@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">Taxonomy Tree Map</title>
+<desc id="desc">지식 분류 체계를 계층 트리로 표현</desc>
+<style>text{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR",Arial,sans-serif}.shadow{filter:drop-shadow(0 20px 32px rgba(26,26,26,.08))}</style>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<circle cx="7230" cy="760" r="520" fill="#fce4e6" opacity=".72"/>
+<circle cx="650" cy="5350" r="760" fill="#f0f4f8" opacity=".88"/>
+<text x="560" y="620" font-size="118" fill="#e63946" font-weight="950" letter-spacing="22">SVG TEMPLATE DEMO</text>
+<text x="560" y="980" font-size="285" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="560" dy="0">Taxonomy Tree Map</tspan>
+</text>
+<text x="570" y="1280" font-size="116" fill="#4a4a4a" font-weight="580" text-anchor="start">
+<tspan x="570" dy="0">지식 분류 체계를 계층 트리로 표현</tspan>
+</text>
+<rect x="3340" y="1500" width="1320" height="420" rx="80" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="3340" y="1500" width="28" height="420" rx="14" fill="#e63946"/>
+<text x="3450" y="1660" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="3450" dy="0">Knowledge Base</tspan>
+</text>
+<text x="3450" y="1815" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="3450" dy="0">root</tspan>
+</text>
+<line x1="4000" y1="1920" x2="1700" y2="2530" stroke="#1a1a1a" stroke-width="12" stroke-linecap="round"/><polygon points="1700,2530 1747.884092277583,2484.297443104878 1764.2395139717842,2545.9654265420295" fill="#1a1a1a"/>
+<rect x="1180" y="2530" width="1040" height="440" rx="80" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="1180" y="2530" width="28" height="440" rx="14" fill="#3a6280"/>
+<text x="1290" y="2690" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="1290" dy="0">Policy</tspan>
+</text>
+<text x="1290" y="2845" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="1290" dy="0">category</tspan>
+</text>
+<line x1="1700" y1="2750" x2="1080" y2="3740" stroke="#d8d8d0" stroke-width="10" stroke-linecap="round"/><polygon points="1080,3740 1083.7487646432273,3673.912506753171 1137.8203500269965,3707.775519821794" fill="#d8d8d0"/>
+<rect x="820" y="3740" width="560" height="420" rx="52" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="820" y="3740" width="28" height="420" rx="14" fill="#3a6280"/>
+<text x="930" y="3900" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="930" dy="0">Po-1</tspan>
+</text>
+<text x="930" y="4055" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="930" dy="0">topic</tspan>
+</text>
+<line x1="1700" y1="2750" x2="1700" y2="3820" stroke="#d8d8d0" stroke-width="10" stroke-linecap="round"/><polygon points="1700,3820 1668.1,3762.0 1731.9,3762.0" fill="#d8d8d0"/>
+<rect x="1440" y="3820" width="560" height="420" rx="52" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="1440" y="3820" width="28" height="420" rx="14" fill="#3a6280"/>
+<text x="1550" y="3980" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="1550" dy="0">Po-2</tspan>
+</text>
+<text x="1550" y="4135" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="1550" dy="0">topic</tspan>
+</text>
+<line x1="1700" y1="2750" x2="2320" y2="3900" stroke="#d8d8d0" stroke-width="10" stroke-linecap="round"/><polygon points="2320,3900 2264.3965563978427,3864.0852807392057 2320.554924586848,3833.808595280785" fill="#d8d8d0"/>
+<rect x="2060" y="3900" width="560" height="420" rx="52" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="2060" y="3900" width="28" height="420" rx="14" fill="#3a6280"/>
+<text x="2170" y="4060" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="2170" dy="0">Po-3</tspan>
+</text>
+<text x="2170" y="4215" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="2170" dy="0">topic</tspan>
+</text>
+<line x1="4000" y1="1920" x2="4000" y2="2530" stroke="#1a1a1a" stroke-width="12" stroke-linecap="round"/><polygon points="4000,2530 3968.1,2472.0 4031.9,2472.0" fill="#1a1a1a"/>
+<rect x="3480" y="2530" width="1040" height="440" rx="80" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="3480" y="2530" width="28" height="440" rx="14" fill="#2a7d5a"/>
+<text x="3590" y="2690" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="3590" dy="0">Product</tspan>
+</text>
+<text x="3590" y="2845" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="3590" dy="0">category</tspan>
+</text>
+<line x1="4000" y1="2750" x2="3380" y2="3740" stroke="#d8d8d0" stroke-width="10" stroke-linecap="round"/><polygon points="3380,3740 3383.7487646432273,3673.912506753171 3437.8203500269965,3707.775519821794" fill="#d8d8d0"/>
+<rect x="3120" y="3740" width="560" height="420" rx="52" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="3120" y="3740" width="28" height="420" rx="14" fill="#2a7d5a"/>
+<text x="3230" y="3900" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="3230" dy="0">Pr-1</tspan>
+</text>
+<text x="3230" y="4055" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="3230" dy="0">topic</tspan>
+</text>
+<line x1="4000" y1="2750" x2="4000" y2="3820" stroke="#d8d8d0" stroke-width="10" stroke-linecap="round"/><polygon points="4000,3820 3968.1,3762.0 4031.9,3762.0" fill="#d8d8d0"/>
+<rect x="3740" y="3820" width="560" height="420" rx="52" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="3740" y="3820" width="28" height="420" rx="14" fill="#2a7d5a"/>
+<text x="3850" y="3980" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="3850" dy="0">Pr-2</tspan>
+</text>
+<text x="3850" y="4135" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="3850" dy="0">topic</tspan>
+</text>
+<line x1="4000" y1="2750" x2="4620" y2="3900" stroke="#d8d8d0" stroke-width="10" stroke-linecap="round"/><polygon points="4620,3900 4564.396556397842,3864.0852807392057 4620.554924586848,3833.808595280785" fill="#d8d8d0"/>
+<rect x="4360" y="3900" width="560" height="420" rx="52" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="4360" y="3900" width="28" height="420" rx="14" fill="#2a7d5a"/>
+<text x="4470" y="4060" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="4470" dy="0">Pr-3</tspan>
+</text>
+<text x="4470" y="4215" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="4470" dy="0">topic</tspan>
+</text>
+<line x1="4000" y1="1920" x2="6300" y2="2530" stroke="#1a1a1a" stroke-width="12" stroke-linecap="round"/><polygon points="6300,2530 6235.760486028215,2545.9654265420295 6252.1159077224165,2484.297443104878" fill="#1a1a1a"/>
+<rect x="5780" y="2530" width="1040" height="440" rx="80" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="5780" y="2530" width="28" height="440" rx="14" fill="#d99a38"/>
+<text x="5890" y="2690" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="5890" dy="0">Ops</tspan>
+</text>
+<text x="5890" y="2845" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="5890" dy="0">category</tspan>
+</text>
+<line x1="6300" y1="2750" x2="5680" y2="3740" stroke="#d8d8d0" stroke-width="10" stroke-linecap="round"/><polygon points="5680,3740 5683.748764643227,3673.912506753171 5737.820350026997,3707.775519821794" fill="#d8d8d0"/>
+<rect x="5420" y="3740" width="560" height="420" rx="52" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="5420" y="3740" width="28" height="420" rx="14" fill="#d99a38"/>
+<text x="5530" y="3900" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="5530" dy="0">Op-1</tspan>
+</text>
+<text x="5530" y="4055" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="5530" dy="0">topic</tspan>
+</text>
+<line x1="6300" y1="2750" x2="6300" y2="3820" stroke="#d8d8d0" stroke-width="10" stroke-linecap="round"/><polygon points="6300,3820 6268.1,3762.0 6331.9,3762.0" fill="#d8d8d0"/>
+<rect x="6040" y="3820" width="560" height="420" rx="52" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="6040" y="3820" width="28" height="420" rx="14" fill="#d99a38"/>
+<text x="6150" y="3980" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="6150" dy="0">Op-2</tspan>
+</text>
+<text x="6150" y="4135" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="6150" dy="0">topic</tspan>
+</text>
+<line x1="6300" y1="2750" x2="6920" y2="3900" stroke="#d8d8d0" stroke-width="10" stroke-linecap="round"/><polygon points="6920,3900 6864.396556397842,3864.0852807392057 6920.554924586848,3833.808595280785" fill="#d8d8d0"/>
+<rect x="6660" y="3900" width="560" height="420" rx="52" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="6660" y="3900" width="28" height="420" rx="14" fill="#d99a38"/>
+<text x="6770" y="4060" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="6770" dy="0">Op-3</tspan>
+</text>
+<text x="6770" y="4215" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="6770" dy="0">topic</tspan>
+</text>
+<rect x="980" y="4920" width="6000" height="420" rx="96" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="980" y="4920" width="28" height="420" rx="14" fill="#ffd400"/>
+<text x="1090" y="5080" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="1090" dy="0">Taxonomy rule</tspan>
+</text>
+<text x="1090" y="5235" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="1090" dy="0">상위 개념 → 카테고리 → 토픽 → 문서로 이어지는 탐색 구조를 보여줍니다.</tspan>
+</text>
+<text x="7440" y="5600" font-size="84" text-anchor="end" fill="#7a7a7a" font-weight="750">8000×6000 SVG · adaptive template demo</text>
+</svg>

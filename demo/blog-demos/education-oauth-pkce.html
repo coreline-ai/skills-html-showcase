@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OAuth 2.0 Authorization Code + PKCE 흐름 강의 (한 시간 완성)</title>
+<meta name="description" content="OAuth 2.0 Authorization Code 흐름과 PKCE를 한 시간에 끝내는 단계별 강의. code_verifier·code_challenge(S256) 동작, 인가 코드 가로채기 공격 방어, 좋은 예/나쁜 예와 실습 과제·퀴즈까지 정리합니다.">
+<meta name="robots" content="index,follow">
+<!-- <link rel="canonical" href="https://example.com/..."> -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "OAuth 2.0 Authorization Code + PKCE 흐름 강의 (한 시간 완성)",
+  "description": "OAuth 2.0 Authorization Code 흐름과 PKCE를 한 시간에 끝내는 단계별 강의. code_verifier·code_challenge(S256) 동작, 인가 코드 가로채기 공격 방어, 좋은 예/나쁜 예와 실습 과제·퀴즈까지 정리합니다.",
+  "inLanguage": "ko"
+}
+</script>
+<style>
+:root{
+  --bg:#f5f5f0;--ink:#1a1a1a;--ink-soft:#4a4a4a;--ink-mute:#7a7a7a;--line:#d8d8d0;--card:#ffffff;
+  --accent:#e63946;--accent-soft:#fce4e6;--term-bg:#fffaf2;--term-border:#e8d9b8;
+  --analogy-bg:#f0f4f8;--analogy-border:#b8cad8;--danger-bg:#fff0ee;--danger-border:#e8b8b2;
+  --good-bg:#eef7f1;--good-border:#b8d8c2;--hl-yellow:#ffe9a3;--hl-blue:#cfe5f5;--hl-pink:#fbd3da;
+  --serif:'Noto Serif KR',serif;--sans:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:60px 28px 100px}
+
+/* 헤더 */
+.kicker{font-size:13px;letter-spacing:0.18em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:36px;line-height:1.35;font-weight:700;margin-bottom:14px;letter-spacing:-0.01em}
+.lead,.sub{font-size:16px;color:var(--ink-soft);margin-bottom:24px}
+.sub{margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+.byline{font-size:13px;color:var(--ink-mute);padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:8px}
+
+/* 블로그/리포트 블록 */
+.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin:24px 0}
+.summary-card .label,.toc .label,.faq .label,.cta-box .label,.source-note .label{
+  font-size:11px;font-weight:800;letter-spacing:0.14em;color:var(--accent);margin-bottom:8px;text-transform:uppercase}
+.summary-card p{margin:0}
+.toc strong{display:block;font-size:14px;color:var(--ink);margin-bottom:8px}
+.toc ol{margin:0 0 0 20px;color:var(--ink-soft)}
+.toc a{color:var(--ink-soft);text-decoration:none}
+.toc a:hover{color:var(--accent);text-decoration:underline}
+.faq h3{font-size:16px;margin:16px 0 6px}
+.faq h3:first-of-type{margin-top:4px}
+.faq p{margin-bottom:0}
+.cta-box p{margin:0}
+.source-note{font-size:13px;color:var(--ink-mute)}
+.source-note p{font-size:13px;color:var(--ink-mute);margin-bottom:8px}
+.source-note p:last-child{margin-bottom:0}
+.source-note a{color:var(--ink-soft)}
+.source-note ol,.source-note ul{margin:6px 0 6px 20px}
+.source-note li{font-size:13px;color:var(--ink-mute)}
+
+/* 섹션 헤더 */
+h2{font-family:var(--serif);font-size:25px;font-weight:700;margin:64px 0 8px;line-height:1.4;letter-spacing:-0.005em;scroll-margin-top:24px}
+h2 .num{display:inline-block;width:34px;height:34px;background:var(--accent);color:#fff;border-radius:50%;
+  text-align:center;line-height:34px;font-size:15px;font-family:var(--sans);margin-right:12px;vertical-align:3px;font-weight:700}
+.h2-sub{font-size:14px;color:var(--ink-mute);margin-bottom:22px;margin-left:46px}
+h3{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--ink)}
+h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+
+/* 본문 */
+p{margin-bottom:16px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:600}
+ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
+li{margin:6px 0}
+em.t{font-style:normal;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px;font-weight:600;font-size:14px}
+code{font-family:'SF Mono',Menlo,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:13.5px;color:#3a3a3a}
+pre{background:#1f1f1d;color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-size:13px;line-height:1.6}
+pre code{background:none;color:inherit;padding:0;font-size:13px}
+blockquote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-style:italic}
+
+/* 형광 하이라이트 */
+.hl{--c:var(--hl-yellow);background-image:linear-gradient(transparent 76%, var(--c) 76%);background-repeat:no-repeat;
+  background-size:0% 100%;padding:1px 7px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  animation:hl-sweep .7s cubic-bezier(.4,0,.2,1) .25s forwards}
+.hl.blue{--c:var(--hl-blue)}
+.hl.pink{--c:var(--hl-pink)}
+@keyframes hl-sweep{to{background-size:100% 100%}}
+@media (prefers-reduced-motion:reduce){.hl{animation:none;background-size:100% 100%}}
+
+/* 용어 박스 (노랑) */
+.term{background:var(--term-bg);border:1px solid var(--term-border);border-left:3px solid #d4a256;border-radius:5px;padding:14px 18px;margin:14px 0 18px;font-size:14px}
+.term .label{font-size:11px;color:#a07020;font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.term .word{font-weight:700;color:#1a1a1a;font-size:15px}
+.term .meaning{color:#5a4a30;margin-top:4px;line-height:1.65}
+
+/* 비유 박스 (파랑) */
+.analogy{background:var(--analogy-bg);border:1px solid var(--analogy-border);border-left:3px solid #5e8aa8;border-radius:5px;padding:16px 20px;margin:18px 0;font-size:14.5px}
+.analogy .label{font-size:11px;color:#3a6280;font-weight:700;letter-spacing:0.12em;margin-bottom:6px}
+.analogy p{color:#2a4a60;margin:0;line-height:1.7}
+.analogy p + p{margin-top:8px}
+
+/* 함정 박스 (빨강) */
+.danger{background:var(--danger-bg);border:1px solid var(--danger-border);border-left:3px solid var(--accent);border-radius:5px;padding:16px 20px;margin:14px 0;font-size:14.5px}
+.danger .label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.danger .name{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px}
+.danger p{color:#5a3a36;margin:0;line-height:1.7;font-size:14px}
+.danger p + p{margin-top:8px}
+
+/* 해결책 박스 (녹색) */
+.good{background:var(--good-bg);border:1px solid var(--good-border);border-left:3px solid #4a9d7a;border-radius:5px;padding:16px 20px;margin:14px 0;font-size:14.5px}
+.good .label{font-size:11px;color:#2a7d5a;font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.good .name{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px}
+.good p{color:#2a5a4a;margin:0;line-height:1.7;font-size:14px}
+
+/* 영웅 비유 박스 */
+.hero-analogy{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:26px 28px;margin:24px 0 12px}
+.hero-analogy .tag{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:10px}
+.hero-analogy h3{margin:0 0 10px;font-family:var(--serif);font-size:20px;line-height:1.5}
+.hero-analogy p{margin:0;font-size:15px;color:var(--ink-soft)}
+.hero-analogy p + p{margin-top:10px}
+
+/* 일반 카드 */
+.card-block{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 26px;margin:14px 0}
+.card-block h3{margin-top:0;font-size:17px}
+.card-block p{font-size:14.5px;margin-bottom:10px}
+.card-block p:last-child{margin-bottom:0}
+.card-block .case-label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:6px}
+
+/* 인용/흐름 박스 */
+.prompt-box{background:#f8f8f4;border-left:2px solid var(--line);padding:10px 14px;margin-top:10px;font-size:13.5px;color:var(--ink-soft);font-style:italic;line-height:1.65}
+
+/* 표 (모바일 안전: 가로 스크롤 래퍼 .tbl로 감쌀 것) */
+.tbl{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px}
+th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;color:var(--ink-soft);vertical-align:top}
+th{background:#efeee8;color:var(--ink);font-weight:700;font-size:13px}
+
+/* 접이식 (네이티브, JS 불필요 — 퀴즈 정답/상세에 사용) */
+details{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 16px;margin:12px 0}
+summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:15px}
+details[open] summary{margin-bottom:8px}
+details p{margin-bottom:0}
+
+/* takeaway 박스 (검정, 마지막) */
+.try{background:#1a1a1a;color:#f5f5f0;border-radius:6px;padding:32px 30px;margin-top:52px}
+.try .label{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:14px}
+.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
+.try ol{padding-left:20px;color:#d0d0c8}
+.try li{margin-bottom:12px;font-size:15px;line-height:1.7}
+.try li strong{color:#fff}
+.try li:last-child{margin-bottom:0}
+
+/* 푸터 */
+.footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+
+/* 모바일 */
+@media (max-width:640px){.wrap{padding:40px 20px 60px}h1{font-size:28px}h2{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">교육 · 한 시간 완성 강의</div>
+<h1>OAuth 2.0 Authorization Code + PKCE 흐름 강의</h1>
+<p class="sub">"구글로 로그인" 버튼 뒤에서 무슨 일이 벌어지는지 궁금했던 분을 위한 강의입니다. 인가 코드(Authorization Code) 흐름의 다섯 단계를 실제 요청·응답 예시로 따라가 보고, 왜 요즘은 PKCE가 사실상 필수가 되었는지를 공격 시나리오와 함께 한 번에 정리합니다. 표준(RFC 6749 · RFC 7636)에 정의된 동작만 다루므로, 강의가 끝나면 스펙 문서를 직접 읽을 자신감이 생길 거예요.</p>
+
+<div class="summary-card">
+  <div class="label">학습 목표</div>
+  <p>이 강의를 끝까지 따라오면 다음을 할 수 있습니다.</p>
+  <ul>
+    <li>OAuth 2.0의 네 가지 역할(<em class="t">client / resource owner / authorization server / resource server</em>)을 구분해 설명할 수 있다.</li>
+    <li>Authorization Code 흐름을 다섯 단계로 그려내고, 각 단계에서 오가는 파라미터(<code>code</code>, <code>state</code>, <code>access_token</code> 등)를 말할 수 있다.</li>
+    <li>인가 코드 가로채기 공격이 왜 가능한지, 그리고 PKCE의 <code>code_verifier</code>·<code>code_challenge</code>(S256)가 그것을 어떻게 막는지 설명할 수 있다.</li>
+    <li>안전한 구현(좋은 예)과 위험한 구현(나쁜 예)을 구별하고, 왜 OAuth 2.1에서 PKCE가 모든 클라이언트의 기본이 되었는지 근거를 댈 수 있다.</li>
+  </ul>
+</div>
+
+<div class="toc">
+  <strong>목차</strong>
+  <ol>
+    <li><a href="#s1">사전 개념: OAuth의 등장인물과 용어</a></li>
+    <li><a href="#s2">핵심: Authorization Code 흐름 5단계</a></li>
+    <li><a href="#s3">PKCE는 왜 필요한가 — 가로채기 공격과 방어</a></li>
+    <li><a href="#s4">좋은 예 / 나쁜 예</a></li>
+    <li><a href="#s5">실습 과제</a></li>
+    <li><a href="#s6">자가 점검 퀴즈</a></li>
+  </ol>
+</div>
+
+<h2 id="s1"><span class="num">1</span>사전 개념: OAuth의 등장인물과 용어</h2>
+<p class="h2-sub">흐름을 따라가기 전에, 무대에 오를 배우들과 핵심 단어를 먼저 익혀 둡니다.</p>
+
+<p>OAuth 2.0은 "내 비밀번호를 넘겨주지 않고도, 다른 앱이 내 데이터의 일부에 접근하도록 허락하는" 위임(delegation) 프로토콜입니다. 여기서 가장 자주 헷갈리는 지점부터 짚고 갑니다.</p>
+
+<div class="term">
+  <div class="label">용어</div>
+  <div class="word">인가(Authorization) ≠ 인증(Authentication)</div>
+  <div class="meaning"><strong>인증</strong>은 "당신이 누구인지" 확인하는 일이고, <strong>인가</strong>는 "무엇을 할 수 있는지" 권한을 주는 일입니다. OAuth 2.0은 본질적으로 <em class="t">인가</em> 프로토콜입니다. 로그인(신원 확인)까지 표준화하려면 그 위에 얹는 OpenID Connect가 필요하다는 점만 기억하세요.</div>
+</div>
+
+<div class="term">
+  <div class="label">용어</div>
+  <div class="word">Resource Owner (자원 소유자)</div>
+  <div class="meaning">보호된 자원에 대한 접근을 허락할 수 있는 주체. 사람일 때는 <strong>end-user</strong>(최종 사용자), 즉 보통 "당신"을 가리킵니다.</div>
+</div>
+
+<div class="term">
+  <div class="label">용어</div>
+  <div class="word">Client (클라이언트)</div>
+  <div class="meaning">자원 소유자를 대신해 자원에 접근을 요청하는 <strong>애플리케이션</strong>입니다. 웹 서버 앱, 모바일 앱, SPA(브라우저 단일 페이지 앱) 등이 모두 클라이언트입니다.</div>
+</div>
+
+<div class="term">
+  <div class="label">용어</div>
+  <div class="word">Authorization Server (인가 서버)</div>
+  <div class="meaning">자원 소유자를 인증하고 동의를 받은 뒤 <strong>토큰을 발급</strong>하는 서버. 구글 로그인 화면, 카카오 동의 화면이 바로 이 서버가 보여 주는 것입니다.</div>
+</div>
+
+<div class="term">
+  <div class="label">용어</div>
+  <div class="word">Resource Server (자원 서버)</div>
+  <div class="meaning">실제 보호된 데이터를 가지고 있고, <strong>access token</strong>을 받아 요청을 처리하는 서버. 예: 사용자의 프로필이나 캘린더를 내주는 API 서버.</div>
+</div>
+
+<div class="term">
+  <div class="label">용어</div>
+  <div class="word">Redirect URI (리다이렉트 URI)</div>
+  <div class="meaning">인가 서버가 사용자를 다시 돌려보낼 클라이언트의 주소입니다. 표준상 이 주소는 <strong>클라이언트 등록 시 미리 약속</strong>해 두며, 인가 서버는 등록된 값과 일치하는지 검증합니다. 흐름에서 "결과를 받는 우편함" 역할을 합니다.</div>
+</div>
+
+<div class="term">
+  <div class="label">용어</div>
+  <div class="word">Access Token (액세스 토큰)</div>
+  <div class="meaning">자원 서버에 "이 요청은 허가된 것"임을 증명하는 자격 증명. 흐름의 최종 목표물이며, 보통 만료 시간(<code>expires_in</code>)이 있고 필요하면 <code>refresh_token</code>으로 갱신합니다.</div>
+</div>
+
+<h2 id="s2"><span class="num">2</span>핵심: Authorization Code 흐름 5단계</h2>
+<p class="h2-sub">RFC 6749의 Authorization Code Grant를 한 단계씩 따라갑니다. 예시 도메인은 모두 가상입니다.</p>
+
+<p>아래 예시에서 클라이언트는 <code>app.example-client.com</code>(우리 앱), 인가/자원 서버는 <code>auth.example-idp.com</code>(가상의 신원 제공자)이라고 하겠습니다. 흐름의 큰 그림은 "먼저 <span class="hl blue">단기 코드(code)</span>를 받고, 그 코드를 뒷단에서 토큰으로 교환한다"는 것입니다. 토큰이 브라우저 URL에 직접 노출되지 않는다는 점이 이 흐름의 핵심 장점입니다.</p>
+
+<div class="card-block">
+  <div class="case-label">단계 1 · 인가 요청</div>
+  <h3>클라이언트가 사용자를 인가 서버로 보낸다</h3>
+  <p>사용자가 "로그인" 버튼을 누르면, 클라이언트는 브라우저를 인가 엔드포인트로 리다이렉트합니다. <code>response_type=code</code>로 "코드 흐름을 쓰겠다"고 선언하고, <code>state</code>에 추측 불가능한 임의 값을 담아 보냅니다(나중에 CSRF 방지에 씁니다).</p>
+  <div class="prompt-box">브라우저가 이동하는 주소(인가 요청):</div>
+<pre><code>GET https://auth.example-idp.com/authorize?
+    response_type=code
+  &amp; client_id=s6BhdRkqt3
+  &amp; redirect_uri=https://app.example-client.com/callback
+  &amp; scope=profile%20email
+  &amp; state=af0ifjsldkj</code></pre>
+</div>
+
+<div class="card-block">
+  <div class="case-label">단계 2 · 사용자 인증 &amp; 동의</div>
+  <h3>인가 서버가 사용자를 인증하고 동의를 받는다</h3>
+  <p>인가 서버는 로그인 화면을 띄워 <em class="t">resource owner</em>를 인증하고, "이 앱에 프로필·이메일 접근을 허용할까요?"라고 동의를 구합니다. 이 단계는 전적으로 인가 서버와 사용자 사이에서 일어나며, <strong>클라이언트는 사용자의 비밀번호를 절대 보지 못합니다</strong>. 이것이 OAuth의 존재 이유입니다.</p>
+</div>
+
+<div class="card-block">
+  <div class="case-label">단계 3 · 인가 응답(코드 전달)</div>
+  <h3>인가 서버가 코드를 들고 사용자를 돌려보낸다</h3>
+  <p>사용자가 동의하면, 인가 서버는 미리 등록된 <code>redirect_uri</code>로 브라우저를 되돌리며 <code>code</code>를 붙여 보냅니다. 이때 단계 1에서 보낸 <code>state</code>를 <strong>그대로 다시 돌려줍니다</strong>. 클라이언트는 이 값이 자기가 보낸 것과 같은지 검증해야 합니다.</p>
+  <div class="prompt-box">콜백으로 돌아오는 주소(인가 응답):</div>
+<pre><code>GET https://app.example-client.com/callback?
+    code=SplxlOBeZQQYbYS6WxSbIA
+  &amp; state=af0ifjsldkj</code></pre>
+</div>
+
+<div class="card-block">
+  <div class="case-label">단계 4 · 토큰 요청(코드 교환)</div>
+  <h3>클라이언트가 백채널에서 코드를 토큰으로 바꾼다</h3>
+  <p>이제 클라이언트는 브라우저가 아니라 <strong>서버 간 직접 통신(back channel)</strong>으로 토큰 엔드포인트에 코드를 보냅니다. <code>grant_type=authorization_code</code>와 함께 방금 받은 <code>code</code>, 그리고 단계 1과 동일한 <code>redirect_uri</code>를 포함합니다.</p>
+  <div class="prompt-box">서버 간 POST 요청(토큰 요청):</div>
+<pre><code>POST https://auth.example-idp.com/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+&amp; code=SplxlOBeZQQYbYS6WxSbIA
+&amp; redirect_uri=https://app.example-client.com/callback
+&amp; client_id=s6BhdRkqt3</code></pre>
+</div>
+
+<div class="card-block">
+  <div class="case-label">단계 5 · 토큰 응답</div>
+  <h3>인가 서버가 액세스 토큰을 발급한다</h3>
+  <p>코드가 유효하면 인가 서버는 <code>access_token</code>을 발급합니다. <code>token_type</code>(보통 Bearer), 만료 시간 <code>expires_in</code>, 그리고 선택적으로 갱신용 <code>refresh_token</code>이 함께 옵니다. 클라이언트는 이제 이 토큰을 <em class="t">resource server</em>의 API 호출에 사용합니다.</p>
+  <div class="prompt-box">토큰 엔드포인트의 JSON 응답:</div>
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "access_token": "2YotnFZFEjr1zCsicMWpAA",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "tGzv3JOkF0XG5Qx2TlKWIA"
+}</code></pre>
+</div>
+
+<h2 id="s3"><span class="num">3</span>PKCE는 왜 필요한가 — 가로채기 공격과 방어</h2>
+<p class="h2-sub">코드 흐름은 좋아 보이는데, 도대체 어디가 뚫린다는 걸까요? 한 가지 약점을 봅시다.</p>
+
+<p>단계 3을 다시 보세요. <code>code</code>는 <strong>브라우저/OS를 거쳐 전달</strong>됩니다. 특히 모바일·데스크톱 앱은 <code>com.myapp://callback</code> 같은 커스텀 URI 스킴으로 코드를 돌려받는데, 같은 기기에 악성 앱이 <span class="hl pink">동일한 스킴을 등록</span>해 두면 그 코드를 가로챌 수 있습니다. 이것이 RFC 7636이 정의한 <em class="t">authorization code interception attack</em>(인가 코드 가로채기 공격)입니다.</p>
+
+<div class="danger">
+  <div class="label">위험</div>
+  <div class="name">인가 코드 가로채기 공격</div>
+  <p>악성 앱이 정상 앱과 같은 리다이렉트 스킴을 등록합니다. 사용자가 정상적으로 동의를 마치면, OS가 콜백을 <strong>악성 앱에도 전달</strong>할 수 있습니다.</p>
+  <p>공격자는 가로챈 <code>code</code>를 토큰 엔드포인트로 보내 <strong>access token으로 교환</strong>합니다. 공개 클라이언트(public client)는 client secret을 안전히 숨길 수 없으므로, 코드만 손에 넣으면 이 교환을 막을 방법이 없습니다.</p>
+</div>
+
+<p>여기서 등장하는 것이 <strong>PKCE(Proof Key for Code Exchange, "픽시"로 읽습니다)</strong> 입니다. 아이디어는 단순합니다. "코드를 처음 요청한 그 클라이언트만이 알고 있는 <span class="hl">한 번 쓰는 비밀</span>을 마지막 교환 단계에서 증명하게 하자."</p>
+
+<div class="good">
+  <div class="label">방어</div>
+  <div class="name">PKCE: code_verifier &amp; code_challenge(S256)</div>
+  <p><strong>1) 시작 전:</strong> 클라이언트가 매 요청마다 임의의 비밀 문자열 <code>code_verifier</code>를 만듭니다. 이를 SHA-256으로 해시하고 Base64-URL로 인코딩한 값이 <code>code_challenge</code>입니다.</p>
+  <p><strong>2) 단계 1(인가 요청)에서:</strong> 해시 값인 <code>code_challenge</code>와 <code>code_challenge_method=S256</code>만 함께 보냅니다. 원본 비밀은 보내지 않습니다.</p>
+  <p><strong>3) 단계 4(토큰 교환)에서:</strong> 이번엔 원본 <code>code_verifier</code>를 보냅니다. 인가 서버는 받은 verifier를 같은 방식으로 해시해 처음 저장해 둔 challenge와 비교하고, 일치할 때만 토큰을 내줍니다.</p>
+</div>
+
+<p>핵심은 <span class="hl">단방향 해시</span>입니다. 공격자가 단계 1의 요청을 엿보거나 단계 3의 코드를 가로채더라도, 거기에는 해시 값(<code>code_challenge</code>)만 들어 있습니다. 원본 <code>code_verifier</code> 없이는 해시를 거꾸로 풀 수 없으므로, 가로챈 코드를 토큰으로 바꾸는 단계 4에서 막힙니다. RFC 7636은 S256을 지원할 수 있는 클라이언트는 <strong>반드시 S256을 쓰라</strong>고 못 박았고(<code>plain</code>은 challenge=verifier라 도청에 취약), S256은 서버 구현 필수(MTI) 항목입니다.</p>
+
+<div class="prompt-box">code_challenge 생성 개념 (의사 표기 — 실제 값은 라이브러리가 계산):</div>
+<pre><code># 1) 43~128자 길이의 임의 비밀 (unreserved 문자: A-Z a-z 0-9 - . _ ~)
+code_verifier  = base64url( random_bytes(32) )
+#    예) "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
+
+# 2) S256 변환: SHA-256 해시 후 Base64-URL 인코딩
+code_challenge = base64url( SHA256( ASCII(code_verifier) ) )
+#    예) "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM"
+
+# 인가 요청에는 challenge만, 토큰 요청에는 verifier를 보낸다.</code></pre>
+
+<p>그래서 <strong>OAuth 2.1</strong> 초안은 PKCE를 공개 클라이언트뿐 아니라 모든 클라이언트의 필수 사항으로 끌어올렸고, 토큰이 URL 조각에 그대로 노출되어 PKCE를 적용할 수 없는 implicit grant는 아예 제거했습니다. "코드 흐름 + PKCE 하나로 SPA를 포함한 모든 앱 유형을 안전하게 처리할 수 있다"는 것이 현대 권고의 결론입니다.</p>
+
+<h2 id="s4"><span class="num">4</span>좋은 예 / 나쁜 예</h2>
+<p class="h2-sub">스펙을 외우는 것보다, 안전한 습관과 위험한 습관을 구별하는 눈이 더 오래갑니다.</p>
+
+<div class="good">
+  <div class="label">좋은 예</div>
+  <div class="name">state로 CSRF를 방지한다</div>
+  <p>인가 요청에 추측 불가능한 <code>state</code>를 담고, 콜백에서 돌아온 값이 정확히 일치하는지 검증합니다. 일치하지 않으면 흐름을 중단합니다. 표준이 CSRF 방지를 위해 권고하는 동작입니다.</p>
+</div>
+
+<div class="good">
+  <div class="label">좋은 예</div>
+  <div class="name">모든 클라이언트에 PKCE(S256)를 적용한다</div>
+  <p>SPA·모바일은 물론, client secret을 가진 서버 앱도 PKCE를 켭니다. 코드 가로채기·치환 공격 표면을 전 영역에서 닫는 방향이며, OAuth 2.1이 권장하는 기본값입니다.</p>
+</div>
+
+<div class="good">
+  <div class="label">좋은 예</div>
+  <div class="name">redirect URI를 정확히 일치(exact match) 검증한다</div>
+  <p>리다이렉트 URI는 사전 등록된 값과 <strong>문자 단위로 정확히</strong> 비교합니다. 와일드카드나 부분 일치는 열린 리다이렉트로 코드를 탈취당하는 통로가 됩니다.</p>
+</div>
+
+<div class="danger">
+  <div class="label">나쁜 예</div>
+  <div class="name">implicit grant로 토큰을 URL에 직접 받는다</div>
+  <p>access token이 URL 조각에 실려 브라우저 히스토리·리퍼러·악성 스크립트로 새기 쉽습니다. 토큰 엔드포인트를 거치지 않아 PKCE도 적용할 수 없어, OAuth 2.1에서 제거되었습니다.</p>
+</div>
+
+<div class="danger">
+  <div class="label">나쁜 예</div>
+  <div class="name">client secret을 SPA에 박아 넣는다</div>
+  <p>브라우저로 내려가는 코드 안의 비밀은 비밀이 아닙니다. 누구나 개발자 도구로 꺼내 볼 수 있습니다. 공개 클라이언트는 secret 대신 <strong>PKCE</strong>로 자신을 증명해야 합니다.</p>
+</div>
+
+<div class="danger">
+  <div class="label">나쁜 예</div>
+  <div class="name">state를 보내기만 하고 검증하지 않는다</div>
+  <p>콜백으로 돌아온 <code>state</code>를 확인하지 않으면, 공격자가 자기 코드를 피해자 세션에 끼워 넣는 CSRF/코드 주입을 막지 못합니다. "보냈으니 됐다"가 아니라 "돌아온 값을 비교한다"가 핵심입니다.</p>
+</div>
+
+<h2 id="s5"><span class="num">5</span>실습 과제</h2>
+<p class="h2-sub">읽기만 하면 금세 잊습니다. 손으로 한 번 짚어 보면 흐름이 몸에 붙습니다.</p>
+
+<p>아래 미션을 순서대로 수행해 보세요. 코드 작성 없이 종이와 펜, 또는 메모장만으로도 충분합니다.</p>
+<ol>
+  <li><strong>역할 매핑:</strong> 평소 자주 쓰는 "OO으로 로그인" 서비스 하나를 골라, 네 가지 역할(client / resource owner / authorization server / resource server)에 각각 무엇이 해당하는지 적어 봅니다.</li>
+  <li><strong>흐름 그리기:</strong> 단계 1~5를 화살표 다이어그램으로 그리고, 각 화살표 위에 그때 오가는 핵심 파라미터(<code>response_type</code>, <code>state</code>, <code>code</code>, <code>access_token</code> 등)를 표시합니다.</li>
+  <li><strong>PKCE 끼워 넣기:</strong> 방금 그린 다이어그램에 <code>code_challenge</code>(단계 1)와 <code>code_verifier</code>(단계 4)가 들어갈 위치를 빨간 펜으로 추가합니다.</li>
+  <li><strong>verifier·challenge 만들어 보기:</strong> 임의의 32바이트를 Base64-URL로 인코딩해 <code>code_verifier</code> 모양(43자 이상)을 흉내 내고, 온라인 SHA-256 도구로 해시해 <code>code_challenge</code>가 어떻게 달라지는지 눈으로 확인합니다.</li>
+  <li><strong>공격 시뮬레이션:</strong> "공격자가 단계 3에서 code를 가로챘다"고 가정하고, PKCE가 있을 때와 없을 때 단계 4에서 무슨 일이 벌어지는지 두 시나리오로 서술합니다.</li>
+</ol>
+
+<h2 id="s6"><span class="num">6</span>자가 점검 퀴즈</h2>
+<p class="h2-sub">먼저 스스로 답해 본 뒤 펼쳐서 확인하세요. 막히는 항목이 복습 지점입니다.</p>
+
+<details>
+  <summary>Q1. OAuth 2.0은 인증(Authentication) 프로토콜인가요, 인가(Authorization) 프로토콜인가요?</summary>
+  <p><strong>인가 프로토콜입니다.</strong> OAuth 2.0은 "이 앱이 무엇에 접근할 수 있는가"라는 권한 위임을 다룹니다. 사용자의 신원 확인(로그인)까지 표준화하려면 그 위에 얹는 OpenID Connect가 필요합니다. 둘을 섞어 쓰지만 개념은 별개입니다.</p>
+</details>
+
+<details>
+  <summary>Q2. Authorization Code 흐름에서 access token이 브라우저 URL에 직접 노출되지 않는 이유는?</summary>
+  <p>브라우저로는 <strong>단기 코드(code)</strong>만 돌아오고, 토큰은 클라이언트가 <strong>서버 간 백채널 통신(단계 4)</strong>으로 토큰 엔드포인트에서 교환해 받기 때문입니다. 토큰이 히스토리·리퍼러에 남지 않는 것이 implicit grant 대비 큰 장점입니다.</p>
+</details>
+
+<details>
+  <summary>Q3. 공격자가 단계 3에서 code를 가로채도 PKCE가 있으면 왜 토큰을 못 받나요?</summary>
+  <p>토큰 교환(단계 4)에는 원본 <code>code_verifier</code>가 필요합니다. 공격자가 본 것은 단방향 해시인 <code>code_challenge</code>뿐이라, 이를 거꾸로 풀어 verifier를 알아낼 수 없습니다. verifier를 모르면 인가 서버의 검증을 통과하지 못해 코드가 토큰으로 바뀌지 않습니다.</p>
+</details>
+
+<details>
+  <summary>Q4. PKCE에서 plain 대신 S256을 써야 하는 이유는?</summary>
+  <p><code>plain</code>은 <code>code_challenge</code>가 <code>code_verifier</code>와 동일해서, 단계 1의 요청을 도청하면 비밀이 그대로 노출됩니다. <code>S256</code>은 SHA-256 해시 값만 전송하므로 도청·가로채기로부터 verifier를 보호합니다. RFC 7636은 S256이 가능하면 반드시 S256을 쓰도록 규정합니다.</p>
+</details>
+
+<div class="try">
+  <div class="label">복습 &amp; 다음 단계</div>
+  <h3>한 시간을 한 문장으로: "코드를 먼저 받고, PKCE로 증명하며 토큰으로 바꾼다."</h3>
+  <ol>
+    <li><strong>복습:</strong> OAuth는 인가 프로토콜이고, 네 역할(client·resource owner·authorization server·resource server)이 단계 1~5에 걸쳐 코드와 토큰을 주고받는다.</li>
+    <li><strong>복습:</strong> 코드는 브라우저를 거치므로 가로채기 위험이 있고, PKCE의 <code>code_verifier</code>/<code>code_challenge</code>(S256)가 토큰 교환 단계에서 그것을 차단한다.</li>
+    <li><strong>다음:</strong> <strong>OpenID Connect</strong>를 학습해 "인가" 위에 "인증(로그인)"을 어떻게 표준으로 얹는지 본다(<code>id_token</code>, <code>nonce</code>).</li>
+    <li><strong>다음:</strong> <strong>refresh token rotation</strong>과 토큰 만료·재발급 전략을 익혀 장기 세션을 안전하게 다룬다.</li>
+    <li><strong>다음:</strong> 실제 라이브러리(예: 표준 준수 OAuth 클라이언트)로 단계 1~5 + PKCE를 한 번 구현해 보고, 인가 서버 로그로 challenge·verifier 검증을 직접 확인한다.</li>
+  </ol>
+</div>
+
+<div class="source-note">
+  <div class="label">참고 출처</div>
+  <p>프로토콜 동작과 파라미터는 아래 1차 표준 문서를 기준으로 작성했으며, OAuth 2.1 관련 동향은 표준화 진행 중인 초안에 근거합니다(세부 수치·문구는 최종 발행본에서 변동 가능, 확인 필요).</p>
+  <ol>
+    <li>RFC 6749, <em>The OAuth 2.0 Authorization Framework</em> — Authorization Code Grant(§4.1), 역할·파라미터·state. <a href="https://datatracker.ietf.org/doc/html/rfc6749">datatracker.ietf.org/doc/html/rfc6749</a></li>
+    <li>RFC 7636, <em>Proof Key for Code Exchange by OAuth Public Clients</em> — code_verifier/code_challenge, S256, 가로채기 공격. <a href="https://www.rfc-editor.org/rfc/rfc7636.html">rfc-editor.org/rfc/rfc7636.html</a></li>
+    <li>OAuth.net, <em>OAuth 2.1</em> 개요 및 초안 — PKCE 전면 필수화, implicit grant 제거. <a href="https://oauth.net/2.1/">oauth.net/2.1</a></li>
+  </ol>
+</div>
+
+<div class="footer">Generated with adaptive-html-blog-writer · mode: education_html</div>
+
+</div>
+</body>
+</html>

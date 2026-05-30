@@ -1,0 +1,67 @@
+{
+  "name": "adaptive-html-final",
+  "version": "4.1.0",
+  "language": "ko",
+  "entry": "SKILL.md",
+  "assets": [
+    "assets/theme.css",
+    "assets/components.css",
+    "assets/layouts.css",
+    "assets/print.css",
+    "assets/base.html"
+  ],
+  "layouts": [
+    "beginner-learning.html",
+    "expert-report.html",
+    "magazine-article.html",
+    "course-module.html",
+    "personal-blog-essay.html",
+    "seo-dashboard.html",
+    "platform-adaptation.html",
+    "skill-audit-report.html",
+    "reference-manual.html",
+    "comparison-matrix.html",
+    "case-study.html",
+    "landing-brief.html",
+    "checklist-playbook.html"
+  ],
+  "modes": [
+    { "id": "skill_audit", "layout": "skill-audit-report.html" },
+    { "id": "platform_blog", "layout": "platform-adaptation.html" },
+    { "id": "seo_dashboard", "layout": "seo-dashboard.html" },
+    { "id": "education_html", "layout": "course-module.html" },
+    { "id": "expert_html", "layout": "expert-report.html" },
+    { "id": "article_html", "layout": "magazine-article.html" },
+    { "id": "blog_writer", "layout": "personal-blog-essay.html" },
+    { "id": "beginner_html", "layout": "beginner-learning.html" },
+    { "id": "reference_html", "layout": "reference-manual.html" },
+    { "id": "comparison_html", "layout": "comparison-matrix.html" },
+    { "id": "case_study_html", "layout": "case-study.html" },
+    { "id": "landing_brief_html", "layout": "landing-brief.html" },
+    { "id": "checklist_playbook", "layout": "checklist-playbook.html" }
+  ],
+  "design": "editorial-learning-v4",
+  "merged_from": [
+    "adaptive-html-learning-ultimate@3.0.0 (13-mode router, layouts, eval rubric, recipes, schemas, layered CSS)",
+    "adaptive-html-blog-writer@2.0.0 (blog/SEO/platform/box-selection 상세 references)"
+  ],
+  "integrates": [
+    "adaptive-html-blog-writer-v2",
+    "adaptive-html-learning-ultimate",
+    "html-for-beginners design DNA"
+  ],
+  "aliases": [
+    "adaptive-html-learning-ultimate",
+    "adaptive-html-blog-writer-v2"
+  ],
+  "changes": [
+    "blog-seo-system / writing-system / platform-system / editorial-design-system references를 blog-writer 상세본으로 흡수",
+    "SKILL.md description에 명시적 트리거 목록과 출력 원칙 추가",
+    "skip link 접근성 버그 수정: 13개 레이아웃 <main>에 id=\"main\" 통일",
+    "v4.1.0: modes를 13개 {id, layout} 객체 배열로 표준화하고 SKILL.md §3 라우터와 일치",
+    "v4.1.0: 접근성 테스트 체크리스트 추가, recipes 13/13 완비, blog-meta/quality-report 스키마 보강",
+    "v4.1.0: layouts.css 미정의 클래스 39개 정의로 차집합 0 달성, AA 대비·focus-visible·reduced-motion 보강",
+    "v4.1.0: base.html에 선택적 {{FOOTER}} 슬롯 추가"
+  ],
+  "updated": "2026-05-30"
+}

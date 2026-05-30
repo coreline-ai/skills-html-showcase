@@ -1,0 +1,48 @@
+{
+  "type": "decision-tree",
+  "title": "이미지 소스 결정 트리",
+  "subtitle": "무엇을 보여줘야 하는가에 따라 소스가 갈린다",
+  "items": [
+    {
+      "label": "Q1",
+      "title": "현실의 인물·장소·제품·사건인가?",
+      "lines": [
+        "맞다면 사진",
+        "아니면 다음 질문"
+      ]
+    },
+    {
+      "label": "Q2",
+      "title": "절차·비교·정책·리스크 구조인가?",
+      "lines": [
+        "맞다면 SVG 인포그래픽",
+        "은유가 필요하면 AI"
+      ]
+    },
+    {
+      "label": "PHOTO",
+      "title": "공개 라이선스 사진",
+      "lines": [
+        "출처·라이선스 명기"
+      ],
+      "accent": "#3a6280"
+    },
+    {
+      "label": "SVG",
+      "title": "SVG 인포그래픽 생성",
+      "lines": [
+        "기본값 · 8000x6000"
+      ],
+      "accent": "#2a7d5a"
+    },
+    {
+      "label": "AI",
+      "title": "AI 컨셉 이미지",
+      "lines": [
+        "사실처럼 쓰지 않기"
+      ],
+      "accent": "#d99a38"
+    }
+  ],
+  "footer": "선택 원칙 · visual-template-system.md"
+}

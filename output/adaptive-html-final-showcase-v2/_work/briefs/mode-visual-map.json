@@ -1,0 +1,56 @@
+{
+  "type": "matrix",
+  "title": "모드별 기본 비주얼 템플릿",
+  "subtitle": "13개 모드 각각에 권장되는 인포그래픽 조합",
+  "items": [
+    {
+      "label": "beginner",
+      "title": "hero-map · checklist-flow"
+    },
+    {
+      "label": "expert",
+      "title": "matrix · timeline · gate"
+    },
+    {
+      "label": "article",
+      "title": "hero-map · decision-tree"
+    },
+    {
+      "label": "education",
+      "title": "timeline · checklist-flow"
+    },
+    {
+      "label": "blog",
+      "title": "hero-map · timeline"
+    },
+    {
+      "label": "seo",
+      "title": "card-grid · matrix"
+    },
+    {
+      "label": "platform",
+      "title": "card-grid · matrix"
+    },
+    {
+      "label": "skill_audit",
+      "title": "matrix · quality-gate"
+    },
+    {
+      "label": "reference",
+      "title": "card-grid · matrix"
+    },
+    {
+      "label": "comparison",
+      "title": "matrix · decision-tree"
+    },
+    {
+      "label": "case_study",
+      "title": "timeline · hero-map"
+    },
+    {
+      "label": "landing/checklist",
+      "title": "hero-map · checklist-flow"
+    }
+  ],
+  "footer": "references/visual-template-system.md 모드별 표"
+}

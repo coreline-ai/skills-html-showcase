@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>adaptive-html-blog-writer v2 · 13개 모드 통합 데모 인덱스</title>
+<meta name="description" content="adaptive-html-blog-writer v2 스킬이 지원하는 13개 모드를 목적별로 묶어 한곳에서 보는 통합 데모 인덱스입니다. 학습·분석·발행·운영까지, 각 모드의 레이아웃과 리서치 기반 HTML 데모를 제공합니다.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f5f0;--ink:#1a1a1a;--ink-soft:#4a4a4a;--ink-mute:#7a7a7a;--line:#d8d8d0;--card:#ffffff;
+  --accent:#e63946;--accent-soft:#fce4e6;
+  --serif:'Noto Serif KR',serif;--sans:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:60px 28px 100px}
+.kicker{font-size:13px;letter-spacing:0.18em;color:var(--accent);font-weight:800;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:38px;line-height:1.34;font-weight:700;letter-spacing:-0.01em;margin-bottom:16px}
+.lead{font-size:16.5px;color:var(--ink-soft);max-width:700px;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{font-size:12px;font-weight:700;color:var(--ink-mute);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.chip strong{color:var(--accent)}
+.note{font-size:13px;color:var(--ink-mute);max-width:760px;padding-top:18px;border-top:1px solid var(--line)}
+.note code{font-family:'SF Mono',Menlo,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:12.5px}
+.section-label{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--ink-mute);text-transform:uppercase;margin:46px 0 8px}
+.section-desc{font-size:13.5px;color:var(--ink-mute);margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(26,26,26,.10);border-color:#c9c9bf}
+.card-top{display:flex;align-items:center;gap:8px;margin-bottom:11px}
+.no{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center;font-family:var(--sans)}
+.badge{font-size:11px;font-weight:800;letter-spacing:0.06em;color:var(--accent);
+  background:var(--accent-soft);border-radius:999px;padding:4px 10px;font-family:'SF Mono',Menlo,monospace}
+.card h2{font-family:var(--serif);font-size:18px;line-height:1.42;margin-bottom:7px}
+.card p{font-size:13.6px;color:var(--ink-soft);margin-bottom:12px;flex:1}
+.lay{font-family:'SF Mono',Menlo,monospace;font-size:11px;color:var(--ink-mute);margin-bottom:10px}
+.open{font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.02em}
+.open::after{content:" \2192"}
+.bonus{grid-template-columns:1fr}
+.bonus .card{border-style:dashed}
+.footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+@media (max-width:640px){.wrap{padding:40px 20px 64px}h1{font-size:29px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">adaptive-html-blog-writer v2 · Unified Demo Index</div>
+  <h1>13개 모드, 하나의 인덱스</h1>
+  <p class="lead">한 스킬이 목적에 따라 어떻게 다른 산출물을 만드는지 목적별로 묶어 보여 줍니다. 각 데모는 모드에 맞는 주제를 정해 권위 있는 출처(RFC·OWASP·NIST·W3C/FIDO·MDN)를 리서치한 뒤, 동일한 editorial 디자인 시스템으로 렌더링했습니다.</p>
+  <div class="chips">
+    <span class="chip"><strong>13</strong> 모드</span>
+    <span class="chip"><strong>13</strong> 레이아웃</span>
+    <span class="chip"><strong>+1</strong> 보너스</span>
+    <span class="chip">단일 HTML · 무 JS</span>
+    <span class="chip">동일 디자인 토큰</span>
+  </div>
+  <p class="note">주제는 모두 인증/보안 영역으로 골랐습니다. 카드의 번호는 13개 모드 전체 순번, <code>badge</code>는 모드명, 아래 줄은 사용된 레이아웃입니다.</p>
+
+  <div class="section-label">A · 학습 &amp; 입문</div>
+  <p class="section-desc">개념을 처음 접하는 독자를 위한 풀어쓰기·실습 중심.</p>
+  <div class="grid">
+    <a class="card" href="beginner-session-vs-token.html">
+      <div class="card-top"><span class="no">1</span><span class="badge">beginner_html</span></div>
+      <h2>세션 vs 토큰 기반 인증: 로그인 상태는 어떻게 유지될까</h2>
+      <p>HTTP가 stateless인데 로그인이 유지되는 원리를 손목밴드·신분증 비유와 용어 박스로 풀었습니다.</p>
+      <div class="lay">layout: beginner-learning · 780px</div>
+      <span class="open">데모 열기</span>
+    </a>
+    <a class="card" href="education-oauth-pkce.html">
+      <div class="card-top"><span class="no">2</span><span class="badge">education_html</span></div>
+      <h2>OAuth 2.0 Authorization Code + PKCE 흐름 강의</h2>
+      <p>학습 목표·단계별 흐름·좋은 예/나쁜 예·실습 과제·자가 점검 퀴즈(접이식 정답)까지 갖춘 강의자료.</p>
+      <div class="lay">layout: course-module · 780px</div>
+      <span class="open">데모 열기</span>
+    </a>
+  </div>
+
+  <div class="section-label">B · 전문 · 분석 · 의사결정</div>
+  <p class="section-desc">판단 기준·리스크·트레이드오프를 앞세운 분석형.</p>
+  <div class="grid">
+    <a class="card" href="expert-password-hashing.html">
+      <div class="card-top"><span class="no">3</span><span class="badge">expert_html</span></div>
+      <h2>비밀번호 저장 전략 전문가 리포트: bcrypt vs scrypt vs Argon2id</h2>
+      <p>Executive Summary, 알고리즘 구조 분석, 권장 파라미터 비교표, 위험 요소와 검증 체크리스트.</p>
+      <div class="lay">layout: expert-report · 1020px</div>
+      <span class="open">데모 열기</span>
+    </a>
+    <a class="card" href="compare-token-storage.html">
+      <div class="card-top"><span class="no">4</span><span class="badge">comparison_html</span></div>
+      <h2>토큰을 어디에 저장할까: localStorage vs 쿠키 vs 메모리</h2>
+      <p>XSS·CSRF·지속성·자동전송 기준 비교 매트릭스와 상황별 승자·트레이드오프·최종 권고.</p>
+      <div class="lay">layout: comparison-matrix · 1020px</div>
+      <span class="open">데모 열기</span>
+    </a>
+    <a class="card" href="skill-audit-report.html">
+      <div class="card-top"><span class="no">5</span><span class="badge">skill_audit</span></div>
+      <h2>adaptive-html-blog-writer SKILL.md 감사 리포트</h2>
+      <p>8개 진단 기준으로 SKILL.md를 라인/섹션별 진단표로 평가하고 개선안과 개선 SKILL.md 발췌를 제시.</p>
+      <div class="lay">layout: skill-audit-report · 1020px</div>
+      <span class="open">데모 열기</span>
+    </a>
+  </div>
+
+  <div class="section-label">C · 공개 발행 · SEO</div>
+  <p class="section-desc">읽는 사람과 검색 유입을 위한 발행형 콘텐츠.</p>
+  <div class="grid">
+    <a class="card" href="article-passwordless-future.html">
+      <div class="card-top"><span class="no">6</span><span class="badge">article_html</span></div>
+      <h2>비밀번호는 정말 사라질까 — 패스워드리스 인증의 현재와 한계</h2>
+      <p>배경·핵심 주장·사례·반론·절충안 구조로 패스키의 가능성과 한계를 균형 있게 다룹니다.</p>
+      <div class="lay">layout: magazine-article · 780px</div>
+      <span class="open">데모 열기</span>
+    </a>
+    <a class="card" href="blog-jwt-mistakes.html">
+      <div class="card-top"><span class="no">7</span><span class="badge">blog_writer</span></div>
+      <h2>개발자가 JWT를 쓸 때 자주 저지르는 실수 7가지</h2>
+      <p>제목 후보 4계열·SEO 메타·검색 의도를 담은 에디터 노트와, 실수→해결 짝으로 구성한 본문.</p>
+      <div class="lay">layout: personal-blog-essay · 780px</div>
+      <span class="open">데모 열기</span>
+    </a>
+    <a class="card" href="blog-seo-mfa-guide.html">
+      <div class="card-top"><span class="no">8</span><span class="badge">seo_dashboard</span></div>
+      <h2>MFA(다단계 인증) 완벽 가이드: TOTP·패스키·SMS</h2>
+      <p>JSON-LD·목차·방식 비교표·FAQ·CTA. NIST의 SMS OTP 권고를 근거로 우선순위를 제시합니다.</p>
+      <div class="lay">layout: seo-dashboard · 1020px</div>
+      <span class="open">데모 열기</span>
+    </a>
+    <a class="card" href="platform-tistory-csrf-cors.html">
+      <div class="card-top"><span class="no">9</span><span class="badge">platform_blog</span></div>
+      <h2>CSRF와 CORS, 헷갈리는 둘의 차이 한 번에 정리</h2>
+      <p>티스토리 맞춤 글. 짧은 문단·HTML 호환 구조에, "CORS 설정하면 CSRF가 막힌다"는 오해를 바로잡습니다.</p>
+      <div class="lay">layout: platform-adaptation · 1020px</div>
+      <span class="open">데모 열기</span>
+    </a>
+  </div>
+
+  <div class="section-label">D · 참조 · 사례 · 운영</div>
+  <p class="section-desc">찾아보고, 돌아보고, 실행할 때 쓰는 실무형.</p>
+  <div class="grid">
+    <a class="card" href="ref-auth-headers.html">
+      <div class="card-top"><span class="no">10</span><span class="badge">reference_html</span></div>
+      <h2>웹 인증·쿠키 보안 헤더 레퍼런스 매뉴얼</h2>
+      <p>Set-Cookie 속성·HSTS·CSP·Authorization을 빠른 참조 카드와 권장값·예시로 정리한 매뉴얼.</p>
+      <div class="lay">layout: reference-manual · 1020px</div>
+      <span class="open">데모 열기</span>
+    </a>
+    <a class="card" href="case-credential-stuffing.html">
+      <div class="card-top"><span class="no">11</span><span class="badge">case_study_html</span></div>
+      <h2>Credential Stuffing 대응 회고 (가상 사례)</h2>
+      <p>탐지→완화→패스키 전환을 타임라인으로. 사건은 가상, 대응 메커니즘은 OWASP·NIST 근거.</p>
+      <div class="lay">layout: case-study · 780px</div>
+      <span class="open">데모 열기</span>
+    </a>
+    <a class="card" href="landing-coreline-auth.html">
+      <div class="card-top"><span class="no">12</span><span class="badge">landing_brief_html</span></div>
+      <h2>coreline-auth — 인증 라이브러리 소개 랜딩</h2>
+      <p>저장소 README·src를 실제로 읽어 작성한 기능 소개·사용 흐름·FAQ·CTA(절제된 editorial).</p>
+      <div class="lay">layout: landing-brief · 1020px</div>
+      <span class="open">데모 열기</span>
+    </a>
+    <a class="card" href="checklist-auth-launch.html">
+      <div class="card-top"><span class="no">13</span><span class="badge">checklist_playbook</span></div>
+      <h2>로그인·인증 보안 출시 전 점검 플레이북</h2>
+      <p>8개 영역 점검 카드 + 실패 모드 + Done 기준. OWASP ASVS·NIST 800-63B 근거.</p>
+      <div class="lay">layout: checklist-playbook · 1020px</div>
+      <span class="open">데모 열기</span>
+    </a>
+  </div>
+
+  <div class="section-label">＋ 보너스</div>
+  <p class="section-desc">이 작업의 출발점이 된 첫 데모.</p>
+  <div class="grid bonus">
+    <a class="card" href="../blog-demo-passkey.html">
+      <div class="card-top"><span class="no">★</span><span class="badge">seo_dashboard</span></div>
+      <h2>패스키란? 비밀번호 없는 로그인의 원리와 도입 체크리스트</h2>
+      <p>패스키의 공개키 원리, 로그인 3단계, 흔한 오해와 도입 체크리스트를 정리한 첫 SEO 블로그 데모.</p>
+      <div class="lay">single-file · blog_seo_html (초기 버전)</div>
+      <span class="open">데모 열기</span>
+    </a>
+  </div>
+
+  <div class="footer">Generated with adaptive-html-blog-writer v2 · 13 modes + 1 bonus · 동일 디자인 시스템, 단일 HTML, 무 JS</div>
+
+</div>
+</body>
+</html>

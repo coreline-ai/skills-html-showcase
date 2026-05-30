@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개발자의 블로그는 왜 다시 포트폴리오가 되었나</title>
+<meta name="description" content="공개 아티클 HTML">
+<meta name="keywords" content="개발자블로그,포트폴리오,AI시대">
+<meta property="og:title" content="개발자의 블로그는 왜 다시 포트폴리오가 되었나">
+<meta property="og:description" content="공개 아티클 HTML">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg:#f7f1e8;--paper:#fffdf8;--ink:#211b18;--muted:#6f625b;
+  --accent:#c9442e;--accent-2:#8f2f22;--accent-soft:#fff0eb;--line:#eaded2;
+  --good:#eff8ee;--good-line:#b8d8b2;--danger:#fff1ef;--danger-line:#e2aaa1;
+  --term:#f6efe5;--note:#fff7de;--note-line:#e8d29c;--dark:#201714;--code:#2b211e;
+  --shadow:0 18px 45px rgba(70,43,24,.08);--radius-lg:22px;--radius-md:16px;
+  --max-reading:760px;--max-wide:980px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(201,68,46,.06),transparent 30%),linear-gradient(180deg,#fbf5ec 0%,var(--bg) 100%);color:var(--ink);font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;line-height:1.82;letter-spacing:-.015em;word-break:keep-all}
+a{color:inherit;text-underline-offset:3px}.skip{position:absolute;left:-999px;top:8px;background:var(--dark);color:white;padding:10px 14px;border-radius:8px;z-index:100}.skip:focus{left:8px}
+.page{width:min(var(--max-reading),calc(100% - 34px));margin:0 auto;padding:56px 0 72px}
+.page-wide{width:min(var(--max-wide),calc(100% - 34px));margin:0 auto;padding:56px 0 72px}
+.header{padding:14px 0 30px;border-bottom:1px solid var(--line);margin-bottom:32px}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800}.kicker:before{content:"";width:8px;height:8px;border-radius:999px;background:var(--accent)}
+h1{font-family:"Noto Serif KR",Georgia,serif;font-size:clamp(34px,6vw,58px);line-height:1.08;letter-spacing:-.055em;margin:18px 0}
+h2{font-family:"Noto Serif KR",Georgia,serif;font-size:clamp(25px,4vw,34px);line-height:1.24;letter-spacing:-.035em;margin:0 0 16px;display:flex;align-items:flex-start;gap:12px}
+h2 .no{flex:0 0 auto;width:34px;height:34px;border-radius:999px;background:var(--accent);color:white;display:inline-grid;place-items:center;font-family:Pretendard,sans-serif;font-size:15px;font-weight:800;margin-top:2px}
+h3{font-size:20px;margin:24px 0 8px}p{margin:0 0 15px}ul,ol{padding-left:24px}li{margin:6px 0}.sub{font-size:18px;color:var(--muted);margin:0}.meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}.meta span,.tag{display:inline-flex;border:1px solid var(--line);background:rgba(255,253,248,.78);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted)}section{margin:38px 0}footer{border-top:1px solid var(--line);margin-top:48px;padding-top:24px;color:var(--muted);font-size:13px}
+@media(max-width:680px){body{line-height:1.74}.page,.page-wide{width:min(100% - 26px,var(--max-reading));padding-top:34px}h2{gap:9px}h2 .no{width:30px;height:30px;font-size:13px}}
+
+
+.box,.term,.analogy,.good,.danger{border-radius:var(--radius-md);padding:18px 20px;margin:18px 0}
+.box{border:1px solid var(--line);background:var(--paper);padding:20px 22px}
+.term{border:1px solid var(--line);background:var(--term)}.analogy{border:1px solid var(--note-line);background:var(--note)}
+.good{border:1px solid var(--good-line);background:var(--good)}.danger{border:1px solid var(--danger-line);background:var(--danger)}
+.hero-analogy{background:var(--dark);color:#fff7ed;border-radius:var(--radius-lg);padding:26px;margin:28px 0;box-shadow:var(--shadow)}.hero-analogy b{color:#ffd7c8}
+.try{background:var(--dark);color:#fffaf2;border-radius:var(--radius-lg);padding:26px;margin-top:44px}.try h2{color:#fffaf2}.try .no{background:#fffaf2;color:var(--dark)}
+.code{background:var(--code);color:#fff7ee;border-radius:14px;padding:14px 16px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;overflow-x:auto;white-space:pre-wrap;line-height:1.65}
+.table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:var(--paper);margin:18px 0}.table th,.table td{border-bottom:1px solid var(--line);padding:12px 13px;vertical-align:top;text-align:left}.table th{background:#f2e8db}.table tr:last-child td{border-bottom:0}
+.toc{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin:28px 0 34px}.toc strong{display:block;margin-bottom:8px}.toc ol{margin:0;padding-left:22px}.toc a{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--line)}
+blockquote,.pull-quote{margin:24px 0;padding:2px 0 2px 18px;border-left:4px solid var(--accent);color:var(--muted);font-family:"Noto Serif KR",Georgia,serif;font-size:20px}.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.mini-card{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius-md);padding:16px}@media(max-width:760px){.card-grid{grid-template-columns:1fr}.table{font-size:14px}.table th,.table td{padding:10px}}
+
+
+.layout-beginner .hero-analogy{margin-top:6px}.layout-beginner .beginner-zero{border-top:1px solid var(--line);padding-top:28px}
+.layout-expert .decision-grid,.layout-expert .summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.layout-expert .decision-card{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius-md);padding:18px}.risk-high{border-left:5px solid var(--accent)}.risk-mid{border-left:5px solid #d99a38}.risk-low{border-left:5px solid #7ea66a}
+.layout-article .lead{font-size:20px;color:var(--ink)}.layout-article .article-takeaway{background:var(--accent-soft)}
+.layout-education .learning-goals{border:1px solid var(--good-line);background:var(--good);border-radius:var(--radius-lg);padding:22px}.layout-education .practice-card{border:1px dashed var(--accent);background:var(--paper);border-radius:var(--radius-lg);padding:22px}.layout-education .quiz-box{background:var(--note);border:1px solid var(--note-line);border-radius:var(--radius-lg);padding:22px}
+.layout-blog .personal-note{font-family:"Noto Serif KR",Georgia,serif;font-size:19px}.layout-blog .hook{color:var(--accent-2)}.layout-blog article section{border-bottom:1px solid var(--line);padding-bottom:24px}
+.layout-seo .serp-box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px;box-shadow:var(--shadow)}.layout-seo .serp-title{color:#1a0dab;font-size:20px;margin:0 0 4px}.layout-seo .serp-url{color:#0b8043;font-size:13px;margin-bottom:6px}.layout-seo .seo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layout-platform .platform-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.layout-platform .platform-card{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius-md);padding:18px 20px}.layout-platform .platform-card h3{margin-top:0;color:var(--accent-2)}
+@media(max-width:760px){.layout-expert .decision-grid,.layout-expert .summary-grid,.layout-seo .seo-grid,.layout-platform .platform-grid{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+
+<main id="main" class="page layout-article">
+<header class="header"><div class="kicker">03 · Magazine Article</div><h1>개발자의 블로그는 왜 다시 포트폴리오가 되었나</h1><p class="sub lead">AI가 코드를 더 빨리 쓰는 시대에도, 개발자가 문제를 어떻게 이해하고 판단하는지는 여전히 블로그에 가장 잘 남습니다.</p><div class="meta"><span>모드: article</span><span>레이아웃: magazine article</span><span>공개 발행용</span></div></header>
+<aside class="pull-quote">좋은 기술 블로그는 지식 자랑이 아니라 판단 과정의 기록입니다.</aside>
+<article><section><h2><span class="no">1</span><span>문제 제기</span></h2><p>깃허브 저장소만으로는 개발자의 사고 과정을 알기 어렵습니다. 어떤 문제를 왜 선택했고, 어떤 대안을 버렸는지는 코드 밖에 있습니다.</p></section><section><h2><span class="no">2</span><span>배경</span></h2><p>AI 코딩 도구가 늘어나면서 단순 구현 능력보다 문제 정의 능력이 더 중요해지고 있습니다.</p></section><section><h2><span class="no">3</span><span>핵심 주장</span></h2><div class="term">기술 블로그는 결과물의 설명서가 아니라, 개발자의 판단 기준을 보여주는 공개 문서입니다.</div></section><section><h2><span class="no">4</span><span>사례</span></h2><p>같은 오픈소스를 분석하더라도 단순 요약보다 “이 프로젝트를 왜 선택하지 않았는가”를 쓰는 글이 더 강한 포트폴리오가 됩니다.</p></section></article>
+<section class="box article-takeaway"><b>Takeaway</b><p>AI 시대의 포트폴리오는 완성된 코드와 함께, 그 코드를 둘러싼 사고의 흔적을 요구합니다.</p></section>
+</main>
+</body>
+</html>

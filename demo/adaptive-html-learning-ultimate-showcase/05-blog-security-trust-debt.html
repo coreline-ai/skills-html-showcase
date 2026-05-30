@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>보안 패치는 기능 추가가 아니라 신뢰 부채를 갚는 일</title>
+  <meta name="description" content="인증 모듈 운영 관점에서 보안 패치를 “새 기능”이 아니라 사용자 신뢰 부채를 상환하는 작업으로 보는 실무 블로그입니다.">
+  <meta name="robots" content="noindex,nofollow">
+  
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+  <link rel="stylesheet" href="assets/components.css">
+  <link rel="stylesheet" href="assets/layouts.css">
+  <link rel="stylesheet" href="assets/print.css">
+
+  <style>
+    .source-box a,.linklike{color:var(--accent-2)}
+    .hero-note{font-size:18px;color:var(--ink-soft);line-height:1.78}
+    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+    .flow .mini-card{min-height:150px}
+    .long-list li{margin-bottom:10px}
+    .callout-title{font-weight:900;color:var(--accent-2);margin-bottom:8px}
+    .score{font-size:34px;font-weight:900;color:var(--accent);line-height:1}
+    .small{font-size:13px;color:var(--ink-mute)}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+    .pill-row span{border:1px solid var(--line);background:rgba(255,255,255,.62);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--ink-mute)}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#ececea;border:1px solid var(--line);border-radius:8px;padding:2px 7px;white-space:nowrap}
+    .mode-card{display:flex;flex-direction:column;gap:8px}
+    .mode-card .mode{font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+    .check{list-style:none;margin-left:0}.check li{position:relative;padding-left:28px}.check li:before{content:"✓";position:absolute;left:0;top:0;color:var(--accent);font-weight:900}
+    .source-list{columns:2;column-gap:28px}.source-list li{break-inside:avoid;margin-bottom:7px}
+    .quote-mini{font-family:var(--serif);font-size:18px;color:var(--ink);border-left:3px solid var(--accent);padding-left:14px;margin:18px 0}
+    .nowrap{white-space:nowrap}
+    @media(max-width:900px){.four-col{grid-template-columns:1fr 1fr}.source-list{columns:1}}
+    @media(max-width:760px){.flow,.two-col,.four-col{grid-template-columns:1fr}}
+  </style>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":'보안 패치는 기능 추가가 아니라 신뢰 부채를 갚는 일',"description":'인증 모듈 운영 관점에서 보안 패치를 “새 기능”이 아니라 사용자 신뢰 부채를 상환하는 작업으로 보는 실무 블로그입니다.',"inLanguage":"ko","dateModified":"2026-05-30","author":{"@type":"Organization","name":"Coreline Auth Research"}}</script>
+</head>
+<body class="layout-blog">
+<a href="#main" class="skip">본문으로 건너뛰기</a>
+<main id="main" class="page">
+<header class="header">
+  <div class="kicker">Adaptive HTML Learning Ultimate · blog</div>
+  <h1>보안 패치는 기능 추가가 아니라 신뢰 부채를 갚는 일</h1>
+  <p class="sub">인증 모듈 운영 관점에서 보안 패치를 “새 기능”이 아니라 사용자 신뢰 부채를 상환하는 작업으로 보는 실무 블로그입니다.</p>
+  <div class="meta"><span>생성일 2026-05-30</span><span>페르소나: Staff Backend Engineer</span><span>모드: blog</span><span>security patch</span><span>devsecops</span><span>trust</span></div>
+</header>
+<nav class="toc"><strong>문서 목차</strong><ol><li><a href="#s1">Hook</a></li><li><a href="#s2">개인 메모</a></li><li><a href="#s3">관점 전환</a></li><li><a href="#s4">실행법</a></li><li><a href="#s5">마무리</a></li></ol></nav><section id="s1"><h2><span class="no">1</span>Hook: 잘 끝난 보안 패치는 아무 일도 일어나지 않습니다</h2><p class="h2-sub">그래서 보안 패치는 쉽게 밀리지만, 인증 영역에서는 가장 중요한 신뢰 작업입니다.</p>
+<p class="hook">새 기능은 보입니다. 새 대시보드, 새 결제 플로우, 새 버튼은 바로 박수를 받습니다. 반면 보안 패치는 조용합니다. 잘 끝나면 침해도 없고, 장애도 없고, 고객 문의도 없습니다. 그래서 스프린트에서 자주 밀립니다.</p><p>하지만 인증 시스템을 운영해 보면 생각이 바뀝니다. 보안 패치는 기능 추가가 아닙니다. 이미 사용자에게 빌려 쓴 신뢰를 갚는 일입니다.</p>
+</section><section id="s2"><h2><span class="no">2</span>개인 메모: 가장 무서운 코드는 “나중에”입니다</h2><p class="h2-sub">복잡한 코드보다 오래된 예외와 임시 우회가 더 위험합니다.</p>
+<p class="personal-note">인증 모듈에서 가장 무서운 코드는 암호학적으로 어려운 코드가 아니었습니다. “for now”, “later”, “temporary”, “TODO security”가 붙은 코드였습니다.</p><ul><li>magic link URL이 access log에 그대로 남는 코드</li><li>session revoke는 있지만 일부 background token은 회수하지 않는 코드</li><li>OAuth redirect URI 검증을 “일단 startswith”로 처리한 코드</li><li>role 변경 후 기존 session permission snapshot을 그대로 믿는 코드</li><li>TOTP replay는 막았지만 동시 요청 CAS를 빼먹은 코드</li></ul>
+</section><section id="s3"><h2><span class="no">3</span>관점 전환: 보안 패치는 신뢰 부채 상환이다</h2><p class="h2-sub">기능 경쟁에서 이기려면 보안 패치를 “보이지 않는 기능”으로 설명해야 합니다.</p>
+<p>보안 패치는 사용자가 맡긴 비밀을 계속 맡길 수 있는 상태, 사고가 나도 피해 범위를 줄일 수 있는 구조, 운영자가 문제를 발견했을 때 빠르게 회수할 수 있는 통제권을 만듭니다.</p><div class="good"><div class="label">TRUST LEDGER</div><div class="name">좋은 패치는 영수증을 남깁니다</div><p>reset token 원문 저장 제거, session token redaction, logout revoke 검증, OAuth nonce negative test처럼 “이전에는 실패했을 테스트”를 추가해야 합니다. 테스트는 신뢰 부채 상환 영수증입니다.</p></div>
+</section><section id="s4"><h2><span class="no">4</span>실행법: 티켓을 구체화하고 secret inventory부터 만든다</h2><p class="h2-sub">막연한 “보안 개선”은 계속 밀립니다. 구체적인 공격 표면 이름을 붙여야 합니다.</p>
+<div class="card-grid"><div class="mini-card"><h3>1. 티켓 제목</h3><p>“인증 보안 개선”이 아니라 “password reset token 원문 저장 제거”처럼 씁니다.</p></div><div class="mini-card"><h3>2. Secret inventory</h3><p>password, session id, magic token, reset token, OAuth code, MFA seed, recovery code를 모두 적습니다.</p></div><div class="mini-card"><h3>3. 직접 암호 금지</h3><p>password hashing, AEAD, signature, random generation은 검증된 라이브러리와 표준을 씁니다.</p></div><div class="mini-card"><h3>4. 실패 테스트</h3><p>CSRF 누락, stale session revive, TOTP replay, origin spoofing 같은 negative test를 남깁니다.</p></div><div class="mini-card"><h3>5. 운영 증거</h3><p>readiness CLI, SIEM redaction, backup drill, release version alignment를 evidence로 저장합니다.</p></div><div class="mini-card"><h3>6. 회수 통제</h3><p>사고 후 토큰과 세션을 얼마나 빠르게 무효화할 수 있는지가 실제 피해 범위를 결정합니다.</p></div></div>
+</section><section id="s5"><h2><span class="no">5</span>마무리: 이번 스프린트에 하나만 갚는다면</h2><p class="h2-sub">오래된 TODO 하나를 신뢰 부채 상환 티켓으로 바꿔보세요.</p>
+<section class="try"><div class="label">SOFT CTA</div><h2><span class="no">✓</span>오늘 바로 찾을 문자열</h2><p>코드에서 <code>temporary</code>, <code>for now</code>, <code>later</code>, <code>TODO security</code>, <code>skip validation</code>, <code>startswith</code>를 검색하세요. 그중 하나만 골라 테스트와 함께 갚아도 됩니다.</p></section>
+</section>
+
+<section class="source-box box" aria-labelledby="sources-title">
+  <h2 id="sources-title"><span class="no">S</span>조사·검토 출처</h2>
+  <p>이 문서는 병렬 에이전트 페르소나 초안, 로컬 프로젝트 문서, 공식 표준/가이드를 함께 검토해 작성했습니다. 세부 외부 URL과 로컬 사본은 출처 허브에서 확인할 수 있습니다.</p>
+  <p><a href="sources/index.html"><strong>전체 출처 링크 모음 열기</strong></a></p>
+  <ul class="source-list"><li><a href="sources/security_best_practices_report.md">패치 후 2차 보안 재리뷰 보고서</a></li><li><a href="sources/auth-expert-review-20260529.md">코드 레벨 인증 전문가 감사 리포트</a></li><li><a href="sources/board-auth-integration-guide-20260529.md">게시판 인증 통합 가이드</a></li><li><a href="sources/deep-research-report.md">Deep Research Report</a></li><li><a href="sources/ops-readiness.md">운영 준비 문서</a></li><li><a href="sources/production-roadblocks-roadmap.md">프로덕션 로드블록 로드맵</a></li><li><a href="sources/security-checklist.md">Security Checklist</a></li><li><a href="sources/mfa-passkey-scope.md">MFA/Passkey Scope</a></li><li><a href="sources/adaptive-html-learning-ultimate-merge-report-20260530.md">최종 스킬 통합 보고서</a></li><li><a href="sources/blog-demos-vs-adaptive-design-audit-20260530.md">디자인 품질 차이 분석</a></li><li><a href="sources/blog-demo-passkey.html">패스키 블로그 데모 HTML</a></li><li><a href="sources/SKILL.md">adaptive-html-learning-ultimate SKILL.md</a></li><li><a href="https://pages.nist.gov/800-63-4/">NIST SP 800-63-4 Digital Identity Guidelines</a></li><li><a href="https://pages.nist.gov/800-63-4/sp800-63b.html">NIST SP 800-63B Authentication and Lifecycle Management</a></li><li><a href="https://owasp.org/www-project-application-security-verification-standard/">OWASP ASVS</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">OWASP Authentication Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">OWASP Password Storage Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html">OWASP Session Management Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html">OWASP CSRF Prevention Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html">OWASP Forgot Password Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html">OWASP Multifactor Authentication Cheat Sheet</a></li><li><a href="https://datatracker.ietf.org/doc/html/rfc6749">OAuth 2.0 Authorization Framework RFC 6749</a></li><li><a href="https://datatracker.ietf.org/doc/html/rfc7636">PKCE RFC 7636</a></li><li><a href="https://datatracker.ietf.org/doc/html/rfc8414">OAuth 2.0 Authorization Server Metadata RFC 8414</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9700.html">OAuth 2.0 Security BCP RFC 9700</a></li><li><a href="https://openid.net/specs/openid-connect-core-1_0-final.html">OpenID Connect Core 1.0</a></li></ul>
+</section>
+<footer><p>Generated with adaptive-html-learning-ultimate. <a href="index.html">전체 모드 목록으로 돌아가기</a></p></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">Radial Ecosystem Network</title>
+<desc id="desc">중심 플랫폼과 주변 이해관계자 관계를 방사형으로 표현</desc>
+<style>text{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR",Arial,sans-serif}.shadow{filter:drop-shadow(0 20px 32px rgba(26,26,26,.08))}</style>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<circle cx="7230" cy="760" r="520" fill="#fce4e6" opacity=".72"/>
+<circle cx="650" cy="5350" r="760" fill="#f0f4f8" opacity=".88"/>
+<text x="560" y="620" font-size="118" fill="#e63946" font-weight="950" letter-spacing="22">SVG TEMPLATE DEMO</text>
+<text x="560" y="980" font-size="285" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="560" dy="0">Radial Ecosystem Network</tspan>
+</text>
+<text x="570" y="1280" font-size="116" fill="#4a4a4a" font-weight="580" text-anchor="start">
+<tspan x="570" dy="0">중심 플랫폼과 주변 이해관계자 관계를 방사형으로 표현</tspan>
+</text>
+<line x1="4000" y1="2510" x2="4000" y2="1720" stroke="#d8d8d0" stroke-width="18"/>
+<line x1="4565" y1="2850" x2="5600" y2="2300" stroke="#d8d8d0" stroke-width="18"/>
+<line x1="4581" y1="3417" x2="5740" y2="3950" stroke="#d8d8d0" stroke-width="18"/>
+<line x1="4000" y1="3790" x2="4000" y2="4700" stroke="#d8d8d0" stroke-width="18"/>
+<line x1="3419" y1="3417" x2="2260" y2="3950" stroke="#d8d8d0" stroke-width="18"/>
+<line x1="3435" y1="2850" x2="2400" y2="2300" stroke="#d8d8d0" stroke-width="18"/>
+<rect x="3480" y="1500" width="1040" height="440" rx="80" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="3480" y="1500" width="28" height="440" rx="14" fill="#e63946"/>
+<text x="3590" y="1660" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="3590" dy="0">Users</tspan>
+</text>
+<text x="3590" y="1815" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="3590" dy="0">role</tspan>
+<tspan x="3590" dy="92">signals</tspan>
+</text>
+<rect x="5080" y="2080" width="1040" height="440" rx="80" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="5080" y="2080" width="28" height="440" rx="14" fill="#3a6280"/>
+<text x="5190" y="2240" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="5190" dy="0">Partners</tspan>
+</text>
+<text x="5190" y="2395" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="5190" dy="0">role</tspan>
+<tspan x="5190" dy="92">signals</tspan>
+</text>
+<rect x="5220" y="3730" width="1040" height="440" rx="80" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="5220" y="3730" width="28" height="440" rx="14" fill="#2a7d5a"/>
+<text x="5330" y="3890" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="5330" dy="0">Data</tspan>
+</text>
+<text x="5330" y="4045" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="5330" dy="0">role</tspan>
+<tspan x="5330" dy="92">signals</tspan>
+</text>
+<rect x="3480" y="4480" width="1040" height="440" rx="80" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="3480" y="4480" width="28" height="440" rx="14" fill="#d99a38"/>
+<text x="3590" y="4640" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="3590" dy="0">Ops</tspan>
+</text>
+<text x="3590" y="4795" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="3590" dy="0">role</tspan>
+<tspan x="3590" dy="92">signals</tspan>
+</text>
+<rect x="1740" y="3730" width="1040" height="440" rx="80" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="1740" y="3730" width="28" height="440" rx="14" fill="#1a1a1a"/>
+<text x="1850" y="3890" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="1850" dy="0">Policy</tspan>
+</text>
+<text x="1850" y="4045" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="1850" dy="0">role</tspan>
+<tspan x="1850" dy="92">signals</tspan>
+</text>
+<rect x="1880" y="2080" width="1040" height="440" rx="80" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="1880" y="2080" width="28" height="440" rx="14" fill="#e63946"/>
+<text x="1990" y="2240" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="1990" dy="0">Tools</tspan>
+</text>
+<text x="1990" y="2395" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="1990" dy="0">role</tspan>
+<tspan x="1990" dy="92">signals</tspan>
+</text>
+<circle cx="4000" cy="3150" r="640" fill="#ffd400" stroke="#1a1a1a" stroke-width="16"/>
+<text x="4000" y="3120" font-size="120" fill="#1a1a1a" font-weight="950" text-anchor="middle">
+<tspan x="4000" dy="0">Core</tspan>
+<tspan x="4000" dy="150">Platform</tspan>
+</text>
+<text x="7440" y="5600" font-size="84" text-anchor="end" fill="#7a7a7a" font-weight="750">8000×6000 SVG · adaptive template demo</text>
+</svg>

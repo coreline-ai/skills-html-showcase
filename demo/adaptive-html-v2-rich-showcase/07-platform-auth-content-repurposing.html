@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>인증 보안 원고를 5개 플랫폼에 맞게 변환하기</title>
+  <meta name="description" content="하나의 인증 보안 원고를 티스토리, 벨로그, 네이버 블로그, 워드프레스, 사내 위키에 맞게 재구성하는 플랫폼별 발행 전략입니다.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+  <link rel="stylesheet" href="assets/components.css">
+  <link rel="stylesheet" href="assets/layouts.css">
+  <style>
+    .source-box a,.linklike{color:var(--accent-2)}
+    .hero-note{font-size:19px;color:var(--ink-soft);line-height:1.75}
+    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+    .flow .mini-card{min-height:150px}
+    .long-list li{margin-bottom:10px}
+    .callout-title{font-weight:900;color:var(--accent-2);margin-bottom:8px}
+    .score{font-size:34px;font-weight:900;color:var(--accent);line-height:1}
+    .small{font-size:13px;color:var(--muted)}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+    .pill-row span{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted)}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--term);border:1px solid var(--line);border-radius:8px;padding:2px 7px}
+    @media(max-width:760px){.flow,.two-col{grid-template-columns:1fr}}
+  </style>
+</head>
+<body class="layout-platform">
+<a href="#main" class="skip">본문으로 건너뛰기</a>
+<main id="main" class="page-wide">
+<header class="header">
+  <div class="kicker">Adaptive HTML v2 · platform</div>
+  <h1>인증 보안 원고를 5개 플랫폼에 맞게 변환하기</h1>
+  <p class="sub">하나의 인증 보안 원고를 티스토리, 벨로그, 네이버 블로그, 워드프레스, 사내 위키에 맞게 재구성하는 플랫폼별 발행 전략입니다.</p>
+  <div class="meta"><span>생성일 2026-05-30</span><span>병렬 에이전트 리서치 기반</span><span>모드: platform</span><span>platform</span><span>repurposing</span><span>publishing</span></div>
+</header>
+
+<section class="box"><h2><span class="no">1</span>원본 요약</h2><p>원본은 “인증 보안 체크리스트” 허브 원고입니다. 핵심 메시지는 세션 revoke, CSRF, MFA/TOTP, OAuth/OIDC, 패스키/WebAuthn, RBAC, audit log를 하나의 운영 체크리스트로 묶는 것입니다. 같은 원고라도 플랫폼마다 독자 의도, 신뢰 형식, CTA, 코드 비중이 달라져야 합니다.</p></section>
+<section><h2><span class="no">2</span>플랫폼별 전략 카드</h2><div class="platform-grid"><div class="platform-card"><h3>티스토리</h3><p>검색 유입과 체류 시간을 목표로 합니다. 첫 화면에 요약, 목차, FAQ를 배치하고 “출시 전 점검표”처럼 문제 해결형 제목을 사용합니다. 코드보다 표와 체크리스트가 효과적입니다.</p></div><div class="platform-card"><h3>벨로그</h3><p>개발자 독자는 구체적 실패 사례와 테스트 명령을 원합니다. 세션 revoke, CSRF 403, TOTP replay 테스트처럼 재현 가능한 내용과 코드 조각을 앞에 둡니다.</p></div><div class="platform-card"><h3>네이버 블로그</h3><p>초보자와 비전문 독자를 위해 비유와 용어 풀이를 강화합니다. “쿠키는 출입 팔찌, CSRF 토큰은 주문서 도장”처럼 기억 가능한 문장을 사용합니다.</p></div><div class="platform-card"><h3>워드프레스</h3><p>장기 검색 자산으로 운영합니다. canonical, schema, 관련 글, 내부 링크, downloadable checklist를 구성하고 콘텐츠 허브의 중심 페이지로 만듭니다.</p></div><div class="platform-card"><h3>사내 위키</h3><p>검색보다 실행 표준이 중요합니다. 팀의 decision record, runbook, owner, release gate, 테스트 체크리스트를 명시합니다.</p></div></div></section>
+<section><h2><span class="no">3</span>비교표</h2><table class="table"><thead><tr><th>플랫폼</th><th>목표</th><th>최적 구조</th><th>CTA</th><th>주의점</th></tr></thead><tbody><tr><td>티스토리</td><td>검색 유입</td><td>요약 → 목차 → 체크리스트 → FAQ</td><td>체크리스트 저장</td><td>너무 긴 코드 블록 지양</td></tr><tr><td>벨로그</td><td>개발자 신뢰</td><td>문제 → 재현 → 패치 → 테스트</td><td>GitHub diff 보기</td><td>근거 없는 일반론 지양</td></tr><tr><td>네이버</td><td>이해와 공유</td><td>비유 → 용어 → 사례 → 점검</td><td>댓글 질문 유도</td><td>전문용어 과다 주의</td></tr><tr><td>워드프레스</td><td>장기 SEO</td><td>Pillar → 내부 링크 → FAQ schema</td><td>뉴스레터/다운로드</td><td>중복 콘텐츠 canonical 필요</td></tr><tr><td>사내 위키</td><td>실행 표준</td><td>정책 → 책임자 → 절차 → 검증</td><td>release gate 적용</td><td>소유자/갱신일 누락 주의</td></tr></tbody></table></section>
+<section><h2><span class="no">4</span>플랫폼별 첫 문단 샘플</h2><div class="analogy"><strong>티스토리</strong><p>로그인 기능은 만들기 쉽지만 안전하게 운영하기는 어렵습니다. 이 글은 SaaS 출시 전 반드시 확인해야 할 인증 보안 체크리스트를 세션, CSRF, MFA, OAuth, 패스키 순서로 정리합니다.</p></div><div class="code">// 벨로그
+with pytest.raises(AuthenticationFailed):
+    service.verify_session(old_token)
+// password reset 이후 기존 세션은 반드시 실패해야 한다.</div><div class="analogy"><strong>네이버 블로그</strong><p>로그인 쿠키가 카페 출입 팔찌라면, CSRF 토큰은 주문서에 찍힌 오늘의 도장입니다. 팔찌만 보고 주문을 처리하면 누군가 대신 주문서를 보낼 수 있습니다.</p></div><div class="good"><strong>워드프레스</strong><p>이 문서는 인증 보안 pillar page로 운영하고, 세션 보안·MFA·OAuth·패스키·감사 로그 상세 글로 내부 링크를 연결합니다.</p></div><div class="box"><strong>사내 위키</strong><p>본 체크리스트는 production release gate입니다. 인증 관련 변경은 세션 revoke, CSRF, MFA, OAuth, audit 항목을 모두 통과해야 merge 가능합니다.</p></div></section>
+<section><h2><span class="no">5</span>재활용 워크플로우</h2><ol class="long-list"><li><strong>Core 원고 작성:</strong> 가장 긴 사내 기준 문서를 먼저 작성합니다.</li><li><strong>Public sanitization:</strong> 내부 경로, secret, 고객명, 취약 세부 재현을 제거합니다.</li><li><strong>Platform slicing:</strong> 티스토리는 SEO, 벨로그는 코드, 네이버는 비유, 워드프레스는 허브, 사내 위키는 runbook으로 재구성합니다.</li><li><strong>Canonical policy:</strong> 워드프레스 원문을 canonical로 두거나 플랫폼별 독립 원고로 제목/구조를 충분히 바꿉니다.</li><li><strong>Feedback loop:</strong> 검색어, 댓글 질문, 사내 장애 회고를 다시 허브 문서에 반영합니다.</li></ol></section>
+<section class="try"><h2><span class="no">✓</span>발행 체크리스트</h2><ul><li>플랫폼별 제목과 첫 문단을 별도로 작성했는가?</li><li>중복 콘텐츠로 보이지 않도록 구조와 예시를 바꿨는가?</li><li>출처와 공식 가이드 링크를 유지했는가?</li><li>코드/체크리스트/비유의 비중을 플랫폼별로 조절했는가?</li><li>게시 후 Search Console, Velog 반응, 네이버 유입어, 사내 피드백을 회수할 계획이 있는가?</li></ul></section>
+
+<section class="source-box box" aria-labelledby="sources-title">
+      <h2 id="sources-title"><span class="no">S</span>조사·검토 출처</h2>
+      <p>이 문서는 병렬 에이전트 초안, 로컬 프로젝트 문서, 공식 표준/가이드를 함께 검토해 작성했습니다. </p>
+      <p><a href="sources/index.html"><strong>전체 출처 링크 모음 열기</strong></a></p>
+      <ul><li><a href="sources/security_best_practices_report.md">보안 재리뷰 보고서</a></li><li><a href="sources/auth-expert-review-20260529.md">전문 보안 리뷰 원문</a></li><li><a href="sources/board-auth-integration-guide-20260529.md">게시판 통합 가이드</a></li><li><a href="sources/ops-readiness.md">운영 준비 문서</a></li><li><a href="sources/production-roadblocks-roadmap.md">Production Roadblocks Roadmap</a></li><li><a href="sources/security-checklist.md">Security Checklist</a></li><li><a href="sources/blog-demo-passkey.html">패스키 데모 HTML</a></li><li><a href="sources/deep-research-report.md">Deep Research Report</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">OWASP Authentication Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html">OWASP Session Management Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html">OWASP CSRF Prevention Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html">OWASP Forgot Password Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html">OWASP Authorization Cheat Sheet</a></li><li><a href="https://pages.nist.gov/800-63-4/sp800-63b.html">NIST SP 800-63B 최신 디지털 인증 가이드</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc7636">RFC 7636 PKCE</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9700.html">RFC 9700 OAuth 2.0 Security Best Current Practice</a></li><li><a href="https://openid.net/specs/openid-connect-core-1_0-final.html">OpenID Connect Core 1.0</a></li><li><a href="https://www.w3.org/TR/webauthn-3/">W3C WebAuthn Level 3</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/Cookies">MDN Secure Cookie Configuration</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/CSRF_prevention">MDN CSRF Prevention</a></li><li><a href="https://developers.google.com/identity/passkeys/ux/user-journeys">Google Passkeys User Journeys</a></li><li><a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide">Google Search Central SEO Starter Guide</a></li><li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google Helpful Content</a></li><li><a href="https://www.w3.org/TR/WCAG22/">W3C WCAG 2.2</a></li><li><a href="https://www.w3.org/WAI/tutorials/page-structure/headings/">WAI Headings Tutorial</a></li></ul>
+    </section>
+<footer><p>Generated with adaptive-html-blog-writer-v2. <a href="index.html">새 쇼케이스 목록으로 돌아가기</a></p></footer>
+</main>
+</body>
+</html>

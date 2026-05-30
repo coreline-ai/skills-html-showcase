@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>인증 보안 원고를 6개 플랫폼에 맞게 변환하는 발행 전략</title>
+  <meta name="description" content="하나의 깊은 인증 보안 원고를 Tistory, Velog, Naver Blog, WordPress, GitHub Pages, 사내 위키로 재구성하는 플랫폼별 콘텐츠 운영 가이드입니다.">
+  <meta name="robots" content="noindex,nofollow">
+  
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+  <link rel="stylesheet" href="assets/components.css">
+  <link rel="stylesheet" href="assets/layouts.css">
+  <link rel="stylesheet" href="assets/print.css">
+
+  <style>
+    .source-box a,.linklike{color:var(--accent-2)}
+    .hero-note{font-size:18px;color:var(--ink-soft);line-height:1.78}
+    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+    .flow .mini-card{min-height:150px}
+    .long-list li{margin-bottom:10px}
+    .callout-title{font-weight:900;color:var(--accent-2);margin-bottom:8px}
+    .score{font-size:34px;font-weight:900;color:var(--accent);line-height:1}
+    .small{font-size:13px;color:var(--ink-mute)}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+    .pill-row span{border:1px solid var(--line);background:rgba(255,255,255,.62);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--ink-mute)}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#ececea;border:1px solid var(--line);border-radius:8px;padding:2px 7px;white-space:nowrap}
+    .mode-card{display:flex;flex-direction:column;gap:8px}
+    .mode-card .mode{font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+    .check{list-style:none;margin-left:0}.check li{position:relative;padding-left:28px}.check li:before{content:"✓";position:absolute;left:0;top:0;color:var(--accent);font-weight:900}
+    .source-list{columns:2;column-gap:28px}.source-list li{break-inside:avoid;margin-bottom:7px}
+    .quote-mini{font-family:var(--serif);font-size:18px;color:var(--ink);border-left:3px solid var(--accent);padding-left:14px;margin:18px 0}
+    .nowrap{white-space:nowrap}
+    @media(max-width:900px){.four-col{grid-template-columns:1fr 1fr}.source-list{columns:1}}
+    @media(max-width:760px){.flow,.two-col,.four-col{grid-template-columns:1fr}}
+  </style>
+
+  
+</head>
+<body class="layout-platform">
+<a href="#main" class="skip">본문으로 건너뛰기</a>
+<main id="main" class="page-wide">
+<header class="header">
+  <div class="kicker">Adaptive HTML Learning Ultimate · platform</div>
+  <h1>인증 보안 원고를 6개 플랫폼에 맞게 변환하는 발행 전략</h1>
+  <p class="sub">하나의 깊은 인증 보안 원고를 Tistory, Velog, Naver Blog, WordPress, GitHub Pages, 사내 위키로 재구성하는 플랫폼별 콘텐츠 운영 가이드입니다.</p>
+  <div class="meta"><span>생성일 2026-05-30</span><span>페르소나: 한국어 테크 블로그 플랫폼 편집장</span><span>모드: platform</span><span>platform</span><span>repurposing</span><span>publishing</span></div>
+</header>
+<nav class="toc"><strong>문서 목차</strong><ol><li><a href="#s1">원문 요약</a></li><li><a href="#s2">플랫폼 카드</a></li><li><a href="#s3">비교 매트릭스</a></li><li><a href="#s4">변환 규칙</a></li><li><a href="#s5">발행 체크리스트</a></li></ol></nav><section id="s1"><h2><span class="no">1</span>원문 요약</h2><p class="h2-sub">원본은 유지하고 플랫폼별로 독자 맥락과 행동 목표를 바꿉니다.</p>
+<div class="original-summary"><p>원본 주제는 “Coreline Auth 인증 보안 체크리스트”입니다. 핵심 논지는 password/session/token 원문 저장 금지, CSRF fail-closed, OAuth/OIDC 검증, MFA replay 방어, WebAuthn origin 검증, 운영 readiness입니다. 긴 원고를 그대로 복사하면 플랫폼별 독자가 이탈하므로 각 채널의 기대 행동에 맞게 재배열합니다.</p></div>
+</section><section id="s2"><h2><span class="no">2</span>플랫폼 카드</h2><p class="h2-sub">같은 사실도 플랫폼마다 첫 문장, 표, 코드, CTA의 위치가 달라져야 합니다.</p>
+<div class="platform-grid"><div class="platform-card"><h3>Tistory</h3><p>긴 호흡의 설명형 글에 적합합니다. 초반에는 문제 상황과 비유, 중반에는 표, 후반에는 체크리스트와 출처를 배치합니다.</p></div><div class="platform-card"><h3>Velog</h3><p>개발자 실무 중심입니다. 코드·설정·실패 테스트를 앞에 두고, 긴 배경 설명은 접거나 후반으로 보냅니다.</p></div><div class="platform-card"><h3>Naver Blog</h3><p>검색 유입과 일반 독자 이해가 중요합니다. 전문 용어 풀이, 짧은 문단, FAQ, 이미지 대체 텍스트가 중요합니다.</p></div><div class="platform-card"><h3>WordPress</h3><p>SEO·schema·내부 링크·리드 수집에 강합니다. Pillar/cluster 구조와 다운로드 CTA를 결합합니다.</p></div><div class="platform-card"><h3>GitHub Pages</h3><p>엔지니어링 문서로 신뢰를 얻습니다. 코드, test command, diff, release evidence, source hub를 명확히 둡니다.</p></div><div class="platform-card"><h3>사내 위키</h3><p>실행 가능한 정책 문서가 목적입니다. owner, due date, gate, checklist, rollback 기준을 우선합니다.</p></div></div>
+</section><section id="s3"><h2><span class="no">3</span>비교 매트릭스</h2><p class="h2-sub">플랫폼별 성공 지표가 다르므로 원고의 구조도 달라집니다.</p><div class="tbl"><table><thead><tr><th>플랫폼</th><th>첫 화면</th><th>주요 컴포넌트</th><th>CTA</th><th>주의점</th></tr></thead><tbody><tr><td>Tistory</td><td>서사형 리드</td><td>비유, 표, FAQ</td><td>구독/다음 글</td><td>출처 과다 나열 금지</td></tr><tr><td>Velog</td><td>문제-해결 코드</td><td>코드블록, 실패 테스트</td><td>GitHub 링크</td><td>이론 과다 금지</td></tr><tr><td>Naver</td><td>쉬운 설명</td><td>용어 카드, 체크박스</td><td>상담/스크랩</td><td>전문어 풀이 필수</td></tr><tr><td>WordPress</td><td>검색 의도 맞춤</td><td>TOC, schema, hub links</td><td>PDF 다운로드</td><td>중복 콘텐츠 관리</td></tr><tr><td>GitHub Pages</td><td>문서형 헤더</td><td>runbook, commands</td><td>Issue/PR</td><td>링크 깨짐 점검</td></tr><tr><td>사내 위키</td><td>정책 요약</td><td>RACI, gate table</td><td>담당자 지정</td><td>최신성 관리</td></tr></tbody></table></div></section><section id="s4"><h2><span class="no">4</span>변환 규칙</h2><p class="h2-sub">원고를 복제하지 말고 정보 구조를 다시 설계합니다.</p>
+<ul class="check long-list"><li>핵심 사실은 유지하되, 플랫폼별 lead와 CTA를 새로 씁니다.</li><li>공식 출처는 본문 3~6개, 전체 출처는 별도 허브로 분리합니다.</li><li>개발자 플랫폼은 “실패 테스트”를 전면에, 일반 플랫폼은 “왜 중요한지”를 전면에 둡니다.</li><li>WordPress는 canonical, meta description, schema, breadcrumb를 명시합니다.</li><li>GitHub Pages는 noindex가 아니라 공개 검색 여부를 의도적으로 선택합니다.</li><li>사내 위키는 독자 설득보다 완료 기준과 담당자를 우선합니다.</li></ul>
+</section><section id="s5"><h2><span class="no">5</span>발행 체크리스트</h2><p class="h2-sub">링크가 깨지는 순간 리서치 신뢰도도 함께 떨어집니다.</p>
+<div class="platform-strategy"><ol><li>원본 문서 URL과 revision date를 기록합니다.</li><li>출처 링크를 source hub에 먼저 고정합니다.</li><li>플랫폼별 제목과 meta를 중복되지 않게 만듭니다.</li><li>모바일 표 깨짐을 카드형으로 대체합니다.</li><li>본문 내 링크는 클릭 테스트하고, 외부 링크는 텍스트 URL도 병기합니다.</li><li>발행 후 Search Console 또는 플랫폼 통계에서 query와 체류 시간을 확인합니다.</li></ol></div>
+</section>
+
+<section class="source-box box" aria-labelledby="sources-title">
+  <h2 id="sources-title"><span class="no">S</span>조사·검토 출처</h2>
+  <p>이 문서는 병렬 에이전트 페르소나 초안, 로컬 프로젝트 문서, 공식 표준/가이드를 함께 검토해 작성했습니다. 세부 외부 URL과 로컬 사본은 출처 허브에서 확인할 수 있습니다.</p>
+  <p><a href="sources/index.html"><strong>전체 출처 링크 모음 열기</strong></a></p>
+  <ul class="source-list"><li><a href="sources/security_best_practices_report.md">패치 후 2차 보안 재리뷰 보고서</a></li><li><a href="sources/auth-expert-review-20260529.md">코드 레벨 인증 전문가 감사 리포트</a></li><li><a href="sources/board-auth-integration-guide-20260529.md">게시판 인증 통합 가이드</a></li><li><a href="sources/deep-research-report.md">Deep Research Report</a></li><li><a href="sources/ops-readiness.md">운영 준비 문서</a></li><li><a href="sources/production-roadblocks-roadmap.md">프로덕션 로드블록 로드맵</a></li><li><a href="sources/security-checklist.md">Security Checklist</a></li><li><a href="sources/mfa-passkey-scope.md">MFA/Passkey Scope</a></li><li><a href="sources/adaptive-html-learning-ultimate-merge-report-20260530.md">최종 스킬 통합 보고서</a></li><li><a href="sources/blog-demos-vs-adaptive-design-audit-20260530.md">디자인 품질 차이 분석</a></li><li><a href="sources/blog-demo-passkey.html">패스키 블로그 데모 HTML</a></li><li><a href="sources/SKILL.md">adaptive-html-learning-ultimate SKILL.md</a></li><li><a href="https://pages.nist.gov/800-63-4/">NIST SP 800-63-4 Digital Identity Guidelines</a></li><li><a href="https://pages.nist.gov/800-63-4/sp800-63b.html">NIST SP 800-63B Authentication and Lifecycle Management</a></li><li><a href="https://owasp.org/www-project-application-security-verification-standard/">OWASP ASVS</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">OWASP Authentication Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">OWASP Password Storage Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html">OWASP Session Management Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html">OWASP CSRF Prevention Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html">OWASP Forgot Password Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html">OWASP Multifactor Authentication Cheat Sheet</a></li><li><a href="https://datatracker.ietf.org/doc/html/rfc6749">OAuth 2.0 Authorization Framework RFC 6749</a></li><li><a href="https://datatracker.ietf.org/doc/html/rfc7636">PKCE RFC 7636</a></li><li><a href="https://datatracker.ietf.org/doc/html/rfc8414">OAuth 2.0 Authorization Server Metadata RFC 8414</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9700.html">OAuth 2.0 Security BCP RFC 9700</a></li><li><a href="https://openid.net/specs/openid-connect-core-1_0-final.html">OpenID Connect Core 1.0</a></li></ul>
+</section>
+<footer><p>Generated with adaptive-html-learning-ultimate. <a href="index.html">전체 모드 목록으로 돌아가기</a></p></footer>
+</main>
+</body>
+</html>

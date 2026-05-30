@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">Conversion Funnel</title>
+<desc id="desc">방문부터 추천까지 단계별 전환과 이탈을 시각화</desc>
+<style>text{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR",Arial,sans-serif}.shadow{filter:drop-shadow(0 20px 32px rgba(26,26,26,.08))}</style>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<circle cx="7230" cy="760" r="520" fill="#fce4e6" opacity=".72"/>
+<circle cx="650" cy="5350" r="760" fill="#f0f4f8" opacity=".88"/>
+<text x="560" y="620" font-size="118" fill="#e63946" font-weight="950" letter-spacing="22">SVG TEMPLATE DEMO</text>
+<text x="560" y="980" font-size="285" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="560" dy="0">Conversion Funnel</tspan>
+</text>
+<text x="570" y="1280" font-size="116" fill="#4a4a4a" font-weight="580" text-anchor="start">
+<tspan x="570" dy="0">방문부터 추천까지 단계별 전환과 이탈을 시각화</tspan>
+</text>
+<path d="M900.0 1650 H7100.0 L6840.0 2210 H1160.0 Z" fill="#e63946" opacity=".9" stroke="#fff" stroke-width="14"/>
+<text x="4000" y="1875" font-size="116" fill="#fff" font-weight="950" text-anchor="middle">
+<tspan x="4000" dy="0">Visit</tspan>
+</text>
+<text x="4000" y="2030" font-size="76" fill="#fff" font-weight="850" text-anchor="middle">
+<tspan x="4000" dy="0">100%</tspan>
+</text>
+<path d="M1500.0 2300 H6500.0 L6240.0 2860 H1760.0 Z" fill="#3a6280" opacity=".9" stroke="#fff" stroke-width="14"/>
+<text x="4000" y="2525" font-size="116" fill="#fff" font-weight="950" text-anchor="middle">
+<tspan x="4000" dy="0">Signup</tspan>
+</text>
+<text x="4000" y="2680" font-size="76" fill="#fff" font-weight="850" text-anchor="middle">
+<tspan x="4000" dy="0">82%</tspan>
+</text>
+<path d="M2100.0 2950 H5900.0 L5640.0 3510 H2360.0 Z" fill="#2a7d5a" opacity=".9" stroke="#fff" stroke-width="14"/>
+<text x="4000" y="3175" font-size="116" fill="#fff" font-weight="950" text-anchor="middle">
+<tspan x="4000" dy="0">Activate</tspan>
+</text>
+<text x="4000" y="3330" font-size="76" fill="#fff" font-weight="850" text-anchor="middle">
+<tspan x="4000" dy="0">64%</tspan>
+</text>
+<path d="M2700.0 3600 H5300.0 L5040.0 4160 H2960.0 Z" fill="#d99a38" opacity=".9" stroke="#fff" stroke-width="14"/>
+<text x="4000" y="3825" font-size="116" fill="#fff" font-weight="950" text-anchor="middle">
+<tspan x="4000" dy="0">Retain</tspan>
+</text>
+<text x="4000" y="3980" font-size="76" fill="#fff" font-weight="850" text-anchor="middle">
+<tspan x="4000" dy="0">46%</tspan>
+</text>
+<path d="M3250.0 4250 H4750.0 L4490.0 4810 H3510.0 Z" fill="#ffd400" opacity=".9" stroke="#fff" stroke-width="14"/>
+<text x="4000" y="4475" font-size="116" fill="#1a1a1a" font-weight="950" text-anchor="middle">
+<tspan x="4000" dy="0">Refer</tspan>
+</text>
+<text x="4000" y="4630" font-size="76" fill="#1a1a1a" font-weight="850" text-anchor="middle">
+<tspan x="4000" dy="0">28%</tspan>
+</text>
+<rect x="1060" y="4950" width="5880" height="390" rx="96" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="1060" y="4950" width="28" height="390" rx="14" fill="#1a1a1a"/>
+<text x="1170" y="5110" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="1170" dy="0">Optimization rule</tspan>
+</text>
+<text x="1170" y="5265" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="1170" dy="0">각 단계의 전환율·이탈 사유·다음 실험을 함께 기록합니다.</tspan>
+</text>
+<text x="7440" y="5600" font-size="84" text-anchor="end" fill="#7a7a7a" font-weight="750">8000×6000 SVG · adaptive template demo</text>
+</svg>

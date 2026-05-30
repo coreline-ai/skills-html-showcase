@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meewang.kr/skills/adaptive-html-final/schemas/blog-meta.schema.json",
+  "title": "Blog Metadata",
+  "type": "object",
+  "required": [
+    "title_recommended",
+    "slug",
+    "meta_description",
+    "tags"
+  ],
+  "properties": {
+    "title_recommended": {
+      "type": "string"
+    },
+    "title_variants": {
+      "type": "object",
+      "properties": {
+        "search": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "click": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expert": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "beginner": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "slug": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "string"
+    },
+    "target_reader": {
+      "type": "string"
+    },
+    "search_intent": {
+      "type": "string",
+      "enum": [
+        "informational",
+        "commercial",
+        "tutorial",
+        "opinion",
+        "news"
+      ]
+    },
+    "keywords_primary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keywords_secondary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "estimated_reading_time": {
+      "type": "string"
+    },
+    "platform_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

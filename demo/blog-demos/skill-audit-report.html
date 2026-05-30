@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>adaptive-html-blog-writer SKILL.md 감사 리포트</title>
+<meta name="description" content="adaptive-html-blog-writer 스킬의 SKILL.md를 8개 진단 기준으로 라인·섹션별 분석한 감사 리포트. 모드 불일치, 트리거 정규화, 출력 경로 일관성, 완료 기준 검증성까지 구체적 개선안을 제시합니다.">
+<meta name="robots" content="index,follow">
+<!-- <link rel="canonical" href="https://example.com/..."> -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "adaptive-html-blog-writer SKILL.md 감사 리포트",
+  "description": "adaptive-html-blog-writer 스킬의 SKILL.md를 8개 진단 기준으로 라인·섹션별 분석한 감사 리포트. 모드 불일치, 트리거 정규화, 출력 경로 일관성, 완료 기준 검증성까지 구체적 개선안을 제시합니다.",
+  "inLanguage": "ko"
+}
+</script>
+<style>
+:root{
+  --bg:#f5f5f0;--ink:#1a1a1a;--ink-soft:#4a4a4a;--ink-mute:#7a7a7a;--line:#d8d8d0;--card:#ffffff;
+  --accent:#e63946;--accent-soft:#fce4e6;--term-bg:#fffaf2;--term-border:#e8d9b8;
+  --analogy-bg:#f0f4f8;--analogy-border:#b8cad8;--danger-bg:#fff0ee;--danger-border:#e8b8b2;
+  --good-bg:#eef7f1;--good-border:#b8d8c2;--hl-yellow:#ffe9a3;--hl-blue:#cfe5f5;--hl-pink:#fbd3da;
+  --serif:'Noto Serif KR',serif;--sans:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:60px 28px 100px}
+
+/* 헤더 */
+.kicker{font-size:13px;letter-spacing:0.18em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:36px;line-height:1.35;font-weight:700;margin-bottom:14px;letter-spacing:-0.01em}
+.lead,.sub{font-size:16px;color:var(--ink-soft);margin-bottom:24px}
+.sub{margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+.byline{font-size:13px;color:var(--ink-mute);padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:8px}
+
+/* 블로그/리포트 블록 */
+.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin:24px 0}
+.summary-card .label,.toc .label,.faq .label,.cta-box .label,.source-note .label{
+  font-size:11px;font-weight:800;letter-spacing:0.14em;color:var(--accent);margin-bottom:8px;text-transform:uppercase}
+.summary-card p{margin:0}
+.toc strong{display:block;font-size:14px;color:var(--ink);margin-bottom:8px}
+.toc ol{margin:0 0 0 20px;color:var(--ink-soft)}
+.toc a{color:var(--ink-soft);text-decoration:none}
+.toc a:hover{color:var(--accent);text-decoration:underline}
+.faq h3{font-size:16px;margin:16px 0 6px}
+.faq h3:first-of-type{margin-top:4px}
+.faq p{margin-bottom:0}
+.cta-box p{margin:0}
+.source-note{font-size:13px;color:var(--ink-mute)}
+.source-note p{font-size:13px;color:var(--ink-mute);margin-bottom:8px}
+.source-note p:last-child{margin-bottom:0}
+.source-note a{color:var(--ink-soft)}
+.source-note ol,.source-note ul{margin:6px 0 6px 20px}
+.source-note li{font-size:13px;color:var(--ink-mute)}
+
+/* 섹션 헤더 */
+h2{font-family:var(--serif);font-size:25px;font-weight:700;margin:64px 0 8px;line-height:1.4;letter-spacing:-0.005em;scroll-margin-top:24px}
+h2 .num{display:inline-block;width:34px;height:34px;background:var(--accent);color:#fff;border-radius:50%;
+  text-align:center;line-height:34px;font-size:15px;font-family:var(--sans);margin-right:12px;vertical-align:3px;font-weight:700}
+.h2-sub{font-size:14px;color:var(--ink-mute);margin-bottom:22px;margin-left:46px}
+h3{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--ink)}
+h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+
+/* 본문 */
+p{margin-bottom:16px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:600}
+ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
+li{margin:6px 0}
+em.t{font-style:normal;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px;font-weight:600;font-size:14px}
+code{font-family:'SF Mono',Menlo,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:13.5px;color:#3a3a3a}
+pre{background:#1f1f1d;color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-size:13px;line-height:1.6}
+pre code{background:none;color:inherit;padding:0;font-size:13px}
+blockquote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-style:italic}
+
+/* 형광 하이라이트 */
+.hl{--c:var(--hl-yellow);background-image:linear-gradient(transparent 76%, var(--c) 76%);background-repeat:no-repeat;
+  background-size:0% 100%;padding:1px 7px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  animation:hl-sweep .7s cubic-bezier(.4,0,.2,1) .25s forwards}
+.hl.blue{--c:var(--hl-blue)}
+.hl.pink{--c:var(--hl-pink)}
+@keyframes hl-sweep{to{background-size:100% 100%}}
+@media (prefers-reduced-motion:reduce){.hl{animation:none;background-size:100% 100%}}
+
+/* 용어 박스 (노랑) */
+.term{background:var(--term-bg);border:1px solid var(--term-border);border-left:3px solid #d4a256;border-radius:5px;padding:14px 18px;margin:14px 0 18px;font-size:14px}
+.term .label{font-size:11px;color:#a07020;font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.term .word{font-weight:700;color:#1a1a1a;font-size:15px}
+.term .meaning{color:#5a4a30;margin-top:4px;line-height:1.65}
+
+/* 비유 박스 (파랑) */
+.analogy{background:var(--analogy-bg);border:1px solid var(--analogy-border);border-left:3px solid #5e8aa8;border-radius:5px;padding:16px 20px;margin:18px 0;font-size:14.5px}
+.analogy .label{font-size:11px;color:#3a6280;font-weight:700;letter-spacing:0.12em;margin-bottom:6px}
+.analogy p{color:#2a4a60;margin:0;line-height:1.7}
+.analogy p + p{margin-top:8px}
+
+/* 함정 박스 (빨강) */
+.danger{background:var(--danger-bg);border:1px solid var(--danger-border);border-left:3px solid var(--accent);border-radius:5px;padding:16px 20px;margin:14px 0;font-size:14.5px}
+.danger .label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.danger .name{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px}
+.danger p{color:#5a3a36;margin:0;line-height:1.7;font-size:14px}
+.danger p + p{margin-top:8px}
+
+/* 해결책 박스 (녹색) */
+.good{background:var(--good-bg);border:1px solid var(--good-border);border-left:3px solid #4a9d7a;border-radius:5px;padding:16px 20px;margin:14px 0;font-size:14.5px}
+.good .label{font-size:11px;color:#2a7d5a;font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.good .name{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px}
+.good p{color:#2a5a4a;margin:0;line-height:1.7;font-size:14px}
+
+/* 영웅 비유 박스 */
+.hero-analogy{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:26px 28px;margin:24px 0 12px}
+.hero-analogy .tag{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:10px}
+.hero-analogy h3{margin:0 0 10px;font-family:var(--serif);font-size:20px;line-height:1.5}
+.hero-analogy p{margin:0;font-size:15px;color:var(--ink-soft)}
+.hero-analogy p + p{margin-top:10px}
+
+/* 일반 카드 */
+.card-block{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 26px;margin:14px 0}
+.card-block h3{margin-top:0;font-size:17px}
+.card-block p{font-size:14.5px;margin-bottom:10px}
+.card-block p:last-child{margin-bottom:0}
+.card-block .case-label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:6px}
+
+/* 인용/흐름 박스 */
+.prompt-box{background:#f8f8f4;border-left:2px solid var(--line);padding:10px 14px;margin-top:10px;font-size:13.5px;color:var(--ink-soft);font-style:italic;line-height:1.65}
+
+/* 표 (모바일 안전: 가로 스크롤 래퍼 .tbl로 감쌀 것) */
+.tbl{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px}
+th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;color:var(--ink-soft);vertical-align:top}
+th{background:#efeee8;color:var(--ink);font-weight:700;font-size:13px}
+
+/* 접이식 (네이티브, JS 불필요 — 퀴즈 정답/상세에 사용) */
+details{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 16px;margin:12px 0}
+summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:15px}
+details[open] summary{margin-bottom:8px}
+details p{margin-bottom:0}
+
+/* takeaway 박스 (검정, 마지막) */
+.try{background:#1a1a1a;color:#f5f5f0;border-radius:6px;padding:32px 30px;margin-top:52px}
+.try .label{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:14px}
+.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
+.try ol{padding-left:20px;color:#d0d0c8}
+.try li{margin-bottom:12px;font-size:15px;line-height:1.7}
+.try li strong{color:#fff}
+.try li:last-child{margin-bottom:0}
+
+/* 푸터 */
+.footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+
+/* 모바일 */
+@media (max-width:640px){.wrap{padding:40px 20px 60px}h1{font-size:28px}h2{font-size:22px}}
+</style>
+</head>
+<!-- ↑↑↑ 여기까지 그대로 복사. 아래부터 <body>에 본문 작성 ↓↓↓ -->
+<body>
+<div class="wrap">
+
+  <div class="kicker">SKILL AUDIT</div>
+  <h1>adaptive-html-blog-writer SKILL.md 감사 리포트</h1>
+  <p class="sub">8개 진단 기준으로 SKILL.md와 3개 references, manifest.json을 라인·섹션별로 점검했습니다. 모드 정의 불일치, 트리거 정규화 부재, 출력 경로 불일치, 완료 기준의 검증 가능성을 중심으로 구체적 개선안을 제시합니다.</p>
+
+  <aside class="summary-card">
+    <div class="label">스킬 목적 요약</div>
+    <p><strong>adaptive-html-blog-writer</strong>는 URL·PDF·텍스트·아이디어 메모 등 다양한 입력을 받아 목적별 한국어 콘텐츠로 변환하는 다중 모드 스킬입니다. 기존 <code>html-for-beginners</code>의 초보자용 HTML 학습 자료 생성을 기반으로, 전문가 리포트 HTML, 공개 아티클, 교육용 HTML, 블로그 원고/SEO/플랫폼 최적화, 그리고 SKILL.md 자체를 분석·개선하는 감사 모드까지 확장한 것이 핵심입니다. 즉 <em class="t">한 스킬 안에 콘텐츠 생산기 + 자기 점검기</em>를 함께 담은 구조입니다.</p>
+  </aside>
+
+  <nav class="toc">
+    <div class="label">목차</div>
+    <strong>이 리포트의 구성</strong>
+    <ol>
+      <li><a href="#s1">현재 구조 분석</a></li>
+      <li><a href="#s2">라인·섹션별 문제점 진단표</a></li>
+      <li><a href="#s3">개선 방향</a></li>
+      <li><a href="#s4">확장 가능한 모드</a></li>
+      <li><a href="#s5">최종 개선 SKILL.md (핵심 발췌)</a></li>
+      <li><a href="#s6">사용 예시</a></li>
+    </ol>
+  </nav>
+
+  <!-- ─────────────────────────── 1 ─────────────────────────── -->
+  <h2 id="s1"><span class="num">1</span>현재 구조 분석</h2>
+  <p class="h2-sub">SKILL.md 본문 11개 섹션 + frontmatter + 3개 references + manifest의 역할과 응집도를 먼저 파악합니다.</p>
+
+  <p>SKILL.md는 frontmatter(1~18행)와 11개 본문 섹션(20~558행)으로 구성됩니다. frontmatter의 <code>description</code>은 트리거 목록과 기본 출력 원칙까지 담고 있어 사실상 스킬 호출 라우터 역할을 합니다. 본문은 Identity → Core Principles → Input Types → Mode Selection → Workflow → Blog Mode → HTML Rendering → Skill Audit → Quality Gates → Output → Completion → Examples 순으로 흐릅니다. 큰 틀에서 <span class="hl">"원칙 → 입력 → 모드 선택 → 워크플로우 → 모드별 상세 → 품질 게이트 → 완료 기준"</span>이라는 합리적 골격을 갖췄습니다.</p>
+
+  <p>모드는 문서마다 수가 어긋납니다. frontmatter 설명(4~6행)과 manifest.json(5~14행)·Mode Selection 표(87~96행)는 <strong>8개 모드</strong>를 전제하지만, 본문 0. Identity(28~34행)는 <strong>7개</strong>만 나열하며 <code>platform_blog</code>가 빠져 있습니다. 이 불일치가 문서 전반의 신뢰도를 떨어뜨리는 1순위 결함입니다.</p>
+
+  <div class="tbl">
+  <table>
+    <thead><tr><th>모드</th><th>정의 위치</th><th>주 산출물</th><th>응집도 메모</th></tr></thead>
+    <tbody>
+      <tr><td><code>beginner_html</code></td><td>0/3/4절</td><td>초보자 HTML 학습 페이지</td><td>원본 스킬 핵심. 구조 명확</td></tr>
+      <tr><td><code>expert_html</code></td><td>0/3/4절</td><td>전문가 리포트 HTML</td><td>구조 정의 양호</td></tr>
+      <tr><td><code>article_html</code></td><td>0/3/4절</td><td>SEO 아티클 HTML</td><td>blog_seo_html과 경계 모호</td></tr>
+      <tr><td><code>education_html</code></td><td>0/3/4절</td><td>교육용 HTML</td><td>구조 정의 양호</td></tr>
+      <tr><td><code>blog_writer</code></td><td>0/3/4/5절</td><td>Markdown 원고 + SEO 메타</td><td>5절에서 가장 상세히 규정</td></tr>
+      <tr><td><code>blog_seo_html</code></td><td>0/3/4절</td><td>SEO 원고 + HTML</td><td>article_html·blog_writer와 3중 중첩</td></tr>
+      <tr><td><code>platform_blog</code></td><td>3절·manifest <strong>만</strong></td><td>플랫폼 맞춤 원고</td><td><em class="t">0절 Identity에서 누락</em></td></tr>
+      <tr><td><code>skill_audit</code></td><td>0/3/4/7절</td><td>라인별 진단 + 개선 SKILL.md</td><td>나머지 7개와 성격 자체가 다름</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>references 파일의 역할</h3>
+  <ul>
+    <li><code>mode-selection.md</code> — Mode Map, 기본 판단 규칙, 다중 모드 결합(Multi-mode Composition), Conflict Resolution. SKILL.md 3절을 보강하지만 <strong>우선순위 체인과 충돌 규칙이 다른 논리</strong>를 제시(3절 분석 참조).</li>
+    <li><code>quality-gates.md</code> — Blog/HTML/Skill 3종 체크리스트. SKILL.md 8절과 거의 동일 내용으로 <span class="hl pink">중복</span>이며, 일부 항목이 본문보다 축약돼 있어 둘 중 무엇이 정본인지 불명확합니다.</li>
+    <li><code>blog-writing-system.md</code> — 블로그 파이프라인, 드래프트 템플릿, SEO/톤/플랫폼 규칙, 100점 품질 점수표. 5절을 확장하는 유일하게 고유한 reference입니다.</li>
+  </ul>
+
+  <p>manifest.json은 <code>name</code>, <code>version 1.0.0</code>, <code>based_on</code>, 8개 <code>modes</code> 배열, <code>created</code>만 담은 최소 메타입니다. <code>references</code>·<code>assets</code> 파일 목록이나 진입점(entry) 선언이 없어, SKILL.md 9.1절이 가리키는 파일들과 대조·검증할 근거가 manifest 안에 없습니다.</p>
+
+  <!-- ─────────────────────────── 2 ─────────────────────────── -->
+  <h2 id="s2"><span class="num">2</span>라인·섹션별 문제점 진단표</h2>
+  <p class="h2-sub">8개 진단 기준(목적·트리거·입출력 검증·워크플로우 순서·금지 규칙·실패 대응·완료 기준·모드 응집도)에 따라 실제 라인 근거로 정리했습니다.</p>
+
+  <div class="tbl">
+  <table>
+    <thead><tr><th>구간</th><th>원문 요약</th><th>문제점</th><th>개선 방향</th><th>우선순위</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>0절 Identity (28~34행) vs frontmatter(4~6행)·manifest</td>
+        <td>Identity는 모드 7개 나열, frontmatter·manifest·3절 표는 8개</td>
+        <td><strong>기준8·기준1</strong> 위반. <code>platform_blog</code>가 Identity에서 누락돼 "스킬이 몇 개 모드인가"라는 정체성 자체가 불일치</td>
+        <td>Identity를 8개로 통일하고, 모드 목록은 한 곳(예: manifest 또는 0절)에서만 정의 후 나머지는 참조</td>
+        <td>P0</td>
+      </tr>
+      <tr>
+        <td>frontmatter 트리거 (8~12행)</td>
+        <td>"HTML로 정리", "블로그 작성" 등 자연어 트리거를 그룹별 나열</td>
+        <td><strong>기준2</strong> 부분 위반. 트리거가 정규화돼 있지 않고, 8개 모드 중 <code>platform_blog</code> 트리거(티스토리/벨로그)는 9~10행에 흩어져 표(95행)와 1:1 매핑이 안 됨</td>
+        <td>트리거를 "모드 → 키워드 배열" 형태로 정규화하고, frontmatter 트리거와 3절 표의 키워드를 동일 출처에서 생성</td>
+        <td>P1</td>
+      </tr>
+      <tr>
+        <td>3절 우선순위(98~104행) vs mode-selection.md 3·4절</td>
+        <td>SKILL.md는 단일 우선순위 체인 제시, reference는 "모드 결합(skill_audit + blog_writer)" 허용</td>
+        <td><strong>기준4·기준8</strong> 충돌. 한쪽은 배타적 선택, 한쪽은 결합 — 동일 입력에 결과가 갈림</td>
+        <td>"단일 모드 선택이 기본, 명시적 복합 요청 시에만 결합" 같은 결정 트리로 두 규칙을 하나로 통합</td>
+        <td>P0</td>
+      </tr>
+      <tr>
+        <td>2절 Input Types(66~79행) + Step 2(137~145행)</td>
+        <td>입력 8종 나열, "불완전해도 멈추지 말고 합리적 기본값으로 진행"</td>
+        <td><strong>기준6</strong> 약함. URL 접근 실패, PDF 파싱 불가, 빈 소스, 손상 입력에 대한 분기·폴백이 없음. "확인 필요" 표시만으로는 실패 처리 불충분</td>
+        <td>입력별 실패 시나리오와 폴백(예: URL 실패→사용자에게 본문 요청, 빈 소스→구조 설계만 진행) 명시</td>
+        <td>P1</td>
+      </tr>
+      <tr>
+        <td>6절 HTML Rendering(380행)·9.1절(500~509행)</td>
+        <td>6절은 <code>assets/template.html</code>을, 9.1절은 <code>references/design-system.md</code>를 가리킴</td>
+        <td><strong>기준3</strong> 위반. 실제 패키지에는 <code>SHARED_STYLE.html</code>만 존재하고 <code>design-system.md</code>·<code>template.html</code>은 미배포 — 경로가 검증 불가</td>
+        <td>실제 배포 파일명(<code>SHARED_STYLE.html</code>)으로 경로를 통일하고, 미배포 파일 참조는 제거하거나 실제로 추가</td>
+        <td>P0</td>
+      </tr>
+      <tr>
+        <td>8절 Quality Gates vs quality-gates.md</td>
+        <td>Blog/HTML/Skill 체크리스트가 SKILL.md 8절과 reference에 거의 동일하게 중복</td>
+        <td><strong>기준7</strong> 약화. 두 곳 내용이 미세하게 달라(예: HTML 폭 "760~860px"는 reference에만 존재) 정본 불명확</td>
+        <td>체크리스트는 reference를 단일 정본(SSOT)으로 두고 SKILL.md는 "quality-gates.md 적용"으로 한 줄 참조</td>
+        <td>P2</td>
+      </tr>
+      <tr>
+        <td>10절 Completion Criteria(537~546행)</td>
+        <td>7개 완료 조건. "바로 복사·다운로드할 수 있다"(6번) 포함</td>
+        <td><strong>기준7</strong> 부분 위반. 6번은 모델이 자기 검증 불가한 환경 의존 조건. 모드별 완료 기준이 분리돼 있지 않아 어떤 모드든 같은 7개를 적용</td>
+        <td>모드별 완료 기준 표로 분리하고, 검증 가능한 표현("산출물에 X 블록이 존재한다")으로 재작성</td>
+        <td>P1</td>
+      </tr>
+      <tr>
+        <td>5.6절 Platform Adaptation vs blog-writing-system.md 5절</td>
+        <td>티스토리/벨로그/네이버/워드프레스 규칙이 SKILL.md와 reference 양쪽에 서술</td>
+        <td><strong>기준8</strong>. <code>platform_blog</code>가 별도 모드인데 규칙은 5절(blog_writer) 하위에 묻혀 모드 경계가 흐림</td>
+        <td>플랫폼 규칙을 reference로 일원화하고, <code>platform_blog</code> 모드는 "blog_writer + platform 어댑터"로 관계를 명문화</td>
+        <td>P2</td>
+      </tr>
+      <tr>
+        <td>9.3절 Final Response(523~531행)</td>
+        <td>고정 문구 "완성했습니다 / 포함된 확장 … / 다운로드: &lt;file&gt;"</td>
+        <td><strong>기준3</strong>. 파일을 못 만드는 채팅 환경에서도 "다운로드: &lt;file&gt;"을 출력하게 돼 산출물과 응답이 불일치할 위험</td>
+        <td>파일 생성 성공 여부에 따라 응답 분기. 본문 출력 시에는 다운로드 줄 생략</td>
+        <td>P2</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="danger">
+    <div class="label">핵심 결함</div>
+    <div class="name">P0 3건 — 정체성·라우팅·경로의 동시 불일치</div>
+    <p>모드 개수(0절 vs manifest), 모드 선택 로직(3절 체인 vs reference 결합), 출력 경로(SHARED_STYLE.html vs design-system.md/template.html) 세 곳이 서로 모순됩니다. 이 세 가지는 스킬이 "무엇을 하고, 무엇을 부르고, 무엇을 내놓는지"의 뼈대라, 먼저 정리하지 않으면 나머지 개선이 모래 위에 쌓입니다.</p>
+  </div>
+
+  <!-- ─────────────────────────── 3 ─────────────────────────── -->
+  <h2 id="s3"><span class="num">3</span>개선 방향</h2>
+  <p class="h2-sub">진단표의 9개 문제를 P0→P2 순으로 묶어, 실행 가능한 권고로 정리합니다.</p>
+
+  <div class="good">
+    <div class="label">P0 · 즉시 수정</div>
+    <div class="name">1) 모드 정의 단일화</div>
+    <p>모드 배열은 manifest.json을 단일 정본으로 두고, SKILL.md 0절·3절은 manifest를 참조한다고 명시합니다. 0절 Identity에 <code>platform_blog</code>를 추가해 8개로 맞춥니다.</p>
+  </div>
+  <div class="good">
+    <div class="label">P0 · 즉시 수정</div>
+    <div class="name">2) 모드 선택 충돌 규칙 통합</div>
+    <p>SKILL.md 3절의 우선순위 체인과 mode-selection.md의 결합 규칙을 하나의 결정 트리로 합칩니다. "기본은 단일 모드, 사용자가 명시적으로 복합('스킬 분석 후 블로그')을 요청할 때만 결합, 충돌 시 우선순위 체인 적용" 순서로 일원화합니다.</p>
+  </div>
+  <div class="good">
+    <div class="label">P0 · 즉시 수정</div>
+    <div class="name">3) 출력 파일 경로 일관성</div>
+    <p>실제 배포되는 <code>SHARED_STYLE.html</code>을 정식 템플릿 경로로 통일하고, 미배포된 <code>references/design-system.md</code>·<code>assets/template.html</code> 참조는 삭제하거나 파일을 실제로 추가합니다. manifest에 <code>references</code>·<code>assets</code> 목록을 선언해 대조 가능하게 만듭니다.</p>
+  </div>
+
+  <h3>P1 · 다음 반영</h3>
+  <ul>
+    <li><strong>트리거 정규화</strong> — frontmatter 트리거를 "모드 → 키워드 배열" 형태로 구조화하고, 3절 표의 사용자 표현과 동일 출처에서 생성해 1:1 매핑을 보장합니다. <code>platform_blog</code> 트리거(티스토리/벨로그/네이버/워드프레스)를 명시적으로 그 모드에 귀속시킵니다.</li>
+    <li><strong>실패·불확실성 대응 추가</strong> — 입력별 실패 분기를 Step 2에 추가합니다: URL 접근 실패 → 사용자에게 본문 붙여넣기 요청, PDF 파싱 불가 → 텍스트 입력 요청, 빈/모호한 소스 → 구조 설계 모드로 폴백, 모드 모호 → 1회 확인 질문.</li>
+    <li><strong>완료 기준 검증 강화</strong> — 10절을 모드별 완료 기준 표로 분리하고, 환경 의존 표현("다운로드할 수 있다")을 산출물 내부에서 확인 가능한 표현("HTML이면 h1 1개·lang=ko 충족", "블로그면 제목 5+·메타·CTA 포함")으로 바꿉니다.</li>
+  </ul>
+
+  <h3>P2 · 정리 단계</h3>
+  <ul>
+    <li><strong>품질 게이트 SSOT화</strong> — 체크리스트는 quality-gates.md를 단일 정본으로, SKILL.md 8절은 한 줄 참조로 축소해 중복·미세 차이를 제거합니다.</li>
+    <li><strong>article_html / blog_seo_html / blog_writer 경계 정리</strong> — 세 모드가 SEO HTML 영역에서 겹칩니다. "공개 아티클(article_html) vs 검색 최적화 블로그(blog_seo_html) vs 원고 중심(blog_writer)"의 결정 기준을 한 문장씩 추가합니다.</li>
+    <li><strong>Final Response 분기</strong> — 파일 생성 성공 시에만 다운로드 줄을 출력하고, 본문 출력 시에는 생략합니다.</li>
+  </ul>
+
+  <!-- ─────────────────────────── 4 ─────────────────────────── -->
+  <h2 id="s4"><span class="num">4</span>확장 가능한 모드</h2>
+  <p class="h2-sub">현재 8개 모드는 "생산(7) + 자기 점검(1)" 구조입니다. 응집도를 해치지 않으면서 실제 빈틈을 메우는 모드를 근거와 함께 제안합니다.</p>
+
+  <div class="card-block">
+    <div class="case-label">제안 1</div>
+    <h3>translate_localize — 한↔영 현지화 모드</h3>
+    <p>현재 모든 산출물이 한국어 고정(1.1절 기본값 <code>language: Korean</code>)입니다. 해외 공개용 아티클·README 수요가 있을 때 톤과 SEO 키워드까지 현지화하는 모드가 필요합니다. 근거: article_html·blog_seo_html이 이미 GitHub Pages를 대상으로 하지만 영어 출력 경로가 없습니다.</p>
+  </div>
+  <div class="card-block">
+    <div class="case-label">제안 2</div>
+    <h3>refresh_update — 기존 글 갱신 모드</h3>
+    <p>입력 타입에 "기존 블로그 초안"(76행)이 있지만, 처음부터 새로 쓰는 흐름만 정의돼 있습니다. 기존 글의 구조를 유지한 채 사실 업데이트·SEO 보강·끊긴 링크 점검만 수행하는 모드가 실무 수요에 맞습니다.</p>
+  </div>
+  <div class="card-block">
+    <div class="case-label">제안 3</div>
+    <h3>series_planner — 연재/시리즈 기획 모드</h3>
+    <p>단일 글 생산에 최적화돼 있어, 하나의 주제를 3~6편 시리즈로 쪼개 각 편의 제목·핵심 메시지·상호 링크를 설계하는 모드가 비어 있습니다. blog_writer의 상위 기획 레이어로 자연스럽게 얹힙니다.</p>
+  </div>
+  <div class="card-block">
+    <div class="case-label">제안 4 (주의)</div>
+    <h3>skill_generate — 신규 SKILL.md 생성 모드</h3>
+    <p>현재 skill_audit는 "기존 스킬 분석·개선"만 다룹니다. 백지에서 새 SKILL.md를 만드는 수요가 있으나, 추가 시 skill_audit와 책임이 겹쳐 응집도가 흔들릴 수 있습니다. 별도 모드보다는 <em class="t">skill_audit의 하위 옵션(audit/scaffold)</em>으로 두는 편을 권합니다.</p>
+  </div>
+
+  <div class="danger">
+    <div class="label">확장 시 경계</div>
+    <div class="name">모드 인플레이션 경고</div>
+    <p>이미 article_html·blog_seo_html·blog_writer가 SEO HTML 영역에서 겹칩니다. 새 모드를 추가하기 전에 기존 모드의 옵션으로 흡수 가능한지 먼저 검토해야 합니다. 모드는 "사용자 의도가 명백히 다를 때"만 늘리는 것이 응집도(기준8)를 지키는 길입니다.</p>
+  </div>
+
+  <!-- ─────────────────────────── 5 ─────────────────────────── -->
+  <h2 id="s5"><span class="num">5</span>최종 개선 SKILL.md (핵심 발췌)</h2>
+  <p class="h2-sub">전체 재작성 대신 P0·P1 결함을 직접 고치는 핵심 블록만 제시합니다. 각 블록 아래에 "무엇을 바꿨는지"를 명시합니다.</p>
+
+  <h3>① frontmatter — 트리거 정규화</h3>
+  <pre><code>---
+name: adaptive-html-blog-writer
+description: |
+  URL·PDF·텍스트·문서·아이디어를 목적별 한국어 콘텐츠로 변환하는 8-모드 스킬.
+  모드 목록의 정본은 manifest.json의 modes 배열이다(중복 정의 금지).
+triggers:
+  beginner_html:  ["초보자용 HTML", "쉽게", "비유로", "공부하기 좋게"]
+  expert_html:    ["전문가용 HTML", "기술 검토", "구조 분석", "리스크"]
+  article_html:   ["아티클", "기사", "공개용", "GitHub Pages"]
+  education_html: ["교육용", "강의", "온보딩", "퀴즈"]
+  blog_writer:    ["블로그 작성", "포스팅 작성", "글 써줘"]
+  blog_seo_html:  ["SEO 글", "키워드", "검색 노출"]
+  platform_blog:  ["티스토리", "벨로그", "네이버 블로그", "워드프레스"]
+  skill_audit:    ["스킬 분석", "SKILL.md 개선", "한 줄 한 줄 분석", "스킬 확장"]
+---</code></pre>
+  <p><strong>변경점:</strong> 자유 나열 트리거를 "모드 → 키워드 배열"로 구조화(기준2). <code>platform_blog</code> 트리거를 명시적으로 귀속(진단표 2행). 모드 목록 정본을 manifest로 단일화(P0-1).</p>
+
+  <h3>② 0. Identity — 8개 모드로 통일</h3>
+  <pre><code>## 0. Identity
+이 스킬은 html-for-beginners를 확장한 8-모드 콘텐츠 생성 스킬이다.
+모드 정의는 manifest.json을 단일 정본으로 한다.
+
+생산 모드(7): beginner_html, expert_html, article_html,
+  education_html, blog_writer, blog_seo_html, platform_blog
+점검 모드(1): skill_audit</code></pre>
+  <p><strong>변경점:</strong> 누락됐던 <code>platform_blog</code> 추가 → 7개를 8개로 정정(P0-1, 기준8). "생산/점검"으로 성격을 분리해 skill_audit의 이질성을 명시.</p>
+
+  <h3>③ 3. Mode Selection — 충돌 규칙 통합</h3>
+  <pre><code>## 3. Mode Selection (단일 결정 트리)
+1) 트리거 매칭으로 후보 모드를 모은다.
+2) 후보가 1개면 그 모드로 확정한다.
+3) 후보가 여러 개면:
+   - 사용자가 명시적 복합("스킬 분석 후 블로그 글로")을 요청 → 모드 결합
+   - 그 외 → 우선순위 체인으로 단일 선택:
+     skill_audit > platform_blog > blog_seo_html > blog_writer
+       > education_html > expert_html > article_html > beginner_html
+4) "HTML 파일"을 명시하면 어떤 모드든 단일 HTML을 함께 생성한다.
+5) 의도가 모호하면 추정으로 진행하지 말고 1회만 확인 질문한다.</code></pre>
+  <p><strong>변경점:</strong> SKILL.md의 배타적 체인과 reference의 결합 규칙을 하나의 트리로 통합(P0-2, 기준4). 모호성 처리 단계(5)를 추가해 실패 대응 보강(기준6).</p>
+
+  <h3>④ Step 2 — 입력 실패 폴백 추가</h3>
+  <pre><code>### Step 2 — Source Collection (실패 분기 포함)
+- URL 접근 실패 → 본문 붙여넣기를 요청하고 대기.
+- PDF 파싱 불가 → 텍스트 추출본 입력을 요청.
+- 빈/모호한 소스 → 사실 주장 없이 '구조 설계 모드'로만 진행.
+- 확인 불가한 최신 정보(가격·일정·정책) → 본문에 '확인 필요'로 표기.</code></pre>
+  <p><strong>변경점:</strong> "멈추지 말고 진행"만 있던 2절·Step 2에 입력별 폴백을 명시(P1, 기준6). 실패가 곧 침묵하거나 추측하는 사태를 방지.</p>
+
+  <h3>⑤ 6 / 9.1 — 출력 경로 통일</h3>
+  <pre><code>## 6. HTML Rendering
+HTML 생성 시 패키지에 실제 포함된 SHARED_STYLE.html을 골격으로 쓴다.
+<!DOCTYPE html>~</head> 직전까지 복사하고 {{TITLE}}·{{META_DESCRIPTION}}만 치환.
+:root 토큰·@media 변경 금지.
+
+## 9.1 파일 생성 시 (실제 배포 목록과 일치)
+SKILL.md
+manifest.json            # references/assets 목록을 선언
+references/mode-selection.md
+references/quality-gates.md
+references/blog-writing-system.md
+SHARED_STYLE.html</code></pre>
+  <p><strong>변경점:</strong> 미배포 <code>design-system.md</code>·<code>template.html</code> 참조 제거, 실존 <code>SHARED_STYLE.html</code>로 통일(P0-3, 기준3). manifest가 파일 목록을 선언하도록 명문화.</p>
+
+  <h3>⑥ 10. Completion Criteria — 모드별·검증 가능 표현</h3>
+  <pre><code>## 10. Completion Criteria (모드별)
+공통: 모드 선택됨 · 사실/해석/추론 구분됨 · 미확인 사실은 단정 안 함.
+HTML 모드:  단일 파일 · lang=ko · h1 1개 · :root 토큰 미변경.
+블로그 모드: 제목 후보 5+ · 추천 제목 1 · 메타 120~160자 · 목차 · CTA · 태그.
+skill_audit: 진단표 행 6+ · 8개 기준 적용 · 개선 SKILL.md 발췌 포함.
+품질 게이트: references/quality-gates.md를 단일 정본으로 적용.</code></pre>
+  <p><strong>변경점:</strong> 환경 의존 조건("다운로드할 수 있다")을 산출물 내부에서 검증 가능한 항목으로 교체(P1, 기준7). 모드별로 분리해 무엇을 만족해야 완료인지 명확화. 품질 게이트는 reference SSOT 참조로 중복 제거(P2).</p>
+
+  <!-- ─────────────────────────── 6 ─────────────────────────── -->
+  <h2 id="s6"><span class="num">6</span>사용 예시</h2>
+  <p class="h2-sub">개선안 적용 후, 정규화된 트리거와 통합된 결정 트리로 명확히 라우팅되는 명령 예시입니다.</p>
+
+  <div class="card-block">
+    <h3>예시 명령</h3>
+    <ul>
+      <li>"이 PDF를 <strong>전문가용 HTML</strong> 리포트로 만들어줘." → <code>expert_html</code> 단일 선택, 산출물에 h1 1개·SHARED_STYLE.html 골격 적용.</li>
+      <li>"이 글을 <strong>티스토리</strong>용으로 SEO 제목·태그까지." → <code>platform_blog</code>(트리거 귀속) + SEO 보강, 블로그 완료 기준 적용.</li>
+      <li>"이 <strong>SKILL.md를 한 줄 한 줄 분석</strong>하고 개선본 만들어줘." → <code>skill_audit</code>, 진단표 6행+ · 8개 기준 · 개선 발췌 포함.</li>
+      <li>"이 <strong>스킬 분석 후 그 결과를 블로그 글</strong>로." → 명시적 복합 → <code>skill_audit + blog_writer</code> 결합(결정 트리 3-가).</li>
+      <li>"이 URL을 초보자용 HTML로." (URL 접근 실패 시) → 추측 대신 "본문을 붙여넣어 주세요" 1회 요청(Step 2 폴백).</li>
+    </ul>
+  </div>
+
+  <div class="source-note">
+    <div class="label">분석 대상</div>
+    <p>아래 파일을 직접 읽고 라인·섹션 근거로 분석했습니다.</p>
+    <ul>
+      <li>/tmp/blog_skill/adaptive-html-blog-writer/SKILL.md (559행, 핵심)</li>
+      <li>/tmp/blog_skill/adaptive-html-blog-writer/manifest.json</li>
+      <li>/tmp/blog_skill/adaptive-html-blog-writer/references/mode-selection.md</li>
+      <li>/tmp/blog_skill/adaptive-html-blog-writer/references/quality-gates.md</li>
+      <li>/tmp/blog_skill/adaptive-html-blog-writer/references/blog-writing-system.md</li>
+      <li>/tmp/blog_skill/SHARED_STYLE.html (스타일 참고)</li>
+    </ul>
+  </div>
+
+  <div class="footer">Generated with adaptive-html-blog-writer · mode: skill_audit</div>
+
+</div>
+</body>
+</html>

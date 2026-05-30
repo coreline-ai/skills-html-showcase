@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">이미지 삽입 품질 게이트</title>
+<desc id="desc">삽입 전 반드시 통과해야 하는 검수 항목</desc>
+<style>text { font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", Arial, sans-serif; }
+.small { font-size: 92px; fill: #7a7a7a; font-weight: 650; }
+.hair { stroke:#d8d8d0; stroke-width:10; }</style>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<circle cx="7200" cy="740" r="520" fill="#fce4e6" opacity="0.8"/>
+<circle cx="680" cy="5350" r="720" fill="#f0f4f8" opacity="0.95"/>
+<text x="560" y="620" font-size="122" fill="#e63946" font-weight="900" letter-spacing="22">ADAPTIVE HTML VISUAL</text>
+<text x="560" y="980" font-size="300" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="560" dy="0">이미지 삽입 품질 게이트</tspan>
+</text>
+<text x="570" y="1280" font-size="118" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="570" dy="0">삽입 전 반드시 통과해야 하는 검수 항목</tspan>
+</text>
+<rect x="560" y="1580" width="3340" height="700" rx="104" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="560" y="1580" width="30" height="700" rx="15" fill="#2a7d5a"/>
+<circle cx="770" cy="1770" r="92" fill="#2a7d5a"/>
+<path d="M720 1770 L758 1812 L845 1716" fill="none" stroke="#fff" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="920" y="1765" font-size="126" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="920" dy="0">8000x6000 캔버스</tspan>
+</text>
+
+<text x="920" y="2080" font-size="66" fill="#7a7a7a" font-weight="650" text-anchor="start">
+<tspan x="920" dy="0">검수 후 삽입 · 모바일 확인 · 출처 기록</tspan>
+</text>
+<rect x="4200" y="1580" width="3340" height="700" rx="104" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="4200" y="1580" width="30" height="700" rx="15" fill="#3a6280"/>
+<circle cx="4410" cy="1770" r="92" fill="#3a6280"/>
+<path d="M4360 1770 L4398 1812 L4485 1716" fill="none" stroke="#fff" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="4560" y="1765" font-size="126" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="4560" dy="0">figure +</tspan>
+</text>
+
+<text x="4560" y="2080" font-size="66" fill="#7a7a7a" font-weight="650" text-anchor="start">
+<tspan x="4560" dy="0">검수 후 삽입 · 모바일 확인 · 출처 기록</tspan>
+</text>
+<rect x="560" y="2470" width="3340" height="700" rx="104" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="560" y="2470" width="30" height="700" rx="15" fill="#d99a38"/>
+<circle cx="770" cy="2660" r="92" fill="#d99a38"/>
+<path d="M720 2660 L758 2702 L845 2606" fill="none" stroke="#fff" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="920" y="2655" font-size="126" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="920" dy="0">의미 있는 alt 텍스트</tspan>
+</text>
+
+<text x="920" y="2970" font-size="66" fill="#7a7a7a" font-weight="650" text-anchor="start">
+<tspan x="920" dy="0">검수 후 삽입 · 모바일 확인 · 출처 기록</tspan>
+</text>
+<rect x="4200" y="2470" width="3340" height="700" rx="104" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="4200" y="2470" width="30" height="700" rx="15" fill="#e63946"/>
+<circle cx="4410" cy="2660" r="92" fill="#e63946"/>
+<path d="M4360 2660 L4398 2702 L4485 2606" fill="none" stroke="#fff" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="4560" y="2655" font-size="126" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="4560" dy="0">본문 내용과 정합</tspan>
+</text>
+
+<text x="4560" y="2970" font-size="66" fill="#7a7a7a" font-weight="650" text-anchor="start">
+<tspan x="4560" dy="0">검수 후 삽입 · 모바일 확인 · 출처 기록</tspan>
+</text>
+<rect x="560" y="3360" width="3340" height="700" rx="104" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="560" y="3360" width="30" height="700" rx="15" fill="#1a1a1a"/>
+<circle cx="770" cy="3550" r="92" fill="#1a1a1a"/>
+<path d="M720 3550 L758 3592 L845 3496" fill="none" stroke="#fff" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="920" y="3545" font-size="126" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="920" dy="0">텍스트 잘림 없음</tspan>
+</text>
+
+<text x="920" y="3860" font-size="66" fill="#7a7a7a" font-weight="650" text-anchor="start">
+<tspan x="920" dy="0">검수 후 삽입 · 모바일 확인 · 출처 기록</tspan>
+</text>
+<rect x="4200" y="3360" width="3340" height="700" rx="104" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="4200" y="3360" width="30" height="700" rx="15" fill="#2a7d5a"/>
+<circle cx="4410" cy="3550" r="92" fill="#2a7d5a"/>
+<path d="M4360 3550 L4398 3592 L4485 3496" fill="none" stroke="#fff" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="4560" y="3545" font-size="126" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="4560" dy="0">라이선스·출처 표기</tspan>
+</text>
+
+<text x="4560" y="3860" font-size="66" fill="#7a7a7a" font-weight="650" text-anchor="start">
+<tspan x="4560" dy="0">검수 후 삽입 · 모바일 확인 · 출처 기록</tspan>
+</text>
+<rect x="560" y="4300" width="6880" height="760" rx="128" fill="#ffd400" stroke="#1a1a1a" stroke-width="18"/>
+<rect x="560" y="4300" width="38" height="760" rx="19" fill="#e63946"/>
+<circle cx="6950" cy="4560" r="190" fill="#fff4a3" opacity="0.8"/>
+<text x="780" y="4555" font-size="170" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="780" dy="0">삽입 전 필수 검수: 장식이 아니라</tspan>
+</text>
+<text x="780" y="4755" font-size="96" fill="#1a1a1a" font-weight="720" text-anchor="start">
+<tspan x="780" dy="0">예쁜 이미지보다 오해 없이 바로 이해되는 이미지가 우선입니다.</tspan>
+</text>
+<text x="780" y="4925" font-size="78" fill="#5a3a00" font-weight="700" text-anchor="start">
+<tspan x="780" dy="0">8000×6000 · alt · figcaption · source · mobile 390px · no overflow</tspan>
+</text>
+<text x="7200" y="4990" font-size="82" text-anchor="end" fill="#1a1a1a" font-weight="900">PRE-FLIGHT</text>
+<text x="7440" y="5600" font-size="84" text-anchor="end" fill="#7a7a7a" font-weight="700">quality/accessibility 체크리스트 연동</text>
+</svg>

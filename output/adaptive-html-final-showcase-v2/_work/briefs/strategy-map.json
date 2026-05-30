@@ -1,0 +1,43 @@
+{
+  "type": "hero-map",
+  "title": "섹션별 이미지 전략",
+  "subtitle": "고해상도 이미지는 장식이 아니라 이해·판단·검증을 돕는 정보 구조다",
+  "items": [
+    {
+      "label": "STEP 1",
+      "title": "목적 분류",
+      "lines": [
+        "이 섹션이 설명인가",
+        "비교·절차·리스크인가",
+        "사실 이미지가 필요한가"
+      ]
+    },
+    {
+      "label": "STEP 2",
+      "title": "방식 선택",
+      "lines": [
+        "사진 검색(라이선스)",
+        "SVG 인포그래픽 생성",
+        "AI 컨셉 이미지"
+      ]
+    },
+    {
+      "label": "STEP 3",
+      "title": "삽입·검수",
+      "lines": [
+        "figure+figcaption",
+        "의미 있는 alt",
+        "8000x6000 유지"
+      ]
+    },
+    {
+      "title": "기본값은 8000x6000 SVG 인포그래픽 직접 생성",
+      "lines": [
+        "사진은 현실 대상이 필요할 때만",
+        "AI는 메타포가 필요할 때만"
+      ],
+      "accent": "#1a1a1a"
+    }
+  ],
+  "footer": "adaptive-html-final v4.2.0 · visual-template-system"
+}

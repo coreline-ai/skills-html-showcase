@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">13개 모드별 최적 이미지 타입</title>
+<desc id="desc">모드마다 장식 이미지가 아니라 정보 구조를 보강하는 시각물을 붙입니다</desc>
+<style>
+  text { font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", Arial, sans-serif; }
+  .small { font-size: 92px; fill: #7a7a7a; font-weight: 650; }
+  .hair { stroke:#d8d8d0; stroke-width:10; }
+</style>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<circle cx="7200" cy="740" r="520" fill="#fce4e6" opacity="0.8"/>
+<circle cx="680" cy="5350" r="720" fill="#f0f4f8" opacity="0.95"/>
+<text x="560" y="620" font-size="122" fill="#e63946" font-weight="900" letter-spacing="22">ADAPTIVE HTML IMAGE SYSTEM</text>
+<text x="560" y="980" font-size="300" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="560" dy="0">13개 모드별 최적 이미지 타입</tspan>
+</text>
+<text x="570" y="1280" font-size="118" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="570" dy="0">모드마다 장식 이미지가 아니라 정보 구조를 보강하는 시각물을 붙입니다</tspan>
+</text>
+<rect x="430" y="1540" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="580" cy="1705" r="72" fill="#e63946"/>
+<text x="580" y="1730" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">1</text>
+<text x="700" y="1694" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">beginner</text>
+<text x="700" y="1855" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="700" dy="0">비유 일러스트</tspan>
+</text>
+<text x="700" y="1995" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="700" dy="0">개념을 생활 장면으로</tspan>
+</text>
+<rect x="2280" y="1540" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="2430" cy="1705" r="72" fill="#3a6280"/>
+<text x="2430" y="1730" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">2</text>
+<text x="2550" y="1694" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">expert</text>
+<text x="2550" y="1855" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="2550" dy="0">운영모델 지도</tspan>
+</text>
+<text x="2550" y="1995" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="2550" dy="0">RACI·리스크·로드맵</tspan>
+</text>
+<rect x="4130" y="1540" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="4280" cy="1705" r="72" fill="#2a7d5a"/>
+<text x="4280" y="1730" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">3</text>
+<text x="4400" y="1694" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">article</text>
+<text x="4400" y="1855" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="4400" dy="0">에디토리얼 키비주얼</tspan>
+</text>
+<text x="4400" y="1995" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="4400" dy="0">주장과 분위기 형성</tspan>
+</text>
+<rect x="5980" y="1540" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="6130" cy="1705" r="72" fill="#d99a38"/>
+<text x="6130" y="1730" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">4</text>
+<text x="6250" y="1694" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">education</text>
+<text x="6250" y="1855" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="6250" dy="0">학습 경로도</tspan>
+</text>
+<text x="6250" y="1995" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="6250" dy="0">목표→실습→퀴즈</tspan>
+</text>
+<rect x="430" y="2380" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="580" cy="2545" r="72" fill="#e63946"/>
+<text x="580" y="2570" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">5</text>
+<text x="700" y="2534" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">blog</text>
+<text x="700" y="2695" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="700" dy="0">개인 경험 장면</tspan>
+</text>
+<text x="700" y="2835" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="700" dy="0">문제 상황을 감각화</tspan>
+</text>
+<rect x="2280" y="2380" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="2430" cy="2545" r="72" fill="#3a6280"/>
+<text x="2430" y="2570" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">6</text>
+<text x="2550" y="2534" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">seo</text>
+<text x="2550" y="2695" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="2550" dy="0">SERP/키워드 맵</tspan>
+</text>
+<text x="2550" y="2835" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="2550" dy="0">검색 의도 구조화</tspan>
+</text>
+<rect x="4130" y="2380" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="4280" cy="2545" r="72" fill="#2a7d5a"/>
+<text x="4280" y="2570" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">7</text>
+<text x="4400" y="2534" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">platform</text>
+<text x="4400" y="2695" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="4400" dy="0">플랫폼 카드</tspan>
+</text>
+<text x="4400" y="2835" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="4400" dy="0">채널별 변환 차이</tspan>
+</text>
+<rect x="5980" y="2380" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="6130" cy="2545" r="72" fill="#d99a38"/>
+<text x="6130" y="2570" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">8</text>
+<text x="6250" y="2534" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">audit</text>
+<text x="6250" y="2695" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="6250" dy="0">진단 대시보드</tspan>
+</text>
+<text x="6250" y="2835" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="6250" dy="0">점수·결함·개선안</tspan>
+</text>
+<rect x="430" y="3220" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="580" cy="3385" r="72" fill="#e63946"/>
+<text x="580" y="3410" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">9</text>
+<text x="700" y="3374" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">reference</text>
+<text x="700" y="3535" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="700" dy="0">개념/API 지도</tspan>
+</text>
+<text x="700" y="3675" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="700" dy="0">탐색 가능한 구조</tspan>
+</text>
+<rect x="2280" y="3220" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="2430" cy="3385" r="72" fill="#3a6280"/>
+<text x="2430" y="3410" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">10</text>
+<text x="2550" y="3374" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">comparison</text>
+<text x="2550" y="3535" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="2550" dy="0">선택 매트릭스</tspan>
+</text>
+<text x="2550" y="3675" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="2550" dy="0">승자·트레이드오프</tspan>
+</text>
+<rect x="4130" y="3220" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="4280" cy="3385" r="72" fill="#2a7d5a"/>
+<text x="4280" y="3410" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">11</text>
+<text x="4400" y="3374" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">case</text>
+<text x="4400" y="3535" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="4400" dy="0">타임라인</tspan>
+</text>
+<text x="4400" y="3675" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="4400" dy="0">사건→결정→결과</tspan>
+</text>
+<rect x="5980" y="3220" width="1680" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="6130" cy="3385" r="72" fill="#d99a38"/>
+<text x="6130" y="3410" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">12</text>
+<text x="6250" y="3374" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">landing</text>
+<text x="6250" y="3535" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="6250" dy="0">가치 제안 그림</tspan>
+</text>
+<text x="6250" y="3675" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="6250" dy="0">문제·해결·CTA</tspan>
+</text>
+<rect x="430" y="4060" width="3530" height="650" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<circle cx="580" cy="4225" r="72" fill="#e63946"/>
+<text x="580" y="4250" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">13</text>
+<text x="700" y="4214" font-size="78" fill="#e63946" font-weight="900" letter-spacing="2">checklist</text>
+<text x="700" y="4375" font-size="102" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="700" dy="0">운영 체크 플로우</tspan>
+</text>
+<text x="700" y="4515" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="700" dy="0">조건·증빙·완료</tspan>
+</text>
+<rect x="430" y="5020" width="7140" height="12" rx="6" fill="#d8d8d0" opacity="0.55"/>
+<text x="430" y="5220" font-size="82" fill="#7a7a7a" font-weight="700">모든 카드는 6000px 캔버스 안쪽에 배치되어 HTML figure 하단에서 잘리지 않습니다.</text>
+<text x="7440" y="5600" font-size="84" text-anchor="end" fill="#7a7a7a" font-weight="700">8000×6000 SVG · scalable infographic</text>
+</svg>
