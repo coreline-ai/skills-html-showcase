@@ -1,5 +1,7 @@
 <div align="center">
 
+<img width="2752" height="1536" alt="만능 콘텐츠 요정 서비스 안내" src="https://github.com/user-attachments/assets/a957a277-d337-43c8-84b6-574a85f59ac2" />
+
 # 🎨 Adaptive HTML Final
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
