@@ -137,7 +137,10 @@ function slug(s){ return s.replace(/[^a-z0-9-]+/gi, '-').replace(/^-|-$/g, '').t
       if (metrics.missingCaptionCount) fail.push(`${metrics.missingCaptionCount} table(s) missing caption`);
       if (label === '02-expert' && vpLabel === 'desktop' && metrics.desktopExecutiveSummaryColumns !== 2) fail.push(`executive summary columns=${metrics.desktopExecutiveSummaryColumns}`);
       if (label === '05-blog' && metrics.checks.darkCtaLink && metrics.checks.darkCtaLink.ratio < 4.5) fail.push(`dark CTA link ratio ${metrics.checks.darkCtaLink.ratio}`);
-      if (label === '05-blog' && metrics.blogCounter && !/1/.test(metrics.blogCounter)) fail.push(`blog counter unexpected ${metrics.blogCounter}`);
+      // Chromium exposes CSS counters in getComputedStyle(::before).content as
+      // the literal `counter(...)` expression, so the screenshot is the source
+      // of truth here. Only fail when the pseudo element is absent.
+      if (label === '05-blog' && metrics.blogCounter === 'none') fail.push('blog section counter pseudo element missing');
       if (label === '07-platform' && (!metrics.platformGridParent || metrics.platformGridParent.tag !== 'SECTION' || metrics.platformGridParent.className !== 'platform-cards-section')) fail.push(`platform grid parent unexpected ${JSON.stringify(metrics.platformGridParent)}`);
       if (label === '08-audit' && !metrics.roadmapIsDirectSection) fail.push('roadmap section is not direct main child');
       if (label === '11-case' && metrics.timelineItemCount < 4) fail.push(`timeline step cards too few ${metrics.timelineItemCount}`);
