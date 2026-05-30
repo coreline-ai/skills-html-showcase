@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">Value Proposition Map</title>
+<desc id="desc">고객 문제와 제품 가치를 좌우로 매핑</desc>
+<style>
+  text { font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", Arial, sans-serif; }
+  .shadow { filter: drop-shadow(0 20px 32px rgba(26,26,26,.08)); }
+</style>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<circle cx="7230" cy="760" r="520" fill="#fce4e6" opacity="0.72"/>
+<circle cx="650" cy="5350" r="760" fill="#f0f4f8" opacity="0.88"/>
+<text x="560" y="620" font-size="118" fill="#e63946" font-weight="950" letter-spacing="22">SVG TEMPLATE DEMO</text>
+<text x="560" y="980" font-size="285" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="560" dy="0">Value Proposition Map</tspan>
+</text>
+<text x="570" y="1280" font-size="116" fill="#4a4a4a" font-weight="580" text-anchor="start">
+<tspan x="570" dy="0">고객 문제와 제품 가치를 좌우로 매핑</tspan>
+</text>
+<rect x="760" y="1860" width="2800" height="2280" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="760" y="1860" width="28" height="2280" rx="14" fill="#3a6280"/>
+<text x="870" y="2025" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="870" dy="0">Customer Profile</tspan>
+</text>
+<text x="870" y="2185" font-size="74" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="870" dy="0">Jobs: 승인·검토·공유</tspan>
+<tspan x="870" dy="94">Pains: 불확실성·반복 작업</tspan>
+<tspan x="870" dy="94">Gains: 빠른 판단·증빙</tspan>
+</text>
+<rect x="4440" y="1860" width="2800" height="2280" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="4440" y="1860" width="28" height="2280" rx="14" fill="#2a7d5a"/>
+<text x="4550" y="2025" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="4550" dy="0">Value Map</tspan>
+</text>
+<text x="4550" y="2185" font-size="74" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="4550" dy="0">Products: 템플릿·자동 SVG</tspan>
+<tspan x="4550" dy="94">Pain relievers: 검수 게이트</tspan>
+<tspan x="4550" dy="94">Gain creators: 즉시 이해</tspan>
+</text>
+<line x1="3600" y1="2280" x2="4440" y2="2280" stroke="#e63946" stroke-width="16" stroke-linecap="round"/><polygon points="4440,2280 4382.0,2311.9 4382.0,2248.1" fill="#e63946"/>
+<line x1="3600" y1="2760" x2="4440" y2="2760" stroke="#e63946" stroke-width="16" stroke-linecap="round"/><polygon points="4440,2760 4382.0,2791.9 4382.0,2728.1" fill="#e63946"/>
+<line x1="3600" y1="3240" x2="4440" y2="3240" stroke="#e63946" stroke-width="16" stroke-linecap="round"/><polygon points="4440,3240 4382.0,3271.9 4382.0,3208.1" fill="#e63946"/>
+<line x1="3600" y1="3720" x2="4440" y2="3720" stroke="#e63946" stroke-width="16" stroke-linecap="round"/><polygon points="4440,3720 4382.0,3751.9 4382.0,3688.1" fill="#e63946"/>
+<circle cx="4000" cy="3000" r="340" fill="#ffd400" stroke="#1a1a1a" stroke-width="16"/>
+<text x="4000" y="3035" font-size="150" fill="#1a1a1a" font-weight="950" text-anchor="middle">
+<tspan x="4000" dy="0">FIT</tspan>
+</text>
+<text x="7440" y="5600" font-size="84" text-anchor="end" fill="#7a7a7a" font-weight="750">8000×6000 SVG · adaptive template demo</text>
+</svg>

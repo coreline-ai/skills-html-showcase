@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">Layered Architecture Flow</title>
+<desc id="desc">서비스 노드와 경계 그룹을 함께 보여주는 아키텍처 SVG</desc>
+<style>
+  text { font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", Arial, sans-serif; }
+  .shadow { filter: drop-shadow(0 20px 32px rgba(26,26,26,.08)); }
+</style>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<circle cx="7230" cy="760" r="520" fill="#fce4e6" opacity="0.72"/>
+<circle cx="650" cy="5350" r="760" fill="#f0f4f8" opacity="0.88"/>
+<text x="560" y="620" font-size="118" fill="#e63946" font-weight="950" letter-spacing="22">SVG TEMPLATE DEMO</text>
+<text x="560" y="980" font-size="285" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="560" dy="0">Layered Architecture Flow</tspan>
+</text>
+<text x="570" y="1280" font-size="116" fill="#4a4a4a" font-weight="580" text-anchor="start">
+<tspan x="570" dy="0">서비스 노드와 경계 그룹을 함께 보여주는 아키텍처 SVG</tspan>
+</text>
+<rect x="820" y="1540" width="6360" height="880" rx="110" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<text x="1120" y="1690" font-size="86" fill="#3a6280" font-weight="950">Edge</text>
+<rect x="820" y="2680" width="6360" height="880" rx="110" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<text x="1120" y="2830" font-size="86" fill="#2a7d5a" font-weight="950">Application</text>
+<rect x="820" y="3820" width="6360" height="880" rx="110" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>
+<text x="1120" y="3970" font-size="86" fill="#d99a38" font-weight="950">Data</text>
+<rect x="1460" y="1770" width="880" height="360" rx="70" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="1460" y="1770" width="28" height="360" rx="14" fill="#3a6280"/>
+<text x="1570" y="1935" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="1570" dy="0">CDN</tspan>
+</text>
+<rect x="2860" y="1770" width="880" height="360" rx="70" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="2860" y="1770" width="28" height="360" rx="14" fill="#3a6280"/>
+<text x="2970" y="1935" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="2970" dy="0">Gateway</tspan>
+</text>
+<rect x="1460" y="2910" width="880" height="360" rx="70" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="1460" y="2910" width="28" height="360" rx="14" fill="#2a7d5a"/>
+<text x="1570" y="3075" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="1570" dy="0">Web App</tspan>
+</text>
+<rect x="2860" y="2910" width="880" height="360" rx="70" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="2860" y="2910" width="28" height="360" rx="14" fill="#2a7d5a"/>
+<text x="2970" y="3075" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="2970" dy="0">API</tspan>
+</text>
+<rect x="4260" y="2910" width="880" height="360" rx="70" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="4260" y="2910" width="28" height="360" rx="14" fill="#2a7d5a"/>
+<text x="4370" y="3075" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="4370" dy="0">Worker</tspan>
+</text>
+<rect x="1860" y="4050" width="880" height="360" rx="70" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="1860" y="4050" width="28" height="360" rx="14" fill="#d99a38"/>
+<text x="1970" y="4215" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="1970" dy="0">Cache</tspan>
+</text>
+<rect x="3660" y="4050" width="880" height="360" rx="70" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="3660" y="4050" width="28" height="360" rx="14" fill="#d99a38"/>
+<text x="3770" y="4215" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="3770" dy="0">Database</tspan>
+</text>
+<rect x="5460" y="4050" width="880" height="360" rx="70" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="5460" y="4050" width="28" height="360" rx="14" fill="#d99a38"/>
+<text x="5570" y="4215" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="5570" dy="0">Object Store</tspan>
+</text>
+<line x1="2340" y1="1950" x2="2860" y2="1950" stroke="#1a1a1a" stroke-width="14" stroke-linecap="round"/><polygon points="2860,1950 2802.0,1981.9 2802.0,1918.1" fill="#1a1a1a"/>
+<line x1="3300" y1="2130" x2="3300" y2="2910" stroke="#1a1a1a" stroke-width="14" stroke-linecap="round"/><polygon points="3300,2910 3268.1,2852.0 3331.9,2852.0" fill="#1a1a1a"/>
+<line x1="2340" y1="3090" x2="2860" y2="3090" stroke="#1a1a1a" stroke-width="14" stroke-linecap="round"/><polygon points="2860,3090 2802.0,3121.9 2802.0,3058.1" fill="#1a1a1a"/>
+<line x1="3740" y1="3090" x2="4260" y2="3090" stroke="#1a1a1a" stroke-width="14" stroke-linecap="round"/><polygon points="4260,3090 4202.0,3121.9 4202.0,3058.1" fill="#1a1a1a"/>
+<line x1="3300" y1="3270" x2="2600" y2="4050" stroke="#1a1a1a" stroke-width="14" stroke-linecap="round"/><polygon points="2600,4050 2614.997436173221,3985.5276267830154 2662.4800938729404,4028.1402683084048" fill="#1a1a1a"/>
+<line x1="4700" y1="3270" x2="4100" y2="4050" stroke="#1a1a1a" stroke-width="14" stroke-linecap="round"/><polygon points="4100,4050 4110.078518876846,3984.578035360828 4160.647929381719,4023.4775819030383" fill="#1a1a1a"/>
+<line x1="5140" y1="3090" x2="5900" y2="4050" stroke="#1a1a1a" stroke-width="14" stroke-linecap="round"/><polygon points="5900,4050 5838.988167426467,4024.325766106479 5889.010291027127,3984.7249182559563" fill="#1a1a1a"/>
+<rect x="850" y="4920" width="6350" height="420" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="850" y="4920" width="28" height="420" rx="14" fill="#e63946"/>
+<text x="960" y="5085" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="960" dy="0">Architecture Reading</tspan>
+</text>
+<text x="960" y="5245" font-size="74" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="960" dy="0">Boundary group은 책임 범위를, 번호형 path는 요청 흐름을 보여줍니다.</tspan>
+</text>
+<text x="7440" y="5600" font-size="84" text-anchor="end" fill="#7a7a7a" font-weight="750">8000×6000 SVG · adaptive template demo</text>
+</svg>

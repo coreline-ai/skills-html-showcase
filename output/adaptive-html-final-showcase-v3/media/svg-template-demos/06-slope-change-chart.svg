@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">Slope Change Chart</title>
+<desc id="desc">두 시점 사이의 변화 방향과 크기를 강조</desc>
+<style>
+  text { font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", Arial, sans-serif; }
+  .shadow { filter: drop-shadow(0 20px 32px rgba(26,26,26,.08)); }
+</style>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<circle cx="7230" cy="760" r="520" fill="#fce4e6" opacity="0.72"/>
+<circle cx="650" cy="5350" r="760" fill="#f0f4f8" opacity="0.88"/>
+<text x="560" y="620" font-size="118" fill="#e63946" font-weight="950" letter-spacing="22">SVG TEMPLATE DEMO</text>
+<text x="560" y="980" font-size="285" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="560" dy="0">Slope Change Chart</tspan>
+</text>
+<text x="570" y="1280" font-size="116" fill="#4a4a4a" font-weight="580" text-anchor="start">
+<tspan x="570" dy="0">두 시점 사이의 변화 방향과 크기를 강조</tspan>
+</text>
+<text x="1780" y="1480" font-size="110" fill="#1a1a1a" font-weight="950" text-anchor="middle">
+<tspan x="1780" dy="0">Before</tspan>
+</text>
+<text x="5800" y="1480" font-size="110" fill="#1a1a1a" font-weight="950" text-anchor="middle">
+<tspan x="5800" dy="0">After</tspan>
+</text>
+<line x1="1780" y1="2213.0" x2="5800" y2="1871.0" stroke="#e63946" stroke-width="18" stroke-linecap="round" opacity="0.88"/>
+<circle cx="1780" cy="2213.0" r="54" fill="#e63946"/>
+<circle cx="5800" cy="1871.0" r="54" fill="#e63946"/>
+<text x="1630" y="2237.0" font-size="64" fill="#1a1a1a" font-weight="850" text-anchor="end">
+<tspan x="1630" dy="0">보안 82</tspan>
+</text>
+<text x="5940" y="1895.0" font-size="64" fill="#1a1a1a" font-weight="850" text-anchor="start">
+<tspan x="5940" dy="0">94</tspan>
+</text>
+<line x1="1780" y1="2669.0" x2="5800" y2="2042.0" stroke="#2a7d5a" stroke-width="18" stroke-linecap="round" opacity="0.88"/>
+<circle cx="1780" cy="2669.0" r="54" fill="#2a7d5a"/>
+<circle cx="5800" cy="2042.0" r="54" fill="#2a7d5a"/>
+<text x="1630" y="2693.0" font-size="64" fill="#1a1a1a" font-weight="850" text-anchor="end">
+<tspan x="1630" dy="0">속도 66</tspan>
+</text>
+<text x="5940" y="2066.0" font-size="64" fill="#1a1a1a" font-weight="850" text-anchor="start">
+<tspan x="5940" dy="0">88</tspan>
+</text>
+<line x1="1780" y1="2498.0" x2="5800" y2="2897.0" stroke="#d99a38" stroke-width="18" stroke-linecap="round" opacity="0.88"/>
+<circle cx="1780" cy="2498.0" r="54" fill="#d99a38"/>
+<circle cx="5800" cy="2897.0" r="54" fill="#d99a38"/>
+<text x="1630" y="2522.0" font-size="64" fill="#1a1a1a" font-weight="850" text-anchor="end">
+<tspan x="1630" dy="0">비용 72</tspan>
+</text>
+<text x="5940" y="2921.0" font-size="64" fill="#1a1a1a" font-weight="850" text-anchor="start">
+<tspan x="5940" dy="0">58</tspan>
+</text>
+<line x1="1780" y1="2982.5" x2="5800" y2="2298.5" stroke="#3a6280" stroke-width="18" stroke-linecap="round" opacity="0.88"/>
+<circle cx="1780" cy="2982.5" r="54" fill="#3a6280"/>
+<circle cx="5800" cy="2298.5" r="54" fill="#3a6280"/>
+<text x="1630" y="3006.5" font-size="64" fill="#1a1a1a" font-weight="850" text-anchor="end">
+<tspan x="1630" dy="0">품질 55</tspan>
+</text>
+<text x="5940" y="2322.5" font-size="64" fill="#1a1a1a" font-weight="850" text-anchor="start">
+<tspan x="5940" dy="0">79</tspan>
+</text>
+<line x1="1780" y1="3410.0" x2="5800" y2="2498.0" stroke="#1a1a1a" stroke-width="18" stroke-linecap="round" opacity="0.88"/>
+<circle cx="1780" cy="3410.0" r="54" fill="#1a1a1a"/>
+<circle cx="5800" cy="2498.0" r="54" fill="#1a1a1a"/>
+<text x="1630" y="3434.0" font-size="64" fill="#1a1a1a" font-weight="850" text-anchor="end">
+<tspan x="1630" dy="0">운영 40</tspan>
+</text>
+<text x="5940" y="2522.0" font-size="64" fill="#1a1a1a" font-weight="850" text-anchor="start">
+<tspan x="5940" dy="0">72</tspan>
+</text>
+<rect x="2820" y="4620" width="2400" height="520" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="2820" y="4620" width="28" height="520" rx="14" fill="#ffd400"/>
+<text x="2930" y="4785" font-size="112" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="2930" dy="0">When to use</tspan>
+</text>
+<text x="2930" y="4945" font-size="74" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="2930" dy="0">전후 변화, 순위 변화, 정책 효과를 한눈에 보여줄 때</tspan>
+</text>
+<text x="7440" y="5600" font-size="84" text-anchor="end" fill="#7a7a7a" font-weight="750">8000×6000 SVG · adaptive template demo</text>
+</svg>

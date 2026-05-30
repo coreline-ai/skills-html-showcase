@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# QA / audit scratch artifacts (large screenshots, regenerable)
+output/playwright/
+
+# Playwright CLI session logs (runtime scratch)
+.playwright-cli/

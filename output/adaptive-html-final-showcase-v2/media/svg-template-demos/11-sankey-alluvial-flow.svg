@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">Sankey / Alluvial Flow</title>
+<desc id="desc">범주 간 이동량과 전환 흐름을 두꺼운 곡선으로 표현</desc>
+<style>text{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR",Arial,sans-serif}.shadow{filter:drop-shadow(0 20px 32px rgba(26,26,26,.08))}</style>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<circle cx="7230" cy="760" r="520" fill="#fce4e6" opacity=".72"/>
+<circle cx="650" cy="5350" r="760" fill="#f0f4f8" opacity=".88"/>
+<text x="560" y="620" font-size="118" fill="#e63946" font-weight="950" letter-spacing="22">SVG TEMPLATE DEMO</text>
+<text x="560" y="980" font-size="285" fill="#1a1a1a" font-weight="950" text-anchor="start">
+<tspan x="560" dy="0">Sankey / Alluvial Flow</tspan>
+</text>
+<text x="570" y="1280" font-size="116" fill="#4a4a4a" font-weight="580" text-anchor="start">
+<tspan x="570" dy="0">범주 간 이동량과 전환 흐름을 두꺼운 곡선으로 표현</tspan>
+</text>
+<rect x="820" y="1700" width="1320" height="440" rx="72" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="820" y="1700" width="28" height="440" rx="14" fill="#e63946"/>
+<text x="930" y="1860" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="930" dy="0">Input A</tspan>
+</text>
+<rect x="820" y="2650" width="1320" height="440" rx="72" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="820" y="2650" width="28" height="440" rx="14" fill="#e63946"/>
+<text x="930" y="2810" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="930" dy="0">Input B</tspan>
+</text>
+<rect x="820" y="3600" width="1320" height="440" rx="72" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="820" y="3600" width="28" height="440" rx="14" fill="#e63946"/>
+<text x="930" y="3760" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="930" dy="0">Input C</tspan>
+</text>
+<rect x="3180" y="1850" width="1320" height="440" rx="72" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="3180" y="1850" width="28" height="440" rx="14" fill="#3a6280"/>
+<text x="3290" y="2010" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="3290" dy="0">Segment 1</tspan>
+</text>
+<rect x="3180" y="3000" width="1320" height="440" rx="72" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="3180" y="3000" width="28" height="440" rx="14" fill="#3a6280"/>
+<text x="3290" y="3160" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="3290" dy="0">Segment 2</tspan>
+</text>
+<rect x="3180" y="4050" width="1320" height="440" rx="72" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="3180" y="4050" width="28" height="440" rx="14" fill="#3a6280"/>
+<text x="3290" y="4210" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="3290" dy="0">Segment 3</tspan>
+</text>
+<rect x="5540" y="2050" width="1320" height="440" rx="72" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="5540" y="2050" width="28" height="440" rx="14" fill="#2a7d5a"/>
+<text x="5650" y="2210" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="5650" dy="0">Outcome X</tspan>
+</text>
+<rect x="5540" y="3350" width="1320" height="440" rx="72" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="5540" y="3350" width="28" height="440" rx="14" fill="#2a7d5a"/>
+<text x="5650" y="3510" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="5650" dy="0">Outcome Y</tspan>
+</text>
+<path d="M2140 1920 C 2660 1920, 2660 2070, 3180 2070" fill="none" stroke="#e63946" stroke-width="70" stroke-linecap="round" opacity=".58"/>
+<path d="M2140 2870 C 2660 2870, 2660 3220, 3180 3220" fill="none" stroke="#3a6280" stroke-width="110" stroke-linecap="round" opacity=".58"/>
+<path d="M2140 3820 C 2660 3820, 2660 4270, 3180 4270" fill="none" stroke="#2a7d5a" stroke-width="55" stroke-linecap="round" opacity=".58"/>
+<path d="M4500 2070 C 5020 2070, 5020 2270, 5540 2270" fill="none" stroke="#e63946" stroke-width="90" stroke-linecap="round" opacity=".58"/>
+<path d="M4500 3220 C 5020 3220, 5020 2270, 5540 2270" fill="none" stroke="#3a6280" stroke-width="60" stroke-linecap="round" opacity=".58"/>
+<path d="M4500 3220 C 5020 3220, 5020 3570, 5540 3570" fill="none" stroke="#3a6280" stroke-width="80" stroke-linecap="round" opacity=".58"/>
+<path d="M4500 4270 C 5020 4270, 5020 3570, 5540 3570" fill="none" stroke="#2a7d5a" stroke-width="70" stroke-linecap="round" opacity=".58"/>
+<rect x="900" y="4820" width="6000" height="420" rx="96" fill="#fff" stroke="#d8d8d0" stroke-width="12" class="shadow"/>
+<rect x="900" y="4820" width="28" height="420" rx="14" fill="#ffd400"/>
+<text x="1010" y="4980" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="1010" dy="0">Use case</tspan>
+</text>
+<text x="1010" y="5135" font-size="72" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="1010" dy="0">유입→세그먼트→결과처럼 흐름의 크기와 이동 경로를 동시에 설명합니다.</tspan>
+</text>
+<text x="7440" y="5600" font-size="84" text-anchor="end" fill="#7a7a7a" font-weight="750">8000×6000 SVG · adaptive template demo</text>
+</svg>

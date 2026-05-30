@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">이미지 소스 결정 트리</title>
+<desc id="desc">무엇을 보여줘야 하는가에 따라 소스가 갈린다</desc>
+<style>text { font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", Arial, sans-serif; }
+.small { font-size: 92px; fill: #7a7a7a; font-weight: 650; }
+.hair { stroke:#d8d8d0; stroke-width:10; }</style>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<circle cx="7200" cy="740" r="520" fill="#fce4e6" opacity="0.8"/>
+<circle cx="680" cy="5350" r="720" fill="#f0f4f8" opacity="0.95"/>
+<text x="560" y="620" font-size="122" fill="#e63946" font-weight="900" letter-spacing="22">ADAPTIVE HTML VISUAL</text>
+<text x="560" y="980" font-size="300" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="560" dy="0">이미지 소스 결정 트리</tspan>
+</text>
+<text x="570" y="1280" font-size="118" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="570" dy="0">무엇을 보여줘야 하는가에 따라 소스가 갈린다</tspan>
+</text>
+<rect x="580" y="1580" width="2500" height="900" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="580" y="1580" width="24" height="900" rx="12" fill="#e63946"/>
+<text x="690" y="1745" font-size="78" fill="#e63946" font-weight="900" letter-spacing="6">Q1</text>
+<text x="690" y="1910" font-size="130" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="690" dy="0">현실의 인물·장소·제품·사건인가?</tspan>
+</text>
+<text x="690" y="2120" font-size="88" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="690" dy="0">맞다면 사진</tspan>
+<tspan x="690" dy="116">아니면 다음 질문</tspan>
+</text>
+<rect x="4920" y="1580" width="2500" height="900" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="4920" y="1580" width="24" height="900" rx="12" fill="#3a6280"/>
+<text x="5030" y="1745" font-size="78" fill="#3a6280" font-weight="900" letter-spacing="6">Q2</text>
+<text x="5030" y="1910" font-size="130" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="5030" dy="0">절차·비교·정책·리스크 구조인가?</tspan>
+</text>
+<text x="5030" y="2120" font-size="88" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="5030" dy="0">맞다면 SVG 인포그래픽</tspan>
+<tspan x="5030" dy="116">은유가 필요하면 AI</tspan>
+</text>
+<path d="M3080 2030 C3700 2030 4300 2030 4920 2030" fill="none" stroke="#1a1a1a" stroke-width="18" stroke-linecap="round"/>
+<polygon points="4900,2030 4720,1930 4720,2130" fill="#1a1a1a"/>
+<rect x="580" y="3040" width="2020" height="1040" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="580" y="3040" width="24" height="1040" rx="12" fill="#3a6280"/>
+<text x="690" y="3205" font-size="78" fill="#3a6280" font-weight="900" letter-spacing="6">PHOTO</text>
+<text x="690" y="3370" font-size="130" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="690" dy="0">공개 라이선스 사진</tspan>
+</text>
+<text x="690" y="3580" font-size="86" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="690" dy="0">출처·라이선스 명기</tspan>
+</text>
+<rect x="2990" y="3040" width="2020" height="1040" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="2990" y="3040" width="24" height="1040" rx="12" fill="#2a7d5a"/>
+<text x="3100" y="3205" font-size="78" fill="#2a7d5a" font-weight="900" letter-spacing="6">SVG</text>
+<text x="3100" y="3370" font-size="130" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="3100" dy="0">SVG 인포그래픽 생성</tspan>
+</text>
+<text x="3100" y="3580" font-size="86" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="3100" dy="0">기본값 · 8000x6000</tspan>
+</text>
+<rect x="5400" y="3040" width="2020" height="1040" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="5400" y="3040" width="24" height="1040" rx="12" fill="#d99a38"/>
+<text x="5510" y="3205" font-size="78" fill="#d99a38" font-weight="900" letter-spacing="6">AI</text>
+<text x="5510" y="3370" font-size="130" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="5510" dy="0">AI 컨셉 이미지</tspan>
+</text>
+<text x="5510" y="3580" font-size="86" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="5510" dy="0">사실처럼 쓰지 않기</tspan>
+</text>
+<text x="7440" y="5600" font-size="84" text-anchor="end" fill="#7a7a7a" font-weight="700">선택 원칙 · visual-template-system.md</text>
+</svg>

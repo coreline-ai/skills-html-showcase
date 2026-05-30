@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meewang.kr/skills/adaptive-html-final/schemas/quality-report.schema.json",
+  "title": "Quality Report",
+  "type": "object",
+  "required": [
+    "mode",
+    "layout",
+    "rubric",
+    "total",
+    "verdict",
+    "gates",
+    "notes"
+  ],
+  "properties": {
+    "mode": {
+      "type": "string"
+    },
+    "layout": {
+      "type": "string"
+    },
+    "rubric": {
+      "type": "object",
+      "description": "평가 항목별 0~5 정성 점수",
+      "properties": {
+        "structure": {
+          "$ref": "#/$defs/rubricScore"
+        },
+        "content_quality": {
+          "$ref": "#/$defs/rubricScore"
+        },
+        "design_fidelity": {
+          "$ref": "#/$defs/rubricScore"
+        },
+        "accessibility": {
+          "$ref": "#/$defs/rubricScore"
+        },
+        "seo_metadata": {
+          "$ref": "#/$defs/rubricScore"
+        },
+        "credibility": {
+          "$ref": "#/$defs/rubricScore"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/rubricScore"
+      }
+    },
+    "total": {
+      "type": "number",
+      "description": "종합 점수 0~100",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "revise",
+        "fail"
+      ]
+    },
+    "gates": {
+      "type": "object",
+      "description": "출시 게이트 통과 여부",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "rubricScore": {
+      "type": "object",
+      "required": [
+        "score"
+      ],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "comment": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

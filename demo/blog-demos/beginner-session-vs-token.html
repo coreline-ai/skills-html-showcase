@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>세션 vs 토큰 기반 인증: 로그인 상태는 어떻게 유지될까 (초보자편)</title>
+<meta name="description" content="HTTP는 매 요청을 처음 보는 척하는데, 로그인 상태는 어떻게 유지될까요? 세션 방식과 토큰(JWT) 방식의 차이를 클럽 손목밴드와 위조 불가 신분증 비유로 풀고, 쿠키와 JWT 구조, 초보자가 자주 빠지는 보안 오해까지 입문자 눈높이로 쉽게 설명합니다.">
+<meta name="robots" content="index,follow">
+<!-- <link rel="canonical" href="https://example.com/..."> -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "세션 vs 토큰 기반 인증: 로그인 상태는 어떻게 유지될까 (초보자편)",
+  "description": "HTTP는 매 요청을 처음 보는 척하는데, 로그인 상태는 어떻게 유지될까요? 세션 방식과 토큰(JWT) 방식의 차이를 클럽 손목밴드와 위조 불가 신분증 비유로 풀고, 쿠키와 JWT 구조, 초보자가 자주 빠지는 보안 오해까지 입문자 눈높이로 쉽게 설명합니다.",
+  "inLanguage": "ko"
+}
+</script>
+<style>
+:root{
+  --bg:#f5f5f0;--ink:#1a1a1a;--ink-soft:#4a4a4a;--ink-mute:#7a7a7a;--line:#d8d8d0;--card:#ffffff;
+  --accent:#e63946;--accent-soft:#fce4e6;--term-bg:#fffaf2;--term-border:#e8d9b8;
+  --analogy-bg:#f0f4f8;--analogy-border:#b8cad8;--danger-bg:#fff0ee;--danger-border:#e8b8b2;
+  --good-bg:#eef7f1;--good-border:#b8d8c2;--hl-yellow:#ffe9a3;--hl-blue:#cfe5f5;--hl-pink:#fbd3da;
+  --serif:'Noto Serif KR',serif;--sans:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:60px 28px 100px}
+
+/* 헤더 */
+.kicker{font-size:13px;letter-spacing:0.18em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:36px;line-height:1.35;font-weight:700;margin-bottom:14px;letter-spacing:-0.01em}
+.lead,.sub{font-size:16px;color:var(--ink-soft);margin-bottom:24px}
+.sub{margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+.byline{font-size:13px;color:var(--ink-mute);padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:8px}
+
+/* 블로그/리포트 블록 */
+.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin:24px 0}
+.summary-card .label,.toc .label,.faq .label,.cta-box .label,.source-note .label{
+  font-size:11px;font-weight:800;letter-spacing:0.14em;color:var(--accent);margin-bottom:8px;text-transform:uppercase}
+.summary-card p{margin:0}
+.toc strong{display:block;font-size:14px;color:var(--ink);margin-bottom:8px}
+.toc ol{margin:0 0 0 20px;color:var(--ink-soft)}
+.toc a{color:var(--ink-soft);text-decoration:none}
+.toc a:hover{color:var(--accent);text-decoration:underline}
+.faq h3{font-size:16px;margin:16px 0 6px}
+.faq h3:first-of-type{margin-top:4px}
+.faq p{margin-bottom:0}
+.cta-box p{margin:0}
+.source-note{font-size:13px;color:var(--ink-mute)}
+.source-note p{font-size:13px;color:var(--ink-mute);margin-bottom:8px}
+.source-note p:last-child{margin-bottom:0}
+.source-note a{color:var(--ink-soft)}
+.source-note ol,.source-note ul{margin:6px 0 6px 20px}
+.source-note li{font-size:13px;color:var(--ink-mute)}
+
+/* 섹션 헤더 */
+h2{font-family:var(--serif);font-size:25px;font-weight:700;margin:64px 0 8px;line-height:1.4;letter-spacing:-0.005em;scroll-margin-top:24px}
+h2 .num{display:inline-block;width:34px;height:34px;background:var(--accent);color:#fff;border-radius:50%;
+  text-align:center;line-height:34px;font-size:15px;font-family:var(--sans);margin-right:12px;vertical-align:3px;font-weight:700}
+.h2-sub{font-size:14px;color:var(--ink-mute);margin-bottom:22px;margin-left:46px}
+h3{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--ink)}
+h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+
+/* 본문 */
+p{margin-bottom:16px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:600}
+ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
+li{margin:6px 0}
+em.t{font-style:normal;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px;font-weight:600;font-size:14px}
+code{font-family:'SF Mono',Menlo,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:13.5px;color:#3a3a3a}
+pre{background:#1f1f1d;color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-size:13px;line-height:1.6}
+pre code{background:none;color:inherit;padding:0;font-size:13px}
+blockquote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-style:italic}
+
+/* 형광 하이라이트 */
+.hl{--c:var(--hl-yellow);background-image:linear-gradient(transparent 76%, var(--c) 76%);background-repeat:no-repeat;
+  background-size:0% 100%;padding:1px 7px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  animation:hl-sweep .7s cubic-bezier(.4,0,.2,1) .25s forwards}
+.hl.blue{--c:var(--hl-blue)}
+.hl.pink{--c:var(--hl-pink)}
+@keyframes hl-sweep{to{background-size:100% 100%}}
+@media (prefers-reduced-motion:reduce){.hl{animation:none;background-size:100% 100%}}
+
+/* 용어 박스 (노랑) */
+.term{background:var(--term-bg);border:1px solid var(--term-border);border-left:3px solid #d4a256;border-radius:5px;padding:14px 18px;margin:14px 0 18px;font-size:14px}
+.term .label{font-size:11px;color:#a07020;font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.term .word{font-weight:700;color:#1a1a1a;font-size:15px}
+.term .meaning{color:#5a4a30;margin-top:4px;line-height:1.65}
+
+/* 비유 박스 (파랑) */
+.analogy{background:var(--analogy-bg);border:1px solid var(--analogy-border);border-left:3px solid #5e8aa8;border-radius:5px;padding:16px 20px;margin:18px 0;font-size:14.5px}
+.analogy .label{font-size:11px;color:#3a6280;font-weight:700;letter-spacing:0.12em;margin-bottom:6px}
+.analogy p{color:#2a4a60;margin:0;line-height:1.7}
+.analogy p + p{margin-top:8px}
+
+/* 함정 박스 (빨강) */
+.danger{background:var(--danger-bg);border:1px solid var(--danger-border);border-left:3px solid var(--accent);border-radius:5px;padding:16px 20px;margin:14px 0;font-size:14.5px}
+.danger .label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.danger .name{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px}
+.danger p{color:#5a3a36;margin:0;line-height:1.7;font-size:14px}
+.danger p + p{margin-top:8px}
+
+/* 해결책 박스 (녹색) */
+.good{background:var(--good-bg);border:1px solid var(--good-border);border-left:3px solid #4a9d7a;border-radius:5px;padding:16px 20px;margin:14px 0;font-size:14.5px}
+.good .label{font-size:11px;color:#2a7d5a;font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.good .name{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px}
+.good p{color:#2a5a4a;margin:0;line-height:1.7;font-size:14px}
+
+/* 영웅 비유 박스 */
+.hero-analogy{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:26px 28px;margin:24px 0 12px}
+.hero-analogy .tag{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:10px}
+.hero-analogy h3{margin:0 0 10px;font-family:var(--serif);font-size:20px;line-height:1.5}
+.hero-analogy p{margin:0;font-size:15px;color:var(--ink-soft)}
+.hero-analogy p + p{margin-top:10px}
+
+/* 일반 카드 */
+.card-block{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 26px;margin:14px 0}
+.card-block h3{margin-top:0;font-size:17px}
+.card-block p{font-size:14.5px;margin-bottom:10px}
+.card-block p:last-child{margin-bottom:0}
+.card-block .case-label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:6px}
+
+/* 인용/흐름 박스 */
+.prompt-box{background:#f8f8f4;border-left:2px solid var(--line);padding:10px 14px;margin-top:10px;font-size:13.5px;color:var(--ink-soft);font-style:italic;line-height:1.65}
+
+/* 표 (모바일 안전: 가로 스크롤 래퍼 .tbl로 감쌀 것) */
+.tbl{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px}
+th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;color:var(--ink-soft);vertical-align:top}
+th{background:#efeee8;color:var(--ink);font-weight:700;font-size:13px}
+
+/* 접이식 (네이티브, JS 불필요 — 퀴즈 정답/상세에 사용) */
+details{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 16px;margin:12px 0}
+summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:15px}
+details[open] summary{margin-bottom:8px}
+details p{margin-bottom:0}
+
+/* takeaway 박스 (검정, 마지막) */
+.try{background:#1a1a1a;color:#f5f5f0;border-radius:6px;padding:32px 30px;margin-top:52px}
+.try .label{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:14px}
+.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
+.try ol{padding-left:20px;color:#d0d0c8}
+.try li{margin-bottom:12px;font-size:15px;line-height:1.7}
+.try li strong{color:#fff}
+.try li:last-child{margin-bottom:0}
+
+/* 푸터 */
+.footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+
+/* 모바일 */
+@media (max-width:640px){.wrap{padding:40px 20px 60px}h1{font-size:28px}h2{font-size:22px}}
+</style>
+</head>
+<!-- ↑↑↑ 여기까지 그대로 복사. 아래부터 <body>에 본문 작성 ↓↓↓ -->
+<body>
+<div class="wrap">
+
+<div class="kicker">초보자를 위한 인증 입문</div>
+<h1>세션 vs 토큰 기반 인증:<br>로그인 상태는 어떻게 유지될까</h1>
+<p class="sub">로그인 버튼을 한 번 눌렀을 뿐인데, 다음 페이지로 넘어가도 나는 여전히 로그인 상태입니다. 서버는 나를 어떻게 계속 알아볼까요? 이 글은 그 비밀인 <strong>세션 방식</strong>과 <strong>토큰 방식</strong>을, 코드 한 줄 몰라도 따라올 수 있게 비유로 풀어 설명합니다.</p>
+
+<div class="toc">
+  <div class="label">목차</div>
+  <strong>이 글에서 다루는 것</strong>
+  <ol>
+    <li><a href="#s0">먼저, 로그인 '상태 유지'가 뭔가?</a></li>
+    <li><a href="#s1">한 줄 요약</a></li>
+    <li><a href="#s2">세션 방식: 서버가 나를 기억한다</a></li>
+    <li><a href="#s3">토큰 방식: 내가 증표를 들고 다닌다</a></li>
+    <li><a href="#s4">손목밴드 vs 신분증: 둘의 결정적 차이</a></li>
+    <li><a href="#s5">초보자가 자주 빠지는 오해</a></li>
+  </ol>
+</div>
+
+<!-- ───────────────────────── 0 ───────────────────────── -->
+<h2 id="s0"><span class="num">0</span>먼저, 로그인 '상태 유지'가 뭔가?</h2>
+<p class="h2-sub">웹의 가장 기본 규칙부터 짚고 갑니다. 사실 인터넷은 '건망증이 심한' 구조예요.</p>
+
+<p>웹 브라우저와 서버는 <strong>HTTP</strong>라는 약속(프로토콜)으로 대화합니다. 그런데 HTTP에는 치명적인 특징이 하나 있어요. <span class="hl">요청 하나하나를 완전히 별개로 취급한다는 점</span>입니다. 방금 전 요청과 지금 요청이 같은 사람에게서 왔는지를 HTTP 자체는 전혀 기억하지 못해요. 이것을 <em class="t">stateless(무상태)</em>라고 부릅니다.</p>
+
+<div class="analogy">
+  <div class="label">비유로 이해하기</div>
+  <p>매번 손님을 처음 보는 척하는, <strong>기억상실증에 걸린 카페 직원</strong>을 떠올려 보세요. 방금 아메리카노를 주문하고 결제까지 한 손님이 "얼음 좀 더 주세요"라고 말해도, 직원은 "어떤 음료 주문하셨죠? 누구세요?"라고 되묻습니다. 매 요청이 '초면'인 거죠. HTTP의 기본 상태가 딱 이렇습니다.</p>
+</div>
+
+<p>그렇다면 로그인은 어떻게 유지될까요? 직원에게 '기억할 방법'을 따로 쥐여 줘야 합니다. 손님 손에 번호표를 쥐여 주든, 손님이 직접 영수증을 들고 다니든 말이죠. 웹에서 이 '기억 장치'를 만드는 두 가지 대표 방식이 바로 <strong>세션</strong>과 <strong>토큰</strong>입니다. 본격적으로 들어가기 전에 핵심 용어 세 개만 미리 만나 둡시다.</p>
+
+<div class="term">
+  <div class="label">용어</div>
+  <span class="word">쿠키 (Cookie)</span>
+  <div class="meaning">서버가 브라우저에 "이거 보관했다가 다음에 올 때 같이 가져와"라며 건네는 작은 메모지. 브라우저는 같은 사이트에 요청할 때마다 이 메모를 <strong>자동으로</strong> 함께 보냅니다. 세션이든 토큰이든, 로그인 정보를 실어 나르는 단골 운반 수단이에요.</div>
+</div>
+
+<div class="term">
+  <div class="label">용어</div>
+  <span class="word">세션 (Session)</span>
+  <div class="meaning">서버가 "이 사람은 로그인한 누구야"라는 정보를 <strong>서버 쪽 메모리/DB에 직접 저장</strong>해 두는 방식. 손님에게는 그 메모를 찾을 수 있는 번호표(세션 ID)만 건넵니다.</div>
+</div>
+
+<div class="term">
+  <div class="label">용어</div>
+  <span class="word">토큰 (Token)</span>
+  <div class="meaning">로그인 정보를 서버가 보관하는 대신, <strong>위조 방지 서명이 찍힌 증표</strong>로 만들어 손님(클라이언트)에게 통째로 들려 보내는 방식. 대표적인 형식이 JWT입니다.</div>
+</div>
+
+<!-- ───────────────────────── 1 ───────────────────────── -->
+<h2 id="s1"><span class="num">1</span>한 줄 요약</h2>
+<p class="h2-sub">세부 내용으로 들어가기 전에, 이 글 전체를 한 문장으로 압축하면 이렇습니다.</p>
+
+<div class="hero-analogy">
+  <div class="tag">핵심 한 문장</div>
+  <h3>세션은 "서버가 너를 기억한다", 토큰은 "네가 증명서를 들고 다닌다".</h3>
+  <p>세션 방식에서는 <strong>서버가 기억의 주인</strong>입니다. 손님은 번호표만 들고 다니고, 진짜 정보는 서버 금고에 있어요. 토큰 방식에서는 <strong>손님이 증명서의 주인</strong>입니다. 위조할 수 없게 서명된 증표를 직접 들고 다니며, 올 때마다 내밉니다.</p>
+  <p>나머지 차이(확장성, 로그아웃, 보안 함정)는 전부 이 한 가지 차이에서 흘러나옵니다.</p>
+</div>
+
+<!-- ───────────────────────── 2 ───────────────────────── -->
+<h2 id="s2"><span class="num">2</span>세션 방식: 서버가 나를 기억한다</h2>
+<p class="h2-sub">가장 오래되고 가장 직관적인 방법. 서버가 직접 출석부를 들고 있는 셈입니다.</p>
+
+<p>세션 방식의 흐름은 다음과 같습니다. 로그인 단계만 잘 그려 두면 나머지는 쉬워요.</p>
+
+<ol>
+  <li>사용자가 아이디·비밀번호를 보내 로그인합니다.</li>
+  <li>서버가 확인 후 <strong>임의의 긴 문자열인 세션 ID</strong>를 하나 만들고, "이 ID = 김초보, 로그인됨"이라는 정보를 <strong>서버 쪽에 저장</strong>합니다.</li>
+  <li>서버는 그 세션 ID만 <code>Set-Cookie</code> 헤더에 담아 브라우저에 건넵니다.</li>
+  <li>이후 브라우저는 요청할 때마다 <code>Cookie</code> 헤더에 세션 ID를 <strong>자동으로</strong> 실어 보냅니다.</li>
+  <li>서버는 받은 세션 ID로 자기 저장소를 뒤져 "아, 김초보구나" 하고 알아봅니다.</li>
+</ol>
+
+<div class="prompt-box">
+실제 주고받는 모습 (서버 → 브라우저, 그리고 다음 요청에서 브라우저 → 서버):
+</div>
+
+<pre><code>// 로그인 성공 시 서버 응답
+Set-Cookie: sessionId=a3fWa9xK7pQ...; HttpOnly; Secure; SameSite=Strict
+
+// 그 다음부터 브라우저가 보내는 요청
+Cookie: sessionId=a3fWa9xK7pQ...</code></pre>
+
+<p>핵심은 쿠키에 담긴 것이 <span class="hl blue">'정보 그 자체'가 아니라 '정보를 찾는 열쇠(번호표)'뿐</span>이라는 점입니다. 누군가 이 세션 ID를 훔쳐봐도 그 안에는 이름도 권한도 없고, 그저 무의미한 난수일 뿐이에요. 진짜 정보는 서버 금고 안에 있습니다.</p>
+
+<div class="analogy">
+  <div class="label">비유로 이해하기</div>
+  <p>클럽이나 사우나에서 받는 <strong>옷장 열쇠</strong>를 생각해 보세요. 열쇠 자체에는 "이 사람은 누구, 소지품은 무엇"이라는 정보가 적혀 있지 않습니다. 그냥 번호만 새겨져 있죠. 진짜 짐은 카운터 뒤 사물함(서버)에 있고, 열쇠(세션 ID)는 그 사물함을 여는 번호표일 뿐입니다.</p>
+</div>
+
+<!-- ───────────────────────── 3 ───────────────────────── -->
+<h2 id="s3"><span class="num">3</span>토큰 방식: 내가 증표를 들고 다닌다</h2>
+<p class="h2-sub">서버의 기억력에 기대지 않습니다. 대신 위조할 수 없는 증표를 손님이 직접 소지해요.</p>
+
+<p>토큰 방식에서 가장 많이 쓰이는 형식이 <strong>JWT(JSON Web Token)</strong>입니다. JWT는 점(<code>.</code>)으로 구분된 세 토막으로 이뤄져 있어요. 아래처럼 생겼습니다.</p>
+
+<pre><code>eyJhbGciOiJIUzI1NiJ9 . eyJzdWIiOiJraW1jaG9ibyIsInJvbGUiOiJ1c2VyIn0 . dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+   └── ① 헤더(Header)        └── ② 페이로드(Payload)               └── ③ 서명(Signature)</code></pre>
+
+<div class="term">
+  <div class="label">용어</div>
+  <span class="word">JWT (JSON Web Token)</span>
+  <div class="meaning">헤더·페이로드·서명 세 부분으로 구성된 표준 토큰 형식(RFC 7519). 헤더와 페이로드는 JSON을 <strong>Base64URL로 '인코딩'한 것</strong>이고, 서명은 비밀 키로 만들어 위·변조 여부를 검증하는 데 씁니다.</div>
+</div>
+
+<p>각 토막이 하는 일은 이렇습니다.</p>
+<ul>
+  <li><strong>① 헤더</strong> — 어떤 서명 알고리즘을 썼는지 같은 메타 정보(예: HMAC SHA-256).</li>
+  <li><strong>② 페이로드</strong> — "나는 kimchobo, 권한은 user, 만료는 언제까지" 같은 <strong>주장(claim)</strong>들. 로그인한 사람의 정보가 여기 담깁니다.</li>
+  <li><strong>③ 서명</strong> — 헤더+페이로드를 <strong>서버만 아는 비밀 키</strong>로 계산한 값. 누군가 페이로드를 한 글자라도 고치면 서명이 어긋나서 서버가 곧바로 "위조됐다"고 잡아냅니다.</li>
+</ul>
+
+<p>흐름은 세션과 비슷하지만 결정적 차이가 하나 있습니다. <span class="hl pink">서버는 발급한 토큰을 따로 저장하지 않아도 된다</span>는 점이에요. 토큰이 다시 들어오면 서버는 저장소를 뒤지는 대신, <strong>서명만 다시 계산해 맞는지 검증</strong>합니다. 서명이 일치하면 "내가 발급한 진짜 증표가 맞네" 하고 페이로드 안의 정보를 그대로 믿습니다.</p>
+
+<div class="analogy">
+  <div class="label">비유로 이해하기</div>
+  <p>나라가 발급한 <strong>위조 방지 신분증</strong>을 떠올려 보세요. 신분증에는 이름·나이가 <em>적혀 있고</em>(페이로드), 누구나 그 글씨를 읽을 수 있습니다. 하지만 정교한 홀로그램과 워터마크(서명) 덕분에 위조는 거의 불가능해요. 경찰관(서버)은 중앙 데이터베이스에 전화해 확인할 필요 없이, 홀로그램만 보고 "진짜 신분증"임을 즉석에서 판단합니다.</p>
+</div>
+
+<!-- ───────────────────────── 4 ───────────────────────── -->
+<h2 id="s4"><span class="num">4</span>손목밴드 vs 신분증: 둘의 결정적 차이</h2>
+<p class="h2-sub">앞의 두 비유를 나란히 놓으면 차이가 선명해집니다.</p>
+
+<div class="analogy">
+  <div class="label">한눈에 보는 비유</div>
+  <p><strong>세션 = 클럽 입장 손목밴드.</strong> 입구에서 신원을 확인하고 손목밴드를 채워 줍니다. 밴드 자체엔 정보가 없고, 클럽은 "오늘 몇 번 밴드를 누구에게 줬다"는 명단을 안에 보관해요. 그래서 손님을 쫓아내고 싶으면(로그아웃) 명단에서 지우기만 하면 즉시 끝납니다.</p>
+  <p><strong>토큰 = 위조 불가 신분증.</strong> 한 번 발급하면 손님이 들고 다니며, 직원은 명단을 뒤지지 않고 신분증의 진위만 봅니다. 빠르고 가볍지만, <strong>이미 발급한 신분증을 그 자리에서 무효화하기는 까다롭습니다.</strong> 보통은 "유효기간을 짧게" 주는 방식으로 보완해요.</p>
+</div>
+
+<p>이 차이를 표로 정리하면 다음과 같습니다.</p>
+
+<div class="tbl">
+<table>
+  <thead>
+    <tr><th>비교 항목</th><th>세션 방식</th><th>토큰(JWT) 방식</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>정보를 누가 보관?</td><td>서버 (출석부의 주인)</td><td>클라이언트 (증표의 주인)</td></tr>
+    <tr><td>쿠키에 담기는 것</td><td>의미 없는 세션 ID(번호표)</td><td>정보가 들어찬 토큰 자체</td></tr>
+    <tr><td>요청마다 서버가 하는 일</td><td>저장소 조회</td><td>서명 검증(조회 불필요)</td></tr>
+    <tr><td>로그아웃/강제 만료</td><td>쉬움 — 서버 기록만 지우면 끝</td><td>까다로움 — 별도 차단 목록 필요</td></tr>
+    <tr><td>서버 여러 대로 확장</td><td>세션 공유 장치가 필요</td><td>비교적 수월(상태를 안 들고 있음)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>"그래서 뭐가 더 좋아요?"라는 질문에는 <span class="hl">"상황에 따라 다르다"가 정직한 답</span>입니다. 사용자 로그인 세션이 중심인 일반 웹 서비스라면 다루기 쉬운 세션 방식이 여전히 훌륭하고, 여러 서비스가 토큰 하나로 연동되는 환경이나 모바일·API 중심이라면 토큰이 잘 맞습니다. 입문 단계에서는 "둘 다 정답이 될 수 있고, 트레이드오프가 다를 뿐"이라는 감만 가져가도 충분합니다.</p>
+
+<!-- ───────────────────────── 5 ───────────────────────── -->
+<h2 id="s5"><span class="num">5</span>초보자가 자주 빠지는 오해</h2>
+<p class="h2-sub">여기서부터는 면접에서도, 실무 첫날에도 발목 잡히기 쉬운 함정들입니다. 미리 알고 가요.</p>
+
+<div class="danger">
+  <div class="label">흔한 오해 1</div>
+  <div class="name">"JWT는 암호화돼 있으니 비밀번호를 넣어도 안전하다" (❌)</div>
+  <p>가장 위험한 착각입니다. 기본 JWT의 헤더·페이로드는 <strong>암호화가 아니라 단순 인코딩(Base64URL)</strong>일 뿐이에요. 비밀번호 없이도 누구나 디코딩해서 내용을 그대로 읽을 수 있습니다. JWT가 보장하는 것은 '비밀 유지'가 아니라 <strong>'위조 방지(서명)'</strong>입니다.</p>
+</div>
+
+<div class="good">
+  <div class="label">이렇게 생각하세요</div>
+  <div class="name">JWT 페이로드는 '유리 상자 안의 봉인된 편지'</div>
+  <p>내용은 다 들여다보이지만(인코딩) 봉인을 뜯으면 표가 납니다(서명). 그러니 페이로드에는 <strong>남이 봐도 괜찮은 정보만</strong> 넣으세요. 비밀번호, 주민번호 같은 민감 정보는 절대 금물입니다.</p>
+</div>
+
+<div class="danger">
+  <div class="label">흔한 오해 2</div>
+  <div class="name">"토큰은 그냥 localStorage에 넣으면 편하다" (❌)</div>
+  <p>편하긴 합니다. 문제는 <code>localStorage</code>에 둔 값은 <strong>그 페이지에서 실행되는 모든 자바스크립트가 읽을 수 있다</strong>는 점이에요. 악성 스크립트가 한 줄이라도 끼어드는 <em class="t">XSS</em> 공격이 성공하면, 토큰이 통째로 새어 나갈 수 있습니다.</p>
+</div>
+
+<div class="good">
+  <div class="label">권장</div>
+  <div class="name">민감한 인증값은 HttpOnly 쿠키에</div>
+  <p>OWASP는 인증 토큰·세션 ID를 <code>localStorage</code>에 저장하지 말라고 권고합니다. 대신 <code>HttpOnly; Secure; SameSite</code> 속성을 건 쿠키에 담는 방법을 권장해요. <code>HttpOnly</code>가 붙으면 자바스크립트가 그 쿠키를 읽지 못해, XSS가 나도 값 자체를 빼가기 어렵습니다.</p>
+</div>
+
+<div class="danger">
+  <div class="label">흔한 오해 3</div>
+  <div class="name">"토큰 방식이면 로그아웃은 토큰만 지우면 끝" (❌)</div>
+  <p>브라우저에서 토큰을 지워도, 그 <strong>토큰의 복사본은 여전히 유효</strong>합니다. 서명이 멀쩡하고 만료 전이라면 누가 들고 와도 서버는 통과시켜요. 그래서 토큰 방식의 '진짜 로그아웃'은 의외로 손이 많이 갑니다.</p>
+  <p>현실적인 보완책은 <strong>토큰 유효기간을 짧게</strong> 두고, 별도의 갱신·차단 목록 같은 장치를 곁들이는 것입니다. 입문 단계에선 "토큰은 한 번 나가면 회수가 어렵다"만 기억해도 충분합니다.</p>
+</div>
+
+<div class="danger">
+  <div class="label">흔한 오해 4</div>
+  <div class="name">"세션 ID는 그냥 평문 쿠키에 담아도 되겠지" (❌)</div>
+  <p>세션 ID는 사실상 '나를 대신하는 출입증'입니다. 이게 새어 나가면 남이 내 행세를 할 수 있어요. 그러니 보호 속성 없이 쿠키에 던져 두면 안 됩니다.</p>
+</div>
+
+<div class="good">
+  <div class="label">권장</div>
+  <div class="name">쿠키엔 보호 속성을 기본값처럼 챙기기</div>
+  <p>세션이든 토큰이든 쿠키에 담을 때는 <code>Secure</code>(HTTPS에서만 전송), <code>HttpOnly</code>(JS 접근 차단), <code>SameSite=Strict</code> 또는 <code>Lax</code>(다른 사이트發 요청에 함부로 안 실림)를 함께 거는 것을 기본 습관으로 삼으세요. 이 세 가지만 챙겨도 흔한 탈취·위조 공격의 상당수를 막아 줍니다.</p>
+</div>
+
+<!-- ───────────────────────── try ───────────────────────── -->
+<div class="try">
+  <div class="label">지금 해보기</div>
+  <h3>읽고 끝내지 말고, 5분만 직접 확인해 보세요</h3>
+  <ol>
+    <li><strong>내 쿠키 들여다보기.</strong> 자주 쓰는 사이트에 로그인한 뒤 브라우저 개발자 도구 → Application(또는 저장소) → Cookies를 열어 보세요. <code>sessionId</code> 비슷한 이름과 <code>HttpOnly</code>·<code>Secure</code> 체크 표시를 직접 확인합니다.</li>
+    <li><strong>JWT를 눈으로 디코딩.</strong> <code>jwt.io</code> 같은 디버거에 예시 토큰을 붙여 넣어, 점으로 나뉜 세 토막이 헤더·페이로드·서명으로 풀리는 걸 보세요. "암호화가 아니라 읽힌다"는 말을 몸으로 느낄 수 있습니다.</li>
+    <li><strong>한 문장으로 설명해 보기.</strong> 옆 사람에게 "세션은 서버가 기억하고, 토큰은 내가 증표를 들고 다닌다"를 비유까지 곁들여 설명해 보세요. 남에게 말로 설명되면 진짜 이해한 겁니다.</li>
+    <li><strong>내 프로젝트는 어느 쪽인지 찾아보기.</strong> 지금 공부 중인 프레임워크 문서에서 'session' 또는 'jwt/token'을 검색해, 어떤 방식을 기본으로 쓰는지 확인해 보세요.</li>
+  </ol>
+</div>
+
+<!-- ───────────────────────── 출처 ───────────────────────── -->
+<div class="source-note">
+  <div class="label">참고 출처</div>
+  <p>아래는 본문의 프로토콜 동작·보안 권장 사항을 확인한 권위 있는 자료입니다. 쿠키-세션 흐름, JWT 구조, 토큰 저장 권장 사항은 이 표준·공식 문서를 근거로 서술했습니다.</p>
+  <ul>
+    <li>Using HTTP cookies — developer.mozilla.org (MDN Web Docs)</li>
+    <li>Session management (Authentication) — developer.mozilla.org (MDN Web Docs)</li>
+    <li>RFC 7519: JSON Web Token (JWT) — datatracker.ietf.org (IETF)</li>
+    <li>Session Management Cheat Sheet — cheatsheetseries.owasp.org (OWASP)</li>
+    <li>JSON Web Token Structure — auth0.com (Auth0 Docs)</li>
+  </ul>
+  <p>쿠키 동작은 RFC 6265(HTTP State Management Mechanism)에도 정의되어 있습니다. 보안 권장 속성의 구체적 적용은 환경에 따라 달라질 수 있으니 실제 적용 시 OWASP 최신 가이드를 함께 확인하세요.</p>
+</div>
+
+<div class="footer">Generated with adaptive-html-blog-writer · mode: beginner_html</div>
+
+</div>
+</body>
+</html>

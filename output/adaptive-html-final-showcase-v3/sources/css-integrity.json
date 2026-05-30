@@ -1,0 +1,17 @@
+{
+  "core_css_sha256": "541d5e0a71dd4a5acf043c3851ba54682ecf3ab0c0b10387c9f7bab0a26a17c1",
+  "asset_order": [
+    "theme.css",
+    "components.css",
+    "visual-components.css",
+    "layouts.css",
+    "print.css"
+  ],
+  "asset_sha256": {
+    "theme.css": "409450c2939c2339d21e01dc7459e3bab33f5df53dcd559af5550db796ad642f",
+    "components.css": "db9aaf1b5472e7ac6ae0dc2eab0560251a9cfc0db3704763bb5cbf3f4e384db6",
+    "visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
+    "layouts.css": "c91844c82b9cd857b90741e566723cdb886e7082fbfb27d813c759a80ef48eb3",
+    "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269"
+  }
+}

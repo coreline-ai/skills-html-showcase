@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coreline Auth: 실제 모듈 기반 Secure-by-default 제품 브리프</title>
+  <meta name="description" content="README와 src/coreline_auth 실제 모듈을 읽어 기능을 기술하고, 버전·테스트 수·운영 상태처럼 시점 의존 값은 확인 필요로 분리한 제품 브리프입니다.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+  <link rel="stylesheet" href="assets/components.css">
+  <link rel="stylesheet" href="assets/layouts.css">
+  <link rel="stylesheet" href="assets/print.css">
+
+  <style>
+    .source-box a,.linklike{color:var(--accent-2)}
+    .hero-note{font-size:18px;color:var(--ink-soft);line-height:1.78}
+    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+    .flow .mini-card{min-height:150px}
+    .long-list li{margin-bottom:10px}
+    .callout-title{font-weight:900;color:var(--accent-2);margin-bottom:8px}
+    .score{font-size:34px;font-weight:900;color:var(--accent);line-height:1}
+    .small{font-size:13px;color:var(--ink-mute)}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+    .pill-row span{border:1px solid var(--line);background:rgba(255,255,255,.62);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--ink-mute)}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#ececea;border:1px solid var(--line);border-radius:8px;padding:2px 7px;white-space:nowrap}
+    .mode-card{display:flex;flex-direction:column;gap:8px}
+    .mode-card .mode{font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+    .check{list-style:none;margin-left:0}.check li{position:relative;padding-left:28px}.check li:before{content:"✓";position:absolute;left:0;top:0;color:var(--accent);font-weight:900}
+    .source-list{columns:2;column-gap:28px}.source-list li{break-inside:avoid;margin-bottom:7px}
+    .quote-mini{font-family:var(--serif);font-size:18px;color:var(--ink);border-left:3px solid var(--accent);padding-left:14px;margin:18px 0}
+    .nowrap{white-space:nowrap}
+    .badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#f7f2e9;border-radius:999px;padding:5px 10px;font-size:12px;color:var(--ink-soft);font-weight:800}
+    .truth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}.truth-grid .mini-card{min-height:170px}
+    .virtual-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:900}
+    .claim-table td:first-child{font-weight:800;color:var(--ink)}
+    @media(max-width:900px){.four-col,.truth-grid{grid-template-columns:1fr}.source-list{columns:1}}
+    @media(max-width:760px){.flow,.two-col,.four-col{grid-template-columns:1fr}}
+  </style>
+
+</head>
+
+<body class="layout-landing">
+<a href="#main" class="skip">본문으로 건너뛰기</a>
+<main id="main" class="page-wide">
+<header class="header">
+  <div class="kicker">Adaptive HTML Learning Ultimate · landing_brief</div>
+  <h1>Coreline Auth: 실제 모듈 기반 Secure-by-default 제품 브리프</h1>
+  <p class="sub">이 랜딩 브리프는 README와 <code>src/coreline_auth</code> 실제 모듈을 읽어 작성했습니다. 기능은 코드·README에 근거해 설명하고, 버전·테스트 수·운영 상태처럼 시점/환경 의존 값은 <strong>확인 필요</strong>로 분리했습니다.</p>
+  <div class="meta"><span>생성일 2026-05-30</span><span>페르소나: B2B 보안 SaaS PMM + 기술 PM</span><span>모드: landing_brief</span><span>근거: README/src 모듈</span><span>미확인 수치 배제</span></div>
+</header>
+<nav class="toc"><strong>문서 목차</strong><ol><li><a href="#s0">Claim policy</a></li><li><a href="#s1">Hero</a></li><li><a href="#s2">Actual capabilities</a></li><li><a href="#s3">How it works</a></li><li><a href="#s4">Evidence map</a></li><li><a href="#s5">FAQ</a></li></ol></nav>
+
+<section id="s0"><h2><span class="no">0</span>Claim policy: 사실 / 확인 필요 분리</h2><p class="h2-sub">랜딩 문서는 과장되기 쉽기 때문에, 검증 가능한 기능과 확인이 필요한 상태값을 분리합니다.</p>
+<div class="truth-grid">
+  <div class="mini-card"><div class="virtual-label">FACT</div><h3>코드와 README로 확인한 기능</h3><p><code>service.py</code>, <code>admin.py</code>, <code>csrf.py</code>, <code>mfa.py</code>, <code>webauthn.py</code>, <code>social/verification.py</code>, storage/adapter 모듈에 존재하는 기능만 제품 기능으로 기술합니다.</p></div>
+  <div class="mini-card"><div class="virtual-label">TODO_CHECK</div><h3>버전·테스트·배포 상태</h3><p>README badge는 <code>0.5.0-rc2</code>, roadmap은 <code>v0.5.0-rc2 Current</code>를 표시하지만 <code>pyproject.toml</code>은 <code>0.5.0rc1</code>입니다. 따라서 README 버전 표기는 <strong>확인 필요</strong>입니다.</p></div>
+  <div class="mini-card"><div class="virtual-label">EXCLUDED</div><h3>미확인 수치 배제</h3><p>벤치마크, 도입 실적, 고객 수, 성능 향상률, 테스트 통과 수, 코드 라인 수, 리뷰 횟수 같은 수치는 이 랜딩 본문에서 주장하지 않습니다.</p></div>
+</div>
+</section>
+
+<section id="s1"><h2><span class="no">1</span>Hero: 인증을 앱마다 다시 만들지 않기</h2><p class="h2-sub">Coreline Auth는 README상 “framework-agnostic authentication module for Python”을 지향하는 독립 인증 모듈입니다.</p>
+<section class="hero-analogy"><div class="tag">PRODUCT BRIEF</div><h3>비밀번호, 세션, MFA, OAuth/OIDC, 감사 로그를 host app 안에 흩뿌리지 마세요.</h3><p class="hero-note">Coreline Auth는 <code>CorelineAuthService</code>와 storage/email/rate-limit/MFA-vault/metric 프로토콜을 중심으로 인증 코어를 분리합니다. CoreMCP는 소비자일 수 있지만, AGENTS.md와 README가 요구하는 의존 방향은 host app → <code>coreline_auth</code>입니다.</p></section>
+<div class="danger"><p class="label">확인 필요</p><p class="name">README 버전 표기</p><p>README badge와 roadmap은 <code>0.5.0-rc2</code>를 표시하지만 <code>pyproject.toml</code>은 <code>0.5.0rc1</code>입니다. 이 페이지에서는 버전을 제품 주장으로 사용하지 않고, 릴리스 전 정합성 확인 항목으로 둡니다.</p></div>
+</section>
+
+<section id="s2"><h2><span class="no">2</span>Actual capabilities from README and src modules</h2><p class="h2-sub">아래 기능은 README의 기능 표와 실제 <code>src/coreline_auth</code> 모듈명·공개 클래스/함수 확인에 근거합니다.</p>
+<div class="value-grid">
+  <div class="mini-card"><h3>Authentication core</h3><p><code>CorelineAuthService</code>는 owner bootstrap, user creation, password login, magic link, email verification, password reset, session issue/verify/logout/revoke, cleanup, audit listing, health check를 제공합니다.</p></div>
+  <div class="mini-card"><h3>Admin/RBAC safety</h3><p><code>CorelineAdminService</code>는 user list, role update, ban/unban, disable/enable, admin password set, user session list/revoke를 다루며 self-demotion·last privileged lockout 계열 보호 로직을 포함합니다.</p></div>
+  <div class="mini-card"><h3>FastAPI adapters</h3><p><code>fastapi_adapter.py</code>와 <code>fastapi_async_adapter.py</code>는 login, magic link, email verification, password reset, logout, me, admin route mount와 dependency helper를 제공합니다.</p></div>
+  <div class="mini-card"><h3>Secret-safe primitives</h3><p><code>security.py</code>는 token generation, SHA-256 hash/compare, email normalization, password hashing/verify, safe return_to policy를 제공합니다. README는 raw session/magic/reset token 비저장 원칙을 명시합니다.</p></div>
+  <div class="mini-card"><h3>MFA / AAL2</h3><p><code>mfa.py</code>는 TOTP secret/code/recovery code 기능을 제공하고, <code>mfa_vault.py</code>는 SQLite/Redis vault 어댑터를 제공합니다. <code>service.py</code>에는 TOTP enrollment, step-up, recovery-code step-up, AAL2 guard가 있습니다.</p></div>
+  <div class="mini-card"><h3>OAuth/OIDC</h3><p><code>social/connectors.py</code>, <code>social/discovery.py</code>, <code>social/verification.py</code>는 provider config, discovery/JWKS, Google/OIDC ID Token verification을 분리합니다. README는 PKCE, nonce, issuer/audience/time-claim 검증 방향을 설명합니다.</p></div>
+  <div class="mini-card"><h3>WebAuthn / passkey groundwork</h3><p><code>webauthn.py</code>는 challenge 생성, registration/assertion response 검증, origin/RP ID validation, signature verification, sign-counter 계열 검증을 포함합니다.</p></div>
+  <div class="mini-card"><h3>Storage adapters</h3><p><code>storage/base.py</code>, <code>storage/sqlite.py</code>, <code>storage/postgres.py</code>, <code>storage/memory.py</code>, async storage contracts가 user/session/login-flow/audit/MFA/recovery-code 저장 책임을 분리합니다.</p></div>
+  <div class="mini-card"><h3>Operations evidence</h3><p><code>ops_readiness.py</code>는 secret-safe readiness output을 생성하고, <code>observability.py</code>는 in-memory/logging/Prometheus text/JSONL security event sink를 제공합니다.</p></div>
+</div>
+</section>
+
+<section id="s3"><h2><span class="no">3</span>How it works</h2><p class="h2-sub">Coreline Auth는 “앱 내부 로그인 코드”가 아니라 교체 가능한 인증 코어 + 어댑터 구조입니다.</p>
+<div class="tbl"><table><thead><tr><th>Layer</th><th>실제 모듈</th><th>역할</th><th>주장 상태</th></tr></thead><tbody>
+<tr><td>Core service</td><td><code>service.py</code>, <code>async_service.py</code></td><td>회원가입, 로그인, 세션, reset, magic link, MFA step-up, audit, health</td><td>코드 확인</td></tr>
+<tr><td>Admin service</td><td><code>admin.py</code></td><td>사용자/역할/상태/세션 관리와 관리자 안전장치</td><td>코드 확인</td></tr>
+<tr><td>Domain model</td><td><code>models.py</code>, <code>permissions.py</code>, <code>authorization.py</code></td><td>AuthUser, AuthSession, Principal, Role, policy/scope evaluation</td><td>코드 확인</td></tr>
+<tr><td>Web adapter</td><td><code>fastapi_adapter.py</code>, <code>fastapi_async_adapter.py</code></td><td>FastAPI route mount, cookie/bearer session, CSRF hook</td><td>코드 확인</td></tr>
+<tr><td>Security primitives</td><td><code>security.py</code>, <code>csrf.py</code>, <code>encryption.py</code></td><td>token hash, password hash, safe return_to, HMAC CSRF, AES-GCM envelope</td><td>코드/README 확인</td></tr>
+<tr><td>Social/OIDC</td><td><code>social/*</code></td><td>connector, provider metadata, JWKS cache, ID token verification</td><td>코드 확인</td></tr>
+<tr><td>Storage</td><td><code>storage/*</code></td><td>Memory/SQLite/Postgres/async contracts와 audit redaction</td><td>코드 확인</td></tr>
+<tr><td>Readiness/observability</td><td><code>ops_readiness.py</code>, <code>observability.py</code></td><td>secret-safe readiness, metrics, JSONL security event sink</td><td>코드 확인</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="s4"><h2><span class="no">4</span>Evidence map: 무엇을 사실로 말하고 무엇을 확인해야 하나</h2><p class="h2-sub">제품 브리프는 강한 문구보다 검증 가능한 근거가 중요합니다.</p>
+<div class="tbl"><table class="claim-table"><thead><tr><th>주장</th><th>근거</th><th>상태</th><th>랜딩 표현</th></tr></thead><tbody>
+<tr><td>독립 인증 모듈</td><td>README Overview, AGENTS.md import rule, <code>src/coreline_auth</code> 구조</td><td>로컬 문서/구조 확인</td><td>사용 가능</td></tr>
+<tr><td>Password/session/magic/reset token 원문 비저장 원칙</td><td>AGENTS.md, README Security Primitives, <code>security.py</code>/<code>service.py</code></td><td>문서·코드 방향 확인</td><td>사용 가능</td></tr>
+<tr><td>Argon2id, HMAC CSRF, AES-GCM, OIDC verification, WebAuthn 검증 모듈</td><td>README Security Primitives, 실제 모듈</td><td>코드/README 확인</td><td>사용 가능</td></tr>
+<tr><td>README 버전 0.5.0-rc2</td><td>README badge/roadmap은 rc2, pyproject는 rc1</td><td>확인 필요</td><td>제품 주장 금지, 정합성 확인 항목</td></tr>
+<tr><td>테스트 통과 수, LOC, 리뷰 횟수</td><td>README Project Stats</td><td>현재 실행 증거 없음</td><td>랜딩 본문에서 제외</td></tr>
+<tr><td>도입 실적, 고객 수, 벤치마크</td><td>로컬 근거 없음</td><td>확인 불가</td><td>사용 금지</td></tr>
+<tr><td>production-ready claim</td><td>외부 SMTP/OAuth/Postgres/Redis/WebAuthn smoke 필요</td><td>환경 의존, 확인 필요</td><td>“production 후보 검증을 돕는다”로 제한</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="s5"><h2><span class="no">5</span>FAQ</h2><p class="h2-sub">구매자와 개발자가 동시에 묻는 질문에, 확인 가능한 범위로만 답합니다.</p>
+<details open><summary>Coreline Auth는 CoreMCP 전용인가요?</summary><p>아닙니다. AGENTS.md와 README는 Coreline Auth를 독립 인증 모듈로 정의하고, 의존 방향을 host app → <code>coreline_auth</code>로 제한합니다.</p></details>
+<details><summary>JWT만 쓰면 더 간단하지 않나요?</summary><p>일부 API에는 JWT가 적합할 수 있지만, 이 모듈은 browser cookie session, server-side revoke, CSRF, step-up, admin audit 같은 회수 가능한 통제 흐름을 함께 제공합니다.</p></details>
+<details><summary>패스키는 바로 primary auth로 쓸 수 있나요?</summary><p><code>webauthn.py</code>에 registration/assertion 검증 groundwork가 있습니다. 다만 primary auth 제품 주장에는 full ceremony, credential lifecycle, 복구 UX, 실제 브라우저/provider smoke evidence가 필요하므로 확인 필요로 둡니다.</p></details>
+<details><summary>버전은 0.5.0-rc2인가요?</summary><p>README는 0.5.0-rc2를 표시하지만 <code>pyproject.toml</code>은 0.5.0rc1입니다. 릴리스 전 버전 소스 정합성을 확인해야 하며, 이 랜딩은 버전을 확정 주장하지 않습니다.</p></details>
+<section class="try"><div class="label">CTA</div><h2><span class="no">→</span>다음 행동</h2><p>먼저 README, <code>pyproject.toml</code>, CHANGELOG 버전 정합성을 맞춘 뒤 <code>make test</code>, <code>make smoke-demo-secure</code>, readiness CLI, 외부 provider smoke 결과를 evidence pack으로 남기세요.</p></section>
+</section>
+
+<section class="source-box box" aria-labelledby="sources-title">
+  <h2 id="sources-title"><span class="no">S</span>조사·검토 출처</h2>
+  <p>이 문서는 로컬 프로젝트 문서, README와 실제 모듈 인벤토리, 공식 표준/가이드를 함께 검토해 작성했습니다. 외부 표준은 통제 메커니즘의 근거로만 사용했고, 프로젝트 상태·버전·테스트 수처럼 시점/환경 의존 값은 확인 필요로 분리했습니다.</p>
+  <p><a href="sources/index.html"><strong>전체 출처 링크 모음 열기</strong></a></p>
+  <ul class="source-list">
+    <li><a href="sources/README.md">README.md 로컬 사본</a></li>
+    <li><a href="sources/pyproject.toml">pyproject.toml 로컬 사본</a></li>
+    <li><a href="sources/CHANGELOG.md">CHANGELOG.md 로컬 사본</a></li>
+    <li><a href="sources/coreline-auth-module-inventory.md">실제 모듈 인벤토리</a></li>
+    <li><a href="sources/security_best_practices_report.md">패치 후 2차 보안 재리뷰 보고서</a></li>
+    <li><a href="sources/auth-expert-review-20260529.md">코드 레벨 인증 전문가 감사 리포트</a></li>
+    <li><a href="sources/security-checklist.md">Security Checklist</a></li>
+    <li><a href="sources/ops-readiness.md">운영 준비 문서</a></li>
+    <li><a href="https://pages.nist.gov/800-63-4/sp800-63b.html">NIST SP 800-63B</a></li>
+    <li><a href="https://owasp.org/www-project-application-security-verification-standard/">OWASP ASVS</a></li>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">OWASP Authentication Cheat Sheet</a></li>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html">OWASP Session Management Cheat Sheet</a></li>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html">OWASP CSRF Prevention Cheat Sheet</a></li>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html">OWASP MFA Cheat Sheet</a></li>
+    <li><a href="https://datatracker.ietf.org/doc/html/rfc7636">PKCE RFC 7636</a></li>
+    <li><a href="https://www.rfc-editor.org/rfc/rfc9700.html">OAuth 2.0 Security BCP RFC 9700</a></li>
+    <li><a href="https://openid.net/specs/openid-connect-core-1_0-final.html">OpenID Connect Core 1.0</a></li>
+    <li><a href="https://www.w3.org/TR/webauthn-3/">W3C WebAuthn Level 3</a></li>
+    <li><a href="https://fidoalliance.org/passkeys/">FIDO Alliance Passkeys</a></li>
+  </ul>
+</section>
+
+<footer><p>Generated with adaptive-html-learning-ultimate. <a href="index.html">전체 모드 목록으로 돌아가기</a></p></footer>
+</main>
+</body>
+</html>

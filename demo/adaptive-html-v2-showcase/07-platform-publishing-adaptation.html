@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>인증 보안 원고를 4개 블로그 플랫폼에 맞게 바꾸는 법</title>
+  <meta name="description" content="동일한 Coreline Auth 보안 원고를 티스토리, 벨로그, 네이버 블로그, 워드프레스에 맞게 재구성하는 플랫폼 최적화 HTML입니다.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+  <link rel="stylesheet" href="assets/components.css">
+  <link rel="stylesheet" href="assets/layouts.css">
+  <style>
+    .source-box a{color:var(--accent-2)}
+    .review-note{border:1px solid var(--line);background:rgba(255,253,248,.72);border-radius:var(--radius-md);padding:16px 18px;margin:18px 0;color:var(--muted)}
+    .mode-badge{display:inline-flex;gap:8px;align-items:center;background:var(--dark);color:#fff7ed;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800}
+    .checklist li::marker{color:var(--accent)}
+    .score{font-size:32px;font-weight:900;color:var(--accent)}
+    .small{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body class="layout-platform">
+  <a href="#main" class="skip">본문으로 건너뛰기</a>
+  <main id="main" class="page-wide">
+    <header class="header">
+      <div class="kicker">Adaptive HTML v2 · platform</div>
+      <h1>인증 보안 원고를 4개 블로그 플랫폼에 맞게 바꾸는 법</h1>
+      <p class="sub">동일한 Coreline Auth 보안 원고를 티스토리, 벨로그, 네이버 블로그, 워드프레스에 맞게 재구성하는 플랫폼 최적화 HTML입니다.</p>
+      <div class="meta"><span>생성일 2026-05-30</span><span>검토 기준: 접근성·SEO·보안 정확성</span><span>platform</span><span>publishing</span><span>blog strategy</span></div>
+    </header>
+    
+<section class="box"><h2><span class="no">1</span>원본 요약</h2><p>원본 주제는 “Coreline Auth 보안 패치로 보는 인증 모듈 production readiness”다. 핵심 메시지는 stale session 제거, 권한 scope 정확성, MFA brute-force 방어, email/OAuth 입력 검증, encrypted MFA vault guardrail이다.</p></section>
+<section><h2><span class="no">2</span>플랫폼 전략</h2><div class="platform-grid"><div class="platform-card"><h3>티스토리</h3><p>검색 유입형 제목과 목차를 앞에 둔다. 코드보다 체크리스트·FAQ·요약 박스를 강화한다.</p></div><div class="platform-card"><h3>벨로그</h3><p>개발자 독자에게 맞춰 diff 관점, 실패 테스트, 회귀 테스트 명령을 강조한다.</p></div><div class="platform-card"><h3>네이버 블로그</h3><p>용어 풀이와 비유를 늘리고, “비밀번호 변경 후 왜 로그아웃되나요?” 같은 질문형 소제목을 사용한다.</p></div><div class="platform-card"><h3>워드프레스</h3><p>schema, canonical, internal link, related posts를 붙여 장기 검색 자산으로 운영한다.</p></div></div></section>
+<section><h2><span class="no">3</span>비교표</h2><table class="table"><thead><tr><th>플랫폼</th><th>최적 길이</th><th>강조 블록</th><th>CTA</th></tr></thead><tbody><tr><td>티스토리</td><td>중간~긴 글</td><td>목차, FAQ, 요약</td><td>체크리스트 다운로드</td></tr><tr><td>벨로그</td><td>기술 상세</td><td>코드, 테스트, 실패 사례</td><td>GitHub diff 보기</td></tr><tr><td>네이버</td><td>쉬운 설명</td><td>비유, 용어 풀이, 이미지 대체 텍스트</td><td>댓글 질문 유도</td></tr><tr><td>워드프레스</td><td>pillar content</td><td>관련 글, schema, lead magnet</td><td>뉴스레터/문서 링크</td></tr></tbody></table></section>
+<section><h2><span class="no">4</span>플랫폼별 첫 문단 샘플</h2><div class="analogy"><strong>네이버형</strong><p>비밀번호를 바꿨는데 예전 로그인 상태가 계속 살아 있다면 어떨까요? 오늘은 이런 위험을 막는 세션 보안 원리를 쉽게 풀어봅니다.</p></div><div class="code">// 벨로그형 hook
+assert policy.allows(("post:*:own",), "post:delete:any") is False
+// 권한 DSL은 테스트로 고정해야 한다.</div><div class="good"><strong>워드프레스형</strong><p>이 글은 인증 모듈의 production readiness를 평가하는 기준과 Coreline Auth 사례를 연결한 pillar article로 구성한다.</p></div></section>
+<section class="try"><h2><span class="no">✓</span>발행 체크리스트</h2><ol><li>플랫폼마다 title과 lead를 다시 쓴다.</li><li>코드 많은 버전과 쉬운 설명 버전을 분리한다.</li><li>모든 이미지/표에는 문맥을 설명하는 텍스트를 둔다.</li><li>canonical 또는 원문 링크 정책을 정한다.</li><li>게시 후 Search Console/유입 키워드를 기준으로 제목을 재검토한다.</li></ol></section>
+
+    <section class="source-box box" aria-labelledby="sources-title">
+      <h2 id="sources-title"><span class="no">S</span>조사·검토 출처</h2>
+      <p>로컬 프로젝트 문서와 공개 표준/가이드를 함께 검토했다. 원문을 과도하게 인용하지 않고 설계 원칙만 요약했다.</p><p><a href="sources/index.html"><strong>출처 링크 모음 전체 보기</strong></a></p>
+      <ul><li><a href="sources/security_best_practices_report.md">보안 재리뷰 보고서</a></li><li><a href="sources/board-auth-integration-guide-20260529.md">게시판 통합 가이드</a></li><li><a href="sources/blog-demo-passkey.html">패스키 데모 HTML</a></li><li><a href="sources/deep-research-report.md">Deep Research Report</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">OWASP Authentication Cheat Sheet</a></li><li><a href="https://pages.nist.gov/800-63-3/sp800-63b.html">NIST SP 800-63B Authentication and Lifecycle Management</a></li><li><a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide">Google Search Central SEO Starter Guide</a></li><li><a href="https://www.w3.org/TR/WCAG22/">W3C WCAG 2.2 Recommendation</a></li><li><a href="https://www.w3.org/WAI/tutorials/page-structure/headings/">WAI Headings Tutorial</a></li></ul>
+    </section>
+    <footer>
+      <p>Generated with adaptive-html-blog-writer-v2 workflow. <a href="index.html">목록으로 돌아가기</a></p>
+    </footer>
+  </main>
+</body>
+</html>

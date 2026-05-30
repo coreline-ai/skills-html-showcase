@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MFA(다단계 인증) 완벽 가이드: TOTP·패스키·SMS 무엇을 써야 하나</title>
+<meta name="description" content="MFA(다단계 인증)의 원리와 SMS OTP·TOTP 앱·푸시 승인·패스키를 보안과 편의성 기준으로 비교합니다. SMS가 권장되지 않는 이유와 NIST 권고, 상황별 최적 선택까지 한 번에 정리한 다단계 인증 완벽 가이드입니다.">
+<meta name="robots" content="index,follow">
+<!-- <link rel="canonical" href="https://example.com/..."> -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "MFA(다단계 인증) 완벽 가이드: TOTP·패스키·SMS 무엇을 써야 하나",
+  "description": "MFA(다단계 인증)의 원리와 SMS OTP·TOTP 앱·푸시 승인·패스키를 보안과 편의성 기준으로 비교합니다. SMS가 권장되지 않는 이유와 NIST 권고, 상황별 최적 선택까지 한 번에 정리한 다단계 인증 완벽 가이드입니다.",
+  "inLanguage": "ko"
+}
+</script>
+<style>
+:root{
+  --bg:#f5f5f0;--ink:#1a1a1a;--ink-soft:#4a4a4a;--ink-mute:#7a7a7a;--line:#d8d8d0;--card:#ffffff;
+  --accent:#e63946;--accent-soft:#fce4e6;--term-bg:#fffaf2;--term-border:#e8d9b8;
+  --analogy-bg:#f0f4f8;--analogy-border:#b8cad8;--danger-bg:#fff0ee;--danger-border:#e8b8b2;
+  --good-bg:#eef7f1;--good-border:#b8d8c2;--hl-yellow:#ffe9a3;--hl-blue:#cfe5f5;--hl-pink:#fbd3da;
+  --serif:'Noto Serif KR',serif;--sans:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:60px 28px 100px}
+
+/* 헤더 */
+.kicker{font-size:13px;letter-spacing:0.18em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:36px;line-height:1.35;font-weight:700;margin-bottom:14px;letter-spacing:-0.01em}
+.lead,.sub{font-size:16px;color:var(--ink-soft);margin-bottom:24px}
+.sub{margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+.byline{font-size:13px;color:var(--ink-mute);padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:8px}
+
+/* 블로그/리포트 블록 */
+.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin:24px 0}
+.summary-card .label,.toc .label,.faq .label,.cta-box .label,.source-note .label{
+  font-size:11px;font-weight:800;letter-spacing:0.14em;color:var(--accent);margin-bottom:8px;text-transform:uppercase}
+.summary-card p{margin:0}
+.toc strong{display:block;font-size:14px;color:var(--ink);margin-bottom:8px}
+.toc ol{margin:0 0 0 20px;color:var(--ink-soft)}
+.toc a{color:var(--ink-soft);text-decoration:none}
+.toc a:hover{color:var(--accent);text-decoration:underline}
+.faq h3{font-size:16px;margin:16px 0 6px}
+.faq h3:first-of-type{margin-top:4px}
+.faq p{margin-bottom:0}
+.cta-box p{margin:0}
+.source-note{font-size:13px;color:var(--ink-mute)}
+.source-note p{font-size:13px;color:var(--ink-mute);margin-bottom:8px}
+.source-note p:last-child{margin-bottom:0}
+.source-note a{color:var(--ink-soft)}
+.source-note ol,.source-note ul{margin:6px 0 6px 20px}
+.source-note li{font-size:13px;color:var(--ink-mute)}
+
+/* 섹션 헤더 */
+h2{font-family:var(--serif);font-size:25px;font-weight:700;margin:64px 0 8px;line-height:1.4;letter-spacing:-0.005em;scroll-margin-top:24px}
+h2 .num{display:inline-block;width:34px;height:34px;background:var(--accent);color:#fff;border-radius:50%;
+  text-align:center;line-height:34px;font-size:15px;font-family:var(--sans);margin-right:12px;vertical-align:3px;font-weight:700}
+.h2-sub{font-size:14px;color:var(--ink-mute);margin-bottom:22px;margin-left:46px}
+h3{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--ink)}
+h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+
+/* 본문 */
+p{margin-bottom:16px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:600}
+ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
+li{margin:6px 0}
+em.t{font-style:normal;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px;font-weight:600;font-size:14px}
+code{font-family:'SF Mono',Menlo,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:13.5px;color:#3a3a3a}
+pre{background:#1f1f1d;color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-size:13px;line-height:1.6}
+pre code{background:none;color:inherit;padding:0;font-size:13px}
+blockquote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-style:italic}
+
+/* 형광 하이라이트 */
+.hl{--c:var(--hl-yellow);background-image:linear-gradient(transparent 76%, var(--c) 76%);background-repeat:no-repeat;
+  background-size:0% 100%;padding:1px 7px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  animation:hl-sweep .7s cubic-bezier(.4,0,.2,1) .25s forwards}
+.hl.blue{--c:var(--hl-blue)}
+.hl.pink{--c:var(--hl-pink)}
+@keyframes hl-sweep{to{background-size:100% 100%}}
+@media (prefers-reduced-motion:reduce){.hl{animation:none;background-size:100% 100%}}
+
+/* 용어 박스 (노랑) */
+.term{background:var(--term-bg);border:1px solid var(--term-border);border-left:3px solid #d4a256;border-radius:5px;padding:14px 18px;margin:14px 0 18px;font-size:14px}
+.term .label{font-size:11px;color:#a07020;font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.term .word{font-weight:700;color:#1a1a1a;font-size:15px}
+.term .meaning{color:#5a4a30;margin-top:4px;line-height:1.65}
+
+/* 비유 박스 (파랑) */
+.analogy{background:var(--analogy-bg);border:1px solid var(--analogy-border);border-left:3px solid #5e8aa8;border-radius:5px;padding:16px 20px;margin:18px 0;font-size:14.5px}
+.analogy .label{font-size:11px;color:#3a6280;font-weight:700;letter-spacing:0.12em;margin-bottom:6px}
+.analogy p{color:#2a4a60;margin:0;line-height:1.7}
+.analogy p + p{margin-top:8px}
+
+/* 함정 박스 (빨강) */
+.danger{background:var(--danger-bg);border:1px solid var(--danger-border);border-left:3px solid var(--accent);border-radius:5px;padding:16px 20px;margin:14px 0;font-size:14.5px}
+.danger .label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.danger .name{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px}
+.danger p{color:#5a3a36;margin:0;line-height:1.7;font-size:14px}
+.danger p + p{margin-top:8px}
+
+/* 해결책 박스 (녹색) */
+.good{background:var(--good-bg);border:1px solid var(--good-border);border-left:3px solid #4a9d7a;border-radius:5px;padding:16px 20px;margin:14px 0;font-size:14.5px}
+.good .label{font-size:11px;color:#2a7d5a;font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.good .name{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px}
+.good p{color:#2a5a4a;margin:0;line-height:1.7;font-size:14px}
+
+/* 영웅 비유 박스 */
+.hero-analogy{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:26px 28px;margin:24px 0 12px}
+.hero-analogy .tag{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:10px}
+.hero-analogy h3{margin:0 0 10px;font-family:var(--serif);font-size:20px;line-height:1.5}
+.hero-analogy p{margin:0;font-size:15px;color:var(--ink-soft)}
+.hero-analogy p + p{margin-top:10px}
+
+/* 일반 카드 */
+.card-block{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 26px;margin:14px 0}
+.card-block h3{margin-top:0;font-size:17px}
+.card-block p{font-size:14.5px;margin-bottom:10px}
+.card-block p:last-child{margin-bottom:0}
+.card-block .case-label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:6px}
+
+/* 인용/흐름 박스 */
+.prompt-box{background:#f8f8f4;border-left:2px solid var(--line);padding:10px 14px;margin-top:10px;font-size:13.5px;color:var(--ink-soft);font-style:italic;line-height:1.65}
+
+/* 표 (모바일 안전: 가로 스크롤 래퍼 .tbl로 감쌀 것) */
+.tbl{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px}
+th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;color:var(--ink-soft);vertical-align:top}
+th{background:#efeee8;color:var(--ink);font-weight:700;font-size:13px}
+
+/* 접이식 (네이티브, JS 불필요 — 퀴즈 정답/상세에 사용) */
+details{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 16px;margin:12px 0}
+summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:15px}
+details[open] summary{margin-bottom:8px}
+details p{margin-bottom:0}
+
+/* takeaway 박스 (검정, 마지막) */
+.try{background:#1a1a1a;color:#f5f5f0;border-radius:6px;padding:32px 30px;margin-top:52px}
+.try .label{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:14px}
+.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
+.try ol{padding-left:20px;color:#d0d0c8}
+.try li{margin-bottom:12px;font-size:15px;line-height:1.7}
+.try li strong{color:#fff}
+.try li:last-child{margin-bottom:0}
+
+/* 푸터 */
+.footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+
+/* 모바일 */
+@media (max-width:640px){.wrap{padding:40px 20px 60px}h1{font-size:28px}h2{font-size:22px}}
+</style>
+</head>
+<!-- ↑↑↑ 여기까지 그대로 복사. 아래부터 <body>에 본문 작성 ↓↓↓ -->
+<body>
+<div class="wrap">
+
+<div class="kicker">보안 · 인증 가이드</div>
+<h1>MFA(다단계 인증) 완벽 가이드: TOTP·패스키·SMS 무엇을 써야 하나</h1>
+<p class="lead">비밀번호 하나로 버티던 시대는 끝났습니다. <strong>MFA(다단계 인증, Multi-Factor Authentication)</strong>는 이제 선택이 아니라 기본입니다. 그런데 막상 켜려고 보면 SMS 문자, OTP 앱, 푸시 알림, 패스키까지 선택지가 너무 많습니다. 이 글은 각 방식의 원리와 보안 차이를 비교하고, 표준 권고에 근거해 "지금 무엇을 써야 하는지"를 명확히 정리합니다.</p>
+
+<div class="summary-card">
+  <div class="label">3줄 요약</div>
+  <p><strong>1.</strong> MFA(다단계 인증)는 비밀번호(지식) 외에 휴대폰(소유)·지문(생체) 같은 서로 다른 요소를 추가로 요구해 계정 탈취를 막는 방식입니다.<br>
+  <strong>2.</strong> 보안·피싱 저항 측면에서 <em class="t">패스키 &gt; TOTP 앱 &gt; SMS</em> 순서가 일반적인 우선순위이며, NIST는 SMS/PSTN 방식을 "제한된(restricted)" 인증 수단으로 분류합니다.<br>
+  <strong>3.</strong> 가능하면 패스키, 어렵다면 OTP 앱을 켜고, SMS는 "아예 없는 것보다는 낫지만 최후의 수단"으로 두는 것이 안전합니다.</p>
+</div>
+
+<div class="toc">
+  <strong>목차</strong>
+  <ol>
+    <li><a href="#s1">MFA란 무엇인가 — 인증의 3요소</a></li>
+    <li><a href="#s2">방식별 정리 — SMS·TOTP·푸시·패스키</a></li>
+    <li><a href="#s3">한눈에 보는 MFA 방식 비교표</a></li>
+    <li><a href="#s4">SMS는 왜 권장되지 않나</a></li>
+    <li><a href="#s5">결론 — 무엇을 써야 하나</a></li>
+  </ol>
+</div>
+
+<h2 id="s1"><span class="num">1</span>MFA란 무엇인가 — 인증의 3요소</h2>
+<p class="h2-sub">다단계 인증의 핵심은 "서로 다른 종류"의 증거를 둘 이상 요구하는 것입니다.</p>
+
+<p>MFA(다단계 인증)는 로그인할 때 비밀번호 하나만 확인하지 않고, <strong>서로 성격이 다른 인증 요소를 두 개 이상</strong> 요구하는 보안 방식입니다. 흔히 2단계 인증(2FA)이라는 말과 섞여 쓰이는데, 2FA는 요소가 정확히 두 개인 MFA의 한 형태라고 보면 됩니다.</p>
+
+<p>여기서 중요한 건 <span class="hl blue">"두 번 묻는다"가 아니라 "서로 다른 종류를 묻는다"</span>는 점입니다. 비밀번호를 두 번 입력하게 하는 건 MFA가 아닙니다. 전통적으로 인증 요소는 다음 세 가지로 분류합니다.</p>
+
+<div class="term">
+  <div class="label">인증의 3요소</div>
+  <div class="word">지식 · 소유 · 생체</div>
+  <div class="meaning"><strong>지식(Something you know)</strong>: 비밀번호, PIN처럼 머릿속에 있는 정보.<br>
+  <strong>소유(Something you have)</strong>: 휴대폰, OTP 앱, 보안키처럼 손에 쥔 물건.<br>
+  <strong>생체(Something you are)</strong>: 지문, 얼굴, 홍채처럼 몸 자체의 특징.</div>
+</div>
+
+<p>MFA는 이 중 <strong>서로 다른 범주에서 둘 이상</strong>을 조합합니다. 예를 들어 "비밀번호(지식) + 휴대폰 OTP(소유)"는 정상적인 MFA지만, "비밀번호 + 보안 질문"은 둘 다 지식이라 진정한 다요소로 보기 어렵습니다.</p>
+
+<div class="analogy">
+  <div class="label">비유로 이해하기</div>
+  <p>은행 금고를 떠올려 보세요. 비밀번호만 쓰는 건 <strong>열쇠 하나로 잠근 문</strong>과 같습니다. 열쇠를 복제당하면 끝이죠. MFA는 여기에 <strong>지문 인식기</strong>와 <strong>본인만 가진 카드키</strong>를 더하는 것입니다. 도둑이 열쇠(비밀번호)를 훔쳐도, 손가락과 카드까지 동시에 손에 넣기는 훨씬 어렵습니다.</p>
+  <p>이때 중요한 건 자물쇠를 <strong>두 개 거는 게 아니라 종류가 다른 잠금을 거는 것</strong>입니다. 같은 열쇠로 여는 자물쇠를 두 개 달아봐야, 그 열쇠 하나만 털리면 둘 다 열리니까요.</p>
+</div>
+
+<p>그래서 MFA의 보안 강도는 "몇 단계냐"보다 <strong>"어떤 요소를, 얼마나 가로채기 어렵게 전달하느냐"</strong>에 좌우됩니다. 같은 소유 요소라도 SMS로 받는 코드와 디바이스에 묶인 패스키는 안전성이 크게 다릅니다. 다음 장에서 방식별로 살펴보겠습니다.</p>
+
+<h2 id="s2"><span class="num">2</span>방식별 정리 — SMS·TOTP·푸시·패스키</h2>
+<p class="h2-sub">대표적인 네 가지 MFA 방식의 작동 원리와 특징을 정리합니다.</p>
+
+<h3>① SMS OTP — 문자로 받는 인증번호</h3>
+<p>가장 익숙한 방식입니다. 로그인 시 서버가 일회용 번호를 문자로 보내고, 사용자가 이를 입력합니다. 별도 앱 설치가 필요 없고 휴대폰만 있으면 되니 <strong>도입 장벽이 가장 낮습니다.</strong> 다만 뒤에서 자세히 다루듯, 전달 경로 자체의 취약점 때문에 보안 측면에서는 가장 약한 축에 속합니다.</p>
+
+<h3>② TOTP 앱 — 30초마다 바뀌는 코드</h3>
+<p>Google OTP(Authenticator), Microsoft Authenticator, Authy 같은 앱이 여기에 해당합니다. 최초 등록 때 서버와 앱이 <strong>비밀 키(seed)</strong>를 공유하고, 이후에는 통신 없이 양쪽이 각자 같은 알고리즘으로 코드를 계산합니다.</p>
+
+<div class="term">
+  <div class="label">TOTP</div>
+  <div class="word">Time-based One-Time Password</div>
+  <div class="meaning">RFC 6238 표준으로, 공유한 비밀 키와 현재 시각을 입력으로 일회용 코드를 만드는 방식입니다. 기본적으로 <strong>30초</strong>마다 새 코드가 생성되며(시간 단계 X=30초), HMAC 기반의 HOTP(RFC 4226)를 시간 기반으로 확장한 것입니다. 서버와 앱이 네트워크로 코드를 주고받지 않으므로 <em class="t">중간에 문자를 가로채는 공격</em>에 노출되지 않습니다.</div>
+</div>
+
+<p>코드가 네트워크를 타지 않고 기기 안에서 계산되므로 SMS보다 안전합니다. 단, 비밀 키가 등록 시점에 노출되거나, 사용자가 가짜 사이트에 코드를 직접 입력하면 뚫릴 수 있습니다(피싱).</p>
+
+<h3>③ 푸시 승인 — "로그인하시겠습니까?" 알림</h3>
+<p>등록된 스마트폰 앱으로 "지금 로그인 시도가 있습니다. 승인할까요?" 알림이 오고, 사용자가 버튼을 눌러 승인하는 방식입니다. 코드를 입력할 필요가 없어 편리합니다. 다만 공격자가 반복해서 로그인을 시도해 알림 폭탄을 보내고, 지친 사용자가 무심코 승인하게 만드는 <strong>MFA 피로(prompt bombing)</strong> 공격이 알려져 있어, 요즘은 화면의 숫자를 맞춰 입력하게 하는 <em class="t">번호 매칭</em> 방식이 권장됩니다.</p>
+
+<h3>④ 하드웨어 보안키 · 패스키 — 공개키 암호 기반</h3>
+<p>YubiKey 같은 하드웨어 보안키와 패스키는 FIDO2/WebAuthn 표준 위에 동작합니다. 등록 시 기기가 <strong>공개키/개인키 쌍</strong>을 만들어 개인키는 기기 밖으로 절대 나가지 않고, 서버에는 공개키만 저장됩니다. 로그인할 때 서버가 보낸 챌린지에 개인키로 서명해 응답하므로, 가로채도 재사용할 수 없습니다.</p>
+
+<div class="term">
+  <div class="label">패스키 (Passkey)</div>
+  <div class="word">FIDO2 기반 비밀번호 대체 자격증명</div>
+  <div class="meaning">FIDO Alliance가 정의한 피싱 저항형 자격증명으로, 공개키 암호를 사용해 비밀번호를 대체합니다. 자격증명이 <strong>특정 도메인(origin)에 묶여</strong> 있어, 가짜 피싱 사이트에서는 브라우저가 아예 인증을 진행하지 못합니다. 지문·얼굴 등 기기 잠금 해제와 결합되어 "소유 + 생체"를 한 번에 충족합니다.</div>
+</div>
+
+<h2 id="s3"><span class="num">3</span>한눈에 보는 MFA 방식 비교표</h2>
+<p class="h2-sub">보안·피싱 저항·편의성을 기준으로 네 가지 방식을 비교했습니다.</p>
+
+<div class="tbl">
+<table>
+  <thead>
+    <tr><th>방식</th><th>보안 수준</th><th>피싱 저항</th><th>편의성</th><th>비고</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SMS OTP</strong></td>
+      <td>낮음</td>
+      <td>없음</td>
+      <td>높음 (앱 불필요)</td>
+      <td>SIM 스와핑·SS7 가로채기에 취약. NIST가 "제한된" 수단으로 분류</td>
+    </tr>
+    <tr>
+      <td><strong>TOTP 앱</strong></td>
+      <td>중간~높음</td>
+      <td>낮음 (실시간 피싱엔 취약)</td>
+      <td>중간 (코드 입력)</td>
+      <td>코드가 기기 내 계산. RFC 6238 표준, 무료 앱 다수</td>
+    </tr>
+    <tr>
+      <td><strong>푸시 승인</strong></td>
+      <td>중간~높음</td>
+      <td>낮음 (피로 공격 주의)</td>
+      <td>높음 (탭 한 번)</td>
+      <td>번호 매칭 적용 시 안전성 향상</td>
+    </tr>
+    <tr>
+      <td><strong>보안키·패스키</strong></td>
+      <td>매우 높음</td>
+      <td>높음 (구조적 차단)</td>
+      <td>높음 (지문/얼굴)</td>
+      <td>FIDO2/WebAuthn. 도메인 바인딩으로 피싱 차단</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p class="hl">표에서 가장 눈에 띄는 차이는 "피싱 저항" 열입니다. SMS·TOTP·푸시는 사용자가 가짜 사이트에 속으면 무력화될 수 있지만, 패스키는 자격증명이 도메인에 묶여 있어 구조적으로 막힙니다.</p>
+
+<h2 id="s4"><span class="num">4</span>SMS는 왜 권장되지 않나</h2>
+<p class="h2-sub">표준 기관이 SMS 인증에 선을 긋는 데는 분명한 이유가 있습니다.</p>
+
+<p>SMS OTP는 "없는 것보다는 훨씬 낫습니다." 비밀번호만 쓰는 것보다는 명백히 안전합니다. 하지만 코드가 <strong>통신망을 거쳐 전달된다는 점</strong>이 근본적인 약점입니다. 그 경로에서 코드를 가로채거나 번호 자체를 탈취하는 공격이 실제로 존재합니다.</p>
+
+<div class="danger">
+  <div class="label">주의</div>
+  <div class="name">SIM 스와핑 (SIM Swapping)</div>
+  <p>공격자가 통신사를 속이거나 내부자를 매수해 <strong>피해자의 전화번호를 자신의 SIM으로 이전</strong>시키는 수법입니다. 번호가 넘어가면 SMS로 오는 모든 인증번호가 공격자에게 도착하고, 비밀번호 재설정까지 SMS로 받는 서비스라면 계정이 통째로 넘어갈 수 있습니다.</p>
+</div>
+
+<div class="danger">
+  <div class="label">주의</div>
+  <div class="name">SS7 가로채기 · 문자 평문 전송</div>
+  <p>전 세계 통신망이 쓰는 SS7 신호 프로토콜은 1970년대에 설계되어 암호화가 없고, 취약점이 반복적으로 입증되었습니다. SMS는 기본적으로 <strong>암호화되지 않은 평문</strong>으로 오가기 때문에, SIM을 바꾸지 않고도 망 차원에서 문자를 가로채거나 다른 곳으로 돌리는 공격이 가능합니다.</p>
+</div>
+
+<p>이런 위험 때문에 미국 표준기술연구소(NIST)는 디지털 신원 지침(SP 800-63B)에서 공중전화망(PSTN)을 통한 인증을 <strong>"제한된(RESTRICTED)" 인증 수단</strong>으로 규정합니다. 금지는 아니지만, 쓰려면 추가 조건과 위험 완화가 필요하다는 뜻입니다. 지침은 이렇게 권고합니다.</p>
+
+<blockquote>"PSTN을 통한 대역 외(out-of-band) 인증을 사용하려면, 검증자는 사전 등록된 전화번호가 특정 물리적 기기와 연결되어 있는지 확인해야 한다(SHALL). 또한 검증자는 PSTN으로 인증 비밀을 전달하기 전에 기기 교체, SIM 변경, 번호 이동(number porting) 등 비정상 행동 지표를 고려해야 한다(SHOULD)." — NIST SP 800-63B</blockquote>
+
+<p>요컨대 SMS는 SIM 스와핑·번호 이동·SS7 가로채기 같은 알려진 위험을 안고 있어, 표준 기관조차 "추가 안전장치 없이는 권장하지 않는다"는 입장입니다.</p>
+
+<h2 id="s5"><span class="num">5</span>결론 — 무엇을 써야 하나</h2>
+<p class="h2-sub">완벽한 하나는 없습니다. 다만 우선순위는 비교적 분명합니다.</p>
+
+<p>보안과 편의성을 함께 고려하면 일반적인 권장 우선순위는 <em class="t">패스키 &gt; TOTP 앱 ≈ 번호 매칭 푸시 &gt; SMS</em> 입니다. 핵심 원칙은 단순합니다. <strong>피싱에 구조적으로 강한 방식을 최우선으로</strong> 두고, SMS는 다른 선택지가 정말 없을 때만 쓰는 것입니다.</p>
+
+<div class="good">
+  <div class="label">1순위 권장</div>
+  <div class="name">패스키 / 하드웨어 보안키</div>
+  <p>서비스가 지원한다면 가장 먼저 켜세요. 피싱 사이트에서 작동하지 않고, 가로채도 재사용할 수 없어 현재 가장 강력합니다. 금융·업무 계정처럼 탈취 시 피해가 큰 곳에 특히 권장됩니다.</p>
+</div>
+
+<div class="good">
+  <div class="label">2순위 권장</div>
+  <div class="name">TOTP 앱 또는 번호 매칭 푸시</div>
+  <p>패스키를 아직 지원하지 않는 서비스에서는 OTP 앱을 쓰세요. 무료이고, 코드가 기기 안에서 생성되어 SMS보다 안전합니다. 푸시를 쓴다면 반드시 번호 매칭 기능을 켜 MFA 피로 공격에 대비하세요.</p>
+</div>
+
+<div class="good">
+  <div class="label">차선책</div>
+  <div class="name">SMS — 그래도 없는 것보다는 낫다</div>
+  <p>해당 서비스가 SMS만 지원한다면, 비밀번호 단독보다는 훨씬 안전하므로 그래도 켜는 편이 낫습니다. 다만 통신사에 <strong>번호 이동·SIM 재발급 보호(잠금)</strong>를 설정하고, 중요한 계정의 비밀번호 재설정을 SMS에만 의존하지 않도록 하세요.</p>
+</div>
+
+<p>정리하면, "어떤 MFA든 켜는 것"이 첫걸음이고, 그다음은 <strong>가능한 한 피싱에 강한 방식으로 옮겨가는 것</strong>입니다. 같은 계정이라도 <span class="hl pink">SMS에서 OTP 앱으로, 다시 패스키로 한 단계씩 올리는 것</span>만으로도 탈취 위험은 크게 줄어듭니다.</p>
+
+<div class="faq">
+  <div class="label">자주 묻는 질문</div>
+  <h3>Q. 2FA와 MFA는 다른 건가요?</h3>
+  <p>MFA(다단계 인증)는 인증 요소를 둘 이상 요구하는 모든 방식을 가리키는 큰 개념이고, 2FA(2단계 인증)는 요소가 정확히 두 개인 MFA의 한 형태입니다. 실무에서는 거의 같은 의미로 섞여 쓰입니다.</p>
+
+  <h3>Q. OTP 앱을 바꾼 휴대폰으로 옮기면 코드가 사라지나요?</h3>
+  <p>TOTP는 비밀 키를 기준으로 코드를 계산하므로, 키를 새 기기로 옮기지 않으면 코드를 만들 수 없습니다. 그래서 처음 등록할 때 받은 <strong>백업 코드를 안전하게 보관</strong>하고, 앱의 클라우드 백업 기능이나 기기 이전 절차를 미리 확인해 두는 것이 중요합니다.</p>
+
+  <h3>Q. 패스키를 쓰면 비밀번호는 아예 없어도 되나요?</h3>
+  <p>패스키는 비밀번호를 대체하도록 설계되었습니다. 다만 서비스마다 정책이 달라, 아직은 비밀번호와 병행하거나 복구 수단으로 두는 경우가 많습니다. 패스키 하나만으로 로그인이 완결되는지는 각 서비스 설정에서 확인하세요.</p>
+
+  <h3>Q. 그래서 SMS 인증은 지금 당장 꺼야 하나요?</h3>
+  <p>더 나은 대안(패스키·OTP 앱)을 켤 수 있다면 그쪽으로 옮기고 SMS는 보조로 두거나 끄는 것이 좋습니다. 하지만 그 서비스가 SMS만 지원한다면, 끄기보다는 켜둔 채 통신사 번호 보호 설정을 함께 쓰는 편이 안전합니다.</p>
+</div>
+
+<div class="cta-box">
+  <div class="label">다음 행동</div>
+  <p>오늘 바로 <strong>가장 중요한 계정 하나</strong>(이메일 또는 주거래 은행)부터 점검하세요. 보안 설정에 들어가 패스키가 있으면 등록하고, 없으면 OTP 앱을 켭니다. SMS만 쓰고 있었다면 통신사 앱에서 번호 이동·SIM 재발급 잠금을 설정하는 것까지 한 번에 끝내면, 오늘 들인 10분이 가장 큰 보안 향상을 가져다줍니다.</p>
+</div>
+
+<div class="source-note">
+  <div class="label">참고 출처</div>
+  <p>아래는 본문의 표준 권고와 기술 설명의 근거가 된 1차·공신력 있는 자료입니다. 점유율·증가율 등 일부 통계 수치는 출처에 따라 편차가 있어 본문에서는 단정하지 않았습니다.</p>
+  <ol>
+    <li>NIST, <a href="https://pages.nist.gov/800-63-3/sp800-63b.html">Special Publication 800-63B — Digital Identity Guidelines: Authentication and Lifecycle Management</a> (SMS/PSTN의 "제한된 인증 수단" 분류 및 SIM 변경·번호 이동 권고).</li>
+    <li>IETF, <a href="https://datatracker.ietf.org/doc/html/rfc6238">RFC 6238 — TOTP: Time-Based One-Time Password Algorithm</a> (TOTP 알고리즘과 30초 시간 단계 정의).</li>
+    <li>FIDO Alliance, <a href="https://fidoalliance.org/passkeys/">Passkeys — Passwordless Authentication</a> (패스키의 공개키 암호 구조와 피싱 저항 설명).</li>
+    <li>Microsoft Security, <a href="https://www.microsoft.com/en-us/security/business/security-101/what-is-fido2">What is FIDO2?</a> (FIDO2/WebAuthn 작동 원리 및 도메인 바인딩).</li>
+  </ol>
+</div>
+
+<div class="footer">Generated with adaptive-html-blog-writer · mode: blog_seo_html</div>
+
+</div>
+</body>
+</html>

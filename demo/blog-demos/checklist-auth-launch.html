@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>로그인·인증 보안 출시 전 점검 플레이북</title>
+<meta name="description" content="프로덕션 로그인 출시 전에 비밀번호 해싱, 무차별 대입 방어, MFA, 세션·쿠키, 토큰, 전송·헤더, 계정 복구, 로깅까지 8개 영역을 OWASP ASVS·NIST 800-63B 표준 근거로 점검하는 출시 게이트 체크리스트 플레이북입니다.">
+<meta property="og:title" content="로그인·인증 보안 출시 전 점검 플레이북">
+<meta property="og:description" content="프로덕션 로그인 출시 전에 비밀번호 해싱, 무차별 대입 방어, MFA, 세션·쿠키, 토큰, 전송·헤더, 계정 복구, 로깅까지 8개 영역을 OWASP ASVS·NIST 800-63B 표준 근거로 점검하는 출시 게이트 체크리스트 플레이북입니다.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f5f0;
+  --ink:#1a1a1a;
+  --ink-soft:#4a4a4a;
+  --ink-mute:#7a7a7a;
+  --line:#d8d8d0;
+  --card:#ffffff;
+  --accent:#e63946;
+  --accent-2:#b72d38;
+  --accent-soft:#fce4e6;
+  --term-bg:#fffaf2;
+  --term-border:#e8d9b8;
+  --analogy-bg:#f0f4f8;
+  --analogy-border:#b8cad8;
+  --danger-bg:#fff0ee;
+  --danger-border:#e8b8b2;
+  --good-bg:#eef7f1;
+  --good-border:#b8d8c2;
+  --hl-yellow:#ffe9a3;
+  --hl-blue:#cfe5f5;
+  --hl-pink:#fbd3da;
+  --dark:#1a1a1a;
+  --dark-soft:#242421;
+  --code:#1f1f1d;
+  --serif:"Noto Serif KR",Georgia,serif;
+  --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;
+  --radius-sm:5px;
+  --radius-md:8px;
+  --radius-lg:12px;
+  --max-reading:780px;
+  --max-wide:1020px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.8;
+  letter-spacing:-.012em;
+  word-break:keep-all;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--dark);color:#fff;padding:10px 14px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+.page,.wrap{width:min(var(--max-reading),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+.page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+.header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
+.kicker{font-size:13px;letter-spacing:.18em;color:var(--accent);font-weight:800;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
+.sub,.lead{font-size:16px;color:var(--ink-soft);margin:0 0 24px;max-width:820px}
+.lead{font-size:18px;line-height:1.75;color:var(--ink-soft)}
+.byline{font-size:13px;color:var(--ink-mute);padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.meta span,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.52);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--ink-mute)}
+section{margin:46px 0}
+h2{font-family:var(--serif);font-size:clamp(24px,3vw,29px);line-height:1.42;font-weight:700;letter-spacing:-.01em;margin:64px 0 8px;scroll-margin-top:24px;color:var(--ink)}
+h2 .no,h2 .num{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--accent);color:#fff;border-radius:50%;font-family:var(--sans);font-size:15px;font-weight:800;margin-right:12px;vertical-align:3px;line-height:1}
+.h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;line-height:1.7}
+h3{font-size:18px;font-weight:700;line-height:1.45;margin:28px 0 10px;color:var(--ink)}
+h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+p{margin:0 0 16px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:700}
+ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
+li{margin:6px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+footer p{font-size:13px;color:var(--ink-mute)}
+@media(max-width:760px){
+  body{line-height:1.74}
+  .page,.page-wide,.wrap{width:min(100% - 40px,var(--max-reading));padding:40px 0 72px}
+  h1{font-size:30px;line-height:1.34}
+  h2{font-size:23px;margin-top:52px}
+  h2 .no,h2 .num{width:30px;height:30px;font-size:13px;margin-right:9px}
+  .h2-sub{margin-left:39px}
+}
+@media(max-width:430px){
+  .page,.page-wide,.wrap{width:min(100% - 32px,var(--max-reading))}
+  h1{font-size:27px}
+}
+/* Editorial components for adaptive-html-blog-writer-v2. */
+.box,.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px;margin:24px 0}
+.summary-card .label,.toc .label,.faq .label,.cta-box .label,.source-note .label{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent);margin-bottom:8px;text-transform:uppercase}
+.summary-card p,.cta-box p{margin:0}
+.toc strong{display:block;font-size:14px;color:var(--ink);margin-bottom:8px}
+.toc ol,.toc ul{margin:0 0 0 20px;color:var(--ink-soft)}
+.toc a{color:var(--ink-soft);text-decoration:none;border-bottom:1px dotted transparent}
+.toc a:hover{color:var(--accent);border-color:var(--accent)}
+.source-note{font-size:13px;color:var(--ink-mute)}
+.source-note p,.source-note li{font-size:13px;color:var(--ink-mute)}
+.source-note ol,.source-note ul{margin:6px 0 6px 20px}
+.source-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px 20px;margin:34px 0;color:var(--ink-mute)}
+.source-box h2{font-family:var(--sans);font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--accent)}
+.source-box p,.source-box li{font-size:13px;color:var(--ink-mute)}
+.source-box ul{columns:2;column-gap:28px;margin-top:8px}
+.source-box a{color:var(--ink-soft)}
+
+.term,.analogy,.danger,.good{border-radius:var(--radius-sm);padding:16px 20px;margin:16px 0 20px;font-size:14.5px}
+.term{background:var(--term-bg);border:1px solid var(--term-border);border-left:3px solid #d4a256}
+.term .label{font-size:11px;color:#a07020;font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.term .word{display:block;font-weight:800;color:var(--ink);font-size:15px;margin-bottom:4px}
+.term .meaning,.term p{color:#5a4a30;margin:0;line-height:1.68;font-size:14px}
+.analogy{background:var(--analogy-bg);border:1px solid var(--analogy-border);border-left:3px solid #5e8aa8}
+.analogy .label{font-size:11px;color:#3a6280;font-weight:800;letter-spacing:.12em;margin-bottom:6px;text-transform:uppercase}
+.analogy p{color:#2a4a60;margin:0;line-height:1.72;font-size:14.5px}
+.analogy p+p{margin-top:8px}
+.danger{background:var(--danger-bg);border:1px solid var(--danger-border);border-left:3px solid var(--accent)}
+.danger .label{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.danger .name{font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.danger p{color:#5a3a36;margin:0;line-height:1.72;font-size:14px}
+.danger p+p{margin-top:8px}
+.good{background:var(--good-bg);border:1px solid var(--good-border);border-left:3px solid #4a9d7a}
+.good .label{font-size:11px;color:#2a7d5a;font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.good .name{font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.good p{color:#2a5a4a;margin:0;line-height:1.72;font-size:14px}
+
+.hero-analogy{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:26px 28px;margin:24px 0 12px;color:var(--ink)}
+.hero-analogy .tag{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.15em;margin:0 0 10px;text-transform:uppercase;border:0;background:transparent;padding:0;border-radius:0}
+.hero-analogy h3{margin:0 0 10px;font-family:var(--serif);font-size:21px;line-height:1.55;color:var(--ink)}
+.hero-analogy p{margin:0;font-size:15px;color:var(--ink-soft)}
+.hero-analogy p+p{margin-top:10px}
+
+.card-block{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 26px;margin:16px 0}
+.card-block h3{margin-top:0;font-size:17px}
+.card-block p{font-size:14.5px;margin-bottom:10px}
+.card-block p:last-child{margin-bottom:0}
+.case-label{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.15em;margin-bottom:6px;text-transform:uppercase}
+.prompt-box{background:#f8f8f4;border-left:2px solid var(--line);padding:10px 14px;margin:12px 0;font-size:13.5px;color:var(--ink-soft);font-style:italic;line-height:1.65}
+
+em.t{font-style:normal;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px;font-weight:700;font-size:14px}
+.hl{--c:var(--hl-yellow);background-image:linear-gradient(transparent 76%,var(--c) 76%);background-repeat:no-repeat;background-size:0% 100%;padding:1px 7px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;animation:hl-sweep .7s cubic-bezier(.4,0,.2,1) .25s forwards}
+.hl.blue{--c:var(--hl-blue)}.hl.pink{--c:var(--hl-pink)}
+@keyframes hl-sweep{to{background-size:100% 100%}}
+@media(prefers-reduced-motion:reduce){.hl{animation:none;background-size:100% 100%}}
+
+code{font-family:"SF Mono",Menlo,Consolas,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:13.5px;color:#3a3a3a}
+pre,.code{background:var(--code);color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;white-space:pre-wrap}
+pre code,.code code{background:none;color:inherit;padding:0;font-size:13px}
+blockquote,.pull-quote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-family:var(--serif);font-size:20px;line-height:1.65;font-style:italic}
+.tbl{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table,.table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:18px 0}
+th,td,.table th,.table td{border:1px solid var(--line);padding:8px 12px;text-align:left;color:var(--ink-soft);vertical-align:top}
+th,.table th{background:#efeee8;color:var(--ink);font-weight:800;font-size:13px}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:12px 16px;margin:12px 0}
+summary{cursor:pointer;font-weight:800;color:var(--ink);font-size:15px}
+details[open] summary{margin-bottom:8px}
+details p{margin-bottom:0}
+.try{background:var(--dark);color:#f5f5f0;border-radius:var(--radius-md);padding:32px 30px;margin-top:52px}
+.try .label{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:.15em;margin-bottom:14px;text-transform:uppercase}
+.try h2,.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
+.try h2 .no,.try h2 .num{background:#fff;color:var(--dark)}
+.try p{color:#d0d0c8}.try ol,.try ul{padding-left:20px;color:#d0d0c8}.try li{margin-bottom:12px;font-size:15px;line-height:1.7}.try strong{color:#fff}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.mini-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:16px}
+.mini-card h3{margin-top:0;font-size:16px}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+@media(max-width:760px){
+  .card-grid{grid-template-columns:1fr}
+  .table,table{font-size:14px}
+  .table th,.table td,th,td{padding:10px}
+  .source-box ul{columns:1}
+}
+.layout-beginner .hero-analogy{margin-top:8px}
+.layout-beginner .beginner-zero{border-top:1px solid var(--line);padding-top:28px}
+.layout-beginner .term+.term{margin-top:12px}
+
+.layout-expert .decision-grid,.layout-expert .summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-expert .decision-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
+.layout-expert .executive-summary,.layout-expert .validation-checklist{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px}
+.risk-high{border-left:5px solid var(--accent)}.risk-mid{border-left:5px solid #d99a38}.risk-low{border-left:5px solid #7ea66a}
+
+.layout-article .article-header{margin-bottom:28px}.layout-article .lead{font-size:18px;color:var(--ink-soft)}.layout-article .article-takeaway{background:var(--accent-soft)}.layout-article article section{margin:54px 0}
+.layout-article .pull-quote{font-size:22px;color:var(--ink);border-color:var(--accent);font-style:normal}
+
+.layout-education .learning-goals{border:1px solid var(--good-border);background:var(--good);border-radius:var(--radius-md);padding:22px}
+.layout-education .practice-card{border:1px dashed var(--accent);background:var(--card);border-radius:var(--radius-md);padding:22px}
+.layout-education .quiz-box{background:var(--term-bg);border:1px solid var(--term-border);border-radius:var(--radius-md);padding:22px}
+.layout-education .answer-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px}
+
+.layout-blog .personal-note{font-family:var(--serif);font-size:19px;line-height:1.7}
+.layout-blog .hook{color:var(--ink-soft)}
+.layout-blog article section{border-bottom:1px solid var(--line);padding-bottom:28px;margin:52px 0}
+.layout-blog article section:last-child{border-bottom:0}
+
+.layout-seo .serp-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.layout-seo .serp-title{color:#1a0dab;font-size:20px;margin:0 0 4px;font-family:Arial,sans-serif}
+.layout-seo .serp-url{color:#0b8043;font-size:13px;margin-bottom:6px}
+.layout-seo .seo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layout-seo .title-candidates,.layout-seo .meta-candidates,.layout-seo .keyword-cluster{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px}
+
+.layout-platform .platform-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.layout-platform .platform-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px 20px}
+.layout-platform .platform-card h3{margin-top:0;color:var(--accent-2)}
+.layout-platform .original-summary,.layout-platform .platform-strategy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+@media(max-width:760px){.layout-expert .decision-grid,.layout-expert .summary-grid,.layout-seo .seo-grid,.layout-platform .platform-grid{grid-template-columns:1fr}}
+
+/* Ultimate extra modes */
+.layout-audit .audit-row{display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr .6fr;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}
+.layout-audit .score-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.layout-reference .ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.layout-reference .quick-reference{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px}
+.layout-compare .matrix{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.layout-compare .winner-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
+.layout-case .timeline{border-left:4px solid var(--accent);padding-left:18px}
+.layout-case .timeline-item{position:relative;margin:18px 0;padding:0 0 0 4px}
+.layout-case .timeline-item::before{content:"";position:absolute;left:-29px;top:.55em;width:11px;height:11px;border-radius:999px;background:var(--accent)}
+.layout-landing .value-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.layout-landing .hero-analogy{font-size:18px}
+.layout-checklist .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layout-checklist .check-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px}
+@media(max-width:760px){.layout-audit .audit-row,.layout-reference .ref-grid,.layout-compare .matrix,.layout-landing .value-grid,.layout-checklist .check-grid{grid-template-columns:1fr}}
+@media print{
+  body{background:white;color:#111}
+  .page,.page-wide,.wrap{width:100%;padding:0}
+  .hero-analogy,.try{background:#f4f4f4;color:#111;box-shadow:none}
+  .try h2,.try h3,.try strong{color:#111}
+  .source-note,.toc,.box,.term,.analogy,.danger,.good,.card-block,.mini-card{break-inside:avoid}
+  a::after{content:" (" attr(href) ")";font-size:11px;color:#555}
+}
+</style>
+
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+<!-- Layout: checklist-playbook / editorial operations theme -->
+<main id="main" class="page-wide layout-checklist">
+  <header class="header checklist-header">
+    <div class="kicker">PLAYBOOK · 인증 보안</div>
+    <h1>로그인·인증 보안 출시 전 점검 플레이북</h1>
+    <p class="sub">프로덕션 로그인 기능을 처음 켜기 직전, 비밀번호 해싱부터 무차별 대입 방어·MFA·세션·토큰·전송 보안·계정 복구·로깅까지 영역별로 빠짐없이 확인하는 OWASP·NIST 표준 기반 출시 게이트 체크리스트입니다.</p>
+    <div class="meta"><span>OWASP ASVS V2 기준</span><span>NIST SP 800-63B 반영</span><span>8개 점검 영역</span><span>업데이트 2026-05</span></div>
+  </header>
+
+  <section class="summary-card">
+    <div class="label">USE CASE · 언제 누가 쓰나</div>
+    <p><strong>프로덕션 로그인을 출시(또는 대규모 인증 변경 배포)하기 직전</strong>의 백엔드·보안·SRE 담당자를 위한 체크리스트입니다. 신규 서비스의 로그인/회원가입 오픈, 자체 인증을 외부 IdP나 패스키로 전환, MFA 도입, 비밀번호 정책 변경 같은 <span class="hl">"인증 경로가 바뀌는 릴리스"</span>의 출시 승인(go/no-go) 게이트로 사용하세요. 각 영역의 항목을 모두 통과한 뒤에야 출시 결정을 내리는 것이 목적이며, 항목은 추측이 아니라 OWASP Authentication Cheat Sheet, OWASP ASVS V2, NIST SP 800-63B의 명시 요구사항에 근거합니다.</p>
+  </section>
+
+  <h2><span class="num">1</span>영역별 점검 카드</h2>
+  <p class="h2-sub">8개 영역을 각각 독립적으로 검증합니다. 한 영역이라도 미충족 항목이 남으면 출시 보류가 기본입니다. 항목 옆 괄호는 근거 표준 조항입니다.</p>
+
+  <section class="check-grid">
+    <div class="check-item">
+      <h3>① 비밀번호·자격증명</h3>
+      <ul>
+        <li>비밀번호를 평문·가역 암호화가 아닌 <strong>전용 단방향 해시</strong>로 저장 — 1순위 Argon2id, 레거시는 bcrypt(work factor ≥ 10) 또는 PBKDF2(≥ 100,000회) 사용 (ASVS 2.4.1–2.4.4)</li>
+        <li>자격증명마다 <strong>고유 salt</strong>(최소 32비트) 적용 (ASVS 2.4.2)</li>
+        <li>단일 인증 시 최소 길이를 충분히 길게(권장 15자 이상, 최소 12자), 최대 <strong>64자 이상</strong> 허용·128자 초과만 거부 (ASVS 2.1.1–2.1.2, NIST 800-63B)</li>
+        <li>유니코드·공백 포함 모든 문자 허용, <strong>문자 종류 강제 규칙(대문자/특수문자) 금지</strong>, 주기적 강제 변경 금지 (ASVS 2.1.4·2.1.9·2.1.10)</li>
+        <li>설정·변경 시 <strong>유출 비밀번호 목록(Pwned Passwords 등)과 대조</strong>해 차단 (ASVS 2.1.7)</li>
+      </ul>
+    </div>
+    <div class="check-item">
+      <h3>② 무차별 대입 방어</h3>
+      <ul>
+        <li><strong>계정 단위</strong> 실패 횟수 제한 — IP가 아닌 계정 기준 카운터, 최대 <strong>시간당 100회</strong> 실패 상한 (ASVS 2.2.1)</li>
+        <li>임계치·관찰 윈도·잠금 시간을 정의하고, <span class="hl blue">지수적 백오프(throttle)</span>로 1초→2초→4초 식 점증 지연 적용</li>
+        <li>유출 자격증명 대입(credential stuffing) 테스트를 막는 안티오토메이션 컨트롤 적용 (ASVS 2.2.1)</li>
+        <li>자동화 의심 트래픽에 CAPTCHA 등 추가 검증 단계 추가 (잠금만으로 인한 DoS 방지)</li>
+        <li>잠금 중에도 안전한 복구 경로를 열어 <strong>잠금이 서비스 거부 무기로 악용되지 않게</strong> 함</li>
+      </ul>
+    </div>
+    <div class="check-item">
+      <h3>③ 다중 인증(MFA)</h3>
+      <ul>
+        <li>가능한 곳에 MFA 제공 — <strong>TOTP·패스키(FIDO/WebAuthn) 등 강한 방식을 먼저 제시</strong> (ASVS 2.2.2)</li>
+        <li>SMS·이메일 OTP는 기본값이 아닌 <strong>보조 수단으로만</strong> 한정 (ASVS 2.2.2·2.7.1)</li>
+        <li>피싱 저항성 확보 — 암호학적 인증기(WebAuthn)로 가짜 사이트 입력 우회 방지 (ASVS 2.2.4)</li>
+        <li>TOTP는 유효시간 정의·재사용 거부, 코드 검증에 승인된 알고리즘 사용 (ASVS 2.8.1·2.8.3·2.8.4)</li>
+        <li>비밀번호 변경·이메일 변경 등 <strong>민감 작업 전 재인증</strong> 요구</li>
+      </ul>
+    </div>
+    <div class="check-item">
+      <h3>④ 세션·쿠키</h3>
+      <ul>
+        <li>세션 쿠키에 <strong>HttpOnly·Secure·SameSite</strong> 속성 모두 설정</li>
+        <li>로그인 성공 직후 세션 식별자 <span class="hl pink">회전(고정 공격 방지)</span>, 권한 상승 시에도 재발급</li>
+        <li>유휴·절대 만료 시간을 명확히 설정하고 서버 측에서 강제</li>
+        <li>로그아웃 시 서버 세션을 즉시 무효화 — 클라이언트 쿠키 삭제에만 의존하지 않음</li>
+        <li>인증 요소 변경·OTP 폐기 시 모든 세션에 즉시 반영(revocation) (ASVS 2.8.6)</li>
+      </ul>
+    </div>
+    <div class="check-item">
+      <h3>⑤ 토큰(JWT 등)</h3>
+      <ul>
+        <li>서명 알고리즘을 서버에서 고정 검증 — <code>alg:none</code>·알고리즘 혼동 공격 차단</li>
+        <li>발급 토큰에 <strong>짧은 만료(exp)</strong>·발급자(iss)·대상(aud) 클레임을 넣고 매 요청 검증</li>
+        <li>서명·검증 키를 코드·저장소에 하드코딩하지 않고 별도 비밀 관리로 보관 (ASVS 2.4.5)</li>
+        <li>접근 토큰을 <strong>localStorage 대신</strong> 안전한 위치(HttpOnly 쿠키 등)에 저장해 XSS 탈취 표면 축소</li>
+        <li>리프레시 토큰 회전·폐기 목록(revocation list)으로 탈취 시 무효화 경로 확보</li>
+      </ul>
+    </div>
+    <div class="check-item">
+      <h3>⑥ 전송·보안 헤더</h3>
+      <ul>
+        <li>로그인·인증된 모든 페이지를 <strong>HTTPS 전용</strong>으로 제공, 비밀번호는 TLS로만 전송 (OWASP Auth Cheat Sheet)</li>
+        <li><strong>HSTS</strong>(includeSubDomains, preload) 적용으로 다운그레이드 차단</li>
+        <li>보안 헤더 적용 — Content-Security-Policy, X-Content-Type-Options, Referrer-Policy 등</li>
+        <li>분리된 인증 서버·검증기 사이 통신은 상호 인증 TLS로 보호 (ASVS 2.2.5)</li>
+        <li>쿠키 <code>Secure</code> 플래그와 HTTPS 정합성 확인(혼합 콘텐츠 없음)</li>
+      </ul>
+    </div>
+    <div class="check-item">
+      <h3>⑦ 계정 복구·이메일 검증</h3>
+      <ul>
+        <li>복구는 <strong>시간 제한 1회용 토큰</strong>(만료 후 무효)으로만, 현재 비밀번호를 노출하지 않음 (ASVS 2.5.1·2.5.3)</li>
+        <li>비밀번호 힌트·지식기반 질문(KBA) 사용 금지 (ASVS 2.5.2)</li>
+        <li>인증 요소 변경·복구 시 사용자에게 알림 발송 (ASVS 2.5.5)</li>
+        <li>가입·복구·로그인 응답을 동일하게 처리해 <span class="hl">사용자 열거(enumeration) 차단</span> — "해당 주소가 등록돼 있으면 메일을 보냅니다" 식 일반 메시지 (OWASP Auth Cheat Sheet)</li>
+        <li>아웃오브밴드 복구 요청은 10분 내 만료, 코드는 1회용 (ASVS 2.7.2·2.7.3)</li>
+      </ul>
+    </div>
+    <div class="check-item">
+      <h3>⑧ 로깅·모니터링</h3>
+      <ul>
+        <li>로그인 성공·실패, MFA 사용, 비밀번호/요소 변경 등 <strong>인증 이벤트를 감사 로그로 기록</strong></li>
+        <li>실패 급증·계정당 다지역 로그인 등 <strong>이상 징후 탐지·알림</strong> 구성</li>
+        <li>로그에 <strong>비밀번호·토큰·OTP·세션ID 등 민감정보를 절대 기록하지 않음</strong></li>
+        <li>다요소 OTP 재사용은 거부하고 기록 후 기기 보유자에게 알림 (ASVS 2.8.5)</li>
+        <li>인증 변경 시 안전한 채널로 알림 발송 — SMS·이메일보다 푸시 선호 (ASVS 2.2.3)</li>
+      </ul>
+    </div>
+  </section>
+
+  <h2><span class="num">2</span>자주 빠지는 함정<span class="h2-sub" style="display:block">표준 위반으로 가장 흔히 출시를 막는 패턴들입니다.</span></h2>
+
+  <section class="failure-modes">
+    <div class="danger">
+      <div class="label">FAILURE MODE 1</div>
+      <div class="name">평문 저장 또는 약한 해시</div>
+      <p>비밀번호를 평문·가역 암호화로 저장하거나 솔트 없는 MD5/SHA-1처럼 빠른 일반 해시를 쓰는 경우입니다. DB 유출 한 번으로 전체 계정이 즉시 노출됩니다. Argon2id 등 전용 단방향 KDF에 고유 솔트를 적용해야 합니다 (ASVS 2.4.1).</p>
+    </div>
+    <div class="danger">
+      <div class="label">FAILURE MODE 2</div>
+      <div class="name">사용자 열거가 가능한 에러·응답</div>
+      <p>"존재하지 않는 아이디" vs "비밀번호 오류"처럼 메시지·상태코드·응답시간이 갈리면 공격자가 유효 계정을 수집합니다. 로그인·가입·복구 모두 동일 메시지·동일 처리 경로·일정한 응답시간으로 통일해야 합니다.</p>
+    </div>
+    <div class="danger">
+      <div class="label">FAILURE MODE 3</div>
+      <div class="name">OTP를 가짜 사이트에 입력 (피싱)</div>
+      <p>SMS·TOTP 코드를 기본 MFA로만 두면, 피싱 사이트가 실시간으로 코드를 중계해 우회합니다. 피싱 저항성이 있는 패스키/WebAuthn을 먼저 제시하고 SMS는 보조로만 한정해야 합니다 (ASVS 2.2.2·2.2.4).</p>
+    </div>
+  </section>
+
+  <section class="try">
+    <div class="label">VERIFY · DONE 기준 (출시 가능 판단)</div>
+    <h3>아래 7개를 모두 충족하면 go, 하나라도 미충족이면 no-go</h3>
+    <ol>
+      <li><strong>저장 검증</strong> — 스테이징 DB 덤프를 떠서 비밀번호 컬럼이 Argon2id/bcrypt/PBKDF2 해시이며 솔트가 계정마다 다른지 직접 확인했다.</li>
+      <li><strong>대입 방어 검증</strong> — 한 계정에 반복 실패를 자동화로 시도해 시간당 100회 이내에서 throttle/잠금이 작동하고, 잠금 중에도 복구 경로가 열려 있음을 확인했다.</li>
+      <li><strong>MFA 검증</strong> — TOTP 또는 패스키 등록·로그인이 동작하고, 강한 방식이 SMS보다 먼저 제시되며 코드가 1회용·시간제한임을 확인했다.</li>
+      <li><strong>세션 검증</strong> — 쿠키에 HttpOnly·Secure·SameSite가 모두 붙고, 로그인 시 세션ID가 회전하며 로그아웃 후 기존 세션이 서버에서 무효화됨을 확인했다.</li>
+      <li><strong>토큰·전송 검증</strong> — JWT 서명·exp·aud가 매 요청 검증되고 <code>alg:none</code>이 거부되며, 모든 인증 경로가 HTTPS·HSTS로만 제공됨을 확인했다.</li>
+      <li><strong>복구·열거 검증</strong> — 복구 토큰이 1회용·시간제한이고, 존재/미존재 계정에 대한 로그인·복구 응답이 메시지·시간·상태코드까지 동일함을 확인했다.</li>
+      <li><strong>로깅 검증</strong> — 인증 이벤트가 감사 로그에 남고 이상 탐지 알림이 동작하며, 로그 샘플에 비밀번호·토큰·OTP가 없음을 확인했다.</li>
+    </ol>
+  </section>
+
+  <aside class="source-note">
+    <div class="label">SOURCES · 근거 표준</div>
+    <ol>
+      <li>OWASP Application Security Verification Standard (ASVS) 4.0 — V2 Authentication (V2.1 비밀번호, V2.2 안티오토메이션, V2.4 자격증명 저장, V2.5 복구, V2.7/V2.8 OTP 검증) — <a href="https://github.com/OWASP/ASVS/blob/master/4.0/en/0x11-V2-Authentication.md">github.com/OWASP/ASVS</a></li>
+      <li>OWASP Authentication Cheat Sheet — 비밀번호 정책, 사용자 열거 방지, 계정 잠금·rate limiting, MFA, 안전한 복구, 전송 보안 — <a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">cheatsheetseries.owasp.org</a></li>
+      <li>OWASP Password Storage Cheat Sheet — Argon2id 1순위, bcrypt(work factor ≥ 10)·scrypt·PBKDF2 파라미터 — <a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">cheatsheetseries.owasp.org</a></li>
+      <li>NIST SP 800-63B Digital Identity Guidelines — 최소 길이·유출목록(blocklist) 대조·복잡도 규칙 미강제 — <a href="https://pages.nist.gov/800-63-4/sp800-63b.html">pages.nist.gov/800-63-4</a></li>
+    </ol>
+  </aside>
+
+  <footer>
+    <p>Generated with adaptive-html-blog-writer v2 · mode: checklist_playbook</p>
+  </footer>
+</main>
+</body>
+</html>

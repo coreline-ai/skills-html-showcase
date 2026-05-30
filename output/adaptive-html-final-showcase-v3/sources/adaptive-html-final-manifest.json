@@ -1,0 +1,150 @@
+{
+  "name": "adaptive-html-final",
+  "version": "4.3.3",
+  "language": "ko",
+  "entry": "SKILL.md",
+  "assets": [
+    "assets/theme.css",
+    "assets/components.css",
+    "assets/visual-components.css",
+    "assets/layouts.css",
+    "assets/print.css",
+    "assets/base.html"
+  ],
+  "layouts": [
+    "beginner-learning.html",
+    "expert-report.html",
+    "magazine-article.html",
+    "course-module.html",
+    "personal-blog-essay.html",
+    "seo-dashboard.html",
+    "platform-adaptation.html",
+    "skill-audit-report.html",
+    "reference-manual.html",
+    "comparison-matrix.html",
+    "case-study.html",
+    "landing-brief.html",
+    "checklist-playbook.html"
+  ],
+  "modes": [
+    {
+      "id": "skill_audit",
+      "layout": "skill-audit-report.html"
+    },
+    {
+      "id": "platform_blog",
+      "layout": "platform-adaptation.html"
+    },
+    {
+      "id": "seo_dashboard",
+      "layout": "seo-dashboard.html"
+    },
+    {
+      "id": "education_html",
+      "layout": "course-module.html"
+    },
+    {
+      "id": "expert_html",
+      "layout": "expert-report.html"
+    },
+    {
+      "id": "article_html",
+      "layout": "magazine-article.html"
+    },
+    {
+      "id": "blog_writer",
+      "layout": "personal-blog-essay.html"
+    },
+    {
+      "id": "beginner_html",
+      "layout": "beginner-learning.html"
+    },
+    {
+      "id": "reference_html",
+      "layout": "reference-manual.html"
+    },
+    {
+      "id": "comparison_html",
+      "layout": "comparison-matrix.html"
+    },
+    {
+      "id": "case_study_html",
+      "layout": "case-study.html"
+    },
+    {
+      "id": "landing_brief_html",
+      "layout": "landing-brief.html"
+    },
+    {
+      "id": "checklist_playbook",
+      "layout": "checklist-playbook.html"
+    }
+  ],
+  "design": "editorial-learning-v4.3.3-responsive-polish",
+  "merged_from": [
+    "adaptive-html-learning-ultimate@3.0.0 (13-mode router, layouts, eval rubric, recipes, schemas, layered CSS)",
+    "adaptive-html-blog-writer@2.0.0 (blog/SEO/platform/box-selection 상세 references)"
+  ],
+  "integrates": [
+    "adaptive-html-blog-writer-v2",
+    "adaptive-html-learning-ultimate",
+    "html-for-beginners design DNA"
+  ],
+  "aliases": [
+    "adaptive-html-learning-ultimate",
+    "adaptive-html-blog-writer-v2"
+  ],
+  "changes": [
+    "blog-seo-system / writing-system / platform-system / editorial-design-system references를 blog-writer 상세본으로 흡수",
+    "SKILL.md description에 명시적 트리거 목록과 출력 원칙 추가",
+    "skip link 접근성 버그 수정: 13개 레이아웃 <main>에 id=\"main\" 통일",
+    "v4.1.0: modes를 13개 {id, layout} 객체 배열로 표준화하고 SKILL.md §3 라우터와 일치",
+    "v4.1.0: 접근성 테스트 체크리스트 추가, recipes 13/13 완비, blog-meta/quality-report 스키마 보강",
+    "v4.1.0: layouts.css 미정의 클래스 39개 정의로 차집합 0 달성, AA 대비·focus-visible·reduced-motion 보강",
+    "v4.1.0: base.html에 선택적 {{FOOTER}} 슬롯 추가",
+    "v4.2.0: Visual Template System 추가 — 8000×6000 SVG 인포그래픽 템플릿 7종과 렌더러 도입",
+    "v4.2.0: visual brief schema, visual-components.css, figure 삽입/품질 게이트 추가",
+    "v4.2.1: quality-gate SVG 레이아웃을 2×3 카드 그리드 + 충분한 높이의 PRE-FLIGHT 패널로 교정",
+    "v4.2.1: 납작한 하단 배너/텍스트-footer 겹침 방지 규칙을 렌더러와 품질 게이트에 반영",
+    "v4.3.0: section wrapper와 grid/card wrapper 분리 — h2/h2-sub/body/table이 grid item으로 쪼개지는 레이아웃 결함 수정",
+    "v4.3.0: components/theme에 long-token overflow 방지와 caption 음수 margin 금지 안전장치 추가",
+    "v4.3.0: validate_output.py 정적 품질 게이트 추가 — h1/main/local refs/caption/grid/source sync/visual figure 검사",
+    "v4.3.1: section/card 내부 첫 heading margin reset으로 카드 상단 과다 여백 방지",
+    "v4.3.1: .try 내부 밝은 카드 텍스트 contrast reset 추가",
+    "v4.3.1: winners/tradeoffs 의미형 블록 grid 오배치와 case timeline left rule 중복 방지",
+    "v4.3.1: validate_output.py에 디자인 회귀 정적 검사 4종 추가",
+    "v4.3.1: output CSS snapshot/css-integrity.json/inline hash marker를 validate_output.py에서 강제",
+    "v4.3.1: .try .cta-box accent left rule 복구와 timeline-card 굵은 left rule 회귀 검사 추가",
+    "v4.3.1: --ink-mute를 #666으로 상향해 h2-sub/caption/meta 흐림 완화",
+    "v4.3.1: timeline-card ordered-list marker 여백 보강",
+    "v4.3.1: 표 내부 status-pill nowrap/center 정렬로 등급 배지 세로 깨짐 방지",
+    "v4.3.2: dark soft CTA 내부 tag pill 대비 보강으로 태그 텍스트 가독성 회복",
+    "v4.3.2: blog_writer 섹션 h2 자동 번호 badge를 CSS counter로 통일",
+    "v4.3.2: SEO SERP title을 literal Google blue/Arial에서 editorial balanced title로 조정",
+    "v4.3.2: validate_output.py에 h2-sub 닫는 태그 오류, blog counter, try tag contrast, SERP title style 회귀 검사 추가",
+    "v4.3.3: dark CTA 내부 링크 전용 --link-on-dark 토큰과 .try a 대비 reset 추가",
+    "v4.3.3: platform-grid를 inner wrapper 전용으로 제한하고 section.platform-grid 회귀 검사 추가",
+    "v4.3.3: mobile-card-table 패턴으로 4열 이상 표를 390px에서 카드형으로 전환 가능하게 추가",
+    "v4.3.3: case timeline을 단일 거대 카드 대신 개별 step card로 렌더링하는 CSS 추가",
+    "v4.3.3: table caption 누락, dark CTA link reset 누락, platform grid section 사용을 validate_output.py에서 실패 처리"
+  ],
+  "updated": "2026-05-30",
+  "visual_templates": [
+    "visual-templates/hero-map.svg.tpl",
+    "visual-templates/card-grid.svg.tpl",
+    "visual-templates/decision-tree.svg.tpl",
+    "visual-templates/quality-gate.svg.tpl",
+    "visual-templates/timeline.svg.tpl",
+    "visual-templates/matrix.svg.tpl",
+    "visual-templates/checklist-flow.svg.tpl"
+  ],
+  "scripts": [
+    "scripts/render_visual_svg.py",
+    "scripts/validate_output.py"
+  ],
+  "schemas": [
+    "schemas/blog-meta.schema.json",
+    "schemas/quality-report.schema.json",
+    "schemas/visual-brief.schema.json"
+  ]
+}

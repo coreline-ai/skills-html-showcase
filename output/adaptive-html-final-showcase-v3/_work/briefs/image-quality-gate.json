@@ -1,0 +1,29 @@
+{
+  "type": "quality-gate",
+  "title": "이미지 삽입 품질 게이트",
+  "subtitle": "삽입 전 반드시 통과해야 하는 검수 항목",
+  "items": [
+    {
+      "title": "8000x6000 캔버스"
+    },
+    {
+      "title": "figure + figcaption"
+    },
+    {
+      "title": "의미 있는 alt 텍스트"
+    },
+    {
+      "title": "본문 내용과 정합"
+    },
+    {
+      "title": "텍스트 잘림 없음"
+    },
+    {
+      "title": "라이선스·출처 표기"
+    },
+    {
+      "title": "삽입 전 필수 검수: 장식이 아니라 정보인가?"
+    }
+  ],
+  "footer": "quality/accessibility 체크리스트 연동"
+}

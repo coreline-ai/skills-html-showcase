@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://adaptive-html-final.local/schemas/visual-brief.schema.json",
+  "title": "Adaptive HTML Visual Brief",
+  "type": "object",
+  "required": ["type", "title", "subtitle", "items"],
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["hero-map", "card-grid", "decision-tree", "quality-gate", "timeline", "matrix", "checklist-flow"]
+    },
+    "title": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "subtitle": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "footer": { "type": "string", "maxLength": 160 },
+    "width": { "type": "integer", "minimum": 8000, "default": 8000 },
+    "height": { "type": "integer", "minimum": 6000, "default": 6000 },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "required": ["title"],
+        "additionalProperties": false,
+        "properties": {
+          "title": { "type": "string", "minLength": 1, "maxLength": 60 },
+          "label": { "type": "string", "maxLength": 40 },
+          "description": { "type": "string", "maxLength": 180 },
+          "lines": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 4,
+            "items": { "type": "string", "maxLength": 80 }
+          },
+          "score": { "type": ["string", "number"] },
+          "accent": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+        }
+      }
+    }
+  }
+}

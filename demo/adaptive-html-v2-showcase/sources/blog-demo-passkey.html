@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>패스키란? 비밀번호 없는 로그인의 원리와 도입 체크리스트</title>
+<meta name="description" content="패스키(passkey)는 비밀번호 대신 기기의 생체인증으로 로그인하는 방식입니다. 공개키 암호가 서버 유출과 피싱을 어떻게 구조적으로 막는지, 등록·로그인 흐름과 실제 도입 시 점검할 항목까지 처음 보는 사람도 이해하도록 정리했습니다.">
+<meta name="robots" content="index,follow">
+<!-- canonical 자리: 실제 발행 도메인으로 교체하세요 -->
+<!-- <link rel="canonical" href="https://example.com/blog/passkey-basics"> -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "패스키란? 비밀번호 없는 로그인의 원리와 도입 체크리스트",
+  "description": "패스키(passkey)는 비밀번호 대신 기기의 생체인증으로 로그인하는 방식입니다. 공개키 암호가 피싱과 유출을 어떻게 막는지, 로그인 흐름과 도입 시 점검할 항목을 정리했습니다.",
+  "inLanguage": "ko"
+}
+</script>
+<style>
+:root{
+  --bg:#f5f5f0;--ink:#1a1a1a;--ink-soft:#4a4a4a;--ink-mute:#7a7a7a;--line:#d8d8d0;--card:#ffffff;
+  --accent:#e63946;--accent-soft:#fce4e6;--term-bg:#fffaf2;--term-border:#e8d9b8;
+  --analogy-bg:#f0f4f8;--analogy-border:#b8cad8;--danger-bg:#fff0ee;--danger-border:#e8b8b2;
+  --good-bg:#eef7f1;--good-border:#b8d8c2;--hl-yellow:#ffe9a3;--hl-blue:#cfe5f5;--hl-pink:#fbd3da;
+  --serif:'Noto Serif KR',serif;--sans:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:60px 28px 100px}
+
+/* 헤더 */
+.kicker{font-size:13px;letter-spacing:0.18em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:36px;line-height:1.35;font-weight:700;margin-bottom:14px;letter-spacing:-0.01em}
+.lead{font-size:16px;color:var(--ink-soft);margin-bottom:24px}
+.byline{font-size:13px;color:var(--ink-mute);padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:8px}
+
+/* 블로그 블록: 요약/목차/FAQ/CTA/출처 */
+.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin:24px 0}
+.summary-card .label,.toc .label,.faq .label,.cta-box .label,.source-note .label{
+  font-size:11px;font-weight:800;letter-spacing:0.14em;color:var(--accent);margin-bottom:8px;text-transform:uppercase}
+.summary-card p{margin:0}
+.toc strong{display:block;font-size:14px;color:var(--ink);margin-bottom:8px}
+.toc ol{margin:0 0 0 20px;color:var(--ink-soft)}
+.toc a{color:var(--ink-soft);text-decoration:none}
+.toc a:hover{color:var(--accent);text-decoration:underline}
+.faq h3{font-size:16px;margin:16px 0 6px}
+.faq h3:first-of-type{margin-top:4px}
+.faq p{margin-bottom:0}
+.cta-box p{margin:0}
+.source-note{font-size:13px;color:var(--ink-mute)}
+.source-note p{font-size:13px;color:var(--ink-mute);margin-bottom:8px}
+.source-note p:last-child{margin-bottom:0}
+
+/* 섹션 헤더 */
+h2{font-family:var(--serif);font-size:25px;font-weight:700;margin:64px 0 8px;line-height:1.4;letter-spacing:-0.005em;scroll-margin-top:24px}
+h2 .num{display:inline-block;width:34px;height:34px;background:var(--accent);color:#fff;border-radius:50%;
+  text-align:center;line-height:34px;font-size:15px;font-family:var(--sans);margin-right:12px;vertical-align:3px;font-weight:700}
+.h2-sub{font-size:14px;color:var(--ink-mute);margin-bottom:22px;margin-left:46px}
+h3{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--ink)}
+
+/* 본문 */
+p{margin-bottom:16px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:600}
+ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
+li{margin:6px 0}
+em.t{font-style:normal;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px;font-weight:600;font-size:14px}
+code{font-family:'SF Mono',Menlo,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:13.5px;color:#3a3a3a}
+
+/* 형광 하이라이트 — 얇은 라인 + 둥근 끝 + 스르륵 자동 재생 */
+.hl{--c:var(--hl-yellow);background-image:linear-gradient(transparent 76%, var(--c) 76%);background-repeat:no-repeat;
+  background-size:0% 100%;padding:1px 7px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  animation:hl-sweep .7s cubic-bezier(.4,0,.2,1) .25s forwards}
+.hl.blue{--c:var(--hl-blue)}
+.hl.pink{--c:var(--hl-pink)}
+@keyframes hl-sweep{to{background-size:100% 100%}}
+@media (prefers-reduced-motion:reduce){.hl{animation:none;background-size:100% 100%}}
+
+/* 용어 박스 (노랑) */
+.term{background:var(--term-bg);border:1px solid var(--term-border);border-left:3px solid #d4a256;border-radius:5px;padding:14px 18px;margin:14px 0 18px;font-size:14px}
+.term .label{font-size:11px;color:#a07020;font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.term .word{font-weight:700;color:#1a1a1a;font-size:15px}
+.term .meaning{color:#5a4a30;margin-top:4px;line-height:1.65}
+
+/* 비유 박스 (파랑) */
+.analogy{background:var(--analogy-bg);border:1px solid var(--analogy-border);border-left:3px solid #5e8aa8;border-radius:5px;padding:16px 20px;margin:18px 0;font-size:14.5px}
+.analogy .label{font-size:11px;color:#3a6280;font-weight:700;letter-spacing:0.12em;margin-bottom:6px}
+.analogy p{color:#2a4a60;margin:0;line-height:1.7}
+.analogy p + p{margin-top:8px}
+
+/* 함정 박스 (빨강) */
+.danger{background:var(--danger-bg);border:1px solid var(--danger-border);border-left:3px solid var(--accent);border-radius:5px;padding:16px 20px;margin:14px 0;font-size:14.5px}
+.danger .label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.danger .name{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px}
+.danger p{color:#5a3a36;margin:0;line-height:1.7;font-size:14px}
+.danger p + p{margin-top:8px}
+
+/* 해결책 박스 (녹색) */
+.good{background:var(--good-bg);border:1px solid var(--good-border);border-left:3px solid #4a9d7a;border-radius:5px;padding:16px 20px;margin:14px 0;font-size:14.5px}
+.good .label{font-size:11px;color:#2a7d5a;font-weight:700;letter-spacing:0.12em;margin-bottom:4px}
+.good .name{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px}
+.good p{color:#2a5a4a;margin:0;line-height:1.7;font-size:14px}
+
+/* 영웅 비유 박스 */
+.hero-analogy{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:26px 28px;margin:24px 0 12px}
+.hero-analogy .tag{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:10px}
+.hero-analogy h3{margin:0 0 10px;font-family:var(--serif);font-size:20px;line-height:1.5}
+.hero-analogy p{margin:0;font-size:15px;color:var(--ink-soft)}
+.hero-analogy p + p{margin-top:10px}
+
+/* 일반 카드 */
+.card-block{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 26px;margin:14px 0}
+.card-block h3{margin-top:0;font-size:17px}
+.card-block p{font-size:14.5px;margin-bottom:10px}
+.card-block p:last-child{margin-bottom:0}
+.card-block .case-label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:6px}
+
+/* 인용/흐름 박스 */
+.prompt-box{background:#f8f8f4;border-left:2px solid var(--line);padding:10px 14px;margin-top:10px;font-size:13.5px;color:var(--ink-soft);font-style:italic;line-height:1.65}
+
+/* takeaway 박스 (검정, 마지막) */
+.try{background:#1a1a1a;color:#f5f5f0;border-radius:6px;padding:32px 30px;margin-top:52px}
+.try .label{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:0.15em;margin-bottom:14px}
+.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
+.try ol{padding-left:20px;color:#d0d0c8}
+.try li{margin-bottom:12px;font-size:15px;line-height:1.7}
+.try li strong{color:#fff}
+.try li:last-child{margin-bottom:0}
+
+/* 푸터 */
+.footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+
+/* 모바일 */
+@media (max-width:640px){.wrap{padding:40px 20px 60px}h1{font-size:28px}h2{font-size:22px}}
+</style>
+</head>
+<body>
+<article class="wrap">
+
+  <!-- ━━━ 헤더 ━━━ -->
+  <div class="kicker">AUTH · 패스키 입문</div>
+  <h1>패스키란? 비밀번호 없는<br>로그인의 원리와 도입 체크리스트</h1>
+  <p class="lead">비밀번호를 외우지도, 입력하지도 않는 로그인이 점점 늘고 있습니다. 지문 한 번이면 끝나는데, 그게 어떻게 안전할 수 있을까요? 패스키가 실제로 무엇을 바꾸는지 처음부터 풀어 봅니다.</p>
+  <div class="byline">독자: 로그인·보안을 막 공부하기 시작한 개발자/기획자 · 읽는 데 약 7분</div>
+
+  <!-- ━━━ 요약 ━━━ -->
+  <aside class="summary-card">
+    <div class="label">요약</div>
+    <p>패스키는 비밀번호 대신 <strong>공개키 암호</strong>로 로그인하는 방식입니다. 기기 안에 든 비밀(개인키)은 절대 서버로 전송되지 않고, 서버에는 짝이 되는 공개키만 저장됩니다. 그래서 서버가 털려도 훔칠 비밀번호가 없고, 가짜 사이트로 유도하는 피싱도 구조적으로 막힙니다. 이 글은 그 원리와 로그인 흐름, 그리고 실제 도입 시 점검할 항목을 정리합니다.</p>
+  </aside>
+
+  <!-- ━━━ 목차 ━━━ -->
+  <nav class="toc">
+    <strong>목차</strong>
+    <ol>
+      <li><a href="#s0">패스키, 한 문장으로</a></li>
+      <li><a href="#s1">비밀번호는 왜 구조적으로 약한가</a></li>
+      <li><a href="#s2">패스키가 바꾸는 것 — 인감도장 비유</a></li>
+      <li><a href="#s3">로그인은 실제로 어떻게 일어나나</a></li>
+      <li><a href="#s4">흔한 오해와 함정</a></li>
+      <li><a href="#s5">도입할 때 챙겨야 할 것</a></li>
+    </ol>
+  </nav>
+
+  <!-- ━━━ 0 ━━━ -->
+  <h2 id="s0"><span class="num">0</span>패스키, 한 문장으로</h2>
+  <p class="h2-sub">기본 개념부터.</p>
+
+  <p>패스키(passkey)는 <strong>"이 기기를 가진 사람이 맞다"는 것을 비밀번호 없이 증명하는 열쇠</strong>입니다. 로그인할 때 사용자는 평소 기기를 잠금 해제하던 방식 — 지문, 얼굴, PIN — 을 그대로 쓰고, 실제 인증은 기기 안에 숨겨진 암호 열쇠가 처리합니다.</p>
+
+  <div class="term">
+    <div class="label">용어</div>
+    <span class="word">패스키 / WebAuthn (Web Authentication, 웹 인증 표준) / FIDO2</span>
+    <div class="meaning">패스키는 사용자가 보는 이름이고, 그 밑에서 동작하는 기술 표준이 <em class="t">WebAuthn</em>과 <em class="t">FIDO2</em>입니다. WebAuthn은 브라우저·앱·운영체제가 "공개키 방식으로 로그인하자"고 합의한 공통 규칙이라고 보면 됩니다. 즉 애플·구글·마이크로소프트가 각자 만든 게 아니라, 같은 표준을 함께 구현하는 것입니다.</div>
+  </div>
+
+  <!-- ━━━ 1 ━━━ -->
+  <h2 id="s1"><span class="num">1</span>비밀번호는 왜 구조적으로 약한가</h2>
+  <p class="h2-sub">기술이 아니라 구조의 문제.</p>
+
+  <p>비밀번호의 약점은 사용자가 게을러서가 아닙니다. <span class="hl">"같은 비밀을 사용자와 서버가 둘 다 알고 있어야 한다"</span>는 구조 자체가 문제입니다. 비밀을 공유하는 순간, 그 비밀은 여러 곳에서 새어 나갈 수 있습니다.</p>
+
+  <div class="danger">
+    <div class="label">함정 1</div>
+    <div class="name">서버에 비밀이 저장된다</div>
+    <p>로그인하려면 서버도 비밀번호(의 해시)를 들고 있어야 합니다. 그래서 서버가 한 번 털리면 수백만 개의 비밀번호가 한꺼번에 유출됩니다. 사용자가 아무리 강한 비밀번호를 써도 막을 수 없는 일입니다.</p>
+  </div>
+
+  <div class="danger">
+    <div class="label">함정 2</div>
+    <div class="name">재사용이 연쇄 붕괴를 부른다</div>
+    <p>한 사이트에서 새어 나간 비밀번호는 곧장 다른 사이트에 자동으로 대입됩니다. 이를 <em class="t">credential stuffing(자격증명 스터핑)</em>이라 합니다. 비밀번호 하나를 여기저기 돌려 쓰는 습관이 약점을 곱셈으로 키웁니다.</p>
+  </div>
+
+  <div class="danger">
+    <div class="label">함정 3</div>
+    <div class="name">사람은 가짜 사이트를 구별 못 한다</div>
+    <p>진짜와 똑같이 생긴 가짜 로그인 페이지에 비밀번호를 그대로 넣어 주는 일이 <em class="t">phishing(피싱)</em>입니다. 비밀번호는 "입력하는 정보"라서, 어디에 입력하든 그냥 넘어가 버립니다. 사람 눈을 속이면 그대로 뚫립니다.</p>
+  </div>
+
+  <p>2단계 인증(OTP)을 붙여도 이 셋이 완전히 사라지진 않습니다. OTP 코드 역시 사람이 가짜 사이트에 입력해 줄 수 있는, <strong>"공유되는 비밀"</strong>이기 때문입니다. 문제의 뿌리를 바꾸려면 비밀을 공유하지 않는 방식이 필요합니다.</p>
+
+  <!-- ━━━ 2 ━━━ -->
+  <h2 id="s2"><span class="num">2</span>패스키가 바꾸는 것 — 인감도장 비유</h2>
+  <p class="h2-sub">한 줄 핵심.</p>
+
+  <div class="hero-analogy">
+    <div class="tag">핵심 메시지</div>
+    <h3>"비밀을 공유하는 대신,<br>서명을 보여 준다."</h3>
+    <p>비밀번호는 금고 열쇠를 통째로 상대에게 건네는 방식입니다. 패스키는 열쇠는 내 손을 떠나지 않고, <strong>그 열쇠로만 찍을 수 있는 도장 자국</strong>만 상대에게 보여 줍니다. 상대는 자국을 보고 진짜임을 확인하지만, 열쇠 자체는 끝까지 못 가져갑니다.</p>
+  </div>
+
+  <div class="analogy">
+    <div class="label">인감도장 비유</div>
+    <p>패스키는 <strong>인감도장</strong>과 같습니다. 내 도장(개인키)은 집 금고에 두고 절대 밖으로 안 꺼냅니다. 대신 관공서에는 <strong>인감증명서(공개키)</strong>를 미리 등록해 둡니다.</p>
+    <p>거래할 때는 도장을 찍은 서류를 보여 주면 됩니다. 상대는 등록된 인감과 대조해 "진짜 도장이 맞네"라고 확인하지요. 도장 자국을 아무리 들여다봐도 <strong>도장 원본을 깎아 만들 수는 없습니다.</strong> 패스키의 공개키/개인키도 정확히 이 관계입니다.</p>
+  </div>
+
+  <div class="term">
+    <div class="label">용어</div>
+    <span class="word">공개키 / 개인키 (public key / private key)</span>
+    <div class="meaning">한 쌍으로 만들어지는 두 개의 열쇠입니다. <strong>개인키</strong>는 기기 안 보안 영역에 갇혀 절대 밖으로 나가지 않고, <strong>공개키</strong>는 서버에 등록됩니다. 개인키로 만든 서명은 짝이 되는 공개키로만 검증되며, 공개키로는 개인키를 거꾸로 알아낼 수 없습니다. 그래서 공개키는 이름처럼 "공개돼도 안전한" 정보입니다.</div>
+  </div>
+
+  <p>그래서 서버가 보관하는 것은 공개키뿐입니다. 서버가 통째로 유출돼도 <span class="hl blue">훔쳐 갈 비밀이 애초에 없습니다.</span> 함정 1이 사라집니다.</p>
+
+  <!-- ━━━ 3 ━━━ -->
+  <h2 id="s3"><span class="num">3</span>로그인은 실제로 어떻게 일어나나</h2>
+  <p class="h2-sub">등록 한 번, 로그인은 매번 세 단계.</p>
+
+  <p>처음 한 번은 <strong>등록</strong>을 합니다. 기기가 공개키/개인키 쌍을 만들고, 공개키만 서버에 올려 두는 단계입니다. 이후 로그인은 매번 아래 흐름을 따릅니다.</p>
+
+  <div class="card-block">
+    <div class="case-label">단계 1</div>
+    <h3>서버가 일회용 도전값을 던진다</h3>
+    <p>로그인을 시작하면 서버는 매번 다른 무작위 값(<em class="t">challenge, 챌린지</em>)을 보냅니다. 매번 값이 달라지므로, 예전에 가로챈 응답을 재사용하는 공격이 통하지 않습니다.</p>
+    <div class="prompt-box">서버 → 기기: "이 번호 12A9F…에 네 도장을 찍어서 보내 줘. 이번에만 유효해."</div>
+  </div>
+
+  <div class="card-block">
+    <div class="case-label">단계 2</div>
+    <h3>기기가 잠금 해제 후 서명한다</h3>
+    <p>사용자가 지문이나 얼굴로 기기를 잠금 해제하면, 기기는 그제서야 개인키로 챌린지에 <strong>서명</strong>합니다. 중요한 점 — 생체정보는 기기 밖으로 나가지 않고, 오직 "기기를 잠금 해제했다"는 신호로만 쓰입니다.</p>
+    <div class="prompt-box">기기 → 서버: 서명된 응답 + "이 응답은 'real-site.com'에 대한 것임"</div>
+  </div>
+
+  <div class="card-block">
+    <div class="case-label">단계 3</div>
+    <h3>서버가 공개키로 검증한다</h3>
+    <p>서버는 등록해 둔 공개키로 서명이 진짜인지 확인합니다. 맞으면 로그인 성공. 비밀번호를 주고받은 적이 한 번도 없는데 신원이 증명된 셈입니다.</p>
+  </div>
+
+  <p>여기서 피싱이 막히는 핵심이 단계 2에 숨어 있습니다. 패스키는 서명에 <strong>"어느 사이트에 대한 로그인인지"(origin, 출처)</strong>를 함께 묶습니다. 가짜 사이트 <code>real-s1te.com</code>에서 로그인을 시도하면 출처가 어긋나 <span class="hl pink">서명 자체가 만들어지지 않습니다.</span> 사람이 속아도 기계가 안 속습니다. 함정 3이 사라집니다.</p>
+
+  <!-- ━━━ 4 ━━━ -->
+  <h2 id="s4"><span class="num">4</span>흔한 오해와 함정</h2>
+  <p class="h2-sub">"그럼 기기를 잃어버리면?" 같은 질문들.</p>
+
+  <div class="danger">
+    <div class="label">오해 1</div>
+    <div class="name">"생체정보가 서버로 넘어가는 거 아냐?"</div>
+    <p>아닙니다. 지문·얼굴 데이터는 기기의 보안 영역에 머물고 서버로 전송되지 않습니다. 서버가 받는 것은 "잠금 해제 후 만들어진 서명"뿐입니다. 생체정보는 로그인 신호의 방아쇠일 뿐, 전송 대상이 아닙니다.</p>
+  </div>
+
+  <div class="good">
+    <div class="label">바로잡기</div>
+    <div class="name">전송되는 것은 서명이지 신체정보가 아니다</div>
+    <p>"생체인증 = 내 지문이 서버에 올라간다"는 직관은 틀렸습니다. 생체정보는 <strong>기기를 여는 열쇠</strong>일 뿐이고, 서버와 오가는 것은 암호학적 서명입니다.</p>
+  </div>
+
+  <div class="danger">
+    <div class="label">오해 2</div>
+    <div class="name">"기기를 잃어버리면 계정도 끝난다"</div>
+    <p>요즘 패스키는 대부분 클라우드 계정(애플 iCloud 키체인, 구글 비밀번호 관리자 등)에 안전하게 동기화됩니다. 새 폰을 사면 패스키도 따라옵니다. 다만 동기화 범위와 복구 흐름은 플랫폼·구현마다 다르므로 <strong>확인이 필요합니다.</strong></p>
+  </div>
+
+  <div class="good">
+    <div class="label">해결책</div>
+    <div class="name">복구 경로를 처음부터 설계한다</div>
+    <p>패스키를 도입해도 "기기를 모두 잃었을 때" 들어올 길은 따로 마련해야 합니다. 보조 패스키 등록, 백업 코드, 신뢰 기기 기반 복구 중 무엇을 쓸지 미리 정해 두는 것이 안전합니다.</p>
+  </div>
+
+  <div class="danger">
+    <div class="label">오해 3</div>
+    <div class="name">"패스키 = 비밀번호의 완전 대체, 당장 전부 갈아엎자"</div>
+    <p>현실에서는 한동안 비밀번호와 공존합니다. 모든 사용자의 기기·브라우저가 패스키를 지원하지 않고, 계정 복구 같은 예외 경로도 필요합니다. 한 번에 전부 바꾸려다 로그인 자체를 막아 버리는 일이 더 위험합니다.</p>
+  </div>
+
+  <!-- ━━━ 5 ━━━ -->
+  <h2 id="s5"><span class="num">5</span>도입할 때 챙겨야 할 것</h2>
+  <p class="h2-sub">기능 추가가 아니라 로그인 경험 재설계.</p>
+
+  <p>패스키 도입은 "로그인 버튼 하나 추가"가 아니라 <strong>로그인·복구·기기 관리 전체를 다시 보는 일</strong>입니다. 최소한 다음을 정해 두면 시작이 한결 수월합니다.</p>
+
+  <ul>
+    <li><strong>점진적 도입.</strong> 비밀번호를 유지한 채 패스키를 "추가 옵션"으로 먼저 제공하고, 사용 비율을 보며 확대합니다.</li>
+    <li><strong>다중 등록 허용.</strong> 한 계정에 폰·노트북·보안키 등 패스키를 여러 개 등록할 수 있게 합니다. 기기 분실에 대한 1차 안전망입니다.</li>
+    <li><strong>복구 경로 분리 설계.</strong> 패스키를 모두 잃었을 때의 절차를 별도로 정의합니다.</li>
+    <li><strong>표준 라이브러리 사용.</strong> WebAuthn 처리는 직접 구현하기보다 검증된 라이브러리에 맡깁니다. 챌린지 생성, 출처 검증, 서명 확인은 어긋나면 곧 보안 구멍이 됩니다.</li>
+  </ul>
+
+  <div class="good">
+    <div class="label">권장 패턴</div>
+    <div class="name">"비밀번호 제거"가 아니라 "비밀번호 의존도 낮추기"부터</div>
+    <p>목표를 "비밀번호 즉시 폐기"로 잡으면 도입이 어렵습니다. "패스키를 쓰는 사용자에겐 비밀번호를 묻지 않는다"처럼, 의존도를 단계적으로 낮추는 목표가 현실적이고 안전합니다.</p>
+  </div>
+
+  <div class="try">
+    <div class="label">지금 해볼 만한 것</div>
+    <h3>패스키를 직접 만져 보는 가장 빠른 길</h3>
+    <ol>
+      <li><strong>내 계정에 패스키부터 켜 보기.</strong> 구글·애플·깃허브 보안 설정에서 패스키를 등록해 로그인 경험을 직접 느껴 봅니다. 이해 속도가 확 빨라집니다.</li>
+      <li><strong>등록·로그인 흐름을 그림으로 정리.</strong> 이 글의 단계 1~3을 본인 서비스에 맞춰 도식화해 봅니다. 어디서 챌린지를 만들고 어디서 검증하는지가 보입니다.</li>
+      <li><strong>복구 시나리오 먼저 적기.</strong> "기능"보다 "기기를 다 잃었을 때"를 먼저 적어 두면, 실제 도입 설계가 무너지지 않습니다.</li>
+    </ol>
+  </div>
+
+  <!-- ━━━ FAQ ━━━ -->
+  <section class="faq">
+    <div class="label">FAQ</div>
+    <h3>Q. 패스키는 비밀번호보다 무조건 안전한가요?</h3>
+    <p>피싱·서버 유출·재사용이라는 비밀번호의 구조적 약점을 제거한다는 점에서 분명히 더 강합니다. 다만 안전성은 기기 보안과 복구 흐름 설계에도 달려 있어, "도입했으니 끝"은 아닙니다.</p>
+    <h3>Q. 비밀번호를 완전히 없애야 하나요?</h3>
+    <p>아닙니다. 당분간은 공존이 현실적입니다. 패스키를 우선 경로로 두되 예외 상황을 위한 대체 경로를 함께 두는 편이 안전합니다.</p>
+    <h3>Q. 기기를 잃어버리면 계정에 영영 못 들어가나요?</h3>
+    <p>대부분의 패스키는 클라우드 계정으로 동기화되어 새 기기로 이어집니다. 동기화·복구 동작은 플랫폼마다 다르므로 사용하는 환경 기준으로 확인이 필요합니다.</p>
+    <h3>Q. 개발자가 직접 암호화 코드를 짜야 하나요?</h3>
+    <p>권장하지 않습니다. WebAuthn 표준을 구현한 검증된 라이브러리를 쓰고, 서버는 챌린지 발급과 서명 검증 같은 핵심 로직에 집중하는 편이 안전합니다.</p>
+  </section>
+
+  <!-- ━━━ CTA ━━━ -->
+  <div class="cta-box">
+    <div class="label">다음 행동</div>
+    <p>오늘 쓰는 서비스 한 곳에서 패스키를 켜 보세요. 직접 한 번 로그인해 보면 이 글의 단계 1~3이 손에 잡힙니다. 그다음, 본인 서비스의 로그인 흐름에 "패스키 추가 옵션"을 어디에 넣을지 한 문장으로 적어 보세요.</p>
+  </div>
+
+  <!-- ━━━ 출처/검증 메모 ━━━ -->
+  <div class="source-note">
+    <div class="label">출처 · 검증 메모</div>
+    <p>이 글은 특정 외부 기사를 옮긴 것이 아니라, 공개 표준(WebAuthn/FIDO2)의 일반적으로 알려진 동작을 처음 보는 독자용으로 풀어 쓴 원작 설명글입니다.</p>
+    <p>공개키/개인키 구조, 챌린지-응답, 출처(origin) 기반 피싱 방지는 표준의 정립된 동작입니다. 반면 플랫폼별 동기화·복구 방식, 기기/브라우저 지원 범위는 시점에 따라 달라지므로 도입 전 공식 문서로 <strong>확인이 필요</strong>합니다. 시장 점유율·유출 통계 같은 수치는 근거 확인 없이 본문에 넣지 않았습니다.</p>
+  </div>
+
+  <div class="footer">Generated with adaptive-html-blog-writer · mode: blog_seo_html</div>
+
+</article>
+</body>
+</html>

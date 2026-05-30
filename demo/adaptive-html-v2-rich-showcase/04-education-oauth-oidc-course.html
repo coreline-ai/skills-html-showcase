@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OAuth/OIDC PKCE·nonce·ID Token 검증 실습 코스</title>
+  <meta name="description" content="OAuth/OIDC code flow hardening을 state, nonce, PKCE, JWKS, ID Token 검증 관점에서 배우는 실습형 교육 HTML입니다.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+  <link rel="stylesheet" href="assets/components.css">
+  <link rel="stylesheet" href="assets/layouts.css">
+  <style>
+    .source-box a,.linklike{color:var(--accent-2)}
+    .hero-note{font-size:19px;color:var(--ink-soft);line-height:1.75}
+    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+    .flow .mini-card{min-height:150px}
+    .long-list li{margin-bottom:10px}
+    .callout-title{font-weight:900;color:var(--accent-2);margin-bottom:8px}
+    .score{font-size:34px;font-weight:900;color:var(--accent);line-height:1}
+    .small{font-size:13px;color:var(--muted)}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+    .pill-row span{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted)}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--term);border:1px solid var(--line);border-radius:8px;padding:2px 7px}
+    @media(max-width:760px){.flow,.two-col{grid-template-columns:1fr}}
+  </style>
+</head>
+<body class="layout-education">
+<a href="#main" class="skip">본문으로 건너뛰기</a>
+<main id="main" class="page">
+<header class="header">
+  <div class="kicker">Adaptive HTML v2 · education</div>
+  <h1>OAuth/OIDC PKCE·nonce·ID Token 검증 실습 코스</h1>
+  <p class="sub">OAuth/OIDC code flow hardening을 state, nonce, PKCE, JWKS, ID Token 검증 관점에서 배우는 실습형 교육 HTML입니다.</p>
+  <div class="meta"><span>생성일 2026-05-30</span><span>병렬 에이전트 리서치 기반</span><span>모드: education</span><span>OIDC</span><span>PKCE</span><span>training</span></div>
+</header>
+
+<section class="learning-goals"><h2><span class="no">1</span>학습 목표</h2><ul><li>state, nonce, PKCE의 역할 차이를 구분합니다.</li><li>Authorization Code Flow에서 code interception 공격을 설명합니다.</li><li>PKCE code_verifier와 code_challenge 생성 과정을 이해합니다.</li><li>ID Token을 단순 decode가 아니라 signature, issuer, audience, expiry, nonce까지 검증해야 하는 이유를 설명합니다.</li><li>Coreline Auth demo의 OIDC hardening 흐름을 추적합니다.</li></ul></section>
+<section><h2><span class="no">2</span>사전 개념</h2><table class="table"><thead><tr><th>구분</th><th>OAuth 2.0</th><th>OpenID Connect</th></tr></thead><tbody><tr><td>목적</td><td>권한 위임</td><td>사용자 인증</td></tr><tr><td>주요 토큰</td><td>Access Token</td><td>ID Token + Access Token</td></tr><tr><td>질문</td><td>이 앱이 API를 호출해도 되는가?</td><td>이 사용자가 누구인가?</td></tr></tbody></table><div class="term"><strong>핵심 문장</strong><p>OAuth는 로그인 프로토콜이 아닙니다. OIDC가 OAuth 위에 사용자 신원 확인 계층을 얹은 것입니다.</p></div></section>
+<section><h2><span class="no">3</span>state·nonce·PKCE 비교</h2><table class="table"><thead><tr><th>값</th><th>전달 위치</th><th>검증 시점</th><th>방어 목적</th></tr></thead><tbody><tr><td>state</td><td>Authorization request / callback</td><td>callback 수신</td><td>CSRF, flow 혼선 방지</td></tr><tr><td>nonce</td><td>Authorization request / ID Token claim</td><td>ID Token 검증</td><td>ID Token replay/injection 방지</td></tr><tr><td>code_verifier</td><td>token request</td><td>code 교환</td><td>authorization code 탈취 방어</td></tr><tr><td>code_challenge</td><td>Authorization request</td><td>provider 내부 비교</td><td>verifier 원문 노출 방지</td></tr></tbody></table></section>
+<section><h2><span class="no">4</span>단계별 흐름</h2><pre class="code"><code>1. Provider 설정 검증: HTTPS, issuer, jwks_uri, no credentials, no fragment
+2. 로그인 시작: nonce + OAuthPKCE.create() + begin_social_login()
+3. Authorization URL: state + nonce + code_challenge + S256
+4. Callback: code + state 수신, nonce/verifier cookie 확인
+5. Token exchange: code + code_verifier 제출
+6. ID Token 검증: alg, kid, signature, iss, aud, exp, nbf, iat, azp, nonce</code></pre><div class="danger"><strong>decode-only는 인증이 아닙니다</strong><p>JWT payload를 읽는 것은 검증이 아닙니다. signature, issuer, audience, expiry, nonce가 맞아야 사용자 신원으로 사용할 수 있습니다.</p></div></section>
+<section class="practice-card"><h2><span class="no">5</span>실습 1 — Authorization URL에 PKCE와 nonce 붙이기</h2><pre class="code"><code>from urllib.parse import urlparse, parse_qs
+from coreline_auth import GoogleOAuthConnector, OAuthPKCE
+from coreline_auth.security import generate_token
+
+connector = GoogleOAuthConnector.from_credentials(
+    client_id="google-client",
+    client_secret="google-secret",
+    redirect_uri="http://localhost/social/google/callback",
+)
+nonce = generate_token()
+pkce = OAuthPKCE.create()
+start = connector.start_authorization(state="state-123", nonce=nonce, pkce=pkce)
+query = parse_qs(urlparse(start.authorization_url).query)
+assert query["nonce"] == [nonce]
+assert query["code_challenge"]
+assert query["code_challenge_method"] == ["S256"]
+assert start.code_verifier == pkce.code_verifier</code></pre></section>
+<section class="practice-card"><h2><span class="no">6</span>실습 2 — Callback 누락 실패시키기</h2><pre class="code"><code>nonce = request.cookies.get("coreline_auth_oauth_google_nonce")
+code_verifier = request.cookies.get("coreline_auth_oauth_google_code_verifier")
+if not nonce or not code_verifier:
+    raise AuthenticationFailed("missing OAuth nonce or PKCE verifier")
+auth.consume_social_login_state(provider="google", state=state, nonce=nonce)
+profile = connector.exchange_code(
+    code=code,
+    code_verifier=code_verifier,
+    expected_nonce=nonce,
+    id_token_jwks=jwks,
+)</code></pre><table class="table"><tr><th>케이스</th><th>기대</th></tr><tr><td>정상 nonce + verifier</td><td>성공</td></tr><tr><td>nonce cookie 없음</td><td>실패</td></tr><tr><td>verifier cookie 없음</td><td>실패</td></tr><tr><td>state 변조</td><td>실패</td></tr><tr><td>ID Token nonce 불일치</td><td>실패</td></tr></table></section>
+<section class="practice-card"><h2><span class="no">7</span>실습 3 — ID Token 검증 규칙 만들기</h2><pre class="code"><code>def verify_id_token(id_token, *, jwks, expected_issuer, expected_audience, expected_nonce):
+    header, payload, signature = decode_compact_jwt(id_token)
+    if header["alg"] != "RS256":
+        raise AuthenticationFailed("invalid alg")
+    key = find_jwk_by_kid(jwks, header["kid"])
+    verify_rs256_signature(key, id_token)
+    if payload["iss"] != expected_issuer:
+        raise AuthenticationFailed("issuer mismatch")
+    if expected_audience not in as_list(payload["aud"]):
+        raise AuthenticationFailed("audience mismatch")
+    if payload["exp"] &lt; now():
+        raise AuthenticationFailed("expired token")
+    if payload.get("nonce") != expected_nonce:
+        raise AuthenticationFailed("nonce mismatch")
+    return payload</code></pre></section>
+<section class="quiz-box"><h2><span class="no">8</span>퀴즈와 정답 해설</h2><ol><li><strong>state와 nonce의 차이?</strong> state는 callback flow 보호, nonce는 ID Token과 인증 요청을 묶습니다.</li><li><strong>PKCE가 막는 대표 공격?</strong> Authorization code interception입니다.</li><li><strong>ID Token decode만 하면 안 되는 이유?</strong> signature, issuer, audience, expiry를 보장하지 않기 때문입니다.</li><li><strong>code_verifier는 언제 쓰나?</strong> token endpoint에서 authorization code를 교환할 때 보냅니다.</li><li><strong>JWKS가 필요한 이유?</strong> ID Token signature를 검증할 public key를 찾기 위해서입니다.</li></ol></section>
+<section class="try"><h2><span class="no">✓</span>Production Checklist</h2><ul><li>OIDC scope에 openid 포함</li><li>state, nonce는 고엔트로피 난수</li><li>PKCE는 S256</li><li>callback state는 1회 소비</li><li>token endpoint는 HTTPS only</li><li>raw token은 log/audit/DB 저장 금지</li><li>JWKS TTL cache와 kid miss cooldown</li><li>redirect URI exact match</li></ul></section>
+
+<section class="source-box box" aria-labelledby="sources-title">
+      <h2 id="sources-title"><span class="no">S</span>조사·검토 출처</h2>
+      <p>이 문서는 병렬 에이전트 초안, 로컬 프로젝트 문서, 공식 표준/가이드를 함께 검토해 작성했습니다. </p>
+      <p><a href="sources/index.html"><strong>전체 출처 링크 모음 열기</strong></a></p>
+      <ul><li><a href="sources/security_best_practices_report.md">보안 재리뷰 보고서</a></li><li><a href="sources/auth-expert-review-20260529.md">전문 보안 리뷰 원문</a></li><li><a href="sources/board-auth-integration-guide-20260529.md">게시판 통합 가이드</a></li><li><a href="sources/ops-readiness.md">운영 준비 문서</a></li><li><a href="sources/production-roadblocks-roadmap.md">Production Roadblocks Roadmap</a></li><li><a href="sources/security-checklist.md">Security Checklist</a></li><li><a href="sources/blog-demo-passkey.html">패스키 데모 HTML</a></li><li><a href="sources/deep-research-report.md">Deep Research Report</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">OWASP Authentication Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html">OWASP Session Management Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html">OWASP CSRF Prevention Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html">OWASP Forgot Password Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html">OWASP Authorization Cheat Sheet</a></li><li><a href="https://pages.nist.gov/800-63-4/sp800-63b.html">NIST SP 800-63B 최신 디지털 인증 가이드</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc7636">RFC 7636 PKCE</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9700.html">RFC 9700 OAuth 2.0 Security Best Current Practice</a></li><li><a href="https://openid.net/specs/openid-connect-core-1_0-final.html">OpenID Connect Core 1.0</a></li><li><a href="https://www.w3.org/TR/webauthn-3/">W3C WebAuthn Level 3</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/Cookies">MDN Secure Cookie Configuration</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/CSRF_prevention">MDN CSRF Prevention</a></li><li><a href="https://developers.google.com/identity/passkeys/ux/user-journeys">Google Passkeys User Journeys</a></li><li><a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide">Google Search Central SEO Starter Guide</a></li><li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google Helpful Content</a></li><li><a href="https://www.w3.org/TR/WCAG22/">W3C WCAG 2.2</a></li><li><a href="https://www.w3.org/WAI/tutorials/page-structure/headings/">WAI Headings Tutorial</a></li></ul>
+    </section>
+<footer><p>Generated with adaptive-html-blog-writer-v2. <a href="index.html">새 쇼케이스 목록으로 돌아가기</a></p></footer>
+</main>
+</body>
+</html>
