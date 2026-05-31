@@ -13,7 +13,6 @@ import math
 import sys
 from html import escape
 from pathlib import Path
-from textwrap import wrap
 
 ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE_DIR = ROOT / "visual-templates"
@@ -32,12 +31,126 @@ def e(value: object) -> str:
     return escape(str(value or ""), quote=True)
 
 
+def char_units(ch: str) -> int:
+    """Return display width units for a single character.
+
+    CJK / full-width characters occupy 2 units, everything else 1 unit. This
+    keeps Korean (Hangul), CJK ideographs and full-width punctuation from
+    overflowing cards/canvas when laid out by character count.
+    """
+    cp = ord(ch)
+    if (
+        0x1100 <= cp <= 0x115F          # Hangul Jamo
+        or 0x2E80 <= cp <= 0x303E       # CJK radicals, Kangxi, CJK symbols/punct
+        or 0x3041 <= cp <= 0x33FF       # Hiragana, Katakana, CJK compat
+        or 0x3400 <= cp <= 0x4DBF       # CJK Ext-A
+        or 0x4E00 <= cp <= 0x9FFF       # CJK Unified Ideographs
+        or 0xA000 <= cp <= 0xA4CF       # Yi
+        or 0xAC00 <= cp <= 0xD7A3       # Hangul Syllables
+        or 0xF900 <= cp <= 0xFAFF       # CJK Compatibility Ideographs
+        or 0xFE30 <= cp <= 0xFE4F       # CJK Compatibility Forms
+        or 0xFF00 <= cp <= 0xFF60       # Full-width forms
+        or 0xFFE0 <= cp <= 0xFFE6       # Full-width signs
+    ):
+        return 2
+    return 1
+
+
+def str_units(value: str) -> int:
+    """Total display width (in units) of a string."""
+    return sum(char_units(ch) for ch in value)
+
+
+def _wrap_by_units(raw: str, max_units: int) -> list[str]:
+    """Greedy word-wrap a single line by display-width units.
+
+    Prefers breaking on whitespace, but falls back to breaking mid-token when
+    a single token (e.g. a long CJK run with no spaces) exceeds the budget.
+    """
+    if max_units < 1:
+        max_units = 1
+    out: list[str] = []
+    cur = ""
+    cur_units = 0
+    # Tokenise keeping whitespace separators so spaces survive between words.
+    tokens: list[str] = []
+    buf = ""
+    for ch in raw:
+        if ch == " ":
+            if buf:
+                tokens.append(buf)
+                buf = ""
+            tokens.append(" ")
+        else:
+            buf += ch
+    if buf:
+        tokens.append(buf)
+
+    def flush() -> None:
+        nonlocal cur, cur_units
+        if cur:
+            out.append(cur)
+        cur = ""
+        cur_units = 0
+
+    for tok in tokens:
+        tu = str_units(tok)
+        if tok == " ":
+            # Drop a leading space at the start of a wrapped line.
+            if cur_units == 0:
+                continue
+            if cur_units + 1 > max_units:
+                flush()
+                continue
+            cur += " "
+            cur_units += 1
+            continue
+        if tu <= max_units:
+            if cur_units + tu > max_units:
+                flush()
+            cur += tok
+            cur_units += tu
+        else:
+            # Token longer than the budget: hard-break it by units.
+            for ch in tok:
+                cu = char_units(ch)
+                if cur_units + cu > max_units:
+                    flush()
+                cur += ch
+                cur_units += cu
+    flush()
+    return out
+
+
+def _truncate_units(value: str, max_units: int, ellipsis: str = "…") -> str:
+    """Truncate a string to max_units display units, appending an ellipsis."""
+    if str_units(value) <= max_units:
+        return value
+    ell_units = str_units(ellipsis)
+    budget = max(0, max_units - ell_units)
+    acc = ""
+    used = 0
+    for ch in value:
+        cu = char_units(ch)
+        if used + cu > budget:
+            break
+        acc += ch
+        used += cu
+    return acc + ellipsis
+
+
 def wrapped(value: str, max_chars: int = 18, max_lines: int = 3) -> list[str]:
+    """Width-aware word wrap.
+
+    ``max_chars`` is interpreted as a display-width budget in units where CJK /
+    full-width glyphs count as 2 and ASCII as 1, so Korean long-form text and
+    ``lines`` arrays stay inside their cards/canvas.
+    """
     if not value:
         return []
     lines: list[str] = []
     for raw in str(value).split("\n"):
-        parts = wrap(raw, max_chars, break_long_words=False, replace_whitespace=False) or [raw]
+        parts = _wrap_by_units(raw, max_chars) or [raw]
         lines.extend(parts)
     return lines[:max_lines]
 
@@ -82,7 +195,17 @@ def card(x: int, y: int, w: int, h: int, title: str, lines: list[str], accent: s
 
 def item_lines(item: dict, width: int = 28, max_lines: int = 3) -> list[str]:
     if item.get("lines"):
-        return [str(v) for v in item["lines"]][:max_lines]
+        # Apply the same width-aware wrapping to the explicit ``lines`` array so
+        # long Korean / full-width entries never pass through unprocessed and
+        # overflow the card. Each source line may wrap into several rendered
+        # lines; the combined result is capped at ``max_lines``.
+        out: list[str] = []
+        for raw in item["lines"]:
+            for wrapped_line in wrapped(str(raw), width, max_lines):
+                out.append(_truncate_units(wrapped_line, width))
+                if len(out) >= max_lines:
+                    return out[:max_lines]
+        return out[:max_lines]
     return wrapped(str(item.get("description", "")), width, max_lines)
 
 
@@ -97,7 +220,8 @@ def render_card_grid(items: list[dict]) -> str:
         body.append(f'<rect x="{x}" y="{y}" width="{w}" height="{ch}" rx="86" fill="#fff" stroke="#d8d8d0" stroke-width="12"/>')
         body.append(f'<circle cx="{x+150}" cy="{y+165}" r="72" fill="{accent}"/>')
         body.append(f'<text x="{x+150}" y="{y+190}" font-size="76" fill="#fff" text-anchor="middle" font-weight="900">{i+1}</text>')
-        body.append(f'<text x="{x+270}" y="{y+154}" font-size="72" fill="#e63946" font-weight="900" letter-spacing="2">{e(item.get("label") or item.get("title"))}</text>')
+        # label is a single unwrapped line — width-clip by units so a long (e.g. CJK) label cannot exceed the card width
+        body.append(f'<text x="{x+270}" y="{y+154}" font-size="72" fill="#e63946" font-weight="900" letter-spacing="2">{e(_truncate_units(str(item.get("label") or item.get("title") or ""), 26))}</text>')
         body.append(text_lines(wrapped(str(item.get("title", "")), 15, 2), x + 270, y + 315, 98, "#1a1a1a", 900, 1.1))
         body.append(text_lines(item_lines(item, 20, 2), x + 270, y + 455, 70, "#4a4a4a", 560, 1.25))
     return "\n".join(body)
@@ -211,8 +335,46 @@ RENDERERS = {
 }
 
 
+# Length constraints mirrored from schemas/visual-brief.schema.json so the
+# renderer enforces them defensively even when callers skip validation (M4).
+MAX_TITLE = 80
+MAX_SUBTITLE = 160
+MAX_FOOTER = 160
+MAX_ITEM_TITLE = 60
+MAX_ITEM_LABEL = 40
+MAX_ITEM_DESC = 180
+MAX_ITEM_LINE = 80
+
+
+def _clip(value: object, max_len: int) -> str:
+    """Truncate to the schema maxLength (character count) with an ellipsis."""
+    s = str(value or "")
+    if len(s) <= max_len:
+        return s
+    return s[: max(0, max_len - 1)] + "…"
+
+
+def _sanitize_item(item: dict) -> dict:
+    """Return a copy of an item with text fields clipped to schema maxLengths."""
+    out = dict(item)
+    if "title" in out:
+        out["title"] = _clip(out.get("title"), MAX_ITEM_TITLE)
+    if "label" in out:
+        out["label"] = _clip(out.get("label"), MAX_ITEM_LABEL)
+    if "description" in out:
+        out["description"] = _clip(out.get("description"), MAX_ITEM_DESC)
+    if out.get("lines"):
+        out["lines"] = [_clip(v, MAX_ITEM_LINE) for v in out["lines"]]
+    return out
+
+
 def render(brief: dict) -> str:
-    typ = brief["type"]
+    typ = brief.get("type")
+    if typ not in RENDERERS:
+        valid = ", ".join(sorted(RENDERERS))
+        raise ValueError(
+            f"unknown visual type {typ!r}; expected one of: {valid}"
+        )
     width = int(brief.get("width", DEFAULT_W))
     height = int(brief.get("height", DEFAULT_H))
     if width < 8000 or height < 6000:
@@ -220,17 +382,20 @@ def render(brief: dict) -> str:
     template_path = TEMPLATE_DIR / f"{typ}.svg.tpl"
     if not template_path.exists():
         raise FileNotFoundError(template_path)
-    items = brief.get("items") or []
+    items = [_sanitize_item(it) for it in (brief.get("items") or [])]
+    title = _clip(brief.get("title", ""), MAX_TITLE)
+    subtitle = _clip(brief.get("subtitle", ""), MAX_SUBTITLE)
+    footer_text = _clip(brief["footer"], MAX_FOOTER) if brief.get("footer") else None
     item_svg = RENDERERS[typ](items)
     replacements = {
         "{{WIDTH}}": str(width),
         "{{HEIGHT}}": str(height),
-        "{{TITLE}}": e(brief.get("title", "")),
-        "{{SUBTITLE}}": e(brief.get("subtitle", "")),
+        "{{TITLE}}": e(title),
+        "{{SUBTITLE}}": e(subtitle),
         "{{SVG_CSS}}": SVG_CSS,
-        "{{HEADER}}": header(str(brief.get("title", "")), str(brief.get("subtitle", ""))),
+        "{{HEADER}}": header(title, subtitle),
         "{{ITEMS}}": item_svg,
-        "{{FOOTER}}": footer(brief.get("footer")),
+        "{{FOOTER}}": footer(footer_text),
     }
     svg = template_path.read_text(encoding="utf-8")
     for key, value in replacements.items():
@@ -243,10 +408,22 @@ def main(argv: list[str]) -> int:
         print("Usage: render_visual_svg.py brief.json [output.svg]", file=sys.stderr)
         return 2
     brief_path = Path(argv[1])
-    brief = json.loads(brief_path.read_text(encoding="utf-8"))
+    try:
+        brief = json.loads(brief_path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print(f"error: brief file not found: {brief_path}", file=sys.stderr)
+        return 2
+    except json.JSONDecodeError as exc:
+        print(f"error: invalid JSON in {brief_path}: {exc}", file=sys.stderr)
+        return 2
+    try:
+        svg = render(brief)
+    except (ValueError, KeyError, FileNotFoundError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
     out = Path(argv[2]) if len(argv) == 3 else Path(brief.get("output", brief_path.with_suffix(".svg")))
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(render(brief), encoding="utf-8")
+    out.write_text(svg, encoding="utf-8")
     print(out)
     return 0
 

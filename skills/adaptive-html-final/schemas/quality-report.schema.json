@@ -21,36 +21,46 @@
     },
     "rubric": {
       "type": "object",
-      "description": "평가 항목별 0~5 정성 점수",
+      "description": "references/eval-rubric.md의 7개 항목별 0~5 정수 정성 점수 (만점 35)",
+      "required": [
+        "mode_fit",
+        "layout_fit",
+        "design_dna",
+        "content_depth",
+        "seo_a11y",
+        "factuality",
+        "source_handling"
+      ],
       "properties": {
-        "structure": {
+        "mode_fit": {
           "$ref": "#/$defs/rubricScore"
         },
-        "content_quality": {
+        "layout_fit": {
           "$ref": "#/$defs/rubricScore"
         },
-        "design_fidelity": {
+        "design_dna": {
           "$ref": "#/$defs/rubricScore"
         },
-        "accessibility": {
+        "content_depth": {
           "$ref": "#/$defs/rubricScore"
         },
-        "seo_metadata": {
+        "seo_a11y": {
           "$ref": "#/$defs/rubricScore"
         },
-        "credibility": {
+        "factuality": {
+          "$ref": "#/$defs/rubricScore"
+        },
+        "source_handling": {
           "$ref": "#/$defs/rubricScore"
         }
       },
-      "additionalProperties": {
-        "$ref": "#/$defs/rubricScore"
-      }
+      "additionalProperties": false
     },
     "total": {
-      "type": "number",
-      "description": "종합 점수 0~100",
+      "type": "integer",
+      "description": "rubric 7개 항목 score의 합계, 0~35 (만점 35). references/eval-rubric.md 기준: 28 이상 pass, 24~27 revise, 23 이하 fail",
       "minimum": 0,
-      "maximum": 100
+      "maximum": 35
     },
     "verdict": {
       "type": "string",

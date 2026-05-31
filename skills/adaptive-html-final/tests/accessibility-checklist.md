@@ -85,3 +85,21 @@ grep -n '<figcaption' output.html
 - [ ] `figure.visual-figure` 또는 `.figure-wide` 안의 이미지에 구체적인 `alt`가 있다.
 - [ ] 같은 figure 안에 `figcaption`이 있다.
 - [ ] SVG 자체에도 `<title>`과 `<desc>`가 있다.
+
+## v4 디자인 리뷰 반영 게이트
+
+```bash
+# 포커스 링이 브랜드 빨강이 아닌 전용 --focus(파랑)를 쓴다 (장식색 분리)
+grep -c ':focus-visible{outline:3px solid var(--focus)' output.html   # == 1
+
+# h2 장식 번호 칩이 스크린리더에서 숨겨진다
+grep -o '<span class="num"[^>]*>' output.html | grep -c 'aria-hidden="true"'   # == 전체 num 칩 수
+
+# 외부/동작 JS 0 유지 (읽기 진행 바는 CSS animation-timeline, <script> 아님)
+grep -rl '<script' output.html | xargs grep -L 'application/ld+json'   # 빈 출력
+```
+
+- [ ] 포커스 링이 `--focus`(파랑) + 흰 헤일로다(브랜드 빨강과 분리).
+- [ ] 장식 번호 칩(`.num`/`.no`)에 `aria-hidden="true"`가 있다.
+- [ ] 모바일(≤760px)에서 목차 링크 등 인터랙티브 타깃이 ≥44px다.
+- [ ] 읽기 진행 바(`.reading-progress`)는 CSS 기반(무 JS)이고 `prefers-reduced-motion`에서 숨겨진다.

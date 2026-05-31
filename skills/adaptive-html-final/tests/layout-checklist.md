@@ -3,6 +3,18 @@
 13개 레이아웃의 mode ↔ 파일 ↔ 필수블록 ↔ 폭클래스를 한눈에 검증한다.
 폭클래스: `.page` = `--max-reading`(780px), `.page-wide` = `--max-wide`(1020px).
 
+## 자동 검증 (먼저 실행)
+
+수동 체크 이전에 정적 게이트를 먼저 통과시킨다. 산출물 디렉터리 단위로 실행한다.
+
+```
+python3 scripts/validate_output.py <산출물 디렉터리> --skill-dir <스킬 루트>
+```
+
+- `OK`가 아니면(`FAILED` + `ISSUE ...`) 릴리즈를 중단하고 해당 회귀를 먼저 고친다.
+- `--skill-dir`를 주면 CSS asset hash/snapshot, 인라인 CSS hash marker, source manifest version 동기화까지 함께 검사한다.
+- 이 스크립트가 자동으로 막는 항목(h1 1개, `<main id="main">`, 외부 JS 0, 깨진 로컬 참조, caption 음수 margin, semantic section grid selector, visual figure 속성·8000×6000)은 아래 수동 체크의 1차 게이트다. 아래 v4.3.0~v4.3.3 절은 이 스크립트가 검사하는 회귀를 사람이 다시 눈으로 확인하는 보조 게이트다.
+
 | 파일 | mode | 필수 블록 | 폭클래스 |
 |---|---|---|---|
 | skill-audit-report.html | skill_audit | executive-summary, summary-grid, line-audit, priority-roadmap, try(개선본) | .page-wide (1020) |
@@ -55,3 +67,22 @@
 - [ ] `.try` 내부 밝은 카드(`.box/.summary-card/.cta-box/.card-block/.mini-card`)는 카드 내부 p/li/strong 색상을 light-surface 토큰으로 되돌린다.
 - [ ] `.winners:not(section)`, `.tradeoffs:not(section)`에 `display:grid`를 직접 걸지 않는다.
 - [ ] case-study timeline은 section wrapper와 내부 timeline card가 동시에 left border를 만들지 않는다.
+
+## v4.3.2 Blog/SEO Polish Regression Gate
+
+`validate_output.py`가 정적으로 막는 blog/SEO 회귀를 레이아웃 관점에서 재확인한다.
+
+- [ ] `.h2-sub` 부제 단락이 `<p class="h2-sub">...</p>`로 올바르게 닫힌다 — `<p class="h2-sub">...</h2>` 형태의 닫는 태그 오류가 없다(`h2_sub_closed_as_h2` 게이트).
+- [ ] `blog_writer` 본문 섹션 h2에 CSS counter 기반 번호 badge가 붙는다 — `.layout-blog article>section>h2:first-child::before`가 정의되어 다른 모드와 번호 일관성을 맞춘다(`missing_blog_section_counter` 게이트).
+- [ ] `layout-seo .serp-title`이 Google 원문 모사형(`#1a0dab`, `Arial`)이 아니라 editorial UI 토큰(`var(--ink)`, sans, 17~18px, 800 weight)을 쓴다(`seo_serp_title_literal_google_style` 게이트).
+- [ ] 검정 `.try`/`.try.soft-cta` 내부 `.tag` pill이 거의 흰 배경 + `var(--ink)` 굵은 텍스트로 재정의되어 `로컬LLM`/`Ollama` 같은 태그 대비가 흐려지지 않는다(`missing_try_tag_contrast_reset` 게이트).
+
+## v4.3.3 Responsive Polish Regression Gate
+
+13개 모드 전수 캡쳐 감사에서 확인된 platform/table/dark CTA 회귀를 재확인한다. `validate_output.py`가 정적으로 막는 항목이다.
+
+- [ ] `platform-grid`가 semantic `<section>`에 직접 걸리지 않는다 — `<section class="platform-grid">`는 실패다. grid는 내부 wrapper(`.layout-platform .platform-grid:not(section)`)에만 적용한다(`platform_grid_used_as_section`, `platform_grid_selector_allows_section_grid` 게이트).
+- [ ] 모든 `<table>`에 `<caption>`이 있다 — caption 없는 표는 실패다(`table_missing_caption` 게이트).
+- [ ] 검정 CTA(`.try`, `.try.soft-cta`) 내부 링크가 `--link-on-dark` 토큰으로 밝게 재정의되어 dark 배경에서 4.5:1 이상 대비를 유지한다(`missing_try_dark_link_contrast_reset` 게이트).
+- [ ] expert executive summary 4카드가 orphan 없이 2×2로 안정적으로 배치되고, case-study timeline이 단일 대형 카드가 아니라 개별 step card로 보인다.
+- [ ] 390px 모바일에서 복잡한 표는 `.mobile-card-table`(`data-label` 기반 행 카드) 패턴으로 잘리지 않게 표시한다.
