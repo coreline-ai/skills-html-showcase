@@ -12,3 +12,4 @@ qa-screenshots/
 
 # Playwright CLI session logs (runtime scratch)
 .playwright-cli/
+.gstack/
