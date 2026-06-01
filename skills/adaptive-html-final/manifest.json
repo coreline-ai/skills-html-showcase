@@ -12,6 +12,10 @@
     "assets/body-icons.css",
     "assets/body-icons.json",
     "assets/editorial-patterns.css",
+    "assets/shape-visuals.css",
+    "assets/shape-catalog.json",
+    "assets/workflow-visuals.css",
+    "assets/workflow-catalog.json",
     "assets/layouts.css",
     "assets/print.css",
     "assets/base.html"
@@ -39,6 +43,30 @@
     ],
     "reference": "references/editorial-pattern-system.md",
     "note": "기존 13모드 내 선택 삽입 본문 구조 패턴, 프로파일 무관, 무 JS"
+  },
+  "shape_visuals": {
+    "css": "assets/shape-visuals.css",
+    "svgs": "assets/shape-svgs/",
+    "catalog": "assets/shape-catalog.json",
+    "count": 36,
+    "namespace": "shape-",
+    "render": "figure.shape-figure > img.shape-img(8000x6000 SVG, alt 필수) + 선택 figcaption",
+    "viewbox": "0 0 8000 6000",
+    "decorative": true,
+    "reference": "references/visual-template-system.md",
+    "note": "본문 설명 시작부 보조 도형(시각 앵커), 핵심 정보는 HTML 텍스트로, 프로파일 무관, 무 JS"
+  },
+  "workflow_visuals": {
+    "css": "assets/workflow-visuals.css",
+    "svgs": "assets/workflow-svgs/",
+    "catalog": "assets/workflow-catalog.json",
+    "count": 10,
+    "namespace": "workflow-",
+    "render": "figure.workflow-figure > img.workflow-img(8000x6000 SVG, alt 필수) + 권장 figcaption | .workflow-grid 갤러리",
+    "viewbox": "0 0 8000 6000",
+    "decorative": true,
+    "reference": "references/visual-template-system.md",
+    "note": "본문 대표 도판/섹션 상단 구조도/랜딩 카드(와이드 ~720px). soft-shape보다 크고 상세, vt- 대체 아님(검색가능 구조도는 vt-), 핵심 정보는 HTML 텍스트로, 프로파일 무관, 무 JS. wf- 금지(vt-21 점유) workflow- 풀네임"
   },
   "layouts": [
     "beginner-learning.html",
@@ -163,7 +191,10 @@
     "v4.4.0: tests/widget-checklist.md 위젯 게이트 추가 — 외부 JS 0, wg-<id>- 네임스페이스 충돌 0, 인터랙션 details/:checked/:target/CSS-anim 한정, 색 외 단서·포커스, 18·20 무 JS 근사 검증",
     "v4.5.0: SVG→HTML 템플릿 20종 편입 + 하네스 정형화 — assets/visual-html.css와 assets/visual-html-templates/01..20.html(vt- 본문 삽입 다이어그램), 캐노니컬 모드→vt 매핑·결정론 진입점, visual_html_templates 메타 등록, 무 JS 0 유지",
     "v4.5.0: 본문용 compact 아이콘 32종 편입 — assets/body-icons.css(bi- 네임스페이스, 무 JS, aria-hidden 장식) + assets/body-icons.json(id/label/usage/svg), references/body-icon-system.md(모드별 추천·삽입 규칙), base.html {{BODY_ICONS_CSS}} 슬롯",
-    "v4.5.0: 본문 구조 패턴 6종 편입 — assets/editorial-patterns.css(chronology·source-preserve·core-insight·connection·before-after·impact-grid) + assets/editorial-pattern-templates/01..06.html, references/editorial-pattern-system.md, base.html {{EDITORIAL_PATTERNS_CSS}} 슬롯, 기존 13모드 내 선택 삽입·무 JS"
+    "v4.5.0: 본문 구조 패턴 6종 편입 — assets/editorial-patterns.css(chronology·source-preserve·core-insight·connection·before-after·impact-grid) + assets/editorial-pattern-templates/01..06.html, references/editorial-pattern-system.md, base.html {{EDITORIAL_PATTERNS_CSS}} 슬롯, 기존 13모드 내 선택 삽입·무 JS",
+    "v4.5.0: vt-21 soft-workflow-map 편입(8816, 전문가 검토) — visual-html-templates/21-soft-workflow-map.html(wf- 접두사, role=img 제거로 카드 텍스트 prune 방지, 장식만 aria-hidden), visual-html.css .wf-*, soft_workflow_gate, expert/education/skill_audit/landing 후순위(1순위 불변)",
+    "v4.5.0: soft-shape 도형 36종 편입(8817, 전문가 검토) — assets/shape-svgs/*.svg(8000×6000) + shape-visuals.css(figure.shape-figure 앵커) + shape-catalog.json, visual-template-system.md 흡수, shape_visual_gate, base.html {{SHAPE_VISUALS_CSS}} 슬롯",
+    "v4.5.0: soft 워크플로우 도판 10종 편입(8819, 전문가 검토) — assets/workflow-svgs/*.svg(8000×6000 pipeline/hub/router/stack/funnel/graph/swarm/timeline/board/governance) + workflow-visuals.css(figure.workflow-figure 와이드 ~720px) + workflow-catalog.json, visual-template-system.md 흡수, workflow_visual_gate(8000×6000 크기 계약 포함), base.html {{WORKFLOW_VISUALS_CSS}} 슬롯, wf- 금지 workflow- 풀네임, version 4.5.0 유지(frozen 골든 v6 보존)"
   ],
   "updated": "2026-06-01",
   "visual_templates": [
@@ -217,7 +248,8 @@
     "assets/visual-html-templates/17-pr-writeup.html",
     "assets/visual-html-templates/18-triage-board.html",
     "assets/visual-html-templates/19-feature-flag.html",
-    "assets/visual-html-templates/20-prompt-tuner.html"
+    "assets/visual-html-templates/20-prompt-tuner.html",
+    "assets/visual-html-templates/21-soft-workflow-map.html"
   ],
   "profiles": {
     "widget": {

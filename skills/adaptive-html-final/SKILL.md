@@ -47,7 +47,7 @@ description: |
 1. **외부/동작 JS 0.** `<script>`는 `type="application/ld+json"`(JSON-LD)만 허용한다. 그 외 외부 스크립트·인라인 동작 JS·`onclick`/`onload` 등 이벤트 핸들러·`draggable`/`contenteditable` 인터랙션은 금지한다. 인터랙션은 `<details>`/`:checked`/`:target`/CSS 애니메이션으로만 구현한다.
 2. **두 위젯 라이브러리는 별개다.**
    - (1) **CSS 뷰 위젯 `wg-01`~`wg-20`** = `assets/widgets.css` + `assets/widget-templates/*.html`. 섹션 보강용 인터랙션 위젯이며 `wg-<id>-` 네임스페이스로 격리된다(Step 4.6).
-   - (2) **SVG→HTML 템플릿 `vt-` 20종** = `assets/visual-html.css` + `assets/visual-html-templates/01..20.html`. 본문에 그대로 삽입하는 in-flow 다이어그램(이미지가 아닌 네이티브 HTML 구조도)이다(Step 4.7). 두 라이브러리를 혼동하거나 한쪽으로 대체하지 않는다.
+   - (2) **SVG→HTML 템플릿 `vt-` 21종** = `assets/visual-html.css` + `assets/visual-html-templates/01..21.html`. 본문에 그대로 삽입하는 in-flow 다이어그램(이미지가 아닌 네이티브 HTML 구조도)이다(Step 4.7). 두 라이브러리를 혼동하거나 한쪽으로 대체하지 않는다.
 3. **비주얼 프로파일 → 13모드 라우터(§3) 순서가 단일 진입점**이다. (a) 먼저 비주얼 프로파일(`widget`=v5 / `diagram`=v6 / `auto`=기본)을 결정한다 — 인자 `profile=widget|diagram|auto` 또는 별칭 `style=v5|v6`를 `trim→lowercase→정규화`(둘 다 오면 `profile=` 우선, 무효 토큰은 `invalid_profile` 실패). 인자 미지정 시 **비대화형(AGENTS.md 경유 Codex/Gemini)은 무조건 `auto`·질문 금지**, 대화형(Claude 대화)은 1회 질문 가능(결정론 보장은 인자 명시 경로 한정). (b) 이어 모드 선택 → 레이아웃 → 프로파일에 따라 vt-템플릿(diagram·auto)·wg-위젯(widget·auto)을 §0.6에서 고른다. 프로파일이 §0.6 결정표의 **어느 열을 쓸지** 게이트한다(widget=wg 열만/diagram=vt 열만/auto=둘 다).
 4. **코어 CSS 인라인 + 해시 마커.** 출력은 `theme.css + components.css + visual-components.css + layouts.css + print.css`를 코어로 인라인하고, 인라인 `<style>`에 `adaptive-html-final-core-css-sha256: <64hex>` 주석 마커를 남긴다. `widgets.css`(위젯 사용 시)와 `visual-html.css`(vt-템플릿 사용 시)는 조건부 인라인이며, 인라인 순서는 §5 Step 5의 합본 순서를 따른다.
 
@@ -64,20 +64,20 @@ description: |
 | Mode | Layout | vt-템플릿 (1순위→) | wg-위젯 (1순위→) |
 |---|---|---|---|
 | beginner_html | beginner-learning.html | concept-explainer, hero-map, checklist-flow | wg-10, wg-13, wg-15 |
-| expert_html | expert-report.html | risk-matrix, raci, quality-gate, implementation-plan | wg-03, wg-04, wg-11, wg-12, wg-16, wg-17 |
+| expert_html | expert-report.html | risk-matrix, raci, quality-gate, implementation-plan, soft-workflow-map | wg-03, wg-04, wg-11, wg-12, wg-16, wg-17 |
 | article_html | magazine-article.html | decision-tree, comparison-cards, concept-explainer | wg-02, wg-04, wg-07, wg-09, wg-10, wg-13, wg-14 |
-| education_html | course-module.html | timeline, checklist-flow, concept-explainer | wg-06, wg-07, wg-08, wg-13, wg-14, wg-15, wg-20 |
+| education_html | course-module.html | timeline, checklist-flow, concept-explainer, soft-workflow-map | wg-06, wg-07, wg-08, wg-13, wg-14, wg-15, wg-20 |
 | blog_writer | personal-blog-essay.html | timeline, weekly-status, comparison-cards | wg-17 |
 | seo_dashboard | seo-dashboard.html | card-grid, comparison-cards, prompt-tuner | wg-11 |
 | platform_blog | platform-adaptation.html | card-grid, comparison-cards, pr-writeup | wg-02 |
-| skill_audit | skill-audit-report.html | quality-gate, file-tour, prompt-tuner, implementation-plan | wg-03, wg-11, wg-17 |
+| skill_audit | skill-audit-report.html | quality-gate, file-tour, prompt-tuner, implementation-plan, soft-workflow-map | wg-03, wg-11, wg-17 |
 | reference_html | reference-manual.html | file-tour, flowchart, card-grid | wg-04, wg-05, wg-06, wg-14, wg-19, wg-20 |
 | comparison_html | comparison-matrix.html | comparison-cards, decision-tree, risk-matrix | wg-01, wg-02 |
 | case_study_html | case-study.html | incident-summary, timeline, process-swimlane | wg-12 |
-| landing_brief_html | landing-brief.html | hero-map, card-grid, feature-flag | wg-02, wg-05, wg-08, wg-09, wg-16 |
+| landing_brief_html | landing-brief.html | hero-map, card-grid, feature-flag, soft-workflow-map | wg-02, wg-05, wg-08, wg-09, wg-16 |
 | checklist_playbook | checklist-playbook.html | checklist-flow, quality-gate, process-swimlane, implementation-plan, triage-board | wg-11, wg-13, wg-16, wg-18, wg-19 |
 
-vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..20)이며, 위 이름은 그 `<name>`과 1:1로 대응한다. 시각물이 필요 없으면 vt-템플릿/wg-위젯 모두 생략할 수 있다(둘 다 선택적 보강이다). 넣을 때는 해당 모드 행의 1순위부터 콘텐츠 적합성 순으로 고른다.
+vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..21)이며, 위 이름은 그 `<name>`과 1:1로 대응한다. 시각물이 필요 없으면 vt-템플릿/wg-위젯 모두 생략할 수 있다(둘 다 선택적 보강이다). 넣을 때는 해당 모드 행의 1순위부터 콘텐츠 적합성 순으로 고른다.
 
 > **프로파일 오버레이(§0.5 프로파일 결정 선행):** 위 표의 **Layout 열은 프로파일과 무관하게 공통**이다. `diagram` 프로파일은 **vt-템플릿 열만**, `widget` 프로파일은 **wg-위젯 열만**, `auto`(기본)는 **두 열 모두** 사용한다. 이 표가 mode→wg / mode→vt 매핑의 **단일 출처**이며, §4.6·§4.7·`references/widget-system.md`·`references/visual-html-system.md`·`AGENTS.md` §3은 이 표의 파생/참조다(불일치 시 §0.6 우선).
 
@@ -141,12 +141,18 @@ assets/components.css  = 공통 박스/표/코드/태그/하이라이트
 assets/visual-components.css = visual-figure/figure-wide/인포그래픽 래퍼
 assets/widgets.css     = CSS 뷰 위젯 20종 (wg-<id>- 네임스페이스, 무 JS)
 assets/widget-templates/*.html = 뷰 위젯별 삽입 골격 20종
-assets/visual-html.css = SVG→HTML 시각 템플릿 20종 스타일 (vt- 네임스페이스, 본문 삽입 in-flow 다이어그램, 무 JS)
-assets/visual-html-templates/01..20.html = SVG→HTML 템플릿 삽입 골격 20종 (vt-, 이미지가 아닌 네이티브 구조도)
+assets/visual-html.css = SVG→HTML 시각 템플릿 21종 스타일 (vt- 네임스페이스, 본문 삽입 in-flow 다이어그램, 무 JS)
+assets/visual-html-templates/01..21.html = SVG→HTML 템플릿 삽입 골격 21종 (vt-, 이미지가 아닌 네이티브 구조도; 21=soft-workflow-map)
 assets/body-icons.css  = 본문용 compact 아이콘 32종 스타일 (bi- 네임스페이스, aria-hidden 장식, 무 JS) — 프로파일 무관, references/body-icon-system.md
 assets/body-icons.json = 본문 아이콘 32종 데이터 (id/label/usage/svg, viewBox 0 0 40 40)
-assets/editorial-patterns.css = 본문 구조 패턴 6종 스타일 (chronology·source-preserve·core-insight·connection·before-after·impact-grid, 무 JS) — 프로파일 무관, references/editorial-pattern-system.md
-assets/editorial-pattern-templates/01..06.html = 패턴 삽입 골격 6종 (콘텐츠만 교체)
+assets/editorial-patterns.css = 본문 구조 패턴 7종 스타일 (chronology·source-preserve·core-insight·connection·before-after·impact-grid·md-excerpt, 무 JS) — 프로파일 무관, references/editorial-pattern-system.md
+assets/editorial-pattern-templates/01..07.html = 패턴 삽입 골격 7종 (콘텐츠만 교체)
+assets/shape-visuals.css = soft-shape 도형 표시 스타일 (.shape-figure/.shape-lead/.shape-grid, 무 JS) — 프로파일 무관, references/visual-template-system.md
+assets/shape-svgs/*.svg = 본문 설명 시작부 보조 도형 36종 (8000×6000 warm SVG, <title>/<desc> 접근성)
+assets/shape-catalog.json = 도형 36종 데이터 (id/label/usage)
+assets/workflow-visuals.css = soft 워크플로우 도판 표시 스타일 (.workflow-figure ~720px/.workflow-grid, 무 JS) — 프로파일 무관, references/visual-template-system.md
+assets/workflow-svgs/*.svg = soft 워크플로우 SVG 도판 10종 (8000×6000, pipeline/hub/router/stack/funnel/graph/swarm/timeline/board/governance)
+assets/workflow-catalog.json = 워크플로우 도판 10종 데이터 (id/label/usage)
 assets/layouts.css     = 모드별 구조 차이
 assets/print.css       = 인쇄 대응
 assets/base.html       = 단일 HTML 렌더링 기본 골격
@@ -266,6 +272,12 @@ TODO_CHECK = 추가 확인이 필요한 주장
 
 섹션 이해를 돕는 시각물이 필요하면 `references/visual-template-system.md`를 읽고 `schemas/visual-brief.schema.json` 형식으로 visual brief를 만든다.
 
+본문 설명 **시작부의 작은 시각 앵커**가 필요하면 같은 문서의 **Soft Shape 도형 36종**(`assets/shape-svgs/<id>.svg`)을 `figure.shape-figure`(또는 `.shape-lead`/`.shape-grid`)로 삽입한다(`assets/shape-visuals.css`, `{{SHAPE_VISUALS_CSS}}` 슬롯, 프로파일 무관). `img.shape-img`에 비어있지 않은 `alt` 필수, figcaption은 선택. 도형은 시각 앵커일 뿐 핵심 정보는 항상 HTML 텍스트로 둔다.
+
+섹션 **상단 대표 도판·랜딩 설명 카드**가 필요하면 **Soft Workflow 도판 10종**(`assets/workflow-svgs/<id>.svg`, pipeline·hub·router·stack·funnel·graph·swarm·timeline·board·governance)을 `figure.workflow-figure`(와이드 ~720px, figcaption 권장)로 삽입한다(`assets/workflow-visuals.css`, `{{WORKFLOW_VISUALS_CSS}}` 슬롯, 프로파일 무관). `wf-` 접두사 금지(vt-21 점유), `workflow-` 풀네임.
+
+경계: 글자 옆 장식=`bi-`(40×40) · 시작부 작은 앵커=soft-shape(420px) · 본문 대표 도판/랜딩 카드=workflow 도판(720px SVG) · 본문 검색가능 구조도=`vt-`(HTML). 상호 비대체이며, 독자가 본문에서 바로 읽어야 하는 절차·비교는 workflow 도판이 아니라 vt-를 쓴다.
+
 기본 판단:
 
 ```text
@@ -333,7 +345,7 @@ platform_blog      → 02 Visual Design Directions
 
 > **프로파일 게이트:** 이 단계는 **`diagram`·`auto` 프로파일에서만** 실행한다(`widget` 프로파일은 생략). CSS 번들에 `visual-html.css`가 포함된다(§0.5 invariant 3, AGENTS.md §4).
 
-본문 안에서 읽혀야 하는 구조도는 이미지가 아니라 **SVG→HTML 템플릿(`vt-`)**으로 삽입한다. `assets/visual-html.css`(스킬 디자인 토큰 재사용)와 `assets/visual-html-templates/01..20.html` 20종으로 제공되며, **외부 JS 없이** 동작하는 네이티브 in-flow 다이어그램이다(이미지처럼 분리되지 않고 문서의 일부로 읽힌다). 자세한 규칙은 필요할 때 `references/visual-html-system.md`를 읽는다.
+본문 안에서 읽혀야 하는 구조도는 이미지가 아니라 **SVG→HTML 템플릿(`vt-`)**으로 삽입한다. `assets/visual-html.css`(스킬 디자인 토큰 재사용)와 `assets/visual-html-templates/01..21.html` 21종으로 제공되며, **외부 JS 없이** 동작하는 네이티브 in-flow 다이어그램이다(이미지처럼 분리되지 않고 문서의 일부로 읽힌다). 자세한 규칙은 필요할 때 `references/visual-html-system.md`를 읽는다.
 
 판단 순서:
 
@@ -343,7 +355,7 @@ platform_blog      → 02 Visual Design Directions
 4. 인터랙션은 §0.5 불변식과 동일하게 `<details>`/`:checked`/`:target`/CSS 애니메이션만 쓴다. 동작 `<script>`는 0이어야 한다(JSON-LD 제외).
 5. hero 키비주얼·별첨 도판·다운로드 한 장 인포그래픽은 vt-가 아니라 `8000×6000` SVG(Step 4.5)로 만든다. 본문 구조도와 hero/별첨의 매체를 뒤바꾸지 않는다(§4 선택 규칙).
 
-vt-템플릿 20종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, timeline, checklist-flow, quality-gate, card-grid, raci, file-tour, flowchart, weekly-status, incident-summary, comparison-cards, process-swimlane, concept-explainer, implementation-plan, pr-writeup, triage-board, feature-flag, prompt-tuner.
+vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, timeline, checklist-flow, quality-gate, card-grid, raci, file-tour, flowchart, weekly-status, incident-summary, comparison-cards, process-swimlane, concept-explainer, implementation-plan, pr-writeup, triage-board, feature-flag, prompt-tuner, soft-workflow-map.
 
 ### Step 5 — HTML Rendering
 

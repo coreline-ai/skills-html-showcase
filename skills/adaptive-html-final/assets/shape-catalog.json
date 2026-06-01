@@ -1,0 +1,182 @@
+[
+ {
+  "id": "bar-metric",
+  "label": "막대 지표",
+  "usage": "수치 비교를 간단히 보여줄 때"
+ },
+ {
+  "id": "blob-idea",
+  "label": "블롭 아이디어",
+  "usage": "정형화 전의 아이디어를 표현할 때"
+ },
+ {
+  "id": "branch-tree",
+  "label": "분기 트리",
+  "usage": "선택지와 하위 경로를 보여줄 때"
+ },
+ {
+  "id": "checklist-done",
+  "label": "체크리스트",
+  "usage": "완료 조건과 점검 항목을 보여줄 때"
+ },
+ {
+  "id": "circle-focus",
+  "label": "원형 포커스",
+  "usage": "핵심 개념 하나를 강조할 때"
+ },
+ {
+  "id": "code-window",
+  "label": "코드 윈도우",
+  "usage": "개발·자동화 흐름을 설명할 때"
+ },
+ {
+  "id": "connector-nodes",
+  "label": "연결 노드",
+  "usage": "관계와 의존성을 설명할 때"
+ },
+ {
+  "id": "conversation-bubble",
+  "label": "대화 버블",
+  "usage": "인터뷰·피드백·메시지를 설명할 때"
+ },
+ {
+  "id": "cycle-loop",
+  "label": "순환 루프",
+  "usage": "반복 개선 사이클을 설명할 때"
+ },
+ {
+  "id": "diamond-decision",
+  "label": "다이아몬드 결정",
+  "usage": "선택 지점과 판단 조건을 나타낼 때"
+ },
+ {
+  "id": "document-card",
+  "label": "문서 카드",
+  "usage": "자료·문서·레퍼런스 대입용"
+ },
+ {
+  "id": "donut-ratio",
+  "label": "도넛 비율",
+  "usage": "구성비나 점유율을 설명할 때"
+ },
+ {
+  "id": "flow-arrow",
+  "label": "흐름 화살표",
+  "usage": "입력→처리→결과 흐름을 보여줄 때"
+ },
+ {
+  "id": "funnel-filter",
+  "label": "퍼널 필터",
+  "usage": "후보를 좁혀가는 과정을 보여줄 때"
+ },
+ {
+  "id": "grid-set",
+  "label": "그리드 묶음",
+  "usage": "여러 항목을 균등하게 나열할 때"
+ },
+ {
+  "id": "hex-system",
+  "label": "육각 시스템",
+  "usage": "모듈/시스템 구성요소를 말할 때"
+ },
+ {
+  "id": "ladder-growth",
+  "label": "성장 사다리",
+  "usage": "점진적 성숙도나 레벨업을 보여줄 때"
+ },
+ {
+  "id": "line-chart",
+  "label": "라인 차트",
+  "usage": "시간에 따른 추세를 보여줄 때"
+ },
+ {
+  "id": "matrix-quadrant",
+  "label": "사분면 매트릭스",
+  "usage": "2축 기준의 판단표를 보여줄 때"
+ },
+ {
+  "id": "orbit-context",
+  "label": "오비트 맥락",
+  "usage": "중심 개념 주변 요소를 설명할 때"
+ },
+ {
+  "id": "pill-label",
+  "label": "필 라벨",
+  "usage": "상태·분류·태그를 부드럽게 보여줄 때"
+ },
+ {
+  "id": "pyramid-levels",
+  "label": "피라미드 단계",
+  "usage": "기초→상위 단계 구조를 말할 때"
+ },
+ {
+  "id": "quote-source",
+  "label": "원문 인용",
+  "usage": "원문 보존 또는 출처를 보여줄 때"
+ },
+ {
+  "id": "rounded-rect",
+  "label": "라운드 카드",
+  "usage": "정리된 정보 블록을 설명할 때"
+ },
+ {
+  "id": "search-lens",
+  "label": "검색 렌즈",
+  "usage": "검색·탐색·리서치 단계를 말할 때"
+ },
+ {
+  "id": "shield-check",
+  "label": "쉴드 검증",
+  "usage": "보안·품질·검수 기준을 말할 때"
+ },
+ {
+  "id": "spark-card",
+  "label": "스파크 카드",
+  "usage": "짧은 성과 요약을 보여줄 때"
+ },
+ {
+  "id": "stack-layers",
+  "label": "스택 레이어",
+  "usage": "계층·레이어·의존성을 설명할 때"
+ },
+ {
+  "id": "star-insight",
+  "label": "스타 인사이트",
+  "usage": "중요 발견이나 추천을 강조할 때"
+ },
+ {
+  "id": "swimlane-process",
+  "label": "스윔레인",
+  "usage": "역할별 병렬 진행을 보여줄 때"
+ },
+ {
+  "id": "target-goal",
+  "label": "타깃 목표",
+  "usage": "목표와 기준선을 맞출 때"
+ },
+ {
+  "id": "timeline-steps",
+  "label": "타임라인 단계",
+  "usage": "시간 순서의 진행을 보여줄 때"
+ },
+ {
+  "id": "triangle-priority",
+  "label": "삼각 우선순위",
+  "usage": "위계와 우선순위를 보여줄 때"
+ },
+ {
+  "id": "venn-overlap",
+  "label": "벤 다이어그램",
+  "usage": "겹치는 조건과 공통분모를 설명할 때"
+ },
+ {
+  "id": "warning-gap",
+  "label": "경고 갭",
+  "usage": "위험·누락·주의점을 강조할 때"
+ },
+ {
+  "id": "wave-change",
+  "label": "웨이브 변화",
+  "usage": "변동·추세·감정 흐름을 보여줄 때"
+ }
+]

@@ -1,0 +1,52 @@
+[
+ {
+  "id": "01-linear-pipeline",
+  "label": "Linear Pipeline",
+  "usage": "입력에서 결과까지 일직선 흐름을 보여주는 기본 자동화 파이프라인"
+ },
+ {
+  "id": "02-radial-hub",
+  "label": "Radial Agent Hub",
+  "usage": "중앙 AI 허브와 주변 역할/에이전트 관계를 보여주는 방사형 구조"
+ },
+ {
+  "id": "03-decision-router",
+  "label": "Decision Router",
+  "usage": "조건에 따라 다른 경로로 라우팅되는 판단 구조"
+ },
+ {
+  "id": "04-layered-stack",
+  "label": "Layered Stack",
+  "usage": "데이터·모델·검증·출력의 계층 구조를 보여주는 레이어형"
+ },
+ {
+  "id": "05-quality-funnel",
+  "label": "Quality Funnel",
+  "usage": "많은 입력을 검토·필터링해 최종 결과로 좁혀가는 퍼널형"
+ },
+ {
+  "id": "06-knowledge-graph",
+  "label": "Knowledge Graph",
+  "usage": "출처·개념·판단 사이 연결 관계를 보여주는 네트워크형"
+ },
+ {
+  "id": "07-agent-swarm",
+  "label": "Agent Swarm",
+  "usage": "여러 전문가 에이전트가 동시에 기여하는 병렬 협업 구조"
+ },
+ {
+  "id": "08-timeline-delivery",
+  "label": "Timeline Delivery",
+  "usage": "단계별 산출과 검증을 시간순으로 보여주는 타임라인형"
+ },
+ {
+  "id": "09-comparison-board",
+  "label": "Comparison Board",
+  "usage": "대안 A/B/C를 나란히 비교하고 선택 기준을 보여주는 보드형"
+ },
+ {
+  "id": "10-governance-operating",
+  "label": "Governance Operating Model",
+  "usage": "역할·정책·품질 게이트가 맞물리는 운영 모델 구조"
+ }
+]

@@ -342,6 +342,106 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         if re.search(r'class=["\'][^"\']*(?<![\w-])(?:chron-list|source-preserve|core-insight|conn-grid|impact-grid|ba|ba-col|ba-arrow|ba-label)(?![\w-])', text):
             if not re.search(r'\.(?:chron-list|source-preserve|core-insight|conn-grid|impact-grid)\b', style):
                 issues.append({'page': rel, 'type': 'editorial_patterns_css_not_inlined'})
+        # body_only = markup with inline <style> stripped — scan <img> here so example markup inside CSS
+        # comments (e.g. an <img class="…-img" src="…"> usage example) can't false-fire the img gates.
+        body_only = re.sub(r'<style\b[^>]*>.*?</style>', '', text, flags=re.I | re.S)
+        # Soft-shape gate (8817): when shape figures are used, enforce CSS inlined + non-empty alt + namespace.
+        # SVG existence / 8000x6000 / figcaption are covered by broken_local_ref + the visual-figure gate below.
+        if re.search(r'class=["\'][^"\']*\bshape-(?:figure|img|lead|grid)\b', body_only):
+            if not re.search(r'\.shape-(?:figure|img)\b', style):
+                issues.append({'page': rel, 'type': 'shape_visuals_css_not_inlined'})
+            for im in re.finditer(r'<img\b[^>]*\bclass=["\'][^"\']*\bshape-img\b[^"\']*["\'][^>]*>', body_only, re.I):
+                am = re.search(r'\balt\s*=\s*("[^"]*"|\'[^\']*\')', im.group(0), re.I)
+                if not am or not am.group(1).strip('\'"').strip():
+                    issues.append({'page': rel, 'type': 'shape_img_missing_alt',
+                                   'detail': '도형 img는 시각 앵커이므로 빈 alt 금지(핵심 정보는 HTML 텍스트로 두되 alt는 도형 의미를 적는다).'})
+                    break
+            leaks = sorted({m.group(0) for m in re.finditer(r'\.shape-[A-Za-z0-9_-]+', style)
+                            if not re.match(r'\.shape-(?:figure|img|lead|grid|lead-body)(?![\w-])', m.group(0))})
+            if leaks:
+                issues.append({'page': rel, 'type': 'shape_selector_namespace_leak', 'detail': leaks})
+        # Soft workflow map gate (vt-21): if .wf-board markup is used, lock accessibility + no raster + mobile collapse.
+        if re.search(r'class=["\'][^"\']*\bwf-board\b', text):
+            if '.wf-board' not in style:
+                issues.append({'page': rel, 'type': 'soft_workflow_css_not_inlined'})
+            fm = re.search(r'<\w+\b[^>]*\bclass=["\'][^"\']*\bwf-board\b[^"\']*["\'][^>]*>', text, re.I)
+            # role="img" on the text-bearing frame prunes card/metric text from assistive tech → forbid.
+            if fm and re.search(r'role\s*=\s*["\']img["\']', fm.group(0), re.I):
+                issues.append({'page': rel, 'type': 'soft_workflow_role_img_buries_text',
+                               'detail': 'wf-board(실제 텍스트 포함)에 role="img" → 스크린리더가 카드/지표 텍스트를 prune. role 제거, 장식 요소만 aria-hidden.'})
+            for deco in ('wf-codewin', 'wf-dash', 'wf-pipes', 'wf-bottom'):
+                dm = re.search(r'<\w+\b[^>]*\bclass=["\'][^"\']*\b' + deco + r'\b[^"\']*["\'][^>]*>', text, re.I)
+                if dm and 'aria-hidden' not in dm.group(0).lower():
+                    issues.append({'page': rel, 'type': 'soft_workflow_deco_not_aria_hidden', 'el': deco})
+                    break
+            wf_area = text[fm.start():fm.start() + 3500] if fm else ''
+            if re.search(r'<img\b[^>]*\.(?:png|jpe?g|webp|gif)\b', wf_area, re.I):
+                issues.append({'page': rel, 'type': 'soft_workflow_raster_image',
+                               'detail': 'soft workflow map은 순수 HTML+CSS(SVG-first·자기완결). 내부 raster <img> 금지.'})
+            if '.wf-map{grid-template-columns:1fr}' not in style.replace(' ', '').replace('\n', ''):
+                issues.append({'page': rel, 'type': 'soft_workflow_map_no_mobile_collapse',
+                               'detail': '모바일에서 .wf-map이 1컬럼으로 접히지 않음. @media max-width에 .wf-map{grid-template-columns:1fr} 필요.'})
+        # Soft workflow SVG gate (8819): when workflow 도판 figures are used, enforce CSS inlined + non-empty alt
+        # + namespace + 8000x6000 resolution. Uses figure.workflow-figure (NOT visual-figure) so figcaption은 권장(강제 아님).
+        # img는 body_only에서 스캔(CSS 주석 속 예시 <img> 오발동 차단).
+        if re.search(r'class=["\'][^"\']*\bworkflow-(?:figure|img|lead|grid)\b', body_only):
+            if not re.search(r'\.workflow-(?:figure|img)\b', style):
+                issues.append({'page': rel, 'type': 'workflow_visuals_css_not_inlined'})
+            alt_bad = False
+            for im in re.finditer(r'<img\b[^>]*\bclass=["\'][^"\']*\bworkflow-img\b[^"\']*["\'][^>]*>', body_only, re.I):
+                tag = im.group(0)
+                am = re.search(r'\balt\s*=\s*("[^"]*"|\'[^\']*\')', tag, re.I)
+                if not alt_bad and (not am or not am.group(1).strip('\'"').strip()):
+                    issues.append({'page': rel, 'type': 'workflow_img_missing_alt',
+                                   'detail': '워크플로우 도판 img는 시각 대표물이라 빈 alt 금지(핵심 정보는 HTML 텍스트·figcaption으로, alt는 도판 의미를 적는다).'})
+                    alt_bad = True
+                sm = re.search(r'\bsrc\s*=\s*("[^"]*"|\'[^\']*\')', tag, re.I)
+                src = sm.group(1).strip('\'"') if sm else ''
+                p = local_path(html, src)
+                if p is not None and p.suffix.lower() == '.svg' and p.exists():
+                    size = svg_size(p)
+                    if not size or size[0] < 8000 or size[1] < 6000:
+                        issues.append({'page': rel, 'type': 'workflow_svg_too_small_or_invalid', 'src': src, 'size': size})
+                        break
+            leaks = sorted({m.group(0) for m in re.finditer(r'\.workflow-[A-Za-z0-9_-]+', style)
+                            if not re.match(r'\.workflow-(?:figure|img|grid|lead|lead-body)(?![\w-])', m.group(0))})
+            if leaks:
+                issues.append({'page': rel, 'type': 'workflow_selector_namespace_leak', 'detail': leaks})
+        # --- Regression gates (lock in fixes so the same defects can't recur) ---
+        # R1: platform-grid is a card grid (div) — must hold .platform-card directly,
+        #     NOT be misused as a section wrapper (heading/intro/card-grid inside → broken grid).
+        for m in re.finditer(r'class=["\'][^"\']*\bplatform-grid\b[^"\']*["\']', text):
+            after = text[m.end():m.end() + 500]
+            if re.search(r'^\s*>?\s*<h2\b', after) or re.search(r'<h2\b', after[:220]) or 'card-grid' in after[:500] or 'h2-sub' in after[:300]:
+                issues.append({'page': rel, 'type': 'platform_grid_wrapper_misuse',
+                               'detail': 'platform-grid(div)에 카드 직접 대신 heading/intro/card-grid 래핑 → grid 깨짐. 래퍼는 <section>으로, .platform-grid는 카드 직접 자식만.'})
+                break
+        # R2/R3 gate on wg-03 MARKUP usage (class="wg-03-…"), not on the inlined CSS text
+        # (widgets.css inlined by widget/auto profiles contains .wg-03-… selectors even when unused).
+        if re.search(r'class=["\'][^"\']*\bwg-03-(?:code|diff|row|grid)\b', text):
+            # R2: wg-03 diff code must reset the generic code{} (light bg) or code goes invisible on the dark diff.
+            if '.wg-03-diff code' not in style and not re.search(r'\.wg-03-code\{[^}]*background\s*:\s*none', style):
+                issues.append({'page': rel, 'type': 'wg03_diff_code_bg_not_reset',
+                               'detail': '다크 diff 코드가 코어 code{background} 에 덮여 안 보임. .wg-03-diff code{background:none} 리셋 필요.'})
+            # R3: wg-03 diff/notes columns must be equal height (stretch), not start (gap).
+            gm = re.search(r'\.wg-03-grid\{[^}]*\}', style)
+            if gm and 'align-items:stretch' not in gm.group(0).replace(' ', ''):
+                issues.append({'page': rel, 'type': 'wg03_grid_not_stretch',
+                               'detail': 'diff(좌)/notes(우) 높이 불일치(틈). .wg-03-grid{align-items:stretch} 필요.'})
+        # R4: tables (min-width:420px) must be mobile-safe (wrapped in .table-scroll or a responsive table).
+        for m in re.finditer(r'<table\b[^>]*>', text):
+            pre = text[max(0, m.start() - 120):m.start()]
+            cls = m.group(0)
+            if 'table-scroll' not in pre and 'final-matrix' not in cls and 'mobile-card' not in cls:
+                issues.append({'page': rel, 'type': 'table_no_mobile_safe_wrapper',
+                               'detail': 'table{min-width:420px}이라 390px에서 넘침. .table-scroll로 감싸거나 반응형 표(mobile-card/final-matrix) 사용.'})
+                break
+        # R5: wide-report layouts must carry the prose width override (else body prose is capped at ~2/3).
+        wide = re.search(r'class=["\'][^"\']*\blayout-(expert|compare|seo|platform|landing|case|checklist|reference|audit|skill-audit)\b', text)
+        if wide and '.page-wide>section>p' in style:
+            if 'max-width:60rem' not in style.replace(' ', ''):
+                issues.append({'page': rel, 'type': 'wide_layout_prose_cap_missing',
+                               'detail': '넓은 레이아웃 본문이 46rem(섹션 2/3)로 좁음. .page-wide.layout-*>section>p{max-width:60rem} 오버라이드 필요.'})
         for tag, ref in parser.local_refs:
             p = local_path(html, ref)
             if p is not None and not p.exists():
