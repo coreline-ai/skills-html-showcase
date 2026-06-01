@@ -1,0 +1,103 @@
+<!-- Widget 03: Annotated Pull Request | 코드·이해 | css-partial -->
+<!-- severity 색(critical/warn/info)에 더해 텍스트 라벨·아이콘(!/i)로 색 외 단서 제공. :target로 노트/라인 점프 강조는 CSS-only. 인라인 코멘트 펼침/접힘 토글이나 라인별 댓글 작성은 JS 필요. -->
+<style>
+.wg-03{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide);margin:0 auto}
+.wg-03-head{margin-bottom:var(--space-4)}
+.wg-03-kicker{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
+.wg-03-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-3)}
+.wg-03-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:var(--space-3)}
+.wg-03-chip{font-size:var(--fs-xs);border:1px solid var(--line);background:rgba(255,255,255,.6);color:var(--chip-ink);border-radius:999px;padding:3px 10px;font-family:ui-monospace,Menlo,monospace}
+.wg-03-chip-add{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink);font-weight:700}
+.wg-03-chip-del{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink);font-weight:700}
+.wg-03-jump{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.wg-03-jump-label{font-size:var(--fs-xs);color:var(--ink-mute);font-weight:600}
+.wg-03-jump-link{font-size:var(--fs-xs);font-weight:700;text-decoration:none;border-radius:999px;padding:4px 10px;border:1px solid var(--line)}
+.wg-03-jump-link.wg-03-sev-critical{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink)}
+.wg-03-jump-link.wg-03-sev-warn{background:var(--hl-yellow);border-color:var(--term-border);color:var(--term-label-ink)}
+.wg-03-jump-link.wg-03-sev-info{background:var(--hl-blue);border-color:var(--analogy-border);color:var(--analogy-label-ink)}
+.wg-03-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--space-4);align-items:start}
+.wg-03-diff{background:var(--code);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs)}
+.wg-03-row{display:flex;align-items:stretch;position:relative;line-height:1.7;border-left:3px solid transparent}
+.wg-03-ln{flex:0 0 auto;width:38px;text-align:right;padding:0 8px;color:#7c7c78;user-select:none;background:rgba(255,255,255,.04)}
+.wg-03-code{flex:1;padding:0 10px;white-space:pre;overflow-x:auto;color:#e2e2dc}
+.wg-03-ctx .wg-03-code{color:#bcbcb6}
+.wg-03-add{background:rgba(63,142,108,.18);border-left-color:var(--good-accent)}
+.wg-03-add .wg-03-code{color:#cfeede}
+.wg-03-del{background:rgba(230,57,70,.16);border-left-color:var(--accent)}
+.wg-03-del .wg-03-code{color:#f5cfcf}
+.wg-03-sign{display:inline-block;width:1ch;font-weight:700}
+.wg-03-add .wg-03-sign{color:#7fe0b0}
+.wg-03-del .wg-03-sign{color:#ff9a9a}
+.wg-03-dot{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;text-decoration:none;color:#fff;font-family:var(--sans)}
+.wg-03-dot.wg-03-sev-critical{background:var(--accent)}
+.wg-03-dot.wg-03-sev-warn{background:var(--term-accent)}
+.wg-03-dot.wg-03-sev-info{background:var(--analogy-accent)}
+.wg-03-flag:target,.wg-03-row.wg-03-flag:target{outline:2px solid var(--focus);outline-offset:-2px}
+.wg-03-notes{display:flex;flex-direction:column;gap:var(--space-3)}
+.wg-03-note{background:var(--card);border:1px solid var(--line);border-left-width:4px;border-radius:var(--radius-md);padding:var(--space-3);transition:box-shadow .2s ease}
+.wg-03-note.wg-03-sev-critical{border-left-color:var(--accent);background:var(--danger-bg)}
+.wg-03-note.wg-03-sev-warn{border-left-color:var(--term-accent);background:var(--term-bg)}
+.wg-03-note.wg-03-sev-info{border-left-color:var(--analogy-accent);background:var(--analogy-bg)}
+.wg-03-note:target{box-shadow:0 0 0 3px rgba(26,86,219,.35);scroll-margin-top:24px}
+.wg-03-note-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-2)}
+.wg-03-badge{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:2px 9px;color:#fff}
+.wg-03-sev-critical .wg-03-badge{background:var(--accent)}
+.wg-03-sev-warn .wg-03-badge{background:var(--term-accent)}
+.wg-03-sev-info .wg-03-badge{background:var(--analogy-accent)}
+.wg-03-note-loc{font-size:var(--fs-xs);font-family:ui-monospace,Menlo,monospace}
+.wg-03-note-loc a{color:var(--ink-soft);font-weight:700}
+.wg-03-note-body{font-size:var(--fs-sm);color:var(--ink-soft);margin:0;line-height:1.65}
+.wg-03-note-body code{background:rgba(26,26,26,.07);border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:.92em}
+@media(max-width:760px){.wg-03-grid{grid-template-columns:1fr}}
+</style>
+<section class="wg-03" aria-labelledby="wg-03-title">
+  <header class="wg-03-head">
+    <p class="wg-03-kicker">코드 리뷰</p>
+    <h2 id="wg-03-title" class="wg-03-title">PR #482 · 결제 재시도 백오프 추가</h2>
+    <div class="wg-03-meta">
+      <span class="wg-03-chip">src/payments/retry.ts</span>
+      <span class="wg-03-chip wg-03-chip-add">+14</span>
+      <span class="wg-03-chip wg-03-chip-del">−5</span>
+      <span class="wg-03-chip">리뷰어 2명</span>
+    </div>
+    <nav class="wg-03-jump" aria-label="노트 점프">
+      <span class="wg-03-jump-label">노트로 이동:</span>
+      <a href="#wg-03-n1" class="wg-03-jump-link wg-03-sev-critical">L18 critical</a>
+      <a href="#wg-03-n2" class="wg-03-jump-link wg-03-sev-warn">L22 warn</a>
+      <a href="#wg-03-n3" class="wg-03-jump-link wg-03-sev-info">L27 info</a>
+    </nav>
+  </header>
+
+  <div class="wg-03-grid">
+    <div class="wg-03-diff" role="table" aria-label="코드 diff">
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln" aria-hidden="true">15</span><code class="wg-03-code">async function charge(order) {</code></div>
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">16</span><code class="wg-03-code">  const max = 3;</code></div>
+      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">17</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">−</span>  for (let i = 0; i &lt; max; i++) {</code></div>
+      <div id="wg-03-l18" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">18</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">+</span>  for (let i = 0; i &lt; max; i++) {</code><a href="#wg-03-n1" class="wg-03-dot wg-03-sev-critical" aria-label="L18 critical 노트">!</a></div>
+      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">19</span><code class="wg-03-code"><span class="wg-03-sign">+</span>    try {</code></div>
+      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">20</span><code class="wg-03-code"><span class="wg-03-sign">+</span>      return await gateway.charge(order);</code></div>
+      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">21</span><code class="wg-03-code"><span class="wg-03-sign">+</span>    } catch (e) {</code></div>
+      <div id="wg-03-l22" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">22</span><code class="wg-03-code"><span class="wg-03-sign">+</span>      await sleep(2 ** i * 100);</code><a href="#wg-03-n2" class="wg-03-dot wg-03-sev-warn" aria-label="L22 warn 노트">!</a></div>
+      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">23</span><code class="wg-03-code"><span class="wg-03-sign">−</span>      await sleep(100);</code></div>
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">24</span><code class="wg-03-code">    }</code></div>
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">25</span><code class="wg-03-code">  }</code></div>
+      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">26</span><code class="wg-03-code"><span class="wg-03-sign">−</span>  throw new Error('charge failed');</code></div>
+      <div id="wg-03-l27" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">27</span><code class="wg-03-code"><span class="wg-03-sign">+</span>  throw new PaymentError('retry exhausted', order.id);</code><a href="#wg-03-n3" class="wg-03-dot wg-03-sev-info" aria-label="L27 info 노트">i</a></div>
+    </div>
+
+    <aside class="wg-03-notes" aria-label="리뷰 노트">
+      <article id="wg-03-n1" class="wg-03-note wg-03-sev-critical" tabindex="-1">
+        <header class="wg-03-note-head"><span class="wg-03-badge">critical</span><span class="wg-03-note-loc"><a href="#wg-03-l18">L18</a></span></header>
+        <p class="wg-03-note-body">루프 조건은 그대로지만 인덱스 <code>i</code>가 0부터 시작해 첫 시도에 <code>sleep(0)</code>이 됩니다. 첫 요청도 지연시키려면 의도를 주석으로 명시하세요. <strong>지수 백오프 상한(cap)이 없어 폭주 위험.</strong></p>
+      </article>
+      <article id="wg-03-n2" class="wg-03-note wg-03-sev-warn" tabindex="-1">
+        <header class="wg-03-note-head"><span class="wg-03-badge">warn</span><span class="wg-03-note-loc"><a href="#wg-03-l22">L22</a></span></header>
+        <p class="wg-03-note-body">지터(jitter) 없이 순수 지수 백오프만 사용하면 동시 재시도 군집이 발생할 수 있습니다. <code>Math.random()</code> 기반 풀 지터 추가 권장.</p>
+      </article>
+      <article id="wg-03-n3" class="wg-03-note wg-03-sev-info" tabindex="-1">
+        <header class="wg-03-note-head"><span class="wg-03-badge">info</span><span class="wg-03-note-loc"><a href="#wg-03-l27">L27</a></span></header>
+        <p class="wg-03-note-body">전용 <code>PaymentError</code>로 교체한 점 좋습니다. <code>order.id</code> 컨텍스트가 로깅에 도움 됩니다.</p>
+      </article>
+    </aside>
+  </div>
+</section>

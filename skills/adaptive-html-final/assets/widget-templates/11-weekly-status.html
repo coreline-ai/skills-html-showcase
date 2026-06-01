@@ -1,0 +1,115 @@
+<!-- Widget 11: Weekly Status | 학습·리포트 | css-only -->
+<!-- 막대는 div width% + @keyframes로 0→목표 그로우(reduced-motion 시 정지). 색상 코드 섹션은 완료/진행/리스크를 색+점+라벨+빗금 패턴으로 이중 표기. 정적 데이터, JS 없음. -->
+<style>
+.wg-11{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide)}
+.wg-11-head{border-bottom:1px solid var(--line);padding-bottom:var(--space-4);margin-bottom:var(--space-5)}
+.wg-11-kicker{font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
+.wg-11-h{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.3;margin:0 0 var(--space-2);color:var(--ink)}
+.wg-11-lead{font-size:var(--fs-sm);color:var(--ink-soft);margin:0}
+.wg-11-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3);margin-bottom:var(--space-6)}
+.wg-11-kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);text-align:center;display:flex;flex-direction:column;gap:var(--space-1)}
+.wg-11-kpi-v{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;color:var(--ink);line-height:1}
+.wg-11-kpi-v.wg-11-warn{color:var(--accent)}
+.wg-11-kpi-l{font-size:var(--fs-xs);color:var(--ink-mute)}
+.wg-11-h3{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;margin:0 0 var(--space-4);color:var(--ink)}
+.wg-11-bars{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-6)}
+.wg-11-bar-row{display:grid;grid-template-columns:140px 1fr 44px;align-items:center;gap:var(--space-3)}
+.wg-11-bar-label{font-size:var(--fs-sm);color:var(--ink-soft);font-weight:600}
+.wg-11-track{height:18px;background:var(--bg);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.wg-11-fill{height:100%;border-radius:999px;animation:wg-11-grow 1s cubic-bezier(.2,.8,.2,1) both}
+.wg-11-fill-good{background:var(--good-accent)}
+.wg-11-fill-prog{background:var(--analogy-accent)}
+.wg-11-fill-risk{background:var(--accent);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.22) 0,rgba(255,255,255,.22) 5px,transparent 5px,transparent 10px)}
+.wg-11-bar-pct{font-size:var(--fs-xs);font-weight:700;color:var(--ink-soft);text-align:right;font-variant-numeric:tabular-nums}
+@keyframes wg-11-grow{from{width:0 !important}}
+@media(prefers-reduced-motion:reduce){.wg-11-fill{animation:none}}
+.wg-11-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
+.wg-11-col{border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);background:var(--card);border-top:3px solid var(--line)}
+.wg-11-col-good{border-top-color:var(--good-accent);background:var(--good-bg)}
+.wg-11-col-prog{border-top-color:var(--analogy-accent);background:var(--analogy-bg)}
+.wg-11-col-risk{border-top-color:var(--accent);background:var(--danger-bg)}
+.wg-11-col-h{display:flex;align-items:center;gap:var(--space-2);font-size:var(--fs-sm);font-weight:800;margin:0 0 var(--space-3)}
+.wg-11-col-good .wg-11-col-h{color:var(--good-label-ink)}
+.wg-11-col-prog .wg-11-col-h{color:var(--analogy-label-ink)}
+.wg-11-col-risk .wg-11-col-h{color:var(--danger-label-ink)}
+.wg-11-dot{width:9px;height:9px;border-radius:50%;flex:none}
+.wg-11-col-good .wg-11-dot{background:var(--good-accent)}
+.wg-11-col-prog .wg-11-dot{background:var(--analogy-accent)}
+.wg-11-col-risk .wg-11-dot{background:var(--accent)}
+.wg-11-col-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-2)}
+.wg-11-col-list li{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;padding-left:16px;position:relative}
+.wg-11-col-list li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:1px;background:currentColor;opacity:.5}
+.wg-11-tk{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 5px;color:var(--ink-mute);vertical-align:1px}
+.wg-11-flag{display:inline-block;font-size:11px;font-weight:800;background:var(--accent);color:#fff;border-radius:var(--radius-sm);padding:1px 6px}
+@media(max-width:760px){.wg-11-kpis{grid-template-columns:repeat(2,1fr)}.wg-11-cols{grid-template-columns:1fr}.wg-11-bar-row{grid-template-columns:110px 1fr 40px}}
+</style>
+<section class="wg-11" aria-labelledby="wg-11-title">
+  <header class="wg-11-head">
+    <p class="wg-11-kicker">주간 상태 리포트</p>
+    <h2 id="wg-11-title" class="wg-11-h">Payments 스쿼드 · 22주차 (5/25–5/31)</h2>
+    <p class="wg-11-lead">스프린트 목표 달성률 <strong>78%</strong> · 리스크 1건 에스컬레이션 필요</p>
+  </header>
+
+  <div class="wg-11-kpis">
+    <div class="wg-11-kpi"><span class="wg-11-kpi-v">14/18</span><span class="wg-11-kpi-l">완료 티켓</span></div>
+    <div class="wg-11-kpi"><span class="wg-11-kpi-v">3</span><span class="wg-11-kpi-l">진행 중</span></div>
+    <div class="wg-11-kpi"><span class="wg-11-kpi-v wg-11-warn">1</span><span class="wg-11-kpi-l">리스크</span></div>
+    <div class="wg-11-kpi"><span class="wg-11-kpi-v">0</span><span class="wg-11-kpi-l">차단됨</span></div>
+  </div>
+
+  <h3 class="wg-11-h3">에픽 진척도</h3>
+  <div class="wg-11-bars">
+    <div class="wg-11-bar-row">
+      <span class="wg-11-bar-label">정산 정산서 v2</span>
+      <div class="wg-11-track" role="img" aria-label="정산서 v2 진척 92퍼센트">
+        <div class="wg-11-fill wg-11-fill-good" style="width:92%"></div>
+      </div>
+      <span class="wg-11-bar-pct">92%</span>
+    </div>
+    <div class="wg-11-bar-row">
+      <span class="wg-11-bar-label">환불 API 리팩터</span>
+      <div class="wg-11-track" role="img" aria-label="환불 API 진척 64퍼센트">
+        <div class="wg-11-fill wg-11-fill-prog" style="width:64%"></div>
+      </div>
+      <span class="wg-11-bar-pct">64%</span>
+    </div>
+    <div class="wg-11-bar-row">
+      <span class="wg-11-bar-label">PG사 이중화</span>
+      <div class="wg-11-track" role="img" aria-label="PG사 이중화 진척 38퍼센트, 리스크">
+        <div class="wg-11-fill wg-11-fill-risk" style="width:38%"></div>
+      </div>
+      <span class="wg-11-bar-pct">38%</span>
+    </div>
+    <div class="wg-11-bar-row">
+      <span class="wg-11-bar-label">대시보드 지표</span>
+      <div class="wg-11-track" role="img" aria-label="대시보드 진척 100퍼센트">
+        <div class="wg-11-fill wg-11-fill-good" style="width:100%"></div>
+      </div>
+      <span class="wg-11-bar-pct">100%</span>
+    </div>
+  </div>
+
+  <div class="wg-11-cols">
+    <div class="wg-11-col wg-11-col-good">
+      <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>완료</h4>
+      <ul class="wg-11-col-list">
+        <li>정산서 PDF 생성 파이프라인 배포 <span class="wg-11-tk">PAY-812</span></li>
+        <li>대시보드 일별 거래액 위젯 <span class="wg-11-tk">PAY-790</span></li>
+        <li>웹훅 재시도 백오프 적용 <span class="wg-11-tk">PAY-805</span></li>
+      </ul>
+    </div>
+    <div class="wg-11-col wg-11-col-prog">
+      <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>진행 중</h4>
+      <ul class="wg-11-col-list">
+        <li>환불 API 멱등성 키 도입 <span class="wg-11-tk">PAY-818</span></li>
+        <li>정산 통화 변환 캐시 <span class="wg-11-tk">PAY-821</span></li>
+      </ul>
+    </div>
+    <div class="wg-11-col wg-11-col-risk">
+      <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>리스크</h4>
+      <ul class="wg-11-col-list">
+        <li><strong>PG사 이중화</strong> — 2차 PG 계약 지연으로 일정 1주 밀림. <span class="wg-11-flag">에스컬레이션</span> <span class="wg-11-tk">PAY-799</span></li>
+      </ul>
+    </div>
+  </div>
+</section>

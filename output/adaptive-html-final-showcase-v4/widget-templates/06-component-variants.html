@@ -1,0 +1,104 @@
+<!-- Widget 06: Component Variants | 디자인 | css-only -->
+<!-- 배경 라이트/다크 토글: input[type=radio]:checked ~ 형제 셀렉터 (JS 0). Default 열은 실제 :hover/:focus-visible, 다른 열은 .wg-06-is-* 클래스로 상태 고정. 색 외 단서로 statetag 텍스트 라벨 제공. prefers-reduced-motion 대응. -->
+<style>
+.wg-06-cs{font-family:var(--sans);color:var(--ink);background:var(--bg);padding:var(--space-6);border:1px solid var(--line);border-radius:var(--radius-lg);max-width:var(--max-wide)}
+.wg-06-head{margin-bottom:var(--space-4)}
+.wg-06-kicker{font-size:var(--fs-xs);letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:var(--space-2)}
+.wg-06-h{font-family:var(--serif);font-size:var(--fs-2xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-2)}
+.wg-06-lead{font-size:var(--fs-sm);color:var(--ink-soft);margin:0;line-height:1.7}
+.wg-06-density{border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-2) var(--space-3);margin:0 0 var(--space-4);display:inline-flex;align-items:center;gap:var(--space-2);background:var(--card)}
+.wg-06-density-leg{font-size:var(--fs-xs);color:var(--ink-mute);font-weight:700;padding:0 var(--space-2)}
+.wg-06-bg-input{position:absolute;opacity:0;width:1px;height:1px}
+.wg-06-bg-label{font-size:var(--fs-xs);font-weight:600;padding:var(--space-1) var(--space-3);border:1px solid var(--line);border-radius:999px;cursor:pointer;color:var(--ink-soft)}
+.wg-06-bg-input:checked+.wg-06-bg-label{background:var(--accent);border-color:var(--accent);color:#fff}
+.wg-06-bg-input:focus-visible+.wg-06-bg-label{outline:3px solid var(--focus);outline-offset:2px}
+.wg-06-sheet{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3);overflow-x:auto;transition:background .25s ease}
+.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet{background:var(--dark)}
+.wg-06-table{border-collapse:collapse;width:100%;min-width:560px}
+.wg-06-cap{caption-side:top;text-align:left;font-size:var(--fs-xs);color:var(--ink-mute);padding:0 0 var(--space-3)}
+.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-cap,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-rowhead,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet th,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-statetag{color:#fff}
+.wg-06-table th{font-size:var(--fs-xs);font-weight:700;color:var(--ink);text-align:center;padding:var(--space-2);border-bottom:2px solid var(--line)}
+.wg-06-rowhead{text-align:left!important;color:var(--ink-soft);white-space:nowrap}
+.wg-06-table td{padding:var(--space-3) var(--space-2);border-bottom:1px dashed var(--line);text-align:center;vertical-align:top}
+.wg-06-stack{display:inline-flex;flex-direction:column;align-items:center;gap:var(--space-2)}
+.wg-06-statetag{font-size:11px;color:var(--ink-mute);font-family:ui-monospace,Menlo,monospace}
+.wg-06-btn{font-family:var(--sans);font-weight:700;border-radius:var(--radius-sm);border:1px solid transparent;cursor:pointer;line-height:1.2;transition:background .15s ease,box-shadow .15s ease,transform .05s ease;white-space:nowrap}
+.wg-06-lg{font-size:var(--fs-md);padding:var(--space-3) var(--space-5)}
+.wg-06-md{font-size:var(--fs-sm);padding:var(--space-2) var(--space-4)}
+.wg-06-sm{font-size:var(--fs-xs);padding:var(--space-1) var(--space-3)}
+.wg-06-btn--primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.wg-06-btn--primary:hover,.wg-06-btn--primary.wg-06-is-hover{background:var(--accent-2);border-color:var(--accent-2)}
+.wg-06-btn--secondary{background:var(--card);color:var(--ink);border-color:var(--line)}
+.wg-06-btn--secondary:hover,.wg-06-btn--secondary.wg-06-is-hover{background:var(--bg);border-color:var(--ink-soft)}
+.wg-06-btn--ghost{background:transparent;color:var(--accent-2);border-color:transparent}
+.wg-06-btn--ghost:hover,.wg-06-btn--ghost.wg-06-is-hover{background:var(--accent-soft)}
+.wg-06-btn--danger{background:var(--danger-bg);color:var(--danger-label-ink);border-color:var(--danger-border)}
+.wg-06-btn--danger:hover,.wg-06-btn--danger.wg-06-is-hover{background:var(--danger-label-ink);color:#fff;border-color:var(--danger-label-ink)}
+.wg-06-btn:focus-visible,.wg-06-btn.wg-06-is-focus{outline:3px solid var(--focus);outline-offset:2px;box-shadow:0 0 0 2px #fff,0 0 0 5px rgba(26,86,219,.4)}
+.wg-06-btn:active{transform:translateY(1px)}
+.wg-06-btn:disabled{opacity:.45;cursor:not-allowed;background:var(--line);color:var(--ink-mute);border-color:var(--line)}
+.wg-06-foot{margin:var(--space-4) 0 0;font-size:var(--fs-xs);color:var(--ink-mute);line-height:1.7;border-top:1px solid var(--line);padding-top:var(--space-3)}
+@media(prefers-reduced-motion:reduce){.wg-06-btn,.wg-06-sheet{transition:none}}
+@media(max-width:560px){.wg-06-cs{padding:var(--space-4)}}
+</style>
+<section class="wg-06-cs" aria-labelledby="wg-06-title">
+  <header class="wg-06-head">
+    <p class="wg-06-kicker">COMPONENT CONTACT SHEET</p>
+    <h2 id="wg-06-title" class="wg-06-h">버튼 컴포넌트 변형</h2>
+    <p class="wg-06-lead">한 버튼 컴포넌트의 모든 변형(Variant) × 크기 × 상태를 한 시트에 정렬했습니다.</p>
+  </header>
+
+  <fieldset class="wg-06-density">
+    <legend class="wg-06-density-leg">배경 토글</legend>
+    <input type="radio" name="wg-06-bg" id="wg-06-bg-light" class="wg-06-bg-input" checked>
+    <label for="wg-06-bg-light" class="wg-06-bg-label">라이트</label>
+    <input type="radio" name="wg-06-bg" id="wg-06-bg-dark" class="wg-06-bg-input">
+    <label for="wg-06-bg-dark" class="wg-06-bg-label">다크</label>
+  </fieldset>
+
+  <div class="wg-06-sheet">
+    <table class="wg-06-table">
+      <caption class="wg-06-cap">행 = 변형 · 열 = 상태 · 셀 내부 = 크기(L/M/S)</caption>
+      <thead>
+        <tr>
+          <th scope="col" class="wg-06-rowhead">Variant \ State</th>
+          <th scope="col">Default</th>
+          <th scope="col">Hover</th>
+          <th scope="col">Focus</th>
+          <th scope="col">Disabled</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="wg-06-rowhead">Primary</th>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-lg">저장 L</button><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-md">저장 M</button><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-sm">저장 S</button></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-md wg-06-is-hover">저장</button><span class="wg-06-statetag">hover</span></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-md wg-06-is-focus">저장</button><span class="wg-06-statetag">focus ring</span></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-md" disabled>저장</button><span class="wg-06-statetag">disabled</span></span></td>
+        </tr>
+        <tr>
+          <th scope="row" class="wg-06-rowhead">Secondary</th>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-lg">취소 L</button><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-md">취소 M</button><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-sm">취소 S</button></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-md wg-06-is-hover">취소</button><span class="wg-06-statetag">hover</span></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-md wg-06-is-focus">취소</button><span class="wg-06-statetag">focus ring</span></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-md" disabled>취소</button><span class="wg-06-statetag">disabled</span></span></td>
+        </tr>
+        <tr>
+          <th scope="row" class="wg-06-rowhead">Ghost</th>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-lg">더보기 L</button><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-md">더보기 M</button><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-sm">더보기 S</button></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-md wg-06-is-hover">더보기</button><span class="wg-06-statetag">hover</span></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-md wg-06-is-focus">더보기</button><span class="wg-06-statetag">focus ring</span></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-md" disabled>더보기</button><span class="wg-06-statetag">disabled</span></span></td>
+        </tr>
+        <tr>
+          <th scope="row" class="wg-06-rowhead">Danger</th>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-lg">삭제 L</button><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-md">삭제 M</button><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-sm">삭제 S</button></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-md wg-06-is-hover">삭제</button><span class="wg-06-statetag">hover</span></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-md wg-06-is-focus">삭제</button><span class="wg-06-statetag">focus ring</span></span></td>
+          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-md" disabled>삭제</button><span class="wg-06-statetag">disabled</span></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="wg-06-foot">Default 열의 버튼은 실제 :hover / :focus-visible 가 동작합니다. 나머지 열은 상태를 고정 시뮬레이션해 한눈에 비교하도록 했습니다.</p>
+</section>

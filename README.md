@@ -5,18 +5,20 @@
 # 🎨 Adaptive HTML Final
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
-[![version](https://img.shields.io/badge/version-4.3.3-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-4.5.0-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
 [![modes](https://img.shields.io/badge/modes-13-2a7d5a)](#-13개-모드)
+[![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
+[![libraries](https://img.shields.io/badge/view%20widgets-20-e63946)](#️-비주얼-프로파일) [![svg→html](https://img.shields.io/badge/svg→html%20templates-20-d99a38)](#️-비주얼-프로파일)
 [![lang](https://img.shields.io/badge/lang-한국어-0b7285)](#)
-[![output](https://img.shields.io/badge/output-HTML%20%2B%208000×6000%20SVG-d99a38)](#-비주얼-템플릿-시스템)
 [![external JS](https://img.shields.io/badge/external%20JS-0-success)](#-품질-게이트)
+[![cross-agent](https://img.shields.io/badge/cross--agent-AGENTS.md-6e40c9)](AGENTS.md)
 [![python](https://img.shields.io/badge/SVG%20render-stdlib%20only-3776AB?logo=python&logoColor=white)](skills/adaptive-html-final/scripts/render_visual_svg.py)
 
-**입력 자료를 13개 모드로 라우팅해 전문가급 한국어 HTML·SVG 콘텐츠를 만드는 단일 통합 스킬**
+**입력 자료를 13개 모드로 라우팅해 전문가급 한국어 HTML 콘텐츠를 만드는 단일 통합 스킬 — 기동 시 비주얼 프로파일(위젯형·도식형·자동) 선택**
 
 URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill`을 받아 학습자료, 전문가 리포트, 아티클, 교육 모듈, 블로그 원고, SEO 대시보드, 플랫폼 변환, 스킬 감사, 레퍼런스, 비교, 케이스 스터디, 랜딩, 체크리스트로 변환합니다.
 
-[Overview](#-overview) · [모드](#-13개-모드) · [쇼케이스 갤러리](#️-쇼케이스-갤러리) · [스킬 구조](#️-스킬-구조) · [상세 분석](#-스킬-상세-분석) · [사용법](#-사용법)
+[Overview](#-overview) · [모드](#-13개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [쇼케이스 갤러리](#️-쇼케이스-갤러리) · [스킬 구조](#️-스킬-구조) · [사용법](#-사용법)
 
 </div>
 
@@ -40,7 +42,10 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 |---|---|
 | 사실성 | 확인되지 않은 최신 정보·수치·가격·날짜는 단정하지 않고 `확인 필요`로 표시 |
 | 무 JS | 외부/동작 JavaScript 미사용 (JSON-LD 메타데이터만 허용) |
-| 단일 HTML | `theme + components + layouts + print` CSS를 inline으로 포함한 자기완결 HTML |
+| 단일 HTML | 코어 CSS(theme·components·visual-components·layouts·print)를 inline으로 포함한 자기완결 HTML + 합본 해시 마커 |
+| **비주얼 프로파일** | 기동 시 `widget`(인터랙티브 위젯) / `diagram`(SVG→HTML 도식) / `auto`(둘 다, 기본) 선택 — 코어 공유, 프로파일이 라이브러리만 게이트 |
+| **두 위젯 라이브러리** | CSS 뷰 위젯 `wg-01~20`(인터랙션) + SVG→HTML 템플릿 `vt-` 20종(본문 삽입 도식), 둘 다 무 JS·네임스페이스 격리 |
+| 크로스-에이전트 결정론 | 루트 [`AGENTS.md`](AGENTS.md)가 결정론 진입점 — Claude Code·Codex·Gemini가 동일 인자로 동일 출력. 정적 게이트 `validate_output.py --profile` |
 | 접근성 | `lang="ko"` · skip link(`#main`) · 단일 `h1` · `:focus-visible` · `prefers-reduced-motion` · AA 대비 |
 | editorial DNA | 오프화이트 배경, Pretendard + Noto Serif KR, 의미 박스, h2 빨간 원번호 |
 
@@ -70,7 +75,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 ## 🖼️ 쇼케이스 갤러리
 
-13개 모드를 **각각 다른 주제**로 실행해 만든 실제 결과물입니다. 모든 페이지는 스킬의 editorial 디자인 시스템을 inline으로 포함한 독립 실행 HTML이며, 품질 게이트 적대적 검증을 거쳤습니다. (스크린샷·링크는 canonical [`adaptive-html-final-showcase-v4`](output/adaptive-html-final-showcase-v4) 기준 · v4.3.3 스킬 + 전문가 리뷰 P1 접근성 보정 반영)
+13개 모드를 **각각 다른 주제**로 실행해 만든 실제 결과물입니다. 모든 페이지는 스킬의 editorial 디자인 시스템을 inline으로 포함한 독립 실행 HTML이며, 품질 게이트 적대적 검증을 거쳤습니다. (스크린샷·링크는 canonical [`adaptive-html-final-showcase-v4`](output/adaptive-html-final-showcase-v4) 기준 · 13개 모드 데모) — 프로파일별 골든은 위 [비주얼 프로파일](#️-비주얼-프로파일) 참조(widget=v5 · auto=v6 · diagram=슬림).
 
 <table>
 <tr>
@@ -107,17 +112,65 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 ---
 
+## 🎚️ 비주얼 프로파일
+
+스킬을 **기동할 때 비주얼 스타일을 고를 수 있습니다.** 코어(13모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 *어느 라이브러리·삽입 단계·CSS 번들*을 쓸지만 게이트합니다. 세 프로파일 모두 **외부/동작 JS 0**.
+
+<table>
+<tr>
+<td width="33%" align="center"><b>🧩 <code>widget</code> (= <code>style=v5</code>)</b></td>
+<td width="33%" align="center"><b>📊 <code>diagram</code> (= <code>style=v6</code>)</b></td>
+<td width="33%" align="center"><b>🔀 <code>auto</code> (기본)</b></td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/profile-widget.png" width="100%" alt="widget profile"></td>
+<td><img src="docs/screenshots/profile-diagram.png" width="100%" alt="diagram profile"></td>
+<td><img src="docs/screenshots/profile-auto.png" width="100%" alt="auto profile"></td>
+</tr>
+<tr>
+<td valign="top">CSS 뷰 위젯 <code>wg-01~20</code> — 탭·플로우·아코디언 등 <b>인터랙티브</b> 컴포넌트(CSS-only). 코어5 + <code>widgets.css</code>.</td>
+<td valign="top">SVG→HTML 템플릿 <code>vt-</code> 20종 — 리스크 매트릭스·비교 카드·타임라인 등 본문 삽입 <b>정적 도식</b>. 코어5 + <code>visual-html.css</code>.</td>
+<td valign="top">둘 다(vt- 1순위 + wg- 보강). 현행 기본값이자 <b>회귀-0 기준선</b>. 코어5 + 두 라이브러리.</td>
+</tr>
+</table>
+
+| 프로파일 | 별칭 | 라이브러리 (markup) | CSS 번들 | 골든 쇼케이스 |
+|---|---|---|---|---|
+| `widget` | `style=v5` | CSS 뷰 위젯 `wg-` | 코어5 + `widgets.css` | [`showcase-v5`](output/adaptive-html-final-showcase-v5) (정합화) |
+| `diagram` | `style=v6` | SVG→HTML `vt-` | 코어5 + `visual-html.css` | [`showcase-diagram`](output/adaptive-html-final-showcase-diagram) (슬림) |
+| `auto` (기본) | — | 둘 다 | 코어5 + `widgets.css` + `visual-html.css` | [`showcase-v6`](output/adaptive-html-final-showcase-v6) |
+
+```bash
+# 기동 인자로 선택 (별칭 v5/v6도 수용 · 미지정 시 auto)
+adaptive-html-final  profile=widget      # 또는 style=v5
+adaptive-html-final  profile=diagram     # 또는 style=v6
+adaptive-html-final                      # 기본 auto
+
+# 검증기는 출력의 sources/profile.json 을 자동 인지(또는 --profile)해
+# 교차 누수(diagram에 wg- / widget에 vt-)를 차단한다
+python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
+  --skill-dir skills/adaptive-html-final --profile diagram
+```
+
+> 🤖 **크로스-에이전트 결정론**: 인자가 명시되면 Claude Code·Codex·Gemini가 동일 결과를 낸다(정규화 `profile=` 우선, 무효 토큰은 `invalid_profile` 실패). 비대화형(AGENTS.md 경유)은 미지정 시 무조건 `auto`. 분리 설계·검증 계획은 [`implement_visual_profile_separation.md`](implement_visual_profile_separation.md).
+
+---
+
 ## 🏗️ 스킬 구조
 
 ### 디자인 시스템 (CSS 레이어)
 
 ```text
-theme.css       색/폰트/폭 토큰(:root) · skip · focus-visible · reduced-motion
-components.css   term · analogy · danger · good · hero-analogy · try · tbl · faq · cta-box ...
-layouts.css      13개 모드별 그리드/구조 (+ 39개 레이아웃 전용 클래스)
-print.css        인쇄 대응(print-color-adjust · break-inside)
-visual-components.css   figure.visual-figure (8000×6000 SVG 삽입 셸)  ← v4.2
+theme.css        색/폰트/폭 토큰(:root) · skip · focus-visible · reduced-motion   ← 코어 해시
+components.css    term · analogy · danger · good · hero-analogy · try · tbl · faq · cta-box ...  ← 코어 해시
+visual-components.css   figure.visual-figure (8000×6000 SVG 삽입 셸)               ← 코어 해시 · v4.2
+layouts.css       13개 모드별 그리드/구조 (+ 39개 레이아웃 전용 클래스)              ← 코어 해시
+print.css         인쇄 대응(print-color-adjust · break-inside)                    ← 코어 해시
+widgets.css       CSS 뷰 위젯 wg-01~20 (탭·플로우·아코디언, 무 JS)  ← v4.4 · widget/auto 프로파일 조건부 인라인
+visual-html.css   SVG→HTML 템플릿 vt- 20종 (본문 삽입 도식)        ← v4.5 · diagram/auto 프로파일 조건부 인라인
 ```
+
+> 코어 해시는 **5종**(theme·components·visual-components·layouts·print)의 합본 SHA-256(`adaptive-html-final-core-css-sha256` 마커)이며, `widgets.css`·`visual-html.css`는 해시 대상이 아닌 **프로파일별 조건부 인라인**이다.
 
 ### 비주얼 템플릿 시스템 (v4.2+)
 
@@ -138,7 +191,7 @@ visual-components.css   figure.visual-figure (8000×6000 SVG 삽입 셸)  ← v4
 skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 (74 files) + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트
-│   ├── manifest.json                  # name/version/modes/layouts (v4.3.3)
+│   ├── manifest.json                  # name/version/modes/layouts/profiles (v4.5.0)
 │   ├── assets/        (6 + 13 layouts) # base.html · CSS 5종 · 13개 레이아웃 골격
 │   ├── references/    (11)            # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/비주얼 규칙
 │   ├── recipes/       (13)            # 13개 모드별 대표 프롬프트
@@ -148,7 +201,7 @@ skills-html-showcase/
 │   ├── scripts/       (2)             # render_visual_svg.py 등
 │   └── examples/      (8)            # 예시 결과물
 ├── output/
-│   ├── adaptive-html-final-showcase-v4/   # 13모드 쇼케이스 (canonical, v4.3.3 + a11y 보정)
+│   ├── adaptive-html-final-showcase-v4/   # 13모드 쇼케이스 (canonical 13-mode 데모)
 │   │   ├── pages/     (15)            # 13모드 + 비주얼 데모 + SVG 갤러리
 │   │   └── media/svg-template-demos/ (20)  # 8000×6000 SVG 데모
 │   └── (playwright/ · qa-screenshots/ 는 .gitignore)
@@ -184,8 +237,10 @@ skills-html-showcase/
 | `v4.1.0` | 7-전문가 분석 P0~P2 자동 패치 — 모드 ID 통일, recipes 13/13, 스키마 보강, 디자인 토큰 정리(AA 대비·print·reduced-motion) |
 | `v4.2.x` | **Visual Template System** 도입 — 8000×6000 SVG 인포그래픽 7종 + stdlib 렌더러 + quality-gate 레이아웃 보정 |
 | `v4.3.3` | 13모드 전수 캡쳐 감사 기반 **반응형 폴리시** — dark CTA 대비, 플랫폼 그리드, 모바일 표 밀도, case timeline 구조 + 정적 게이트 |
+| `v4.4.0` | **뷰 위젯 시스템** 편입 — CSS 뷰 위젯 `wg-01~20`(무 JS, `widgets.css` + 위젯 템플릿) + 위젯 정적 게이트, 전문가 리뷰 P0/P1 마감 |
+| `v4.5.0` | **SVG→HTML 템플릿** 편입(`vt-` 20종, `visual-html.css`) + **하네스 정형화**(루트 `AGENTS.md` 결정론 진입점) + **비주얼 프로파일**(`widget`·`diagram`·`auto`) 도입 — 검증기 `--profile`·교차 누수 게이트·`profiles` 매니페스트 |
 
-> 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md)
+> 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) · 프로파일 분리 계획: [`implement_visual_profile_separation.md`](implement_visual_profile_separation.md)
 
 ---
 
@@ -211,9 +266,12 @@ skills-html-showcase/
 ```text
 [입력 자료/URL/파일/주제]를 [목적/독자]용 [모드]로 만들어줘.
 출력은 [단일 HTML / Markdown+HTML / 플랫폼별 원고]로 해줘.
+비주얼: profile=widget | diagram | auto  (또는 style=v5 | v6, 미지정 시 auto)
 반드시 포함: [목차, 용어 풀이, 예시, 리스크, FAQ, CTA 등]
 주의: [최신 정보는 확인 필요 표시, 외부 JS 금지, 모바일 안전 표]
 ```
+
+`profile=widget`은 탭·플로우 같은 인터랙티브 위젯(`wg-`)을, `profile=diagram`은 본문 삽입 도식(`vt-`)을, `auto`(기본)는 둘 다 적용합니다. 자세한 선택 규칙은 [비주얼 프로파일](#️-비주얼-프로파일) 참조.
 
 ### 비주얼 인포그래픽 직접 렌더
 
@@ -237,5 +295,5 @@ python3 -m http.server 8788
 별도 라이선스가 지정되지 않았습니다. 사용 전 저장소 소유자(`coreline-ai`)에게 확인하세요.
 
 <div align="center">
-<sub>생성 도구: <code>adaptive-html-final</code> v4.3.3 · 13-mode editorial HTML/SVG engine</sub>
+<sub>생성 도구: <code>adaptive-html-final</code> v4.5.0 · 13-mode · 3-profile editorial HTML engine</sub>
 </div>

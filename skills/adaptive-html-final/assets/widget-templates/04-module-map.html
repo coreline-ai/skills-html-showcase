@@ -1,0 +1,105 @@
+<!-- Widget 04: Module Map | 코드·이해 | css-partial -->
+<!-- SVG 노드/엣지 정적 렌더, 핵심 경로는 색 + 굵기 + 굵은 텍스트 + 범례 + 별도 경로 칩으로 색 외 단서 제공. 노드 호버는 CSS transition. 노드 클릭 확장·드래그 재배치·줌은 JS 필요(완전 인터랙션은 JS 필요). -->
+<style>
+.wg-04{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide);margin:0 auto}
+.wg-04-head{margin-bottom:var(--space-4)}
+.wg-04-kicker{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
+.wg-04-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-2)}
+.wg-04-lead{font-size:var(--fs-base);color:var(--ink-soft);line-height:1.7;margin:0 0 var(--space-3)}
+.wg-04-crit-word{color:var(--accent-2)}
+.wg-04-legend{list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-4);margin:0;padding:0;font-size:var(--fs-xs);color:var(--ink-soft)}
+.wg-04-legend li{display:flex;align-items:center;gap:6px}
+.wg-04-lg{display:inline-block;width:16px;height:12px;border-radius:3px;border:1.5px solid var(--line)}
+.wg-04-lg-entry{background:var(--analogy-bg);border-color:var(--analogy-accent)}
+.wg-04-lg-core{background:var(--card);border-color:var(--ink)}
+.wg-04-lg-leaf{background:var(--bg);border-color:var(--line)}
+.wg-04-lg-crit{background:var(--accent);border-color:var(--accent-2)}
+.wg-04-diagram{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-3);overflow-x:auto}
+.wg-04-svg{display:block;width:100%;height:auto;min-width:520px}
+.wg-04-edge{stroke:var(--ink-mute);stroke-width:1.6;fill:none}
+.wg-04-edge-crit{stroke:var(--accent);stroke-width:3}
+.wg-04-node rect{stroke-width:1.6;transition:transform .18s ease}
+.wg-04-node text{font-family:var(--sans);font-size:14px;font-weight:600;text-anchor:middle;fill:var(--ink)}
+.wg-04-node-entry rect{fill:var(--analogy-bg);stroke:var(--analogy-accent)}
+.wg-04-node-core rect{fill:var(--card);stroke:var(--ink)}
+.wg-04-node-leaf rect{fill:var(--bg);stroke:var(--line)}
+.wg-04-node-crit rect{stroke:var(--accent);stroke-width:3}
+.wg-04-node-crit text{fill:var(--accent-2);font-weight:800}
+.wg-04-node:hover rect{transform:translateY(-2px)}
+.wg-04-path{margin-top:var(--space-4);background:var(--danger-bg);border:1px solid var(--danger-border);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2) var(--space-3)}
+.wg-04-path-label{font-size:var(--fs-xs);font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:999px;padding:3px 10px}
+.wg-04-path-chain{font-family:ui-monospace,Menlo,monospace;font-size:var(--fs-sm);font-weight:700;color:var(--ink)}
+.wg-04-path-chain code{background:rgba(230,57,70,.12);border:1px solid var(--danger-border);border-radius:4px;padding:1px 7px;color:var(--accent-2)}
+.wg-04-path-note{font-size:var(--fs-xs);color:var(--ink-soft)}
+@media(max-width:600px){.wg-04-path{flex-direction:column;align-items:flex-start}}
+</style>
+<section class="wg-04" aria-labelledby="wg-04-title">
+  <header class="wg-04-head">
+    <p class="wg-04-kicker">패키지 구조</p>
+    <h2 id="wg-04-title" class="wg-04-title">모듈 의존성 맵 · @shop/checkout</h2>
+    <p class="wg-04-lead">노드는 패키지, 화살표는 의존 방향입니다. <strong class="wg-04-crit-word">붉은 굵은 경로</strong>가 결제 핵심 경로(critical path)입니다.</p>
+    <ul class="wg-04-legend" aria-label="범례">
+      <li><span class="wg-04-lg wg-04-lg-entry" aria-hidden="true"></span> 진입점</li>
+      <li><span class="wg-04-lg wg-04-lg-core" aria-hidden="true"></span> 도메인 코어</li>
+      <li><span class="wg-04-lg wg-04-lg-leaf" aria-hidden="true"></span> 외부/유틸</li>
+      <li><span class="wg-04-lg wg-04-lg-crit" aria-hidden="true"></span> 핵심 경로</li>
+    </ul>
+  </header>
+
+  <div class="wg-04-diagram">
+    <svg viewBox="0 0 640 360" class="wg-04-svg" role="img" aria-labelledby="wg-04-svg-t wg-04-svg-d">
+      <title id="wg-04-svg-t">@shop/checkout 패키지 의존성 다이어그램</title>
+      <desc id="wg-04-svg-d">api 진입점에서 cart, payment, order 코어를 거쳐 gateway, db, logger 유틸로 이어지는 그래프. 핵심 경로는 api → payment → gateway.</desc>
+      <defs>
+        <marker id="wg-04-arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--ink-mute)"></path></marker>
+        <marker id="wg-04-arrow-crit" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--accent)"></path></marker>
+      </defs>
+
+      <g class="wg-04-edges">
+        <path class="wg-04-edge wg-04-edge-crit" d="M120,70 L120,150" marker-end="url(#wg-04-arrow-crit)"></path>
+        <path class="wg-04-edge" d="M155,55 L300,150" marker-end="url(#wg-04-arrow)"></path>
+        <path class="wg-04-edge" d="M150,60 L470,150" marker-end="url(#wg-04-arrow)"></path>
+        <path class="wg-04-edge wg-04-edge-crit" d="M120,190 L120,270" marker-end="url(#wg-04-arrow-crit)"></path>
+        <path class="wg-04-edge" d="M300,190 L160,265" marker-end="url(#wg-04-arrow)"></path>
+        <path class="wg-04-edge" d="M310,190 L310,270" marker-end="url(#wg-04-arrow)"></path>
+        <path class="wg-04-edge" d="M470,190 L330,270" marker-end="url(#wg-04-arrow)"></path>
+        <path class="wg-04-edge" d="M480,190 L500,270" marker-end="url(#wg-04-arrow)"></path>
+      </g>
+
+      <g class="wg-04-node wg-04-node-entry">
+        <rect x="60" y="30" width="120" height="40" rx="8"></rect>
+        <text x="120" y="55">api (진입점)</text>
+      </g>
+      <g class="wg-04-node wg-04-node-core wg-04-node-crit">
+        <rect x="60" y="150" width="120" height="40" rx="8"></rect>
+        <text x="120" y="175">payment</text>
+      </g>
+      <g class="wg-04-node wg-04-node-core">
+        <rect x="250" y="150" width="120" height="40" rx="8"></rect>
+        <text x="310" y="175">cart</text>
+      </g>
+      <g class="wg-04-node wg-04-node-core">
+        <rect x="420" y="150" width="120" height="40" rx="8"></rect>
+        <text x="480" y="175">order</text>
+      </g>
+      <g class="wg-04-node wg-04-node-leaf wg-04-node-crit">
+        <rect x="60" y="270" width="120" height="40" rx="8"></rect>
+        <text x="120" y="295">gateway</text>
+      </g>
+      <g class="wg-04-node wg-04-node-leaf">
+        <rect x="250" y="270" width="120" height="40" rx="8"></rect>
+        <text x="310" y="295">db</text>
+      </g>
+      <g class="wg-04-node wg-04-node-leaf">
+        <rect x="440" y="270" width="120" height="40" rx="8"></rect>
+        <text x="500" y="295">logger</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="wg-04-path" role="note">
+    <span class="wg-04-path-label">핵심 경로</span>
+    <span class="wg-04-path-chain"><code>api</code> <span aria-hidden="true">→</span> <code>payment</code> <span aria-hidden="true">→</span> <code>gateway</code></span>
+    <span class="wg-04-path-note">결제 실패 시 영향 범위 · 변경 시 최우선 회귀 테스트 대상</span>
+  </div>
+</section>

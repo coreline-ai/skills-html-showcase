@@ -1,5 +1,94 @@
 # Changelog — adaptive-html-final
 
+## v4.5.0 (2026-05-31) — SVG→HTML 템플릿 편입 & 하네스 정형화
+
+SVG로 그리던 본문 삽입 다이어그램을 순수 HTML+CSS 뷰 템플릿(`vt-`) 20종으로 정식 편입하고, 모드→템플릿 결정론 진입점과 정적 게이트로 하네스를 정형화했다. 무 JS 원칙(외부/동작 JS 0, JSON-LD만 허용)은 전 항목에서 유지된다.
+
+### 추가
+- `assets/visual-html.css` — SVG→HTML 뷰 템플릿 20종 스타일.
+- `assets/visual-html-templates/01..20.html` 20종 — `vt-` 본문 삽입 다이어그램 골격(hero-map, decision-tree, risk-matrix, timeline, checklist-flow, quality-gate, card-grid, raci, file-tour, flowchart, weekly-status, incident-summary, comparison-cards, process-swimlane, concept-explainer, implementation-plan, pr-writeup, triage-board, feature-flag, prompt-tuner).
+- `references/visual-html-system.md` — 캐노니컬 모드→vt 템플릿 매핑(첫=1순위, 단일 출처), 선택·삽입 규칙.
+- `AGENTS.md` — 결정론 진입점(모드 입력→vt 선택을 단일 출처로 고정).
+
+### 캐노니컬 모드→vt 매핑 (첫=1순위, 단일 출처)
+- beginner_html: concept-explainer, hero-map, checklist-flow
+- expert_html: risk-matrix, raci, quality-gate, implementation-plan
+- article_html: decision-tree, comparison-cards, concept-explainer
+- education_html: timeline, checklist-flow, concept-explainer
+- blog_writer: timeline, weekly-status, comparison-cards
+- seo_dashboard: card-grid, comparison-cards, prompt-tuner
+- platform_blog: card-grid, comparison-cards, pr-writeup
+- skill_audit: quality-gate, file-tour, prompt-tuner, implementation-plan
+- reference_html: file-tour, flowchart, card-grid
+- comparison_html: comparison-cards, decision-tree, risk-matrix
+- case_study_html: incident-summary, timeline, process-swimlane
+- landing_brief_html: hero-map, card-grid, feature-flag
+- checklist_playbook: checklist-flow, quality-gate, process-swimlane, implementation-plan, triage-board
+
+### 변경
+- `SKILL.md`: 모드→vt 결정표 추가(캐노니컬 매핑을 단일 출처로 참조).
+- `assets/base.html`: `{{WIDGETS_CSS}}` 슬롯 바로 뒤에 `{{VISUAL_HTML_CSS}}` 슬롯 추가(인라인 순서 widgets → visual-html → layouts 유지).
+- `scripts/validate_output.py`: `vt-` 게이트 추가(visual-html 템플릿 사용 시 정적 검사).
+- `manifest.json`: 버전 4.5.0, assets에 `assets/visual-html.css` 추가, `visual_html_templates` 배열(01~20) 등록, changes 항목 추가, updated 2026-05-31.
+
+### 적용 데모
+- `showcase-v6` — SVG→HTML 템플릿 20종을 모드별로 적용한 갤러리.
+
+### 검증
+- `assets/visual-html-templates/*.html` 20종 모두 외부/동작 `<script>` 0건(무 JS 0, JSON-LD만 허용).
+- `manifest.json` `python json.load` 유효성 통과, `visual_html_templates` 20개 실제 파일 경로 일치.
+
+### 비주얼 프로파일 선택 (2026-06-01)
+스킬 기동 시 비주얼 스타일을 고를 수 있게 단일 스킬 + 프로파일 파라미터를 도입했다. 코어(13모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 라이브러리·삽입 단계·CSS 번들·결정표 컬럼만 게이트한다. 무 JS 0·코어 해시 계약 불변. (버전은 4.5.0 유지 — 4.6.0 bump은 frozen auto 골든 v6의 footer/sources를 건드려 회귀-0을 깨므로 골든 보존을 위해 보류; 버전 일관성은 manifest=sources=footer=4.5.0으로 충족.)
+- **프로파일 3종**: `widget`(=v5, CSS 뷰 위젯 `wg-`, 코어5+`widgets.css`) / `diagram`(=v6, SVG→HTML `vt-`, 코어5+`visual-html.css`) / `auto`(기본, 둘 다 = 현행 v6 산출).
+- **선택 규칙**: 인자 `profile=widget|diagram|auto` 또는 별칭 `style=v5|v6`(`trim→lowercase→정규화`, 둘 다 오면 `profile=` 우선, 무효=`invalid_profile` 실패·조용한 폴백 금지). 미지정 시 비대화형(AGENTS.md 경유 Codex/Gemini)=무조건 `auto`·질문 금지, 대화형(Claude)=1회 질문. 결정론은 인자 명시 경로 한정.
+- `manifest.json`: `profiles` 스키마(이름·별칭·css·templates·markup·steps) + `profile_selection` 설명 추가.
+- `AGENTS.md`: §4 "0. 프로파일 결정(모드 선행)"·"0.5 profile.json 기록"·§3 프로파일별 컬럼 주석·§4 프로파일별 CSS 번들표·삽입 단계 6/7 게이팅·불변식6 "5종 해시+조건부 인라인".
+- `SKILL.md`: §0.5 비주얼 프로파일 선행·§0.6 프로파일 오버레이(단일 출처)·Step 4.6/4.7 프로파일 게이트.
+- `scripts/validate_output.py`: `validate(root, skill_dir, profile=None)`·`--profile`·`_resolve_profile`(우선순위 인자>profile.json>폴백, 별칭·invalid)·always-on `cross_leak_gate`(diagram `wg-\d{2}`/widget `vt-[a-z]`, 단·이중따옴표·대소문자, `cross_leak` ISSUE)·`unfilled_placeholder` 게이트. **기존 3인자 호출 회귀 0**(baseline 동일).
+- `references/visual-html-system.md`: "코어 6종"→"코어 5종 해시 + 조건부 인라인" 동기화.
+- 골든: `auto`=showcase-v6(무변경)·`diagram`=v6 슬림(widgets.css 제거)·`widget`=showcase-v5(정합화). 각 `sources/profile.json` 동봉.
+- 분리 계획·검증: 루트 `implement_visual_profile_separation.md`(Phase -1~6, 전문가·QA 리뷰 반영), `dev-plan/golden_prediagnosis.md`.
+
+## v4.4.0 (2026-05-31) — 뷰 위젯 시스템 편입
+
+코드/디자인/리뷰/운영형 정보를 위한 뷰 위젯(view widget) 20종을 스킬 본체에 정식 편입했다. 모든 위젯은 스킬 디자인 토큰을 재사용하고 외부 JS 없이 동작하며, 레이아웃 골격 위에 섹션 목적에 맞게 선택·삽입한다.
+
+### 추가
+- `assets/widgets.css` — 위젯 20종 스타일. 모든 선택자는 `wg-<id>-` 네임스페이스(`wg-01`~`wg-20`)로 격리되어 기존 theme/components/layouts와 충돌하지 않는다.
+- `assets/widget-templates/*.html` 20종 — 위젯별 삽입 골격. 헤더 주석에 인터랙티브 분류(`css-only`/`css-partial`/`js-needed`)와 무 JS 근사 범위를 명시.
+- `references/widget-system.md` — 위젯 선택 기준, 모드별 권장 매핑, 무 JS 인터랙션(`<details>`/`:checked`/`:target`/CSS 애니메이션) 규칙, 접근성(색 외 단서·포커스) 가이드.
+- `tests/widget-checklist.md` — 위젯 게이트(외부 JS 0, `wg-<id>-` 네임스페이스 충돌 0, 인터랙션 기법 한정, 색 외 단서·포커스, 18·20 무 JS 근사) grep 명령+기대값.
+
+### 위젯 20종 (인터랙티브 분류)
+- CSS-only(완전 무JS) 11종: 02 Visual Design Directions, 06 Component Variants, 07 Animation Sandbox, 08 Clickable Flow, 10 SVG Figure Sheet, 11 Weekly Status, 13 Annotated Flowchart, 14 Feature Explainer, 15 Concept Explainer, 16 Implementation Plan, 17 PR Writeup.
+- CSS 부분 7종: 01 Three Code Approaches, 03 Annotated PR, 04 Module Map, 05 Living Design System, 09 Arrow-Key Slide Deck, 12 Incident Timeline, 19 Feature Flag Editor.
+- JS 필요 2종: 18 Ticket Triage Board(칸반), 20 Prompt Tuner. 완전 인터랙션(드래그·실시간 토큰)에만 JS가 필요하며, 스킬 기본값은 정적/`:checked` 상태의 **무 JS 근사**로 삽입하고 실시간 동작은 선택적 점진 향상으로만 둔다.
+
+### 변경
+- `SKILL.md`: 워크플로우에 Step 4.6 View Widget Selection & Insertion 추가(레이아웃 골격에 적합 위젯을 widgets.css 기반·무 JS로 삽입). §4 Design System 자산 맵과 §8 References에 widgets.css / widget-templates / widget-system.md 등재, 모드별 권장 위젯 한 줄 가이드 추가.
+- `assets/base.html`: `{{WIDGETS_CSS}}` 슬롯을 통해 위젯 CSS를 합본하도록 적용(theme → components → visual-components → widgets → layouts → print 순서).
+- `manifest.json`: 버전 4.4.0, assets에 `assets/widgets.css` 추가, changes에 위젯 시스템 편입 항목, updated 2026-05-31.
+
+### 검증
+- `assets/widgets.css`에서 `wg-01`~`wg-20` 네임스페이스 20종 확인, 네임스페이스 밖으로 새는 `.wg-` 선택자 0건.
+- `assets/widget-templates/*.html` 20종 모두 외부/동작 `<script>` 0건. 18·20도 `<script>` 0건(무 JS 근사).
+- 인터랙티브 분류 집계 11/7/2 일치(`css-only` 11, `css-partial` 7, `js-needed` 2).
+- `manifest.json` `python json.load` 유효성 통과.
+
+### 편입 완성도 마감 (전문가 리뷰 반영, 2026-05-31)
+편입 준비도 리뷰(평균 84/100, 최저 항목 "편입 완성도" 72)에서 지적된 P0/P1을 반영해 "강제·메타데이터·문서 정합"의 2차 표면 편입을 마감했다. 무 JS 원칙(외부/동작 JS 0)은 전 항목에서 유지된다.
+- `scripts/validate_output.py`: 위젯 정적 게이트 편입 — 출력에 `wg-` 클래스가 있으면 (a) widgets.css 인라인, (b) `wg-<id>-` 밖 `.wg-` 누수 0, (c) 위젯 영역 비-JSON-LD `<script>` 0, (d) `draggable`/`contenteditable` 0을 정적 실패로 검사.
+- `manifest.json`: `visual_templates`와 대칭으로 `widget_templates` 배열(01~20) 등록.
+- `tests/widget-checklist.md`: 회귀 규칙 2건 추가 — `role="tab"` 사용 시 `aria-selected` 필수/라벨 `tabindex·role` 금지(이중 탭 스톱 금지), `:target-within` 단독 의존 금지(`:target` 폴백 필수).
+- `references/widget-system.md`: forward/reverse 매핑 불일치 2건 정합(landing_brief_html↔05, education_html↔10), 배정 원칙("콘텐츠 적합성 우선") 및 적용 갤러리 발견 링크 명시.
+- `references/editorial-design-system.md`: 하이라이트 역할-색 1:1 규칙 명문화 — 본문 핵심 강조는 노랑 `.hl` 단일, `.hl.blue`/`.hl.pink`는 별도 의미 한정.
+- `assets/widgets.css`: 위젯 08 `:target-within`에 `:has(:target)`/`:target ~` 폴백 추가(Chrome/FF 보강, 실측 동작 확인), `.wg-08-screen{outline:none}` 정리 후 `:focus-visible` 링 복원, wg-03/05/08/17에 `var(--focus)` 3px 포커스 링 일관 적용.
+- `assets/widget-templates/14·15`: 커스텀 탭/스텝 라벨의 `role="tab"·tabindex="0"`과 `role="tablist"/tabpanel` 제거 → 네이티브 라디오 시맨틱 위임(이중 탭 스톱·미완성 ARIA 해소). 탭 전환은 `#id:checked`+`for=` 기제로 그대로 동작.
+- `recipes/*.md` 5종(comparison·audit·reference·case-study·checklist): 모드 1순위 위젯 삽입 지시 추가.
+- `README.md`: v4.4.0 갱신, 위젯 4종 자산 등재, tests "6종" 정정.
+- 검증: 무 JS 0(스킬 assets·v5 전 페이지 전수), validate 위젯 게이트 통과, Chromium 실측 — 04 탭·09 스텝·12 플로우 전환 정상, 13 `.hl` 단일색(#ffe9a3), 포커스 링 3px.
+
 ## v4.3.3 (2026-05-30) — responsive polish regression gate
 
 13개 모드 전수 캡쳐 감사에서 확인된 dark CTA 링크 대비, platform section/grid 구조, 모바일 표 밀도, case timeline 단일 대형 카드 문제를 스킬 CSS와 정적 게이트에 반영했다.

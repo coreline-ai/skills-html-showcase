@@ -1,0 +1,99 @@
+<!-- Widget 18: Ticket Triage Board | 편집 인터페이스 | js-needed -->
+<!-- 정적 칸반: 우선순위 칩(높음/보통/완료)과 컬럼별 좌측 보더 색 + 도트/카운트로 상태 표현, 색 외 텍스트·기호(●/✓) 단서 병기. 카드 hover/focus 리프트는 transition. 완전 인터랙션(드래그앤드롭으로 컬럼 간 카드 이동·실시간 카운트 갱신)은 JS 필요. -->
+<style>
+.wg-18-board{font-family:var(--sans);color:var(--ink);background:var(--bg);padding:var(--space-5);border:1px solid var(--line);border-radius:var(--radius-lg)}
+.wg-18-head{margin-bottom:var(--space-5)}
+.wg-18-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;margin:0 0 var(--space-2)}
+.wg-18-hint{font-size:var(--fs-xs);color:var(--ink-mute);margin:0;line-height:1.6}
+.wg-18-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.wg-18-col{background:rgba(255,255,255,.5);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3);min-width:0}
+.wg-18-col-head{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-1) var(--space-1) var(--space-3);border-bottom:1px solid var(--line);margin-bottom:var(--space-3)}
+.wg-18-dot{width:10px;height:10px;border-radius:999px;flex:0 0 auto}
+.wg-18-dot--todo{background:var(--ink-mute)}
+.wg-18-dot--prog{background:var(--accent)}
+.wg-18-dot--done{background:var(--good-accent)}
+.wg-18-col-name{font-size:var(--fs-sm);font-weight:700;margin:0;flex:1 1 auto;color:var(--ink)}
+.wg-18-count{font-size:var(--fs-xs);font-weight:700;color:var(--ink-mute);background:var(--bg);border:1px solid var(--line);border-radius:999px;min-width:22px;text-align:center;padding:1px 6px}
+.wg-18-card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:var(--radius-sm);padding:var(--space-3);margin-bottom:var(--space-3);transition:transform .15s ease,box-shadow .15s ease}
+.wg-18-card:last-child{margin-bottom:0}
+.wg-18-card:hover,.wg-18-card:focus-visible{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.wg-18-card--active{border-left-color:var(--accent)}
+.wg-18-card--done{border-left-color:var(--good-accent);opacity:.86}
+.wg-18-card--done .wg-18-card-title{text-decoration:line-through;text-decoration-color:var(--good-border)}
+.wg-18-card-top{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);margin-bottom:var(--space-2)}
+.wg-18-id{font-size:var(--fs-xs);font-weight:700;color:var(--ink-mute);letter-spacing:.02em}
+.wg-18-pri{font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.wg-18-pri--high{color:var(--danger-label-ink);background:var(--danger-bg);border:1px solid var(--danger-border)}
+.wg-18-pri--mid{color:var(--term-label-ink);background:var(--term-bg);border:1px solid var(--term-border)}
+.wg-18-pri--low{color:var(--ink-mute);background:var(--bg);border:1px solid var(--line)}
+.wg-18-card--done .wg-18-pri{color:var(--good-label-ink);background:var(--good-bg);border:1px solid var(--good-border)}
+.wg-18-card-title{font-size:var(--fs-sm);font-weight:600;color:var(--ink);margin:0 0 var(--space-3);line-height:1.5}
+.wg-18-meta{display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap}
+.wg-18-tag{font-size:11px;color:var(--analogy-label-ink);background:var(--analogy-bg);border:1px solid var(--analogy-border);border-radius:var(--radius-sm);padding:1px 7px}
+.wg-18-assignee{font-size:var(--fs-xs);color:var(--ink-mute);margin-left:auto}
+@media(max-width:760px){.wg-18-cols{grid-template-columns:1fr}}
+</style>
+<section class="wg-18-board" aria-label="티켓 분류 보드">
+  <header class="wg-18-head">
+    <h2 class="wg-18-title">스프린트 24 보드</h2>
+    <p class="wg-18-hint">드래그앤드롭 이동은 JS가 필요합니다. 아래는 정적 보드 + 우선순위 태그로 상태를 표현합니다.</p>
+  </header>
+  <div class="wg-18-cols" role="list">
+    <div class="wg-18-col" role="listitem">
+      <div class="wg-18-col-head">
+        <span class="wg-18-dot wg-18-dot--todo" aria-hidden="true"></span>
+        <h3 class="wg-18-col-name">할 일</h3>
+        <span class="wg-18-count" aria-label="3건">3</span>
+      </div>
+      <article class="wg-18-card" tabindex="0">
+        <div class="wg-18-card-top"><span class="wg-18-id">FE-412</span><span class="wg-18-pri wg-18-pri--high">● 높음</span></div>
+        <p class="wg-18-card-title">로그인 폼 자동완성 깨짐</p>
+        <div class="wg-18-meta"><span class="wg-18-tag">버그</span><span class="wg-18-assignee">이서연</span></div>
+      </article>
+      <article class="wg-18-card" tabindex="0">
+        <div class="wg-18-card-top"><span class="wg-18-id">FE-418</span><span class="wg-18-pri wg-18-pri--mid">● 보통</span></div>
+        <p class="wg-18-card-title">설정 페이지 다크모드 토큰 적용</p>
+        <div class="wg-18-meta"><span class="wg-18-tag">개선</span><span class="wg-18-assignee">박준호</span></div>
+      </article>
+      <article class="wg-18-card" tabindex="0">
+        <div class="wg-18-card-top"><span class="wg-18-id">FE-420</span><span class="wg-18-pri wg-18-pri--low">● 낮음</span></div>
+        <p class="wg-18-card-title">푸터 링크 정렬 정리</p>
+        <div class="wg-18-meta"><span class="wg-18-tag">잡무</span><span class="wg-18-assignee">미할당</span></div>
+      </article>
+    </div>
+    <div class="wg-18-col" role="listitem">
+      <div class="wg-18-col-head">
+        <span class="wg-18-dot wg-18-dot--prog" aria-hidden="true"></span>
+        <h3 class="wg-18-col-name">진행 중</h3>
+        <span class="wg-18-count" aria-label="2건">2</span>
+      </div>
+      <article class="wg-18-card wg-18-card--active" tabindex="0">
+        <div class="wg-18-card-top"><span class="wg-18-id">FE-401</span><span class="wg-18-pri wg-18-pri--high">● 높음</span></div>
+        <p class="wg-18-card-title">결제 모달 접근성 라벨 보강</p>
+        <div class="wg-18-meta"><span class="wg-18-tag">접근성</span><span class="wg-18-assignee">최강환</span></div>
+      </article>
+      <article class="wg-18-card wg-18-card--active" tabindex="0">
+        <div class="wg-18-card-top"><span class="wg-18-id">FE-407</span><span class="wg-18-pri wg-18-pri--mid">● 보통</span></div>
+        <p class="wg-18-card-title">대시보드 차트 리사이즈 버그</p>
+        <div class="wg-18-meta"><span class="wg-18-tag">버그</span><span class="wg-18-assignee">김다은</span></div>
+      </article>
+    </div>
+    <div class="wg-18-col" role="listitem">
+      <div class="wg-18-col-head">
+        <span class="wg-18-dot wg-18-dot--done" aria-hidden="true"></span>
+        <h3 class="wg-18-col-name">완료</h3>
+        <span class="wg-18-count" aria-label="2건">2</span>
+      </div>
+      <article class="wg-18-card wg-18-card--done" tabindex="0">
+        <div class="wg-18-card-top"><span class="wg-18-id">FE-388</span><span class="wg-18-pri wg-18-pri--mid">✓ 완료</span></div>
+        <p class="wg-18-card-title">검색 인풋 디바운스 적용</p>
+        <div class="wg-18-meta"><span class="wg-18-tag">개선</span><span class="wg-18-assignee">박준호</span></div>
+      </article>
+      <article class="wg-18-card wg-18-card--done" tabindex="0">
+        <div class="wg-18-card-top"><span class="wg-18-id">FE-390</span><span class="wg-18-pri wg-18-pri--low">✓ 완료</span></div>
+        <p class="wg-18-card-title">아이콘 폰트 → SVG 교체</p>
+        <div class="wg-18-meta"><span class="wg-18-tag">잡무</span><span class="wg-18-assignee">이서연</span></div>
+      </article>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,87 @@
+<!-- Widget 09: Arrow-Key Slide Deck | 프로토·다이어그램 | js-needed -->
+<!-- 슬라이드 이동은 scroll-snap(좌우 스와이프) + 점/링크 앵커(:target 점프) 2중 CSS-only 경로. 화살표키 키보드 이동과 자동 재생은 keydown 핸들러가 필요해 JS 없이는 불가 → 완전 인터랙션은 JS 필요. 현재는 트랙 포커스 후 스크롤/Tab+Enter 링크로 접근 가능. -->
+<style>
+.wg-09-deck{font-family:var(--sans);color:var(--ink);max-width:640px;margin:0 auto}
+.wg-09-bar{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);margin-bottom:var(--space-3)}
+.wg-09-name{font-size:var(--fs-sm);font-weight:800;color:var(--ink-soft)}
+.wg-09-dots{display:flex;gap:var(--space-2)}
+.wg-09-dots a{width:26px;height:26px;display:grid;place-items:center;font-size:var(--fs-xs);font-weight:700;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink-mute);text-decoration:none}
+.wg-09-dots a:hover{border-color:var(--accent);color:var(--accent)}
+.wg-09-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:var(--space-4);scroll-behavior:smooth;border-radius:var(--radius-lg);scrollbar-width:thin}
+.wg-09-slide{scroll-snap-align:center;flex:0 0 100%;min-height:300px;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4);scroll-margin:0}
+.wg-09-slide--title{background:var(--dark);color:#fff;border-color:var(--dark)}
+.wg-09-slide--title .wg-09-no,.wg-09-slide--end .wg-09-no{color:var(--link-on-dark)}
+.wg-09-slide--title .wg-09-title{color:#fff}
+.wg-09-slide--title .wg-09-lead{color:rgba(255,255,255,.82)}
+.wg-09-slide--end{background:var(--accent);color:#fff;border-color:var(--accent-2)}
+.wg-09-slide--end .wg-09-title,.wg-09-slide--end .wg-09-lead{color:#fff}
+.wg-09-no{font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;color:var(--ink-mute);font-variant-numeric:tabular-nums}
+.wg-09-title{font-family:var(--serif);font-size:var(--fs-2xl);font-weight:700;margin:0;color:var(--ink)}
+.wg-09-lead{font-size:var(--fs-md);color:var(--ink-soft);margin:0}
+.wg-09-points{margin:0 0 0 var(--space-5);font-size:var(--fs-md);color:var(--ink-soft);display:flex;flex-direction:column;gap:var(--space-2)}
+.wg-09-stats{display:flex;gap:var(--space-4);flex-wrap:wrap}
+.wg-09-stat{flex:1;min-width:90px;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);text-align:center}
+.wg-09-stat strong{display:block;font-size:var(--fs-2xl);color:var(--accent-2);font-variant-numeric:tabular-nums;line-height:1.1}
+.wg-09-stat span{font-size:var(--fs-xs);color:var(--ink-mute)}
+.wg-09-cta-row{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3)}
+.wg-09-cta-row a:only-child{margin-left:auto}
+.wg-09-prev,.wg-09-next{font-size:var(--fs-sm);font-weight:800;text-decoration:none;padding:var(--space-2) var(--space-4);border-radius:999px;border:1px solid currentColor}
+.wg-09-next{background:var(--accent);color:#fff;border-color:var(--accent-2)}
+.wg-09-next:hover{background:var(--accent-2);color:#fff}
+.wg-09-prev{color:var(--ink-soft);background:transparent;border-color:var(--line)}
+.wg-09-prev:hover{color:var(--accent);border-color:var(--accent)}
+.wg-09-slide--title .wg-09-prev,.wg-09-slide--end .wg-09-prev{color:#fff;border-color:rgba(255,255,255,.5)}
+.wg-09-slide--end .wg-09-next{background:#fff;color:var(--accent-2);border-color:#fff}
+.wg-09-hint{font-size:var(--fs-xs);color:var(--ink-mute);margin-top:var(--space-3);text-align:center}
+</style>
+<section class="wg-09-deck" aria-label="슬라이드 덱">
+  <header class="wg-09-bar">
+    <span class="wg-09-name">2026 로드맵 · 발표 덱</span>
+    <nav class="wg-09-dots" aria-label="슬라이드 바로가기">
+      <a href="#wg-09-s1">1</a>
+      <a href="#wg-09-s2">2</a>
+      <a href="#wg-09-s3">3</a>
+      <a href="#wg-09-s4">4</a>
+    </nav>
+  </header>
+
+  <div class="wg-09-track" tabindex="0" aria-label="좌우 스크롤로 슬라이드 이동">
+    <article id="wg-09-s1" class="wg-09-slide wg-09-slide--title" aria-label="슬라이드 1">
+      <span class="wg-09-no">01 / 04</span>
+      <h2 class="wg-09-title">2026 제품 로드맵</h2>
+      <p class="wg-09-lead">플랫폼 팀 분기 발표 · 2026-05-30</p>
+      <div class="wg-09-cta-row"><a class="wg-09-next" href="#wg-09-s2">다음 &rarr;</a></div>
+    </article>
+
+    <article id="wg-09-s2" class="wg-09-slide" aria-label="슬라이드 2">
+      <span class="wg-09-no">02 / 04</span>
+      <h2 class="wg-09-title">Q2 핵심 목표</h2>
+      <ul class="wg-09-points">
+        <li>배포 파이프라인 자동화 완료</li>
+        <li>p95 응답시간 320ms &rarr; 180ms</li>
+        <li>다국어 지원 3개 언어 추가</li>
+      </ul>
+      <div class="wg-09-cta-row"><a class="wg-09-prev" href="#wg-09-s1">&larr; 이전</a><a class="wg-09-next" href="#wg-09-s3">다음 &rarr;</a></div>
+    </article>
+
+    <article id="wg-09-s3" class="wg-09-slide" aria-label="슬라이드 3">
+      <span class="wg-09-no">03 / 04</span>
+      <h2 class="wg-09-title">진행 현황</h2>
+      <div class="wg-09-stats">
+        <div class="wg-09-stat"><strong>87%</strong><span>스프린트 소진율</span></div>
+        <div class="wg-09-stat"><strong>14</strong><span>완료 티켓</span></div>
+        <div class="wg-09-stat"><strong>2</strong><span>차단 이슈</span></div>
+      </div>
+      <div class="wg-09-cta-row"><a class="wg-09-prev" href="#wg-09-s2">&larr; 이전</a><a class="wg-09-next" href="#wg-09-s4">다음 &rarr;</a></div>
+    </article>
+
+    <article id="wg-09-s4" class="wg-09-slide wg-09-slide--end" aria-label="슬라이드 4">
+      <span class="wg-09-no">04 / 04</span>
+      <h2 class="wg-09-title">다음 단계</h2>
+      <p class="wg-09-lead">차단 이슈 해소 후 Q3 계획 확정. 질문 환영합니다.</p>
+      <div class="wg-09-cta-row"><a class="wg-09-prev" href="#wg-09-s3">&larr; 이전</a><a class="wg-09-next" href="#wg-09-s1">처음으로</a></div>
+    </article>
+  </div>
+
+  <p class="wg-09-hint">하단 점 또는 슬라이드 내 이전/다음 링크로 이동 &middot; 트랙을 좌우로 스와이프/스크롤(scroll-snap). 화살표키 이동은 JS 필요.</p>
+</section>

@@ -100,9 +100,156 @@ def svg_size(path: Path):
     return None
 
 
-def validate(root: Path, skill_dir: Path | None = None) -> dict:
+def widget_static_gate(text: str, style: str) -> list[dict]:
+    """Static gate for output pages that embed view widgets (wg- classes).
+
+    Mirrors tests/widget-checklist.md. Only runs when a wg- class is present in
+    the page. Returns a list of issue dicts to merge into the page issues. Uses
+    only the stdlib (regex over the raw HTML + collected inline <style> text).
+    """
+    issues: list[dict] = []
+    # Detect a widget class inside any class="..."/class='...' attribute.
+    has_widget = False
+    for cm in re.finditer(r'class\s*=\s*("[^"]*"|\'[^\']*\')', text, re.I):
+        if re.search(r'\bwg-', cm.group(1)):
+            has_widget = True
+            break
+    if not has_widget:
+        return issues
+    # (a) widgets.css must be inlined: look for a known namespaced selector
+    #     (e.g. ".wg-01") or the widgets.css header marker ("widget templates").
+    if not (re.search(r'\.wg-\d{2}\b', style) or 'widget templates' in style.lower()):
+        issues.append({'type': 'widget_css_not_inlined'})
+    # (b) no ".wg-" selector leakage outside the wg-<id>- (2-digit) namespace.
+    leaks = sorted({
+        sm.group(0)
+        for sm in re.finditer(r'\.wg-[A-Za-z0-9_-]+', style)
+        if not re.match(r'\.wg-\d{2}(?![0-9])', sm.group(0))
+    })
+    if leaks:
+        issues.append({'type': 'widget_selector_namespace_leak', 'detail': leaks})
+    # (c) no behavioral <script> in the widget area (application/ld+json is allowed).
+    behavioral_scripts = 0
+    for sm in re.finditer(r'<script\b([^>]*)>', text, re.I):
+        attrs = sm.group(1)
+        tm = re.search(r'type\s*=\s*("[^"]*"|\'[^\']*\'|[^\s>]+)', attrs, re.I)
+        stype = tm.group(1).strip('\'"').lower() if tm else ''
+        if stype != 'application/ld+json':
+            behavioral_scripts += 1
+    if behavioral_scripts:
+        issues.append({'type': 'widget_behavioral_script', 'detail': behavioral_scripts})
+    # (d) no forbidden interaction primitives (draggable=/contenteditable=).
+    forbidden = sorted({
+        fm.group(1).lower()
+        for fm in re.finditer(r'\b(draggable|contenteditable)\s*=', text, re.I)
+    })
+    if forbidden:
+        issues.append({'type': 'widget_forbidden_primitive', 'detail': forbidden})
+    return issues
+
+
+def visual_html_gate(text: str, style: str) -> list[dict]:
+    """Static gate for SVG->HTML view-template pages (vt- classes).
+
+    Only runs when a vt template class (vt-shell / vt-frame) is used in the
+    page. Returns a list of issue dicts to merge into the page issues. Uses
+    only the stdlib (regex over the raw HTML + collected inline <style> text).
+    """
+    issues: list[dict] = []
+    # Detect a vt template class (vt-shell / vt-frame) inside any
+    # class="..."/class='...' attribute. Mirrors widget_static_gate.
+    has_vt = False
+    first_vt_pos = None
+    for cm in re.finditer(r'class\s*=\s*("[^"]*"|\'[^\']*\')', text, re.I):
+        if re.search(r'\b(vt-shell|vt-frame)\b', cm.group(1)):
+            has_vt = True
+            first_vt_pos = cm.start()
+            break
+    if not has_vt:
+        return issues
+    # (a) visual-html.css must be inlined: look for a known namespaced rule
+    #     (".vt-shell{" or ".vt-frame{") inside the inline <style> text.
+    if not re.search(r'\.(?:vt-shell|vt-frame)\s*\{', style):
+        issues.append({'type': 'visual_html_css_not_inlined'})
+    # (b) no behavioral <script> on the page (application/ld+json is allowed).
+    behavioral_scripts = 0
+    for sm in re.finditer(r'<script\b([^>]*)>', text, re.I):
+        attrs = sm.group(1)
+        tm = re.search(r'type\s*=\s*("[^"]*"|\'[^\']*\'|[^\s>]+)', attrs, re.I)
+        stype = tm.group(1).strip('\'"').lower() if tm else ''
+        if stype != 'application/ld+json':
+            behavioral_scripts += 1
+    if behavioral_scripts:
+        issues.append({'type': 'visual_html_behavioral_script', 'detail': behavioral_scripts})
+    # (c) no forbidden interaction primitives (draggable=/contenteditable=) in
+    #     the vt template area (from the first vt class to end of document).
+    vt_area = text[first_vt_pos:]
+    forbidden = sorted({
+        fm.group(1).lower()
+        for fm in re.finditer(r'\b(draggable|contenteditable)\s*=', vt_area, re.I)
+    })
+    if forbidden:
+        issues.append({'type': 'visual_html_forbidden_primitive', 'detail': forbidden})
+    return issues
+
+
+VALID_PROFILES = ('widget', 'diagram', 'auto')
+_STYLE_ALIAS = {'v5': 'widget', 'v6': 'diagram'}
+
+
+def _resolve_profile(profile_arg, root: Path, issues: list):
+    """Profile resolution priority: --profile arg (1st) -> sources/profile.json (2nd) -> None (fallback).
+
+    Accepts canonical names or style aliases (v5/v6). Invalid/out-of-range tokens append an
+    'invalid_profile' issue and resolve to None (no silent auto fallback). Returns one of
+    VALID_PROFILES or None.
+    """
+    if profile_arg:
+        p = str(profile_arg).strip().lower()
+        p = _STYLE_ALIAS.get(p, p)
+        if p in VALID_PROFILES:
+            return p
+        issues.append({'type': 'invalid_profile', 'source': '--profile', 'value': str(profile_arg)})
+        return None
+    pj = root / 'sources' / 'profile.json'
+    if pj.exists():
+        try:
+            v = json.loads(pj.read_text(encoding='utf-8')).get('profile')
+            v = _STYLE_ALIAS.get(str(v).strip().lower(), str(v).strip().lower()) if v is not None else None
+            if v in VALID_PROFILES:
+                return v
+            issues.append({'type': 'invalid_profile', 'source': 'sources/profile.json', 'value': v})
+        except Exception as e:
+            issues.append({'type': 'profile_json_parse_error', 'detail': str(e)})
+    return None
+
+
+def cross_leak_gate(text: str, declared_profile) -> list:
+    """Always-on cross-leak gate keyed by the DECLARED profile (markup classes only — 1층).
+
+    diagram: no wg-NN markup. widget: no vt-<a-z> markup (whitelist frozen empty). auto/None: skip.
+    CSS-bundle inclusion (2층) is a separate lint/warn, NOT this gate. Core hash (3층) is elsewhere.
+    """
+    issues = []
+    if declared_profile not in ('widget', 'diagram'):
+        return issues  # auto / None: cross-leak gate not applicable
+    tokens = set()
+    for cv in re.findall(r'class\s*=\s*"([^"]*)"', text, re.I) + re.findall(r"class\s*=\s*'([^']*)'", text, re.I):
+        tokens.update(cv.split())
+    if declared_profile == 'diagram':
+        for t in sorted(t for t in tokens if re.match(r'wg-\d{2}', t, re.I)):
+            issues.append({'type': 'cross_leak', 'profile': 'diagram', 'found': t})
+    else:  # widget — vt- markup must be 0 (whitelist frozen empty)
+        whitelist = set()
+        for t in sorted(t for t in tokens if re.match(r'vt-[a-z]', t, re.I) and t.lower() not in whitelist):
+            issues.append({'type': 'cross_leak', 'profile': 'widget', 'found': t})
+    return issues
+
+
+def validate(root: Path, skill_dir: Path | None = None, profile: str | None = None) -> dict:
     issues = []
     warnings = []
+    declared_profile = _resolve_profile(profile, root, issues)
     expected_css_hash = None
     expected_asset_hashes = None
     asset_order = ['theme.css', 'components.css', 'visual-components.css', 'layouts.css', 'print.css']
@@ -169,6 +316,18 @@ def validate(root: Path, skill_dir: Path | None = None) -> dict:
             issues.append({'page': rel, 'type': 'seo_serp_title_literal_google_style'})
         if re.search(r'\.layout-platform\s+\.platform-grid\s*\{[^}]*display\s*:\s*grid', style, re.I|re.S):
             issues.append({'page': rel, 'type': 'platform_grid_selector_allows_section_grid'})
+        for wg_issue in widget_static_gate(text, style):
+            wg_issue['page'] = rel
+            issues.append(wg_issue)
+        for vt_issue in visual_html_gate(text, style):
+            vt_issue['page'] = rel
+            issues.append(vt_issue)
+        for cl_issue in cross_leak_gate(text, declared_profile):
+            cl_issue['page'] = rel
+            issues.append(cl_issue)
+        ph = sorted(set(re.findall(r'\{\{[A-Z_]+\}\}', text)))
+        if ph:
+            issues.append({'page': rel, 'type': 'unfilled_placeholder', 'found': ph})
         for tag, ref in parser.local_refs:
             p = local_path(html, ref)
             if p is not None and not p.exists():
@@ -228,7 +387,7 @@ def validate(root: Path, skill_dir: Path | None = None) -> dict:
                                 issues.append({'type': 'output_css_snapshot_mismatch', 'asset': name})
                 except Exception as e:
                     issues.append({'type': 'css_integrity_parse_error', 'detail': str(e)})
-    return {'root': str(root), 'html_count': len(htmls), 'issues': issues, 'warnings': warnings, 'ok': not issues}
+    return {'root': str(root), 'profile': declared_profile, 'html_count': len(htmls), 'issues': issues, 'warnings': warnings, 'ok': not issues}
 
 
 def main():
@@ -236,8 +395,9 @@ def main():
     ap.add_argument('output_dir', type=Path)
     ap.add_argument('--skill-dir', type=Path)
     ap.add_argument('--json', action='store_true')
+    ap.add_argument('--profile', default=None, help='widget|diagram|auto (or style alias v5|v6). 미지정 시 sources/profile.json → 폴백(교차 게이트 미적용)')
     ns = ap.parse_args()
-    result = validate(ns.output_dir.resolve(), ns.skill_dir.resolve() if ns.skill_dir else None)
+    result = validate(ns.output_dir.resolve(), ns.skill_dir.resolve() if ns.skill_dir else None, ns.profile)
     if ns.json:
         print(json.dumps(result, ensure_ascii=False, indent=2))
     else:

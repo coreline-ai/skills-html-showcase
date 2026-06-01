@@ -1,0 +1,143 @@
+<!-- Widget 01: Three Code Approaches | 코드·이해 | css-partial -->
+<!-- 장단점 카드·트레이드오프 태그는 정적, 코드 블록은 tabindex로 포커스/가로 스크롤 가능. 호버 강조는 CSS transition. 라이브 코드 실행/구문 토글은 JS 필요. -->
+<style>
+.wg-01{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide);margin:0 auto}
+.wg-01-head{margin-bottom:var(--space-5)}
+.wg-01-kicker{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
+.wg-01-title{font-family:var(--serif);font-size:var(--fs-2xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-3)}
+.wg-01-lead{font-size:var(--fs-base);color:var(--ink-soft);margin:0;line-height:1.7}
+.wg-01-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.wg-01-card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-4);transition:box-shadow .2s ease,transform .2s ease}
+.wg-01-card:hover{box-shadow:0 6px 20px rgba(26,26,26,.08);transform:translateY(-2px)}
+.wg-01-card-pick{border:2px solid var(--accent);box-shadow:0 4px 16px var(--accent-soft)}
+.wg-01-card-head{display:flex;gap:var(--space-3);align-items:flex-start;margin-bottom:var(--space-3)}
+.wg-01-rank{flex:0 0 auto;display:inline-grid;place-items:center;width:34px;height:34px;border:2px solid var(--ink);border-radius:999px;font-weight:800;font-size:var(--fs-base);line-height:1}
+.wg-01-rank-pick{background:var(--accent);border-color:var(--accent);color:#fff}
+.wg-01-card-title{font-family:var(--serif);font-size:var(--fs-md);font-weight:700;margin:0;line-height:1.4}
+.wg-01-card-sub{font-size:var(--fs-xs);color:var(--ink-mute);margin:var(--space-1) 0 0}
+.wg-01-pick-badge{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.04em;background:var(--accent);color:#fff;border-radius:999px;padding:2px 8px;vertical-align:2px;margin-left:var(--space-1)}
+.wg-01-code{background:var(--code);color:#e8e8e3;border-radius:var(--radius-md);padding:var(--space-3);font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs);line-height:1.65;overflow-x:auto;margin:0 0 var(--space-3);white-space:pre}
+.wg-01-code .wg-01-kw{color:#ffb6c0;font-weight:600}
+.wg-01-code .wg-01-fn{color:#9fd2ff}
+.wg-01-code .wg-01-num{color:#f3c98b}
+.wg-01-cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-3)}
+.wg-01-coltag{font-size:var(--fs-xs);font-weight:800;margin:0 0 var(--space-1);display:flex;align-items:center;gap:4px}
+.wg-01-coltag-good{color:var(--good-label-ink)}
+.wg-01-coltag-bad{color:var(--danger-label-ink)}
+.wg-01-pros ul,.wg-01-cons ul{margin:0;padding-left:18px;font-size:var(--fs-xs);color:var(--ink-soft);line-height:1.6}
+.wg-01-pros ul li,.wg-01-cons ul li{margin:2px 0}
+.wg-01-pros{background:var(--good-bg);border:1px solid var(--good-border);border-radius:var(--radius-sm);padding:var(--space-2)}
+.wg-01-cons{background:var(--danger-bg);border:1px solid var(--danger-border);border-radius:var(--radius-sm);padding:var(--space-2)}
+.wg-01-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:var(--space-2);border-top:1px dashed var(--line)}
+.wg-01-tag{display:inline-flex;align-items:center;font-size:11px;font-weight:600;border:1px solid var(--line);background:rgba(255,255,255,.6);color:var(--chip-ink);border-radius:999px;padding:3px 9px}
+.wg-01-tag-time{background:var(--hl-blue);border-color:var(--analogy-border);color:var(--analogy-ink)}
+.wg-01-tag-space{background:var(--hl-yellow);border-color:var(--term-border);color:var(--term-ink)}
+@media(max-width:880px){.wg-01-grid{grid-template-columns:1fr}}
+@media(max-width:430px){.wg-01-cols{grid-template-columns:1fr}}
+</style>
+<section class="wg-01" aria-labelledby="wg-01-title">
+  <header class="wg-01-head">
+    <p class="wg-01-kicker">코드 비교</p>
+    <h2 id="wg-01-title" class="wg-01-title">한 문제, 세 가지 구현 접근</h2>
+    <p class="wg-01-lead">문제: <strong>중복 없는 정수 배열에서 두 수의 합이 target이 되는 인덱스 쌍 찾기</strong>. 세 접근의 코드·장단점·트레이드오프를 나란히 비교합니다.</p>
+  </header>
+
+  <div class="wg-01-grid" role="list">
+    <article class="wg-01-card" role="listitem" aria-labelledby="wg-01-a1">
+      <div class="wg-01-card-head">
+        <span class="wg-01-rank" aria-hidden="true">A</span>
+        <div>
+          <h3 id="wg-01-a1" class="wg-01-card-title">완전 탐색 (Brute Force)</h3>
+          <p class="wg-01-card-sub">O(n²) · 추가 메모리 없음</p>
+        </div>
+      </div>
+      <pre class="wg-01-code" tabindex="0" aria-label="완전 탐색 코드"><code><span class="wg-01-kw">def</span> <span class="wg-01-fn">two_sum</span>(nums, target):
+  <span class="wg-01-kw">for</span> i <span class="wg-01-kw">in</span> range(len(nums)):
+    <span class="wg-01-kw">for</span> j <span class="wg-01-kw">in</span> range(i+<span class="wg-01-num">1</span>, len(nums)):
+      <span class="wg-01-kw">if</span> nums[i]+nums[j] == target:
+        <span class="wg-01-kw">return</span> [i, j]
+  <span class="wg-01-kw">return</span> []</code></pre>
+      <div class="wg-01-cols">
+        <div class="wg-01-pros">
+          <p class="wg-01-coltag wg-01-coltag-good"><span aria-hidden="true">▲</span> 장점</p>
+          <ul><li>구현이 단순, 버그 위험 낮음</li><li>메모리 O(1)</li></ul>
+        </div>
+        <div class="wg-01-cons">
+          <p class="wg-01-coltag wg-01-coltag-bad"><span aria-hidden="true">▼</span> 단점</p>
+          <ul><li>큰 입력에서 느림</li><li>중첩 루프 확장성 낮음</li></ul>
+        </div>
+      </div>
+      <div class="wg-01-tags" aria-label="트레이드오프 태그">
+        <span class="wg-01-tag wg-01-tag-time">시간 O(n²)</span>
+        <span class="wg-01-tag wg-01-tag-space">공간 O(1)</span>
+        <span class="wg-01-tag">읽기 쉬움</span>
+      </div>
+    </article>
+
+    <article class="wg-01-card wg-01-card-pick" role="listitem" aria-labelledby="wg-01-a2">
+      <div class="wg-01-card-head">
+        <span class="wg-01-rank wg-01-rank-pick" aria-hidden="true">B</span>
+        <div>
+          <h3 id="wg-01-a2" class="wg-01-card-title">해시맵 1-pass <span class="wg-01-pick-badge">권장</span></h3>
+          <p class="wg-01-card-sub">O(n) · 메모리 트레이드</p>
+        </div>
+      </div>
+      <pre class="wg-01-code" tabindex="0" aria-label="해시맵 코드"><code><span class="wg-01-kw">def</span> <span class="wg-01-fn">two_sum</span>(nums, target):
+  seen = {}
+  <span class="wg-01-kw">for</span> i, n <span class="wg-01-kw">in</span> enumerate(nums):
+    need = target - n
+    <span class="wg-01-kw">if</span> need <span class="wg-01-kw">in</span> seen:
+      <span class="wg-01-kw">return</span> [seen[need], i]
+    seen[n] = i
+  <span class="wg-01-kw">return</span> []</code></pre>
+      <div class="wg-01-cols">
+        <div class="wg-01-pros">
+          <p class="wg-01-coltag wg-01-coltag-good"><span aria-hidden="true">▲</span> 장점</p>
+          <ul><li>선형 시간, 단일 순회</li><li>대규모 입력에 안정적</li></ul>
+        </div>
+        <div class="wg-01-cons">
+          <p class="wg-01-coltag wg-01-coltag-bad"><span aria-hidden="true">▼</span> 단점</p>
+          <ul><li>O(n) 추가 메모리</li><li>해시 충돌 의존</li></ul>
+        </div>
+      </div>
+      <div class="wg-01-tags" aria-label="트레이드오프 태그">
+        <span class="wg-01-tag wg-01-tag-time">시간 O(n)</span>
+        <span class="wg-01-tag wg-01-tag-space">공간 O(n)</span>
+        <span class="wg-01-tag">실무 기본</span>
+      </div>
+    </article>
+
+    <article class="wg-01-card" role="listitem" aria-labelledby="wg-01-a3">
+      <div class="wg-01-card-head">
+        <span class="wg-01-rank" aria-hidden="true">C</span>
+        <div>
+          <h3 id="wg-01-a3" class="wg-01-card-title">정렬 + 투 포인터</h3>
+          <p class="wg-01-card-sub">O(n log n) · 인덱스 보존 필요</p>
+        </div>
+      </div>
+      <pre class="wg-01-code" tabindex="0" aria-label="투 포인터 코드"><code><span class="wg-01-kw">def</span> <span class="wg-01-fn">two_sum</span>(nums, target):
+  arr = sorted(enumerate(nums), key=<span class="wg-01-kw">lambda</span> x: x[<span class="wg-01-num">1</span>])
+  l, r = <span class="wg-01-num">0</span>, len(arr)-<span class="wg-01-num">1</span>
+  <span class="wg-01-kw">while</span> l &lt; r:
+    s = arr[l][<span class="wg-01-num">1</span>] + arr[r][<span class="wg-01-num">1</span>]
+    <span class="wg-01-kw">if</span> s == target: <span class="wg-01-kw">return</span> [arr[l][<span class="wg-01-num">0</span>], arr[r][<span class="wg-01-num">0</span>]]
+    l, r = (l+<span class="wg-01-num">1</span>, r) <span class="wg-01-kw">if</span> s&lt;target <span class="wg-01-kw">else</span> (l, r-<span class="wg-01-num">1</span>)
+  <span class="wg-01-kw">return</span> []</code></pre>
+      <div class="wg-01-cols">
+        <div class="wg-01-pros">
+          <p class="wg-01-coltag wg-01-coltag-good"><span aria-hidden="true">▲</span> 장점</p>
+          <ul><li>정렬 데이터에 재사용 용이</li><li>공간 O(1)~O(n)</li></ul>
+        </div>
+        <div class="wg-01-cons">
+          <p class="wg-01-coltag wg-01-coltag-bad"><span aria-hidden="true">▼</span> 단점</p>
+          <ul><li>정렬 비용 발생</li><li>원본 인덱스 추적 복잡</li></ul>
+        </div>
+      </div>
+      <div class="wg-01-tags" aria-label="트레이드오프 태그">
+        <span class="wg-01-tag wg-01-tag-time">시간 O(n log n)</span>
+        <span class="wg-01-tag wg-01-tag-space">공간 O(n)</span>
+        <span class="wg-01-tag">정렬 의존</span>
+      </div>
+    </article>
+  </div>
+</section>
