@@ -11,11 +11,13 @@
     "assets/visual-html.css",
     "assets/body-icons.css",
     "assets/body-icons.json",
+    "assets/editorial-patterns.css",
     "assets/layouts.css",
     "assets/print.css",
     "assets/base.html"
   ],
   "body_icons": {"css": "assets/body-icons.css", "data": "assets/body-icons.json", "count": 32, "namespace": "bi-", "decorative": true, "reference": "references/body-icon-system.md"},
+  "editorial_patterns": {"css": "assets/editorial-patterns.css", "templates": "assets/editorial-pattern-templates/", "count": 6, "patterns": ["chronology", "source-preserve", "core-insight", "connection", "before-after", "impact-grid"], "reference": "references/editorial-pattern-system.md", "note": "기존 13모드 내 선택 삽입 본문 구조 패턴, 프로파일 무관, 무 JS"},
   "layouts": [
     "beginner-learning.html",
     "expert-report.html",
@@ -138,7 +140,8 @@
     "v4.4.0: references/widget-system.md 위젯 선택·삽입·접근성 규칙 문서 추가, base.html {{WIDGETS_CSS}} 슬롯 사용 명시",
     "v4.4.0: tests/widget-checklist.md 위젯 게이트 추가 — 외부 JS 0, wg-<id>- 네임스페이스 충돌 0, 인터랙션 details/:checked/:target/CSS-anim 한정, 색 외 단서·포커스, 18·20 무 JS 근사 검증",
     "v4.5.0: SVG→HTML 템플릿 20종 편입 + 하네스 정형화 — assets/visual-html.css와 assets/visual-html-templates/01..20.html(vt- 본문 삽입 다이어그램), 캐노니컬 모드→vt 매핑·결정론 진입점, visual_html_templates 메타 등록, 무 JS 0 유지",
-    "v4.5.0: 본문용 compact 아이콘 32종 편입 — assets/body-icons.css(bi- 네임스페이스, 무 JS, aria-hidden 장식) + assets/body-icons.json(id/label/usage/svg), references/body-icon-system.md(모드별 추천·삽입 규칙), base.html {{BODY_ICONS_CSS}} 슬롯"
+    "v4.5.0: 본문용 compact 아이콘 32종 편입 — assets/body-icons.css(bi- 네임스페이스, 무 JS, aria-hidden 장식) + assets/body-icons.json(id/label/usage/svg), references/body-icon-system.md(모드별 추천·삽입 규칙), base.html {{BODY_ICONS_CSS}} 슬롯",
+    "v4.5.0: 본문 구조 패턴 6종 편입 — assets/editorial-patterns.css(chronology·source-preserve·core-insight·connection·before-after·impact-grid) + assets/editorial-pattern-templates/01..06.html, references/editorial-pattern-system.md, base.html {{EDITORIAL_PATTERNS_CSS}} 슬롯, 기존 13모드 내 선택 삽입·무 JS"
   ],
   "updated": "2026-06-01",
   "visual_templates": [
