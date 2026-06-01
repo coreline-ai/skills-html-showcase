@@ -38,6 +38,14 @@ SVG로 그리던 본문 삽입 다이어그램을 순수 HTML+CSS 뷰 템플릿(
 - `assets/visual-html-templates/*.html` 20종 모두 외부/동작 `<script>` 0건(무 JS 0, JSON-LD만 허용).
 - `manifest.json` `python json.load` 유효성 통과, `visual_html_templates` 20개 실제 파일 경로 일치.
 
+### 본문 아이콘 세트 편입 (2026-06-01)
+본문용 compact 아이콘 32종을 정식 편입했다. 섹션 제목·콜아웃·카드 옆에 의미를 보조하는 인라인 SVG 장식(외부/동작 JS 0, `aria-hidden="true"`)이며 스킬 디자인 토큰을 쓴다.
+- `assets/body-icons.css` — `bi-` 네임스페이스 렌더 CSS(8 클래스: line/accent-line/fill/soft/accent/accent-box/dot/dot-box) + `.body-icon`/`--sm`/`--plain` 래퍼. 프로파일 무관 조건부 인라인.
+- `assets/body-icons.json` — 32종 `{id, label, usage, svg}`(viewBox 0 0 40 40). id: idea·source·timeline·connection·edit·check·impact·reference·warning·success·question·compare·decision·metric·search·file·code·database·security·user·flow·map·quote·note·learning·platform·audit·case·landing·api·prompt·experiment.
+- `references/body-icon-system.md` — 32종 카탈로그·모드별 추천·삽입/접근성 규칙.
+- `assets/base.html`: `{{BODY_ICONS_CSS}}` 슬롯 추가(visual-html 뒤). `manifest.json`: assets + `body_icons` 메타(count 32).
+- `scripts/validate_output.py`: body-icon 게이트(아이콘 사용 시 body-icons.css 인라인·`aria-hidden` 강제).
+
 ### 비주얼 프로파일 선택 (2026-06-01)
 스킬 기동 시 비주얼 스타일을 고를 수 있게 단일 스킬 + 프로파일 파라미터를 도입했다. 코어(13모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 라이브러리·삽입 단계·CSS 번들·결정표 컬럼만 게이트한다. 무 JS 0·코어 해시 계약 불변. (버전은 4.5.0 유지 — 4.6.0 bump은 frozen auto 골든 v6의 footer/sources를 건드려 회귀-0을 깨므로 골든 보존을 위해 보류; 버전 일관성은 manifest=sources=footer=4.5.0으로 충족.)
 - **프로파일 3종**: `widget`(=v5, CSS 뷰 위젯 `wg-`, 코어5+`widgets.css`) / `diagram`(=v6, SVG→HTML `vt-`, 코어5+`visual-html.css`) / `auto`(기본, 둘 다 = 현행 v6 산출).
