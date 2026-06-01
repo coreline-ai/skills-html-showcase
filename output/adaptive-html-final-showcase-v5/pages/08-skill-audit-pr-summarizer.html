@@ -14,7 +14,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: bd5665d927349550e9511e0fbc75077ddfad814d86442b3117eadcef4bf5ff94 */
+/* adaptive-html-final-core-css-sha256: 3e6a8bfa3710afb7c998efc60f58cec45273a4ae0803016852c2856e2b390a79 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -95,6 +95,7 @@ a:hover{color:var(--accent)}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 /* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
 .kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
 h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
@@ -1327,6 +1328,7 @@ details p{margin-bottom:0}
 }
 
 </style>
+<style>@media(max-width:760px){.table-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main table{max-width:100%}}</style>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -1432,7 +1434,7 @@ details p{margin-bottom:0}
   <p>세 줄 모두 동사는 있지만 <span class="hl">입력 형태·처리 방법·중간 산출물·실패 처리가 비어 있습니다.</span> "PR을 읽는다"가 URL fetch인지, 붙여넣은 diff 파싱인지, gh CLI 호출인지 알 수 없습니다. 단계는 다음 네 가지를 갖출 때 실행 가능해집니다 — 입력 정규화, 처리 규칙, 산출 형식, 실패 분기.</p>
 
   <div class="tbl">
-    <table>
+    <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
       <caption>워크플로우 단계별 실행 가능성 채점 (각 항목 0~5)</caption>
       <thead>
         <tr><th scope="col">단계</th><th scope="col">현재 서술</th><th scope="col">빠진 것</th><th scope="col">점수</th></tr>
@@ -1445,7 +1447,7 @@ details p{margin-bottom:0}
         <tr><td>출력 조립</td><td>"결과를 보여준다"</td><td>3블록 마크다운 템플릿, 빈 섹션 처리</td><td><span class="status-pill">2/5</span></td></tr>
         <tr><td>실패 처리</td><td>(없음)</td><td>diff 누락·과대·접근 실패 시 분기</td><td><span class="status-pill">0/5</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 
   <p>워크플로우 평균은 0.7/5 수준으로, 이 스킬에서 가장 약한 축입니다. 다행히 보완은 어렵지 않습니다. 각 단계를 "입력→처리→산출" 형태의 동사절로 다시 쓰고, 마지막에 실패 분기를 한 절 추가하면 점수가 빠르게 회복됩니다. 구체 문구는 6번 섹션 개선본에 담았습니다.</p>
@@ -1458,7 +1460,7 @@ details p{margin-bottom:0}
   <p>아래 audit 표는 SKILL.md의 핵심 6개 절을 동일 척도로 채점한 결과입니다. 점수는 "초안 상태에서 실무 호출에 바로 쓸 수 있는가"를 기준으로 했습니다. 근거 열은 본문에서 인용한 발췌와 직접 연결됩니다.</p>
 
   <div class="tbl">
-    <table>
+    <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
       <caption>pr-summarizer SKILL.md 섹션 진단표 (0=없음/위험, 5=실무 즉시 사용 가능)</caption>
       <thead>
         <tr><th scope="col">항목</th><th scope="col">점수</th><th scope="col">현재 상태 근거</th><th scope="col">개선 방향</th></tr>
@@ -1472,7 +1474,7 @@ details p{margin-bottom:0}
         <tr><td>품질 게이트</td><td><span class="status-pill">0/5</span></td><td>출력 검수 기준이 전무</td><td>사실/추론 분리, 코드 단정 금지 등 게이트 신설</td></tr>
         <tr><td>완료 기준</td><td><span class="status-pill">0/5</span></td><td>"보여준다"로 끝, Done 정의 없음</td><td>3블록 충족 + 게이트 통과를 완료로 정의</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 
   <p>합계는 9/35로, 발상은 좋지만 운영 문서로는 미완성인 전형적인 초안입니다. 특히 <span class="hl">품질 게이트와 완료 기준이 0점</span>이라는 점이 핵심입니다. 이 두 항목이 없으면 모델은 "그럴듯한 요약"에서 멈추고, 사용자는 출력이 충분한지 판단할 기준을 얻지 못합니다.</p>
@@ -1586,7 +1588,7 @@ details p{margin-bottom:0}
   <p>점수 분포를 보면 손대야 할 순서가 분명합니다. 0점인 <strong>품질 게이트·완료 기준</strong>을 먼저 신설하고, 그다음 트리거와 워크플로우를 구체화합니다. 정체성 문장은 모든 절의 기준점이 되므로 가장 먼저 한 줄 고쳐 둡니다.</p>
 
   <div class="tbl">
-    <table>
+    <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
       <caption>개선 우선순위 로드맵</caption>
       <thead>
         <tr><th scope="col">순위</th><th scope="col">개선 항목</th><th scope="col">기대 효과</th></tr>
@@ -1599,7 +1601,7 @@ details p{margin-bottom:0}
         <tr><td>P2</td><td>워크플로우 단계별 입력→처리→산출 + 실패 분기</td><td>재현 가능한 실행 절차 확보</td></tr>
         <tr><td>P2</td><td>입력 상한·정규화 규칙 명시</td><td>대용량 diff 환각·누락 방지</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 
   <p>아래는 위 우선순위를 반영한 개선된 SKILL.md 발췌입니다. 전체가 아니라 가장 약했던 절들을 다시 쓴 부분이며, 그대로 옮겨도 동작 가능한 형태로 정리했습니다.</p>

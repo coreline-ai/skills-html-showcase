@@ -87,6 +87,7 @@ a:hover{color:var(--accent)}
 .page,.wrap{width:min(var(--max-reading),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
 .kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
 h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
@@ -521,6 +522,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
 @media(max-width:760px){.source-list,.page-list,.audit-row,.gallery-grid{grid-template-columns:1fr}.visual-demo{--max-wide:780px}.gallery-card .visual-figure{padding:10px}.timeline-card{padding:16px 14px 16px 34px}}
 
 </style>
+<style>@media(max-width:760px){.table-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main table{max-width:100%}}</style>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -649,7 +651,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
     <p class="h2-sub">등급별로 "무엇이 걸리고, 무엇을 해야 하는가"를 한 표로.</p>
     <p>아래 매트릭스는 리스크 등급별 핵심 특징과 생성형 AI에 적용되는 대표 의무, 그리고 실무 통제 초점을 정리한 것입니다. 칸 안의 의무는 대표 예시이며, 정확한 적용 범위와 시점은 공식 조문으로 확인하세요.</p>
     <div class="tbl">
-      <table>
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
         <caption>EU AI Act 리스크 등급 × 생성형 AI 적용 매트릭스 (대표 의무 기준, 세부는 확인 필요)</caption>
         <thead>
           <tr>
@@ -697,7 +699,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
             <td>모델 카드와 데이터 출처 추적이 통제점.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
     <p class="caption">표 안의 "확인 필요"는 단정 가능한 공식 수치·시점이 정해지기 전까지 의도적으로 비워둔 자리입니다. 추정치로 채우지 않는 것이 컴플라이언스에서 더 안전합니다.</p>
     <div class="analogy">

@@ -87,6 +87,7 @@ a:hover{color:var(--accent)}
 .page,.wrap{width:min(var(--max-reading),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
 .kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
 h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
@@ -1334,6 +1335,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
 .wg-demo-note{font-size:13px;color:var(--ink-mute);margin:0 0 14px;line-height:1.6}
 
 </style>
+<style>@media(max-width:760px){.table-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main table{max-width:100%}}</style>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -1866,7 +1868,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
   </fieldset>
 
   <div class="wg-06-sheet">
-    <table class="wg-06-table">
+    <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table class="wg-06-table">
       <caption class="wg-06-cap">행 = 변형 · 열 = 상태 · 셀 내부 = 크기(L/M/S)</caption>
       <thead>
         <tr>
@@ -1907,7 +1909,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
           <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-md" disabled>삭제</button><span class="wg-06-statetag">disabled</span></span></td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
   <p class="wg-06-foot">Default 열의 버튼은 실제 :hover / :focus-visible 가 동작합니다. 나머지 열은 상태를 고정 시뮬레이션해 한눈에 비교하도록 했습니다.</p>
 </section>
@@ -2296,14 +2298,14 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
   </ol>
 
   <h3 class="wg-12-h3">영향 · 원인 · 조치</h3>
-  <table class="wg-12-table">
+  <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table class="wg-12-table">
     <thead><tr><th scope="col">구분</th><th scope="col">내용</th></tr></thead>
     <tbody>
       <tr><th scope="row"><span class="wg-12-rk wg-12-rk-impact">영향</span></th><td>37분간 결제 승인 12% 실패·지연, 추정 손실 거래 ₩2.1M, 고객 문의 84건</td></tr>
       <tr><th scope="row"><span class="wg-12-rk wg-12-rk-cause">원인</span></th><td>배포 v3.14.2에서 트랜잭션 미종료 경로 추가 → 커넥션 누수 → 풀 고갈</td></tr>
       <tr><th scope="row"><span class="wg-12-rk wg-12-rk-action">조치</span></th><td>즉시 롤백 완료. 누수 경로 수정 PR 머지, 커넥션 누수 알림 임계치 신규 설정</td></tr>
     </tbody>
-  </table>
+  </table></div>
 
   <h3 class="wg-12-h3">후속 액션 체크리스트</h3>
   <ul class="wg-12-check">
@@ -2507,7 +2509,7 @@ $ gh mq add 4821 --priority hotfix
   <p class="wg-15-lead">노드를 원형 해시 링 위에 배치해, 노드가 추가·제거돼도 <strong>재배치되는 키를 최소화</strong>하는 분산 기법입니다.</p>
 
   <h3 class="wg-15-h3">왜 단순 모듈로(hash % N)로는 부족할까</h3>
-  <table class="wg-15-table">
+  <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table class="wg-15-table">
     <caption class="wg-15-cap">방식 비교</caption>
     <thead>
       <tr><th scope="col">기준</th><th scope="col">모듈로 해싱</th><th scope="col">컨시스턴트 해싱</th></tr>
@@ -2518,7 +2520,7 @@ $ gh mq add 4821 --priority hotfix
       <tr><th scope="row">구현 난도</th><td>낮음</td><td>중간</td></tr>
       <tr><th scope="row">대표 사용처</th><td>고정 샤드</td><td>Cassandra · DynamoDB · CDN</td></tr>
     </tbody>
-  </table>
+  </table></div>
 
   <h3 class="wg-15-h3">단계별로 이해하기</h3>
   <div class="wg-15-steps">
@@ -2624,14 +2626,14 @@ $ gh mq add 4821 --priority hotfix
   </div>
 
   <h3 class="wg-16-h3">리스크 평가</h3>
-  <table class="wg-16-table">
+  <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table class="wg-16-table">
     <thead><tr><th scope="col">리스크</th><th scope="col">가능성</th><th scope="col">영향</th><th scope="col">완화책</th></tr></thead>
     <tbody>
       <tr><th scope="row">이벤트 순서 역전</th><td><span class="wg-16-lv wg-16-lv-mid">중</span></td><td><span class="wg-16-lv wg-16-lv-hi">높음</span></td><td>도큐먼트 버전(version) 기반 조건부 upsert</td></tr>
       <tr><th scope="row">컨슈머 랙 누적</th><td><span class="wg-16-lv wg-16-lv-mid">중</span></td><td><span class="wg-16-lv wg-16-lv-mid">중</span></td><td>파티션 확장 + 랙 알림, 백프레셔 적용</td></tr>
       <tr><th scope="row">스키마 변경 호환성</th><td><span class="wg-16-lv wg-16-lv-lo">낮음</span></td><td><span class="wg-16-lv wg-16-lv-hi">높음</span></td><td>스키마 레지스트리 + 하위호환 강제</td></tr>
     </tbody>
-  </table>
+  </table></div>
 
   <h3 class="wg-16-h3">UI 목업</h3>
   <div class="wg-16-mock" aria-label="색인 상태 대시보드 목업 자리">

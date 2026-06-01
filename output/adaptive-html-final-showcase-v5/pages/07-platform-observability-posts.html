@@ -14,7 +14,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: bd5665d927349550e9511e0fbc75077ddfad814d86442b3117eadcef4bf5ff94 */
+/* adaptive-html-final-core-css-sha256: 3e6a8bfa3710afb7c998efc60f58cec45273a4ae0803016852c2856e2b390a79 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -95,6 +95,7 @@ a:hover{color:var(--accent)}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 /* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
 .kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
 h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
@@ -1327,6 +1328,7 @@ details p{margin-bottom:0}
 }
 
 </style>
+<style>@media(max-width:760px){.table-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main table{max-width:100%}}</style>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -1654,7 +1656,7 @@ details p{margin-bottom:0}
     <h2><span class="num is-key" aria-hidden="true">5</span>한눈에 보는 플랫폼 비교 표</h2>
     <p class="h2-sub">같은 원문을 네 그릇에 담을 때 결정해야 하는 6가지 축을 한 표로 모았다. 발행 직전 의사결정용 체크 테이블이다.</p>
     <div class="tbl">
-      <table>
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
         <caption>옵저버빌리티 원문의 플랫폼별 변환 기준 비교</caption>
         <thead>
           <tr>
@@ -1709,7 +1711,7 @@ details p{margin-bottom:0}
             <td>태도 제안</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
     <p>표의 행을 위에서 아래로 따라가면 곧 "발행 결정"이 된다. 한 칸이라도 원문 그대로 복사된 게 보이면, 그 플랫폼에서는 변환이 덜 된 것이다. 특히 <span class="hl">코드 비중과 결론 형태 두 행은 플랫폼 정체성을 가장 빠르게 드러내므로 마지막까지 점검한다.</span></p>
   </section>

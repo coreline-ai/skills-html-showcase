@@ -14,7 +14,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: bd5665d927349550e9511e0fbc75077ddfad814d86442b3117eadcef4bf5ff94 */
+/* adaptive-html-final-core-css-sha256: 3e6a8bfa3710afb7c998efc60f58cec45273a4ae0803016852c2856e2b390a79 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -95,6 +95,7 @@ a:hover{color:var(--accent)}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 /* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
 .kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
 h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
@@ -1327,6 +1328,7 @@ details p{margin-bottom:0}
 }
 
 </style>
+<style>@media(max-width:760px){.table-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main table{max-width:100%}}</style>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -1414,7 +1416,7 @@ details p{margin-bottom:0}
     <p>PostgreSQL은 여러 인덱스 접근 방식을 제공합니다. 가장 많이 쓰는 넷만 정확히 구분하면 대부분의 결정을 내릴 수 있습니다. 핵심은 <span class="hl">"이 컬럼을 등호·범위로 찾는가, 포함 관계로 찾는가, 공간/근접으로 찾는가, 아니면 물리적 순서에 기대는가"</span>입니다.</p>
 
     <div class="tbl">
-      <table>
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
         <caption>인덱스 타입별 쓰임새 한눈에</caption>
         <thead>
           <tr><th scope="col">타입</th><th scope="col">잘 맞는 검색</th><th scope="col">대표 사례</th><th scope="col">주의점</th></tr>
@@ -1425,7 +1427,7 @@ details p{margin-bottom:0}
           <tr><th scope="row">GiST</th><td>겹침·근접·범위 등 기하/특수 연산</td><td>지리좌표(PostGIS), 범위 타입, 최근접 검색</td><td>연산자 클래스가 타입을 지원해야 함</td></tr>
           <tr><th scope="row">BRIN</th><td>물리 저장 순서와 값이 상관된 매우 큰 테이블의 범위</td><td>append-only 로그·시계열의 시간 컬럼</td><td>저장 순서가 흐트러지면 효과 급감</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
     <p>표를 외우기보다 결정 흐름으로 기억하세요. 일반 컬럼을 등호·범위로 찾으면 <strong>B-tree</strong>. jsonb·배열·전문 검색처럼 한 행 안에 든 여러 값을 포함 검색하면 <strong>GIN</strong>. 좌표·범위처럼 겹침/근접을 따지면 <strong>GiST</strong>. 시간순으로 계속 쌓이기만 하는 거대한 테이블의 범위 조회면 <strong>BRIN</strong>입니다.</p>
