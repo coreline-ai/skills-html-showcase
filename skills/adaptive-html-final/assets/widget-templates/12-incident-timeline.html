@@ -1,0 +1,117 @@
+<!-- Widget 12: Incident Timeline | 학습·리포트 | css-partial -->
+<!-- 체크리스트 토글은 checkbox:checked + label로 완료 표시(취소선·체크마크), 타임라인·표는 정적 시맨틱 HTML. 색 외 단서로 점 테두리·라벨 글리프 사용. 상태 저장·집계 등 완전 인터랙션은 JS 필요(note·foot 명시). -->
+<style>
+.wg-12{font-family:var(--sans);color:var(--ink);max-width:var(--max-reading)}
+.wg-12-head{border-bottom:1px solid var(--line);padding-bottom:var(--space-4);margin-bottom:var(--space-5)}
+.wg-12-kicker{font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
+.wg-12-h{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.3;margin:0 0 var(--space-3);color:var(--ink)}
+.wg-12-meta{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.wg-12-chip{font-size:var(--fs-xs);color:var(--chip-ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.wg-12-chip-sev{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:800}
+.wg-12-h3{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;margin:var(--space-6) 0 var(--space-4);color:var(--ink)}
+.wg-12-tl{list-style:none;margin:0;padding:0;position:relative}
+.wg-12-tl::before{content:"";position:absolute;left:62px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.wg-12-tl-item{display:grid;grid-template-columns:48px 16px 1fr;align-items:start;gap:var(--space-3);padding:var(--space-2) 0;position:relative}
+.wg-12-tl-time{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:var(--fs-xs);font-weight:700;color:var(--ink-soft);text-align:right;padding-top:2px;font-variant-numeric:tabular-nums}
+.wg-12-tl-dot{width:13px;height:13px;border-radius:50%;background:var(--card);border:3px solid var(--ink-mute);margin-top:3px;z-index:1;justify-self:center}
+.wg-12-dot-detect{border-color:var(--accent);box-shadow:0 0 0 4px var(--danger-bg)}
+.wg-12-dot-mit{border-color:var(--term-accent)}
+.wg-12-dot-resolve{border-color:var(--good-accent);box-shadow:0 0 0 4px var(--good-bg)}
+.wg-12-tl-body{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.65}
+.wg-12-tl-body strong{color:var(--ink)}
+.wg-12 code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em;background:var(--accent-soft);color:var(--accent-2);padding:1px 5px;border-radius:var(--radius-sm)}
+.wg-12-table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+.wg-12-table th,.wg-12-table td{padding:var(--space-3) var(--space-4);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.wg-12-table thead th{background:var(--bg);font-size:var(--fs-xs);font-weight:700;color:var(--ink)}
+.wg-12-table tbody tr:last-child td,.wg-12-table tbody tr:last-child th{border-bottom:none}
+.wg-12-table tbody th{white-space:nowrap}
+.wg-12-table td{color:var(--ink-soft);line-height:1.6}
+.wg-12-rk{display:inline-block;font-size:var(--fs-xs);font-weight:800;border-radius:var(--radius-sm);padding:2px 8px}
+.wg-12-rk-impact{background:var(--danger-bg);color:var(--danger-label-ink);border:1px solid var(--danger-border)}
+.wg-12-rk-cause{background:var(--term-bg);color:var(--term-label-ink);border:1px solid var(--term-border)}
+.wg-12-rk-action{background:var(--good-bg);color:var(--good-label-ink);border:1px solid var(--good-border)}
+.wg-12-check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-2)}
+.wg-12-ck-in{position:absolute;opacity:0;width:1px;height:1px}
+.wg-12-ck-lb{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3);border:1px solid var(--line);border-radius:var(--radius-md);background:var(--card);cursor:pointer;font-size:var(--fs-sm);color:var(--ink-soft)}
+.wg-12-ck-box{flex:none;width:20px;height:20px;border:2px solid var(--ink-mute);border-radius:var(--radius-sm);display:grid;place-items:center;margin-top:1px;transition:all .15s ease}
+.wg-12-ck-box::after{content:"";width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) scale(0);transition:transform .15s ease;margin-top:-2px}
+.wg-12-ck-in:checked+.wg-12-ck-lb .wg-12-ck-box{background:var(--good-accent);border-color:var(--good-accent)}
+.wg-12-ck-in:checked+.wg-12-ck-lb .wg-12-ck-box::after{transform:rotate(45deg) scale(1)}
+.wg-12-ck-in:checked+.wg-12-ck-lb .wg-12-ck-txt{color:var(--ink-mute);text-decoration:line-through;text-decoration-color:var(--good-accent)}
+.wg-12-ck-in:focus-visible+.wg-12-ck-lb{outline:3px solid var(--focus);outline-offset:2px}
+.wg-12-owner{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--analogy-label-ink);background:var(--analogy-bg);border:1px solid var(--analogy-border);border-radius:var(--radius-sm);padding:0 5px;margin-left:4px}
+.wg-12-ck-foot{font-size:var(--fs-xs);color:var(--ink-mute);margin:var(--space-3) 0 0}
+@media(max-width:560px){.wg-12-tl::before{left:54px}.wg-12-tl-item{grid-template-columns:42px 16px 1fr}}
+</style>
+<section class="wg-12" aria-labelledby="wg-12-title">
+  <header class="wg-12-head">
+    <p class="wg-12-kicker">포스트모템 · SEV-2</p>
+    <h2 id="wg-12-title" class="wg-12-h">INC-2041 결제 승인 지연 장애</h2>
+    <div class="wg-12-meta">
+      <span class="wg-12-chip">발생 2026-05-28 14:02 KST</span>
+      <span class="wg-12-chip">지속 37분</span>
+      <span class="wg-12-chip wg-12-chip-sev">SEV-2</span>
+      <span class="wg-12-chip">담당 결제플랫폼팀</span>
+    </div>
+  </header>
+
+  <h3 class="wg-12-h3">타임라인 (분 단위)</h3>
+  <ol class="wg-12-tl">
+    <li class="wg-12-tl-item">
+      <span class="wg-12-tl-time">14:02</span>
+      <span class="wg-12-tl-dot wg-12-dot-detect"></span>
+      <div class="wg-12-tl-body"><strong>감지</strong> — 결제 승인 p99 레이턴시 800ms→6.4s 급등, 알림 발화</div>
+    </li>
+    <li class="wg-12-tl-item">
+      <span class="wg-12-tl-time">14:06</span>
+      <span class="wg-12-tl-dot"></span>
+      <div class="wg-12-tl-body"><strong>대응 시작</strong> — 온콜 인지, 인시던트 채널 개설 및 IC 지정</div>
+    </li>
+    <li class="wg-12-tl-item">
+      <span class="wg-12-tl-time">14:15</span>
+      <span class="wg-12-tl-dot"></span>
+      <div class="wg-12-tl-body"><strong>원인 추정</strong> — DB 커넥션 풀 고갈 확인, 직전 배포(<code>v3.14.2</code>) 의심</div>
+    </li>
+    <li class="wg-12-tl-item">
+      <span class="wg-12-tl-time">14:24</span>
+      <span class="wg-12-tl-dot wg-12-dot-mit"></span>
+      <div class="wg-12-tl-body"><strong>완화</strong> — <code>v3.14.2</code> 롤백 시작, 풀 사이즈 임시 2배 증설</div>
+    </li>
+    <li class="wg-12-tl-item">
+      <span class="wg-12-tl-time">14:39</span>
+      <span class="wg-12-tl-dot wg-12-dot-resolve"></span>
+      <div class="wg-12-tl-body"><strong>복구</strong> — 레이턴시 정상화, 승인 성공률 99.98% 회복</div>
+    </li>
+  </ol>
+
+  <h3 class="wg-12-h3">영향 · 원인 · 조치</h3>
+  <table class="wg-12-table">
+    <thead><tr><th scope="col">구분</th><th scope="col">내용</th></tr></thead>
+    <tbody>
+      <tr><th scope="row"><span class="wg-12-rk wg-12-rk-impact">영향</span></th><td>37분간 결제 승인 12% 실패·지연, 추정 손실 거래 ₩2.1M, 고객 문의 84건</td></tr>
+      <tr><th scope="row"><span class="wg-12-rk wg-12-rk-cause">원인</span></th><td>배포 v3.14.2에서 트랜잭션 미종료 경로 추가 → 커넥션 누수 → 풀 고갈</td></tr>
+      <tr><th scope="row"><span class="wg-12-rk wg-12-rk-action">조치</span></th><td>즉시 롤백 완료. 누수 경로 수정 PR 머지, 커넥션 누수 알림 임계치 신규 설정</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="wg-12-h3">후속 액션 체크리스트</h3>
+  <ul class="wg-12-check">
+    <li class="wg-12-ck">
+      <input type="checkbox" id="wg-12-c1" class="wg-12-ck-in" checked>
+      <label for="wg-12-c1" class="wg-12-ck-lb"><span class="wg-12-ck-box"></span><span class="wg-12-ck-txt">트랜잭션 누수 경로 핫픽스 배포 <span class="wg-12-owner">@jihoon</span></span></label>
+    </li>
+    <li class="wg-12-ck">
+      <input type="checkbox" id="wg-12-c2" class="wg-12-ck-in" checked>
+      <label for="wg-12-c2" class="wg-12-ck-lb"><span class="wg-12-ck-box"></span><span class="wg-12-ck-txt">커넥션 풀 사용률 알림 임계치 추가 <span class="wg-12-owner">@sora</span></span></label>
+    </li>
+    <li class="wg-12-ck">
+      <input type="checkbox" id="wg-12-c3" class="wg-12-ck-in">
+      <label for="wg-12-c3" class="wg-12-ck-lb"><span class="wg-12-ck-box"></span><span class="wg-12-ck-txt">통합 테스트에 커넥션 누수 검출 추가 <span class="wg-12-owner">@minu</span></span></label>
+    </li>
+    <li class="wg-12-ck">
+      <input type="checkbox" id="wg-12-c4" class="wg-12-ck-in">
+      <label for="wg-12-c4" class="wg-12-ck-lb"><span class="wg-12-ck-box"></span><span class="wg-12-ck-txt">배포 카나리 단계 5%→DB지표 게이트 도입 <span class="wg-12-owner">@team</span></span></label>
+    </li>
+  </ul>
+  <p class="wg-12-ck-foot" aria-live="off">체크 상태는 표시용 데모입니다 — 저장·집계 등 완전 인터랙션은 JS 필요.</p>
+</section>

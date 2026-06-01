@@ -1,0 +1,116 @@
+<!-- Widget 13: Annotated Flowchart | 프로토·다이어그램 | css-only -->
+<!-- 단계 박스는 앵커 링크로 해당 <details>로 점프(:target 하이라이트), 상세는 <details>/<summary> 접기로 표현. 실패 경로는 danger 토큰으로 색+라벨(! 기호, '실패 경로' 텍스트) 이중 단서. 화살표는 텍스트 글리프로 CSS만 사용. -->
+<style>
+.wg-13-fc{font-family:var(--sans);color:var(--ink);max-width:560px;margin:0 auto}
+.wg-13-h{font-family:var(--sans);font-size:var(--fs-lg);font-weight:800;margin:0 0 var(--space-5);display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-3)}
+.wg-13-sub{font-size:var(--fs-xs);font-weight:600;color:var(--ink-mute)}
+.wg-13-flow{display:flex;flex-direction:column;align-items:center;gap:var(--space-2)}
+.wg-13-node{display:flex;flex-direction:column;align-items:center;gap:var(--space-1);text-align:center;width:200px;padding:var(--space-3) var(--space-4);background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius-md);font-size:var(--fs-sm);font-weight:700;color:var(--ink);text-decoration:none;transition:border-color .15s,box-shadow .15s}
+.wg-13-node:hover,.wg-13-node:focus-visible{border-color:var(--accent);box-shadow:0 2px 10px rgba(230,57,70,.15)}
+.wg-13-step{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--bg);color:var(--ink-mute);border:1px solid var(--line)}
+.wg-13-node--start{border-color:var(--ink);border-radius:999px}
+.wg-13-node--start .wg-13-step{background:var(--ink);color:#fff;border-color:var(--ink)}
+.wg-13-node--decide{border-color:var(--term-border);background:var(--term-bg);transform:rotate(0)}
+.wg-13-node--decide .wg-13-step{background:var(--term-accent);color:#fff;border-color:var(--term-accent)}
+.wg-13-node--fail{border-color:var(--danger-border);background:var(--danger-bg);color:var(--danger-ink)}
+.wg-13-node--fail .wg-13-step{background:var(--danger-label-ink);color:#fff;border-color:var(--danger-label-ink)}
+.wg-13-node--end{border-color:var(--good-border);background:var(--good-bg);color:var(--good-ink);border-radius:999px}
+.wg-13-node--end .wg-13-step{background:var(--good-label-ink);color:#fff;border-color:var(--good-label-ink)}
+.wg-13-arrow{color:var(--ink-mute);font-size:18px;line-height:1}
+.wg-13-branch{display:flex;flex-direction:column;align-items:center;gap:var(--space-2);width:100%}
+.wg-13-paths{display:flex;gap:var(--space-4);width:100%;justify-content:center;flex-wrap:wrap}
+.wg-13-path{display:flex;flex-direction:column;align-items:center;gap:var(--space-2);padding:var(--space-3);border-radius:var(--radius-md);border:1px dashed var(--line)}
+.wg-13-path--fail{border-color:var(--danger-border)}
+.wg-13-path--ok{border-color:var(--good-border)}
+.wg-13-edge{font-size:11px;font-weight:700;color:var(--ink-mute)}
+.wg-13-path--fail .wg-13-edge{color:var(--danger-label-ink)}
+.wg-13-path--ok .wg-13-edge{color:var(--good-label-ink)}
+.wg-13-detail{margin-top:var(--space-6)}
+.wg-13-dh{font-size:var(--fs-base);font-weight:800;margin:0 0 var(--space-3);display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-2)}
+.wg-13-dnote{font-size:var(--fs-xs);font-weight:500;color:var(--ink-mute)}
+.wg-13-acc{border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:var(--space-2);background:var(--card);scroll-margin-top:16px}
+.wg-13-acc:target{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.wg-13-acc--fail:target{border-color:var(--danger-label-ink)}
+.wg-13-acc--ok:target{border-color:var(--good-label-ink)}
+.wg-13-acc summary{cursor:pointer;list-style:none;padding:var(--space-3) var(--space-4);font-weight:700;font-size:var(--fs-sm);display:flex;align-items:center;gap:var(--space-3)}
+.wg-13-acc summary::-webkit-details-marker{display:none}
+.wg-13-acc summary::after{content:"\25BC";margin-left:auto;font-size:10px;color:var(--ink-mute);transition:transform .2s}
+.wg-13-acc[open] summary::after{transform:rotate(180deg)}
+.wg-13-tag{font-size:10px;font-weight:800;letter-spacing:.04em;padding:2px 8px;border-radius:999px;background:var(--bg);color:var(--ink-soft);border:1px solid var(--line)}
+.wg-13-tag--fail{background:var(--danger-bg);color:var(--danger-label-ink);border-color:var(--danger-border)}
+.wg-13-tag--ok{background:var(--good-bg);color:var(--good-label-ink);border-color:var(--good-border)}
+.wg-13-body{padding:0 var(--space-4) var(--space-4);font-size:var(--fs-sm);color:var(--ink-soft)}
+.wg-13-body p{font-size:var(--fs-sm);margin:0 0 var(--space-2)}
+.wg-13-body ul{margin:var(--space-2) 0 0 var(--space-5)}
+.wg-13-code{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:var(--fs-xs);background:var(--code);color:#f0f0e8;padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);overflow-x:auto}
+.wg-13-codein{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;background:var(--bg);padding:1px 5px;border-radius:4px;border:1px solid var(--line)}
+@media(max-width:480px){.wg-13-paths{flex-direction:column;align-items:center}.wg-13-node{width:100%;max-width:240px}}
+</style>
+<section class="wg-13-fc" aria-label="배포 파이프라인 플로우차트">
+  <h3 class="wg-13-h">배포 파이프라인 <span class="wg-13-sub">main 머지 후 자동 트리거</span></h3>
+
+  <div class="wg-13-flow">
+    <a href="#wg-13-s1" class="wg-13-node wg-13-node--start">
+      <span class="wg-13-step">시작</span>커밋 푸시
+    </a>
+    <span class="wg-13-arrow" aria-hidden="true">&darr;</span>
+
+    <a href="#wg-13-s2" class="wg-13-node">
+      <span class="wg-13-step">1</span>빌드 &amp; 테스트
+    </a>
+    <span class="wg-13-arrow" aria-hidden="true">&darr;</span>
+
+    <div class="wg-13-branch">
+      <a href="#wg-13-s3" class="wg-13-node wg-13-node--decide">
+        <span class="wg-13-step">2</span>품질 게이트 통과?
+      </a>
+      <div class="wg-13-paths">
+        <div class="wg-13-path wg-13-path--fail">
+          <span class="wg-13-edge">아니오 &rarr; 실패 경로</span>
+          <a href="#wg-13-fail" class="wg-13-node wg-13-node--fail">
+            <span class="wg-13-step">!</span>롤백 &amp; 알림
+          </a>
+        </div>
+        <div class="wg-13-path wg-13-path--ok">
+          <span class="wg-13-edge">예 &rarr; 정상 경로</span>
+          <a href="#wg-13-s4" class="wg-13-node">
+            <span class="wg-13-step">3</span>스테이징 배포
+          </a>
+          <span class="wg-13-arrow" aria-hidden="true">&darr;</span>
+          <a href="#wg-13-s5" class="wg-13-node wg-13-node--end">
+            <span class="wg-13-step">완료</span>프로덕션 릴리스
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wg-13-detail">
+    <h4 class="wg-13-dh">단계 상세 <span class="wg-13-dnote">박스를 클릭하면 해당 단계로 이동 &middot; 펼쳐서 상세 확인</span></h4>
+
+    <details id="wg-13-s2" class="wg-13-acc">
+      <summary><span class="wg-13-tag">1단계</span>빌드 &amp; 테스트</summary>
+      <div class="wg-13-body"><p>의존성 설치 후 유닛 테스트 1,240건 실행. 평균 소요 4분 12초.</p><code class="wg-13-code">npm ci &amp;&amp; npm run test:ci</code></div>
+    </details>
+
+    <details id="wg-13-s3" class="wg-13-acc">
+      <summary><span class="wg-13-tag">2단계</span>품질 게이트</summary>
+      <div class="wg-13-body"><p>커버리지 80% 미만, lint 오류, 취약점 high 이상이면 실패 경로로 분기합니다.</p><ul><li>커버리지 &ge; 80%</li><li>lint 오류 0건</li><li>보안 스캔 high 0건</li></ul></div>
+    </details>
+
+    <details id="wg-13-fail" class="wg-13-acc wg-13-acc--fail">
+      <summary><span class="wg-13-tag wg-13-tag--fail">실패</span>롤백 &amp; 알림</summary>
+      <div class="wg-13-body"><p>직전 안정 릴리스로 자동 롤백 후 <code class="wg-13-codein">#deploy-alerts</code> 채널에 실패 사유와 로그 링크를 전송합니다.</p></div>
+    </details>
+
+    <details id="wg-13-s4" class="wg-13-acc">
+      <summary><span class="wg-13-tag">3단계</span>스테이징 배포</summary>
+      <div class="wg-13-body"><p>스테이징 환경에 카나리 10%로 배포 후 5분간 헬스체크를 관찰합니다.</p></div>
+    </details>
+
+    <details id="wg-13-s5" class="wg-13-acc wg-13-acc--ok">
+      <summary><span class="wg-13-tag wg-13-tag--ok">완료</span>프로덕션 릴리스</summary>
+      <div class="wg-13-body"><p>점진적 롤아웃(10% &rarr; 50% &rarr; 100%). 오류율 임계 초과 시 자동 중단.</p></div>
+    </details>
+  </div>
+</section>

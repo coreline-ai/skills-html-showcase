@@ -10,3 +10,7 @@
 금지:
 - 항목을 막연하게 두지 말고 통과/실패를 판단할 수 있게 적는다.
 - 확인되지 않은 절차/기준은 단정하지 말고 확인 필요로 표시한다.
+
+위젯:
+- 권장 위젯: 13 Annotated Flowchart — widgets.css 기반 무 JS로 Check Grid 섹션에 삽입(절차·흐름 다이어그램에 단계별 상세 주석).
+- 권장 위젯: 19 Feature Flag Editor — widgets.css 기반 무 JS로 Use Case/운영 토글 섹션에 삽입(배포/피처 플래그 토글 편집 뷰).

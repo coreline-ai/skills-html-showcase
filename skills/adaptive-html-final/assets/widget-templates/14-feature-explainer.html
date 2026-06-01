@@ -1,0 +1,129 @@
+<!-- Widget 14: Feature Explainer | 학습·리포트 | css-only -->
+<!-- 탭은 radio:checked + ~ 형제 선택자로 코드 패널 전환, 접기는 <details>/<summary>, FAQ는 details, 모두 CSS-only. 동작 JS 없음. -->
+<style>
+.wg-14{font-family:var(--sans);color:var(--ink);max-width:var(--max-reading)}
+.wg-14-kicker{font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
+.wg-14-h{font-family:var(--serif);font-size:var(--fs-2xl);font-weight:700;line-height:1.3;margin:0 0 var(--space-2);color:var(--ink)}
+.wg-14-lead{font-size:var(--fs-md);color:var(--ink-soft);margin:0 0 var(--space-5);line-height:1.7}
+.wg-14-tldr{display:flex;gap:var(--space-3);align-items:flex-start;background:var(--good-bg);border:1px solid var(--good-border);border-left:4px solid var(--good-accent);border-radius:var(--radius-md);padding:var(--space-4);margin:0 0 var(--space-6)}
+.wg-14-tldr-tag{flex:none;font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;color:var(--good-label-ink);background:var(--card);border:1px solid var(--good-border);border-radius:var(--radius-sm);padding:2px 8px;margin-top:2px}
+.wg-14-tldr-body{margin:0;font-size:var(--fs-sm);color:var(--good-ink);line-height:1.7}
+.wg-14-tldr-body strong{color:var(--good-label-ink)}
+.wg-14-acc{display:flex;flex-direction:column;gap:var(--space-3);margin:0 0 var(--space-6)}
+.wg-14-sec{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+.wg-14-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:var(--space-3);padding:var(--space-4);font-weight:700;font-size:var(--fs-base);color:var(--ink);user-select:none}
+.wg-14-sum::-webkit-details-marker{display:none}
+.wg-14-sum-no{flex:none;display:inline-grid;place-items:center;width:26px;height:26px;border:2px solid var(--ink);border-radius:999px;font-size:var(--fs-xs);font-weight:800}
+.wg-14-chev{margin-left:auto;width:9px;height:9px;border-right:2px solid var(--ink-mute);border-bottom:2px solid var(--ink-mute);transform:rotate(45deg);transition:transform .2s ease}
+.wg-14-sec[open] .wg-14-chev{transform:rotate(-135deg)}
+.wg-14-sec[open] .wg-14-sum-no{border-color:var(--accent);color:var(--accent)}
+.wg-14-sec-body{padding:0 var(--space-4) var(--space-4);border-top:1px solid var(--line)}
+.wg-14-sec-body p{margin:var(--space-3) 0;font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.7}
+.wg-14-list,.wg-14-flow{margin:var(--space-2) 0 0;padding-left:0;list-style:none}
+.wg-14-list li{position:relative;padding-left:18px;margin:var(--space-2) 0;font-size:var(--fs-sm);color:var(--ink-soft)}
+.wg-14-list li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:2px;background:var(--accent)}
+.wg-14-flow{counter-reset:none}
+.wg-14-flow li{display:flex;align-items:flex-start;gap:var(--space-3);margin:var(--space-3) 0;font-size:var(--fs-sm);color:var(--ink-soft)}
+.wg-14-flow-n{flex:none;display:inline-grid;place-items:center;width:22px;height:22px;border-radius:999px;background:var(--accent-soft);color:var(--accent-2);font-weight:800;font-size:var(--fs-xs)}
+.wg-14 code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--accent-soft);color:var(--accent-2);padding:1px 6px;border-radius:var(--radius-sm)}
+.wg-14-h3{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;margin:var(--space-6) 0 var(--space-3);color:var(--ink)}
+.wg-14-tabs{position:relative;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:0 0 var(--space-2)}
+.wg-14-tab-in{position:absolute;opacity:0;width:1px;height:1px}
+.wg-14-tablist{display:flex;background:var(--bg);border-bottom:1px solid var(--line)}
+.wg-14-tab{padding:var(--space-3) var(--space-4);font-size:var(--fs-sm);font-weight:600;color:var(--ink-mute);cursor:pointer;border-bottom:2px solid transparent;user-select:none;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.wg-14-tab:hover{color:var(--ink)}
+.wg-14-code{display:none;margin:0;padding:var(--space-4);background:var(--code);color:#e8e8e3;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:var(--fs-xs);line-height:1.7;overflow-x:auto;white-space:pre}
+.wg-14-code code{background:none;color:inherit;padding:0;font-size:inherit}
+#wg-14-tab-yml:checked~.wg-14-tablist .wg-14-tab[for=wg-14-tab-yml],
+#wg-14-tab-cli:checked~.wg-14-tablist .wg-14-tab[for=wg-14-tab-cli],
+#wg-14-tab-api:checked~.wg-14-tablist .wg-14-tab[for=wg-14-tab-api]{color:var(--accent-2);border-bottom-color:var(--accent);background:var(--card)}
+#wg-14-tab-yml:checked~.wg-14-code-yml,
+#wg-14-tab-cli:checked~.wg-14-code-cli,
+#wg-14-tab-api:checked~.wg-14-code-api{display:block}
+.wg-14-tab-in:focus-visible~.wg-14-tablist .wg-14-tab{outline:3px solid var(--focus);outline-offset:-3px}
+.wg-14-faq{display:flex;flex-direction:column;gap:var(--space-2)}
+.wg-14-q{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md)}
+.wg-14-q-sum{list-style:none;cursor:pointer;padding:var(--space-3) var(--space-4);font-weight:600;font-size:var(--fs-sm);color:var(--ink);position:relative;padding-right:40px;user-select:none}
+.wg-14-q-sum::-webkit-details-marker{display:none}
+.wg-14-q-sum::after{content:"+";position:absolute;right:var(--space-4);top:50%;transform:translateY(-50%);font-size:var(--fs-md);color:var(--accent);font-weight:700}
+.wg-14-q[open] .wg-14-q-sum::after{content:"−"}
+.wg-14-q-a{margin:0;padding:0 var(--space-4) var(--space-4);font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.7}
+@media(max-width:560px){.wg-14-tablist{flex-wrap:wrap}.wg-14-tab{flex:1 1 auto;text-align:center}}
+</style>
+<section class="wg-14" aria-labelledby="wg-14-title">
+  <p class="wg-14-kicker">기능 안내 · v2.8 릴리스</p>
+  <h2 id="wg-14-title" class="wg-14-h">스마트 머지 큐 (Smart Merge Queue)</h2>
+  <p class="wg-14-lead">PR을 자동으로 줄 세워 순차 머지하고, 충돌·CI 실패를 머지 전에 잡아내는 기능입니다.</p>
+
+  <div class="wg-14-tldr" role="note" aria-label="핵심 요약">
+    <span class="wg-14-tldr-tag">TL;DR</span>
+    <p class="wg-14-tldr-body"><strong>버튼 하나로 PR을 큐에 넣으면</strong> 메인 브랜치 기준 재검증 후 자동 머지됩니다. 평균 머지 대기 18분 → 4분, 실패 머지 -82%.</p>
+  </div>
+
+  <div class="wg-14-acc">
+    <details class="wg-14-sec" open>
+      <summary class="wg-14-sum"><span class="wg-14-sum-no">01</span> 무엇을 해결하나요 <span class="wg-14-chev" aria-hidden="true"></span></summary>
+      <div class="wg-14-sec-body">
+        <p>여러 PR이 동시에 메인에 머지될 때 발생하는 <strong>'머지 후 깨짐(semantic conflict)'</strong>을 방지합니다. 각 PR은 머지 직전 최신 메인 위에서 CI를 다시 돌립니다.</p>
+        <ul class="wg-14-list">
+          <li>충돌·테스트 실패 PR은 큐에서 자동 제외 후 작성자에게 알림</li>
+          <li>FIFO 우선순위, <code>priority:hotfix</code> 라벨은 새치기 허용</li>
+          <li>배치 머지: 독립 PR 최대 5개를 한 번에 검증</li>
+        </ul>
+      </div>
+    </details>
+    <details class="wg-14-sec">
+      <summary class="wg-14-sum"><span class="wg-14-sum-no">02</span> 동작 방식 <span class="wg-14-chev" aria-hidden="true"></span></summary>
+      <div class="wg-14-sec-body">
+        <ol class="wg-14-flow">
+          <li><span class="wg-14-flow-n">1</span> PR에 <code>/merge-queue</code> 코멘트 또는 큐 버튼 클릭</li>
+          <li><span class="wg-14-flow-n">2</span> 임시 브랜치에 (메인 + 큐 + 내 PR) 병합</li>
+          <li><span class="wg-14-flow-n">3</span> CI 통과 시 머지, 실패 시 해당 PR만 이탈</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <h3 class="wg-14-h3">설정 예시</h3>
+  <div class="wg-14-tabs">
+    <input type="radio" name="wg-14-tab" id="wg-14-tab-yml" class="wg-14-tab-in" checked>
+    <input type="radio" name="wg-14-tab" id="wg-14-tab-cli" class="wg-14-tab-in">
+    <input type="radio" name="wg-14-tab" id="wg-14-tab-api" class="wg-14-tab-in">
+    <div class="wg-14-tablist">
+      <label class="wg-14-tab" for="wg-14-tab-yml">config.yml</label>
+      <label class="wg-14-tab" for="wg-14-tab-cli">CLI</label>
+      <label class="wg-14-tab" for="wg-14-tab-api">REST API</label>
+    </div>
+    <pre class="wg-14-code wg-14-code-yml"><code>merge_queue:
+  enabled: true
+  method: squash
+  max_batch: 5
+  required_checks:
+    - build
+    - test:unit</code></pre>
+    <pre class="wg-14-code wg-14-code-cli"><code>$ gh mq enable --repo acme/api
+$ gh mq add 4821 --priority hotfix
+  ✓ PR #4821 큐 2번째 (예상 3분)</code></pre>
+    <pre class="wg-14-code wg-14-code-api"><code>POST /repos/acme/api/merge-queue
+{
+  "pr": 4821,
+  "method": "squash"
+}</code></pre>
+  </div>
+
+  <h3 class="wg-14-h3">자주 묻는 질문</h3>
+  <div class="wg-14-faq">
+    <details class="wg-14-q">
+      <summary class="wg-14-q-sum">큐에 넣은 PR을 취소할 수 있나요</summary>
+      <p class="wg-14-q-a">네. <code>/merge-queue cancel</code> 코멘트 또는 큐 패널의 제거 버튼으로 언제든 이탈 가능합니다.</p>
+    </details>
+    <details class="wg-14-q">
+      <summary class="wg-14-q-sum">기존 브랜치 보호 규칙과 충돌하나요</summary>
+      <p class="wg-14-q-a">아니요. 필수 체크는 그대로 적용되며, 머지 큐가 그 체크를 큐 컨텍스트에서 재실행합니다.</p>
+    </details>
+    <details class="wg-14-q">
+      <summary class="wg-14-q-sum">모노레포에서도 동작하나요</summary>
+      <p class="wg-14-q-a">지원합니다. <code>path-filter</code>로 영향받은 패키지만 검증하도록 좁힐 수 있습니다.</p>
+    </details>
+  </div>
+</section>

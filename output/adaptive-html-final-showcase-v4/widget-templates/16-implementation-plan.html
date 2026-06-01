@@ -1,0 +1,131 @@
+<!-- Widget 16: Implementation Plan | 학습·리포트 | css-only -->
+<!-- 마일스톤·플로우·리스크·목업 모두 시맨틱 정적 마크업 + CSS. 리스크 레벨은 색 + 원형 채움 글리프(●◐○)로 이중 표기, 플로우 화살표는 aria-hidden + role=img 설명. 인터랙션 불필요해 JS 없음. -->
+<style>
+.wg-16{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide)}
+.wg-16-head{border-bottom:1px solid var(--line);padding-bottom:var(--space-4);margin-bottom:var(--space-5)}
+.wg-16-kicker{font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
+.wg-16-h{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.3;margin:0 0 var(--space-2);color:var(--ink)}
+.wg-16-lead{font-size:var(--fs-sm);color:var(--ink-soft);margin:0;line-height:1.7}
+.wg-16-h3{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;margin:var(--space-6) 0 var(--space-4);color:var(--ink)}
+.wg-16-ms{list-style:none;margin:0;padding:0;position:relative}
+.wg-16-ms::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.wg-16-ms-item{display:grid;grid-template-columns:20px 1fr;gap:var(--space-4);margin-bottom:var(--space-3);position:relative}
+.wg-16-ms-mark{display:flex;justify-content:center;padding-top:14px}
+.wg-16-ms-node{width:14px;height:14px;border-radius:50%;background:var(--card);border:3px solid var(--ink-mute);z-index:1}
+.wg-16-done .wg-16-ms-node{background:var(--good-accent);border-color:var(--good-accent)}
+.wg-16-active .wg-16-ms-node{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.wg-16-ms-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4)}
+.wg-16-active .wg-16-ms-card{border-color:var(--accent);border-left:3px solid var(--accent)}
+.wg-16-ms-top{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3)}
+.wg-16-ms-name{font-size:var(--fs-sm);font-weight:700;color:var(--ink)}
+.wg-16-badge{flex:none;font-size:var(--fs-xs);font-weight:700;border-radius:999px;padding:2px 10px;background:var(--bg);border:1px solid var(--line);color:var(--ink-mute)}
+.wg-16-bd-done{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
+.wg-16-bd-active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-2)}
+.wg-16-ms-desc{font-size:var(--fs-xs);color:var(--ink-soft);margin:var(--space-1) 0 0;line-height:1.6}
+.wg-16-flow{display:flex;align-items:stretch;flex-wrap:wrap;gap:var(--space-2);padding:var(--space-4);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md)}
+.wg-16-fnode{flex:1 1 110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:var(--space-3);background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-md);font-size:var(--fs-sm);font-weight:700;color:var(--ink);text-align:center}
+.wg-16-fnode-s{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:500;color:var(--ink-mute)}
+.wg-16-fnode-q{background:var(--term-bg);border-color:var(--term-border)}
+.wg-16-fnode-hot{background:var(--accent-soft);border-color:var(--accent)}
+.wg-16-fnode-hot,.wg-16-fnode-hot .wg-16-fnode-s{color:var(--accent-2)}
+.wg-16-farrow{display:flex;align-items:center;color:var(--ink-mute);font-size:var(--fs-lg);font-weight:700;flex:none}
+.wg-16-table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+.wg-16-table th,.wg-16-table td{padding:var(--space-3) var(--space-4);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.wg-16-table thead th{background:var(--bg);font-size:var(--fs-xs);font-weight:700;color:var(--ink)}
+.wg-16-table tbody th{font-weight:600;color:var(--ink);white-space:nowrap}
+.wg-16-table td{color:var(--ink-soft);line-height:1.55}
+.wg-16-table tbody tr:last-child td,.wg-16-table tbody tr:last-child th{border-bottom:none}
+.wg-16-lv{display:inline-block;font-size:11px;font-weight:800;border-radius:var(--radius-sm);padding:1px 8px}
+.wg-16-lv-hi{background:var(--danger-bg);color:var(--danger-label-ink);border:1px solid var(--danger-border)}
+.wg-16-lv-hi::before{content:"\25CF "}
+.wg-16-lv-mid{background:var(--term-bg);color:var(--term-label-ink);border:1px solid var(--term-border)}
+.wg-16-lv-mid::before{content:"\25D0 "}
+.wg-16-lv-lo{background:var(--good-bg);color:var(--good-label-ink);border:1px solid var(--good-border)}
+.wg-16-lv-lo::before{content:"\25CB "}
+.wg-16-mock{border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:var(--card)}
+.wg-16-mock-bar{display:flex;align-items:center;gap:6px;padding:var(--space-2) var(--space-3);background:var(--bg);border-bottom:1px solid var(--line)}
+.wg-16-mock-dot{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.wg-16-mock-ttl{margin-left:var(--space-2);font-size:var(--fs-xs);color:var(--ink-mute);font-weight:600}
+.wg-16-mock-body{padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)}
+.wg-16-mock-line{height:12px;border-radius:999px;background:linear-gradient(90deg,var(--line),var(--bg));}
+.wg-16-w70{width:70%}.wg-16-w90{width:90%}
+.wg-16-mock-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
+.wg-16-mock-tile{height:56px;border-radius:var(--radius-md);background:repeating-linear-gradient(45deg,var(--bg),var(--bg) 8px,var(--card) 8px,var(--card) 16px);border:1px dashed var(--line)}
+.wg-16-mock-cap{font-size:var(--fs-xs);color:var(--ink-mute);text-align:center;margin:var(--space-2) 0 0}
+@media(max-width:640px){.wg-16{max-width:var(--max-reading)}.wg-16-flow{flex-direction:column}.wg-16-farrow{transform:rotate(90deg);align-self:center}.wg-16-mock-tiles{grid-template-columns:1fr}}
+</style>
+<section class="wg-16" aria-labelledby="wg-16-title">
+  <header class="wg-16-head">
+    <p class="wg-16-kicker">구현 계획서 · RFC-118</p>
+    <h2 id="wg-16-title" class="wg-16-h">검색 인덱싱 파이프라인 v2</h2>
+    <p class="wg-16-lead">배치 재색인을 <strong>실시간 증분 색인</strong>으로 전환. 검색 신선도 6시간 → 30초 목표.</p>
+  </header>
+
+  <h3 class="wg-16-h3">마일스톤 타임라인</h3>
+  <ol class="wg-16-ms">
+    <li class="wg-16-ms-item wg-16-done">
+      <div class="wg-16-ms-mark"><span class="wg-16-ms-node"></span></div>
+      <div class="wg-16-ms-card">
+        <div class="wg-16-ms-top"><span class="wg-16-ms-name">M1 · CDC 이벤트 스트림</span><span class="wg-16-badge wg-16-bd-done">완료</span></div>
+        <p class="wg-16-ms-desc">DB 변경분을 Debezium으로 캡처해 Kafka 토픽 발행. 6/06 까지.</p>
+      </div>
+    </li>
+    <li class="wg-16-ms-item wg-16-active">
+      <div class="wg-16-ms-mark"><span class="wg-16-ms-node"></span></div>
+      <div class="wg-16-ms-card">
+        <div class="wg-16-ms-top"><span class="wg-16-ms-name">M2 · 증분 인덱서</span><span class="wg-16-badge wg-16-bd-active">진행 중</span></div>
+        <p class="wg-16-ms-desc">컨슈머가 변경 도큐먼트를 정규화해 검색엔진에 upsert. 6/20 목표.</p>
+      </div>
+    </li>
+    <li class="wg-16-ms-item">
+      <div class="wg-16-ms-mark"><span class="wg-16-ms-node"></span></div>
+      <div class="wg-16-ms-card">
+        <div class="wg-16-ms-top"><span class="wg-16-ms-name">M3 · 이중 쓰기 검증</span><span class="wg-16-badge">예정</span></div>
+        <p class="wg-16-ms-desc">구·신 인덱스 병행 비교, 불일치율 0.1% 미만 확인. 7/04 목표.</p>
+      </div>
+    </li>
+    <li class="wg-16-ms-item">
+      <div class="wg-16-ms-mark"><span class="wg-16-ms-node"></span></div>
+      <div class="wg-16-ms-card">
+        <div class="wg-16-ms-top"><span class="wg-16-ms-name">M4 · 전환 및 배치 제거</span><span class="wg-16-badge">예정</span></div>
+        <p class="wg-16-ms-desc">트래픽 100% 전환, 레거시 배치 잡 폐기. 7/18 목표.</p>
+      </div>
+    </li>
+  </ol>
+
+  <h3 class="wg-16-h3">데이터 플로우</h3>
+  <div class="wg-16-flow" role="img" aria-label="데이터 플로우: 원천 DB에서 CDC, Kafka, 인덱서를 거쳐 검색엔진으로">
+    <div class="wg-16-fnode">원천 DB<span class="wg-16-fnode-s">PostgreSQL</span></div>
+    <span class="wg-16-farrow" aria-hidden="true">→</span>
+    <div class="wg-16-fnode">CDC<span class="wg-16-fnode-s">Debezium</span></div>
+    <span class="wg-16-farrow" aria-hidden="true">→</span>
+    <div class="wg-16-fnode wg-16-fnode-q">Kafka<span class="wg-16-fnode-s">docs.changelog</span></div>
+    <span class="wg-16-farrow" aria-hidden="true">→</span>
+    <div class="wg-16-fnode wg-16-fnode-hot">인덱서<span class="wg-16-fnode-s">증분 upsert</span></div>
+    <span class="wg-16-farrow" aria-hidden="true">→</span>
+    <div class="wg-16-fnode">검색엔진<span class="wg-16-fnode-s">OpenSearch</span></div>
+  </div>
+
+  <h3 class="wg-16-h3">리스크 평가</h3>
+  <table class="wg-16-table">
+    <thead><tr><th scope="col">리스크</th><th scope="col">가능성</th><th scope="col">영향</th><th scope="col">완화책</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">이벤트 순서 역전</th><td><span class="wg-16-lv wg-16-lv-mid">중</span></td><td><span class="wg-16-lv wg-16-lv-hi">높음</span></td><td>도큐먼트 버전(version) 기반 조건부 upsert</td></tr>
+      <tr><th scope="row">컨슈머 랙 누적</th><td><span class="wg-16-lv wg-16-lv-mid">중</span></td><td><span class="wg-16-lv wg-16-lv-mid">중</span></td><td>파티션 확장 + 랙 알림, 백프레셔 적용</td></tr>
+      <tr><th scope="row">스키마 변경 호환성</th><td><span class="wg-16-lv wg-16-lv-lo">낮음</span></td><td><span class="wg-16-lv wg-16-lv-hi">높음</span></td><td>스키마 레지스트리 + 하위호환 강제</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="wg-16-h3">UI 목업</h3>
+  <div class="wg-16-mock" aria-label="색인 상태 대시보드 목업 자리">
+    <div class="wg-16-mock-bar"><span class="wg-16-mock-dot"></span><span class="wg-16-mock-dot"></span><span class="wg-16-mock-dot"></span><span class="wg-16-mock-ttl">색인 상태 대시보드</span></div>
+    <div class="wg-16-mock-body">
+      <div class="wg-16-mock-line wg-16-w70"></div>
+      <div class="wg-16-mock-line wg-16-w90"></div>
+      <div class="wg-16-mock-tiles">
+        <div class="wg-16-mock-tile"></div><div class="wg-16-mock-tile"></div><div class="wg-16-mock-tile"></div>
+      </div>
+      <p class="wg-16-mock-cap">목업 자리 — 실제 화면은 디자인 확정 후 교체</p>
+    </div>
+  </div>
+</section>

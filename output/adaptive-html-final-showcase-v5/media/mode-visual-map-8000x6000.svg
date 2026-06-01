@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">모드별 기본 비주얼 템플릿</title>
+<desc id="desc">13개 모드 각각에 권장되는 인포그래픽 조합</desc>
+<style>text { font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", Arial, sans-serif; }
+.small { font-size: 92px; fill: #7a7a7a; font-weight: 650; }
+.hair { stroke:#d8d8d0; stroke-width:10; }</style>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<circle cx="7200" cy="740" r="520" fill="#fce4e6" opacity="0.8"/>
+<circle cx="680" cy="5350" r="720" fill="#f0f4f8" opacity="0.95"/>
+<text x="560" y="620" font-size="122" fill="#e63946" font-weight="900" letter-spacing="22">ADAPTIVE HTML VISUAL</text>
+<text x="560" y="980" font-size="300" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="560" dy="0">모드별 기본 비주얼 템플릿</tspan>
+</text>
+<text x="570" y="1280" font-size="118" fill="#4a4a4a" font-weight="560" text-anchor="start">
+<tspan x="570" dy="0">13개 모드 각각에 권장되는 인포그래픽 조합</tspan>
+</text>
+<rect x="560" y="1580" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="560" y="1580" width="24" height="760" rx="12" fill="#e63946"/>
+<text x="670" y="1745" font-size="78" fill="#e63946" font-weight="900" letter-spacing="6">beginner</text>
+<text x="670" y="1910" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="670" dy="0">hero-map ·</tspan>
+<tspan x="670" dy="120">checklist-flow</tspan>
+</text>
+
+<rect x="2370" y="1580" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="2370" y="1580" width="24" height="760" rx="12" fill="#3a6280"/>
+<text x="2480" y="1745" font-size="78" fill="#3a6280" font-weight="900" letter-spacing="6">expert</text>
+<text x="2480" y="1910" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="2480" dy="0">matrix · timeline</tspan>
+<tspan x="2480" dy="120">· gate</tspan>
+</text>
+
+<rect x="4180" y="1580" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="4180" y="1580" width="24" height="760" rx="12" fill="#2a7d5a"/>
+<text x="4290" y="1745" font-size="78" fill="#2a7d5a" font-weight="900" letter-spacing="6">article</text>
+<text x="4290" y="1910" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="4290" dy="0">hero-map ·</tspan>
+<tspan x="4290" dy="120">decision-tree</tspan>
+</text>
+
+<rect x="5990" y="1580" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="5990" y="1580" width="24" height="760" rx="12" fill="#d99a38"/>
+<text x="6100" y="1745" font-size="78" fill="#d99a38" font-weight="900" letter-spacing="6">education</text>
+<text x="6100" y="1910" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="6100" dy="0">timeline ·</tspan>
+<tspan x="6100" dy="120">checklist-flow</tspan>
+</text>
+
+<rect x="560" y="2520" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="560" y="2520" width="24" height="760" rx="12" fill="#e63946"/>
+<text x="670" y="2685" font-size="78" fill="#e63946" font-weight="900" letter-spacing="6">blog</text>
+<text x="670" y="2850" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="670" dy="0">hero-map ·</tspan>
+<tspan x="670" dy="120">timeline</tspan>
+</text>
+
+<rect x="2370" y="2520" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="2370" y="2520" width="24" height="760" rx="12" fill="#3a6280"/>
+<text x="2480" y="2685" font-size="78" fill="#3a6280" font-weight="900" letter-spacing="6">seo</text>
+<text x="2480" y="2850" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="2480" dy="0">card-grid · matrix</tspan>
+</text>
+
+<rect x="4180" y="2520" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="4180" y="2520" width="24" height="760" rx="12" fill="#2a7d5a"/>
+<text x="4290" y="2685" font-size="78" fill="#2a7d5a" font-weight="900" letter-spacing="6">platform</text>
+<text x="4290" y="2850" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="4290" dy="0">card-grid · matrix</tspan>
+</text>
+
+<rect x="5990" y="2520" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="5990" y="2520" width="24" height="760" rx="12" fill="#d99a38"/>
+<text x="6100" y="2685" font-size="78" fill="#d99a38" font-weight="900" letter-spacing="6">skill_audit</text>
+<text x="6100" y="2850" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="6100" dy="0">matrix · quality-</tspan>
+<tspan x="6100" dy="120">gate</tspan>
+</text>
+
+<rect x="560" y="3460" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="560" y="3460" width="24" height="760" rx="12" fill="#e63946"/>
+<text x="670" y="3625" font-size="78" fill="#e63946" font-weight="900" letter-spacing="6">reference</text>
+<text x="670" y="3790" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="670" dy="0">card-grid · matrix</tspan>
+</text>
+
+<rect x="2370" y="3460" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="2370" y="3460" width="24" height="760" rx="12" fill="#3a6280"/>
+<text x="2480" y="3625" font-size="78" fill="#3a6280" font-weight="900" letter-spacing="6">comparison</text>
+<text x="2480" y="3790" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="2480" dy="0">matrix · decision-</tspan>
+<tspan x="2480" dy="120">tree</tspan>
+</text>
+
+<rect x="4180" y="3460" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="4180" y="3460" width="24" height="760" rx="12" fill="#2a7d5a"/>
+<text x="4290" y="3625" font-size="78" fill="#2a7d5a" font-weight="900" letter-spacing="6">case_study</text>
+<text x="4290" y="3790" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="4290" dy="0">timeline · hero-</tspan>
+<tspan x="4290" dy="120">map</tspan>
+</text>
+
+<rect x="5990" y="3460" width="1640" height="760" rx="96" fill="#ffffff" stroke="#d8d8d0" stroke-width="12"/>
+<rect x="5990" y="3460" width="24" height="760" rx="12" fill="#d99a38"/>
+<text x="6100" y="3625" font-size="78" fill="#d99a38" font-weight="900" letter-spacing="6">landing/checklist</text>
+<text x="6100" y="3790" font-size="108" fill="#1a1a1a" font-weight="900" text-anchor="start">
+<tspan x="6100" dy="0">hero-map ·</tspan>
+<tspan x="6100" dy="120">checklist-flow</tspan>
+</text>
+
+<text x="7440" y="5600" font-size="84" text-anchor="end" fill="#7a7a7a" font-weight="700">references/visual-template-system.md 모드별 표</text>
+</svg>

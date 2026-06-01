@@ -1,0 +1,66 @@
+<!-- Widget 20: Prompt Tuner | 편집 인터페이스 | css-partial -->
+<!-- radio:checked ~ .grid 형제 선택자로 선택한 샘플의 입력/렌더 결과만 표시(CSS-only 탭 전환). 템플릿 변수는 {{...}} 표기로 정적 강조. 칩은 라디오 그룹이라 키보드 화살표 이동·focus-visible 링 동작, 선택 칩은 색+채움으로 단서. 완전 인터랙션(템플릿 라이브 편집 후 변수 치환·실시간 LLM 재생성)은 JS 필요. -->
+<style>
+.wg-20-tuner{font-family:var(--sans);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-5)}
+.wg-20-head{margin-bottom:var(--space-4)}
+.wg-20-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;margin:0 0 var(--space-2)}
+.wg-20-hint{font-size:var(--fs-xs);color:var(--ink-mute);margin:0;line-height:1.6}
+.wg-20-samples{border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);margin-bottom:var(--space-4);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2)}
+.wg-20-legend{font-size:var(--fs-xs);font-weight:700;color:var(--ink-mute);padding:0 var(--space-2)}
+.wg-20-radio{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.wg-20-chip{font-size:var(--fs-xs);font-weight:600;color:var(--ink-soft);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:var(--space-1) var(--space-4);cursor:pointer;transition:all .15s ease}
+.wg-20-chip:hover{border-color:var(--accent)}
+.wg-20-radio:checked + .wg-20-chip{color:#fff;background:var(--accent);border-color:var(--accent)}
+.wg-20-radio:focus-visible + .wg-20-chip{outline:3px solid var(--focus);outline-offset:2px}
+.wg-20-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3)}
+.wg-20-pane{border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;min-width:0;display:flex;flex-direction:column}
+.wg-20-pane-head{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mute);background:var(--bg);padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--line)}
+.wg-20-tpl{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:var(--fs-xs);line-height:1.7;color:var(--term-ink);background:var(--term-bg);margin:0;padding:var(--space-3);white-space:pre-wrap;word-break:break-word;flex:1 1 auto}
+.wg-20-var{color:var(--term-label-ink);background:rgba(201,138,46,.16);border-radius:3px;padding:0 4px;font-weight:700}
+.wg-20-input,.wg-20-out{font-size:var(--fs-xs);line-height:1.7;padding:var(--space-3);flex:1 1 auto;display:none}
+.wg-20-input{color:var(--ink-soft);background:var(--analogy-bg)}
+.wg-20-out{color:var(--good-ink);background:var(--good-bg)}
+.wg-20-k{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;font-weight:700;color:var(--analogy-label-ink);margin-right:var(--space-2)}
+#wg-20-s1:checked ~ .wg-20-grid .wg-20-input--s1,#wg-20-s1:checked ~ .wg-20-grid .wg-20-out--s1{display:block}
+#wg-20-s2:checked ~ .wg-20-grid .wg-20-input--s2,#wg-20-s2:checked ~ .wg-20-grid .wg-20-out--s2{display:block}
+#wg-20-s3:checked ~ .wg-20-grid .wg-20-input--s3,#wg-20-s3:checked ~ .wg-20-grid .wg-20-out--s3{display:block}
+.wg-20-foot{margin-top:var(--space-4);font-size:var(--fs-xs);color:var(--ink-mute);line-height:1.6}
+.wg-20-foot code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--accent-2)}
+@media(max-width:760px){.wg-20-grid{grid-template-columns:1fr}}
+</style>
+<section class="wg-20-tuner" aria-label="프롬프트 튜너">
+  <header class="wg-20-head">
+    <h2 class="wg-20-title">프롬프트 튜너</h2>
+    <p class="wg-20-hint">샘플을 골라 렌더 결과를 비교합니다. 라이브 편집 렌더는 JS가 필요합니다.</p>
+  </header>
+  <fieldset class="wg-20-samples">
+    <legend class="wg-20-legend">샘플 입력</legend>
+    <input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s1" checked>
+    <label class="wg-20-chip" for="wg-20-s1">환불 문의</label>
+    <input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s2">
+    <label class="wg-20-chip" for="wg-20-s2">배송 지연</label>
+    <input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s3">
+    <label class="wg-20-chip" for="wg-20-s3">계정 잠김</label>
+  </fieldset>
+  <div class="wg-20-grid">
+    <div class="wg-20-pane">
+      <div class="wg-20-pane-head">템플릿</div>
+      <pre class="wg-20-tpl">당신은 친절한 CS 상담원입니다.
+고객 메시지: <span class="wg-20-var">{{message}}</span>
+어조: <span class="wg-20-var">{{tone}}</span> 로 3문장 이내 답변.</pre>
+    </div>
+    <div class="wg-20-pane">
+      <div class="wg-20-pane-head">샘플 입력</div>
+      <div class="wg-20-input wg-20-input--s1"><span class="wg-20-k">message</span>“결제했는데 환불 가능한가요?”<br><span class="wg-20-k">tone</span>정중함</div>
+      <div class="wg-20-input wg-20-input--s2"><span class="wg-20-k">message</span>“주문한 지 일주일째 안 와요.”<br><span class="wg-20-k">tone</span>공감</div>
+      <div class="wg-20-input wg-20-input--s3"><span class="wg-20-k">message</span>“로그인이 계속 막힙니다.”<br><span class="wg-20-k">tone</span>차분함</div>
+    </div>
+    <div class="wg-20-pane">
+      <div class="wg-20-pane-head">렌더 결과</div>
+      <div class="wg-20-out wg-20-out--s1">환불 문의 주셔서 감사합니다. 결제 건은 영업일 3일 내 전액 환불 가능합니다. 처리 후 안내 메일을 보내드리겠습니다.</div>
+      <div class="wg-20-out wg-20-out--s2">기다리게 해 정말 죄송합니다. 현재 물류 지연으로 배송이 늦어지고 있어요. 오늘 중 운송장 번호를 다시 안내드리겠습니다.</div>
+      <div class="wg-20-out wg-20-out--s3">불편을 드려 죄송합니다. 보안 정책으로 계정이 일시 잠긴 상태로 보입니다. 본인 확인 후 즉시 잠금을 해제해 드리겠습니다.</div>
+    </div>
+  </div>
+  <footer class="wg-20-foot">변수 <code>{{message}}</code>·<code>{{tone}}</code>가 선택한 샘플로 치환됩니다. 실시간 편집·재생성은 JS 필요.</footer>
+</section>

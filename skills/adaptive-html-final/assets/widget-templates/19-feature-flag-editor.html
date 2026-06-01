@@ -1,0 +1,83 @@
+<!-- Widget 19: Feature Flag Editor | 편집 인터페이스 | css-partial -->
+<!-- input[type=checkbox]:checked + label로 트랙 색·노브 위치·ON/OFF 텍스트가 즉시 전환(CSS-only). 의존성/지원종료 경고는 ⚠ 기호+텍스트로 색 외 단서 병기. 토글은 키보드 포커스/스페이스 동작, focus-visible 링 적용. 완전 인터랙션(의존성 위반 시 자동 비활성·JSON export·서버 반영)은 JS 필요. -->
+<style>
+.wg-19-editor{font-family:var(--sans);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-5)}
+.wg-19-head{margin-bottom:var(--space-4)}
+.wg-19-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;margin:0 0 var(--space-2)}
+.wg-19-hint{font-size:var(--fs-xs);color:var(--ink-mute);margin:0;line-height:1.6}
+.wg-19-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.wg-19-row{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-4) var(--space-1);border-bottom:1px solid var(--line)}
+.wg-19-info{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:3px}
+.wg-19-key{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:var(--fs-sm);font-weight:700;color:var(--ink)}
+.wg-19-desc{font-size:var(--fs-xs);color:var(--ink-soft)}
+.wg-19-dep{font-size:11px;color:var(--term-label-ink);background:var(--term-bg);border:1px solid var(--term-border);border-radius:var(--radius-sm);padding:2px 7px;margin-top:2px;align-self:flex-start}
+.wg-19-dep code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px}
+.wg-19-dep--warn{color:var(--danger-label-ink);background:var(--danger-bg);border-color:var(--danger-border)}
+.wg-19-env{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mute);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:2px 8px;flex:0 0 auto}
+.wg-19-env--stg{color:var(--analogy-label-ink);background:var(--analogy-bg);border-color:var(--analogy-border)}
+.wg-19-cb{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.wg-19-toggle{flex:0 0 auto;display:inline-flex;align-items:center;gap:var(--space-2);cursor:pointer;-webkit-user-select:none;user-select:none}
+.wg-19-toggle::before{content:"";width:42px;height:24px;border-radius:999px;background:var(--ink-mute);border:1px solid var(--line);transition:background .18s ease;flex:0 0 auto}
+.wg-19-knob{position:absolute;width:18px;height:18px;border-radius:999px;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.3);transform:translateX(3px);transition:transform .18s ease;pointer-events:none}
+.wg-19-toggle{position:relative}
+.wg-19-state{font-size:11px;font-weight:700;letter-spacing:.04em;min-width:26px}
+.wg-19-state--on{display:none;color:var(--good-label-ink)}
+.wg-19-state--off{display:inline;color:var(--ink-mute)}
+.wg-19-cb:checked + .wg-19-toggle::before{background:var(--good-accent);border-color:var(--good-accent)}
+.wg-19-cb:checked + .wg-19-toggle .wg-19-knob{transform:translateX(21px)}
+.wg-19-cb:checked + .wg-19-toggle .wg-19-state--on{display:inline}
+.wg-19-cb:checked + .wg-19-toggle .wg-19-state--off{display:none}
+.wg-19-cb:focus-visible + .wg-19-toggle::before{outline:3px solid var(--focus);outline-offset:2px}
+.wg-19-foot{margin-top:var(--space-4);display:flex;justify-content:flex-end}
+.wg-19-export{font-family:var(--sans);font-size:var(--fs-xs);font-weight:700;color:var(--ink-mute);background:var(--bg);border:1px dashed var(--line);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-4);cursor:not-allowed}
+@media(max-width:760px){.wg-19-row{flex-wrap:wrap;gap:var(--space-2)}.wg-19-env{order:3}.wg-19-toggle{order:4;margin-left:auto}}
+</style>
+<section class="wg-19-editor" aria-label="피처 플래그 편집기">
+  <header class="wg-19-head">
+    <h2 class="wg-19-title">피처 플래그</h2>
+    <p class="wg-19-hint">토글은 즉시 시각 전환됩니다. 설정 내보내기(export)는 JS가 필요합니다.</p>
+  </header>
+  <ul class="wg-19-list">
+    <li class="wg-19-row">
+      <div class="wg-19-info">
+        <span class="wg-19-key">new_checkout_flow</span>
+        <span class="wg-19-desc">신규 결제 플로우 (단계 축소)</span>
+      </div>
+      <span class="wg-19-env">prod</span>
+      <input class="wg-19-cb" type="checkbox" id="wg-19-f1" checked>
+      <label class="wg-19-toggle" for="wg-19-f1"><span class="wg-19-knob"></span><span class="wg-19-state wg-19-state--on">ON</span><span class="wg-19-state wg-19-state--off">OFF</span></label>
+    </li>
+    <li class="wg-19-row">
+      <div class="wg-19-info">
+        <span class="wg-19-key">checkout_one_click</span>
+        <span class="wg-19-desc">원클릭 결제 버튼</span>
+        <span class="wg-19-dep" role="note">⚠ <code>new_checkout_flow</code> 필요</span>
+      </div>
+      <span class="wg-19-env">prod</span>
+      <input class="wg-19-cb" type="checkbox" id="wg-19-f2">
+      <label class="wg-19-toggle" for="wg-19-f2"><span class="wg-19-knob"></span><span class="wg-19-state wg-19-state--on">ON</span><span class="wg-19-state wg-19-state--off">OFF</span></label>
+    </li>
+    <li class="wg-19-row">
+      <div class="wg-19-info">
+        <span class="wg-19-key">beta_dashboard</span>
+        <span class="wg-19-desc">베타 대시보드 위젯</span>
+      </div>
+      <span class="wg-19-env wg-19-env--stg">staging</span>
+      <input class="wg-19-cb" type="checkbox" id="wg-19-f3" checked>
+      <label class="wg-19-toggle" for="wg-19-f3"><span class="wg-19-knob"></span><span class="wg-19-state wg-19-state--on">ON</span><span class="wg-19-state wg-19-state--off">OFF</span></label>
+    </li>
+    <li class="wg-19-row">
+      <div class="wg-19-info">
+        <span class="wg-19-key">legacy_export_csv</span>
+        <span class="wg-19-desc">구형 CSV 내보내기 (지원 종료 예정)</span>
+        <span class="wg-19-dep wg-19-dep--warn" role="note">⚠ 2026-09 제거 예정</span>
+      </div>
+      <span class="wg-19-env">prod</span>
+      <input class="wg-19-cb" type="checkbox" id="wg-19-f4">
+      <label class="wg-19-toggle" for="wg-19-f4"><span class="wg-19-knob"></span><span class="wg-19-state wg-19-state--on">ON</span><span class="wg-19-state wg-19-state--off">OFF</span></label>
+    </li>
+  </ul>
+  <footer class="wg-19-foot">
+    <button class="wg-19-export" type="button" disabled aria-disabled="true">JSON 내보내기 (JS 필요)</button>
+  </footer>
+</section>

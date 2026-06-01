@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>코드 리뷰 SLA가 팀 속도를 결정한다</title>
+<meta name="description" content="리뷰 지연은 게으름이 아니라 시스템 신호다. 첫 반응 시간을 합의하는 리뷰 SLA로 대기 비용을 줄이고, 팀 규모에 맞는 기준을 스스로 고르는 판단 프레임을 제시한다.">
+<meta property="og:title" content="코드 리뷰 SLA가 팀 속도를 결정한다">
+<meta property="og:description" content="리뷰 지연은 게으름이 아니라 시스템 신호다. 첫 반응 시간을 합의하는 리뷰 SLA로 대기 비용을 줄이고, 팀 규모에 맞는 기준을 스스로 고르는 판단 프레임을 제시한다.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* adaptive-html-final-core-css-sha256: bd5665d927349550e9511e0fbc75077ddfad814d86442b3117eadcef4bf5ff94 */
+:root{
+  --bg:#f5f5f0;
+  --ink:#1a1a1a;
+  --ink-soft:#4a4a4a;
+  --ink-mute:#666666;
+  --line:#d8d8d0;
+  --card:#ffffff;
+  --accent:#e63946;
+  --accent-2:#b72d38;
+  --link-on-dark:#ffb6c0;
+  --accent-soft:#fce4e6;
+  --term-bg:#fffaf2;
+  --term-border:#e8d9b8;
+  --analogy-bg:#f0f4f8;
+  --analogy-border:#b8cad8;
+  --danger-bg:#fff0ee;
+  --danger-border:#e8b8b2;
+  --good-bg:#eef7f1;
+  --good-border:#b8d8c2;
+  --hl-yellow:#ffe9a3;
+  --hl-blue:#cfe5f5;
+  --hl-pink:#fbd3da;
+  /* Callout text/border tokens (extracted from components.css raw hex) */
+  --term-ink:#5a4a30;
+  --term-label-ink:#8a5e10;
+  --term-accent:#c98a2e;
+  --analogy-ink:#234458;
+  --analogy-label-ink:#2f5470;
+  --analogy-accent:#5e8aa8;
+  --danger-ink:#5a3a36;
+  --danger-label-ink:#c62433;
+  --good-ink:#1f5040;
+  --good-label-ink:#1f6f4e;
+  --good-accent:#3f8e6c;
+  /* AA-compliant muted foreground for chips/meta */
+  --chip-ink:#6a6a6a;
+  --dark:#1a1a1a;
+  --dark-soft:#242421;
+  --code:#1f1f1d;
+  --serif:"Noto Serif KR",Georgia,serif;
+  --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;
+  --radius-sm:5px;
+  --radius-md:8px;
+  --radius-lg:12px;
+  --max-reading:780px;
+  --max-wide:1020px;
+  /* focus ring (non-decorative, distinct from brand red) */
+  --focus:#1a56db;
+  /* spacing scale (8px base) — additive; new rules use these */
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;
+  /* type scale (additive reference axis) */
+  --fs-xs:13px;--fs-sm:14px;--fs-base:16px;--fs-md:18px;--fs-lg:20px;--fs-xl:24px;--fs-2xl:30px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px;box-shadow:0 0 0 2px #fff,0 0 0 5px rgba(26,86,219,.4);border-radius:3px}
+/* CSS-only reading progress bar (scroll-driven; progressive enhancement, no JS). Degrades to invisible 0-width where unsupported. */
+.reading-progress{position:fixed;top:0;left:0;height:4px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--accent);z-index:200;animation:read-progress linear both;animation-timeline:scroll(root)}
+@keyframes read-progress{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){.reading-progress{display:none}}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.8;
+  letter-spacing:-.012em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--dark);color:#fff;padding:10px 14px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+.page,.wrap{width:min(var(--max-reading),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+.page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+/* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
+.page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
+.kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
+.sub,.lead{font-size:16px;color:var(--ink-soft);margin:0 0 24px;max-width:820px}
+.lead{font-size:18px;line-height:1.75;color:var(--ink-soft)}
+.byline{font-size:13px;color:var(--ink-mute);padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.meta span,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.52);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--chip-ink)}
+section{margin:46px 0}
+h2{font-family:var(--serif);font-size:clamp(24px,3vw,29px);line-height:1.42;font-weight:700;letter-spacing:-.01em;margin:64px 0 8px;scroll-margin-top:24px;color:var(--ink)}
+section>h2:first-child,
+article>h2:first-child,
+.box>h2:first-child,
+.summary-card>h2:first-child,
+.toc>h2:first-child,
+.faq>h2:first-child,
+.cta-box>h2:first-child,
+.source-note>h2:first-child,
+.card-block>h2:first-child,
+.mini-card>h2:first-child{margin-top:0}
+h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;height:34px;padding:0 9px;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;font-family:var(--sans);font-size:15px;font-weight:800;margin-right:12px;vertical-align:3px;line-height:1}
+/* opt-in: only the 1-2 most important section numbers use solid brand red */
+h2 .no.is-key,h2 .num.is-key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;line-height:1.7}
+h3{font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.45;margin:28px 0 10px;color:var(--ink)}
+section>h3:first-child,
+article>h3:first-child,
+.box>h3:first-child,
+.summary-card>h3:first-child,
+.toc>h3:first-child,
+.faq>h3:first-child,
+.cta-box>h3:first-child,
+.source-note>h3:first-child,
+.card-block>h3:first-child,
+.mini-card>h3:first-child{margin-top:0}
+h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+p{margin:0 0 16px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:700}
+ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
+li{margin:6px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+footer p{font-size:13px;color:var(--ink-mute)}
+@media(max-width:760px){
+  body{line-height:1.74}
+  .page,.page-wide,.wrap{width:min(100% - 40px,var(--max-reading));padding:40px 0 72px}
+  .header{padding-bottom:22px;margin-bottom:28px}
+  .lead{font-size:16px}
+  h1{font-size:30px;line-height:1.34}
+  h2{font-size:23px;margin-top:52px}
+  h2 .no,h2 .num{min-width:30px;width:auto;height:30px;font-size:13px;margin-right:9px;padding:0 8px}
+  .h2-sub{margin-left:39px}
+}
+@media(max-width:430px){
+  .page,.page-wide,.wrap{width:min(100% - 32px,var(--max-reading))}
+  h1{font-size:27px}
+}
+
+/* Editorial components for adaptive-html-blog-writer-v2. */
+.box,.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px;margin:24px 0}
+.summary-card .label,.toc .label,.faq .label,.cta-box .label,.source-note .label{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-2);margin-bottom:8px;text-transform:uppercase}
+.summary-card p,.cta-box p{margin:0}
+.toc strong{display:block;font-size:14px;color:var(--ink);margin-bottom:8px}
+.toc ol,.toc ul{margin:0 0 0 20px;color:var(--ink-soft)}
+.toc a{color:var(--ink-soft);text-decoration:none;border-bottom:1px dotted transparent}
+.toc a:hover{color:var(--accent);border-color:var(--accent)}
+.source-note{font-size:13px;color:var(--ink-mute)}
+.source-note p,.source-note li{font-size:13px;color:var(--ink-mute)}
+.source-note ol,.source-note ul{margin:6px 0 6px 20px}
+.source-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px 20px;margin:34px 0;color:var(--ink-mute)}
+.source-box h2{font-family:var(--sans);font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--accent)}
+.source-box p,.source-box li{font-size:13px;color:var(--ink-mute)}
+.source-box ul{columns:2;column-gap:28px;margin-top:8px}
+.source-box a{color:var(--ink-soft)}
+
+/* Robust wrapping for long URLs, code tokens, and Korean/English mixed labels. */
+.source-note,.source-box,.source-list,.card-block,.mini-card,.term,.analogy,.danger,.good,td,th,caption,a,code{overflow-wrap:anywhere}
+.tbl{max-width:100%}
+.caption{font-size:12px;color:var(--ink-mute);margin:8px 0 0}
+
+/* Neutral box: generic content container */
+.box p:last-child,.box li:last-child{margin-bottom:0}
+/* FAQ: question/answer list */
+.faq dl,.faq>ul,.faq>ol{margin:0}
+.faq dt,.faq .q{font-weight:800;color:var(--ink);font-size:15px;margin:14px 0 4px}
+.faq dt:first-child,.faq .q:first-child{margin-top:0}
+.faq dd,.faq .a{margin:0 0 4px;color:var(--ink-soft);font-size:14.5px;line-height:1.72}
+.faq dd+dt,.faq .a+.q{border-top:1px solid var(--line);padding-top:12px}
+/* CTA: call-to-action box */
+.cta-box{border-left:4px solid var(--accent)}
+.cta-box h2,.cta-box h3{margin:0 0 8px;font-size:18px;color:var(--ink)}
+.cta-box .label{color:var(--accent)}
+.cta-box a{color:var(--accent);font-weight:700}
+
+.term,.analogy,.danger,.good{border-radius:var(--radius-sm);padding:18px 22px;margin:28px 0 32px;font-size:14.5px}
+.term{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--term-accent)}
+.term .label{font-size:11px;color:var(--term-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.term .word{display:block;font-weight:800;color:var(--ink);font-size:15px;margin-bottom:4px}
+.term .meaning,.term p{color:var(--term-ink);margin:0;line-height:1.68;font-size:14px}
+.analogy{background:var(--analogy-bg);border:1px solid var(--analogy-border);border-left:3px solid var(--analogy-accent)}
+.analogy .label{font-size:11px;color:var(--analogy-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:6px;text-transform:uppercase}
+.analogy p{color:var(--analogy-ink);margin:0;line-height:1.72;font-size:14.5px}
+.analogy p+p{margin-top:8px}
+.danger{background:var(--danger-bg);border:1px solid var(--danger-border);border-left:3px solid var(--accent-2)}
+.danger .label{font-size:11px;color:var(--danger-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.danger .name{font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.danger p{color:var(--danger-ink);margin:0;line-height:1.72;font-size:14px}
+.danger p+p{margin-top:8px}
+.good{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--good-accent)}
+.good .label{font-size:11px;color:var(--good-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.good .name{font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.good p{color:var(--good-ink);margin:0;line-height:1.72;font-size:14px}
+
+.hero-analogy{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:26px 28px;margin:24px 0 12px;color:var(--ink)}
+.hero-analogy .tag{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.15em;margin:0 0 10px;text-transform:uppercase;border:0;background:transparent;padding:0;border-radius:0}
+.hero-analogy h3{margin:0 0 10px;font-family:var(--serif);font-size:21px;line-height:1.55;color:var(--ink)}
+.hero-analogy p{margin:0;font-size:15px;color:var(--ink-soft)}
+.hero-analogy p+p{margin-top:10px}
+
+.card-block{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 26px;margin:16px 0}
+.card-block h3{margin-top:0;font-size:17px}
+.card-block p{font-size:14.5px;margin-bottom:10px}
+.card-block p:last-child{margin-bottom:0}
+.case-label{font-size:11px;color:var(--accent-2);font-weight:800;letter-spacing:.15em;margin-bottom:6px;text-transform:uppercase}
+.prompt-box{background:#f8f8f4;border-left:2px solid var(--line);padding:10px 14px;margin:12px 0;font-size:13.5px;color:var(--ink-soft);font-style:italic;line-height:1.65}
+
+em.t{font-style:normal;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px;font-weight:700;font-size:14px}
+.hl{--c:var(--hl-yellow);background-image:linear-gradient(transparent 76%,var(--c) 76%);background-repeat:no-repeat;background-size:0% 100%;padding:1px 7px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;animation:hl-sweep .7s cubic-bezier(.4,0,.2,1) .25s forwards}
+.hl.blue{--c:var(--hl-blue)}.hl.pink{--c:var(--hl-pink)}
+@keyframes hl-sweep{to{background-size:100% 100%}}
+@media(prefers-reduced-motion:reduce){.hl{animation:none;background-size:100% 100%}}
+
+code{font-family:"SF Mono",Menlo,Consolas,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:13.5px;color:#3a3a3a}
+pre,.code{background:var(--code);color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;white-space:pre-wrap}
+pre code,.code code{background:none;color:inherit;padding:0;font-size:13px}
+blockquote,.pull-quote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-family:var(--serif);font-size:20px;line-height:1.65;font-style:italic}
+.tbl{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table,.table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:18px 0}
+caption{caption-side:top;text-align:left;font-size:13px;line-height:1.6;color:var(--ink);font-weight:800;margin:0;padding:0 0 8px;white-space:normal;overflow:visible}
+th,td,.table th,.table td{border:1px solid var(--line);padding:10px 14px;text-align:left;color:var(--ink-soft);vertical-align:top}
+th,.table th{background:var(--ink);color:#fff;font-weight:800;font-size:13px}
+tbody tr:nth-child(even) td,.table tbody tr:nth-child(even) td{background:rgba(0,0,0,.025)}
+.status-pill{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 9px;font-size:12px;line-height:1.45;color:var(--ink-mute);margin:3px 4px 3px 0;text-align:center;white-space:normal}
+.tbl .status-pill,table .status-pill{white-space:nowrap;width:max-content;max-width:none;text-align:center;justify-content:center}
+.timeline-card{background:#fff;border:1px solid var(--line);border-left:1px solid var(--line);border-radius:var(--radius-md);padding:18px 22px 18px 40px;margin:12px 0;list-style-position:outside}
+.timeline-card>li{padding-left:4px;margin:12px 0}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:12px 16px;margin:12px 0}
+summary{cursor:pointer;font-weight:800;color:var(--ink);font-size:15px}
+details[open] summary{margin-bottom:8px}
+details p{margin-bottom:0}
+.try{background:var(--dark);color:#f5f5f0;border-radius:var(--radius-md);padding:32px 30px;margin-top:52px}
+.try .label{font-size:12px;color:var(--link-on-dark);font-weight:800;letter-spacing:.15em;margin-bottom:14px;text-transform:uppercase}
+.try h2,.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
+.try h2 .no,.try h2 .num{background:#fff;color:var(--dark)}
+.try p{color:#d0d0c8}.try ol,.try ul{padding-left:20px;color:#d0d0c8}.try li{margin-bottom:12px;font-size:15px;line-height:1.7}.try strong{color:#fff}
+.try .box,
+.try .summary-card,
+.try .cta-box,
+.try .card-block,
+.try .mini-card{
+  background:var(--card);
+  color:var(--ink);
+  border-color:var(--line);
+}
+.try .box h2,
+.try .summary-card h2,
+.try .cta-box h2,
+.try .card-block h2,
+.try .mini-card h2,
+.try .box h3,
+.try .summary-card h3,
+.try .cta-box h3,
+.try .card-block h3,
+.try .mini-card h3{color:var(--ink);font-family:var(--sans)}
+.try .box h2 .no,
+.try .summary-card h2 .no,
+.try .cta-box h2 .no,
+.try .card-block h2 .no,
+.try .mini-card h2 .no,
+.try .box h2 .num,
+.try .summary-card h2 .num,
+.try .cta-box h2 .num,
+.try .card-block h2 .num,
+.try .mini-card h2 .num{background:var(--accent);color:#fff}
+.try .box p,
+.try .summary-card p,
+.try .cta-box p,
+.try .card-block p,
+.try .mini-card p,
+.try .box li,
+.try .summary-card li,
+.try .cta-box li,
+.try .card-block li,
+.try .mini-card li,
+.try .box ul,
+.try .summary-card ul,
+.try .cta-box ul,
+.try .card-block ul,
+.try .mini-card ul,
+.try .box ol,
+.try .summary-card ol,
+.try .cta-box ol,
+.try .card-block ol,
+.try .mini-card ol{color:var(--ink-soft)}
+.try .box strong,
+.try .summary-card strong,
+.try .cta-box strong,
+.try .card-block strong,
+.try .mini-card strong,
+.try .box b,
+.try .summary-card b,
+.try .cta-box b,
+.try .card-block b,
+.try .mini-card b{color:var(--ink)}
+.try .box .label,
+.try .summary-card .label,
+.try .cta-box .label,
+.try .card-block .label,
+.try .mini-card .label{color:var(--accent)}
+.try .cta-box{border-left-color:var(--accent)}
+.try a,
+.try.soft-cta a{
+  color:var(--link-on-dark);
+  font-weight:800;
+  text-decoration-color:rgba(255,255,255,.55);
+}
+.try a:hover,
+.try.soft-cta a:hover{color:#fff;text-decoration-color:#fff}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.mini-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:16px}
+.mini-card h3{margin-top:0;font-size:16px}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.try .tag,
+.try.soft-cta .tag{
+  background:rgba(255,255,255,.96);
+  color:var(--ink);
+  border-color:rgba(255,255,255,.72);
+  font-weight:800;
+  justify-content:center;
+  text-align:center;
+}
+.try .tag-list{gap:8px 9px}
+@media(max-width:760px){
+  /* touch targets ≥44px (WCAG 2.5.8) — padding expands hit area, visual size kept */
+  .toc a{display:inline-block;min-height:44px;padding-top:8px;padding-bottom:8px;line-height:1.4}
+  .meta span,.tag,.status-pill{min-height:32px}
+  .card-grid{grid-template-columns:1fr}
+  .table,table{font-size:14px}
+  .table th,.table td,th,td{padding:10px}
+  .source-box ul{columns:1}
+  .timeline-card{padding:16px 14px 16px 34px}
+  .mobile-card-table{overflow:visible}
+  .mobile-card-table table{min-width:0;border:0;background:transparent;margin:14px 0}
+  .mobile-card-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .mobile-card-table tbody,.mobile-card-table tr,.mobile-card-table th,.mobile-card-table td{display:block}
+  .mobile-card-table tr{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:10px 12px;margin:10px 0}
+  .mobile-card-table th,.mobile-card-table td{border:0;padding:7px 0;color:var(--ink-soft)}
+  .mobile-card-table td{display:grid;grid-template-columns:minmax(92px,34%) 1fr;gap:8px;align-items:start}
+  .mobile-card-table td::before{content:attr(data-label);font-size:11px;line-height:1.45;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2)}
+  .mobile-card-table tbody th{color:var(--ink);font-weight:800;background:transparent}
+  .mobile-card-table tbody th::before{content:"";display:none}
+}
+
+/* Visual Template System: responsive figure shell for 8000x6000 SVG infographics. */
+.visual-figure,.figure-wide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:14px;margin:22px 0 28px;overflow:hidden}
+.visual-figure img,.figure-wide img{display:block;width:100%;height:auto;border-radius:8px;background:var(--bg);border:1px solid var(--line)}
+.visual-figure figcaption,.figure-wide figcaption{font-size:13px;color:var(--ink-mute);line-height:1.65;margin:10px 4px 0}
+.visual-figure.is-hero,.figure-wide.is-hero{margin-top:18px;margin-bottom:34px}
+.visual-rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.visual-rule{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:var(--radius-md);padding:18px}
+.visual-rule h3{margin:0 0 8px;font-size:16px}.visual-rule p{font-size:14px;margin:0}
+.visual-pipeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+.visual-pipeline .mini-card{min-height:156px}
+@media(max-width:760px){.visual-rule-grid,.visual-pipeline{grid-template-columns:1fr}.visual-figure,.figure-wide{padding:10px;margin-left:-2px;margin-right:-2px}.visual-figure figcaption,.figure-wide figcaption{font-size:12.5px}}
+@media print{.visual-figure,.figure-wide{break-inside:avoid;background:#fff}.visual-figure img,.figure-wide img{max-height:70vh;object-fit:contain}}
+
+/* SVG-to-HTML view template system — native, in-flow, harmonized with adaptive-html-final */
+:root{--vt-paper:#fff;--vt-wash:#faf9f5;--vt-soft:#f0eee6;--vt-line:var(--line);--vt-ink:var(--ink);--vt-muted:var(--ink-mute);--vt-red:var(--accent);--vt-red2:var(--accent-2);--vt-blue:#3a6280;--vt-green:#2a7d5a;--vt-gold:#d99a38;--vt-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+body{background:var(--vt-wash)}
+.vt-page{max-width:1120px}.vt-hero{background:var(--vt-paper);border:1px solid var(--vt-line);border-radius:18px;padding:34px 38px;margin-bottom:34px}.vt-hero h1{font-size:clamp(32px,4.4vw,48px);line-height:1.2}.vt-hero .sub{max-width:850px}.vt-principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}.vt-principle{border:1px solid var(--vt-line);border-radius:14px;background:#fff;padding:16px}.vt-principle b{display:block;color:var(--vt-ink);margin-bottom:4px}.vt-principle p{font-size:13.5px;margin:0}.vt-index-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.vt-index-card{display:block;background:#fff;border:1px solid var(--vt-line);border-radius:16px;padding:20px;text-decoration:none;color:inherit;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}.vt-index-card:hover{transform:translateY(-2px);border-color:var(--vt-red);box-shadow:0 10px 24px rgba(0,0,0,.055)}.vt-index-card em{display:block;font-style:normal;font-family:var(--vt-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--vt-red2);font-weight:900;margin-bottom:8px}.vt-index-card strong{display:block;font-family:var(--serif);font-size:22px;line-height:1.3;margin-bottom:8px;color:var(--vt-ink)}.vt-index-card p{font-size:14px;margin:0;color:var(--ink-soft)}.vt-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.vt-tags span{font-family:var(--vt-mono);font-size:11px;border:1px solid var(--line);border-radius:999px;padding:3px 7px;color:#666}.vt-nav{display:flex;justify-content:space-between;gap:10px;margin-bottom:28px;font-size:13px;color:var(--ink-mute)}.vt-nav a{display:inline-flex;align-items:center;min-height:44px;color:inherit}.vt-shell{background:#fff;border:1px solid var(--vt-line);border-radius:18px;padding:24px;margin:20px 0}.vt-shell-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;border-bottom:1px solid var(--vt-line);padding-bottom:16px;margin-bottom:18px}.vt-id{font-family:var(--vt-mono);font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--vt-red2)}.vt-shell h2{font-family:var(--serif);font-size:clamp(24px,3vw,32px);line-height:1.25;margin:4px 0 6px}.vt-shell-head p{margin:0;font-size:14.5px;max-width:680px}.vt-fit{display:inline-flex;align-items:center;min-height:34px;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-family:var(--vt-mono);font-size:12px;color:#555;background:var(--vt-soft);white-space:nowrap}.vt-frame{background:var(--vt-wash);border:1px solid var(--vt-line);border-radius:15px;padding:18px;overflow:visible}.vt-note-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}.vt-note{border:1px solid var(--line);border-radius:13px;background:#fff;padding:16px}.vt-note .label,.vt-panel .label{font-family:var(--vt-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--vt-red2);font-weight:900;margin-bottom:8px}.vt-note p{font-size:14px;margin:0}.vt-panel{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px;margin:14px 0}.vt-code{background:var(--code);color:#f4f4ef;border-radius:12px;padding:14px;overflow:auto;font-family:var(--vt-mono);font-size:12.5px;line-height:1.6;white-space:pre}.vt-source{font-size:13px;color:var(--ink-mute)}.vt-source a{display:inline-flex;align-items:center;min-height:36px}.vt-demo{--c:var(--vt-red);--c2:var(--vt-blue)}.vt-demo *{box-sizing:border-box}.vt-kicker{font-family:var(--vt-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--vt-red2);font-weight:900}.vt-title{font-family:var(--serif);font-size:22px;line-height:1.3;margin:4px 0 10px;color:var(--vt-ink)}.vt-text{font-size:14px;color:var(--ink-soft);line-height:1.65}.vt-mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.vt-mini-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}.vt-mini-card b{display:block;margin-bottom:5px}.vt-mini-card p{font-size:13px;margin:0}.vt-pill{display:inline-flex;align-items:center;min-height:30px;border-radius:999px;padding:4px 9px;font-family:var(--vt-mono);font-size:11px;border:1px solid var(--line);background:#fff;color:#555}.vt-pill.hot{background:#fff0ee;border-color:#e8b8b2;color:#b72d38}.vt-pill.good{background:#eef7f1;border-color:#b8d8c2;color:#1f6f4e}.vt-pill.watch{background:#fffaf2;border-color:#e8d9b8;color:#8a5e10}.vt-section-title{display:flex;align-items:center;gap:8px;margin-bottom:12px}.vt-num{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:999px;background:var(--vt-red);color:#fff;font-weight:900;font-size:13px}.vt-row{display:flex;gap:10px;flex-wrap:wrap}.vt-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.vt-list li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0}.vt-list b{display:block;color:var(--ink)}.vt-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.vt-four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.vt-stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px}.vt-stat b{display:block;font-family:var(--serif);font-size:24px;color:var(--vt-red);line-height:1.1}.vt-stat span{font-size:12px;color:var(--ink-mute)}
+/* 01 hero map */.hm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.hm-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--c);border-radius:13px;padding:16px}.hm-card h3{margin:0 0 6px;font-size:17px}.hm-result{margin-top:12px;border:1px solid var(--line);border-radius:13px;background:#fff;padding:16px;display:flex;justify-content:space-between;gap:12px;align-items:center}.hm-result b{font-family:var(--serif);font-size:20px}.hm-result span{font-size:13px;color:var(--ink-soft)}
+/* 02 decision tree */.dt-q{display:grid;grid-template-columns:1fr 80px 1fr;gap:10px;align-items:center}.dt-card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px}.dt-arrow{height:2px;background:var(--ink);position:relative}.dt-arrow:after{content:"";position:absolute;right:-1px;top:-5px;border-left:10px solid var(--ink);border-top:6px solid transparent;border-bottom:6px solid transparent}.dt-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.dt-options .dt-card{border-top:4px solid var(--c)}
+/* 03 risk matrix */.rm-grid{display:grid;grid-template-columns:90px repeat(3,1fr);gap:8px}.rm-cell{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;min-height:72px}.rm-head{background:var(--vt-soft);font-weight:800;text-align:center}.rm-risk{border-left:4px solid var(--c);font-size:13px}.rm-risk.high{--c:var(--vt-red)}.rm-risk.med{--c:var(--vt-gold)}.rm-risk.low{--c:var(--vt-green)}
+/* 04 timeline */.tl{position:relative;display:grid;gap:12px;padding-left:28px}.tl:before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:3px;background:var(--vt-red);border-radius:99px}.tl-item{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}.tl-item:before{content:"";position:absolute;left:-24px;top:16px;width:14px;height:14px;border-radius:99px;background:var(--vt-red)}
+/* 05 checklist */.cf{display:grid;gap:10px}.cf-item{display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.cf-check{width:24px;height:24px;border-radius:7px;background:var(--vt-green);color:#fff;display:grid;place-items:center;font-weight:900}.cf-state{font-family:var(--vt-mono);font-size:11px;color:#666}
+/* 06 quality gate */.qg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.qg-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--vt-green);border-radius:12px;padding:12px}.qg-card.warn{border-left-color:var(--vt-gold)}.qg-card.block{border-left-color:var(--vt-red)}.qg-final{margin-top:10px;background:#ffd400;border:2px solid var(--ink);border-radius:13px;padding:15px;font-weight:900}
+/* 07 card grid */.cg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.cg-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.cg-card em{font-style:normal;font-family:var(--vt-mono);font-size:11px;color:var(--vt-red2);font-weight:900}.cg-card b{display:block;margin:5px 0}.cg-card p{font-size:12.5px;margin:0;color:var(--ink-soft)}
+/* 08 raci */.raci{display:grid;grid-template-columns:1.2fr repeat(4,.7fr);gap:6px}.raci div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:9px;font-size:13px;text-align:center}.raci .h{background:var(--vt-soft);font-weight:900}.raci .task{text-align:left;font-weight:800}.raci .r{background:#fff0ee;color:var(--vt-red2);font-weight:900}.raci .a{background:#eef7f1;color:#1f6f4e;font-weight:900}
+/* 09 file tour */.ft{display:grid;gap:10px}.ft-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}.ft-head{background:var(--vt-soft);padding:10px 12px;font-family:var(--vt-mono);font-size:12px;display:flex;justify-content:space-between}.ft-body{padding:12px}.ft-note{border-left:3px solid var(--vt-red);background:#fff7f5;border-radius:8px;padding:10px;font-size:13px}
+/* 10 flowchart */.fc{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:center}.fc-node{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.fc-node.hot{border-color:var(--vt-red);box-shadow:inset 0 3px 0 var(--vt-red)}.fc-arrow{text-align:center;font-weight:900;color:var(--ink-mute)}
+/* 11 weekly */.wk-bars{display:grid;gap:10px}.wk-row{display:grid;grid-template-columns:130px 1fr 44px;gap:10px;align-items:center}.wk-bar{height:12px;background:var(--vt-soft);border-radius:99px;overflow:hidden}.wk-fill{height:100%;background:var(--vt-red);border-radius:99px}.wk-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.wk-col{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}
+/* 12 incident */.inc-head{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.inc-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.inc-card.impact{border-top:4px solid var(--vt-red)}.inc-card.cause{border-top:4px solid var(--vt-gold)}.inc-card.action{border-top:4px solid var(--vt-green)}
+/* 13 comparison */.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cmp-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}.cmp-card.pick{border:2px solid var(--vt-red)}.cmp-card ul{font-size:13px;margin:8px 0 0 18px}
+/* 14 swimlane */.swim{display:grid;gap:8px}.lane{display:grid;grid-template-columns:110px repeat(4,1fr);gap:8px}.lane-label{font-weight:900;color:var(--vt-red2);padding:10px}.lane-step{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px}.lane-step.blank{opacity:.22}
+/* 15 concept */.concept-ring{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px}.concept-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.concept-step{border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.concept-step b{display:block;color:var(--vt-red)}
+/* 16 plan */.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.milestone{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.milestone b{display:block}.plan-risk{border-left:4px solid var(--vt-gold)}
+/* 17 pr */.pr-box{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px}.pr-diff{background:var(--code);color:#eee;border-radius:10px;padding:12px;font-family:var(--vt-mono);font-size:12px;overflow:auto}.pr-add{color:#b7f5ce}.pr-del{color:#ffb6c0}.pr-walk{display:grid;gap:9px;margin-top:10px}.pr-file{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}
+/* 18 board */.board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.board-col{background:var(--vt-soft);border:1px solid var(--line);border-radius:12px;padding:10px}.board-col h3{font-size:15px;margin:0 0 8px}.ticket{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0;font-size:13px}.ticket.active{border-left:4px solid var(--vt-red)}
+/* 19 flag */.flag-list{display:grid;gap:10px}.flag{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.switch{width:48px;height:26px;border-radius:999px;background:var(--vt-green);position:relative}.switch:after{content:"";position:absolute;right:4px;top:4px;width:18px;height:18px;background:#fff;border-radius:99px}.switch.off{background:#bbb}.switch.off:after{right:auto;left:4px}
+/* 20 tuner */.tuner{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tune-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.score{display:flex;gap:6px;margin-top:8px}.score span{height:8px;flex:1;background:var(--vt-soft);border-radius:99px}.score span.on{background:var(--vt-red)}
+@media(max-width:920px){.vt-principles,.vt-index-grid,.hm-grid,.dt-q,.dt-options,.qg-grid,.vt-note-grid,.vt-two,.plan-grid,.tuner{grid-template-columns:1fr}.dt-arrow{height:22px;width:2px;justify-self:center}.dt-arrow:after{right:-5px;top:auto;bottom:-1px;border-left:6px solid transparent;border-right:6px solid transparent;border-top:10px solid var(--ink);border-bottom:0}.cg-grid,.vt-four{grid-template-columns:repeat(2,1fr)}.fc{grid-template-columns:1fr}.fc-arrow{transform:rotate(90deg)}.board,.cmp,.wk-cols,.inc-head,.vt-mini-grid{grid-template-columns:1fr}.raci{grid-template-columns:1.2fr repeat(4,.6fr);overflow-x:auto}.lane{grid-template-columns:1fr;overflow:visible}.lane-label{background:var(--vt-soft);border-radius:10px}.concept-steps{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.vt-page{width:min(100% - 32px,var(--max-wide))}.vt-hero{padding:24px 20px}.vt-shell{padding:16px}.vt-shell-head{display:block}.vt-fit{margin-top:10px}.vt-frame{padding:12px}.cg-grid,.vt-four,.concept-steps{grid-template-columns:1fr}.wk-row{grid-template-columns:90px 1fr 38px}.vt-source a{min-height:44px}}
+
+.layout-beginner .hero-analogy{margin-top:8px}
+.layout-beginner .beginner-zero{border-top:1px solid var(--line);padding-top:28px}
+.layout-beginner .term+.term{margin-top:12px}
+
+/* Expert mode: section wrappers stay in normal document flow; only inner grids/cards are gridded. */
+.layout-expert .summary-grid,
+.layout-expert .decision-grid:not(section),
+.layout-expert .decision-grid>.grid,
+.layout-expert .architecture-grid,
+.layout-expert .risk-grid,
+.layout-expert .roadmap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-expert .decision-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
+.layout-expert .executive-summary,.layout-expert .validation-checklist{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px}
+.layout-expert .executive-summary .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.risk-high{border-left:5px solid var(--accent)}.risk-mid{border-left:5px solid #d99a38}.risk-low{border-left:5px solid #7ea66a}
+
+.layout-article .article-header{margin-bottom:28px}.layout-article .lead{font-size:18px;color:var(--ink-soft)}.layout-article .article-takeaway{background:var(--accent-soft)}.layout-article article section{margin:54px 0}
+.layout-article .pull-quote{font-size:22px;color:var(--ink);border-color:var(--accent);font-style:normal}
+
+.layout-education .learning-goals{border:1px solid var(--good-border);background:var(--good-bg);border-radius:var(--radius-md);padding:22px}
+.layout-education .practice-card{border:1px dashed var(--accent);background:var(--card);border-radius:var(--radius-md);padding:22px}
+.layout-education .quiz-box{background:var(--term-bg);border:1px solid var(--term-border);border-radius:var(--radius-md);padding:22px}
+.layout-education .answer-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px}
+
+.layout-blog .personal-note{font-family:var(--serif);font-size:19px;line-height:1.7}
+.layout-blog .hook{color:var(--ink-soft)}
+.layout-blog article{counter-reset:blog-section}
+.layout-blog article section{border-bottom:1px solid var(--line);padding-bottom:28px;margin:52px 0}
+.layout-blog article>section{counter-increment:blog-section}
+.layout-blog article>section>h2:first-child::before{
+  content:counter(blog-section);
+  display:inline-grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  margin-right:12px;
+  border-radius:999px;
+  background:var(--accent);
+  color:#fff;
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:800;
+  line-height:1;
+  vertical-align:3px;
+}
+.layout-blog article section:last-child{border-bottom:0}
+
+.layout-seo .serp-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.layout-seo .serp-title{color:var(--ink);font-family:var(--sans);font-size:clamp(17px,2vw,18px);line-height:1.45;font-weight:800;letter-spacing:-.012em;margin:2px 0 8px}
+.layout-seo .serp-url{color:#1f6f4e;font-size:12.5px;margin-bottom:6px;font-weight:700}
+.layout-seo .seo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layout-seo .title-candidates,.layout-seo .meta-candidates,.layout-seo .keyword-cluster{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px}
+
+/* Platform grid is safe only as an inner wrapper, never as the semantic section itself. */
+.layout-platform .platform-grid:not(section){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.layout-platform .platform-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px 20px}
+.layout-platform .platform-card h3{margin-top:0;color:var(--accent-2)}
+.layout-platform .original-summary,.layout-platform .platform-strategy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid:not(section),.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+
+/* Ultimate extra modes */
+.layout-audit .audit-row{display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr .6fr;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}
+.layout-audit .score-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.layout-reference .quick-reference{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px}
+.layout-compare .matrix:not(section),.layout-compare .matrix>.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.layout-compare .winner-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
+.layout-case .timeline{border-left:0;padding-left:0}
+.layout-case .timeline-card{background:transparent;border:0;border-left:0;padding:0;margin:18px 0;list-style:none;counter-reset:timeline-step}
+.layout-case .timeline-card>li{counter-increment:timeline-step;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px 16px 54px;margin:12px 0}
+.layout-case .timeline-card>li::before{content:counter(timeline-step);position:absolute;left:18px;top:18px;width:24px;height:24px;border-radius:999px;background:var(--accent);color:#fff;display:grid;place-items:center;font:800 12px/1 var(--sans)}
+.layout-case .timeline-item{position:relative;margin:18px 0;padding:0 0 0 4px}
+.layout-case .timeline-item::before{content:"";position:absolute;left:-17px;top:.55em;width:11px;height:11px;border-radius:999px;background:var(--accent)}
+.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.layout-landing .hero-analogy{font-size:18px}
+.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layout-checklist .check-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px}
+@media(max-width:760px){.layout-audit .audit-row,.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid,.layout-compare .matrix:not(section),.layout-compare .matrix>.grid,.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid,.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{grid-template-columns:1fr}}
+
+/* ── Section-level classes (v4.3.0) ─────────────────────────────
+   IMPORTANT: semantic section wrappers must not become card grids.
+   Use inner wrappers such as .card-grid, .summary-grid, .matrix:not(section),
+   .winners:not(section), or .tradeoffs:not(section) for actual grid layout. */
+
+.audit-header,.blog-header,.case-header,.checklist-header,.compare-header,
+.course-header,.landing-header,.platform-header,.reference-header,
+.report-header,.seo-header{margin-bottom:42px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+
+/* Semantic section wrappers: normal flow only. */
+.risk-matrix,.priority-roadmap,.architecture-map,.serp-preview,.platform-comparison-table,
+.decision-context,.decisions,.results,.winners,.tradeoffs,.how-it-works,.failure-modes,
+.patterns,.examples,.line-audit,.content-outline,.seo-overview,.before-start,
+.beginner-analogy,.beginner-practice,.beginner-terms,.beginner-traps,.example-block,
+.lesson-step,.publish-checklist,.related-list,.soft-cta{margin:46px 0}
+
+/* Actual reusable grid/card wrappers. Never apply these to a section containing h2/h2-sub. */
+.grid-2,.cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.grid-3,.cards-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.grid-2>*,.cards-2>*,.grid-3>*,.cards-3>*{min-width:0}
+.winners:not(section),.tradeoffs:not(section){
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  padding:18px 20px;
+  margin:18px 0;
+}
+.winners:not(section)>h3:first-child,
+.tradeoffs:not(section)>h3:first-child{margin-top:0}
+
+.final-seo-set .grid,.final-seo-set .seo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0 0}
+
+.lesson-step,.line-audit,.before-start{border-left:3px solid var(--line);padding-left:18px}
+.lesson-step+.lesson-step{margin-top:24px}
+
+.soft-cta{background:var(--accent-soft);border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px;color:var(--ink-soft)}
+.soft-cta a{color:var(--accent-2);font-weight:700}
+.soft-cta p,.soft-cta li{color:var(--ink-soft)}
+.soft-cta strong{color:var(--ink)}
+.try.soft-cta{background:var(--dark);border-color:var(--dark);border-left-color:var(--accent);color:#f5f5f0}
+.try.soft-cta p,.try.soft-cta li{color:#d0d0c8}.try.soft-cta strong{color:#fff}
+.try.soft-cta .label{color:var(--accent)}
+
+.related-list ul,.related-list ol{margin:8px 0 0 20px}
+
+@media(max-width:760px){
+  .grid-2,.cards-2,.grid-3,.cards-3,
+  .final-seo-set .grid,.final-seo-set .seo-grid{grid-template-columns:1fr}
+  .layout-blog article>section>h2:first-child::before{width:30px;height:30px;margin-right:9px;font-size:13px;vertical-align:2px}
+}
+
+@media print{
+  *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white;color:#111}
+  .page,.page-wide,.wrap{width:100%;padding:0}
+  .hero-analogy,.try{background:#f4f4f4;color:#111;box-shadow:none}
+  .try h2,.try h3,.try strong{color:#111}
+  .source-note,.toc,.box,.term,.analogy,.danger,.good,.card-block,.mini-card{break-inside:avoid}
+  pre,table,.tbl,blockquote,figure,.card-block{break-inside:avoid}
+  .skip{display:none}
+  a::after{content:" (" attr(href) ")";font-size:11px;color:#555}
+}
+
+</style>
+
+<style>@media(max-width:760px){.table-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main .swim,main .lane,main .raci,main .fc,main .cg-grid,main .board,main pre,main .vt-code,main .pr-diff{max-width:100%;overflow-x:auto}}</style>
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav class="page-nav" aria-label="페이지 이동" style="max-width:var(--max-wide,1120px);margin:0 auto;padding:14px 20px 0;display:flex;gap:14px;justify-content:space-between;font-size:13px"><a href="./02-realtime-inventory-sync-operating-model.html">← 실시간 재고 동기화 시스템 운영 모델</a><a href="../index.html">v6 홈</a><a href="./04-grpc-streaming-3week-education-module.html">gRPC 스트리밍 3주 교육 모듈 →</a></nav>
+<main id="main" class="page-wide layout-article">
+  <header class="header article-header">
+    <div class="kicker">엔지니어링 운영 · 개발 생산성</div>
+    <h1>코드 리뷰 SLA가 팀 속도를 결정한다</h1>
+    <p class="sub lead">리뷰 지연은 게으름이 아니라 시스템 신호다. 리뷰 SLA는 "언제까지 첫 반응을 줄지"를 팀이 합의해 대기 비용을 줄이는 장치다. 이 글은 주장과 반례, 적용 기준을 분리해 독자가 자기 팀 규모에 맞는 SLA를 직접 고르도록 돕는다.</p>
+    <div class="meta">엔지니어링 리드 · 플랫폼 팀 · PM 대상 · 약 9분 분량 · 2026-05-31</div>
+  </header>
+
+  <aside class="pull-quote">"리뷰가 늦는 팀은 리뷰어가 게을러서가 아니다. 큐가 보이지 않고, 첫 반응까지의 책임이 누구에게도 없기 때문이다. SLA는 그 책임에 시간을 붙이는 일이다."</aside>
+
+  <article>
+    <section>
+      <h2>문제: 멈춰 있는 PR이 팀의 진짜 병목이다</h2>
+      <p class="h2-sub">코드를 짜는 시간보다, 코드가 리뷰를 기다리는 시간이 더 길다.</p>
+      <p>많은 팀에서 기능 하나가 머지되기까지 걸리는 전체 시간 중 상당 부분은 "작성"이 아니라 "대기"다. 개발자는 PR을 올린 뒤 리뷰어의 첫 반응을 기다리고, 코멘트를 받으면 컨텍스트를 다시 끌어올려 수정하고, 다시 기다린다. 이 왕복 사이의 빈 시간이 누적되면, 작업 자체는 두 시간이었는데 머지까지는 사흘이 걸리는 일이 흔하게 벌어진다.</p>
+      <p>이 대기는 단순한 지연이 아니라 복리로 비싸진다. PR이 열려 있는 동안 베이스 브랜치는 계속 움직여 충돌 위험이 커지고, 작성자는 다른 일로 컨텍스트를 옮겼다가 리뷰 코멘트가 오면 다시 처음 상태로 머리를 되돌려야 한다. 컨텍스트 전환 비용은 측정하기 어렵지만 적지 않으며, 리뷰가 길어질수록 한 번에 검토해야 할 변경 폭도 커져 리뷰 품질 자체가 떨어진다.</p>
+      <p>여기서 핵심 인식 전환이 필요하다. 리뷰가 늦는 것을 개인의 태도 문제로 보면 잔소리와 죄책감만 남고 구조는 그대로다. 대신 이를 <strong>시스템 신호</strong>로 읽어야 한다. 리뷰 큐가 어디에도 보이지 않거나, 첫 반응의 책임이 누구에게도 명시되지 않았거나, 리뷰어의 WIP(동시 진행 작업)가 이미 한계를 넘었다는 신호다. 신호를 읽었다면 다음 단계는 분명하다. 첫 반응까지의 시간에 합의된 기준을 붙이는 것, 즉 리뷰 SLA다.</p>
+    </section>
+
+    <section>
+      <h2>맥락: SLA가 약속하는 것은 "머지"가 아니라 "첫 반응"이다</h2>
+      <p class="h2-sub">용어를 먼저 합의해야 SLA를 둘러싼 오해가 줄어든다.</p>
+      <p>리뷰 SLA를 도입하려 할 때 가장 흔한 저항은 "리뷰를 시간에 쫓기듯 대충 하라는 거냐"는 반응이다. 이 오해는 SLA가 무엇을 약속하는지가 흐릿할 때 생긴다. 리뷰 SLA가 약속하는 것은 승인이나 머지의 마감이 아니라 <strong>첫 반응 시간(time to first response)</strong>이다. 즉 "언제까지 이 PR을 봤다는 신호 — 코멘트, 질문, 승인, 또는 '지금은 못 본다'는 명시적 응답 — 를 줄 것인가"에 대한 합의다.</p>
+      <p>이 차이가 중요하다. 첫 반응은 리뷰어가 통제할 수 있는 행동이지만, 머지 시점은 변경의 복잡도와 작성자의 수정 속도에 좌우되어 리뷰어 혼자 책임질 수 없다. 통제 가능한 지표에 SLA를 거는 것이 핵심이다. 아래는 이 글에서 반복해 쓰는 핵심 용어다.</p>
+      <ul>
+        <li><span class="term"><span class="word">첫 반응 시간</span> <span class="meaning">PR이 리뷰 요청된 뒤 첫 의미 있는 응답까지 걸린 시간. SLA가 거는 대상.</span></span></li>
+        <li><span class="term"><span class="word">리뷰 큐</span> <span class="meaning">반응을 기다리는 PR의 대기열. 보이지 않으면 관리되지 않는다.</span></span></li>
+        <li><span class="term"><span class="word">WIP 한도</span> <span class="meaning">한 사람이 동시에 들고 있는 진행 작업의 상한. 넘기면 모든 것이 느려진다.</span></span></li>
+        <li><span class="term"><span class="word">페어 리뷰</span> <span class="meaning">작성자와 리뷰어가 함께 보며 즉시 합의하는 동기식 리뷰.</span></span></li>
+        <li><span class="term"><span class="word">자동 할당</span> <span class="meaning">규칙·라운드로빈·코드 오너로 리뷰어를 자동 배정해 "누가 볼지" 협상을 없애는 것.</span></span></li>
+        <li><span class="term"><span class="word">리뷰 부채</span> <span class="meaning">SLA를 넘겨 쌓인 미반응 PR. 이자처럼 충돌·재작업 비용을 키운다.</span></span></li>
+      </ul>
+      <p>업계 자료에서 자주 인용되는 경향은 PR이 작을수록, 첫 반응이 빠를수록 전체 리드타임이 짧아진다는 것이다(구체 수치는 팀·도구마다 달라 약/추정으로 본다). 즉 SLA는 리뷰를 더 빡세게 만드는 장치가 아니라, 대기로 새는 시간을 막아 작성자와 리뷰어 모두의 컨텍스트를 보존하는 장치에 가깝다.</p>
+    </section>
+
+    <section>
+      <h2>핵심 주장: 첫 반응에 시간을 붙이면 대기 비용이 줄어든다</h2>
+      <p class="h2-sub">주장 → 반례 → 적용 기준을 분리해 무비판적 도입을 막는다.</p>
+      <p><strong>주장.</strong> 리뷰 큐를 가시화하고 첫 반응에 합의된 시간 기준을 붙이면, 머지 리드타임의 분산이 줄고 PR이 작아진다. 작성자는 "언젠가는 보겠지"가 아니라 "이 시간 안에는 반응이 온다"는 예측 가능성을 얻고, 그 결과 큰 덩어리를 한 번에 올리는 대신 작은 단위로 자주 올리게 된다. 리뷰어는 큐를 보고 우선순위를 정할 수 있어 "내가 안 봐도 누군가 보겠지"라는 책임 분산이 줄어든다.</p>
+      <p><strong>반례 — SLA가 오히려 해가 되는 경우.</strong> SLA를 도입하면 늘 좋아진다는 식의 주장은 정직하지 않다. 첫째, SLA를 머지 마감으로 오해하면 리뷰어가 시간에 쫓겨 형식 승인(rubber-stamp)을 찍게 되어 리뷰 품질이 무너진다. 둘째, 인력 대비 PR 유입이 구조적으로 과한 팀에 SLA만 얹으면, 지킬 수 없는 약속이 매일 깨지면서 SLA 자체가 무력화되고 사기를 떨어뜨린다. 셋째, 깊은 설계 리뷰가 필요한 변경에까지 짧은 SLA를 일률 적용하면, 빠른 반응을 위해 큰 결정을 미루는 왜곡이 생긴다. 즉 SLA는 <em>유입과 용량이 균형 잡힌 상태에서, 첫 반응이라는 통제 가능한 지표에 걸 때</em> 효과를 낸다.</p>
+      <p><strong>적용 기준.</strong> 따라서 도입 전에 세 가지를 먼저 본다. (1) 리뷰 큐가 보이는가 — 보이지 않으면 SLA를 측정조차 할 수 없다. (2) 리뷰어 용량이 유입을 감당하는가 — WIP 한도를 먼저 점검한다. (3) 변경 유형별로 SLA를 나눌 수 있는가 — 핫픽스, 일반 기능, 대형 설계 변경을 같은 시간으로 묶지 않는다. 아래 결정 트리는 이 판단을 한 흐름으로 정리한 것이다.</p>
+
+      <section class="vt-shell">
+        <div class="vt-frame">
+          <div class="vt-kicker">결정 트리</div>
+          <h3 class="vt-title">우리 팀에 리뷰 SLA를 어떻게 적용할까</h3>
+          <div class="vt-demo">
+            <div class="dt-q">
+              <article class="dt-card">
+                <div class="vt-kicker">Q1</div>
+                <h3>리뷰 큐가 보이는가?</h3>
+                <p class="vt-text">대시보드·봇·라벨 등으로 대기 중 PR과 대기 시간이 한눈에 보이지 않으면, SLA를 측정할 수 없습니다. 먼저 큐 가시화부터 합니다.</p>
+              </article>
+              <div class="dt-arrow"></div>
+              <article class="dt-card">
+                <div class="vt-kicker">Q2</div>
+                <h3>리뷰어 용량이 유입을 감당하는가?</h3>
+                <p class="vt-text">하루 유입 PR이 리뷰어 가용 시간을 넘으면, SLA보다 WIP 한도·자동 할당으로 부하부터 분산해야 합니다.</p>
+              </article>
+            </div>
+            <div class="dt-options">
+              <article class="dt-card">
+                <b>택일 A · 일반 기능 PR</b>
+                <p class="vt-text">첫 반응 SLA를 짧게(예: 영업 기준 당일~익일, 추정). 자동 할당으로 "누가 볼지" 협상 제거.</p>
+              </article>
+              <article class="dt-card" style="--c:var(--vt-gold)">
+                <b>택일 B · 핫픽스/장애</b>
+                <p class="vt-text">동기식 페어 리뷰로 전환. SLA를 분 단위로 두되, 별도 채널에서 즉시 호출.</p>
+              </article>
+              <article class="dt-card" style="--c:var(--vt-green)">
+                <b>택일 C · 대형 설계 변경</b>
+                <p class="vt-text">첫 반응 SLA는 유지하되 승인 마감은 별도. 사전 설계 리뷰로 큰 결정을 앞당김.</p>
+              </article>
+            </div>
+          </div>
+          <p class="vt-text">색이 아니라 카드의 라벨(A·B·C, 일반/핫픽스/대형)로 분기를 구분합니다. 큐 가시화와 용량 점검을 통과한 뒤에야 변경 유형별 SLA를 고릅니다.</p>
+        </div>
+      </section>
+    </section>
+
+    <section>
+      <h2>사례: 같은 SLA 도입, 다른 결과</h2>
+      <p class="h2-sub">규모와 전제가 다르면 같은 정책도 다르게 작동한다(가상의 합성 사례).</p>
+      <p>아래는 실제 단일 조직이 아니라, 여러 팀에서 반복적으로 관찰되는 패턴을 합성해 구성한 가상의 사례다. 수치는 예시이며 단정하지 않는다.</p>
+      <p><strong>팀 가 — 6인 제품 팀.</strong> 리뷰 큐를 채팅 봇으로 가시화하고, "첫 반응은 영업 시간 내 4시간 이내(추정 목표)"라는 단일 SLA를 도입했다. 유입 대비 인원이 균형 잡혀 있었고 자동 할당으로 협상을 없앤 결과, 머지 리드타임의 들쭉날쭉함이 눈에 띄게 줄었다고 보고되는 유형이다. 핵심 성공 요인은 SLA 자체보다 "큐가 보였다는 것"과 "약속이 지킬 만했다는 것"이었다.</p>
+      <p><strong>팀 나 — 20인 플랫폼 팀.</strong> 같은 4시간 SLA를 그대로 복사했지만, 핵심 모듈 리뷰가 소수 시니어에게 몰려 있어 그들의 WIP가 이미 포화 상태였다. SLA는 매일 깨졌고, 결국 형식 승인이 늘며 SLA가 사문화됐다. 이 팀에 필요했던 것은 더 빡센 SLA가 아니라, 코드 오너 분산·페어 리뷰 시간 블록·WIP 한도 같은 용량 조정이었다.</p>
+      <p>두 사례의 교훈은 하나다. SLA는 정답이 아니라 도구이며, 도입의 성패는 시간 숫자가 아니라 <strong>큐 가시성과 용량 균형</strong>이라는 선행 조건에서 갈린다. 아래 비교 카드는 자기 팀이 어느 운영 방식에 가까운지 가늠하는 데 쓴다.</p>
+
+      <section class="vt-shell">
+        <div class="vt-frame">
+          <div class="vt-kicker">비교</div>
+          <h3 class="vt-title">리뷰 운영 방식 세 가지, 무엇을 고를까</h3>
+          <div class="vt-demo">
+            <div class="cmp">
+              <article class="cmp-card">
+                <div class="vt-kicker">A · 무정책</div>
+                <h3>그때그때 알아서</h3>
+                <ul>
+                  <li>큐 비가시 · 첫 반응 책임 불명확</li>
+                  <li>리드타임 분산이 큼, 리뷰 부채 누적</li>
+                  <li>소규모·저유입에서만 그럭저럭</li>
+                </ul>
+              </article>
+              <article class="cmp-card pick">
+                <div class="vt-kicker">B · 첫 반응 SLA</div>
+                <h3>큐 가시화 + 시간 합의 (추천 출발점)</h3>
+                <ul>
+                  <li>첫 반응에 합의된 시간 기준</li>
+                  <li>자동 할당으로 협상 제거, 예측 가능</li>
+                  <li>유입·용량 균형 팀에서 가장 효과</li>
+                </ul>
+              </article>
+              <article class="cmp-card">
+                <div class="vt-kicker">C · 동기 페어</div>
+                <h3>페어 리뷰 전면화</h3>
+                <ul>
+                  <li>대기 0에 가깝고 지식 공유 강함</li>
+                  <li>일정 조율 비용·집중 시간 잠식</li>
+                  <li>핫픽스·고위험 변경에 부분 적용이 현실적</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+          <p class="vt-text">"추천 출발점" 표시는 B 카드의 라벨로 구분합니다(색에만 의존하지 않음). 대부분의 팀은 B를 기본으로 두고, 핫픽스·고위험 변경에만 C를 섞는 조합이 현실적입니다.</p>
+        </div>
+      </section>
+
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table class="tbl">
+        <caption>팀 규모별 첫 반응 SLA 출발선 (예시·추정, 자기 팀 데이터로 보정 필요)</caption>
+        <thead>
+          <tr>
+            <th scope="col">팀 규모</th>
+            <th scope="col">첫 반응 SLA(예시)</th>
+            <th scope="col">함께 둘 장치</th>
+            <th scope="col">주의 신호</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3~6인 소규모</td>
+            <td>영업일 기준 반나절~당일(추정)</td>
+            <td>채팅 봇 큐 알림, 라운드로빈 할당</td>
+            <td>한 명에게 리뷰 집중</td>
+          </tr>
+          <tr>
+            <td>7~15인 중규모</td>
+            <td>영업일 기준 당일~익일(추정)</td>
+            <td>코드 오너, WIP 한도, 리뷰 시간 블록</td>
+            <td>시니어 큐 포화, 리뷰 부채 증가</td>
+          </tr>
+          <tr>
+            <td>16인+ 다팀/플랫폼</td>
+            <td>변경 유형별로 분리(핫픽스 분 단위~대형 별도)</td>
+            <td>오너 분산, 페어 리뷰 채널, 큐 대시보드</td>
+            <td>일률 SLA 사문화, 형식 승인 증가</td>
+          </tr>
+        </tbody>
+      </table></div></div>
+    </section>
+
+    <section>
+      <h2>결론: 시간 숫자보다 선행 조건을 먼저 고쳐라</h2>
+      <p class="h2-sub">SLA는 큐 가시성과 용량 균형 위에서만 작동한다.</p>
+      <p>리뷰 지연을 태도가 아니라 시스템 신호로 다시 읽는 순간, 해야 할 일이 분명해진다. 첫 반응이라는 통제 가능한 지점에 합의된 시간을 붙이되, 그 전에 리뷰 큐를 보이게 만들고 리뷰어 용량이 유입을 감당하는지부터 확인한다. 이 두 선행 조건이 없으면 어떤 멋진 SLA 숫자도 매일 깨지는 약속으로 전락한다.</p>
+      <p>실행은 작게 시작하는 편이 안전하다. 먼저 큐를 가시화하고, 한 주간 첫 반응 시간을 측정만 해 본다. 그 분포를 보고 "지킬 만한" 첫 반응 SLA를 한 줄로 합의하고, 자동 할당으로 "누가 볼지" 협상을 없앤다. 핫픽스와 대형 설계 변경은 같은 시간에 묶지 말고 별도 트랙으로 빼둔다. 한 달 뒤 리드타임 분산과 형식 승인 비율을 함께 보며 숫자를 보정한다. 형식 승인이 늘었다면 SLA가 아니라 용량을 손볼 신호다.</p>
+      <p>결국 리뷰 SLA의 목적은 사람을 재촉하는 것이 아니라, 대기로 새는 시간과 누적되는 리뷰 부채를 줄여 작성자와 리뷰어의 컨텍스트를 지키는 것이다. 팀 속도를 결정하는 것은 누가 더 빨리 타이핑하느냐가 아니라, PR이 큐에서 얼마나 적게 기다리느냐다.</p>
+    </section>
+  </article>
+
+  <section class="box article-takeaway">
+    <h2>한 장 요약 · 가져갈 것</h2>
+    <ul>
+      <li><strong>SLA가 거는 대상은 머지가 아니라 첫 반응 시간</strong>이다 — 리뷰어가 통제할 수 있는 지표에 약속을 건다.</li>
+      <li><strong>도입 전 선행 조건 두 가지</strong>: 리뷰 큐 가시화, 리뷰어 용량(WIP) 점검. 둘 중 하나라도 없으면 SLA부터 만들지 않는다.</li>
+      <li><strong>변경 유형을 분리</strong>한다: 일반 기능 / 핫픽스(페어·분 단위) / 대형 설계(별도 트랙). 일률 SLA는 왜곡을 만든다.</li>
+      <li><strong>측정 → 합의 → 보정</strong> 순서로 작게 시작한다. 형식 승인이 늘면 SLA가 아니라 용량을 고친다.</li>
+      <li>팀 속도는 타이핑 속도가 아니라 <strong>큐 대기 시간</strong>이 결정한다.</li>
+    </ul>
+  </section>
+
+  <section class="related-list">
+    <h2>이어서 볼 만한 주제</h2>
+    <ul class="tag-list">
+      <li class="tag">작은 PR 문화 만들기</li>
+      <li class="tag">WIP 한도와 칸반 운영</li>
+      <li class="tag">코드 오너십과 리뷰어 자동 할당</li>
+      <li class="tag">리뷰 부채 측정 대시보드</li>
+      <li class="tag">동기식 페어 리뷰 도입 가이드</li>
+      <li class="tag">리드타임·첫 반응 시간 지표 설계</li>
+    </ul>
+  </section>
+
+  <aside class="source-note">
+    <p><strong>출처와 한계.</strong> 이 글의 사례(팀 가·나)는 단일 조직이 아니라 여러 팀에서 반복 관찰되는 패턴을 합성한 가상의 예시이며, 표의 SLA 시간 값과 효과는 모두 예시·추정이다. 실제 적용 시에는 자기 팀의 첫 반응 시간 분포와 리드타임을 직접 측정해 숫자를 보정하라. "첫 반응이 빠르고 PR이 작을수록 리드타임이 짧아진다"는 일반 경향은 업계에서 자주 언급되지만 구체 수치는 도구·팀마다 달라 단정하지 않았다.</p>
+  </aside>
+</main>
+<footer style="max-width:var(--max-wide,1120px);margin:40px auto 0;padding:20px;border-top:1px solid var(--line);color:var(--ink-mute);font-size:13px">adaptive-html-final v4.5.0 · article_html · 스킬 본체 레이아웃 + vt-템플릿(decision-tree, comparison-cards) · 외부 JS 0</footer>
+</body>
+</html>

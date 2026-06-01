@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>검색 지연을 줄인 캐시 전략 개선 사례</title>
+<meta name="description" content="검색이 느려진 원인은 트래픽 증가가 아니라 캐시 적중률 저하와 무효화 폭주였다. 키 설계와 무효화 범위를 바꿔 p95 지연을 절반으로 줄인 과정을 상황·가설·실험·결과·후속 정책 순으로 기록한 케이스 스터디.">
+<meta property="og:title" content="검색 지연을 줄인 캐시 전략 개선 사례">
+<meta property="og:description" content="검색이 느려진 원인은 트래픽 증가가 아니라 캐시 적중률 저하와 무효화 폭주였다. 키 설계와 무효화 범위를 바꿔 p95 지연을 절반으로 줄인 과정을 상황·가설·실험·결과·후속 정책 순으로 기록한 케이스 스터디.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* adaptive-html-final-core-css-sha256: bd5665d927349550e9511e0fbc75077ddfad814d86442b3117eadcef4bf5ff94 */
+:root{
+  --bg:#f5f5f0;
+  --ink:#1a1a1a;
+  --ink-soft:#4a4a4a;
+  --ink-mute:#666666;
+  --line:#d8d8d0;
+  --card:#ffffff;
+  --accent:#e63946;
+  --accent-2:#b72d38;
+  --link-on-dark:#ffb6c0;
+  --accent-soft:#fce4e6;
+  --term-bg:#fffaf2;
+  --term-border:#e8d9b8;
+  --analogy-bg:#f0f4f8;
+  --analogy-border:#b8cad8;
+  --danger-bg:#fff0ee;
+  --danger-border:#e8b8b2;
+  --good-bg:#eef7f1;
+  --good-border:#b8d8c2;
+  --hl-yellow:#ffe9a3;
+  --hl-blue:#cfe5f5;
+  --hl-pink:#fbd3da;
+  /* Callout text/border tokens (extracted from components.css raw hex) */
+  --term-ink:#5a4a30;
+  --term-label-ink:#8a5e10;
+  --term-accent:#c98a2e;
+  --analogy-ink:#234458;
+  --analogy-label-ink:#2f5470;
+  --analogy-accent:#5e8aa8;
+  --danger-ink:#5a3a36;
+  --danger-label-ink:#c62433;
+  --good-ink:#1f5040;
+  --good-label-ink:#1f6f4e;
+  --good-accent:#3f8e6c;
+  /* AA-compliant muted foreground for chips/meta */
+  --chip-ink:#6a6a6a;
+  --dark:#1a1a1a;
+  --dark-soft:#242421;
+  --code:#1f1f1d;
+  --serif:"Noto Serif KR",Georgia,serif;
+  --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;
+  --radius-sm:5px;
+  --radius-md:8px;
+  --radius-lg:12px;
+  --max-reading:780px;
+  --max-wide:1020px;
+  /* focus ring (non-decorative, distinct from brand red) */
+  --focus:#1a56db;
+  /* spacing scale (8px base) — additive; new rules use these */
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;
+  /* type scale (additive reference axis) */
+  --fs-xs:13px;--fs-sm:14px;--fs-base:16px;--fs-md:18px;--fs-lg:20px;--fs-xl:24px;--fs-2xl:30px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px;box-shadow:0 0 0 2px #fff,0 0 0 5px rgba(26,86,219,.4);border-radius:3px}
+/* CSS-only reading progress bar (scroll-driven; progressive enhancement, no JS). Degrades to invisible 0-width where unsupported. */
+.reading-progress{position:fixed;top:0;left:0;height:4px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--accent);z-index:200;animation:read-progress linear both;animation-timeline:scroll(root)}
+@keyframes read-progress{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){.reading-progress{display:none}}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.8;
+  letter-spacing:-.012em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--dark);color:#fff;padding:10px 14px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+.page,.wrap{width:min(var(--max-reading),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+.page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+/* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
+.page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
+.kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
+.sub,.lead{font-size:16px;color:var(--ink-soft);margin:0 0 24px;max-width:820px}
+.lead{font-size:18px;line-height:1.75;color:var(--ink-soft)}
+.byline{font-size:13px;color:var(--ink-mute);padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.meta span,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.52);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--chip-ink)}
+section{margin:46px 0}
+h2{font-family:var(--serif);font-size:clamp(24px,3vw,29px);line-height:1.42;font-weight:700;letter-spacing:-.01em;margin:64px 0 8px;scroll-margin-top:24px;color:var(--ink)}
+section>h2:first-child,
+article>h2:first-child,
+.box>h2:first-child,
+.summary-card>h2:first-child,
+.toc>h2:first-child,
+.faq>h2:first-child,
+.cta-box>h2:first-child,
+.source-note>h2:first-child,
+.card-block>h2:first-child,
+.mini-card>h2:first-child{margin-top:0}
+h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;height:34px;padding:0 9px;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;font-family:var(--sans);font-size:15px;font-weight:800;margin-right:12px;vertical-align:3px;line-height:1}
+/* opt-in: only the 1-2 most important section numbers use solid brand red */
+h2 .no.is-key,h2 .num.is-key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;line-height:1.7}
+h3{font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.45;margin:28px 0 10px;color:var(--ink)}
+section>h3:first-child,
+article>h3:first-child,
+.box>h3:first-child,
+.summary-card>h3:first-child,
+.toc>h3:first-child,
+.faq>h3:first-child,
+.cta-box>h3:first-child,
+.source-note>h3:first-child,
+.card-block>h3:first-child,
+.mini-card>h3:first-child{margin-top:0}
+h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+p{margin:0 0 16px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:700}
+ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
+li{margin:6px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+footer p{font-size:13px;color:var(--ink-mute)}
+@media(max-width:760px){
+  body{line-height:1.74}
+  .page,.page-wide,.wrap{width:min(100% - 40px,var(--max-reading));padding:40px 0 72px}
+  .header{padding-bottom:22px;margin-bottom:28px}
+  .lead{font-size:16px}
+  h1{font-size:30px;line-height:1.34}
+  h2{font-size:23px;margin-top:52px}
+  h2 .no,h2 .num{min-width:30px;width:auto;height:30px;font-size:13px;margin-right:9px;padding:0 8px}
+  .h2-sub{margin-left:39px}
+}
+@media(max-width:430px){
+  .page,.page-wide,.wrap{width:min(100% - 32px,var(--max-reading))}
+  h1{font-size:27px}
+}
+
+/* Editorial components for adaptive-html-blog-writer-v2. */
+.box,.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px;margin:24px 0}
+.summary-card .label,.toc .label,.faq .label,.cta-box .label,.source-note .label{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-2);margin-bottom:8px;text-transform:uppercase}
+.summary-card p,.cta-box p{margin:0}
+.toc strong{display:block;font-size:14px;color:var(--ink);margin-bottom:8px}
+.toc ol,.toc ul{margin:0 0 0 20px;color:var(--ink-soft)}
+.toc a{color:var(--ink-soft);text-decoration:none;border-bottom:1px dotted transparent}
+.toc a:hover{color:var(--accent);border-color:var(--accent)}
+.source-note{font-size:13px;color:var(--ink-mute)}
+.source-note p,.source-note li{font-size:13px;color:var(--ink-mute)}
+.source-note ol,.source-note ul{margin:6px 0 6px 20px}
+.source-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px 20px;margin:34px 0;color:var(--ink-mute)}
+.source-box h2{font-family:var(--sans);font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--accent)}
+.source-box p,.source-box li{font-size:13px;color:var(--ink-mute)}
+.source-box ul{columns:2;column-gap:28px;margin-top:8px}
+.source-box a{color:var(--ink-soft)}
+
+/* Robust wrapping for long URLs, code tokens, and Korean/English mixed labels. */
+.source-note,.source-box,.source-list,.card-block,.mini-card,.term,.analogy,.danger,.good,td,th,caption,a,code{overflow-wrap:anywhere}
+.tbl{max-width:100%}
+.caption{font-size:12px;color:var(--ink-mute);margin:8px 0 0}
+
+/* Neutral box: generic content container */
+.box p:last-child,.box li:last-child{margin-bottom:0}
+/* FAQ: question/answer list */
+.faq dl,.faq>ul,.faq>ol{margin:0}
+.faq dt,.faq .q{font-weight:800;color:var(--ink);font-size:15px;margin:14px 0 4px}
+.faq dt:first-child,.faq .q:first-child{margin-top:0}
+.faq dd,.faq .a{margin:0 0 4px;color:var(--ink-soft);font-size:14.5px;line-height:1.72}
+.faq dd+dt,.faq .a+.q{border-top:1px solid var(--line);padding-top:12px}
+/* CTA: call-to-action box */
+.cta-box{border-left:4px solid var(--accent)}
+.cta-box h2,.cta-box h3{margin:0 0 8px;font-size:18px;color:var(--ink)}
+.cta-box .label{color:var(--accent)}
+.cta-box a{color:var(--accent);font-weight:700}
+
+.term,.analogy,.danger,.good{border-radius:var(--radius-sm);padding:18px 22px;margin:28px 0 32px;font-size:14.5px}
+.term{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--term-accent)}
+.term .label{font-size:11px;color:var(--term-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.term .word{display:block;font-weight:800;color:var(--ink);font-size:15px;margin-bottom:4px}
+.term .meaning,.term p{color:var(--term-ink);margin:0;line-height:1.68;font-size:14px}
+.analogy{background:var(--analogy-bg);border:1px solid var(--analogy-border);border-left:3px solid var(--analogy-accent)}
+.analogy .label{font-size:11px;color:var(--analogy-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:6px;text-transform:uppercase}
+.analogy p{color:var(--analogy-ink);margin:0;line-height:1.72;font-size:14.5px}
+.analogy p+p{margin-top:8px}
+.danger{background:var(--danger-bg);border:1px solid var(--danger-border);border-left:3px solid var(--accent-2)}
+.danger .label{font-size:11px;color:var(--danger-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.danger .name{font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.danger p{color:var(--danger-ink);margin:0;line-height:1.72;font-size:14px}
+.danger p+p{margin-top:8px}
+.good{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--good-accent)}
+.good .label{font-size:11px;color:var(--good-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.good .name{font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.good p{color:var(--good-ink);margin:0;line-height:1.72;font-size:14px}
+
+.hero-analogy{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:26px 28px;margin:24px 0 12px;color:var(--ink)}
+.hero-analogy .tag{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.15em;margin:0 0 10px;text-transform:uppercase;border:0;background:transparent;padding:0;border-radius:0}
+.hero-analogy h3{margin:0 0 10px;font-family:var(--serif);font-size:21px;line-height:1.55;color:var(--ink)}
+.hero-analogy p{margin:0;font-size:15px;color:var(--ink-soft)}
+.hero-analogy p+p{margin-top:10px}
+
+.card-block{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 26px;margin:16px 0}
+.card-block h3{margin-top:0;font-size:17px}
+.card-block p{font-size:14.5px;margin-bottom:10px}
+.card-block p:last-child{margin-bottom:0}
+.case-label{font-size:11px;color:var(--accent-2);font-weight:800;letter-spacing:.15em;margin-bottom:6px;text-transform:uppercase}
+.prompt-box{background:#f8f8f4;border-left:2px solid var(--line);padding:10px 14px;margin:12px 0;font-size:13.5px;color:var(--ink-soft);font-style:italic;line-height:1.65}
+
+em.t{font-style:normal;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px;font-weight:700;font-size:14px}
+.hl{--c:var(--hl-yellow);background-image:linear-gradient(transparent 76%,var(--c) 76%);background-repeat:no-repeat;background-size:0% 100%;padding:1px 7px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;animation:hl-sweep .7s cubic-bezier(.4,0,.2,1) .25s forwards}
+.hl.blue{--c:var(--hl-blue)}.hl.pink{--c:var(--hl-pink)}
+@keyframes hl-sweep{to{background-size:100% 100%}}
+@media(prefers-reduced-motion:reduce){.hl{animation:none;background-size:100% 100%}}
+
+code{font-family:"SF Mono",Menlo,Consolas,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:13.5px;color:#3a3a3a}
+pre,.code{background:var(--code);color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;white-space:pre-wrap}
+pre code,.code code{background:none;color:inherit;padding:0;font-size:13px}
+blockquote,.pull-quote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-family:var(--serif);font-size:20px;line-height:1.65;font-style:italic}
+.tbl{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table,.table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:18px 0}
+caption{caption-side:top;text-align:left;font-size:13px;line-height:1.6;color:var(--ink);font-weight:800;margin:0;padding:0 0 8px;white-space:normal;overflow:visible}
+th,td,.table th,.table td{border:1px solid var(--line);padding:10px 14px;text-align:left;color:var(--ink-soft);vertical-align:top}
+th,.table th{background:var(--ink);color:#fff;font-weight:800;font-size:13px}
+tbody tr:nth-child(even) td,.table tbody tr:nth-child(even) td{background:rgba(0,0,0,.025)}
+.status-pill{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 9px;font-size:12px;line-height:1.45;color:var(--ink-mute);margin:3px 4px 3px 0;text-align:center;white-space:normal}
+.tbl .status-pill,table .status-pill{white-space:nowrap;width:max-content;max-width:none;text-align:center;justify-content:center}
+.timeline-card{background:#fff;border:1px solid var(--line);border-left:1px solid var(--line);border-radius:var(--radius-md);padding:18px 22px 18px 40px;margin:12px 0;list-style-position:outside}
+.timeline-card>li{padding-left:4px;margin:12px 0}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:12px 16px;margin:12px 0}
+summary{cursor:pointer;font-weight:800;color:var(--ink);font-size:15px}
+details[open] summary{margin-bottom:8px}
+details p{margin-bottom:0}
+.try{background:var(--dark);color:#f5f5f0;border-radius:var(--radius-md);padding:32px 30px;margin-top:52px}
+.try .label{font-size:12px;color:var(--link-on-dark);font-weight:800;letter-spacing:.15em;margin-bottom:14px;text-transform:uppercase}
+.try h2,.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
+.try h2 .no,.try h2 .num{background:#fff;color:var(--dark)}
+.try p{color:#d0d0c8}.try ol,.try ul{padding-left:20px;color:#d0d0c8}.try li{margin-bottom:12px;font-size:15px;line-height:1.7}.try strong{color:#fff}
+.try .box,
+.try .summary-card,
+.try .cta-box,
+.try .card-block,
+.try .mini-card{
+  background:var(--card);
+  color:var(--ink);
+  border-color:var(--line);
+}
+.try .box h2,
+.try .summary-card h2,
+.try .cta-box h2,
+.try .card-block h2,
+.try .mini-card h2,
+.try .box h3,
+.try .summary-card h3,
+.try .cta-box h3,
+.try .card-block h3,
+.try .mini-card h3{color:var(--ink);font-family:var(--sans)}
+.try .box h2 .no,
+.try .summary-card h2 .no,
+.try .cta-box h2 .no,
+.try .card-block h2 .no,
+.try .mini-card h2 .no,
+.try .box h2 .num,
+.try .summary-card h2 .num,
+.try .cta-box h2 .num,
+.try .card-block h2 .num,
+.try .mini-card h2 .num{background:var(--accent);color:#fff}
+.try .box p,
+.try .summary-card p,
+.try .cta-box p,
+.try .card-block p,
+.try .mini-card p,
+.try .box li,
+.try .summary-card li,
+.try .cta-box li,
+.try .card-block li,
+.try .mini-card li,
+.try .box ul,
+.try .summary-card ul,
+.try .cta-box ul,
+.try .card-block ul,
+.try .mini-card ul,
+.try .box ol,
+.try .summary-card ol,
+.try .cta-box ol,
+.try .card-block ol,
+.try .mini-card ol{color:var(--ink-soft)}
+.try .box strong,
+.try .summary-card strong,
+.try .cta-box strong,
+.try .card-block strong,
+.try .mini-card strong,
+.try .box b,
+.try .summary-card b,
+.try .cta-box b,
+.try .card-block b,
+.try .mini-card b{color:var(--ink)}
+.try .box .label,
+.try .summary-card .label,
+.try .cta-box .label,
+.try .card-block .label,
+.try .mini-card .label{color:var(--accent)}
+.try .cta-box{border-left-color:var(--accent)}
+.try a,
+.try.soft-cta a{
+  color:var(--link-on-dark);
+  font-weight:800;
+  text-decoration-color:rgba(255,255,255,.55);
+}
+.try a:hover,
+.try.soft-cta a:hover{color:#fff;text-decoration-color:#fff}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.mini-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:16px}
+.mini-card h3{margin-top:0;font-size:16px}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.try .tag,
+.try.soft-cta .tag{
+  background:rgba(255,255,255,.96);
+  color:var(--ink);
+  border-color:rgba(255,255,255,.72);
+  font-weight:800;
+  justify-content:center;
+  text-align:center;
+}
+.try .tag-list{gap:8px 9px}
+@media(max-width:760px){
+  /* touch targets ≥44px (WCAG 2.5.8) — padding expands hit area, visual size kept */
+  .toc a{display:inline-block;min-height:44px;padding-top:8px;padding-bottom:8px;line-height:1.4}
+  .meta span,.tag,.status-pill{min-height:32px}
+  .card-grid{grid-template-columns:1fr}
+  .table,table{font-size:14px}
+  .table th,.table td,th,td{padding:10px}
+  .source-box ul{columns:1}
+  .timeline-card{padding:16px 14px 16px 34px}
+  .mobile-card-table{overflow:visible}
+  .mobile-card-table table{min-width:0;border:0;background:transparent;margin:14px 0}
+  .mobile-card-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .mobile-card-table tbody,.mobile-card-table tr,.mobile-card-table th,.mobile-card-table td{display:block}
+  .mobile-card-table tr{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:10px 12px;margin:10px 0}
+  .mobile-card-table th,.mobile-card-table td{border:0;padding:7px 0;color:var(--ink-soft)}
+  .mobile-card-table td{display:grid;grid-template-columns:minmax(92px,34%) 1fr;gap:8px;align-items:start}
+  .mobile-card-table td::before{content:attr(data-label);font-size:11px;line-height:1.45;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2)}
+  .mobile-card-table tbody th{color:var(--ink);font-weight:800;background:transparent}
+  .mobile-card-table tbody th::before{content:"";display:none}
+}
+
+/* Visual Template System: responsive figure shell for 8000x6000 SVG infographics. */
+.visual-figure,.figure-wide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:14px;margin:22px 0 28px;overflow:hidden}
+.visual-figure img,.figure-wide img{display:block;width:100%;height:auto;border-radius:8px;background:var(--bg);border:1px solid var(--line)}
+.visual-figure figcaption,.figure-wide figcaption{font-size:13px;color:var(--ink-mute);line-height:1.65;margin:10px 4px 0}
+.visual-figure.is-hero,.figure-wide.is-hero{margin-top:18px;margin-bottom:34px}
+.visual-rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.visual-rule{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:var(--radius-md);padding:18px}
+.visual-rule h3{margin:0 0 8px;font-size:16px}.visual-rule p{font-size:14px;margin:0}
+.visual-pipeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+.visual-pipeline .mini-card{min-height:156px}
+@media(max-width:760px){.visual-rule-grid,.visual-pipeline{grid-template-columns:1fr}.visual-figure,.figure-wide{padding:10px;margin-left:-2px;margin-right:-2px}.visual-figure figcaption,.figure-wide figcaption{font-size:12.5px}}
+@media print{.visual-figure,.figure-wide{break-inside:avoid;background:#fff}.visual-figure img,.figure-wide img{max-height:70vh;object-fit:contain}}
+
+/* SVG-to-HTML view template system — native, in-flow, harmonized with adaptive-html-final */
+:root{--vt-paper:#fff;--vt-wash:#faf9f5;--vt-soft:#f0eee6;--vt-line:var(--line);--vt-ink:var(--ink);--vt-muted:var(--ink-mute);--vt-red:var(--accent);--vt-red2:var(--accent-2);--vt-blue:#3a6280;--vt-green:#2a7d5a;--vt-gold:#d99a38;--vt-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+body{background:var(--vt-wash)}
+.vt-page{max-width:1120px}.vt-hero{background:var(--vt-paper);border:1px solid var(--vt-line);border-radius:18px;padding:34px 38px;margin-bottom:34px}.vt-hero h1{font-size:clamp(32px,4.4vw,48px);line-height:1.2}.vt-hero .sub{max-width:850px}.vt-principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}.vt-principle{border:1px solid var(--vt-line);border-radius:14px;background:#fff;padding:16px}.vt-principle b{display:block;color:var(--vt-ink);margin-bottom:4px}.vt-principle p{font-size:13.5px;margin:0}.vt-index-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.vt-index-card{display:block;background:#fff;border:1px solid var(--vt-line);border-radius:16px;padding:20px;text-decoration:none;color:inherit;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}.vt-index-card:hover{transform:translateY(-2px);border-color:var(--vt-red);box-shadow:0 10px 24px rgba(0,0,0,.055)}.vt-index-card em{display:block;font-style:normal;font-family:var(--vt-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--vt-red2);font-weight:900;margin-bottom:8px}.vt-index-card strong{display:block;font-family:var(--serif);font-size:22px;line-height:1.3;margin-bottom:8px;color:var(--vt-ink)}.vt-index-card p{font-size:14px;margin:0;color:var(--ink-soft)}.vt-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.vt-tags span{font-family:var(--vt-mono);font-size:11px;border:1px solid var(--line);border-radius:999px;padding:3px 7px;color:#666}.vt-nav{display:flex;justify-content:space-between;gap:10px;margin-bottom:28px;font-size:13px;color:var(--ink-mute)}.vt-nav a{display:inline-flex;align-items:center;min-height:44px;color:inherit}.vt-shell{background:#fff;border:1px solid var(--vt-line);border-radius:18px;padding:24px;margin:20px 0}.vt-shell-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;border-bottom:1px solid var(--vt-line);padding-bottom:16px;margin-bottom:18px}.vt-id{font-family:var(--vt-mono);font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--vt-red2)}.vt-shell h2{font-family:var(--serif);font-size:clamp(24px,3vw,32px);line-height:1.25;margin:4px 0 6px}.vt-shell-head p{margin:0;font-size:14.5px;max-width:680px}.vt-fit{display:inline-flex;align-items:center;min-height:34px;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-family:var(--vt-mono);font-size:12px;color:#555;background:var(--vt-soft);white-space:nowrap}.vt-frame{background:var(--vt-wash);border:1px solid var(--vt-line);border-radius:15px;padding:18px;overflow:visible}.vt-note-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}.vt-note{border:1px solid var(--line);border-radius:13px;background:#fff;padding:16px}.vt-note .label,.vt-panel .label{font-family:var(--vt-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--vt-red2);font-weight:900;margin-bottom:8px}.vt-note p{font-size:14px;margin:0}.vt-panel{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px;margin:14px 0}.vt-code{background:var(--code);color:#f4f4ef;border-radius:12px;padding:14px;overflow:auto;font-family:var(--vt-mono);font-size:12.5px;line-height:1.6;white-space:pre}.vt-source{font-size:13px;color:var(--ink-mute)}.vt-source a{display:inline-flex;align-items:center;min-height:36px}.vt-demo{--c:var(--vt-red);--c2:var(--vt-blue)}.vt-demo *{box-sizing:border-box}.vt-kicker{font-family:var(--vt-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--vt-red2);font-weight:900}.vt-title{font-family:var(--serif);font-size:22px;line-height:1.3;margin:4px 0 10px;color:var(--vt-ink)}.vt-text{font-size:14px;color:var(--ink-soft);line-height:1.65}.vt-mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.vt-mini-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}.vt-mini-card b{display:block;margin-bottom:5px}.vt-mini-card p{font-size:13px;margin:0}.vt-pill{display:inline-flex;align-items:center;min-height:30px;border-radius:999px;padding:4px 9px;font-family:var(--vt-mono);font-size:11px;border:1px solid var(--line);background:#fff;color:#555}.vt-pill.hot{background:#fff0ee;border-color:#e8b8b2;color:#b72d38}.vt-pill.good{background:#eef7f1;border-color:#b8d8c2;color:#1f6f4e}.vt-pill.watch{background:#fffaf2;border-color:#e8d9b8;color:#8a5e10}.vt-section-title{display:flex;align-items:center;gap:8px;margin-bottom:12px}.vt-num{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:999px;background:var(--vt-red);color:#fff;font-weight:900;font-size:13px}.vt-row{display:flex;gap:10px;flex-wrap:wrap}.vt-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.vt-list li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0}.vt-list b{display:block;color:var(--ink)}.vt-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.vt-four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.vt-stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px}.vt-stat b{display:block;font-family:var(--serif);font-size:24px;color:var(--vt-red);line-height:1.1}.vt-stat span{font-size:12px;color:var(--ink-mute)}
+/* 01 hero map */.hm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.hm-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--c);border-radius:13px;padding:16px}.hm-card h3{margin:0 0 6px;font-size:17px}.hm-result{margin-top:12px;border:1px solid var(--line);border-radius:13px;background:#fff;padding:16px;display:flex;justify-content:space-between;gap:12px;align-items:center}.hm-result b{font-family:var(--serif);font-size:20px}.hm-result span{font-size:13px;color:var(--ink-soft)}
+/* 02 decision tree */.dt-q{display:grid;grid-template-columns:1fr 80px 1fr;gap:10px;align-items:center}.dt-card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px}.dt-arrow{height:2px;background:var(--ink);position:relative}.dt-arrow:after{content:"";position:absolute;right:-1px;top:-5px;border-left:10px solid var(--ink);border-top:6px solid transparent;border-bottom:6px solid transparent}.dt-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.dt-options .dt-card{border-top:4px solid var(--c)}
+/* 03 risk matrix */.rm-grid{display:grid;grid-template-columns:90px repeat(3,1fr);gap:8px}.rm-cell{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;min-height:72px}.rm-head{background:var(--vt-soft);font-weight:800;text-align:center}.rm-risk{border-left:4px solid var(--c);font-size:13px}.rm-risk.high{--c:var(--vt-red)}.rm-risk.med{--c:var(--vt-gold)}.rm-risk.low{--c:var(--vt-green)}
+/* 04 timeline */.tl{position:relative;display:grid;gap:12px;padding-left:28px}.tl:before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:3px;background:var(--vt-red);border-radius:99px}.tl-item{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}.tl-item:before{content:"";position:absolute;left:-24px;top:16px;width:14px;height:14px;border-radius:99px;background:var(--vt-red)}
+/* 05 checklist */.cf{display:grid;gap:10px}.cf-item{display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.cf-check{width:24px;height:24px;border-radius:7px;background:var(--vt-green);color:#fff;display:grid;place-items:center;font-weight:900}.cf-state{font-family:var(--vt-mono);font-size:11px;color:#666}
+/* 06 quality gate */.qg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.qg-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--vt-green);border-radius:12px;padding:12px}.qg-card.warn{border-left-color:var(--vt-gold)}.qg-card.block{border-left-color:var(--vt-red)}.qg-final{margin-top:10px;background:#ffd400;border:2px solid var(--ink);border-radius:13px;padding:15px;font-weight:900}
+/* 07 card grid */.cg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.cg-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.cg-card em{font-style:normal;font-family:var(--vt-mono);font-size:11px;color:var(--vt-red2);font-weight:900}.cg-card b{display:block;margin:5px 0}.cg-card p{font-size:12.5px;margin:0;color:var(--ink-soft)}
+/* 08 raci */.raci{display:grid;grid-template-columns:1.2fr repeat(4,.7fr);gap:6px}.raci div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:9px;font-size:13px;text-align:center}.raci .h{background:var(--vt-soft);font-weight:900}.raci .task{text-align:left;font-weight:800}.raci .r{background:#fff0ee;color:var(--vt-red2);font-weight:900}.raci .a{background:#eef7f1;color:#1f6f4e;font-weight:900}
+/* 09 file tour */.ft{display:grid;gap:10px}.ft-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}.ft-head{background:var(--vt-soft);padding:10px 12px;font-family:var(--vt-mono);font-size:12px;display:flex;justify-content:space-between}.ft-body{padding:12px}.ft-note{border-left:3px solid var(--vt-red);background:#fff7f5;border-radius:8px;padding:10px;font-size:13px}
+/* 10 flowchart */.fc{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:center}.fc-node{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.fc-node.hot{border-color:var(--vt-red);box-shadow:inset 0 3px 0 var(--vt-red)}.fc-arrow{text-align:center;font-weight:900;color:var(--ink-mute)}
+/* 11 weekly */.wk-bars{display:grid;gap:10px}.wk-row{display:grid;grid-template-columns:130px 1fr 44px;gap:10px;align-items:center}.wk-bar{height:12px;background:var(--vt-soft);border-radius:99px;overflow:hidden}.wk-fill{height:100%;background:var(--vt-red);border-radius:99px}.wk-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.wk-col{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}
+/* 12 incident */.inc-head{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.inc-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.inc-card.impact{border-top:4px solid var(--vt-red)}.inc-card.cause{border-top:4px solid var(--vt-gold)}.inc-card.action{border-top:4px solid var(--vt-green)}
+/* 13 comparison */.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cmp-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}.cmp-card.pick{border:2px solid var(--vt-red)}.cmp-card ul{font-size:13px;margin:8px 0 0 18px}
+/* 14 swimlane */.swim{display:grid;gap:8px}.lane{display:grid;grid-template-columns:110px repeat(4,1fr);gap:8px}.lane-label{font-weight:900;color:var(--vt-red2);padding:10px}.lane-step{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px}.lane-step.blank{opacity:.22}
+/* 15 concept */.concept-ring{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px}.concept-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.concept-step{border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.concept-step b{display:block;color:var(--vt-red)}
+/* 16 plan */.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.milestone{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.milestone b{display:block}.plan-risk{border-left:4px solid var(--vt-gold)}
+/* 17 pr */.pr-box{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px}.pr-diff{background:var(--code);color:#eee;border-radius:10px;padding:12px;font-family:var(--vt-mono);font-size:12px;overflow:auto}.pr-add{color:#b7f5ce}.pr-del{color:#ffb6c0}.pr-walk{display:grid;gap:9px;margin-top:10px}.pr-file{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}
+/* 18 board */.board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.board-col{background:var(--vt-soft);border:1px solid var(--line);border-radius:12px;padding:10px}.board-col h3{font-size:15px;margin:0 0 8px}.ticket{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0;font-size:13px}.ticket.active{border-left:4px solid var(--vt-red)}
+/* 19 flag */.flag-list{display:grid;gap:10px}.flag{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.switch{width:48px;height:26px;border-radius:999px;background:var(--vt-green);position:relative}.switch:after{content:"";position:absolute;right:4px;top:4px;width:18px;height:18px;background:#fff;border-radius:99px}.switch.off{background:#bbb}.switch.off:after{right:auto;left:4px}
+/* 20 tuner */.tuner{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tune-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}.score{display:flex;gap:6px;margin-top:8px}.score span{height:8px;flex:1;background:var(--vt-soft);border-radius:99px}.score span.on{background:var(--vt-red)}
+@media(max-width:920px){.vt-principles,.vt-index-grid,.hm-grid,.dt-q,.dt-options,.qg-grid,.vt-note-grid,.vt-two,.plan-grid,.tuner{grid-template-columns:1fr}.dt-arrow{height:22px;width:2px;justify-self:center}.dt-arrow:after{right:-5px;top:auto;bottom:-1px;border-left:6px solid transparent;border-right:6px solid transparent;border-top:10px solid var(--ink);border-bottom:0}.cg-grid,.vt-four{grid-template-columns:repeat(2,1fr)}.fc{grid-template-columns:1fr}.fc-arrow{transform:rotate(90deg)}.board,.cmp,.wk-cols,.inc-head,.vt-mini-grid{grid-template-columns:1fr}.raci{grid-template-columns:1.2fr repeat(4,.6fr);overflow-x:auto}.lane{grid-template-columns:1fr;overflow:visible}.lane-label{background:var(--vt-soft);border-radius:10px}.concept-steps{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.vt-page{width:min(100% - 32px,var(--max-wide))}.vt-hero{padding:24px 20px}.vt-shell{padding:16px}.vt-shell-head{display:block}.vt-fit{margin-top:10px}.vt-frame{padding:12px}.cg-grid,.vt-four,.concept-steps{grid-template-columns:1fr}.wk-row{grid-template-columns:90px 1fr 38px}.vt-source a{min-height:44px}}
+
+.layout-beginner .hero-analogy{margin-top:8px}
+.layout-beginner .beginner-zero{border-top:1px solid var(--line);padding-top:28px}
+.layout-beginner .term+.term{margin-top:12px}
+
+/* Expert mode: section wrappers stay in normal document flow; only inner grids/cards are gridded. */
+.layout-expert .summary-grid,
+.layout-expert .decision-grid:not(section),
+.layout-expert .decision-grid>.grid,
+.layout-expert .architecture-grid,
+.layout-expert .risk-grid,
+.layout-expert .roadmap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-expert .decision-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
+.layout-expert .executive-summary,.layout-expert .validation-checklist{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px}
+.layout-expert .executive-summary .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.risk-high{border-left:5px solid var(--accent)}.risk-mid{border-left:5px solid #d99a38}.risk-low{border-left:5px solid #7ea66a}
+
+.layout-article .article-header{margin-bottom:28px}.layout-article .lead{font-size:18px;color:var(--ink-soft)}.layout-article .article-takeaway{background:var(--accent-soft)}.layout-article article section{margin:54px 0}
+.layout-article .pull-quote{font-size:22px;color:var(--ink);border-color:var(--accent);font-style:normal}
+
+.layout-education .learning-goals{border:1px solid var(--good-border);background:var(--good-bg);border-radius:var(--radius-md);padding:22px}
+.layout-education .practice-card{border:1px dashed var(--accent);background:var(--card);border-radius:var(--radius-md);padding:22px}
+.layout-education .quiz-box{background:var(--term-bg);border:1px solid var(--term-border);border-radius:var(--radius-md);padding:22px}
+.layout-education .answer-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px}
+
+.layout-blog .personal-note{font-family:var(--serif);font-size:19px;line-height:1.7}
+.layout-blog .hook{color:var(--ink-soft)}
+.layout-blog article{counter-reset:blog-section}
+.layout-blog article section{border-bottom:1px solid var(--line);padding-bottom:28px;margin:52px 0}
+.layout-blog article>section{counter-increment:blog-section}
+.layout-blog article>section>h2:first-child::before{
+  content:counter(blog-section);
+  display:inline-grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  margin-right:12px;
+  border-radius:999px;
+  background:var(--accent);
+  color:#fff;
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:800;
+  line-height:1;
+  vertical-align:3px;
+}
+.layout-blog article section:last-child{border-bottom:0}
+
+.layout-seo .serp-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.layout-seo .serp-title{color:var(--ink);font-family:var(--sans);font-size:clamp(17px,2vw,18px);line-height:1.45;font-weight:800;letter-spacing:-.012em;margin:2px 0 8px}
+.layout-seo .serp-url{color:#1f6f4e;font-size:12.5px;margin-bottom:6px;font-weight:700}
+.layout-seo .seo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layout-seo .title-candidates,.layout-seo .meta-candidates,.layout-seo .keyword-cluster{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px}
+
+/* Platform grid is safe only as an inner wrapper, never as the semantic section itself. */
+.layout-platform .platform-grid:not(section){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.layout-platform .platform-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px 20px}
+.layout-platform .platform-card h3{margin-top:0;color:var(--accent-2)}
+.layout-platform .original-summary,.layout-platform .platform-strategy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid:not(section),.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+
+/* Ultimate extra modes */
+.layout-audit .audit-row{display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr .6fr;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}
+.layout-audit .score-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.layout-reference .quick-reference{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px}
+.layout-compare .matrix:not(section),.layout-compare .matrix>.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.layout-compare .winner-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
+.layout-case .timeline{border-left:0;padding-left:0}
+.layout-case .timeline-card{background:transparent;border:0;border-left:0;padding:0;margin:18px 0;list-style:none;counter-reset:timeline-step}
+.layout-case .timeline-card>li{counter-increment:timeline-step;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px 16px 54px;margin:12px 0}
+.layout-case .timeline-card>li::before{content:counter(timeline-step);position:absolute;left:18px;top:18px;width:24px;height:24px;border-radius:999px;background:var(--accent);color:#fff;display:grid;place-items:center;font:800 12px/1 var(--sans)}
+.layout-case .timeline-item{position:relative;margin:18px 0;padding:0 0 0 4px}
+.layout-case .timeline-item::before{content:"";position:absolute;left:-17px;top:.55em;width:11px;height:11px;border-radius:999px;background:var(--accent)}
+.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.layout-landing .hero-analogy{font-size:18px}
+.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layout-checklist .check-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px}
+@media(max-width:760px){.layout-audit .audit-row,.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid,.layout-compare .matrix:not(section),.layout-compare .matrix>.grid,.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid,.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{grid-template-columns:1fr}}
+
+/* ── Section-level classes (v4.3.0) ─────────────────────────────
+   IMPORTANT: semantic section wrappers must not become card grids.
+   Use inner wrappers such as .card-grid, .summary-grid, .matrix:not(section),
+   .winners:not(section), or .tradeoffs:not(section) for actual grid layout. */
+
+.audit-header,.blog-header,.case-header,.checklist-header,.compare-header,
+.course-header,.landing-header,.platform-header,.reference-header,
+.report-header,.seo-header{margin-bottom:42px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+
+/* Semantic section wrappers: normal flow only. */
+.risk-matrix,.priority-roadmap,.architecture-map,.serp-preview,.platform-comparison-table,
+.decision-context,.decisions,.results,.winners,.tradeoffs,.how-it-works,.failure-modes,
+.patterns,.examples,.line-audit,.content-outline,.seo-overview,.before-start,
+.beginner-analogy,.beginner-practice,.beginner-terms,.beginner-traps,.example-block,
+.lesson-step,.publish-checklist,.related-list,.soft-cta{margin:46px 0}
+
+/* Actual reusable grid/card wrappers. Never apply these to a section containing h2/h2-sub. */
+.grid-2,.cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.grid-3,.cards-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.grid-2>*,.cards-2>*,.grid-3>*,.cards-3>*{min-width:0}
+.winners:not(section),.tradeoffs:not(section){
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  padding:18px 20px;
+  margin:18px 0;
+}
+.winners:not(section)>h3:first-child,
+.tradeoffs:not(section)>h3:first-child{margin-top:0}
+
+.final-seo-set .grid,.final-seo-set .seo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0 0}
+
+.lesson-step,.line-audit,.before-start{border-left:3px solid var(--line);padding-left:18px}
+.lesson-step+.lesson-step{margin-top:24px}
+
+.soft-cta{background:var(--accent-soft);border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px;color:var(--ink-soft)}
+.soft-cta a{color:var(--accent-2);font-weight:700}
+.soft-cta p,.soft-cta li{color:var(--ink-soft)}
+.soft-cta strong{color:var(--ink)}
+.try.soft-cta{background:var(--dark);border-color:var(--dark);border-left-color:var(--accent);color:#f5f5f0}
+.try.soft-cta p,.try.soft-cta li{color:#d0d0c8}.try.soft-cta strong{color:#fff}
+.try.soft-cta .label{color:var(--accent)}
+
+.related-list ul,.related-list ol{margin:8px 0 0 20px}
+
+@media(max-width:760px){
+  .grid-2,.cards-2,.grid-3,.cards-3,
+  .final-seo-set .grid,.final-seo-set .seo-grid{grid-template-columns:1fr}
+  .layout-blog article>section>h2:first-child::before{width:30px;height:30px;margin-right:9px;font-size:13px;vertical-align:2px}
+}
+
+@media print{
+  *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white;color:#111}
+  .page,.page-wide,.wrap{width:100%;padding:0}
+  .hero-analogy,.try{background:#f4f4f4;color:#111;box-shadow:none}
+  .try h2,.try h3,.try strong{color:#111}
+  .source-note,.toc,.box,.term,.analogy,.danger,.good,.card-block,.mini-card{break-inside:avoid}
+  pre,table,.tbl,blockquote,figure,.card-block{break-inside:avoid}
+  .skip{display:none}
+  a::after{content:" (" attr(href) ")";font-size:11px;color:#555}
+}
+
+</style>
+
+<style>@media(max-width:760px){.table-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main .swim,main .lane,main .raci,main .fc,main .cg-grid,main .board,main pre,main .vt-code,main .pr-diff{max-width:100%;overflow-x:auto}}</style>
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav class="page-nav" aria-label="페이지 이동" style="max-width:var(--max-wide,1120px);margin:0 auto;padding:14px 20px 0;display:flex;gap:14px;justify-content:space-between;font-size:13px"><a href="./10-message-queue-kafka-rabbitmq-sqs.html">← 메시지 큐 선택: Kafka vs Rab</a><a href="../index.html">v6 홈</a><a href="./12-sohsanggongin-yeyak-saas-landing-brief.html">소상공인 예약 관리 SaaS 랜딩 브리프 →</a></nav>
+<main id="main" class="page-wide layout-case">
+  <header class="header case-header">
+    <div class="kicker">케이스 스터디 · 검색 플랫폼</div>
+    <h1>검색 지연을 줄인 캐시 전략 개선 사례</h1>
+    <p class="sub">검색이 느려진 원인은 트래픽 증가가 아니라 캐시 적중률 저하와 무효화 폭주였다. 키 설계와 무효화 범위를 바꿔 p95 지연을 약 절반으로 줄인 과정을 시간순으로 정리한다.</p>
+    <div class="meta">대상 독자: 검색·플랫폼 엔지니어, PM · 기간: 약 3주(추정) · 범위: 검색 결과 캐시 계층 · 작성일 기준 사내 회고 정리본</div>
+  </header>
+
+  <section class="summary-card">
+    <h2><span class="no" aria-hidden="true">1</span>상황 · Situation</h2>
+    <p class="h2-sub">무엇이, 어떤 제약 안에서, 왜 문제였는지를 먼저 못 박는다.</p>
+    <p class="lead">검색 응답이 체감상 느려졌다는 제보가 늘면서, 처음에는 "트래픽이 늘어서 그렇다"는 해석이 지배적이었다. 그러나 같은 기간 동안 요청 수(QPS)는 평소 변동폭 안에 있었고, 느려진 것은 평균이 아니라 꼬리 구간이었다. p50은 거의 그대로인데 p95 지연만 눈에 띄게 길어졌다는 점이 핵심 단서였다.</p>
+    <p>제약은 분명했다. 검색 인덱스 자체를 재설계하거나 새 캐시 인프라를 도입할 시간·예산은 없었고, 진행 중인 신규 기능 릴리스 일정도 막을 수 없었다. 따라서 목표는 "인프라 추가 없이, 기존 캐시 계층의 동작을 바로잡아 p95 지연을 끌어내린다"로 좁혀졌다. 성공 기준도 평균이 아니라 p95 지연으로 못 박았다.</p>
+    <p>판단의 출발점은 두 가지였다. 첫째, 원인을 트래픽으로 단정하지 않는다. 둘째, 지표를 평균에서 분위수(특히 p95)로 옮겨 본다. 아래 요약은 이 사건의 영향·원인·조치를 한눈에 정리한 것이다.</p>
+
+    <section class="vt-shell">
+      <div class="vt-frame">
+        <div>
+          <div class="inc-head">
+            <div class="inc-card impact"><b>영향 (Impact)</b><p class="vt-text">검색 p95 지연 약 2배로 악화, 꼬리 구간 사용자 체감 저하. p50은 거의 변화 없음.</p></div>
+            <div class="inc-card cause"><b>원인 (Cause)</b><p class="vt-text">캐시 적중률 저하 + 무효화 폭주(invalidation storm). 트래픽 증가가 아니라 캐시가 제 역할을 못 한 것.</p></div>
+            <div class="inc-card action"><b>조치 (Action)</b><p class="vt-text">캐시 키 설계 재정의, 무효화 범위 축소, TTL 전략과 스탬피드 방지 도입.</p></div>
+          </div>
+          <ol class="tl" style="margin-top:12px">
+            <li class="tl-item"><b>증상 확인</b><p class="vt-text">p95만 악화, QPS는 정상 범위. 원인을 트래픽으로 단정하지 않음.</p></li>
+            <li class="tl-item"><b>원인 분리</b><p class="vt-text">적중률 추이와 무효화 이벤트 로그를 시계열로 겹쳐 상관 확인.</p></li>
+            <li class="tl-item"><b>개선 적용</b><p class="vt-text">키·무효화·TTL을 바꾼 뒤 p95 지연 약 절반으로 감소(사내 측정).</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="term">
+      <span class="label">핵심 용어</span>
+      <p><span class="word">캐시 적중률</span> 요청 중 캐시에서 바로 응답한 비율. 떨어지면 같은 트래픽에도 백엔드 부하와 지연이 함께 커진다.</p>
+      <p><span class="word">무효화 폭주</span> 짧은 시간에 너무 넓은 범위의 캐시 키가 한꺼번에 무효화되어, 직후 요청들이 동시에 원본으로 몰리는 현상.</p>
+      <p><span class="word">키 설계</span> 어떤 입력 조합을 하나의 캐시 키로 묶을지 정하는 규칙. 너무 잘게 나누면 적중률이 떨어지고, 너무 뭉치면 잘못된 결과를 캐시한다.</p>
+      <p><span class="word">p95 지연</span> 느린 쪽 5%를 가르는 응답 시간. 평균이 아니라 꼬리 구간의 사용자 경험을 대표한다.</p>
+      <p><span class="word">스탬피드</span> 인기 키가 만료·무효화된 직후 다수 요청이 동시에 원본을 재계산하게 되는 캐시 스탬피드(thundering herd).</p>
+      <p><span class="word">TTL 전략</span> 캐시 항목의 수명(time-to-live)을 어떻게 두고 갱신할지에 대한 정책. 고정 TTL, 지터, 조기 재계산 등을 포함한다.</p>
+    </div>
+  </section>
+
+  <section class="timeline">
+    <h2><span class="no" aria-hidden="true">2</span>타임라인 · Timeline</h2>
+    <p class="h2-sub">증상 인지부터 후속 정책까지를 시간 순서로 따라간다.</p>
+    <p>이 사례는 한 번의 "수정"이 아니라, 가설을 세우고 깨뜨리며 원인을 좁혀 간 과정이었다. 아래 흐름은 진단 → 가설 → 실험 → 적용 → 검증의 순서를 그대로 보여준다. 각 단계의 판단 근거와 다음 행동은 이어지는 의사결정 섹션에서 더 풀어 쓴다.</p>
+
+    <section class="vt-shell">
+      <div class="vt-frame">
+        <ol class="tl">
+          <li class="tl-item"><b>1단계 · 증상 인지</b><p class="vt-text">검색이 느리다는 제보 증가. 대시보드에서 p95 지연만 악화되고 p50과 QPS는 정상 범위임을 확인. "트래픽 탓"이라는 첫 해석을 보류.</p></li>
+          <li class="tl-item"><b>2단계 · 가설 수립</b><p class="vt-text">가설 A: 트래픽 증가. 가설 B: 캐시 적중률 저하. 가설 C: 무효화 폭주로 인한 원본 쏠림. 어떤 데이터로 각 가설을 깰지 먼저 정함.</p></li>
+          <li class="tl-item"><b>3단계 · 측정과 분리</b><p class="vt-text">적중률 추이, 무효화 이벤트 빈도, 원본 재계산 횟수를 같은 시간축에 겹침. 적중률 하락 구간과 무효화 급증 구간이 겹치는 것을 확인해 가설 A를 기각, B·C를 채택(상관 기반, 인과는 실험으로 검증).</p></li>
+          <li class="tl-item"><b>4단계 · 실험</b><p class="vt-text">제한된 트래픽 비율에 키 설계 변경과 무효화 범위 축소를 먼저 적용해 A/B로 비교. 동일 부하에서 적중률과 p95 지연을 함께 관찰.</p></li>
+          <li class="tl-item"><b>5단계 · 적용</b><p class="vt-text">실험 구간에서 효과가 재현되어 전체로 점진 롤아웃. 스탬피드 방지와 TTL 지터를 함께 켜 무효화 직후 쏠림을 완화.</p></li>
+          <li class="tl-item"><b>6단계 · 검증과 정책화</b><p class="vt-text">p95 지연이 약 절반으로 내려간 것을 사내 측정으로 확인. 적중률·무효화 폭을 상시 모니터링 지표로 승격하고 무효화 범위 규칙을 코드 리뷰 체크리스트에 추가.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <p>위 단계에서 가장 중요한 전환점은 3단계였다. 증상(p95)과 후보 원인(적중률·무효화)을 같은 시간축에 겹쳐 보기 전까지는 "트래픽" 가설을 버리기 어려웠다. 측정 축을 바꾸자 비로소 다음 행동이 분명해졌다.</p>
+  </section>
+
+  <section class="decisions">
+    <h2><span class="no is-key" aria-hidden="true">3</span>핵심 의사결정 · Decisions</h2>
+    <p class="h2-sub">무엇을, 왜 그렇게 바꿨고, 어떤 위험을 감수했는지 근거와 함께 남긴다.</p>
+
+    <div class="card-block">
+      <span class="case-label">결정 1</span>
+      <h3>성공 지표를 평균에서 p95 지연으로 바꾼다</h3>
+      <p>평균 지연만 보면 문제가 "그저 그렇게 나쁜" 수준으로 보여 우선순위가 낮아진다. 느려진 것은 꼬리 구간이었으므로, 개선의 목표와 합격선을 모두 p95 지연으로 정의했다. 이렇게 하면 적중률을 조금 올리면서도 일부 키의 응답을 더 느리게 만드는 식의 "평균은 좋아 보이는" 변경을 걸러낼 수 있다.</p>
+      <p><strong>근거:</strong> p50은 정상, p95만 악화된 측정 결과. <strong>감수한 위험:</strong> p95에 과적합해 평균이나 적중률을 놓칠 수 있어, 두 지표를 함께 모니터링하기로 보완.</p>
+    </div>
+
+    <div class="card-block">
+      <span class="case-label">결정 2</span>
+      <h3>캐시 키를 "결과를 실제로 가르는 입력"만으로 재설계한다</h3>
+      <p>기존 키에는 결과에 영향을 주지 않는 파라미터(요청별로 달라지는 부가 정보 등)가 섞여 있어, 사실상 같은 결과를 서로 다른 키로 저장하고 있었다. 그 결과 적중률이 구조적으로 낮았다. 키를 결과를 실제로 가르는 입력(질의 정규화 값, 핵심 필터)만으로 좁혀, 동일 결과가 하나의 키로 모이도록 했다.</p>
+      <p><strong>근거:</strong> 키 카디널리티가 비정상적으로 높고 적중률이 낮다는 관찰. <strong>감수한 위험:</strong> 키를 과도하게 뭉치면 잘못된 결과를 공유할 수 있어, 결과를 가르는 입력 목록을 명시적으로 정의·리뷰했다.</p>
+    </div>
+
+    <div class="card-block">
+      <span class="case-label">결정 3</span>
+      <h3>무효화 범위를 넓은 일괄에서 변경된 키 단위로 좁힌다</h3>
+      <p>데이터가 갱신될 때마다 넓은 범위를 한꺼번에 무효화하던 방식이 무효화 폭주를 일으켰다. 무효화 직후 다수 요청이 동시에 원본을 재계산하면서 p95가 튀었다. 무효화 단위를 "실제로 바뀐 항목과 직접 의존하는 키"로 좁히고, 무효화 이벤트를 작은 배치로 분산시켰다.</p>
+      <p><strong>근거:</strong> 무효화 급증 구간과 p95 악화 구간의 겹침. <strong>감수한 위험:</strong> 무효화를 너무 좁히면 잠깐 낡은 결과가 노출될 수 있어, 의존성 누락을 막는 테스트와 짧은 TTL로 안전망을 뒀다.</p>
+    </div>
+
+    <div class="card-block">
+      <span class="case-label">결정 4</span>
+      <h3>TTL 전략과 스탬피드 방지를 함께 켠다</h3>
+      <p>키와 무효화만 고쳐도 적중률은 올랐지만, 인기 키가 만료되는 순간의 쏠림이 남았다. 고정 TTL에 지터를 더해 만료 시점을 흩고, 인기 키는 만료 직전 백그라운드 재계산으로 미리 갱신해 스탬피드를 줄였다. 동시에 같은 키의 원본 재계산을 한 번으로 합치는 single-flight 형태의 보호를 적용했다.</p>
+      <p><strong>근거:</strong> 무효화·만료 직후의 원본 재계산 스파이크. <strong>감수한 위험:</strong> 조기 재계산은 약간의 추가 연산을 쓰므로, 인기 상위 키에만 적용해 비용을 제한했다.</p>
+    </div>
+
+    <p>이 네 결정은 역할별로 나누면 더 분명하다. 아래 스윔레인은 검색 엔지니어, 플랫폼 엔지니어, PM, 운영(SRE)이 단계별로 무엇을 맡았는지를 보여준다. 빈 칸(—)은 해당 단계에서 그 역할의 주된 책임이 없었음을 뜻한다.</p>
+
+    <section class="vt-shell">
+      <div class="vt-frame">
+        <div class="swim">
+          <div class="lane">
+            <div class="lane-label">검색 엔지니어</div>
+            <div class="lane-step">키 재설계</div>
+            <div class="lane-step">실험 설계</div>
+            <div class="lane-step blank">—</div>
+            <div class="lane-step">롤아웃 검증</div>
+          </div>
+          <div class="lane">
+            <div class="lane-label">플랫폼 엔지니어</div>
+            <div class="lane-step">무효화 범위 축소</div>
+            <div class="lane-step">TTL·스탬피드 방지</div>
+            <div class="lane-step">단계 롤아웃</div>
+            <div class="lane-step blank">—</div>
+          </div>
+          <div class="lane">
+            <div class="lane-label">PM</div>
+            <div class="lane-step">성공 기준 합의(p95)</div>
+            <div class="lane-step blank">—</div>
+            <div class="lane-step">릴리스 일정 조율</div>
+            <div class="lane-step">정책화 승인</div>
+          </div>
+          <div class="lane">
+            <div class="lane-label">운영(SRE)</div>
+            <div class="lane-step blank">—</div>
+            <div class="lane-step">지표 계측</div>
+            <div class="lane-step">모니터링</div>
+            <div class="lane-step">회고·알림 정의</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section class="results">
+    <h2><span class="no" aria-hidden="true">4</span>결과 · Results</h2>
+    <p class="h2-sub">바뀐 것을 지표로 말한다. 단정할 수 없는 수치는 헤징한다.</p>
+    <p>가장 큰 변화는 목표 지표였다. 동일한 트래픽 수준에서 검색 p95 지연이 개선 전 대비 약 절반으로 내려갔다(사내 대시보드 측정 기준, 정확한 수치는 환경별로 다를 수 있어 확인 필요). 평균(p50)은 원래 정상 범위였으므로 큰 변화가 없었고, 이는 의도한 결과다.</p>
+    <p>중간 지표들도 같은 방향으로 움직였다. 캐시 적중률은 키 재설계 이후 뚜렷이 회복했고, 무효화 이벤트의 순간 폭이 줄어 원본 재계산 스파이크가 완만해졌다. 무효화 직후 발생하던 스탬피드성 쏠림은 TTL 지터와 조기 재계산 도입 이후 관찰 빈도가 낮아졌다(정량 폭은 추정).</p>
+    <div class="tbl-wrap">
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table class="tbl">
+        <caption>개선 전후 주요 지표 변화 요약(사내 측정 기준, 절대치 일부는 확인 필요)</caption>
+        <thead>
+          <tr><th scope="col">지표</th><th scope="col">개선 전</th><th scope="col">개선 후</th><th scope="col">방향</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">검색 p95 지연</th><td>악화(기준선 대비 약 2배)</td><td>약 절반으로 감소</td><td>개선 (목표 달성)</td></tr>
+          <tr><th scope="row">검색 p50 지연</th><td>정상 범위</td><td>정상 범위 유지</td><td>변화 거의 없음 (의도)</td></tr>
+          <tr><th scope="row">캐시 적중률</th><td>구조적으로 낮음</td><td>뚜렷이 회복</td><td>개선</td></tr>
+          <tr><th scope="row">무효화 순간 폭</th><td>폭주성 급증</td><td>배치 분산으로 완화</td><td>개선</td></tr>
+          <tr><th scope="row">원본 재계산 스파이크</th><td>만료·무효화 직후 쏠림</td><td>완만(스탬피드 방지)</td><td>개선</td></tr>
+        </tbody>
+      </table></div></div>
+    </div>
+    <p>주의할 점도 기록한다. 위 수치 중 적중률·재계산 폭의 절대값은 측정 윈도와 트래픽 구성에 민감해 단정하지 않는다. 또한 "약 절반"이라는 표현은 대표 구간 기준이며, 특정 질의 유형에서는 개선 폭이 더 작을 수 있다(확인 필요). 효과가 트래픽 패턴 변화와 우연히 겹쳤을 가능성은 실험 구간 A/B 비교로 일부 배제했지만, 장기 추적으로 계속 확인한다.</p>
+  </section>
+
+  <section class="try">
+    <h2><span class="no" aria-hidden="true">5</span>배운 점과 다음 행동 · Lessons</h2>
+    <p class="h2-sub">막연한 감상이 아니라, 다음에 그대로 실행할 수 있는 형태로 남긴다.</p>
+    <ol>
+      <li><strong>"느리다 = 트래픽 탓"이라는 기본 가설을 의심하라.</strong> 먼저 평균이 아니라 분위수(p95)로 증상을 본 뒤, 후보 원인(적중률·무효화)을 같은 시간축에 겹쳐 가설을 깬다.</li>
+      <li><strong>캐시 키는 "결과를 실제로 가르는 입력"만 담는다.</strong> 결과에 무관한 파라미터가 키에 섞이면 적중률이 구조적으로 무너진다. 새 키를 추가할 때 결과를 가르는 입력 목록을 리뷰에서 확인한다.</li>
+      <li><strong>무효화는 좁게, 분산해서.</strong> 넓은 일괄 무효화는 폭주와 스탬피드를 부른다. 변경된 항목과 직접 의존하는 키만 무효화하고 이벤트를 작은 배치로 나눈다.</li>
+      <li><strong>TTL은 지터와 조기 재계산을 기본값으로.</strong> 인기 키 만료 시점을 흩고 미리 갱신해 쏠림을 줄인다. 같은 키의 재계산은 한 번으로 합친다.</li>
+      <li><strong>적중률과 무효화 폭을 상시 지표로 승격한다.</strong> 사후에 들여다보는 로그가 아니라, 알림이 걸리는 1급 지표로 두어 다음 회귀를 조기에 잡는다.</li>
+    </ol>
+  </section>
+
+  <aside class="source-note">
+    이 문서는 사내 회고를 정리한 케이스 스터디다. p95 지연 약 절반, 적중률 회복 등 수치는 사내 대시보드 측정값 기준이며 환경·측정 윈도에 따라 달라질 수 있어 일부는 확인 필요로 표시했다. 인용한 외부 출처는 없으며, 모든 판단 근거는 본문 타임라인과 의사결정 섹션에 함께 기록했다.
+  </aside>
+</main>
+<footer style="max-width:var(--max-wide,1120px);margin:40px auto 0;padding:20px;border-top:1px solid var(--line);color:var(--ink-mute);font-size:13px">adaptive-html-final v4.5.0 · case_study_html · 스킬 본체 레이아웃 + vt-템플릿(incident-summary, timeline, process-swimlane) · 외부 JS 0</footer>
+</body>
+</html>

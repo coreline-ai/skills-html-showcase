@@ -1,0 +1,98 @@
+<!-- Widget 08: Clickable Flow | 프로토·다이어그램 | css-only -->
+<!-- 화면 전환은 :target + :target-within(기본 화면 숨김)으로 구현. 클릭 네비는 앵커 링크만 사용. 완전한 폼 상태 저장/실시간 검증은 JS 필요하나 프로토타입 화면 전환 목적에는 CSS-only로 충분. -->
+<style>
+.wg-08-proto{font-family:var(--sans);color:var(--ink);max-width:480px;margin:0 auto}
+.wg-08-bar{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-4)}
+.wg-08-title{font-size:var(--fs-sm);font-weight:800;letter-spacing:.04em;color:var(--ink-soft)}
+.wg-08-steps{list-style:none;display:flex;gap:var(--space-2);margin:0;padding:0}
+.wg-08-steps li{margin:0;flex:1}
+.wg-08-steps a{display:block;text-align:center;font-size:var(--fs-xs);font-weight:700;padding:var(--space-2);border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink-mute);text-decoration:none}
+.wg-08-steps a:hover{border-color:var(--accent);color:var(--accent)}
+.wg-08-steps a:focus-visible,.wg-08-cta:focus-visible,.wg-08-back:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.wg-08-device{background:var(--dark);border-radius:var(--radius-lg);padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.wg-08-viewport{position:relative;background:var(--bg);border-radius:var(--radius-md);height:360px;overflow:hidden}
+.wg-08-screen{position:absolute;inset:0;padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-4);background:var(--bg);opacity:0;visibility:hidden;transform:translateX(16px);transition:opacity .28s ease,transform .28s ease,visibility .28s}
+.wg-08-screen--default{opacity:1;visibility:visible;transform:none}
+.wg-08-viewport:target-within .wg-08-screen--default{opacity:0;visibility:hidden}
+/* :target-within fallback (Chrome/FF without it): targeted non-default screen hides default via :has(); plus sibling-combinator example */
+.wg-08-viewport:has(.wg-08-screen:target) .wg-08-screen--default{opacity:0;visibility:hidden}
+.wg-08-screen:target ~ .wg-08-screen--default{opacity:0;visibility:hidden}
+.wg-08-screen:target{opacity:1;visibility:visible;transform:none;z-index:2}
+.wg-08-screen:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.wg-08-screen{transition:none;transform:none}}
+.wg-08-shead{display:flex;align-items:center;gap:var(--space-3)}
+.wg-08-shead h3{font-family:var(--sans);font-size:var(--fs-lg);margin:0}
+.wg-08-badge{font-size:11px;font-weight:800;letter-spacing:.05em;padding:3px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent-2);border:1px solid var(--accent-2)}
+.wg-08-badge--ok{background:var(--good-bg);color:var(--good-label-ink);border-color:var(--good-border)}
+.wg-08-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-2)}
+.wg-08-list li{display:flex;justify-content:space-between;margin:0;padding:var(--space-3);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);font-size:var(--fs-sm)}
+.wg-08-price{font-variant-numeric:tabular-nums;color:var(--ink-soft)}
+.wg-08-total{display:flex;justify-content:space-between;align-items:center;padding-top:var(--space-3);border-top:1px dashed var(--line);font-size:var(--fs-sm)}
+.wg-08-total strong{font-size:var(--fs-md)}
+.wg-08-cta{margin-top:auto;display:block;text-align:center;background:var(--accent);color:#fff;font-weight:800;padding:var(--space-3) var(--space-4);border-radius:var(--radius-sm);text-decoration:none}
+.wg-08-cta:hover{background:var(--accent-2);color:#fff}
+.wg-08-back{font-size:var(--fs-sm);font-weight:700;color:var(--ink-mute);text-decoration:none}
+.wg-08-back:hover{color:var(--accent)}
+.wg-08-nav{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3)}
+.wg-08-nav .wg-08-cta{margin-top:0;flex:1}
+.wg-08-pick{border:0;display:flex;flex-direction:column;gap:var(--space-2)}
+.wg-08-legend{font-size:var(--fs-xs);color:var(--ink-mute);padding:0;margin-bottom:var(--space-1)}
+.wg-08-pick label{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);font-size:var(--fs-sm)}
+.wg-08-dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink-mute);flex:none}
+.wg-08-ok{display:flex;align-items:center;gap:var(--space-4);background:var(--good-bg);border:1px solid var(--good-border);border-radius:var(--radius-md);padding:var(--space-5)}
+.wg-08-check{width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:50%;background:var(--good-label-ink);color:#fff;font-size:24px;font-weight:800}
+.wg-08-ok p{margin:0;font-size:var(--fs-sm);color:var(--good-ink)}
+.wg-08-order{font-variant-numeric:tabular-nums;color:var(--ink-mute);font-size:var(--fs-xs)}
+.wg-08-hint{font-size:var(--fs-xs);color:var(--ink-mute);margin-top:var(--space-3);text-align:center}
+</style>
+<section class="wg-08-proto" aria-label="클릭형 화면 프로토타입">
+  <div class="wg-08-bar">
+    <span class="wg-08-title">주문 결제 플로우 · 프로토타입</span>
+    <ol class="wg-08-steps" aria-label="진행 단계">
+      <li><a href="#wg-08-cart">1 장바구니</a></li>
+      <li><a href="#wg-08-pay">2 결제</a></li>
+      <li><a href="#wg-08-done">3 완료</a></li>
+    </ol>
+  </div>
+
+  <div class="wg-08-device">
+    <div class="wg-08-viewport">
+
+      <article id="wg-08-cart" class="wg-08-screen wg-08-screen--default" tabindex="-1" aria-label="화면 A: 장바구니">
+        <header class="wg-08-shead"><span class="wg-08-badge">화면 A</span><h3>장바구니</h3></header>
+        <ul class="wg-08-list">
+          <li><span>무선 키보드</span><span class="wg-08-price">49,000원</span></li>
+          <li><span>USB-C 허브</span><span class="wg-08-price">32,000원</span></li>
+        </ul>
+        <div class="wg-08-total"><span>합계</span><strong>81,000원</strong></div>
+        <a class="wg-08-cta" href="#wg-08-pay">결제하기 &rarr;</a>
+      </article>
+
+      <article id="wg-08-pay" class="wg-08-screen" tabindex="-1" aria-label="화면 B: 결제">
+        <header class="wg-08-shead"><span class="wg-08-badge">화면 B</span><h3>결제 수단</h3></header>
+        <fieldset class="wg-08-pick">
+          <legend class="wg-08-legend">결제 방법 선택</legend>
+          <label><span class="wg-08-dot" aria-hidden="true"></span>신용카드 ·· 1234</label>
+          <label><span class="wg-08-dot" aria-hidden="true"></span>간편결제 (Pay)</label>
+          <label><span class="wg-08-dot" aria-hidden="true"></span>계좌이체</label>
+        </fieldset>
+        <div class="wg-08-total"><span>결제 금액</span><strong>81,000원</strong></div>
+        <div class="wg-08-nav">
+          <a class="wg-08-back" href="#wg-08-cart">&larr; 뒤로</a>
+          <a class="wg-08-cta" href="#wg-08-done">81,000원 결제 &rarr;</a>
+        </div>
+      </article>
+
+      <article id="wg-08-done" class="wg-08-screen" tabindex="-1" aria-label="화면 C: 완료">
+        <header class="wg-08-shead"><span class="wg-08-badge wg-08-badge--ok">화면 C</span><h3>결제 완료</h3></header>
+        <div class="wg-08-ok">
+          <span class="wg-08-check" aria-hidden="true">&#10003;</span>
+          <p>주문이 정상 접수되었습니다.<br><span class="wg-08-order">주문번호 ORD-20260530-7741</span></p>
+        </div>
+        <a class="wg-08-back" href="#wg-08-cart">처음으로 돌아가기</a>
+      </article>
+
+    </div>
+  </div>
+  <p class="wg-08-hint">상단 단계 또는 화면 내 버튼을 눌러 화면 A &rarr; B &rarr; C로 전환됩니다. (:target 기반)</p>
+</section>

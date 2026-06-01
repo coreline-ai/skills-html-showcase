@@ -1,0 +1,122 @@
+<!-- Widget 02: Visual Design Directions | 디자인 | css-only -->
+<!-- 선택 강조: input[type=radio]:checked + .card 인접 셀렉터로 테두리/그림자/뱃지/라디오 글리프 전환(JS 0). 색 외 단서: ○→● 글리프 + '선택됨' 텍스트 뱃지. 3개 방향 미니 라이브 렌더(에디토리얼/다크 대시보드/소프트 사이드바). 실시간 토큰 편집·export는 JS 필요. prefers-reduced-motion 대응. -->
+<style>
+.wg-02-dir{font-family:var(--sans);color:var(--ink);background:var(--bg);padding:var(--space-6);border:1px solid var(--line);border-radius:var(--radius-lg);max-width:var(--max-wide)}
+.wg-02-head{margin-bottom:var(--space-5)}
+.wg-02-kicker{font-size:var(--fs-xs);letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:var(--space-2)}
+.wg-02-h{font-family:var(--serif);font-size:var(--fs-2xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-2)}
+.wg-02-lead{font-size:var(--fs-sm);color:var(--ink-soft);margin:0;line-height:1.7}
+.wg-02-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.wg-02-grid{border:0;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.wg-02-radio{position:absolute;opacity:0;width:1px;height:1px}
+.wg-02-card{background:var(--card);border:2px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;display:flex;flex-direction:column}
+.wg-02-radio:checked+.wg-02-card{border-color:var(--accent);box-shadow:0 6px 20px rgba(230,57,70,.16);transform:translateY(-3px)}
+.wg-02-radio:focus-visible+.wg-02-card{outline:3px solid var(--focus);outline-offset:2px}
+.wg-02-preview{padding:var(--space-3);height:148px;display:flex;flex-direction:column;gap:var(--space-2);overflow:hidden}
+.wg-02-preview--a{background:var(--bg)}
+.wg-02-preview--b{background:var(--dark)}
+.wg-02-preview--c{background:var(--analogy-bg)}
+.wg-02-pv-bar{display:flex;align-items:center;gap:var(--space-2)}
+.wg-02-pv-dot{width:8px;height:8px;border-radius:999px;background:var(--accent);flex:none}
+.wg-02-pv-line{height:6px;border-radius:999px;background:var(--line);flex:1}
+.wg-02-pv-bar--b .wg-02-pv-line{background:rgba(255,255,255,.22)}
+.wg-02-pv-bar--c .wg-02-pv-line{background:var(--analogy-border)}
+.wg-02-pv-hero{font-family:var(--serif);font-weight:700;font-size:var(--fs-lg);color:var(--ink)}
+.wg-02-pv-body{display:flex;flex-direction:column;gap:5px}
+.wg-02-pv-body span{height:6px;border-radius:999px;background:var(--line)}
+.wg-02-pv-short{width:55%}
+.wg-02-pv-cta{align-self:flex-start;margin-top:auto;font-size:11px;font-weight:700;padding:4px var(--space-3);border-radius:var(--radius-sm)}
+.wg-02-pv-cta--a{background:var(--accent);color:#fff}
+.wg-02-pv-cta--b{background:var(--good-accent);color:#fff}
+.wg-02-pv-cta--c{background:var(--analogy-accent);color:#fff}
+.wg-02-pv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;flex:1}
+.wg-02-pv-cards span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-sm)}
+.wg-02-pv-split{display:flex;gap:6px;flex:1}
+.wg-02-pv-aside{width:30%;background:var(--analogy-accent);border-radius:var(--radius-sm);opacity:.85}
+.wg-02-pv-main{flex:1;display:flex;flex-direction:column;gap:5px;justify-content:center}
+.wg-02-pv-main span{height:8px;border-radius:999px;background:#fff}
+.wg-02-meta{padding:var(--space-3) var(--space-4) var(--space-4);border-top:1px solid var(--line);position:relative}
+.wg-02-pick-label{display:block;font-weight:800;font-size:var(--fs-sm);color:var(--ink);cursor:pointer;padding-right:64px}
+.wg-02-pick-label::before{content:"\25CB";margin-right:var(--space-2);color:var(--ink-mute)}
+.wg-02-radio:checked+.wg-02-card .wg-02-pick-label::before{content:"\25CF";color:var(--accent)}
+.wg-02-desc{font-size:var(--fs-xs);color:var(--ink-soft);margin:var(--space-1) 0 var(--space-2);line-height:1.6}
+.wg-02-palette{list-style:none;display:flex;gap:6px;margin:0;padding:0}
+.wg-02-palette li{flex:1;height:26px;border-radius:var(--radius-sm);border:1px solid var(--line);display:grid;place-items:center}
+.wg-02-palette li span{font-size:9px;font-weight:700;color:#fff;mix-blend-mode:difference;letter-spacing:.02em}
+.wg-02-badge{position:absolute;top:var(--space-3);right:var(--space-4);font-size:10px;font-weight:800;color:#fff;background:var(--accent);border-radius:999px;padding:2px var(--space-2);opacity:0;transform:scale(.8);transition:opacity .2s ease,transform .2s ease}
+.wg-02-radio:checked+.wg-02-card .wg-02-badge{opacity:1;transform:scale(1)}
+.wg-02-foot{margin:var(--space-5) 0 0;font-size:var(--fs-xs);color:var(--ink-mute);line-height:1.7;border-top:1px solid var(--line);padding-top:var(--space-3)}
+@media(prefers-reduced-motion:reduce){.wg-02-card,.wg-02-badge{transition:none}.wg-02-radio:checked+.wg-02-card{transform:none}}
+@media(max-width:760px){.wg-02-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.wg-02-dir{padding:var(--space-4)}}
+</style>
+<section class="wg-02-dir" aria-labelledby="wg-02-title">
+  <header class="wg-02-head">
+    <p class="wg-02-kicker">DESIGN DIRECTIONS</p>
+    <h2 id="wg-02-title" class="wg-02-h">비주얼 디자인 방향 비교</h2>
+    <p class="wg-02-lead">3개 레이아웃·팔레트 방향을 라이브 렌더 카드로 나란히 비교하세요. 선택하면 강조 표시됩니다.</p>
+  </header>
+
+  <fieldset class="wg-02-grid">
+    <legend class="wg-02-sr">디자인 방향 선택</legend>
+
+    <input type="radio" name="wg-02-pick" id="wg-02-a" class="wg-02-radio" checked>
+    <div class="wg-02-card" data-dir="A">
+      <div class="wg-02-preview wg-02-preview--a">
+        <div class="wg-02-pv-bar"><span class="wg-02-pv-dot"></span><span class="wg-02-pv-line"></span></div>
+        <div class="wg-02-pv-hero">Editorial</div>
+        <div class="wg-02-pv-body"><span></span><span></span><span class="wg-02-pv-short"></span></div>
+        <div class="wg-02-pv-cta wg-02-pv-cta--a">읽어보기</div>
+      </div>
+      <div class="wg-02-meta">
+        <label for="wg-02-a" class="wg-02-pick-label">방향 A · 에디토리얼</label>
+        <p class="wg-02-desc">세리프 헤드라인, 넉넉한 여백, 단일 강조색. 긴 글 읽기 중심.</p>
+        <ul class="wg-02-palette" aria-label="방향 A 팔레트">
+          <li style="background:var(--bg)"><span>bg</span></li>
+          <li style="background:var(--ink)"><span>ink</span></li>
+          <li style="background:var(--accent)"><span>accent</span></li>
+        </ul>
+        <span class="wg-02-badge">선택됨</span>
+      </div>
+    </div>
+
+    <input type="radio" name="wg-02-pick" id="wg-02-b" class="wg-02-radio">
+    <div class="wg-02-card" data-dir="B">
+      <div class="wg-02-preview wg-02-preview--b">
+        <div class="wg-02-pv-bar wg-02-pv-bar--b"><span class="wg-02-pv-dot"></span><span class="wg-02-pv-line"></span></div>
+        <div class="wg-02-pv-cards"><span></span><span></span><span></span></div>
+        <div class="wg-02-pv-cta wg-02-pv-cta--b">대시보드</div>
+      </div>
+      <div class="wg-02-meta">
+        <label for="wg-02-b" class="wg-02-pick-label">방향 B · 다크 대시보드</label>
+        <p class="wg-02-desc">다크 캔버스, 카드 그리드, 데이터 밀도 높음. 운영 도구 지향.</p>
+        <ul class="wg-02-palette" aria-label="방향 B 팔레트">
+          <li style="background:var(--dark)"><span>dark</span></li>
+          <li style="background:var(--good-accent)"><span>good</span></li>
+          <li style="background:var(--accent)"><span>accent</span></li>
+        </ul>
+        <span class="wg-02-badge">선택됨</span>
+      </div>
+    </div>
+
+    <input type="radio" name="wg-02-pick" id="wg-02-c" class="wg-02-radio">
+    <div class="wg-02-card" data-dir="C">
+      <div class="wg-02-preview wg-02-preview--c">
+        <div class="wg-02-pv-bar wg-02-pv-bar--c"><span class="wg-02-pv-dot"></span><span class="wg-02-pv-line"></span></div>
+        <div class="wg-02-pv-split"><div class="wg-02-pv-aside"></div><div class="wg-02-pv-main"><span></span><span></span></div></div>
+        <div class="wg-02-pv-cta wg-02-pv-cta--c">시작하기</div>
+      </div>
+      <div class="wg-02-meta">
+        <label for="wg-02-c" class="wg-02-pick-label">방향 C · 소프트 사이드바</label>
+        <p class="wg-02-desc">파스텔 사이드바, 둥근 카드, 친근한 톤. 온보딩·SaaS 랜딩.</p>
+        <ul class="wg-02-palette" aria-label="방향 C 팔레트">
+          <li style="background:var(--analogy-bg)"><span>soft</span></li>
+          <li style="background:var(--analogy-accent)"><span>blue</span></li>
+          <li style="background:var(--accent)"><span>accent</span></li>
+        </ul>
+        <span class="wg-02-badge">선택됨</span>
+      </div>
+    </div>
+  </fieldset>
+  <p class="wg-02-foot">라디오 선택으로 카드가 강조됩니다(reactive selection 근사). 실시간 토큰 편집·코드 export는 JS가 필요합니다.</p>
+</section>
