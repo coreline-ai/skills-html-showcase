@@ -14,7 +14,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: bd5665d927349550e9511e0fbc75077ddfad814d86442b3117eadcef4bf5ff94 */
+/* adaptive-html-final-core-css-sha256: 3e6a8bfa3710afb7c998efc60f58cec45273a4ae0803016852c2856e2b390a79 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -95,6 +95,7 @@ a:hover{color:var(--accent)}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 /* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
 .kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
 h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
@@ -1327,6 +1328,7 @@ details p{margin-bottom:0}
 }
 
 </style>
+<style>@media(max-width:760px){.table-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main table{max-width:100%}}</style>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -1432,7 +1434,7 @@ details p{margin-bottom:0}
     <p>자료구조가 정해지면 다음 질문은 거의 항상 두 가지입니다. <span class="hl">이 키는 언제 사라져야 하는가(TTL)</span>, 그리고 여러 명령을 묶을 때 무엇이 원자적으로 실행되는가입니다. 아래 표는 "이 데이터에는 무엇을 쓰나"를 빠르게 고르기 위한 요약입니다.</p>
 
     <div class="tbl">
-      <table>
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
         <caption>자료구조 선택 가이드 — 데이터 성격별 1차 후보</caption>
         <thead>
           <tr><th>담는 데이터</th><th>1차 후보</th><th>핵심 명령</th><th>대표 시간복잡도(개념)</th></tr>
@@ -1445,7 +1447,7 @@ details p{margin-bottom:0}
           <tr><td>점수 정렬·랭킹</td><td>Sorted Set</td><td><code>ZADD</code> / <code>ZREVRANGE</code></td><td>추가 O(log N)</td></tr>
           <tr><td>이벤트 스트림·소비자 그룹</td><td>Stream</td><td><code>XADD</code> / <code>XREADGROUP</code></td><td>추가 O(1)</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
     <p>시간복잡도는 개념적 안내이며, 실제 비용은 데이터 크기·인코딩·범위 인자에 따라 달라집니다. 정확한 복잡도 표기는 각 명령의 공식 문서를 확인하세요.</p>
   </section>
@@ -1460,7 +1462,7 @@ details p{margin-bottom:0}
       <p class="wg-15-lead">예시는 <strong>사용자 프로필(닉네임·포인트·레벨)</strong> 하나입니다. 이 데이터를 String·Hash·Sorted Set 중 무엇에 담느냐에 따라 <strong>필드 접근 비용</strong>과 <strong>랭킹 조회 가능 여부</strong>가 결정됩니다.</p>
 
       <h3 class="wg-15-h3">후보별 트레이드오프</h3>
-      <table class="wg-15-table">
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table class="wg-15-table">
         <caption class="wg-15-cap">프로필 데이터를 담을 때 — 후보 자료구조 비교</caption>
         <thead>
           <tr><th scope="col">기준</th><th scope="col">String(JSON 통째)</th><th scope="col">Hash(필드 분리)</th></tr>
@@ -1471,7 +1473,7 @@ details p{margin-bottom:0}
           <tr><th scope="row">객체 통째 캐싱</th><td><span class="wg-15-good">SET 한 줄로 단순</span></td><td>HSET 다중 필드</td></tr>
           <tr><th scope="row">포인트로 랭킹</th><td><span class="wg-15-bad">불가 — 정렬 안 됨</span></td><td><span class="wg-15-bad">불가 — 별도 ZSet 필요</span></td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <h3 class="wg-15-h3">결정 흐름을 단계로 보기</h3>
       <div class="wg-15-steps">
@@ -1552,7 +1554,7 @@ details p{margin-bottom:0}
     </div>
 
     <div class="tbl">
-      <table>
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
         <caption>RDB와 AOF 비교 — 개념 수준 요약</caption>
         <thead>
           <tr><th>관점</th><th>RDB (스냅샷)</th><th>AOF (명령 로그)</th></tr>
@@ -1564,7 +1566,7 @@ details p{margin-bottom:0}
           <tr><td>파일 크기</td><td>작은 편(압축)</td><td>커질 수 있어 재작성(rewrite) 필요</td></tr>
           <tr><td>제어 명령(예)</td><td><code>SAVE</code> / <code>BGSAVE</code></td><td><code>BGREWRITEAOF</code> 등</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
     <p><code>fsync</code> 정책, 스냅샷 트리거 조건, 혼합 영속성(AOF 안에 RDB 프리앰블) 같은 세부는 버전·설정에 크게 의존합니다. 정확한 옵션 이름과 기본값은 출처의 영속성 문서를 확인하세요. 또한 <strong>영속성은 백업이 아닙니다</strong> — 별도 백업/복제 전략이 필요합니다.</p>
   </section>
@@ -1586,7 +1588,7 @@ details p{margin-bottom:0}
     <p>읽기-수정-쓰기를 진짜 한 덩어리로 묶고 싶다면 <strong>Lua 스크립트</strong>(<code>EVAL</code> / <code>EVALSHA</code>)가 가장 직접적입니다. 스크립트는 서버에서 원자적으로 실행되므로, 레이트리밋·재고 차감처럼 "검사와 변경이 분리되면 안 되는" 로직에 적합합니다. 다만 스크립트는 가능한 한 짧게 — 길고 무거운 스크립트는 단일 스레드 실행을 점유해 전체 지연을 키웁니다.</p>
 
     <div class="tbl">
-      <table>
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
         <caption>묶음 실행 기법 비교 — 언제 무엇을</caption>
         <thead>
           <tr><th>기법</th><th>목적</th><th>원자성</th><th>적합한 경우</th></tr>
@@ -1597,7 +1599,7 @@ details p{margin-bottom:0}
           <tr><td>WATCH + MULTI</td><td>낙관적 잠금(CAS)</td><td>충돌 시 취소</td><td>읽고-검사-쓰기, 재시도 허용</td></tr>
           <tr><td>Lua EVAL</td><td>서버측 원자 실행</td><td>스크립트 단위</td><td>검사와 변경이 분리되면 안 될 때</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
   </section>
 

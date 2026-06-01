@@ -87,6 +87,7 @@ a:hover{color:var(--accent)}
 .page,.wrap{width:min(var(--max-reading),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
 .kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
 h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
@@ -521,6 +522,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
 @media(max-width:760px){.source-list,.page-list,.audit-row,.gallery-grid{grid-template-columns:1fr}.visual-demo{--max-wide:780px}.gallery-card .visual-figure{padding:10px}.timeline-card{padding:16px 14px 16px 34px}}
 
 </style>
+<style>@media(max-width:760px){.table-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main table{max-width:100%}}</style>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -604,7 +606,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
     <h3>도구 승인 절차</h3>
     <p>새 AI 도구를 쓰고 싶을 때 거치는 단계입니다. 단계 수치(소요 기간 등)는 운영 상황에 따라 달라지므로 사내 최신 절차를 확인하세요.</p>
     <div class="tbl mobile-card-table">
-      <table>
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
         <caption>도구 승인 절차 요약</caption>
         <thead>
           <tr><th>단계</th><th>하는 일</th><th>누가 보나</th><th>결과</th></tr>
@@ -616,7 +618,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
           <tr><td data-label="단계">조건 부여</td><td data-label="하는 일">사용 가능한 데이터 범위·계정·로깅 조건을 정한다</td><td data-label="누가 보나">AI 운영 · 보안</td><td data-label="결과">‘조건부’ 또는 ‘승인됨’</td></tr>
           <tr><td data-label="단계">게시</td><td data-label="하는 일">온보딩·검증 프롬프트와 함께 허브에 등록한다</td><td data-label="누가 보나">AI 운영팀</td><td data-label="결과">상태 배지 공개</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
     <div class="prompt-box">

@@ -87,6 +87,7 @@ a:hover{color:var(--accent)}
 .page,.wrap{width:min(var(--max-reading),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
 .kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
 h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
@@ -521,6 +522,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
 @media(max-width:760px){.source-list,.page-list,.audit-row,.gallery-grid{grid-template-columns:1fr}.visual-demo{--max-wide:780px}.gallery-card .visual-figure{padding:10px}.timeline-card{padding:16px 14px 16px 34px}}
 
 </style>
+<style>@media(max-width:760px){.table-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main table{max-width:100%}}</style>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -633,7 +635,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
       </div>
       <p>해법은 <span class="hl blue">위험에 비례한 마찰(risk-proportionate friction)</span>이다. 모든 행동을 같은 무게로 다루지 말고, 가역성과 영향 범위로 분류해 멈출 곳에서만 멈춘다. 아래는 그 분류의 한 예다.</p>
       <div class="tbl">
-        <table>
+        <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
           <caption>행동의 위험 등급과 권한 처리 방식</caption>
           <thead>
             <tr><th scope="col">등급</th><th scope="col">예시 행동</th><th scope="col">가역성</th><th scope="col">권장 UX 처리</th></tr>
@@ -645,7 +647,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
             <tr><td>비가역</td><td>결제, 외부 발송, 영구 삭제, 권한 부여</td><td>되돌릴 수 없음</td><td>실행 전 확인 게이트 + 요약 표시</td></tr>
             <tr><td>고위험·고영향</td><td>대량 삭제, 자금 이체, 프로덕션 배포</td><td>비가역 + 광범위</td><td>휴먼인더루프 필수 + 명시적 재입력</td></tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
       <p>핵심은 확인 게이트를 &lsquo;개수&rsquo;가 아니라 &lsquo;배치&rsquo;의 문제로 보는 것이다. 게이트가 적을수록 좋은 게 아니라, <span class="hl pink">정확히 비가역의 순간에만 떠야</span> 사용자가 그 경고를 진지하게 받아들인다. 그리고 권한은 시작이 아니라 필요한 순간에, 그 작업의 맥락과 함께 요청하는 것(just-in-time consent)이 동의의 질을 높인다.</p>
       <div class="prompt-box">

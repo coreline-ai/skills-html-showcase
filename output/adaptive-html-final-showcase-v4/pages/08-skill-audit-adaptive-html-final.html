@@ -87,6 +87,7 @@ a:hover{color:var(--accent)}
 .page,.wrap{width:min(var(--max-reading),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
 .kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
 h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
@@ -521,6 +522,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
 @media(max-width:760px){.source-list,.page-list,.audit-row,.gallery-grid{grid-template-columns:1fr}.visual-demo{--max-wide:780px}.gallery-card .visual-figure{padding:10px}.timeline-card{padding:16px 14px 16px 34px}}
 
 </style>
+<style>@media(max-width:760px){.table-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main table{max-width:100%}}</style>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -649,7 +651,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
     <p class="h2-sub">SKILL.md와 패키지 메타데이터를 skill-audit-system.md의 12개 기준에 매핑한 audit-table</p>
 
     <div class="tbl mobile-card-table">
-      <table>
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
         <caption>섹션·기준별 진단 표 (근거: SKILL.md 본문, manifest.json, CHANGELOG.md)</caption>
         <thead>
           <tr><th scope="col">감사 기준</th><th scope="col">근거 위치</th><th scope="col">상태</th><th scope="col">진단</th></tr>
@@ -728,7 +730,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
             <td data-label="진단">CSS 5계층 + base/layout 골격 + references + scripts + schemas가 역할별로 분리. 관심사 분리 명확.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
     <p class="caption">표 읽는 법: "양호"는 근거 문서에서 해당 기준이 명시적으로 충족됨을, "보완 권장"은 원칙은 있으나 강제 장치가 약함을 뜻한다. 12개 기준 중 11개 양호, 1개(실패 대응) 보완 권장.</p>
@@ -736,7 +738,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
     <h3>3-1. v4.1.0 패치 사실 확인</h3>
     <p>CHANGELOG.md 기준으로 v4.1.0의 핵심 5개 패치를 사실 검증했다.</p>
     <div class="tbl mobile-card-table">
-      <table>
+      <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
         <caption>v4.1.0 패치 항목별 사실 확인 (근거: CHANGELOG.md)</caption>
         <thead><tr><th scope="col">패치</th><th scope="col">CHANGELOG 근거</th><th scope="col">감사 확인</th></tr></thead>
         <tbody>
@@ -746,7 +748,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid v
           <tr><td data-label="패치">스키마 보강</td><td data-label="CHANGELOG 근거">L7/L8: blog-meta.schema.json 11필드 정합, quality-report.schema.json 루브릭 구조(0~5+total+verdict+gates)로 확장</td><td data-label="감사 확인">확인됨. manifest schemas 3종 등재.</td></tr>
           <tr><td data-label="패치">CSS 차집합 0</td><td data-label="CHANGELOG 근거">M2: 레이아웃이 쓰던 미정의 클래스 39개를 layouts.css에 전부 정의. 차집합 0</td><td data-label="감사 확인">확인됨. "미정의 CSS 클래스 0"로 검증 그룹에 기록.</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
     <p>주의: 위 표의 "확인됨"은 <strong>근거 문서(CHANGELOG/manifest/SKILL.md) 내 기술과의 일치</strong>를 뜻하며, 실제 파일 단위 재검증(예: recipes 디렉터리의 실파일 13개 존재, layouts.css의 39개 정의 라인)은 패키지 전수 점검으로 별도 확인하는 것이 안전하다. 또한 manifest의 현재 버전은 <span class="hl blue">v4.2.0</span>(Visual Template System 추가)이며, 본 리포트가 감사 범위로 지정한 v4.1.0 패치 항목들은 그 직전 릴리스에서 이미 반영된 상태다.</p>
   </section>
