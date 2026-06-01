@@ -46,6 +46,14 @@ SVG로 그리던 본문 삽입 다이어그램을 순수 HTML+CSS 뷰 템플릿(
 - `assets/base.html`: `{{BODY_ICONS_CSS}}` 슬롯 추가(visual-html 뒤). `manifest.json`: assets + `body_icons` 메타(count 32).
 - `scripts/validate_output.py`: body-icon 게이트(아이콘 사용 시 body-icons.css 인라인·`aria-hidden` 강제).
 
+### wg-03 PR diff 가시성·정렬 수정 + md-excerpt 패턴 (2026-06-01)
+skill_audit "좋은 출력은 어떻게 생겼나"(주석 달린 PR) 섹션의 두 결함과 SKILL.md 발췌 표기를 보강했다.
+- `assets/widgets.css` wg-03: diff 코드가 안 보이던 버그 수정 — `<code class="wg-03-code">`가 코어 `code{background:#ececea}`(밝음)에 덮여 밝은 텍스트가 밝은 배경에 묻혔다. `.wg-03-diff code,.wg-03-code{background:none;border:0;border-radius:0;font-size:inherit}` 리셋으로 다크 diff 패널에 코드가 보이게. (wg-01/13/14는 `.wg-XX-code`에 다크 배경을 직접 줘서 무관.)
+- `assets/widgets.css` wg-03 정렬: `.wg-03-grid{align-items:stretch}` + `.wg-03-diff{align-self:stretch}`로 diff(좌)·리뷰 노트(우)를 **같은 높이로 통일**(이전 `align-items:start`로 좌측이 짧아 우측과 틈 발생).
+- `assets/editorial-patterns.css` + `editorial-pattern-templates/07-md-excerpt.html`: **md-excerpt 패턴** 추가(7번째) — SKILL.md/마크다운/코드 발췌를 `.prompt-box` 텍스트가 아니라 다크 코드 블럭(`pre.code`)에 마크다운 소스 그대로 표기.
+- `references/skill-audit-system.md`·`editorial-pattern-system.md`: 발췌=코드블럭, 주석 PR=wg-03 다크 diff·stretch 정렬 규칙 명문화. `manifest.json` editorial_patterns count 6→7.
+- 적용: showcase-v5 page 08 — wg-03 diff 코드 가시·좌우 475=475 균등, SKILL.md 발췌 3종 코드블럭화(콘텐츠 무변경). validate OK·무 JS 0.
+
 ### 본문 구조 패턴 6종 편입 (2026-06-01)
 첨부 HTML의 좋은 구조만 추려 기존 13모드 안에서 선택 삽입하는 **작은 본문 구조 패턴 라이브러리**로 편입했다(새 모드 미추가). 외부/동작 JS 0, 스킬 토큰 + body icon 활용, 프로파일 무관.
 - `assets/editorial-patterns.css` — 6 패턴 CSS: `chron-list`(증류 연대기)·`source-preserve`(원문 보존 details)·`core-insight`(핵심 명제 callout)·`conn-grid`(연결 분석 카드)·`ba`(Before/After 윤문)·`impact-grid`(콘텐츠 전환). 기존 클래스와 충돌 0.

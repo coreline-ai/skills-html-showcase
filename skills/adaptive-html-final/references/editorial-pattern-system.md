@@ -14,6 +14,7 @@
 | `core-insight` | 핵심 아이디어 callout | `idea` | article_html · blog_writer · expert_html · landing_brief_html |
 | `connection` | 연결 분석 카드 | `connection` | reference_html · skill_audit · article_html · comparison_html |
 | `before-after` | Before / After 윤문 | `edit` | platform_blog · blog_writer · skill_audit · comparison_html |
+| `md-excerpt` | SKILL.md/마크다운/코드 원문 발췌 | `source` | skill_audit · reference_html · article_html |
 | `impact-grid` | 콘텐츠 전환 impact grid | `impact` | platform_blog · landing_brief_html · seo_dashboard · checklist_playbook |
 
 ## 삽입 규칙
@@ -26,3 +27,16 @@
 ## 적용 갤러리
 
 `output/adaptive-html-final-editorial-pattern-demo-v1/index.html` (6 패턴 도입 데모).
+
+## md-excerpt (SKILL.md/코드 발췌)
+
+SKILL.md·마크다운·코드 원문 발췌는 `.prompt-box`(텍스트 인용)가 아니라 **코드 블럭으로 표기**해 실제 마크다운 소스처럼 보이게 한다:
+
+```html
+<figure class="md-excerpt">
+  <figcaption class="case-label">개선본 발췌 · SKILL.md</figcaption>
+  <pre class="code"><code>name: ...\n## TRIGGER\n- ...</code></pre>
+</figure>
+```
+
+`pre.code`(다크 코드 블럭)에 마크다운 소스를 그대로 넣고, `<br>`/문단이 아니라 실제 줄바꿈으로 작성한다. `##`·`-`·`1.`·`name:` 등 마크다운 문법이 소스로 드러나야 한다.
