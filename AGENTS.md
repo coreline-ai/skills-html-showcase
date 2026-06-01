@@ -44,17 +44,17 @@
 | Mode | 트리거(요약) | layout 클래스 | layout 파일 | 1순위 vt-템플릿 (이하 후순위) | 권장 wg-위젯 |
 |---|---|---|---|---|---|
 | `beginner_html` | 초보자, 쉽게, 비유로, 입문 | `.layout-beginner` | `beginner-learning.html` | **concept-explainer** → hero-map → checklist-flow | wg-10, wg-13, wg-15 |
-| `expert_html` | 전문가, 리포트, 진단, 아키텍처, 리스크 | `.layout-expert` | `expert-report.html` | **risk-matrix** → raci → quality-gate → implementation-plan | wg-03, wg-04, wg-11, wg-12, wg-16, wg-17 |
+| `expert_html` | 전문가, 리포트, 진단, 아키텍처, 리스크 | `.layout-expert` | `expert-report.html` | **risk-matrix** → raci → quality-gate → implementation-plan → soft-workflow-map | wg-03, wg-04, wg-11, wg-12, wg-16, wg-17 |
 | `article_html` | 공개 글, 아티클, 기사, GitHub Pages | `.layout-article` | `magazine-article.html` | **decision-tree** → comparison-cards → concept-explainer | wg-02, wg-04, wg-07, wg-09, wg-10, wg-13, wg-14 |
-| `education_html` | 교육, 강의, 온보딩, 실습, 퀴즈 | `.layout-education` | `course-module.html` | **timeline** → checklist-flow → concept-explainer | wg-06, wg-07, wg-08, wg-13, wg-14, wg-15, wg-20 |
+| `education_html` | 교육, 강의, 온보딩, 실습, 퀴즈 | `.layout-education` | `course-module.html` | **timeline** → checklist-flow → concept-explainer → soft-workflow-map | wg-06, wg-07, wg-08, wg-13, wg-14, wg-15, wg-20 |
 | `blog_writer` | 블로그 글, 포스팅, 경험담, 내 생각 | `.layout-blog` | `personal-blog-essay.html` | **timeline** → weekly-status → comparison-cards | wg-17 |
 | `seo_dashboard` | SEO, 제목, 메타, 태그, 검색 의도 | `.layout-seo` | `seo-dashboard.html` | **card-grid** → comparison-cards → prompt-tuner | wg-11 |
 | `platform_blog` | 티스토리, 벨로그, 네이버, 워드프레스, 플랫폼별 | `.layout-platform` | `platform-adaptation.html` | **card-grid** → comparison-cards → pr-writeup | wg-02 |
-| `skill_audit` | 스킬 분석, SKILL.md 개선, .skill 통합, 한 줄 분석 | `.layout-skill-audit` | `skill-audit-report.html` | **quality-gate** → file-tour → prompt-tuner → implementation-plan | wg-03, wg-11, wg-17 |
+| `skill_audit` | 스킬 분석, SKILL.md 개선, .skill 통합, 한 줄 분석 | `.layout-skill-audit` | `skill-audit-report.html` | **quality-gate** → file-tour → prompt-tuner → implementation-plan → soft-workflow-map | wg-03, wg-11, wg-17 |
 | `reference_html` | 레퍼런스, 매뉴얼, API 문서 | `.layout-reference` | `reference-manual.html` | **file-tour** → flowchart → card-grid | wg-04, wg-05, wg-06, wg-14, wg-19, wg-20 |
 | `comparison_html` | 비교, 장단점, 선택 기준 | `.layout-comparison` | `comparison-matrix.html` | **comparison-cards** → decision-tree → risk-matrix | wg-01, wg-02 |
 | `case_study_html` | 사례 연구, 회고, 프로젝트 기록 | `.layout-case` | `case-study.html` | **incident-summary** → timeline → process-swimlane | wg-12 |
-| `landing_brief_html` | 소개 페이지, 랜딩, 요약 페이지 | `.layout-landing` | `landing-brief.html` | **hero-map** → card-grid → feature-flag | wg-02, wg-05, wg-08, wg-09, wg-16 |
+| `landing_brief_html` | 소개 페이지, 랜딩, 요약 페이지 | `.layout-landing` | `landing-brief.html` | **hero-map** → card-grid → feature-flag → soft-workflow-map | wg-02, wg-05, wg-08, wg-09, wg-16 |
 | `checklist_playbook` | 체크리스트, 운영 절차, 플레이북 | `.layout-checklist` | `checklist-playbook.html` | **checklist-flow** → quality-gate → process-swimlane → implementation-plan → triage-board | wg-11, wg-13, wg-16, wg-18, wg-19 |
 
 - layout 파일 위치: `skills/adaptive-html-final/assets/layouts/<layout 파일>`
@@ -82,6 +82,8 @@
    | 5 | `visual-html.css` | `{{VISUAL_HTML_CSS}}` | **diagram·auto** 프로파일만(widget에선 슬롯 빈 값). 해시 대상 아님 |
    | 5.5 | `body-icons.css` | `{{BODY_ICONS_CSS}}` | 본문 아이콘(`bi-`) 사용 시. **프로파일 무관**(장식). 해시 대상 아님 |
    | 5.6 | `editorial-patterns.css` | `{{EDITORIAL_PATTERNS_CSS}}` | 본문 패턴(chronology·source-preserve·core-insight·connection·before-after·impact-grid) 사용 시. **프로파일 무관**. 해시 대상 아님 |
+   | 5.7 | `shape-visuals.css` | `{{SHAPE_VISUALS_CSS}}` | soft-shape 도형(`.shape-figure`/`.shape-img`, `assets/shape-svgs/`) 사용 시. **프로파일 무관**(장식 앵커). 해시 대상 아님 |
+   | 5.8 | `workflow-visuals.css` | `{{WORKFLOW_VISUALS_CSS}}` | soft 워크플로우 도판(`.workflow-figure`/`.workflow-img`, `assets/workflow-svgs/` 10종) 사용 시. **프로파일 무관**(대표 도판). 해시 대상 아님 |
    | 6 | `layouts.css` | `{{LAYOUTS_CSS}}` | **코어 해시 대상** |
    | 7 | `print.css` | `{{PRINT_CSS}}` | **코어 해시 대상** |
 
@@ -116,7 +118,7 @@
 1. **외부/동작 JS 0.** `<script type="application/ld+json">`(JSON-LD)만 허용. 그 외 모든 `<script>`, 외부 JS, `draggable=`, `contenteditable=` 금지.
 2. **두 위젯 라이브러리만 존재.**
    - (1) CSS 뷰 위젯 `wg-01`~`wg-20`: `assets/widgets.css` + `assets/widget-templates/NN-*.html` (인터랙션·보강용).
-   - (2) SVG→HTML 템플릿 `vt-` 20종: `assets/visual-html.css` + `assets/visual-html-templates/01..20.html` (본문 삽입 다이어그램).
+   - (2) SVG→HTML 템플릿 `vt-` 21종: `assets/visual-html.css` + `assets/visual-html-templates/01..21.html` (본문 삽입 다이어그램).
 3. **네임스페이스 고정.** 위젯은 `wg-NN-` 접두사만, 비주얼 템플릿은 `.vt-*` 접두사만 사용. 충돌·누수 0.
 4. **인터랙션 한정.** `<details>` / `:checked` / `:target` / CSS 애니메이션만. JS 필요 위젯(18 triage, 20 prompt-tuner)은 무 JS 근사로 삽입.
 5. **13모드 라우터 고정.** §3 결정표 외 모드를 만들지 않는다.
@@ -138,7 +140,7 @@ python3 /Users/hwanchoi/project_202605/skills-html-showcase/skills/adaptive-html
 
 - 마지막 줄이 `OK`가 아니면(`FAILED`/`ISSUE`) 수정 후 재실행한다.
 - JSON 상세가 필요하면 `--json`을 추가한다.
-- **골든(레퍼런스) 출력:** `output/adaptive-html-final-showcase-v6/`는 위 검증을 통과하는 정답 예시다(13모드 × vt-템플릿 20종, `sources/css-integrity.json` 포함). 새 출력의 구조·`sources/` 구성·통과 여부를 이 폴더와 대조하라.
+- **골든(레퍼런스) 출력:** `output/adaptive-html-final-showcase-v6/`는 위 검증을 통과하는 정답 예시다(v6 동결 시점 기준 13모드 × vt-템플릿 20종 적용; 이후 추가된 21-soft-workflow-map은 후순위라 v6 미사용, `sources/css-integrity.json` 포함). 새 출력의 구조·`sources/` 구성·통과 여부를 이 폴더와 대조하라.
 
 **무 JS grep (불변식 1 보조 확인)** — JSON-LD 외 `<script>`가 0이어야 한다.
 
@@ -176,14 +178,14 @@ grep -rniE 'draggable=|contenteditable=' <output_dir>/*.html && echo "FORBIDDEN 
 | 스킬 감사 기준 | `references/skill-audit-system.md` |
 | 평가 루브릭 / 최종 검수 | `references/eval-rubric.md`, `references/quality-gates.md` |
 | **SVG→HTML 본문 템플릿(vt-) 선택·삽입·매핑(정본)** | `references/visual-html-system.md` |
-| SVG 인포그래픽(8000×6000, hero/별첨/다운로드 전용) | `references/visual-template-system.md` |
+| SVG 인포그래픽(8000×6000, hero/별첨/다운로드 전용) + soft-shape 도형 36종(본문 시작부 보조, `assets/shape-svgs/`) + soft 워크플로우 도판 10종(대표 도판/랜딩, `assets/workflow-svgs/`) | `references/visual-template-system.md` |
 | 뷰 위젯(wg-) 선택·삽입·접근성 | `references/widget-system.md` |
 | 본문 아이콘(bi-, 32종) 선택·삽입·모드별 추천 | `references/body-icon-system.md` |
 | 본문 구조 패턴(6종) 선택·삽입·모드별 추천 | `references/editorial-pattern-system.md` |
 
 ### 8.2 vt-템플릿 인덱스 (`assets/visual-html-templates/`) — 캐노니컬 이름 단일 출처
 
-`01-hero-map` · `02-decision-tree` · `03-risk-matrix` · `04-timeline` · `05-checklist-flow` · `06-quality-gate` · `07-card-grid` · `08-raci` · `09-file-tour` · `10-flowchart` · `11-weekly-status` · `12-incident-summary` · `13-comparison-cards` · `14-process-swimlane` · `15-concept-explainer` · `16-implementation-plan` · `17-pr-writeup` · `18-triage-board` · `19-feature-flag` · `20-prompt-tuner`
+`01-hero-map` · `02-decision-tree` · `03-risk-matrix` · `04-timeline` · `05-checklist-flow` · `06-quality-gate` · `07-card-grid` · `08-raci` · `09-file-tour` · `10-flowchart` · `11-weekly-status` · `12-incident-summary` · `13-comparison-cards` · `14-process-swimlane` · `15-concept-explainer` · `16-implementation-plan` · `17-pr-writeup` · `18-triage-board` · `19-feature-flag` · `20-prompt-tuner` · `21-soft-workflow-map`
 (CSS: `assets/visual-html.css`, 네임스페이스 `.vt-*`)
 
 ### 8.3 wg-위젯 인덱스 (`assets/widget-templates/`)

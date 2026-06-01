@@ -103,3 +103,15 @@
 - 모바일에서 4열 이상 text-heavy table은 `.mobile-card-table` 또는 동등한 카드 변환 패턴을 우선한다.
 - case-study timeline은 하나의 긴 카드 안에 모든 사건을 넣지 않는다. 각 사건은 개별 step/card로 구분되어야 한다.
 - 자동 overflow 메트릭은 `documentElement.scrollWidth > clientWidth`를 1차 실패로 보고, `.skip:not(:focus)` clipped는 접근성 패턴으로 allowlist 처리한다.
+
+
+## v4.5.0 Regression Gate (실측 수정 잠금)
+
+실제 쇼케이스에서 발견·수정한 결함을 재발 방지용으로 고정한다. `scripts/validate_output.py`의 R1–R5 자동 게이트와 1:1 대응하므로, 빌드 후 이 항목들을 함께 점검한다.
+
+- **R1 — platform-grid 래퍼 오용 금지.** `class="platform-grid"`인 `<div>`는 `.platform-card`를 **직접** 담는 카드 그리드다. 그 안에 `<h2>`, `.h2-sub`, `.card-grid`를 다시 중첩하면 `:not(section)` 2컬럼 grid 규칙에 걸려 레이아웃이 깨진다. 섹션 래퍼가 필요하면 `<section id="...">`를 쓰고 `platform-grid` 클래스는 제거한다. (자동: `platform_grid_wrapper_misuse`)
+- **R2 — wg-03 diff 코드 가시성.** wg-03(Annotated PR) diff 코드는 다크 패널 위 밝은 텍스트여야 한다. 코어 `code{background:#ececea}`(밝은 배경)가 덮으면 텍스트가 안 보인다. `.wg-03-diff code,.wg-03-code{background:none}` 리셋을 유지한다. (자동: `wg03_diff_code_bg_not_reset` — wg-03 **마크업** 사용 시에만 검사)
+- **R3 — wg-03 좌우 컬럼 높이 통일.** diff(좌)/리뷰 노트(우)는 `.wg-03-grid{align-items:stretch}`로 같은 높이여야 한다. `start`면 짧은 쪽 아래에 틈이 생겨 뷰가 어긋난다. (자동: `wg03_grid_not_stretch`)
+- **R4 — 표 모바일 안전.** components.css `table{min-width:420px}` 때문에 모든 `<table>`은 `.table-scroll`(overflow-x:auto) 래핑 또는 `.mobile-card-table`/`.final-matrix` 카드 변환으로 모바일 가로 넘침을 막아야 한다. (자동: `table_no_mobile_safe_wrapper`)
+- **R5 — 와이드 리포트 본문 폭 상한.** `.page-wide`의 분석 폭 레이아웃(expert/compare/seo/platform/landing/case/checklist/reference/audit/skill-audit)은 본문 `p/ul/ol`을 60rem로 넓힌다(`.page-wide.layout-*>section>p{max-width:60rem}`). 기본 46rem만 상속하면 와이드 섹션에서 본문이 1/3만 차서 깨져 보인다. (자동: `wide_layout_prose_cap_missing`)
+- **md-excerpt — SKILL.md/마크다운/코드 발췌 표기.** "개선본 발췌 · SKILL.md" 같은 원문/마크다운 발췌는 `.prompt-box`의 `<p>`+`<br>` 텍스트가 아니라 `md-excerpt` 패턴(`<figure class="md-excerpt"><figcaption class="case-label">…</figcaption><pre class="code"><code>…</code></pre></figure>`)으로, `##`·`-`·`name:` 같은 마크다운 문법이 실제 소스처럼 코드 블럭에 보이게 한다. 실제 줄바꿈으로 작성한다. (skill-audit-system.md "발췌·예시 출력 표기 규칙" 참조)

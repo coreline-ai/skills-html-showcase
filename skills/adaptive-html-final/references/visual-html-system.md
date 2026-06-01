@@ -1,6 +1,6 @@
 # Visual HTML System
 
-`adaptive-html-final`의 두 번째 위젯 라이브러리다. 첫 번째인 **CSS 뷰 위젯**(`wg-01`~`20`, `assets/widgets.css`, `references/widget-system.md`)이 인터랙션 중심의 보조 뷰라면, 이 **SVG→HTML 템플릿**(`vt-` 20종)은 종래 대형 SVG 인포그래픽을 대체하는 **본문 삽입형 다이어그램**이다. 두 라이브러리는 역할이 다르며 어느 쪽도 다른 쪽을 대체하지 않는다.
+`adaptive-html-final`의 두 번째 위젯 라이브러리다. 첫 번째인 **CSS 뷰 위젯**(`wg-01`~`20`, `assets/widgets.css`, `references/widget-system.md`)이 인터랙션 중심의 보조 뷰라면, 이 **SVG→HTML 템플릿**(`vt-` 21종)은 종래 대형 SVG 인포그래픽을 대체하는 **본문 삽입형 다이어그램**이다. 두 라이브러리는 역할이 다르며 어느 쪽도 다른 쪽을 대체하지 않는다.
 
 핵심 철학은 스킬 전체와 동일하게 **외부/동작 JS 0**이다. 본문 삽입형 다이어그램에는 `<script>`가 한 줄도 들어가지 않는다. 검색·복사·번역·스크린리더가 그대로 통하고, 모바일에서 자연스럽게 줄바꿈되며, 문서의 한 부분으로 읽힌다(허용되는 유일한 스크립트는 Article/Blog/SEO 모드의 `application/ld+json` JSON-LD 메타데이터뿐이며, 이는 동작 코드가 아니다).
 
@@ -16,7 +16,7 @@
 
 `vt-` 템플릿은 이 모든 것을 실제 HTML 텍스트로 해결한다. 절차·비교·정책·리스크·학습 구조처럼 **본문과 같은 호흡으로 읽혀야 하는 다이어그램**은 SVG가 아니라 이 템플릿으로 만든다.
 
-## 2. 20종 카탈로그
+## 2. 21종 카탈로그
 
 | no | slug | 이름 | 용도 / 언제 쓰나 | 핵심 클래스 네임스페이스 |
 |---|---|---|---|---|
@@ -40,6 +40,7 @@
 | 18 | triage-board | Triage Board | 트리아지/운영 칸반(상태 컬럼) | `.board` `.board-col` `.ticket`(`.active`) |
 | 19 | feature-flag | Feature Flag | 배포/피처 플래그 토글 현황 | `.flag-list` `.flag` `.switch`(`.off`) |
 | 20 | prompt-tuner | Prompt Tuner | 프롬프트 템플릿·점수 튜닝 뷰 | `.tuner` `.tune-box` `.score`(`span.on`) |
+| 21 | soft-workflow-map | Soft Workflow Map | 입력 ∥ 중앙 대시보드 ∥ 결과로 수렴하는 AI/에이전트 프로세스 맵(소프트 카드뷰). `hero-map`이 단일 축이라면 이건 좌우 카드가 중앙 집계 패널로 수렴하는 3컬럼형 | `.wf-board` `.wf-map` `.wf-col` `.wf-card` `.wf-center` `.wf-metrics` `.wf-pipes` |
 
 > 공통 셸·요소 네임스페이스는 모든 템플릿이 공유한다: `.vt-shell` `.vt-frame` `.vt-demo` `.vt-kicker` `.vt-title` `.vt-text` `.vt-section-title` `.vt-num` `.vt-pill`(`.hot/.good/.watch`) `.vt-list` `.vt-two` `.vt-four` `.vt-stat` 등. 색 토큰은 `--vt-red/--vt-blue/--vt-green/--vt-gold`이며 모두 스킬 테마 토큰(`var(--accent)`, `var(--line)`, `var(--ink)` …) 위에서 파생된다. 카드별 강조색은 인라인 `style="--c:var(--vt-blue)"`로 바꾼다.
 
@@ -50,17 +51,17 @@
 | 모드 | 1순위 | 그 외 권장 |
 |---|---|---|
 | beginner_html | **concept-explainer** | hero-map, checklist-flow |
-| expert_html | **risk-matrix** | raci, quality-gate, implementation-plan |
+| expert_html | **risk-matrix** | raci, quality-gate, implementation-plan, soft-workflow-map |
 | article_html | **decision-tree** | comparison-cards, concept-explainer |
-| education_html | **timeline** | checklist-flow, concept-explainer |
+| education_html | **timeline** | checklist-flow, concept-explainer, soft-workflow-map |
 | blog_writer | **timeline** | weekly-status, comparison-cards |
 | seo_dashboard | **card-grid** | comparison-cards, prompt-tuner |
 | platform_blog | **card-grid** | comparison-cards, pr-writeup |
-| skill_audit | **quality-gate** | file-tour, prompt-tuner, implementation-plan |
+| skill_audit | **quality-gate** | file-tour, prompt-tuner, implementation-plan, soft-workflow-map |
 | reference_html | **file-tour** | flowchart, card-grid |
 | comparison_html | **comparison-cards** | decision-tree, risk-matrix |
 | case_study_html | **incident-summary** | timeline, process-swimlane |
-| landing_brief_html | **hero-map** | card-grid, feature-flag |
+| landing_brief_html | **hero-map** | card-grid, feature-flag, soft-workflow-map |
 | checklist_playbook | **checklist-flow** | quality-gate, process-swimlane, implementation-plan, triage-board |
 
 ## 4. SVG vs HTML 선택 규칙
@@ -110,6 +111,7 @@
 - **외부/동작 JS 0 (불변식)**: `vt-` 템플릿에는 어떤 스크립트도 넣지 않는다. JSON-LD(`application/ld+json`)만 예외로 허용되며 이는 메타데이터이지 동작 코드가 아니다.
 - **색 외 단서 의무**: 상태/심각도를 색만으로 구분하지 않는다. `.rm-risk.high/.med/.low`, `.qg-card.warn/.block`, `.inc-card.impact/.cause/.action`, `.vt-pill.hot/.good/.watch`, `.switch.off` 등은 항상 텍스트 라벨을 함께 둔다(색맹 대응).
 - **시맨틱 마크업**: 카드는 `<article>`, 목록은 `<ul>/<li>`, 제목 계층(`h2/h3`)을 유지한다. 표형 템플릿(raci·risk-matrix)도 의미가 표면 `<table>`/`<caption>`을 우선한다.
+- **`role="img"`로 텍스트를 가두지 말 것 (vt-21 soft-workflow-map 핵심 규칙)**: 실제 본문 텍스트를 담은 컨테이너(`.wf-board`/`.wf-map`)에 `role="img"`+단일 `aria-label`을 걸면 스크린리더가 내부 카드 텍스트(`.wf-card`의 `<strong>`/`<p>`)와 지표(`.wf-metric`)를 **전부 prune**해 정보가 사라진다. 따라서 프레임에는 `role="img"`를 쓰지 않는다. 순수 장식 그래픽(`.wf-codewin`·`.wf-dash`·`.wf-pipes`·`.wf-bottom`·`.wf-icon`·`.wf-aistack`)에만 `aria-hidden="true"`를 부여하고, 카드·지표 텍스트는 일반 DOM으로 노출한다. 이미지 안에 작은 텍스트를 박제하지 말고 본문 정보는 HTML 텍스트로 둔다.
 - **링크 터치 타깃**: `.vt-nav a`, `.vt-source a` 등 링크는 `min-height` 44px 안팎을 보장한다(모바일 탭 영역).
 - **반응형 브레이크포인트 2단**:
   - `@media(max-width:920px)` — 멀티컬럼 그리드(hm-grid·dt-q·qg-grid·cmp·board·tuner 등)를 1컬럼으로, `decision-tree` 화살표는 가로→세로로, `flowchart` 화살표는 90도 회전, `swimlane`은 레인 라벨을 칩으로 전환.

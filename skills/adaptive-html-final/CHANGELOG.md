@@ -54,6 +54,41 @@ skill_audit "좋은 출력은 어떻게 생겼나"(주석 달린 PR) 섹션의 �
 - `references/skill-audit-system.md`·`editorial-pattern-system.md`: 발췌=코드블럭, 주석 PR=wg-03 다크 diff·stretch 정렬 규칙 명문화. `manifest.json` editorial_patterns count 6→7.
 - 적용: showcase-v5 page 08 — wg-03 diff 코드 가시·좌우 475=475 균등, SKILL.md 발췌 3종 코드블럭화(콘텐츠 무변경). validate OK·무 JS 0.
 
+### 자체 검증 회귀 게이트 강화 R1–R5 (2026-06-01)
+지금까지 실측 수정한 결함이 다시 발생하지 않도록 `scripts/validate_output.py`에 정적 회귀 게이트 5종을 추가하고, `references/quality-gates.md`에 "v4.5.0 Regression Gate"로 명문화했다.
+- **R1 `platform_grid_wrapper_misuse`** — `div.platform-grid`에 `<h2>`/`.card-grid`/`.h2-sub`를 중첩하면 검출(카드 직접 보유만 허용, 섹션 래퍼는 `<section>` 사용).
+- **R2 `wg03_diff_code_bg_not_reset`** — wg-03 **마크업** 사용 시 `.wg-03-diff code{background:none}` 리셋 누락 검출(다크 diff 코드 가시성).
+- **R3 `wg03_grid_not_stretch`** — `.wg-03-grid{align-items:stretch}` 누락 검출(좌우 컬럼 높이 통일).
+- **R4 `table_no_mobile_safe_wrapper`** — `.table-scroll`/카드 변환 없는 `<table>` 검출(모바일 가로 넘침 방지).
+- **R5 `wide_layout_prose_cap_missing`** — `.page-wide` 분석 폭 레이아웃에 본문 60rem 상한 override 누락 검출(와이드 섹션 본문이 1/3만 차는 문제).
+- 검증: R2/R3은 인라인 widgets.css의 CSS 텍스트가 아니라 **wg-03 마크업 사용**에서만 발동하도록 정밀화(widget/auto 프로파일 오발동 0). 3 프로파일 골든(widget/auto/diagram) 전부 `OK` 유지, 픽스처 10/10 통과.
+
+### vt-21 soft-workflow-map 편입 (8816, 전문가 검토 반영, 2026-06-01)
+크림톤 "AI 카드뷰" 워크플로우 맵을 본문 삽입 HTML+CSS 다이어그램으로 vt- 라이브러리에 **vt-21**로 편입(20→21종). 아키텍처/IA + QA/접근성 2인 전문가 검토 후 진행.
+- `assets/visual-html-templates/21-soft-workflow-map.html` — `vt-shell`/`vt-frame` 셸 + `wf-` 접두사. 좌 3카드 ∥ 중앙 대시보드(코드창·미니대시·지표·파이프) ∥ 우 3카드 수렴형(기존 hero-map 단일 축과 구별).
+- **접근성 수정(전문가 지적 반영)**: 원본의 `role="img"`+단일 `aria-label`은 내부 카드/지표 텍스트 12블록을 스크린리더에서 prune하므로 **제거**. 텍스트는 일반 DOM 노출, 순수 장식(`wf-codewin`·`wf-dash`·`wf-pipes`·`wf-bottom`·`wf-icon`·`wf-aistack`)에만 `aria-hidden`. raster PNG 제외(SVG-first·자기완결).
+- `assets/visual-html.css`에 `.wf-*` 추가(스킬 토큰화, 코어 해시 비대상). 모바일 계약: `@820px` wf-map 1컬럼, `@520px` 지표 1컬럼·장식 connector 숨김.
+- 매핑: expert/education/skill_audit/landing_brief의 **후순위**(1순위 불변 → 골든 v6 회귀-0 보존). SKILL §0.6/§4.7·AGENTS §3/§8.2·`references/visual-html-system.md`(카탈로그 21·접근성 규칙) 반영.
+- 게이트: `soft_workflow_gate`(opt-in `wf-board`) — role=img 금지·장식 aria-hidden·raster 금지·모바일 접힘·CSS 인라인. 렌더 1280/390px overflow 0, 무 JS 0 확인.
+
+### Soft Shape 도형 36종 편입 (8817, 전문가 검토 반영, 2026-06-01)
+"본문 설명 시작부 보조 도형" 36종을 신규 무거운 라이브러리 대신 **visual-template-system(8000×6000 SVG)의 soft-shape 카탈로그**로 흡수(전문가 합의: 캔버스·`figure.visual-figure` 매체 동일 → 중복 최소화).
+- `assets/shape-svgs/*.svg` 36종(8000×6000 warm SVG, `<title>/<desc>` 접근성, 무 JS) + `assets/shape-catalog.json`(id/label/usage).
+- `assets/shape-visuals.css`(`.shape-figure`/`.shape-lead`/`.shape-grid`, 프로파일 무관 조건부) + `base.html` `{{SHAPE_VISUALS_CSS}}` 슬롯(editorial 뒤). 코어 해시 비대상.
+- 삽입 표준: `<figure class="shape-figure"><img class="shape-img" …8000×6000 alt="…"></figure>`(visual-figure 아님 — 앵커라 figcaption 선택). `alt`는 `shape_visual_gate`가, svg 존재는 `broken_local_ref`가 검사. 도형은 시각 앵커, 핵심 정보는 HTML 텍스트.
+- 경계: 글자 옆 장식=`bi-`(40×40), 본문 구조도=`vt-`(HTML), 시작부 프리뷰=soft-shape(8000×6000 img) — 상호 비대체.
+- `references/visual-template-system.md`(카탈로그 36·삽입 패턴·모드별 추천)·SKILL §4.5/자산맵·AGENTS §8.1·`manifest.json` `shape_visuals` 메타 반영.
+- 게이트: `shape_visual_gate`(opt-in `shape-figure/img/lead/grid`) — CSS 인라인·빈 alt 금지·네임스페이스 누수. 두 편입 모두 신규 게이트 opt-in이라 3 프로파일 골든 `OK` 바이트 불변(회귀 0). 버전은 4.5.0 유지(frozen 골든 v6의 sources 버전 보존 — bump 시 `source_version_mismatch`).
+
+### Soft Workflow 도판 10종 편입 (8819, 전문가 검토 반영, 2026-06-01)
+8817·8816의 후속 — soft 스타일 8000×6000 SVG 워크플로우 도판 10종을 visual-template-system에 흡수(아키텍처/IA + QA/접근성 2인 검토). soft-shape(작은 앵커)와 달리 "본문 대표 도판/섹션 상단 구조도/랜딩 카드"용 **와이드**.
+- `assets/workflow-svgs/01..10.svg` — Linear Pipeline·Radial Agent Hub·Decision Router·Layered Stack·Quality Funnel·Knowledge Graph·Agent Swarm·Timeline Delivery·Comparison Board·Governance Operating Model. 8000×6000, `<title>/<desc>` 접근성, 무 JS, warm cream. + `assets/workflow-catalog.json`(id/label/usage 정규화).
+- `assets/workflow-visuals.css` — `.workflow-figure`(와이드 ~720px, `object-fit:contain`, 모바일 고정 height 금지)·`.workflow-grid`(2열→1열). `{{WORKFLOW_VISUALS_CSS}}` 슬롯(shape 뒤), 프로파일 무관·코어 해시 비대상.
+- **네임스페이스 `workflow-` 신설**(전문가 지적: `wf-`는 vt-21 `soft_workflow_gate`가 점유 → 금지, `shape-` 재사용은 420px라 도판 뭉갬 → 별도). cross_leak(`vt-[a-z]`/`wg-\d2`) 충돌 0.
+- 삽입: `figure.workflow-figure`(visual-figure 아님 → figcaption 권장·강제 아님) + `img.workflow-img`(alt 필수). **경계**: bi-(40×40) < shape-(420px 앵커) < workflow-(720px 대표 도판) < vt-(검색가능 HTML). workflow 도판은 placeholder 노드라 vt- 대체 금지(독자가 본문에서 읽어야 할 절차/비교는 vt-).
+- 게이트 `workflow_visual_gate`(opt-in `workflow-figure/img/grid`) — CSS 인라인·빈 alt 금지·네임스페이스 누수·**로컬 SVG 8000×6000 해상도 계약**. 또 QA 지적대로 **`<style>` 제거 후 body만 스캔**해 CSS 주석 속 예시 `<img>` 오발동을 구조적 차단(기존 `shape_visual_gate`도 동일 백포트).
+- 검증: 3 프로파일 골든(widget/auto/diagram) `OK` 바이트 불변, workflow 픽스처 4/4 + CSS주석 오발동 회귀 통과, 실제 도판 페이지 렌더 1280/390px overflow 0·무 JS 0. version 4.5.0 유지.
+
 ### 본문 구조 패턴 6종 편입 (2026-06-01)
 첨부 HTML의 좋은 구조만 추려 기존 13모드 안에서 선택 삽입하는 **작은 본문 구조 패턴 라이브러리**로 편입했다(새 모드 미추가). 외부/동작 JS 0, 스킬 토큰 + body icon 활용, 프로파일 무관.
 - `assets/editorial-patterns.css` — 6 패턴 CSS: `chron-list`(증류 연대기)·`source-preserve`(원문 보존 details)·`core-insight`(핵심 명제 callout)·`conn-grid`(연결 분석 카드)·`ba`(Before/After 윤문)·`impact-grid`(콘텐츠 전환). 기존 클래스와 충돌 0.
