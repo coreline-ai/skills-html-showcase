@@ -337,6 +337,11 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
                 if 'aria-hidden' not in m.group(1).lower():
                     issues.append({'page': rel, 'type': 'body_icon_not_aria_hidden'})
                     break
+        # Editorial pattern gate: if a pattern block is used, its CSS must be inlined.
+        # Standalone-token match (lookbehind/lookahead exclude prefixed classes like wg-17-ba).
+        if re.search(r'class=["\'][^"\']*(?<![\w-])(?:chron-list|source-preserve|core-insight|conn-grid|impact-grid|ba|ba-col|ba-arrow|ba-label)(?![\w-])', text):
+            if not re.search(r'\.(?:chron-list|source-preserve|core-insight|conn-grid|impact-grid)\b', style):
+                issues.append({'page': rel, 'type': 'editorial_patterns_css_not_inlined'})
         for tag, ref in parser.local_refs:
             p = local_path(html, ref)
             if p is not None and not p.exists():
