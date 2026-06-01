@@ -102,10 +102,12 @@
 .wg-03-jump-link.wg-03-sev-critical{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink)}
 .wg-03-jump-link.wg-03-sev-warn{background:var(--hl-yellow);border-color:var(--term-border);color:var(--term-label-ink)}
 .wg-03-jump-link.wg-03-sev-info{background:var(--hl-blue);border-color:var(--analogy-border);color:var(--analogy-label-ink)}
-.wg-03-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--space-4);align-items:start}
-.wg-03-diff{background:var(--code);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs)}
+.wg-03-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--space-4);align-items:stretch}
+.wg-03-diff{background:var(--code);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs);align-self:stretch}
 .wg-03-row{display:flex;align-items:stretch;position:relative;line-height:1.7;border-left:3px solid transparent}
 .wg-03-ln{flex:0 0 auto;width:38px;text-align:right;padding:0 8px;color:#7c7c78;user-select:none;background:rgba(255,255,255,.04)}
+/* reset skill's generic code{} (light bg/padding/border) so the dark diff shows + code stays visible */
+.wg-03-diff code,.wg-03-code{background:none;border:0;border-radius:0;font-size:inherit}
 .wg-03-code{flex:1;padding:0 10px;white-space:pre;overflow-x:auto;color:#e2e2dc}
 .wg-03-ctx .wg-03-code{color:#bcbcb6}
 .wg-03-add{background:rgba(63,142,108,.18);border-left-color:var(--good-accent)}

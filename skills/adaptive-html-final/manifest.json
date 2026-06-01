@@ -16,8 +16,30 @@
     "assets/print.css",
     "assets/base.html"
   ],
-  "body_icons": {"css": "assets/body-icons.css", "data": "assets/body-icons.json", "count": 32, "namespace": "bi-", "decorative": true, "reference": "references/body-icon-system.md"},
-  "editorial_patterns": {"css": "assets/editorial-patterns.css", "templates": "assets/editorial-pattern-templates/", "count": 6, "patterns": ["chronology", "source-preserve", "core-insight", "connection", "before-after", "impact-grid"], "reference": "references/editorial-pattern-system.md", "note": "기존 13모드 내 선택 삽입 본문 구조 패턴, 프로파일 무관, 무 JS"},
+  "body_icons": {
+    "css": "assets/body-icons.css",
+    "data": "assets/body-icons.json",
+    "count": 32,
+    "namespace": "bi-",
+    "decorative": true,
+    "reference": "references/body-icon-system.md"
+  },
+  "editorial_patterns": {
+    "css": "assets/editorial-patterns.css",
+    "templates": "assets/editorial-pattern-templates/",
+    "count": 7,
+    "patterns": [
+      "chronology",
+      "source-preserve",
+      "core-insight",
+      "connection",
+      "before-after",
+      "impact-grid",
+      "md-excerpt"
+    ],
+    "reference": "references/editorial-pattern-system.md",
+    "note": "기존 13모드 내 선택 삽입 본문 구조 패턴, 프로파일 무관, 무 JS"
+  },
   "layouts": [
     "beginner-learning.html",
     "expert-report.html",
@@ -198,9 +220,48 @@
     "assets/visual-html-templates/20-prompt-tuner.html"
   ],
   "profiles": {
-    "widget": {"alias": "v5", "css": ["widgets.css"], "templates": "widget-templates/", "markup": "wg-", "steps": ["4.6"]},
-    "diagram": {"alias": "v6", "css": ["visual-html.css"], "templates": "visual-html-templates/", "markup": "vt-", "steps": ["4.7"]},
-    "auto": {"alias": null, "css": ["widgets.css", "visual-html.css"], "templates": ["widget-templates/", "visual-html-templates/"], "markup": ["vt-", "wg-"], "steps": ["4.6", "4.7"], "default": true}
+    "widget": {
+      "alias": "v5",
+      "css": [
+        "widgets.css"
+      ],
+      "templates": "widget-templates/",
+      "markup": "wg-",
+      "steps": [
+        "4.6"
+      ]
+    },
+    "diagram": {
+      "alias": "v6",
+      "css": [
+        "visual-html.css"
+      ],
+      "templates": "visual-html-templates/",
+      "markup": "vt-",
+      "steps": [
+        "4.7"
+      ]
+    },
+    "auto": {
+      "alias": null,
+      "css": [
+        "widgets.css",
+        "visual-html.css"
+      ],
+      "templates": [
+        "widget-templates/",
+        "visual-html-templates/"
+      ],
+      "markup": [
+        "vt-",
+        "wg-"
+      ],
+      "steps": [
+        "4.6",
+        "4.7"
+      ],
+      "default": true
+    }
   },
   "profile_selection": "인자 profile=widget|diagram|auto 또는 style=v5|v6 (trim→lowercase→정규화, profile= 우선, 무효=invalid_profile). 미지정 시: 비대화형(AGENTS.md 경유)=auto·질문금지, 대화형=1회 질문. 결정론은 인자 명시 경로 한정.",
   "scripts": [
