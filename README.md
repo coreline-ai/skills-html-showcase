@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="2752" height="1536" alt="만능 콘텐츠 요정 서비스 안내" src="https://github.com/user-attachments/assets/a957a277-d337-43c8-84b6-574a85f59ac2" />
+<img width="2752" height="1536" alt="완벽한 HTML 변환 파이프라인 안내" src="https://github.com/user-attachments/assets/aad48544-f667-438a-a28b-5c55f38a1909" />
 
 # 🎨 Adaptive HTML Final
 
