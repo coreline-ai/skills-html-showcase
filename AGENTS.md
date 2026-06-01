@@ -80,6 +80,7 @@
    | 3 | `visual-components.css` | `{{VISUAL_COMPONENTS_CSS}}` | **코어 해시 대상** |
    | 4 | `widgets.css` | `{{WIDGETS_CSS}}` | **widget·auto** 프로파일만(diagram에선 슬롯 빈 값). 해시 대상 아님 |
    | 5 | `visual-html.css` | `{{VISUAL_HTML_CSS}}` | **diagram·auto** 프로파일만(widget에선 슬롯 빈 값). 해시 대상 아님 |
+   | 5.5 | `body-icons.css` | `{{BODY_ICONS_CSS}}` | 본문 아이콘(`bi-`) 사용 시. **프로파일 무관**(장식). 해시 대상 아님 |
    | 6 | `layouts.css` | `{{LAYOUTS_CSS}}` | **코어 해시 대상** |
    | 7 | `print.css` | `{{PRINT_CSS}}` | **코어 해시 대상** |
 
@@ -176,6 +177,7 @@ grep -rniE 'draggable=|contenteditable=' <output_dir>/*.html && echo "FORBIDDEN 
 | **SVG→HTML 본문 템플릿(vt-) 선택·삽입·매핑(정본)** | `references/visual-html-system.md` |
 | SVG 인포그래픽(8000×6000, hero/별첨/다운로드 전용) | `references/visual-template-system.md` |
 | 뷰 위젯(wg-) 선택·삽입·접근성 | `references/widget-system.md` |
+| 본문 아이콘(bi-, 32종) 선택·삽입·모드별 추천 | `references/body-icon-system.md` |
 
 ### 8.2 vt-템플릿 인덱스 (`assets/visual-html-templates/`) — 캐노니컬 이름 단일 출처
 
@@ -189,4 +191,4 @@ grep -rniE 'draggable=|contenteditable=' <output_dir>/*.html && echo "FORBIDDEN 
 
 ### 8.4 base.html 슬롯 인덱스 (`assets/base.html`)
 
-`{{TITLE}}` · `{{DESCRIPTION}}` · `{{THEME_CSS}}` · `{{COMPONENTS_CSS}}` · `{{VISUAL_COMPONENTS_CSS}}` · `{{WIDGETS_CSS}}` · `{{VISUAL_HTML_CSS}}` · `{{LAYOUTS_CSS}}` · `{{PRINT_CSS}}` · `{{JSON_LD_BLOCK}}` · `{{BODY}}` · `{{FOOTER}}`
+`{{TITLE}}` · `{{DESCRIPTION}}` · `{{THEME_CSS}}` · `{{COMPONENTS_CSS}}` · `{{VISUAL_COMPONENTS_CSS}}` · `{{WIDGETS_CSS}}` · `{{VISUAL_HTML_CSS}}` · `{{BODY_ICONS_CSS}}` · `{{LAYOUTS_CSS}}` · `{{PRINT_CSS}}` · `{{JSON_LD_BLOCK}}` · `{{BODY}}` · `{{FOOTER}}`

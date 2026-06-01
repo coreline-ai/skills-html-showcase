@@ -328,6 +328,15 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         ph = sorted(set(re.findall(r'\{\{[A-Z_]+\}\}', text)))
         if ph:
             issues.append({'page': rel, 'type': 'unfilled_placeholder', 'found': ph})
+        # Body icon gate: if body icons (bi-/.body-icon) are used, their CSS must be inlined
+        # and the icon SVGs must be decorative (aria-hidden). No-JS is covered by external_script.
+        if re.search(r'class=["\'][^"\']*\bbody-icon\b', text) or re.search(r'class=["\']bi-(?:line|soft|fill|accent|dot)', text):
+            if '.body-icon' not in style:
+                issues.append({'page': rel, 'type': 'body_icons_css_not_inlined'})
+            for m in re.finditer(r'<span\b[^>]*class=["\'][^"\']*\bbody-icon\b[^>]*>\s*<svg\b([^>]*)>', text, re.I):
+                if 'aria-hidden' not in m.group(1).lower():
+                    issues.append({'page': rel, 'type': 'body_icon_not_aria_hidden'})
+                    break
         for tag, ref in parser.local_refs:
             p = local_path(html, ref)
             if p is not None and not p.exists():
