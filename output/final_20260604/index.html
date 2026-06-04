@@ -3004,6 +3004,7 @@ body h2,body h3,body h4{font-family:var(--report-sans)!important;font-weight:800
   .new-template-section .static-flow-step{min-height:0}
 }
 
+
 /* final_20260604 single template header/toc/footer polish */
 .imported-toc-card a.imported-toc-chip{
   text-decoration:none;
@@ -3110,9 +3111,189 @@ body h2,body h3,body h4{font-family:var(--report-sans)!important;font-weight:800
   }
 }
 
+
+
+/* ===== DARK THEME (default; toggle #theme-toggle -> original light) — no JS, :has() gated ===== */
+:root:not(:has(#theme-toggle:checked)){
+  --bg:#15161a;--ink:#ececE6;--ink-soft:#c3c3bc;--ink-mute:#9a9a92;--line:#34353d;--card:#1e2026;
+  --accent:#ff6b75;--accent-2:#ff909a;--accent-soft:#3a2228;--link-on-dark:#ffb6c0;--chip-ink:#a8a8a1;
+  --dark:#0d0e11;--dark-soft:#15171b;--code:#0e0f13;
+  --term-bg:#241f13;--term-border:#48402a;--term-ink:#ead9b2;--term-label-ink:#e3bd6a;--term-accent:#d7a657;
+  --analogy-bg:#15212e;--analogy-border:#2e4458;--analogy-ink:#bfd6e8;--analogy-label-ink:#9cc2de;--analogy-accent:#79a8c8;
+  --danger-bg:#291513;--danger-border:#5c2f2a;--danger-ink:#f2c6c0;--danger-label-ink:#ff8c87;--danger-accent:#e26d64;
+  --good-bg:#0f2419;--good-border:#244b37;--good-ink:#bfe2cf;--good-label-ink:#80d2a7;--good-accent:#60ba8b;
+  --hl-yellow:#6a5618;--hl-blue:#21405c;--hl-pink:#5a2530;
+  --pill-bg:#262830;--pill-bg-hover:#2f313a;--pill-border:#3b3d47;--pill-ink:#c3c3bc;
+  --pill-accent-bg:#2a2820;--pill-accent-border:#4a4332;--pill-accent-ink:#dccdb2;--pill-accent-dot:#b7a892;--hm-c:#b7a892;
+  --focus:#5a86ee;color-scheme:dark;
+}
+:root:not(:has(#theme-toggle:checked)) html,:root:not(:has(#theme-toggle:checked)) body{background:var(--bg);color:var(--ink)}
+:root:not(:has(#theme-toggle:checked)) :is(.access-check-card,
+.access-check-rule,
+.access-check-time,
+.access-release-ready .access-subnum,
+.access-release-ready li,
+.access-release-ready li::before,
+.ba-col.after,
+.ba-col.before,
+.body-icon-gallery-note span,
+.dark .widget-pv-body span,
+.dark .widget-pv-line,
+.edge-failure-note,
+.edge-flag,
+.edge-gov-badge,
+.edge-gov-badge.done,
+.edge-gov-demo,
+.edge-gov-flow,
+.edge-gov-level,
+.edge-status-track,
+.edge-ticket,
+.figure-wide,
+.final-body-icon-card,
+.final-hero-map,
+.final-hero-map-result,
+.final-softshape-card,
+.header .meta span,
+.header .meta span:hover,
+.hero-analogy,
+.imported-toc-card,
+.imported-toc-card a.imported-toc-chip:hover,
+.imported-toc-chip,
+.imported-toc-chip b,
+.kicker,
+.landing-action-btn,
+.landing-action-panel,
+.landing-action-proof,
+.lens-chip,
+.meta span,
+.new-template-card,
+.pattern-meta span,
+.pattern-meta span:hover,
+.pattern-nav a,
+.pattern-shell,
+.platform-branch-card,
+.platform-conversion-card,
+.platform-mini-tags span,
+.platform-title-prompt,
+.platform-transform-section .platform-lead-card,
+.prompt-box,
+.seo-result-card,
+.seo-rule-card,
+.seo-snippet-checks span,
+.seo-snippet-preview,
+.seo-variant,
+.shape-example-brief,
+.shape-example-output,
+.shape-example-quote,
+.shape-example-rule,
+.shape-example-visual,
+.shape-step-card,
+.shape-step-card.good,
+.soft .widget-pv-body span,
+.soft-shape-theme-note span,
+.soft-shape-use-card,
+.soft-shape-use-card.good,
+.static-flow-no,
+.static-flow-step,
+.status-pill,
+.tag,
+.template-addition-note span,
+.timeline-card,
+.token-rhythm-row,
+.token-rhythm-row code,
+.token-swatch,
+.top-shape-anchor,
+.variant-card,
+.variant-card.is-danger .variant-demo-btn,
+.variant-card.is-disabled,
+.variant-demo-btn,
+.visual-figure,
+.vt-adapt-demo,
+.vt-adapt-pill,
+.vt-adapt-result,
+.vt-check-item,
+.vt-concept-step,
+.vt-file-card,
+.vt-file-head,
+.vt-file-note,
+.vt-flag,
+.vt-flow-node,
+.vt-qg-final,
+.vt-raci .a,
+.vt-raci .h,
+.vt-raci .r,
+.vt-raci div,
+.vt-risk-cell,
+.vt-risk-head,
+.vt-soft-panel,
+.vt-soft-stat div,
+.vt-swimlane .h,
+.vt-swimlane .role,
+.vt-swimlane div,
+.vt-ticket,
+.vt-timeline li,
+.vt-toggle:after,
+.vt-track,
+.vt-triage-col,
+.widget-adapt-meta span,
+.widget-chip-row span,
+.widget-count,
+.widget-design-preview,
+.widget-diff-row .ln,
+.widget-feature-step,
+.widget-flow-detail,
+.widget-node,
+.widget-node span,
+.widget-pri.low,
+.widget-procon>div,
+.widget-review-note,
+.widget-soft-card,
+.widget-triage-col){background:var(--card)!important;border-color:var(--line)!important}
+:root:not(:has(#theme-toggle:checked)) :is(.final-softshape-card img,
+.shape-example-output img,
+.shape-step-card img,
+.top-shape-anchor img){background:#23252b!important}
+:root:not(:has(#theme-toggle:checked)) :is(.ba-col.before .ba-label,
+.conn-strength,
+.edge-flag,
+.edge-gov-badge,
+.edge-gov-level,
+.edge-ticket,
+.final-hero-map-card.map .final-hero-map-kicker,
+.hero-analogy,
+.imported-toc-chip b,
+.layout-seo .serp-url,
+.lens-chip,
+.pattern-meta span,
+.try h2,
+.try h3,
+.vt-adapt-pill,
+a::after,
+body,
+code){color:var(--ink)!important}
+:root:not(:has(#theme-toggle:checked)) :is(code,.code,.code-path,pre,pre code,.token-rhythm-row code,.widget-diff-row .ln){background:#0f1013!important;color:#e4e4dd!important;border-color:var(--line)!important}
+:root:not(:has(#theme-toggle:checked)) th,:root:not(:has(#theme-toggle:checked)) .table th{background:#262830!important;color:var(--ink)}
+:root:not(:has(#theme-toggle:checked)) table,:root:not(:has(#theme-toggle:checked)) .table,:root:not(:has(#theme-toggle:checked)) td{background:var(--card);border-color:var(--line)}
+:root:not(:has(#theme-toggle:checked)) .vt-toggle:after{background:#cfd2da!important}
+:root:not(:has(#theme-toggle:checked)) .access-release-ready li::before{background:var(--good-accent)!important}
+:root:not(:has(#theme-toggle:checked)) .reading-progress{background:var(--accent)}
+/* ===== THEME TOGGLE BUTTON (always present, token-based so it adapts) ===== */
+#theme-toggle{position:fixed;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.theme-switch{position:fixed;top:14px;right:16px;z-index:500;display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;
+  cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.28);transition:border-color .15s,background .15s}
+.theme-switch:hover{border-color:var(--accent);color:var(--accent)}
+#theme-toggle:focus-visible + .theme-switch{outline:3px solid var(--focus);outline-offset:3px}
+.theme-switch svg{display:block}
+.theme-switch .ts-moon{display:none}
+:root:has(#theme-toggle:checked) .theme-switch .ts-sun{display:none}
+:root:has(#theme-toggle:checked) .theme-switch .ts-moon{display:block}
+@media print{.theme-switch,#theme-toggle{display:none}}
 </style>
 </head>
 <body>
+<input type="checkbox" id="theme-toggle" aria-label="라이트/다크 테마 전환"><label for="theme-toggle" class="theme-switch" title="테마 전환 (라이트 / 다크)"><svg class="ts-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3 19 19M19 5l-1.7 1.7M6.7 17.3 5 19"/></svg><svg class="ts-moon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 1 1 9.4 4 6.6 6.6 0 0 0 20 14.6z"/></svg><span style="position:absolute;left:-9999px">테마 전환</span></label>
+
 <div class="reading-progress" aria-hidden="true"></div>
 <a class="skip" href="#main">본문 바로가기</a>
 <main id="main" class="page-wide v5-home">
