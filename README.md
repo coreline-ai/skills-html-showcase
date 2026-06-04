@@ -104,7 +104,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 </tr>
 <tr>
 <td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/13-checklist-web-accessibility-release.html"><img src="docs/screenshots/13-checklist.png" width="100%" alt="checklist_playbook"></a><br><b>13 · <code>checklist_playbook</code></b><br>웹 접근성 배포 전 30분 체크리스트</td>
-<td width="50%" valign="top"><br><b>＋ 추가 데모</b><br>· <a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/14-visual-template-system.html">14 · Visual Template System</a> (8000×6000 SVG 인포그래픽)<br>· <a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/15-svg-template-gallery.html">15 · SVG 템플릿 20종 갤러리</a></td>
+<td width="50%" valign="top"><br><b>＋ 추가 데모</b><br>· <a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/14-visual-template-system.html">14 · Visual Template System</a> (8000×6000 SVG 인포그래픽)<br>· <a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/15-svg-template-gallery.html">15 · SVG 템플릿 20종 갤러리</a><br>· <a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html">final_20260604 · Skill Template HTML</a> (스킬 적용용 단일 템플릿 HTML)</td>
 </tr>
 </table>
 
