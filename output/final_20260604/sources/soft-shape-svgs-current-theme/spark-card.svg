@@ -22,11 +22,16 @@
 <ellipse cx="4000" cy="3050" rx="1960" ry="1470" fill="#eee9df" opacity=".28"/>
 <g class="motif" transform="translate(4000 3000)">
 
-<rect x="-1320" y="-1050" width="2640" height="2100" rx="190" fill="#fffdfb" stroke="#d8d8d0" stroke-width="54"/>
-<circle cx="-900" cy="-600" r="150" fill="#d77a82"/>
-<path class="thin" d="M-840 560L-360 100 120 330 560 -390 940 -80" stroke="#d77a82" opacity=".85"/>
-<path class="thin" d="M-520 -650H840" opacity=".2"/>
-<path d="M910 -780l100 270 270 100-270 100-100 270-100-270-270-100 270-100z" fill="#f3e4c2" opacity=".72"/>
+<rect x="-1510" y="-1080" width="3020" height="2160" rx="220" fill="#fffdfb" stroke="#d8d8d0" stroke-width="56"/>
+<rect x="-1510" y="-1080" width="3020" height="390" rx="220" fill="#f5f5f0" opacity=".72"/>
+<circle cx="-1180" cy="-875" r="86" fill="#d77a82"/>
+<rect x="-940" y="-925" width="940" height="88" rx="44" fill="#d8d8d0"/>
+<rect x="-1040" y="450" width="2050" height="68" rx="34" fill="#eee9df" opacity=".78"/>
+<path d="M-920 440L-420 -30 20 160 510 -560 980 -210" fill="none" stroke="#cfc7bb" stroke-width="74" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-920 440L-420 -30 20 160 510 -560" fill="none" stroke="#d77a82" stroke-width="78" stroke-linecap="round" stroke-linejoin="round" opacity=".86"/>
+<circle cx="-420" cy="-30" r="72" fill="#fffdfb" stroke="#d77a82" stroke-width="42"/>
+<circle cx="510" cy="-560" r="72" fill="#6f967f"/>
+<path d="M900 -820l92 246 246 92-246 92-92 246-92-246-246-92 246-92z" fill="#f3e4c2" stroke="#d7a655" stroke-width="30" opacity=".9"/>
 
 </g>
 </svg>
