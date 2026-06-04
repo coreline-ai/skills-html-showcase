@@ -1,17 +1,31 @@
-<svg data-theme="final_20260604-soft-editorial" xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
-<title id="title">웨이브 변화</title><desc id="desc">변동·추세·감정 흐름을 보여줄 때. Warm cream soft card visual in adaptive-html-final style.</desc>
+<svg data-theme="final_20260604-soft-editorial-v2" xmlns="http://www.w3.org/2000/svg" width="8000" height="6000" viewBox="0 0 8000 6000" role="img" aria-labelledby="title desc">
+<title id="title">웨이브 변화</title>
+<desc id="desc">변화 흐름과 리듬을 부드러운 곡선으로 보여주는 도형.</desc>
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5f5f0"/><stop offset=".55" stop-color="#fffdfb"/><stop offset="1" stop-color="#eee9df"/></linearGradient>
-  <linearGradient id="orangeSoft" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f2d4d7"/><stop offset="1" stop-color="#d77a82"/></linearGradient>
-  <linearGradient id="purpleSoft" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7e6e8"/><stop offset="1" stop-color="#d77a82"/></linearGradient>
-  <linearGradient id="mintSoft" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f3f8f4"/><stop offset="1" stop-color="#6f967f"/></linearGradient>
-  <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="32" stdDeviation="54" flood-color="#a0917e" flood-opacity=".10"/></filter>
-  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="30" flood-color="#a0917e" flood-opacity=".07"/></filter>
-  <style>.k{font:850 118px -apple-system,BlinkMacSystemFont,'Pretendard','Segoe UI',sans-serif;fill:#9b5960;letter-spacing:8px;opacity:.72}.t{font:850 260px -apple-system,BlinkMacSystemFont,'Pretendard','Apple SD Gothic Neo','Segoe UI',sans-serif;fill:#4b463e;letter-spacing:-6px;opacity:.86}.s{font:600 104px -apple-system,BlinkMacSystemFont,'Pretendard','Segoe UI',sans-serif;fill:#7a7065;opacity:.78}</style>
+  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fffdfb"/><stop offset=".58" stop-color="#fbfaf6"/><stop offset="1" stop-color="#eee9df"/>
+  </linearGradient>
+  <linearGradient id="rose" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1ccd0"/><stop offset="1" stop-color="#d77a82"/></linearGradient>
+  <linearGradient id="sage" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dce9df"/><stop offset="1" stop-color="#6f967f"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f3e4c2"/><stop offset="1" stop-color="#d7a655"/></linearGradient>
+  <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="34" stdDeviation="58" flood-color="#a0917e" flood-opacity=".10"/></filter>
+  <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="22" stdDeviation="34" flood-color="#a0917e" flood-opacity=".11"/></filter>
+  <style><![CDATA[
+    .stroke{fill:none;stroke:#6a6258;stroke-width:84;stroke-linecap:round;stroke-linejoin:round;opacity:.48}
+    .thin{fill:none;stroke:#6a6258;stroke-width:52;stroke-linecap:round;stroke-linejoin:round;opacity:.32}
+    .rose{fill:#d77a82}.rose-soft{fill:#f1ccd0}.sage{fill:#6f967f}.sage-soft{fill:#dce9df}.gold{fill:#d7a655}.gold-soft{fill:#f3e4c2}
+    .paper{fill:#fffdfb}.line{stroke:#d8d8d0}.motif{filter:url(#softShadow)}
+  ]]></style>
 </defs>
-<rect width="8000" height="6000" fill="#f5f5f0"/><rect x="470" y="430" width="7060" height="5140" rx="330" fill="url(#bg)" stroke="#d8d8d0" stroke-width="16" filter="url(#shadow)"/>
-<rect x="470" y="980" width="7060" height="10" fill="#fff" opacity=".36"/>
-<text x="880" y="840" class="k">SOFT SHAPE</text><rect x="6460" y="620" width="560" height="560" rx="155" fill="#fffdfb" stroke="#d8d8d0" stroke-width="10" filter="url(#soft)"/><text x="6740" y="980" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Pretendard','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="230" font-weight="850" fill="#9b5960" opacity=".82">AI</text>
-<g><path d="M1850 3220c620-760 1080-760 1700 0s1080 760 1700 0 1080-760 1700 0" fill="none" stroke="#d77a82" stroke-width="120" stroke-linecap="round"/><path d="M1850 3720c620-560 1080-560 1700 0s1080 560 1700 0 1080-560 1700 0" fill="none" stroke="#6f967f" stroke-width="82" stroke-linecap="round" opacity=".72"/><circle cx="2740" cy="2450" r="210" fill="#d77a82"/><circle cx="5260" cy="2450" r="210" fill="#d77a82"/></g>
-<text x="900" y="5090" class="t">웨이브 변화</text><text x="900" y="5350" class="s">변동·추세·감정 흐름을 보여줄 때</text>
+<rect width="8000" height="6000" fill="#f5f5f0"/>
+<rect x="520" y="520" width="6960" height="4960" rx="360" fill="url(#paper)" stroke="#d8d8d0" stroke-width="18" filter="url(#cardShadow)"/>
+<ellipse cx="4000" cy="3050" rx="1960" ry="1470" fill="#eee9df" opacity=".28"/>
+<g class="motif" transform="translate(4000 3000)">
+
+<path d="M-1650 -180C-1150 -850-610 -850-110 -180S930 490 1650 -180" fill="none" stroke="#d77a82" stroke-width="112" stroke-linecap="round"/>
+<path d="M-1650 450C-1150 -220-610 -220-110 450S930 1120 1650 450" fill="none" stroke="#6f967f" stroke-width="86" stroke-linecap="round" opacity=".86"/>
+<circle cx="-720" cy="-510" r="170" fill="#f1ccd0"/>
+<circle cx="760" cy="120" r="170" fill="#d77a82"/>
+
+</g>
 </svg>
