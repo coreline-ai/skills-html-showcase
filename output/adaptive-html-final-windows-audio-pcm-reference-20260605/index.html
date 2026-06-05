@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: 93340ef6ff9b38ba6b5ca94161f665901749185c0eadeca2cc6219fd5d6566c6 */
+/* adaptive-html-final-core-css-sha256: b8d79efbc33ead87e764cd5bd51e6d3c398862068a6849e3ced6f813234bf95d */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -1447,17 +1447,10 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 .layout-github .repo-health-grid,
 .layout-github .repo-action-grid,
 .layout-github .repo-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
-.layout-github>section,
+.layout-github>section:not(.try),
 .layout-github>.source-note,
 .layout-github>.github-question-toc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
-.layout-github>.try{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);color:var(--ink)}
-.layout-github>.try .label{color:var(--accent-2)}
-.layout-github>.try p,.layout-github>.try li{color:var(--ink-soft)}
-.layout-github>.try h2{color:var(--ink)}
-.layout-github>.try strong{color:var(--ink)}
-.layout-github>.try a{color:var(--accent-2)}
-.layout-github>.try h2 .no,.layout-github>.try h2 .num{background:var(--accent);color:var(--on-accent)}
-.layout-github>.try .tag{background:var(--chip-bg);border-color:var(--line);color:var(--ink)}
+/* .try(Next Actions)는 base 검정 hero CTA 유지 — 라이트/화이트/다크 모두 dark 패널 (v5.3.3) */
 .layout-github>section .vt-shell{margin-bottom:0}
 .layout-github .repo-card,
 .layout-github .repo-signal,

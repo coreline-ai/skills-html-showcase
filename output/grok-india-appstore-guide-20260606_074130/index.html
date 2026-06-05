@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: 93340ef6ff9b38ba6b5ca94161f665901749185c0eadeca2cc6219fd5d6566c6 */
+/* adaptive-html-final-core-css-sha256: b8d79efbc33ead87e764cd5bd51e6d3c398862068a6849e3ced6f813234bf95d */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -1264,6 +1264,35 @@ body{background:var(--vt-wash)}
 /* === 완성본 표준 승격 v5.3.1 — vt-frame 내부 박스 평면화 === */
 .vt-frame{background:transparent;border:0}
 
+/* adaptive-html-final body icons — compact editorial inline SVG, namespaced bi-, uses skill tokens. 외부/동작 JS 0. */
+.body-icon{width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(245,245,240,.72));display:inline-grid;place-items:center;flex:0 0 auto;vertical-align:middle}
+.body-icon svg{width:28px;height:28px;overflow:visible}
+.body-icon--sm{width:26px;height:26px;border-radius:8px}
+.body-icon--sm svg{width:18px;height:18px}
+.body-icon--plain{border:0;background:none;width:auto;height:auto;border-radius:0}
+.body-icon--plain svg{width:22px;height:22px}
+.body-icon .bi-line{stroke:var(--ink-mute);stroke-width:2.05;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.body-icon .bi-accent-line{stroke:var(--accent);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.body-icon .bi-fill{fill:var(--card);stroke:var(--ink-mute);stroke-width:2.05}
+.body-icon .bi-soft{fill:var(--hl-yellow);stroke:var(--ink-mute);stroke-width:1.65}
+.body-icon .bi-accent{fill:var(--accent)}
+.body-icon .bi-accent-box{fill:var(--accent);stroke:var(--accent);stroke-width:1.6}
+.body-icon .bi-dot{fill:#7ea66a;stroke:var(--ink-mute);stroke-width:1.3}
+.body-icon .bi-dot-box{fill:#7ea66a;stroke:#7ea66a;stroke-width:1.5}
+/* icon + text alignment: 헤딩/라벨이 body-icon을 직접 자식으로 가지면 왼쪽 아이콘 + 일정 간격으로 정렬(무 JS, :has). v5.2.1 */
+.label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+h1:has(> .body-icon),h2:has(> .body-icon){display:flex;align-items:center;gap:10px}
+h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
+.mini-card h3 .body-icon,.card-block h3 .body-icon{align-self:flex-start;margin-top:1px}
+/* lede-note 등 컨텍스트 라벨도 아이콘+텍스트 정렬(고특이도 .lede-note .label{display:block}를 이김). v5.2.2 */
+.lede-note .label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+/* 아이콘 박스 배경 테마 적응(white/dark) — 하드코딩 흰빛 그라디언트가 다크에서 떠 보이던 문제 해소. SVG 칠은 토큰으로 이미 적응. v5.2.2 */
+:root:has(#ahf-white:checked) .body-icon{background:linear-gradient(180deg,#ffffff,#f4f5f8)}
+:root:has(#ahf-dark:checked) .body-icon{background:linear-gradient(180deg,var(--vt-soft),var(--card));border-color:var(--line)}
+@media(prefers-reduced-motion:reduce){.body-icon{transition:none}}
+/* === 완성본 표준 승격 v5.3.1 — 섹션 제목 앞 큰 아이콘(42px) === */
+h2>.body-icon,h3>.body-icon{width:42px;height:42px;border-radius:12px}
+h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 
 
 
@@ -1290,17 +1319,10 @@ body{background:var(--vt-wash)}
 .layout-github .repo-health-grid,
 .layout-github .repo-action-grid,
 .layout-github .repo-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
-.layout-github>section,
+.layout-github>section:not(.try),
 .layout-github>.source-note,
 .layout-github>.github-question-toc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
-.layout-github>.try{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);color:var(--ink)}
-.layout-github>.try .label{color:var(--accent-2)}
-.layout-github>.try p,.layout-github>.try li{color:var(--ink-soft)}
-.layout-github>.try h2{color:var(--ink)}
-.layout-github>.try strong{color:var(--ink)}
-.layout-github>.try a{color:var(--accent-2)}
-.layout-github>.try h2 .no,.layout-github>.try h2 .num{background:var(--accent);color:var(--on-accent)}
-.layout-github>.try .tag{background:var(--chip-bg);border-color:var(--line);color:var(--ink)}
+/* .try(Next Actions)는 base 검정 hero CTA 유지 — 라이트/화이트/다크 모두 dark 패널 (v5.3.3) */
 .layout-github>section .vt-shell{margin-bottom:0}
 .layout-github .repo-card,
 .layout-github .repo-signal,
@@ -1513,14 +1535,26 @@ body{background:var(--vt-wash)}
 <div class="reading-progress" aria-hidden="true"></div>
 
 <main id="main" class="page-wide layout-checklist">
-  <header class="header checklist-header">
-    <div class="kicker">App Store 결제 플레이북 · India</div>
+  <header class="header">
+    <div class="kicker"><span class="kicker-text">APP STORE 결제 플레이북 · INDIA</span></div>
     <h1>인도 App Store로 Grok·SuperGrok 구독하기</h1>
     <p class="sub">메인 Apple ID를 건드리지 않고, 별도 인도 Apple 계정 + Apple Gift Card로 Grok / SuperGrok을 결제하는 실전 순서와 체크리스트.</p>
-    <div class="meta">작성일 2026-06-06 · 개인 경험 공유용 · Apple/xAI/Grok/Amazon 공식 안내문 아님</div>
+    <div class="meta"><span>checklist_playbook</span><span>checklist-playbook.html</span><span>profile auto</span><span>adaptive-html-final v5.3.2</span><span>무 JS</span></div>
+    <div class="generated-row">
+      <p class="generated-date">Generated · 2026-06-06 KST · 개인 경험 공유용</p>
+      <div class="lens-strip" aria-label="적용 단계">
+        <span class="lens-strip-label">FLOW</span>
+        <span class="lens-chip">India Apple ID</span>
+        <span class="lens-chip">Apple Gift Card</span>
+        <span class="lens-chip">Redeem</span>
+        <span class="lens-chip">Billing Address</span>
+        <span class="lens-chip">SuperGrok</span>
+      </div>
+    </div>
   </header>
 
   <section class="summary-card">
+    <div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span>개요 — 한눈에</div>
     <p class="lead">한국에서 쓰는 메인 Apple ID의 국가를 바꾸는 대신, App Store·미디어 구입용으로 <strong>별도 인도 Apple 계정</strong>을 쓰는 것이 가장 충돌이 적고 안전한 방향입니다.</p>
     <div class="card-grid">
       <div class="mini-card"><span class="label">핵심 목적</span><p>Grok / SuperGrok을 인도 App Store 결제로 구독한다.</p></div>
@@ -1529,8 +1563,8 @@ body{background:var(--vt-wash)}
     </div>
   </section>
 
-  <section>
-    <h2>먼저 알아둘 점</h2>
+  <section id="intro">
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span>먼저 알아둘 점</h2>
     <p class="h2-sub">합법적으로 구매한 기프트카드와 본인이 관리하는 계정만 사용하세요.</p>
     <p>이 문서는 개인 경험 공유용 안내입니다. Apple·Amazon·xAI/Grok의 공식 문서가 아니며, 각 서비스의 약관·지역 정책·결제 정책은 언제든 바뀔 수 있습니다.</p>
     <div class="danger">
@@ -1556,7 +1590,7 @@ body{background:var(--vt-wash)}
   </nav>
 
   <section id="step1">
-    <h2><span class="num">1</span> 맥에서 인도 Apple 계정 생성</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="14" r="6"/><path class="bi-fill" d="M10 32c1.5-7 18.5-7 20 0"/><circle class="bi-accent" cx="28" cy="15" r="2"/></svg></span><span class="no is-key">1</span>맥에서 인도 Apple 계정 생성</h2>
     <p class="h2-sub">아이폰에서 막히면 맥에서 만들면 한국 번호로도 가입되는 경우가 있습니다.</p>
     <p>아이폰에서 인도 계정을 만들려고 하면 인도 전화번호만 가입할 수 있는 경우가 있습니다. 이때는 <strong>맥에서 Apple 계정을 생성</strong>하면 한국 전화번호로도 가입이 되는 사례가 있습니다.</p>
     <div class="box">
@@ -1570,7 +1604,7 @@ body{background:var(--vt-wash)}
   </section>
 
   <section id="step2">
-    <h2><span class="num">2</span> 미국 Amazon 계정으로 Amazon India에서 Apple Gift Card 구매</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M8 30h24"/><rect class="bi-soft" x="11" y="21" width="4" height="9" rx="1"/><rect class="bi-fill" x="18" y="15" width="4" height="15" rx="1"/><rect class="bi-accent-box" x="25" y="9" width="4" height="21" rx="1"/></svg></span><span class="no">2</span>미국 Amazon 계정으로 Amazon India에서 Apple Gift Card 구매</h2>
     <p class="h2-sub">상품이 Apple App Store / iTunes India용인지 결제 전에 반드시 확인.</p>
     <p>미국 Amazon 계정으로 <strong>Amazon India</strong>에 접속한 뒤, <strong>Apple Gift Card 6,500루피</strong>를 구매합니다. 금액은 구독 플랜·환율·시점에 따라 달라질 수 있으니 결제 화면에서 직접 확인하세요.</p>
     <div class="danger">
@@ -1580,7 +1614,7 @@ body{background:var(--vt-wash)}
   </section>
 
   <section id="step3">
-    <h2><span class="num">3</span> 아이패드·아이폰에서 인도 Apple 계정으로 로그인하고 리딤</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><span class="no">3</span>아이패드·아이폰에서 인도 Apple 계정으로 로그인하고 리딤</h2>
     <p class="h2-sub">iCloud 전체가 아니라 "미디어 및 구입" 항목만 인도 계정으로 바꿉니다.</p>
     <p>아이패드 또는 아이폰에서 인도 Apple 계정으로 로그인합니다. iCloud 전체 계정을 바꾸기보다 <strong>미디어 및 구입 항목만</strong> 인도 계정으로 전환하는 방식이 충돌이 적습니다.</p>
     <div class="box">
@@ -1593,13 +1627,13 @@ body{background:var(--vt-wash)}
   </section>
 
   <section id="step4">
-    <h2><span class="num">4</span> Grok 앱 설치</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="22" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="8" y="22" width="10" height="9" rx="2"/><rect class="bi-fill" x="22" y="22" width="10" height="9" rx="2"/><circle class="bi-accent" cx="13" cy="14" r="2"/></svg></span><span class="no">4</span>Grok 앱 설치</h2>
     <p class="h2-sub">인도 App Store 계정으로 로그인된 상태에서 설치합니다.</p>
     <p>인도 App Store 계정으로 로그인된 상태에서 <strong>Grok 앱</strong>을 설치합니다. 기존에 Grok에 가입하지 않았던 계정으로 로그인하거나, 신규 Grok 계정을 새로 만들어도 됩니다. 설치 후 앱 내 <strong>구독 업그레이드</strong> 화면으로 이동합니다.</p>
   </section>
 
   <section id="step5">
-    <h2><span class="num">5</span> SuperGrok 업그레이드 + Billing Address</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M8 11l8-3 8 3 8-3v21l-8 3-8-3-8 3z"/><path class="bi-line" d="M16 8v21M24 11v21"/><path class="bi-accent-line" d="M12 22c4-6 10 3 16-4"/></svg></span><span class="no">5</span>SuperGrok 업그레이드 + Billing Address</h2>
     <p class="h2-sub">인도 주소가 확인되지 않으면 Billing Address 업데이트 요청이 뜹니다.</p>
     <p>Grok 앱에서 업그레이드 버튼을 누르면, 인도 주소가 확인되지 않아 <strong>인도 내 주소 등록(Billing Address)</strong>을 요청받을 수 있습니다.</p>
     <div class="box">
@@ -1613,7 +1647,7 @@ body{background:var(--vt-wash)}
   </section>
 
   <section id="step6">
-    <h2><span class="num">6</span> Apple TV 무료체험 · VPN은 보조 수단</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="no">6</span>Apple TV 무료체험 · VPN은 보조 수단</h2>
     <p class="h2-sub">잔액 보존과 지역 오류 해결을 분리해서 다루세요.</p>
     <p><strong>Apple TV 2개월 무료체험</strong>은 Grok 결제와 별개의 구독입니다. 무료 기간 중에는 보통 바로 결제되지 않지만, 종료 후 자동결제가 켜질 수 있습니다. Grok 결제용으로 넣어둔 잔액을 보존하려면 무료체험을 시작하지 않는 편이 안전합니다.</p>
     <div class="good">
@@ -1622,10 +1656,10 @@ body{background:var(--vt-wash)}
     </div>
   </section>
 
-  <section class="check-grid">
-    <h2>최종 체크리스트</h2>
+  <section id="final-check">
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>최종 체크리스트</h2>
     <p class="h2-sub">결제 전후로 이 항목들이 모두 ✓ 인지 확인하세요.</p>
-    <section class="vt-shell">
+    <section class="vt-shell" aria-label="결제 전 3대 필수 확인">
       <div class="vt-frame">
         <div class="cf">
           <div class="cf-item"><span class="cf-check">✓</span><div><b>기프트카드 종류</b><p class="vt-text">Amazon Pay가 아니라 Apple App Store / iTunes <strong>India</strong>용 코드</p></div><span class="cf-state">CHECK</span></div>
@@ -1648,8 +1682,8 @@ body{background:var(--vt-wash)}
     </div>
   </section>
 
-  <section class="failure-modes">
-    <h2>문제가 생겼을 때</h2>
+  <section id="troubleshoot">
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M16 16c.7-3 7-3.5 8 0 .8 2.6-2.4 3.8-4 5.4V24"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span>문제가 생겼을 때</h2>
     <p class="h2-sub">증상별로 가장 흔한 원인부터 점검하세요.</p>
     <div class="card-grid">
       <div class="mini-card"><span class="label">Invalid Address가 계속 뜬다</span><p>City·State·PIN code 조합이 맞는지 확인 → 주소 저장 후 App Store 앱을 완전히 종료했다 다시 열기 → 너무 여러 번 시도하지 말고 잠시 후 재시도.</p></div>
@@ -1659,7 +1693,7 @@ body{background:var(--vt-wash)}
   </section>
 
   <section class="try">
-    <h2>마무리</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M13 20l5 5 10-11"/></svg></span>마무리</h2>
     <p>핵심은 세 가지입니다 — <span class="hl">올바른 종류의 인도 Apple Gift Card</span>, <span class="hl">인도 형식의 Billing Address</span>, 그리고 <span class="hl">₹ 통화 확인</span>. 이 세 가지가 맞으면 대부분의 "Invalid Address"·"원화 표시" 문제는 사라집니다.</p>
     <div class="summary-card">
       <p>결제 완료 후에는 Grok 앱과 <a href="https://grok.com">grok.com</a> 양쪽에서 SuperGrok이 활성화됐는지 꼭 확인하세요. 잔액을 보존하려면 Apple TV 같은 별도 무료체험은 시작하지 않는 것이 안전합니다.</p>

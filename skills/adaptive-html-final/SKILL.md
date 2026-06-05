@@ -25,7 +25,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.3.2 · "github_analysis Next Actions(.try) 라이트 카드 배경 버그 수정 — 라이트에서 검정 배경+어두운 텍스트 회귀 해소" (이전 5.3.1)
+> Version 5.3.3 · "github_analysis Next Actions(.try)를 base 검정 hero CTA로 복원 — 라이트/화이트에서도 검정 패널" (이전 5.3.2)
 
 ## 0. Identity
 

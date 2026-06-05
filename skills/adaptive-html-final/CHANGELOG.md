@@ -1,5 +1,12 @@
 # Changelog — adaptive-html-final
 
+## v5.3.3 (2026-06-06) — github_analysis Next Actions를 검정 hero로 복원
+
+v5.3.2에서 `.try`를 라이트 카드로 바꿨으나, 의도는 **base 검정 hero CTA 유지**였음. `.layout-github>section`(카드)에서 `.try`를 `:not(.try)`로 제외하고 `.layout-github>.try` 오버라이드 전부 제거 → base `.try{background:var(--dark);color:#f5f5f0}`(라이트/화이트/다크 모두 검정 패널 + 라이트 텍스트) 적용.
+
+- `assets/layouts.css`: `.layout-github>section:not(.try)`, `.layout-github>.try` 오버라이드 삭제.
+- 코어 리베이스 → 베이스라인 4종 v5.3.3 재생성, validate OK.
+
 ## v5.3.2 (2026-06-06) — github_analysis Next Actions(.try) 배경 버그 수정
 
 `layout-github`의 최종 `.try`(Next Actions)가 텍스트만 `var(--ink)`로 바꾸고 배경은 base `.try{background:var(--dark)}`(라이트에서 검정)를 그대로 둬, **라이트 테마에서 검정 배경 + 어두운 텍스트(거의 안 보임)** 로 나오던 버그 수정.
