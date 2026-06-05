@@ -25,7 +25,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.3.4 · "표 셀 overflow-wrap:anywhere→break-word — 공간 남는데 2줄 쪼개짐·열폭 불균형(날것) 해소, 내용 기준 단일행" (이전 5.3.3)
+> Version 5.3.5 · "표 풀폭(width:100%) 복원 + 셀 break-word + 표 내 링크(commit) 안 쪼개짐 — 빈공간 없이 효율 배치, 단일행" (이전 5.3.4)
 
 ## 0. Identity
 

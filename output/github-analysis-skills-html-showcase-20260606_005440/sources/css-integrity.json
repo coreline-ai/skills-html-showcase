@@ -1,5 +1,5 @@
 {
-  "core_css_sha256": "b6852f69891be6070d1512a7a5c9f1f3c4ee68296c410f8482a1b9320141bf1e",
+  "core_css_sha256": "845dc9efa9253069b2b1150fdc1f22605e3161a23d8f8b0b69c72a6625d6c303",
   "asset_order": [
     "theme.css",
     "components.css",
@@ -9,7 +9,7 @@
   ],
   "asset_sha256": {
     "theme.css": "71d6c0d2af864def8bfcd6340f6cf4c04d1c2fdc68e5a0783b62d5cd3a24222b",
-    "components.css": "15d796e52e1d9e4e1a537865da78fda3b5e3bb8c7c503e2627f1e55883bada9f",
+    "components.css": "5e6ae376616bd2fe4200483bcf5fda4c31793823b67662ffb9e9da1fcc7f938f",
     "visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
     "layouts.css": "26affb9221b94b2fa6b4c5d25fbb012690933ade77b5969e31aceb9b22948704",
     "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
@@ -22,5 +22,5 @@
   "generated_at": "2026-06-06T00:54:40.920530+09:00",
   "mode": "github_analysis",
   "target": "https://github.com/coreline-ai/skills-html-showcase",
-  "skill_version": "5.3.4"
+  "skill_version": "5.3.5"
 }

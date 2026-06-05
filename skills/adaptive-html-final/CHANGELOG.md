@@ -1,5 +1,17 @@
 # Changelog — adaptive-html-final
 
+## v5.3.5 (2026-06-06) — 표 풀폭 복원 + 링크 단일행
+
+v5.3.4에서 table을 width:auto로 줄여 빈 공간이 생기던 문제를 되돌림. **풀폭 채움(width:100%)** 유지하면서 효율 배치.
+
+### 변경 (`assets/components.css`)
+- `table{width:auto→100%}`, `min-width:420px` 복원 → 표가 컨테이너 폭을 채움(빈 공간 없음).
+- `th,td{overflow-wrap:break-word;word-break:keep-all}` 유지 → 긴 토큰(validate_output.py)이 공간 있으면 단일행, 슬랙은 내용 많은 열(설명)이 흡수.
+- `td a,th a{overflow-wrap:normal}` 추가 → 표 내 링크(예: commit)가 squeeze된 열에서 `comm/it`로 쪼개지던 문제 해소(링크는 한 토큰 유지).
+
+### 영향
+- 코어(components.css) 리베이스 → 베이스라인 4종 v5.3.5 재생성, validate OK.
+
 ## v5.3.4 (2026-06-06) — 표 셀 줄바꿈/열폭 정돈
 
 표 셀의 `overflow-wrap:anywhere`가 auto-layout 최소폭을 ~1글자로 만들어, 공간이 남는데도 긴 토큰(예: `validate_output.py`)이 2줄로 쪼개지고 짧은 열은 과폭이 되던(날것의) 문제 수정.
