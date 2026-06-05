@@ -1,5 +1,15 @@
 # Changelog — adaptive-html-final
 
+## v5.3.6 (2026-06-06) — code-tour 카드 좌우 정렬
+
+`어디부터 읽으면 되는가`(code-tour)의 repo-card가 파일명(위)+역할(아래)로 세로 적층돼 빈약/날것이던 레이아웃을, **좌우 정렬 row(파일명 좌 · 역할 우)** 로 변경.
+
+### 변경 (`assets/layouts.css`)
+- `.layout-github .code-tour .repo-card{display:flex;justify-content:space-between;align-items:baseline}` + h3/p 마진·크기 정리, 패딩 축소.
+
+### 영향
+- 코어(layouts.css) 리베이스 → 베이스라인 4종 v5.3.6 재생성, validate OK.
+
 ## v5.3.5 (2026-06-06) — 표 풀폭 복원 + 링크 단일행
 
 v5.3.4에서 table을 width:auto로 줄여 빈 공간이 생기던 문제를 되돌림. **풀폭 채움(width:100%)** 유지하면서 효율 배치.

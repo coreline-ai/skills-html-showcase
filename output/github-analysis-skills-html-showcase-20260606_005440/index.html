@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: 845dc9efa9253069b2b1150fdc1f22605e3161a23d8f8b0b69c72a6625d6c303 */
+/* adaptive-html-final-core-css-sha256: 91b364eb9a842afb8015f43ba83b4fe8dc1cadc40704ee92be0bd187905c3fd4 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -1334,6 +1334,10 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 .layout-github .repo-evidence h3{margin-top:0;color:var(--accent-2)}
 .layout-github .repo-signal .label,
 .layout-github .repo-evidence .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink)}
+/* code-tour(어디부터 읽으면 되는가): 파일명/역할 카드는 좌우 정렬 row로 — 세로 적층의 빈약함 해소 (v5.3.6) */
+.layout-github .code-tour .repo-card{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 16px}
+.layout-github .code-tour .repo-card h3{margin:0;font-size:14.5px}
+.layout-github .code-tour .repo-card p{margin:0;color:var(--chip-ink);font-size:12.5px;white-space:nowrap;flex:0 0 auto}
 .layout-github .repo-score{display:inline-grid;place-items:center;min-width:48px;height:48px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:900 16px/1 var(--sans);margin:0 10px 8px 0}
 .layout-github .repo-unknown{border-style:dashed;background:var(--accent-soft)}
 .layout-github .github-question-toc{margin:24px 0 34px}

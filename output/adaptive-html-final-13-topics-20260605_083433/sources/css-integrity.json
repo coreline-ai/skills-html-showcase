@@ -1,5 +1,5 @@
 {
-  "core_css_sha256": "845dc9efa9253069b2b1150fdc1f22605e3161a23d8f8b0b69c72a6625d6c303",
+  "core_css_sha256": "91b364eb9a842afb8015f43ba83b4fe8dc1cadc40704ee92be0bd187905c3fd4",
   "asset_order": [
     "theme.css",
     "components.css",
@@ -20,7 +20,7 @@
     "theme.css": "71d6c0d2af864def8bfcd6340f6cf4c04d1c2fdc68e5a0783b62d5cd3a24222b",
     "components.css": "5e6ae376616bd2fe4200483bcf5fda4c31793823b67662ffb9e9da1fcc7f938f",
     "visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
-    "layouts.css": "26affb9221b94b2fa6b4c5d25fbb012690933ade77b5969e31aceb9b22948704",
+    "layouts.css": "49ed767ca190cc9f8fc2c9387f06b6de213106188e15922d29ea9fc01710b4b9",
     "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
     "widgets.css": "ce038131dc852a0e08b60884f9aa15d9e670561854c0b1bb53a9d197f0a47659",
     "visual-html.css": "769bfd01d8b93eed23dd87bae61fff46609f46c50f728b838e74484523f65dce",
@@ -31,5 +31,5 @@
     "theme-dark.css": "54e927c1b9c58d5fd0bf0fc6baf38777fcc9e8445c744f440f325d187f864588"
   },
   "profile": "auto",
-  "skill_version": "5.3.5"
+  "skill_version": "5.3.6"
 }

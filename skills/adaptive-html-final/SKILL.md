@@ -25,7 +25,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.3.5 · "표 풀폭(width:100%) 복원 + 셀 break-word + 표 내 링크(commit) 안 쪼개짐 — 빈공간 없이 효율 배치, 단일행" (이전 5.3.4)
+> Version 5.3.6 · "github_analysis code-tour 카드 좌우 정렬(파일명/역할) — 세로 적층 빈약함 해소" (이전 5.3.5)
 
 ## 0. Identity
 

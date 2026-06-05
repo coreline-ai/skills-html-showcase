@@ -35,6 +35,10 @@
 .layout-github .repo-evidence h3{margin-top:0;color:var(--accent-2)}
 .layout-github .repo-signal .label,
 .layout-github .repo-evidence .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink)}
+/* code-tour(어디부터 읽으면 되는가): 파일명/역할 카드는 좌우 정렬 row로 — 세로 적층의 빈약함 해소 (v5.3.6) */
+.layout-github .code-tour .repo-card{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 16px}
+.layout-github .code-tour .repo-card h3{margin:0;font-size:14.5px}
+.layout-github .code-tour .repo-card p{margin:0;color:var(--chip-ink);font-size:12.5px;white-space:nowrap;flex:0 0 auto}
 .layout-github .repo-score{display:inline-grid;place-items:center;min-width:48px;height:48px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:900 16px/1 var(--sans);margin:0 10px 8px 0}
 .layout-github .repo-unknown{border-style:dashed;background:var(--accent-soft)}
 .layout-github .github-question-toc{margin:24px 0 34px}
