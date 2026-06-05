@@ -7,7 +7,7 @@
 > - **v4.2**(Visual Template System): 8000×6000 SVG 인포그래픽 템플릿 7종(`visual-templates/*.svg.tpl`)과 stdlib-only 렌더러 `scripts/render_visual_svg.py`, `assets/visual-components.css`, `schemas/visual-brief.schema.json`, SKILL.md Step 4.5 Visual Brief Planning 도입.
 > - **v4.3.x**(반응형 폴리시 회귀 게이트): dark CTA 링크/태그 대비 회복(`--link-on-dark`), `platform-grid`를 inner wrapper 전용으로 제한, 390px용 `mobile-card-table` 패턴, case timeline을 개별 step card로 분리, blog 섹션 자동 번호·SEO SERP title 조정 — 그리고 이 모든 회귀를 정적으로 막는 `scripts/validate_output.py` 게이트.
 > - **v4.4.0**(뷰 위젯 시스템): 뷰 위젯 시스템(20종, CSS-only, `assets/widgets.css`) 정식 편입 — `wg-<id>-` 네임스페이스·무 JS 위젯 템플릿 `assets/widget-templates/*.html`, 선택·삽입·접근성 규칙 `references/widget-system.md`, 위젯 게이트 `tests/widget-checklist.md`.
-> - **v4.5.0**(SVG→HTML 템플릿 편입 & 하네스 정형화): SVG→HTML 뷰 템플릿 20종(`assets/visual-html.css`)과 본문 삽입 다이어그램 `assets/visual-html-templates/01..20.html`(`vt-`), 캐노니컬 모드→vt 매핑·결정론 진입점, 선택·삽입 규칙 `references/visual-html-system.md`. 무 JS 0 유지.
+> - **v4.5.0**(SVG→HTML 템플릿 편입 & 하네스 정형화): SVG→HTML 뷰 템플릿 21종(`assets/visual-html.css`)과 본문 삽입 다이어그램 `assets/visual-html-templates/01..21.html`(`vt-`), 캐노니컬 모드→vt 매핑·결정론 진입점, 선택·삽입 규칙 `references/visual-html-system.md`. 무 JS 0 유지.
 > - **v4.5.0**(비주얼 프로파일 선택): 기동 시 비주얼 스타일 선택 — `profile=widget|diagram|auto`(별칭 `style=v5|v6`). 코어(13모드·레이아웃·코어 CSS)는 공유, 프로파일이 라이브러리·삽입단계·CSS 번들만 게이트. 검증기 `--profile`로 교차 누수 차단. `manifest.json` `profiles` 선언. 분리 계획: 루트 `implement_visual_profile_separation.md`.
 
 ### 비주얼 프로파일 (스킬 기동 시 선택)
@@ -15,7 +15,7 @@
 | 프로파일 | 별칭 | 라이브러리 | CSS 번들 | 골든 |
 |---|---|---|---|---|
 | `widget` | `style=v5` | CSS 뷰 위젯 `wg-01~20` | 코어5 + `widgets.css` | showcase-v5(정합화) |
-| `diagram` | `style=v6` | SVG→HTML `vt-` 20종 | 코어5 + `visual-html.css` | showcase-v6 슬림 |
+| `diagram` | `style=v6` | SVG→HTML `vt-` 21종 | 코어5 + `visual-html.css` | showcase-v6 슬림 |
 | `auto`(기본) | — | 둘 다(vt- 1순위 + wg- 보강) | 코어5 + 둘 다 | showcase-v6 |
 
 선택 규칙: 인자 우선(`trim→lowercase→정규화`, `profile=` 우선, 무효는 `invalid_profile` 실패). 미지정 시 비대화형(Codex/Gemini 등 AGENTS.md 경유)=무조건 `auto`, 대화형(Claude)=1회 질문. 결정론은 인자 명시 경로 한정.
@@ -43,7 +43,7 @@
 - `assets/visual-components.css`: `figure.visual-figure`/figcaption/visual grid·pipeline 등 시각 인포그래픽 삽입용 반응형 스타일
 - `assets/widgets.css`: 뷰 위젯 20종 CSS-only 스타일 (`wg-<id>-` 네임스페이스, 무 JS)
 - `assets/widget-templates/*.html`: 뷰 위젯 템플릿 20종 (01~20)
-- `assets/visual-html.css`: SVG→HTML 뷰 템플릿 20종 (`assets/visual-html-templates/01..20.html`, `vt-` 본문 삽입 다이어그램, 무 JS)
+- `assets/visual-html.css`: SVG→HTML 뷰 템플릿 21종 (`assets/visual-html-templates/01..21.html`, `vt-` 본문 삽입 다이어그램, 무 JS)
 - `assets/layouts.css`: 모드별 레이아웃 차이
 - `assets/base.html`: 단일 HTML 렌더링 골격
 - `assets/print.css`: 인쇄 대응

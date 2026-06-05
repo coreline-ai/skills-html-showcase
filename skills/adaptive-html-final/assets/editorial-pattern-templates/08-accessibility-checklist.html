@@ -1,0 +1,69 @@
+<!-- editorial pattern 08 · accessibility-checklist — 30분 점검 그리드 + 실패 모드 표 + 릴리스 준비 체크리스트.
+     무 JS · 색 외 텍스트 단서(PASS/FAIL) · 다크 패널은 .try와 동일한 의도적 반전 카드.
+     콘텐츠만 교체하고 클래스·구조는 유지. editorial-patterns.css를 인라인한다. -->
+<section class="a11y-check">
+  <h3 class="a11y-subhead"><span class="a11y-subnum">1</span>30분 접근성 점검</h3>
+  <p class="a11y-lead">배포 전 30분 안에 끝내는 핵심 점검. 각 카드는 점검 영역 · 예상 소요 · 통과/실패 기준을 담는다.</p>
+  <div class="a11y-grid">
+    <article class="a11y-card">
+      <div class="a11y-card-head"><span>키보드</span><span class="a11y-time">8분</span></div>
+      <h4>키보드만으로 전체 탐색</h4>
+      <p>Tab/Shift+Tab으로 모든 인터랙션에 도달·조작되는지 본다.</p>
+      <ul class="a11y-points">
+        <li><span class="a11y-pass">PASS</span><span>포커스 링이 항상 보인다</span></li>
+        <li><span class="a11y-fail">FAIL</span><span>마우스로만 열리는 메뉴가 있다</span></li>
+      </ul>
+    </article>
+    <article class="a11y-card">
+      <div class="a11y-card-head"><span>대비</span><span class="a11y-time">7분</span></div>
+      <h4>본문·칩 대비 AA</h4>
+      <p>본문 텍스트와 흐린 칩/메타가 4.5:1을 넘는지 본다.</p>
+      <ul class="a11y-points">
+        <li><span class="a11y-pass">PASS</span><span>흐린 메타도 4.5:1 이상</span></li>
+        <li><span class="a11y-fail">FAIL</span><span>상태를 색으로만 구분</span></li>
+      </ul>
+    </article>
+    <article class="a11y-card">
+      <div class="a11y-card-head"><span>구조</span><span class="a11y-time">10분</span></div>
+      <h4>제목 계층·대체 텍스트</h4>
+      <p>h1→h2→h3 순서와 이미지 alt, 스킵 링크를 확인한다.</p>
+      <ul class="a11y-points">
+        <li><span class="a11y-pass">PASS</span><span>도형 SVG에 의미 있는 alt</span></li>
+        <li><span class="a11y-fail">FAIL</span><span>h2를 건너뛰고 h4 사용</span></li>
+      </ul>
+    </article>
+  </div>
+  <div class="a11y-rule"><b>단일 규칙</b><p>상태·심각도는 절대 색만으로 전달하지 않는다 — 텍스트 라벨(PASS/FAIL/WARN)이나 형태 단서를 항상 함께 둔다.</p></div>
+
+  <h3 class="a11y-subhead"><span class="a11y-subnum">2</span>실패 모드와 함정</h3>
+  <p class="a11y-lead">자주 반복되는 실패와 해결책. 표는 모바일에서 가로 스크롤된다.</p>
+  <div class="table-scroll">
+    <table class="tbl">
+      <caption>접근성 실패 모드 · 증상 · 해결</caption>
+      <thead><tr><th scope="col">실패 모드</th><th scope="col">증상</th><th scope="col">해결</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">색-단독 상태</th><td>색맹 사용자가 상태 구분 불가</td><td>텍스트/형태 단서 병기</td></tr>
+        <tr><th scope="row">role="img" 남용</th><td>컨테이너 텍스트가 prune됨</td><td>role 제거, 장식만 aria-hidden</td></tr>
+        <tr><th scope="row">포커스 소실</th><td>키보드 위치를 알 수 없음</td><td>:focus-visible 링 유지</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="a11y-notes">
+    <div class="a11y-note trap"><span class="label">함정</span><h4>"나중에 손볼게요"</h4><p>대비·포커스는 사후 보정이 가장 비싸다. 토큰 단계에서 잡는다.</p></div>
+    <div class="a11y-note solution"><span class="label">해결</span><h4>토큰에 단서 내장</h4><p>상태 토큰에 텍스트 라벨 컴포넌트를 묶어 색-단독을 구조적으로 차단한다.</p></div>
+    <div class="a11y-note case"><span class="label">사례</span><h4>토글 3-상태화</h4><p>ON/WARN/OFF 텍스트 라벨로 스위치의 색-단독 신호를 제거.</p></div>
+  </div>
+
+  <div class="a11y-release">
+    <h3 class="a11y-subhead"><span class="a11y-subnum">3</span>릴리스 준비 체크</h3>
+    <p>아래 항목이 모두 충족되면 접근성 관점에서 배포 가능하다.</p>
+    <ol>
+      <li><strong>키보드 전 경로</strong> — 모든 기능이 Tab으로 도달·조작</li>
+      <li><strong>가시 포커스</strong> — 전 인터랙션에 :focus-visible 링</li>
+      <li><strong>AA 대비</strong> — 본문·칩·메타 4.5:1 이상</li>
+      <li><strong>비색 단서</strong> — 상태/심각도에 텍스트·형태 병기</li>
+      <li><strong>의미 있는 alt</strong> — 정보성 이미지에 대체 텍스트</li>
+      <li><strong>축소 모션</strong> — prefers-reduced-motion 폴백</li>
+    </ol>
+  </div>
+</section>

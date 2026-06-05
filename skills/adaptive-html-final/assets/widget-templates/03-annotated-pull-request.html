@@ -6,7 +6,7 @@
 .wg-03-kicker{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
 .wg-03-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-3)}
 .wg-03-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:var(--space-3)}
-.wg-03-chip{font-size:var(--fs-xs);border:1px solid var(--line);background:rgba(255,255,255,.6);color:var(--chip-ink);border-radius:999px;padding:3px 10px;font-family:ui-monospace,Menlo,monospace}
+.wg-03-chip{font-size:var(--fs-xs);border:1px solid var(--line);background:var(--card);color:var(--chip-ink);border-radius:999px;padding:3px 10px;font-family:ui-monospace,Menlo,monospace}
 .wg-03-chip-add{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink);font-weight:700}
 .wg-03-chip-del{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink);font-weight:700}
 .wg-03-jump{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
@@ -14,12 +14,12 @@
 .wg-03-jump-link{font-size:var(--fs-xs);font-weight:700;text-decoration:none;border-radius:999px;padding:4px 10px;border:1px solid var(--line)}
 .wg-03-jump-link:focus-visible,.wg-03-dot:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .wg-03-jump-link.wg-03-sev-critical{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink)}
-.wg-03-jump-link.wg-03-sev-warn{background:var(--hl-yellow);border-color:var(--term-border);color:var(--term-label-ink)}
+.wg-03-jump-link.wg-03-sev-warn{background:var(--hl-yellow);border-color:var(--term-border);color:var(--ink)}
 .wg-03-jump-link.wg-03-sev-info{background:var(--hl-blue);border-color:var(--analogy-border);color:var(--analogy-label-ink)}
 .wg-03-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--space-4);align-items:start}
 .wg-03-diff{background:var(--code);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs)}
 .wg-03-row{display:flex;align-items:stretch;position:relative;line-height:1.7;border-left:3px solid transparent}
-.wg-03-ln{flex:0 0 auto;width:38px;text-align:right;padding:0 8px;color:#7c7c78;user-select:none;background:rgba(255,255,255,.04)}
+.wg-03-ln{flex:0 0 auto;width:38px;text-align:right;padding:0 8px;color:var(--ink-mute);user-select:none;background:var(--card)}
 .wg-03-code{flex:1;padding:0 10px;white-space:pre;overflow-x:auto;color:#e2e2dc}
 .wg-03-ctx .wg-03-code{color:#bcbcb6}
 .wg-03-add{background:rgba(63,142,108,.18);border-left-color:var(--good-accent)}
@@ -29,7 +29,7 @@
 .wg-03-sign{display:inline-block;width:1ch;font-weight:700}
 .wg-03-add .wg-03-sign{color:#7fe0b0}
 .wg-03-del .wg-03-sign{color:#ff9a9a}
-.wg-03-dot{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;text-decoration:none;color:#fff;font-family:var(--sans)}
+.wg-03-dot{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;text-decoration:none;color:var(--on-accent);font-family:var(--sans)}
 .wg-03-dot.wg-03-sev-critical{background:var(--accent)}
 .wg-03-dot.wg-03-sev-warn{background:var(--term-accent)}
 .wg-03-dot.wg-03-sev-info{background:var(--analogy-accent)}
@@ -41,7 +41,7 @@
 .wg-03-note.wg-03-sev-info{border-left-color:var(--analogy-accent);background:var(--analogy-bg)}
 .wg-03-note:target{box-shadow:0 0 0 3px rgba(26,86,219,.35);scroll-margin-top:24px}
 .wg-03-note-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-2)}
-.wg-03-badge{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:2px 9px;color:#fff}
+.wg-03-badge{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:2px 9px;color:var(--on-accent)}
 .wg-03-sev-critical .wg-03-badge{background:var(--accent)}
 .wg-03-sev-warn .wg-03-badge{background:var(--term-accent)}
 .wg-03-sev-info .wg-03-badge{background:var(--analogy-accent)}

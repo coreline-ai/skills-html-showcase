@@ -12,7 +12,7 @@
 .wg-07-seg{display:inline-flex;gap:var(--space-2);margin-top:var(--space-2)}
 .wg-07-radio,.wg-07-radio2{position:absolute;opacity:0;width:1px;height:1px}
 .wg-07-pill{display:inline-block;font-size:var(--fs-xs);font-weight:600;padding:var(--space-1) var(--space-3);border:1px solid var(--line);border-radius:999px;cursor:pointer;color:var(--ink-soft);background:var(--bg);transition:background .15s ease,color .15s ease,border-color .15s ease}
-.wg-07-radio:checked+.wg-07-pill,.wg-07-radio2:checked+.wg-07-pill{background:var(--accent);border-color:var(--accent);color:#fff}
+.wg-07-radio:checked+.wg-07-pill,.wg-07-radio2:checked+.wg-07-pill{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .wg-07-radio:focus-visible+.wg-07-pill,.wg-07-radio2:focus-visible+.wg-07-pill{outline:3px solid var(--focus);outline-offset:2px}
 /* duration presets drive a custom prop on the section */
 .wg-07-anim:has(#wg-07-dur-fast:checked){--wg07-dur:.4s}
@@ -24,7 +24,7 @@
 .wg-07-stage{background:var(--dark);border-radius:var(--radius-md);padding:var(--space-5);overflow:hidden}
 .wg-07-track{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
 .wg-07-box{aspect-ratio:1/1;border-radius:var(--radius-md);display:grid;place-items:center;color:#fff;font-weight:800;font-size:var(--fs-xs);will-change:transform,opacity}
-.wg-07-box-label{background:rgba(0,0,0,.28);padding:2px var(--space-2);border-radius:999px;letter-spacing:.04em}
+.wg-07-box-label{background:rgba(0,0,0,.6);padding:2px var(--space-2);border-radius:999px;letter-spacing:.04em}
 .wg-07-box--slide{background:var(--accent);animation:wg-07-slide var(--wg07-dur) var(--wg07-ease) infinite alternate}
 .wg-07-box--fade{background:var(--good-accent);animation:wg-07-fade var(--wg07-dur) var(--wg07-ease) infinite alternate}
 .wg-07-box--scale{background:var(--analogy-accent);animation:wg-07-scale var(--wg07-dur) var(--wg07-ease) infinite alternate}

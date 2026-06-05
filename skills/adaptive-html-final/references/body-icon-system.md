@@ -82,4 +82,4 @@
 
 ## 적용 갤러리
 
-`output/adaptive-html-final-showcase-v5-quality-13-v2/body-icon-gallery.html`(32종 데모).
+**인-스킬 카탈로그**: `galleries/body-icons-catalog.html`(32종 전체 데모 — id·라벨·용도). 스킬 패키지에 동봉된 레퍼런스 데모이며 `assets/body-icons.json`에서 생성된다(생성 출력 아님). `assets/body-icons.css`는 프리미티브 전용으로 유지한다.

@@ -10,7 +10,7 @@
 .wg-06-density-leg{font-size:var(--fs-xs);color:var(--ink-mute);font-weight:700;padding:0 var(--space-2)}
 .wg-06-bg-input{position:absolute;opacity:0;width:1px;height:1px}
 .wg-06-bg-label{font-size:var(--fs-xs);font-weight:600;padding:var(--space-1) var(--space-3);border:1px solid var(--line);border-radius:999px;cursor:pointer;color:var(--ink-soft)}
-.wg-06-bg-input:checked+.wg-06-bg-label{background:var(--accent);border-color:var(--accent);color:#fff}
+.wg-06-bg-input:checked+.wg-06-bg-label{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .wg-06-bg-input:focus-visible+.wg-06-bg-label{outline:3px solid var(--focus);outline-offset:2px}
 .wg-06-sheet{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3);overflow-x:auto;transition:background .25s ease}
 .wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet{background:var(--dark)}
@@ -26,14 +26,14 @@
 .wg-06-lg{font-size:var(--fs-md);padding:var(--space-3) var(--space-5)}
 .wg-06-md{font-size:var(--fs-sm);padding:var(--space-2) var(--space-4)}
 .wg-06-sm{font-size:var(--fs-xs);padding:var(--space-1) var(--space-3)}
-.wg-06-btn--primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.wg-06-btn--primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .wg-06-btn--primary:hover,.wg-06-btn--primary.wg-06-is-hover{background:var(--accent-2);border-color:var(--accent-2)}
 .wg-06-btn--secondary{background:var(--card);color:var(--ink);border-color:var(--line)}
 .wg-06-btn--secondary:hover,.wg-06-btn--secondary.wg-06-is-hover{background:var(--bg);border-color:var(--ink-soft)}
 .wg-06-btn--ghost{background:transparent;color:var(--accent-2);border-color:transparent}
 .wg-06-btn--ghost:hover,.wg-06-btn--ghost.wg-06-is-hover{background:var(--accent-soft)}
 .wg-06-btn--danger{background:var(--danger-bg);color:var(--danger-label-ink);border-color:var(--danger-border)}
-.wg-06-btn--danger:hover,.wg-06-btn--danger.wg-06-is-hover{background:var(--danger-label-ink);color:#fff;border-color:var(--danger-label-ink)}
+.wg-06-btn--danger:hover,.wg-06-btn--danger.wg-06-is-hover{background:var(--danger-label-ink);color:var(--on-accent);border-color:var(--danger-label-ink)}
 .wg-06-btn:focus-visible,.wg-06-btn.wg-06-is-focus{outline:3px solid var(--focus);outline-offset:2px;box-shadow:0 0 0 2px #fff,0 0 0 5px rgba(26,86,219,.4)}
 .wg-06-btn:active{transform:translateY(1px)}
 .wg-06-btn:disabled{opacity:.45;cursor:not-allowed;background:var(--line);color:var(--ink-mute);border-color:var(--line)}
@@ -56,7 +56,7 @@
     <label for="wg-06-bg-dark" class="wg-06-bg-label">다크</label>
   </fieldset>
 
-  <div class="wg-06-sheet">
+  <div class="wg-06-sheet table-scroll">
     <table class="wg-06-table">
       <caption class="wg-06-cap">행 = 변형 · 열 = 상태 · 셀 내부 = 크기(L/M/S)</caption>
       <thead>

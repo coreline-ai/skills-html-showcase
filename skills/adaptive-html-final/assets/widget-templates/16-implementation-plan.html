@@ -32,7 +32,7 @@
 .wg-16-table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
 .wg-16-table th,.wg-16-table td{padding:var(--space-3) var(--space-4);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
 .wg-16-table thead th{background:var(--bg);font-size:var(--fs-xs);font-weight:700;color:var(--ink)}
-.wg-16-table tbody th{font-weight:600;color:var(--ink);white-space:nowrap}
+.wg-16-table tbody th{font-weight:600;color:var(--ink);background:var(--card);white-space:nowrap}
 .wg-16-table td{color:var(--ink-soft);line-height:1.55}
 .wg-16-table tbody tr:last-child td,.wg-16-table tbody tr:last-child th{border-bottom:none}
 .wg-16-lv{display:inline-block;font-size:11px;font-weight:800;border-radius:var(--radius-sm);padding:1px 8px}
@@ -107,7 +107,9 @@
   </div>
 
   <h3 class="wg-16-h3">리스크 평가</h3>
+  <div class="table-scroll">
   <table class="wg-16-table">
+    <caption>주요 리스크 · 가능성 · 영향 · 완화책</caption>
     <thead><tr><th scope="col">리스크</th><th scope="col">가능성</th><th scope="col">영향</th><th scope="col">완화책</th></tr></thead>
     <tbody>
       <tr><th scope="row">이벤트 순서 역전</th><td><span class="wg-16-lv wg-16-lv-mid">중</span></td><td><span class="wg-16-lv wg-16-lv-hi">높음</span></td><td>도큐먼트 버전(version) 기반 조건부 upsert</td></tr>
@@ -115,6 +117,7 @@
       <tr><th scope="row">스키마 변경 호환성</th><td><span class="wg-16-lv wg-16-lv-lo">낮음</span></td><td><span class="wg-16-lv wg-16-lv-hi">높음</span></td><td>스키마 레지스트리 + 하위호환 강제</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h3 class="wg-16-h3">UI 목업</h3>
   <div class="wg-16-mock" aria-label="색인 상태 대시보드 목업 자리">
