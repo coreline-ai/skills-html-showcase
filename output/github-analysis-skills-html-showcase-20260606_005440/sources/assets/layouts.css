@@ -23,9 +23,13 @@
 .layout-github>section,
 .layout-github>.source-note,
 .layout-github>.github-question-toc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
-.layout-github>.try{color:var(--ink)}
+.layout-github>.try{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);color:var(--ink)}
+.layout-github>.try .label{color:var(--accent-2)}
 .layout-github>.try p,.layout-github>.try li{color:var(--ink-soft)}
 .layout-github>.try h2{color:var(--ink)}
+.layout-github>.try strong{color:var(--ink)}
+.layout-github>.try a{color:var(--accent-2)}
+.layout-github>.try h2 .no,.layout-github>.try h2 .num{background:var(--accent);color:var(--on-accent)}
 .layout-github>.try .tag{background:var(--chip-bg);border-color:var(--line);color:var(--ink)}
 .layout-github>section .vt-shell{margin-bottom:0}
 .layout-github .repo-card,

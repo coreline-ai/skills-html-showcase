@@ -1,5 +1,16 @@
 # Changelog — adaptive-html-final
 
+## v5.3.2 (2026-06-06) — github_analysis Next Actions(.try) 배경 버그 수정
+
+`layout-github`의 최종 `.try`(Next Actions)가 텍스트만 `var(--ink)`로 바꾸고 배경은 base `.try{background:var(--dark)}`(라이트에서 검정)를 그대로 둬, **라이트 테마에서 검정 배경 + 어두운 텍스트(거의 안 보임)** 로 나오던 버그 수정.
+
+### 변경 (`assets/layouts.css`)
+- `.layout-github>.try`에 `background:var(--card)` + border(+left accent) 추가 → 라이트=라이트 카드/어두운 텍스트, 다크=다크 카드/밝은 텍스트로 테마 추종.
+- `.label`(accent-2)·`strong`(ink)·`a`(accent-2)·`h2 .no/.num`(accent bg) 대비 보정.
+
+### 영향·검증
+- 코어(layouts.css) 변경 → core-css-sha256 리베이스. 게이트 통과 베이스라인 4종(13-topics·github_analysis·windows-audio·grok-india) v5.3.2 재생성, validate OK.
+
 ## v5.3.1 (2026-06-06) — 완성본(reference) 표준화: 페이지-로컬 디자인을 스킬 기본값으로 승격
 
 `windows-audio-pcm-reference`(완성본, v5.2.3)에만 page-local로 있던 핵심 디자인을 **스킬 기본값으로 승격**해, 신규 출력(예: github_analysis v5.3.0)이 완성본과 다르게 회귀하던 문제를 근본 해소. 무 JS, `!important` 0.

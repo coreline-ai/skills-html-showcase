@@ -25,7 +25,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.3.1 · "완성본 표준화 — 무클래스 섹션 카드뷰·섹션 제목 큰 아이콘·헤더 리듬·source-note·vt-frame 평면을 스킬 기본값으로 승격(회귀 안전)" (이전 5.3.0)
+> Version 5.3.2 · "github_analysis Next Actions(.try) 라이트 카드 배경 버그 수정 — 라이트에서 검정 배경+어두운 텍스트 회귀 해소" (이전 5.3.1)
 
 ## 0. Identity
 
