@@ -1,5 +1,27 @@
 # Changelog — adaptive-html-final
 
+## v5.3.4 (2026-06-06) — 표 셀 줄바꿈/열폭 정돈
+
+표 셀의 `overflow-wrap:anywhere`가 auto-layout 최소폭을 ~1글자로 만들어, 공간이 남는데도 긴 토큰(예: `validate_output.py`)이 2줄로 쪼개지고 짧은 열은 과폭이 되던(날것의) 문제 수정.
+
+### 변경 (`assets/components.css`)
+- `td,th`를 `overflow-wrap:anywhere` 그룹에서 제외.
+- `th,td`에 `overflow-wrap:break-word;word-break:keep-all` 적용 → 열폭이 내용(가장 긴 단어) 기준으로 잡혀 공간 있으면 단일행, 긴 URL/SHA는 넘칠 때만 분리, 한국어는 어절 단위 줄바꿈.
+
+### 영향
+- 코어(components.css) 리베이스 → 베이스라인 4종 v5.3.4 재생성, validate OK.
+
+## v5.3.4 (2026-06-06) — `.pull-quote--note` 변형 + 검정 `.try` 안 `.hl` 가독성 수정
+
+본문 인라인 면책/주석 문구가 editorial pull-quote(세리프 20px italic)로 과하게 잡히던 문제와, 검정 `.try` hero CTA 안에서 `.hl`(노란 언더라인 밴드)이 밝은 본문색과 겹쳐 강조어가 묻히던 문제를 **추가형(additive) 규칙**으로 해결. 기존 `.pull-quote`·`.hl` 규칙은 그대로 두어 전 모드 회귀 0.
+
+### 변경 (`assets/components.css`, additive)
+- `.pull-quote--note`: 본문 sans(`var(--sans)`)·15px·upright·`--ink-mute` — pull-quote가 아닌 인라인 주석/면책용 compact 변형(opt-in).
+- `.try .hl`: 어두운 `.try` 안에서 언더라인 그라디언트를 솔리드 칩(`background-color:var(--c)`)+`color:var(--ink)`로 전환해 강조어가 선명히 보이도록 보정(`!important` 미사용, `.try .hl` 스코프 한정).
+
+### 영향·검증
+- 코어 해시 리베이스 → 현재 green 출력 베이스라인 전체를 콘텐츠 보존 재동기화(인라인 core CSS·해시 마커·`sources/assets/components.css`·`css-integrity.json`·매니페스트). governance 29/29, validate OK.
+
 ## v5.3.3 (2026-06-06) — github_analysis Next Actions를 검정 hero로 복원
 
 v5.3.2에서 `.try`를 라이트 카드로 바꿨으나, 의도는 **base 검정 hero CTA 유지**였음. `.layout-github>section`(카드)에서 `.try`를 `:not(.try)`로 제외하고 `.layout-github>.try` 오버라이드 전부 제거 → base `.try{background:var(--dark);color:#f5f5f0}`(라이트/화이트/다크 모두 검정 패널 + 라이트 텍스트) 적용.

@@ -25,7 +25,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.3.3 · "github_analysis Next Actions(.try)를 base 검정 hero CTA로 복원 — 라이트/화이트에서도 검정 패널" (이전 5.3.2)
+> Version 5.3.4 · "표 셀 overflow-wrap:anywhere→break-word — 공간 남는데 2줄 쪼개짐·열폭 불균형(날것) 해소, 내용 기준 단일행" (이전 5.3.3)
 
 ## 0. Identity
 

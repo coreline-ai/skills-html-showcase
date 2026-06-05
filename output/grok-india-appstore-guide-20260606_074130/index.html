@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: b8d79efbc33ead87e764cd5bd51e6d3c398862068a6849e3ced6f813234bf95d */
+/* adaptive-html-final-core-css-sha256: b6852f69891be6070d1512a7a5c9f1f3c4ee68296c410f8482a1b9320141bf1e */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -189,7 +189,7 @@ footer p{font-size:13px;color:var(--ink-mute)}
 
 
 /* Robust wrapping for long URLs, code tokens, and Korean/English mixed labels. */
-.source-note,.source-box,.source-list,.card-block,.mini-card,.term,.analogy,.danger,.good,td,th,caption,a,code{overflow-wrap:anywhere}
+.source-note,.source-box,.source-list,.card-block,.mini-card,.term,.analogy,.danger,.good,caption,a,code{overflow-wrap:anywhere}
 .tbl,.table-scroll{max-width:100%}
 .caption{font-size:12px;color:var(--ink-mute);margin:8px 0 0}
 
@@ -261,10 +261,11 @@ code{font-family:"SF Mono",Menlo,Consolas,monospace;background:#ececea;padding:1
 pre,.code{background:var(--code);color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;white-space:pre-wrap}
 pre code,.code code{background:none;color:inherit;padding:0;font-size:13px}
 blockquote,.pull-quote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-family:var(--serif-kr);font-size:20px;line-height:1.65;font-style:italic}
+.pull-quote--note{font-family:var(--sans);font-size:15px;line-height:1.7;font-style:normal;color:var(--ink-mute)}
 .tbl,.table-scroll{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
-table,.table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:18px 0}
+table,.table{border-collapse:collapse;width:auto;max-width:100%;font-size:14px;background:var(--card);min-width:min(420px,100%);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:18px 0}
 caption{caption-side:top;text-align:left;font-size:13px;line-height:1.6;color:var(--ink);font-weight:800;margin:0;padding:0 0 8px;white-space:normal;overflow:visible}
-th,td,.table th,.table td{border:1px solid var(--line);padding:10px 14px;text-align:left;color:var(--ink-soft);vertical-align:top}
+th,td,.table th,.table td{border:1px solid var(--line);padding:10px 14px;text-align:left;color:var(--ink-soft);vertical-align:top;overflow-wrap:break-word;word-break:keep-all}
 th,.table th{background:var(--ink);color:#fff;font-weight:800;font-size:13px}
 tbody tr:nth-child(even) td,.table tbody tr:nth-child(even) td{background:rgba(0,0,0,.025)}
 .status-pill{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 9px;font-size:12px;line-height:1.45;color:var(--ink-mute);margin:3px 4px 3px 0;text-align:center;white-space:normal}
@@ -280,6 +281,7 @@ details p{margin-bottom:0}
 .try h2,.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
 .try h2 .no,.try h2 .num{background:#fff;color:var(--dark)}
 .try p{color:#d0d0c8}.try ol,.try ul{padding-left:20px;color:#d0d0c8}.try li{margin-bottom:12px;font-size:15px;line-height:1.7}.try strong{color:#fff}
+.try .hl{background-image:none;background-color:var(--c);background-size:100% 100%;color:var(--ink);animation:none}
 .try .box,
 .try .summary-card,
 .try .cta-box,
@@ -1643,7 +1645,7 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
         <li>주소 제출·업데이트 완료 후 다시 <strong>SuperGrok 결제</strong>를 진행합니다.</li>
       </ul>
     </div>
-    <p class="pull-quote">실제 사례로는 유효한 인도 주소와 9자리 형식 전화번호로 업데이트가 완료된 경우가 있습니다 — 다만 본인이 쓸 수 있는 유효한 청구 정보를 쓰는 것이 약관·계정 검토 측면에서 안전합니다.</p>
+    <p class="pull-quote pull-quote--note">실제 사례로는 유효한 인도 주소와 9자리 형식 전화번호로 업데이트가 완료된 경우가 있습니다 — 다만 본인이 쓸 수 있는 유효한 청구 정보를 쓰는 것이 약관·계정 검토 측면에서 안전합니다.</p>
   </section>
 
   <section id="step6">
