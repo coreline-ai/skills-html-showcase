@@ -13,4 +13,14 @@
 .body-icon .bi-accent-box{fill:var(--accent);stroke:var(--accent);stroke-width:1.6}
 .body-icon .bi-dot{fill:#7ea66a;stroke:var(--ink-mute);stroke-width:1.3}
 .body-icon .bi-dot-box{fill:#7ea66a;stroke:#7ea66a;stroke-width:1.5}
+/* icon + text alignment: 헤딩/라벨이 body-icon을 직접 자식으로 가지면 왼쪽 아이콘 + 일정 간격으로 정렬(무 JS, :has). v5.2.1 */
+.label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+h1:has(> .body-icon),h2:has(> .body-icon){display:flex;align-items:center;gap:10px}
+h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
+.mini-card h3 .body-icon,.card-block h3 .body-icon{align-self:flex-start;margin-top:1px}
+/* lede-note 등 컨텍스트 라벨도 아이콘+텍스트 정렬(고특이도 .lede-note .label{display:block}를 이김). v5.2.2 */
+.lede-note .label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+/* 아이콘 박스 배경 테마 적응(white/dark) — 하드코딩 흰빛 그라디언트가 다크에서 떠 보이던 문제 해소. SVG 칠은 토큰으로 이미 적응. v5.2.2 */
+:root:has(#ahf-white:checked) .body-icon{background:linear-gradient(180deg,#ffffff,#f4f5f8)}
+:root:has(#ahf-dark:checked) .body-icon{background:linear-gradient(180deg,var(--vt-soft),var(--card));border-color:var(--line)}
 @media(prefers-reduced-motion:reduce){.body-icon{transition:none}}

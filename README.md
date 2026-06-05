@@ -7,7 +7,7 @@
 # 🎨 Adaptive HTML Final
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
-[![version](https://img.shields.io/badge/version-5.2.0-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-5.2.3-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
 [![modes](https://img.shields.io/badge/modes-13-2a7d5a)](#-13개-모드)
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
 [![themes](https://img.shields.io/badge/themes-light·white·dark-111827)](#-최근-업데이트)
@@ -57,13 +57,52 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 ## 🆕 최근 업데이트
 
+### v5.2.1 → v5.2.3 (2026-06-05) — 캐노니컬 산출물 정련 + 전문가 팀 콘텐츠 보강 + 가독성 승격
+
+> **전문가 리뷰 한 줄 결론:** 스킬 본체(13모드·3프로파일·무 JS·정적 게이트 3층)는 그대로 견고하고, 이번 차수는 **게이트를 완전 통과하는 단일 캐노니컬 산출물**(`13-topics`)을 디자인·접근성·콘텐츠 모든 면에서 출시 등급으로 끌어올렸다. 결함은 본체가 아니라 "전시 자산"에 몰려 있었고, 그 적자를 해소했다.
+
+**1) 스킬 자산 승격 (v5.2.0 → v5.2.1)**
+
+| 자산 | 변경 |
+|---|---|
+| `assets/body-icons.css` | `:has()` 기반 icon+text 정렬 규칙 — `.label`/`h1`/`h2`/`h3`가 body-icon을 직접 자식으로 가지면 **왼쪽 아이콘 + 세로중앙 + 일정 간격**으로 정렬(무 JS) |
+| `assets/theme.css` | `.header` 48rem 단일측정 캡 해제 → 헤더가 컨테이너 폭(아래 섹션과 동일)으로 정렬 |
+| 버전/이력 | `manifest.json`·`SKILL.md`·`CHANGELOG.md` 5.2.1 동기화, 코어 해시 `78f7c0…` → `3b4887…` |
+
+**2) 13-topics 캐노니컬 산출물 정련 (게이트 OK 유지)**
+
+- **콘텐츠**: 13명 전문가 에이전트(아키텍트·에디터·DB 교육설계자·SEO 전략가·SRE·보안 레퍼런스 작성자 등)가 **모든 얕은 섹션을 보강** — 페이지당 표(전부 `<caption>`)·카드그리드·코드 예시·콜아웃·체크리스트를 대폭 확충(각 191–204KB).
+- **아이콘**: 번호 헤딩 130개 전부 아이콘 보유(누락 43개 맥락 배정 보강), 헤딩 아이콘 42px, 라이트/화이트/다크 테마 적응 박스.
+- **레이아웃**: 모든 콘텐츠 섹션을 카드 뷰로 통일, 이중 박스/그라데이션 정리, a11y·impact 카드 간격·표 첫 열 줄바꿈 등 미세 가독성 보정.
+- **검증**: `validate_output.py` **OK**, `test_governance_gates.py` **25/25**, 14개 HTML 전부 h1 1개·표 caption 100%·HTTP 200.
+
+**3) 문서 정리 (저장소 위생)**
+
+- 루트의 v4~v5.0 시점 고정 리뷰/분석/계획 6종을 [`docs/archive/`](docs/archive/README.md)로 이관(SUPERSEDED 배지 + 색인).
+- 루트는 현행 3종만 유지: `README.md` · [`AGENTS.md`](AGENTS.md)(머신 고정 절대경로 → 저장소 루트 상대경로로 정정) · [`Guide.md`](Guide.md)(v5.2.1 전면 재작성).
+
+**4) 추가 스킬 승격 (v5.2.2·v5.2.3 — 조건부 자산만, 코어 해시 불변)**
+
+13-topics에서 반복 적용하던 보편적 개선을 스킬 기본값으로 올려, 향후 모든 출력에 자동 적용되게 했습니다.
+
+| 버전 | 자산 | 승격 내용 |
+|---|---|---|
+| v5.2.2 | `body-icons.css` | 아이콘 박스 배경 **테마 적응**(white=순백/dark=카드 표면) — 다크에서 흰 박스로 떠 보이던 보편 결함 해소. `.lede-note` 컨텍스트 라벨 아이콘 정렬 |
+| v5.2.3 | `editorial-patterns.css` | **가독성 승격** — `.a11y-grid`/`.a11y-card`/`.a11y-points` 줄·카드 간격 확대, `.impact-card` 아이콘 하단 여백 |
+
+> 갤러리 취향·출력 전용 디자인(헤더 kicker 폰트·전 섹션 카드 뷰·core-insight 재배경 등)은 전역 기본값화 시 모든 출력 모양이 바뀌므로 의도적으로 13-topics page-local로만 유지했습니다.
+
+> ⚠️ 알려진 한계: 본 저장소는 정적 게이트가 매우 엄격하지만 **CI(GitHub Actions)가 아직 없어** 과거 `output/`·`examples/` 다수는 코어 CSS 진화로 해시가 드리프트해 현재 게이트에서 `FAILED`가 납니다. **신뢰 기준선은 항상 `13-topics`** 산출물입니다.
+
+---
+
 `adaptive-html-final`은 2026-06-05 기준 **v5.2.0**으로 갱신되었습니다. 핵심은 "기존 13모드/3프로파일 구조는 유지하면서, 실제 브라우저 캡처에서 발견된 가독성·레이아웃 회귀를 스킬 자산에 직접 반영"한 것입니다.
 
 | 영역 | 변경 내용 |
 |---|---|
 | 3-테마 시스템 | `assets/theme-dark.css`에 라이트(크림 기본)·화이트(순백)·다크(proper-black) 토큰을 통합하고, `#theme-toggle` 체크박스를 `name="ahf-theme"` 라디오 3-세그먼트로 교체. 전부 `:has()` 기반 무 JS |
 | 모바일 테마바 | 모바일에서는 `.ahf-themebar`를 문서 흐름 안의 static 컨트롤로 전환해 표·체크리스트·메타 칩을 가리지 않도록 보정 |
-| CSS 무결성 | 출력 폴더의 `sources/assets/*.css`, `sources/css-integrity.json`, `sources/adaptive-html-final-manifest.json`을 현재 스킬 자산과 동기화. 코어 해시는 `78f7c0f836948338a066ddc3392ecddecdba4f437e6d19ec05059c168b6ca19c` |
+| CSS 무결성 | 출력 폴더의 `sources/assets/*.css`, `sources/css-integrity.json`, `sources/adaptive-html-final-manifest.json`을 현재 스킬 자산과 동기화. 코어 해시 `3b4887c281115b3c7a5ade783cd05464c14c043e8f888615b4c069fce0029b09` (v5.2.2·v5.2.3은 조건부 자산만 변경 → **코어 해시 불변**) |
 | 검증기 강화 | `scripts/validate_output.py`가 source manifest 내용 불일치, stale CSS snapshot, legacy `#theme-toggle`, 외부/동작 JS, table caption, h1/#main 구조를 더 엄격히 검사 |
 | 실제 화면 검증 | Playwright 기준 390px 모바일 / 1440px 데스크톱, 라이트·화이트·다크 조합으로 주요 페이지를 재촬영하고 가로 넘침·텍스트 대비·테마 컨트롤 겹침을 확인 |
 
@@ -81,15 +120,16 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 ### 최신 로컬 산출물
 
-이번 점검의 최신 13개 주제 산출물은 [`output/adaptive-html-final-13-topics-20260605_083433/`](output/adaptive-html-final-13-topics-20260605_083433/)에 있습니다.
+이번 점검의 최신 13개 주제 산출물은 [`output/adaptive-html-final-13-topics-20260605_083433/`](output/adaptive-html-final-13-topics-20260605_083433/)에 있으며, **웹 라이브 갤러리**는 [쇼케이스 갤러리](#️-쇼케이스-갤러리)에서 index + 13개 모드를 바로 열 수 있습니다.
 
 | 항목 | 값 |
 |---|---|
 | 프로파일 | `auto` |
-| 스킬 버전 | `5.2.0` |
+| 스킬 버전 | **`5.2.3`** |
 | HTML 수 | `index.html` + 13개 페이지 |
-| 검증 | `validate_output.py`: `OK`, `test_governance_gates.py`: `24/24 checks passed` |
-| 화면 감사 | `_visual-audit/fix-10-11/`, `_visual-audit/fix-wg12/`에 브라우저 캡처 저장 |
+| 콘텐츠 | 13명 전문가 에이전트가 모든 얕은 섹션 보강 (페이지당 표·카드·코드·콜아웃·체크리스트 대폭 확충, 표 caption 100%) |
+| 검증 | `validate_output.py`: **`OK`**, `test_governance_gates.py`: **`25/25 checks passed`** |
+| 코어 CSS 해시 | `3b4887c281115b3c7a5ade783cd05464c14c043e8f888615b4c069fce0029b09` |
 
 ```bash
 # 최신 산출물 검증
@@ -128,7 +168,46 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ## 🖼️ 쇼케이스 갤러리
 
-13개 모드를 **각각 다른 주제**로 실행해 만든 실제 결과물입니다. 모든 페이지는 스킬의 editorial 디자인 시스템을 inline으로 포함한 독립 실행 HTML이며, 품질 게이트 적대적 검증을 거쳤습니다. (스크린샷·링크는 canonical [`adaptive-html-final-showcase-v4`](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4) 기준 · 13개 모드 데모) — 프로파일별 골든은 위 [비주얼 프로파일](#️-비주얼-프로파일) 참조(widget=v5 · auto=v6 · diagram=슬림). 최신 로컬 검증 산출물은 [`adaptive-html-final-13-topics-20260605_083433`](output/adaptive-html-final-13-topics-20260605_083433/)입니다.
+### 🌐 라이브 캐노니컬 갤러리 — 13-topics (v5.2.3, 게이트 OK)
+
+현재 스킬 **v5.2.3**의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 13명 전문가 에이전트가 모든 얕은 섹션을 보강한 **캐노니컬 산출물**입니다. 메인 화면과 13개 모드 페이지를 웹에서 바로 볼 수 있습니다.
+
+**▶ 메인 화면:** **[13개 모드 신규 주제 쇼케이스 (index)](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/index.html)**
+
+| # | Mode | 주제 | 열기 |
+|--:|---|---|---|
+| 01 | `beginner_html` | 로컬 RAG 개인 지식 금고 입문 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/01-local-rag-personal-knowledge-vault.html) |
+| 02 | `expert_html` | AI 코드 리뷰 게이트웨이 운영 모델 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/02-ai-code-review-gateway-operating-model.html) |
+| 03 | `article_html` | 작은 팀의 운영 문서와 제품 속도 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/03-small-team-operating-docs-product-speed.html) |
+| 04 | `education_html` | PostgreSQL 쿼리 플랜 읽기 3주 교육 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/04-postgres-query-plan-3week-course.html) |
+| 05 | `blog_writer` | 두 번째 뇌를 다시 작게 만든 30일 회고 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/05-small-second-brain-30days-retro.html) |
+| 06 | `seo_dashboard` | AI 회의록 자동화 검색 허브 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/06-ai-meeting-notes-automation-seo.html) |
+| 07 | `platform_blog` | 컨퍼런스 발표를 플랫폼별 글로 변환 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/07-conference-talk-platform-adaptation.html) |
+| 08 | `skill_audit` | 배포 체크리스트 생성 스킬 감사 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/08-release-checklist-skill-audit.html) |
+| 09 | `reference_html` | Webhook 서명 검증 레퍼런스 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/09-webhook-signature-verification-reference.html) |
+| 10 | `comparison_html` | 벡터 검색 선택 기준 비교 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/10-vector-db-pgvector-search-engine-comparison.html) |
+| 11 | `case_study_html` | 예약 알림 지연 사고 케이스 스터디 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/11-reservation-reminder-delay-case-study.html) |
+| 12 | `landing_brief_html` | LocalNote 팀 지식관리 랜딩 브리프 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/12-localnote-team-knowledge-landing.html) |
+| 13 | `checklist_playbook` | AI 기능 출시 전 안전성 플레이북 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/13-ai-feature-release-safety-playbook.html) |
+
+> 💡 로컬: `python3 -m http.server 8788` → [`http://127.0.0.1:8788/output/adaptive-html-final-13-topics-20260605_083433/index.html`](http://127.0.0.1:8788/output/adaptive-html-final-13-topics-20260605_083433/index.html) · 상단 테마 스위처로 라이트·화이트·다크 전환
+
+### 🧩 스킬 적용용 단일 템플릿 HTML 미리보기 (final_20260604)
+
+스킬의 모든 자산·패턴을 한 파일에 담은 **단일 템플릿 HTML** 2종입니다. 클릭하면 전체 화면으로 확인할 수 있습니다.
+
+<table>
+<tr>
+<td width="50%" valign="top"><b><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html">▶ Skill Template HTML (와이드·3-테마)</a></b><br><code>final_20260604/index.html</code><br>13모드·프로파일·3-테마·vt/wg·soft-shape·workflow 도판·body-icon을 한 페이지에 집약한 적용용 마스터 템플릿. 상단 테마 스위처로 라이트/화이트/다크 전환.</td>
+<td width="50%" valign="top"><b><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html">▶ Skill Template HTML (beginner-width 변형)</a></b><br><code>final_20260604/index-beginner-width.html</code><br>본문 가독 폭(beginner-width)으로 조판한 변형본. 아이콘+텍스트 배치를 섹션 #37 컴팩트 아이콘 세트 기준으로 통일.</td>
+</tr>
+</table>
+
+> 💡 로컬: `python3 -m http.server 8788` → [`http://127.0.0.1:8788/output/final_20260604/index.html`](http://127.0.0.1:8788/output/final_20260604/index.html) · 캐시 우회는 `?v=` 쿼리 추가
+
+### 🎞️ 디자인 썸네일 미리보기 (v4 데모 — 참고용)
+
+아래는 디자인 시스템을 한눈에 보는 **v4 스크린샷 데모**입니다(주제는 13-topics와 다름). 캐노니컬 라이브는 위 13-topics 갤러리를 사용하세요. 프로파일별 골든은 [비주얼 프로파일](#️-비주얼-프로파일) 참조.
 
 <table>
 <tr>
@@ -205,7 +284,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
   --skill-dir skills/adaptive-html-final --profile diagram
 ```
 
-> 🤖 **크로스-에이전트 결정론**: 인자가 명시되면 Claude Code·Codex·Gemini가 동일 결과를 낸다(정규화 `profile=` 우선, 무효 토큰은 `invalid_profile` 실패). 비대화형(AGENTS.md 경유)은 미지정 시 무조건 `auto`. 분리 설계·검증 계획은 [`implement_visual_profile_separation.md`](implement_visual_profile_separation.md).
+> 🤖 **크로스-에이전트 결정론**: 인자가 명시되면 Claude Code·Codex·Gemini가 동일 결과를 낸다(정규화 `profile=` 우선, 무효 토큰은 `invalid_profile` 실패). 비대화형(AGENTS.md 경유)은 미지정 시 무조건 `auto`. 분리 설계·검증 계획(아카이브)은 [`docs/archive/implement_visual_profile_separation.md`](docs/archive/implement_visual_profile_separation.md).
 
 ---
 
@@ -248,7 +327,7 @@ theme-dark.css    CSS-only 3-테마 토큰 오버라이드 + 라디오 세그먼
 skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트
-│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.2.0)
+│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.2.3)
 │   ├── assets/                        # base.html · CSS · 위젯/도식/패턴/테마 자산 · 13개 레이아웃 골격
 │   ├── references/                    # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/비주얼 규칙
 │   ├── recipes/       (13)            # 13개 모드별 대표 프롬프트
@@ -261,19 +340,21 @@ skills-html-showcase/
 │   ├── adaptive-html-final-showcase-v4/   # 13모드 쇼케이스 (canonical 13-mode 데모)
 │   │   ├── pages/     (15)            # 13모드 + 비주얼 데모 + SVG 갤러리
 │   │   └── media/svg-template-demos/ (20)  # 8000×6000 SVG 데모
-│   ├── adaptive-html-final-13-topics-20260605_083433/ # v5.2.0 3-테마 검증 산출물
+│   ├── adaptive-html-final-13-topics-20260605_083433/ # ★ v5.2.3 게이트 완전 통과 캐노니컬 기준선(전문가 보강)
 │   └── (playwright/ · qa-screenshots/ 는 .gitignore)
-├── docs/screenshots/  (13)           # 본 README용 쇼케이스 썸네일
+├── docs/
+│   ├── screenshots/   (13)           # 본 README용 쇼케이스 썸네일
+│   └── archive/                      # v4~v5.0 시점 고정 리뷰/분석/계획 기록 (SUPERSEDED)
 ├── demo/ · orginal_skill/            # 이전 계열 데모 · 원본 스킬
-├── ANALYSIS_adaptive-html-final.md   # 7-전문가 정밀 분석 보고서
-└── Guide.md                          # 사용 가이드
+├── AGENTS.md                         # 크로스-에이전트 결정론 진입점
+└── Guide.md                          # 사용 가이드 (v5.2.1+)
 ```
 
 ---
 
 ## 🔬 스킬 상세 분석
 
-[`ANALYSIS_adaptive-html-final.md`](ANALYSIS_adaptive-html-final.md) — 7개 전문가 에이전트 병렬 분해 + 쟁점 적대적 검증 + 교차 통합 감사로 도출한 정밀 분석 보고서입니다.
+[`docs/archive/ANALYSIS_adaptive-html-final.md`](docs/archive/ANALYSIS_adaptive-html-final.md) — 7개 전문가 에이전트 병렬 분해 + 쟁점 적대적 검증 + 교차 통합 감사로 도출한 정밀 분석 보고서입니다(v4.5.0 시점, 아카이브). v4~v5.0 전 리뷰·계획 기록은 [`docs/archive/`](docs/archive/README.md)에 시점 배지와 함께 보관됩니다.
 
 ### 검증으로 입증된 강점
 
@@ -300,8 +381,11 @@ skills-html-showcase/
 | `v5.0.0` | 코어 프리미티브 업그레이드 + 토큰 전용 다크 테마 도입. CTA/SERP/platform primitive를 기존 정본 클래스 안에서 강화 |
 | `v5.1.0` | proper-black 다크 보정. vt/wg 표면 색, CTA 태그, 회색 리터럴 토큰화, OS/토글 조합 회귀를 실제 캡처로 검증 |
 | `v5.2.0` | **CSS-only 3-테마 시스템**(라이트·화이트·다크) + 라디오 세그먼트 스위처. CSS snapshot/source manifest/legacy toggle 검증 강화, `wg-12`·`wg-16`·`vt-02`·`vt-21`·`.try` 회귀 패치 |
+| `v5.2.1` | body-icon `:has()` icon+text 정렬 + 헤더 폭 캡 해제(스킬 자산). **13-topics 캐노니컬 산출물**을 13명 전문가 에이전트로 전 섹션 콘텐츠 보강하고 아이콘·테마·레이아웃 정련(게이트 OK·25/25) |
+| `v5.2.2` | body-icons.css에 **아이콘 박스 테마 적응**(white=순백/dark=카드 표면) + lede-note 라벨 정렬 승격. 조건부 자산만 변경 → 코어 해시 불변 |
+| `v5.2.3` | editorial-patterns.css **가독성 승격** — a11y 카드/그리드/포인트 간격, impact 카드 아이콘 하단 여백. 조건부 자산만 변경 → 코어 해시 불변 |
 
-> 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) · 프로파일 분리 계획: [`implement_visual_profile_separation.md`](implement_visual_profile_separation.md)
+> 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) · 프로파일 분리 계획(아카이브): [`docs/archive/implement_visual_profile_separation.md`](docs/archive/implement_visual_profile_separation.md)
 
 ---
 
@@ -318,6 +402,17 @@ skills-html-showcase/
 - [x] 외부/동작 JS 0 · 확인되지 않은 최신 정보 단정 금지 · 출처 추측 금지
 - [x] 교육용=퀴즈+정답 · 전문가용=리스크+검증 · 블로그/SEO=제목+메타+태그 · 감사=개선본
 - [x] 비주얼: 8000×6000 캔버스 · `figure`+`figcaption` · 의미 있는 `alt` · 캔버스 잘림 없음
+
+> 🟢 **캐노니컬 빌드 기준선**: `output/adaptive-html-final-13-topics-20260605_083433/`(HTML 14개)는 현재 스킬 **v5.2.3**의 정적 품질 게이트를 **0 issue로 완전 통과**합니다 — 빌드 완성도 검증 기준선(13명 전문가 보강).
+
+```bash
+# 재현 (저장소 루트에서)
+python3 skills/adaptive-html-final/scripts/validate_output.py \
+  output/adaptive-html-final-13-topics-20260605_083433 \
+  --skill-dir skills/adaptive-html-final   # → 마지막 줄 OK
+```
+
+> 참고: v4~v5.0 시점에 생성된 일부 `output/`·`examples/`는 그 후 코어 CSS가 진화해 해시가 드리프트하면 현재 게이트에서 `FAILED`가 날 수 있습니다(시점 고정 산출물). 최신 기준선은 항상 위 13-topics 디렉토리입니다.
 
 ---
 
@@ -350,7 +445,7 @@ python3 -m http.server 8788
 # canonical v4 쇼케이스
 # → http://127.0.0.1:8788/output/adaptive-html-final-showcase-v4/index.html
 
-# 최신 v5.2.0 13-topic 산출물
+# 최신 v5.2.3 13-topic 산출물(전문가 보강)
 # → http://127.0.0.1:8788/output/adaptive-html-final-13-topics-20260605_083433/index.html
 ```
 
@@ -361,5 +456,5 @@ python3 -m http.server 8788
 별도 라이선스가 지정되지 않았습니다. 사용 전 저장소 소유자(`coreline-ai`)에게 확인하세요.
 
 <div align="center">
-<sub>생성 도구: <code>adaptive-html-final</code> v5.2.0 · 13-mode · 3-theme · 3-profile editorial HTML engine</sub>
+<sub>생성 도구: <code>adaptive-html-final</code> v5.2.3 · 13-mode · 3-theme · 3-profile editorial HTML engine</sub>
 </div>

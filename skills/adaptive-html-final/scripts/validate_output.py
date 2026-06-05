@@ -198,30 +198,41 @@ _STYLE_ALIAS = {'v5': 'widget', 'v6': 'diagram'}
 
 
 def _resolve_profile(profile_arg, root: Path, issues: list):
-    """Profile resolution priority: --profile arg (1st) -> sources/profile.json (2nd) -> None (fallback).
+    """Profile resolution priority: --profile arg (1st) -> sources/profile.json (2nd).
 
     Accepts canonical names or style aliases (v5/v6). Invalid/out-of-range tokens append an
-    'invalid_profile' issue and resolve to None (no silent auto fallback). Returns one of
-    VALID_PROFILES or None.
+    'invalid_profile' issue and resolve to None (no silent auto fallback). `sources/profile.json`
+    is mandatory for deterministic outputs; when --profile and profile.json are both present,
+    they must agree after alias normalization. Returns one of VALID_PROFILES or None.
     """
+    pj = root / 'sources' / 'profile.json'
+    file_profile = None
+    if pj.exists():
+        try:
+            v = json.loads(pj.read_text(encoding='utf-8')).get('profile')
+            file_profile = _STYLE_ALIAS.get(str(v).strip().lower(), str(v).strip().lower()) if v is not None else None
+            if file_profile not in VALID_PROFILES:
+                issues.append({'type': 'invalid_profile', 'source': 'sources/profile.json', 'value': v})
+                file_profile = None
+        except Exception as e:
+            issues.append({'type': 'profile_json_parse_error', 'detail': str(e)})
+    else:
+        issues.append({'type': 'missing_profile_json',
+                       'detail': '결정론 출력은 sources/profile.json에 profile=widget|diagram|auto를 기록해야 한다.'})
+
     if profile_arg:
         p = str(profile_arg).strip().lower()
         p = _STYLE_ALIAS.get(p, p)
+        if p in VALID_PROFILES and file_profile and p != file_profile:
+            issues.append({'type': 'profile_mismatch',
+                           'source': '--profile vs sources/profile.json',
+                           'arg': p,
+                           'profile_json': file_profile})
         if p in VALID_PROFILES:
             return p
         issues.append({'type': 'invalid_profile', 'source': '--profile', 'value': str(profile_arg)})
         return None
-    pj = root / 'sources' / 'profile.json'
-    if pj.exists():
-        try:
-            v = json.loads(pj.read_text(encoding='utf-8')).get('profile')
-            v = _STYLE_ALIAS.get(str(v).strip().lower(), str(v).strip().lower()) if v is not None else None
-            if v in VALID_PROFILES:
-                return v
-            issues.append({'type': 'invalid_profile', 'source': 'sources/profile.json', 'value': v})
-        except Exception as e:
-            issues.append({'type': 'profile_json_parse_error', 'detail': str(e)})
-    return None
+    return file_profile
 
 
 def cross_leak_gate(text: str, declared_profile) -> list:
@@ -315,7 +326,8 @@ def bespoke_prefix_gate(text: str) -> list:
 
 def global_no_js_gate(text: str) -> list:
     """Invariant #1 enforced GLOBALLY (not only inside wg-/vt- areas): the only allowed
-    <script> is type=application/ld+json; no draggable/contenteditable anywhere."""
+    <script> is type=application/ld+json; no event handler attributes, javascript: href,
+    draggable/contenteditable anywhere."""
     issues = []
     bad_scripts = 0
     for sm in re.finditer(r'<script\b([^>]*)>', text, re.I):
@@ -329,6 +341,13 @@ def global_no_js_gate(text: str) -> list:
     forbidden = sorted({fm.group(1).lower() for fm in re.finditer(r'\b(draggable|contenteditable)\s*=', text, re.I)})
     if forbidden:
         issues.append({'type': 'forbidden_primitive_global', 'detail': forbidden})
+    handlers = sorted({fm.group(1).lower() for fm in re.finditer(r'\s(on[a-z][a-z0-9_-]*)\s*=', text, re.I)})
+    if handlers:
+        issues.append({'type': 'event_handler_global', 'detail': handlers,
+                       'note': '무 JS 불변식: onclick/onload 등 인라인 이벤트 핸들러 금지.'})
+    if re.search(r'\bhref\s*=\s*["\']\s*javascript:', text, re.I):
+        issues.append({'type': 'javascript_href_global',
+                       'note': '무 JS 불변식: href="javascript:..." 금지.'})
     return issues
 
 
@@ -425,6 +444,7 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
     expected_css_hash = None
     expected_asset_hashes = None
     all_skill_css_hashes = None
+    asset_texts = {}
     asset_order = ['theme.css', 'components.css', 'visual-components.css', 'layouts.css', 'print.css']
     conditional_order = ['widgets.css', 'visual-html.css', 'body-icons.css', 'editorial-patterns.css', 'shape-visuals.css', 'workflow-visuals.css', 'theme-dark.css']
     if skill_dir:
@@ -467,6 +487,33 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
                 issues.append({'page': rel, 'type': 'missing_inline_css_hash_marker'})
             elif m.group(1) != expected_css_hash:
                 issues.append({'page': rel, 'type': 'inline_css_hash_mismatch', 'expected': expected_css_hash, 'actual': m.group(1)})
+            for name in asset_order:
+                if asset_texts.get(name) and asset_texts[name] not in style:
+                    issues.append({'page': rel, 'type': 'inline_core_css_not_verbatim', 'asset': name,
+                                   'detail': '코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다.'})
+        if skill_dir:
+            theme_dark_path = skill_dir / 'assets' / 'theme-dark.css'
+            if theme_dark_path.exists():
+                theme_dark_text = theme_dark_path.read_text(encoding='utf-8')
+                if theme_dark_text not in style:
+                    issues.append({'page': rel, 'type': 'theme_dark_css_not_inlined',
+                                   'detail': 'theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다.'})
+            profile_assets = {
+                'widget': {'required': ['widgets.css'], 'forbidden': ['visual-html.css']},
+                'diagram': {'required': ['visual-html.css'], 'forbidden': ['widgets.css']},
+                'auto': {'required': ['widgets.css', 'visual-html.css'], 'forbidden': []},
+            }.get(declared_profile)
+            if profile_assets:
+                for name in profile_assets['required']:
+                    p = skill_dir / 'assets' / name
+                    if p.exists() and p.read_text(encoding='utf-8') not in style:
+                        issues.append({'page': rel, 'type': 'profile_required_css_not_inlined',
+                                       'profile': declared_profile, 'asset': name})
+                for name in profile_assets['forbidden']:
+                    p = skill_dir / 'assets' / name
+                    if p.exists() and p.read_text(encoding='utf-8') in style:
+                        issues.append({'page': rel, 'type': 'profile_forbidden_css_inlined',
+                                       'profile': declared_profile, 'asset': name})
         if re.search(r'(?:caption|\.caption)[^{]*\{[^}]*margin-[^:]+:\s*-', style, re.I|re.S) or re.search(r'(?:caption|\.caption)[^{]*\{[^}]*margin\s*:[^;}]*-', style, re.I|re.S):
             issues.append({'page': rel, 'type': 'caption_negative_margin'})
         # Known old regression: semantic section wrapper classes must not be direct grid/card selectors.
@@ -727,7 +774,7 @@ def main():
     ap.add_argument('output_dir', type=Path)
     ap.add_argument('--skill-dir', type=Path)
     ap.add_argument('--json', action='store_true')
-    ap.add_argument('--profile', default=None, help='widget|diagram|auto (or style alias v5|v6). 미지정 시 sources/profile.json → 폴백(교차 게이트 미적용)')
+    ap.add_argument('--profile', default=None, help='widget|diagram|auto (or style alias v5|v6). sources/profile.json 필수, 둘 다 지정 시 일치해야 함')
     ns = ap.parse_args()
     result = validate(ns.output_dir.resolve(), ns.skill_dir.resolve() if ns.skill_dir else None, ns.profile)
     if ns.json:

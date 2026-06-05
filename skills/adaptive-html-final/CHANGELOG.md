@@ -1,5 +1,40 @@
 # Changelog — adaptive-html-final
 
+## v5.2.3 (2026-06-05) — editorial-patterns 가독성 승격
+
+쇼케이스에서 반복 적용하던 일반 가독성 보정을 스킬 기본값으로 승격. 무 JS, `!important` 0, 조건부 자산(`editorial-patterns.css`)만 변경 — **코어 해시 불변**.
+
+### 변경 (`assets/editorial-patterns.css`)
+- **`.a11y-card`** 내부 줄 간격 `gap:8px → 12px`, **`.a11y-points`** `gap:5px → 9px` — 접근성 점검 카드의 헤드/제목/PASS·FAIL 줄이 너무 붙던 문제 완화.
+- **`.impact-card .body-icon`** `display:grid;margin-bottom:12px` 추가 — impact 카드에서 아이콘이 제목/수치에 바로 붙던 문제 해소(아이콘 ↔ 텍스트 12px 간격).
+
+### 영향·검증
+- `editorial-patterns.css`는 조건부 자산이라 **core-css-sha256 불변**. `output/adaptive-html-final-13-topics-20260605_083433/`의 인라인 `editorial-patterns.css`·스냅샷·`css-integrity.json`·source manifest를 v5.2.3로 재생성, `validate_output.py` **OK** 유지.
+
+## v5.2.2 (2026-06-05) — 아이콘 박스 테마 적응 + lede-note 라벨 정렬
+
+쇼케이스/템플릿 점검에서 확정된 보편 결함을 스킬 기본값으로 승격. 무 JS(`:has()`), `!important` 0, 조건부 자산(`body-icons.css`)만 변경 — **코어 해시 불변**.
+
+### 변경 (`assets/body-icons.css`)
+- **아이콘 박스 배경 테마 적응**: `.body-icon` 박스 배경이 하드코딩 흰빛 그라디언트라 다크/화이트 테마에서 그대로 떠 보이던 문제를 해소. `:root:has(#ahf-white:checked)`=순백, `:root:has(#ahf-dark:checked)`=카드 표면(`var(--vt-soft)`→`var(--card)`, border `var(--line)`). 라이트는 기존 크림빛 유지. SVG 칠(bi-*)은 이미 토큰 기반이라 그대로 적응.
+- **lede-note 라벨 정렬**: `.lede-note .label{display:block}`(고특이도)이 v5.2.1의 `.label:has(>.body-icon){display:flex}`를 무력화하던 문제를 `.lede-note .label:has(>.body-icon)`(0,3,0)로 보강.
+
+### 영향·검증
+- `body-icons.css`는 조건부 자산이라 **core-css-sha256 불변**. `output/adaptive-html-final-13-topics-20260605_083433/`의 인라인 `body-icons.css`·스냅샷·`css-integrity.json`(conditional hash)·source manifest를 v5.2.2로 재생성, `validate_output.py` **OK** 유지.
+- 같은 결함을 가진 `output/final_20260604/index*.html`(반례 데모)도 향후 재인라인 시 자동 적용.
+
+## v5.2.1 (2026-06-05) — body-icon 정렬 규칙 + 헤더 폭 정련
+
+쇼케이스 인덱스 검수에서 확정된 정렬·폭 개선 2건을 스킬 기본값으로 승격. 전부 무 JS(`:has()`), `!important` 0.
+
+### 변경
+- **`assets/body-icons.css`**: `body-icon`을 직접 자식으로 갖는 `.label`/`h1`/`h2`/`h3`를 **flex 왼쪽 아이콘 + 일정 간격(gap 8~10px)**으로 정렬. `.mini-card`/`.card-block` 카드 제목 아이콘은 2줄 제목에서 상단 정렬(`align-self:flex-start`). 헤딩·라벨 전반의 아이콘↔텍스트 간격 일관화.
+- **`assets/theme.css`**: `.header` 콘텐츠의 **48rem 단일 측정 캡 해제**(`max-width:none`). 헤더가 `.page`/`.page-wide` 컨테이너 폭에 맞춰 **아래 섹션과 동일 폭**으로 정렬(특히 wide 레이아웃에서 헤더가 768px로 좁던 문제 해소).
+
+### 영향·검증
+- `theme.css`가 코어 해시 자산이라 **core-css-sha256 변경** → `output/adaptive-html-final-13-topics-20260605_083433/` 기준선의 인라인 CSS·코어 마커·CSS 스냅샷·`css-integrity.json`을 v5.2.1로 재생성, `validate_output.py` **OK** 유지.
+- 인덱스 전용 미세 튜닝(상단 kicker 폰트 11px, 인트로 `text-align:justify`)은 갤러리 취향이라 스킬에 승격하지 않고 해당 `index.html` 페이지-로컬 오버라이드로만 유지.
+
 ## v5.2.0 (2026-06-05) — CSS-only 3-테마 시스템 (라이트·완전 화이트·다크)
 
 기존 라이트(크림)/다크 2-테마에 **완전 화이트(순백) 테마**를 추가해 **3-테마**로 확장. 단일 체크박스 토글을 **라디오 3-세그먼트 스위처**(`name=ahf-theme`: `#ahf-light`/`#ahf-white`/`#ahf-dark`)로 교체. 전부 `:has()` 기반 **무 JS**, 코어 CSS 무수정(해시-safe), `!important` 0.

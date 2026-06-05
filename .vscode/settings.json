@@ -1,0 +1,22 @@
+{
+  "html.validate.enable": false,
+  "html.validate.styles": false,
+  "html.validate.scripts": false,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "htmlhint.exclude": {
+    "**/output/**/*": true,
+    "output/**/*": true
+  },
+  "markdownlint.config": {
+    "default": false
+  },
+  "markdownlint.run": "off",
+  "sonarlint.analyzerProperties": {
+    "sonar.exclusions": "**/output/**,**/output/**/*"
+  },
+  "eslint.options": {
+    "ignorePattern": ["**/output/**"]
+  }
+}

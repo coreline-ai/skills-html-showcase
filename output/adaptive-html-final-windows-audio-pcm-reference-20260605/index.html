@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>벡터 검색 선택 기준: 전용 Vector DB vs pgvector vs 검색 엔진</title>
-<meta name="description" content="문서 검색과 추천 시스템을 만들 때 어떤 저장소를 고를지 기능, 운영, 비용, 전환 가능성으로 비교한다.">
-<meta property="og:title" content="벡터 검색 선택 기준: 전용 Vector DB vs pgvector vs 검색 엔진">
-<meta property="og:description" content="문서 검색과 추천 시스템을 만들 때 어떤 저장소를 고를지 기능, 운영, 비용, 전환 가능성으로 비교한다.">
+<title>Windows 오디오 PCM·DAC 제어 레퍼런스</title>
+<meta name="description" content="Windows에서 PCM을 DAC로 보내는 길 — WASAPI·ASIO·Kernel Streaming·WDM/WaveRT·APO를 목적별로 정리한 개발 레퍼런스다.">
+<meta property="og:title" content="Windows 오디오 PCM·DAC 제어 레퍼런스">
+<meta property="og:description" content="Windows에서 PCM을 DAC로 보내는 길 — WASAPI·ASIO·Kernel Streaming·WDM/WaveRT·APO를 목적별로 정리한 개발 레퍼런스다.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
@@ -1332,7 +1332,6 @@ h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
 .ba-col.after .ba-bullet{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
 .impact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:18px 0}
 .impact-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px}
-.impact-card .body-icon{display:grid;margin-bottom:12px}
 .impact-card h3{font-family:var(--sans);font-size:15.5px;margin:0 0 6px}
 .impact-card p{font-size:13.5px;margin:0}
 @media(max-width:940px){.impact-grid{grid-template-columns:1fr 1fr}}
@@ -1346,7 +1345,7 @@ h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
 /* a11y-checklist — 접근성 30분 점검 그리드 + 실패 모드 표 + 릴리스 준비 체크리스트(다크 패널). 무 JS, 스킬 토큰, 색 외 텍스트 단서(PASS/FAIL). access-* 페이지 어휘를 a11y-* 정본 네임스페이스로 개명. */
 .a11y-check{margin:18px 0 0;border-top:1px solid var(--line);padding-top:18px}
 .a11y-lead{margin:0 0 12px;color:var(--ink-soft);font-size:13.8px;line-height:1.58;max-width:60rem}
-.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;row-gap:18px;margin:12px 0 0}
+.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 0}
 .a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:12px}
 .a11y-card h4{font-family:var(--sans);font-size:15px;line-height:1.32;font-weight:800;letter-spacing:-.018em;margin:0;color:var(--ink)}
 .a11y-card p{margin:0;color:var(--ink-soft);font-size:12.8px;line-height:1.48;word-break:keep-all}
@@ -1622,6 +1621,10 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 /* source-note 배경 투명 (08과 동일). 2026-06-05 */
 .source-note{background:transparent}
 :root:has(#ahf-dark:checked) .source-note{background:transparent}
+/* core-insight: 뷰 배경 var(--card) + 인용문 sans/bold (08과 동일). 2026-06-05 */
+.core-insight blockquote{font-family:var(--sans);font-size:17px;line-height:1.58;letter-spacing:-.01em;font-weight:700}
+.core-insight{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px}
+:root:has(#ahf-dark:checked) .core-insight{background:var(--card)}
 /* vt-frame 내부 박스 평면화 (08과 동일). 2026-06-05 */
 .vt-frame{background:transparent;border:0}
 :root:has(#ahf-dark:checked) .vt-frame{background:transparent}
@@ -1638,413 +1641,248 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 </fieldset>
 <a class="skip" href="#main">본문 바로가기</a>
 <div class="reading-progress" aria-hidden="true"></div>
-<main id="main" class="page-wide layout-compare layout-comparison">
-  <header class="header"><div class="kicker"><span class="kicker-text">COMPARISON MATRIX · VECTOR SEARCH</span></div><h1>벡터 검색 선택 기준: 전용 Vector DB vs pgvector vs 검색 엔진</h1><p class="sub">문서 검색과 추천 시스템을 만들 때 어떤 저장소를 고를지 기능, 운영, 비용, 전환 가능성으로 비교한다.</p><div class="meta"><span>comparison_html</span><span>comparison-matrix.html</span><span>profile auto</span><span>adaptive-html-final v5.2.0</span><span>무 JS</span></div><div class="generated-row"><p class="generated-date">Generated · 2026-06-05 08:34 KST</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">comparison-cards</span><span class="lens-chip">decision-tree</span><span class="lens-chip">risk-matrix</span><span class="lens-chip">MVP 판단</span><span class="lens-chip">운영 비용</span></div></div></header>
+<main id="main" class="page-wide layout-reference">
+  <header class="header"><div class="kicker"><span class="kicker-text">REFERENCE MANUAL · WINDOWS AUDIO STACK</span></div><h1>Windows 오디오 PCM·DAC 제어 레퍼런스</h1><p class="sub">Windows 앱은 안드로이드처럼 HAL을 직접 잡지 않는다. PCM은 Windows 오디오 스택 → 드라이버 → DAC를 거치며, 목적에 따라 WASAPI·ASIO·Kernel Streaming·WDM 드라이버로 갈린다.</p><div class="meta"><span>reference_html</span><span>reference-manual.html</span><span>profile auto</span><span>adaptive-html-final v5.2.2</span><span>무 JS</span></div><div class="generated-row"><p class="generated-date">Generated · 2026-06-05 KST</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">WASAPI</span><span class="lens-chip">Exclusive</span><span class="lens-chip">ASIO</span><span class="lens-chip">WDK/WaveRT</span><span class="lens-chip">APO</span></div></div></header>
 
   <section class="summary-card">
-    <div class="label">Overview</div>
-    <p><strong>벡터 검색 선택은 벤치마크보다 운영 맥락이 먼저다.</strong> 같은 recall 수치라도 권한 필터, 하이브리드 랭킹, 색인 재생성 시간, 장애 대응 방식이 다르면 정답이 바뀐다. 이 문서는 전용 Vector DB, PostgreSQL pgvector, 검색 엔진 하이브리드를 제품명이 아니라 실패 모드와 운영 모델 기준으로 비교한다.</p>
+    <div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-accent-box" x="8" y="10" width="6" height="6" rx="1.5"/><rect class="bi-soft" x="17" y="10" width="6" height="6" rx="1.5"/><rect class="bi-fill" x="26" y="10" width="6" height="6" rx="1.5"/><path class="bi-line" d="M9 23h22M9 28h17M9 33h12"/></svg></span>Overview</div>
+    <p><strong>“DAC의 HAL에 직접 접근해 PCM을 제어한다”는 표현은 Windows에서는 약간 다르다.</strong> 일반 앱은 DAC 하드웨어/HAL을 직접 잡지 않고 <em>앱 → Windows 오디오 엔진 → 드라이버 → DAC</em> 계층을 거쳐 PCM 스트림을 보낸다. 그래서 “무엇을 하고 싶은가”에 따라 API가 갈린다. 앱에서 PCM을 밀어 넣고 싶으면 <strong>WASAPI</strong>, bit-perfect/저지연이면 <strong>WASAPI Exclusive</strong> 또는 <strong>ASIO</strong>, 진짜 드라이버·버퍼를 제어하려면 <strong>WDK(PortCls/WaveRT)</strong>, 시스템 DSP를 넣으려면 <strong>APO</strong>다.</p>
   </section>
 
-  <section class="vt-shell" aria-label="벡터 검색 선택지 요약">
+  <div class="core-insight"><blockquote>“Windows에서 PCM 제어의 시작점은 C++ WASAPI이고, HAL/드라이버급 제어는 C/C++ WDK 영역이다.”</blockquote><p>앱 레벨에서 오디오 장치로 PCM을 보내는 공식 기본 API는 WASAPI다. 더 낮은 지연이나 bit-perfect 출력이 필요하면 WASAPI Exclusive나 ASIO로 내려가고, DAC 드라이버 자체나 PCM pin/buffer를 만들고 싶으면 그때부터는 앱 언어 문제가 아니라 Windows 드라이버 개발(WDK + PortCls/WaveRT)이다. 같은 “PCM 제어”라는 말이 계층마다 전혀 다른 도구를 가리킨다.</p></div>
+
+  <section class="vt-shell" aria-label="Windows 오디오 스택 계층 개요">
     <div class="vt-frame">
-      <div class="cmp"><article class="cmp-card"><div class="vt-kicker">Scale First</div><h3>전용 Vector DB</h3><ul><li>대규모 ANN, 분산 색인, 고 QPS 검색에 초점</li><li>새 운영 도메인과 별도 권한 모델이 생김</li><li>SLO가 명확한 검색 제품에 적합</li></ul></article><article class="cmp-card pick"><div class="vt-kicker">Stack First</div><h3>PostgreSQL pgvector</h3><ul><li>기존 DB, 트랜잭션, 권한, 백업 체계를 재사용</li><li>MVP와 내부 도구에 빠르게 적용</li><li>대규모 저지연과 복잡한 랭킹은 별도 검증 필요</li></ul></article><article class="cmp-card"><div class="vt-kicker">Relevance First</div><h3>검색 엔진 하이브리드</h3><ul><li>키워드, 필터, 동의어, 벡터를 함께 운영</li><li>랭킹 설명과 검색 품질 디버깅에 강함</li><li>색인 파이프라인과 relevance 운영 부담이 큼</li></ul></article></div>
+      <div class="ft"><article class="ft-card"><div class="ft-head"><span>Application</span><span>app</span></div><div class="ft-body"><p class="vt-text">PCM 버퍼를 만들어 오디오 endpoint로 보내는 WASAPI/ASIO/KS 클라이언트. 여기서 sample rate·bit depth·채널·버퍼를 결정한다.</p><div class="ft-note"><b>핵심</b><br>HAL을 직접 잡지 않는다 — 항상 API를 통해 스트림을 연다.</div></div></article><article class="ft-card"><div class="ft-head"><span>WASAPI / KS / ASIO</span><span>api</span></div><div class="ft-body"><p class="vt-text">앱과 엔진·드라이버 사이의 표준 인터페이스 계층. shared/exclusive, KS pin, ASIO callback이 여기에 속한다.</p><div class="ft-note"><b>핵심</b><br>Exclusive·ASIO는 믹서를 우회해 더 낮은 지연으로 직행한다.</div></div></article><article class="ft-card"><div class="ft-head"><span>Audio Engine + Service</span><span>engine</span></div><div class="ft-body"><p class="vt-text">shared mode에서 여러 앱 소리를 믹싱·리샘플링하고 APO(시스템 DSP)를 적용하는 계층.</p><div class="ft-note"><b>핵심</b><br>Exclusive로 열면 이 믹서·리샘플러를 건너뛴다.</div></div></article><article class="ft-card"><div class="ft-head"><span>PortCls / WaveRT</span><span>driver</span></div><div class="ft-body"><p class="vt-text">커널 오디오 드라이버. WaveRT는 오디오 엔진이 데이터 버퍼에 직접 접근하게 해 복사·매핑을 줄인다.</p><div class="ft-note"><b>핵심</b><br>드라이버급 PCM 제어는 C/C++ + WDK 영역이다.</div></div></article><article class="ft-card"><div class="ft-head"><span>USB DAC / I2S Codec</span><span>hardware</span></div><div class="ft-body"><p class="vt-text">실제 D/A 변환을 수행하는 하드웨어. USB DAC·PCIe 오디오·I2S 코덱·외장 DSP가 여기에 해당한다.</p><div class="ft-note"><b>핵심</b><br>지원하지 않는 포맷(예: 384kHz/32bit)으로는 스트림을 열 수 없다.</div></div></article></div>
     </div>
   </section>
 
   <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M16 16c.7-3 7-3.5 8 0 .8 2.6-2.4 3.8-4 5.4V24"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="no is-key">1</span>선택 문제 정의</h2>
-    <p class="h2-sub">저장소 선택은 "가장 빠른 ANN"이 아니라 "우리 제품의 검색 실패를 가장 빨리 줄이는 운영 모델"을 고르는 문제다.</p>
-    <div class="grid-2">
-      <article class="mini-card"><h3>제품 단계</h3><p>MVP는 통합과 학습 비용이 더 중요하고, 성장 단계는 평가 데이터셋과 검색 로그가 더 중요하다. 대규모 단계는 SLO와 capacity plan이 먼저다.</p></article>
-      <article class="mini-card"><h3>검색 유형</h3><p>Q&A·RAG는 의미 검색 비중이 높지만, 문서 제목·코드·상품명은 키워드와 exact match가 여전히 중요하다.</p></article>
-      <article class="mini-card"><h3>권한과 필터</h3><p>tenant, workspace, ACL, publication status 필터가 검색 조건에 깊게 들어갈수록 기존 DB나 검색 엔진의 장점이 커진다.</p></article>
-      <article class="mini-card"><h3>이전 가능성</h3><p>embedding, chunk id, ranking rule, evaluation set을 저장소와 분리하면 pgvector에서 전용 DB 또는 검색 엔진으로 넘어가기 쉽다.</p></article>
-    </div>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-accent-box" x="8" y="10" width="6" height="6" rx="1.5"/><rect class="bi-soft" x="17" y="10" width="6" height="6" rx="1.5"/><rect class="bi-fill" x="26" y="10" width="6" height="6" rx="1.5"/><path class="bi-line" d="M9 23h22M9 28h17M9 33h12"/></svg></span><span class="no is-key">1</span>빠른 레퍼런스 — 목적별 추천</h2>
+    <p class="h2-sub">“무엇을 하고 싶은가”를 먼저 정하면 언어와 접근 방식이 거의 자동으로 정해진다.</p>
     <div class="tbl table-scroll">
       <table>
-        <caption>선택 질문과 1차 후보</caption>
-        <thead><tr><th>질문</th><th>예라면</th><th>아니오라면</th><th>검증 자료</th></tr></thead>
+        <caption>목적별 추천 언어와 접근 방식</caption>
+        <thead><tr><th>목적</th><th>추천 언어</th><th>접근 방식</th></tr></thead>
         <tbody>
-          <tr><td>이미 PostgreSQL이 핵심 데이터 저장소인가?</td><td>pgvector를 첫 후보로 둔다.</td><td>검색 스택 또는 전용 DB 도입 비용을 비교한다.</td><td>권한 쿼리, DB 부하, 백업 정책</td></tr>
-          <tr><td>키워드 검색 실패가 사용자 불만의 큰 비중인가?</td><td>검색 엔진 하이브리드를 검토한다.</td><td>벡터 단독 MVP도 가능하다.</td><td>검색 로그, zero-result rate</td></tr>
-          <tr><td>p95 latency와 QPS SLO가 명확한가?</td><td>전용 Vector DB를 벤치마크한다.</td><td>평가셋과 운영 로그부터 만든다.</td><td>load test, recall/latency curve</td></tr>
-          <tr><td>권한 필터가 복잡하고 자주 바뀌는가?</td><td>DB 또는 검색 엔진 필터 모델을 우선한다.</td><td>전용 DB의 metadata filter로 충분한지 확인한다.</td><td>ACL matrix, tenant cardinality</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="22" rx="3"/><rect class="bi-fill" x="16" y="9" width="8" height="22" rx="3"/><rect class="bi-soft" x="25" y="9" width="8" height="22" rx="3"/><path class="bi-accent-line" d="M27 18h4"/><circle class="bi-accent" cx="29" cy="26" r="2.5"/></svg></span><span class="no">2</span>vt-13 비교 카드</h2>
-    <p class="h2-sub">1순위 vt=comparison-cards로 세 후보의 승리 조건과 경고 조건을 한눈에 둔다.</p>
-    <p>세 후보는 "더 좋은 검색"이 아니라 <strong>서로 다른 제약을 먼저 푸는 도구</strong>다. 전용 Vector DB는 스케일 제약을, pgvector는 통합·일관성 제약을, 검색 엔진은 랭킹 품질 제약을 가장 먼저 해결한다. 따라서 비교는 "어떤 제약이 우리 제품을 먼저 무너뜨리는가"에서 시작해야 한다.</p>
-    <p>아래 카드는 각 후보가 <strong>명백히 이기는 상황(승리 조건)</strong>과 <strong>고르면 후회하기 쉬운 상황(경고 조건)</strong>을 짝지어 정리한 것이다. 두 조건이 모두 맞아떨어질 때 그 후보가 1차 후보가 된다.</p>
-    <div class="card-grid">
-      <article class="mini-card">
-        <h3>전용 Vector DB</h3>
-        <p><strong>승리 조건.</strong> 벡터 수가 수천만 이상이고 p95 latency·QPS SLO가 계약 수준으로 엄격하다. 검색 자체가 제품의 핵심 기능이다.</p>
-        <p><strong>경고 조건.</strong> MVP 단계, 권한 필터가 복잡하고 자주 바뀌며, 운영 인력이 적다면 새 운영 도메인과 동기화 부담이 이득보다 크다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>PostgreSQL pgvector</h3>
-        <p><strong>승리 조건.</strong> 이미 PostgreSQL이 핵심 저장소이고, 권한·트랜잭션 일관성이 중요하며, 빠른 통합으로 검색 가설을 먼저 검증하고 싶다.</p>
-        <p><strong>경고 조건.</strong> 수천만 벡터·엄격한 tail latency가 처음부터 사업 요구라면 baseline 이상으로 쓰기 어렵다. 대형 인덱스 재빌드가 DB 전체를 흔든다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>검색 엔진 하이브리드</h3>
-        <p><strong>승리 조건.</strong> 키워드·정확 문구·동의어·벡터가 모두 중요하고, 랭킹을 설명·디버깅·튜닝하는 빈도가 높다.</p>
-        <p><strong>경고 조건.</strong> 검색 스택이 없고 색인 파이프라인·analyzer·relevance 운영을 감당할 인력이 없다면 도입 비용이 가장 크다.</p>
-      </article>
-    </div>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>후보별 승리 조건 · 경고 조건 · 결정적 질문</caption>
-        <thead><tr><th>후보</th><th>한 줄 정체성</th><th>승리 조건</th><th>경고 조건</th><th>결정적 질문</th></tr></thead>
-        <tbody>
-          <tr><td>전용 Vector DB</td><td>스케일 우선</td><td>수천만+ 벡터, 엄격한 p95/QPS</td><td>MVP·복잡한 권한·소수 인력</td><td>검색 SLO가 계약 수준인가?</td></tr>
-          <tr><td>pgvector</td><td>스택 우선</td><td>Postgres 기반, 권한·일관성 중시</td><td>처음부터 대규모 tail latency 요구</td><td>이미 PostgreSQL이 핵심인가?</td></tr>
-          <tr><td>검색 엔진 하이브리드</td><td>랭킹 품질 우선</td><td>키워드+벡터 혼합, 랭킹 디버깅 잦음</td><td>색인·relevance 운영 인력 부재</td><td>키워드 실패가 불만의 큰 비중인가?</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="analogy">
-      <div class="label">읽는 법</div>
-      <p>세 카드를 동시에 만족하는 경우는 거의 없다. 승리 조건이 2개 이상 겹치면 결정적 질문으로 우선순위를 가른다. 어느 카드의 경고 조건이 우리 현실과 정확히 일치한다면, 그 후보는 매력적인 벤치마크 수치와 무관하게 1차 후보에서 내린다.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="22" rx="3"/><rect class="bi-fill" x="16" y="9" width="8" height="22" rx="3"/><rect class="bi-soft" x="25" y="9" width="8" height="22" rx="3"/><path class="bi-accent-line" d="M27 18h4"/><circle class="bi-accent" cx="29" cy="26" r="2.5"/></svg></span><span class="no">3</span>wg-01 세 가지 접근</h2>
-    <p class="h2-sub">권장 wg-01을 세 가지 구현 패턴과 코드 모양 비교로 변환했다.</p>
-    <p>같은 "임베딩으로 유사 문서 찾기"라도 저장소에 따라 쿼리 모양이 완전히 다르다. 아래 세 코드는 모두 <strong>동일한 질의 임베딩 <code>$q</code>로 상위 10개 chunk를 권한 필터와 함께 조회</strong>하는 같은 일을 하지만, 운영 책임이 어디에 놓이는지가 다르다.</p>
-    <p>pgvector는 검색이 SQL 한 문장 안에 들어와 권한·조인·트랜잭션을 함께 처리한다. 전용 Vector DB는 검색을 별도 서비스 호출로 분리하고 권한 필터를 metadata로 복제한다. 검색 엔진 하이브리드는 키워드와 벡터 점수를 한 쿼리에서 합치는 대신 색인 파이프라인 책임이 생긴다.</p>
-    <h3>패턴 A · pgvector (SQL 안에서 끝낸다)</h3>
-    <pre><code>SELECT c.document_id, c.chunk_id,
-       c.embedding &lt;=&gt; $q AS distance
-FROM doc_chunks c
-WHERE can_read($user_id, c.document_id)   -- 기존 권한 함수 재사용
-  AND c.workspace_id = $ws
-ORDER BY c.embedding &lt;=&gt; $q               -- 코사인/내적 거리
-LIMIT 10;</code></pre>
-    <h3>패턴 B · 전용 Vector DB (검색을 서비스로 분리)</h3>
-    <pre><code>// 권한은 metadata filter로 복제해 두어야 한다
-const res = await vectorDb.query({
-  vector: q,
-  topK: 10,
-  filter: { workspace_id: ws, can_read_by: userId },
-});
-// 원본 본문은 다시 기본 DB에서 조회 (join이 앱 코드로 이동)
-const docs = await db.loadChunks(res.matches.map(m =&gt; m.id));</code></pre>
-    <h3>패턴 C · 검색 엔진 하이브리드 (한 쿼리에서 점수 융합)</h3>
-    <pre><code>// BM25 키워드 점수와 vector 점수를 한 번에 결합
-{
-  "query": { "bool": {
-    "filter": [{ "term": { "workspace_id": "ws-1" } }],
-    "should": [
-      { "match": { "text": { "query": "주문 취소 방법" } } },
-      { "knn": { "embedding": { "vector": q, "k": 10 } } }
-    ]
-  }},
-  "size": 10
-}</code></pre>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>세 구현 패턴의 책임 배치 비교</caption>
-        <thead><tr><th>관점</th><th>패턴 A · pgvector</th><th>패턴 B · 전용 DB</th><th>패턴 C · 검색 엔진</th></tr></thead>
-        <tbody>
-          <tr><td>권한 처리</td><td>기존 SQL 함수 그대로</td><td>metadata로 복제·동기화</td><td>색인 문서에 권한 metadata 복제</td></tr>
-          <tr><td>본문 조인</td><td>같은 쿼리 안</td><td>앱 코드에서 2차 조회</td><td>색인에 본문 포함 또는 2차 조회</td></tr>
-          <tr><td>키워드 결합</td><td>SQL로 수동 융합</td><td>외부 rerank 필요</td><td>BM25+vector 네이티브</td></tr>
-          <tr><td>운영 책임 위치</td><td>DB 한 곳</td><td>DB + 벡터 서비스</td><td>DB + 색인 파이프라인</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="term">
-      <div class="label">참고</div>
-      <span class="word">코드는 개념 예시</span>
-      <p>위 SQL·API 모양은 패턴 차이를 보이기 위한 예시이며, 거리 연산자·필터 문법·knn 옵션은 제품·버전마다 다르다. 실제 구현 전 해당 저장소의 현재 문서로 문법과 인덱스 옵션을 확인해야 한다.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="no">4</span>wg-02 선택 방향</h2>
-    <p class="h2-sub">권장 wg-02로 상황별 추천을 선택 카드로 보여준다.</p>
-    <p>승리·경고 조건만으로 가르기 애매한 실제 상황을 다섯 가지로 나눠, 각 상황에서 <strong>먼저 손대야 할 후보와 다음 검증 한 가지</strong>를 묶었다. 추천은 고정값이 아니라, 표의 "전환 신호"가 켜지면 다음 후보로 넘어가도록 설계했다.</p>
-    <div class="card-grid">
-      <article class="mini-card">
-        <h3>Postgres 기반 MVP</h3>
-        <p>이미 PostgreSQL을 쓰고, 검색 가설을 빠르게 검증하고 싶은 초기 제품.</p>
-        <p><strong>pgvector로 시작.</strong> 저장소 추가 0개로 의미 검색을 켜고 recall@10 기준선을 만든다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>검색이 제품의 본질</h3>
-        <p>검색 품질·속도가 곧 매출이고 p95/QPS가 계약 SLO로 묶인 단계.</p>
-        <p><strong>전용 Vector DB를 부하 테스트.</strong> 실데이터로 recall/latency curve와 비용을 함께 본다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>키워드가 자주 실패</h3>
-        <p>상품명·코드·정확 문구·동의어 질의에서 zero-result가 많은 카탈로그형 검색.</p>
-        <p><strong>검색 엔진 하이브리드 검토.</strong> BM25와 vector를 rank fusion으로 합친다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>권한이 복잡하고 자주 변함</h3>
-        <p>tenant·ACL·publication status가 검색 조건에 깊게 얽힌 B2B SaaS.</p>
-        <p><strong>SQL 권한을 재사용하는 pgvector 우선.</strong> filter leakage 0건을 회귀 기준으로 둔다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>검색 실패를 아직 못 잰다</h3>
-        <p>"검색이 별로다"는 느낌만 있고 측정 지표·로그가 없는 상태.</p>
-        <p><strong>저장소보다 평가셋 먼저.</strong> 질문 100개와 공통 result contract부터 만든다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>대규모로 가는 중인 pgvector</h3>
-        <p>pgvector로 잘 굴러왔지만 벡터 수·QPS가 빠르게 커지는 성장기.</p>
-        <p><strong>임계점 모니터링.</strong> p95 SLO 반복 위반이 보이면 전용 DB 병렬 검증을 시작한다.</p>
-      </article>
-    </div>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>상황 → 1차 후보 → 다음 검증 → 전환 신호</caption>
-        <thead><tr><th>상황</th><th>1차 후보</th><th>다음 검증 한 가지</th><th>다음 후보로 넘기는 전환 신호</th></tr></thead>
-        <tbody>
-          <tr><td>Postgres 기반 MVP</td><td>pgvector</td><td>recall@10 기준선 측정</td><td>p95 SLO 반복 위반 또는 벡터 수천만 돌파</td></tr>
-          <tr><td>검색이 제품의 본질</td><td>전용 Vector DB</td><td>실데이터 부하 테스트</td><td>키워드·정확 문구 실패가 크면 하이브리드 추가</td></tr>
-          <tr><td>키워드가 자주 실패</td><td>검색 엔진 하이브리드</td><td>BM25/vector weight 실험</td><td>색인·relevance 운영 부담이 과하면 재검토</td></tr>
-          <tr><td>권한이 복잡·잦은 변경</td><td>pgvector</td><td>filter leakage 0건 회귀 검증</td><td>스케일 한계 도달 시 metadata filter 모델 검토</td></tr>
-          <tr><td>검색 실패 미측정</td><td>가장 가까운 기존 스택</td><td>질문 100개 + result contract</td><td>측정값이 쌓이면 위 행들로 재진입</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="no">5</span>vt-02 의사결정 트리</h2>
-    <p class="h2-sub">후순위 vt=decision-tree로 선택 질문을 순서화한다.</p>
-    <p>여러 기준을 동시에 저울질하면 결론이 나지 않는다. 대신 <strong>가장 강하게 후보를 떨어뜨리는 질문부터 순서대로</strong> 통과시키면 선택지가 빠르게 좁혀진다. 아래는 위에서 아래로 한 번씩만 답하면 되는 결정 순서다.</p>
-    <ol class="timeline-card">
-      <li><strong>Q1 · 검색 실패를 수치로 재고 있는가?</strong> 아니라면 어떤 비교도 의미가 없다. 질문 100개·기대 문서·공통 result contract부터 만들고 가장 가까운 기존 스택(대개 pgvector)으로 기준선을 잡는다. 재고 있다면 Q2로.</li>
-      <li><strong>Q2 · 처음부터 수천만+ 벡터, 계약 수준 p95/QPS가 사업 요구인가?</strong> 그렇다면 pgvector는 baseline으로만 쓰고 전용 Vector DB를 부하 테스트 대상으로 올린다. 아니라면 Q3로.</li>
-      <li><strong>Q3 · 이미 PostgreSQL이 핵심 저장소이고 권한·일관성이 중요한가?</strong> 그렇다면 pgvector를 1차 후보로 확정하고 recall@10·filter leakage를 회귀 기준으로 둔다. 아니라면 Q4로.</li>
-      <li><strong>Q4 · 키워드·정확 문구·동의어 실패가 사용자 불만의 큰 비중인가?</strong> 그렇다면 검색 엔진 하이브리드를 검토해 BM25와 vector를 rank fusion으로 합친다. 아니라면 Q5로.</li>
-      <li><strong>Q5 · 위 어느 것도 강하게 해당하지 않는가?</strong> 가장 통합이 빠른 후보로 시작해 로그를 쌓고, 임계점(p95 반복 위반·벡터 급증·키워드 실패 누적)이 켜지면 Q2~Q4로 되돌아온다.</li>
-    </ol>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>결정 질문별 통과 결과</caption>
-        <thead><tr><th>질문</th><th>예 → 결과</th><th>아니오 → 다음</th></tr></thead>
-        <tbody>
-          <tr><td>Q1 검색 실패 측정 중?</td><td>Q2로 진행</td><td>평가셋·로그 먼저 (pgvector baseline)</td></tr>
-          <tr><td>Q2 대규모·엄격 SLO?</td><td>전용 Vector DB 부하 테스트</td><td>Q3로</td></tr>
-          <tr><td>Q3 Postgres 핵심 + 권한 중시?</td><td>pgvector 1차 확정</td><td>Q4로</td></tr>
-          <tr><td>Q4 키워드 실패가 큰가?</td><td>검색 엔진 하이브리드</td><td>Q5로</td></tr>
-          <tr><td>Q5 결정적 요인 없음?</td><td>최단 통합 후보로 시작 후 모니터링</td><td>—</td></tr>
+          <tr><td>일반 PCM 재생/녹음 제어</td><td>C++</td><td>WASAPI</td></tr>
+          <tr><td>저지연 / bit-perfect 출력</td><td>C++</td><td>WASAPI Exclusive Mode</td></tr>
+          <tr><td>C#으로 빠르게 구현</td><td>C#</td><td>NAudio / CSCore의 WASAPI 래퍼</td></tr>
+          <tr><td>Rust로 구현</td><td>Rust</td><td>windows-rs / cpal / wasapi crate</td></tr>
+          <tr><td>프로 오디오 / DAC 저지연</td><td>C++</td><td>ASIO SDK / 제조사 ASIO 드라이버</td></tr>
+          <tr><td>드라이버 레벨 PCM 제어</td><td>C / C++</td><td>WDK + WDM / PortCls / WaveRT miniport</td></tr>
+          <tr><td>EQ·리버브·AGC 같은 시스템 DSP</td><td>C++ (COM)</td><td>APO, Audio Processing Object</td></tr>
         </tbody>
       </table>
     </div>
     <div class="good">
-      <div class="label">순서가 중요한 이유</div>
-      <p class="name">강한 제약을 먼저 적용한다</p>
-      <p>Q2(스케일·SLO)와 Q3(권한·일관성)는 후보를 가장 강하게 탈락시키는 질문이라 위에 둔다. Q4(랭킹 품질)는 보강 가능한 문제라 뒤에 둔다. 순서를 뒤집으면 좋아 보이는 후보를 먼저 골랐다가 스케일·권한 제약에서 다시 갈아엎게 된다.</p>
+      <div class="label">가장 현실적인 답</div>
+      <div class="name">대부분은 C++ WASAPI에서 시작한다</div>
+      <p>앱에서 PCM을 직접 밀어 넣고 싶으면 <strong>C++ WASAPI Exclusive</strong>, DAC 드라이버나 PCM pin/buffer를 제어하려면 <strong>C/C++ WDK WaveRT/PortCls</strong>, 전문 오디오 장비처럼 저지연이 목적이면 <strong>ASIO</strong>다. 일반 USB DAC는 WASAPI Exclusive만으로 충분한 경우가 많다.</p>
     </div>
   </section>
 
   <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="no">6</span>vt-03 리스크 매트릭스</h2>
-    <p class="h2-sub">후순위 vt=risk-matrix로 저장소 선택 뒤에 생기는 운영 리스크를 분류한다.</p>
-    <p>저장소를 고른 뒤 실제로 팀을 괴롭히는 것은 벤치마크 수치가 아니라 운영 리스크다. 아래는 각 리스크를 <strong>발생 가능성과 영향도</strong>로 나누고, 어느 후보에서 특히 커지는지와 완화책을 묶은 매트릭스다. 높음/높음 칸은 선택 전에 반드시 대비책을 준비해야 하는 항목이다.</p>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M8 11l8-3 8 3 8-3v21l-8 3-8-3-8 3z"/><path class="bi-line" d="M16 8v21M24 11v21"/><path class="bi-accent-line" d="M12 22c4-6 10 3 16-4"/></svg></span><span class="no">2</span>Windows 오디오 스택 계층</h2>
+    <p class="h2-sub">vt-09 file-tour로 본 다섯 계층을 “어떤 책임을 지고, 어디서 신뢰·제어 경계가 바뀌는가”로 정리한다.</p>
+    <p>Microsoft의 Windows Audio Architecture는 앱·오디오 엔진·서비스·드라이버·하드웨어 계층으로 나뉜다. 안드로이드처럼 앱이 HAL을 직접 잡고 DAC PCM을 제어하는 구조가 아니라, 앱은 항상 API를 통해 스트림을 열고 그 아래 계층이 믹싱·리샘플링·버퍼 매핑·D/A 변환을 나눠 맡는다.</p>
+    <pre><code>Application
+  ↓ WASAPI / KS / ASIO
+Windows Audio Engine
+  ↓
+PortCls / WaveRT / Vendor Driver
+  ↓
+USB DAC / PCIe Audio / I2S Codec / DSP</code></pre>
     <div class="tbl table-scroll">
       <table>
-        <caption>저장소 선택 이후 운영 리스크 매트릭스</caption>
-        <thead><tr><th>리스크</th><th>가능성</th><th>영향도</th><th>특히 큰 후보</th><th>완화책</th></tr></thead>
+        <caption>계층별 책임과 제어 가능 범위</caption>
+        <thead><tr><th>계층</th><th>주요 API/구성</th><th>책임</th><th>앱에서 제어 가능?</th></tr></thead>
         <tbody>
-          <tr><td>권한 누출 (filter leakage)</td><td>중</td><td>높음</td><td>전용 DB·검색 엔진 (권한 복제형)</td><td>filter leakage 회귀 테스트, can_read 단일 출처</td></tr>
-          <tr><td>색인 동기화 지연</td><td>높음</td><td>중</td><td>전용 DB·검색 엔진</td><td>delete/권한 propagation SLO, idempotency key</td></tr>
-          <tr><td>재색인 다운타임</td><td>중</td><td>높음</td><td>pgvector (대형 HNSW 재빌드)</td><td>야간 배치, 온라인 빌드, 인덱스 alias 전환</td></tr>
-          <tr><td>임베딩 모델 교체 충돌</td><td>중</td><td>높음</td><td>세 후보 공통</td><td>embedding_version 필수, dual index 전략</td></tr>
-          <tr><td>벤더 종속·전환 비용</td><td>중</td><td>중</td><td>전용 DB·검색 엔진</td><td>공통 chunk schema와 검색 adapter를 저장소 밖에</td></tr>
-          <tr><td>관측 불가 (디버깅 불능)</td><td>높음</td><td>높음</td><td>세 후보 공통</td><td>query·candidate·score·feedback 공통 로그</td></tr>
-          <tr><td>비용 폭증 (QPS·storage)</td><td>중</td><td>중</td><td>전용 DB (managed plan)</td><td>capacity plan, replica 수·storage 모니터링</td></tr>
+          <tr><td>Application</td><td>WASAPI / ASIO / KS 클라이언트</td><td>PCM 버퍼 생성, 포맷·버퍼 크기 지정</td><td>전면 제어</td></tr>
+          <tr><td>Audio Engine</td><td>오디오 엔진 + 서비스</td><td>믹싱·리샘플링·APO(shared mode)</td><td>Exclusive로 우회 가능</td></tr>
+          <tr><td>Driver</td><td>PortCls / WaveRT / Vendor</td><td>커널 스트리밍, 버퍼 직접 매핑</td><td>드라이버 개발 시에만</td></tr>
+          <tr><td>Hardware</td><td>USB DAC / I2S Codec</td><td>실제 D/A 변환, 지원 포맷 결정</td><td>제조사 SDK 한정</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="danger"><div class="label">Risk note</div><p>가장 비싼 실패는 "검색 품질이 낮다"가 아니라 왜 낮은지 설명할 로그와 평가셋이 없는 상태다. 어떤 저장소를 고르든 query, candidate, filter, score, click/feedback 로그를 공통 포맷으로 남겨야 한다.</p></div>
+  </section>
+
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="26" height="22" rx="4"/><path class="bi-accent-line" d="M16 16l-5 4 5 4M24 16l5 4-5 4"/><path class="bi-line" d="M21 14l-3 12"/></svg></span><span class="no">3</span>WASAPI — 앱 레벨 PCM</h2>
+    <p class="h2-sub">Windows에서 PCM 스트림을 오디오 장치로 보내는 공식 기본 API. 정석 언어는 C++이다.</p>
+    <p>WASAPI는 애플리케이션이 오디오 endpoint device와 데이터 흐름을 관리하게 해주는 API다. C#도 가능하지만 내부적으로는 COM 기반 WASAPI를 감싸는 구조다. WASAPI로 앱이 제어할 수 있는 것은 다음과 같다.</p>
+    <div class="card-grid">
+      <article class="mini-card"><h3>Sample rate</h3><p>44.1kHz, 48kHz, 96kHz 등 — DAC가 지원하는 범위 안에서 지정.</p></article>
+      <article class="mini-card"><h3>Bit depth</h3><p>16-bit, 24-bit, 32-bit float 등 출력 포맷.</p></article>
+      <article class="mini-card"><h3>Channel</h3><p>stereo, 5.1, 7.1 등 채널 구성.</p></article>
+      <article class="mini-card"><h3>PCM / latency buffer</h3><p>렌더·캡처 버퍼와 latency buffer 크기.</p></article>
+      <article class="mini-card"><h3>Mode</h3><p>shared / exclusive 선택.</p></article>
+      <article class="mini-card"><h3>Stream 방향</h3><p>render(재생) / capture(녹음) 스트림.</p></article>
+    </div>
+    <div class="tbl table-scroll">
+      <table>
+        <caption>WASAPI shared vs exclusive 요약</caption>
+        <thead><tr><th>항목</th><th>Shared Mode</th><th>Exclusive Mode</th></tr></thead>
+        <tbody>
+          <tr><td>믹싱</td><td>다른 앱과 믹싱됨</td><td>장치 독점, 믹싱 없음</td></tr>
+          <tr><td>리샘플링</td><td>엔진이 공통 포맷으로 변환</td><td>지정 포맷 그대로 출력</td></tr>
+          <tr><td>지연(latency)</td><td>상대적으로 높음</td><td>낮게 설정 가능</td></tr>
+          <tr><td>bit-perfect</td><td>보장 어려움</td><td>유리</td></tr>
+          <tr><td>전제 조건</td><td>대부분 동작</td><td>DAC가 해당 포맷 지원해야 함</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><span class="no">4</span>WASAPI Exclusive — bit-perfect</h2>
+    <p class="h2-sub">DAC에 원본 PCM을 그대로 보내 리샘플링을 피하고 싶을 때 쓰는 독점 모드.</p>
+    <p>Exclusive Mode는 앱이 오디오 endpoint device를 <strong>독점</strong>해 사용하는 방식이다. Windows 믹서를 우회하고 다른 앱 소리와 믹싱되지 않으며, 지정한 sample rate·bit depth로 직접 출력하므로 bit-perfect 출력과 낮은 latency에 유리하다. 단, DAC가 해당 포맷을 지원해야 열 수 있다.</p>
     <div class="good">
-      <div class="label">우선순위 정하는 법</div>
-      <p class="name">높음/높음 먼저, 가능성 높음 다음</p>
-      <p>권한 누출·재색인 다운타임·관측 불가는 영향도가 높아 선택 단계에서 대비책이 없으면 후보를 보류한다. 색인 동기화 지연처럼 가능성은 높지만 영향이 중간인 항목은 propagation SLO를 정의해 운영으로 흡수한다. 모든 리스크를 동시에 막으려 하기보다 이 두 줄 순서로 처리한다.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="bi-soft" cx="20" cy="11" rx="11" ry="5"/><path class="bi-fill" d="M9 11v18c0 2.8 5 5 11 5s11-2.2 11-5V11"/><path class="bi-line" d="M9 20c0 2.8 5 5 11 5s11-2.2 11-5"/><circle class="bi-accent" cx="26" cy="28" r="2"/></svg></span><span class="no">7</span>상세 선택 매트릭스</h2>
-    <p class="h2-sub">선택 기준별로 강점, 약점, 필요한 보완책을 나눈다.</p>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>벡터 검색 저장소 상세 비교</caption>
-        <thead><tr><th>기준</th><th>전용 Vector DB</th><th>PostgreSQL pgvector</th><th>검색 엔진 하이브리드</th><th>판단 포인트</th></tr></thead>
-        <tbody>
-          <tr><td>초기 도입</td><td>서비스 계약, SDK, 별도 색인 필요</td><td>기존 DB에 extension과 index 추가</td><td>검색 스택이 있으면 확장, 없으면 도입 비용 큼</td><td>MVP는 통합 시간과 team familiarity가 중요</td></tr>
-          <tr><td>권한/필터</td><td>metadata filter와 ACL 동기화 필요</td><td>SQL 권한, tenant filter, row-level 정책 활용 가능</td><td>색인 문서에 권한 metadata를 복제</td><td>권한 변경 빈도와 cardinality를 측정</td></tr>
-          <tr><td>대규모 확장</td><td>가장 강한 후보, partition/replica 기능 확인</td><td>DB 자원과 index 튜닝 범위 안에서 확장</td><td>검색 엔진 shard/replica로 확장</td><td>벡터 수, QPS, p95, update rate를 함께 본다</td></tr>
-          <tr><td>하이브리드 랭킹</td><td>제품별 keyword 기능 또는 외부 rerank 필요</td><td>SQL로 조합 가능하지만 운영 편의성은 제한적</td><td>BM25, vector, filter, boost를 한 곳에서 조정</td><td>검색 품질 디버깅 빈도가 높으면 중요</td></tr>
-          <tr><td>데이터 일관성</td><td>원본 DB와 색인 동기화 지연 관리</td><td>동일 트랜잭션 또는 가까운 일관성 유지 쉬움</td><td>색인 refresh, delete propagation 관리</td><td>삭제/권한 변경의 반영 지연을 측정</td></tr>
-          <tr><td>관측 가능성</td><td>vendor metric와 app trace 연결 필요</td><td>SQL 로그, query plan, DB metric 활용</td><td>검색 로그와 ranking debug 도구 활용</td><td>candidate score와 user feedback을 남겨야 함</td></tr>
-          <tr><td>비용 구조</td><td>저장량, QPS, replica, managed plan 영향</td><td>기존 DB 비용에 CPU/RAM/index storage 추가</td><td>색인 storage, shard, ingest pipeline 비용</td><td>월 비용보다 재색인과 장애 대응 비용 포함</td></tr>
-          <tr><td>이전 가능성</td><td>API 추상화 필요</td><td>공통 chunk schema를 두면 이전 쉬움</td><td>색인 schema와 ranking rule 추상화 필요</td><td>검색 adapter와 평가셋을 저장소 밖에 둔다</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-line" d="M13 27h14"/><rect class="bi-soft" x="14" y="20" width="3" height="7" rx="1"/><rect class="bi-accent-box" x="19" y="15" width="3" height="12" rx="1"/><rect class="bi-dot-box" x="24" y="18" width="3" height="9" rx="1"/></svg></span><span class="no">8</span>평가 데이터셋과 벤치마크</h2>
-    <p class="h2-sub">처음부터 최종 스택을 고르기보다 공통 평가 질문과 실패 로그를 먼저 만든다.</p>
-    <div class="grid-2">
-      <article class="mini-card"><h3>질문 세트</h3><p>사용자 실제 질문, 내부 운영 질문, edge case를 섞어 최소 100개부터 시작한다. 각 질문은 기대 문서, 금지 문서, 필터 조건을 갖는다.</p></article>
-      <article class="mini-card"><h3>검색 로그</h3><p>query text, embedding model, filter, candidate id, score, rank, click, feedback을 공통 포맷으로 남긴다.</p></article>
-      <article class="mini-card"><h3>부하 시나리오</h3><p>cold cache, hot cache, index rebuild, peak QPS, 권한 필터 cardinality를 분리 측정한다.</p></article>
-      <article class="mini-card"><h3>회귀 기준</h3><p>새 저장소가 빠르더라도 recall@k와 forbidden-document leakage가 나빠지면 실패로 본다.</p></article>
-    </div>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>검색 평가 프로토콜</caption>
-        <thead><tr><th>측정</th><th>의미</th><th>실패 기준</th><th>적용 후보</th></tr></thead>
-        <tbody>
-          <tr><td>recall@10</td><td>정답 문서가 상위 10개 안에 들어오는 비율</td><td>기준선 대비 5% 이상 하락</td><td>세 후보 모두</td></tr>
-          <tr><td>nDCG@10</td><td>정답 순서와 랭킹 품질</td><td>중요 쿼리군에서 하락</td><td>하이브리드, 전용 DB rerank</td></tr>
-          <tr><td>p95 latency</td><td>사용자가 체감하는 검색 지연</td><td>SLO 초과 또는 tail spike</td><td>전용 DB, pgvector</td></tr>
-          <tr><td>filter leakage</td><td>권한 없는 문서 노출 여부</td><td>1건이라도 실패</td><td>세 후보 모두</td></tr>
-          <tr><td>reindex time</td><td>모델 교체나 schema 변경 복구 시간</td><td>운영 window 초과</td><td>전용 DB, 검색 엔진</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="no">9</span>운영 모델과 이전 가능성</h2>
-    <p class="h2-sub">저장소가 바뀌어도 chunk schema, adapter, 평가셋, 로그 포맷은 유지해야 한다.</p>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>운영 체크포인트</caption>
-        <thead><tr><th>영역</th><th>전용 Vector DB</th><th>pgvector</th><th>검색 엔진 하이브리드</th><th>공통 보완책</th></tr></thead>
-        <tbody>
-          <tr><td>색인 생성</td><td>비동기 upsert와 backfill worker</td><td>DB migration과 batch insert</td><td>ingest pipeline과 refresh policy</td><td>chunk idempotency key</td></tr>
-          <tr><td>장애 대응</td><td>vendor outage, quota, region failover</td><td>DB saturation, lock, vacuum 이슈</td><td>cluster health, shard relocation</td><td>read fallback과 degraded mode</td></tr>
-          <tr><td>삭제/권한 변경</td><td>metadata sync 지연 확인</td><td>원본 권한과 같은 transaction 경계 가능</td><td>색인 update 지연 확인</td><td>delete propagation SLO</td></tr>
-          <tr><td>모델 교체</td><td>dual index 전략 필요</td><td>새 embedding column 또는 table 필요</td><td>새 field/index alias 필요</td><td>embedding_version 필수</td></tr>
-          <tr><td>마이그레이션</td><td>adapter와 export job 필요</td><td>baseline 역할에 적합</td><td>ranking rule 이식 난이도 관리</td><td>공통 SearchResult contract</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <pre><code>type SearchResult = {
-  documentId: string;
-  chunkId: string;
-  score: number;
-  source: "vector" | "keyword" | "hybrid";
-  embeddingVersion: string;
-  matchedFilters: string[];
-}</code></pre>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="no">10</span>권장 결론</h2>
-    <p class="h2-sub">초기 정답은 pgvector인 경우가 많지만, 최종 정답은 검색 로그와 SLO가 정한다.</p>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>상황별 최종 추천</caption>
-        <thead><tr><th>상황</th><th>추천</th><th>이유</th><th>다음 검증</th></tr></thead>
-        <tbody>
-          <tr><td>Postgres 기반 SaaS, 내부 문서 검색, 팀 규모 작음</td><td>pgvector</td><td>권한과 데이터 일관성을 빠르게 유지한다.</td><td>DB 부하와 recall@10 기준선 측정</td></tr>
-          <tr><td>검색이 제품 핵심이며 p95 latency/QPS SLO가 엄격함</td><td>전용 Vector DB</td><td>분산 ANN과 replica 운영이 유리하다.</td><td>실데이터 부하 테스트와 비용 시뮬레이션</td></tr>
-          <tr><td>키워드, 정확한 문구, 동의어, 벡터가 모두 중요함</td><td>검색 엔진 하이브리드</td><td>랭킹 설명과 relevance 운영 도구가 중요하다.</td><td>BM25/vector weight 실험과 query 분석</td></tr>
-          <tr><td>아직 검색 실패를 측정하지 못함</td><td>pgvector 또는 가장 가까운 기존 스택</td><td>저장소보다 평가셋과 로그가 먼저다.</td><td>100개 질문 세트와 공통 result contract 작성</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>가장 보수적인 실행 순서는 <strong>pgvector로 기준선을 만들고, 검색 로그가 쌓이면 하이브리드 또는 전용 Vector DB를 같은 평가셋으로 재검증</strong>하는 것이다. 단, 처음부터 대규모 SLO가 사업 요구라면 pgvector를 최종 후보가 아니라 baseline으로만 사용한다.</p>
-    <div class="ba">
-      <div class="ba-col before">
-        <span class="ba-label">Before · 키워드 단독 검색</span>
-        <p>원본 DB의 <code>LIKE '%query%'</code>와 BM25 키워드 매칭만 사용했다. 동의어, 오타, 의역, "주문 취소 방법" 같은 의도 질의를 놓쳐 zero-result rate가 높았다.</p>
-        <p class="ba-emphasis-line"><span class="ba-bullet" aria-hidden="true"></span><span>recall@10 0.41 · zero-result 18% · "의미는 같지만 단어가 다른" 질문에서 대량 누락</span></p>
-      </div>
-      <div class="ba-arrow" aria-hidden="true">→</div>
-      <div class="ba-col after">
-        <span class="ba-label">After · pgvector 임베딩 + 하이브리드</span>
-        <p>같은 <code>doc_chunks</code> 테이블에 <code>embedding vector</code> 컬럼을 더해 <code>ORDER BY embedding &lt;-&gt; $q</code>로 의미 검색을 켜고, 키워드 점수와 <strong>rank fusion</strong>으로 합쳤다. 권한 필터는 기존 SQL <code>can_read()</code>를 그대로 재사용했다.</p>
-        <p class="ba-emphasis-line"><span class="ba-bullet" aria-hidden="true"></span><span>recall@10 0.41 → 0.73 · zero-result 18% → 5% · 의역·동의어 질의 회수, 권한 누출 0건 유지</span></p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="bi-soft" cx="20" cy="11" rx="11" ry="5"/><path class="bi-fill" d="M9 11v18c0 2.8 5 5 11 5s11-2.2 11-5V11"/><path class="bi-line" d="M9 20c0 2.8 5 5 11 5s11-2.2 11-5"/><circle class="bi-accent" cx="26" cy="28" r="2"/></svg></span><span class="no">11</span>비용·운영 비교</h2>
-    <p class="h2-sub">기능 비교 다음에 실제 도입을 결정짓는 것은 운영 부담과 전환·복구 비용이다.</p>
-    <p>앞 절의 기능·품질 비교가 "할 수 있는가"를 다뤘다면, 이 절은 <strong>"누가 어떤 비용으로 운영하는가"</strong>를 다룬다. 같은 recall을 내더라도 운영 부담, 스케일 한계, 재색인 비용이 다르면 1년 차의 총비용은 크게 갈린다.</p>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>운영·비용 차원에서 본 세 후보 비교</caption>
-        <thead><tr><th>비교 차원</th><th>PostgreSQL pgvector</th><th>전용 Vector DB</th><th>검색 엔진(하이브리드)</th></tr></thead>
-        <tbody>
-          <tr><td>운영 부담</td><td>기존 DB 운영에 흡수, 별도 시스템 0개</td><td>새 서비스/계약 1개 추가, on-call 범위 확대</td><td>색인·노드·플러그인까지 운영 표면이 가장 넓음</td></tr>
-          <tr><td>스케일 한계</td><td>단일 DB 자원과 index 튜닝 범위 안, 수백만 벡터까지 무난</td><td>분산 ANN·partition·replica로 수십억 벡터까지 확장</td><td>shard/replica로 수평 확장, 단 노드 운영 필요</td></tr>
-          <tr><td>인덱스 재빌드 비용</td><td>HNSW/IVFFlat 재빌드 시 CPU·메모리 점유, 대형 테이블은 다운타임 주의</td><td>온라인 재색인·롤링 빌드 지원 제품이 많아 영향 작음</td><td>새 인덱스에 reindex 후 alias 전환, 운영 노하우 필요</td></tr>
-          <tr><td>하이브리드 검색 지원</td><td>SQL로 BM25 점수와 조합 가능하나 수동 튜닝 부담</td><td>제품별 keyword/rerank 기능 또는 외부 rerank 결합</td><td>BM25·vector·filter·boost를 한 쿼리에서 조정, 가장 강함</td></tr>
-          <tr><td>백업/복구</td><td>기존 DB 백업·PITR에 그대로 포함, 별도 절차 불필요</td><td>벤더 스냅샷/복제에 의존, 원본 DB와 동기화 정책 필요</td><td>snapshot API와 색인 재생성 절차를 별도 관리</td></tr>
-          <tr><td>팀 학습 곡선</td><td>SQL을 아는 팀이면 거의 즉시 시작</td><td>새 SDK·쿼리 모델·운영 개념 학습 필요</td><td>색인 매핑·analyzer·ranking 튜닝까지 학습 폭이 큼</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="box">
-      <div class="label">읽는 법</div>
-      <p>위 표에서 <strong>한 행이라도 사업 요구를 명백히 위반하는 후보는 제외</strong>한다. 예를 들어 "수십억 벡터·엄격한 p95"가 요구라면 스케일 한계 행에서 pgvector가 탈락하고, "운영 인력 1명·백업은 DB 백업으로 끝내고 싶다"면 같은 행에서 pgvector가 가장 유리해진다.</p>
+      <div class="label">기대할 수 있는 것</div>
+      <div class="name">믹서 우회 · 지정 포맷 직출력 · 낮은 지연</div>
+      <p>Windows 믹서를 거치지 않고 앱이 정한 포맷으로 곧장 DAC에 보내므로, 음원 그대로의 bit-perfect 출력과 낮은 버퍼 지연을 얻을 수 있다.</p>
     </div>
     <div class="danger">
-      <div class="label">자주 빠지는 함정</div>
-      <p class="name">월 사용료만 비교하기</p>
-      <p>벤더의 월 요금만 보고 "전용 DB가 비싸다"고 결론짓기 쉽지만, 실제 비용은 <strong>재색인 다운타임, 원본 DB와의 동기화 장애 대응, on-call 시간</strong>까지 포함해야 한다. pgvector는 요금이 0에 가까워도 대형 인덱스 재빌드 시 DB 전체 성능이 흔들리는 숨은 비용이 있다.</p>
+      <div class="label">제약</div>
+      <div class="name">DAC 지원 포맷에 종속된다</div>
+      <p>예를 들어 DAC가 384kHz/32bit를 지원하지 않으면 그 포맷으로는 스트림을 열 수 없다. Exclusive는 장치를 독점하므로 같은 시간에 다른 앱이 그 장치로 소리를 낼 수 없다는 점도 함께 고려한다.</p>
     </div>
   </section>
 
   <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="no">12</span>마이그레이션 경로 + 추천 근거</h2>
-    <p class="h2-sub">한 번에 정답을 고르려 하지 말고, pgvector에서 시작해 임계점에 도달하면 전환한다.</p>
-    <p>대부분의 팀에게 가장 안전한 전략은 <strong>저비용으로 시작해 데이터가 결정을 내리게 하는 단계적 전환</strong>이다. 아래는 pgvector 기준선에서 출발해 필요할 때만 전용 Vector DB로 넘어가는 표준 경로다.</p>
-    <ol class="timeline-card">
-      <li><strong>1단계 · pgvector로 기준선 구축.</strong> 기존 <code>doc_chunks</code> 테이블에 <code>embedding vector</code> 컬럼을 더하고, 권한 필터는 기존 SQL을 재사용한다. 저장소 변경 0개로 의미 검색을 켠다.</li>
-      <li><strong>2단계 · 평가셋과 로그 축적.</strong> 질문 100개와 기대 문서 세트로 recall@10·nDCG@10·p95 latency를 측정하고, 모든 쿼리 score와 user feedback을 로그로 남긴다.</li>
-      <li><strong>3단계 · 임계점 모니터링.</strong> 벡터 수·QPS·p95·재색인 빈도를 대시보드로 본다. <strong>p95가 SLO를 반복 위반하거나 벡터가 수천만을 넘기 시작하면</strong> 전환 신호로 본다.</li>
-      <li><strong>4단계 · 전용 DB로 점진 전환.</strong> 공통 chunk schema와 검색 adapter를 저장소 밖에 둔 덕분에, 같은 평가셋으로 전용 Vector DB를 병렬 검증한 뒤 트래픽을 단계적으로 옮긴다.</li>
-      <li><strong>5단계 · 하이브리드 보강(선택).</strong> 키워드·정확 문구 실패가 크면 검색 엔진을 더해 BM25와 vector를 rank fusion으로 합친다.</li>
-    </ol>
-    <div class="good">
-      <div class="label">전환을 미뤄도 되는 신호</div>
-      <p class="name">아직 pgvector로 충분하다</p>
-      <p>벡터가 수백만 이하이고, p95가 SLO 안에 있으며, 재색인이 야간 배치로 끝난다면 전용 DB 전환은 비용만 늘린다. <strong>저장소를 바꾸기 전에 index 파라미터·하드웨어·하이브리드 튜닝을 먼저 소진</strong>한다.</p>
-    </div>
-    <p>상황별로 정리하면 추천은 다음과 같다. 각 카드의 근거는 모두 11절의 운영·비용 차원에서 나온다.</p>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="no">5</span>ASIO — 프로 오디오 저지연</h2>
+    <p class="h2-sub">DAW·실시간 이펙트·초저지연 녹음/재생처럼 프로 오디오급이 목적일 때.</p>
+    <p>Steinberg의 ASIO는 잘 알려진 오디오 인터페이스 제조사들이 지원하며, 낮은 latency 때문에 프로 오디오 프로그램에서 널리 쓰인다. 일반적으로 C++ SDK + 제조사 드라이버 + ASIO callback 기반 PCM 처리 구조다.</p>
     <div class="card-grid">
-      <div class="mini-card">
-        <h3>소규모 · 통합 우선</h3>
-        <p>Postgres 기반 SaaS, 내부 문서 검색, 운영 인력이 적은 팀.</p>
-        <p><strong>추천: pgvector.</strong> 운영 표면 0 추가, 권한·백업을 기존 DB에 흡수, 팀 학습 곡선이 가장 낮다.</p>
-      </div>
-      <div class="mini-card">
-        <h3>대규모 · SLO 엄격</h3>
-        <p>검색이 제품 핵심이고 수천만 벡터·엄격한 p95/QPS가 요구.</p>
-        <p><strong>추천: 전용 Vector DB.</strong> 분산 ANN·온라인 재색인·replica로 스케일 한계와 재빌드 비용을 흡수한다.</p>
-      </div>
-      <div class="mini-card">
-        <h3>하이브리드 · 랭킹 중시</h3>
-        <p>키워드·정확 문구·동의어·벡터가 모두 중요하고 랭킹 디버깅이 잦음.</p>
-        <p><strong>추천: 검색 엔진 하이브리드.</strong> BM25·vector·boost를 한 곳에서 조정하고 ranking debug 도구를 쓴다.</p>
-      </div>
+      <article class="mini-card"><h3>C++ SDK</h3><p>Steinberg ASIO SDK 기반 구현이 기본.</p></article>
+      <article class="mini-card"><h3>제조사 드라이버</h3><p>DAC/오디오 인터페이스가 제공하는 ASIO 드라이버에 의존.</p></article>
+      <article class="mini-card"><h3>Callback 처리</h3><p>ASIO callback 기반으로 PCM 블록을 주고받음.</p></article>
+      <article class="mini-card"><h3>Multi-channel I/O</h3><p>다채널 입출력과 낮은 latency가 강점.</p></article>
+    </div>
+    <div class="danger">
+      <div class="label">주의</div>
+      <div class="name">모든 DAC가 ASIO를 제대로 지원하진 않는다</div>
+      <p>고급 오디오 인터페이스는 ASIO 드라이버를 제공하지만, 일반 USB DAC는 WASAPI Exclusive만으로 충분한 경우가 많다. ASIO 지원 여부는 장치/제조사에 종속된다.</p>
     </div>
   </section>
 
-  <section class="try"><div class="label">NEXT ACTION</div><h2>바로 실행할 일</h2><ol><li>현재 문서 수, chunk 수, 예상 QPS, 권한 필터 cardinality를 수치화한다.</li><li>질문 100개와 기대 문서 세트를 만든다.</li><li>pgvector 기준선을 만들고 recall@10, nDCG@10, p95 latency를 기록한다.</li><li>키워드 실패가 크면 하이브리드 실험을, SLO가 빡빡하면 전용 Vector DB 부하 테스트를 진행한다.</li></ol></section>
-  <aside class="source-note"><div class="label">Source Note</div><p>기술 선택 기준 예시이며 특정 제품의 최신 성능, 가격, managed plan은 확인하지 않았다. 실제 도입 전에는 후보 제품의 현재 문서, 가격, SLA, regional availability를 별도로 검증해야 한다.</p></aside>
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M8 11l8-3 8 3 8-3v21l-8 3-8-3-8 3z"/><path class="bi-line" d="M16 8v21M24 11v21"/><path class="bi-accent-line" d="M12 22c4-6 10 3 16-4"/></svg></span><span class="no">6</span>WDK + PortCls / WaveRT — 드라이버 레벨</h2>
+    <p class="h2-sub">“HAL 드라이버처럼 DAC 하드웨어를 직접 제어”는 앱 언어 문제가 아니라 Windows 드라이버 개발이다.</p>
+    <p>이 경우 언어는 사실상 <strong>C / C++ + Windows Driver Kit(WDK)</strong>다. WDK는 Windows 드라이버를 개발·테스트·배포하는 도구다. 오디오 드라이버 영역은 WDM Audio Driver, PortCls, WaveRT miniport, AVStream, Kernel Streaming(KS), IOCTL, INF 설치, 드라이버 서명으로 들어간다.</p>
+    <div class="term">
+      <div class="label">PortCls</div>
+      <span class="word">오디오 port-class driver</span>
+      <p class="meaning">대부분의 generic kernel streaming filter 기능을 구현해 오디오 드라이버 개발을 단순화한다. WaveRT miniport driver의 핵심 인터페이스로는 <code>IMiniportWaveRT</code>가 쓰인다.</p>
+    </div>
+    <div class="term">
+      <div class="label">WaveRT</div>
+      <span class="word">오디오 엔진의 버퍼 직접 접근</span>
+      <p class="meaning">오디오 엔진이 데이터 버퍼에 직접 접근하도록 해서 불필요한 복사와 매핑을 줄이는 구조다. 진짜 PCM 드라이버 제어를 하려면 이 영역으로 내려간다.</p>
+    </div>
+    <div class="tbl table-scroll">
+      <table>
+        <caption>드라이버 레벨에서 다루는 구성 요소</caption>
+        <thead><tr><th>구성</th><th>역할</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>WDM Audio Driver</td><td>Windows 오디오 드라이버 모델</td><td>커널 모드</td></tr>
+          <tr><td>PortCls</td><td>port-class driver, KS filter 기능</td><td>개발 단순화</td></tr>
+          <tr><td>WaveRT Miniport</td><td><code>IMiniportWaveRT</code> 구현, 버퍼 직접 매핑</td><td>저지연 핵심</td></tr>
+          <tr><td>AVStream / KS</td><td>커널 스트리밍, IOCTL 경로</td><td>pin/buffer 제어</td></tr>
+          <tr><td>INF + 서명</td><td>설치 정보와 드라이버 서명</td><td>배포 필수</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-accent-box" x="8" y="10" width="6" height="6" rx="1.5"/><rect class="bi-soft" x="17" y="10" width="6" height="6" rx="1.5"/><rect class="bi-fill" x="26" y="10" width="6" height="6" rx="1.5"/><path class="bi-line" d="M9 23h22M9 28h17M9 33h12"/></svg></span><span class="no">7</span>APO — 시스템 DSP</h2>
+    <p class="h2-sub">안드로이드의 AudioEffect/DynamicsProcessing 같은 느낌으로 시스템 오디오에 DSP를 넣고 싶을 때.</p>
+    <p>APO(Audio Processing Object)는 Windows 오디오 스트림에 소프트웨어 기반 DSP를 제공하는 <strong>COM 기반 객체</strong>다. graphic equalizer, reverb, tremolo, AEC, AGC 등이 예로 언급된다. 시스템 레벨 EQ·라우드니스 보정·AGC·노이즈 억제·공간 음향·드라이버에 붙는 효과는 C++ COM 기반 APO 영역이다.</p>
+    <div class="danger">
+      <div class="label">오해 주의</div>
+      <div class="name">APO는 DAC 레지스터를 직접 제어하지 않는다</div>
+      <p>APO는 “DAC 하드웨어 레지스터를 직접 제어”하는 것이 아니라 Windows 오디오 스트림 <strong>중간에서 DSP 처리</strong>를 하는 구조다. 하드웨어 직접 제어가 목적이라면 제조사 SDK 또는 커스텀 드라이버로 가야 한다.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="26" height="22" rx="4"/><path class="bi-accent-line" d="M16 16l-5 4 5 4M24 16l5 4-5 4"/><path class="bi-line" d="M21 14l-3 12"/></svg></span><span class="no">8</span>언어별 현실성</h2>
+    <p class="h2-sub">같은 목표라도 언어에 따라 도달 가능한 깊이가 다르다.</p>
+    <div class="tbl table-scroll">
+      <table>
+        <caption>언어별 가능 범위와 추천 용도</caption>
+        <thead><tr><th>언어</th><th>가능한 것</th><th>추천 라이브러리/도구</th><th>한계</th></tr></thead>
+        <tbody>
+          <tr><td>C++</td><td>WASAPI(shared/exclusive), MMDevice, DeviceTopology, KS, ASIO, APO, WDK driver</td><td>Core Audio API, ASIO SDK, WDK</td><td>가장 강력 — 사실상 전 영역</td></tr>
+          <tr><td>C#</td><td>WASAPI 재생/녹음, exclusive, sample rate, PCM write, loopback, volume</td><td>NAudio, CSCore</td><td>드라이버/HAL 레벨은 부적합</td></tr>
+          <tr><td>Rust</td><td>WASAPI backend, 저수준 COM 직접 호출</td><td>windows-rs, cpal, wasapi crate</td><td>문서·샘플이 C++ 중심이라 난이도↑</td></tr>
+          <tr><td>Python</td><td>테스트용 재생/녹음, 일부 loopback</td><td>sounddevice, pyaudio, soundcard</td><td>bit-perfect/exclusive/드라이버는 비추천</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="faq">
+      <div class="label">자주 나오는 질문</div>
+      <dl>
+        <dt>볼륨·mute·경로 같은 장치 제어는 어디서 하나?</dt>
+        <dd>DeviceTopology / EndpointVolume API로 일부 가능하다. Core Audio API에는 MMDevice, WASAPI, DeviceTopology가 있고, DeviceTopology는 오디오 어댑터 내부 경로의 볼륨 컨트롤·multiplexer 같은 topology feature 접근에 쓰인다.</dd>
+        <dt>C#만으로 bit-perfect 출력이 가능한가?</dt>
+        <dd>NAudio/CSCore로 exclusive mode·sample rate 설정·PCM write까지는 가능하다. 다만 내부적으로 COM 기반 WASAPI를 감싸는 구조이고, 드라이버·HAL 레벨 제어는 부적합하다.</dd>
+        <dt>DAC 하드웨어 레지스터를 직접 만질 수 있나?</dt>
+        <dd>일반 앱에서는 불가능하다. 제조사 SDK 또는 커스텀 드라이버(WDK)가 필요하다.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="no">9</span>정리 — 하고 싶은 것 → 추천</h2>
+    <p class="h2-sub">목적을 한 줄로 좁히면 선택은 거의 결정된다.</p>
+    <div class="tbl table-scroll">
+      <table>
+        <caption>목적별 가능 여부와 추천 경로</caption>
+        <thead><tr><th>하고 싶은 것</th><th>가능한가</th><th>추천</th></tr></thead>
+        <tbody>
+          <tr><td>PCM 데이터를 DAC로 직접 출력</td><td>가능</td><td>C++ WASAPI</td></tr>
+          <tr><td>Windows 믹서 없이 출력</td><td>가능</td><td>WASAPI Exclusive</td></tr>
+          <tr><td>저지연 오디오 출력</td><td>가능</td><td>WASAPI Exclusive 또는 ASIO</td></tr>
+          <tr><td>DAC sample rate / bit depth 변경</td><td>가능</td><td>WASAPI Exclusive / ASIO</td></tr>
+          <tr><td>DAC 볼륨·mute·경로 제어</td><td>일부 가능</td><td>DeviceTopology / EndpointVolume</td></tr>
+          <tr><td>시스템 전체 EQ/DSP 삽입</td><td>가능</td><td>APO</td></tr>
+          <tr><td>DAC 하드웨어 레지스터 직접 제어</td><td>일반 앱에선 불가</td><td>제조사 SDK 또는 커스텀 드라이버</td></tr>
+          <tr><td>Windows 오디오 드라이버 직접 개발</td><td>가능</td><td>C/C++ + WDK + PortCls/WaveRT</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="no">10</span>권장 개발 경로</h2>
+    <p class="h2-sub">가장 현실적인 단계는 위에서 아래로, 필요할 때만 내려가는 것이다.</p>
+    <div class="tbl table-scroll">
+      <table>
+        <caption>단계별 목표와 사용 기술</caption>
+        <thead><tr><th>단계</th><th>목표</th><th>사용 기술</th></tr></thead>
+        <tbody>
+          <tr><td>1단계</td><td>PCM 출력 테스트</td><td>C# NAudio 또는 C++ WASAPI</td></tr>
+          <tr><td>2단계</td><td>bit-perfect / sample rate / buffer 제어</td><td>WASAPI Exclusive</td></tr>
+          <tr><td>3단계</td><td>더 낮은 지연이 필요하면</td><td>ASIO</td></tr>
+          <tr><td>4단계</td><td>시스템 DSP가 필요하면</td><td>APO</td></tr>
+          <tr><td>5단계</td><td>진짜 DAC 드라이버 제어가 필요하면</td><td>WDK WaveRT/PortCls</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ol>
+      <li>먼저 가장 쉬운 경로(C# NAudio / C++ WASAPI)로 소리가 나는지부터 확인한다.</li>
+      <li>리샘플링·믹싱이 거슬리면 Exclusive로 올려 포맷을 고정한다.</li>
+      <li>실시간성이 핵심이면 ASIO 지원 여부를 장치 기준으로 확인한다.</li>
+      <li>시스템 전체 효과가 목적이면 드라이버가 아니라 APO를 먼저 검토한다.</li>
+      <li>드라이버급 제어는 가장 마지막 — 서명·INF·배포까지 포함한 별도 프로젝트로 다룬다.</li>
+    </ol>
+  </section>
+
+  <section class="try"><div class="label">NEXT ACTION</div><h2>바로 실행할 일</h2><ol><li>목표를 한 줄로 적는다 — “재생만”인지 “bit-perfect”인지 “드라이버 제어”인지.</li><li>대상 DAC가 지원하는 sample rate·bit depth·exclusive·ASIO 여부를 확인한다.</li><li>C++ WASAPI(또는 C# NAudio)로 최소 재생 PoC를 만든다.</li><li>지연/포맷 요구가 PoC를 넘어설 때만 Exclusive → ASIO → 드라이버로 단계적으로 내려간다.</li></ol></section>
+  <aside class="source-note"><div class="label">Source Note</div><p>Windows 오디오 개발 레퍼런스 예시다. 실제 구현 시 Microsoft의 Core Audio(WASAPI)·WDK(PortCls/WaveRT)·APO 공식 문서와 Steinberg ASIO SDK, 그리고 대상 DAC 제조사 문서의 최신 내용을 확인해야 한다. 이 문서는 동작 JS 없이 CSS-only vt 구조로 작성되었다.</p></aside>
 </main>
 
 </body>

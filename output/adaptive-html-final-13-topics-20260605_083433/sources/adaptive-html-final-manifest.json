@@ -1,6 +1,6 @@
 {
   "name": "adaptive-html-final",
-  "version": "5.2.0",
+  "version": "5.2.3",
   "language": "ko",
   "entry": "SKILL.md",
   "assets": [
@@ -212,7 +212,10 @@
     "v4.5.0: 본문 구조 패턴 7종 편입 — assets/editorial-patterns.css(chronology·source-preserve·core-insight·connection·before-after·impact-grid·md-excerpt) + assets/editorial-pattern-templates/01..07.html, references/editorial-pattern-system.md, base.html {{EDITORIAL_PATTERNS_CSS}} 슬롯, 기존 13모드 내 선택 삽입·무 JS",
     "v4.5.0: vt-21 soft-workflow-map 편입(8816, 전문가 검토) — visual-html-templates/21-soft-workflow-map.html(wf- 접두사, role=img 제거로 카드 텍스트 prune 방지, 장식만 aria-hidden), visual-html.css .wf-*, soft_workflow_gate, expert/education/skill_audit/landing 후순위(1순위 불변)",
     "v4.5.0: soft-shape 도형 36종 편입(8817, 전문가 검토) — assets/shape-svgs/*.svg(8000×6000) + shape-visuals.css(figure.shape-figure 앵커) + shape-catalog.json, visual-template-system.md 흡수, shape_visual_gate, base.html {{SHAPE_VISUALS_CSS}} 슬롯",
-    "v4.5.0: soft 워크플로우 도판 10종 편입(8819, 전문가 검토) — assets/workflow-svgs/*.svg(8000×6000 pipeline/hub/router/stack/funnel/graph/swarm/timeline/board/governance) + workflow-visuals.css(figure.workflow-figure 와이드 ~720px) + workflow-catalog.json, visual-template-system.md 흡수, workflow_visual_gate(8000×6000 크기 계약 포함), base.html {{WORKFLOW_VISUALS_CSS}} 슬롯, wf- 금지 workflow- 풀네임, version 4.5.0 유지(frozen 골든 v6 보존)"
+    "v4.5.0: soft 워크플로우 도판 10종 편입(8819, 전문가 검토) — assets/workflow-svgs/*.svg(8000×6000 pipeline/hub/router/stack/funnel/graph/swarm/timeline/board/governance) + workflow-visuals.css(figure.workflow-figure 와이드 ~720px) + workflow-catalog.json, visual-template-system.md 흡수, workflow_visual_gate(8000×6000 크기 계약 포함), base.html {{WORKFLOW_VISUALS_CSS}} 슬롯, wf- 금지 workflow- 풀네임, version 4.5.0 유지(frozen 골든 v6 보존)",
+    "v5.2.1: body-icons.css에 icon+text 정렬 규칙 추가(:has 기반, 무 JS) — body-icon을 직접 자식으로 갖는 .label/h1/h2/h3를 flex 왼쪽 아이콘+일정 간격 정렬, .mini-card/.card-block h3 아이콘은 상단 정렬. theme.css 헤더 48rem 단일측정 캡 해제(.header content가 .page/.page-wide 컨테이너 폭에 맞춰 아래 섹션과 동일 폭). 코어 해시 변경(theme.css), 13-topics 기준선 재생성",
+    "v5.2.2: body-icons.css에 아이콘 박스 배경 테마 적응 추가 — :root:has(#ahf-white) 순백 / :root:has(#ahf-dark) 카드 표면(var(--vt-soft)→var(--card))으로, 하드코딩 흰빛 그라디언트가 다크에서 떠 보이던 보편 결함 해소(스킬·final 템플릿 공통). lede-note 컨텍스트 라벨 아이콘 정렬(.lede-note .label:has) 추가. 조건부 자산만 변경 → 코어 해시 불변, 13-topics body-icons.css 재인라인+스냅샷+css-integrity 갱신",
+    "v5.2.3: editorial-patterns.css 일반 가독성 승격 — a11y-card 줄 간격 8→12px·a11y-points 5→9px(헤드/제목/PASS·FAIL 덜 붙음), impact-card 아이콘 하단 12px 여백(아이콘이 제목에 붙던 문제). 조건부 자산만 변경 → 코어 해시 불변, 13-topics editorial-patterns.css 재인라인+스냅샷+css-integrity 갱신"
   ],
   "updated": "2026-06-05",
   "visual_templates": [

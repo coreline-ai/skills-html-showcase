@@ -1,92 +1,137 @@
 # adaptive-html-final 사용 가이드
 
-작성일: 2026-05-30
-대상 스킬: `skills/adaptive-html-final` (v4.0.0)
+갱신일: 2026-06-05
+대상 스킬: `skills/adaptive-html-final` (**v5.2.0**)
+
+> 이 문서는 현행 운영본 기준 사용 가이드입니다. 결정론 실행 규칙의 단일 출처는 루트 [`AGENTS.md`](AGENTS.md) → [`skills/adaptive-html-final/SKILL.md`](skills/adaptive-html-final/SKILL.md) → `references/*`이며, 충돌 시 그 순서를 따릅니다. v4.x 시점의 리뷰·분석·계획 기록은 [`docs/archive/`](docs/archive/README.md)에 보관되어 있습니다.
 
 ## 1. 개요
 
 `adaptive-html-final`은 입력 자료(URL, PDF, 텍스트, 이미지 추출문, 메모, 기술 문서, 블로그 초안, SKILL.md/.skill)를 받아 **고품질 한국어 HTML 콘텐츠**를 만드는 다중 모드 스킬입니다.
 
-이 스킬은 기존 두 스킬을 하나로 합친 최종 통합본입니다.
+기존 계열을 하나로 합친 최종 통합본입니다.
 
 ```text
 html-for-beginners
   → adaptive-html-blog-writer        (블로그/SEO/플랫폼 상세 규칙)
+  → adaptive-html-blog-writer-v2
   → adaptive-html-learning-ultimate  (13모드 라우터·레이아웃·평가체계)
-  → adaptive-html-final              (둘을 통합 + 접근성 버그 수정)  ← 현재 운영본
+  → adaptive-html-final              (통합 + 비주얼 프로파일 + 3-테마 + 정적 검증 게이트)  ← 현재 운영본
 ```
 
 운영 원칙:
 
-1. 기본 HTML 생성·블로그·SEO·플랫폼 변환·스킬 감사 모두 `adaptive-html-final` 하나로 처리합니다.
-2. 13개 모드 라우터가 요청을 자동 분류하고, 모드별 레이아웃과 글쓰기 규칙을 적용합니다.
-3. 출처가 확인되지 않은 최신 정보·수치·가격은 단정하지 않고 `확인 필요`로 표시합니다.
+1. 기본 HTML 생성·블로그·SEO·플랫폼 변환·스킬 감사를 `adaptive-html-final` 하나로 처리합니다.
+2. 13개 모드 라우터가 요청을 자동 분류하고, 모드별 레이아웃·글쓰기 규칙·시각 자산을 적용합니다.
+3. **외부/동작 JS는 0**입니다. 인터랙션은 `<details>`/`:checked`/`:target`/CSS 애니메이션으로만 구현하며, `<script>`는 JSON-LD(`type="application/ld+json"`)만 허용합니다.
+4. 출처가 확인되지 않은 최신 정보·수치·가격은 단정하지 않고 `확인 필요`로 표시합니다.
+5. **완료 기준은 `scripts/validate_output.py`가 `OK`를 내는 것**입니다(§9).
 
 ## 2. 패키지 현황
 
 | 항목 | 값 |
 |---|---|
 | 스킬명 | `adaptive-html-final` |
-| version | `4.0.0` |
-| 압축 해제 디렉토리 | `skills/adaptive-html-final/` |
+| version | **`5.2.0`** |
+| 디렉토리 | `skills/adaptive-html-final/` |
 | 설치용 패키지 | `skills/adaptive-html-final.skill` |
-| 파일 수 | 51개 |
+| 파일 수 | 187개 |
 | 모드 수 | 13개 |
 | 레이아웃 수 | 13개 |
-| CSS 자산 | 4개 + base template |
-| 스키마 | JSON 정상 (blog-meta, quality-report) |
+| CSS 자산 | 12개 + `base.html` 템플릿 |
+| 비주얼 프로파일 | `widget`(v5) · `diagram`(v6) · `auto`(기본) |
+| 테마 | `light`(크림 기본) · `white`(순백) · `dark`(proper-black) — CSS-only 라디오 스위처 |
+| vt- SVG→HTML 템플릿 | 21종 |
+| wg- 뷰 위젯 | 20종 |
+| 본문 시각 자산 | body-icon 32 · editorial-pattern 8 · soft-shape 36 · workflow 도판 10 |
+| references | 15종 |
+| recipes | 13종 (모드 13/13 완비) |
+| schemas | 3종 (blog-meta, quality-report, visual-brief) |
+| 스크립트 | `validate_output.py`(정적 게이트), `render_visual_svg.py`(SVG 렌더러) |
 | aliases | `adaptive-html-learning-ultimate`, `adaptive-html-blog-writer-v2` |
 
-> 기존 `adaptive-html-learning-ultimate-20260530-final.skill`과 `adaptive-html-blog-writer.skill`은 본 스킬에 통합되어 삭제되었습니다. 두 이름은 manifest의 `aliases`·`merged_from`에 이력으로 보존됩니다.
+> 기존 `adaptive-html-learning-ultimate`·`adaptive-html-blog-writer`는 본 스킬에 통합되었고, 두 이름은 manifest의 `aliases`·`merged_from`에 이력으로 보존됩니다.
 
 ## 3. 핵심 구조
 
 ```text
-SKILL.md                    # 스킬 라우터, 워크플로우, 품질 기준
-manifest.json               # 이름, 버전, assets/layouts/modes, merged_from/aliases
-README.md                   # 스킬 요약
-assets/base.html            # 단일 HTML 렌더링 기본 골격 (skip link 포함)
-assets/theme.css            # 색상, 폰트, 폭, 기본 타이포그래피
-assets/components.css       # term/analogy/danger/good/try/table 등 공통 컴포넌트
-assets/layouts.css          # 모드별 그리드와 시각 구조
-assets/print.css            # 인쇄 대응
-assets/layouts/*.html       # 13개 모드별 HTML 골격 (모두 <main id="main">)
-references/*.md             # 필요할 때만 읽는 세부 작성 규칙 (10종)
-recipes/*.prompt.md         # 대표 요청 프롬프트 (6종)
-schemas/*.json              # 블로그 메타/품질 리포트 스키마
-tests/*.md                  # 품질/레이아웃/시각 회귀 체크리스트
-examples/*.html             # 예시 결과물 (7종 + index)
+SKILL.md                       # 라우터, 워크플로우, 불변식, 품질 게이트 (단일 출처)
+manifest.json                  # 이름/버전/assets/layouts/modes/profiles/theme_system
+README.md / CHANGELOG.md       # 스킬 요약 / 전체 변경 이력
+assets/base.html               # 단일 HTML 렌더 골격 (skip link + CSS 슬롯 11종 + {{FOOTER}})
+assets/theme.css               # 색상/폰트/폭/타이포 (코어)
+assets/components.css          # term/analogy/danger/good/try/table 등 공통 컴포넌트 (코어)
+assets/visual-components.css   # visual-figure/figure-wide 래퍼 (코어)
+assets/layouts.css             # 모드별 그리드·구조 (코어)
+assets/print.css               # 인쇄 대응 (코어)
+assets/theme-dark.css          # 3-테마 토큰 오버라이드 (항상 인라인, 코어 해시 제외, print 뒤 맨끝)
+assets/widgets.css             # CSS 뷰 위젯 20종 (wg- 네임스페이스, widget/auto 프로파일)
+assets/visual-html.css         # SVG→HTML 템플릿 21종 (vt- 네임스페이스, diagram/auto 프로파일)
+assets/body-icons.css(.json)   # 본문 compact 아이콘 32종 (bi-, aria-hidden 장식)
+assets/editorial-patterns.css  # 본문 구조 패턴 8종 (chronology·core-insight·before-after 등)
+assets/shape-visuals.css       # soft-shape 도형 36종 앵커 (8000×6000 SVG)
+assets/workflow-visuals.css    # soft 워크플로우 도판 10종 (8000×6000 SVG, ~720px)
+assets/layouts/*.html          # 13개 모드별 HTML 골격 (모두 <main id="main">)
+assets/widget-templates/*.html       # wg- 위젯 삽입 골격 20종
+assets/visual-html-templates/*.html   # vt- 템플릿 삽입 골격 21종
+assets/editorial-pattern-templates/*.html  # 패턴 골격 8종
+references/*.md                # 필요할 때만 읽는 세부 규칙 (15종)
+recipes/*.prompt.md            # 모드별 대표 프롬프트 (13종)
+schemas/*.json                 # blog-meta / quality-report / visual-brief
+tests/*                        # 품질/레이아웃/접근성/위젯/시각 회귀 체크리스트 + governance 테스트
+scripts/validate_output.py     # 정적 품질 게이트 (완료 필수, stdlib-only)
+scripts/render_visual_svg.py   # visual brief → 8000×6000 SVG 렌더러
+examples/*.html                # 모드별 예시 결과물 (7종 + index)
 ```
 
 ## 4. 동작 파이프라인
 
-이 스킬은 단순 HTML 변환기가 아니라 다음 순서로 결과물을 만듭니다.
+단순 HTML 변환기가 아니라 다음 순서로 결과물을 만듭니다.
 
 ```text
 입력 분석
 → 사실 / 해석 / 추론 / 확인 필요 분리
 → 독자 수준 판단
-→ 모드 선택
+→ 비주얼 프로파일 결정 (widget / diagram / auto)   ← §5
+→ 모드 선택 (13모드 라우터)                          ← §6
 → 레이아웃 선택
 → 글쓰기·학습·SEO·플랫폼 최적화
-→ editorial HTML 렌더링
-→ 품질 검수
+→ 시각 자산 배치 (vt-/wg- · body-icon · shape · workflow · SVG 인포그래픽)
+→ editorial HTML 렌더링 (CSS 합본 + 코어 해시 마커)
+→ 정적 품질 게이트 검수 (validate_output.py → OK)
 → 파일/링크 제시
 ```
 
 중요 원칙:
 
-- 확인되지 않은 최신 정보, 가격, 수치, 정책은 단정하지 않습니다.
-- 사용자가 HTML을 요구하면 단일 HTML 또는 로컬 assets 연결형 HTML을 생성합니다.
-- 외부 JS는 쓰지 않습니다.
+- 확인되지 않은 최신 정보·가격·수치·정책은 단정하지 않습니다.
+- HTML 요청 시 단일 HTML 또는 로컬 assets 연결형 HTML을 생성합니다.
+- 외부/동작 JS는 0(JSON-LD만 허용).
 - 공개 블로그 품질이 필요하면 Pretendard Variable + Noto Serif KR 폰트를 사용합니다.
-- 결과물은 `lang="ko"`, viewport, title, meta description, h1 1개를 보장해야 합니다.
+- 결과물은 `lang="ko"`, viewport, title, meta description, h1 1개를 보장합니다.
 
-## 5. 13개 모드 사용표
+## 5. 비주얼 프로파일 (widget / diagram / auto)
+
+코어(13모드·레이아웃·코어 CSS)는 공유하되, 프로파일이 **어떤 시각 라이브러리를 쓸지** 게이트합니다.
+
+| 프로파일 | 별칭 | 쓰는 라이브러리 | CSS 번들 추가 | 삽입 단계 |
+|---|---|---|---|---|
+| `widget` | `v5` | wg- 뷰 위젯 20종만 | `widgets.css` | Step 4.6 |
+| `diagram` | `v6` | vt- SVG→HTML 템플릿 21종만 | `visual-html.css` | Step 4.7 |
+| `auto` | (기본) | 둘 다 | `widgets.css` + `visual-html.css` | 4.6 + 4.7 |
+
+- 인자 지정: `profile=widget|diagram|auto` 또는 별칭 `style=v5|v6` (`trim→lowercase→정규화`, `profile=` 우선, 무효 토큰은 `invalid_profile` 실패).
+- 미지정 시: **비대화형(AGENTS.md 경유 Codex/Gemini)은 무조건 `auto`·질문 금지**, 대화형(Claude 대화)은 1회 질문 가능.
+- 검증기는 `--profile`로 교차 누수를 차단합니다(`diagram`에 `wg-` 마크업 0, `widget`에 `vt-` 마크업 0).
+- 모드→vt-/wg- 매핑의 **단일 출처는 SKILL.md §0.6 캐노니컬 결정표**입니다.
+
+> **vt- vs SVG 인포그래픽**: 본문에서 읽혀야 하는 구조도(절차·비교·리스크·RACI·타임라인·플로우)는 `vt-`(네이티브 HTML, 검색·복사·반응형). hero 키비주얼·별첨·다운로드용 한 장 인포그래픽은 8000×6000 SVG(`figure.visual-figure > img`). 둘을 뒤바꾸지 않습니다.
+
+## 6. 13개 모드 사용표
 
 | 우선순위 | 모드 | 언제 쓰나 | 레이아웃 |
 |---:|---|---|---|
-| 1 | `skill_audit` | SKILL.md/.skill 분석, 개선, 통합 | `skill-audit-report.html` |
+| 1 | `skill_audit` | SKILL.md/.skill 분석, 개선, 통합, 한 줄 분석 | `skill-audit-report.html` |
 | 2 | `platform_blog` | 티스토리, 벨로그, 네이버, 워드프레스 변환 | `platform-adaptation.html` |
 | 3 | `seo_dashboard` | SEO 제목, 메타, 태그, 검색 의도 설계 | `seo-dashboard.html` |
 | 4 | `education_html` | 강의, 온보딩, 실습, 퀴즈 | `course-module.html` |
@@ -100,13 +145,13 @@ examples/*.html             # 예시 결과물 (7종 + index)
 | 12 | `landing_brief_html` | 소개 페이지, 랜딩, 요약 페이지 | `landing-brief.html` |
 | 13 | `checklist_playbook` | 체크리스트, 운영 절차, 플레이북 | `checklist-playbook.html` |
 
-주의: 여러 트리거가 동시에 들어오면 기본적으로 우선순위가 높은 모드가 선택됩니다. 단, 사용자가 모드를 명시하면 사용자 지시가 우선입니다.
+여러 트리거가 동시에 들어오면 우선순위가 높은 모드를 선택합니다. 사용자가 모드를 명시하면 사용자 지시가 우선입니다. tie-breaker: 교육/강의 + 공개글이 겹치면 `education_html` 우선, GitHub Pages 배포가 단독 언급되면 `article_html`.
 
-## 6. 가장 좋은 요청 템플릿
+## 7. 가장 좋은 요청 템플릿
 
 ```text
 [입력 자료/URL/파일/주제]를 [목적/독자]용 [모드]로 만들어줘.
-출력은 [단일 HTML/Markdown+HTML/플랫폼별 원고]로 해줘.
+출력은 [단일 HTML/Markdown+HTML/플랫폼별 원고]로, 프로파일은 [widget/diagram/auto]로 해줘.
 반드시 포함: [목차, 용어 풀이, 예시, 리스크, FAQ, CTA 등]
 주의: [최신 정보는 확인 필요 표시, 외부 JS 금지, 모바일 안전 표 등]
 저장 위치/파일명: [원하는 경로]
@@ -115,12 +160,14 @@ examples/*.html             # 예시 결과물 (7종 + index)
 예시:
 
 ```text
-이 문서를 초보자용 HTML 학습자료로 만들어줘.
+이 문서를 초보자용 HTML 학습자료로 만들어줘. 프로파일은 auto.
 전문 용어는 용어 박스로 풀고, 일상 비유, 함정/해결, 마지막 실습 체크리스트를 넣어줘.
 단일 HTML 파일로 저장해줘.
 ```
 
-## 7. 모드별 예시 프롬프트
+## 8. 모드별 예시 프롬프트
+
+각 모드의 완성형 프롬프트는 `skills/adaptive-html-final/recipes/*.prompt.md` 13종에 정리되어 있습니다. 대표 예시:
 
 ### 초보자 학습자료
 
@@ -133,15 +180,15 @@ Docker 개념을 beginner_html 모드로 HTML 학습자료로 만들어줘.
 
 ```text
 이 아키텍처 메모를 expert_html 모드로 전문가 리포트 HTML로 정리해줘.
-Executive Summary, 리스크 매트릭스, 우선순위 로드맵, 검증 체크리스트를 포함해줘.
+Executive Summary, 운영모델/RACI, 리스크 매트릭스(4개+), 우선순위 로드맵, 검증 체크리스트를 포함해줘.
+핵심 표는 5행 이상으로.
 ```
 
 ### 블로그 글
 
 ```text
 이 주제로 blog_writer 모드 블로그 글을 작성해줘.
-제목 후보 8개, 추천 제목, 메타 설명, 목차, 본문, FAQ, CTA, 태그를 포함해줘.
-필요하면 HTML 버전도 같이 만들어줘.
+제목 후보 8개, 추천 제목, 메타 설명, 목차, 본문, FAQ, CTA, 태그를 포함해줘. 필요하면 HTML 버전도.
 ```
 
 ### SEO 대시보드
@@ -165,136 +212,77 @@ GraphRAG 입문 글의 seo_dashboard를 만들어줘.
 목적, 트리거, 입력/출력, 워크플로우, 품질 게이트, 완료 기준을 평가하고 개선본까지 제시해줘.
 ```
 
-### 비교 매트릭스
+### 비교 매트릭스 / 운영 체크리스트
 
 ```text
-A/B/C 도구를 comparison_html 모드로 비교 HTML로 만들어줘.
-선택 기준, 장단점, 추천 상황, 최종 의사결정 표를 포함해줘.
+A/B/C 도구를 comparison_html 모드로 비교 HTML로. 선택 기준, 장단점, 추천 상황, 최종 의사결정 표 포함.
+배포 전 점검 절차를 checklist_playbook 모드로 HTML 플레이북으로. 체크 그리드, 실패 모드, 완료 기준 포함.
 ```
 
-### 운영 체크리스트
+## 9. HTML 생성 시 내부 사용법 + 검증
 
-```text
-배포 전 점검 절차를 checklist_playbook 모드로 HTML 플레이북으로 만들어줘.
-체크 그리드, 실패 모드, 완료 기준을 포함해줘.
-```
+스킬을 직접 운용할 때 순서:
 
-## 8. HTML 생성 시 내부 사용법
-
-스킬을 직접 운용할 때는 다음 순서를 따릅니다.
-
-1. `SKILL.md`에서 요청과 맞는 모드를 고릅니다.
-2. 필요한 경우에만 `references/*.md`를 추가로 읽습니다.
-3. 해당 모드의 `assets/layouts/*.html` 템플릿을 선택합니다.
-4. `assets/base.html`에 body를 삽입합니다.
-5. CSS는 `theme.css → components.css → layouts.css → print.css` 순서로 합칩니다.
+1. 비주얼 프로파일을 결정합니다(`widget`/`diagram`/`auto`). 비대화형이면 `auto`.
+2. `SKILL.md` §3 라우터로 모드를, §0.6 캐노니컬 결정표로 레이아웃·vt-·wg-를 고릅니다.
+3. 필요할 때만 `references/*.md`를 추가로 읽습니다.
+4. 해당 모드의 `assets/layouts/*.html` 골격을 선택하고 `assets/base.html`에 삽입합니다.
+5. CSS는 다음 순서로 합칩니다.
+   `theme → components → visual-components → widgets(widget/auto) → visual-html(diagram/auto) → body-icons(사용 시) → editorial-patterns(사용 시) → shape-visuals(사용 시) → workflow-visuals(사용 시) → layouts → print → theme-dark(항상, 맨끝)`
+   - **코어 해시 대상은 5종**(`theme + components + visual-components + layouts + print`)이며, 인라인 `<style>`에 `adaptive-html-final-core-css-sha256: <64hex>` 마커를 남깁니다. `theme-dark.css`는 해시 제외.
 6. 공개 블로그면 title/meta/OG/JSON-LD 후보를 넣습니다.
-7. 최종 품질 게이트를 확인합니다.
+7. 결과 폴더를 만들면 `sources/assets/*.css` 스냅샷, `sources/css-integrity.json`, `sources/adaptive-html-final-manifest.json`을 남깁니다.
+8. **정적 게이트를 실행합니다(완료 필수):**
 
-관련 references:
-
-- `editorial-design-system.md` — 디자인 DNA, 컴포넌트 규칙, **박스 선택 가이드**, 시각 사고 방지
-- `writing-system.md` — 모드별 글쓰기 + **제목 4계열·도입부 3유형·본문 밀도·톤 매핑**
-- `blog-seo-system.md` — 제목/메타/SERP/태그 + **Blog Metadata Schema·Blog Quality Score(100점)**
-- `platform-system.md` — 티스토리/벨로그/네이버/워드프레스 **발행 관점 세부 규칙**
-- `mode-selection.md`, `layout-system.md`, `skill-audit-system.md`, `eval-rubric.md`, `quality-gates.md`, `design-dna.md`
-
-## 9. 품질 게이트 요약
-
-최소 통과 조건:
-
-- [ ] 선택 모드와 요청 목적이 맞다.
-- [ ] 선택 모드의 필수 블록이 있다.
-- [ ] `lang="ko"`, viewport, title, meta description이 있다.
-- [ ] h1은 1개다.
-- [ ] 주요 h2에 `.h2-sub` 또는 동등한 부제가 있다.
-- [ ] 모바일에서 그리드가 1컬럼으로 내려간다.
-- [ ] 표는 `.tbl` wrapper 또는 모바일 안전 구조다.
-- [ ] 외부 JS를 사용하지 않는다.
-- [ ] 확인되지 않은 최신 정보/수치/가격을 단정하지 않는다.
-- [ ] 출처가 많으면 `.source-note`와 source hub로 분리한다.
-- [ ] 교육용은 퀴즈와 정답이 있다.
-- [ ] 전문가용은 리스크와 검증 기준이 있다.
-- [ ] SEO/블로그는 제목, 메타 설명, 태그 또는 키워드가 있다.
-
-## 10. v4.0.0 통합 내역
-
-`adaptive-html-final`은 기존 두 스킬을 합치면서 다음을 적용했습니다.
-
-### 10.1 블로그/SEO 상세 references 흡수
-
-`adaptive-html-blog-writer`의 더 풍부한 reference 4종을 그대로 가져왔습니다.
-
-- `blog-seo-system.md` — SEO 세부 규칙 + Blog Metadata Schema + Blog Quality Score(100점) 추가
-- `writing-system.md` — 제목 생성 4계열, 도입부 3유형, 본문 밀도 비율, 톤 매핑 추가
-- `platform-system.md` — 플랫폼별(티스토리/벨로그/네이버/워드프레스) 발행 관점 세부 규칙 추가
-- `editorial-design-system.md` — 박스 선택 가이드(언제 무엇을), 시각 사고 방지 규칙 추가
-
-### 10.2 접근성 버그 수정 (skip link)
-
-`assets/base.html`의 skip link는 `#main`을 가리킵니다.
-
-```html
-<a class="skip" href="#main">본문 바로가기</a>
+```bash
+# cwd = 저장소 루트
+python3 skills/adaptive-html-final/scripts/validate_output.py \
+  <output_dir> \
+  --skill-dir skills/adaptive-html-final --profile <widget|diagram|auto>
 ```
 
-기존에는 7개 레이아웃의 `<main>`에 `id="main"`이 없어 링크가 동작하지 않았습니다. v4에서 **13개 레이아웃 전체**의 `<main>`을 다음과 같이 통일했습니다.
+마지막 줄이 `OK`여야만 완료입니다. `FAILED`/`ISSUE`면 수정 후 재실행하고, 상세가 필요하면 `--json`을 붙입니다.
 
-```html
-<main id="main" class="page layout-...">
+관련 references: `editorial-design-system.md`(디자인 DNA·박스 선택), `writing-system.md`(제목·도입부·밀도·톤), `blog-seo-system.md`(메타·SERP·태그·점수), `platform-system.md`, `visual-html-system.md`(vt-), `widget-system.md`(wg-), `visual-template-system.md`(SVG·shape·workflow), `body-icon-system.md`, `editorial-pattern-system.md`, `mode-selection.md`, `layout-system.md`, `skill-audit-system.md`, `eval-rubric.md`, `quality-gates.md`, `design-dna.md`.
+
+## 10. 품질 게이트 요약
+
+`validate_output.py`가 자동 강제하는 핵심 + 수동 점검 항목(전체 35항목은 SKILL.md §7):
+
+- [ ] `validate_output.py`가 `OK`. **외부/동작 JS 0**(JSON-LD만 허용).
+- [ ] 선택 모드가 §0.6 캐노니컬 결정표(모드→layout→vt-→wg-)와 일치.
+- [ ] 코어 CSS 해시 마커가 현재 skill asset 해시와 일치(`css-integrity.json` 포함).
+- [ ] 프로파일 교차 누수 0(`diagram`에 wg-, `widget`에 vt- 마크업 없음).
+- [ ] `lang="ko"`, viewport, title, meta description, h1 1개, `<main id="main">`.
+- [ ] 주요 h2에 `.h2-sub` 또는 동등 부제.
+- [ ] 모바일 390px에서 제목·표 캡션·카드 텍스트가 잘리지 않음. 4열+ 표는 `.mobile-card-table` 등 카드형 대체.
+- [ ] semantic section에 grid/card CSS를 직접 걸지 않음. 모든 table에 visible `<caption>`.
+- [ ] 시각 템플릿 SVG는 8000×6000 이상, `<img width height alt>` + `<figcaption>`.
+- [ ] 교육용=퀴즈/정답, 전문가용=executive summary·운영모델/RACI·리스크·로드맵·검증 기준, SEO/블로그=제목·메타·태그.
+- [ ] 확인되지 않은 최신 정보/수치/가격을 단정하지 않음.
+
+## 11. 빌드 완성도 기준선 (Canonical Baseline)
+
+현재 스킬 v5.2.0의 정적 품질 게이트를 **0 issue로 완전 통과**한 캐노니컬 산출물:
+
+```text
+output/adaptive-html-final-13-topics-20260605_083433/   (HTML 14개, 게이트 OK)
 ```
 
-### 10.3 SKILL.md 강화
+이 디렉토리는 13개 토픽을 v5.2.0의 강력한 정적 게이트(코어 해시·교차 누수·무 JS·접근성·모바일 안전 표·시각 자산 계약)에 맞춰 빌드한 **빌드 완성도 검증 기준선**입니다. 신규 산출물을 만들 때는 이 구조(`sources/` 스냅샷 + `css-integrity.json` + 코어 해시 마커)를 따르고, 게이트 `OK`를 완료 기준으로 삼습니다.
 
-YAML `description`에 **명시적 트리거 목록**과 **기본 출력 원칙**(HTML/블로그 글/스킬 분석별)을 추가해 모드 자동 선택의 정확도를 높였습니다.
-
-### 10.4 이름·메타데이터 일원화
-
-package/디렉토리/manifest/SKILL의 이름을 `adaptive-html-final`로 정렬하고, `merged_from`·`aliases`·`changes`·`updated`를 manifest에 기록했습니다.
-
-## 11. 향후 보강 후보 (선택)
-
-아직 적용하지 않았지만 운영 품질을 더 올릴 수 있는 항목입니다.
-
-- recipes 확장: 현재 6종(audit, beginner, blog, expert, platform, seo) → `reference`, `comparison`, `case-study`, `landing-brief`, `checklist`, `article`, `education` 추가
-- 렌더링/검증 스크립트: `scripts/render_html.py`(base+CSS+layout+body 조립), `scripts/validate_skill.py`(manifest 경로·JSON·layout id·h1/meta 검사), `scripts/package_skill.sh`(.skill 재패키징)
+> 참고: v4~v5.0 시점에 생성된 일부 `output/`·`examples/`는 그 사이 코어 CSS가 진화하면서 해시가 드리프트해 현재 게이트에서 `FAILED`가 날 수 있습니다(시점 고정 산출물). 최신 기준선은 항상 위 13-topics 디렉토리입니다.
 
 ## 12. 추천 운영 규칙
 
 1. 모든 HTML 콘텐츠 작업은 `adaptive-html-final` 하나로 호출합니다.
-2. 블로그 글 작성은 `blog_writer`, 플랫폼 변환은 `platform_blog`, SEO 설계는 `seo_dashboard`를 명시합니다.
-3. 사용자가 "쉽게", "초보자", "비유"라고 하면 `beginner_html`을 사용합니다.
-4. 사용자가 "스킬 분석", "SKILL.md 개선", ".skill 통합"이라고 하면 `skill_audit`을 최우선으로 사용합니다.
-5. 최신 정보나 URL/PDF가 포함되면 출처 확인을 먼저 하고, 확인 불가 항목은 `확인 필요`로 표시합니다.
-6. 결과물은 단일 HTML을 기본으로 하되, 유지보수가 필요하면 assets 연결형으로 생성합니다.
-7. 최종 응답에는 선택 모드, 생성 파일, 핵심 구성, 검증 결과만 짧게 보고합니다.
+2. 블로그=`blog_writer`, 플랫폼 변환=`platform_blog`, SEO 설계=`seo_dashboard`, 스킬 분석=`skill_audit`(최우선)을 명시합니다.
+3. "쉽게/초보자/비유"는 `beginner_html`.
+4. 최신 정보·URL·PDF가 포함되면 출처를 먼저 확인하고, 불가 항목은 `확인 필요`로 표시합니다.
+5. 결과물은 단일 HTML 기본, 유지보수가 필요하면 assets 연결형.
+6. **출력 폴더를 만들면 반드시 `validate_output.py`로 `OK`를 확인합니다.**
+7. 최종 응답에는 선택 모드·프로파일·생성 파일·핵심 구성·검증 결과만 짧게 보고합니다.
 
-## 13. 빠른 사용 예시 모음
+## 13. 한 줄 요약
 
-```text
-adaptive-html-final로 이 URL을 초보자용 HTML 학습자료로 만들어줘.
-```
-
-```text
-이 내용을 전문가용 HTML 리포트로 정리해줘. 리스크와 검증 기준을 앞쪽에 배치해줘.
-```
-
-```text
-이 초안을 티스토리/벨로그/네이버/워드프레스용으로 각각 변환해줘.
-```
-
-```text
-이 주제의 SEO 대시보드를 만들어줘. 제목 후보 10개와 meta description 3개를 포함해줘.
-```
-
-```text
-이 SKILL.md를 분석하고 문제점, 개선 우선순위, 최종 개선본까지 만들어줘.
-```
-
-```text
-이 비교 내용을 comparison_html 모드로 HTML 비교 매트릭스로 만들어줘.
-```
-
-## 14. 한 줄 요약
-
-`adaptive-html-final`(v4.0.0)은 13개 모드 라우터와 editorial 디자인 시스템에, 블로그/SEO/플랫폼/박스 선택 상세 규칙까지 흡수하고 skip link 접근성 버그를 수정한 **단일 통합 운영본**입니다.
+`adaptive-html-final`(**v5.2.0**)은 13개 모드 라우터 + editorial 디자인 시스템에 **비주얼 프로파일(widget·diagram·auto)·3-테마(light·white·dark)·vt-/wg- 시각 라이브러리·정적 품질 게이트**까지 갖춘, 외부 JS 0의 결정론적 단일 통합 운영본입니다.

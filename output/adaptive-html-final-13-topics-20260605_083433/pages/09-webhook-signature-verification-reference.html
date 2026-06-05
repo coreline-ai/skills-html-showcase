@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: 78f7c0f836948338a066ddc3392ecddecdba4f437e6d19ec05059c168b6ca19c */
+/* adaptive-html-final-core-css-sha256: 3b4887c281115b3c7a5ade783cd05464c14c043e8f888615b4c069fce0029b09 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -98,8 +98,8 @@ a:hover{color:var(--accent)}
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
 .page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
-/* no-SVG single-column header: cap the stack to one editorial measure (≈ reference copy column) so edges align */
-.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:48rem}
+/* header content fills its container width (.page / .page-wide) so the header matches the sections below — v5.2.1 (이전: 48rem 단일 측정 캡) */
+.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:none}
 /* kicker — final_20260604 header: 점 달린 pill eyebrow(토큰화 → 다크 자동 대응) */
 .kicker{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:7px 13px 7px 11px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:13px;letter-spacing:.14em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:24px}
 .kicker::before{content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--accent)}
@@ -1271,6 +1271,16 @@ body{background:var(--vt-wash)}
 .body-icon .bi-accent-box{fill:var(--accent);stroke:var(--accent);stroke-width:1.6}
 .body-icon .bi-dot{fill:#7ea66a;stroke:var(--ink-mute);stroke-width:1.3}
 .body-icon .bi-dot-box{fill:#7ea66a;stroke:#7ea66a;stroke-width:1.5}
+/* icon + text alignment: 헤딩/라벨이 body-icon을 직접 자식으로 가지면 왼쪽 아이콘 + 일정 간격으로 정렬(무 JS, :has). v5.2.1 */
+.label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+h1:has(> .body-icon),h2:has(> .body-icon){display:flex;align-items:center;gap:10px}
+h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
+.mini-card h3 .body-icon,.card-block h3 .body-icon{align-self:flex-start;margin-top:1px}
+/* lede-note 등 컨텍스트 라벨도 아이콘+텍스트 정렬(고특이도 .lede-note .label{display:block}를 이김). v5.2.2 */
+.lede-note .label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+/* 아이콘 박스 배경 테마 적응(white/dark) — 하드코딩 흰빛 그라디언트가 다크에서 떠 보이던 문제 해소. SVG 칠은 토큰으로 이미 적응. v5.2.2 */
+:root:has(#ahf-white:checked) .body-icon{background:linear-gradient(180deg,#ffffff,#f4f5f8)}
+:root:has(#ahf-dark:checked) .body-icon{background:linear-gradient(180deg,var(--vt-soft),var(--card));border-color:var(--line)}
 @media(prefers-reduced-motion:reduce){.body-icon{transition:none}}
 
 /* adaptive-html-final editorial patterns — small content-structure blocks for in-mode insertion. 무 JS, 스킬 토큰. */
@@ -1322,6 +1332,7 @@ body{background:var(--vt-wash)}
 .ba-col.after .ba-bullet{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
 .impact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:18px 0}
 .impact-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px}
+.impact-card .body-icon{display:grid;margin-bottom:12px}
 .impact-card h3{font-family:var(--sans);font-size:15.5px;margin:0 0 6px}
 .impact-card p{font-size:13.5px;margin:0}
 @media(max-width:940px){.impact-grid{grid-template-columns:1fr 1fr}}
@@ -1335,14 +1346,14 @@ body{background:var(--vt-wash)}
 /* a11y-checklist — 접근성 30분 점검 그리드 + 실패 모드 표 + 릴리스 준비 체크리스트(다크 패널). 무 JS, 스킬 토큰, 색 외 텍스트 단서(PASS/FAIL). access-* 페이지 어휘를 a11y-* 정본 네임스페이스로 개명. */
 .a11y-check{margin:18px 0 0;border-top:1px solid var(--line);padding-top:18px}
 .a11y-lead{margin:0 0 12px;color:var(--ink-soft);font-size:13.8px;line-height:1.58;max-width:60rem}
-.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 0}
-.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;row-gap:18px;margin:12px 0 0}
+.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:12px}
 .a11y-card h4{font-family:var(--sans);font-size:15px;line-height:1.32;font-weight:800;letter-spacing:-.018em;margin:0;color:var(--ink)}
 .a11y-card p{margin:0;color:var(--ink-soft);font-size:12.8px;line-height:1.48;word-break:keep-all}
 .a11y-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:22px}
 .a11y-card-head>span:first-child{font-size:10.8px;line-height:1.15;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
 .a11y-time{display:inline-flex;align-items:center;min-height:22px;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:2px 7px;color:var(--chip-ink);font-size:11px;font-weight:800;white-space:nowrap}
-.a11y-points{display:grid;gap:5px;margin:1px 0 0;padding:0;list-style:none}
+.a11y-points{display:grid;gap:9px;margin:1px 0 0;padding:0;list-style:none}
 .a11y-points li{display:grid;grid-template-columns:46px 1fr;gap:7px;align-items:start;margin:0;color:var(--ink-soft);font-size:12.4px;line-height:1.38}
 .a11y-pass,.a11y-fail{display:inline-flex;align-items:center;justify-content:center;min-height:20px;border-radius:999px;border:1px solid var(--line);padding:0 6px;font-size:9.8px;line-height:1;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
 .a11y-pass{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
@@ -1600,6 +1611,28 @@ body{background:var(--vt-wash)}
 @media print{.ahf-themebar{display:none}}
 </style>
 
+<style>
+/* page-local presentation tweaks (mode page) — 헤더 미세 튜닝(인덱스와 동일). 아이콘 정렬·헤더 폭은 스킬 v5.2.1 기본값 */
+.header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
+.header .kicker::before{width:6px;height:6px}
+.header .sub{text-align:justify;word-break:keep-all}
+/* 헤딩 아이콘 크기 확대 — 참조 사이트(final_20260604 .pattern-head .body-icon=42px)처럼. 2026-06-05 followup-final */
+h2>.body-icon,h3>.body-icon{width:42px;height:42px;border-radius:12px}
+h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
+/* source-note 배경 투명 (08과 동일). 2026-06-05 */
+.source-note{background:transparent}
+:root:has(#ahf-dark:checked) .source-note{background:transparent}
+/* core-insight: 뷰 배경 var(--card) + 인용문 sans/bold (08과 동일). 2026-06-05 */
+.core-insight blockquote{font-family:var(--sans);font-size:17px;line-height:1.58;letter-spacing:-.01em;font-weight:700}
+.core-insight{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px}
+:root:has(#ahf-dark:checked) .core-insight{background:var(--card)}
+/* vt-frame 내부 박스 평면화 (08과 동일). 2026-06-05 */
+.vt-frame{background:transparent;border:0}
+:root:has(#ahf-dark:checked) .vt-frame{background:transparent}
+/* 모든 플레인 콘텐츠 섹션을 카드 뷰로(다른 섹션과 동일 표면). 2026-06-05 */
+.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}
+</style>
 </head>
 <body>
 <fieldset class="ahf-themebar" aria-label="테마 선택">
@@ -1628,16 +1661,7 @@ body{background:var(--vt-wash)}
   <section>
     <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-accent-box" x="8" y="10" width="6" height="6" rx="1.5"/><rect class="bi-soft" x="17" y="10" width="6" height="6" rx="1.5"/><rect class="bi-fill" x="26" y="10" width="6" height="6" rx="1.5"/><path class="bi-line" d="M9 23h22M9 28h17M9 33h12"/></svg></span><span class="no is-key">1</span>빠른 레퍼런스</h2>
     <p class="h2-sub">구현자가 먼저 확인해야 할 입력, 계산식, 저장 정책을 한 화면에 둔다.</p>
-    <!-- template-showcase:start vt-07 card-grid -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · vt-07 card-grid</div>
-      <div class="vt-shell">
-        <div class="vt-frame">
-          <div class="cg-grid"><article class="cg-card"><em>01</em><b>Raw body</b><p>검증 전 parse, trim, pretty-print 금지</p></article><article class="cg-card"><em>02</em><b>Signing input</b><p><code>timestamp + "." + raw_body</code>처럼 제공자별 규칙 고정</p></article><article class="cg-card"><em>03</em><b>Digest</b><p>HMAC-SHA256, hex/base64, prefix를 문서와 일치</p></article><article class="cg-card"><em>04</em><b>Compare</b><p>길이와 값을 constant-time 비교</p></article><article class="cg-card"><em>05</em><b>Timestamp</b><p>기본 5분 내외 window로 지연 요청 거절</p></article><article class="cg-card"><em>06</em><b>Replay</b><p>event id 또는 signature nonce를 TTL 캐시에 기록</p></article><article class="cg-card"><em>07</em><b>Rotation</b><p>현재 secret 우선, 이전 secret은 종료일 포함</p></article><article class="cg-card"><em>08</em><b>Observability</b><p>secret과 payload 원문 없이 request id 중심 로그</p></article></div>
-        </div>
-      </div>
-    </div>
-    <!-- template-showcase:end vt-07 card-grid -->
+    
     <div class="tbl table-scroll">
       <table>
         <caption>Webhook 서명 검증 빠른 규칙</caption>
@@ -1653,18 +1677,30 @@ body{background:var(--vt-wash)}
   </section>
 
   <section>
-    <h2><span class="no">2</span>vt-09 파일 투어</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M11 7h12l6 6v20H11z"/><path class="bi-line" d="M23 7v7h6M16 20h9M16 26h7"/><circle class="bi-accent" cx="15" cy="14" r="2"/></svg></span><span class="no">2</span>vt-09 파일 투어</h2>
     <p class="h2-sub">1순위 vt=file-tour로 검증 경계와 파일 책임을 고정한다.</p>
-    <!-- template-showcase:start vt-09 file-tour -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · vt-09 file-tour</div>
-      <div class="vt-shell">
-        <div class="vt-frame">
-          <div class="ft"><article class="ft-card"><div class="ft-head"><span>webhook.ts</span><span>entry</span></div><div class="ft-body"><p class="vt-text">HTTP 어댑터에서 raw body와 헤더를 검증 모듈로 넘긴다.</p><div class="ft-note"><b>Review note</b><br>프레임워크 body parser가 원문을 바꾸는지 통합 테스트로 확인</div></div></article><article class="ft-card"><div class="ft-head"><span>signature.ts</span><span>crypto</span></div><div class="ft-body"><p class="vt-text">signing input 생성, HMAC 계산, prefix/인코딩 파싱, constant-time 비교를 담당한다.</p><div class="ft-note"><b>Review note</b><br>secret을 문자열 로그, 예외 메시지, span attribute에 남기지 않음</div></div></article><article class="ft-card"><div class="ft-head"><span>replay-cache.ts</span><span>cache</span></div><div class="ft-body"><p class="vt-text">timestamp window와 event id TTL 캐시를 묶어 replay decision을 반환한다.</p><div class="ft-note"><b>Review note</b><br>검증 성공 이벤트만 저장하고 처리 실패와 재시도 정책을 분리</div></div></article><article class="ft-card"><div class="ft-head"><span>test-vectors.spec</span><span>proof</span></div><div class="ft-body"><p class="vt-text">정상 서명, 변조 payload, 만료 timestamp, 이전 secret, 중복 event를 fixture로 검증한다.</p><div class="ft-note"><b>Review note</b><br>테스트 벡터는 secret rotation 때 함께 갱신</div></div></article></div>
-        </div>
-      </div>
+
+    <p>위 파일 개요 카드는 검증 코드를 <strong>네 개의 단일 책임 모듈</strong>로 나눈 형태다. 핵심 설계 원칙은 "신뢰 경계(trust boundary)를 코드 구조로 드러내는 것"이다. 즉 <code>signature.ts</code>를 통과하기 전까지의 모든 입력은 잠재적 공격자가 만든 값으로 취급하고, 통과한 뒤에야 <code>handler.ts</code>에서 비즈니스 의미를 부여한다.</p>
+    <p>모듈을 이렇게 분리하면 테스트도 분리된다. <code>signature.ts</code>는 입력 바이트와 secret만으로 결정되므로 외부 의존성 없이 테스트 벡터로 검증할 수 있고, <code>replay-cache.ts</code>는 시간·중복만 다루므로 가짜 시계(fake clock)와 인메모리 캐시로 단위 테스트가 가능하다. <code>handler.ts</code>는 이미 "검증된 이벤트"만 받는다는 전제 아래 도메인 로직에 집중한다.</p>
+
+    <div class="tbl table-scroll">
+      <table>
+        <caption>vt-09 파일별 책임과 실패 경계</caption>
+        <thead><tr><th>파일</th><th>입력</th><th>책임</th><th>실패 시 반환</th><th>신뢰 수준</th></tr></thead>
+        <tbody>
+          <tr><td><code>webhook.ts</code></td><td>HTTP 요청 객체</td><td>raw body bytes, 헤더, request id 추출. 파싱·인코딩 변환 금지</td><td>400 형식 오류(헤더 자체 누락 시)</td><td>전부 untrusted</td></tr>
+          <tr><td><code>signature.ts</code></td><td>raw body, timestamp, secret 목록</td><td>signing input 구성 → HMAC 계산 → constant-time 비교</td><td>401 <code>invalid_signature</code></td><td>여기서 신뢰 경계 통과</td></tr>
+          <tr><td><code>replay-cache.ts</code></td><td>event id, timestamp, 현재 시각</td><td>window 초과·중복 수신 차단, accepted 기록</td><td>400 <code>stale_request</code> / 200 <code>already_processed</code></td><td>서명은 통과, 신선도 미확인</td></tr>
+          <tr><td><code>handler.ts</code></td><td>검증된 이벤트</td><td>도메인 처리, 멱등 실행, 처리 실패 분리 기록</td><td>500 <code>processing_failed</code>(재시도 유도)</td><td>trusted</td></tr>
+        </tbody>
+      </table>
     </div>
-    <!-- template-showcase:end vt-09 file-tour -->
+
+    <div class="good">
+      <div class="label">설계 원칙</div>
+      <div class="name">검증 경계를 import 방향으로 강제한다</div>
+      <p><code>handler.ts</code>가 <code>webhook.ts</code>의 raw 입력을 직접 import하지 못하게 하면, 검증을 건너뛴 본문이 도메인 로직에 도달하는 실수를 컴파일 단계에서 막을 수 있다. 검증된 이벤트는 별도 타입(예: <code>VerifiedEvent</code>)으로만 핸들러에 전달한다.</p>
+    </div>
   </section>
 
   <section>
@@ -1694,17 +1730,7 @@ body{background:var(--vt-wash)}
   <section>
     <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="no">4</span>vt-10 검증 플로우</h2>
     <p class="h2-sub">후순위 vt=flowchart로 수신부터 핸들러 전달까지의 실패 지점을 순서화한다.</p>
-    <!-- template-showcase:start vt-10 flowchart -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · vt-10 flowchart</div>
-      <div class="vt-shell">
-        <div class="vt-frame">
-          <div class="fc"><div class="fc-node hot"><b>수신</b><p class="vt-text">raw body 보존</p></div><div class="fc-arrow">→</div><div class="fc-node"><b>파싱</b><p class="vt-text">헤더·prefix·timestamp</p></div><div class="fc-arrow">→</div><div class="fc-node hot"><b>HMAC</b><p class="vt-text">expected digest 계산</p></div><div class="fc-arrow">→</div><div class="fc-node"><b>Replay</b><p class="vt-text">window·event id TTL</p></div><div class="fc-arrow">→</div><div class="fc-node"><b>처리</b><p class="vt-text">멱등 핸들러</p></div></div>
-          <p class="vt-text">서명 불일치는 즉시 401로 종료한다. timestamp 만료는 400으로 종료하고, 중복 event id는 이미 처리된 성공으로 응답해 제공자의 재시도 폭주를 막는다.</p>
-        </div>
-      </div>
-    </div>
-    <!-- template-showcase:end vt-10 flowchart -->
+    
     <pre><code>function verifyWebhook(rawBody, headers, secrets) {
   const timestamp = requireHeader(headers, "x-webhook-timestamp");
   const received = parseSignature(requireHeader(headers, "x-webhook-signature"));
@@ -1719,127 +1745,102 @@ body{background:var(--vt-wash)}
   </section>
 
   <section>
-    <h2><span class="no">5</span>wg-04 모듈 맵</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M8 11l8-3 8 3 8-3v21l-8 3-8-3-8 3z"/><path class="bi-line" d="M16 8v21M24 11v21"/><path class="bi-accent-line" d="M12 22c4-6 10 3 16-4"/></svg></span><span class="no">5</span>wg-04 모듈 맵</h2>
     <p class="h2-sub">권장 wg-04를 API 레퍼런스의 구현 경계 맵으로 사용한다.</p>
-    <!-- template-showcase:start wg-04 module-map -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · wg-04 module-map</div>
-      <section class="wg-04" aria-labelledby="ref-wg04-title">
-        <header class="wg-04-head">
-          <p class="wg-04-kicker">SECURITY MODULE MAP</p>
-          <h2 id="ref-wg04-title" class="wg-04-title">Webhook 검증 의존성 맵</h2>
-          <p class="wg-04-lead">붉은 굵은 경로가 요청을 신뢰 가능한 이벤트로 바꾸는 <strong class="wg-04-crit-word">보안 핵심 경로</strong>다. 이 경로에는 business parser, DB write, 외부 API 호출을 넣지 않는다.</p>
-          <ul class="wg-04-legend" aria-label="범례">
-            <li><span class="wg-04-lg wg-04-lg-entry" aria-hidden="true"></span> 진입점</li>
-            <li><span class="wg-04-lg wg-04-lg-core" aria-hidden="true"></span> 검증 코어</li>
-            <li><span class="wg-04-lg wg-04-lg-leaf" aria-hidden="true"></span> 외부/저장소</li>
-            <li><span class="wg-04-lg wg-04-lg-crit" aria-hidden="true"></span> 핵심 경로</li>
-          </ul>
-        </header>
-        <div class="wg-04-diagram">
-          <svg viewBox="0 0 640 360" class="wg-04-svg" role="img" aria-labelledby="ref-wg04-svg-t ref-wg04-svg-d">
-            <title id="ref-wg04-svg-t">Webhook 검증 모듈 의존성 다이어그램</title>
-            <desc id="ref-wg04-svg-d">HTTP entry에서 raw body capture, signature verifier, replay guard를 거쳐 verified event handler로 이어지는 그래프. secret store와 replay cache는 검증 코어의 leaf 의존성이다.</desc>
-            <defs>
-              <marker id="ref-wg04-arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--ink-mute)"></path></marker>
-              <marker id="ref-wg04-arrow-crit" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--accent)"></path></marker>
-            </defs>
-            <g class="wg-04-edges">
-              <path class="wg-04-edge wg-04-edge-crit" d="M120,70 L120,145" marker-end="url(#ref-wg04-arrow-crit)"></path>
-              <path class="wg-04-edge wg-04-edge-crit" d="M120,190 L120,270" marker-end="url(#ref-wg04-arrow-crit)"></path>
-              <path class="wg-04-edge" d="M180,165 L300,165" marker-end="url(#ref-wg04-arrow)"></path>
-              <path class="wg-04-edge" d="M180,175 L470,175" marker-end="url(#ref-wg04-arrow)"></path>
-              <path class="wg-04-edge wg-04-edge-crit" d="M180,290 L300,290" marker-end="url(#ref-wg04-arrow-crit)"></path>
-              <path class="wg-04-edge" d="M365,290 L470,210" marker-end="url(#ref-wg04-arrow)"></path>
-            </g>
-            <g class="wg-04-node wg-04-node-entry">
-              <rect x="55" y="30" width="130" height="40" rx="8"></rect>
-              <text x="120" y="55">http entry</text>
-            </g>
-            <g class="wg-04-node wg-04-node-core wg-04-node-crit">
-              <rect x="55" y="150" width="130" height="40" rx="8"></rect>
-              <text x="120" y="175">raw body</text>
-            </g>
-            <g class="wg-04-node wg-04-node-leaf">
-              <rect x="255" y="145" width="130" height="40" rx="8"></rect>
-              <text x="320" y="170">secret store</text>
-            </g>
-            <g class="wg-04-node wg-04-node-leaf">
-              <rect x="430" y="145" width="130" height="40" rx="8"></rect>
-              <text x="495" y="170">clock source</text>
-            </g>
-            <g class="wg-04-node wg-04-node-core wg-04-node-crit">
-              <rect x="55" y="270" width="130" height="40" rx="8"></rect>
-              <text x="120" y="295">signature</text>
-            </g>
-            <g class="wg-04-node wg-04-node-core wg-04-node-crit">
-              <rect x="255" y="270" width="130" height="40" rx="8"></rect>
-              <text x="320" y="295">replay guard</text>
-            </g>
-            <g class="wg-04-node wg-04-node-leaf">
-              <rect x="430" y="270" width="130" height="40" rx="8"></rect>
-              <text x="495" y="295">event handler</text>
-            </g>
-          </svg>
-        </div>
-        <div class="wg-04-path" role="note">
-          <span class="wg-04-path-label">핵심 경로</span>
-          <span class="wg-04-path-chain"><code>raw body</code> <span aria-hidden="true">→</span> <code>signature</code> <span aria-hidden="true">→</span> <code>replay guard</code></span>
-          <span class="wg-04-path-note">이 경로가 실패하면 핸들러는 호출하지 않는다.</span>
-        </div>
-      </section>
+
+    <p>파일 투어가 "어떤 파일이 무엇을 하는가"라면, 모듈 맵은 "각 책임이 외부 세계와 어떤 계약(interface)으로 연결되는가"를 보여준다. 검증 파이프라인은 아래 다섯 개의 책임 단위로 쪼개 두면 교체·테스트·감사가 모두 쉬워진다. 각 단위는 순수 함수에 가깝게 유지하고, 부수효과(캐시 쓰기, 로깅)는 경계 바깥으로 밀어낸다.</p>
+
+    <div class="card-grid">
+      <article class="mini-card"><h3>1. Extract</h3><p>HTTP 어댑터에서 raw body(bytes), 서명·시간·id 헤더를 꺼낸다. 프레임워크 의존성은 이 단위에만 가둔다. 출력은 순수 데이터 구조.</p></article>
+      <article class="mini-card"><h3>2. Canonicalize</h3><p>제공자 규칙대로 signing input을 만든다. <code>timestamp + "." + body</code>, version prefix 부착 등 차이를 여기서 흡수한다.</p></article>
+      <article class="mini-card"><h3>3. Compute &amp; Compare</h3><p>secret 목록으로 HMAC을 계산하고 constant-time으로 비교한다. rotation을 위해 secret을 배열로 받는 것이 핵심.</p></article>
+      <article class="mini-card"><h3>4. Freshness</h3><p>timestamp window와 event id TTL 캐시로 만료·중복을 거른다. 시계와 캐시를 주입(inject)해 테스트 가능하게.</p></article>
+      <article class="mini-card"><h3>5. Dispatch</h3><p>검증된 이벤트를 멱등 핸들러에 넘긴다. 처리 실패는 검증 실패와 다른 status code 계열로 분리.</p></article>
+      <article class="mini-card"><h3>0. Config</h3><p>secret, 허용 알고리즘, window, TTL, provider 매핑을 한곳에서 주입한다. 환경별(test/prod) 분리는 여기서 보장한다.</p></article>
     </div>
-    <!-- template-showcase:end wg-04 module-map -->
+
+    <div class="tbl table-scroll">
+      <table>
+        <caption>wg-04 모듈별 입출력 계약과 교체 가능성</caption>
+        <thead><tr><th>모듈</th><th>입력 → 출력</th><th>순수성</th><th>교체 사례</th></tr></thead>
+        <tbody>
+          <tr><td>Extract</td><td>HTTP req → <code>{ rawBody, headers, requestId }</code></td><td>I/O 경계(불순)</td><td>Express → Fastify → Lambda</td></tr>
+          <tr><td>Canonicalize</td><td>raw + meta → signing input bytes</td><td>순수</td><td>제공자 A/B 규칙</td></tr>
+          <tr><td>Compute &amp; Compare</td><td>input + secrets → <code>{ ok, secretId }</code></td><td>순수</td><td>SHA256 → SHA512</td></tr>
+          <tr><td>Freshness</td><td>id + ts + now + cache → 신선도 판정</td><td>캐시 부수효과</td><td>인메모리 → Redis</td></tr>
+          <tr><td>Dispatch</td><td>VerifiedEvent → 처리 결과</td><td>도메인 부수효과</td><td>동기 처리 → 큐 적재</td></tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <section>
-    <h2><span class="no">6</span>wg-14 기능 설명</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-accent-box" x="8" y="10" width="6" height="6" rx="1.5"/><rect class="bi-soft" x="17" y="10" width="6" height="6" rx="1.5"/><rect class="bi-fill" x="26" y="10" width="6" height="6" rx="1.5"/><path class="bi-line" d="M9 23h22M9 28h17M9 33h12"/></svg></span><span class="no">6</span>wg-14 기능 설명</h2>
     <p class="h2-sub">권장 wg-14로 검증 기능을 접이식 API 설명으로 만든다.</p>
-    <!-- template-showcase:start wg-14 feature-explainer -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · wg-14 feature-explainer</div>
-      <section class="wg-14" aria-labelledby="ref-wg14-title">
-        <p class="wg-14-kicker">REFERENCE FEATURE</p><h2 id="ref-wg14-title" class="wg-14-h">Webhook 서명 검증 API</h2><p class="wg-14-lead">검증 API는 HTTP raw input을 받아 <code>accepted</code>, <code>rejected</code>, <code>already_processed</code> 중 하나의 결정만 반환한다. 도메인 이벤트 변환은 이 결정 뒤에서만 수행한다.</p>
-        <div class="wg-14-tldr" role="note" aria-label="핵심 요약"><span class="wg-14-tldr-tag">TL;DR</span><p class="wg-14-tldr-body"><strong>검증 함수는 순수하게 유지</strong>한다. 입력은 raw body와 headers, 출력은 status/code/secretId/replayKey뿐이다.</p></div>
-        <div class="wg-14-acc">
-          <details class="wg-14-sec" open><summary class="wg-14-sum"><span class="wg-14-sum-no">01</span> 입력 계약 <span class="wg-14-chev" aria-hidden="true"></span></summary><div class="wg-14-sec-body"><ol class="wg-14-flow"><li><span class="wg-14-flow-n">1</span><code>rawBody: string | Buffer</code></li><li><span class="wg-14-flow-n">2</span><code>headers: SignatureHeaders</code></li><li><span class="wg-14-flow-n">3</span><code>secrets: ActiveSecret[]</code></li><li><span class="wg-14-flow-n">4</span><code>now: Clock</code></li></ol></div></details>
-          <details class="wg-14-sec"><summary class="wg-14-sum"><span class="wg-14-sum-no">02</span> 출력 계약 <span class="wg-14-chev" aria-hidden="true"></span></summary><div class="wg-14-sec-body"><p><code>{ ok: true, eventId, replayKey, secretId }</code> 또는 <code>{ ok: false, status, code }</code>만 반환한다. secret 값과 raw payload는 출력하지 않는다.</p></div></details>
-          <details class="wg-14-sec"><summary class="wg-14-sum"><span class="wg-14-sum-no">03</span> 실패 코드 <span class="wg-14-chev" aria-hidden="true"></span></summary><div class="wg-14-sec-body"><p><code>missing_signature</code>, <code>invalid_signature</code>, <code>stale_request</code>, <code>replay_detected</code>, <code>unsupported_algorithm</code>을 최소 코드로 둔다.</p></div></details>
-        </div>
-      </section>
+
+    <p>검증 모듈을 라이브러리로 제공한다면 호출자가 가장 먼저 묻는 질문은 정해져 있다. "무엇을 넘기고, 무엇을 돌려받으며, 실패는 어떻게 구분하는가"다. 아래는 그 핵심 API를 질의응답 형태로 정리한 것이다.</p>
+
+    <div class="term">
+      <div class="label">핵심 함수</div>
+      <span class="word">verify(rawBody, headers, secrets, options) → Result</span>
+      <p class="meaning"><code>Result</code>는 성공 시 <code>{ ok: true, secretId, eventId }</code>, 실패 시 <code>{ ok: false, status, code }</code>를 돌려준다. 예외(throw)는 입력 자체가 잘못된 프로그래밍 오류에만 쓰고, 검증 실패는 정상 반환값으로 표현한다. 그래야 호출자가 try/catch 없이 분기할 수 있다.</p>
     </div>
-    <!-- template-showcase:end wg-14 feature-explainer -->
+
+    <div class="faq">
+      <div class="label">API 동작</div>
+      <dl>
+        <dt>raw body는 어떤 타입으로 넘겨야 하나?</dt>
+        <dd>반드시 <strong>bytes/Buffer</strong>로 넘긴다. 문자열로 받으면 charset 변환 과정에서 바이트가 바뀔 수 있어 서명이 어긋난다. 프레임워크의 body parser를 끄고 raw 핸들러를 쓰는 것이 전제다.</dd>
+        <dt>secret을 왜 단일 값이 아니라 배열로 받나?</dt>
+        <dd>secret rotation 때문이다. 신규·구버전 secret을 모두 넘기면 어느 하나라도 일치할 때 통과시키되, 어느 secret이 맞았는지(<code>secretId</code>)를 반환해 구버전 사용량을 모니터링하고 종료일에 안전하게 제거할 수 있다.</dd>
+        <dt>options에는 무엇이 들어가나?</dt>
+        <dd>허용 알고리즘, timestamp window(초), 서명 헤더·시간 헤더 이름, 인코딩(hex/base64), event id 추출 경로 등 제공자별 차이를 흡수하는 설정이 들어간다. 기본값은 가장 엄격한 쪽으로 둔다.</dd>
+        <dt>검증과 멱등 처리는 한 함수에서 하나?</dt>
+        <dd>아니다. <code>verify</code>는 서명·신선도 판정까지만 책임지고, event id 중복 차단과 멱등 실행은 호출자(또는 replay-cache 모듈)가 결정한다. 캐시 백엔드 선택을 강제하지 않기 위해서다.</dd>
+        <dt>비동기인가 동기인가?</dt>
+        <dd>HMAC 계산 자체는 동기로 충분하다. 다만 secret을 외부 비밀 저장소에서 가져오거나 replay 캐시를 조회하는 단계는 비동기일 수 있으므로, 이 경계는 <code>verify</code> 바깥에 둔다.</dd>
+      </dl>
+    </div>
   </section>
 
   <section>
-    <h2><span class="no">7</span>wg-19 정책 토글</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><span class="no">7</span>wg-19 정책 토글</h2>
     <p class="h2-sub">권장 wg-19로 운영 정책의 기본 상태와 rotation 예외를 명확히 드러낸다.</p>
-    <!-- template-showcase:start wg-19 feature-flag-editor -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · wg-19 feature-flag-editor</div>
-      <section class="wg-19-editor" aria-label="Webhook 검증 정책 토글">
-        <header class="wg-19-head"><h2 class="wg-19-title">Webhook 검증 정책</h2><p class="wg-19-hint">토글은 CSS-only 상태 표시다. 실제 서버 반영은 배포 설정과 config audit로 관리한다.</p></header>
-        <ul class="wg-19-list"><li class="wg-19-row"><div class="wg-19-info"><span class="wg-19-key">require_signature</span><span class="wg-19-desc">서명 없는 요청을 모든 환경에서 차단</span></div><span class="wg-19-env">prod</span><input class="wg-19-cb" type="checkbox" id="ref-wg19-f1" checked><label class="wg-19-toggle" for="ref-wg19-f1"><span class="wg-19-knob"></span><span class="wg-19-state wg-19-state--on">ON</span><span class="wg-19-state wg-19-state--off">OFF</span></label></li><li class="wg-19-row"><div class="wg-19-info"><span class="wg-19-key">replay_cache</span><span class="wg-19-desc">event id 중복 차단, TTL 10분</span><span class="wg-19-dep" role="note">TTL은 provider retry 정책보다 길게</span></div><span class="wg-19-env">prod</span><input class="wg-19-cb" type="checkbox" id="ref-wg19-f2" checked><label class="wg-19-toggle" for="ref-wg19-f2"><span class="wg-19-knob"></span><span class="wg-19-state wg-19-state--on">ON</span><span class="wg-19-state wg-19-state--off">OFF</span></label></li><li class="wg-19-row"><div class="wg-19-info"><span class="wg-19-key">accept_previous_secret</span><span class="wg-19-desc">rotation 기간 동안 이전 secret 허용</span><span class="wg-19-dep wg-19-dep--warn" role="note">종료일과 owner 필수</span></div><span class="wg-19-env wg-19-env--stg">staging</span><input class="wg-19-cb" type="checkbox" id="ref-wg19-f3"><label class="wg-19-toggle" for="ref-wg19-f3"><span class="wg-19-knob"></span><span class="wg-19-state wg-19-state--on">ON</span><span class="wg-19-state wg-19-state--off">OFF</span></label></li></ul>
-      </section>
+
+    <p>검증 정책은 코드만큼이나 "기본값(default)"이 중요하다. 보안 토글은 <strong>안전한 쪽이 기본 ON</strong>이어야 하고, 느슨하게 푸는 것은 항상 명시적·한시적이어야 한다. 아래 표는 각 토글의 권장 기본 상태와, 예외적으로 풀 때의 종료 조건을 정리한 것이다.</p>
+
+    <div class="tbl table-scroll">
+      <table>
+        <caption>wg-19 검증 정책 토글과 예외 종료 조건</caption>
+        <thead><tr><th>정책 토글</th><th>권장 기본</th><th>예외(완화) 사용 사례</th><th>예외 종료 조건</th></tr></thead>
+        <tbody>
+          <tr><td>서명 검증 필수</td><td>ON</td><td>없음 (절대 끄지 않음)</td><td>해당 없음</td></tr>
+          <tr><td>timestamp window 강제</td><td>ON · 300초</td><td>대량 배치 재전송 마이그레이션</td><td>마이그레이션 종료일 / 작업 종료 즉시</td></tr>
+          <tr><td>event id 중복 차단</td><td>ON</td><td>의도적 재처리(reprocess) 작업</td><td>운영자 승인 + 작업 윈도우</td></tr>
+          <tr><td>이전 secret 허용(rotation)</td><td>OFF</td><td>secret 교체 기간</td><td>rotation 종료일 + owner 지정</td></tr>
+          <tr><td>약한 알고리즘(SHA1) 허용</td><td>OFF</td><td>레거시 제공자 한시 지원</td><td>제공자 업그레이드 완료일</td></tr>
+          <tr><td>검증 실패 상세 로그</td><td>ON(레벨 분리)</td><td>디버그 시 일시 verbose</td><td>secret·서명 원문은 항상 redaction</td></tr>
+        </tbody>
+      </table>
     </div>
-    <!-- template-showcase:end wg-19 feature-flag-editor -->
+
+    <div class="good">
+      <div class="label">권장</div>
+      <div class="name">완화 토글에는 항상 만료와 책임자를 붙인다</div>
+      <p>rotation, 레거시 알고리즘 허용 같은 예외는 feature flag로 만들되 <strong>종료일(expiry)</strong>과 <strong>owner</strong>를 필수 메타데이터로 둔다. 만료가 지나면 자동으로 엄격 모드로 되돌아가게 하면, "임시로 풀어둔 예외"가 영구적인 약점으로 굳는 것을 막는다.</p>
+    </div>
+
+    <div class="danger">
+      <div class="label">Anti-pattern</div>
+      <div class="name">전역 환경변수로 검증을 끄는 스위치</div>
+      <p><code>SKIP_WEBHOOK_VERIFY=true</code> 같은 전역 우회 스위치는 테스트용으로 만들어졌더라도 운영에 새어 들어가는 순간 모든 위조 요청을 통과시킨다. 검증 우회는 명시적 테스트 코드 경로로만 가능하게 하고, 운영 빌드에는 아예 포함하지 않는다.</p>
+    </div>
   </section>
 
   <section>
     <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="26" height="22" rx="4"/><path class="bi-accent-line" d="M16 16l-5 4 5 4M24 16l5 4-5 4"/><path class="bi-line" d="M21 14l-3 12"/></svg></span><span class="no">8</span>wg-20 테스트 벡터</h2>
     <p class="h2-sub">권장 wg-20으로 fixture 입력과 기대 결과를 CSS-only 탭처럼 비교한다.</p>
-    <!-- template-showcase:start wg-20 prompt-tuner -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · wg-20 prompt-tuner</div>
-      <section class="wg-20-tuner" aria-label="Webhook 검증 테스트 케이스 튜너">
-        <header class="wg-20-head"><h2 class="wg-20-title">서명 검증 테스트 벡터 튜너</h2><p class="wg-20-hint">예시는 <code>HMAC_SHA256(secret, timestamp + "." + raw_body)</code>의 hex digest다. secret은 테스트 전용 값이다.</p></header>
-        <fieldset class="wg-20-samples"><legend class="wg-20-legend">fixture</legend><input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s1" checked><label class="wg-20-chip" for="wg-20-s1">정상 서명</label><input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s2"><label class="wg-20-chip" for="wg-20-s2">중복 event</label><input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s3"><label class="wg-20-chip" for="wg-20-s3">이전 secret</label></fieldset>
-        <div class="wg-20-grid"><div class="wg-20-pane"><div class="wg-20-pane-head">검증 템플릿</div><pre class="wg-20-tpl">input = <span class="wg-20-var">{{timestamp}}</span> + "." + <span class="wg-20-var">{{raw_body}}</span>
-signature = "v1=" + HMAC_SHA256_HEX(<span class="wg-20-var">{{secret}}</span>, input)
-compare(signature, header_signature)</pre></div><div class="wg-20-pane"><div class="wg-20-pane-head">샘플 입력</div><div class="wg-20-input wg-20-input--s1"><span class="wg-20-k">timestamp</span>1700000000<br><span class="wg-20-k">event</span>evt_valid_001<br><span class="wg-20-k">secret</span>whsec_test_1234567890</div><div class="wg-20-input wg-20-input--s2"><span class="wg-20-k">timestamp</span>1700000100<br><span class="wg-20-k">event</span>evt_replay_001<br><span class="wg-20-k">cache</span>already contains event id</div><div class="wg-20-input wg-20-input--s3"><span class="wg-20-k">timestamp</span>1700000200<br><span class="wg-20-k">event</span>evt_rotation_001<br><span class="wg-20-k">secret</span>whsec_previous_0987654321</div></div><div class="wg-20-pane"><div class="wg-20-pane-head">기대 결과</div><div class="wg-20-out wg-20-out--s1">digest b66a20dcd19dcaa9e3b20f16fa04f59772552b37ccaa0ef25fe831fc1dcb8689 · 200 accepted</div><div class="wg-20-out wg-20-out--s2">digest 8a0ae221c821d438e942646e263040fc098daeedf13b6b39878d855c3a288ee0 · 200 already processed</div><div class="wg-20-out wg-20-out--s3">digest f4d4640282faa5000fdc030c31bfcfff83fafe74c159f8be66645c5b9902013f · accepted with previous_secret until rotation deadline</div></div></div>
-      </section>
-    </div>
-    <!-- template-showcase:end wg-20 prompt-tuner -->
+    
     <div class="tbl table-scroll">
       <table>
         <caption>Webhook 서명 검증 테스트 벡터</caption>
@@ -1897,6 +1898,102 @@ compare(signature, header_signature)</pre></div><div class="wg-20-pane"><div cla
       <li>accepted 이벤트 기록은 핸들러 실행 전후의 race를 고려한다.</li>
       <li>테스트 벡터는 CI에서 매번 실행하고 secret rotation PR에 포함한다.</li>
     </ol>
+  </section>
+
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="26" height="22" rx="4"/><path class="bi-accent-line" d="M16 16l-5 4 5 4M24 16l5 4-5 4"/><path class="bi-line" d="M21 14l-3 12"/></svg></span><span class="no">11</span>언어별 검증 코드 예시</h2>
+    <p class="h2-sub">HMAC-SHA256 서명 검증을 Node.js와 Python으로 정리한다. 핵심은 상수시간 비교, 타임스탬프 허용오차, 원문 바이트 그대로 사용 세 가지다.</p>
+    <p>아래 두 예시는 모두 같은 규칙을 따른다. <strong>파싱 전 raw body</strong>를 그대로 서명 입력으로 쓰고, 직접 만든 서명과 헤더 서명을 <strong>상수시간(constant-time)</strong>으로 비교하며, 타임스탬프가 허용오차(여기서는 300초)를 벗어나면 즉시 거부한다.</p>
+    <h3>Node.js (Express, crypto)</h3>
+    <pre><code>const crypto = require("crypto");
+
+// raw body 보존: express.raw({ type: "*/*" }) 등으로
+// 파싱 전 원문 Buffer를 그대로 받아야 한다.
+function verify(rawBody, headers, secret) {
+  const sig = headers["x-signature"];          // hex 인코딩 서명
+  const ts  = Number(headers["x-timestamp"]);  // unix seconds
+
+  // 1) 타임스탬프 허용오차 (재생공격 1차 방어)
+  const now = Math.floor(Date.now() / 1000);
+  if (!ts || Math.abs(now - ts) &gt; 300) return false;  // ±5분
+
+  // 2) signing input = timestamp + "." + raw body (원문 바이트 그대로)
+  const signedPayload = Buffer.concat([
+    Buffer.from(`${ts}.`),
+    rawBody,                                    // 절대 JSON.stringify 재직렬화 금지
+  ]);
+
+  // 3) 서버측 서명 계산
+  const expected = crypto
+    .createHmac("sha256", secret)
+    .update(signedPayload)
+    .digest();                                  // Buffer
+
+  // 4) 상수시간 비교 (길이 다르면 throw → catch에서 false)
+  let received;
+  try { received = Buffer.from(sig, "hex"); } catch { return false; }
+  if (received.length !== expected.length) return false;
+  return crypto.timingSafeEqual(received, expected);
+}</code></pre>
+    <h3>Python (Flask, hmac)</h3>
+    <pre><code>import hmac, hashlib, time
+
+# raw body 보존: Flask는 request.get_data() 로 원문 bytes 를 얻는다.
+def verify(raw_body: bytes, headers, secret: str) -&gt; bool:
+    sig = headers.get("X-Signature", "")        # hex 인코딩 서명
+    ts_raw = headers.get("X-Timestamp", "")
+    if not ts_raw.isdigit():
+        return False
+    ts = int(ts_raw)
+
+    # 1) 타임스탬프 허용오차 (±5분)
+    if abs(int(time.time()) - ts) &gt; 300:
+        return False
+
+    # 2) signing input = "{ts}." + 원문 바이트 그대로
+    signed_payload = f"{ts}.".encode() + raw_body
+
+    # 3) 서버측 서명 계산
+    expected = hmac.new(
+        secret.encode(), signed_payload, hashlib.sha256
+    ).hexdigest()
+
+    # 4) 상수시간 비교 — hmac.compare_digest 사용
+    return hmac.compare_digest(sig, expected)</code></pre>
+    <div class="danger">
+      <div class="label">흔한 구현 실수</div>
+      <div class="name">검증을 통과시키거나 우회시키는 패턴</div>
+      <p>아래 실수는 정상 요청을 401로 떨어뜨리거나, 반대로 위조 요청을 통과시킨다.</p>
+    </div>
+    <ul>
+      <li><strong>재직렬화된 body 사용</strong> — <code>JSON.parse</code> 후 다시 <code>stringify</code>한 문자열로 서명을 계산하면 키 순서, 공백, 유니코드 이스케이프가 달라져 정상 요청도 항상 실패한다. 반드시 raw 바이트를 쓴다.</li>
+      <li><strong>일반 비교(<code>==</code>, <code>===</code>) 사용</strong> — 문자열 비교는 첫 불일치에서 조기 반환되어 타이밍 공격에 노출된다. <code>timingSafeEqual</code> / <code>compare_digest</code>를 쓴다.</li>
+      <li><strong>길이 검사 누락</strong> — <code>timingSafeEqual</code>은 길이가 다르면 throw하므로 try/catch나 사전 길이 비교가 없으면 500이 난다.</li>
+      <li><strong>타임스탬프 미검증</strong> — 서명만 맞으면 통과시키면, 가로챈 과거 요청을 무한 재전송하는 재생공격을 막지 못한다.</li>
+      <li><strong>hex/base64 인코딩 혼동</strong> — 제공자가 base64로 보내는데 hex로 디코딩하면 항상 실패한다. 제공자 문서의 인코딩을 확인한다.</li>
+      <li><strong>secret을 환경별로 분리하지 않음</strong> — 테스트 secret과 운영 secret을 같이 쓰면 로그 유출 시 운영까지 뚫린다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-accent-box" x="8" y="10" width="6" height="6" rx="1.5"/><rect class="bi-soft" x="17" y="10" width="6" height="6" rx="1.5"/><rect class="bi-fill" x="26" y="10" width="6" height="6" rx="1.5"/><path class="bi-line" d="M9 23h22M9 28h17M9 33h12"/></svg></span><span class="no">12</span>빠른 레퍼런스 표</h2>
+    <p class="h2-sub">구현 전 한 번에 확인할 검증 항목을 헤더, 알고리즘, 허용오차, 재생공격 방지, 실패 응답으로 정리했다. 실제 값은 제공자 문서를 기준으로 채운다.</p>
+    <div class="tbl table-scroll">
+      <table>
+        <caption>Webhook 서명 검증 항목별 빠른 레퍼런스</caption>
+        <thead><tr><th>항목</th><th>일반적 값 / 예시</th><th>확인 포인트</th><th>틀렸을 때 증상</th></tr></thead>
+        <tbody>
+          <tr><td>서명 헤더 이름</td><td><code>X-Signature</code>, <code>X-Hub-Signature-256</code> 등</td><td>제공자별로 이름과 prefix(<code>sha256=</code>)가 다름</td><td>헤더 누락으로 항상 거부</td></tr>
+          <tr><td>해시 알고리즘</td><td>HMAC-SHA256</td><td>SHA1/SHA512 여부, base64 vs hex 인코딩</td><td>서명 불일치로 정상 요청 401</td></tr>
+          <tr><td>Signing input</td><td><code>{timestamp}.{raw body}</code></td><td>구분자, timestamp 포함 여부, 원문 바이트 사용</td><td>전 요청 검증 실패</td></tr>
+          <tr><td>타임스탬프 허용오차</td><td>±300초 (5분)</td><td>서버 시계 동기(NTP), 양방향 오차 허용</td><td>지연 요청 또는 재생 통과</td></tr>
+          <tr><td>재생공격 방지</td><td>timestamp window + nonce/event id 캐시</td><td>처리한 event id를 TTL 동안 저장</td><td>중복 결제, 중복 알림</td></tr>
+          <tr><td>비교 방식</td><td>constant-time 비교</td><td><code>timingSafeEqual</code> / <code>compare_digest</code></td><td>타이밍 공격 노출</td></tr>
+          <tr><td>실패 시 응답 코드</td><td><code>401</code>(서명 불일치), <code>400</code>(형식 오류), <code>409</code>(중복)</td><td>provider retry 정책과 일치 여부</td><td>무한 재시도 또는 이벤트 유실</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>응답 코드는 제공자 retry 정책과 맞춰야 한다. 일시 오류가 아닌 검증 실패에 <code>5xx</code>를 반환하면 제공자가 같은 위조 요청을 계속 재전송할 수 있으므로, 영구 거부는 <code>4xx</code>로 응답한다.</p>
   </section>
 
   <section class="try"><div class="label">NEXT ACTION</div><h2>바로 실행할 일</h2><ol><li>현재 프레임워크의 raw body 보존 방식을 확인한다.</li><li>제공자별 signing input을 표로 고정한다.</li><li>위 테스트 벡터를 unit/integration test로 옮긴다.</li><li>replay cache TTL과 secret rotation 종료일을 운영 문서에 적는다.</li></ol></section>

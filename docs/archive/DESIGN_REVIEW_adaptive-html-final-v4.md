@@ -1,3 +1,7 @@
+> ⚠️ **ARCHIVED — SUPERSEDED by v5.2.0.** 이 문서는 작성 당시 버전의 시점 고정(point-in-time) 리뷰/분석/계획 기록입니다. 현재 스킬은 **v5.2.0**이며, 여기서 지적된 항목 다수는 이미 해소·초과 달성되었습니다. 최신 사실 기준선은 게이트를 완전 통과한 `output/adaptive-html-final-13-topics-20260605_083433/`이고, 현행 문서는 루트 `README.md`·`AGENTS.md`·`Guide.md`입니다. 아카이브 색인: [`docs/archive/README.md`](README.md).
+
+---
+
 # adaptive-html-final 디자인 품질 전문가 리뷰 (v4)
 
 > 7개 디자인 전문가 페르소나가 v4 쇼케이스의 **실측 렌더 26종**(데스크탑 풀페이지 14 + 모바일 390px 6 + SVG 6)을 직접 보며 검토 → 디자인 총괄(Design Lead) 종합

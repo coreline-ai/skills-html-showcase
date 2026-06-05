@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: 78f7c0f836948338a066ddc3392ecddecdba4f437e6d19ec05059c168b6ca19c */
+/* adaptive-html-final-core-css-sha256: 3b4887c281115b3c7a5ade783cd05464c14c043e8f888615b4c069fce0029b09 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -98,8 +98,8 @@ a:hover{color:var(--accent)}
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
 .page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
-/* no-SVG single-column header: cap the stack to one editorial measure (≈ reference copy column) so edges align */
-.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:48rem}
+/* header content fills its container width (.page / .page-wide) so the header matches the sections below — v5.2.1 (이전: 48rem 단일 측정 캡) */
+.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:none}
 /* kicker — final_20260604 header: 점 달린 pill eyebrow(토큰화 → 다크 자동 대응) */
 .kicker{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:7px 13px 7px 11px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:13px;letter-spacing:.14em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:24px}
 .kicker::before{content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--accent)}
@@ -1271,6 +1271,16 @@ body{background:var(--vt-wash)}
 .body-icon .bi-accent-box{fill:var(--accent);stroke:var(--accent);stroke-width:1.6}
 .body-icon .bi-dot{fill:#7ea66a;stroke:var(--ink-mute);stroke-width:1.3}
 .body-icon .bi-dot-box{fill:#7ea66a;stroke:#7ea66a;stroke-width:1.5}
+/* icon + text alignment: 헤딩/라벨이 body-icon을 직접 자식으로 가지면 왼쪽 아이콘 + 일정 간격으로 정렬(무 JS, :has). v5.2.1 */
+.label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+h1:has(> .body-icon),h2:has(> .body-icon){display:flex;align-items:center;gap:10px}
+h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
+.mini-card h3 .body-icon,.card-block h3 .body-icon{align-self:flex-start;margin-top:1px}
+/* lede-note 등 컨텍스트 라벨도 아이콘+텍스트 정렬(고특이도 .lede-note .label{display:block}를 이김). v5.2.2 */
+.lede-note .label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+/* 아이콘 박스 배경 테마 적응(white/dark) — 하드코딩 흰빛 그라디언트가 다크에서 떠 보이던 문제 해소. SVG 칠은 토큰으로 이미 적응. v5.2.2 */
+:root:has(#ahf-white:checked) .body-icon{background:linear-gradient(180deg,#ffffff,#f4f5f8)}
+:root:has(#ahf-dark:checked) .body-icon{background:linear-gradient(180deg,var(--vt-soft),var(--card));border-color:var(--line)}
 @media(prefers-reduced-motion:reduce){.body-icon{transition:none}}
 
 /* adaptive-html-final editorial patterns — small content-structure blocks for in-mode insertion. 무 JS, 스킬 토큰. */
@@ -1322,6 +1332,7 @@ body{background:var(--vt-wash)}
 .ba-col.after .ba-bullet{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
 .impact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:18px 0}
 .impact-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px}
+.impact-card .body-icon{display:grid;margin-bottom:12px}
 .impact-card h3{font-family:var(--sans);font-size:15.5px;margin:0 0 6px}
 .impact-card p{font-size:13.5px;margin:0}
 @media(max-width:940px){.impact-grid{grid-template-columns:1fr 1fr}}
@@ -1335,14 +1346,14 @@ body{background:var(--vt-wash)}
 /* a11y-checklist — 접근성 30분 점검 그리드 + 실패 모드 표 + 릴리스 준비 체크리스트(다크 패널). 무 JS, 스킬 토큰, 색 외 텍스트 단서(PASS/FAIL). access-* 페이지 어휘를 a11y-* 정본 네임스페이스로 개명. */
 .a11y-check{margin:18px 0 0;border-top:1px solid var(--line);padding-top:18px}
 .a11y-lead{margin:0 0 12px;color:var(--ink-soft);font-size:13.8px;line-height:1.58;max-width:60rem}
-.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 0}
-.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;row-gap:18px;margin:12px 0 0}
+.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:12px}
 .a11y-card h4{font-family:var(--sans);font-size:15px;line-height:1.32;font-weight:800;letter-spacing:-.018em;margin:0;color:var(--ink)}
 .a11y-card p{margin:0;color:var(--ink-soft);font-size:12.8px;line-height:1.48;word-break:keep-all}
 .a11y-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:22px}
 .a11y-card-head>span:first-child{font-size:10.8px;line-height:1.15;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
 .a11y-time{display:inline-flex;align-items:center;min-height:22px;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:2px 7px;color:var(--chip-ink);font-size:11px;font-weight:800;white-space:nowrap}
-.a11y-points{display:grid;gap:5px;margin:1px 0 0;padding:0;list-style:none}
+.a11y-points{display:grid;gap:9px;margin:1px 0 0;padding:0;list-style:none}
 .a11y-points li{display:grid;grid-template-columns:46px 1fr;gap:7px;align-items:start;margin:0;color:var(--ink-soft);font-size:12.4px;line-height:1.38}
 .a11y-pass,.a11y-fail{display:inline-flex;align-items:center;justify-content:center;min-height:20px;border-radius:999px;border:1px solid var(--line);padding:0 6px;font-size:9.8px;line-height:1;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
 .a11y-pass{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
@@ -1598,6 +1609,15 @@ body{background:var(--vt-wash)}
 .ahf-themebar input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
 @media(max-width:560px){.ahf-themebar{position:static;width:max-content;max-width:calc(100% - 28px);margin:10px auto 16px}}
 @media print{.ahf-themebar{display:none}}
+</style>
+
+<style>
+/* page-local presentation tweaks (index only) — 갤러리 취향 미세 튜닝. 아이콘 정렬·헤더 48rem 캡 해제는 v5.2.1에서 스킬(body-icons.css/theme.css)로 승격됨 */
+/* 상단 'ADAPTIVE HTML FINAL' 킥커 폰트 축소(인덱스 전용) */
+.header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
+.header .kicker::before{width:6px;height:6px}
+/* 인트로 설명문 양끝 정렬(인덱스 전용), 한국어 어절 보존 */
+.header .sub{text-align:justify;word-break:keep-all}
 </style>
 
 </head>

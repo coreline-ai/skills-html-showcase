@@ -1,3 +1,7 @@
+> ⚠️ **ARCHIVED — SUPERSEDED by v5.2.0.** 이 문서는 작성 당시 버전의 시점 고정(point-in-time) 리뷰/분석/계획 기록입니다. 현재 스킬은 **v5.2.0**이며, 여기서 지적된 항목 다수는 이미 해소·초과 달성되었습니다. 최신 사실 기준선은 게이트를 완전 통과한 `output/adaptive-html-final-13-topics-20260605_083433/`이고, 현행 문서는 루트 `README.md`·`AGENTS.md`·`Guide.md`입니다. 아카이브 색인: [`docs/archive/README.md`](README.md).
+
+---
+
 # adaptive-html-final 정밀 분석 보고서 (v4.5.0)
 
 > 분석 방식: 7개 영역 병렬 분해(오케스트레이션·레이아웃/CSS/접근성·위젯·vt 템플릿·시각 에셋팩·검증/게이트·메타데이터 정합성) → 핵심 쟁점 적대적 검증(실파일·스크립트 실행으로 재확인) → 교차 통합 감사 → 종합 정리

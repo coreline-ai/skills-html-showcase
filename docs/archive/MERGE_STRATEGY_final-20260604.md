@@ -1,3 +1,7 @@
+> ⚠️ **ARCHIVED — SUPERSEDED by v5.2.0.** 이 문서는 작성 당시 버전의 시점 고정(point-in-time) 리뷰/분석/계획 기록입니다. 현재 스킬은 **v5.2.0**이며, 여기서 지적된 항목 다수는 이미 해소·초과 달성되었습니다. 최신 사실 기준선은 게이트를 완전 통과한 `output/adaptive-html-final-13-topics-20260605_083433/`이고, 현행 문서는 루트 `README.md`·`AGENTS.md`·`Guide.md`입니다. 아카이브 색인: [`docs/archive/README.md`](README.md).
+
+---
+
 # final_20260604 → adaptive-html-final 섹션 병합 전략
 
 > 작성 방식: `output/final_20260604/index.html`(4,135줄) 전 섹션 패턴을 5개 도메인 병렬 분해(52개 패턴 인벤토리) → 4인 전문가 패널 적대적 검토(에디토리얼/비주얼, CSS 아키텍처, 접근성, 스킬-거버넌스) → 종합. 모든 load-bearing 주장은 **출고된 `skills/adaptive-html-final/assets/*.css`에 직접 대조 검증**함.

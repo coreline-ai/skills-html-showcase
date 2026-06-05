@@ -15,12 +15,12 @@
 - **저장소**: `skills-html-showcase` — 다중 모드 한국어 HTML 생성 스킬 `adaptive-html-final`과 그 자산·검증·예제를 담은 쇼케이스 저장소.
 - **스킬**: `adaptive-html-final` — 입력(URL/PDF/텍스트/이미지/메모/기술자료/블로그 초안/SKILL.md)을 받아 **외부 동작 JS 없는** editorial HTML(학습자료·전문가 리포트·아티클·교육 모듈·블로그·SEO 대시보드·플랫폼 블로그·스킬 감사·레퍼런스·비교·케이스 스터디·랜딩·체크리스트)을 생성한다.
 - **현재 버전**: **5.2.0** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
-- **스킬 위치(절대 경로)**: `/Users/hwanchoi/project_202605/skills-html-showcase/skills/adaptive-html-final/`
+- **스킬 위치(저장소 루트 기준 상대 경로 — 체크아웃 위치 무관 이식성)**: `skills/adaptive-html-final/`
   - 본체: `skills/adaptive-html-final/SKILL.md`
   - 매니페스트: `skills/adaptive-html-final/manifest.json`
   - 참조: `skills/adaptive-html-final/references/`
   - 검증기: `skills/adaptive-html-final/scripts/validate_output.py`
-- **경로 폴백(결정론)**: 위 절대 경로가 현재 체크아웃에 존재하지 않을 때만, 현재 저장소 루트 기준 `skills/adaptive-html-final/`을 동일 스킬 디렉터리로 사용한다. 임의 검색 경로를 만들지 않는다.
+- **경로 규칙(결정론)**: 명령은 항상 **저장소 루트에서** 위 상대 경로로 실행한다. 머신 고정 절대 경로(`/Users/...`)를 하드코딩하지 않는다 — 체크아웃 위치가 달라지면 스테일이 되기 때문이다. 임의 검색 경로를 만들지 않는다.
 
 ---
 
@@ -51,9 +51,9 @@
 | `blog_writer` | 블로그 글, 포스팅, 경험담, 내 생각 | `.layout-blog` | `personal-blog-essay.html` | **timeline** → weekly-status → comparison-cards | wg-17 |
 | `seo_dashboard` | SEO, 제목, 메타, 태그, 검색 의도 | `.layout-seo` | `seo-dashboard.html` | **card-grid** → comparison-cards → prompt-tuner | wg-11 |
 | `platform_blog` | 티스토리, 벨로그, 네이버, 워드프레스, 플랫폼별 | `.layout-platform` | `platform-adaptation.html` | **card-grid** → comparison-cards → pr-writeup | wg-02 |
-| `skill_audit` | 스킬 분석, SKILL.md 개선, .skill 통합, 한 줄 분석 | `.layout-skill-audit` | `skill-audit-report.html` | **quality-gate** → file-tour → prompt-tuner → implementation-plan → soft-workflow-map | wg-03, wg-11, wg-17 |
+| `skill_audit` | 스킬 분석, SKILL.md 개선, .skill 통합, 한 줄 분석 | `.layout-audit` | `skill-audit-report.html` | **quality-gate** → file-tour → prompt-tuner → implementation-plan → soft-workflow-map | wg-03, wg-11, wg-17 |
 | `reference_html` | 레퍼런스, 매뉴얼, API 문서 | `.layout-reference` | `reference-manual.html` | **file-tour** → flowchart → card-grid | wg-04, wg-05, wg-06, wg-14, wg-19, wg-20 |
-| `comparison_html` | 비교, 장단점, 선택 기준 | `.layout-comparison` | `comparison-matrix.html` | **comparison-cards** → decision-tree → risk-matrix | wg-01, wg-02 |
+| `comparison_html` | 비교, 장단점, 선택 기준 | `.layout-compare` | `comparison-matrix.html` | **comparison-cards** → decision-tree → risk-matrix | wg-01, wg-02 |
 | `case_study_html` | 사례 연구, 회고, 프로젝트 기록 | `.layout-case` | `case-study.html` | **incident-summary** → timeline → process-swimlane | wg-12 |
 | `landing_brief_html` | 소개 페이지, 랜딩, 요약 페이지 | `.layout-landing` | `landing-brief.html` | **hero-map** → card-grid → feature-flag → soft-workflow-map | wg-02, wg-05, wg-08, wg-09, wg-16 |
 | `checklist_playbook` | 체크리스트, 운영 절차, 플레이북 | `.layout-checklist` | `checklist-playbook.html` | **checklist-flow** → quality-gate → process-swimlane → implementation-plan → triage-board | wg-11, wg-13, wg-16, wg-18, wg-19 |
@@ -134,18 +134,20 @@
 
 ## 6. 필수 검증 명령 (완료 기준)
 
-작업 디렉터리 무관하게 절대 경로 사용. **`OK`가 나와야만 완료.**
+**저장소 루트에서** 실행한다(상대 경로 — 체크아웃 위치 무관). **`OK`가 나와야만 완료.**
 
 ```bash
-python3 /Users/hwanchoi/project_202605/skills-html-showcase/skills/adaptive-html-final/scripts/validate_output.py \
+# cwd = 저장소 루트(skills-html-showcase)
+python3 skills/adaptive-html-final/scripts/validate_output.py \
   <output_dir> \
-  --skill-dir /Users/hwanchoi/project_202605/skills-html-showcase/skills/adaptive-html-final
+  --skill-dir skills/adaptive-html-final
 ```
 
 - 마지막 줄이 `OK`가 아니면(`FAILED`/`ISSUE`) 수정 후 재실행한다.
 - JSON 상세가 필요하면 `--json`을 추가한다.
-- 위 절대 경로가 없는 체크아웃에서는 §1의 경로 폴백에 따라 `python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> --skill-dir skills/adaptive-html-final`을 사용한다.
-- **골든(레퍼런스) 출력:** `output/adaptive-html-final-showcase-v6/`는 위 검증을 통과하는 정답 예시다(v6 동결 시점 기준 13모드 × vt-템플릿 20종 적용; 이후 추가된 21-soft-workflow-map은 후순위라 v6 미사용, `sources/css-integrity.json` 포함). 새 출력의 구조·`sources/` 구성·통과 여부를 이 폴더와 대조하라.
+- 검증 명령은 §1의 상대 경로 규칙을 따른다. 다른 체크아웃의 과거 절대 경로를 사용하지 않는다.
+- **현행 골든(레퍼런스) 출력:** `output/adaptive-html-final-13-topics-20260605_083433/`는 현재 v5.2.0 스킬 자산 기준으로 위 검증을 통과하는 최신 예시다. 새 출력의 구조·`sources/` 구성·통과 여부는 이 폴더와 대조한다.
+- **역사적 골든:** `output/adaptive-html-final-showcase-v6/`는 v4.5/v6 동결 시점 예시이므로 현재 v5.2.0 검증 기준선으로 사용하지 않는다.
 
 **무 JS grep (불변식 1 보조 확인)** — JSON-LD 외 `<script>`가 0이어야 한다.
 

@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: 78f7c0f836948338a066ddc3392ecddecdba4f437e6d19ec05059c168b6ca19c */
+/* adaptive-html-final-core-css-sha256: 3b4887c281115b3c7a5ade783cd05464c14c043e8f888615b4c069fce0029b09 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -98,8 +98,8 @@ a:hover{color:var(--accent)}
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
 .page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
-/* no-SVG single-column header: cap the stack to one editorial measure (≈ reference copy column) so edges align */
-.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:48rem}
+/* header content fills its container width (.page / .page-wide) so the header matches the sections below — v5.2.1 (이전: 48rem 단일 측정 캡) */
+.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:none}
 /* kicker — final_20260604 header: 점 달린 pill eyebrow(토큰화 → 다크 자동 대응) */
 .kicker{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:7px 13px 7px 11px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:13px;letter-spacing:.14em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:24px}
 .kicker::before{content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--accent)}
@@ -1271,6 +1271,16 @@ body{background:var(--vt-wash)}
 .body-icon .bi-accent-box{fill:var(--accent);stroke:var(--accent);stroke-width:1.6}
 .body-icon .bi-dot{fill:#7ea66a;stroke:var(--ink-mute);stroke-width:1.3}
 .body-icon .bi-dot-box{fill:#7ea66a;stroke:#7ea66a;stroke-width:1.5}
+/* icon + text alignment: 헤딩/라벨이 body-icon을 직접 자식으로 가지면 왼쪽 아이콘 + 일정 간격으로 정렬(무 JS, :has). v5.2.1 */
+.label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+h1:has(> .body-icon),h2:has(> .body-icon){display:flex;align-items:center;gap:10px}
+h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
+.mini-card h3 .body-icon,.card-block h3 .body-icon{align-self:flex-start;margin-top:1px}
+/* lede-note 등 컨텍스트 라벨도 아이콘+텍스트 정렬(고특이도 .lede-note .label{display:block}를 이김). v5.2.2 */
+.lede-note .label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+/* 아이콘 박스 배경 테마 적응(white/dark) — 하드코딩 흰빛 그라디언트가 다크에서 떠 보이던 문제 해소. SVG 칠은 토큰으로 이미 적응. v5.2.2 */
+:root:has(#ahf-white:checked) .body-icon{background:linear-gradient(180deg,#ffffff,#f4f5f8)}
+:root:has(#ahf-dark:checked) .body-icon{background:linear-gradient(180deg,var(--vt-soft),var(--card));border-color:var(--line)}
 @media(prefers-reduced-motion:reduce){.body-icon{transition:none}}
 
 /* adaptive-html-final editorial patterns — small content-structure blocks for in-mode insertion. 무 JS, 스킬 토큰. */
@@ -1322,6 +1332,7 @@ body{background:var(--vt-wash)}
 .ba-col.after .ba-bullet{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
 .impact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:18px 0}
 .impact-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px}
+.impact-card .body-icon{display:grid;margin-bottom:12px}
 .impact-card h3{font-family:var(--sans);font-size:15.5px;margin:0 0 6px}
 .impact-card p{font-size:13.5px;margin:0}
 @media(max-width:940px){.impact-grid{grid-template-columns:1fr 1fr}}
@@ -1335,14 +1346,14 @@ body{background:var(--vt-wash)}
 /* a11y-checklist — 접근성 30분 점검 그리드 + 실패 모드 표 + 릴리스 준비 체크리스트(다크 패널). 무 JS, 스킬 토큰, 색 외 텍스트 단서(PASS/FAIL). access-* 페이지 어휘를 a11y-* 정본 네임스페이스로 개명. */
 .a11y-check{margin:18px 0 0;border-top:1px solid var(--line);padding-top:18px}
 .a11y-lead{margin:0 0 12px;color:var(--ink-soft);font-size:13.8px;line-height:1.58;max-width:60rem}
-.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 0}
-.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;row-gap:18px;margin:12px 0 0}
+.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:12px}
 .a11y-card h4{font-family:var(--sans);font-size:15px;line-height:1.32;font-weight:800;letter-spacing:-.018em;margin:0;color:var(--ink)}
 .a11y-card p{margin:0;color:var(--ink-soft);font-size:12.8px;line-height:1.48;word-break:keep-all}
 .a11y-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:22px}
 .a11y-card-head>span:first-child{font-size:10.8px;line-height:1.15;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
 .a11y-time{display:inline-flex;align-items:center;min-height:22px;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:2px 7px;color:var(--chip-ink);font-size:11px;font-weight:800;white-space:nowrap}
-.a11y-points{display:grid;gap:5px;margin:1px 0 0;padding:0;list-style:none}
+.a11y-points{display:grid;gap:9px;margin:1px 0 0;padding:0;list-style:none}
 .a11y-points li{display:grid;grid-template-columns:46px 1fr;gap:7px;align-items:start;margin:0;color:var(--ink-soft);font-size:12.4px;line-height:1.38}
 .a11y-pass,.a11y-fail{display:inline-flex;align-items:center;justify-content:center;min-height:20px;border-radius:999px;border:1px solid var(--line);padding:0 6px;font-size:9.8px;line-height:1;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
 .a11y-pass{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
@@ -1600,6 +1611,21 @@ body{background:var(--vt-wash)}
 @media print{.ahf-themebar{display:none}}
 </style>
 
+<style>
+/* page-local presentation tweaks (mode page) — 헤더 미세 튜닝(인덱스와 동일). 아이콘 정렬·헤더 폭은 스킬 v5.2.1 기본값 */
+.header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
+.header .kicker::before{width:6px;height:6px}
+.header .sub{text-align:justify;word-break:keep-all}
+/* 헤딩 아이콘 크기 확대 — 참조 사이트(final_20260604 .pattern-head .body-icon=42px)처럼. 2026-06-05 followup-final */
+h2>.body-icon,h3>.body-icon{width:42px;height:42px;border-radius:12px}
+h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
+/* source-note 배경 투명 (08과 동일). 2026-06-05 */
+.source-note{background:transparent}
+:root:has(#ahf-dark:checked) .source-note{background:transparent}
+/* 모든 플레인 콘텐츠 섹션을 카드 뷰로(다른 섹션과 동일 표면). 2026-06-05 */
+.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}
+</style>
 </head>
 <body>
 <fieldset class="ahf-themebar" aria-label="테마 선택">
@@ -1614,79 +1640,60 @@ body{background:var(--vt-wash)}
 <section class="summary-card"><div class="label">Overview</div><p><strong>로컬 RAG는 모델에게 모든 것을 외우게 하는 기술이 아니라, 답변 직전에 믿을 만한 근거를 찾아 붙이는 구조다.</strong> 처음에는 문서 10개, 질문 20개, 검색 결과 확인표 하나로 충분하다.</p></section>
 <div class="lede-note"><span class="label">Goal</span><p>이 글의 목표는 멋진 챗봇을 완성하는 것이 아니라, 검색된 근거를 읽고 고치는 감각을 만드는 것이다.</p></div>
 
-<!-- template-showcase:start vt-15 concept-explainer -->
-<div class="summary-card template-showcase"><div class="label">TEMPLATE CHECK · vt-15 concept-explainer</div>
-<section class="vt-shell"><div class="vt-frame"><div class="concept-ring"><div class="vt-section-title"><span class="vt-num">?</span><h3 style="margin:0">로컬 RAG = 내 서재에서 근거를 찾아 답하는 구조</h3></div><p class="vt-text">개인 서재에는 원문이 있고, 사서는 질문에 맞는 책갈피를 찾고, 답변자는 그 책갈피를 근거로 설명한다. 좋은 RAG는 말솜씨보다 근거 회수율이 먼저다.</p><div class="concept-steps"><div class="concept-step"><b>1</b>문서 금고<br>원문과 출처 보관</div><div class="concept-step"><b>2</b>조각화<br>질문 단위로 분리</div><div class="concept-step"><b>3</b>검색<br>관련 조각 확인</div><div class="concept-step"><b>4</b>근거 답변<br>출처와 한계 표시</div></div></div></div></section>
-</div>
-<!-- template-showcase:end vt-15 concept-explainer -->
-<section><h2><span class="no is-key" aria-hidden="true">1</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span>로컬 RAG를 서재와 사서로 이해하기</h2><p class="h2-sub">RAG는 기억을 모델 안에 넣는 방식이 아니라, 질문할 때 필요한 문서 조각을 찾아 답변 옆에 붙이는 방식이다.</p><p>비유하면 개인 서재에 책이 있고, 사서가 질문에 맞는 책갈피를 찾아주며, 답변자는 그 책갈피를 보고 설명한다. 여기서 책은 메모와 PDF와 회의록이고, 책갈피는 검색된 청크이며, 답변자는 언어 모델이다.</p><p>초보자가 가장 먼저 붙잡아야 할 문장은 이것이다. <strong>RAG의 품질은 모델의 말투보다 검색된 근거의 품질에서 먼저 결정된다.</strong> 답변이 자연스러워도 근거가 틀리면 좋은 시스템이 아니다.</p></section>
-<section><h2><span class="no" aria-hidden="true">2</span>RAG가 해결하는 문제와 해결하지 못하는 문제</h2><p class="h2-sub">흩어진 자료를 질문 가능한 형태로 만드는 데 강하지만, 문서에 없는 사실을 만들어내지는 못한다.</p><div class="grid-2"><article class="mini-card"><h3>잘하는 일</h3><p>메모, PDF, 회의록, 기술 문서에서 관련 근거를 찾아 질문에 연결한다. “전에 어디 적어뒀지?”라는 시간을 줄인다.</p></article><article class="mini-card"><h3>못하는 일</h3><p>문서가 틀렸거나 오래되었거나 서로 충돌할 때 자동으로 진실을 판별하지 못한다. 원문 품질은 그대로 답변 품질에 반영된다.</p></article><article class="mini-card"><h3>위험한 착각</h3><p>모델을 더 좋은 것으로 바꾸면 모든 문제가 해결된다고 믿는 것이다. 검색 실패와 청크 불량은 모델 교체로 가려질 뿐이다.</p></article><article class="mini-card"><h3>좋은 목표</h3><p>그럴듯한 답변보다 다시 확인 가능한 답변을 만든다. 답변, 출처, 모르는 부분이 함께 보여야 한다.</p></article></div></section>
-<section><h2><span class="no" aria-hidden="true">3</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="bi-soft" cx="20" cy="11" rx="11" ry="5"/><path class="bi-fill" d="M9 11v18c0 2.8 5 5 11 5s11-2.2 11-5V11"/><path class="bi-line" d="M9 20c0 2.8 5 5 11 5s11-2.2 11-5"/><circle class="bi-accent" cx="26" cy="28" r="2"/></svg></span>개인 지식 금고의 기본 재료</h2><p class="h2-sub">첫 버전에는 많은 자료보다 자주 다시 찾는 정확한 자료가 필요하다.</p><p>문서에는 제목, 작성일, 출처, 주제, 원문 위치를 함께 남긴다. 나중에 답변이 이상할 때 원문으로 돌아갈 수 있어야 수정도 가능하다. 요약본만 저장하면 편하지만 누락과 해석이 섞이므로 원문을 기준으로 두고 요약은 보조 정보로 둔다.</p><p>개인 지식 금고의 첫 컬렉션은 “중요해 보이는 자료”가 아니라 “반복해서 질문할 자료”로 고르는 편이 좋다. 회의 결정, 프로젝트 규칙, 자주 보는 기술 문서, 개인 연구 노트처럼 다시 물어볼 일이 있는 문서가 우선이다.</p>
 
-
-<!-- template-showcase:start wg-10 svg-figure-sheet -->
-<div class="summary-card template-showcase"><div class="label">TEMPLATE CHECK · wg-10 svg-figure-sheet</div>
-<section class="wg-10-sheet" aria-label="RAG 구성요소 아이콘 시트">
-  <h3 class="wg-10-h">RAG 구성요소 아이콘 시트</h3>
-  <div class="wg-10-grid">
-    <figure class="wg-10-fig"><div class="wg-10-stage"><svg viewBox="0 0 120 120" role="img" aria-labelledby="rag-wg10-t1" class="wg-10-svg"><title id="rag-wg10-t1">문서 금고</title><rect x="28" y="24" width="64" height="72" rx="8" fill="var(--card)" stroke="var(--ink)" stroke-width="3"/><path d="M42 44h36M42 60h28M42 76h32" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/></svg></div><figcaption class="wg-10-cap"><strong>문서 금고</strong><span>원문·출처·날짜 보존</span></figcaption></figure>
-    <figure class="wg-10-fig"><div class="wg-10-stage"><svg viewBox="0 0 120 120" role="img" aria-labelledby="rag-wg10-t2" class="wg-10-svg"><title id="rag-wg10-t2">청크 조각</title><rect x="18" y="30" width="38" height="28" rx="6" fill="var(--term-bg)" stroke="var(--term-accent)" stroke-width="2"/><rect x="64" y="30" width="38" height="28" rx="6" fill="var(--term-bg)" stroke="var(--term-accent)" stroke-width="2"/><rect x="41" y="68" width="38" height="28" rx="6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/></svg></div><figcaption class="wg-10-cap"><strong>청크 설계</strong><span>질문에 답할 단위</span></figcaption></figure>
-    <figure class="wg-10-fig"><div class="wg-10-stage"><svg viewBox="0 0 120 120" role="img" aria-labelledby="rag-wg10-t3" class="wg-10-svg"><title id="rag-wg10-t3">검색 회수</title><circle cx="52" cy="52" r="24" fill="var(--analogy-bg)" stroke="var(--analogy-accent)" stroke-width="3"/><path d="M70 70l24 24" stroke="var(--ink)" stroke-width="6" stroke-linecap="round"/><circle cx="52" cy="52" r="8" fill="var(--accent)"/></svg></div><figcaption class="wg-10-cap"><strong>검색 회수</strong><span>상위 근거 조각 확인</span></figcaption></figure>
-    <figure class="wg-10-fig"><div class="wg-10-stage"><svg viewBox="0 0 120 120" role="img" aria-labelledby="rag-wg10-t4" class="wg-10-svg"><title id="rag-wg10-t4">근거 답변</title><path d="M24 30h72v42H54L38 90V72H24z" fill="var(--good-bg)" stroke="var(--good-label-ink)" stroke-width="3"/><path d="M40 48h42M40 60h28" stroke="var(--good-label-ink)" stroke-width="4" stroke-linecap="round"/></svg></div><figcaption class="wg-10-cap"><strong>근거 답변</strong><span>출처·한계·모름 표시</span></figcaption></figure>
-  </div>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span><span class="no is-key" aria-hidden="true">1</span>로컬 RAG를 서재와 사서로 이해하기</h2><p class="h2-sub">RAG는 기억을 모델 안에 넣는 방식이 아니라, 질문할 때 필요한 문서 조각을 찾아 답변 옆에 붙이는 방식이다.</p><p>비유하면 개인 서재에 책이 있고, 사서가 질문에 맞는 책갈피를 찾아주며, 답변자는 그 책갈피를 보고 설명한다. 여기서 책은 메모와 PDF와 회의록이고, 책갈피는 검색된 청크이며, 답변자는 언어 모델이다.</p><p>초보자가 가장 먼저 붙잡아야 할 문장은 이것이다. <strong>RAG의 품질은 모델의 말투보다 검색된 근거의 품질에서 먼저 결정된다.</strong> 답변이 자연스러워도 근거가 틀리면 좋은 시스템이 아니다.</p>
+<div class="analogy"><div class="label">핵심 비유</div><p>RAG는 “모든 책을 통째로 외운 천재”가 아니라 “질문을 들으면 서가로 달려가 딱 맞는 페이지에 책갈피를 꽂아 오는 사서”다. 답변자는 그 책갈피만 보고 설명한다.</p><p>그래서 사서가 엉뚱한 책을 가져오면(검색 실패), 답변자가 아무리 말을 잘해도 답은 틀린다. 반대로 사서가 정확한 페이지를 찾아오면 평범한 답변자도 믿을 만한 답을 만든다. 우리가 손봐야 할 곳은 대부분 사서(검색)이지 답변자(모델)가 아니다.</p></div>
+<p>이 비유를 코드 흐름으로 바꾸면 세 단계가 된다. <strong>질문 → 관련 청크 검색 → 검색된 청크를 근거로 답변 생성</strong>이다. 모델은 마지막 단계에만 등장한다. 그래서 “모델을 바꿨는데도 답이 그대로 이상하다”면 앞의 검색 단계를 의심하는 것이 정석이다.</p>
+<div class="term"><div class="label">용어</div><span class="word">RAG (Retrieval-Augmented Generation)</span><p class="meaning">검색(Retrieval)으로 찾은 근거를 답변 생성(Generation)에 덧붙이는(Augmented) 방식. 지식을 모델 가중치에 욱여넣는 대신, 질문 시점에 필요한 문서 조각을 외부 저장소에서 찾아 프롬프트에 끼워 넣는다.</p></div>
+<div class="term"><div class="label">용어</div><span class="word">청크(chunk)</span><p class="meaning">긴 문서를 검색·인용하기 좋게 잘라 둔 한 조각. 책에서 “한 페이지” 또는 “한 문단”에 해당한다. 검색은 문서 전체가 아니라 이 청크 단위로 이루어진다.</p></div>
+<pre><code>질문: "지난 회의의 배포 조건은?"
+  └→ [검색] 회의록에서 관련 청크 3개 회수
+        └→ [생성] 그 3개만 근거로 답변 + 출처 표기</code></pre></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="22" rx="3"/><rect class="bi-fill" x="16" y="9" width="8" height="22" rx="3"/><rect class="bi-soft" x="25" y="9" width="8" height="22" rx="3"/><path class="bi-accent-line" d="M27 18h4"/><circle class="bi-accent" cx="29" cy="26" r="2.5"/></svg></span><span class="no" aria-hidden="true">2</span>RAG가 해결하는 문제와 해결하지 못하는 문제</h2><p class="h2-sub">흩어진 자료를 질문 가능한 형태로 만드는 데 강하지만, 문서에 없는 사실을 만들어내지는 못한다.</p><div class="grid-2"><article class="mini-card"><h3>잘하는 일</h3><p>메모, PDF, 회의록, 기술 문서에서 관련 근거를 찾아 질문에 연결한다. “전에 어디 적어뒀지?”라는 시간을 줄인다.</p></article><article class="mini-card"><h3>못하는 일</h3><p>문서가 틀렸거나 오래되었거나 서로 충돌할 때 자동으로 진실을 판별하지 못한다. 원문 품질은 그대로 답변 품질에 반영된다.</p></article><article class="mini-card"><h3>위험한 착각</h3><p>모델을 더 좋은 것으로 바꾸면 모든 문제가 해결된다고 믿는 것이다. 검색 실패와 청크 불량은 모델 교체로 가려질 뿐이다.</p></article><article class="mini-card"><h3>좋은 목표</h3><p>그럴듯한 답변보다 다시 확인 가능한 답변을 만든다. 답변, 출처, 모르는 부분이 함께 보여야 한다.</p></article></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="bi-soft" cx="20" cy="11" rx="11" ry="5"/><path class="bi-fill" d="M9 11v18c0 2.8 5 5 11 5s11-2.2 11-5V11"/><path class="bi-line" d="M9 20c0 2.8 5 5 11 5s11-2.2 11-5"/><circle class="bi-accent" cx="26" cy="28" r="2"/></svg></span><span class="no" aria-hidden="true">3</span>개인 지식 금고의 기본 재료</h2><p class="h2-sub">첫 버전에는 많은 자료보다 자주 다시 찾는 정확한 자료가 필요하다.</p><p>문서에는 제목, 작성일, 출처, 주제, 원문 위치를 함께 남긴다. 나중에 답변이 이상할 때 원문으로 돌아갈 수 있어야 수정도 가능하다. 요약본만 저장하면 편하지만 누락과 해석이 섞이므로 원문을 기준으로 두고 요약은 보조 정보로 둔다.</p><p>개인 지식 금고의 첫 컬렉션은 “중요해 보이는 자료”가 아니라 “반복해서 질문할 자료”로 고르는 편이 좋다. 회의 결정, 프로젝트 규칙, 자주 보는 기술 문서, 개인 연구 노트처럼 다시 물어볼 일이 있는 문서가 우선이다.</p>
+<div class="term"><div class="label">용어</div><span class="word">메타데이터(metadata)</span><p class="meaning">문서 본문이 아니라 문서를 설명하는 정보. 제목, 작성일, 출처, 주제, 원문 위치 등이다. 답변이 이상할 때 “이 근거가 어디서 왔지?”를 추적하고, 오래된 문서를 걸러내는 기준이 된다.</p></div>
+<p>아래 표는 첫 금고에 넣을 문서를 고를 때 쓰는 간단한 판별 기준이다. 한 문서가 여러 줄에 걸쳐 “예”가 나오면 우선순위가 높다.</p>
+<div class="tbl table-scroll"><table><caption>첫 컬렉션 문서 선별 기준 (예시)</caption><thead><tr><th>기준</th><th>넣을 문서</th><th>미루는 문서</th></tr></thead><tbody><tr><td>재질문 빈도</td><td>한 달에 두 번 이상 다시 찾는 문서</td><td>한 번 보고 끝나는 자료</td></tr><tr><td>원문 확보</td><td>출처와 원본 위치가 분명한 문서</td><td>출처 없는 복사·요약본</td></tr><tr><td>안정성</td><td>결정·규칙처럼 잘 안 바뀌는 내용</td><td>매일 바뀌는 임시 메모</td></tr><tr><td>민감도</td><td>외부에 나가도 괜찮은 자료(초기 테스트용)</td><td>개인정보·기밀 (별도 금고)</td></tr></tbody></table></div>
+<div class="danger"><div class="label">흔한 오해</div><div class="name">“요약본만 저장하면 가볍고 충분하다”</div><p>요약은 사람의 해석과 누락이 이미 섞인 결과물이다. 요약본만 금고에 넣으면 답변이 틀려도 원문으로 되돌아가 확인·수정할 수 없다. 디버깅 통로 자체가 사라진다.</p></div>
+<div class="good"><div class="label">권장</div><div class="name">원문을 기준, 요약은 보조</div><p>원문(또는 원문 위치 링크)을 그대로 보존하고, 요약은 검색 보조용 메타데이터로 함께 둔다. 그러면 “요약으로 빨리 찾고, 원문으로 확인한다”는 두 단계를 모두 쓸 수 있다.</p></div>
+<div class="box"><strong>실습 체크리스트 — 문서 한 건 등록하기</strong><ul><li>제목·작성일·출처·원문 위치(파일 경로나 링크)를 적었는가?</li><li>이 문서가 “어떤 질문에 답하려고” 들어왔는지 한 줄로 적었는가?</li><li>요약이 아니라 원문(또는 원문을 가리키는 링크)을 보존했는가?</li><li>민감 정보가 섞였다면 테스트 금고가 아닌 별도 금고로 분리했는가?</li></ul></div>
 </section>
-</div>
-<!-- template-showcase:end wg-10 svg-figure-sheet -->
-</section>
-<section><h2><span class="no" aria-hidden="true">4</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M11 7h12l6 6v20H11z"/><path class="bi-line" d="M23 7v7h6M16 20h9M16 26h7"/><circle class="bi-accent" cx="15" cy="14" r="2"/></svg></span>문서를 잘게 나누는 청크 설계</h2><p class="h2-sub">청크는 검색 가능한 문서 조각이다. 너무 크면 잡음이 섞이고, 너무 작으면 문맥이 끊긴다.</p><p>좋은 청크는 한 가지 질문에 답할 만큼의 맥락을 가진다. 제목, 소제목, 표 설명, 앞뒤 문맥을 함께 보존하면 검색 품질이 좋아진다. 특히 회의록이나 PDF는 문단만 자르면 의미가 끊길 수 있으므로 섹션 제목과 문서 출처를 메타데이터로 붙인다.</p><p>처음부터 완벽한 크기를 찾으려 하지 않는다. 질문 20개를 만든 뒤, 각 질문에서 상위 검색 결과 3개가 납득되는지 보며 조정한다. 청크 설계는 숫자 맞추기가 아니라 검색 결과를 읽고 고치는 반복 작업이다.</p><div class="ba"><div class="ba-col before"><span class="ba-label">Before</span><p>문서를 500자마다 기계적으로 자른다.</p></div><div class="ba-arrow" aria-hidden="true">&rarr;</div><div class="ba-col after"><span class="ba-label">After</span><p>질문 하나에 답할 만큼 제목·문맥·출처를 함께 보존한다.</p></div></div></section>
-<section><h2><span class="no" aria-hidden="true">5</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="18" cy="18" r="9"/><path class="bi-accent-line" d="M25 25l7 7"/><path class="bi-line" d="M14 18h8"/></svg></span>검색이 먼저이고 답변은 그다음이다</h2><p class="h2-sub">답이 틀렸을 때 가장 먼저 볼 것은 모델 이름이 아니라 검색된 조각이다.</p><p>검색 결과 상위 조각을 사람이 읽어보고 질문과 맞는지 확인한다. 이 과정이 납득되지 않으면 답변이 자연스러워도 신뢰하면 안 된다. 답변 프롬프트에는 근거에 없는 내용은 추측으로 표시하고, 출처를 남기고, 모르면 모른다고 말하라는 제한을 둔다.</p><p>검색 실패의 원인은 여러 가지다. 문서 자체가 없을 수 있고, 청크가 너무 잘게 잘렸을 수 있으며, 질문 표현과 문서 표현이 다를 수 있다. 원인을 나눠야 모델 튜닝, 청크 수정, 문서 보강 중 무엇을 해야 할지 결정할 수 있다.</p><div class="core-insight core-insight--neutral"><blockquote>답변을 평가하기 전에 검색 조각부터 읽는다.</blockquote><p>RAG의 첫 품질 게이트는 모델이 아니라 회수된 근거다.</p></div>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M11 7h12l6 6v20H11z"/><path class="bi-line" d="M23 7v7h6M16 20h9M16 26h7"/><circle class="bi-accent" cx="15" cy="14" r="2"/></svg></span><span class="no" aria-hidden="true">4</span>문서를 잘게 나누는 청크 설계</h2><p class="h2-sub">청크는 검색 가능한 문서 조각이다. 너무 크면 잡음이 섞이고, 너무 작으면 문맥이 끊긴다.</p><p>좋은 청크는 한 가지 질문에 답할 만큼의 맥락을 가진다. 제목, 소제목, 표 설명, 앞뒤 문맥을 함께 보존하면 검색 품질이 좋아진다. 특히 회의록이나 PDF는 문단만 자르면 의미가 끊길 수 있으므로 섹션 제목과 문서 출처를 메타데이터로 붙인다.</p><p>처음부터 완벽한 크기를 찾으려 하지 않는다. 질문 20개를 만든 뒤, 각 질문에서 상위 검색 결과 3개가 납득되는지 보며 조정한다. 청크 설계는 숫자 맞추기가 아니라 검색 결과를 읽고 고치는 반복 작업이다.</p><div class="ba"><div class="ba-col before"><span class="ba-label">Before</span><p>문서를 500자마다 기계적으로 자른다.</p></div><div class="ba-arrow" aria-hidden="true">&rarr;</div><div class="ba-col after"><span class="ba-label">After</span><p>질문 하나에 답할 만큼 제목·문맥·출처를 함께 보존한다.</p></div></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="18" cy="18" r="9"/><path class="bi-accent-line" d="M25 25l7 7"/><path class="bi-line" d="M14 18h8"/></svg></span><span class="no" aria-hidden="true">5</span>검색이 먼저이고 답변은 그다음이다</h2><p class="h2-sub">답이 틀렸을 때 가장 먼저 볼 것은 모델 이름이 아니라 검색된 조각이다.</p><p>검색 결과 상위 조각을 사람이 읽어보고 질문과 맞는지 확인한다. 이 과정이 납득되지 않으면 답변이 자연스러워도 신뢰하면 안 된다. 답변 프롬프트에는 근거에 없는 내용은 추측으로 표시하고, 출처를 남기고, 모르면 모른다고 말하라는 제한을 둔다.</p><p>검색 실패의 원인은 여러 가지다. 문서 자체가 없을 수 있고, 청크가 너무 잘게 잘렸을 수 있으며, 질문 표현과 문서 표현이 다를 수 있다. 원인을 나눠야 모델 튜닝, 청크 수정, 문서 보강 중 무엇을 해야 할지 결정할 수 있다.</p><div class="core-insight core-insight--neutral"><blockquote>답변을 평가하기 전에 검색 조각부터 읽는다.</blockquote><p>RAG의 첫 품질 게이트는 모델이 아니라 회수된 근거다.</p></div>
 
 
-<!-- template-showcase:start wg-13 annotated-flowchart -->
-<div class="summary-card template-showcase"><div class="label">TEMPLATE CHECK · wg-13 annotated-flowchart</div>
-<section class="wg-13-fc" aria-label="RAG 검색 우선 플로우차트">
-  <h3 class="wg-13-h">RAG 검색 우선 플로우 <span class="wg-13-sub">답변 전 검색 품질 확인</span></h3>
-  <div class="wg-13-flow">
-    <a href="#rag-wg13-s1" class="wg-13-node wg-13-node--start"><span class="wg-13-step">시작</span>질문 입력</a><span class="wg-13-arrow" aria-hidden="true">&darr;</span>
-    <a href="#rag-wg13-s2" class="wg-13-node"><span class="wg-13-step">1</span>상위 청크 3개 검색</a><span class="wg-13-arrow" aria-hidden="true">&darr;</span>
-    <a href="#rag-wg13-s3" class="wg-13-node wg-13-node--decide"><span class="wg-13-step">2</span>근거가 맞는가?</a>
-    <div class="wg-13-paths"><div class="wg-13-path wg-13-path--fail"><span class="wg-13-edge">아니오 → 실패 경로</span><a href="#rag-wg13-fail" class="wg-13-node wg-13-node--fail"><span class="wg-13-step">!</span>청크·질문 수정</a></div><div class="wg-13-path wg-13-path--ok"><span class="wg-13-edge">예 → 정상 경로</span><a href="#rag-wg13-ok" class="wg-13-node wg-13-node--end"><span class="wg-13-step">완료</span>출처 포함 답변</a></div></div>
-  </div>
-  <div class="wg-13-detail">
-    <details id="rag-wg13-s2" class="wg-13-acc" open><summary><span class="wg-13-tag">검색</span>검색 결과를 먼저 읽기</summary><div class="wg-13-body"><p>답변 생성 전에 실제 검색 조각이 질문과 맞는지 사람이 확인한다.</p></div></details>
-    <details id="rag-wg13-fail" class="wg-13-acc wg-13-acc--fail"><summary><span class="wg-13-tag wg-13-tag--fail">실패</span>검색 실패 원인 분리</summary><div class="wg-13-body"><p>문서 없음, 청크 불량, 검색 표현 불일치, 생성 오류를 나눠 기록한다.</p></div></details>
-    <details id="rag-wg13-ok" class="wg-13-acc wg-13-acc--ok"><summary><span class="wg-13-tag wg-13-tag--ok">통과</span>출처 포함 답변</summary><div class="wg-13-body"><p>검색된 근거만 사용하고 모르는 부분은 모른다고 표시한다.</p></div></details>
-  </div>
+
 </section>
-</div>
-<!-- template-showcase:end wg-13 annotated-flowchart -->
-</section>
-<section><h2><span class="no" aria-hidden="true">6</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M16 16c.7-3 7-3.5 8 0 .8 2.6-2.4 3.8-4 5.4V24"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span>좋은 질문 세트를 먼저 만드는 법</h2><p class="h2-sub">질문 세트는 RAG의 테스트 도구다. 만들기 전에 먼저 물어볼 질문을 적는다.</p><p>“이 문서 요약해줘”보다 “지난 회의에서 결정된 배포 조건은 무엇인가?”처럼 구체적인 질문이 좋다. 질문은 사실 확인형, 비교형, 절차형, 원인 분석형으로 섞는다. 그래야 검색과 답변의 약점을 넓게 볼 수 있다.</p><p>좋은 질문 세트는 나중에 회귀 테스트가 된다. 새 문서를 넣거나 청크 전략을 바꿀 때 같은 질문을 다시 물어보면 품질이 좋아졌는지 나빠졌는지 볼 수 있다.</p></section>
-<section><h2><span class="no" aria-hidden="true">7</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span>로컬 구성에서 개인정보를 지키는 기준</h2><p class="h2-sub">로컬 RAG라고 해서 모든 단계가 자동으로 안전한 것은 아니다.</p><p>확인해야 할 단계는 문서 저장, 임베딩 생성, 검색, 답변 생성이다. 문서는 로컬에 있어도 임베딩이나 답변 생성이 원격 API로 나가면 검색된 문서 조각이 외부로 전달될 수 있다. 민감한 자료는 처음부터 분리하고, 테스트 단계에서는 공개 가능하거나 위험이 낮은 문서로 시작한다.</p><p>로컬 모델은 외부 전송을 줄일 수 있지만 성능, 속도, 운영 부담이 있다. 원격 모델은 답변 품질이 좋아질 수 있지만 데이터 전송 경계를 명확히 해야 한다. 초보자는 “어느 단계가 내 장비 안에서 처리되는가”를 표로 적어보면 위험을 훨씬 빨리 이해한다.</p></section>
-<section><h2><span class="no" aria-hidden="true">8</span>첫 번째 프로토타입 만들기</h2><p class="h2-sub">목표는 멋진 챗봇이 아니라 관찰 가능한 작은 실험이다.</p><p>순서는 문서 10개 고르기, 원문 보존하기, 청크 나누기, 질문 20개 만들기, 질문별 검색 결과 보기, 답변 생성하기, 출처 확인하기가 좋다. 처음부터 자동화하지 말고 어떤 조각이 검색되었는지 화면이나 로그로 볼 수 있게 만든다.</p><p>가장 중요한 산출물은 데모 화면이 아니라 검색 결과 확인표다. 질문, 기대 근거, 실제 검색 조각, 최종 답변, 수정 필요 여부를 남기면 나중에 무엇을 고쳐야 할지 보인다.</p></section>
-<section><h2><span class="no is-key" aria-hidden="true">9</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>답변 품질을 검증하는 루틴</h2><p class="h2-sub">자연스러운 오답이 가장 위험하다. 말투보다 근거를 먼저 채점한다.</p><div class="tbl table-scroll"><table><caption>로컬 RAG 초보자 품질 점검표</caption><thead><tr><th>판단 영역</th><th>초보자 질문</th><th>좋은 기준</th><th>위험 신호</th></tr></thead><tbody><tr><td>문서 선택</td><td>이 자료를 자주 다시 찾는가?</td><td>반복적으로 참고하는 원문</td><td>출처 없는 복사본</td></tr><tr><td>청크 설계</td><td>한 조각이 한 질문에 답하는가?</td><td>제목과 문맥이 함께 있음</td><td>너무 짧거나 너무 긴 조각</td></tr><tr><td>검색 평가</td><td>검색 결과가 질문과 맞는가?</td><td>상위 조각을 사람이 납득 가능</td><td>답변만 보고 통과 처리</td></tr><tr><td>답변 생성</td><td>근거 밖 추측을 막았는가?</td><td>출처와 제한을 함께 표시</td><td>단정적이지만 근거 없음</td></tr><tr><td>운영 관리</td><td>나중에 원문으로 돌아갈 수 있는가?</td><td>파일 위치, 날짜, 버전 보존</td><td>요약본만 남김</td></tr></tbody></table></div>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M16 16c.7-3 7-3.5 8 0 .8 2.6-2.4 3.8-4 5.4V24"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="no" aria-hidden="true">6</span>좋은 질문 세트를 먼저 만드는 법</h2><p class="h2-sub">질문 세트는 RAG의 테스트 도구다. 만들기 전에 먼저 물어볼 질문을 적는다.</p><p>“이 문서 요약해줘”보다 “지난 회의에서 결정된 배포 조건은 무엇인가?”처럼 구체적인 질문이 좋다. 질문은 사실 확인형, 비교형, 절차형, 원인 분석형으로 섞는다. 그래야 검색과 답변의 약점을 넓게 볼 수 있다.</p><p>좋은 질문 세트는 나중에 회귀 테스트가 된다. 새 문서를 넣거나 청크 전략을 바꿀 때 같은 질문을 다시 물어보면 품질이 좋아졌는지 나빠졌는지 볼 수 있다.</p>
+<div class="term"><div class="label">용어</div><span class="word">회귀 테스트(regression test)</span><p class="meaning">무언가를 바꾼 뒤, 이전에 잘 되던 것이 망가지지 않았는지 같은 입력으로 다시 확인하는 일. 여기서는 “고정된 질문 20개”가 그 입력 역할을 한다.</p></div>
+<p>질문을 네 가지 유형으로 섞으면 검색과 답변의 약점을 골고루 드러낼 수 있다. 한 유형으로만 채우면 다른 유형에서 무너지는 것을 놓친다.</p>
+<div class="tbl table-scroll"><table><caption>질문 세트를 구성하는 네 가지 유형 (예시)</caption><thead><tr><th>유형</th><th>드러내는 약점</th><th>질문 예시</th></tr></thead><tbody><tr><td>사실 확인형</td><td>해당 청크가 검색되는지</td><td>“배포 승인 담당자는 누구인가?”</td></tr><tr><td>비교형</td><td>여러 청크를 모아 답하는지</td><td>“A안과 B안의 비용 차이는?”</td></tr><tr><td>절차형</td><td>순서·단계 정보를 잃지 않는지</td><td>“배포 전 점검 순서는?”</td></tr><tr><td>원인 분석형</td><td>근거 밖 추측을 막는지</td><td>“지난 장애의 원인으로 기록된 것은?”</td></tr></tbody></table></div>
+<div class="danger"><div class="label">흔한 오해</div><div class="name">“이 문서 요약해줘”도 좋은 테스트 질문이다</div><p>요약 요청은 정답이 모호해서 검색이 맞았는지 틀렸는지 판정할 수 없다. 채점 불가능한 질문은 테스트 도구로 쓸 수 없다.</p></div>
+<div class="good"><div class="label">권장</div><div class="name">정답을 미리 아는 질문으로 시작</div><p>“기대 근거(어느 문서·어느 줄에서 나와야 하는가)”를 적을 수 있는 질문을 고른다. 그래야 검색 결과가 맞았는지 사람이 바로 판정할 수 있다.</p></div>
+<div class="box"><strong>실습 체크리스트 — 질문 20개 만들기</strong><ul><li>네 유형(사실·비교·절차·원인)을 각각 최소 3개씩 포함했는가?</li><li>각 질문에 “기대 근거”(어느 문서에서 나와야 하는지)를 적었는가?</li><li>모호하거나 채점 불가능한 질문(막연한 요약 요청)을 걸러냈는가?</li><li>이 20개를 파일로 고정해 두고, 변경 후 다시 돌릴 준비가 됐는가?</li></ul></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><span class="no" aria-hidden="true">7</span>로컬 구성에서 개인정보를 지키는 기준</h2><p class="h2-sub">로컬 RAG라고 해서 모든 단계가 자동으로 안전한 것은 아니다.</p><p>확인해야 할 단계는 문서 저장, 임베딩 생성, 검색, 답변 생성이다. 문서는 로컬에 있어도 임베딩이나 답변 생성이 원격 API로 나가면 검색된 문서 조각이 외부로 전달될 수 있다. 민감한 자료는 처음부터 분리하고, 테스트 단계에서는 공개 가능하거나 위험이 낮은 문서로 시작한다.</p><p>로컬 모델은 외부 전송을 줄일 수 있지만 성능, 속도, 운영 부담이 있다. 원격 모델은 답변 품질이 좋아질 수 있지만 데이터 전송 경계를 명확히 해야 한다. 초보자는 “어느 단계가 내 장비 안에서 처리되는가”를 표로 적어보면 위험을 훨씬 빨리 이해한다.</p>
+<div class="term"><div class="label">용어</div><span class="word">임베딩(embedding)</span><p class="meaning">문서 청크의 의미를 숫자 벡터로 바꾼 표현. 검색은 질문 벡터와 문서 벡터의 거리를 비교해 이뤄진다. 임베딩을 원격 API로 만들면 그 단계에서 문서 본문이 외부로 나간다는 점에 주의한다.</p></div>
+<div class="term"><div class="label">용어</div><span class="word">데이터 전송 경계(data boundary)</span><p class="meaning">데이터가 내 장비를 벗어나 외부로 나가는 지점. RAG에서는 임베딩 생성과 답변 생성이 흔한 경계다. 이 선을 그려야 “무엇이 어디로 나가는지” 통제할 수 있다.</p></div>
+<p>아래 표처럼 네 단계를 한 줄씩 적고 “내 장비 안인가, 외부로 나가는가”를 표시해 보면, 어디서 문서가 빠져나가는지 한눈에 보인다.</p>
+<div class="tbl table-scroll"><table><caption>처리 단계별 데이터 전송 경계 점검 (구성에 따라 달라지는 예시)</caption><thead><tr><th>단계</th><th>로컬 구성</th><th>원격 구성</th><th>나갈 수 있는 것</th></tr></thead><tbody><tr><td>문서 저장</td><td>내 디스크</td><td>내 디스크</td><td>(없음)</td></tr><tr><td>임베딩 생성</td><td>로컬 모델</td><td>원격 API</td><td>문서 청크 본문</td></tr><tr><td>검색</td><td>로컬 벡터 저장소</td><td>로컬/관리형</td><td>질문, 회수된 청크</td></tr><tr><td>답변 생성</td><td>로컬 모델</td><td>원격 API</td><td>질문 + 회수된 청크 전체</td></tr></tbody></table></div>
+<div class="danger"><div class="label">흔한 오해</div><div class="name">“로컬 RAG니까 데이터가 절대 밖으로 안 나간다”</div><p>문서를 로컬에 두어도 임베딩이나 답변 생성을 원격 API로 호출하면, 검색된 청크 본문이 그 요청에 실려 외부로 전송된다. “로컬 저장”과 “로컬 처리”는 다른 이야기다.</p></div>
+<div class="good"><div class="label">권장</div><div class="name">민감 자료 분리 + 저위험 문서로 시작</div><p>테스트 단계에서는 공개 가능하거나 위험이 낮은 문서로 흐름을 검증한다. 민감 자료는 처음부터 별도 금고로 떼어 두고, 그 금고는 전 단계를 로컬로 처리할 수 있는지 따로 확인한다.</p></div>
+<div class="box"><strong>실습 체크리스트 — 전송 경계 그리기</strong><ul><li>저장·임베딩·검색·생성 네 단계를 한 줄씩 적었는가?</li><li>각 단계가 “내 장비 안”인지 “외부로 나감”인지 표시했는가?</li><li>외부로 나가는 단계에서 “무엇이” 나가는지(질문/청크/원문) 적었는가?</li><li>민감 자료는 별도 금고로 분리하고 테스트는 저위험 문서로 시작했는가?</li></ul></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="26" height="22" rx="4"/><path class="bi-accent-line" d="M16 16l-5 4 5 4M24 16l5 4-5 4"/><path class="bi-line" d="M21 14l-3 12"/></svg></span><span class="no" aria-hidden="true">8</span>첫 번째 프로토타입 만들기</h2><p class="h2-sub">목표는 멋진 챗봇이 아니라 관찰 가능한 작은 실험이다.</p><p>순서는 문서 10개 고르기, 원문 보존하기, 청크 나누기, 질문 20개 만들기, 질문별 검색 결과 보기, 답변 생성하기, 출처 확인하기가 좋다. 처음부터 자동화하지 말고 어떤 조각이 검색되었는지 화면이나 로그로 볼 수 있게 만든다.</p><p>가장 중요한 산출물은 데모 화면이 아니라 검색 결과 확인표다. 질문, 기대 근거, 실제 검색 조각, 최종 답변, 수정 필요 여부를 남기면 나중에 무엇을 고쳐야 할지 보인다.</p>
+<h3>프로토타입 만드는 일곱 단계</h3>
+<ol><li><strong>문서 10개 고르기</strong> — 반복해서 다시 찾는 문서만.</li><li><strong>원문 보존하기</strong> — 제목·날짜·출처·원문 위치를 메타데이터로.</li><li><strong>청크 나누기</strong> — 한 조각이 한 질문에 답할 만큼.</li><li><strong>질문 20개 만들기</strong> — 네 유형을 섞고 기대 근거를 적는다.</li><li><strong>질문별 검색 결과 보기</strong> — 상위 조각 3개를 사람이 직접 읽는다.</li><li><strong>답변 생성하기</strong> — 근거에 없는 내용은 추측으로 표시.</li><li><strong>출처 확인하기</strong> — 답변이 어느 청크에서 나왔는지 대조.</li></ol>
+<div class="analogy"><div class="label">핵심 비유</div><p>첫 프로토타입은 “손님에게 보여줄 매장”이 아니라 “주방에 달린 유리창”이다. 멋있게 꾸미는 것보다, 안에서 무슨 일이 일어나는지(어떤 청크가 검색됐는지) 들여다볼 수 있게 만드는 것이 핵심이다.</p></div>
+<p>그래서 자동화를 서두르지 않는다. 어떤 조각이 검색되었는지 화면이나 로그로 눈에 보이게 둔 채, 아래 같은 확인표를 한 질문씩 채워 나간다.</p>
+<div class="tbl table-scroll"><table><caption>검색 결과 확인표 — 한 질문씩 채우는 핵심 산출물 (예시)</caption><thead><tr><th>질문</th><th>기대 근거</th><th>실제 검색 조각</th><th>최종 답변</th><th>수정 필요</th></tr></thead><tbody><tr><td>배포 승인 담당자는?</td><td>5/2 회의록</td><td>5/2 회의록 1번 청크</td><td>담당자 정확</td><td>아니오</td></tr><tr><td>롤백 절차는?</td><td>운영 규칙 문서</td><td>FAQ 일반론 청크</td><td>두루뭉술</td><td>예 — 청크 보강</td></tr><tr><td>지난 장애 원인은?</td><td>장애 보고서</td><td>(검색 실패)</td><td>추측성 답변</td><td>예 — 문서 추가</td></tr></tbody></table></div>
+<div class="box"><strong>실습 체크리스트 — 30분 프로토타입</strong><ul><li>검색된 청크를 화면이나 로그로 “볼 수 있게” 만들었는가?</li><li>질문 20개 중 최소 5개를 확인표로 채워 봤는가?</li><li>수정이 필요한 행에 “무엇을 고칠지”(문서/청크/검색/생성)를 적었는가?</li><li>완성된 데모보다 확인표를 먼저 산출물로 남겼는가?</li></ul></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="no is-key" aria-hidden="true">9</span>답변 품질을 검증하는 루틴</h2><p class="h2-sub">자연스러운 오답이 가장 위험하다. 말투보다 근거를 먼저 채점한다.</p><div class="tbl table-scroll"><table><caption>로컬 RAG 초보자 품질 점검표</caption><thead><tr><th>판단 영역</th><th>초보자 질문</th><th>좋은 기준</th><th>위험 신호</th></tr></thead><tbody><tr><td>문서 선택</td><td>이 자료를 자주 다시 찾는가?</td><td>반복적으로 참고하는 원문</td><td>출처 없는 복사본</td></tr><tr><td>청크 설계</td><td>한 조각이 한 질문에 답하는가?</td><td>제목과 문맥이 함께 있음</td><td>너무 짧거나 너무 긴 조각</td></tr><tr><td>검색 평가</td><td>검색 결과가 질문과 맞는가?</td><td>상위 조각을 사람이 납득 가능</td><td>답변만 보고 통과 처리</td></tr><tr><td>답변 생성</td><td>근거 밖 추측을 막았는가?</td><td>출처와 제한을 함께 표시</td><td>단정적이지만 근거 없음</td></tr><tr><td>운영 관리</td><td>나중에 원문으로 돌아갈 수 있는가?</td><td>파일 위치, 날짜, 버전 보존</td><td>요약본만 남김</td></tr></tbody></table></div>
 
 
-<!-- template-showcase:start wg-15 concept-explainer -->
-<div class="summary-card template-showcase"><div class="label">TEMPLATE CHECK · wg-15 concept-explainer</div>
-<section class="wg-15" aria-labelledby="rag-wg15-title">
-  <p class="wg-15-kicker">개념 교보재 · 로컬 RAG</p>
-  <h2 id="rag-wg15-title" class="wg-15-h">검색 품질이 답변 품질을 끌고 간다</h2>
-  <p class="wg-15-lead">답변이 틀릴 때는 모델 교체보다 검색된 근거가 질문과 맞는지 먼저 본다.</p>
-  <div class="wg-15-steps">
-    <input type="radio" name="wg-15-step" id="wg-15-s1" class="wg-15-step-in" checked>
-    <input type="radio" name="wg-15-step" id="wg-15-s2" class="wg-15-step-in">
-    <input type="radio" name="wg-15-step" id="wg-15-s3" class="wg-15-step-in">
-    <div class="wg-15-stepnav"><label class="wg-15-stepbtn" for="wg-15-s1"><span class="wg-15-stepnum">1</span> 원문</label><label class="wg-15-stepbtn" for="wg-15-s2"><span class="wg-15-stepnum">2</span> 검색</label><label class="wg-15-stepbtn" for="wg-15-s3"><span class="wg-15-stepnum">3</span> 답변</label></div>
-    <div class="wg-15-stage"><div class="wg-15-ring" aria-hidden="true"><span class="wg-15-node wg-15-na">문</span><span class="wg-15-node wg-15-nb">청</span><span class="wg-15-node wg-15-nc">검</span><span class="wg-15-node wg-15-nd wg-15-new">답</span><span class="wg-15-key wg-15-k1">Q</span><span class="wg-15-key wg-15-k2">근거</span><span class="wg-15-center">RAG</span></div><div class="wg-15-panels"><div class="wg-15-panel wg-15-p1"><h4 class="wg-15-pt">원문을 버리지 않는다</h4><p>요약본만 남기면 누락과 해석이 섞인다. 원문 위치와 날짜를 보존한다.</p></div><div class="wg-15-panel wg-15-p2"><h4 class="wg-15-pt">검색 결과를 사람이 본다</h4><p>상위 조각 3개가 질문과 맞는지 먼저 확인한다.</p></div><div class="wg-15-panel wg-15-p3"><h4 class="wg-15-pt">근거 밖은 추측으로 둔다</h4><p>답변은 출처, 한계, 모르는 부분을 함께 드러낸다.</p></div></div></div>
-  </div>
-</section>
-</div>
-<!-- template-showcase:end wg-15 concept-explainer -->
+
 
 <section class="a11y-check"><h3 class="a11y-subhead"><span class="a11y-subnum">1</span>초보자 산출물 접근성 30분 점검</h3><p class="a11y-lead">접기 위젯, 라디오 교보재, 다크 CTA가 섞여 있으므로 색·키보드·제목 구조를 함께 확인한다.</p><div class="a11y-grid"><article class="a11y-card"><div class="a11y-card-head"><span>키보드</span><span class="a11y-time">8분</span></div><h4>details/라디오/CTA 접근</h4><ul class="a11y-points"><li><span class="a11y-pass">PASS</span><span>모든 details와 라디오 위젯에 Tab으로 도달</span></li><li><span class="a11y-fail">FAIL</span><span>마우스로만 열리는 정보가 있음</span></li></ul></article><article class="a11y-card"><div class="a11y-card-head"><span>대비</span><span class="a11y-time">7분</span></div><h4>렌즈 칩과 다크 CTA</h4><ul class="a11y-points"><li><span class="a11y-pass">PASS</span><span>meta chip과 lens-chip이 AA 대비 유지</span></li><li><span class="a11y-fail">FAIL</span><span>흐린 칩 텍스트가 배경에 묻힘</span></li></ul></article><article class="a11y-card"><div class="a11y-card-head"><span>구조</span><span class="a11y-time">10분</span></div><h4>템플릿 텍스트 노출</h4><ul class="a11y-points"><li><span class="a11y-pass">PASS</span><span>h1 1개와 vt/wg 텍스트가 DOM에 노출</span></li><li><span class="a11y-fail">FAIL</span><span>도식이 이미지처럼만 보임</span></li></ul></article></div><div class="a11y-rule"><b>단일 규칙</b><p>상태와 위험도는 색만으로 전달하지 않고 PASS/FAIL/WARN 텍스트를 함께 둔다.</p></div><h3 class="a11y-subhead"><span class="a11y-subnum">2</span>실패 모드와 해결</h3><div class="table-scroll"><table class="tbl"><caption>접근성 실패 모드 · 증상 · 해결</caption><thead><tr><th scope="col">실패 모드</th><th scope="col">증상</th><th scope="col">해결</th></tr></thead><tbody><tr><th scope="row">색-단독 상태</th><td>위험과 통과가 색만으로 구분된다.</td><td>라벨과 아이콘/형태 단서를 함께 쓴다.</td></tr><tr><th scope="row">키보드 경로 누락</th><td>details, 라디오, CTA에 도달하지 못한다.</td><td>Tab 순서와 focus-visible을 확인한다.</td></tr><tr><th scope="row">제목 계층 흔들림</th><td>굵은 문장이 제목 역할을 대신한다.</td><td>h1 1개와 본문 h2 흐름을 유지한다.</td></tr></tbody></table></div><div class="a11y-release"><h3 class="a11y-subhead"><span class="a11y-subnum">3</span>릴리스 준비 체크</h3><p>아래 항목이 충족되면 v5.2.0 3-테마와 긴 본문 위젯을 함께 배포할 수 있다.</p><ol><li>상위 검색 조각 3개는 텍스트로도 읽힌다.</li><li>상태 라벨은 PASS/FAIL/WARN 텍스트를 병기한다.</li><li>모든 입력·details·CTA에 가시 포커스가 있다.</li><li>무 JS 원칙을 유지한다.</li></ol></div></section>
 </section>
-<section><h2><span class="no" aria-hidden="true">10</span>운영하면서 키워야 할 습관</h2><p class="h2-sub">지식 금고는 한 번 만들고 끝나는 도구가 아니라 계속 정리하는 서재다.</p><ul><li>새 문서를 넣을 때 “이 문서는 어떤 질문에 답해야 하는가?”를 함께 기록한다.</li><li>오래된 문서, 중복 문서, 출처 없는 메모를 주기적으로 정리한다.</li><li>답변이 틀리면 문서 없음, 청크 불량, 검색 실패, 생성 오류 중 어디인지 나눈다.</li><li>로컬과 원격 처리 경계를 문서로 남기고 민감 자료는 별도 금고로 분리한다.</li><li>답변보다 근거를 믿는다. RAG의 목적은 그럴듯한 말이 아니라 다시 확인 가능한 답이다.</li></ul></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="no" aria-hidden="true">10</span>운영하면서 키워야 할 습관</h2><p class="h2-sub">지식 금고는 한 번 만들고 끝나는 도구가 아니라 계속 정리하는 서재다.</p><ul><li>새 문서를 넣을 때 “이 문서는 어떤 질문에 답해야 하는가?”를 함께 기록한다.</li><li>오래된 문서, 중복 문서, 출처 없는 메모를 주기적으로 정리한다.</li><li>답변이 틀리면 문서 없음, 청크 불량, 검색 실패, 생성 오류 중 어디인지 나눈다.</li><li>로컬과 원격 처리 경계를 문서로 남기고 민감 자료는 별도 금고로 분리한다.</li><li>답변보다 근거를 믿는다. RAG의 목적은 그럴듯한 말이 아니라 다시 확인 가능한 답이다.</li></ul></section>
 <section class="try"><div class="label">NEXT ACTION</div><h2>오늘 30분 안에 만드는 첫 지식 금고</h2><p>오늘의 목표는 완성된 챗봇이 아니라, 질문 20개와 검색 결과 확인표 1개다.</p><ol><li>반복해서 다시 찾는 문서 10개를 고른다.</li><li>각 문서에 제목·날짜·출처·원문 위치를 붙인다.</li><li>사실 확인형·비교형·절차형·원인 분석형 질문 20개를 만든다.</li><li>질문마다 상위 검색 조각 3개를 먼저 읽는다.</li><li>답변에는 출처, 한계, 모르는 부분을 함께 남긴다.</li></ol></section>
 <aside class="source-note"><div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="10" y="7" width="20" height="26" rx="3"/><path class="bi-line" d="M15 14h10M15 20h10M15 26h7"/><path class="bi-accent-line" d="M27 7v8h-8"/></svg></span>Source Note</div><p>전담 beginner_html 에이전트 결과를 반영해 adaptive-html-final v5.2.0의 generated-row/lens-strip, lede-note, before-after, core-insight, a11y-checklist 패턴으로 재보강했다.</p></aside></main>
 

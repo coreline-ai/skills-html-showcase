@@ -24,7 +24,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.2.0 · "CSS-only 3-테마 시스템(라이트 크림·완전 화이트·다크) — 라디오 세그먼트 스위처" (이전 5.1.0)
+> Version 5.2.3 · "editorial-patterns 가독성 승격(a11y 줄 간격·impact 아이콘 여백)" (이전 5.2.2)
 
 ## 0. Identity
 
