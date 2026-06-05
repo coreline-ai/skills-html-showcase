@@ -1,0 +1,93 @@
+[
+  {
+    "num": 1,
+    "mode": "beginner_html",
+    "title": "로컬 RAG 개인 지식 금고 입문",
+    "layout": "beginner-learning.html",
+    "file": "01-local-rag-personal-knowledge-vault.html"
+  },
+  {
+    "num": 2,
+    "mode": "expert_html",
+    "title": "AI 코드 리뷰 게이트웨이 운영 모델",
+    "layout": "expert-report.html",
+    "file": "02-ai-code-review-gateway-operating-model.html"
+  },
+  {
+    "num": 3,
+    "mode": "article_html",
+    "title": "작은 팀의 운영 문서는 어떻게 제품 속도를 바꾸는가",
+    "layout": "magazine-article.html",
+    "file": "03-small-team-operating-docs-product-speed.html"
+  },
+  {
+    "num": 4,
+    "mode": "education_html",
+    "title": "PostgreSQL 쿼리 플랜 읽기 3주 교육 모듈",
+    "layout": "course-module.html",
+    "file": "04-postgres-query-plan-3week-course.html"
+  },
+  {
+    "num": 5,
+    "mode": "blog_writer",
+    "title": "두 번째 뇌를 다시 작게 만든 30일 기록",
+    "layout": "personal-blog-essay.html",
+    "file": "05-small-second-brain-30days-retro.html"
+  },
+  {
+    "num": 6,
+    "mode": "seo_dashboard",
+    "title": "AI 회의록 자동화 검색 허브",
+    "layout": "seo-dashboard.html",
+    "file": "06-ai-meeting-notes-automation-seo.html"
+  },
+  {
+    "num": 7,
+    "mode": "platform_blog",
+    "title": "컨퍼런스 발표를 플랫폼별 글로 변환하기",
+    "layout": "platform-adaptation.html",
+    "file": "07-conference-talk-platform-adaptation.html"
+  },
+  {
+    "num": 8,
+    "mode": "skill_audit",
+    "title": "배포 체크리스트 생성 스킬 감사 리포트",
+    "layout": "skill-audit-report.html",
+    "file": "08-release-checklist-skill-audit.html"
+  },
+  {
+    "num": 9,
+    "mode": "reference_html",
+    "title": "Webhook 서명 검증 레퍼런스",
+    "layout": "reference-manual.html",
+    "file": "09-webhook-signature-verification-reference.html"
+  },
+  {
+    "num": 10,
+    "mode": "comparison_html",
+    "title": "벡터 검색 선택 기준: 전용 Vector DB vs pgvector vs 검색 엔진",
+    "layout": "comparison-matrix.html",
+    "file": "10-vector-db-pgvector-search-engine-comparison.html"
+  },
+  {
+    "num": 11,
+    "mode": "case_study_html",
+    "title": "예약 알림 지연 사고 케이스 스터디",
+    "layout": "case-study.html",
+    "file": "11-reservation-reminder-delay-case-study.html"
+  },
+  {
+    "num": 12,
+    "mode": "landing_brief_html",
+    "title": "LocalNote 팀 지식관리 랜딩 브리프",
+    "layout": "landing-brief.html",
+    "file": "12-localnote-team-knowledge-landing.html"
+  },
+  {
+    "num": 13,
+    "mode": "checklist_playbook",
+    "title": "AI 기능 출시 전 안전성 플레이북",
+    "layout": "checklist-playbook.html",
+    "file": "13-ai-feature-release-safety-playbook.html"
+  }
+]

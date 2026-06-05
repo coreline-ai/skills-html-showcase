@@ -1,0 +1,30 @@
+/* adaptive-html-final 테마 시스템 (v5.2) — CSS-only 3-테마: 라이트(크림 기본)·화이트(순백)·다크.
+   라디오 #ahf-light/#ahf-white/#ahf-dark(name=ahf-theme) + :has(). 무 JS · 강제선언 0 · 코어 무수정. 마크업 없으면 라이트 기본. */
+
+/* ===== 화이트(순백) ===== */
+:root:has(#ahf-white:checked){--bg:#ffffff;--card:#ffffff;--line:#e4e4ea;--ink:#16181d;--ink-soft:#43474e;--ink-mute:#6b6f78;--chip-ink:#6b6f78;--dark:#16181d;--dark-soft:#23262d;--code:#1b1e24;--vt-paper:#ffffff;--vt-wash:#ffffff;--vt-soft:#f2f3f6;color-scheme:light}
+
+/* ===== 다크(명시) + 표면 보정 ===== */
+:root:has(#ahf-dark:checked){--bg:#0c0d10;--ink:#ececea;--ink-soft:#c3c3bc;--ink-mute:#9a9a92;--line:#2c2d34;--card:#1a1c22;--accent:#ff6b75;--accent-2:#ff909a;--accent-soft:#3a2228;--link-on-dark:#ffb6c0;--chip-ink:#a8a8a1;--on-accent:#0c0d10;--dark:#000000;--dark-soft:#0c0d10;--code:#070809;--vt-paper:#1a1c22;--vt-wash:#0c0d10;--vt-soft:#23252c;--vt-blue:#7fb0d8;--vt-green:#60ba8b;--vt-gold:#e0b357;--term-bg:#241f13;--term-border:#48402a;--term-ink:#ead9b2;--term-label-ink:#e3bd6a;--term-accent:#d7a657;--analogy-bg:#15212e;--analogy-border:#2e4458;--analogy-ink:#bfd6e8;--analogy-label-ink:#9cc2de;--analogy-accent:#79a8c8;--danger-bg:#291513;--danger-border:#5c2f2a;--danger-ink:#f2c6c0;--danger-label-ink:#ff8c87;--good-bg:#0f2419;--good-border:#244b37;--good-ink:#bfe2cf;--good-label-ink:#80d2a7;--good-accent:#60ba8b;--hl-yellow:#6a5618;--hl-blue:#21405c;--hl-pink:#5a2530;--focus:#5a86ee;color-scheme:dark}
+:root:has(#ahf-dark:checked) .prompt-box{background:var(--card)}
+:root:has(#ahf-dark:checked) code{background:var(--code);color:var(--ink)}
+:root:has(#ahf-dark:checked) th,:root:has(#ahf-dark:checked) .table th{background:var(--line);color:var(--ink)}
+:root:has(#ahf-dark:checked) .status-pill{background:var(--card)}
+:root:has(#ahf-dark:checked) .timeline-card{background:var(--card)}
+:root:has(#ahf-dark:checked) .layout-seo .serp-url{color:var(--good-accent)}
+:root:has(#ahf-dark:checked) .core-insight{background:linear-gradient(135deg,var(--accent-soft),var(--card))}
+:root:has(#ahf-dark:checked) .try .tag,:root:has(#ahf-dark:checked) .try.soft-cta .tag{background:var(--card);border-color:var(--line)}
+:root:has(#ahf-dark:checked) .vt-pill.hot{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink)}
+:root:has(#ahf-dark:checked) .vt-pill.good{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
+:root:has(#ahf-dark:checked) .vt-pill.watch{background:var(--term-bg);border-color:var(--term-border);color:var(--term-label-ink)}
+:root:has(#ahf-dark:checked) .wf-board{--ink:#242421;--ink-soft:#66584c;--ink-mute:#66584c;--vt-ink:#242421;--vt-muted:#66584c;--card:#fffaf4;--line:#ead8c7;--accent-2:#b72d38;--good-label-ink:#1f6f4e;--danger-label-ink:#c62433;--accent:#e63946;--wf-warm:#c2560f;--wf-warm2:#d9742a}
+
+/* ===== 세그먼트 스위처(라디오 3단) ===== */
+.ahf-themebar{position:fixed;top:14px;right:16px;z-index:600;display:inline-flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.18);margin:0}
+.ahf-themebar input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.ahf-themebar label{display:inline-flex;align-items:center;min-height:30px;padding:4px 13px;border-radius:999px;font-size:12px;font-weight:700;color:var(--ink-mute);cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
+.ahf-themebar label:hover{color:var(--ink)}
+.ahf-themebar input:checked + label{background:var(--accent-2);color:var(--on-accent,#fff)}
+.ahf-themebar input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
+@media(max-width:560px){.ahf-themebar{position:static;width:max-content;max-width:calc(100% - 28px);margin:10px auto 16px}}
+@media print{.ahf-themebar{display:none}}

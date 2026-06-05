@@ -1,0 +1,308 @@
+{
+  "name": "adaptive-html-final",
+  "version": "4.5.0",
+  "language": "ko",
+  "entry": "SKILL.md",
+  "assets": [
+    "assets/theme.css",
+    "assets/components.css",
+    "assets/visual-components.css",
+    "assets/widgets.css",
+    "assets/visual-html.css",
+    "assets/body-icons.css",
+    "assets/body-icons.json",
+    "assets/editorial-patterns.css",
+    "assets/shape-visuals.css",
+    "assets/shape-catalog.json",
+    "assets/workflow-visuals.css",
+    "assets/workflow-catalog.json",
+    "assets/layouts.css",
+    "assets/print.css",
+    "assets/base.html"
+  ],
+  "body_icons": {
+    "css": "assets/body-icons.css",
+    "data": "assets/body-icons.json",
+    "count": 32,
+    "namespace": "bi-",
+    "decorative": true,
+    "reference": "references/body-icon-system.md"
+  },
+  "editorial_patterns": {
+    "css": "assets/editorial-patterns.css",
+    "templates": "assets/editorial-pattern-templates/",
+    "count": 7,
+    "patterns": [
+      "chronology",
+      "source-preserve",
+      "core-insight",
+      "connection",
+      "before-after",
+      "impact-grid",
+      "md-excerpt"
+    ],
+    "reference": "references/editorial-pattern-system.md",
+    "note": "기존 13모드 내 선택 삽입 본문 구조 패턴, 프로파일 무관, 무 JS"
+  },
+  "shape_visuals": {
+    "css": "assets/shape-visuals.css",
+    "svgs": "assets/shape-svgs/",
+    "catalog": "assets/shape-catalog.json",
+    "count": 36,
+    "namespace": "shape-",
+    "render": "figure.shape-figure > img.shape-img(8000x6000 SVG, alt 필수) + 선택 figcaption",
+    "viewbox": "0 0 8000 6000",
+    "decorative": true,
+    "reference": "references/visual-template-system.md",
+    "note": "본문 설명 시작부 보조 도형(시각 앵커), 핵심 정보는 HTML 텍스트로, 프로파일 무관, 무 JS"
+  },
+  "workflow_visuals": {
+    "css": "assets/workflow-visuals.css",
+    "svgs": "assets/workflow-svgs/",
+    "catalog": "assets/workflow-catalog.json",
+    "count": 10,
+    "namespace": "workflow-",
+    "render": "figure.workflow-figure > img.workflow-img(8000x6000 SVG, alt 필수) + 권장 figcaption | .workflow-grid 갤러리",
+    "viewbox": "0 0 8000 6000",
+    "decorative": true,
+    "reference": "references/visual-template-system.md",
+    "note": "본문 대표 도판/섹션 상단 구조도/랜딩 카드(와이드 ~720px). soft-shape보다 크고 상세, vt- 대체 아님(검색가능 구조도는 vt-), 핵심 정보는 HTML 텍스트로, 프로파일 무관, 무 JS. wf- 금지(vt-21 점유) workflow- 풀네임"
+  },
+  "layouts": [
+    "beginner-learning.html",
+    "expert-report.html",
+    "magazine-article.html",
+    "course-module.html",
+    "personal-blog-essay.html",
+    "seo-dashboard.html",
+    "platform-adaptation.html",
+    "skill-audit-report.html",
+    "reference-manual.html",
+    "comparison-matrix.html",
+    "case-study.html",
+    "landing-brief.html",
+    "checklist-playbook.html"
+  ],
+  "modes": [
+    {
+      "id": "skill_audit",
+      "layout": "skill-audit-report.html"
+    },
+    {
+      "id": "platform_blog",
+      "layout": "platform-adaptation.html"
+    },
+    {
+      "id": "seo_dashboard",
+      "layout": "seo-dashboard.html"
+    },
+    {
+      "id": "education_html",
+      "layout": "course-module.html"
+    },
+    {
+      "id": "expert_html",
+      "layout": "expert-report.html"
+    },
+    {
+      "id": "article_html",
+      "layout": "magazine-article.html"
+    },
+    {
+      "id": "blog_writer",
+      "layout": "personal-blog-essay.html"
+    },
+    {
+      "id": "beginner_html",
+      "layout": "beginner-learning.html"
+    },
+    {
+      "id": "reference_html",
+      "layout": "reference-manual.html"
+    },
+    {
+      "id": "comparison_html",
+      "layout": "comparison-matrix.html"
+    },
+    {
+      "id": "case_study_html",
+      "layout": "case-study.html"
+    },
+    {
+      "id": "landing_brief_html",
+      "layout": "landing-brief.html"
+    },
+    {
+      "id": "checklist_playbook",
+      "layout": "checklist-playbook.html"
+    }
+  ],
+  "design": "editorial-learning-v4.3.3-responsive-polish",
+  "merged_from": [
+    "adaptive-html-learning-ultimate@3.0.0 (13-mode router, layouts, eval rubric, recipes, schemas, layered CSS)",
+    "adaptive-html-blog-writer@2.0.0 (blog/SEO/platform/box-selection 상세 references)"
+  ],
+  "integrates": [
+    "adaptive-html-blog-writer-v2",
+    "adaptive-html-learning-ultimate",
+    "html-for-beginners design DNA"
+  ],
+  "aliases": [
+    "adaptive-html-learning-ultimate",
+    "adaptive-html-blog-writer-v2"
+  ],
+  "changes": [
+    "blog-seo-system / writing-system / platform-system / editorial-design-system references를 blog-writer 상세본으로 흡수",
+    "SKILL.md description에 명시적 트리거 목록과 출력 원칙 추가",
+    "skip link 접근성 버그 수정: 13개 레이아웃 <main>에 id=\"main\" 통일",
+    "v4.1.0: modes를 13개 {id, layout} 객체 배열로 표준화하고 SKILL.md §3 라우터와 일치",
+    "v4.1.0: 접근성 테스트 체크리스트 추가, recipes 13/13 완비, blog-meta/quality-report 스키마 보강",
+    "v4.1.0: layouts.css 미정의 클래스 39개 정의로 차집합 0 달성, AA 대비·focus-visible·reduced-motion 보강",
+    "v4.1.0: base.html에 선택적 {{FOOTER}} 슬롯 추가",
+    "v4.2.0: Visual Template System 추가 — 8000×6000 SVG 인포그래픽 템플릿 7종과 렌더러 도입",
+    "v4.2.0: visual brief schema, visual-components.css, figure 삽입/품질 게이트 추가",
+    "v4.2.1: quality-gate SVG 레이아웃을 2×3 카드 그리드 + 충분한 높이의 PRE-FLIGHT 패널로 교정",
+    "v4.2.1: 납작한 하단 배너/텍스트-footer 겹침 방지 규칙을 렌더러와 품질 게이트에 반영",
+    "v4.3.0: section wrapper와 grid/card wrapper 분리 — h2/h2-sub/body/table이 grid item으로 쪼개지는 레이아웃 결함 수정",
+    "v4.3.0: components/theme에 long-token overflow 방지와 caption 음수 margin 금지 안전장치 추가",
+    "v4.3.0: validate_output.py 정적 품질 게이트 추가 — h1/main/local refs/caption/grid/source sync/visual figure 검사",
+    "v4.3.1: section/card 내부 첫 heading margin reset으로 카드 상단 과다 여백 방지",
+    "v4.3.1: .try 내부 밝은 카드 텍스트 contrast reset 추가",
+    "v4.3.1: winners/tradeoffs 의미형 블록 grid 오배치와 case timeline left rule 중복 방지",
+    "v4.3.1: validate_output.py에 디자인 회귀 정적 검사 4종 추가",
+    "v4.3.1: output CSS snapshot/css-integrity.json/inline hash marker를 validate_output.py에서 강제",
+    "v4.3.1: .try .cta-box accent left rule 복구와 timeline-card 굵은 left rule 회귀 검사 추가",
+    "v4.3.1: --ink-mute를 #666으로 상향해 h2-sub/caption/meta 흐림 완화",
+    "v4.3.1: timeline-card ordered-list marker 여백 보강",
+    "v4.3.1: 표 내부 status-pill nowrap/center 정렬로 등급 배지 세로 깨짐 방지",
+    "v4.3.2: dark soft CTA 내부 tag pill 대비 보강으로 태그 텍스트 가독성 회복",
+    "v4.3.2: blog_writer 섹션 h2 자동 번호 badge를 CSS counter로 통일",
+    "v4.3.2: SEO SERP title을 literal Google blue/Arial에서 editorial balanced title로 조정",
+    "v4.3.2: validate_output.py에 h2-sub 닫는 태그 오류, blog counter, try tag contrast, SERP title style 회귀 검사 추가",
+    "v4.3.3: dark CTA 내부 링크 전용 --link-on-dark 토큰과 .try a 대비 reset 추가",
+    "v4.3.3: platform-grid를 inner wrapper 전용으로 제한하고 section.platform-grid 회귀 검사 추가",
+    "v4.3.3: mobile-card-table 패턴으로 4열 이상 표를 390px에서 카드형으로 전환 가능하게 추가",
+    "v4.3.3: case timeline을 단일 거대 카드 대신 개별 step card로 렌더링하는 CSS 추가",
+    "v4.3.3: table caption 누락, dark CTA link reset 누락, platform grid section 사용을 validate_output.py에서 실패 처리",
+    "v4.4.0: 뷰 위젯 시스템 정식 편입 — assets/widgets.css(wg-<id>- 네임스페이스, 무 JS)와 assets/widget-templates/*.html 20종 도입",
+    "v4.4.0: 위젯 인터랙티브 분류 정의 — CSS-only 11 / CSS 부분 7 / JS 필요 2(18 칸반, 20 프롬프트 튜너는 무 JS 근사, 완전 인터랙션은 선택적 점진 향상)",
+    "v4.4.0: SKILL.md 워크플로우에 Step 4.6 View Widget Selection & Insertion과 모드별 권장 위젯 가이드 추가, References에 widget-system.md 등재",
+    "v4.4.0: references/widget-system.md 위젯 선택·삽입·접근성 규칙 문서 추가, base.html {{WIDGETS_CSS}} 슬롯 사용 명시",
+    "v4.4.0: tests/widget-checklist.md 위젯 게이트 추가 — 외부 JS 0, wg-<id>- 네임스페이스 충돌 0, 인터랙션 details/:checked/:target/CSS-anim 한정, 색 외 단서·포커스, 18·20 무 JS 근사 검증",
+    "v4.5.0: SVG→HTML 템플릿 20종 편입 + 하네스 정형화 — assets/visual-html.css와 assets/visual-html-templates/01..20.html(vt- 본문 삽입 다이어그램), 캐노니컬 모드→vt 매핑·결정론 진입점, visual_html_templates 메타 등록, 무 JS 0 유지",
+    "v4.5.0: 본문용 compact 아이콘 32종 편입 — assets/body-icons.css(bi- 네임스페이스, 무 JS, aria-hidden 장식) + assets/body-icons.json(id/label/usage/svg), references/body-icon-system.md(모드별 추천·삽입 규칙), base.html {{BODY_ICONS_CSS}} 슬롯",
+    "v4.5.0: 본문 구조 패턴 6종 편입 — assets/editorial-patterns.css(chronology·source-preserve·core-insight·connection·before-after·impact-grid) + assets/editorial-pattern-templates/01..06.html, references/editorial-pattern-system.md, base.html {{EDITORIAL_PATTERNS_CSS}} 슬롯, 기존 13모드 내 선택 삽입·무 JS",
+    "v4.5.0: vt-21 soft-workflow-map 편입(8816, 전문가 검토) — visual-html-templates/21-soft-workflow-map.html(wf- 접두사, role=img 제거로 카드 텍스트 prune 방지, 장식만 aria-hidden), visual-html.css .wf-*, soft_workflow_gate, expert/education/skill_audit/landing 후순위(1순위 불변)",
+    "v4.5.0: soft-shape 도형 36종 편입(8817, 전문가 검토) — assets/shape-svgs/*.svg(8000×6000) + shape-visuals.css(figure.shape-figure 앵커) + shape-catalog.json, visual-template-system.md 흡수, shape_visual_gate, base.html {{SHAPE_VISUALS_CSS}} 슬롯",
+    "v4.5.0: soft 워크플로우 도판 10종 편입(8819, 전문가 검토) — assets/workflow-svgs/*.svg(8000×6000 pipeline/hub/router/stack/funnel/graph/swarm/timeline/board/governance) + workflow-visuals.css(figure.workflow-figure 와이드 ~720px) + workflow-catalog.json, visual-template-system.md 흡수, workflow_visual_gate(8000×6000 크기 계약 포함), base.html {{WORKFLOW_VISUALS_CSS}} 슬롯, wf- 금지 workflow- 풀네임, version 4.5.0 유지(frozen 골든 v6 보존)"
+  ],
+  "updated": "2026-06-01",
+  "visual_templates": [
+    "visual-templates/hero-map.svg.tpl",
+    "visual-templates/card-grid.svg.tpl",
+    "visual-templates/decision-tree.svg.tpl",
+    "visual-templates/quality-gate.svg.tpl",
+    "visual-templates/timeline.svg.tpl",
+    "visual-templates/matrix.svg.tpl",
+    "visual-templates/checklist-flow.svg.tpl"
+  ],
+  "widget_templates": [
+    "assets/widget-templates/01-three-code-approaches.html",
+    "assets/widget-templates/02-visual-design-directions.html",
+    "assets/widget-templates/03-annotated-pull-request.html",
+    "assets/widget-templates/04-module-map.html",
+    "assets/widget-templates/05-living-design-system.html",
+    "assets/widget-templates/06-component-variants.html",
+    "assets/widget-templates/07-animation-sandbox.html",
+    "assets/widget-templates/08-clickable-flow.html",
+    "assets/widget-templates/09-arrow-key-slide-deck.html",
+    "assets/widget-templates/10-svg-figure-sheet.html",
+    "assets/widget-templates/11-weekly-status.html",
+    "assets/widget-templates/12-incident-timeline.html",
+    "assets/widget-templates/13-annotated-flowchart.html",
+    "assets/widget-templates/14-feature-explainer.html",
+    "assets/widget-templates/15-concept-explainer.html",
+    "assets/widget-templates/16-implementation-plan.html",
+    "assets/widget-templates/17-pr-writeup.html",
+    "assets/widget-templates/18-ticket-triage-board.html",
+    "assets/widget-templates/19-feature-flag-editor.html",
+    "assets/widget-templates/20-prompt-tuner.html"
+  ],
+  "visual_html_templates": [
+    "assets/visual-html-templates/01-hero-map.html",
+    "assets/visual-html-templates/02-decision-tree.html",
+    "assets/visual-html-templates/03-risk-matrix.html",
+    "assets/visual-html-templates/04-timeline.html",
+    "assets/visual-html-templates/05-checklist-flow.html",
+    "assets/visual-html-templates/06-quality-gate.html",
+    "assets/visual-html-templates/07-card-grid.html",
+    "assets/visual-html-templates/08-raci.html",
+    "assets/visual-html-templates/09-file-tour.html",
+    "assets/visual-html-templates/10-flowchart.html",
+    "assets/visual-html-templates/11-weekly-status.html",
+    "assets/visual-html-templates/12-incident-summary.html",
+    "assets/visual-html-templates/13-comparison-cards.html",
+    "assets/visual-html-templates/14-process-swimlane.html",
+    "assets/visual-html-templates/15-concept-explainer.html",
+    "assets/visual-html-templates/16-implementation-plan.html",
+    "assets/visual-html-templates/17-pr-writeup.html",
+    "assets/visual-html-templates/18-triage-board.html",
+    "assets/visual-html-templates/19-feature-flag.html",
+    "assets/visual-html-templates/20-prompt-tuner.html",
+    "assets/visual-html-templates/21-soft-workflow-map.html"
+  ],
+  "profiles": {
+    "widget": {
+      "alias": "v5",
+      "css": [
+        "widgets.css"
+      ],
+      "templates": "widget-templates/",
+      "markup": "wg-",
+      "steps": [
+        "4.6"
+      ]
+    },
+    "diagram": {
+      "alias": "v6",
+      "css": [
+        "visual-html.css"
+      ],
+      "templates": "visual-html-templates/",
+      "markup": "vt-",
+      "steps": [
+        "4.7"
+      ]
+    },
+    "auto": {
+      "alias": null,
+      "css": [
+        "widgets.css",
+        "visual-html.css"
+      ],
+      "templates": [
+        "widget-templates/",
+        "visual-html-templates/"
+      ],
+      "markup": [
+        "vt-",
+        "wg-"
+      ],
+      "steps": [
+        "4.6",
+        "4.7"
+      ],
+      "default": true
+    }
+  },
+  "profile_selection": "인자 profile=widget|diagram|auto 또는 style=v5|v6 (trim→lowercase→정규화, profile= 우선, 무효=invalid_profile). 미지정 시: 비대화형(AGENTS.md 경유)=auto·질문금지, 대화형=1회 질문. 결정론은 인자 명시 경로 한정.",
+  "scripts": [
+    "scripts/render_visual_svg.py",
+    "scripts/validate_output.py"
+  ],
+  "schemas": [
+    "schemas/blog-meta.schema.json",
+    "schemas/quality-report.schema.json",
+    "schemas/visual-brief.schema.json"
+  ]
+}
