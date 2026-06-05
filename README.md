@@ -190,7 +190,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 | 12 | `landing_brief_html` | LocalNote 팀 지식관리 랜딩 브리프 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/12-localnote-team-knowledge-landing.html) |
 | 13 | `checklist_playbook` | AI 기능 출시 전 안전성 플레이북 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/13-ai-feature-release-safety-playbook.html) |
 
-> 💡 로컬: `python3 -m http.server 8788` → [`http://127.0.0.1:8788/output/adaptive-html-final-13-topics-20260605_083433/index.html`](http://127.0.0.1:8788/output/adaptive-html-final-13-topics-20260605_083433/index.html) · 상단 테마 스위처로 라이트·화이트·다크 전환
+> 🌐 라이브(GitHub Pages): **[index 열기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/index.html)** · 상단 테마 스위처로 라이트·화이트·다크 전환 · 로컬 확인은 `python3 -m http.server 8788` 후 `127.0.0.1:8788/...`
 
 ### 🧩 스킬 적용용 단일 템플릿 HTML 미리보기 (final_20260604)
 
@@ -203,7 +203,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 </tr>
 </table>
 
-> 💡 로컬: `python3 -m http.server 8788` → [`http://127.0.0.1:8788/output/final_20260604/index.html`](http://127.0.0.1:8788/output/final_20260604/index.html) · 캐시 우회는 `?v=` 쿼리 추가
+> 🌐 라이브(GitHub Pages): **[index.html](https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html)** · **[index-beginner-width.html](https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html)** · 로컬 확인은 `python3 -m http.server 8788`(캐시 우회 `?v=`)
 
 ### 🎞️ 디자인 썸네일 미리보기 (v4 데모 — 참고용)
 
@@ -240,7 +240,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 </tr>
 </table>
 
-> 💡 로컬에서 렌더된 모습으로 직접 보려면: `python3 -m http.server 8788` 실행 후 `http://127.0.0.1:8788/output/adaptive-html-final-showcase-v4/index.html`
+> 🌐 라이브(GitHub Pages): **[v4 데모 index 열기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/index.html)** · 로컬은 `python3 -m http.server 8788` 후 `127.0.0.1:8788/...`
 
 ---
 
