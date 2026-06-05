@@ -1,0 +1,26 @@
+{
+  "core_css_sha256": "3e6a8bfa3710afb7c998efc60f58cec45273a4ae0803016852c2856e2b390a79",
+  "asset_order": [
+    "theme.css",
+    "components.css",
+    "visual-components.css",
+    "layouts.css",
+    "print.css"
+  ],
+  "conditional_asset_order": [
+    "widgets.css",
+    "visual-html.css",
+    "editorial-patterns.css"
+  ],
+  "asset_sha256": {
+    "theme.css": "9dd8bb29746b1b25a12756487d6a2ea2b669d00190480d94be987d3d975db77d",
+    "components.css": "46f3170d4800637dde040f726a3c5284689b398380db7b79f78306d7499cd918",
+    "visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
+    "widgets.css": "f54c5bc6259b90496587c44d138e37b5c54f3d8e8534586a4448deb9ec18964f",
+    "visual-html.css": "384867b2f9f02657c8937939a0de3c51f9b841738d650a1bce168beae7c6f1e9",
+    "editorial-patterns.css": "cb497848aa0b5c4f2ea0aa56dca23c82c2ac7ec68e62cd1f76628be3dabc4da0",
+    "layouts.css": "c91844c82b9cd857b90741e566723cdb886e7082fbfb27d813c759a80ef48eb3",
+    "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269"
+  },
+  "profile": "auto"
+}

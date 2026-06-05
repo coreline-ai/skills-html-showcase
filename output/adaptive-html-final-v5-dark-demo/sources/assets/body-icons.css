@@ -1,0 +1,16 @@
+/* adaptive-html-final body icons — compact editorial inline SVG, namespaced bi-, uses skill tokens. 외부/동작 JS 0. */
+.body-icon{width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(245,245,240,.72));display:inline-grid;place-items:center;flex:0 0 auto;vertical-align:middle}
+.body-icon svg{width:28px;height:28px;overflow:visible}
+.body-icon--sm{width:26px;height:26px;border-radius:8px}
+.body-icon--sm svg{width:18px;height:18px}
+.body-icon--plain{border:0;background:none;width:auto;height:auto;border-radius:0}
+.body-icon--plain svg{width:22px;height:22px}
+.body-icon .bi-line{stroke:var(--ink-mute);stroke-width:2.05;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.body-icon .bi-accent-line{stroke:var(--accent);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.body-icon .bi-fill{fill:var(--card);stroke:var(--ink-mute);stroke-width:2.05}
+.body-icon .bi-soft{fill:var(--hl-yellow);stroke:var(--ink-mute);stroke-width:1.65}
+.body-icon .bi-accent{fill:var(--accent)}
+.body-icon .bi-accent-box{fill:var(--accent);stroke:var(--accent);stroke-width:1.6}
+.body-icon .bi-dot{fill:#7ea66a;stroke:var(--ink-mute);stroke-width:1.3}
+.body-icon .bi-dot-box{fill:#7ea66a;stroke:#7ea66a;stroke-width:1.5}
+@media(prefers-reduced-motion:reduce){.body-icon{transition:none}}
