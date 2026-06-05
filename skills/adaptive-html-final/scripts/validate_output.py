@@ -361,6 +361,61 @@ def legacy_theme_toggle_gate(text: str) -> list:
     return []
 
 
+def theme_switcher_contract_gate(text: str, style: str) -> list:
+    """When the v5.2+ theme CSS is inlined, the visible CSS-only switcher must ship too.
+
+    A past regression in the GitHub-analysis output inlined theme-dark.css but omitted
+    the #ahf-light/#ahf-white/#ahf-dark radio markup, leaving users unable to change
+    light/white/dark modes even though the stylesheet existed. Keep the contract
+    explicit so a CSS-only "support" claim cannot pass without the control surface.
+    """
+    has_theme_css = '.ahf-themebar' in style or '#ahf-dark:checked' in style or 'name=ahf-theme' in style
+    if not has_theme_css:
+        return []
+    issues = []
+    if not re.search(r'<fieldset\b[^>]*class=["\'][^"\']*\bahf-themebar\b', text, re.I):
+        issues.append({'type': 'theme_switcher_missing_fieldset'})
+    if len(re.findall(r'<input\b[^>]*name=["\']ahf-theme["\']', text, re.I)) != 3:
+        issues.append({'type': 'theme_switcher_radio_count',
+                       'detail': 'name="ahf-theme" 라디오가 light/white/dark 3개여야 한다.'})
+    for _id in ('ahf-light', 'ahf-white', 'ahf-dark'):
+        if not re.search(r'<input\b[^>]*id=["\']' + re.escape(_id) + r'["\'][^>]*name=["\']ahf-theme["\']', text, re.I) \
+           and not re.search(r'<input\b[^>]*name=["\']ahf-theme["\'][^>]*id=["\']' + re.escape(_id) + r'["\']', text, re.I):
+            issues.append({'type': 'theme_switcher_missing_radio', 'id': _id})
+        if not re.search(r'<label\b[^>]*for=["\']' + re.escape(_id) + r'["\']', text, re.I):
+            issues.append({'type': 'theme_switcher_missing_label', 'for': _id})
+    if not re.search(r'<input\b(?=[^>]*id=["\']ahf-light["\'])(?=[^>]*name=["\']ahf-theme["\'])(?=[^>]*\bchecked\b)', text, re.I):
+        issues.append({'type': 'theme_switcher_light_not_default'})
+    return issues
+
+
+def github_analysis_visual_contract_gate(text: str, style: str) -> list:
+    """GitHub-analysis outputs must follow the current showcase visual contract.
+
+    This protects the 14th mode from drifting back to a raw report: latest header
+    rhythm (generated-row/lens-strip), section-card shell, and body icons before
+    numbered headings are all required for `.layout-github`.
+    """
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-github\b', body_only, re.I):
+        return []
+    issues = []
+    if 'generated-row' not in body_only or 'lens-strip' not in body_only:
+        issues.append({'type': 'github_header_generated_row_missing'})
+    if '.layout-github>section' not in style.replace(' ', ''):
+        issues.append({'type': 'github_section_card_css_missing'})
+    if '.body-icon' not in style:
+        issues.append({'type': 'github_body_icons_css_missing'})
+    h2s = re.findall(r'<h2\b[^>]*>[\s\S]*?</h2>', body_only, re.I)
+    numbered = [h for h in h2s if re.search(r'<span\b[^>]*class=["\'][^"\']*\bnum\b', h, re.I)]
+    missing_icon = [h[:120] for h in numbered if not re.search(r'<span\b[^>]*class=["\'][^"\']*\bbody-icon\b', h, re.I)]
+    if missing_icon:
+        issues.append({'type': 'github_numbered_heading_icon_missing',
+                       'count': len(missing_icon),
+                       'detail': missing_icon[:5]})
+    return issues
+
+
 def _inner_html(text: str, open_end: int, tag: str) -> str:
     """Inner HTML of the element whose opening tag ends at open_end, by balancing nested
     <tag>/</tag>. Falls back to a bounded window if the tag never closes (malformed)."""
@@ -561,6 +616,12 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for tg_issue in legacy_theme_toggle_gate(text):
             tg_issue['page'] = rel
             issues.append(tg_issue)
+        for ts_issue in theme_switcher_contract_gate(text, style):
+            ts_issue['page'] = rel
+            issues.append(ts_issue)
+        for gh_issue in github_analysis_visual_contract_gate(text, style):
+            gh_issue['page'] = rel
+            issues.append(gh_issue)
         for ri_issue in role_img_buries_text_gate(text):
             ri_issue['page'] = rel
             issues.append(ri_issue)
@@ -676,7 +737,7 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
                                'detail': 'table{min-width:420px}이라 390px에서 넘침. .table-scroll로 감싸거나 반응형 표(mobile-card/final-matrix) 사용.'})
                 break
         # R5: wide-report layouts must carry the prose width override (else body prose is capped at ~2/3).
-        wide = re.search(r'class=["\'][^"\']*\blayout-(expert|compare|seo|platform|landing|case|checklist|reference|audit|skill-audit)\b', text)
+        wide = re.search(r'class=["\'][^"\']*\blayout-(expert|github|compare|seo|platform|landing|case|checklist|reference|audit|skill-audit)\b', text)
         if wide and '.page-wide>section>p' in style:
             if 'max-width:60rem' not in style.replace(' ', ''):
                 issues.append({'page': rel, 'type': 'wide_layout_prose_cap_missing',

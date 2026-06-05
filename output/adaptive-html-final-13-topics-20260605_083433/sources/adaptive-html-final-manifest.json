@@ -1,6 +1,6 @@
 {
   "name": "adaptive-html-final",
-  "version": "5.2.3",
+  "version": "5.3.1",
   "language": "ko",
   "entry": "SKILL.md",
   "assets": [
@@ -26,7 +26,11 @@
     "slot": "{{THEME_DARK_CSS}}",
     "order": "print.css 뒤(맨 끝) — 토큰 오버라이드+표면 보정이 코어를 이긴다",
     "model": "token-only :root override · CSS-only radios (:has)",
-    "themes": ["light(크림 기본)", "white(순백)", "dark(proper-black)"],
+    "themes": [
+      "light(크림 기본)",
+      "white(순백)",
+      "dark(proper-black)"
+    ],
     "switcher": "라디오 name=ahf-theme: #ahf-light(checked)/#ahf-white/#ahf-dark + .ahf-themebar 세그먼트(input:checked + label=accent). 마크업 없으면 라이트 고정",
     "default": "light",
     "hash_safe": true,
@@ -88,6 +92,7 @@
   },
   "layouts": [
     "beginner-learning.html",
+    "github-analysis.html",
     "expert-report.html",
     "magazine-article.html",
     "course-module.html",
@@ -117,6 +122,10 @@
     {
       "id": "education_html",
       "layout": "course-module.html"
+    },
+    {
+      "id": "github_analysis",
+      "layout": "github-analysis.html"
     },
     {
       "id": "expert_html",
@@ -170,6 +179,7 @@
     "adaptive-html-blog-writer-v2"
   ],
   "changes": [
+    "v5.3.0: github_analysis 14번째 모드 추가 — GitHub 저장소 URL/owner/repo를 사용자 질문 중심 HTML 분석 리포트로 변환하는 레이아웃·라우터·문서 계약 추가.",
     "blog-seo-system / writing-system / platform-system / editorial-design-system references를 blog-writer 상세본으로 흡수",
     "SKILL.md description에 명시적 트리거 목록과 출력 원칙 추가",
     "skip link 접근성 버그 수정: 13개 레이아웃 <main>에 id=\"main\" 통일",
@@ -217,7 +227,7 @@
     "v5.2.2: body-icons.css에 아이콘 박스 배경 테마 적응 추가 — :root:has(#ahf-white) 순백 / :root:has(#ahf-dark) 카드 표면(var(--vt-soft)→var(--card))으로, 하드코딩 흰빛 그라디언트가 다크에서 떠 보이던 보편 결함 해소(스킬·final 템플릿 공통). lede-note 컨텍스트 라벨 아이콘 정렬(.lede-note .label:has) 추가. 조건부 자산만 변경 → 코어 해시 불변, 13-topics body-icons.css 재인라인+스냅샷+css-integrity 갱신",
     "v5.2.3: editorial-patterns.css 일반 가독성 승격 — a11y-card 줄 간격 8→12px·a11y-points 5→9px(헤드/제목/PASS·FAIL 덜 붙음), impact-card 아이콘 하단 12px 여백(아이콘이 제목에 붙던 문제). 조건부 자산만 변경 → 코어 해시 불변, 13-topics editorial-patterns.css 재인라인+스냅샷+css-integrity 갱신"
   ],
-  "updated": "2026-06-05",
+  "updated": "2026-06-06",
   "visual_templates": [
     "visual-templates/hero-map.svg.tpl",
     "visual-templates/card-grid.svg.tpl",

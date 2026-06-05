@@ -54,6 +54,7 @@
 | expert_html | **risk-matrix** | raci, quality-gate, implementation-plan, soft-workflow-map |
 | article_html | **decision-tree** | comparison-cards, concept-explainer |
 | education_html | **timeline** | checklist-flow, concept-explainer, soft-workflow-map |
+| github_analysis | **hero-map** | quality-gate, file-tour, risk-matrix, timeline, decision-tree, checklist-flow |
 | blog_writer | **timeline** | weekly-status, comparison-cards |
 | seo_dashboard | **card-grid** | comparison-cards, prompt-tuner |
 | platform_blog | **card-grid** | comparison-cards, pr-writeup |
@@ -63,6 +64,15 @@
 | case_study_html | **incident-summary** | timeline, process-swimlane |
 | landing_brief_html | **hero-map** | card-grid, feature-flag, soft-workflow-map |
 | checklist_playbook | **checklist-flow** | quality-gate, process-swimlane, implementation-plan, triage-board |
+
+### github_analysis 권장 삽입 순서
+
+GitHub 저장소 분석은 첫 화면에서 판단 구조가 보여야 하므로 `hero-map`을 1순위로 사용한다. 이후 저장소 구조 설명은 `file-tour`, 채택 리스크는 `risk-matrix`, 검증 기준은 `quality-gate`, 최근 활동은 `timeline`, 최종 선택은 `decision-tree`, 다음 행동은 `checklist-flow`로 보강한다.
+
+- `hero-map`: 프로젝트 목적 → 저장소 신호 → 추천 행동.
+- `file-tour`: README, package/manifest, src, tests, docs, CI, security 관련 파일 경로.
+- `risk-matrix`: 유지보수 정체, 빠진 라이선스, 취약한 quickstart, 테스트 부재, 릴리스 부재 등.
+- `quality-gate`: 사용/검토/보류 판단을 위한 최소 검증 조건.
 
 ## 4. SVG vs HTML 선택 규칙
 
@@ -129,4 +139,4 @@
 
 - `references/widget-system.md` — CSS 뷰 위젯 `wg-01`~`20`(인터랙션 보조 뷰, 이 라이브러리와 별개).
 - `references/visual-template-system.md` — `8000×6000` SVG 인포그래픽(hero·별첨용, HTML 템플릿이 대체하는 대상).
-- `references/mode-selection.md` — 13개 모드 라우팅.
+- `references/mode-selection.md` — 14개 모드 라우팅.

@@ -4,8 +4,8 @@ description: |
   URL, PDF, 텍스트, 이미지 추출문, 메모, 기술 자료, 블로그 초안, SKILL.md/.skill 패키지를 입력받아
   고품질 한국어 HTML 학습자료, 전문가 리포트, 공개 아티클, 교육 모듈, 블로그 원고, SEO 대시보드,
   플랫폼별 블로그 변환, 스킬 감사 리포트, 레퍼런스 매뉴얼, 비교 매트릭스, 케이스 스터디,
-  랜딩 브리프, 체크리스트 플레이북까지 생성하는 최종형 다중 모드 스킬.
-  adaptive-html-learning-ultimate의 13개 모드 라우터·레이아웃·평가 루브릭을 뼈대로,
+  랜딩 브리프, 체크리스트 플레이북, GitHub 저장소 분석 리포트까지 생성하는 최종형 다중 모드 스킬.
+  adaptive-html-learning-ultimate의 13개 모드 라우터·레이아웃·평가 루브릭을 뼈대로 삼고 GitHub 분석 모드를 추가한 14개 모드 체계를,
   adaptive-html-blog-writer의 블로그 글쓰기·SEO·플랫폼·박스 선택 상세 규칙을 흡수하고,
   blog-demos급 editorial 디자인 시스템을 유지하고, 필요 시 8000×6000 SVG 인포그래픽 Visual Template System을 섹션별로 배치한다.
 
@@ -15,6 +15,7 @@ description: |
   - "비교/장단점/선택 기준", "사례 연구/회고", "랜딩/소개 페이지", "체크리스트/플레이북"
   - "이 문서를 블로그 글로", "이 내용을 글감으로", "제목/도입부/목차/본문/마무리까지"
   - "스킬 분석", "SKILL.md 개선", "한 줄 한 줄 분석", "스킬 통합/감사"
+  - "GitHub 저장소 분석", "깃허브 URL 분석", "owner/repo 분석", "README/이슈/릴리스/라이선스 분석"
 
   기본 출력 원칙:
   - 사용자가 HTML을 원하면 단일 HTML 파일(또는 로컬 assets 연결형)을 만든다.
@@ -24,12 +25,12 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.2.3 · "editorial-patterns 가독성 승격(a11y 줄 간격·impact 아이콘 여백)" (이전 5.2.2)
+> Version 5.3.1 · "완성본 표준화 — 무클래스 섹션 카드뷰·섹션 제목 큰 아이콘·헤더 리듬·source-note·vt-frame 평면을 스킬 기본값으로 승격(회귀 안전)" (이전 5.3.0)
 
 ## 0. Identity
 
 이 스킬은 `html-for-beginners` → `adaptive-html-blog-writer` → `adaptive-html-blog-writer-v2` → `adaptive-html-learning-ultimate` 계열을 하나로 합친 최종 통합본이다.
-`adaptive-html-learning-ultimate`의 13개 모드 라우터·레이아웃·평가 체계를 뼈대로 두고, `adaptive-html-blog-writer`의 블로그/SEO/플랫폼/박스 선택 상세 규칙을 references로 흡수했으며, skip link 접근성 버그(`id="main"`)를 13개 레이아웃 전체에서 수정했다.
+`adaptive-html-learning-ultimate`의 13개 모드 라우터·레이아웃·평가 체계를 뼈대로 두고, GitHub 저장소를 의사결정형 리포트로 바꾸는 `github_analysis`를 14번째 모드로 추가했다. `adaptive-html-blog-writer`의 블로그/SEO/플랫폼/박스 선택 상세 규칙은 references로 흡수했으며, 모든 레이아웃은 skip link 접근성 계약(`id="main"`)을 유지한다.
 
 목표는 단순 HTML 생성이 아니라 다음 파이프라인을 안정적으로 실행하는 것이다.
 
@@ -48,7 +49,7 @@ description: |
 2. **두 위젯 라이브러리는 별개다.**
    - (1) **CSS 뷰 위젯 `wg-01`~`wg-20`** = `assets/widgets.css` + `assets/widget-templates/*.html`. 섹션 보강용 인터랙션 위젯이며 `wg-<id>-` 네임스페이스로 격리된다(Step 4.6).
    - (2) **SVG→HTML 템플릿 `vt-` 21종** = `assets/visual-html.css` + `assets/visual-html-templates/01..21.html`. 본문에 그대로 삽입하는 in-flow 다이어그램(이미지가 아닌 네이티브 HTML 구조도)이다(Step 4.7). 두 라이브러리를 혼동하거나 한쪽으로 대체하지 않는다.
-3. **비주얼 프로파일 → 13모드 라우터(§3) 순서가 단일 진입점**이다. (a) 먼저 비주얼 프로파일(`widget`=v5 / `diagram`=v6 / `auto`=기본)을 결정한다 — 인자 `profile=widget|diagram|auto` 또는 별칭 `style=v5|v6`를 `trim→lowercase→정규화`(둘 다 오면 `profile=` 우선, 무효 토큰은 `invalid_profile` 실패). 인자 미지정 시 **비대화형(AGENTS.md 경유 Codex/Gemini)은 무조건 `auto`·질문 금지**, 대화형(Claude 대화)은 1회 질문 가능(결정론 보장은 인자 명시 경로 한정). (b) 이어 모드 선택 → 레이아웃 → 프로파일에 따라 vt-템플릿(diagram·auto)·wg-위젯(widget·auto)을 §0.6에서 고른다. 프로파일이 §0.6 결정표의 **어느 열을 쓸지** 게이트한다(widget=wg 열만/diagram=vt 열만/auto=둘 다).
+3. **비주얼 프로파일 → 14모드 라우터(§3) 순서가 단일 진입점**이다. (a) 먼저 비주얼 프로파일(`widget`=v5 / `diagram`=v6 / `auto`=기본)을 결정한다 — 인자 `profile=widget|diagram|auto` 또는 별칭 `style=v5|v6`를 `trim→lowercase→정규화`(둘 다 오면 `profile=` 우선, 무효 토큰은 `invalid_profile` 실패). 인자 미지정 시 **비대화형(AGENTS.md 경유 Codex/Gemini)은 무조건 `auto`·질문 금지**, 대화형(Claude 대화)은 1회 질문 가능(결정론 보장은 인자 명시 경로 한정). (b) 이어 모드 선택 → 레이아웃 → 프로파일에 따라 vt-템플릿(diagram·auto)·wg-위젯(widget·auto)을 §0.6에서 고른다. 프로파일이 §0.6 결정표의 **어느 열을 쓸지** 게이트한다(widget=wg 열만/diagram=vt 열만/auto=둘 다).
 4. **코어 CSS 인라인 + 해시 마커.** 출력은 `theme.css + components.css + visual-components.css + layouts.css + print.css`를 코어로 인라인하고, 인라인 `<style>`에 `adaptive-html-final-core-css-sha256: <64hex>` 주석 마커를 남긴다. `widgets.css`(위젯 사용 시)와 `visual-html.css`(vt-템플릿 사용 시)는 조건부 인라인이며, 인라인 순서는 §5 Step 5의 합본 순서를 따른다.
 
 **운영 원칙:**
@@ -67,6 +68,7 @@ description: |
 | expert_html | expert-report.html | risk-matrix, raci, quality-gate, implementation-plan, soft-workflow-map | wg-03, wg-04, wg-11, wg-12, wg-16, wg-17 |
 | article_html | magazine-article.html | decision-tree, comparison-cards, concept-explainer | wg-02, wg-04, wg-07, wg-09, wg-10, wg-13, wg-14 |
 | education_html | course-module.html | timeline, checklist-flow, concept-explainer, soft-workflow-map | wg-06, wg-07, wg-08, wg-13, wg-14, wg-15, wg-20 |
+| github_analysis | github-analysis.html | hero-map, quality-gate, file-tour, risk-matrix, timeline, decision-tree, checklist-flow | wg-11, wg-04, wg-14, wg-16, wg-17, wg-18 |
 | blog_writer | personal-blog-essay.html | timeline, weekly-status, comparison-cards | wg-17 |
 | seo_dashboard | seo-dashboard.html | card-grid, comparison-cards, prompt-tuner | wg-11 |
 | platform_blog | platform-adaptation.html | card-grid, comparison-cards, pr-writeup | wg-02 |
@@ -95,6 +97,7 @@ vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..2
 10. 결과물은 사용자가 복사, 다운로드, 로컬 링크로 확인할 수 있어야 한다.
 11. 전문가/감사/레퍼런스 모드는 “요약 카드만 있는 결과물”로 끝내지 말고, 표·RACI·로드맵·체크리스트 등 실행 가능한 상세 근거를 충분히 제공한다.
 12. 섹션 이해를 돕는 이미지가 필요하면 장식 사진보다 8000×6000 SVG 인포그래픽을 우선하고, 사진/AI 이미지는 현실성·메타포 목적이 분명할 때만 사용한다.
+13. GitHub 저장소 분석은 README 미화가 아니라 사용/채택/감사 의사결정을 돕는 실사 리포트로 작성하며, 관측 사실·추론·확인 불가를 명확히 분리한다.
 
 ## 2. Supported Input Types
 
@@ -106,6 +109,7 @@ vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..2
 - 기존 블로그 초안
 - 리서치 노트/기술 문서/제품 문서
 - SKILL.md 또는 `.skill` 패키지
+- GitHub 저장소 URL(`https://github.com/owner/repo`) 또는 `owner/repo`
 
 입력이 불완전해도 멈추지 않는다. 합리적인 기본값으로 진행하되, 사실 확인이 필요한 내용은 `확인 필요`로 표시한다.
 
@@ -117,19 +121,20 @@ vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..2
 | 2 | platform_blog | 티스토리, 벨로그, 네이버, 워드프레스, 플랫폼별 | platform-adaptation.html |
 | 3 | seo_dashboard | SEO, 제목, 메타, 태그, 검색 의도 | seo-dashboard.html |
 | 4 | education_html | 교육, 강의, 온보딩, 실습, 퀴즈 | course-module.html |
-| 5 | expert_html | 전문가, 리포트, 진단, 아키텍처, 리스크 | expert-report.html |
-| 6 | article_html | 공개 글, 아티클, 기사, GitHub Pages | magazine-article.html |
-| 7 | blog_writer | 블로그 글, 포스팅, 경험담, 내 생각 | personal-blog-essay.html |
-| 8 | beginner_html | 초보자, 쉽게, 비유로, 입문 | beginner-learning.html |
-| 9 | reference_html | 레퍼런스, 매뉴얼, API 문서 | reference-manual.html |
-| 10 | comparison_html | 비교, 장단점, 선택 기준 | comparison-matrix.html |
-| 11 | case_study_html | 사례 연구, 회고, 프로젝트 기록 | case-study.html |
-| 12 | landing_brief_html | 소개 페이지, 랜딩, 요약 페이지 | landing-brief.html |
-| 13 | checklist_playbook | 체크리스트, 운영 절차, 플레이북 | checklist-playbook.html |
+| 5 | github_analysis | GitHub 저장소 URL, owner/repo, README/Issues/Releases/License 분석 | github-analysis.html |
+| 6 | expert_html | 전문가, 리포트, 진단, 아키텍처, 리스크 | expert-report.html |
+| 7 | article_html | 공개 글, 아티클, 기사, GitHub Pages | magazine-article.html |
+| 8 | blog_writer | 블로그 글, 포스팅, 경험담, 내 생각 | personal-blog-essay.html |
+| 9 | beginner_html | 초보자, 쉽게, 비유로, 입문 | beginner-learning.html |
+| 10 | reference_html | 레퍼런스, 매뉴얼, API 문서 | reference-manual.html |
+| 11 | comparison_html | 비교, 장단점, 선택 기준 | comparison-matrix.html |
+| 12 | case_study_html | 사례 연구, 회고, 프로젝트 기록 | case-study.html |
+| 13 | landing_brief_html | 소개 페이지, 랜딩, 요약 페이지 | landing-brief.html |
+| 14 | checklist_playbook | 체크리스트, 운영 절차, 플레이북 | checklist-playbook.html |
 
 여러 트리거가 동시에 감지되면 Priority가 높은 모드를 우선한다. 단, 사용자가 명시적으로 특정 모드를 지정하면 그 지시가 우선한다.
 
-트리거 충돌 tie-breaker: 교육/강의 트리거와 공개글 트리거가 겹치면 `education_html`을 우선하고, GitHub Pages 배포가 단독으로 언급되면 `article_html`을 선택한다.
+트리거 충돌 tie-breaker: 교육/강의 트리거와 공개글 트리거가 겹치면 `education_html`을 우선하고, GitHub 저장소 URL/`owner/repo` 분석이 명확하면 `github_analysis`를 우선한다. 단, GitHub Pages 배포가 단독으로 언급되면 `article_html`을 선택한다.
 
 ## 4. Design System
 
@@ -256,6 +261,7 @@ TODO_CHECK = 추가 확인이 필요한 주장
 - expert: executive summary, decision cards, operating model/RACI, risk matrix, roadmap, validation checklist. 핵심 표는 최소 5행 이상, 리스크·검증·실행계획은 각각 4개 이상 작성한다.
 - article: lead, pull quote, argument, case, takeaway
 - education: goals, before start, lesson, example, practice, quiz, answer
+- github_analysis: verdict, question toc, repo identity, quickstart readiness, health signals, code/file tour, release/activity timeline, security/license, risk matrix, final decision, next actions, source limits. GitHub UI/REST에서 확인 가능한 FACT와 합리적 INFERENCE, UNKNOWN을 분리하고 각 핵심 판단에 근거 링크/근거 필드를 둔다.
 - blog: hook, personal note, view, example, how-to, soft CTA
 - seo: primary keyword, SERP preview, title candidates, meta candidates, tag cluster
 - platform: original summary, platform cards, comparison table, publish checklist
@@ -294,6 +300,7 @@ beginner_html      → hero-map, checklist-flow
 expert_html        → hero-map, matrix, timeline, quality-gate
 article_html       → hero-map, decision-tree
 education_html     → timeline, checklist-flow
+github_analysis    → hero-map, file-tour, risk-matrix, quality-gate
 blog_writer        → hero-map, timeline
 seo_dashboard      → card-grid, matrix
 platform_blog      → card-grid, matrix, checklist-flow
@@ -330,6 +337,7 @@ comparison_html    → 01 Three Code Approaches, 02 Visual Design Directions
 expert_html        → 03 Annotated PR, 04 Module Map, 11 Weekly Status, 12 Incident Timeline, 16 Implementation Plan, 17 PR Writeup
 reference_html     → 04 Module Map, 05 Living Design System, 06 Component Variants, 14 Feature Explainer, 19 Feature Flag Editor, 20 Prompt Tuner
 education_html     → 06 Component Variants, 07 Animation Sandbox, 08 Clickable Flow, 13 Annotated Flowchart, 14 Feature Explainer, 15 Concept Explainer, 20 Prompt Tuner
+github_analysis    → 11 Weekly Status, 04 Module Map, 14 Feature Explainer, 16 Implementation Plan, 17 PR Writeup, 18 Ticket Triage Board
 beginner_html      → 10 SVG Figure Sheet, 13 Annotated Flowchart, 15 Concept Explainer
 article_html       → 02 Visual Design Directions, 04 Module Map, 07 Animation Sandbox, 09 Slide Deck, 10 SVG Figure Sheet, 13 Annotated Flowchart, 14 Feature Explainer
 landing_brief_html → 02 Visual Design Directions, 05 Living Design System, 08 Clickable Flow, 09 Slide Deck, 16 Implementation Plan
@@ -362,7 +370,7 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 
 1. `assets/base.html` 또는 로컬 CSS 연결형 HTML을 사용한다.
 2. 선택된 `assets/layouts/*.html` 골격을 적용한다.
-3. CSS는 `theme.css + components.css + visual-components.css + widgets.css(widget·auto) + visual-html.css(diagram·auto) + body-icons.css(본문 아이콘 사용 시) + editorial-patterns.css(본문 패턴 사용 시) + shape-visuals.css(soft-shape 사용 시) + workflow-visuals.css(workflow 도판 사용 시) + layouts.css + print.css + theme-dark.css(3-테마 토큰 오버라이드, 항상)` 순서로 합친다. 코어 해시는 `theme.css + components.css + visual-components.css + layouts.css + print.css` 5종만 대상이며(`theme-dark.css`는 코어 해시 제외, print 뒤 맨끝), `base.html`의 각 CSS 슬롯은 미사용 시 빈 문자열로 치환한다(단 `theme-dark.css`는 항상 인라인 — 스위처 마크업 없으면 라이트 고정).
+3. CSS는 `theme.css + components.css + visual-components.css + widgets.css(widget·auto) + visual-html.css(diagram·auto) + body-icons.css(본문 아이콘 사용 시) + editorial-patterns.css(본문 패턴 사용 시) + shape-visuals.css(soft-shape 사용 시) + workflow-visuals.css(workflow 도판 사용 시) + layouts.css + print.css + theme-dark.css(3-테마 토큰 오버라이드, 항상)` 순서로 합친다. 코어 해시는 `theme.css + components.css + visual-components.css + layouts.css + print.css` 5종만 대상이며(`theme-dark.css`는 코어 해시 제외, print 뒤 맨끝), `base.html`의 각 CSS 슬롯은 미사용 시 빈 문자열로 치환한다. `base.html`의 `ahf-theme` 라디오 3-세그먼트 스위처는 기본 필수 UI이며 라이트/화이트/다크 전환을 무 JS로 제공한다.
 4. 섹션 wrapper와 grid/card wrapper를 분리한다. `section.matrix`, `section.serp-preview`, `section.value-grid`, `section.check-grid`, `section.priority-roadmap` 같은 semantic section에는 `display:grid`를 직접 걸지 말고, 내부에 `.card-grid`, `.grid-2`, `.grid-3`, `.matrix:not(section)` 같은 별도 wrapper를 둔다.
    - `section > h2:first-child`는 내부 top margin이 0이어야 한다. 섹션 간 간격은 `section{margin}`으로 제어하고, 카드 내부 첫 heading의 `margin-top:64px`가 빈 공간을 만들게 두지 않는다.
    - 검정 `.try` 섹션 안에 흰색 `.box`, `.summary-card`, `.cta-box`, `.card-block`, `.mini-card`를 넣으면 반드시 카드 안쪽 텍스트 색을 `var(--ink)`/`var(--ink-soft)`로 되돌린다. `.try p/li{color:#d0d0c8}` 상속이 흰 카드에 새어 들어가면 실패다.
@@ -435,9 +443,10 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 
 - `references/design-dna.md` — 디자인 토큰 원천
 - `references/editorial-design-system.md` — 현재 디자인 DNA와 컴포넌트 규칙
-- `references/mode-selection.md` — 13개 모드 라우팅
+- `references/mode-selection.md` — 14개 모드 라우팅
 - `references/layout-system.md` — 레이아웃별 블록
 - `references/writing-system.md` — 모드별 글쓰기 원칙
+- `references/github-analysis-system.md` — GitHub 저장소 분석 리포트 정보 구조·판단 기준·출처 한계
 - `references/blog-seo-system.md` — 제목/메타/SERP/태그
 - `references/platform-system.md` — 플랫폼별 변환 규칙
 - `references/skill-audit-system.md` — 스킬 감사 기준

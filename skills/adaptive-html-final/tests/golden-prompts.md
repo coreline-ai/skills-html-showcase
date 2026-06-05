@@ -1,6 +1,6 @@
 # Golden Prompts
 
-13개 모드를 대표하는 골든 프롬프트. 각 항목은 기대 모드와 레이아웃을 명시한다.
+14개 모드를 대표하는 골든 프롬프트. 각 항목은 기대 모드와 레이아웃을 명시한다.
 
 1. Docker를 초보자용 HTML 학습자료로 만들어줘.
    - expected_mode: beginner_html
@@ -41,3 +41,6 @@
 13. 배포 전 점검 체크리스트/운영 플레이북을 만들어줘. 사용 사례, 체크 그리드, 실패 모드, 완료 기준 포함.
     - expected_mode: checklist_playbook
     - expected_layout: checklist-playbook.html
+14. https://github.com/coreline-ai/skills-html-showcase 저장소를 사용자가 가장 궁금해할 질문 중심으로 분석해줘. README, 파일 구조, 릴리스/이슈/라이선스/리스크와 다음 행동을 HTML로 정리해줘.
+    - expected_mode: github_analysis
+    - expected_layout: github-analysis.html

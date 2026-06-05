@@ -14,6 +14,34 @@
 .layout-expert .executive-summary .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .risk-high{border-left:5px solid var(--accent)}.risk-mid{border-left:5px solid #d99a38}.risk-low{border-left:5px solid #7ea66a}
 
+/* GitHub analysis mode: repository due-diligence report with evidence-first cards. */
+.layout-github .repo-signal-grid,
+.layout-github .repo-identity-grid,
+.layout-github .repo-health-grid,
+.layout-github .repo-action-grid,
+.layout-github .repo-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-github>section,
+.layout-github>.source-note,
+.layout-github>.github-question-toc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
+.layout-github>.try{color:var(--ink)}
+.layout-github>.try p,.layout-github>.try li{color:var(--ink-soft)}
+.layout-github>.try h2{color:var(--ink)}
+.layout-github>.try .tag{background:var(--chip-bg);border-color:var(--line);color:var(--ink)}
+.layout-github>section .vt-shell{margin-bottom:0}
+.layout-github .repo-card,
+.layout-github .repo-signal,
+.layout-github .repo-question,
+.layout-github .repo-evidence{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px;min-width:0}
+.layout-github .repo-card h3,
+.layout-github .repo-signal h3,
+.layout-github .repo-question h3,
+.layout-github .repo-evidence h3{margin-top:0;color:var(--accent-2)}
+.layout-github .repo-signal .label,
+.layout-github .repo-evidence .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink)}
+.layout-github .repo-score{display:inline-grid;place-items:center;min-width:48px;height:48px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:900 16px/1 var(--sans);margin:0 10px 8px 0}
+.layout-github .repo-unknown{border-style:dashed;background:var(--accent-soft)}
+.layout-github .github-question-toc{margin:24px 0 34px}
+
 .layout-article .article-header{margin-bottom:28px}.layout-article .lead{font-size:18px;color:var(--ink-soft)}.layout-article .article-takeaway{background:var(--accent-soft)}.layout-article article section{margin:54px 0}
 .layout-article .pull-quote{font-size:22px;color:var(--ink);border-color:var(--accent);font-style:normal}
 
@@ -73,7 +101,7 @@
 .layout-platform .platform-card.is-essay{border-left:4px solid var(--term-accent)}
 .layout-platform .platform-card h3{margin-top:0;color:var(--accent-2)}
 .layout-platform .original-summary,.layout-platform .platform-strategy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
-@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid:not(section),.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid:not(section),.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-github .repo-signal-grid,.layout-github .repo-identity-grid,.layout-github .repo-health-grid,.layout-github .repo-action-grid,.layout-github .repo-evidence-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
 
 /* Ultimate extra modes */
 .layout-audit .audit-row{display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr .6fr;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}
@@ -100,7 +128,7 @@
    .winners:not(section), or .tradeoffs:not(section) for actual grid layout. */
 
 .audit-header,.blog-header,.case-header,.checklist-header,.compare-header,
-.course-header,.landing-header,.platform-header,.reference-header,
+.course-header,.github-header,.landing-header,.platform-header,.reference-header,
 .report-header,.seo-header{margin-bottom:42px;padding-bottom:32px;border-bottom:1px solid var(--line)}
 
 /* Semantic section wrappers: normal flow only. */
@@ -108,7 +136,9 @@
 .decision-context,.decisions,.results,.winners,.tradeoffs,.how-it-works,.failure-modes,
 .patterns,.examples,.line-audit,.content-outline,.seo-overview,.before-start,
 .beginner-analogy,.beginner-practice,.beginner-terms,.beginner-traps,.example-block,
-.lesson-step,.publish-checklist,.related-list,.soft-cta{margin:46px 0}
+.lesson-step,.publish-checklist,.related-list,.soft-cta,.github-verdict,.repo-identity,
+.quickstart-readiness,.repo-health,.code-tour,.release-roadmap,.security-license,
+.decision-tree{margin:46px 0}
 
 /* Actual reusable grid/card wrappers. Never apply these to a section containing h2/h2-sub. */
 .grid-2,.cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
@@ -149,3 +179,6 @@
   .final-seo-set .grid,.final-seo-set .seo-grid{grid-template-columns:1fr}
   .layout-blog article>section>h2:first-child::before{width:30px;height:30px;margin-right:9px;font-size:13px;vertical-align:2px}
 }
+/* === 완성본 표준 승격 v5.3.1 — 무클래스 콘텐츠 섹션 카드 뷰 === */
+.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}

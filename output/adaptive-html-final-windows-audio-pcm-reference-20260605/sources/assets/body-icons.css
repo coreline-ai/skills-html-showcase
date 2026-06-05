@@ -24,3 +24,6 @@ h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
 :root:has(#ahf-white:checked) .body-icon{background:linear-gradient(180deg,#ffffff,#f4f5f8)}
 :root:has(#ahf-dark:checked) .body-icon{background:linear-gradient(180deg,var(--vt-soft),var(--card));border-color:var(--line)}
 @media(prefers-reduced-motion:reduce){.body-icon{transition:none}}
+/* === 완성본 표준 승격 v5.3.1 — 섹션 제목 앞 큰 아이콘(42px) === */
+h2>.body-icon,h3>.body-icon{width:42px;height:42px;border-radius:12px}
+h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}

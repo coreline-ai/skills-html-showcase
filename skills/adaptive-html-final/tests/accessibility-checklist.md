@@ -12,14 +12,14 @@ grep -c 'class="skip" href="#main"' assets/base.html
 
 - [ ] base.html에 `<a class="skip" href="#main">`가 정확히 1개 있다.
 
-## 2. 13개 레이아웃의 `<main id="main">`가 각각 정확히 1개
+## 2. 14개 레이아웃의 `<main id="main">`가 각각 정확히 1개
 
 ```bash
 for f in assets/layouts/*.html; do echo -n "$f: "; grep -c 'main id="main"' "$f"; done
-# 기대값: 13개 파일 모두 1 (13/13)
+# 기대값: 14개 파일 모두 1 (14/14)
 ```
 
-- [ ] `assets/layouts/*.html` 13개 모두 `main id="main"`가 정확히 1개다(skip link 타깃 보장).
+- [ ] `assets/layouts/*.html` 14개 모두 `main id="main"`가 정확히 1개다(skip link 타깃 보장).
 
 ## 3. 단일 h1 (각 레이아웃/예시에 h1 1개)
 

@@ -84,5 +84,27 @@ check("legacy gate flags #theme-toggle selector", any(i["type"] == "legacy_theme
 t_ok = v.legacy_theme_toggle_gate('<input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">Dark</label>')
 check("legacy gate passes ahf-theme switcher", t_ok == [])
 
+# Theme switcher contract: theme CSS without the 3 visible radios is a real UI regression.
+theme_css = '.ahf-themebar{}:root:has(#ahf-dark:checked){--bg:#000}'
+ts_missing = v.theme_switcher_contract_gate('<main id="main"><h1>x</h1></main>', theme_css)
+check("theme switcher gate flags missing radios", any(i["type"] == "theme_switcher_missing_fieldset" for i in ts_missing))
+ts_ok_html = '''
+<fieldset class="ahf-themebar" aria-label="테마 선택">
+  <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+</fieldset>
+'''
+check("theme switcher gate passes 3 radios", v.theme_switcher_contract_gate(ts_ok_html, theme_css) == [])
+
+# GitHub-analysis visual contract: 14th mode must not regress to raw report markup.
+github_bad = '<main id="main" class="page-wide layout-github"><header class="header github-header"><h1>x</h1></header><section><h2><span class="num">1</span>Raw</h2></section></main>'
+gh_bad = v.github_analysis_visual_contract_gate(github_bad, '.layout-github .repo-card{}')
+check("github visual gate catches raw header/icons/cards",
+      {"github_header_generated_row_missing", "github_section_card_css_missing", "github_body_icons_css_missing", "github_numbered_heading_icon_missing"}.issubset({i["type"] for i in gh_bad}))
+github_ok = '<main id="main" class="page-wide layout-github"><header class="header github-header"><div class="generated-row"><div class="lens-strip"></div></div><h1>x</h1></header><section><h2><span class="body-icon"><svg aria-hidden="true"></svg></span><span class="num">1</span>OK</h2></section></main>'
+github_ok_css = '.layout-github>section{background:var(--card)}.body-icon{}'
+check("github visual gate passes current contract", v.github_analysis_visual_contract_gate(github_ok, github_ok_css) == [])
+
 print(f"\n{_checks - _fails}/{_checks} checks passed")
 sys.exit(1 if _fails else 0)

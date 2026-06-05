@@ -215,3 +215,5 @@ details p{margin-bottom:0}
   .mobile-card-table tbody th{color:var(--ink);font-weight:800;background:transparent}
   .mobile-card-table tbody th::before{content:"";display:none}
 }
+/* === 완성본 표준 승격 v5.3.1 — source-note 투명 === */
+.source-note{background:transparent}

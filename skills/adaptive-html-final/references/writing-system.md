@@ -31,6 +31,26 @@ Hook → 문제 → 관점 → 사례 → 실행 → CTA 흐름을 따른다. �
 
 목적, 트리거, 입력/출력, 워크플로우, 금지 규칙, 품질 게이트, 완료 기준을 빠짐없이 본다.
 
+## GitHub Analysis
+
+GitHub 저장소 분석은 README를 예쁘게 다시 쓰는 작업이 아니라 “이 저장소를 이해·실행·채택·감사해도 되는가?”를 판단하게 만드는 실사 리포트다.
+
+필수 원칙:
+
+- **질문 중심 목차**: 무엇인가, 바로 실행 가능한가, 어디를 보면 되는가, 살아 있는 프로젝트인가, 라이선스/보안 리스크는 무엇인가, 다음 행동은 무엇인가.
+- **FACT / INFERENCE / UNKNOWN 분리**: README, repository metadata, files, releases, issues, PRs, contributors, topics, license처럼 관측 가능한 값만 FACT로 쓴다. 내부 보안 설정, 실제 취약점, 비공개 로드맵은 UNKNOWN으로 둔다.
+- **근거 링크/근거 필드**: 핵심 판단 카드에는 “근거” 또는 “확인 위치”를 함께 둔다. 출처가 없으면 점수화하지 않는다.
+- **채택 판단 우선**: 별점/포크 수만 앞세우지 말고 quickstart 재현성, 최근 활동, 테스트/CI 흔적, 릴리스/버전 정책, 라이선스 명확성, 보안 안내를 더 중요하게 본다.
+- **실행 계획 마무리**: 마지막은 사용/검토/보류/대체 탐색 중 하나의 권장 행동과 3~5개 후속 체크리스트로 끝낸다.
+
+권장 블록:
+
+```text
+verdict → repo identity → quickstart readiness → health signals
+→ file/code tour → releases/activity → security/license
+→ risk matrix → final decision → next actions → source limits
+```
+
 ---
 
 ## Blog/SEO 상세 규칙 (adaptive-html-blog-writer 계승)

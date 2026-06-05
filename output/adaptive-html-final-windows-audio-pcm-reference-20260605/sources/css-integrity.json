@@ -1,5 +1,5 @@
 {
-  "core_css_sha256": "3b4887c281115b3c7a5ade783cd05464c14c043e8f888615b4c069fce0029b09",
+  "core_css_sha256": "d042b5d2e3d5ee6722e40e3cc88fed45643379a1fbcfe283637605192f70b600",
   "asset_order": [
     "theme.css",
     "components.css",
@@ -17,19 +17,19 @@
     "theme-dark.css"
   ],
   "asset_sha256": {
-    "theme.css": "faa37581e7bc9ccc4717f80f2aaf266eb75a5f672c30f0f164ed6dc7e1f8c111",
-    "components.css": "f0647d0429fd6366804b07b1f1bed10420792dae0a22c15d18e5b6bd341fafe0",
+    "theme.css": "71d6c0d2af864def8bfcd6340f6cf4c04d1c2fdc68e5a0783b62d5cd3a24222b",
+    "components.css": "d3c0be07b7cee4ddf44358f5e9194427ed22619847150f7c567850b5f7cb6a58",
     "visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
-    "layouts.css": "195f1d3479a6a4ed7c299c3a437b381d79839e9aca460ec0a5ead4bea3ccc39f",
+    "layouts.css": "6573bab54821bfa66f5a47abd443c47cd087a7bf98375a2a71f5ad3fae23e2b3",
     "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
     "widgets.css": "ce038131dc852a0e08b60884f9aa15d9e670561854c0b1bb53a9d197f0a47659",
-    "visual-html.css": "1605be2efce87dd167413f96c8143e6beff083fe2fdfd29c70a0f867b45b9b2b",
-    "body-icons.css": "33910481dd3f05b9d2d014a1866075c2f85777ac319eb745233d400164031a01",
-    "editorial-patterns.css": "ec38043285eb96508ba44ad15ee8c4d82295f2bc4be4f4c22477ffb1c1db071f",
+    "visual-html.css": "769bfd01d8b93eed23dd87bae61fff46609f46c50f728b838e74484523f65dce",
+    "body-icons.css": "796d128b4296617c4aad7c6a26fc7e797c2f085be977ccb33542ee83efbdc6a5",
+    "editorial-patterns.css": "cffe01f8cbde64f8046c2ca6ee1c50c9eda37e6369c7f369956459a41788dba6",
     "shape-visuals.css": "cd4d0f0d9112eb8212564ed05753817d69e1b49ec3fa378c7f3887cdc545e817",
     "workflow-visuals.css": "3dd9135960bf8ceef96008a6ec0cd40329bbf3bfd8c040120429cfc68673cd8c",
     "theme-dark.css": "54e927c1b9c58d5fd0bf0fc6baf38777fcc9e8445c744f440f325d187f864588"
   },
   "profile": "auto",
-  "skill_version": "5.2.3"
+  "skill_version": "5.3.1"
 }

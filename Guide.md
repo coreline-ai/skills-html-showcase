@@ -1,7 +1,7 @@
 # adaptive-html-final 사용 가이드
 
-갱신일: 2026-06-05
-대상 스킬: `skills/adaptive-html-final` (**v5.2.0**)
+갱신일: 2026-06-06
+대상 스킬: `skills/adaptive-html-final` (**v5.3.0**)
 
 > 이 문서는 현행 운영본 기준 사용 가이드입니다. 결정론 실행 규칙의 단일 출처는 루트 [`AGENTS.md`](AGENTS.md) → [`skills/adaptive-html-final/SKILL.md`](skills/adaptive-html-final/SKILL.md) → `references/*`이며, 충돌 시 그 순서를 따릅니다. v4.x 시점의 리뷰·분석·계획 기록은 [`docs/archive/`](docs/archive/README.md)에 보관되어 있습니다.
 
@@ -16,13 +16,13 @@ html-for-beginners
   → adaptive-html-blog-writer        (블로그/SEO/플랫폼 상세 규칙)
   → adaptive-html-blog-writer-v2
   → adaptive-html-learning-ultimate  (13모드 라우터·레이아웃·평가체계)
-  → adaptive-html-final              (통합 + 비주얼 프로파일 + 3-테마 + 정적 검증 게이트)  ← 현재 운영본
+  → adaptive-html-final              (통합 + GitHub 분석 14번째 모드 + 비주얼 프로파일 + 3-테마 + 정적 검증 게이트)  ← 현재 운영본
 ```
 
 운영 원칙:
 
 1. 기본 HTML 생성·블로그·SEO·플랫폼 변환·스킬 감사를 `adaptive-html-final` 하나로 처리합니다.
-2. 13개 모드 라우터가 요청을 자동 분류하고, 모드별 레이아웃·글쓰기 규칙·시각 자산을 적용합니다.
+2. 14개 모드 라우터가 요청을 자동 분류하고, 모드별 레이아웃·글쓰기 규칙·시각 자산을 적용합니다.
 3. **외부/동작 JS는 0**입니다. 인터랙션은 `<details>`/`:checked`/`:target`/CSS 애니메이션으로만 구현하며, `<script>`는 JSON-LD(`type="application/ld+json"`)만 허용합니다.
 4. 출처가 확인되지 않은 최신 정보·수치·가격은 단정하지 않고 `확인 필요`로 표시합니다.
 5. **완료 기준은 `scripts/validate_output.py`가 `OK`를 내는 것**입니다(§9).
@@ -32,12 +32,12 @@ html-for-beginners
 | 항목 | 값 |
 |---|---|
 | 스킬명 | `adaptive-html-final` |
-| version | **`5.2.0`** |
+| version | **`5.3.0`** |
 | 디렉토리 | `skills/adaptive-html-final/` |
 | 설치용 패키지 | `skills/adaptive-html-final.skill` |
 | 파일 수 | 187개 |
-| 모드 수 | 13개 |
-| 레이아웃 수 | 13개 |
+| 모드 수 | 14개 |
+| 레이아웃 수 | 14개 |
 | CSS 자산 | 12개 + `base.html` 템플릿 |
 | 비주얼 프로파일 | `widget`(v5) · `diagram`(v6) · `auto`(기본) |
 | 테마 | `light`(크림 기본) · `white`(순백) · `dark`(proper-black) — CSS-only 라디오 스위처 |
@@ -45,7 +45,7 @@ html-for-beginners
 | wg- 뷰 위젯 | 20종 |
 | 본문 시각 자산 | body-icon 32 · editorial-pattern 8 · soft-shape 36 · workflow 도판 10 |
 | references | 15종 |
-| recipes | 13종 (모드 13/13 완비) |
+| recipes | 14종 (모드 14/14 완비) |
 | schemas | 3종 (blog-meta, quality-report, visual-brief) |
 | 스크립트 | `validate_output.py`(정적 게이트), `render_visual_svg.py`(SVG 렌더러) |
 | aliases | `adaptive-html-learning-ultimate`, `adaptive-html-blog-writer-v2` |
@@ -71,12 +71,12 @@ assets/body-icons.css(.json)   # 본문 compact 아이콘 32종 (bi-, aria-hidde
 assets/editorial-patterns.css  # 본문 구조 패턴 8종 (chronology·core-insight·before-after 등)
 assets/shape-visuals.css       # soft-shape 도형 36종 앵커 (8000×6000 SVG)
 assets/workflow-visuals.css    # soft 워크플로우 도판 10종 (8000×6000 SVG, ~720px)
-assets/layouts/*.html          # 13개 모드별 HTML 골격 (모두 <main id="main">)
+assets/layouts/*.html          # 14개 모드별 HTML 골격 (모두 <main id="main">)
 assets/widget-templates/*.html       # wg- 위젯 삽입 골격 20종
 assets/visual-html-templates/*.html   # vt- 템플릿 삽입 골격 21종
 assets/editorial-pattern-templates/*.html  # 패턴 골격 8종
 references/*.md                # 필요할 때만 읽는 세부 규칙 (15종)
-recipes/*.prompt.md            # 모드별 대표 프롬프트 (13종)
+recipes/*.prompt.md            # 모드별 대표 프롬프트 (14종)
 schemas/*.json                 # blog-meta / quality-report / visual-brief
 tests/*                        # 품질/레이아웃/접근성/위젯/시각 회귀 체크리스트 + governance 테스트
 scripts/validate_output.py     # 정적 품질 게이트 (완료 필수, stdlib-only)
@@ -93,7 +93,7 @@ examples/*.html                # 모드별 예시 결과물 (7종 + index)
 → 사실 / 해석 / 추론 / 확인 필요 분리
 → 독자 수준 판단
 → 비주얼 프로파일 결정 (widget / diagram / auto)   ← §5
-→ 모드 선택 (13모드 라우터)                          ← §6
+→ 모드 선택 (14모드 라우터)                          ← §6
 → 레이아웃 선택
 → 글쓰기·학습·SEO·플랫폼 최적화
 → 시각 자산 배치 (vt-/wg- · body-icon · shape · workflow · SVG 인포그래픽)
@@ -112,7 +112,7 @@ examples/*.html                # 모드별 예시 결과물 (7종 + index)
 
 ## 5. 비주얼 프로파일 (widget / diagram / auto)
 
-코어(13모드·레이아웃·코어 CSS)는 공유하되, 프로파일이 **어떤 시각 라이브러리를 쓸지** 게이트합니다.
+코어(14모드·레이아웃·코어 CSS)는 공유하되, 프로파일이 **어떤 시각 라이브러리를 쓸지** 게이트합니다.
 
 | 프로파일 | 별칭 | 쓰는 라이브러리 | CSS 번들 추가 | 삽입 단계 |
 |---|---|---|---|---|
@@ -127,7 +127,7 @@ examples/*.html                # 모드별 예시 결과물 (7종 + index)
 
 > **vt- vs SVG 인포그래픽**: 본문에서 읽혀야 하는 구조도(절차·비교·리스크·RACI·타임라인·플로우)는 `vt-`(네이티브 HTML, 검색·복사·반응형). hero 키비주얼·별첨·다운로드용 한 장 인포그래픽은 8000×6000 SVG(`figure.visual-figure > img`). 둘을 뒤바꾸지 않습니다.
 
-## 6. 13개 모드 사용표
+## 6. 14개 모드 사용표
 
 | 우선순위 | 모드 | 언제 쓰나 | 레이아웃 |
 |---:|---|---|---|
@@ -135,17 +135,18 @@ examples/*.html                # 모드별 예시 결과물 (7종 + index)
 | 2 | `platform_blog` | 티스토리, 벨로그, 네이버, 워드프레스 변환 | `platform-adaptation.html` |
 | 3 | `seo_dashboard` | SEO 제목, 메타, 태그, 검색 의도 설계 | `seo-dashboard.html` |
 | 4 | `education_html` | 강의, 온보딩, 실습, 퀴즈 | `course-module.html` |
-| 5 | `expert_html` | 전문가 리포트, 아키텍처, 리스크 진단 | `expert-report.html` |
-| 6 | `article_html` | 공개 아티클, 매거진형 글, GitHub Pages 글 | `magazine-article.html` |
-| 7 | `blog_writer` | 블로그 글, 포스팅, 경험담, 관점 글 | `personal-blog-essay.html` |
-| 8 | `beginner_html` | 초보자용 설명, 비유, 용어 풀이 | `beginner-learning.html` |
-| 9 | `reference_html` | 레퍼런스, 매뉴얼, API 문서 | `reference-manual.html` |
-| 10 | `comparison_html` | 비교, 장단점, 선택 기준 | `comparison-matrix.html` |
-| 11 | `case_study_html` | 사례 연구, 회고, 프로젝트 기록 | `case-study.html` |
-| 12 | `landing_brief_html` | 소개 페이지, 랜딩, 요약 페이지 | `landing-brief.html` |
-| 13 | `checklist_playbook` | 체크리스트, 운영 절차, 플레이북 | `checklist-playbook.html` |
+| 5 | `github_analysis` | GitHub 저장소 URL/owner/repo 분석, README·이슈·릴리스·라이선스 실사 | `github-analysis.html` |
+| 6 | `expert_html` | 전문가 리포트, 아키텍처, 리스크 진단 | `expert-report.html` |
+| 7 | `article_html` | 공개 아티클, 매거진형 글, GitHub Pages 글 | `magazine-article.html` |
+| 8 | `blog_writer` | 블로그 글, 포스팅, 경험담, 관점 글 | `personal-blog-essay.html` |
+| 9 | `beginner_html` | 초보자용 설명, 비유, 용어 풀이 | `beginner-learning.html` |
+| 10 | `reference_html` | 레퍼런스, 매뉴얼, API 문서 | `reference-manual.html` |
+| 11 | `comparison_html` | 비교, 장단점, 선택 기준 | `comparison-matrix.html` |
+| 12 | `case_study_html` | 사례 연구, 회고, 프로젝트 기록 | `case-study.html` |
+| 13 | `landing_brief_html` | 소개 페이지, 랜딩, 요약 페이지 | `landing-brief.html` |
+| 14 | `checklist_playbook` | 체크리스트, 운영 절차, 플레이북 | `checklist-playbook.html` |
 
-여러 트리거가 동시에 들어오면 우선순위가 높은 모드를 선택합니다. 사용자가 모드를 명시하면 사용자 지시가 우선입니다. tie-breaker: 교육/강의 + 공개글이 겹치면 `education_html` 우선, GitHub Pages 배포가 단독 언급되면 `article_html`.
+여러 트리거가 동시에 들어오면 우선순위가 높은 모드를 선택합니다. 사용자가 모드를 명시하면 사용자 지시가 우선입니다. tie-breaker: 교육/강의 + 공개글이 겹치면 `education_html` 우선, GitHub 저장소 URL/`owner/repo` 분석이면 `github_analysis` 우선, GitHub Pages 배포가 단독 언급되면 `article_html`.
 
 ## 7. 가장 좋은 요청 템플릿
 
@@ -167,7 +168,7 @@ examples/*.html                # 모드별 예시 결과물 (7종 + index)
 
 ## 8. 모드별 예시 프롬프트
 
-각 모드의 완성형 프롬프트는 `skills/adaptive-html-final/recipes/*.prompt.md` 13종에 정리되어 있습니다. 대표 예시:
+각 모드의 완성형 프롬프트는 `skills/adaptive-html-final/recipes/*.prompt.md` 14종에 정리되어 있습니다. 대표 예시:
 
 ### 초보자 학습자료
 
@@ -182,6 +183,14 @@ Docker 개념을 beginner_html 모드로 HTML 학습자료로 만들어줘.
 이 아키텍처 메모를 expert_html 모드로 전문가 리포트 HTML로 정리해줘.
 Executive Summary, 운영모델/RACI, 리스크 매트릭스(4개+), 우선순위 로드맵, 검증 체크리스트를 포함해줘.
 핵심 표는 5행 이상으로.
+```
+
+### GitHub 저장소 분석
+
+```text
+https://github.com/coreline-ai/skills-html-showcase 저장소를 github_analysis 모드로 분석해줘.
+사용자가 가장 궁금해할 질문 중심 목차, quickstart 가능성, 파일 투어, 유지보수 신호, 라이선스/보안 리스크, 다음 행동 체크리스트를 포함해줘.
+FACT / INFERENCE / UNKNOWN을 분리하고 단일 HTML로 저장해줘.
 ```
 
 ### 블로그 글
@@ -263,15 +272,15 @@ python3 skills/adaptive-html-final/scripts/validate_output.py \
 
 ## 11. 빌드 완성도 기준선 (Canonical Baseline)
 
-현재 스킬 v5.2.0의 정적 품질 게이트를 **0 issue로 완전 통과**한 캐노니컬 산출물:
+현재 13-topic 캐노니컬 산출물은 v5.2.3 정적 품질 게이트를 **0 issue로 완전 통과**한 기준선입니다. v5.3.0의 14번째 `github_analysis` 쇼케이스는 별도 재생성 전까지 이 기준선에 포함되지 않습니다:
 
 ```text
 output/adaptive-html-final-13-topics-20260605_083433/   (HTML 14개, 게이트 OK)
 ```
 
-이 디렉토리는 13개 토픽을 v5.2.0의 강력한 정적 게이트(코어 해시·교차 누수·무 JS·접근성·모바일 안전 표·시각 자산 계약)에 맞춰 빌드한 **빌드 완성도 검증 기준선**입니다. 신규 산출물을 만들 때는 이 구조(`sources/` 스냅샷 + `css-integrity.json` + 코어 해시 마커)를 따르고, 게이트 `OK`를 완료 기준으로 삼습니다.
+이 디렉토리는 13개 토픽을 v5.2.3의 강력한 정적 게이트(코어 해시·교차 누수·무 JS·접근성·모바일 안전 표·시각 자산 계약)에 맞춰 빌드한 **빌드 완성도 검증 기준선**입니다. 신규 산출물을 만들 때는 이 구조(`sources/` 스냅샷 + `css-integrity.json` + 코어 해시 마커)를 따르고, 게이트 `OK`를 완료 기준으로 삼습니다.
 
-> 참고: v4~v5.0 시점에 생성된 일부 `output/`·`examples/`는 그 사이 코어 CSS가 진화하면서 해시가 드리프트해 현재 게이트에서 `FAILED`가 날 수 있습니다(시점 고정 산출물). 최신 기준선은 항상 위 13-topics 디렉토리입니다.
+> 참고: v4~v5.0 시점에 생성된 일부 `output/`·`examples/`는 그 사이 코어 CSS가 진화하면서 해시가 드리프트해 현재 게이트에서 `FAILED`가 날 수 있습니다(시점 고정 산출물). 최신 13-topic 기준선은 위 디렉토리이며, 14-mode 갤러리는 후속 재생성 대상입니다.
 
 ## 12. 추천 운영 규칙
 
@@ -285,4 +294,4 @@ output/adaptive-html-final-13-topics-20260605_083433/   (HTML 14개, 게이트 O
 
 ## 13. 한 줄 요약
 
-`adaptive-html-final`(**v5.2.0**)은 13개 모드 라우터 + editorial 디자인 시스템에 **비주얼 프로파일(widget·diagram·auto)·3-테마(light·white·dark)·vt-/wg- 시각 라이브러리·정적 품질 게이트**까지 갖춘, 외부 JS 0의 결정론적 단일 통합 운영본입니다.
+`adaptive-html-final`(**v5.3.0**)은 14개 모드 라우터 + editorial 디자인 시스템에 **비주얼 프로파일(widget·diagram·auto)·3-테마(light·white·dark)·vt-/wg- 시각 라이브러리·정적 품질 게이트**까지 갖춘, 외부 JS 0의 결정론적 단일 통합 운영본입니다.

@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: 3b4887c281115b3c7a5ade783cd05464c14c043e8f888615b4c069fce0029b09 */
+/* adaptive-html-final-core-css-sha256: d042b5d2e3d5ee6722e40e3cc88fed45643379a1fbcfe283637605192f70b600 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -96,7 +96,7 @@ a:hover{color:var(--accent)}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 /* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
-.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
+.page-wide.layout-github>section>p,.page-wide.layout-github>section>ul,.page-wide.layout-github>section>ol,.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
 /* header content fills its container width (.page / .page-wide) so the header matches the sections below — v5.2.1 (이전: 48rem 단일 측정 캡) */
 .header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:none}
@@ -165,6 +165,10 @@ footer p{font-size:13px;color:var(--ink-mute)}
   .page,.page-wide,.wrap{width:min(100% - 32px,var(--max-reading))}
   h1{font-size:27px}
 }
+/* === 완성본 표준 승격 v5.3.1 — 헤더 리듬 === */
+.header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
+.header .kicker::before{width:6px;height:6px}
+.header .sub{text-align:justify;word-break:keep-all}
 
 /* Editorial components for adaptive-html-blog-writer-v2. */
 .box,.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px;margin:24px 0}
@@ -383,6 +387,8 @@ details p{margin-bottom:0}
   .mobile-card-table tbody th{color:var(--ink);font-weight:800;background:transparent}
   .mobile-card-table tbody th::before{content:"";display:none}
 }
+/* === 완성본 표준 승격 v5.3.1 — source-note 투명 === */
+.source-note{background:transparent}
 
 /* Visual Template System: responsive figure shell for 8000x6000 SVG infographics. */
 .visual-figure,.figure-wide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:14px;margin:22px 0 28px;overflow:hidden}
@@ -1255,6 +1261,8 @@ body{background:var(--vt-wash)}
 /* 21 soft-workflow-map */.wf-board{--wf-warm:#ff812f;--wf-warm2:#ffbd72;--wf-edge:#ead8c7;position:relative;background:linear-gradient(135deg,#fff2e4 0%,#fffaf5 52%,#f8e1cf 100%);border:1px solid var(--wf-edge);border-radius:18px;padding:30px;overflow:hidden}.wf-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px}.wf-newbadge{display:inline-flex;align-items:center;background:var(--vt-ink);color:#fff;border-radius:999px;padding:9px 22px;font-weight:900;font-size:18px}.wf-aistack{display:flex;align-items:center;gap:12px}.wf-aibadge{width:54px;height:54px;border-radius:16px;background:#242421;color:var(--wf-warm2);display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:26px}.wf-bag{width:48px;height:48px;border:1px solid var(--wf-edge);border-radius:16px;background:#fff5e9;display:grid;place-items:center;color:var(--wf-warm);font-size:24px}.wf-map{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:24px;align-items:center}.wf-col{display:grid;gap:16px}.wf-card{background:rgba(255,250,244,.92);border:1px solid var(--wf-edge);border-radius:16px;padding:18px;min-height:112px;box-shadow:0 14px 28px rgba(172,124,83,.13)}.wf-card strong{display:block;font-weight:900;margin-bottom:6px;color:var(--vt-ink)}.wf-card p{font-size:14px;line-height:1.6;color:var(--ink-mute);margin:0}.wf-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:10px;background:var(--card);box-shadow:inset 0 0 0 1px var(--wf-edge);color:var(--wf-warm)}.wf-center{position:relative;background:#fffaf5;border:1px solid var(--wf-edge);border-radius:22px;padding:22px;box-shadow:0 24px 50px rgba(172,124,83,.2)}.wf-codewin{height:120px;border-radius:15px;background:#2b2e36;margin:-44px auto 16px;width:80%;box-shadow:0 20px 34px rgba(31,31,29,.22);padding:16px}.wf-codewin span{display:block;height:8px;border-radius:999px;margin:9px;background:#7f8cff}.wf-codewin span:nth-child(2){width:64%;background:var(--wf-warm2)}.wf-codewin span:nth-child(3){width:82%;background:#72d9aa}.wf-dash{border-radius:16px;background:#f1e8ff;border:1px solid #d9caff;padding:14px;margin-bottom:16px}.wf-dashbar{height:32px;width:54%;border-radius:11px;background:linear-gradient(90deg,#cdb7ff,#9a75ff);margin-bottom:12px}.wf-dashblock{height:64px;border-radius:11px;background:var(--card)}.wf-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.wf-metric{background:var(--card);border:1px solid var(--wf-edge);border-radius:14px;padding:13px;text-align:center}.wf-metric b{display:block;color:#1683a3;font-size:26px;font-family:var(--serif)}.wf-metric span{font-size:12px;color:var(--ink-mute)}.wf-pipes{margin-top:16px;display:grid;gap:9px}.wf-pipe{display:grid;grid-template-columns:22px 1fr 1.4fr;gap:11px;align-items:center}.wf-pipe i{width:22px;height:22px;border-radius:50%;background:var(--wf-warm)}.wf-pipe:nth-child(2) i{background:#9a75ff}.wf-pipe:nth-child(3) i{background:#61d1a0}.wf-pipe:nth-child(4) i{background:#ff6b6b}.wf-pipe span{height:8px;border-radius:999px;background:#eadbd0}.wf-bottom{margin-top:24px;background:#fff6ed;border:1px solid var(--wf-edge);border-radius:999px;height:50px;display:flex;align-items:center;padding:0 10px 0 18px;gap:16px}.wf-rail-short{width:72px;height:13px;border-radius:999px;background:#f1dac5}.wf-rail-long{width:340px;max-width:46%;height:13px;border-radius:999px;background:#e8d4c2}.wf-arrow{margin-left:auto;width:120px;height:42px;border-radius:999px;background:linear-gradient(135deg,var(--wf-warm2),#ff7a2c);display:flex;align-items:center;justify-content:flex-end;padding-right:11px;box-shadow:0 8px 18px rgba(255,122,44,.25)}.wf-arrow i{width:32px;height:32px;border-radius:50%;background:var(--card);display:grid;place-items:center;color:var(--wf-warm);font-weight:900;font-style:normal}
 @media(max-width:820px){.wf-map{grid-template-columns:1fr}.wf-codewin{margin-top:0}.wf-board{padding:22px}}
 @media(max-width:520px){.wf-metrics{grid-template-columns:1fr}.wf-pipes{display:none}.wf-rail-long{display:none}.wf-arrow{width:96px}}
+/* === 완성본 표준 승격 v5.3.1 — vt-frame 내부 박스 평면화 === */
+.vt-frame{background:transparent;border:0}
 
 /* adaptive-html-final body icons — compact editorial inline SVG, namespaced bi-, uses skill tokens. 외부/동작 JS 0. */
 .body-icon{width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(245,245,240,.72));display:inline-grid;place-items:center;flex:0 0 auto;vertical-align:middle}
@@ -1282,6 +1290,9 @@ h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
 :root:has(#ahf-white:checked) .body-icon{background:linear-gradient(180deg,#ffffff,#f4f5f8)}
 :root:has(#ahf-dark:checked) .body-icon{background:linear-gradient(180deg,var(--vt-soft),var(--card));border-color:var(--line)}
 @media(prefers-reduced-motion:reduce){.body-icon{transition:none}}
+/* === 완성본 표준 승격 v5.3.1 — 섹션 제목 앞 큰 아이콘(42px) === */
+h2>.body-icon,h3>.body-icon{width:42px;height:42px;border-radius:12px}
+h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 
 /* adaptive-html-final editorial patterns — small content-structure blocks for in-mode insertion. 무 JS, 스킬 토큰. */
 .source-preserve{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:0;margin:18px 0}
@@ -1431,6 +1442,34 @@ h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
 .layout-expert .executive-summary .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .risk-high{border-left:5px solid var(--accent)}.risk-mid{border-left:5px solid #d99a38}.risk-low{border-left:5px solid #7ea66a}
 
+/* GitHub analysis mode: repository due-diligence report with evidence-first cards. */
+.layout-github .repo-signal-grid,
+.layout-github .repo-identity-grid,
+.layout-github .repo-health-grid,
+.layout-github .repo-action-grid,
+.layout-github .repo-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-github>section,
+.layout-github>.source-note,
+.layout-github>.github-question-toc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
+.layout-github>.try{color:var(--ink)}
+.layout-github>.try p,.layout-github>.try li{color:var(--ink-soft)}
+.layout-github>.try h2{color:var(--ink)}
+.layout-github>.try .tag{background:var(--chip-bg);border-color:var(--line);color:var(--ink)}
+.layout-github>section .vt-shell{margin-bottom:0}
+.layout-github .repo-card,
+.layout-github .repo-signal,
+.layout-github .repo-question,
+.layout-github .repo-evidence{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px;min-width:0}
+.layout-github .repo-card h3,
+.layout-github .repo-signal h3,
+.layout-github .repo-question h3,
+.layout-github .repo-evidence h3{margin-top:0;color:var(--accent-2)}
+.layout-github .repo-signal .label,
+.layout-github .repo-evidence .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink)}
+.layout-github .repo-score{display:inline-grid;place-items:center;min-width:48px;height:48px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:900 16px/1 var(--sans);margin:0 10px 8px 0}
+.layout-github .repo-unknown{border-style:dashed;background:var(--accent-soft)}
+.layout-github .github-question-toc{margin:24px 0 34px}
+
 .layout-article .article-header{margin-bottom:28px}.layout-article .lead{font-size:18px;color:var(--ink-soft)}.layout-article .article-takeaway{background:var(--accent-soft)}.layout-article article section{margin:54px 0}
 .layout-article .pull-quote{font-size:22px;color:var(--ink);border-color:var(--accent);font-style:normal}
 
@@ -1490,7 +1529,7 @@ h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
 .layout-platform .platform-card.is-essay{border-left:4px solid var(--term-accent)}
 .layout-platform .platform-card h3{margin-top:0;color:var(--accent-2)}
 .layout-platform .original-summary,.layout-platform .platform-strategy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
-@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid:not(section),.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid:not(section),.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-github .repo-signal-grid,.layout-github .repo-identity-grid,.layout-github .repo-health-grid,.layout-github .repo-action-grid,.layout-github .repo-evidence-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
 
 /* Ultimate extra modes */
 .layout-audit .audit-row{display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr .6fr;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}
@@ -1517,7 +1556,7 @@ h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
    .winners:not(section), or .tradeoffs:not(section) for actual grid layout. */
 
 .audit-header,.blog-header,.case-header,.checklist-header,.compare-header,
-.course-header,.landing-header,.platform-header,.reference-header,
+.course-header,.github-header,.landing-header,.platform-header,.reference-header,
 .report-header,.seo-header{margin-bottom:42px;padding-bottom:32px;border-bottom:1px solid var(--line)}
 
 /* Semantic section wrappers: normal flow only. */
@@ -1525,7 +1564,9 @@ h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
 .decision-context,.decisions,.results,.winners,.tradeoffs,.how-it-works,.failure-modes,
 .patterns,.examples,.line-audit,.content-outline,.seo-overview,.before-start,
 .beginner-analogy,.beginner-practice,.beginner-terms,.beginner-traps,.example-block,
-.lesson-step,.publish-checklist,.related-list,.soft-cta{margin:46px 0}
+.lesson-step,.publish-checklist,.related-list,.soft-cta,.github-verdict,.repo-identity,
+.quickstart-readiness,.repo-health,.code-tour,.release-roadmap,.security-license,
+.decision-tree{margin:46px 0}
 
 /* Actual reusable grid/card wrappers. Never apply these to a section containing h2/h2-sub. */
 .grid-2,.cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
@@ -1566,6 +1607,9 @@ h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
   .final-seo-set .grid,.final-seo-set .seo-grid{grid-template-columns:1fr}
   .layout-blog article>section>h2:first-child::before{width:30px;height:30px;margin-right:9px;font-size:13px;vertical-align:2px}
 }
+/* === 완성본 표준 승격 v5.3.1 — 무클래스 콘텐츠 섹션 카드 뷰 === */
+.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}
 
 @media print{
   *{print-color-adjust:exact;-webkit-print-color-adjust:exact}

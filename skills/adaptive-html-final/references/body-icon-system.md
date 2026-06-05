@@ -68,6 +68,7 @@
 | `expert_html` | `warning` · `decision` · `metric` · `security` |
 | `article_html` | `idea` · `quote` · `connection` |
 | `education_html` | `learning` · `check` · `timeline` |
+| `github_analysis` | `file` · `metric` · `security` · `decision` |
 | `blog_writer` | `idea` · `timeline` · `note` |
 | `seo_dashboard` | `search` · `question` · `compare` |
 | `platform_blog` | `platform` · `edit` · `compare` |

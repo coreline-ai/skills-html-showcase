@@ -1,6 +1,6 @@
 # Editorial Design System
 
-`adaptive-html-final`은 13개 모드 구조를 유지하되, 출력물은 고급 한국어 기술 블로그/학습지처럼 보여야 한다.
+`adaptive-html-final`은 14개 모드 구조를 유지하되, 출력물은 고급 한국어 기술 블로그/학습지처럼 보여야 한다.
 
 ## 디자인 토큰
 

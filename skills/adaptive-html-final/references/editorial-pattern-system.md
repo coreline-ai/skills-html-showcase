@@ -1,6 +1,6 @@
 # Editorial Pattern System
 
-기존 13개 모드를 늘리지 않고, **필요한 섹션에 선택 삽입하는 작은 본문 구조 패턴 8종**이다. 큰 SVG 시스템이 아니라 본문 흐름에 붙는 카드·타임라인·콜아웃·마크다운 발췌·접근성 체크리스트 중심이며, 외부/동작 JS 0, 스킬 디자인 토큰 + body icon(`bi-`)을 쓴다.
+현행 14개 모드와 별개로 새 모드를 늘리지 않고, **필요한 섹션에 선택 삽입하는 작은 본문 구조 패턴 8종**이다. 큰 SVG 시스템이 아니라 본문 흐름에 붙는 카드·타임라인·콜아웃·마크다운 발췌·접근성 체크리스트 중심이며, 외부/동작 JS 0, 스킬 디자인 토큰 + body icon(`bi-`)을 쓴다.
 
 - **자산**: `assets/editorial-patterns.css`(패턴 CSS) + `assets/editorial-pattern-templates/01..08.html`(삽입 골격) + body icon(`assets/body-icons.css`)
 - **프로파일 무관**: widget/diagram/auto 어디서나 사용(본문 구조 보조). 조건부 인라인(`{{EDITORIAL_PATTERNS_CSS}}` 슬롯).
@@ -9,12 +9,12 @@
 
 | pattern | 이름 | 아이콘 | 추천 모드 |
 |---|---|---|---|
-| `chronology` | 증류 연대기 (timeline) | `timeline` | expert_html · case_study_html · skill_audit · education_html |
-| `source-preserve` | 원문 보존 카드 | `source` | reference_html · article_html · blog_writer · skill_audit |
-| `core-insight` | 핵심 아이디어 callout | `idea` | article_html · blog_writer · expert_html · landing_brief_html |
-| `connection` | 연결 분석 카드 | `connection` | reference_html · skill_audit · article_html · comparison_html |
+| `chronology` | 증류 연대기 (timeline) | `timeline` | expert_html · case_study_html · skill_audit · education_html · github_analysis |
+| `source-preserve` | 원문 보존 카드 | `source` | reference_html · article_html · blog_writer · skill_audit · github_analysis |
+| `core-insight` | 핵심 아이디어 callout | `idea` | article_html · blog_writer · expert_html · landing_brief_html · github_analysis |
+| `connection` | 연결 분석 카드 | `connection` | reference_html · skill_audit · article_html · comparison_html · github_analysis |
 | `before-after` | Before / After 윤문 | `edit` | platform_blog · blog_writer · skill_audit · comparison_html |
-| `md-excerpt` | SKILL.md/마크다운/코드 원문 발췌 | `source` | skill_audit · reference_html · article_html |
+| `md-excerpt` | SKILL.md/마크다운/코드 원문 발췌 | `source` | skill_audit · reference_html · article_html · github_analysis |
 | `impact-grid` | 콘텐츠 전환 impact grid | `impact` | platform_blog · landing_brief_html · seo_dashboard · checklist_playbook |
 | `accessibility-checklist` | 접근성 30분 점검 + 실패 모드 + 릴리스 체크 | `shield` | skill_audit · checklist_playbook · expert_html · reference_html |
 

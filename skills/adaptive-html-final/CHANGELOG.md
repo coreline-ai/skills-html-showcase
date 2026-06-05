@@ -1,5 +1,44 @@
 # Changelog — adaptive-html-final
 
+## v5.3.1 (2026-06-06) — 완성본(reference) 표준화: 페이지-로컬 디자인을 스킬 기본값으로 승격
+
+`windows-audio-pcm-reference`(완성본, v5.2.3)에만 page-local로 있던 핵심 디자인을 **스킬 기본값으로 승격**해, 신규 출력(예: github_analysis v5.3.0)이 완성본과 다르게 회귀하던 문제를 근본 해소. 무 JS, `!important` 0.
+
+### 승격 (회귀 안전 배치)
+- **layouts.css(코어)**: `.page/.page-wide > section:not([class])`(+article) 무클래스 콘텐츠 섹션을 카드 뷰(`var(--card)`+border+radius+padding)로 감싸고 첫 h2 top-margin 리셋. 13-topics 전 13모드에서 이미 검증된 규칙.
+- **theme.css(코어)**: `.header .kicker` 폰트 11px·축소 패딩, `.header .sub{text-align:justify;word-break:keep-all}` — 헤더 리듬 표준화.
+- **components.css(코어)**: `.source-note{background:transparent}` — 최하단 노트 평면.
+- **body-icons.css(조건부)**: `h2/h3 > .body-icon{42px}` — 섹션 제목 앞 큰 아이콘.
+- **visual-html.css(조건부)**: `.vt-frame{background:transparent;border:0}` — 다이어그램 내부 박스 평면(외곽 vt-shell 단일 뷰).
+
+### 회귀 방지 결정
+- **core-insight는 승격 제외**: bare `.core-insight` 전역 오버라이드는 accent-gradient hero 콜아웃을 전 모드 회귀시키므로, 기존 `.core-insight--neutral` opt-in 모디파이어로만 평면 처리(스킬 안전장치 유지).
+
+### 영향·검증
+- 코어 자산(theme/components/layouts) 변경 → **core-css-sha256 리베이스**. 게이트 통과 베이스라인(13-topics·github_analysis·windows-audio-reference)을 v5.3.1로 재생성(재인라인·코어 마커·스냅샷·css-integrity), page-local 중복 제거, `validate_output.py` **OK** 유지.
+
+## v5.3.0 (2026-06-06) — GitHub Analysis 14번째 모드 추가
+
+GitHub 저장소 URL 또는 `owner/repo` 입력을 사용자 질문 중심의 HTML 실사 리포트로 변환하는 `github_analysis` 모드를 추가했다. 목적은 README 재요약이 아니라 “이 저장소를 이해·실행·채택·감사해도 되는가?”를 판단하게 하는 것이다.
+
+### 추가
+- **신규 모드**: `github_analysis` — priority 5, layout `github-analysis.html`, class `.layout-github`.
+- **신규 레이아웃**: `assets/layouts/github-analysis.html` — verdict, question toc, repo identity, quickstart readiness, repo health, code tour, releases/roadmap, security/license, risk matrix, final decision, next actions, source note.
+- **신규 CSS**: `assets/layouts.css`에 `.layout-github` repo signal/card/grid 스타일 추가.
+- **와이드 폭 보정**: `assets/theme.css`의 `.page-wide` prose override에 `.layout-github`를 포함해 GitHub 분석 본문이 1020px 와이드 레이아웃 리듬을 따른다.
+- **신규 전략 문서**: `references/github-analysis-system.md` — FACT/INFERENCE/UNKNOWN 분리, GitHub 표면별 수집 항목, 판단 모델, source note 계약.
+- **신규 recipe**: `recipes/github-analysis.prompt.md`.
+- **개발 계획**: `dev-plan/implement_20260606_003800.md`.
+
+### 매핑
+- vt 1순위: `hero-map`; 보강: `quality-gate`, `file-tour`, `risk-matrix`, `timeline`, `decision-tree`, `checklist-flow`.
+- wg 1순위: `wg-11 Weekly Status`; 보강: `wg-04 Module Map`, `wg-14 Feature Explainer`, `wg-16 Implementation Plan`, `wg-17 PR Writeup`, `wg-18 Ticket Triage Board`.
+
+### 영향·검증
+- `manifest.json` 버전 `5.3.0`, modes/layouts 14개로 갱신.
+- `AGENTS.md`, `SKILL.md`, `references/mode-selection.md`, layout/visual/widget/writing references, tests/golden prompts/checklists, README/Guide 동기화.
+- `layouts.css`가 코어 CSS 자산이라 신규 출력의 core-css-sha256은 재계산이 필요하다. 기존 `13-topics` 산출물은 v5.2.3 캐노니컬 기준선으로 유지하며, 14-mode 쇼케이스 재생성은 후속 작업이다.
+
 ## v5.2.3 (2026-06-05) — editorial-patterns 가독성 승격
 
 쇼케이스에서 반복 적용하던 일반 가독성 보정을 스킬 기본값으로 승격. 무 JS, `!important` 0, 조건부 자산(`editorial-patterns.css`)만 변경 — **코어 해시 불변**.

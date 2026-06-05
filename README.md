@@ -7,8 +7,8 @@
 # 🎨 Adaptive HTML Final
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
-[![version](https://img.shields.io/badge/version-5.2.3-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
-[![modes](https://img.shields.io/badge/modes-13-2a7d5a)](#-13개-모드)
+[![version](https://img.shields.io/badge/version-5.3.0-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
+[![modes](https://img.shields.io/badge/modes-14-2a7d5a)](#-14개-모드)
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
 [![themes](https://img.shields.io/badge/themes-light·white·dark-111827)](#-최근-업데이트)
 [![libraries](https://img.shields.io/badge/view%20widgets-20-e63946)](#️-비주얼-프로파일) [![svg→html](https://img.shields.io/badge/svg→html%20templates-21-d99a38)](#️-비주얼-프로파일)
@@ -17,11 +17,11 @@
 [![cross-agent](https://img.shields.io/badge/cross--agent-AGENTS.md-6e40c9)](AGENTS.md)
 [![python](https://img.shields.io/badge/SVG%20render-stdlib%20only-3776AB?logo=python&logoColor=white)](skills/adaptive-html-final/scripts/render_visual_svg.py)
 
-**입력 자료를 13개 모드로 라우팅해 전문가급 한국어 HTML 콘텐츠를 만드는 단일 통합 스킬 — 3-테마(라이트·화이트·다크)와 비주얼 프로파일(위젯형·도식형·자동) 선택**
+**입력 자료를 14개 모드로 라우팅해 전문가급 한국어 HTML 콘텐츠를 만드는 단일 통합 스킬 — GitHub 저장소 분석, 3-테마(라이트·화이트·다크), 비주얼 프로파일(위젯형·도식형·자동) 선택**
 
-URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill`을 받아 학습자료, 전문가 리포트, 아티클, 교육 모듈, 블로그 원고, SEO 대시보드, 플랫폼 변환, 스킬 감사, 레퍼런스, 비교, 케이스 스터디, 랜딩, 체크리스트로 변환합니다.
+URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill`·GitHub 저장소 URL을 받아 학습자료, 전문가 리포트, GitHub 저장소 분석, 아티클, 교육 모듈, 블로그 원고, SEO 대시보드, 플랫폼 변환, 스킬 감사, 레퍼런스, 비교, 케이스 스터디, 랜딩, 체크리스트로 변환합니다.
 
-[Overview](#-overview) · [최근 업데이트](#-최근-업데이트) · [모드](#-13개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [쇼케이스 갤러리](#️-쇼케이스-갤러리) · [스킬 구조](#️-스킬-구조) · [사용법](#-사용법)
+[Overview](#-overview) · [최근 업데이트](#-최근-업데이트) · [모드](#-14개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [쇼케이스 갤러리](#️-쇼케이스-갤러리) · [스킬 구조](#️-스킬-구조) · [사용법](#-사용법)
 
 </div>
 
@@ -56,6 +56,20 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 ---
 
 ## 🆕 최근 업데이트
+
+### v5.3.0 (2026-06-06) — GitHub Analysis 14번째 모드 추가
+
+> **전문가 전략 한 줄 결론:** GitHub 저장소 분석은 README 재요약이 아니라 “이 저장소를 이해·실행·채택·감사해도 되는가?”를 판단하게 만드는 실사 리포트다. `github_analysis`는 verdict, quickstart, repo health, file tour, security/license, risk matrix, next actions를 질문 중심 목차로 재구성한다.
+
+| 영역 | 변경 내용 |
+|---|---|
+| 신규 모드 | `github_analysis` — GitHub 저장소 URL/`owner/repo` 입력을 사용자 질문 중심 HTML 리포트로 변환 |
+| 레이아웃 | `assets/layouts/github-analysis.html`, `.layout-github` CSS, repo signal/grid/card 클래스 추가 |
+| 결정표 | SKILL.md §0.6, AGENTS.md §3, `references/mode-selection.md`를 14모드로 동기화 |
+| 시각 매핑 | vt 1순위 `hero-map`, 보강 `quality-gate`·`file-tour`·`risk-matrix`·`timeline`·`decision-tree`; wg 보강 `wg-11`·`wg-04`·`wg-14`·`wg-16` |
+| 전략 문서 | `references/github-analysis-system.md`, `recipes/github-analysis.prompt.md`, 개발 계획 `dev-plan/implement_20260606_003800.md` 추가 |
+
+> 기존 `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 기준 13-topic 캐노니컬 산출물로 유지합니다. 14-mode 신규 쇼케이스 재생성은 후속 작업입니다.
 
 ### v5.2.1 → v5.2.3 (2026-06-05) — 캐노니컬 산출물 정련 + 전문가 팀 콘텐츠 보강 + 가독성 승격
 
@@ -144,7 +158,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ---
 
-## 📦 13개 모드
+## 📦 14개 모드
 
 요청에서 여러 트리거가 감지되면 우선순위가 높은 모드가 선택되며, 사용자가 모드를 명시하면 그 지시가 우선합니다.
 
@@ -154,15 +168,16 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 | 2 | `platform_blog` | 티스토리·벨로그·네이버·워드프레스 변환 | `platform-adaptation.html` |
 | 3 | `seo_dashboard` | 제목·메타·태그·검색 의도 설계 | `seo-dashboard.html` |
 | 4 | `education_html` | 강의·온보딩·실습·퀴즈 | `course-module.html` |
-| 5 | `expert_html` | 전문가 리포트·아키텍처·리스크 진단 | `expert-report.html` |
-| 6 | `article_html` | 공개 아티클·매거진형 글 | `magazine-article.html` |
-| 7 | `blog_writer` | 블로그 글·포스팅·경험담 | `personal-blog-essay.html` |
-| 8 | `beginner_html` | 초보자 설명·비유·용어 풀이 | `beginner-learning.html` |
-| 9 | `reference_html` | 레퍼런스·매뉴얼·API 문서 | `reference-manual.html` |
-| 10 | `comparison_html` | 비교·장단점·선택 기준 | `comparison-matrix.html` |
-| 11 | `case_study_html` | 사례 연구·회고·프로젝트 기록 | `case-study.html` |
-| 12 | `landing_brief_html` | 소개·랜딩·요약 페이지 | `landing-brief.html` |
-| 13 | `checklist_playbook` | 체크리스트·운영 절차·플레이북 | `checklist-playbook.html` |
+| 5 | `github_analysis` | GitHub 저장소 URL/owner/repo 실사·README·이슈·릴리스·라이선스 분석 | `github-analysis.html` |
+| 6 | `expert_html` | 전문가 리포트·아키텍처·리스크 진단 | `expert-report.html` |
+| 7 | `article_html` | 공개 아티클·매거진형 글 | `magazine-article.html` |
+| 8 | `blog_writer` | 블로그 글·포스팅·경험담 | `personal-blog-essay.html` |
+| 9 | `beginner_html` | 초보자 설명·비유·용어 풀이 | `beginner-learning.html` |
+| 10 | `reference_html` | 레퍼런스·매뉴얼·API 문서 | `reference-manual.html` |
+| 11 | `comparison_html` | 비교·장단점·선택 기준 | `comparison-matrix.html` |
+| 12 | `case_study_html` | 사례 연구·회고·프로젝트 기록 | `case-study.html` |
+| 13 | `landing_brief_html` | 소개·랜딩·요약 페이지 | `landing-brief.html` |
+| 14 | `checklist_playbook` | 체크리스트·운영 절차·플레이북 | `checklist-playbook.html` |
 
 ---
 
@@ -246,7 +261,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ## 🎚️ 비주얼 프로파일
 
-스킬을 **기동할 때 비주얼 스타일을 고를 수 있습니다.** 코어(13모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 *어느 라이브러리·삽입 단계·CSS 번들*을 쓸지만 게이트합니다. 세 프로파일 모두 **외부/동작 JS 0**.
+스킬을 **기동할 때 비주얼 스타일을 고를 수 있습니다.** 코어(14모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 *어느 라이브러리·삽입 단계·CSS 번들*을 쓸지만 게이트합니다. 세 프로파일 모두 **외부/동작 JS 0**.
 
 <table>
 <tr>
@@ -296,7 +311,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 theme.css        색/폰트/폭 토큰(:root) · skip · focus-visible · reduced-motion   ← 코어 해시
 components.css    term · analogy · danger · good · hero-analogy · try · tbl · faq · cta-box ...  ← 코어 해시
 visual-components.css   figure.visual-figure (8000×6000 SVG 삽입 셸)               ← 코어 해시 · v4.2
-layouts.css       13개 모드별 그리드/구조 (+ 39개 레이아웃 전용 클래스)              ← 코어 해시
+layouts.css       14개 모드별 그리드/구조 (+ github-analysis 레이아웃 포함)              ← 코어 해시
 print.css         인쇄 대응(print-color-adjust · break-inside)                    ← 코어 해시
 widgets.css       CSS 뷰 위젯 wg-01~20 (탭·플로우·아코디언, 무 JS)  ← v4.4 · widget/auto 프로파일 조건부 인라인
 visual-html.css   SVG→HTML 템플릿 vt- 21종 (본문 삽입 도식)        ← v4.5+ · diagram/auto 프로파일 조건부 인라인
@@ -327,10 +342,10 @@ theme-dark.css    CSS-only 3-테마 토큰 오버라이드 + 라디오 세그먼
 skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트
-│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.2.3)
-│   ├── assets/                        # base.html · CSS · 위젯/도식/패턴/테마 자산 · 13개 레이아웃 골격
+│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.3.0)
+│   ├── assets/                        # base.html · CSS · 위젯/도식/패턴/테마 자산 · 14개 레이아웃 골격
 │   ├── references/                    # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/비주얼 규칙
-│   ├── recipes/       (13)            # 13개 모드별 대표 프롬프트
+│   ├── recipes/       (14)            # 14개 모드별 대표 프롬프트
 │   ├── schemas/       (3)             # blog-meta · quality-report · visual-brief
 │   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트
 │   ├── visual-templates/ (7)         # 8000×6000 SVG 템플릿
@@ -347,7 +362,7 @@ skills-html-showcase/
 │   └── archive/                      # v4~v5.0 시점 고정 리뷰/분석/계획 기록 (SUPERSEDED)
 ├── demo/ · orginal_skill/            # 이전 계열 데모 · 원본 스킬
 ├── AGENTS.md                         # 크로스-에이전트 결정론 진입점
-└── Guide.md                          # 사용 가이드 (v5.2.1+)
+└── Guide.md                          # 사용 가이드 (v5.3.0+)
 ```
 
 ---
@@ -360,12 +375,12 @@ skills-html-showcase/
 
 | 항목 | 결과 |
 |---|---|
-| skip link ↔ `<main id="main">` | **13 / 13** (접근성 회귀 가드로 고정) |
-| 단일 `h1` 원칙 | 13 / 13 |
+| skip link ↔ `<main id="main">` | **14 / 14** (접근성 회귀 가드로 고정) |
+| 단일 `h1` 원칙 | 14 / 14 레이아웃 계약 |
 | 외부 동작 JS | **0건** |
 | 미정의 CSS 클래스 | **0개** (레이아웃↔CSS 차집합 0) |
 | manifest ↔ 디스크 레이아웃 매핑 | 차집합 0 |
-| recipes 커버리지 | 13 / 13 모드 |
+| recipes 커버리지 | 14 / 14 모드 |
 | blog-writer 상세 규칙 흡수 | 8 / 8 (제목 4계열·도입부 3유형·본문 밀도·톤 매핑·100점·메타·플랫폼·박스) |
 
 ### 버전 진화
@@ -384,6 +399,7 @@ skills-html-showcase/
 | `v5.2.1` | body-icon `:has()` icon+text 정렬 + 헤더 폭 캡 해제(스킬 자산). **13-topics 캐노니컬 산출물**을 13명 전문가 에이전트로 전 섹션 콘텐츠 보강하고 아이콘·테마·레이아웃 정련(게이트 OK·25/25) |
 | `v5.2.2` | body-icons.css에 **아이콘 박스 테마 적응**(white=순백/dark=카드 표면) + lede-note 라벨 정렬 승격. 조건부 자산만 변경 → 코어 해시 불변 |
 | `v5.2.3` | editorial-patterns.css **가독성 승격** — a11y 카드/그리드/포인트 간격, impact 카드 아이콘 하단 여백. 조건부 자산만 변경 → 코어 해시 불변 |
+| `v5.3.0` | **GitHub Analysis 14번째 모드** — `github_analysis`, `github-analysis.html`, `.layout-github`, GitHub 분석 전략/recipe/검증 문서 추가 |
 
 > 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) · 프로파일 분리 계획(아카이브): [`docs/archive/implement_visual_profile_separation.md`](docs/archive/implement_visual_profile_separation.md)
 

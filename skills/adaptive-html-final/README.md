@@ -1,6 +1,11 @@
-# Adaptive HTML Final (v4.5.0)
+# Adaptive HTML Final (v5.3.0)
 
-`adaptive-html-learning-ultimate`(13모드 라우터·레이아웃·평가체계)와 `adaptive-html-blog-writer`(블로그·SEO·플랫폼 상세 규칙)를 하나로 합친 **최종 통합 한국어 HTML 콘텐츠 생성 스킬**입니다.
+`adaptive-html-learning-ultimate`(13모드 라우터·레이아웃·평가체계)에 GitHub 분석 모드를 더한 14모드 체계와 `adaptive-html-blog-writer`(블로그·SEO·플랫폼 상세 규칙)를 하나로 합친 **최종 통합 한국어 HTML 콘텐츠 생성 스킬**입니다.
+
+> **v5.3.0 현재 요약**
+> - 14번째 모드 `github_analysis` 추가: GitHub 저장소 URL/`owner/repo`를 verdict, quickstart, repo health, file tour, security/license, risk matrix, next actions 중심의 HTML 실사 리포트로 변환.
+> - 신규 레이아웃 `assets/layouts/github-analysis.html` + `.layout-github` CSS + `references/github-analysis-system.md` 전략 문서 + `recipes/github-analysis.prompt.md` 추가.
+> - 기존 13-topic 캐노니컬 산출물은 v5.2.3 기준선으로 유지하고, 14-mode 쇼케이스 재생성은 후속 작업.
 
 > **현행 요약 (v4.1 → v4.5.0)**
 > - **v4.1**(정밀 분석 패치): 접근성 테스트 체크리스트 추가, 13개 모드 ID를 SKILL.md 라우터와 통일(`{id, layout}` 매핑), recipes 13/13 완비, blog-meta·quality-report 스키마 보강, 미정의 CSS 클래스 39개 정의로 차집합 0 달성.
@@ -22,11 +27,11 @@
 
 ## 핵심
 
-- 7개 핵심 모드: beginner, expert, article, education, blog, seo, platform
+- 8개 핵심/실사 모드: beginner, expert, article, education, github_analysis, blog, seo, platform
 - 6개 확장 모드: skill_audit, reference, comparison, case_study, landing_brief, checklist_playbook
 - 디자인 유지: 오프화이트 배경, Pretendard + Noto Serif KR, h2 빨간 원번호, h2-sub, 의미 박스, source-note
 - 블로그 강점 흡수: 제목 4계열·도입부 3유형·본문 밀도·블로그 메타 스키마·플랫폼별 규칙·박스 선택 가이드(references 상세)
-- 접근성 수정: 13개 레이아웃 `<main>`에 `id="main"` 통일 (skip link 정상 동작)
+- 접근성 수정: 14개 레이아웃 `<main>`에 `id="main"` 통일 (skip link 정상 동작)
 
 ## 통합 내역
 
@@ -47,11 +52,13 @@
 - `assets/layouts.css`: 모드별 레이아웃 차이
 - `assets/base.html`: 단일 HTML 렌더링 골격
 - `assets/print.css`: 인쇄 대응
-- `assets/layouts/*.html`: 13개 레이아웃 템플릿
+- `assets/layouts/*.html`: 14개 레이아웃 템플릿
+- `assets/layouts/github-analysis.html`: GitHub 저장소 분석 전용 레이아웃
 - `visual-templates/*.svg.tpl`: 8000×6000 SVG 인포그래픽 템플릿 7종 (hero-map, card-grid, decision-tree, quality-gate, timeline, matrix, checklist-flow)
 - `scripts/render_visual_svg.py`: visual brief JSON을 8000×6000 SVG로 렌더링하는 stdlib-only 스크립트
 - `scripts/validate_output.py`: 생성된 output 디렉터리를 검사하는 정적 품질 게이트 (h1·`#main`·로컬 참조·caption·grid 회귀·source sync·visual figure 등)
+- `references/github-analysis-system.md`: GitHub 저장소 분석 정보 구조·판단 기준
 - `references/*.md`: 필요 시 로드하는 세부 규칙 (`widget-system.md` 위젯 선택·삽입·접근성 규칙, `visual-html-system.md` SVG→HTML 템플릿 모드→vt 매핑·삽입 규칙 포함)
-- `recipes/*.md`: 대표 요청 프롬프트 (13모드)
+- `recipes/*.md`: 대표 요청 프롬프트 (14모드)
 - `tests/*.md`: 검증 체크리스트 6종 (accessibility, golden-prompts, layout, quality, visual-regression, widget-checklist)
 - `schemas/*.json`: 메타/품질/시각 스키마 3종 (blog-meta, quality-report, visual-brief)
