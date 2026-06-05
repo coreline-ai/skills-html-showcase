@@ -14,12 +14,13 @@
 
 - **저장소**: `skills-html-showcase` — 다중 모드 한국어 HTML 생성 스킬 `adaptive-html-final`과 그 자산·검증·예제를 담은 쇼케이스 저장소.
 - **스킬**: `adaptive-html-final` — 입력(URL/PDF/텍스트/이미지/메모/기술자료/블로그 초안/SKILL.md)을 받아 **외부 동작 JS 없는** editorial HTML(학습자료·전문가 리포트·아티클·교육 모듈·블로그·SEO 대시보드·플랫폼 블로그·스킬 감사·레퍼런스·비교·케이스 스터디·랜딩·체크리스트)을 생성한다.
-- **현재 버전**: **4.4.0 → 이번 편입으로 4.5.0** (`skills/adaptive-html-final/manifest.json`).
+- **현재 버전**: **5.2.0** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
 - **스킬 위치(절대 경로)**: `/Users/hwanchoi/project_202605/skills-html-showcase/skills/adaptive-html-final/`
   - 본체: `skills/adaptive-html-final/SKILL.md`
   - 매니페스트: `skills/adaptive-html-final/manifest.json`
   - 참조: `skills/adaptive-html-final/references/`
   - 검증기: `skills/adaptive-html-final/scripts/validate_output.py`
+- **경로 폴백(결정론)**: 위 절대 경로가 현재 체크아웃에 존재하지 않을 때만, 현재 저장소 루트 기준 `skills/adaptive-html-final/`을 동일 스킬 디렉터리로 사용한다. 임의 검색 경로를 만들지 않는다.
 
 ---
 
@@ -81,11 +82,12 @@
    | 4 | `widgets.css` | `{{WIDGETS_CSS}}` | **widget·auto** 프로파일만(diagram에선 슬롯 빈 값). 해시 대상 아님 |
    | 5 | `visual-html.css` | `{{VISUAL_HTML_CSS}}` | **diagram·auto** 프로파일만(widget에선 슬롯 빈 값). 해시 대상 아님 |
    | 5.5 | `body-icons.css` | `{{BODY_ICONS_CSS}}` | 본문 아이콘(`bi-`) 사용 시. **프로파일 무관**(장식). 해시 대상 아님 |
-   | 5.6 | `editorial-patterns.css` | `{{EDITORIAL_PATTERNS_CSS}}` | 본문 패턴(chronology·source-preserve·core-insight·connection·before-after·impact-grid) 사용 시. **프로파일 무관**. 해시 대상 아님 |
+   | 5.6 | `editorial-patterns.css` | `{{EDITORIAL_PATTERNS_CSS}}` | 본문 패턴 8종(chronology·source-preserve·core-insight·connection·before-after·impact-grid·md-excerpt·accessibility-checklist) 사용 시. **프로파일 무관**. 해시 대상 아님 |
    | 5.7 | `shape-visuals.css` | `{{SHAPE_VISUALS_CSS}}` | soft-shape 도형(`.shape-figure`/`.shape-img`, `assets/shape-svgs/`) 사용 시. **프로파일 무관**(장식 앵커). 해시 대상 아님 |
    | 5.8 | `workflow-visuals.css` | `{{WORKFLOW_VISUALS_CSS}}` | soft 워크플로우 도판(`.workflow-figure`/`.workflow-img`, `assets/workflow-svgs/` 10종) 사용 시. **프로파일 무관**(대표 도판). 해시 대상 아님 |
    | 6 | `layouts.css` | `{{LAYOUTS_CSS}}` | **코어 해시 대상** |
    | 7 | `print.css` | `{{PRINT_CSS}}` | **코어 해시 대상** |
+   | 8 | `theme-dark.css` | `{{THEME_DARK_CSS}}` | **3-테마(light/white/dark) 토큰 오버라이드 + 다크 표면 보정**. print 뒤 맨끝(코어를 이긴다). **항상 인라인**(마크업 없으면 라이트 고정이라 비용 0). 코어를 byte-수정하지 않으므로 라이트 산출은 안정. 해시 대상 아님 |
 
    - **코어 CSS 해시 마커**: 코어 해시는 `theme.css + components.css + visual-components.css + layouts.css + print.css` 5종을 이 순서로 `\n` 결합한 SHA-256이다(검증기 `asset_order` 기준; `widgets.css`·`visual-html.css`는 코어 해시에서 제외). 인라인 코어 `<style>` 안에 다음 주석 마커를 넣는다.
      ```
@@ -103,12 +105,13 @@
 
      - **미사용 라이브러리 슬롯은 빈 문자열로 치환**(슬롯 삭제 아님, `{{...}}` 잔존 금지). 빈 슬롯이 byte 차이를 만들지 않도록 **합본 단계에서 잉여 빈 줄을 제거(개행 정규화)**한다.
      - 코어 5종 해시 마커는 프로파일과 무관하게 **항상 동일 값**(조건부 인라인은 해시 산식에서 제외).
-     - `auto` = 현행 v6 산출과 동일 번들이며 **회귀-0 기준선**(Phase -1 baseline 과 SHA256 diff 0).
-5. **base.html 슬롯 채우기** — `{{TITLE}}`, `{{DESCRIPTION}}`, `{{JSON_LD_BLOCK}}`(허용되는 JSON-LD만), `{{BODY}}`, `{{FOOTER}}`(불필요하면 비움).
+     - `auto` = **혼합/기본 번들**(widget+diagram 둘 다)이며 **회귀-0 기준선**(Phase -1 baseline 과 SHA256 diff 0). `v5=widget`·`v6=diagram`은 단일 라이브러리 별칭이고 `auto`는 그 둘을 합친 기본값이다(`auto ≠ diagram`).
+5. **base.html 슬롯 채우기** — `{{TITLE}}`, `{{DESCRIPTION}}`, `{{JSON_LD_BLOCK}}`(허용되는 JSON-LD만), `{{BODY}}`, `{{FOOTER}}`(불필요하면 비움), `{{THEME_DARK_CSS}}`(3-테마 CSS, 항상 인라인).
+   - **테마 스위처(선택)**: 사용자가 라이트/화이트/다크 선택 UI를 요청하면 `<body>` 첫 자식으로 라디오 `name="ahf-theme"` 3개(`#ahf-light` checked · `#ahf-white` · `#ahf-dark`) + `.ahf-themebar` 세그먼트 라벨을 삽입한다. 미요청 시 스위처 없이 라이트 고정. legacy `#theme-toggle` 마크업은 금지(v5.2는 `ahf-theme` 단일 계약).
 6. **vt-템플릿 삽입 (diagram·auto 프로파일에서만 — widget 프로파일은 생략)** — §3의 **1순위 vt-템플릿을 최소 1회** `assets/visual-html-templates/NN-*.html` 골격에서 복사해 본문 다이어그램으로 삽입한다(콘텐츠만 교체, `.vt-*` 네임스페이스 유지). 후순위 템플릿 추가·1순위 생략은 "해당 모드 1순위가 그 섹션 정보 구조에 명백히 부적합"할 때만 허용하며, 그 경우에도 §3 같은 행의 후순위에서 순서대로 고른다(임의 선택 금지). 판단이 서지 않으면 1순위를 쓴다.
 7. **wg-위젯 삽입 (widget·auto 프로파일에서만 — diagram 프로파일은 생략)** — 구조형 정보일 때만 §3 권장 wg-위젯을 `assets/widget-templates/NN-*.html` 골격에서 복사. `wg-NN-` 네임스페이스만 사용, 인터랙션은 `<details>/:checked/:target/CSS-anim`만. 단순 prose/표로 충분하면 넣지 않는다(과삽입 금지).
 8. **footer 처리** — 필요 시 `{{FOOTER}}`에 채우고, 불필요하면 슬롯을 비워 footer 없이 렌더링.
-9. **출처 스냅샷 남기기** — 출력 폴더에 `sources/assets/*.css` 스냅샷과 `sources/css-integrity.json`(`core_css_sha256`, `asset_order`, `asset_sha256` 포함), `sources/adaptive-html-final-manifest.json`(버전 4.5.0 일치)을 남긴다.
+9. **출처 스냅샷 남기기** — 출력 폴더에 `sources/assets/*.css` 스냅샷(인라인한 조건부 CSS·`theme-dark.css` 포함)과 `sources/css-integrity.json`(`core_css_sha256`, `asset_order`, `asset_sha256` 포함), `sources/adaptive-html-final-manifest.json`(현재 `manifest.json`과 **동일 내용** — 버전·`theme_system` 포함)을 남긴다. 스냅샷한 `sources/assets/*.css`는 현재 스킬 자산과 byte-일치해야 한다(stale 스냅샷 금지).
 10. **검증 게이트 실행** — §6 명령으로 `OK`를 확인한다.
 
 ---
@@ -124,7 +127,8 @@
 5. **13모드 라우터 고정.** §3 결정표 외 모드를 만들지 않는다.
 6. **코어 CSS 5종 해시 + 조건부 인라인.** 코어 해시 대상은 **5종**(`theme→components→visual-components→layouts→print`)이며 이 합본의 SHA-256 마커를 반드시 포함한다. `widgets.css`·`visual-html.css`는 **해시 대상이 아닌 조건부 인라인**으로, 프로파일에 따라 포함 여부가 갈린다(widget=widgets만/diagram=visual-html만/auto=둘 다). 인라인 동작 순서는 `theme→components→visual-components→(widgets)→(visual-html)→layouts→print`(미사용 라이브러리는 생략, 코어 5종 해시 산식·순서는 불변).
 7. **구조 보장.** `<html lang="ko">`, viewport, title, meta description, `h1` 정확히 1개, `<main id="main">`.
-8. **버전 일치.** manifest·출력 source manifest 버전이 **4.5.0**으로 일치.
+8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(버전 **5.2.0** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
+9. **3-테마 단일 계약.** 테마는 `theme-dark.css`의 라디오 `name="ahf-theme"`(light/white/dark) 1종만 사용한다. legacy `#theme-toggle` 마크업·스크립트형 테마 토글은 금지.
 
 ---
 
@@ -140,6 +144,7 @@ python3 /Users/hwanchoi/project_202605/skills-html-showcase/skills/adaptive-html
 
 - 마지막 줄이 `OK`가 아니면(`FAILED`/`ISSUE`) 수정 후 재실행한다.
 - JSON 상세가 필요하면 `--json`을 추가한다.
+- 위 절대 경로가 없는 체크아웃에서는 §1의 경로 폴백에 따라 `python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> --skill-dir skills/adaptive-html-final`을 사용한다.
 - **골든(레퍼런스) 출력:** `output/adaptive-html-final-showcase-v6/`는 위 검증을 통과하는 정답 예시다(v6 동결 시점 기준 13모드 × vt-템플릿 20종 적용; 이후 추가된 21-soft-workflow-map은 후순위라 v6 미사용, `sources/css-integrity.json` 포함). 새 출력의 구조·`sources/` 구성·통과 여부를 이 폴더와 대조하라.
 
 **무 JS grep (불변식 1 보조 확인)** — JSON-LD 외 `<script>`가 0이어야 한다.
@@ -181,7 +186,7 @@ grep -rniE 'draggable=|contenteditable=' <output_dir>/*.html && echo "FORBIDDEN 
 | SVG 인포그래픽(8000×6000, hero/별첨/다운로드 전용) + soft-shape 도형 36종(본문 시작부 보조, `assets/shape-svgs/`) + soft 워크플로우 도판 10종(대표 도판/랜딩, `assets/workflow-svgs/`) | `references/visual-template-system.md` |
 | 뷰 위젯(wg-) 선택·삽입·접근성 | `references/widget-system.md` |
 | 본문 아이콘(bi-, 32종) 선택·삽입·모드별 추천 | `references/body-icon-system.md` |
-| 본문 구조 패턴(6종) 선택·삽입·모드별 추천 | `references/editorial-pattern-system.md` |
+| 본문 구조 패턴(8종) 선택·삽입·모드별 추천 | `references/editorial-pattern-system.md` |
 
 ### 8.2 vt-템플릿 인덱스 (`assets/visual-html-templates/`) — 캐노니컬 이름 단일 출처
 
@@ -195,4 +200,4 @@ grep -rniE 'draggable=|contenteditable=' <output_dir>/*.html && echo "FORBIDDEN 
 
 ### 8.4 base.html 슬롯 인덱스 (`assets/base.html`)
 
-`{{TITLE}}` · `{{DESCRIPTION}}` · `{{THEME_CSS}}` · `{{COMPONENTS_CSS}}` · `{{VISUAL_COMPONENTS_CSS}}` · `{{WIDGETS_CSS}}` · `{{VISUAL_HTML_CSS}}` · `{{BODY_ICONS_CSS}}` · `{{EDITORIAL_PATTERNS_CSS}}` · `{{LAYOUTS_CSS}}` · `{{PRINT_CSS}}` · `{{JSON_LD_BLOCK}}` · `{{BODY}}` · `{{FOOTER}}`
+`{{TITLE}}` · `{{DESCRIPTION}}` · `{{THEME_CSS}}` · `{{COMPONENTS_CSS}}` · `{{VISUAL_COMPONENTS_CSS}}` · `{{WIDGETS_CSS}}` · `{{VISUAL_HTML_CSS}}` · `{{BODY_ICONS_CSS}}` · `{{EDITORIAL_PATTERNS_CSS}}` · `{{SHAPE_VISUALS_CSS}}` · `{{WORKFLOW_VISUALS_CSS}}` · `{{LAYOUTS_CSS}}` · `{{PRINT_CSS}}` · `{{THEME_DARK_CSS}}` · `{{JSON_LD_BLOCK}}` · `{{BODY}}` · `{{FOOTER}}`

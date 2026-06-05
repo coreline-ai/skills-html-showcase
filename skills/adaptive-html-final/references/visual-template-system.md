@@ -118,6 +118,8 @@ python scripts/render_visual_svg.py visual-brief.json output/media/visual.svg
 
 ### 36종 카탈로그
 
+**인-스킬 비주얼 카탈로그**: `galleries/soft-shapes-catalog.html`(36종 도형을 `.shape-grid`로 렌더한 레퍼런스 데모, `assets/shape-catalog.json`+`assets/shape-svgs/`에서 생성 — 생성 출력 아님). 아래는 동일 카탈로그의 텍스트 표.
+
 | id | 이름 | 언제 쓰나 |
 |---|---|---|
 | `bar-metric` | 막대 지표 | 수치 비교를 간단히 보여줄 때 |

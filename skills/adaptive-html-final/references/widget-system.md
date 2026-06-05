@@ -6,7 +6,7 @@
 
 ## 사용 규칙
 
-1. **CSS 인라인**: `assets/widgets.css`(약 81KB) 전체를 `base.html`의 `{{WIDGETS_CSS}}` 슬롯에 인라인한다. 별도 `<link>`나 외부 파일 참조를 만들지 않는다. 슬롯 순서는 `THEME → COMPONENTS → VISUAL_COMPONENTS → WIDGETS → LAYOUTS → PRINT`이므로 위젯 CSS는 테마 토큰(`var(--...)`)을 받아 쓰고 레이아웃보다 먼저 정의된다.
+1. **CSS 인라인**: `assets/widgets.css`(약 81KB) 전체를 `base.html`의 `{{WIDGETS_CSS}}` 슬롯에 인라인한다. 별도 `<link>`나 외부 파일 참조를 만들지 않는다. 슬롯 순서는 `THEME → COMPONENTS → VISUAL_COMPONENTS → WIDGETS → VISUAL_HTML → BODY_ICONS → EDITORIAL_PATTERNS → SHAPE_VISUALS → WORKFLOW_VISUALS → LAYOUTS → PRINT`이며, 미사용 조건부 슬롯은 빈 문자열로 치환한다.
 2. **네임스페이스**: 모든 위젯 클래스·커스텀 프로퍼티는 `wg-<id>-` 접두사를 쓴다(예: `wg-07-anim`, `--wg07-dur`). id는 2자리(`01`~`20`). 본문 컴포넌트(`components.css`)와의 충돌을 막기 위해 위젯 내부 셀렉터는 반드시 이 네임스페이스 안에서만 작성한다.
 3. **외부 JS 0 유지**: 스니펫에 `<script>`를 넣지 않는다. 18(칸반)·20(프롬프트 튜너)처럼 본질이 편집 인터페이스인 위젯은 **CSS 근사를 기본값**으로 제공하고, 완전 인터랙션(드래그 이동·실시간 카운트·라이브 변수 치환·LLM 재생성)은 도입처에서 선택적 점진 향상으로만 얹는다. 스킬 기본 출력은 무 JS 근사 상태를 유지한다.
 4. **색 외 단서 의무**: 상태/심각도를 색으로만 구분하지 않는다. 텍스트 라벨·글리프(`●◐○`, `✓`, `!`, `⚠`, `○→●`)·패턴을 병기한다(접근성 색맹 대응).
@@ -31,9 +31,13 @@
 | 06 | Component Variants | 컴포넌트 상태/변형(default·hover·disabled·다크)을 매트릭스로 문서화 | reference_html, education_html | CSS-only — `radio:checked ~` 형제로 라이트/다크 토글, 상태는 `.wg-06-is-*` 고정 + statetag 라벨 | `assets/widget-templates/06-component-variants.html` |
 | 07 | Animation Sandbox | 애니메이션 프리셋(slide/fade/scale/rotate·duration·easing)을 설명·실연 | reference_html / education_html, article_html | CSS-only — `@keyframes` 자동재생 + `radio:checked + :has()`로 `--wg07-dur/ease` 교체, readout도 `:has()`. 자유값 슬라이더만 JS. `:has()` 미지원 시 기본 프리셋 폴백 | `assets/widget-templates/07-animation-sandbox.html` |
 | 08 | Clickable Flow | 화면 전환형 클릭 프로토타입(가입·결제 등 UX 흐름) | landing_brief_html, education_html | CSS-only — `:target` + `:target-within`로 화면 전환, 앵커 링크 네비. 폼 상태 저장만 JS(프로토타입엔 불필요) | `assets/widget-templates/08-clickable-flow.html` |
+
+> **wg-08 static 변형(`.wg-08-static-*`)**: `:target`/`:has`를 쓰지 않는 **읽기 전용 정적 스테퍼**(번호+커넥터, `--hot`/`--ok` 상태). 인터랙션이 불가/불필요한 환경(이식성 우선)에서 클릭 플로우 대신 사용. 마크업: `.wg-08-static > .wg-08-static-step(.wg-08-static-step--hot/--ok) > .wg-08-static-no + div(h3+p)`. `final_20260604`의 `static-flow-*`를 정본 네임스페이스로 개명·토큰화한 것.
 | 09 | Arrow-Key Slide Deck | 발표형 슬라이드 덱(좌우 슬라이드 전환) | article_html / landing_brief_html, education_html | **JS 필요** — `scroll-snap`(스와이프) + 점/앵커(`:target`) 2중 CSS-only 경로 제공. 화살표키 이동·자동재생은 JS 필수. 무JS에선 트랙 포커스 후 스크롤/Tab+Enter로 접근 | `assets/widget-templates/09-arrow-key-slide-deck.html` |
 | 10 | SVG Figure Sheet | 일러스트/개념도 4종 SVG 시트(개념 도해) | article_html, beginner_html, education_html | CSS-only — 순수 인라인 SVG, fill/stroke 전부 theme 토큰 `var()`, `role=img`+`<title>` 라벨. 정적 시트 | `assets/widget-templates/10-svg-figure-sheet.html` |
-| 11 | Weekly Status | 주간 지표/진행률 대시보드 리포트 | seo_dashboard, expert_html, checklist_playbook | CSS-only — 막대 `width%` + `@keyframes` 그로우, 완료/진행/리스크를 색+점+라벨+빗금 이중 표기. 정적 데이터 | `assets/widget-templates/11-weekly-status.html` |
+| 11 | Weekly Status | 주간 지표/진행률 대시보드 리포트 (거버넌스·운영 상태 보드의 **정본**) | seo_dashboard, expert_html, checklist_playbook | CSS-only — 막대 `width%` + `@keyframes` 그로우, 완료/진행/리스크를 색+점+라벨+`wg-11-fill-risk` **빗금**으로 이중 표기(색-단독 회귀 방지). 정적 데이터. ≤480px에서 막대 라벨이 위로 적층 | `assets/widget-templates/11-weekly-status.html` |
+
+> **상태/거버넌스 보드는 wg-11로 통일**: 별도 `edge-status-*`/색-단독 진행바를 새로 만들지 않는다. wg-11은 빗금(`wg-11-fill-risk`)이라는 색 외 단서를 이미 갖춘 정본 소스이므로, 진행률·KPI·완료/리스크 보드는 wg-11을 재사용한다(WCAG 1.4.1).
 | 12 | Incident Timeline | 사고 회고/포스트모템 타임라인 + 액션 체크리스트 | case_study_html, expert_html | 부분 — `checkbox:checked + label` 완료 표시(취소선·체크마크), 타임라인 정적. 상태 저장·집계만 JS | `assets/widget-templates/12-incident-timeline.html` |
 | 13 | Annotated Flowchart | 절차·흐름 다이어그램에 단계별 상세 주석 | education_html / beginner_html, checklist_playbook, expert_html, article_html | CSS-only — 단계 박스 앵커로 `<details>` 점프(`:target` 하이라이트), 실패 경로는 danger 색+`!`+'실패 경로' 라벨, 화살표는 텍스트 글리프 | `assets/widget-templates/13-annotated-flowchart.html` |
 | 14 | Feature Explainer | 기능 설명 + 탭 전환 코드 예제(CLI/API 등) + FAQ | education_html, reference_html, article_html | CSS-only — `radio:checked ~` 형제로 코드 패널 탭, `<details>` 접기·FAQ. JS 없음 | `assets/widget-templates/14-feature-explainer.html` |
@@ -60,7 +64,7 @@
 
 | Mode | 권장 위젯 | 쓰임 |
 |---|---|---|
-| skill_audit | **03 Annotated PR**, **17 PR Writeup** | 코드/diff 진단, 변경 요약 |
+| skill_audit | **03 Annotated PR**, 11 Weekly Status, **17 PR Writeup** | 코드/diff 진단, 감사 진행 상태, 변경 요약 |
 | expert_html | **04 Module Map**, **16 Implementation Plan**, 01, 03, 11, 12, 13, 17, 18, 19 | 아키텍처·실행계획·리포트·코드 리뷰·회고 |
 | article_html | **02 Visual Design Directions**, **10 SVG Figure Sheet**, 04, 07, 09, 13, 14 | 시안 비교·일러스트·발표·흐름 |
 | education_html | **14 Feature Explainer**, **15 Concept Explainer**, 06, 07, 08, 09, 10, 13, 20 | 학습/탭 코드·개념·인터랙션 설명·UX 흐름 |

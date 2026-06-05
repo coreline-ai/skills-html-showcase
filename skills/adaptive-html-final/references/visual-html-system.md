@@ -109,7 +109,8 @@
 ## 6. 무 JS · 접근성 · 반응형 규칙
 
 - **외부/동작 JS 0 (불변식)**: `vt-` 템플릿에는 어떤 스크립트도 넣지 않는다. JSON-LD(`application/ld+json`)만 예외로 허용되며 이는 메타데이터이지 동작 코드가 아니다.
-- **색 외 단서 의무**: 상태/심각도를 색만으로 구분하지 않는다. `.rm-risk.high/.med/.low`, `.qg-card.warn/.block`, `.inc-card.impact/.cause/.action`, `.vt-pill.hot/.good/.watch`, `.switch.off` 등은 항상 텍스트 라벨을 함께 둔다(색맹 대응).
+- **색 외 단서 의무**: 상태/심각도를 색만으로 구분하지 않는다. `.rm-risk.high/.med/.low`, `.qg-card.warn/.block`, `.inc-card.impact/.cause/.action`, `.vt-pill.hot/.good/.watch` 등은 항상 텍스트 라벨을 함께 둔다(색맹 대응).
+- **feature-flag(19)는 3-상태 + 텍스트 라벨**: 토글(`.switch.on/.warn/.off`)은 색·노브 위치만으로 상태를 전달하므로 `aria-hidden="true"` 장식으로 두고, 의미는 인접한 `.flag-state.on/.warn/.off`의 **가시 텍스트(ON/WARN/OFF)**가 전달한다(스크린리더 노출 + 색맹 대응). 형태 단서로 `.flag-state:before` 점이 상태별로 원/사각/링으로 달라진다.
 - **시맨틱 마크업**: 카드는 `<article>`, 목록은 `<ul>/<li>`, 제목 계층(`h2/h3`)을 유지한다. 표형 템플릿(raci·risk-matrix)도 의미가 표면 `<table>`/`<caption>`을 우선한다.
 - **`role="img"`로 텍스트를 가두지 말 것 (vt-21 soft-workflow-map 핵심 규칙)**: 실제 본문 텍스트를 담은 컨테이너(`.wf-board`/`.wf-map`)에 `role="img"`+단일 `aria-label`을 걸면 스크린리더가 내부 카드 텍스트(`.wf-card`의 `<strong>`/`<p>`)와 지표(`.wf-metric`)를 **전부 prune**해 정보가 사라진다. 따라서 프레임에는 `role="img"`를 쓰지 않는다. 순수 장식 그래픽(`.wf-codewin`·`.wf-dash`·`.wf-pipes`·`.wf-bottom`·`.wf-icon`·`.wf-aistack`)에만 `aria-hidden="true"`를 부여하고, 카드·지표 텍스트는 일반 DOM으로 노출한다. 이미지 안에 작은 텍스트를 박제하지 말고 본문 정보는 HTML 텍스트로 둔다.
 - **링크 터치 타깃**: `.vt-nav a`, `.vt-source a` 등 링크는 `min-height` 44px 안팎을 보장한다(모바일 탭 영역).
@@ -121,8 +122,8 @@
 
 ## 7. 적용 갤러리
 
-- 카탈로그·전략 원본: `output/adaptive-html-final-html-view-templates-20-v1/`(20종 라이브 데모 + `SVG_TO_HTML_TEMPLATE_STRATEGY.md`).
-- 모드별 실제 적용 갤러리: **`output/adaptive-html-final-showcase-v6`** — 본문에 `vt-` 템플릿이 삽입된 모드별 페이지와 QA 스크린샷을 확인한다.
+- 카탈로그·전략 원본: `output/adaptive-html-final-html-view-templates-20-v1/`(초기 20종 라이브 데모 + `SVG_TO_HTML_TEMPLATE_STRATEGY.md`; 이후 21번째 `soft-workflow-map`이 후순위 템플릿으로 편입됨).
+- 모드별 실제 적용 갤러리: **`output/adaptive-html-final-showcase-v6`** — 본문에 `vt-` 템플릿이 삽입된 모드별 페이지와 QA 스크린샷을 확인한다. v6 골든은 동결 시점 기준 20종 적용이며, vt-21은 후순위라 골든 본문에는 필수 등장하지 않는다.
 
 ## 관련 문서
 

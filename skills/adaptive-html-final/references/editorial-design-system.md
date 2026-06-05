@@ -132,3 +132,21 @@
 - **포커스·터치.** 포커스 링은 `--focus`(파랑)+흰 헤일로(자동). 모바일 목차 링크는 44px 히트영역(자동).
 - **읽기 진행 바.** `.reading-progress`는 CSS `animation-timeline: scroll()`(무 JS, 점진적 향상, reduced-motion에서 숨김). 활성 목차 스크롤스파이는 JS 필요 → 무 JS 원칙상 미도입.
 - **표 editorial 스타일.** 헤더 잉크 다크+흰 텍스트, 짝수 행 zebra 자동. 비교표 "추천/승자" 셀은 `.good` 강조 수동 적용 가능.
+
+## 테마 시스템 — 3종 (v5.2.0 · `assets/theme-dark.css`, 선택 슬롯)
+
+**CSS-only 3-테마**: 라이트(크림 기본) · **화이트(순백)** · 다크. 라디오 그룹 + `:has()`로 전환하며 **무 JS**. 코어 CSS는 수정하지 않는다(라이트 byte-안정, 해시-safe).
+
+- **모델 — `:root` 토큰 오버라이드.** `:root:has(#ahf-white:checked)`=순백 토큰(neutral만: `--bg/--card/--line/--ink*/--dark*/--code/--vt-*` 쿨·순백, accent·콜아웃은 유지), `:root:has(#ahf-dark:checked)`=다크 토큰(37개)+표면 보정. 토큰을 쓰는 모든 컴포넌트가 자동 추종. `!important` 0.
+- **기본=라이트(크림).** 라디오 마크업이 없으면 그대로 라이트. (OS 자동 다크가 필요하면 `#ahf-dark`에 `@media(prefers-color-scheme:dark)` 한 줄 추가 가능 — 기본은 명시 선택.)
+- **다크 표면 보정 6+개(코어가 토큰 대신 리터럴을 쓰는 곳).** `.prompt-box`·`code`·`th`·`.status-pill`·`.timeline-card`·`.layout-seo .serp-url`·`.core-insight`·`.try .tag`·`.vt-pill.*` + `.wf-board` 라이트-토큰 컨텍스트(soft-workflow 일러스트 자기완결). 화이트는 보정 불필요(라이트 표면).
+- **삽입.** `{{THEME_DARK_CSS}}` 슬롯 = **`print.css` 뒤(맨 끝)**. 조건부 인라인.
+- **스위처 마크업(선택, 무 JS).** `<body>` 첫머리에 숨긴 라디오 3개 + 세그먼트 라벨:
+  ```html
+  <fieldset class="ahf-themebar" aria-label="테마 선택">
+    <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+    <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
+    <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+  </fieldset>
+  ```
+  라디오는 시각적으로 숨고(`opacity:0`), `input:checked + label`이 활성 세그먼트(accent), 포커스 링은 `input:focus-visible + label`. 마크업을 빼면 출력은 라이트 고정(테마 토큰만 동봉).

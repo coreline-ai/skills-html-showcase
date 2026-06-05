@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soft-shape SVG 카탈로그 · 36종</title>
+<style>
+:root{
+  --bg:#f5f5f0;
+  --ink:#1a1a1a;
+  --ink-soft:#4a4a4a;
+  --ink-mute:#666666;
+  --line:#d8d8d0;
+  --card:#ffffff;
+  --accent:#e63946;
+  --accent-2:#b72d38;
+  --link-on-dark:#ffb6c0;
+  --accent-soft:#fce4e6;
+  --term-bg:#fffaf2;
+  --term-border:#e8d9b8;
+  --analogy-bg:#f0f4f8;
+  --analogy-border:#b8cad8;
+  --danger-bg:#fff0ee;
+  --danger-border:#e8b8b2;
+  --good-bg:#eef7f1;
+  --good-border:#b8d8c2;
+  --hl-yellow:#ffe9a3;
+  --hl-blue:#cfe5f5;
+  --hl-pink:#fbd3da;
+  /* Callout text/border tokens (extracted from components.css raw hex) */
+  --term-ink:#5a4a30;
+  --term-label-ink:#8a5e10;
+  --term-accent:#c98a2e;
+  --analogy-ink:#234458;
+  --analogy-label-ink:#2f5470;
+  --analogy-accent:#5e8aa8;
+  --danger-ink:#5a3a36;
+  --danger-label-ink:#c62433;
+  --good-ink:#1f5040;
+  --good-label-ink:#1f6f4e;
+  --good-accent:#3f8e6c;
+  /* AA-compliant muted foreground for chips/meta */
+  --chip-ink:#6a6a6a;
+  --dark:#1a1a1a;
+  --dark-soft:#242421;
+  --code:#1f1f1d;
+  --serif:"Noto Serif KR",Georgia,serif;
+  --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;
+  --radius-sm:5px;
+  --radius-md:8px;
+  --radius-lg:12px;
+  --max-reading:780px;
+  --max-wide:1020px;
+  /* focus ring (non-decorative, distinct from brand red) */
+  --focus:#1a56db;
+  /* spacing scale (8px base) — additive; new rules use these */
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;
+  /* type scale (additive reference axis) */
+  --fs-xs:13px;--fs-sm:14px;--fs-base:16px;--fs-md:18px;--fs-lg:20px;--fs-xl:24px;--fs-2xl:30px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px;box-shadow:0 0 0 2px #fff,0 0 0 5px rgba(26,86,219,.4);border-radius:3px}
+/* CSS-only reading progress bar (scroll-driven; progressive enhancement, no JS). Degrades to invisible 0-width where unsupported. */
+.reading-progress{position:fixed;top:0;left:0;height:4px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--accent);z-index:200;animation:read-progress linear both;animation-timeline:scroll(root)}
+@keyframes read-progress{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){.reading-progress{display:none}}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.8;
+  letter-spacing:-.012em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--dark);color:#fff;padding:10px 14px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+.page,.wrap{width:min(var(--max-reading),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+.page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+/* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
+.page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
+.header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
+.kicker{font-size:13px;letter-spacing:.18em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.34;font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
+.sub,.lead{font-size:16px;color:var(--ink-soft);margin:0 0 24px;max-width:820px}
+.lead{font-size:18px;line-height:1.75;color:var(--ink-soft)}
+.byline{font-size:13px;color:var(--ink-mute);padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.meta span,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.52);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--chip-ink)}
+section{margin:46px 0}
+h2{font-family:var(--serif);font-size:clamp(24px,3vw,29px);line-height:1.42;font-weight:700;letter-spacing:-.01em;margin:64px 0 8px;scroll-margin-top:24px;color:var(--ink)}
+section>h2:first-child,
+article>h2:first-child,
+.box>h2:first-child,
+.summary-card>h2:first-child,
+.toc>h2:first-child,
+.faq>h2:first-child,
+.cta-box>h2:first-child,
+.source-note>h2:first-child,
+.card-block>h2:first-child,
+.mini-card>h2:first-child{margin-top:0}
+h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;height:34px;padding:0 9px;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;font-family:var(--sans);font-size:15px;font-weight:800;margin-right:12px;vertical-align:3px;line-height:1}
+/* opt-in: only the 1-2 most important section numbers use solid brand red */
+h2 .no.is-key,h2 .num.is-key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;line-height:1.7}
+h3{font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.45;margin:28px 0 10px;color:var(--ink)}
+section>h3:first-child,
+article>h3:first-child,
+.box>h3:first-child,
+.summary-card>h3:first-child,
+.toc>h3:first-child,
+.faq>h3:first-child,
+.cta-box>h3:first-child,
+.source-note>h3:first-child,
+.card-block>h3:first-child,
+.mini-card>h3:first-child{margin-top:0}
+h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+p{margin:0 0 16px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:700}
+ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
+li{margin:6px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+footer p{font-size:13px;color:var(--ink-mute)}
+@media(max-width:760px){
+  body{line-height:1.74}
+  .page,.page-wide,.wrap{width:min(100% - 40px,var(--max-reading));padding:40px 0 72px}
+  .header{padding-bottom:22px;margin-bottom:28px}
+  .lead{font-size:16px}
+  h1{font-size:30px;line-height:1.34}
+  h2{font-size:23px;margin-top:52px}
+  h2 .no,h2 .num{min-width:30px;width:auto;height:30px;font-size:13px;margin-right:9px;padding:0 8px}
+  .h2-sub{margin-left:39px}
+}
+@media(max-width:430px){
+  .page,.page-wide,.wrap{width:min(100% - 32px,var(--max-reading))}
+  h1{font-size:27px}
+}
+
+/* adaptive-html-final shape-visuals — 본문 설명 시작부 보조 SVG 도형(8000x6000, warm soft).
+   무 JS · 프로파일 무관 조건부 인라인. 도형은 시각 앵커이고 핵심 정보는 항상 HTML 텍스트로 둔다.
+   삽입 표준: figure.shape-figure 안에 img.shape-img(8000x6000 svg, 비어있지 않은 alt 필수). figcaption은 선택(앵커라서).
+   alt는 shape_visual_gate가, svg 파일 존재는 broken_local_ref가 검사한다. 삽입 예시는 references/visual-template-system.md 참조. */
+.shape-figure{max-width:420px;margin:6px 0 18px}
+.shape-figure img,.shape-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#fff4e8;border:1px solid var(--line);border-radius:16px}
+.shape-figure figcaption{margin-top:8px;font-size:13px;color:var(--ink-mute);line-height:1.5}
+/* 제목 아래 대표 도형 + 옆 설명(읽기 전 구조 프리뷰) */
+.shape-lead{display:grid;grid-template-columns:210px 1fr;gap:22px;align-items:center;margin:18px 0}
+.shape-lead .shape-figure{max-width:210px;margin:0}
+.shape-lead-body>:first-child{margin-top:0}
+.shape-lead-body>:last-child{margin-bottom:0}
+/* 도형 갤러리(여러 개념을 균등 나열할 때만) */
+.shape-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:18px 0}
+.shape-grid .shape-figure{max-width:none;margin:0}
+@media(max-width:760px){.shape-lead{grid-template-columns:1fr}.shape-lead .shape-figure{max-width:300px}.shape-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:430px){.shape-grid{grid-template-columns:1fr}}
+
+
+body{max-width:1100px;margin:0 auto;padding:40px 24px 80px}
+h1{font-family:var(--serif);font-size:32px;margin:0 0 6px}
+.cat-lead{color:var(--ink-soft);margin:0 0 28px;max-width:60rem;line-height:1.6}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.cat-card{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:14px;display:flex;flex-direction:column;gap:8px}
+.cat-icon{display:flex;align-items:center;gap:10px}
+.cat-id{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--accent-2);font-weight:800}
+.cat-card b{font-size:14px}
+.cat-card p{margin:0;font-size:12.5px;color:var(--ink-soft);line-height:1.45}
+@media(max-width:620px){.cat-grid{grid-template-columns:1fr 1fr}}
+
+</style>
+</head>
+<body>
+<h1>Soft-shape SVG 카탈로그 · 36종</h1>
+<p class="cat-lead">섹션 도입 보조 도형(figure.shape-figure, 8000×6000 SVG, alt 필수). 핵심 정보는 본문 HTML 텍스트로. 스킬 내 레퍼런스 데모(생성 출력 아님).</p>
+<div class="shape-grid">
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/bar-metric.svg" alt="막대 지표 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">bar-metric</span> 막대 지표 — 수치 비교를 간단히 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/blob-idea.svg" alt="블롭 아이디어 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">blob-idea</span> 블롭 아이디어 — 정형화 전의 아이디어를 표현할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/branch-tree.svg" alt="분기 트리 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">branch-tree</span> 분기 트리 — 선택지와 하위 경로를 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/checklist-done.svg" alt="체크리스트 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">checklist-done</span> 체크리스트 — 완료 조건과 점검 항목을 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/circle-focus.svg" alt="원형 포커스 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">circle-focus</span> 원형 포커스 — 핵심 개념 하나를 강조할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/code-window.svg" alt="코드 윈도우 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">code-window</span> 코드 윈도우 — 개발·자동화 흐름을 설명할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/connector-nodes.svg" alt="연결 노드 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">connector-nodes</span> 연결 노드 — 관계와 의존성을 설명할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/conversation-bubble.svg" alt="대화 버블 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">conversation-bubble</span> 대화 버블 — 인터뷰·피드백·메시지를 설명할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/cycle-loop.svg" alt="순환 루프 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">cycle-loop</span> 순환 루프 — 반복 개선 사이클을 설명할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/diamond-decision.svg" alt="다이아몬드 결정 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">diamond-decision</span> 다이아몬드 결정 — 선택 지점과 판단 조건을 나타낼 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/document-card.svg" alt="문서 카드 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">document-card</span> 문서 카드 — 자료·문서·레퍼런스 대입용</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/donut-ratio.svg" alt="도넛 비율 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">donut-ratio</span> 도넛 비율 — 구성비나 점유율을 설명할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/flow-arrow.svg" alt="흐름 화살표 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">flow-arrow</span> 흐름 화살표 — 입력→처리→결과 흐름을 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/funnel-filter.svg" alt="퍼널 필터 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">funnel-filter</span> 퍼널 필터 — 후보를 좁혀가는 과정을 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/grid-set.svg" alt="그리드 묶음 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">grid-set</span> 그리드 묶음 — 여러 항목을 균등하게 나열할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/hex-system.svg" alt="육각 시스템 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">hex-system</span> 육각 시스템 — 모듈/시스템 구성요소를 말할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/ladder-growth.svg" alt="성장 사다리 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">ladder-growth</span> 성장 사다리 — 점진적 성숙도나 레벨업을 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/line-chart.svg" alt="라인 차트 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">line-chart</span> 라인 차트 — 시간에 따른 추세를 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/matrix-quadrant.svg" alt="사분면 매트릭스 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">matrix-quadrant</span> 사분면 매트릭스 — 2축 기준의 판단표를 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/orbit-context.svg" alt="오비트 맥락 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">orbit-context</span> 오비트 맥락 — 중심 개념 주변 요소를 설명할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/pill-label.svg" alt="필 라벨 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">pill-label</span> 필 라벨 — 상태·분류·태그를 부드럽게 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/pyramid-levels.svg" alt="피라미드 단계 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">pyramid-levels</span> 피라미드 단계 — 기초→상위 단계 구조를 말할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/quote-source.svg" alt="원문 인용 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">quote-source</span> 원문 인용 — 원문 보존 또는 출처를 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/rounded-rect.svg" alt="라운드 카드 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">rounded-rect</span> 라운드 카드 — 정리된 정보 블록을 설명할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/search-lens.svg" alt="검색 렌즈 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">search-lens</span> 검색 렌즈 — 검색·탐색·리서치 단계를 말할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/shield-check.svg" alt="쉴드 검증 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">shield-check</span> 쉴드 검증 — 보안·품질·검수 기준을 말할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/spark-card.svg" alt="스파크 카드 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">spark-card</span> 스파크 카드 — 짧은 성과 요약을 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/stack-layers.svg" alt="스택 레이어 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">stack-layers</span> 스택 레이어 — 계층·레이어·의존성을 설명할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/star-insight.svg" alt="스타 인사이트 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">star-insight</span> 스타 인사이트 — 중요 발견이나 추천을 강조할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/swimlane-process.svg" alt="스윔레인 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">swimlane-process</span> 스윔레인 — 역할별 병렬 진행을 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/target-goal.svg" alt="타깃 목표 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">target-goal</span> 타깃 목표 — 목표와 기준선을 맞출 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/timeline-steps.svg" alt="타임라인 단계 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">timeline-steps</span> 타임라인 단계 — 시간 순서의 진행을 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/triangle-priority.svg" alt="삼각 우선순위 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">triangle-priority</span> 삼각 우선순위 — 위계와 우선순위를 보여줄 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/venn-overlap.svg" alt="벤 다이어그램 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">venn-overlap</span> 벤 다이어그램 — 겹치는 조건과 공통분모를 설명할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/warning-gap.svg" alt="경고 갭 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">warning-gap</span> 경고 갭 — 위험·누락·주의점을 강조할 때</figcaption></figure>
+  <figure class="shape-figure"><img class="shape-img" src="../assets/shape-svgs/wave-change.svg" alt="웨이브 변화 도형" width="8000" height="6000" loading="lazy"><figcaption><span class="cat-id">wave-change</span> 웨이브 변화 — 변동·추세·감정 흐름을 보여줄 때</figcaption></figure>
+</div>
+</body>
+</html>

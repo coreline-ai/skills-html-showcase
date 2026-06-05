@@ -10,11 +10,11 @@
 .wg-09-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:var(--space-4);scroll-behavior:smooth;border-radius:var(--radius-lg);scrollbar-width:thin}
 .wg-09-slide{scroll-snap-align:center;flex:0 0 100%;min-height:300px;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4);scroll-margin:0}
 .wg-09-slide--title{background:var(--dark);color:#fff;border-color:var(--dark)}
-.wg-09-slide--title .wg-09-no,.wg-09-slide--end .wg-09-no{color:var(--link-on-dark)}
+.wg-09-slide--title .wg-09-no{color:var(--link-on-dark)}.wg-09-slide--end .wg-09-no{color:var(--on-accent)}
 .wg-09-slide--title .wg-09-title{color:#fff}
 .wg-09-slide--title .wg-09-lead{color:rgba(255,255,255,.82)}
-.wg-09-slide--end{background:var(--accent);color:#fff;border-color:var(--accent-2)}
-.wg-09-slide--end .wg-09-title,.wg-09-slide--end .wg-09-lead{color:#fff}
+.wg-09-slide--end{background:var(--accent);color:var(--on-accent);border-color:var(--accent-2)}
+.wg-09-slide--end .wg-09-title,.wg-09-slide--end .wg-09-lead{color:var(--on-accent)}
 .wg-09-no{font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;color:var(--ink-mute);font-variant-numeric:tabular-nums}
 .wg-09-title{font-family:var(--serif);font-size:var(--fs-2xl);font-weight:700;margin:0;color:var(--ink)}
 .wg-09-lead{font-size:var(--fs-md);color:var(--ink-soft);margin:0}
@@ -26,12 +26,12 @@
 .wg-09-cta-row{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3)}
 .wg-09-cta-row a:only-child{margin-left:auto}
 .wg-09-prev,.wg-09-next{font-size:var(--fs-sm);font-weight:800;text-decoration:none;padding:var(--space-2) var(--space-4);border-radius:999px;border:1px solid currentColor}
-.wg-09-next{background:var(--accent);color:#fff;border-color:var(--accent-2)}
-.wg-09-next:hover{background:var(--accent-2);color:#fff}
+.wg-09-next{background:var(--accent);color:var(--on-accent);border-color:var(--accent-2)}
+.wg-09-next:hover{background:var(--accent-2);color:var(--on-accent)}
 .wg-09-prev{color:var(--ink-soft);background:transparent;border-color:var(--line)}
 .wg-09-prev:hover{color:var(--accent);border-color:var(--accent)}
-.wg-09-slide--title .wg-09-prev,.wg-09-slide--end .wg-09-prev{color:#fff;border-color:rgba(255,255,255,.5)}
-.wg-09-slide--end .wg-09-next{background:#fff;color:var(--accent-2);border-color:#fff}
+.wg-09-slide--title .wg-09-prev{color:#fff;border-color:rgba(255,255,255,.5)}.wg-09-slide--end .wg-09-prev{color:var(--on-accent);border-color:var(--on-accent)}
+.wg-09-slide--end .wg-09-next{background:var(--card);color:var(--accent-2);border-color:#fff}
 .wg-09-hint{font-size:var(--fs-xs);color:var(--ink-mute);margin-top:var(--space-3);text-align:center}
 </style>
 <section class="wg-09-deck" aria-label="슬라이드 덱">

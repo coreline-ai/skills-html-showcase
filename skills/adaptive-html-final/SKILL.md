@@ -24,7 +24,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 4.5.0 · "SVG→HTML 시각 템플릿 시스템 편입 + 결정론 운영 사양 정형화" (이전 4.4.0)
+> Version 5.2.0 · "CSS-only 3-테마 시스템(라이트 크림·완전 화이트·다크) — 라디오 세그먼트 스위처" (이전 5.1.0)
 
 ## 0. Identity
 
@@ -77,7 +77,7 @@ description: |
 | landing_brief_html | landing-brief.html | hero-map, card-grid, feature-flag, soft-workflow-map | wg-02, wg-05, wg-08, wg-09, wg-16 |
 | checklist_playbook | checklist-playbook.html | checklist-flow, quality-gate, process-swimlane, implementation-plan, triage-board | wg-11, wg-13, wg-16, wg-18, wg-19 |
 
-vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..21)이며, 위 이름은 그 `<name>`과 1:1로 대응한다. 시각물이 필요 없으면 vt-템플릿/wg-위젯 모두 생략할 수 있다(둘 다 선택적 보강이다). 넣을 때는 해당 모드 행의 1순위부터 콘텐츠 적합성 순으로 고른다.
+vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..21)이며, 위 이름은 그 `<name>`과 1:1로 대응한다. `diagram`·`auto` 프로파일 출력은 선택된 모드 행의 **1순위 vt-템플릿을 최소 1회** 삽입한다. `widget`·`auto` 프로파일의 wg-위젯은 구조형 정보가 있을 때만 삽입한다(단순 prose/표로 충분하면 과삽입하지 않는다). 넣을 때는 해당 모드 행의 1순위부터 콘텐츠 적합성 순으로 고른다.
 
 > **프로파일 오버레이(§0.5 프로파일 결정 선행):** 위 표의 **Layout 열은 프로파일과 무관하게 공통**이다. `diagram` 프로파일은 **vt-템플릿 열만**, `widget` 프로파일은 **wg-위젯 열만**, `auto`(기본)는 **두 열 모두** 사용한다. 이 표가 mode→wg / mode→vt 매핑의 **단일 출처**이며, §4.6·§4.7·`references/widget-system.md`·`references/visual-html-system.md`·`AGENTS.md` §3은 이 표의 파생/참조다(불일치 시 §0.6 우선).
 
@@ -145,8 +145,8 @@ assets/visual-html.css = SVG→HTML 시각 템플릿 21종 스타일 (vt- 네임
 assets/visual-html-templates/01..21.html = SVG→HTML 템플릿 삽입 골격 21종 (vt-, 이미지가 아닌 네이티브 구조도; 21=soft-workflow-map)
 assets/body-icons.css  = 본문용 compact 아이콘 32종 스타일 (bi- 네임스페이스, aria-hidden 장식, 무 JS) — 프로파일 무관, references/body-icon-system.md
 assets/body-icons.json = 본문 아이콘 32종 데이터 (id/label/usage/svg, viewBox 0 0 40 40)
-assets/editorial-patterns.css = 본문 구조 패턴 7종 스타일 (chronology·source-preserve·core-insight·connection·before-after·impact-grid·md-excerpt, 무 JS) — 프로파일 무관, references/editorial-pattern-system.md
-assets/editorial-pattern-templates/01..07.html = 패턴 삽입 골격 7종 (콘텐츠만 교체)
+assets/editorial-patterns.css = 본문 구조 패턴 8종 스타일 (chronology·source-preserve·core-insight·connection·before-after·impact-grid·md-excerpt·accessibility-checklist, 무 JS) — 프로파일 무관, references/editorial-pattern-system.md
+assets/editorial-pattern-templates/01..08.html = 패턴 삽입 골격 8종 (콘텐츠만 교체)
 assets/shape-visuals.css = soft-shape 도형 표시 스타일 (.shape-figure/.shape-lead/.shape-grid, 무 JS) — 프로파일 무관, references/visual-template-system.md
 assets/shape-svgs/*.svg = 본문 설명 시작부 보조 도형 36종 (8000×6000 warm SVG, <title>/<desc> 접근성)
 assets/shape-catalog.json = 도형 36종 데이터 (id/label/usage)
@@ -344,12 +344,13 @@ platform_blog      → 02 Visual Design Directions
 ### Step 4.7 — SVG→HTML Visual Template Insertion (vt-)
 
 > **프로파일 게이트:** 이 단계는 **`diagram`·`auto` 프로파일에서만** 실행한다(`widget` 프로파일은 생략). CSS 번들에 `visual-html.css`가 포함된다(§0.5 invariant 3, AGENTS.md §4).
+> `diagram`·`auto` 출력에서는 선택 모드의 1순위 vt-템플릿을 최소 1회 삽입한다. 후순위 템플릿으로 대체해야 할 때도 §0.6 같은 행의 순서를 따른다.
 
 본문 안에서 읽혀야 하는 구조도는 이미지가 아니라 **SVG→HTML 템플릿(`vt-`)**으로 삽입한다. `assets/visual-html.css`(스킬 디자인 토큰 재사용)와 `assets/visual-html-templates/01..21.html` 21종으로 제공되며, **외부 JS 없이** 동작하는 네이티브 in-flow 다이어그램이다(이미지처럼 분리되지 않고 문서의 일부로 읽힌다). 자세한 규칙은 필요할 때 `references/visual-html-system.md`를 읽는다.
 
 판단 순서:
 
-1. 해당 섹션을 §0.6 캐노니컬 결정표의 vt-템플릿 1순위부터 콘텐츠 적합성 순으로 매칭한다. 단순 prose/표로 충분하면 넣지 않는다(선택적 보강).
+1. 해당 섹션을 §0.6 캐노니컬 결정표의 vt-템플릿 1순위부터 콘텐츠 적합성 순으로 매칭한다. `diagram`·`auto` 프로파일의 1순위 vt-템플릿은 최소 1회 삽입하며, 후순위 템플릿은 1순위가 해당 섹션 정보 구조에 명백히 부적합할 때만 쓴다.
 2. `assets/visual-html-templates/NN-<name>.html` 골격을 복사해 콘텐츠만 바꾼다. `vt-` 네임스페이스 클래스와 템플릿별 짧은 접두사(`hm-`, `dt-`, `rm-` 등)만 사용한다.
 3. `visual-html.css`는 `base.html`의 `{{VISUAL_HTML_CSS}}` 슬롯에 합본하거나, 사용한 템플릿의 CSS만 인라인한다(인라인 순서는 Step 5 참고).
 4. 인터랙션은 §0.5 불변식과 동일하게 `<details>`/`:checked`/`:target`/CSS 애니메이션만 쓴다. 동작 `<script>`는 0이어야 한다(JSON-LD 제외).
@@ -361,7 +362,7 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 
 1. `assets/base.html` 또는 로컬 CSS 연결형 HTML을 사용한다.
 2. 선택된 `assets/layouts/*.html` 골격을 적용한다.
-3. CSS는 `theme.css + components.css + visual-components.css(필요 시) + widgets.css(wg-위젯 사용 시) + visual-html.css(vt-템플릿 사용 시) + layouts.css + print.css` 순서로 합친다. `base.html`의 `{{WIDGETS_CSS}}` / `{{VISUAL_HTML_CSS}}` 슬롯에 각각 채운다(visual-html.css는 widgets.css 다음, layouts.css 앞).
+3. CSS는 `theme.css + components.css + visual-components.css + widgets.css(widget·auto) + visual-html.css(diagram·auto) + body-icons.css(본문 아이콘 사용 시) + editorial-patterns.css(본문 패턴 사용 시) + shape-visuals.css(soft-shape 사용 시) + workflow-visuals.css(workflow 도판 사용 시) + layouts.css + print.css + theme-dark.css(3-테마 토큰 오버라이드, 항상)` 순서로 합친다. 코어 해시는 `theme.css + components.css + visual-components.css + layouts.css + print.css` 5종만 대상이며(`theme-dark.css`는 코어 해시 제외, print 뒤 맨끝), `base.html`의 각 CSS 슬롯은 미사용 시 빈 문자열로 치환한다(단 `theme-dark.css`는 항상 인라인 — 스위처 마크업 없으면 라이트 고정).
 4. 섹션 wrapper와 grid/card wrapper를 분리한다. `section.matrix`, `section.serp-preview`, `section.value-grid`, `section.check-grid`, `section.priority-roadmap` 같은 semantic section에는 `display:grid`를 직접 걸지 말고, 내부에 `.card-grid`, `.grid-2`, `.grid-3`, `.matrix:not(section)` 같은 별도 wrapper를 둔다.
    - `section > h2:first-child`는 내부 top margin이 0이어야 한다. 섹션 간 간격은 `section{margin}`으로 제어하고, 카드 내부 첫 heading의 `margin-top:64px`가 빈 공간을 만들게 두지 않는다.
    - 검정 `.try` 섹션 안에 흰색 `.box`, `.summary-card`, `.cta-box`, `.card-block`, `.mini-card`를 넣으면 반드시 카드 안쪽 텍스트 색을 `var(--ink)`/`var(--ink-soft)`로 되돌린다. `.try p/li{color:#d0d0c8}` 상속이 흰 카드에 새어 들어가면 실패다.
@@ -443,7 +444,7 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 - `references/eval-rubric.md` — 0~5점 평가 루브릭
 - `references/quality-gates.md` — 최종 검수
 - `references/visual-template-system.md` — 8000×6000 SVG 인포그래픽 템플릿 선택·삽입·검수
-- `references/visual-html-system.md` — SVG→HTML 시각 템플릿(`vt-`) 20종 선택·삽입·무 JS 인터랙션·검수 (`assets/visual-html.css`, `assets/visual-html-templates/`)
+- `references/visual-html-system.md` — SVG→HTML 시각 템플릿(`vt-`) 21종 선택·삽입·무 JS 인터랙션·검수 (`assets/visual-html.css`, `assets/visual-html-templates/`)
 - `references/widget-system.md` — CSS 뷰 위젯 20종 선택·삽입·무 JS 인터랙션·접근성 규칙 (`assets/widgets.css`, `assets/widget-templates/`)
 
 ## 9. Output Rules

@@ -246,13 +246,187 @@ def cross_leak_gate(text: str, declared_profile) -> list:
     return issues
 
 
+# ---- Phase 0 governance gates (final_20260604 merge-protection lints) ----
+
+# Gate A: zero !important across skill CSS, except 2 sanctioned widgets.css cases.
+IMPORTANT_LINT_ASSETS = [
+    'theme.css', 'components.css', 'visual-components.css', 'layouts.css', 'print.css',
+    'editorial-patterns.css', 'visual-html.css', 'shape-visuals.css',
+    'workflow-visuals.css', 'body-icons.css', 'widgets.css', 'theme-dark.css',
+]
+
+
+def _mask_css_comments(text: str) -> str:
+    """Blank out /* ... */ comments while preserving line count/numbers, so the asset
+    lints never false-fire on prose inside a comment (e.g. a note mentioning !important)."""
+    return re.sub(r'/\*.*?\*/', lambda m: re.sub(r'[^\n]', ' ', m.group(0)), text, flags=re.S)
+
+
+def _important_allowlisted(asset_name: str, line: str) -> bool:
+    """Sanctioned widgets.css cases: .wg-06-rowhead text-align + @keyframes wg-11-grow width:0."""
+    if asset_name != 'widgets.css':
+        return False
+    if '.wg-06-rowhead' in line:
+        return True
+    if re.search(r'width\s*:\s*0\s*!important', line):
+        return True
+    return False
+
+
+# Gate C: bare callout class (.good/.danger/.term/.analogy) reused as a compound state
+# modifier outside components.css. .vt-pill is pre-existing/sanctioned (shipped before this gate).
+_CALLOUT_RE = re.compile(r'(\.[\w-]+)\.(good|danger|term|analogy)(?![\w-])')
+_CALLOUT_CARRIER_ALLOW = {'.vt-pill'}
+
+# Gate D: page-invented class vocabularies that must never appear in canonical skill output.
+# Each verified to have 0 occurrences in skill/assets/, so denying them cannot break a
+# legitimately generated page. Canonical output uses wg-/vt-(canonical)/wf-(vt-21)/
+# workflow-/shape-/bi-/editorial names only.
+BESPOKE_CLASS_PREFIXES = (
+    'vt-adapt-', 'vt-flow-', 'vt-file-', 'vt-soft-', 'vt-risk-', 'vt-triage-',
+    'vt-concept-', 'vt-compare-', 'vt-check-', 'vt-qg-', 'vt-ticket', 'vt-raci',
+    'vt-swimlane', 'vt-fill', 'vt-flag',
+    'edge-gov-', 'edge-status-', 'edge-ticket', 'edge-flag', 'edge-failure',
+    'module-node', 'module-edge',
+    'final-softshape', 'final-body-icon', 'final-hero-map', 'final-vt-',
+    'static-flow-', 'new-template-', 'imported-toc-',
+    'landing-action-', 'seo-result-', 'seo-snippet-', 'seo-rule-', 'seo-variant',
+    'platform-conversion-', 'platform-branch-', 'platform-transform-',
+    'platform-title-', 'platform-mini-',
+    'access-check-', 'access-release', 'access-pass', 'access-fail',
+    'token-swatch', 'token-chip', 'token-rhythm',
+    'pattern-shell', 'pattern-nav', 'pattern-head', 'pattern-meta', 'pattern-hero-note',
+    'widget-',
+)
+
+
+def bespoke_prefix_gate(text: str) -> list:
+    """Reject page-invented class vocabularies in output markup."""
+    issues = []
+    tokens = set()
+    for cv in re.findall(r'class\s*=\s*"([^"]*)"', text, re.I) + re.findall(r"class\s*=\s*'([^']*)'", text, re.I):
+        tokens.update(cv.split())
+    bad = sorted({t for t in tokens if t.startswith(BESPOKE_CLASS_PREFIXES)})
+    if bad:
+        issues.append({'type': 'bespoke_namespace_class', 'count': len(bad), 'detail': bad[:40],
+                       'note': '페이지 발명 어휘는 정본 접두사로 개명 후에만 병합(§3.2). 정식 출력에 등장 금지.'})
+    return issues
+
+
+def global_no_js_gate(text: str) -> list:
+    """Invariant #1 enforced GLOBALLY (not only inside wg-/vt- areas): the only allowed
+    <script> is type=application/ld+json; no draggable/contenteditable anywhere."""
+    issues = []
+    bad_scripts = 0
+    for sm in re.finditer(r'<script\b([^>]*)>', text, re.I):
+        tm = re.search(r'type\s*=\s*("[^"]*"|\'[^\']*\'|[^\s>]+)', sm.group(1), re.I)
+        stype = tm.group(1).strip('\'"').lower() if tm else ''
+        if stype != 'application/ld+json':
+            bad_scripts += 1
+    if bad_scripts:
+        issues.append({'type': 'behavioral_script_global', 'count': bad_scripts,
+                       'note': '무 JS 불변식: <script>는 application/ld+json(JSON-LD)만 허용.'})
+    forbidden = sorted({fm.group(1).lower() for fm in re.finditer(r'\b(draggable|contenteditable)\s*=', text, re.I)})
+    if forbidden:
+        issues.append({'type': 'forbidden_primitive_global', 'detail': forbidden})
+    return issues
+
+
+def legacy_theme_toggle_gate(text: str) -> list:
+    """v5.2 ships one theme contract: radios name="ahf-theme" (#ahf-light/#ahf-white/#ahf-dark).
+    The pre-5.2 single `#theme-toggle` checkbox is deprecated — flag it so stale theme markup
+    can't silently ship inside a 5.2 package."""
+    if re.search(r'''id\s*=\s*["']theme-toggle["']|#theme-toggle\b''', text):
+        return [{'type': 'legacy_theme_toggle',
+                 'note': 'legacy #theme-toggle 테마 토글 감지. v5.2는 라디오 name="ahf-theme"(light/white/dark) 단일 계약.'}]
+    return []
+
+
+def _inner_html(text: str, open_end: int, tag: str) -> str:
+    """Inner HTML of the element whose opening tag ends at open_end, by balancing nested
+    <tag>/</tag>. Falls back to a bounded window if the tag never closes (malformed)."""
+    depth = 1
+    window = text[open_end:open_end + 20000]
+    for mm in re.finditer(r'<(/?)' + re.escape(tag) + r'\b', window, re.I):
+        depth += -1 if mm.group(1) else 1
+        if depth == 0:
+            return window[:mm.start()]
+    return window[:1800]
+
+
+def role_img_buries_text_gate(text: str) -> list:
+    """role="img" on a text-bearing container (not figure/img/svg) prunes its text from
+    assistive tech. Generalizes the wf-board-specific check to any bespoke container.
+    Scopes the text scan to the element's OWN subtree (balanced tags) so a decorative
+    container with text-bearing *siblings* is not false-flagged."""
+    issues = []
+    for m in re.finditer(r'<(div|section|article|ul|ol|nav|aside)\b([^>]*)\brole\s*=\s*["\']img["\']([^>]*)>', text, re.I):
+        attrs = m.group(2) + m.group(3)
+        if 'wf-board' in attrs:  # already covered by the specific soft-workflow gate
+            continue
+        inner = _inner_html(text, m.end(), m.group(1))
+        if re.search(r'<(?:h[2-6]|p|li|strong)\b', inner, re.I):
+            cls = re.search(r'class\s*=\s*("[^"]*"|\'[^\']*\')', attrs, re.I)
+            issues.append({'type': 'role_img_buries_text', 'el': m.group(1).lower(),
+                           'class': cls.group(1).strip('\'"') if cls else '',
+                           'detail': '텍스트 포함 컨테이너에 role="img" → 스크린리더가 텍스트를 prune. role 제거, 장식 요소만 aria-hidden.'})
+            break
+    return issues
+
+
+def skill_asset_lint(skill_dir: Path) -> list:
+    """Merge-protection lints on the skill's own CSS assets (run when --skill-dir given).
+    Asset-level issues (no 'page' key). Protects the final_20260604 section merge."""
+    issues = []
+    assets = skill_dir / 'assets'
+    # Comment-masked text per CSS asset (so lints never false-fire on prose in /* */).
+    masked = {p.name: _mask_css_comments(p.read_text(encoding='utf-8')) for p in assets.glob('*.css')}
+    # Gate A: zero !important (2 sanctioned widgets.css cases allowlisted).
+    bad_imp = []
+    for name in IMPORTANT_LINT_ASSETS:
+        if name not in masked:
+            continue
+        for i, line in enumerate(masked[name].splitlines(), 1):
+            if '!important' in line and not _important_allowlisted(name, line):
+                bad_imp.append({'asset': name, 'line': i, 'text': line.strip()[:120]})
+    if bad_imp:
+        issues.append({'type': 'important_in_core_css', 'count': len(bad_imp), 'detail': bad_imp[:30]})
+    # Gate B: forbidden page-local font token --report-sans/--report-serif.
+    bad_tok = []
+    for name, text in sorted(masked.items()):
+        for i, line in enumerate(text.splitlines(), 1):
+            if re.search(r'--report-(?:sans|serif)\b', line):
+                bad_tok.append({'asset': name, 'line': i})
+    if bad_tok:
+        issues.append({'type': 'forbidden_report_font_token', 'count': len(bad_tok), 'detail': bad_tok[:30],
+                       'note': '--report-* 토큰은 스킬에 미정의 → var(--sans)/var(--serif)로 재작성.'})
+    # Gate C: bare callout class as compound modifier outside components.css.
+    bad_callout = []
+    for name, text in sorted(masked.items()):
+        if name == 'components.css':
+            continue
+        for sm in re.finditer(r'([^{}]+)\{', text):
+            selector = sm.group(1)
+            for cm in _CALLOUT_RE.finditer(selector):
+                if cm.group(1) in _CALLOUT_CARRIER_ALLOW:
+                    continue
+                bad_callout.append({'asset': name, 'selector': ' '.join(selector.split())[-80:],
+                                    'modifier': cm.group(0)})
+    if bad_callout:
+        issues.append({'type': 'bare_callout_modifier', 'count': len(bad_callout), 'detail': bad_callout[:30],
+                       'note': '비콜아웃 셀렉터의 베어 .good/.danger/.term/.analogy 수식자 금지 → 네임스페이스형(--ok/--done)으로 개명.'})
+    return issues
+
+
 def validate(root: Path, skill_dir: Path | None = None, profile: str | None = None) -> dict:
     issues = []
     warnings = []
     declared_profile = _resolve_profile(profile, root, issues)
     expected_css_hash = None
     expected_asset_hashes = None
+    all_skill_css_hashes = None
     asset_order = ['theme.css', 'components.css', 'visual-components.css', 'layouts.css', 'print.css']
+    conditional_order = ['widgets.css', 'visual-html.css', 'body-icons.css', 'editorial-patterns.css', 'shape-visuals.css', 'workflow-visuals.css', 'theme-dark.css']
     if skill_dir:
         asset_paths = [skill_dir/'assets'/name for name in asset_order]
         if all(p.exists() for p in asset_paths):
@@ -260,6 +434,12 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
             core_css = '\n'.join(asset_texts[name] for name in asset_order)
             expected_css_hash = hashlib.sha256(core_css.encode('utf-8')).hexdigest()
             expected_asset_hashes = {name: hashlib.sha256(asset_texts[name].encode('utf-8')).hexdigest() for name in asset_order}
+            # All CSS assets (core + conditional) for snapshot/recorded-hash currency checks.
+            all_skill_css_hashes = dict(expected_asset_hashes)
+            for _name in conditional_order:
+                _p = skill_dir/'assets'/_name
+                if _p.exists():
+                    all_skill_css_hashes[_name] = hashlib.sha256(_p.read_text(encoding='utf-8').encode('utf-8')).hexdigest()
         else:
             warnings.append({'type': 'missing_skill_css_assets', 'asset_order': asset_order})
     htmls = sorted(root.glob('*.html')) + sorted((root/'pages').glob('*.html'))
@@ -325,6 +505,18 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for cl_issue in cross_leak_gate(text, declared_profile):
             cl_issue['page'] = rel
             issues.append(cl_issue)
+        for bp_issue in bespoke_prefix_gate(text):
+            bp_issue['page'] = rel
+            issues.append(bp_issue)
+        for js_issue in global_no_js_gate(text):
+            js_issue['page'] = rel
+            issues.append(js_issue)
+        for tg_issue in legacy_theme_toggle_gate(text):
+            tg_issue['page'] = rel
+            issues.append(tg_issue)
+        for ri_issue in role_img_buries_text_gate(text):
+            ri_issue['page'] = rel
+            issues.append(ri_issue)
         ph = sorted(set(re.findall(r'\{\{[A-Z_]+\}\}', text)))
         if ph:
             issues.append({'page': rel, 'type': 'unfilled_placeholder', 'found': ph})
@@ -339,8 +531,8 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
                     break
         # Editorial pattern gate: if a pattern block is used, its CSS must be inlined.
         # Standalone-token match (lookbehind/lookahead exclude prefixed classes like wg-17-ba).
-        if re.search(r'class=["\'][^"\']*(?<![\w-])(?:chron-list|source-preserve|core-insight|conn-grid|impact-grid|ba|ba-col|ba-arrow|ba-label)(?![\w-])', text):
-            if not re.search(r'\.(?:chron-list|source-preserve|core-insight|conn-grid|impact-grid)\b', style):
+        if re.search(r'class=["\'][^"\']*(?<![\w-])(?:chron-list|source-preserve|core-insight|conn-grid|impact-grid|ba|ba-col|ba-arrow|ba-label|a11y-check|a11y-grid)(?![\w-])', text):
+            if not re.search(r'\.(?:chron-list|source-preserve|core-insight|conn-grid|impact-grid|a11y-check)\b', style):
                 issues.append({'page': rel, 'type': 'editorial_patterns_css_not_inlined'})
         # body_only = markup with inline <style> stripped — scan <img> here so example markup inside CSS
         # comments (e.g. an <img class="…-img" src="…"> usage example) can't false-fire the img gates.
@@ -469,10 +661,14 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         output_manifest = root/'sources/adaptive-html-final-manifest.json'
         if skill_manifest.exists() and output_manifest.exists():
             try:
-                sv = json.loads(skill_manifest.read_text()).get('version')
-                ov = json.loads(output_manifest.read_text()).get('version')
+                sm = json.loads(skill_manifest.read_text())
+                om = json.loads(output_manifest.read_text())
+                sv, ov = sm.get('version'), om.get('version')
                 if sv != ov:
                     issues.append({'type': 'source_version_mismatch', 'skill_version': sv, 'output_source_version': ov})
+                elif json.dumps(sm, sort_keys=True) != json.dumps(om, sort_keys=True):
+                    issues.append({'type': 'source_manifest_content_mismatch',
+                                   'note': '버전은 같으나 source manifest 내용이 현재 manifest.json과 다름(예: theme_system 누락 / 구버전 dark_theme 잔존).'})
             except Exception as e:
                 issues.append({'type': 'manifest_parse_error', 'detail': str(e)})
         elif skill_manifest.exists():
@@ -488,9 +684,19 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
                         issues.append({'type': 'css_integrity_core_hash_mismatch', 'expected': expected_css_hash, 'actual': data.get('core_css_sha256')})
                     if data.get('asset_order') != asset_order:
                         issues.append({'type': 'css_integrity_asset_order_mismatch', 'expected': asset_order, 'actual': data.get('asset_order')})
+                    # Core-5 recorded hashes are the canonical contract — must match exactly.
                     for name, digest in expected_asset_hashes.items():
                         if data.get('asset_sha256', {}).get(name) != digest:
                             issues.append({'type': 'css_integrity_asset_hash_mismatch', 'asset': name})
+                    # Any OTHER recorded asset hash (conditional: widgets/visual-html/theme-dark/...) must
+                    # also match the current skill — a stale recorded hash means a stale embedded asset.
+                    if all_skill_css_hashes:
+                        for name, recorded in (data.get('asset_sha256') or {}).items():
+                            if name in expected_asset_hashes:
+                                continue
+                            if name in all_skill_css_hashes and recorded != all_skill_css_hashes[name]:
+                                issues.append({'type': 'css_integrity_conditional_hash_mismatch', 'asset': name})
+                    # Core-5 snapshot files are mandatory and must match.
                     for name in asset_order:
                         snap = root/'sources/assets'/name
                         if not snap.exists():
@@ -499,8 +705,20 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
                             snap_hash = hashlib.sha256(snap.read_text(encoding='utf-8').encode('utf-8')).hexdigest()
                             if snap_hash != expected_asset_hashes[name]:
                                 issues.append({'type': 'output_css_snapshot_mismatch', 'asset': name})
+                    # Conditional snapshot files are optional, but if present must match the current skill
+                    # (catches a stale snapshot like a pre-5.2 #theme-toggle theme-dark.css).
+                    if all_skill_css_hashes:
+                        for name in conditional_order:
+                            snap = root/'sources/assets'/name
+                            if snap.exists() and name in all_skill_css_hashes:
+                                snap_hash = hashlib.sha256(snap.read_text(encoding='utf-8').encode('utf-8')).hexdigest()
+                                if snap_hash != all_skill_css_hashes[name]:
+                                    issues.append({'type': 'output_css_snapshot_mismatch', 'asset': name})
                 except Exception as e:
                     issues.append({'type': 'css_integrity_parse_error', 'detail': str(e)})
+        # Phase 0 merge-protection lints on the skill's own CSS assets.
+        for a_issue in skill_asset_lint(skill_dir):
+            issues.append(a_issue)
     return {'root': str(root), 'profile': declared_profile, 'html_count': len(htmls), 'issues': issues, 'warnings': warnings, 'ok': not issues}
 
 

@@ -1,42 +1,125 @@
 # Changelog — adaptive-html-final
 
+## v5.2.0 (2026-06-05) — CSS-only 3-테마 시스템 (라이트·완전 화이트·다크)
+
+기존 라이트(크림)/다크 2-테마에 **완전 화이트(순백) 테마**를 추가해 **3-테마**로 확장. 단일 체크박스 토글을 **라디오 3-세그먼트 스위처**(`name=ahf-theme`: `#ahf-light`/`#ahf-white`/`#ahf-dark`)로 교체. 전부 `:has()` 기반 **무 JS**, 코어 CSS 무수정(해시-safe), `!important` 0.
+
+### 추가/변경 (`assets/theme-dark.css` → 테마 시스템)
+- **화이트(순백)**: `:root:has(#ahf-white:checked)` — neutral 토큰만 쿨·순백(`--bg/--card #fff`, `--line #e4e4ea`, `--ink #16181d`, `--vt-* #fff`); accent·콜아웃 유지. 라이트(크림 `#f5f5f0`)와 명확히 구분.
+- **다크**: `:root:has(#ahf-dark:checked)` + 표면 보정(이전과 동일, proper-black `#0c0d10`).
+- **스위처**: `.ahf-themebar` 세그먼트 컨트롤(숨긴 라디오 + 라벨, `input:checked + label`=accent 활성, focus-visible 링). 기본=라이트, 마크업 없으면 라이트 고정.
+- 이전 `#theme-toggle` 체크박스(invert) 방식은 3-라디오로 대체.
+
+### 검증
+- Playwright 3-테마 전환 실측: body bg 라이트 `#faf9f5` / 화이트 `#ffffff` / 다크 `#0c0d10`. 화이트 ink/bg 17.8:1. self-test 16/16.
+
+### 후속 하드닝 (5.2.0 라인 · 2026-06-05)
+- **결정론 문서 동기화** (`AGENTS.md`·`SKILL.md`): 버전 하드코딩 제거(→ `manifest.json` 일치), CSS 순서표·슬롯 인덱스에 `theme-dark.css`/`{{THEME_DARK_CSS}}` 추가(누락됐던 `SHAPE_VISUALS`/`WORKFLOW_VISUALS` 포함), 테마 스위처(`name="ahf-theme"`) 삽입 규칙 + 불변식 "3-테마 단일 계약"(legacy `#theme-toggle` 금지), `auto = 혼합/기본(auto≠diagram)` 명확화, 본문 구조 패턴 **8종**(`accessibility-checklist` 포함, 템플릿 `01..08`) 정정.
+- **검증기 강화** (`scripts/validate_output.py`): (1) 조건부 CSS 스냅샷·`asset_sha256` 기록 해시를 현재 스킬과 대조(있을 때만; stale `theme-dark.css` 등 차단), (2) source manifest를 버전만이 아닌 **내용 전체** 비교(`source_manifest_content_mismatch`), (3) legacy `#theme-toggle` 가드(`legacy_theme_toggle`). self-test 16 → **24** (legacy-toggle fixture 3종 추가).
+- **M6 모바일 표/매트릭스**: `<table>` 보유 위젯(`wg-06`/`12`/`15`/`16`)을 `.table-scroll`로 래핑(`table_no_mobile_safe_wrapper` 게이트 충족), vt-03 리스크 매트릭스 `.rm-grid`에 모바일 규칙(`minmax` 바닥 + `overflow-x:auto`) 추가.
+- 쇼케이스 출력(`13-topics`)을 현재 자산으로 재인라인·재스냅샷, `.skill` 재패키징(stale `__pycache__/*.pyc` 정리).
+
+## v5.1.0 (2026-06-05) — 글꼴(Pretendard sans 제목)·헤더 반영 + proper-black 다크 (디자이너 검토)
+
+`output/final_20260604/index.html`의 **글꼴**과 **헤더 섹션(SVG 제외)**을 스킬에 반영하고, 다크 테마를 **"proper black"**으로 교정했다. 전문 시각 디자이너 + 레이아웃 스타일 디자이너 에이전트 2인 검토 결과를 반영. 코어 해시 재베이스라인(`b04221bd…`→`fea7b026…`). 무 JS·코어 `!important` 0 유지.
+
+### 글꼴 — report 룩(sans 제목)
+- `--serif` 토큰을 Pretendard sans 스택으로 전환(제목·디스플레이가 Noto Serif KR → Pretendard sans). 진짜 세리프는 `--serif-kr`로 보존하고 `blockquote`/`.pull-quote`/`.core-insight blockquote`에만 적용(에디토리얼 대비).
+- 디자이너 검토 반영: sans 제목은 700→**800** 무게 + 트래킹 강화(h1 -.025em/lh1.22, h2 -.02em/lh1.3, h3 -.015em).
+
+### 헤더 — final_20260604 반영(SVG 제외)
+- `.kicker`를 **점 달린 pill eyebrow**로(토큰화 → 다크 자동). `.kicker-text` 추가.
+- `.generated-row` + `.generated-date` + `.lens-strip` + `.lens-strip-label` + `.lens-chip`(적용 기준 칩) 추가 — 페이지 warm 리터럴을 쿨 토큰으로.
+- no-SVG 단일 컬럼 헤더에 **측정 캡**(`.header` 자식 `max-width:48rem`)으로 제목/본문 우측 정렬. 헤더 리듬 재튜닝(kicker→h1 24, meta 24, generated-row 16, `--space-*` 정렬).
+
+### 다크 — proper black (디자이너 P1)
+- 팔레트 교정: `--bg #15161a→#0c0d10`(near-black), `--card #1e2026→#1a1c22`(lifted, 카드 분리), `--line→#2c2d34`, `--dark→#000`(true-black `.try` hero), `--code→#070809`.
+- **AA 교정**: `--on-accent` 토큰 신설(라이트 `#fff`, 다크 `#0c0d10`) — accent 버튼/배지 흰 텍스트의 AA 미달(라이트 4.17·다크 2.76)을 해소(다크 on-accent 7:1). `.cta-btn.primary`·`h2 .no.is-key`에 적용.
+- **다크 커버리지 갭 차단**: `widgets.css`·`visual-html.css`의 흰 카드 `background:#fff` 38곳을 `var(--card)`로 토큰화(라이트 동일, 다크 자동 반전) — 위젯/vt 템플릿이 다크에서 흰 섬으로 남던 문제 해결.
+- **"전혀 블랙이 아니다" 근본 원인 수정(실제 렌더 캡쳐로 진단)**: `visual-html.css`가 `body{background:var(--vt-wash)}`로 페이지 배경을 자체 `--vt-*` 토큰(다크 미적용)으로 덮어 다크에서도 `#faf9f5`(밝은 wash)로 남던 버그. theme-dark가 `--vt-paper/--vt-wash/--vt-soft`(+ vt-blue/green/gold 명도 상향)를 다크로 덮도록 추가 → body 배경 `#0c0d10`(near-black) 확정(Playwright 캡쳐 검증). `widgets.css` 흰 글레이즈 `rgba(255,255,255,…)` 7곳→`var(--card)`(wg-11 빗금 보존), `.core-insight` 흰 글레이즈 그라데이션→다크 그라데이션, vt-pill.hot/good/watch 다크 틴트. theme-dark 토글 `th,.table th` 콤마 스코프 누수 수정.
+- **양방향 토글 수정(OS 다크에서 화이트 전환 불가 버그)**: 기존 토글은 dark를 "추가"만 해서 OS가 다크면 토글로 라이트 복귀가 불가능했음. **invert 패턴**으로 재작성 — `@media(prefers-color-scheme:dark) :root:not(:has(#theme-toggle:checked))`(OS다크 기본 다크, 토글 시 라이트) + `@media(light/no-preference) :root:has(#theme-toggle:checked)`(OS라이트 토글 시 다크). 4조합(OS×토글) 전부 검증: light/dark/dark/light. 아이콘은 현재 테마 표시(다크=달/라이트=해). 토글 마크업 없으면 OS 자동만 동작.
+- **다크 텍스트 대비 감사(Playwright로 전 텍스트 노드 대비 계산 + 풀페이지 캡쳐)**: 안 보이는 텍스트 패치 — `.try .tag`(밝은 pill+`var(--ink)` 텍스트가 다크에서 light-on-light 1.18:1 → 다크 pill `var(--card)`/`var(--line)`로 보정), `visual-html.css`의 `.vt-pill`·`.vt-fit`(`color:#555`)·`.vt-tags span`·`.cf-state`(`#666`)·`#6e6258` + `widgets.css` `#7c7c78` 리터럴 회색 텍스트를 `var(--ink-mute)`로 토큰화(다크 자동 반전). 종합 kitchen-sink(`output/adaptive-html-final-dark-coverage-test`)에서 저대비 텍스트 **0건** 확인.
+- theme-dark 토글 블록의 `th,.table th` 셀렉터 스코프 버그 수정(콤마로 인한 라이트 누수 차단).
+
+## v5.0.0 (2026-06-05) — Tranche B: 다크 테마 + 코어 프리미티브 업그레이드 (코어 해시 재베이스라인)
+
+`final_20260604` 병합 Tranche B. **토큰 전용 다크 테마**를 추가하고, 코어 프리미티브(`.cta-box`/`.serp-*`/`.platform-card`)를 "replace-the-primitive"로 제자리 업그레이드했다. 후자가 **코어 5개 동결 자산(theme/components/visual-components/layouts/print)을 수정**하므로 코어 해시가 재베이스라인된다(메이저 범프). 골든 v6는 v4.x 역사 베이스라인으로 남는다. 페이지 발명 어휘(`landing-action-*`/`seo-result-*`/`platform-conversion-*`)는 도입하지 않고 기존 정본 클래스만 강화. 무 JS·`!important` 0(코어) 유지.
+
+### 추가 — 다크 테마 (hash-safe, 코어 무수정)
+- `assets/theme-dark.css` — **토큰 전용 `:root` 오버라이드**(37개 색 토큰). `@media(prefers-color-scheme:dark)` 1순위 + **라이트 기본** + 선택적 `:root:has(#theme-toggle:checked)` 강제 다크. 페이지의 116-클래스 `!important` 열거는 폐기. 표면 보정 6개(prompt-box/code/th/status-pill/timeline-card/serp-url)만, `!important` 0.
+- `base.html`에 `{{THEME_DARK_CSS}}` 슬롯(print 뒤) + manifest `dark_theme` 블록 + `references/editorial-design-system.md` 다크 테마 절. 선택 토글 버튼(체크박스+라벨, 무 JS).
+
+### 변경 — 코어 프리미티브 업그레이드 (코어 해시 재베이스라인)
+- `.cta-box`(components.css): `.cta-actions`/`.cta-btn`(44px 터치, primary/secondary)/`.cta-proof-grid`/`.cta-proof` 추가. translateY hover에 `prefers-reduced-motion` 폴백.
+- `.layout-seo .serp-*`(layouts.css): `.serp-desc`/`.serp-dots`(검색 점열)/`.serp-checks`(칩, `.ok`)/`.serp-rule-grid`/`.serp-rule`(`.is-wide`) 추가. 전부 `.layout-seo` 스코프, `--report-sans`→`var(--sans)`, dot hex 토큰화.
+- `.layout-platform .platform-card`(layouts.css): 채널 코딩 `.is-search/.is-dev/.is-story/.is-essay` 좌측 보더(토큰) + `.platform-kicker`. 제네릭 충돌 방지 위해 `.layout-platform` 스코프 + `is-` 접두.
+
+### 게이트 (부수 개선)
+- 자산 린터를 **주석-인식**(`/* */` 마스킹)으로 교정(prose 속 `!important` 오탐 차단) + `theme-dark.css`를 `important_in_core_css` 린트 대상에 편입. self-test 16/16.
+
+### 비고
+- 코어 해시 변경: v4.x `3e6a8bfa…` → v5 `b04221bd…`. 기존 출력물은 재검증 시 해시 불일치(재생성 필요). 새 데모는 v5 해시로 재생성됨.
+
+## v4.6.0 (2026-06-05) — final_20260604 섹션 Tranche A 흡수 & 병합 보호 게이트
+
+`output/final_20260604/index.html`(무신뢰 디자인 소스)의 섹션 패턴 중 **재사용 가치가 검증된 9종을 흡수**했다. 페이지 발명 어휘(`access-*`/`edge-*`/`pattern-hero-note`/`static-flow-*`/`vt-flag`/`fi-*`)는 모두 **정본 네임스페이스로 개명**하고, `!important`·`--report-sans`·warm 리터럴·베어 콜아웃 충돌을 제거한 뒤 토큰화했다. 코어-해시 5개 자산(theme/components/visual-components/layouts/print)은 **무변경**(전부 hash-safe 경로). 무 JS 원칙 유지.
+
+### 추가 (Phase 0 — 병합 보호 거버넌스 게이트)
+- `scripts/validate_output.py` — 자산 린터 3종(`important_in_core_css`, `forbidden_report_font_token`, `bare_callout_modifier`) + 출력 게이트 2종(`bespoke_namespace_class` denylist, `role_img_buries_text` 일반화). `--skill-dir` 제공 시 스킬 자산을 린트.
+- `tests/test_governance_gates.py` — 게이트 16개 체크 stdlib 자체 테스트(회귀 방어).
+
+### 추가/변경 (Phase 1 — Tranche A 9종 병합)
+- editorial 패턴 **08 `accessibility-checklist`** 신규(`a11y-*`): 30분 점검 그리드 + 실패 모드 표(caption+`.table-scroll`) + 다크 릴리스 체크. 상태는 PASS/FAIL **텍스트 칩**(색 외 단서). `editorial-pattern-templates/08-accessibility-checklist.html`, manifest editorial_patterns 7→8.
+- callout·헬퍼(opt-in, 패턴 수 미증가): `.lede-note`(←pattern-hero-note), `.source-preserve-static`, `.core-insight--neutral`, before/after `.ba-emphasis-line`+`.ba-bullet`.
+- `.md-excerpt .code` 긴 줄 줄바꿈(`pre-wrap`+`overflow-wrap:anywhere`).
+- vt-19 feature-flag **3-상태 토글**(`.switch.on/.warn/.off`) + 가시·SR 텍스트 라벨(`.flag-state`) — 색-단독 회귀 해소.
+- `wg-11` ≤480px 라벨 적층 + 상태/거버넌스 보드 정본 통일(빗금 `wg-11-fill-risk` 비색 단서 보존).
+- `wg-08-static-*` — `:target/:has` 없는 읽기전용 스테퍼(←static-flow-*).
+
+### 추가 (Phase 3 — 인-스킬 갤러리)
+- `galleries/body-icons-catalog.html`(32종)·`galleries/soft-shapes-catalog.html`(36종) — 외부 `output/` 경로 링크를 인-스킬 데모로 재배치. `body-icons.css`/`shape-visuals.css`는 프리미티브 전용 유지. manifest에 catalog/gallery 필드 등록.
+- `pattern-shell`을 **데모 하네스**(콘텐츠 패턴 아님, 정식 출력에선 denylist)로 문서화.
+
+### 비고
+- Tranche B(토큰 전용 다크 테마 + CTA/SERP/platform 코어-해시 제자리 업그레이드)는 v5.0.0에서 별도 진행. 전략: `MERGE_STRATEGY_final-20260604.md`.
+
 ## v4.5.0 (2026-05-31) — SVG→HTML 템플릿 편입 & 하네스 정형화
 
-SVG로 그리던 본문 삽입 다이어그램을 순수 HTML+CSS 뷰 템플릿(`vt-`) 20종으로 정식 편입하고, 모드→템플릿 결정론 진입점과 정적 게이트로 하네스를 정형화했다. 무 JS 원칙(외부/동작 JS 0, JSON-LD만 허용)은 전 항목에서 유지된다.
+SVG로 그리던 본문 삽입 다이어그램을 순수 HTML+CSS 뷰 템플릿(`vt-`)으로 정식 편입하고, 이후 vt-21 `soft-workflow-map`까지 포함해 현재 21종으로 확장했다. 모드→템플릿 결정론 진입점과 정적 게이트로 하네스를 정형화했으며, 무 JS 원칙(외부/동작 JS 0, JSON-LD만 허용)은 전 항목에서 유지된다.
 
 ### 추가
-- `assets/visual-html.css` — SVG→HTML 뷰 템플릿 20종 스타일.
-- `assets/visual-html-templates/01..20.html` 20종 — `vt-` 본문 삽입 다이어그램 골격(hero-map, decision-tree, risk-matrix, timeline, checklist-flow, quality-gate, card-grid, raci, file-tour, flowchart, weekly-status, incident-summary, comparison-cards, process-swimlane, concept-explainer, implementation-plan, pr-writeup, triage-board, feature-flag, prompt-tuner).
+- `assets/visual-html.css` — SVG→HTML 뷰 템플릿 21종 스타일.
+- `assets/visual-html-templates/01..21.html` 21종 — `vt-` 본문 삽입 다이어그램 골격(hero-map, decision-tree, risk-matrix, timeline, checklist-flow, quality-gate, card-grid, raci, file-tour, flowchart, weekly-status, incident-summary, comparison-cards, process-swimlane, concept-explainer, implementation-plan, pr-writeup, triage-board, feature-flag, prompt-tuner, soft-workflow-map).
 - `references/visual-html-system.md` — 캐노니컬 모드→vt 템플릿 매핑(첫=1순위, 단일 출처), 선택·삽입 규칙.
 - `AGENTS.md` — 결정론 진입점(모드 입력→vt 선택을 단일 출처로 고정).
 
 ### 캐노니컬 모드→vt 매핑 (첫=1순위, 단일 출처)
 - beginner_html: concept-explainer, hero-map, checklist-flow
-- expert_html: risk-matrix, raci, quality-gate, implementation-plan
+- expert_html: risk-matrix, raci, quality-gate, implementation-plan, soft-workflow-map
 - article_html: decision-tree, comparison-cards, concept-explainer
-- education_html: timeline, checklist-flow, concept-explainer
+- education_html: timeline, checklist-flow, concept-explainer, soft-workflow-map
 - blog_writer: timeline, weekly-status, comparison-cards
 - seo_dashboard: card-grid, comparison-cards, prompt-tuner
 - platform_blog: card-grid, comparison-cards, pr-writeup
-- skill_audit: quality-gate, file-tour, prompt-tuner, implementation-plan
+- skill_audit: quality-gate, file-tour, prompt-tuner, implementation-plan, soft-workflow-map
 - reference_html: file-tour, flowchart, card-grid
 - comparison_html: comparison-cards, decision-tree, risk-matrix
 - case_study_html: incident-summary, timeline, process-swimlane
-- landing_brief_html: hero-map, card-grid, feature-flag
+- landing_brief_html: hero-map, card-grid, feature-flag, soft-workflow-map
 - checklist_playbook: checklist-flow, quality-gate, process-swimlane, implementation-plan, triage-board
 
 ### 변경
 - `SKILL.md`: 모드→vt 결정표 추가(캐노니컬 매핑을 단일 출처로 참조).
 - `assets/base.html`: `{{WIDGETS_CSS}}` 슬롯 바로 뒤에 `{{VISUAL_HTML_CSS}}` 슬롯 추가(인라인 순서 widgets → visual-html → layouts 유지).
 - `scripts/validate_output.py`: `vt-` 게이트 추가(visual-html 템플릿 사용 시 정적 검사).
-- `manifest.json`: 버전 4.5.0, assets에 `assets/visual-html.css` 추가, `visual_html_templates` 배열(01~20) 등록, changes 항목 추가, updated 2026-05-31.
+- `manifest.json`: 버전 4.5.0, assets에 `assets/visual-html.css` 추가, `visual_html_templates` 배열(01~21) 등록, changes 항목 추가, updated 2026-05-31.
 
 ### 적용 데모
-- `showcase-v6` — SVG→HTML 템플릿 20종을 모드별로 적용한 갤러리.
+- `showcase-v6` — 동결 시점 기준 SVG→HTML 템플릿 20종을 모드별로 적용한 골든 갤러리(vt-21은 후순위 편입이라 골든 본문에는 필수 등장하지 않음).
 
 ### 검증
-- `assets/visual-html-templates/*.html` 20종 모두 외부/동작 `<script>` 0건(무 JS 0, JSON-LD만 허용).
-- `manifest.json` `python json.load` 유효성 통과, `visual_html_templates` 20개 실제 파일 경로 일치.
+- `assets/visual-html-templates/*.html` 21종 모두 외부/동작 `<script>` 0건(무 JS 0, JSON-LD만 허용).
+- `manifest.json` `python json.load` 유효성 통과, `visual_html_templates` 21개 실제 파일 경로 일치.
 
 ### 본문 아이콘 세트 편입 (2026-06-01)
 본문용 compact 아이콘 32종을 정식 편입했다. 섹션 제목·콜아웃·카드 옆에 의미를 보조하는 인라인 SVG 장식(외부/동작 JS 0, `aria-hidden="true"`)이며 스킬 디자인 토큰을 쓴다.
@@ -89,12 +172,12 @@ skill_audit "좋은 출력은 어떻게 생겼나"(주석 달린 PR) 섹션의 �
 - 게이트 `workflow_visual_gate`(opt-in `workflow-figure/img/grid`) — CSS 인라인·빈 alt 금지·네임스페이스 누수·**로컬 SVG 8000×6000 해상도 계약**. 또 QA 지적대로 **`<style>` 제거 후 body만 스캔**해 CSS 주석 속 예시 `<img>` 오발동을 구조적 차단(기존 `shape_visual_gate`도 동일 백포트).
 - 검증: 3 프로파일 골든(widget/auto/diagram) `OK` 바이트 불변, workflow 픽스처 4/4 + CSS주석 오발동 회귀 통과, 실제 도판 페이지 렌더 1280/390px overflow 0·무 JS 0. version 4.5.0 유지.
 
-### 본문 구조 패턴 6종 편입 (2026-06-01)
-첨부 HTML의 좋은 구조만 추려 기존 13모드 안에서 선택 삽입하는 **작은 본문 구조 패턴 라이브러리**로 편입했다(새 모드 미추가). 외부/동작 JS 0, 스킬 토큰 + body icon 활용, 프로파일 무관.
-- `assets/editorial-patterns.css` — 6 패턴 CSS: `chron-list`(증류 연대기)·`source-preserve`(원문 보존 details)·`core-insight`(핵심 명제 callout)·`conn-grid`(연결 분석 카드)·`ba`(Before/After 윤문)·`impact-grid`(콘텐츠 전환). 기존 클래스와 충돌 0.
-- `assets/editorial-pattern-templates/01..06.html` — 콘텐츠만 교체하는 삽입 골격 6종.
-- `references/editorial-pattern-system.md` — 6종 카탈로그·모드별 추천(예: chronology→expert/case_study, source-preserve→reference/article, core-insight는 페이지당 1개)·과삽입 금지·삽입 규칙.
-- `assets/base.html`: `{{EDITORIAL_PATTERNS_CSS}}` 슬롯(body-icons 뒤). `manifest.json`: assets + `editorial_patterns` 메타(count 6).
+### 본문 구조 패턴 7종 편입 (2026-06-01)
+첨부 HTML의 좋은 구조만 추려 기존 13모드 안에서 선택 삽입하는 **작은 본문 구조 패턴 라이브러리**로 편입했고, 이후 `md-excerpt`를 추가해 현재 7종으로 확장했다(새 모드 미추가). 외부/동작 JS 0, 스킬 토큰 + body icon 활용, 프로파일 무관.
+- `assets/editorial-patterns.css` — 7 패턴 CSS: `chron-list`(증류 연대기)·`source-preserve`(원문 보존 details)·`core-insight`(핵심 명제 callout)·`conn-grid`(연결 분석 카드)·`ba`(Before/After 윤문)·`impact-grid`(콘텐츠 전환)·`md-excerpt`(마크다운/코드 발췌). 기존 클래스와 충돌 0.
+- `assets/editorial-pattern-templates/01..07.html` — 콘텐츠만 교체하는 삽입 골격 7종.
+- `references/editorial-pattern-system.md` — 7종 카탈로그·모드별 추천(예: chronology→expert/case_study, source-preserve→reference/article, core-insight는 페이지당 1개, md-excerpt→skill_audit/reference)·과삽입 금지·삽입 규칙.
+- `assets/base.html`: `{{EDITORIAL_PATTERNS_CSS}}` 슬롯(body-icons 뒤). `manifest.json`: assets + `editorial_patterns` 메타(count 7).
 - `scripts/validate_output.py`: editorial-pattern 게이트(패턴 사용 시 editorial-patterns.css 인라인 강제).
 
 ### 비주얼 프로파일 선택 (2026-06-01)
