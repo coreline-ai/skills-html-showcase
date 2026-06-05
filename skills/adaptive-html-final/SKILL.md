@@ -25,7 +25,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.3.6 · "github_analysis code-tour 카드 좌우 정렬(파일명/역할) — 세로 적층 빈약함 해소" (이전 5.3.5)
+> Version 5.4.0 · "템플릿 목차 chip-nav(toc-map) 정본 컴포넌트 승격 — final_20260604 imported-toc 레이아웃을 3테마 토큰 정본 클래스로" (이전 5.3.6)
 
 ## 0. Identity
 
@@ -150,7 +150,7 @@ assets/visual-html.css = SVG→HTML 시각 템플릿 21종 스타일 (vt- 네임
 assets/visual-html-templates/01..21.html = SVG→HTML 템플릿 삽입 골격 21종 (vt-, 이미지가 아닌 네이티브 구조도; 21=soft-workflow-map)
 assets/body-icons.css  = 본문용 compact 아이콘 32종 스타일 (bi- 네임스페이스, aria-hidden 장식, 무 JS) — 프로파일 무관, references/body-icon-system.md
 assets/body-icons.json = 본문 아이콘 32종 데이터 (id/label/usage/svg, viewBox 0 0 40 40)
-assets/editorial-patterns.css = 본문 구조 패턴 8종 스타일 (chronology·source-preserve·core-insight·connection·before-after·impact-grid·md-excerpt·accessibility-checklist, 무 JS) — 프로파일 무관, references/editorial-pattern-system.md
+assets/editorial-patterns.css = 본문 구조 패턴 8종 스타일 (chronology·source-preserve·core-insight·connection·before-after·impact-grid·md-excerpt·accessibility-checklist, 무 JS) + opt-in 헬퍼(lede-note·toc-map 목차 chip-nav 등) — 프로파일 무관, references/editorial-pattern-system.md
 assets/editorial-pattern-templates/01..08.html = 패턴 삽입 골격 8종 (콘텐츠만 교체)
 assets/shape-visuals.css = soft-shape 도형 표시 스타일 (.shape-figure/.shape-lead/.shape-grid, 무 JS) — 프로파일 무관, references/visual-template-system.md
 assets/shape-svgs/*.svg = 본문 설명 시작부 보조 도형 36종 (8000×6000 warm SVG, <title>/<desc> 접근성)

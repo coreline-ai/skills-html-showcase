@@ -1,5 +1,19 @@
 # Changelog — adaptive-html-final
 
+## v5.4.0 (2026-06-06) — 템플릿 목차 chip-nav(toc-map) 정본 승격
+
+`final_20260604` 쇼케이스에만 있던 **템플릿 목차**(번호 pill이 한 줄에서 wrap 되는 chip-row) 레이아웃을 정본 컴포넌트로 승격. 데모용 `imported-toc-*` 어휘는 denylist에 남기고, 정식 출력용 정본 클래스 `toc-map`/`toc-pills`/`toc-pill`을 신설.
+
+### 추가 (`assets/editorial-patterns.css`, CONDITIONAL)
+- `.toc-map`(카드) + `.toc-pills`(flex-wrap) + `.toc-pill`(번호 pill) + `.toc-pill b`(번호 배지) — 모두 스킬 토큰 사용, 3테마 자동 적응(배지 `--accent-soft`/`--accent-2`). 무 JS.
+- 리스트형 `.toc`(components.css)와 별개의 opt-in 컴포넌트. 항목이 많거나 가로로 훑게 할 때 사용.
+
+### 문서
+- references/editorial-pattern-system.md `callout·변형 헬퍼`에 `toc-map` 마크업/사용 규약 추가. SKILL.md asset 설명 갱신.
+
+### 영향
+- CONDITIONAL 자산 변경 → 이를 인라인하는 베이스라인 2종(13-topics, windows-audio) 재인라인+스냅샷+integrity 갱신. 코어 해시 불변. validate 4/4 OK, governance 29/29.
+
 ## v5.3.6 (2026-06-06) — code-tour 카드 좌우 정렬
 
 `어디부터 읽으면 되는가`(code-tour)의 repo-card가 파일명(위)+역할(아래)로 세로 적층돼 빈약/날것이던 레이아웃을, **좌우 정렬 row(파일명 좌 · 역할 우)** 로 변경.

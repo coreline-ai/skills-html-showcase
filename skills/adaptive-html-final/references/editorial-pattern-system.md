@@ -60,6 +60,18 @@ SKILL.md·마크다운·코드 원문 발췌는 `.prompt-box`(텍스트 인용)�
 - **`.source-preserve-static`** — `source-preserve`의 **접기 없는 정적 변형**(`<details>` 대신 `<div class="source-preserve source-preserve-static">` + `.source-preserve-title`(div) + `.source-body`, `role="group"`/`aria-labelledby`). 무 JS.
 - **`.core-insight--neutral`** — `core-insight`의 그라데이션 없는 중립 변형. **베어 `.core-insight`를 덮어쓰지 않는다**(opt-in). blockquote는 `var(--sans)`.
 - **before/after 강조** — `.ba-emphasis-line`(강조 문장) + `.ba-bullet`(장식 마커, `aria-hidden="true"`). `.ba-col.after .ba-bullet`는 accent, 기본은 `--ink-mute`(토큰화, warm 리터럴 미사용).
+- **`.toc-map`(템플릿 목차 chip-nav)** — 섹션 목차를 **번호 pill이 한 줄에서 wrap 되는 chip-row**로 보여주는 정본 목차 카드(`final_20260604`의 `imported-toc-*` 데모를 정본 이름으로 승격). 리스트형 `.toc`(components.css)와 별개의 opt-in 컴포넌트로, 항목이 6개 이상이거나 가로로 훑게 하고 싶을 때 쓴다. 번호 배지는 `--accent-soft`/`--accent-2` 토큰으로 3테마 자동 적응. 마크업:
+  ```html
+  <section class="toc-map" aria-labelledby="toc-map-title">
+    <div class="label" id="toc-map-title">템플릿 목차</div>
+    <p>이 페이지에서 확인할 영역을 섹션 순서대로 묶었습니다.</p>
+    <nav class="toc-pills" aria-label="섹션 목차">
+      <a class="toc-pill" href="#p1"><b>1</b>첫 섹션</a>
+      <a class="toc-pill" href="#p2"><b>2</b>둘째 섹션</a>
+    </nav>
+  </section>
+  ```
+  주의: 데모용 `imported-toc-*` 어휘는 `bespoke_namespace_class` denylist에 그대로 남으므로 정식 출력에는 **`toc-map`/`toc-pills`/`toc-pill`** 정본 클래스만 쓴다.
 
 ## 데모 하네스 (pattern-shell) — 생성 출력 아님
 
