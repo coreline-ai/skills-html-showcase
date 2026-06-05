@@ -5,7 +5,7 @@
 > **작성일**: 2026-05-29
 > **전제(사용자 확정)**: 기준 배포 = 데모(동기 `CorelineAuthService` + `SQLiteAuthStorage`) → 프로덕션(`AsyncCorelineAuthService` + Postgres 비동기) **전환 경로 포함**
 > **기존 통합 레퍼런스**: `examples/saas_app.py`
-> **루트**: `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth`
+> **루트**: `<coreline-auth-root>`
 
 ---
 
@@ -1467,23 +1467,23 @@ mount_board_routes(app, auth, board_service=BoardService(auth, storage=SQLiteBoa
 
 ### E. 핵심 소스 파일 (절대경로)
 
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/permissions.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/authorization.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/service.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/async_service.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/admin.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/mfa.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/fastapi_adapter.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/fastapi_async_adapter.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/csrf.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/social/connectors.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/storage/sqlite.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/storage/postgres.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/storage/async_protocols.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/examples/board_models.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/examples/board_storage.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/examples/board_service.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/examples/board_web.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/examples/board_seed.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/src/coreline_auth/examples/saas_app.py`
-- `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/migrations/versions/0001_initial.py`
+- `<coreline-auth-root>/src/coreline_auth/permissions.py`
+- `<coreline-auth-root>/src/coreline_auth/authorization.py`
+- `<coreline-auth-root>/src/coreline_auth/service.py`
+- `<coreline-auth-root>/src/coreline_auth/async_service.py`
+- `<coreline-auth-root>/src/coreline_auth/admin.py`
+- `<coreline-auth-root>/src/coreline_auth/mfa.py`
+- `<coreline-auth-root>/src/coreline_auth/fastapi_adapter.py`
+- `<coreline-auth-root>/src/coreline_auth/fastapi_async_adapter.py`
+- `<coreline-auth-root>/src/coreline_auth/csrf.py`
+- `<coreline-auth-root>/src/coreline_auth/social/connectors.py`
+- `<coreline-auth-root>/src/coreline_auth/storage/sqlite.py`
+- `<coreline-auth-root>/src/coreline_auth/storage/postgres.py`
+- `<coreline-auth-root>/src/coreline_auth/storage/async_protocols.py`
+- `<coreline-auth-root>/src/coreline_auth/examples/board_models.py`
+- `<coreline-auth-root>/src/coreline_auth/examples/board_storage.py`
+- `<coreline-auth-root>/src/coreline_auth/examples/board_service.py`
+- `<coreline-auth-root>/src/coreline_auth/examples/board_web.py`
+- `<coreline-auth-root>/src/coreline_auth/examples/board_seed.py`
+- `<coreline-auth-root>/src/coreline_auth/examples/saas_app.py`
+- `<coreline-auth-root>/migrations/versions/0001_initial.py`

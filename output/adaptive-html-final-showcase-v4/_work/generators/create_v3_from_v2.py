@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib, json, re, shutil
 from html import escape
 
-ROOT = Path('/Users/hwanchoi/project_202605/skills-html-showcase')
+ROOT = Path('<repo-root>')
 SKILL = ROOT / 'skills/adaptive-html-final'
 SRC = ROOT / 'output/adaptive-html-final-showcase-v2'
 OUT = ROOT / 'output/adaptive-html-final-showcase-v3'

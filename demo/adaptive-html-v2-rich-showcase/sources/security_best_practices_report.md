@@ -1,8 +1,8 @@
 # Coreline Auth 보안 재리뷰 보고서 — 패치 후 2차 감사
 
-분석일: 2026-05-29  
-대상 경로: `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth`  
-대상 버전: `0.5.0rc1` 작업 트리 기준  
+분석일: 2026-05-29
+대상 경로: `<coreline-auth-root>`
+대상 버전: `0.5.0rc1` 작업 트리 기준
 범위: `src/coreline_auth`, FastAPI adapter, storage adapters, OAuth/OIDC, MFA, WebAuthn, demo SaaS app, 관련 테스트
 
 ## Executive Summary

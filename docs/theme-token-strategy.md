@@ -564,9 +564,9 @@ grep -rniE '<script(?![^>]*type=["'"']application/ld\+json)' output/final_202606
 grep -rniE 'draggable=|contenteditable=' output/final_20260604/*.html && echo "FORBIDDEN primitive found" || echo "NO forbidden primitive (OK)"
 
 # full validator, asset-level 생성물에 적용
-python3 /Users/hwanchoi/project_202605/skills-html-showcase/skills/adaptive-html-final/scripts/validate_output.py \
+python3 <repo-root>/skills/adaptive-html-final/scripts/validate_output.py \
   output/final_20260604 \
-  --skill-dir /Users/hwanchoi/project_202605/skills-html-showcase/skills/adaptive-html-final
+  --skill-dir <repo-root>/skills/adaptive-html-final
 ```
 
 ---

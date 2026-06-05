@@ -3,7 +3,7 @@
 import hashlib, json, re, shutil, sys
 from pathlib import Path
 
-SKILL = Path("/Users/iriver/hwan/projects/html-skills-doc/skills/adaptive-html-final")
+SKILL = Path("<repo-root>/skills/adaptive-html-final")
 ASSETS = SKILL / "assets"
 CORE = ['theme.css', 'components.css', 'visual-components.css', 'layouts.css', 'print.css']
 INLINE = ['theme.css', 'components.css', 'visual-components.css', 'widgets.css', 'visual-html.css',

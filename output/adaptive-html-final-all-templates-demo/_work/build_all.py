@@ -1,6 +1,6 @@
 import hashlib,json,pathlib,re
-SK=pathlib.Path("/Users/iriver/hwan/projects/html-skills-doc/skills/adaptive-html-final");A=SK/"assets"
-OUT=pathlib.Path("/Users/iriver/hwan/projects/html-skills-doc/output/adaptive-html-final-all-templates-demo")
+SK=pathlib.Path("<repo-root>/skills/adaptive-html-final");A=SK/"assets"
+OUT=pathlib.Path("<repo-root>/output/adaptive-html-final-all-templates-demo")
 CORE=['theme.css','components.css','visual-components.css','layouts.css','print.css']
 EXTRA=['editorial-patterns.css','visual-html.css','widgets.css','body-icons.css','shape-visuals.css','workflow-visuals.css']
 core={n:(A/n).read_text(encoding='utf-8') for n in CORE}

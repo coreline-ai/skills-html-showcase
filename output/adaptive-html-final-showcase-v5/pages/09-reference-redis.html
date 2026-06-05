@@ -1500,12 +1500,12 @@ details p{margin-bottom:0}
           <div class="wg-15-panels">
             <div class="wg-15-panel wg-15-p1">
               <h4 class="wg-15-pt">1. 가장 단순한 선택 — String에 JSON 통째</h4>
-              <p>프로필을 <code>SET user:42 '{"nick":"hwan","pts":120,"lv":5}'</code>로 한 줄에 저장합니다. 객체를 한꺼번에 읽고 쓸 때는 가장 간단합니다.</p>
+              <p>프로필을 <code>SET user:42 '{"nick":"coreline","pts":120,"lv":5}'</code>로 한 줄에 저장합니다. 객체를 한꺼번에 읽고 쓸 때는 가장 간단합니다.</p>
               <p class="wg-15-note-line">한계: 포인트 하나만 올리려 해도 <strong>전체를 읽어 파싱하고 다시 써야</strong> 합니다.</p>
             </div>
             <div class="wg-15-panel wg-15-p2">
               <h4 class="wg-15-pt">2. 필드 접근이 잦다 — Hash로 전환</h4>
-              <p>같은 키를 <code>HSET user:42 nick hwan pts 120 lv 5</code>로 필드 분리하면 <code>HGET user:42 pts</code>로 한 필드만 읽고, <code>HINCRBY user:42 pts 10</code>으로 <strong>원자적 증가</strong>까지 됩니다.</p>
+              <p>같은 키를 <code>HSET user:42 nick coreline pts 120 lv 5</code>로 필드 분리하면 <code>HGET user:42 pts</code>로 한 필드만 읽고, <code>HINCRBY user:42 pts 10</code>으로 <strong>원자적 증가</strong>까지 됩니다.</p>
               <p class="wg-15-note-line">nick·pts 같은 필드가 같은 키 안에서 독립적으로 다뤄집니다.</p>
             </div>
             <div class="wg-15-panel wg-15-p3">

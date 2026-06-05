@@ -1,6 +1,6 @@
 from pathlib import Path
 from html import escape
-ROOT = Path('/Users/hwanchoi/project_202605/skills-html-showcase')
+ROOT = Path('<repo-root>')
 page = ROOT/'output/adaptive-html-final-showcase/pages/02-expert-eu-ai-act-governance.html'
 old = page.read_text()
 head = old.split('<body>')[0]

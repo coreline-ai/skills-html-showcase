@@ -2,7 +2,7 @@
 
 **대상 버전:** 0.5.0rc1
 **분석일:** 2026-05-29
-**분석 대상:** `/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth`
+**분석 대상:** `<coreline-auth-root>`
 **분석 범위:** 13개 서브시스템(핵심 인증 플로우, 세션/토큰 수명주기, 패스워드/시크릿 해싱, MFA/TOTP & 복구코드, WebAuthn/패스키, CSRF 방어, 인가/권한/관리자, 레이트 리미팅/브루트포스, 이메일 발송 & 검증, 소셜 로그인/OAuth2/OIDC, 저장소 계층, FastAPI 어댑터, 관측성/운영 준비/감사)에 대한 코드 레벨 정밀 감사 및 적대적 검증
 **평가 기준:** OWASP ASVS 4.0, OWASP Top 10 (2021), NIST SP 800-63B, RFC 6749/6750/7636/6238/7519, OpenID Connect Core 1.0, WebAuthn Level 2, CWE
 
