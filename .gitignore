@@ -16,3 +16,6 @@ node_modules/
 # Playwright CLI session logs (runtime scratch)
 .playwright-cli/
 .gstack/
+
+# Build-time export artifacts (regenerable)
+output/**/exports/

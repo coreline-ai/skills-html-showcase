@@ -1,6 +1,6 @@
 {
   "name": "adaptive-html-final",
-  "version": "5.4.2",
+  "version": "5.5.6",
   "language": "ko",
   "entry": "SKILL.md",
   "assets": [
@@ -106,6 +106,31 @@
     "landing-brief.html",
     "checklist-playbook.html"
   ],
+  "examples": {
+    "dir": "examples/",
+    "count": 14,
+    "index": "examples/index.html",
+    "purpose": "14모드 풀 스킬급 참조 예제 — 실제 코어 CSS 인라인·3-테마 스위처·body-icon·editorial 컴포넌트로 생성된 자기완결 HTML(무 JS). 모드별 시그니처 구조 확인용. 정식 캐노니컬 산출물은 output/ 참조.",
+    "fidelity": "skill-core-inlined + 3-theme(ahf-theme) + body-icons + editorial components",
+    "files": [
+      "01_beginner_passkey_login.html",
+      "02_expert_llm_gateway_report.html",
+      "03_article_side_project_signal.html",
+      "04_education_git_rebase_workshop.html",
+      "05_blog_deepwork_4day_retro.html",
+      "06_seo_prompt_engineering_dashboard.html",
+      "07_platform_tech_retro_adaptation.html",
+      "08_skill_audit_codereview_bot.html",
+      "09_reference_regex.html",
+      "10_comparison_message_queue.html",
+      "11_case_study_search_index_outage.html",
+      "12_landing_pagercalm_brief.html",
+      "13_checklist_data_migration.html",
+      "14_github_analysis_fastapi_starter.html",
+      "index.html"
+    ],
+    "version": "5.4.3"
+  },
   "modes": [
     {
       "id": "skill_audit",
@@ -179,6 +204,7 @@
     "adaptive-html-blog-writer-v2"
   ],
   "changes": [
+    "v5.4.3: final_20260604 검수 템플릿 P0 4종 승격 — wg-11 상태판(KPI/진척/완료·진행·리스크), wg-16 거버넌스 운영 팩(마일스톤/플로우/리스크), seo_dashboard SERP premium(`serp-*`), platform_blog transform/output cards(`platform-split`/`platform-output-*`). final 전용 prefix는 사용하지 않고 정본 namespace로 토큰화.",
     "v5.3.0: github_analysis 14번째 모드 추가 — GitHub 저장소 URL/owner/repo를 사용자 질문 중심 HTML 분석 리포트로 변환하는 레이아웃·라우터·문서 계약 추가.",
     "blog-seo-system / writing-system / platform-system / editorial-design-system references를 blog-writer 상세본으로 흡수",
     "SKILL.md description에 명시적 트리거 목록과 출력 원칙 추가",

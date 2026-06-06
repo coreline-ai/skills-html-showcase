@@ -479,6 +479,34 @@ python3 -m http.server 8788
 # → http://127.0.0.1:8788/output/adaptive-html-final-13-topics-20260605_083433/index.html
 ```
 
+### HTML → PDF/PNG/WebP export
+
+완성된 `output/<dir>` HTML은 빌드 타임 도구로 PDF·테마별 PNG·WebP로 변환할 수 있습니다. 출력 HTML에는 JS를 삽입하지 않고, export 전후 HTML SHA와 `validate_output.py --json` 이슈 불변성을 manifest에 기록합니다.
+
+> 재사용 스킬: [`skills/html-exporter`](skills/html-exporter/) — 다른 프로젝트에서도 동일한 export 절차를 적용할 때 사용합니다.
+
+```bash
+# 최초 1회
+npm install
+
+# 기본: pdf,png,webp + light,light2,white,dark,dark2 요청
+npm run export:output -- output/final_20260604 --clean
+
+# 13-topic 기준선 export
+npm run export:output -- output/adaptive-html-final-13-topics-20260605_083433 --clean
+```
+
+| 항목 | v1 계약 |
+|---|---|
+| 엔진 | Playwright Chromium (`:has()` 테마·대형 SVG 충실도 유지) |
+| WebP | `sharp` optional dependency. 없으면 webp skip, `--require-webp`면 실패 |
+| 테마 | DOM radio `name="ahf-theme"`에 존재하는 테마만 캡처. 없는 `light2`/`dark2`는 skip 기록 |
+| 긴 페이지 | `--scale 2` 요청 후 Chromium 안전선에 맞춰 `scale_used` 자동 강등. scale 1에서도 긴 페이지는 PNG master로 시도하고 WebP는 16383px로 downscale |
+| 산출물 | `<output_dir>/exports/{pdf,png,webp}/` + `exports/export-manifest.json` |
+| 커밋 정책 | `output/**/exports/`는 재생성 산출물이므로 `.gitignore` 처리 |
+
+허용 옵션은 `--formats`, `--themes`, `--scale`, `--viewport`, `--require-webp`, `--clean` 6개입니다. screen PDF, controls 노출, concurrency, WebP chunks 등은 v2 reserve라 v1에서는 exit 2로 거부합니다.
+
 ---
 
 ## 📜 License

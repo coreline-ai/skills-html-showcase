@@ -1,5 +1,76 @@
 # Changelog — adaptive-html-final
 
+## v5.5.6 (2026-06-06) — 테마 라벨 개선
+
+의미 불명확한 숫자 라벨을 색 성격 기반으로 변경: **라이트2→그레이**(쿨 뉴트럴), **다크2→로즈**(웜 로즈/모브). id(`ahf-light2`/`ahf-dark2`)는 토큰·게이트 안정성을 위해 유지하고 보이는 라벨만 변경.
+
+## v5.5.5 (2026-06-06) — 세피아 테마 추가(8테마)
+
+**세피아**(따뜻한 종이빛 #f4ecd8 + 시에나 accent #a85c32, 저블루라이트 리딩) 추가. 장문 가독성에 최적. 8테마 → 테마바 4+4 균일 그리드.
+
+### 변경
+- `theme-dark.css`: `:root:has(#ahf-sepia:checked)` 라이트 종이빛 토큰 블록.
+- `body-icons.css`: 세피아 전용 종이빛 아이콘 박스(`linear-gradient(--card,--bg)`).
+- `base.html`: 세피아 라디오(8번째).
+
+### 적용
+- examples/01 반영(8테마·4+4 균일 확인), 베이스라인 4종 재동기화.
+
+## v5.5.4 (2026-06-06) — 테마 스위처 정형화 버튼 그리드
+
+가변폭 알약(ragged wrap) → **균일폭 버튼 4열 그리드**로 정렬. 7테마가 동일 크기 버튼으로 4+3 배치.
+
+### 변경
+- `theme-dark.css` `.ahf-themebar`: `display:grid;grid-template-columns:repeat(4,1fr);width:276px`, 라벨 `justify-content:center;border-radius:9px`, hover 배경. 모든 버튼 폭 동일(검증 63px×7).
+
+### 적용
+- examples/01 반영, 베이스라인 4종 재동기화.
+
+## v5.5.3 (2026-06-06) — 스카이블루 테마 추가(7테마)
+
+**스카이블루**(라이트 배경 #eef4fb + 블루 분위기 accent #2f6fdb) 추가. 7테마(라이트·라이트2·스카이블루·화이트·다크·다크2·블루).
+
+### 변경
+- `theme-dark.css`: `:root:has(#ahf-skyblue:checked)` 라이트 토큰 블록(블루 accent/analogy). 테마바 `max-width:286px`로 7개 2줄(4+3).
+- `body-icons.css`: 흰 아이콘 박스 그룹에 skyblue 합류(`:is(#ahf-white,#ahf-light2,#ahf-skyblue)`).
+- `base.html`: 스카이 라디오.
+
+### 적용
+- examples/01 반영(7테마·2줄 확인), 베이스라인 4종 재동기화.
+
+## v5.5.2 (2026-06-06) — 테마 스위처 2줄 wrap
+
+6테마로 길어진 `.ahf-themebar`를 **2줄(3+3)** 로 wrap. `display:flex;flex-wrap:wrap;justify-content:flex-end;max-width:208px;border-radius:16px`.
+
+### 적용
+- theme-dark.css `.ahf-themebar` 한 줄→두 줄. examples/01 반영, 베이스라인 4종 재동기화.
+
+## v5.5.1 (2026-06-06) — 블루 테마 추가(6테마)
+
+다크2의 완전 토큰 구조를 표본으로 **블루 테마(딥 네이비 #0d1320 + blue accent #5b9cf0)** 추가. 6테마(라이트·라이트2·화이트·다크·다크2·블루).
+
+### 변경
+- `theme-dark.css`: `:root:has(#ahf-blue:checked)` 토큰 블록(term/analogy/danger/good/hl/vt 전 토큰) + 다크 동반 규칙을 `:is(#ahf-dark,#ahf-dark2,#ahf-blue)` 공유.
+- `body-icons.css`: 아이콘 박스 다크 적응에 #ahf-blue 합류.
+- `base.html`: 테마바에 블루 라디오.
+- `validate_output.py`: 테마 게이트 라디오 수 `≥3`(확장 테마 자유 추가) 허용. governance 6-radio 통과 케이스 추가.
+
+### 적용
+- examples/01에 우선 적용(6테마 작동 확인). 베이스라인 4종 재동기화.
+
+## v5.5.0 (2026-06-06) — CSS-only 5-테마 확장(라이트2·다크2)
+
+final_20260604 표준의 **라이트2(쿨 뉴트럴 gray-blue)·다크2(웜 로즈/모브)** 를 정식 테마로 승격. 3-테마 → 5-테마(라이트·라이트2·화이트·다크·다크2).
+
+### 변경
+- `assets/theme-dark.css`: `:root:has(#ahf-light2/#ahf-dark2:checked)` 토큰 블록 추가, 다크 동반 규칙을 `:is(#ahf-dark,#ahf-dark2)` 공유로 전환, 5-세그먼트 스위처.
+- `assets/base.html`: 테마바에 라이트2·다크2 라디오/라벨 추가(라이트 기본 유지).
+- `scripts/validate_output.py`: 테마 스위처 게이트가 3개(light/white/dark) 또는 5개(+light2/dark2) 허용. 확장 시 light2·dark2 쌍 강제.
+- governance 테스트에 5-radio 통과 + 반쪽 확장 거부 케이스 추가.
+
+### 적용
+- examples/01_beginner_passkey_login.html에 우선 적용(5-테마 작동 확인). 나머지 예제·산출물은 후속 롤아웃.
+
 ## v5.4.2 (2026-06-06) — 텍스트 전용 뷰 bullet(text-bullet-view)
 
 `final_20260604` section 7의 `assets/editorial-patterns.css` code-path bullet 리듬을 정본 헬퍼로 승격. 체크리스트/요약 카드처럼 **텍스트만 있는 뷰**가 카드 안에서 밋밋하게 보일 때, 기존 `.ba-bullet`을 재사용해 작은 써클 마커를 붙인다. 이미 아이콘·번호·상태칩이 있는 뷰에는 중복 적용하지 않는 opt-in 규칙이다.

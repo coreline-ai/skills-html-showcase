@@ -25,7 +25,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.4.2 · "텍스트 전용 뷰 bullet(text-bullet-view) — 문장만 있는 카드/체크 항목 앞에 작은 써클 마커 적용" (이전 5.4.1)
+> Version 5.5.6 · "테마 라벨 개선 — 라이트2→그레이, 다크2→로즈(id 유지)" (이전 5.5.5)
 
 ## 0. Identity
 
@@ -164,6 +164,7 @@ assets/base.html       = 단일 HTML 렌더링 기본 골격
 assets/layouts/*.html  = 모드별 골격
 visual-templates/*.svg.tpl = 8000×6000 SVG 인포그래픽 템플릿
 scripts/render_visual_svg.py = visual brief → SVG 렌더러
+examples/01..14_*.html = 14모드 경량 참조 예제(자기완결·무 JS·인라인 스타일, 모드별 시그니처 구조 확인용) + examples/index.html 갤러리
 ```
 
 공개 블로그 품질이 필요하면 `<head>`에 Pretendard Variable + Noto Serif KR 폰트 링크를 포함한다. 오프라인/내부 문서이면 fallback으로도 동작한다.
@@ -258,13 +259,13 @@ TODO_CHECK = 추가 확인이 필요한 주장
 모드별 필수 블록을 채운다.
 
 - beginner: toc, hero analogy, terms, analogy, danger/good, practice, try
-- expert: executive summary, decision cards, operating model/RACI, risk matrix, roadmap, validation checklist. 핵심 표는 최소 5행 이상, 리스크·검증·실행계획은 각각 4개 이상 작성한다.
+- expert: executive summary, decision cards, operating model/RACI, risk matrix, roadmap, validation checklist. 핵심 표는 최소 5행 이상, 리스크·검증·실행계획은 각각 4개 이상 작성한다. 거버넌스·운영모델·90일 도입 계획은 `wg-16`의 마일스톤+플로우+리스크 표 구조를 우선 사용한다.
 - article: lead, pull quote, argument, case, takeaway
 - education: goals, before start, lesson, example, practice, quiz, answer
-- github_analysis: verdict, question toc, repo identity, quickstart readiness, health signals, code/file tour, release/activity timeline, security/license, risk matrix, final decision, next actions, source limits. GitHub UI/REST에서 확인 가능한 FACT와 합리적 INFERENCE, UNKNOWN을 분리하고 각 핵심 판단에 근거 링크/근거 필드를 둔다.
+- github_analysis: verdict, question toc, repo identity, quickstart readiness, health signals, code/file tour, release/activity timeline, security/license, risk matrix, final decision, next actions, source limits. GitHub UI/REST에서 확인 가능한 FACT와 합리적 INFERENCE, UNKNOWN을 분리하고 각 핵심 판단에 근거 링크/근거 필드를 둔다. “살아 있는 프로젝트인가/운영 상태” 섹션은 `wg-11` KPI+진척+상태보드 구조를 우선 사용한다.
 - blog: hook, personal note, view, example, how-to, soft CTA
-- seo: primary keyword, SERP preview, title candidates, meta candidates, tag cluster
-- platform: original summary, platform cards, comparison table, publish checklist
+- seo: primary keyword, SERP preview, title candidates, meta candidates, tag cluster. SERP preview는 `serp-shell`/`serp-box`/`serp-rule-grid` premium 구조를 우선 사용한다.
+- platform: original summary, transform strategy, platform cards, comparison table, publish checklist. 변환 전략은 `platform-split`/`platform-anchor`/`platform-route-grid`, 플랫폼별 결과는 `platform-output-grid`/`platform-output-card` 구조를 우선 사용한다.
 - skill_audit: purpose, trigger score, workflow score, line/section diagnosis, improved skill
 - reference: quick reference, concepts/API, patterns, examples, checklist
 - comparison: decision context, matrix, winners, tradeoffs, recommendation
@@ -420,6 +421,8 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 [ ] `.try`/`.try.soft-cta` 내부 링크는 충분한 대비로 읽힌다.
 [ ] `blog_writer` 본문 section h2에는 번호 badge 또는 동등한 진행 표시가 있다.
 [ ] SEO SERP Preview 제목은 literal Google blue/Arial/과대 크기 고정이 아니라 페이지 디자인과 균형을 이룬다.
+[ ] SERP premium 구조를 쓸 때 final 페이지 전용 `seo-result-*`/`seo-snippet-*`/`seo-rule-*` prefix가 아니라 `serp-*` 정본 클래스를 사용했다.
+[ ] 플랫폼 변환 구조를 쓸 때 final 페이지 전용 `platform-transform-*`/`platform-conversion-*`/`platform-branch-*` prefix가 아니라 `platform-split`/`platform-output-*` 정본 클래스를 사용했다.
 [ ] `<p class="h2-sub">`가 `</h2>`로 잘못 닫히지 않았다.
 [ ] `.winners/.tradeoffs` 같은 의미형 블록이 h3와 ul을 서로 다른 grid column으로 찢지 않는다.
 [ ] timeline section과 timeline card의 left rule이 중복되지 않으며, 순서형 목록에는 굵은 accent left rule을 추가하지 않는다.

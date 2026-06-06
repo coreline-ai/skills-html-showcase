@@ -254,6 +254,39 @@ python3 skills/adaptive-html-final/scripts/validate_output.py \
 
 관련 references: `editorial-design-system.md`(디자인 DNA·박스 선택), `writing-system.md`(제목·도입부·밀도·톤), `blog-seo-system.md`(메타·SERP·태그·점수), `platform-system.md`, `visual-html-system.md`(vt-), `widget-system.md`(wg-), `visual-template-system.md`(SVG·shape·workflow), `body-icon-system.md`, `editorial-pattern-system.md`, `mode-selection.md`, `layout-system.md`, `skill-audit-system.md`, `eval-rubric.md`, `quality-gates.md`, `design-dna.md`.
 
+## 9.5. HTML → PDF/PNG/WebP export
+
+`scripts/export_output.mjs`는 검증 완료된 HTML 산출물을 공유·인쇄·썸네일용 파일로 변환하는 **빌드 타임 보조 도구**입니다. 스킬 본체와 출력 HTML을 수정하지 않으며, export 전후 HTML SHA와 `validate_output.py --json` 이슈 불변성을 `exports/export-manifest.json`에 기록합니다.
+
+동일 절차를 다른 저장소에서 재사용할 때는 별도 스킬 [`skills/html-exporter`](skills/html-exporter/)를 사용합니다.
+
+```bash
+# 최초 1회
+npm install
+
+# 기본: pdf,png,webp + light,light2,white,dark,dark2 요청
+node scripts/export_output.mjs output/final_20260604 --clean
+
+# 특정 포맷/테마만
+node scripts/export_output.mjs output/final_20260604 \
+  --formats pdf,png \
+  --themes light,dark \
+  --scale 1 \
+  --viewport 1280x900
+```
+
+| 구분 | v1 결정 |
+|---|---|
+| 렌더 엔진 | Node Playwright Chromium. `:has()` 기반 테마·인라인 CSS·대형 SVG 때문에 비-Chromium 변환기는 사용하지 않습니다 |
+| 출력 위치 | `<output_dir>/exports/pdf`, `exports/png`, `exports/webp`, `exports/export-manifest.json` |
+| 테마 | `light,light2,white,dark,dark2`를 요청하되 DOM radio가 없는 테마는 skip으로 기록 |
+| PNG | full-page screenshot. `--scale` 요청값은 페이지 높이에 따라 `scale_used`로 자동 강등될 수 있습니다 |
+| WebP | PNG master에서 `sharp`로 파생. 긴 변 16383px 초과 시 WebP만 downscale, PNG master는 보존 |
+| PDF | fresh page/context에서 print PDF 1종 생성, controls/themebar는 export에서 숨김 |
+| 안전성 | `output/` 내부 디렉터리만 허용, `--clean`은 요청 포맷 export 디렉터리만 삭제, symlink는 거부 |
+
+v1 허용 옵션은 `--formats`, `--themes`, `--scale`, `--viewport`, `--require-webp`, `--clean`뿐입니다. `--pdf-media`, `--pdf-themes`, `--show-controls`, `--concurrency`, `--webp-mode`, `--offline`, `--strict-fonts` 등은 v2 reserve라 v1에서는 `not implemented in v1`과 함께 exit 2로 종료합니다.
+
 ## 10. 품질 게이트 요약
 
 `validate_output.py`가 자동 강제하는 핵심 + 수동 점검 항목(전체 35항목은 SKILL.md §7):

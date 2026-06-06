@@ -44,6 +44,7 @@
 - 검정 `.try`/`.try.soft-cta` 내부 `.tag` pill은 흐린 회색을 상속하면 실패다. 밝은 pill 배경과 `var(--ink)` 굵은 텍스트로 읽혀야 한다.
 - `blog_writer`의 본문 section h2는 번호 badge 또는 동등한 진행 표시가 있어야 한다. "왜 지금 ..." 같은 첫 섹션만 번호 없이 튀면 실패다.
 - SEO `SERP Preview`는 실제 검색결과를 설명하되, 사이트 전체 디자인에서는 literal Google blue/Arial/과대 크기를 그대로 쓰지 않는다. editorial dashboard에 맞는 제목 크기·무게·색 균형을 우선한다.
+- SEO premium preview는 `serp-*` 정본 클래스만 사용한다. `seo-result-*`, `seo-snippet-*`, `seo-rule-*`, `seo-variant` 같은 final 페이지 전용 클래스는 출력에 남기지 않는다.
 
 ## Content Gate
 
@@ -57,6 +58,7 @@
 - skill audit은 개선본 또는 명확한 패치 계획을 포함한다.
 - SEO 결과물은 title/meta/tag/final set을 포함한다.
 - platform 결과물은 플랫폼별 차이를 실제 발행 관점에서 분리한다.
+- platform 변환 전략은 `platform-split`/`platform-route-card`/`platform-output-card` 정본 구조를 사용한다. `platform-transform-*`, `platform-conversion-*`, `platform-branch-*`, `platform-title-*`, `platform-mini-*`는 출력 금지다.
 
 ## HTML Gate
 

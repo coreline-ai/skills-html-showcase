@@ -96,6 +96,24 @@ ts_ok_html = '''
 </fieldset>
 '''
 check("theme switcher gate passes 3 radios", v.theme_switcher_contract_gate(ts_ok_html, theme_css) == [])
+ts_ok5 = '''
+<fieldset class="ahf-themebar" aria-label="테마 선택">
+  <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">라이트2</label>
+  <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark2"><label for="ahf-dark2">다크2</label>
+</fieldset>
+'''
+check("theme switcher gate passes 5 radios (light2/dark2)", v.theme_switcher_contract_gate(ts_ok5, theme_css) == [])
+ts_ok6 = ts_ok5.replace('</fieldset>', '  <input type="radio" name="ahf-theme" id="ahf-blue"><label for="ahf-blue">블루</label>\n</fieldset>')
+check("theme switcher gate passes 6 radios (+blue)", v.theme_switcher_contract_gate(ts_ok6, theme_css) == [])
+ts_pair = '''
+<fieldset class="ahf-themebar"><input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라</label>
+<input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">라2</label>
+<input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화</label>
+<input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다</label></fieldset>'''
+check("theme switcher gate flags half-extended (4 radios / no dark2)", any(i["type"] in ("theme_switcher_radio_count","theme_switcher_extended_pair") for i in v.theme_switcher_contract_gate(ts_pair, theme_css)))
 
 # GitHub-analysis visual contract: 14th mode must not regress to raw report markup.
 github_bad = '<main id="main" class="page-wide layout-github"><header class="header github-header"><h1>x</h1></header><section><h2><span class="num">1</span>Raw</h2></section></main>'

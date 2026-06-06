@@ -375,9 +375,16 @@ def theme_switcher_contract_gate(text: str, style: str) -> list:
     issues = []
     if not re.search(r'<fieldset\b[^>]*class=["\'][^"\']*\bahf-themebar\b', text, re.I):
         issues.append({'type': 'theme_switcher_missing_fieldset'})
-    if len(re.findall(r'<input\b[^>]*name=["\']ahf-theme["\']', text, re.I)) != 3:
+    _radio_n = len(re.findall(r'<input\b[^>]*name=["\']ahf-theme["\']', text, re.I))
+    if _radio_n < 3:
         issues.append({'type': 'theme_switcher_radio_count',
-                       'detail': 'name="ahf-theme" 라디오가 light/white/dark 3개여야 한다.'})
+                       'detail': 'name="ahf-theme" 라디오는 최소 3개(light/white/dark)여야 하며 확장 테마(light2/dark2/blue …)를 추가할 수 있다.'})
+    # 5-radio 확장 테마(light2/dark2)를 쓰면 둘 다 있어야 한다(반쪽 확장 금지).
+    _has_l2 = bool(re.search(r'id=["\']ahf-light2["\']', text, re.I))
+    _has_d2 = bool(re.search(r'id=["\']ahf-dark2["\']', text, re.I))
+    if _has_l2 != _has_d2:
+        issues.append({'type': 'theme_switcher_extended_pair',
+                       'detail': '확장 테마는 light2·dark2를 함께 제공해야 한다.'})
     for _id in ('ahf-light', 'ahf-white', 'ahf-dark'):
         if not re.search(r'<input\b[^>]*id=["\']' + re.escape(_id) + r'["\'][^>]*name=["\']ahf-theme["\']', text, re.I) \
            and not re.search(r'<input\b[^>]*name=["\']ahf-theme["\'][^>]*id=["\']' + re.escape(_id) + r'["\']', text, re.I):

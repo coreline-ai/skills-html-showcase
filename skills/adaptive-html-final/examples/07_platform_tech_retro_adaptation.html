@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>기술 회고 글을 4개 플랫폼으로 변환하기</title>
+<meta name="description" content="플랫폼 변환 — 티스토리·벨로그·브런치·LinkedIn 규약별">
+<meta name="keywords" content="플랫폼변환,티스토리,벨로그,브런치,linkedin">
+<meta property="og:title" content="기술 회고 글을 4개 플랫폼으로 변환하기">
+<meta property="og:description" content="플랫폼 변환 — 티스토리·벨로그·브런치·LinkedIn 규약별">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* adaptive-html-final-core-css-sha256: 91b364eb9a842afb8015f43ba83b4fe8dc1cadc40704ee92be0bd187905c3fd4 */
+:root{
+  --bg:#f5f5f0;
+  --ink:#1a1a1a;
+  --ink-soft:#4a4a4a;
+  --ink-mute:#666666;
+  --line:#d8d8d0;
+  --card:#ffffff;
+  --accent:#e63946;
+  --accent-2:#b72d38;
+  --link-on-dark:#ffb6c0;
+  --accent-soft:#fce4e6;
+  --term-bg:#fffaf2;
+  --term-border:#e8d9b8;
+  --analogy-bg:#f0f4f8;
+  --analogy-border:#b8cad8;
+  --danger-bg:#fff0ee;
+  --danger-border:#e8b8b2;
+  --good-bg:#eef7f1;
+  --good-border:#b8d8c2;
+  --hl-yellow:#ffe9a3;
+  --hl-blue:#cfe5f5;
+  --hl-pink:#fbd3da;
+  /* Callout text/border tokens (extracted from components.css raw hex) */
+  --term-ink:#5a4a30;
+  --term-label-ink:#8a5e10;
+  --term-accent:#c98a2e;
+  --analogy-ink:#234458;
+  --analogy-label-ink:#2f5470;
+  --analogy-accent:#5e8aa8;
+  --danger-ink:#5a3a36;
+  --danger-label-ink:#c62433;
+  --good-ink:#1f5040;
+  --good-label-ink:#1f6f4e;
+  --good-accent:#3f8e6c;
+  /* AA-compliant muted foreground for chips/meta */
+  --chip-ink:#6a6a6a;
+  --on-accent:#ffffff; /* text on --accent fills; flips to near-black in dark for AA */
+  --dark:#1a1a1a;
+  --dark-soft:#242421;
+  --code:#1f1f1d;
+  /* v5.1 글꼴: final_20260604 'report' 룩 — 제목/디스플레이를 Pretendard sans로 통일(이전 Noto Serif KR). 진짜 세리프는 --serif-kr로 보존. */
+  --serif:"Pretendard","Apple SD Gothic Neo",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --serif-kr:"Noto Serif KR",Georgia,serif;
+  --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;
+  --radius-sm:5px;
+  --radius-md:8px;
+  --radius-lg:12px;
+  --max-reading:780px;
+  --max-wide:1020px;
+  /* focus ring (non-decorative, distinct from brand red) */
+  --focus:#1a56db;
+  /* spacing scale (8px base) — additive; new rules use these */
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;
+  /* type scale (additive reference axis) */
+  --fs-xs:13px;--fs-sm:14px;--fs-base:16px;--fs-md:18px;--fs-lg:20px;--fs-xl:24px;--fs-2xl:30px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px;box-shadow:0 0 0 2px #fff,0 0 0 5px rgba(26,86,219,.4);border-radius:3px}
+/* CSS-only reading progress bar (scroll-driven; progressive enhancement, no JS). Degrades to invisible 0-width where unsupported. */
+.reading-progress{position:fixed;top:0;left:0;height:4px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--accent);z-index:200;animation:read-progress linear both;animation-timeline:scroll(root)}
+@keyframes read-progress{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){.reading-progress{display:none}}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.8;
+  letter-spacing:-.012em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--dark);color:#fff;padding:10px 14px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+.page,.wrap{width:min(var(--max-reading),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+.page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+/* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
+.page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-github>section>p,.page-wide.layout-github>section>ul,.page-wide.layout-github>section>ol,.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
+.header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
+/* header content fills its container width (.page / .page-wide) so the header matches the sections below — v5.2.1 (이전: 48rem 단일 측정 캡) */
+.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:none}
+/* kicker — final_20260604 header: 점 달린 pill eyebrow(토큰화 → 다크 자동 대응) */
+.kicker{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:7px 13px 7px 11px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:13px;letter-spacing:.14em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:24px}
+.kicker::before{content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.kicker-text{line-height:1.2}
+h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.22;font-weight:800;letter-spacing:-.025em;margin:0 0 16px}
+.sub,.lead{font-size:16px;color:var(--ink-soft);margin:0 0 24px;max-width:820px}
+.lead{font-size:18px;line-height:1.75;color:var(--ink-soft)}
+.byline{font-size:13px;color:var(--ink-mute);padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.meta span,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--chip-ink)}
+/* header generated-row + 적용 기준 lens chips (final_20260604, 토큰화 → 다크 자동) */
+.generated-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 0 0;flex-wrap:wrap}
+.generated-date{margin:0;flex:0 0 auto;font-size:13px;color:var(--ink-mute)}
+.lens-strip{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;margin-left:auto}
+.lens-strip-label{font-size:11px;font-weight:900;letter-spacing:.04em;color:var(--ink-mute);margin-right:2px;line-height:1}
+.lens-chip{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border:1px dashed var(--line);border-radius:8px;background:var(--card);color:var(--chip-ink);font-size:12px;line-height:1;font-weight:700}
+@media(max-width:760px){.generated-row{align-items:flex-start;gap:8px}.lens-strip{justify-content:flex-start;margin-left:0;width:100%}.lens-chip{min-height:30px;line-height:1.2;padding:5px 9px}}
+section{margin:48px 0}
+h2{font-family:var(--serif);font-size:clamp(24px,3vw,29px);line-height:1.3;font-weight:800;letter-spacing:-.02em;margin:64px 0 12px;scroll-margin-top:24px;color:var(--ink)}
+section>h2:first-child,
+article>h2:first-child,
+.box>h2:first-child,
+.summary-card>h2:first-child,
+.toc>h2:first-child,
+.faq>h2:first-child,
+.cta-box>h2:first-child,
+.source-note>h2:first-child,
+.card-block>h2:first-child,
+.mini-card>h2:first-child{margin-top:0}
+h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;height:34px;padding:0 9px;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;font-family:var(--sans);font-size:15px;font-weight:800;margin-right:12px;vertical-align:3px;line-height:1}
+/* opt-in: only the 1-2 most important section numbers use solid brand red */
+h2 .no.is-key,h2 .num.is-key{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;line-height:1.7}
+h3{font-family:var(--serif);font-size:19px;font-weight:800;line-height:1.45;letter-spacing:-.015em;margin:32px 0 12px;color:var(--ink)}
+section>h3:first-child,
+article>h3:first-child,
+.box>h3:first-child,
+.summary-card>h3:first-child,
+.toc>h3:first-child,
+.faq>h3:first-child,
+.cta-box>h3:first-child,
+.source-note>h3:first-child,
+.card-block>h3:first-child,
+.mini-card>h3:first-child{margin-top:0}
+h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+p{margin:0 0 16px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:700}
+ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
+li{margin:6px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+footer p{font-size:13px;color:var(--ink-mute)}
+@media(max-width:760px){
+  body{line-height:1.74}
+  .page,.page-wide,.wrap{width:min(100% - 40px,var(--max-reading));padding:40px 0 72px}
+  .header{padding-bottom:22px;margin-bottom:28px}
+  .lead{font-size:16px}
+  h1{font-size:30px;line-height:1.34}
+  h2{font-size:23px;margin-top:52px}
+  h2 .no,h2 .num{min-width:30px;width:auto;height:30px;font-size:13px;margin-right:9px;padding:0 8px}
+  .h2-sub{margin-left:39px}
+}
+@media(max-width:430px){
+  .page,.page-wide,.wrap{width:min(100% - 32px,var(--max-reading))}
+  h1{font-size:27px}
+}
+/* === 완성본 표준 승격 v5.3.1 — 헤더 리듬 === */
+.header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
+.header .kicker::before{width:6px;height:6px}
+.header .sub{text-align:justify;word-break:keep-all}
+
+/* Editorial components for adaptive-html-blog-writer-v2. */
+.box,.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px;margin:24px 0}
+.summary-card .label,.toc .label,.faq .label,.cta-box .label,.source-note .label{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-2);margin-bottom:8px;text-transform:uppercase}
+.summary-card p,.cta-box p{margin:0}
+.toc strong{display:block;font-size:14px;color:var(--ink);margin-bottom:8px}
+.toc ol,.toc ul{margin:0 0 0 20px;color:var(--ink-soft)}
+.toc a{color:var(--ink-soft);text-decoration:none;border-bottom:1px dotted transparent}
+.toc a:hover{color:var(--accent);border-color:var(--accent)}
+.source-note{font-size:13px;color:var(--ink-mute)}
+.source-note p,.source-note li{font-size:13px;color:var(--ink-mute)}
+.source-note ol,.source-note ul{margin:6px 0 6px 20px}
+.source-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px 20px;margin:34px 0;color:var(--ink-mute)}
+.source-box h2{font-family:var(--sans);font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--accent)}
+.source-box p,.source-box li{font-size:13px;color:var(--ink-mute)}
+.source-box ul{columns:2;column-gap:28px;margin-top:8px}
+.source-box a{color:var(--ink-soft)}
+
+
+/* Robust wrapping for long URLs, code tokens, and Korean/English mixed labels. */
+.source-note,.source-box,.source-list,.card-block,.mini-card,.term,.analogy,.danger,.good,caption,a,code{overflow-wrap:anywhere}
+.tbl,.table-scroll{max-width:100%}
+.caption{font-size:12px;color:var(--ink-mute);margin:8px 0 0}
+
+/* Neutral box: generic content container */
+.box p:last-child,.box li:last-child{margin-bottom:0}
+/* FAQ: question/answer list */
+.faq dl,.faq>ul,.faq>ol{margin:0}
+.faq dt,.faq .q{font-weight:800;color:var(--ink);font-size:15px;margin:14px 0 4px}
+.faq dt:first-child,.faq .q:first-child{margin-top:0}
+.faq dd,.faq .a{margin:0 0 4px;color:var(--ink-soft);font-size:14.5px;line-height:1.72}
+.faq dd+dt,.faq .a+.q{border-top:1px solid var(--line);padding-top:12px}
+/* CTA: call-to-action box */
+.cta-box{border-left:4px solid var(--accent)}
+.cta-box h2,.cta-box h3{margin:0 0 8px;font-size:18px;color:var(--ink)}
+.cta-box .label{color:var(--accent)}
+.cta-box a{color:var(--accent);font-weight:700}
+.cta-actions{display:grid;gap:8px;margin:12px 0 0}
+.cta-btn{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:999px;border:1px solid var(--line);padding:9px 14px;text-decoration:none;font-size:13.5px;line-height:1.25;font-weight:800;text-align:center;color:var(--ink);background:var(--card);transition:transform .15s,border-color .15s,background .15s}
+.cta-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.cta-btn.primary:hover{background:var(--accent-2);color:var(--on-accent)}
+.cta-btn.secondary{background:transparent;color:var(--chip-ink);font-weight:700}
+.cta-btn:hover{transform:translateY(-1px);border-color:var(--accent)}
+@media(prefers-reduced-motion:reduce){.cta-btn{transition:none}.cta-btn:hover{transform:none}}
+.cta-proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 0}
+.cta-proof{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;min-width:0}
+.cta-proof.criteria{border-left:4px solid var(--ink-mute)}
+.cta-proof.next{border-left:4px solid var(--good-label-ink)}
+@media(max-width:820px){.cta-proof-grid{grid-template-columns:1fr}}
+
+.term,.analogy,.danger,.good{border-radius:var(--radius-sm);padding:18px 22px;margin:28px 0 32px;font-size:14.5px}
+.term{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--term-accent)}
+.term .label{font-size:11px;color:var(--term-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.term .word{display:block;font-weight:800;color:var(--ink);font-size:15px;margin-bottom:4px}
+.term .meaning,.term p{color:var(--term-ink);margin:0;line-height:1.68;font-size:14px}
+.analogy{background:var(--analogy-bg);border:1px solid var(--analogy-border);border-left:3px solid var(--analogy-accent)}
+.analogy .label{font-size:11px;color:var(--analogy-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:6px;text-transform:uppercase}
+.analogy p{color:var(--analogy-ink);margin:0;line-height:1.72;font-size:14.5px}
+.analogy p+p{margin-top:8px}
+.danger{background:var(--danger-bg);border:1px solid var(--danger-border);border-left:3px solid var(--accent-2)}
+.danger .label{font-size:11px;color:var(--danger-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.danger .name{font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.danger p{color:var(--danger-ink);margin:0;line-height:1.72;font-size:14px}
+.danger p+p{margin-top:8px}
+.good{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--good-accent)}
+.good .label{font-size:11px;color:var(--good-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.good .name{font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.good p{color:var(--good-ink);margin:0;line-height:1.72;font-size:14px}
+
+.hero-analogy{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:26px 28px;margin:24px 0 12px;color:var(--ink)}
+.hero-analogy .tag{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.15em;margin:0 0 10px;text-transform:uppercase;border:0;background:transparent;padding:0;border-radius:0}
+.hero-analogy h3{margin:0 0 10px;font-family:var(--serif);font-size:21px;line-height:1.55;color:var(--ink)}
+.hero-analogy p{margin:0;font-size:15px;color:var(--ink-soft)}
+.hero-analogy p+p{margin-top:10px}
+
+.card-block{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 26px;margin:16px 0}
+.card-block h3{margin-top:0;font-size:17px}
+.card-block p{font-size:14.5px;margin-bottom:10px}
+.card-block p:last-child{margin-bottom:0}
+.case-label{font-size:11px;color:var(--accent-2);font-weight:800;letter-spacing:.15em;margin-bottom:6px;text-transform:uppercase}
+.prompt-box{background:#f8f8f4;border-left:2px solid var(--line);padding:10px 14px;margin:12px 0;font-size:13.5px;color:var(--ink-soft);font-style:italic;line-height:1.65}
+
+em.t{font-style:normal;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px;font-weight:700;font-size:14px}
+.hl{--c:var(--hl-yellow);background-image:linear-gradient(transparent 76%,var(--c) 76%);background-repeat:no-repeat;background-size:0% 100%;padding:1px 7px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;animation:hl-sweep .7s cubic-bezier(.4,0,.2,1) .25s forwards}
+.hl.blue{--c:var(--hl-blue)}.hl.pink{--c:var(--hl-pink)}
+@keyframes hl-sweep{to{background-size:100% 100%}}
+@media(prefers-reduced-motion:reduce){.hl{animation:none;background-size:100% 100%}}
+
+code{font-family:"SF Mono",Menlo,Consolas,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:13.5px;color:#3a3a3a}
+pre,.code{background:var(--code);color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;white-space:pre-wrap}
+pre code,.code code{background:none;color:inherit;padding:0;font-size:13px}
+blockquote,.pull-quote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-family:var(--serif-kr);font-size:20px;line-height:1.65;font-style:italic}
+.pull-quote--note{font-family:var(--sans);font-size:15px;line-height:1.7;font-style:normal;color:var(--ink-mute)}
+.tbl,.table-scroll{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table,.table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:18px 0}
+caption{caption-side:top;text-align:left;font-size:13px;line-height:1.6;color:var(--ink);font-weight:800;margin:0;padding:0 0 8px;white-space:normal;overflow:visible}
+th,td,.table th,.table td{border:1px solid var(--line);padding:10px 14px;text-align:left;color:var(--ink-soft);vertical-align:top;overflow-wrap:break-word;word-break:keep-all}
+td a,th a,.table td a,.table th a{overflow-wrap:normal;word-break:keep-all}
+th,.table th{background:var(--ink);color:#fff;font-weight:800;font-size:13px}
+tbody tr:nth-child(even) td,.table tbody tr:nth-child(even) td{background:rgba(0,0,0,.025)}
+.status-pill{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 9px;font-size:12px;line-height:1.45;color:var(--ink-mute);margin:3px 4px 3px 0;text-align:center;white-space:normal}
+.tbl .status-pill,table .status-pill{white-space:nowrap;width:max-content;max-width:none;text-align:center;justify-content:center}
+.timeline-card{background:#fff;border:1px solid var(--line);border-left:1px solid var(--line);border-radius:var(--radius-md);padding:18px 22px 18px 40px;margin:12px 0;list-style-position:outside}
+.timeline-card>li{padding-left:4px;margin:12px 0}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:12px 16px;margin:12px 0}
+summary{cursor:pointer;font-weight:800;color:var(--ink);font-size:15px}
+details[open] summary{margin-bottom:8px}
+details p{margin-bottom:0}
+.try{background:var(--dark);color:#f5f5f0;border-radius:var(--radius-md);padding:32px 30px;margin-top:52px}
+.try .label{font-size:12px;color:var(--link-on-dark);font-weight:800;letter-spacing:.15em;margin-bottom:14px;text-transform:uppercase}
+.try h2,.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
+.try h2 .no,.try h2 .num{background:#fff;color:var(--dark)}
+.try p{color:#d0d0c8}.try ol,.try ul{padding-left:20px;color:#d0d0c8}.try li{margin-bottom:12px;font-size:15px;line-height:1.7}.try strong{color:#fff}
+.try .hl{background-image:none;background-color:var(--c);background-size:100% 100%;color:var(--ink);animation:none}
+.try .box,
+.try .summary-card,
+.try .cta-box,
+.try .card-block,
+.try .mini-card{
+  background:var(--card);
+  color:var(--ink);
+  border-color:var(--line);
+}
+.try .box h2,
+.try .summary-card h2,
+.try .cta-box h2,
+.try .card-block h2,
+.try .mini-card h2,
+.try .box h3,
+.try .summary-card h3,
+.try .cta-box h3,
+.try .card-block h3,
+.try .mini-card h3{color:var(--ink);font-family:var(--sans)}
+.try .box h2 .no,
+.try .summary-card h2 .no,
+.try .cta-box h2 .no,
+.try .card-block h2 .no,
+.try .mini-card h2 .no,
+.try .box h2 .num,
+.try .summary-card h2 .num,
+.try .cta-box h2 .num,
+.try .card-block h2 .num,
+.try .mini-card h2 .num{background:var(--accent);color:#fff}
+.try .box p,
+.try .summary-card p,
+.try .cta-box p,
+.try .card-block p,
+.try .mini-card p,
+.try .box li,
+.try .summary-card li,
+.try .cta-box li,
+.try .card-block li,
+.try .mini-card li,
+.try .box ul,
+.try .summary-card ul,
+.try .cta-box ul,
+.try .card-block ul,
+.try .mini-card ul,
+.try .box ol,
+.try .summary-card ol,
+.try .cta-box ol,
+.try .card-block ol,
+.try .mini-card ol{color:var(--ink-soft)}
+.try .box strong,
+.try .summary-card strong,
+.try .cta-box strong,
+.try .card-block strong,
+.try .mini-card strong,
+.try .box b,
+.try .summary-card b,
+.try .cta-box b,
+.try .card-block b,
+.try .mini-card b{color:var(--ink)}
+.try .box .label,
+.try .summary-card .label,
+.try .cta-box .label,
+.try .card-block .label,
+.try .mini-card .label{color:var(--accent)}
+.try .cta-box{border-left-color:var(--accent)}
+.try a,
+.try.soft-cta a{
+  color:var(--link-on-dark);
+  font-weight:800;
+  text-decoration-color:rgba(255,255,255,.55);
+}
+.try a:hover,
+.try.soft-cta a:hover{color:#fff;text-decoration-color:#fff}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.mini-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:16px}
+.mini-card h3{margin-top:0;font-size:16px}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.try .tag,
+.try.soft-cta .tag{
+  background:rgba(255,255,255,.96);
+  color:var(--ink);
+  border-color:rgba(255,255,255,.72);
+  font-weight:800;
+  justify-content:center;
+  text-align:center;
+}
+.try .tag-list{gap:8px 9px}
+@media(max-width:760px){
+  /* touch targets ≥44px (WCAG 2.5.8) — padding expands hit area, visual size kept */
+  .toc a{display:inline-block;min-height:44px;padding-top:8px;padding-bottom:8px;line-height:1.4}
+  .meta span,.tag,.status-pill{min-height:32px}
+  .card-grid{grid-template-columns:1fr}
+  .table,table{font-size:14px}
+  .table th,.table td,th,td{padding:10px}
+  .source-box ul{columns:1}
+  .timeline-card{padding:16px 14px 16px 34px}
+  .mobile-card-table{overflow:visible}
+  .mobile-card-table table{min-width:0;border:0;background:transparent;margin:14px 0}
+  .mobile-card-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .mobile-card-table tbody,.mobile-card-table tr,.mobile-card-table th,.mobile-card-table td{display:block}
+  .mobile-card-table tr{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:10px 12px;margin:10px 0}
+  .mobile-card-table th,.mobile-card-table td{border:0;padding:7px 0;color:var(--ink-soft)}
+  .mobile-card-table td{display:grid;grid-template-columns:minmax(92px,34%) 1fr;gap:8px;align-items:start}
+  .mobile-card-table td::before{content:attr(data-label);font-size:11px;line-height:1.45;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2)}
+  .mobile-card-table tbody th{color:var(--ink);font-weight:800;background:transparent}
+  .mobile-card-table tbody th::before{content:"";display:none}
+}
+/* === 완성본 표준 승격 v5.3.1 — source-note 투명 === */
+.source-note{background:transparent}
+
+/* Visual Template System: responsive figure shell for 8000x6000 SVG infographics. */
+.visual-figure,.figure-wide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:14px;margin:22px 0 28px;overflow:hidden}
+.visual-figure img,.figure-wide img{display:block;width:100%;height:auto;border-radius:8px;background:var(--bg);border:1px solid var(--line)}
+.visual-figure figcaption,.figure-wide figcaption{font-size:13px;color:var(--ink-mute);line-height:1.65;margin:10px 4px 0}
+.visual-figure.is-hero,.figure-wide.is-hero{margin-top:18px;margin-bottom:34px}
+.visual-rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.visual-rule{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:var(--radius-md);padding:18px}
+.visual-rule h3{margin:0 0 8px;font-size:16px}.visual-rule p{font-size:14px;margin:0}
+.visual-pipeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+.visual-pipeline .mini-card{min-height:156px}
+@media(max-width:760px){.visual-rule-grid,.visual-pipeline{grid-template-columns:1fr}.visual-figure,.figure-wide{padding:10px;margin-left:-2px;margin-right:-2px}.visual-figure figcaption,.figure-wide figcaption{font-size:12.5px}}
+@media print{.visual-figure,.figure-wide{break-inside:avoid;background:#fff}.visual-figure img,.figure-wide img{max-height:70vh;object-fit:contain}}
+
+
+
+/* adaptive-html-final body icons — compact editorial inline SVG, namespaced bi-, uses skill tokens. 외부/동작 JS 0. */
+.body-icon{width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(245,245,240,.72));display:inline-grid;place-items:center;flex:0 0 auto;vertical-align:middle}
+.body-icon svg{width:28px;height:28px;overflow:visible}
+.body-icon--sm{width:26px;height:26px;border-radius:8px}
+.body-icon--sm svg{width:18px;height:18px}
+.body-icon--plain{border:0;background:none;width:auto;height:auto;border-radius:0}
+.body-icon--plain svg{width:22px;height:22px}
+.body-icon .bi-line{stroke:var(--ink-mute);stroke-width:2.05;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.body-icon .bi-accent-line{stroke:var(--accent);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.body-icon .bi-fill{fill:var(--card);stroke:var(--ink-mute);stroke-width:2.05}
+.body-icon .bi-soft{fill:var(--hl-yellow);stroke:var(--ink-mute);stroke-width:1.65}
+.body-icon .bi-accent{fill:var(--accent)}
+.body-icon .bi-accent-box{fill:var(--accent);stroke:var(--accent);stroke-width:1.6}
+.body-icon .bi-dot{fill:#7ea66a;stroke:var(--ink-mute);stroke-width:1.3}
+.body-icon .bi-dot-box{fill:#7ea66a;stroke:#7ea66a;stroke-width:1.5}
+/* icon + text alignment: 헤딩/라벨이 body-icon을 직접 자식으로 가지면 왼쪽 아이콘 + 일정 간격으로 정렬(무 JS, :has). v5.2.1 */
+.label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+h1:has(> .body-icon),h2:has(> .body-icon){display:flex;align-items:center;gap:10px}
+h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
+.mini-card h3 .body-icon,.card-block h3 .body-icon{align-self:flex-start;margin-top:1px}
+/* lede-note 등 컨텍스트 라벨도 아이콘+텍스트 정렬(고특이도 .lede-note .label{display:block}를 이김). v5.2.2 */
+.lede-note .label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+/* 아이콘 박스 배경 테마 적응(white/dark) — 하드코딩 흰빛 그라디언트가 다크에서 떠 보이던 문제 해소. SVG 칠은 토큰으로 이미 적응. v5.2.2 */
+:root:has(#ahf-white:checked) .body-icon{background:linear-gradient(180deg,#ffffff,#f4f5f8)}
+:root:has(#ahf-dark:checked) .body-icon{background:linear-gradient(180deg,var(--vt-soft),var(--card));border-color:var(--line)}
+@media(prefers-reduced-motion:reduce){.body-icon{transition:none}}
+/* === 완성본 표준 승격 v5.3.1 — 섹션 제목 앞 큰 아이콘(42px) === */
+h2>.body-icon,h3>.body-icon{width:42px;height:42px;border-radius:12px}
+h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
+
+/* adaptive-html-final editorial patterns — small content-structure blocks for in-mode insertion. 무 JS, 스킬 토큰. */
+.source-preserve{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:0;margin:18px 0}
+.source-preserve summary{padding:16px 20px;min-height:54px}
+.source-preserve .source-body{border-top:1px solid var(--line);padding:18px 22px}
+.source-preserve .source-body p,.source-preserve li{font-size:14.5px}
+.source-preserve summary::-webkit-details-marker{display:none}
+.source-preserve summary::marker{content:""}
+/* source-preserve-static — 접기 없이 항상 펼쳐진 정적 원문 카드(<details> 대신 div+role=group). 무 JS. */
+.source-preserve-static{display:block}
+.source-preserve-static .source-preserve-title{padding:14px 20px;min-height:50px;display:flex;align-items:center;font-weight:800;color:var(--ink);font-size:14.5px;line-height:1.35;letter-spacing:-.01em}
+.source-preserve-static .source-body{border-top:1px solid var(--line);padding:16px 22px 18px}
+.chron-list{list-style:none;margin:20px 0 0;padding:0;position:relative}
+.chron-list:before{content:"";position:absolute;left:20px;top:8px;bottom:10px;width:2px;background:linear-gradient(var(--accent),var(--line))}
+.chron-item{position:relative;padding:0 0 15px 58px}
+.chron-dot{position:absolute;left:2px;top:0;width:38px;height:38px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;font-weight:900;color:var(--accent);z-index:1}
+.chron-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 16px}
+.chron-kicker{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:4px}
+.chron-card h3{font-family:var(--sans);font-size:16px;margin:0 0 4px}
+.chron-card p{font-size:14.5px;margin:0}
+.core-insight{background:linear-gradient(135deg,var(--accent-soft),rgba(255,255,255,.6));border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:22px 24px;margin:18px 0}
+.core-insight blockquote{font-family:var(--serif-kr);font-size:22px;line-height:1.65;color:var(--ink);border:0;margin:0 0 12px;padding:0;font-style:normal}
+.core-insight p{margin:0}
+/* core-insight--neutral — 그라데이션 없는 중립 callout 변형(opt-in). 베어 .core-insight를 덮어쓰지 않는다(전 모드 회귀 방지). */
+.core-insight--neutral{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
+.core-insight--neutral blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.025em;line-height:1.42}
+/* lede-note — Goal/도입 강조 카드(좌측 accent rail). pattern-hero-note(페이지 어휘)를 정본 callout으로 개명, .label은 공유 uppercase 규약으로 복귀. */
+.lede-note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:16px 24px 17px;margin:24px 0 34px}
+.lede-note .label{display:block;font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
+.lede-note p{margin:0;line-height:1.62}
+.conn-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.conn-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px 18px}
+.conn-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.conn-label{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2)}
+.conn-strength{font-size:12px;color:var(--term-label-ink)}
+.conn-card h3{font-family:var(--serif);font-size:17px;margin:0 0 8px}
+.conn-card p{font-size:14px;margin:0}
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin:18px 0}
+.ba-col{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:17px 18px}
+.ba-col.before{opacity:.78}
+.ba-col.after{border-color:rgba(230,57,70,.38);box-shadow:inset 3px 0 0 var(--accent)}
+.ba-label{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
+.ba-arrow{display:grid;place-items:center;color:var(--accent);font-size:24px}
+/* before/after 강조 라인 + 마커(opt-in). ba-bullet은 장식(aria-hidden). 토큰화: warm 리터럴 대신 --ink-mute/--bg. */
+.ba-emphasis-line{display:flex;align-items:center;gap:10px;margin:0;color:var(--ink);font-weight:800;line-height:1.45}
+.ba-emphasis-line span:last-child{display:inline-block;transform:translateY(1px)}
+.ba-bullet{flex:0 0 auto;width:8px;height:8px;border-radius:999px;background:var(--ink-mute);box-shadow:0 0 0 4px var(--bg);margin-top:0}
+.ba-col.after .ba-bullet{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.impact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:18px 0}
+.impact-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px}
+.impact-card .body-icon{display:grid;margin-bottom:12px}
+.impact-card h3{font-family:var(--sans);font-size:15.5px;margin:0 0 6px}
+.impact-card p{font-size:13.5px;margin:0}
+@media(max-width:940px){.impact-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.ba{grid-template-columns:1fr}.ba-arrow{transform:rotate(90deg);min-height:34px}.chron-item{padding-left:50px}.chron-list:before{left:17px}.chron-dot{width:34px;height:34px}}
+/* md-excerpt — SKILL.md/마크다운/코드 원문 발췌를 실제 마크다운 소스처럼 코드 블럭으로 표기(prompt-box 텍스트 대신) */
+.md-excerpt{margin:18px 0}
+.md-excerpt figcaption,.md-excerpt .case-label{display:block;font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin:0 0 8px}
+.md-excerpt .code{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.md-excerpt .code code{background:none;color:inherit;padding:0;font:inherit}
+@media(max-width:620px){.md-excerpt .code{padding:13px 14px}}
+/* a11y-checklist — 접근성 30분 점검 그리드 + 실패 모드 표 + 릴리스 준비 체크리스트(다크 패널). 무 JS, 스킬 토큰, 색 외 텍스트 단서(PASS/FAIL). access-* 페이지 어휘를 a11y-* 정본 네임스페이스로 개명. */
+.a11y-check{margin:18px 0 0;border-top:1px solid var(--line);padding-top:18px}
+.a11y-lead{margin:0 0 12px;color:var(--ink-soft);font-size:13.8px;line-height:1.58;max-width:60rem}
+.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;row-gap:18px;margin:12px 0 0}
+.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.a11y-card h4{font-family:var(--sans);font-size:15px;line-height:1.32;font-weight:800;letter-spacing:-.018em;margin:0;color:var(--ink)}
+.a11y-card p{margin:0;color:var(--ink-soft);font-size:12.8px;line-height:1.48;word-break:keep-all}
+.a11y-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:22px}
+.a11y-card-head>span:first-child{font-size:10.8px;line-height:1.15;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
+.a11y-time{display:inline-flex;align-items:center;min-height:22px;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:2px 7px;color:var(--chip-ink);font-size:11px;font-weight:800;white-space:nowrap}
+.a11y-points{display:grid;gap:9px;margin:1px 0 0;padding:0;list-style:none}
+.a11y-points li{display:grid;grid-template-columns:46px 1fr;gap:7px;align-items:start;margin:0;color:var(--ink-soft);font-size:12.4px;line-height:1.38}
+.a11y-pass,.a11y-fail{display:inline-flex;align-items:center;justify-content:center;min-height:20px;border-radius:999px;border:1px solid var(--line);padding:0 6px;font-size:9.8px;line-height:1;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.a11y-pass{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
+.a11y-fail{background:var(--danger-bg);border-color:var(--danger-border);color:var(--accent-2)}
+.a11y-rule{margin:12px 0 0;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:13px;padding:13px 14px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
+.a11y-rule b{font-family:var(--sans);font-size:14.5px;line-height:1.35;font-weight:800;color:var(--ink)}
+.a11y-rule p{margin:2px 0 0;color:var(--ink-soft);font-size:13px;line-height:1.5}
+.a11y-subhead{display:flex;align-items:center;gap:9px;margin:18px 0 7px;font-family:var(--sans);font-size:17px;line-height:1.35;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.a11y-subnum{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;border:2px solid var(--ink);font-size:12px;line-height:1;font-weight:900;color:var(--ink);background:transparent;flex:0 0 auto}
+.a11y-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 0}
+.a11y-note{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0}
+.a11y-note.trap{border-left:4px solid var(--accent)}
+.a11y-note.solution{border-left:4px solid var(--good-label-ink)}
+.a11y-note.case{border-left:4px solid var(--ink-mute)}
+.a11y-note .label{display:block;margin:0 0 5px;font-size:10.8px;line-height:1.15;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
+.a11y-note.solution .label{color:var(--good-label-ink)}
+.a11y-note h4{font-family:var(--sans);font-size:15px;line-height:1.32;font-weight:800;letter-spacing:-.018em;margin:0 0 6px;color:var(--ink)}
+.a11y-note p{margin:0;color:var(--ink-soft);font-size:12.9px;line-height:1.5;word-break:keep-all}
+.a11y-release{margin:18px 0 0;background:var(--dark);color:#f5f5f0;border-radius:15px;padding:18px 19px;border:1px solid rgba(255,255,255,.08)}
+.a11y-release .a11y-subhead{color:#fff;margin-top:0;margin-bottom:7px}
+.a11y-release .a11y-subnum{border-color:#fff;color:var(--dark);background:#fff}
+.a11y-release>p{margin:0 0 12px;color:#d0d0c8;font-size:13.6px;line-height:1.58;max-width:58rem}
+.a11y-release ol{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 10px;list-style:none;padding:0;counter-reset:ready-step}
+.a11y-release li{counter-increment:ready-step;position:relative;margin:0;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:11px 12px 11px 42px;color:#d8d8d0;font-size:13px;line-height:1.48}
+.a11y-release li::before{content:counter(ready-step);position:absolute;left:12px;top:12px;width:20px;height:20px;border-radius:999px;background:#fff;color:var(--dark);display:grid;place-items:center;font:900 10.5px/1 var(--sans)}
+.a11y-release strong{color:#fff;font-weight:800}
+@media(max-width:980px){.a11y-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:820px){.a11y-notes,.a11y-release ol{grid-template-columns:1fr}}
+@media(max-width:620px){.a11y-grid{grid-template-columns:1fr}.a11y-check{padding-top:16px}.a11y-rule{grid-template-columns:1fr}.a11y-card{padding:12px 13px}.a11y-points li{grid-template-columns:44px 1fr}.a11y-subhead{font-size:16px}.a11y-note{padding:12px 13px}.a11y-release{padding:16px}.a11y-release li{font-size:12.8px}}
+/* 템플릿 목차 chip-nav (toc-map) — 번호 pill이 한 줄에서 wrap 되는 섹션 목차. final_20260604 표준 승격, 정본 이름. 3테마 토큰. v5.4.0 */
+.toc-map{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px 20px 20px;margin:24px 0}
+.toc-map>.label{display:block;font-size:14px;line-height:1.35;font-weight:900;letter-spacing:-.01em;text-transform:none;color:var(--ink);margin:0 0 4px}
+.toc-map>p{margin:0 0 13px;color:var(--ink-mute);font-size:13.5px;line-height:1.55}
+.toc-pills{display:flex;flex-wrap:wrap;gap:7px;margin:0}
+.toc-pill{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:0 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--chip-ink);font-size:12.5px;line-height:1;font-weight:700;text-decoration:none;white-space:nowrap}
+.toc-pill:hover{border-color:var(--accent);color:var(--accent)}
+.toc-pill b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:999px;background:var(--accent-soft);color:var(--accent-2);font-size:10.5px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+@media(max-width:700px){.toc-map{padding:15px 16px}.toc-pill{white-space:normal;line-height:1.25;min-height:32px;padding:5px 11px}}
+/* 평면 리스트 자동 다단 (col-list) — 짧은 항목(파일명·태그·키워드)이 6개 이상인 ul/ol을 한 줄에 여러 개로 채워 세로 1열 적층의 가로 공백 낭비를 없앤다. auto-fill로 폭을 꽉 채움(≈3개+/행). v5.4.1 */
+ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:7px 10px}
+.col-list li{margin:0;min-width:0;color:var(--ink-soft);font-size:13.5px;line-height:1.4}
+.col-list li code{display:inline-block;max-width:100%;overflow-wrap:anywhere}
+@media(max-width:560px){ul.col-list,ol.col-list{grid-template-columns:1fr 1fr}}
+/* 텍스트 전용 뷰 bullet (text-bullet-view) — final_20260604 section 7의 code-path bullet 리듬을 정본화. 텍스트만 있는 카드/체크 항목 앞에 작은 써클을 붙여 스캔성을 높인다. opt-in, 무 JS, 3테마 토큰. v5.4.2 */
+.text-bullet-view{display:flex;align-items:flex-start;gap:10px;line-height:1.62}
+.text-bullet-view>.ba-bullet{margin-top:.72em;background:var(--ink-mute);box-shadow:0 0 0 4px var(--bg)}
+:root:has(#ahf-dark:checked) .text-bullet-view>.ba-bullet{background:var(--accent-2);box-shadow:0 0 0 4px var(--card)}
+
+
+
+.layout-beginner .hero-analogy{margin-top:8px}
+.layout-beginner .beginner-zero{border-top:1px solid var(--line);padding-top:28px}
+.layout-beginner .term+.term{margin-top:12px}
+
+/* Expert mode: section wrappers stay in normal document flow; only inner grids/cards are gridded. */
+.layout-expert .summary-grid,
+.layout-expert .decision-grid:not(section),
+.layout-expert .decision-grid>.grid,
+.layout-expert .architecture-grid,
+.layout-expert .risk-grid,
+.layout-expert .roadmap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-expert .decision-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
+.layout-expert .executive-summary,.layout-expert .validation-checklist{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px}
+.layout-expert .executive-summary .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.risk-high{border-left:5px solid var(--accent)}.risk-mid{border-left:5px solid #d99a38}.risk-low{border-left:5px solid #7ea66a}
+
+/* GitHub analysis mode: repository due-diligence report with evidence-first cards. */
+.layout-github .repo-signal-grid,
+.layout-github .repo-identity-grid,
+.layout-github .repo-health-grid,
+.layout-github .repo-action-grid,
+.layout-github .repo-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-github>section:not(.try),
+.layout-github>.source-note,
+.layout-github>.github-question-toc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
+/* .try(Next Actions)는 base 검정 hero CTA 유지 — 라이트/화이트/다크 모두 dark 패널 (v5.3.3) */
+.layout-github>section .vt-shell{margin-bottom:0}
+.layout-github .repo-card,
+.layout-github .repo-signal,
+.layout-github .repo-question,
+.layout-github .repo-evidence{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px;min-width:0}
+.layout-github .repo-card h3,
+.layout-github .repo-signal h3,
+.layout-github .repo-question h3,
+.layout-github .repo-evidence h3{margin-top:0;color:var(--accent-2)}
+.layout-github .repo-signal .label,
+.layout-github .repo-evidence .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink)}
+/* code-tour(어디부터 읽으면 되는가): 파일명/역할 카드는 좌우 정렬 row로 — 세로 적층의 빈약함 해소 (v5.3.6) */
+.layout-github .code-tour .repo-card{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 16px}
+.layout-github .code-tour .repo-card h3{margin:0;font-size:14.5px}
+.layout-github .code-tour .repo-card p{margin:0;color:var(--chip-ink);font-size:12.5px;white-space:nowrap;flex:0 0 auto}
+.layout-github .repo-score{display:inline-grid;place-items:center;min-width:48px;height:48px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:900 16px/1 var(--sans);margin:0 10px 8px 0}
+.layout-github .repo-unknown{border-style:dashed;background:var(--accent-soft)}
+.layout-github .github-question-toc{margin:24px 0 34px}
+
+.layout-article .article-header{margin-bottom:28px}.layout-article .lead{font-size:18px;color:var(--ink-soft)}.layout-article .article-takeaway{background:var(--accent-soft)}.layout-article article section{margin:54px 0}
+.layout-article .pull-quote{font-size:22px;color:var(--ink);border-color:var(--accent);font-style:normal}
+
+.layout-education .learning-goals{border:1px solid var(--good-border);background:var(--good-bg);border-radius:var(--radius-md);padding:22px}
+.layout-education .practice-card{border:1px dashed var(--accent);background:var(--card);border-radius:var(--radius-md);padding:22px}
+.layout-education .quiz-box{background:var(--term-bg);border:1px solid var(--term-border);border-radius:var(--radius-md);padding:22px}
+.layout-education .answer-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px}
+
+.layout-blog .personal-note{font-family:var(--serif);font-size:19px;line-height:1.7}
+.layout-blog .hook{color:var(--ink-soft)}
+.layout-blog article{counter-reset:blog-section}
+.layout-blog article section{border-bottom:1px solid var(--line);padding-bottom:28px;margin:52px 0}
+.layout-blog article>section{counter-increment:blog-section}
+.layout-blog article>section>h2:first-child::before{
+  content:counter(blog-section);
+  display:inline-grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  margin-right:12px;
+  border-radius:999px;
+  background:var(--accent);
+  color:#fff;
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:800;
+  line-height:1;
+  vertical-align:3px;
+}
+.layout-blog article section:last-child{border-bottom:0}
+
+.layout-seo .serp-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.layout-seo .serp-title{color:var(--ink);font-family:var(--sans);font-size:clamp(17px,2vw,18px);line-height:1.45;font-weight:800;letter-spacing:-.012em;margin:2px 0 8px}
+.layout-seo .serp-url{color:#1f6f4e;font-size:12.5px;margin-bottom:6px;font-weight:700}
+.layout-seo .serp-desc{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.62}
+.layout-seo .serp-dots{display:flex;align-items:center;gap:9px;margin:0 0 14px;color:var(--chip-ink);font-size:12.5px;font-weight:700;line-height:1.2}
+.layout-seo .serp-dots::before{content:"";width:11px;height:11px;border-radius:999px;background:var(--good-accent);box-shadow:18px 0 0 var(--accent),36px 0 0 var(--line);flex:0 0 11px;margin-right:36px}
+.layout-seo .serp-checks{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+.layout-seo .serp-checks span{display:inline-flex;align-items:center;min-height:27px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 9px;font-size:11.8px;font-weight:700;line-height:1.2;color:var(--chip-ink)}
+.layout-seo .serp-checks .ok{border-color:var(--good-border);color:var(--good-label-ink);background:var(--good-bg)}
+.layout-seo .serp-rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;min-width:0}
+.layout-seo .serp-rule{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;min-width:0}
+.layout-seo .serp-rule.is-wide{grid-column:1/-1;border-left:4px solid var(--accent)}
+.layout-seo .serp-rule h3{font-family:var(--sans);font-size:16px;line-height:1.34;font-weight:800;letter-spacing:-.018em;margin:0 0 6px;color:var(--ink)}
+.layout-seo .serp-rule p{margin:0;color:var(--ink-soft);font-size:13.2px;line-height:1.56;word-break:keep-all}
+@media(max-width:620px){.layout-seo .serp-rule-grid{grid-template-columns:1fr}}
+.layout-seo .seo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layout-seo .title-candidates,.layout-seo .meta-candidates,.layout-seo .keyword-cluster{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px}
+
+/* Platform grid is safe only as an inner wrapper, never as the semantic section itself. */
+.layout-platform .platform-grid:not(section){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.layout-platform .platform-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px 20px}
+.layout-platform .platform-card .platform-kicker{display:block;margin:0 0 6px;color:var(--accent-2);font-size:10.5px;line-height:1.15;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.layout-platform .platform-card.is-search{border-left:4px solid var(--analogy-accent)}
+.layout-platform .platform-card.is-dev{border-left:4px solid var(--accent)}
+.layout-platform .platform-card.is-story{border-left:4px solid var(--good-label-ink)}
+.layout-platform .platform-card.is-essay{border-left:4px solid var(--term-accent)}
+.layout-platform .platform-card h3{margin-top:0;color:var(--accent-2)}
+.layout-platform .original-summary,.layout-platform .platform-strategy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid:not(section),.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-github .repo-signal-grid,.layout-github .repo-identity-grid,.layout-github .repo-health-grid,.layout-github .repo-action-grid,.layout-github .repo-evidence-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+
+/* Ultimate extra modes */
+.layout-audit .audit-row{display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr .6fr;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}
+.layout-audit .score-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.layout-reference .quick-reference{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px}
+.layout-compare .matrix:not(section),.layout-compare .matrix>.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.layout-compare .winner-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
+.layout-case .timeline{border-left:0;padding-left:0}
+.layout-case .timeline-card{background:transparent;border:0;border-left:0;padding:0;margin:18px 0;list-style:none;counter-reset:timeline-step}
+.layout-case .timeline-card>li{counter-increment:timeline-step;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px 16px 54px;margin:12px 0}
+.layout-case .timeline-card>li::before{content:counter(timeline-step);position:absolute;left:18px;top:18px;width:24px;height:24px;border-radius:999px;background:var(--accent);color:#fff;display:grid;place-items:center;font:800 12px/1 var(--sans)}
+.layout-case .timeline-item{position:relative;margin:18px 0;padding:0 0 0 4px}
+.layout-case .timeline-item::before{content:"";position:absolute;left:-17px;top:.55em;width:11px;height:11px;border-radius:999px;background:var(--accent)}
+.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.layout-landing .hero-analogy{font-size:18px}
+.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layout-checklist .check-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px}
+@media(max-width:760px){.layout-audit .audit-row,.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid,.layout-compare .matrix:not(section),.layout-compare .matrix>.grid,.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid,.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{grid-template-columns:1fr}}
+
+/* ── Section-level classes (v4.3.0) ─────────────────────────────
+   IMPORTANT: semantic section wrappers must not become card grids.
+   Use inner wrappers such as .card-grid, .summary-grid, .matrix:not(section),
+   .winners:not(section), or .tradeoffs:not(section) for actual grid layout. */
+
+.audit-header,.blog-header,.case-header,.checklist-header,.compare-header,
+.course-header,.github-header,.landing-header,.platform-header,.reference-header,
+.report-header,.seo-header{margin-bottom:42px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+
+/* Semantic section wrappers: normal flow only. */
+.risk-matrix,.priority-roadmap,.architecture-map,.serp-preview,.platform-comparison-table,
+.decision-context,.decisions,.results,.winners,.tradeoffs,.how-it-works,.failure-modes,
+.patterns,.examples,.line-audit,.content-outline,.seo-overview,.before-start,
+.beginner-analogy,.beginner-practice,.beginner-terms,.beginner-traps,.example-block,
+.lesson-step,.publish-checklist,.related-list,.soft-cta,.github-verdict,.repo-identity,
+.quickstart-readiness,.repo-health,.code-tour,.release-roadmap,.security-license,
+.decision-tree{margin:46px 0}
+
+/* Actual reusable grid/card wrappers. Never apply these to a section containing h2/h2-sub. */
+.grid-2,.cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.grid-3,.cards-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.grid-2>*,.cards-2>*,.grid-3>*,.cards-3>*{min-width:0}
+.winners:not(section),.tradeoffs:not(section){
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  padding:18px 20px;
+  margin:18px 0;
+}
+.winners:not(section)>h3:first-child,
+.tradeoffs:not(section)>h3:first-child{margin-top:0}
+
+.final-seo-set .grid,.final-seo-set .seo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0 0}
+
+.lesson-step,.line-audit,.before-start{border-left:3px solid var(--line);padding-left:18px}
+.lesson-step+.lesson-step{margin-top:24px}
+
+.soft-cta{background:var(--accent-soft);border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px;color:var(--ink-soft)}
+.soft-cta a{color:var(--accent-2);font-weight:700}
+.soft-cta p,.soft-cta li{color:var(--ink-soft)}
+.soft-cta strong{color:var(--ink)}
+.try.soft-cta{background:var(--dark);border-color:var(--dark);border-left-color:var(--accent);color:#f5f5f0}
+.try.soft-cta p,.try.soft-cta li{color:#d0d0c8}.try.soft-cta strong{color:#fff}
+.try.soft-cta .label{color:var(--accent)}
+.layout-comparison .try,.layout-compare .try,.layout-case .try{background:var(--card);color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
+.layout-comparison .try .label,.layout-compare .try .label,.layout-case .try .label{color:var(--accent-2)}
+.layout-comparison .try h2,.layout-comparison .try h3,.layout-comparison .try strong,.layout-compare .try h2,.layout-compare .try h3,.layout-compare .try strong,.layout-case .try h2,.layout-case .try h3,.layout-case .try strong{color:var(--ink)}
+.layout-comparison .try p,.layout-comparison .try ol,.layout-comparison .try ul,.layout-comparison .try li,.layout-compare .try p,.layout-compare .try ol,.layout-compare .try ul,.layout-compare .try li,.layout-case .try p,.layout-case .try ol,.layout-case .try ul,.layout-case .try li{color:var(--ink-soft)}
+.layout-comparison .try h2 .no,.layout-comparison .try h2 .num,.layout-compare .try h2 .no,.layout-compare .try h2 .num,.layout-case .try h2 .no,.layout-case .try h2 .num{background:var(--accent);color:var(--on-accent)}
+
+.related-list ul,.related-list ol{margin:8px 0 0 20px}
+
+@media(max-width:760px){
+  .grid-2,.cards-2,.grid-3,.cards-3,
+  .final-seo-set .grid,.final-seo-set .seo-grid{grid-template-columns:1fr}
+  .layout-blog article>section>h2:first-child::before{width:30px;height:30px;margin-right:9px;font-size:13px;vertical-align:2px}
+}
+/* === 완성본 표준 승격 v5.3.1 — 무클래스 콘텐츠 섹션 카드 뷰 === */
+.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}
+
+@media print{
+  *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white;color:#111}
+  .page,.page-wide,.wrap{width:100%;padding:0}
+  .hero-analogy,.try{background:#f4f4f4;color:#111;box-shadow:none}
+  .try h2,.try h3,.try strong{color:#111}
+  .source-note,.toc,.box,.term,.analogy,.danger,.good,.card-block,.mini-card{break-inside:avoid}
+  pre,table,.tbl,blockquote,figure,.card-block{break-inside:avoid}
+  .skip{display:none}
+  a::after{content:" (" attr(href) ")";font-size:11px;color:#555}
+}
+
+/* adaptive-html-final 테마 시스템 (v5.2) — CSS-only 3-테마: 라이트(크림 기본)·화이트(순백)·다크.
+   라디오 #ahf-light/#ahf-white/#ahf-dark(name=ahf-theme) + :has(). 무 JS · 강제선언 0 · 코어 무수정. 마크업 없으면 라이트 기본. */
+
+/* ===== 화이트(순백) ===== */
+:root:has(#ahf-white:checked){--bg:#ffffff;--card:#ffffff;--line:#e4e4ea;--ink:#16181d;--ink-soft:#43474e;--ink-mute:#6b6f78;--chip-ink:#6b6f78;--dark:#16181d;--dark-soft:#23262d;--code:#1b1e24;--vt-paper:#ffffff;--vt-wash:#ffffff;--vt-soft:#f2f3f6;color-scheme:light}
+
+/* ===== 다크(명시) + 표면 보정 ===== */
+:root:has(#ahf-dark:checked){--bg:#0c0d10;--ink:#ececea;--ink-soft:#c3c3bc;--ink-mute:#9a9a92;--line:#2c2d34;--card:#1a1c22;--accent:#ff6b75;--accent-2:#ff909a;--accent-soft:#3a2228;--link-on-dark:#ffb6c0;--chip-ink:#a8a8a1;--on-accent:#0c0d10;--dark:#000000;--dark-soft:#0c0d10;--code:#070809;--vt-paper:#1a1c22;--vt-wash:#0c0d10;--vt-soft:#23252c;--vt-blue:#7fb0d8;--vt-green:#60ba8b;--vt-gold:#e0b357;--term-bg:#241f13;--term-border:#48402a;--term-ink:#ead9b2;--term-label-ink:#e3bd6a;--term-accent:#d7a657;--analogy-bg:#15212e;--analogy-border:#2e4458;--analogy-ink:#bfd6e8;--analogy-label-ink:#9cc2de;--analogy-accent:#79a8c8;--danger-bg:#291513;--danger-border:#5c2f2a;--danger-ink:#f2c6c0;--danger-label-ink:#ff8c87;--good-bg:#0f2419;--good-border:#244b37;--good-ink:#bfe2cf;--good-label-ink:#80d2a7;--good-accent:#60ba8b;--hl-yellow:#6a5618;--hl-blue:#21405c;--hl-pink:#5a2530;--focus:#5a86ee;color-scheme:dark}
+:root:has(#ahf-dark:checked) .prompt-box{background:var(--card)}
+:root:has(#ahf-dark:checked) code{background:var(--code);color:var(--ink)}
+:root:has(#ahf-dark:checked) th,:root:has(#ahf-dark:checked) .table th{background:var(--line);color:var(--ink)}
+:root:has(#ahf-dark:checked) .status-pill{background:var(--card)}
+:root:has(#ahf-dark:checked) .timeline-card{background:var(--card)}
+:root:has(#ahf-dark:checked) .layout-seo .serp-url{color:var(--good-accent)}
+:root:has(#ahf-dark:checked) .core-insight{background:linear-gradient(135deg,var(--accent-soft),var(--card))}
+:root:has(#ahf-dark:checked) .try .tag,:root:has(#ahf-dark:checked) .try.soft-cta .tag{background:var(--card);border-color:var(--line)}
+:root:has(#ahf-dark:checked) .vt-pill.hot{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink)}
+:root:has(#ahf-dark:checked) .vt-pill.good{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
+:root:has(#ahf-dark:checked) .vt-pill.watch{background:var(--term-bg);border-color:var(--term-border);color:var(--term-label-ink)}
+:root:has(#ahf-dark:checked) .wf-board{--ink:#242421;--ink-soft:#66584c;--ink-mute:#66584c;--vt-ink:#242421;--vt-muted:#66584c;--card:#fffaf4;--line:#ead8c7;--accent-2:#b72d38;--good-label-ink:#1f6f4e;--danger-label-ink:#c62433;--accent:#e63946;--wf-warm:#c2560f;--wf-warm2:#d9742a}
+
+/* ===== 세그먼트 스위처(라디오 3단) ===== */
+.ahf-themebar{position:fixed;top:14px;right:16px;z-index:600;display:inline-flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.18);margin:0}
+.ahf-themebar input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.ahf-themebar label{display:inline-flex;align-items:center;min-height:30px;padding:4px 13px;border-radius:999px;font-size:12px;font-weight:700;color:var(--ink-mute);cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
+.ahf-themebar label:hover{color:var(--ink)}
+.ahf-themebar input:checked + label{background:var(--accent-2);color:var(--on-accent,#fff)}
+.ahf-themebar input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
+@media(max-width:560px){.ahf-themebar{position:static;width:max-content;max-width:calc(100% - 28px);margin:10px auto 16px}}
+@media print{.ahf-themebar{display:none}}
+
+</style>
+
+</head>
+<body>
+<fieldset class="ahf-themebar" aria-label="테마 선택">
+  <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+</fieldset>
+<a class="skip" href="#main">본문 바로가기</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<main id="main" class="page-wide layout-platform">
+<header class="header"><div class="kicker"><span class="kicker-text">PLATFORM BLOG · TECH RETROSPECTIVE</span></div><h1>기술 회고 글을 4개 플랫폼으로 변환하기</h1><p class="sub">한 편의 기술 회고를 티스토리, 벨로그, 브런치, LinkedIn으로 나눠 발행하는 플랫폼별 변환 설계다. 원본 회고의 주장은 그대로 두고, 제목·문단 리듬·증거·태그·CTA만 플랫폼 규약에 맞게 다시 쓴다.</p><div class="meta"><span>platform_blog</span><span>platform-adaptation.html</span><span>profile auto</span><span>adaptive-html-final</span><span>무 JS</span></div><div class="generated-row"><p class="generated-date">Generated · 2026-06-05 KST</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">card-grid</span><span class="lens-chip">platform-grid</span><span class="lens-chip">변환표</span><span class="lens-chip">플랫폼별 톤</span><span class="lens-chip">발행 체크</span></div></div></header>
+
+<section class="summary-card"><div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span>Overview</div><p><strong>같은 회고라도 플랫폼마다 독자가 기다리는 증거가 다르다.</strong> 티스토리는 검색형 목차와 비교표를, 벨로그는 재현 가능한 코드와 실패 로그를, 브런치는 감정 곡선이 있는 서사를, LinkedIn은 짧은 교훈과 커리어 시그널을 기대한다.</p><p>따라서 이 작업의 핵심은 복붙이 아니라 <span class="hl blue">하나의 회고를 네 개의 발행 계약으로 다시 쓰는 것</span>이다. 제목, 문단 길이, 증거의 무게, CTA, 태그를 플랫폼별로 분리해도 원본 회고의 결론과 사실관계는 흔들리지 않게 한 곳에서 관리한다.</p></section>
+
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M13 7v26"/><circle class="bi-dot" cx="13" cy="10" r="3"/><circle class="bi-accent" cx="13" cy="20" r="3"/><circle class="bi-soft" cx="13" cy="30" r="3"/><path class="bi-line" d="M21 11h10M21 20h7M21 30h9"/></svg></span><span class="num">1</span>원본 회고 분해</h2><p class="h2-sub">회고는 시간 순서대로 글이 되지 않는다. 먼저 사실·감정·교훈·증거·CTA로 분해해야 플랫폼별 변환이 흔들리지 않는다. 분해가 끝나면 같은 조각을 네 가지 규약으로 재조립할 수 있다.</p><div class="card-grid"><article class="mini-card"><h3>사실(타임라인)</h3><p>무슨 일이 언제 일어났는지를 감정과 분리해 적는다. 장애 시각, 배포 시점, 롤백 시각 같은 사실은 모든 플랫폼에서 변하지 않는다.</p></article><article class="mini-card"><h3>감정과 전환점</h3><p>“막막했던 순간”과 “관점이 바뀐 순간”을 표시한다. 브런치 서사의 곡선과 LinkedIn 도입 훅의 원천이 된다.</p></article><article class="mini-card"><h3>기술 증거</h3><p>코드 조각, 설정, 에러 로그, 지표 그래프를 분리한다. 벨로그·티스토리에서 무게가 가장 크고, 브런치·LinkedIn에서는 최소화한다.</p></article><article class="mini-card"><h3>교훈과 CTA</h3><p>“다시 한다면” 한 문장과, 댓글·구독·채용 연결·후속 글 중 플랫폼별로 하나만 고른다. CTA가 겹치면 글끼리 충돌한다.</p></article></div><div class="tbl table-scroll"><table><caption>회고 원본 조각 분해표</caption><thead><tr><th>원본 조각</th><th>보존해야 할 의미</th><th>플랫폼 변환 포인트</th></tr></thead><tbody><tr><td>장애 발생 타임라인</td><td>사실관계와 시간 순서</td><td>벨로그/티스토리는 표로, 브런치는 장면 묘사로</td></tr><tr><td>원인 분석</td><td>왜 그 선택이 실패했는가</td><td>벨로그는 코드·로그로, LinkedIn은 한 줄 교훈으로</td></tr><tr><td>감정의 전환점</td><td>관점이 바뀐 순간</td><td>브런치는 서사 절정으로, 나머지는 짧게 언급</td></tr><tr><td>회고 결론</td><td>다음에 바꿀 행동</td><td>플랫폼별 CTA·태그·후속 글로 분기</td></tr></tbody></table></div></section>
+
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="11" cy="20" r="5"/><circle class="bi-soft" cx="29" cy="11" r="5"/><circle class="bi-accent" cx="29" cy="29" r="5"/><path class="bi-line" d="M16 18l8-5M16 22l8 5"/></svg></span>하나의 회고가 네 플랫폼으로 연결되는 관계</h2><p class="h2-sub">분해한 회고는 독립된 글 네 편이 아니라, 검색형 허브를 뿌리로 두고 서로 의존하는 발행 묶음이다. 아래는 단일 원본에서 각 플랫폼 변형으로 이어지는 연결과 의존 관계다.</p><div class="card-grid"><article class="mini-card"><h3>뿌리 · 티스토리 검색 허브</h3><p>고정한 사실 타임라인과 원인 분석을 검색 질문형 H2로 펼친다. 가장 먼저 발행하고, 다른 플랫폼 글이 되돌아오는 기준 문서가 된다.</p></article><article class="mini-card"><h3>분기 · 벨로그 재현 기록</h3><p>허브의 코드·로그 조각을 환경 버전과 실패 케이스로 확장한다. 허브가 “무엇이”를, 회고 기록이 “어떻게 재현되는지”를 맡는다.</p></article><article class="mini-card"><h3>번역 · 브런치 서사</h3><p>같은 사건을 감정 곡선이 있는 이야기로 다시 쓴다. 증거는 줄이되 결론은 허브와 같게 유지해 메시지가 어긋나지 않게 한다.</p></article><article class="mini-card"><h3>전환 · LinkedIn 시그널</h3><p>허브의 교훈을 짧은 인사이트와 커리어 시그널로 압축한다. 가장 마지막에 발행하며 허브로 가는 링크에 의존한다.</p></article></div></section>
+
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="22" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="8" y="22" width="10" height="9" rx="2"/><rect class="bi-fill" x="22" y="22" width="10" height="9" rx="2"/><circle class="bi-accent" cx="13" cy="14" r="2"/></svg></span><span class="num">2</span>플랫폼별 발행 전략 카드</h2><p class="h2-sub">각 플랫폼은 같은 회고를 읽는 다른 인터페이스다. 카드에는 톤, 권장 길이, 제목 기준, 증거, 태그, CTA를 함께 고정해 글쓰기 단계에서 톤이 섞이지 않게 한다.</p><div class="platform-grid"><article class="platform-card is-search"><span class="platform-kicker">TISTORY</span><h3>검색형 장문 회고</h3><p>회고의 핵심 키워드를 제목 앞쪽에 두고 목차·원인 분석표·FAQ를 배치한다. 문단은 길어도 되지만 H2마다 독립 질문을 품어야 한다.</p><ul><li>권장 길이: 2,500~4,000자</li><li>제목: 검색 키워드 + 문제(예: “OOM 장애 회고: 원인과 재발 방지”)</li><li>증거: 원인 분석표, Before/After, FAQ</li><li>태그: 장애 키워드, 도구, 원인, 해결</li><li>CTA: 후속 글, 체크리스트 다운로드</li></ul></article><article class="platform-card is-dev"><span class="platform-kicker">VELOG</span><h3>재현 가능한 기술 기록</h3><p>성공담보다 실패 조건, 환경 버전, 코드, 에러 로그를 먼저 밝힌다. 독자가 자기 환경에서 따라 검증할 수 있어야 한다.</p><ul><li>권장 길이: 1,800~3,200자</li><li>제목: 기술 문제 명확화(예: “GC 튜닝으로 p99를 잡은 기록”)</li><li>증거: 코드 블록, 설정, 실패 로그, 지표</li><li>태그: 언어, 프레임워크, 오류, 실험</li><li>CTA: GitHub 링크, 댓글 질문, 후속 실험</li></ul></article><article class="platform-card is-story"><span class="platform-kicker">BRUNCH</span><h3>감정 곡선이 있는 서사</h3><p>기술 세부보다 “그때 나는 어떤 결정을 왜 내렸는가”를 이야기한다. 전문용어는 줄이고 장면과 전환점으로 끌고 간다.</p><ul><li>권장 길이: 1,500~2,500자</li><li>제목: 정서적 질문형(예: “장애 앞에서 팀장이 한 첫 한마디”)</li><li>증거: 한두 장면, 인용구, 최소한의 수치</li><li>태그: 일·성장·팀워크 같은 정서 키워드</li><li>CTA: 구독, 다음 이야기 예고</li></ul></article><article class="platform-card is-essay"><span class="platform-kicker">LINKEDIN</span><h3>짧은 교훈과 커리어 시그널</h3><p>도입 한 줄로 멈추게 하고, 본문은 불릿 교훈으로 압축한다. 회고를 통해 “나/우리 팀이 무엇을 배웠는가”라는 직무 시그널을 보낸다.</p><ul><li>권장 길이: 600~1,300자(첫 2줄이 훅)</li><li>제목/도입: 결과·교훈 선공개(예: “3시간 장애가 우리 배포 문화를 바꿨다”)</li><li>증거: 핵심 지표 1~2개, 교훈 3불릿</li><li>태그: 직무·산업 해시태그 3~5개</li><li>CTA: 의견 질문, 프로필·채용 연결</li></ul></article></div></section>
+
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="22" rx="3"/><rect class="bi-fill" x="16" y="9" width="8" height="22" rx="3"/><rect class="bi-soft" x="25" y="9" width="8" height="22" rx="3"/><path class="bi-accent-line" d="M27 18h4"/><circle class="bi-accent" cx="29" cy="26" r="2.5"/></svg></span><span class="num">3</span>플랫폼별 발행 톤</h2><p class="h2-sub">톤은 취향이 아니라 독자 계약이다. 같은 결론도 플랫폼마다 허용되는 문장 길이, 전문용어 밀도, 증거의 무게가 다르다. 톤을 먼저 고르면 본문을 쓰는 동안 “브런치인데 너무 건조하다”거나 “벨로그인데 코드가 없다”는 흔들림을 줄일 수 있다.</p><div class="tbl table-scroll"><table><caption>플랫폼별 발행 톤 비교: 문장 리듬·용어 밀도·증거 무게·감정 강도</caption><thead><tr><th>톤 방향</th><th>대표 플랫폼</th><th>문장 리듬</th><th>전문용어 밀도</th><th>증거 무게</th><th>감정 강도</th></tr></thead><tbody><tr><td>검색 친화 정보형</td><td>티스토리</td><td>중간 길이, H2마다 한 질문</td><td>중간(용어+설명 병기)</td><td>표·체크리스트 중심</td><td>낮음</td></tr><tr><td>재현 가능 기록형</td><td>벨로그</td><td>호흡 긴 단계 서술</td><td>높음(코드·버전 노출)</td><td>코드·로그·지표 중심</td><td>낮음</td></tr><tr><td>서사 공감형</td><td>브런치</td><td>짧은 문단, 장면 전환</td><td>낮음(비유로 대체)</td><td>장면·인용 중심</td><td>높음</td></tr><tr><td>인사이트 시그널형</td><td>LinkedIn</td><td>훅 한 줄 + 불릿</td><td>중간(직무 언어)</td><td>핵심 지표 1~2개</td><td>중간</td></tr></tbody></table></div><div class="good"><div class="label">권장</div><div class="name">첫 발행은 검색 친화 정보형으로</div><p>회고 직후 첫 글은 검색형 허브(티스토리)로 톤을 잡는 편이 안전하다. 사실관계와 원인 분석이 한 곳에 정리되어 다른 세 글이 가리키는 기준점이 되고, 정정이 생겨도 허브 한 곳만 고치면 된다.</p></div></section>
+
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="9" width="18" height="22" rx="3"/><path class="bi-line" d="M13 16h8M13 22h7"/><path class="bi-accent-line" d="M24 28l8-8 3 3-8 8-5 1z"/></svg></span><span class="num">4</span>플랫폼 변환표</h2><p class="h2-sub">회고의 한 조각은 플랫폼마다 다른 문단이 된다. 변환표를 먼저 만들면 글쓰기 단계에서 플랫폼별 톤이 섞이지 않고, 같은 사실이 네 가지 형태로 정확히 매핑된다.</p><div class="tbl table-scroll"><table><caption>기술 회고 원본의 플랫폼별 변환표</caption><thead><tr><th>회고 원본</th><th>티스토리</th><th>벨로그</th><th>브런치</th><th>LinkedIn</th></tr></thead><tbody><tr><td>장애 발생 상황</td><td>검색 질문형 H2와 도입 요약</td><td>재현 가능한 오류 조건과 환경</td><td>긴박했던 장면과 첫 감정</td><td>결과를 선공개하는 훅 한 줄</td></tr><tr><td>원인 분석</td><td>원인 분석표와 체크리스트</td><td>코드 블록, 설정, 실패 로그</td><td>“왜 그렇게 판단했나”의 내면</td><td>핵심 원인 한 문장 + 지표</td></tr><tr><td>해결 과정</td><td>Before/After 비교표</td><td>해결 커밋과 검증 로그</td><td>전환점이 된 결정의 순간</td><td>배운 점 3불릿</td></tr><tr><td>회고 결론</td><td>FAQ와 재발 방지 가이드</td><td>후속 실험·댓글 질문</td><td>성장 메시지와 다음 이야기</td><td>의견 질문 + 프로필 연결</td></tr></tbody></table></div></section>
+
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="num">5</span>발행 형식 선택과 순서</h2><p class="h2-sub">형식을 고를 때는 “어떤 글이 가장 멋진가”가 아니라 “지금 가장 빨리 가치를 주는 형식은 무엇인가”를 본다. 같은 회고에서 나온 네 형식을 같은 기준으로 줄 세우면 발행 순서가 자연스럽게 정해진다.</p><div class="tbl table-scroll"><table><caption>발행 형식 비교: 준비 난이도·검색 수명·전환 기여·적합 시점</caption><thead><tr><th>형식</th><th>플랫폼</th><th>준비 난이도</th><th>검색 수명</th><th>전환 기여</th><th>적합 시점</th></tr></thead><tbody><tr><td>검색형 허브</td><td>티스토리</td><td>중</td><td>길다</td><td>간접</td><td>가장 먼저</td></tr><tr><td>재현 기록</td><td>벨로그</td><td>높음</td><td>중간</td><td>신뢰 형성</td><td>허브 직후</td></tr><tr><td>서사 글</td><td>브런치</td><td>중</td><td>짧다</td><td>도달 확장</td><td>병행 가능</td></tr><tr><td>인사이트 포스트</td><td>LinkedIn</td><td>낮음</td><td>매우 짧다</td><td>직접(커리어)</td><td>마지막</td></tr></tbody></table></div><div class="platform-grid"><article class="platform-card is-search"><span class="platform-kicker">FIRST · 검색형 허브</span><h3>가장 먼저 발행</h3><p>사실·원인·FAQ가 한 곳에 모여 검색 수명이 길다. 다른 글이 되돌아오는 기준 문서이므로 링크 구조를 가장 먼저 확정한다.</p></article><article class="platform-card is-dev"><span class="platform-kicker">NEXT · 재현 기록</span><h3>허브 직후 발행</h3><p>재현 정보가 신뢰를 만든다. 준비 난이도가 가장 높으므로 환경과 코드 검증이 끝난 뒤 공개하고, 허브의 “무엇이”를 “어떻게”로 잇는다.</p></article><article class="platform-card is-story"><span class="platform-kicker">PARALLEL · 서사 글</span><h3>병행 발행 가능</h3><p>준비가 가볍고 도달을 넓힌다. 검색 수명이 짧으므로 허브로 가는 링크를 반드시 남겨 정서적 공감을 자산으로 전환한다.</p></article><article class="platform-card is-essay"><span class="platform-kicker">LAST · 인사이트 포스트</span><h3>마지막에 발행</h3><p>커리어 시그널에 직접 기여한다. 허브·기록이 먼저 쌓여야 짧은 포스트의 “더 보기” 링크에 신뢰가 실리므로 가장 마지막에 둔다.</p></article></div><div class="danger"><div class="label">주의</div><div class="name">네 형식을 같은 날 동시에 올리지 않는다</div><p>같은 날 네 곳에 동시 발행하면 사실 정정이 생겼을 때 네 번 고쳐야 하고, 내부 링크가 서로를 가리키지 못한다. 허브를 기준점으로 두고 순차 발행해야 정정과 링크 관리가 단순해진다.</p></div></section>
+
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="9" width="18" height="22" rx="3"/><path class="bi-line" d="M13 16h8M13 22h7"/><path class="bi-accent-line" d="M24 28l8-8 3 3-8 8-5 1z"/></svg></span><span class="num">6</span>발행 패키지 변경 요약</h2><p class="h2-sub">회고 원고를 플랫폼별로 나누는 일은 코드 변경처럼 다루는 편이 안전하다. 무엇이 그대로 유지되고, 무엇이 플랫폼별로 갈라지며, 왜 그렇게 했는지를 한 문서로 남기면 나중에 사실을 정정할 때 어느 글을 함께 고쳐야 하는지 추적할 수 있다.</p><div class="box"><div class="label">유지(컨텍스트) · 모든 플랫폼 공통</div><ul><li>장애·해결 <strong>타임라인의 사실관계</strong> — 시각, 배포·롤백 시점은 변경 금지</li><li>원인 분석의 <strong>핵심 결론 한 문장</strong> — 모든 글이 같은 결론을 말한다</li><li><strong>수치·로그 원본</strong> — 증거의 원천, 플랫폼마다 노출 양만 조절</li></ul></div><div class="tbl table-scroll"><table><caption>발행 패키지 변경 요약: 유지·추가·제거 항목과 이유</caption><thead><tr><th>구분</th><th>항목</th><th>적용 대상</th><th>이유</th></tr></thead><tbody><tr><td>유지</td><td>타임라인·핵심 결론</td><td>네 플랫폼 공통</td><td>사실관계와 메시지 일관성 유지</td></tr><tr><td>추가</td><td>검색 키워드 H2·원인 분석표</td><td>티스토리</td><td>검색 유입과 체류 확보</td></tr><tr><td>추가</td><td>코드·설정·실패 로그</td><td>벨로그</td><td>재현 가능성으로 신뢰 확보</td></tr><tr><td>추가</td><td>감정 곡선·장면 묘사</td><td>브런치</td><td>정서적 공감으로 도달 확장</td></tr><tr><td>추가</td><td>훅 도입·교훈 불릿·해시태그</td><td>LinkedIn</td><td>직무 시그널과 커리어 전환</td></tr><tr><td>제거</td><td>시간 순서 그대로 복붙</td><td>전 플랫폼</td><td>읽기 흐름과 검색에 불리</td></tr><tr><td>제거</td><td>모든 글에 동일 CTA 삽입</td><td>브런치·LinkedIn</td><td>반응 유도·정서 흐름과 충돌</td></tr></tbody></table></div></section>
+
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="12" width="8" height="16" rx="2"/><rect class="bi-soft" x="16" y="9" width="8" height="22" rx="2"/><rect class="bi-fill" x="24" y="12" width="8" height="16" rx="2"/><path class="bi-accent-line" d="M16 20h8"/><circle class="bi-accent" cx="12" cy="27" r="2"/></svg></span><span class="num">7</span>제목·메타·태그·CTA 운영표</h2><p class="h2-sub">플랫폼별 변환은 문체만 바꾸는 일이 아니다. 제목, 설명, 태그, CTA를 따로 관리해야 같은 회고가 서로 다른 독자에게 자연스럽게 닿는다.</p><div class="tbl table-scroll"><table><caption>플랫폼별 제목·메타·태그·CTA 운영표</caption><thead><tr><th>플랫폼</th><th>제목 기준</th><th>설명/도입</th><th>태그</th><th>CTA</th></tr></thead><tbody><tr><td>티스토리</td><td>검색 키워드 + 문제</td><td>원인과 결과를 120~160자로 요약</td><td>장애 키워드, 도구, 원인, 해결</td><td>체크리스트, 후속 글</td></tr><tr><td>벨로그</td><td>기술 문제 명확화</td><td>환경·실패·해결 범위를 짧게 명시</td><td>언어, 프레임워크, 오류, 실험</td><td>GitHub, 댓글 질문</td></tr><tr><td>브런치</td><td>정서적 질문형 문장</td><td>한 장면으로 시작하는 도입 2~3줄</td><td>일·성장·팀워크 정서 키워드</td><td>구독, 다음 이야기 예고</td></tr><tr><td>LinkedIn</td><td>결과·교훈 선공개</td><td>첫 2줄 안에 결론을 던지는 훅</td><td>직무·산업 해시태그 3~5개</td><td>의견 질문, 프로필·채용 연결</td></tr></tbody></table></div></section>
+
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="num">8</span>발행 체크리스트와 일정</h2><p class="h2-sub">동시에 여러 플랫폼에 올리면 사실 정정과 링크 관리가 어려워진다. 허브를 먼저 발행하고, 재현 기록과 서사·인사이트 글을 순차 발행한다.</p><div class="card-grid"><article class="mini-card"><h3>D-2 원본 고정</h3><p>타임라인, 코드, 로그, 결론, 링크를 하나의 source note로 잠근다. 이후 변경은 이 원본에서만 시작한다.</p></article><article class="mini-card"><h3>D-1 플랫폼 초안</h3><p>티스토리는 원인 분석표를, 벨로그는 재현 환경을 먼저 검증한다. 브런치는 장면을, LinkedIn은 훅 두 줄을 다듬는다.</p></article><article class="mini-card"><h3>D 발행</h3><p>검색형 허브를 먼저 공개하고, 다른 플랫폼 글은 허브로 되돌아오는 링크를 둔다.</p></article><article class="mini-card"><h3>D+7 정리</h3><p>댓글·유입 키워드·코드 재현 요청·공유 반응을 모아 후속 글로 연결한다.</p></article></div><ul class="col-list"><li>원본 타임라인과 각 플랫폼 원고가 같은 사실·결론을 말하는지 확인한다.</li><li>플랫폼별 태그가 과도하게 겹치지 않는지 점검한다.</li><li>코드·수치·로그처럼 오류 가능성이 큰 증거는 발행 전 다시 확인한다.</li><li>커리어 CTA는 LinkedIn에만 두고, 브런치는 구독, 벨로그는 댓글·후속 실험으로 분리한다.</li></ul></section>
+
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="9" y="7" width="18" height="25" rx="3"/><path class="bi-line" d="M14 14h8M14 20h7M14 26h6"/><circle class="bi-accent" cx="29" cy="26" r="4"/><path class="bi-accent-line" d="M32 29l4 4"/></svg></span><span class="num">9</span>발행 후 검증 루프</h2><p class="h2-sub">복붙 여부가 아니라 플랫폼별 독자 반응의 차이를 본다. 같은 회고에서 어떤 질문이 어느 플랫폼에서 살아나는지 추적해야 다음 회고의 콘텐츠 설계가 쉬워진다.</p><div class="tbl table-scroll"><table><caption>발행 후 개선 판단표</caption><thead><tr><th>신호</th><th>해석</th><th>다음 조치</th></tr></thead><tbody><tr><td>검색 유입은 높은데 체류가 짧음</td><td>티스토리 허브의 H2가 검색 질문과 어긋남</td><td>유입 키워드를 다음 H2로 재배치</td></tr><tr><td>댓글이 코드 재현 실패에 집중됨</td><td>벨로그 기록의 환경·버전 정보 부족</td><td>실행 환경과 실패 로그 추가</td></tr><tr><td>브런치 공유는 높고 구독은 낮음</td><td>서사는 닿았으나 다음 이야기 동선이 약함</td><td>마지막에 후속 이야기 예고 추가</td></tr><tr><td>LinkedIn 노출은 많고 댓글은 없음</td><td>훅은 멈췄지만 의견 질문이 약함</td><td>마지막 문장을 열린 질문으로 교체</td></tr></tbody></table></div><div class="good"><div class="label">검증 통과 기준</div><div class="name">발행 전 self-review 3문장</div><p>① 네 글이 같은 사실과 결론을 말하는가, ② 원본 정정 시 함께 고칠 글 목록이 source note에 있는가, ③ 플랫폼별 CTA가 서로 충돌하지 않는가. 세 문장에 모두 “예”라고 답할 수 있을 때 발행한다.</p></div></section>
+
+<section class="try"><div class="label">NEXT ACTION</div><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>바로 실행할 일</h2><ol><li>회고를 사실·감정·증거·교훈으로 분해하고, 변경 금지할 결론 한 문장을 고정한다.</li><li>티스토리 허브 초안에 검색 질문형 H2와 원인 분석표를 채운다.</li><li>벨로그 기록의 환경·코드·실패 로그를 자기 환경에서 다시 검증한다.</li><li>브런치 장면 도입과 LinkedIn 훅 두 줄을 쓰고, 두 글 모두 허브로 가는 링크를 단다.</li></ol></section>
+
+<aside class="source-note"><div class="label">Source Note</div><p>플랫폼별 일반 발행 전략 예시이며 각 플랫폼의 정책, 에디터 기능, 노출 알고리즘은 변경될 수 있다. 발행 직전 플랫폼별 최신 정책과 태그·길이 권장값은 별도 확인이 필요하다.</p></aside>
+</main>
+
+
+</body>
+</html>

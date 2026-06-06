@@ -1,5 +1,5 @@
 {
-  "core_css_sha256": "91b364eb9a842afb8015f43ba83b4fe8dc1cadc40704ee92be0bd187905c3fd4",
+  "core_css_sha256": "bae97cf859b3d7405c44fa16b42831cc8fb2065a854765f746f4767750101ab6",
   "asset_order": [
     "theme.css",
     "components.css",
@@ -11,17 +11,17 @@
     "theme.css": "71d6c0d2af864def8bfcd6340f6cf4c04d1c2fdc68e5a0783b62d5cd3a24222b",
     "components.css": "5e6ae376616bd2fe4200483bcf5fda4c31793823b67662ffb9e9da1fcc7f938f",
     "visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
-    "layouts.css": "49ed767ca190cc9f8fc2c9387f06b6de213106188e15922d29ea9fc01710b4b9",
-    "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
-    "widgets.css": "ce038131dc852a0e08b60884f9aa15d9e670561854c0b1bb53a9d197f0a47659",
+    "widgets.css": "b42b8e4e676fab6d7a2938b9b22c835e5f7a69186fd323cfd95ce65b27ddec6c",
     "visual-html.css": "769bfd01d8b93eed23dd87bae61fff46609f46c50f728b838e74484523f65dce",
-    "body-icons.css": "796d128b4296617c4aad7c6a26fc7e797c2f085be977ccb33542ee83efbdc6a5",
-    "theme-dark.css": "54e927c1b9c58d5fd0bf0fc6baf38777fcc9e8445c744f440f325d187f864588",
-    "editorial-patterns.css": "1552bed519005da3e6d7435ff1939fc9f07cd3319d78f3737fd06d351c76dcf1"
+    "body-icons.css": "abf84aa13dc11168c18e3aa1d19abe0efed039b89cfd942257c4057ee081bf7c",
+    "editorial-patterns.css": "1552bed519005da3e6d7435ff1939fc9f07cd3319d78f3737fd06d351c76dcf1",
+    "layouts.css": "cc20c21e2fd653abf04335ca4494c8842c4f3e1c5b5060813f784ad7d27ae25d",
+    "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
+    "theme-dark.css": "ae30098b2b59ad5a984961e0e46cb0628b6884352faac14e94cf6c79e8598929"
   },
   "profile": "auto",
-  "generated_at": "2026-06-06T00:54:40.920530+09:00",
+  "generated_at": "2026-06-06T19:59:25.775347+09:00",
   "mode": "github_analysis",
   "target": "https://github.com/coreline-ai/skills-html-showcase",
-  "skill_version": "5.4.2"
+  "skill_version": "5.5.6"
 }

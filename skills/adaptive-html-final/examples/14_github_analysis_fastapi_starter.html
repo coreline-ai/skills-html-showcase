@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub 저장소 분석 리포트 (owner/fastapi-starter)</title>
+<meta name="description" content="github_analysis — 저장소 실사·리스크·다음행동(가상 예시)">
+<meta name="keywords" content="github분석,저장소분석,risk,verdict">
+<meta property="og:title" content="GitHub 저장소 분석 리포트 (owner/fastapi-starter)">
+<meta property="og:description" content="github_analysis — 저장소 실사·리스크·다음행동(가상 예시)">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* adaptive-html-final-core-css-sha256: 91b364eb9a842afb8015f43ba83b4fe8dc1cadc40704ee92be0bd187905c3fd4 */
+:root{
+  --bg:#f5f5f0;
+  --ink:#1a1a1a;
+  --ink-soft:#4a4a4a;
+  --ink-mute:#666666;
+  --line:#d8d8d0;
+  --card:#ffffff;
+  --accent:#e63946;
+  --accent-2:#b72d38;
+  --link-on-dark:#ffb6c0;
+  --accent-soft:#fce4e6;
+  --term-bg:#fffaf2;
+  --term-border:#e8d9b8;
+  --analogy-bg:#f0f4f8;
+  --analogy-border:#b8cad8;
+  --danger-bg:#fff0ee;
+  --danger-border:#e8b8b2;
+  --good-bg:#eef7f1;
+  --good-border:#b8d8c2;
+  --hl-yellow:#ffe9a3;
+  --hl-blue:#cfe5f5;
+  --hl-pink:#fbd3da;
+  /* Callout text/border tokens (extracted from components.css raw hex) */
+  --term-ink:#5a4a30;
+  --term-label-ink:#8a5e10;
+  --term-accent:#c98a2e;
+  --analogy-ink:#234458;
+  --analogy-label-ink:#2f5470;
+  --analogy-accent:#5e8aa8;
+  --danger-ink:#5a3a36;
+  --danger-label-ink:#c62433;
+  --good-ink:#1f5040;
+  --good-label-ink:#1f6f4e;
+  --good-accent:#3f8e6c;
+  /* AA-compliant muted foreground for chips/meta */
+  --chip-ink:#6a6a6a;
+  --on-accent:#ffffff; /* text on --accent fills; flips to near-black in dark for AA */
+  --dark:#1a1a1a;
+  --dark-soft:#242421;
+  --code:#1f1f1d;
+  /* v5.1 글꼴: final_20260604 'report' 룩 — 제목/디스플레이를 Pretendard sans로 통일(이전 Noto Serif KR). 진짜 세리프는 --serif-kr로 보존. */
+  --serif:"Pretendard","Apple SD Gothic Neo",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --serif-kr:"Noto Serif KR",Georgia,serif;
+  --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;
+  --radius-sm:5px;
+  --radius-md:8px;
+  --radius-lg:12px;
+  --max-reading:780px;
+  --max-wide:1020px;
+  /* focus ring (non-decorative, distinct from brand red) */
+  --focus:#1a56db;
+  /* spacing scale (8px base) — additive; new rules use these */
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;
+  /* type scale (additive reference axis) */
+  --fs-xs:13px;--fs-sm:14px;--fs-base:16px;--fs-md:18px;--fs-lg:20px;--fs-xl:24px;--fs-2xl:30px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px;box-shadow:0 0 0 2px #fff,0 0 0 5px rgba(26,86,219,.4);border-radius:3px}
+/* CSS-only reading progress bar (scroll-driven; progressive enhancement, no JS). Degrades to invisible 0-width where unsupported. */
+.reading-progress{position:fixed;top:0;left:0;height:4px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--accent);z-index:200;animation:read-progress linear both;animation-timeline:scroll(root)}
+@keyframes read-progress{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){.reading-progress{display:none}}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.8;
+  letter-spacing:-.012em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--dark);color:#fff;padding:10px 14px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+.page,.wrap{width:min(var(--max-reading),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+.page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
+/* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
+.page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
+.page-wide.layout-github>section>p,.page-wide.layout-github>section>ul,.page-wide.layout-github>section>ol,.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
+.header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
+/* header content fills its container width (.page / .page-wide) so the header matches the sections below — v5.2.1 (이전: 48rem 단일 측정 캡) */
+.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:none}
+/* kicker — final_20260604 header: 점 달린 pill eyebrow(토큰화 → 다크 자동 대응) */
+.kicker{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:7px 13px 7px 11px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:13px;letter-spacing:.14em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:24px}
+.kicker::before{content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.kicker-text{line-height:1.2}
+h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.22;font-weight:800;letter-spacing:-.025em;margin:0 0 16px}
+.sub,.lead{font-size:16px;color:var(--ink-soft);margin:0 0 24px;max-width:820px}
+.lead{font-size:18px;line-height:1.75;color:var(--ink-soft)}
+.byline{font-size:13px;color:var(--ink-mute);padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.meta span,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--chip-ink)}
+/* header generated-row + 적용 기준 lens chips (final_20260604, 토큰화 → 다크 자동) */
+.generated-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 0 0;flex-wrap:wrap}
+.generated-date{margin:0;flex:0 0 auto;font-size:13px;color:var(--ink-mute)}
+.lens-strip{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;margin-left:auto}
+.lens-strip-label{font-size:11px;font-weight:900;letter-spacing:.04em;color:var(--ink-mute);margin-right:2px;line-height:1}
+.lens-chip{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border:1px dashed var(--line);border-radius:8px;background:var(--card);color:var(--chip-ink);font-size:12px;line-height:1;font-weight:700}
+@media(max-width:760px){.generated-row{align-items:flex-start;gap:8px}.lens-strip{justify-content:flex-start;margin-left:0;width:100%}.lens-chip{min-height:30px;line-height:1.2;padding:5px 9px}}
+section{margin:48px 0}
+h2{font-family:var(--serif);font-size:clamp(24px,3vw,29px);line-height:1.3;font-weight:800;letter-spacing:-.02em;margin:64px 0 12px;scroll-margin-top:24px;color:var(--ink)}
+section>h2:first-child,
+article>h2:first-child,
+.box>h2:first-child,
+.summary-card>h2:first-child,
+.toc>h2:first-child,
+.faq>h2:first-child,
+.cta-box>h2:first-child,
+.source-note>h2:first-child,
+.card-block>h2:first-child,
+.mini-card>h2:first-child{margin-top:0}
+h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;height:34px;padding:0 9px;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;font-family:var(--sans);font-size:15px;font-weight:800;margin-right:12px;vertical-align:3px;line-height:1}
+/* opt-in: only the 1-2 most important section numbers use solid brand red */
+h2 .no.is-key,h2 .num.is-key{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;line-height:1.7}
+h3{font-family:var(--serif);font-size:19px;font-weight:800;line-height:1.45;letter-spacing:-.015em;margin:32px 0 12px;color:var(--ink)}
+section>h3:first-child,
+article>h3:first-child,
+.box>h3:first-child,
+.summary-card>h3:first-child,
+.toc>h3:first-child,
+.faq>h3:first-child,
+.cta-box>h3:first-child,
+.source-note>h3:first-child,
+.card-block>h3:first-child,
+.mini-card>h3:first-child{margin-top:0}
+h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+p{margin:0 0 16px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:700}
+ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
+li{margin:6px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+footer p{font-size:13px;color:var(--ink-mute)}
+@media(max-width:760px){
+  body{line-height:1.74}
+  .page,.page-wide,.wrap{width:min(100% - 40px,var(--max-reading));padding:40px 0 72px}
+  .header{padding-bottom:22px;margin-bottom:28px}
+  .lead{font-size:16px}
+  h1{font-size:30px;line-height:1.34}
+  h2{font-size:23px;margin-top:52px}
+  h2 .no,h2 .num{min-width:30px;width:auto;height:30px;font-size:13px;margin-right:9px;padding:0 8px}
+  .h2-sub{margin-left:39px}
+}
+@media(max-width:430px){
+  .page,.page-wide,.wrap{width:min(100% - 32px,var(--max-reading))}
+  h1{font-size:27px}
+}
+/* === 완성본 표준 승격 v5.3.1 — 헤더 리듬 === */
+.header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
+.header .kicker::before{width:6px;height:6px}
+.header .sub{text-align:justify;word-break:keep-all}
+
+/* Editorial components for adaptive-html-blog-writer-v2. */
+.box,.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px;margin:24px 0}
+.summary-card .label,.toc .label,.faq .label,.cta-box .label,.source-note .label{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-2);margin-bottom:8px;text-transform:uppercase}
+.summary-card p,.cta-box p{margin:0}
+.toc strong{display:block;font-size:14px;color:var(--ink);margin-bottom:8px}
+.toc ol,.toc ul{margin:0 0 0 20px;color:var(--ink-soft)}
+.toc a{color:var(--ink-soft);text-decoration:none;border-bottom:1px dotted transparent}
+.toc a:hover{color:var(--accent);border-color:var(--accent)}
+.source-note{font-size:13px;color:var(--ink-mute)}
+.source-note p,.source-note li{font-size:13px;color:var(--ink-mute)}
+.source-note ol,.source-note ul{margin:6px 0 6px 20px}
+.source-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px 20px;margin:34px 0;color:var(--ink-mute)}
+.source-box h2{font-family:var(--sans);font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--accent)}
+.source-box p,.source-box li{font-size:13px;color:var(--ink-mute)}
+.source-box ul{columns:2;column-gap:28px;margin-top:8px}
+.source-box a{color:var(--ink-soft)}
+
+
+/* Robust wrapping for long URLs, code tokens, and Korean/English mixed labels. */
+.source-note,.source-box,.source-list,.card-block,.mini-card,.term,.analogy,.danger,.good,caption,a,code{overflow-wrap:anywhere}
+.tbl,.table-scroll{max-width:100%}
+.caption{font-size:12px;color:var(--ink-mute);margin:8px 0 0}
+
+/* Neutral box: generic content container */
+.box p:last-child,.box li:last-child{margin-bottom:0}
+/* FAQ: question/answer list */
+.faq dl,.faq>ul,.faq>ol{margin:0}
+.faq dt,.faq .q{font-weight:800;color:var(--ink);font-size:15px;margin:14px 0 4px}
+.faq dt:first-child,.faq .q:first-child{margin-top:0}
+.faq dd,.faq .a{margin:0 0 4px;color:var(--ink-soft);font-size:14.5px;line-height:1.72}
+.faq dd+dt,.faq .a+.q{border-top:1px solid var(--line);padding-top:12px}
+/* CTA: call-to-action box */
+.cta-box{border-left:4px solid var(--accent)}
+.cta-box h2,.cta-box h3{margin:0 0 8px;font-size:18px;color:var(--ink)}
+.cta-box .label{color:var(--accent)}
+.cta-box a{color:var(--accent);font-weight:700}
+.cta-actions{display:grid;gap:8px;margin:12px 0 0}
+.cta-btn{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:999px;border:1px solid var(--line);padding:9px 14px;text-decoration:none;font-size:13.5px;line-height:1.25;font-weight:800;text-align:center;color:var(--ink);background:var(--card);transition:transform .15s,border-color .15s,background .15s}
+.cta-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.cta-btn.primary:hover{background:var(--accent-2);color:var(--on-accent)}
+.cta-btn.secondary{background:transparent;color:var(--chip-ink);font-weight:700}
+.cta-btn:hover{transform:translateY(-1px);border-color:var(--accent)}
+@media(prefers-reduced-motion:reduce){.cta-btn{transition:none}.cta-btn:hover{transform:none}}
+.cta-proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 0}
+.cta-proof{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;min-width:0}
+.cta-proof.criteria{border-left:4px solid var(--ink-mute)}
+.cta-proof.next{border-left:4px solid var(--good-label-ink)}
+@media(max-width:820px){.cta-proof-grid{grid-template-columns:1fr}}
+
+.term,.analogy,.danger,.good{border-radius:var(--radius-sm);padding:18px 22px;margin:28px 0 32px;font-size:14.5px}
+.term{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--term-accent)}
+.term .label{font-size:11px;color:var(--term-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.term .word{display:block;font-weight:800;color:var(--ink);font-size:15px;margin-bottom:4px}
+.term .meaning,.term p{color:var(--term-ink);margin:0;line-height:1.68;font-size:14px}
+.analogy{background:var(--analogy-bg);border:1px solid var(--analogy-border);border-left:3px solid var(--analogy-accent)}
+.analogy .label{font-size:11px;color:var(--analogy-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:6px;text-transform:uppercase}
+.analogy p{color:var(--analogy-ink);margin:0;line-height:1.72;font-size:14.5px}
+.analogy p+p{margin-top:8px}
+.danger{background:var(--danger-bg);border:1px solid var(--danger-border);border-left:3px solid var(--accent-2)}
+.danger .label{font-size:11px;color:var(--danger-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.danger .name{font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.danger p{color:var(--danger-ink);margin:0;line-height:1.72;font-size:14px}
+.danger p+p{margin-top:8px}
+.good{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--good-accent)}
+.good .label{font-size:11px;color:var(--good-label-ink);font-weight:800;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase}
+.good .name{font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.good p{color:var(--good-ink);margin:0;line-height:1.72;font-size:14px}
+
+.hero-analogy{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:26px 28px;margin:24px 0 12px;color:var(--ink)}
+.hero-analogy .tag{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.15em;margin:0 0 10px;text-transform:uppercase;border:0;background:transparent;padding:0;border-radius:0}
+.hero-analogy h3{margin:0 0 10px;font-family:var(--serif);font-size:21px;line-height:1.55;color:var(--ink)}
+.hero-analogy p{margin:0;font-size:15px;color:var(--ink-soft)}
+.hero-analogy p+p{margin-top:10px}
+
+.card-block{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 26px;margin:16px 0}
+.card-block h3{margin-top:0;font-size:17px}
+.card-block p{font-size:14.5px;margin-bottom:10px}
+.card-block p:last-child{margin-bottom:0}
+.case-label{font-size:11px;color:var(--accent-2);font-weight:800;letter-spacing:.15em;margin-bottom:6px;text-transform:uppercase}
+.prompt-box{background:#f8f8f4;border-left:2px solid var(--line);padding:10px 14px;margin:12px 0;font-size:13.5px;color:var(--ink-soft);font-style:italic;line-height:1.65}
+
+em.t{font-style:normal;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px;font-weight:700;font-size:14px}
+.hl{--c:var(--hl-yellow);background-image:linear-gradient(transparent 76%,var(--c) 76%);background-repeat:no-repeat;background-size:0% 100%;padding:1px 7px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;animation:hl-sweep .7s cubic-bezier(.4,0,.2,1) .25s forwards}
+.hl.blue{--c:var(--hl-blue)}.hl.pink{--c:var(--hl-pink)}
+@keyframes hl-sweep{to{background-size:100% 100%}}
+@media(prefers-reduced-motion:reduce){.hl{animation:none;background-size:100% 100%}}
+
+code{font-family:"SF Mono",Menlo,Consolas,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:13.5px;color:#3a3a3a}
+pre,.code{background:var(--code);color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;white-space:pre-wrap}
+pre code,.code code{background:none;color:inherit;padding:0;font-size:13px}
+blockquote,.pull-quote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-family:var(--serif-kr);font-size:20px;line-height:1.65;font-style:italic}
+.pull-quote--note{font-family:var(--sans);font-size:15px;line-height:1.7;font-style:normal;color:var(--ink-mute)}
+.tbl,.table-scroll{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table,.table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:18px 0}
+caption{caption-side:top;text-align:left;font-size:13px;line-height:1.6;color:var(--ink);font-weight:800;margin:0;padding:0 0 8px;white-space:normal;overflow:visible}
+th,td,.table th,.table td{border:1px solid var(--line);padding:10px 14px;text-align:left;color:var(--ink-soft);vertical-align:top;overflow-wrap:break-word;word-break:keep-all}
+td a,th a,.table td a,.table th a{overflow-wrap:normal;word-break:keep-all}
+th,.table th{background:var(--ink);color:#fff;font-weight:800;font-size:13px}
+tbody tr:nth-child(even) td,.table tbody tr:nth-child(even) td{background:rgba(0,0,0,.025)}
+.status-pill{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 9px;font-size:12px;line-height:1.45;color:var(--ink-mute);margin:3px 4px 3px 0;text-align:center;white-space:normal}
+.tbl .status-pill,table .status-pill{white-space:nowrap;width:max-content;max-width:none;text-align:center;justify-content:center}
+.timeline-card{background:#fff;border:1px solid var(--line);border-left:1px solid var(--line);border-radius:var(--radius-md);padding:18px 22px 18px 40px;margin:12px 0;list-style-position:outside}
+.timeline-card>li{padding-left:4px;margin:12px 0}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:12px 16px;margin:12px 0}
+summary{cursor:pointer;font-weight:800;color:var(--ink);font-size:15px}
+details[open] summary{margin-bottom:8px}
+details p{margin-bottom:0}
+.try{background:var(--dark);color:#f5f5f0;border-radius:var(--radius-md);padding:32px 30px;margin-top:52px}
+.try .label{font-size:12px;color:var(--link-on-dark);font-weight:800;letter-spacing:.15em;margin-bottom:14px;text-transform:uppercase}
+.try h2,.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
+.try h2 .no,.try h2 .num{background:#fff;color:var(--dark)}
+.try p{color:#d0d0c8}.try ol,.try ul{padding-left:20px;color:#d0d0c8}.try li{margin-bottom:12px;font-size:15px;line-height:1.7}.try strong{color:#fff}
+.try .hl{background-image:none;background-color:var(--c);background-size:100% 100%;color:var(--ink);animation:none}
+.try .box,
+.try .summary-card,
+.try .cta-box,
+.try .card-block,
+.try .mini-card{
+  background:var(--card);
+  color:var(--ink);
+  border-color:var(--line);
+}
+.try .box h2,
+.try .summary-card h2,
+.try .cta-box h2,
+.try .card-block h2,
+.try .mini-card h2,
+.try .box h3,
+.try .summary-card h3,
+.try .cta-box h3,
+.try .card-block h3,
+.try .mini-card h3{color:var(--ink);font-family:var(--sans)}
+.try .box h2 .no,
+.try .summary-card h2 .no,
+.try .cta-box h2 .no,
+.try .card-block h2 .no,
+.try .mini-card h2 .no,
+.try .box h2 .num,
+.try .summary-card h2 .num,
+.try .cta-box h2 .num,
+.try .card-block h2 .num,
+.try .mini-card h2 .num{background:var(--accent);color:#fff}
+.try .box p,
+.try .summary-card p,
+.try .cta-box p,
+.try .card-block p,
+.try .mini-card p,
+.try .box li,
+.try .summary-card li,
+.try .cta-box li,
+.try .card-block li,
+.try .mini-card li,
+.try .box ul,
+.try .summary-card ul,
+.try .cta-box ul,
+.try .card-block ul,
+.try .mini-card ul,
+.try .box ol,
+.try .summary-card ol,
+.try .cta-box ol,
+.try .card-block ol,
+.try .mini-card ol{color:var(--ink-soft)}
+.try .box strong,
+.try .summary-card strong,
+.try .cta-box strong,
+.try .card-block strong,
+.try .mini-card strong,
+.try .box b,
+.try .summary-card b,
+.try .cta-box b,
+.try .card-block b,
+.try .mini-card b{color:var(--ink)}
+.try .box .label,
+.try .summary-card .label,
+.try .cta-box .label,
+.try .card-block .label,
+.try .mini-card .label{color:var(--accent)}
+.try .cta-box{border-left-color:var(--accent)}
+.try a,
+.try.soft-cta a{
+  color:var(--link-on-dark);
+  font-weight:800;
+  text-decoration-color:rgba(255,255,255,.55);
+}
+.try a:hover,
+.try.soft-cta a:hover{color:#fff;text-decoration-color:#fff}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.mini-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:16px}
+.mini-card h3{margin-top:0;font-size:16px}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.try .tag,
+.try.soft-cta .tag{
+  background:rgba(255,255,255,.96);
+  color:var(--ink);
+  border-color:rgba(255,255,255,.72);
+  font-weight:800;
+  justify-content:center;
+  text-align:center;
+}
+.try .tag-list{gap:8px 9px}
+@media(max-width:760px){
+  /* touch targets ≥44px (WCAG 2.5.8) — padding expands hit area, visual size kept */
+  .toc a{display:inline-block;min-height:44px;padding-top:8px;padding-bottom:8px;line-height:1.4}
+  .meta span,.tag,.status-pill{min-height:32px}
+  .card-grid{grid-template-columns:1fr}
+  .table,table{font-size:14px}
+  .table th,.table td,th,td{padding:10px}
+  .source-box ul{columns:1}
+  .timeline-card{padding:16px 14px 16px 34px}
+  .mobile-card-table{overflow:visible}
+  .mobile-card-table table{min-width:0;border:0;background:transparent;margin:14px 0}
+  .mobile-card-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .mobile-card-table tbody,.mobile-card-table tr,.mobile-card-table th,.mobile-card-table td{display:block}
+  .mobile-card-table tr{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:10px 12px;margin:10px 0}
+  .mobile-card-table th,.mobile-card-table td{border:0;padding:7px 0;color:var(--ink-soft)}
+  .mobile-card-table td{display:grid;grid-template-columns:minmax(92px,34%) 1fr;gap:8px;align-items:start}
+  .mobile-card-table td::before{content:attr(data-label);font-size:11px;line-height:1.45;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2)}
+  .mobile-card-table tbody th{color:var(--ink);font-weight:800;background:transparent}
+  .mobile-card-table tbody th::before{content:"";display:none}
+}
+/* === 완성본 표준 승격 v5.3.1 — source-note 투명 === */
+.source-note{background:transparent}
+
+/* Visual Template System: responsive figure shell for 8000x6000 SVG infographics. */
+.visual-figure,.figure-wide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:14px;margin:22px 0 28px;overflow:hidden}
+.visual-figure img,.figure-wide img{display:block;width:100%;height:auto;border-radius:8px;background:var(--bg);border:1px solid var(--line)}
+.visual-figure figcaption,.figure-wide figcaption{font-size:13px;color:var(--ink-mute);line-height:1.65;margin:10px 4px 0}
+.visual-figure.is-hero,.figure-wide.is-hero{margin-top:18px;margin-bottom:34px}
+.visual-rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.visual-rule{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:var(--radius-md);padding:18px}
+.visual-rule h3{margin:0 0 8px;font-size:16px}.visual-rule p{font-size:14px;margin:0}
+.visual-pipeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+.visual-pipeline .mini-card{min-height:156px}
+@media(max-width:760px){.visual-rule-grid,.visual-pipeline{grid-template-columns:1fr}.visual-figure,.figure-wide{padding:10px;margin-left:-2px;margin-right:-2px}.visual-figure figcaption,.figure-wide figcaption{font-size:12.5px}}
+@media print{.visual-figure,.figure-wide{break-inside:avoid;background:#fff}.visual-figure img,.figure-wide img{max-height:70vh;object-fit:contain}}
+
+
+
+/* adaptive-html-final body icons — compact editorial inline SVG, namespaced bi-, uses skill tokens. 외부/동작 JS 0. */
+.body-icon{width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(245,245,240,.72));display:inline-grid;place-items:center;flex:0 0 auto;vertical-align:middle}
+.body-icon svg{width:28px;height:28px;overflow:visible}
+.body-icon--sm{width:26px;height:26px;border-radius:8px}
+.body-icon--sm svg{width:18px;height:18px}
+.body-icon--plain{border:0;background:none;width:auto;height:auto;border-radius:0}
+.body-icon--plain svg{width:22px;height:22px}
+.body-icon .bi-line{stroke:var(--ink-mute);stroke-width:2.05;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.body-icon .bi-accent-line{stroke:var(--accent);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.body-icon .bi-fill{fill:var(--card);stroke:var(--ink-mute);stroke-width:2.05}
+.body-icon .bi-soft{fill:var(--hl-yellow);stroke:var(--ink-mute);stroke-width:1.65}
+.body-icon .bi-accent{fill:var(--accent)}
+.body-icon .bi-accent-box{fill:var(--accent);stroke:var(--accent);stroke-width:1.6}
+.body-icon .bi-dot{fill:#7ea66a;stroke:var(--ink-mute);stroke-width:1.3}
+.body-icon .bi-dot-box{fill:#7ea66a;stroke:#7ea66a;stroke-width:1.5}
+/* icon + text alignment: 헤딩/라벨이 body-icon을 직접 자식으로 가지면 왼쪽 아이콘 + 일정 간격으로 정렬(무 JS, :has). v5.2.1 */
+.label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+h1:has(> .body-icon),h2:has(> .body-icon){display:flex;align-items:center;gap:10px}
+h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
+.mini-card h3 .body-icon,.card-block h3 .body-icon{align-self:flex-start;margin-top:1px}
+/* lede-note 등 컨텍스트 라벨도 아이콘+텍스트 정렬(고특이도 .lede-note .label{display:block}를 이김). v5.2.2 */
+.lede-note .label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+/* 아이콘 박스 배경 테마 적응(white/dark) — 하드코딩 흰빛 그라디언트가 다크에서 떠 보이던 문제 해소. SVG 칠은 토큰으로 이미 적응. v5.2.2 */
+:root:has(#ahf-white:checked) .body-icon{background:linear-gradient(180deg,#ffffff,#f4f5f8)}
+:root:has(#ahf-dark:checked) .body-icon{background:linear-gradient(180deg,var(--vt-soft),var(--card));border-color:var(--line)}
+@media(prefers-reduced-motion:reduce){.body-icon{transition:none}}
+/* === 완성본 표준 승격 v5.3.1 — 섹션 제목 앞 큰 아이콘(42px) === */
+h2>.body-icon,h3>.body-icon{width:42px;height:42px;border-radius:12px}
+h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
+
+/* adaptive-html-final editorial patterns — small content-structure blocks for in-mode insertion. 무 JS, 스킬 토큰. */
+.source-preserve{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:0;margin:18px 0}
+.source-preserve summary{padding:16px 20px;min-height:54px}
+.source-preserve .source-body{border-top:1px solid var(--line);padding:18px 22px}
+.source-preserve .source-body p,.source-preserve li{font-size:14.5px}
+.source-preserve summary::-webkit-details-marker{display:none}
+.source-preserve summary::marker{content:""}
+/* source-preserve-static — 접기 없이 항상 펼쳐진 정적 원문 카드(<details> 대신 div+role=group). 무 JS. */
+.source-preserve-static{display:block}
+.source-preserve-static .source-preserve-title{padding:14px 20px;min-height:50px;display:flex;align-items:center;font-weight:800;color:var(--ink);font-size:14.5px;line-height:1.35;letter-spacing:-.01em}
+.source-preserve-static .source-body{border-top:1px solid var(--line);padding:16px 22px 18px}
+.chron-list{list-style:none;margin:20px 0 0;padding:0;position:relative}
+.chron-list:before{content:"";position:absolute;left:20px;top:8px;bottom:10px;width:2px;background:linear-gradient(var(--accent),var(--line))}
+.chron-item{position:relative;padding:0 0 15px 58px}
+.chron-dot{position:absolute;left:2px;top:0;width:38px;height:38px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;font-weight:900;color:var(--accent);z-index:1}
+.chron-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 16px}
+.chron-kicker{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:4px}
+.chron-card h3{font-family:var(--sans);font-size:16px;margin:0 0 4px}
+.chron-card p{font-size:14.5px;margin:0}
+.core-insight{background:linear-gradient(135deg,var(--accent-soft),rgba(255,255,255,.6));border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:22px 24px;margin:18px 0}
+.core-insight blockquote{font-family:var(--serif-kr);font-size:22px;line-height:1.65;color:var(--ink);border:0;margin:0 0 12px;padding:0;font-style:normal}
+.core-insight p{margin:0}
+/* core-insight--neutral — 그라데이션 없는 중립 callout 변형(opt-in). 베어 .core-insight를 덮어쓰지 않는다(전 모드 회귀 방지). */
+.core-insight--neutral{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
+.core-insight--neutral blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.025em;line-height:1.42}
+/* lede-note — Goal/도입 강조 카드(좌측 accent rail). pattern-hero-note(페이지 어휘)를 정본 callout으로 개명, .label은 공유 uppercase 규약으로 복귀. */
+.lede-note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:16px 24px 17px;margin:24px 0 34px}
+.lede-note .label{display:block;font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
+.lede-note p{margin:0;line-height:1.62}
+.conn-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.conn-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px 18px}
+.conn-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.conn-label{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2)}
+.conn-strength{font-size:12px;color:var(--term-label-ink)}
+.conn-card h3{font-family:var(--serif);font-size:17px;margin:0 0 8px}
+.conn-card p{font-size:14px;margin:0}
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin:18px 0}
+.ba-col{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:17px 18px}
+.ba-col.before{opacity:.78}
+.ba-col.after{border-color:rgba(230,57,70,.38);box-shadow:inset 3px 0 0 var(--accent)}
+.ba-label{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
+.ba-arrow{display:grid;place-items:center;color:var(--accent);font-size:24px}
+/* before/after 강조 라인 + 마커(opt-in). ba-bullet은 장식(aria-hidden). 토큰화: warm 리터럴 대신 --ink-mute/--bg. */
+.ba-emphasis-line{display:flex;align-items:center;gap:10px;margin:0;color:var(--ink);font-weight:800;line-height:1.45}
+.ba-emphasis-line span:last-child{display:inline-block;transform:translateY(1px)}
+.ba-bullet{flex:0 0 auto;width:8px;height:8px;border-radius:999px;background:var(--ink-mute);box-shadow:0 0 0 4px var(--bg);margin-top:0}
+.ba-col.after .ba-bullet{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.impact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:18px 0}
+.impact-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px}
+.impact-card .body-icon{display:grid;margin-bottom:12px}
+.impact-card h3{font-family:var(--sans);font-size:15.5px;margin:0 0 6px}
+.impact-card p{font-size:13.5px;margin:0}
+@media(max-width:940px){.impact-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.ba{grid-template-columns:1fr}.ba-arrow{transform:rotate(90deg);min-height:34px}.chron-item{padding-left:50px}.chron-list:before{left:17px}.chron-dot{width:34px;height:34px}}
+/* md-excerpt — SKILL.md/마크다운/코드 원문 발췌를 실제 마크다운 소스처럼 코드 블럭으로 표기(prompt-box 텍스트 대신) */
+.md-excerpt{margin:18px 0}
+.md-excerpt figcaption,.md-excerpt .case-label{display:block;font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin:0 0 8px}
+.md-excerpt .code{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.md-excerpt .code code{background:none;color:inherit;padding:0;font:inherit}
+@media(max-width:620px){.md-excerpt .code{padding:13px 14px}}
+/* a11y-checklist — 접근성 30분 점검 그리드 + 실패 모드 표 + 릴리스 준비 체크리스트(다크 패널). 무 JS, 스킬 토큰, 색 외 텍스트 단서(PASS/FAIL). access-* 페이지 어휘를 a11y-* 정본 네임스페이스로 개명. */
+.a11y-check{margin:18px 0 0;border-top:1px solid var(--line);padding-top:18px}
+.a11y-lead{margin:0 0 12px;color:var(--ink-soft);font-size:13.8px;line-height:1.58;max-width:60rem}
+.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;row-gap:18px;margin:12px 0 0}
+.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.a11y-card h4{font-family:var(--sans);font-size:15px;line-height:1.32;font-weight:800;letter-spacing:-.018em;margin:0;color:var(--ink)}
+.a11y-card p{margin:0;color:var(--ink-soft);font-size:12.8px;line-height:1.48;word-break:keep-all}
+.a11y-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:22px}
+.a11y-card-head>span:first-child{font-size:10.8px;line-height:1.15;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
+.a11y-time{display:inline-flex;align-items:center;min-height:22px;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:2px 7px;color:var(--chip-ink);font-size:11px;font-weight:800;white-space:nowrap}
+.a11y-points{display:grid;gap:9px;margin:1px 0 0;padding:0;list-style:none}
+.a11y-points li{display:grid;grid-template-columns:46px 1fr;gap:7px;align-items:start;margin:0;color:var(--ink-soft);font-size:12.4px;line-height:1.38}
+.a11y-pass,.a11y-fail{display:inline-flex;align-items:center;justify-content:center;min-height:20px;border-radius:999px;border:1px solid var(--line);padding:0 6px;font-size:9.8px;line-height:1;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.a11y-pass{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
+.a11y-fail{background:var(--danger-bg);border-color:var(--danger-border);color:var(--accent-2)}
+.a11y-rule{margin:12px 0 0;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:13px;padding:13px 14px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
+.a11y-rule b{font-family:var(--sans);font-size:14.5px;line-height:1.35;font-weight:800;color:var(--ink)}
+.a11y-rule p{margin:2px 0 0;color:var(--ink-soft);font-size:13px;line-height:1.5}
+.a11y-subhead{display:flex;align-items:center;gap:9px;margin:18px 0 7px;font-family:var(--sans);font-size:17px;line-height:1.35;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.a11y-subnum{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;border:2px solid var(--ink);font-size:12px;line-height:1;font-weight:900;color:var(--ink);background:transparent;flex:0 0 auto}
+.a11y-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 0}
+.a11y-note{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0}
+.a11y-note.trap{border-left:4px solid var(--accent)}
+.a11y-note.solution{border-left:4px solid var(--good-label-ink)}
+.a11y-note.case{border-left:4px solid var(--ink-mute)}
+.a11y-note .label{display:block;margin:0 0 5px;font-size:10.8px;line-height:1.15;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
+.a11y-note.solution .label{color:var(--good-label-ink)}
+.a11y-note h4{font-family:var(--sans);font-size:15px;line-height:1.32;font-weight:800;letter-spacing:-.018em;margin:0 0 6px;color:var(--ink)}
+.a11y-note p{margin:0;color:var(--ink-soft);font-size:12.9px;line-height:1.5;word-break:keep-all}
+.a11y-release{margin:18px 0 0;background:var(--dark);color:#f5f5f0;border-radius:15px;padding:18px 19px;border:1px solid rgba(255,255,255,.08)}
+.a11y-release .a11y-subhead{color:#fff;margin-top:0;margin-bottom:7px}
+.a11y-release .a11y-subnum{border-color:#fff;color:var(--dark);background:#fff}
+.a11y-release>p{margin:0 0 12px;color:#d0d0c8;font-size:13.6px;line-height:1.58;max-width:58rem}
+.a11y-release ol{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 10px;list-style:none;padding:0;counter-reset:ready-step}
+.a11y-release li{counter-increment:ready-step;position:relative;margin:0;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:11px 12px 11px 42px;color:#d8d8d0;font-size:13px;line-height:1.48}
+.a11y-release li::before{content:counter(ready-step);position:absolute;left:12px;top:12px;width:20px;height:20px;border-radius:999px;background:#fff;color:var(--dark);display:grid;place-items:center;font:900 10.5px/1 var(--sans)}
+.a11y-release strong{color:#fff;font-weight:800}
+@media(max-width:980px){.a11y-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:820px){.a11y-notes,.a11y-release ol{grid-template-columns:1fr}}
+@media(max-width:620px){.a11y-grid{grid-template-columns:1fr}.a11y-check{padding-top:16px}.a11y-rule{grid-template-columns:1fr}.a11y-card{padding:12px 13px}.a11y-points li{grid-template-columns:44px 1fr}.a11y-subhead{font-size:16px}.a11y-note{padding:12px 13px}.a11y-release{padding:16px}.a11y-release li{font-size:12.8px}}
+/* 템플릿 목차 chip-nav (toc-map) — 번호 pill이 한 줄에서 wrap 되는 섹션 목차. final_20260604 표준 승격, 정본 이름. 3테마 토큰. v5.4.0 */
+.toc-map{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px 20px 20px;margin:24px 0}
+.toc-map>.label{display:block;font-size:14px;line-height:1.35;font-weight:900;letter-spacing:-.01em;text-transform:none;color:var(--ink);margin:0 0 4px}
+.toc-map>p{margin:0 0 13px;color:var(--ink-mute);font-size:13.5px;line-height:1.55}
+.toc-pills{display:flex;flex-wrap:wrap;gap:7px;margin:0}
+.toc-pill{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:0 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--chip-ink);font-size:12.5px;line-height:1;font-weight:700;text-decoration:none;white-space:nowrap}
+.toc-pill:hover{border-color:var(--accent);color:var(--accent)}
+.toc-pill b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:999px;background:var(--accent-soft);color:var(--accent-2);font-size:10.5px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+@media(max-width:700px){.toc-map{padding:15px 16px}.toc-pill{white-space:normal;line-height:1.25;min-height:32px;padding:5px 11px}}
+/* 평면 리스트 자동 다단 (col-list) — 짧은 항목(파일명·태그·키워드)이 6개 이상인 ul/ol을 한 줄에 여러 개로 채워 세로 1열 적층의 가로 공백 낭비를 없앤다. auto-fill로 폭을 꽉 채움(≈3개+/행). v5.4.1 */
+ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:7px 10px}
+.col-list li{margin:0;min-width:0;color:var(--ink-soft);font-size:13.5px;line-height:1.4}
+.col-list li code{display:inline-block;max-width:100%;overflow-wrap:anywhere}
+@media(max-width:560px){ul.col-list,ol.col-list{grid-template-columns:1fr 1fr}}
+/* 텍스트 전용 뷰 bullet (text-bullet-view) — final_20260604 section 7의 code-path bullet 리듬을 정본화. 텍스트만 있는 카드/체크 항목 앞에 작은 써클을 붙여 스캔성을 높인다. opt-in, 무 JS, 3테마 토큰. v5.4.2 */
+.text-bullet-view{display:flex;align-items:flex-start;gap:10px;line-height:1.62}
+.text-bullet-view>.ba-bullet{margin-top:.72em;background:var(--ink-mute);box-shadow:0 0 0 4px var(--bg)}
+:root:has(#ahf-dark:checked) .text-bullet-view>.ba-bullet{background:var(--accent-2);box-shadow:0 0 0 4px var(--card)}
+
+
+
+.layout-beginner .hero-analogy{margin-top:8px}
+.layout-beginner .beginner-zero{border-top:1px solid var(--line);padding-top:28px}
+.layout-beginner .term+.term{margin-top:12px}
+
+/* Expert mode: section wrappers stay in normal document flow; only inner grids/cards are gridded. */
+.layout-expert .summary-grid,
+.layout-expert .decision-grid:not(section),
+.layout-expert .decision-grid>.grid,
+.layout-expert .architecture-grid,
+.layout-expert .risk-grid,
+.layout-expert .roadmap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-expert .decision-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
+.layout-expert .executive-summary,.layout-expert .validation-checklist{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px}
+.layout-expert .executive-summary .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.risk-high{border-left:5px solid var(--accent)}.risk-mid{border-left:5px solid #d99a38}.risk-low{border-left:5px solid #7ea66a}
+
+/* GitHub analysis mode: repository due-diligence report with evidence-first cards. */
+.layout-github .repo-signal-grid,
+.layout-github .repo-identity-grid,
+.layout-github .repo-health-grid,
+.layout-github .repo-action-grid,
+.layout-github .repo-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-github>section:not(.try),
+.layout-github>.source-note,
+.layout-github>.github-question-toc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
+/* .try(Next Actions)는 base 검정 hero CTA 유지 — 라이트/화이트/다크 모두 dark 패널 (v5.3.3) */
+.layout-github>section .vt-shell{margin-bottom:0}
+.layout-github .repo-card,
+.layout-github .repo-signal,
+.layout-github .repo-question,
+.layout-github .repo-evidence{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px;min-width:0}
+.layout-github .repo-card h3,
+.layout-github .repo-signal h3,
+.layout-github .repo-question h3,
+.layout-github .repo-evidence h3{margin-top:0;color:var(--accent-2)}
+.layout-github .repo-signal .label,
+.layout-github .repo-evidence .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink)}
+/* code-tour(어디부터 읽으면 되는가): 파일명/역할 카드는 좌우 정렬 row로 — 세로 적층의 빈약함 해소 (v5.3.6) */
+.layout-github .code-tour .repo-card{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 16px}
+.layout-github .code-tour .repo-card h3{margin:0;font-size:14.5px}
+.layout-github .code-tour .repo-card p{margin:0;color:var(--chip-ink);font-size:12.5px;white-space:nowrap;flex:0 0 auto}
+.layout-github .repo-score{display:inline-grid;place-items:center;min-width:48px;height:48px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:900 16px/1 var(--sans);margin:0 10px 8px 0}
+.layout-github .repo-unknown{border-style:dashed;background:var(--accent-soft)}
+.layout-github .github-question-toc{margin:24px 0 34px}
+
+.layout-article .article-header{margin-bottom:28px}.layout-article .lead{font-size:18px;color:var(--ink-soft)}.layout-article .article-takeaway{background:var(--accent-soft)}.layout-article article section{margin:54px 0}
+.layout-article .pull-quote{font-size:22px;color:var(--ink);border-color:var(--accent);font-style:normal}
+
+.layout-education .learning-goals{border:1px solid var(--good-border);background:var(--good-bg);border-radius:var(--radius-md);padding:22px}
+.layout-education .practice-card{border:1px dashed var(--accent);background:var(--card);border-radius:var(--radius-md);padding:22px}
+.layout-education .quiz-box{background:var(--term-bg);border:1px solid var(--term-border);border-radius:var(--radius-md);padding:22px}
+.layout-education .answer-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px}
+
+.layout-blog .personal-note{font-family:var(--serif);font-size:19px;line-height:1.7}
+.layout-blog .hook{color:var(--ink-soft)}
+.layout-blog article{counter-reset:blog-section}
+.layout-blog article section{border-bottom:1px solid var(--line);padding-bottom:28px;margin:52px 0}
+.layout-blog article>section{counter-increment:blog-section}
+.layout-blog article>section>h2:first-child::before{
+  content:counter(blog-section);
+  display:inline-grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  margin-right:12px;
+  border-radius:999px;
+  background:var(--accent);
+  color:#fff;
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:800;
+  line-height:1;
+  vertical-align:3px;
+}
+.layout-blog article section:last-child{border-bottom:0}
+
+.layout-seo .serp-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.layout-seo .serp-title{color:var(--ink);font-family:var(--sans);font-size:clamp(17px,2vw,18px);line-height:1.45;font-weight:800;letter-spacing:-.012em;margin:2px 0 8px}
+.layout-seo .serp-url{color:#1f6f4e;font-size:12.5px;margin-bottom:6px;font-weight:700}
+.layout-seo .serp-desc{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.62}
+.layout-seo .serp-dots{display:flex;align-items:center;gap:9px;margin:0 0 14px;color:var(--chip-ink);font-size:12.5px;font-weight:700;line-height:1.2}
+.layout-seo .serp-dots::before{content:"";width:11px;height:11px;border-radius:999px;background:var(--good-accent);box-shadow:18px 0 0 var(--accent),36px 0 0 var(--line);flex:0 0 11px;margin-right:36px}
+.layout-seo .serp-checks{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+.layout-seo .serp-checks span{display:inline-flex;align-items:center;min-height:27px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 9px;font-size:11.8px;font-weight:700;line-height:1.2;color:var(--chip-ink)}
+.layout-seo .serp-checks .ok{border-color:var(--good-border);color:var(--good-label-ink);background:var(--good-bg)}
+.layout-seo .serp-rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;min-width:0}
+.layout-seo .serp-rule{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;min-width:0}
+.layout-seo .serp-rule.is-wide{grid-column:1/-1;border-left:4px solid var(--accent)}
+.layout-seo .serp-rule h3{font-family:var(--sans);font-size:16px;line-height:1.34;font-weight:800;letter-spacing:-.018em;margin:0 0 6px;color:var(--ink)}
+.layout-seo .serp-rule p{margin:0;color:var(--ink-soft);font-size:13.2px;line-height:1.56;word-break:keep-all}
+@media(max-width:620px){.layout-seo .serp-rule-grid{grid-template-columns:1fr}}
+.layout-seo .seo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layout-seo .title-candidates,.layout-seo .meta-candidates,.layout-seo .keyword-cluster{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px}
+
+/* Platform grid is safe only as an inner wrapper, never as the semantic section itself. */
+.layout-platform .platform-grid:not(section){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.layout-platform .platform-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px 20px}
+.layout-platform .platform-card .platform-kicker{display:block;margin:0 0 6px;color:var(--accent-2);font-size:10.5px;line-height:1.15;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.layout-platform .platform-card.is-search{border-left:4px solid var(--analogy-accent)}
+.layout-platform .platform-card.is-dev{border-left:4px solid var(--accent)}
+.layout-platform .platform-card.is-story{border-left:4px solid var(--good-label-ink)}
+.layout-platform .platform-card.is-essay{border-left:4px solid var(--term-accent)}
+.layout-platform .platform-card h3{margin-top:0;color:var(--accent-2)}
+.layout-platform .original-summary,.layout-platform .platform-strategy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid:not(section),.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-github .repo-signal-grid,.layout-github .repo-identity-grid,.layout-github .repo-health-grid,.layout-github .repo-action-grid,.layout-github .repo-evidence-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+
+/* Ultimate extra modes */
+.layout-audit .audit-row{display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr .6fr;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}
+.layout-audit .score-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.layout-reference .quick-reference{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px}
+.layout-compare .matrix:not(section),.layout-compare .matrix>.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.layout-compare .winner-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
+.layout-case .timeline{border-left:0;padding-left:0}
+.layout-case .timeline-card{background:transparent;border:0;border-left:0;padding:0;margin:18px 0;list-style:none;counter-reset:timeline-step}
+.layout-case .timeline-card>li{counter-increment:timeline-step;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px 16px 54px;margin:12px 0}
+.layout-case .timeline-card>li::before{content:counter(timeline-step);position:absolute;left:18px;top:18px;width:24px;height:24px;border-radius:999px;background:var(--accent);color:#fff;display:grid;place-items:center;font:800 12px/1 var(--sans)}
+.layout-case .timeline-item{position:relative;margin:18px 0;padding:0 0 0 4px}
+.layout-case .timeline-item::before{content:"";position:absolute;left:-17px;top:.55em;width:11px;height:11px;border-radius:999px;background:var(--accent)}
+.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.layout-landing .hero-analogy{font-size:18px}
+.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layout-checklist .check-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px}
+@media(max-width:760px){.layout-audit .audit-row,.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid,.layout-compare .matrix:not(section),.layout-compare .matrix>.grid,.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid,.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{grid-template-columns:1fr}}
+
+/* ── Section-level classes (v4.3.0) ─────────────────────────────
+   IMPORTANT: semantic section wrappers must not become card grids.
+   Use inner wrappers such as .card-grid, .summary-grid, .matrix:not(section),
+   .winners:not(section), or .tradeoffs:not(section) for actual grid layout. */
+
+.audit-header,.blog-header,.case-header,.checklist-header,.compare-header,
+.course-header,.github-header,.landing-header,.platform-header,.reference-header,
+.report-header,.seo-header{margin-bottom:42px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+
+/* Semantic section wrappers: normal flow only. */
+.risk-matrix,.priority-roadmap,.architecture-map,.serp-preview,.platform-comparison-table,
+.decision-context,.decisions,.results,.winners,.tradeoffs,.how-it-works,.failure-modes,
+.patterns,.examples,.line-audit,.content-outline,.seo-overview,.before-start,
+.beginner-analogy,.beginner-practice,.beginner-terms,.beginner-traps,.example-block,
+.lesson-step,.publish-checklist,.related-list,.soft-cta,.github-verdict,.repo-identity,
+.quickstart-readiness,.repo-health,.code-tour,.release-roadmap,.security-license,
+.decision-tree{margin:46px 0}
+
+/* Actual reusable grid/card wrappers. Never apply these to a section containing h2/h2-sub. */
+.grid-2,.cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.grid-3,.cards-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.grid-2>*,.cards-2>*,.grid-3>*,.cards-3>*{min-width:0}
+.winners:not(section),.tradeoffs:not(section){
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  padding:18px 20px;
+  margin:18px 0;
+}
+.winners:not(section)>h3:first-child,
+.tradeoffs:not(section)>h3:first-child{margin-top:0}
+
+.final-seo-set .grid,.final-seo-set .seo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0 0}
+
+.lesson-step,.line-audit,.before-start{border-left:3px solid var(--line);padding-left:18px}
+.lesson-step+.lesson-step{margin-top:24px}
+
+.soft-cta{background:var(--accent-soft);border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px;color:var(--ink-soft)}
+.soft-cta a{color:var(--accent-2);font-weight:700}
+.soft-cta p,.soft-cta li{color:var(--ink-soft)}
+.soft-cta strong{color:var(--ink)}
+.try.soft-cta{background:var(--dark);border-color:var(--dark);border-left-color:var(--accent);color:#f5f5f0}
+.try.soft-cta p,.try.soft-cta li{color:#d0d0c8}.try.soft-cta strong{color:#fff}
+.try.soft-cta .label{color:var(--accent)}
+.layout-comparison .try,.layout-compare .try,.layout-case .try{background:var(--card);color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
+.layout-comparison .try .label,.layout-compare .try .label,.layout-case .try .label{color:var(--accent-2)}
+.layout-comparison .try h2,.layout-comparison .try h3,.layout-comparison .try strong,.layout-compare .try h2,.layout-compare .try h3,.layout-compare .try strong,.layout-case .try h2,.layout-case .try h3,.layout-case .try strong{color:var(--ink)}
+.layout-comparison .try p,.layout-comparison .try ol,.layout-comparison .try ul,.layout-comparison .try li,.layout-compare .try p,.layout-compare .try ol,.layout-compare .try ul,.layout-compare .try li,.layout-case .try p,.layout-case .try ol,.layout-case .try ul,.layout-case .try li{color:var(--ink-soft)}
+.layout-comparison .try h2 .no,.layout-comparison .try h2 .num,.layout-compare .try h2 .no,.layout-compare .try h2 .num,.layout-case .try h2 .no,.layout-case .try h2 .num{background:var(--accent);color:var(--on-accent)}
+
+.related-list ul,.related-list ol{margin:8px 0 0 20px}
+
+@media(max-width:760px){
+  .grid-2,.cards-2,.grid-3,.cards-3,
+  .final-seo-set .grid,.final-seo-set .seo-grid{grid-template-columns:1fr}
+  .layout-blog article>section>h2:first-child::before{width:30px;height:30px;margin-right:9px;font-size:13px;vertical-align:2px}
+}
+/* === 완성본 표준 승격 v5.3.1 — 무클래스 콘텐츠 섹션 카드 뷰 === */
+.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}
+
+@media print{
+  *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white;color:#111}
+  .page,.page-wide,.wrap{width:100%;padding:0}
+  .hero-analogy,.try{background:#f4f4f4;color:#111;box-shadow:none}
+  .try h2,.try h3,.try strong{color:#111}
+  .source-note,.toc,.box,.term,.analogy,.danger,.good,.card-block,.mini-card{break-inside:avoid}
+  pre,table,.tbl,blockquote,figure,.card-block{break-inside:avoid}
+  .skip{display:none}
+  a::after{content:" (" attr(href) ")";font-size:11px;color:#555}
+}
+
+/* adaptive-html-final 테마 시스템 (v5.2) — CSS-only 3-테마: 라이트(크림 기본)·화이트(순백)·다크.
+   라디오 #ahf-light/#ahf-white/#ahf-dark(name=ahf-theme) + :has(). 무 JS · 강제선언 0 · 코어 무수정. 마크업 없으면 라이트 기본. */
+
+/* ===== 화이트(순백) ===== */
+:root:has(#ahf-white:checked){--bg:#ffffff;--card:#ffffff;--line:#e4e4ea;--ink:#16181d;--ink-soft:#43474e;--ink-mute:#6b6f78;--chip-ink:#6b6f78;--dark:#16181d;--dark-soft:#23262d;--code:#1b1e24;--vt-paper:#ffffff;--vt-wash:#ffffff;--vt-soft:#f2f3f6;color-scheme:light}
+
+/* ===== 다크(명시) + 표면 보정 ===== */
+:root:has(#ahf-dark:checked){--bg:#0c0d10;--ink:#ececea;--ink-soft:#c3c3bc;--ink-mute:#9a9a92;--line:#2c2d34;--card:#1a1c22;--accent:#ff6b75;--accent-2:#ff909a;--accent-soft:#3a2228;--link-on-dark:#ffb6c0;--chip-ink:#a8a8a1;--on-accent:#0c0d10;--dark:#000000;--dark-soft:#0c0d10;--code:#070809;--vt-paper:#1a1c22;--vt-wash:#0c0d10;--vt-soft:#23252c;--vt-blue:#7fb0d8;--vt-green:#60ba8b;--vt-gold:#e0b357;--term-bg:#241f13;--term-border:#48402a;--term-ink:#ead9b2;--term-label-ink:#e3bd6a;--term-accent:#d7a657;--analogy-bg:#15212e;--analogy-border:#2e4458;--analogy-ink:#bfd6e8;--analogy-label-ink:#9cc2de;--analogy-accent:#79a8c8;--danger-bg:#291513;--danger-border:#5c2f2a;--danger-ink:#f2c6c0;--danger-label-ink:#ff8c87;--good-bg:#0f2419;--good-border:#244b37;--good-ink:#bfe2cf;--good-label-ink:#80d2a7;--good-accent:#60ba8b;--hl-yellow:#6a5618;--hl-blue:#21405c;--hl-pink:#5a2530;--focus:#5a86ee;color-scheme:dark}
+:root:has(#ahf-dark:checked) .prompt-box{background:var(--card)}
+:root:has(#ahf-dark:checked) code{background:var(--code);color:var(--ink)}
+:root:has(#ahf-dark:checked) th,:root:has(#ahf-dark:checked) .table th{background:var(--line);color:var(--ink)}
+:root:has(#ahf-dark:checked) .status-pill{background:var(--card)}
+:root:has(#ahf-dark:checked) .timeline-card{background:var(--card)}
+:root:has(#ahf-dark:checked) .layout-seo .serp-url{color:var(--good-accent)}
+:root:has(#ahf-dark:checked) .core-insight{background:linear-gradient(135deg,var(--accent-soft),var(--card))}
+:root:has(#ahf-dark:checked) .try .tag,:root:has(#ahf-dark:checked) .try.soft-cta .tag{background:var(--card);border-color:var(--line)}
+:root:has(#ahf-dark:checked) .vt-pill.hot{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink)}
+:root:has(#ahf-dark:checked) .vt-pill.good{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
+:root:has(#ahf-dark:checked) .vt-pill.watch{background:var(--term-bg);border-color:var(--term-border);color:var(--term-label-ink)}
+:root:has(#ahf-dark:checked) .wf-board{--ink:#242421;--ink-soft:#66584c;--ink-mute:#66584c;--vt-ink:#242421;--vt-muted:#66584c;--card:#fffaf4;--line:#ead8c7;--accent-2:#b72d38;--good-label-ink:#1f6f4e;--danger-label-ink:#c62433;--accent:#e63946;--wf-warm:#c2560f;--wf-warm2:#d9742a}
+
+/* ===== 세그먼트 스위처(라디오 3단) ===== */
+.ahf-themebar{position:fixed;top:14px;right:16px;z-index:600;display:inline-flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.18);margin:0}
+.ahf-themebar input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.ahf-themebar label{display:inline-flex;align-items:center;min-height:30px;padding:4px 13px;border-radius:999px;font-size:12px;font-weight:700;color:var(--ink-mute);cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
+.ahf-themebar label:hover{color:var(--ink)}
+.ahf-themebar input:checked + label{background:var(--accent-2);color:var(--on-accent,#fff)}
+.ahf-themebar input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
+@media(max-width:560px){.ahf-themebar{position:static;width:max-content;max-width:calc(100% - 28px);margin:10px auto 16px}}
+@media print{.ahf-themebar{display:none}}
+
+</style>
+
+</head>
+<body>
+<fieldset class="ahf-themebar" aria-label="테마 선택">
+  <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+</fieldset>
+<a class="skip" href="#main">본문 바로가기</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<main id="main" class="page-wide layout-github">
+  <header class="header github-header"><div class="kicker"><span class="kicker-text">GITHUB ANALYSIS · 14TH MODE</span></div><h1>owner/fastapi-starter 저장소 분석 리포트</h1><p class="sub">README 재요약이 아니라 도입·검토·배포 판단을 위한 GitHub 저장소 실사 HTML. 모든 수치는 가상 예시 값이다.</p><div class="meta"><span>target: <a href="https://github.com/owner/fastapi-starter">owner/fastapi-starter</a> (가상)</span><span>mode: github_analysis</span><span>profile: auto</span><span>engine: adaptive-html-final (예시)</span></div><div class="generated-row"><p class="generated-date">Generated · 2026-06-06 KST (예시)</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">GitHub API</span><span class="lens-chip">LICENSE</span><span class="lens-chip">Release</span><span class="lens-chip">CI</span><span class="lens-chip">14모드</span></div></div></header>
+  <section class="github-verdict">
+      <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="num is-key" aria-hidden="true">1</span> 한 줄 결론</h2>
+      <p class="h2-sub">스타터 템플릿으로 학습·프로토타이핑에는 바로 쓸 만하지만, 운영 도입 전에 테스트 커버리지와 의존성 보안 점검이 필요하다. (가상 평가)</p>
+      <div class="repo-signal-grid">
+        <article class="repo-signal"><span class="label">Verdict</span><h3>학습·PoC 적합 · 운영 도입은 보강 후</h3><p>FastAPI 보일러플레이트로 구조 파악·실험에는 충분하다. 프로덕션 편입에는 테스트와 보안 신호 확인이 선행돼야 한다.</p></article>
+        <article class="repo-signal"><span class="label">Score</span><h3><span class="repo-score">62</span> / 100</h3><p>구조·문서 신호는 양호하고, 테스트·릴리스·커뮤니티 신호가 점수를 끌어내린다. (가상 산정)</p></article>
+        <article class="repo-signal repo-unknown"><span class="label">UNKNOWN</span><h3>실제 보안 취약점은 확인 불가</h3><p>GitHub API 공개 메타데이터만으로는 Dependabot alert·private advisory 여부를 확정할 수 없다. UNKNOWN으로 둔다.</p></article>
+      </div>
+    </section>
+  <section class="toc-map" aria-labelledby="toc-map-title">
+      <div class="label" id="toc-map-title">리포트 목차</div>
+      <p>이 분석에서 답하는 질문을 섹션 순서대로 묶었습니다. 각 항목은 해당 섹션으로 이동합니다.</p>
+      <nav class="toc-pills" aria-label="GitHub 분석 목차"><a class="toc-pill" href="#repo-identity"><b>2</b>무엇을 담고 있나</a><a class="toc-pill" href="#quickstart"><b>3</b>바로 실행되나</a><a class="toc-pill" href="#repo-health"><b>4</b>살아 있는가</a><a class="toc-pill" href="#code-tour"><b>5</b>어디부터 읽나</a><a class="toc-pill" href="#release-roadmap"><b>6</b>릴리스 신호</a><a class="toc-pill" href="#security-license"><b>7</b>보안·라이선스</a><a class="toc-pill" href="#risk-matrix"><b>8</b>도입 리스크</a><a class="toc-pill" href="#decision-tree"><b>9</b>최종 판단</a><a class="toc-pill" href="#next-actions"><b>&rarr;</b>다음 할 일</a></nav>
+    </section>
+  <section class="repo-identity">
+      <h2 id="repo-identity"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="10" y="7" width="20" height="26" rx="3"/><path class="bi-line" d="M15 14h10M15 20h10M15 26h7"/><path class="bi-accent-line" d="M27 7v8h-8"/></svg></span><span class="num" aria-hidden="true">2</span> 저장소 정체 · 무엇을 담고 있나</h2>
+      <p class="h2-sub">FACT는 공개 메타데이터에서 관측한 값, INFERENCE는 그로부터의 추론, UNKNOWN은 GitHub만으로 확인 불가한 항목이다. 아래 값은 모두 가상 예시다.</p>
+      <p><strong>owner/fastapi-starter</strong>(가상 저장소)는 FastAPI 기반 백엔드 시작 템플릿으로, 인증·DB 세션·Docker 구성·예시 라우터를 묶어 제공하는 공개 보일러플레이트로 관측된다.</p>
+      <div class="tag-list"><span class="tag">fastapi</span><span class="tag">python</span><span class="tag">boilerplate</span><span class="tag">starter-template</span><span class="tag">sqlalchemy</span><span class="tag">docker</span><span class="tag">jwt</span><span class="tag">async</span><span class="tag">pydantic</span><span class="tag">rest-api</span></div>
+      <div class="table-scroll"><table><caption>저장소 기본 메타데이터 (FACT · 가상 예시값)</caption><thead><tr><th scope="col">항목</th><th scope="col">관측값</th><th scope="col">판단</th></tr></thead><tbody><tr><th scope="row">Repository</th><td>owner/fastapi-starter</td><td>공개 저장소이며 description에 "Production-ready FastAPI starter"라 표기됨.</td></tr><tr><th scope="row">Default branch</th><td>main</td><td>자동 분석 기준 브랜치로 사용했다.</td></tr><tr><th scope="row">Created / pushed</th><td>2024-08-12 / 2026-05-28 (예시)</td><td>INFERENCE: 최근 push가 분석 시점 기준 약 1주 이내라 유지보수는 활성으로 보인다.</td></tr><tr><th scope="row">Size / default lang</th><td>2,840 KB · Python (예시)</td><td>FACT: 주 언어는 Python으로 관측.</td></tr><tr><th scope="row">License (API)</th><td>MIT (예시)</td><td>FACT: license endpoint에서 MIT 관측 → 외부 재사용 법적 신호는 양호.</td></tr><tr><th scope="row">Topics</th><td>fastapi, python, boilerplate, starter-template, sqlalchemy, docker, jwt, async, pydantic, rest-api</td><td>검색/분류 태그는 충분히 구체적이다.</td></tr></tbody></table></div>
+      <div class="table-scroll"><table><caption>언어 구성 (FACT · 가상 예시값)</caption><thead><tr><th scope="col">언어</th><th scope="col">바이트</th><th scope="col">비율</th></tr></thead><tbody><tr><th scope="row">Python</th><td>184,210</td><td>78.4%</td></tr><tr><th scope="row">Dockerfile</th><td>21,940</td><td>9.3%</td></tr><tr><th scope="row">Mako</th><td>16,300</td><td>6.9%</td></tr><tr><th scope="row">Shell</th><td>9,120</td><td>3.9%</td></tr><tr><th scope="row">Makefile</th><td>3,480</td><td>1.5%</td></tr></tbody></table></div>
+    </section>
+  <section class="quickstart-readiness">
+      <h2 id="quickstart"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="num" aria-hidden="true">3</span> 바로 실행 가능한가</h2>
+      <p class="h2-sub">README의 quickstart, Docker compose, .env.example이 있어 첫 실행 진입성은 좋다. 단, 일부 단계는 직접 검증해야 한다. (가상 관측)</p>
+      <div class="table-scroll"><table><caption>실행/검증 준비도 (가상 예시값)</caption><thead><tr><th scope="col">항목</th><th scope="col">관측</th><th scope="col">판단</th></tr></thead><tbody><tr><th scope="row">README quickstart</th><td>있음 (FACT)</td><td><code>uvicorn app.main:app --reload</code> 실행 절차가 문서화됨.</td></tr><tr><th scope="row">docker-compose.yml</th><td>루트에 있음 (FACT)</td><td>app + Postgres 구성으로 로컬 부팅 경로가 명확하다.</td></tr><tr><th scope="row">.env.example</th><td>있음 (FACT)</td><td>필수 환경변수 키가 예시로 제공된다.</td></tr><tr><th scope="row">requirements / pyproject</th><td>pyproject.toml (FACT)</td><td>의존성 정의가 한 곳에 모여 있다.</td></tr><tr><th scope="row">실제 부팅 성공 여부</th><td>미검증 (UNKNOWN)</td><td>문서상 절차만 관측했을 뿐, 실제 빌드/부팅은 로컬에서 확인해야 한다.</td></tr></tbody></table></div>
+      <div class="repo-evidence-grid">
+        <article class="repo-evidence"><span class="label">FACT</span><h3>Docker compose 제공</h3><p>루트 <code>docker-compose.yml</code>에 app과 db 서비스가 정의되어 있어 단일 명령 부팅 경로가 있다.</p></article>
+        <article class="repo-evidence"><span class="label">INFERENCE</span><h3>로컬 진입성 양호</h3><p>quickstart + .env.example + compose 조합으로 보아 신규 개발자가 수십 분 내 첫 응답을 받을 수 있을 것으로 추론된다.</p></article>
+        <article class="repo-evidence repo-unknown"><span class="label">UNKNOWN</span><h3>의존성 핀 최신성</h3><p>pyproject 버전 핀이 현재 보안 권고 기준으로 최신인지는 공개 메타데이터만으로 확인 불가다.</p></article>
+      </div>
+    </section>
+  <section class="repo-health">
+      <h2 id="repo-health"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-line" d="M13 27h14"/><rect class="bi-soft" x="14" y="20" width="3" height="7" rx="1"/><rect class="bi-accent-box" x="19" y="15" width="3" height="12" rx="1"/><rect class="bi-dot-box" x="24" y="18" width="3" height="9" rx="1"/></svg></span><span class="num" aria-hidden="true">4</span> 살아 있는 프로젝트인가</h2>
+      <p class="h2-sub">최근 커밋·이슈 활동은 양호하나, 릴리스 노트와 테스트 신호는 외부 운영 도입 기준으로 보강 여지가 있다. 아래 수치는 모두 가상 예시다.</p>
+      <div class="repo-evidence-grid">
+        <article class="repo-evidence"><span class="label">FACT</span><h3>stars 1,240 · forks 210</h3><p>관측된 인기 신호. 가상 예시값이지만, 채택·재사용 의향이 일정 수준 있음을 시사한다.</p></article>
+        <article class="repo-evidence"><span class="label">FACT</span><h3>open issues 18 · PR 4</h3><p>이슈가 닫히고 다시 열리는 흐름이 있어 유지보수가 진행 중인 것으로 관측된다.</p></article>
+        <article class="repo-evidence repo-unknown"><span class="label">UNKNOWN</span><h3>실제 응답 속도</h3><p>이슈/PR 평균 응답·머지 시간은 단일 스냅샷만으로는 추정할 수 없어 UNKNOWN.</p></article>
+      </div>
+      <div class="table-scroll"><table><caption>최근 커밋 5개 (FACT · 가상 예시값)</caption><thead><tr><th scope="col">SHA</th><th scope="col">일시</th><th scope="col">메시지</th></tr></thead><tbody><tr><th scope="row">a1b2c3d</th><td>2026-05-28 (예시)</td><td>fix: refresh token rotation edge case</td></tr><tr><th scope="row">e4f5g6h</th><td>2026-05-24 (예시)</td><td>chore: bump pydantic to v2.x range</td></tr><tr><th scope="row">i7j8k9l</th><td>2026-05-19 (예시)</td><td>feat: add health and readiness probes</td></tr><tr><th scope="row">m0n1o2p</th><td>2026-05-11 (예시)</td><td>docs: expand deployment section</td></tr><tr><th scope="row">q3r4s5t</th><td>2026-05-03 (예시)</td><td>test: add auth router happy-path cases</td></tr></tbody></table></div>
+    </section>
+  <section class="code-tour">
+      <h2 id="code-tour"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M11 7h12l6 6v20H11z"/><path class="bi-line" d="M23 7v7h6M16 20h9M16 26h7"/><circle class="bi-accent" cx="15" cy="14" r="2"/></svg></span><span class="num" aria-hidden="true">5</span> 어디부터 읽으면 되는가</h2>
+      <p class="h2-sub">"진입점(main) → 설정 → 라우터 → DB 모델 → 인증" 순서로 읽으면 구조가 빠르게 잡힌다. (INFERENCE, 가상 트리 기준)</p>
+      <div class="repo-identity-grid"><article class="repo-card"><h3>app/main.py</h3><p>entry</p></article><article class="repo-card"><h3>app/core/config.py</h3><p>config</p></article><article class="repo-card"><h3>app/api/routes</h3><p>router</p></article><article class="repo-card"><h3>app/models</h3><p>db</p></article><article class="repo-card"><h3>app/core/security.py</h3><p>auth</p></article><article class="repo-card"><h3>app/db/session.py</h3><p>db</p></article><article class="repo-card"><h3>alembic/</h3><p>migration</p></article><article class="repo-card"><h3>tests/</h3><p>test</p></article><article class="repo-card"><h3>docker-compose.yml</h3><p>root</p></article></div>
+      <h3>루트 주요 파일 (FACT · 가상 관측)</h3>
+      <p>GitHub contents 기준 루트에서 관측된 주요 파일/디렉터리 목록이다.</p>
+      <ul class="col-list"><li><code>README.md</code></li><li><code>pyproject.toml</code></li><li><code>docker-compose.yml</code></li><li><code>Dockerfile</code></li><li><code>.env.example</code></li><li><code>Makefile</code></li><li><code>alembic.ini</code></li><li><code>app/</code></li><li><code>tests/</code></li><li><code>scripts/</code></li><li><code>.github/</code></li><li><code>LICENSE</code></li></ul>
+    </section>
+  <section class="release-roadmap">
+      <h2 id="release-roadmap"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M13 7v26"/><circle class="bi-dot" cx="13" cy="10" r="3"/><circle class="bi-accent" cx="13" cy="20" r="3"/><circle class="bi-soft" cx="13" cy="30" r="3"/><path class="bi-line" d="M21 11h10M21 20h7M21 30h9"/></svg></span><span class="num" aria-hidden="true">6</span> 릴리스와 배포 신호</h2>
+      <p class="h2-sub">태그·릴리스가 일부 있으나 변경 이력 추적은 중간 수준이다. (가상 예시값)</p>
+      <div class="table-scroll"><table><caption>릴리스/태그 상태 (가상 예시값)</caption><thead><tr><th scope="col">항목</th><th scope="col">관측값</th><th scope="col">판단</th></tr></thead><tbody><tr><th scope="row">GitHub Releases</th><td>3 (FACT)</td><td>최신 v1.3.0에 릴리스 노트가 있어 변경 맥락 추적이 가능하다.</td></tr><tr><th scope="row">Tags</th><td>5개 · 최신 v1.3.0 (FACT)</td><td>버전 태깅 규율이 어느 정도 있는 것으로 관측.</td></tr><tr><th scope="row">CHANGELOG</th><td>없음 (FACT)</td><td>INFERENCE: 릴리스 노트로 일부 대체되나 단일 파일 이력은 부재.</td></tr><tr><th scope="row">CI workflow</th><td>.github/workflows/ci.yml 있음 (FACT)</td><td>lint+test 워크플로가 관측되어 기본 게이트는 존재.</td></tr><tr><th scope="row">실제 CI 통과율</th><td>미확인 (UNKNOWN)</td><td>최근 run의 성공/실패 추세는 이 스냅샷으로 단정 불가.</td></tr></tbody></table></div>
+      <div class="repo-action-grid">
+        <article class="repo-card"><h3>1단계 · 버전 고정</h3><p>도입 시 v1.3.0 등 특정 릴리스 태그에 핀한다.</p></article>
+        <article class="repo-card"><h3>2단계 · 테스트 확인</h3><p>로컬에서 <code>pytest</code> 실행해 통과 여부를 직접 검증한다.</p></article>
+        <article class="repo-card"><h3>3단계 · 의존성 스캔</h3><p>도입 전 pyproject 의존성에 보안 스캐너를 돌린다.</p></article>
+      </div>
+    </section>
+  <section class="security-license">
+      <h2 id="security-license"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><span class="num" aria-hidden="true">7</span> 보안·라이선스·커뮤니티 신뢰</h2>
+      <p class="h2-sub">라이선스는 명확(MIT)하나, 보안 알림·테스트 커버리지 같은 운영 신호는 공개 메타데이터로 확정하기 어렵다. (가상 관측)</p>
+      <div class="table-scroll"><table><caption>GitHub Community Profile 관측 (가상 예시값)</caption><thead><tr><th scope="col">항목</th><th scope="col">상태</th><th scope="col">판단</th></tr></thead><tbody><tr><th scope="row">README</th><td>있음 (FACT)</td><td>진입 문서는 충분하다.</td></tr><tr><th scope="row">License</th><td>MIT (FACT)</td><td>외부 재사용 법적 신호는 양호.</td></tr><tr><th scope="row">Contributing</th><td>있음 (FACT)</td><td>기여 절차가 문서화됨.</td></tr><tr><th scope="row">Code of Conduct</th><td>없음 (FACT)</td><td>커뮤니티 운영 공식화 시 보강 권장.</td></tr><tr><th scope="row">Security policy</th><td>없음 (FACT)</td><td>취약점 제보 창구가 없어 보안 운영 신호는 약하다.</td></tr><tr><th scope="row">Dependabot alerts</th><td>비공개 (UNKNOWN)</td><td>외부 관찰자는 실제 취약점 경보 수를 확인할 수 없다.</td></tr></tbody></table></div>
+      <div class="danger"><span class="label">WARNING</span><p><strong>보안 운영 신호 부족:</strong> SECURITY.md와 공개 보안 정책이 관측되지 않았고, Dependabot/Advisory 상태는 UNKNOWN이다. 운영 도입 전 의존성 스캔과 자체 보안 검토를 수행하는 것이 안전하다. (가상 시나리오)</p></div>
+    </section>
+  <section class="risk-matrix">
+      <h2 id="risk-matrix"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="num" aria-hidden="true">8</span> 도입 리스크 매트릭스</h2>
+      <p class="h2-sub">리스크는 "템플릿 구조 품질"보다 "운영 보안·테스트 신뢰·이력 추적"에 집중되어 있다. (가상 평가)</p>
+      <div class="table-scroll"><table><caption>도입 리스크 매트릭스 (가상 예시값)</caption><thead><tr><th scope="col">리스크</th><th scope="col">심각도</th><th scope="col">근거 (FACT/UNKNOWN)</th><th scope="col">권장 조치</th></tr></thead><tbody><tr><th scope="row">보안 정책 부재</th><td>높음</td><td>SECURITY.md 없음(FACT) · alert 상태 UNKNOWN</td><td>의존성 스캔 + 자체 보안 검토 후 도입</td></tr><tr><th scope="row">테스트 커버리지 불명</th><td>중간</td><td>tests/ 존재(FACT) · 커버리지 수치 UNKNOWN</td><td>로컬 pytest+coverage로 직접 측정</td></tr><tr><th scope="row">CHANGELOG 부재</th><td>중간</td><td>릴리스 노트만 있음(FACT)</td><td>버전 태그에 핀하고 노트 직접 검토</td></tr><tr><th scope="row">의존성 노후 가능성</th><td>중간</td><td>핀 최신성 UNKNOWN</td><td>도입 시 lock 갱신·취약점 재확인</td></tr><tr><th scope="row">단일 메인테이너 추정</th><td>낮음</td><td>contributor 다수 여부 UNKNOWN (INFERENCE)</td><td>버스팩터 가정하에 fork 전략 준비</td></tr></tbody></table></div>
+      <div class="repo-evidence-grid">
+        <article class="repo-evidence"><span class="label">HIGH</span><h3>보안 운영</h3><p>보안 정책 부재 + alert 상태 UNKNOWN이 운영 도입의 1순위 점검 항목이다.</p></article>
+        <article class="repo-evidence"><span class="label">MED</span><h3>테스트 신뢰</h3><p>tests/는 있으나 커버리지가 확인되지 않아 직접 측정이 필요하다.</p></article>
+        <article class="repo-evidence repo-unknown"><span class="label">UNKNOWN</span><h3>실제 운영 안정성</h3><p>프로덕션 사용 사례·장애 이력은 공개 메타데이터로 확인 불가다.</p></article>
+      </div>
+    </section>
+  <section class="decision-tree">
+      <h2 id="decision-tree"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="num" aria-hidden="true">9</span> 최종 판단 · 무엇을 해야 하나</h2>
+      <p class="h2-sub">학습·PoC는 바로 가능, 운영 도입은 보안·테스트 검증 후 진행. (가상 결론)</p>
+      <div class="repo-evidence-grid">
+        <article class="repo-evidence"><span class="label">USE</span><h3>학습·구조 참고</h3><p>FastAPI 프로젝트 레이아웃과 인증 패턴 학습에 바로 활용 가능하다.</p></article>
+        <article class="repo-evidence"><span class="label">POC</span><h3>로컬 검증</h3><p>compose로 부팅하고 pytest를 돌려 동작·테스트를 직접 확인한다.</p></article>
+        <article class="repo-evidence repo-unknown"><span class="label">HOLD</span><h3>운영 도입</h3><p>보안 정책·취약점 상태가 UNKNOWN인 동안 프로덕션 편입은 보류한다.</p></article>
+      </div>
+    </section>
+  <section class="try">
+      <span class="label">Next Actions</span>
+      <h2 id="next-actions"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>권장하는 다음 할 일</h2>
+      <ol>
+        <li><strong>로컬 부팅 검증:</strong> <code>docker compose up</code>으로 app+DB를 띄우고 quickstart 절차를 실제로 통과시켜 본다.</li>
+        <li><strong>테스트·커버리지 측정:</strong> <code>pytest --cov</code>를 실행해 UNKNOWN이던 커버리지 수치를 직접 확정한다.</li>
+        <li><strong>의존성 보안 스캔:</strong> <code>pip-audit</code> 등으로 pyproject 의존성의 취약점 상태를 점검한다.</li>
+        <li><strong>버전 핀:</strong> 도입 시 v1.3.0 같은 특정 릴리스 태그에 고정하고 릴리스 노트를 검토한다.</li>
+      </ol>
+      <div class="tag-list"><span class="tag">PoC 권장</span><span class="tag">보안 점검 우선</span><span class="tag">버전 핀</span></div>
+    </section>
+  <aside class="source-note">
+      <strong>Source note</strong>
+      <p>이 리포트는 실제 저장소가 아닌 <strong>가상 저장소 owner/fastapi-starter</strong>를 대상으로 한 예시이며, 모든 수치·SHA·날짜·메타데이터는 데모용 가짜 값이다. 분석 기준은 "GitHub API 공개 메타데이터 관측(FACT) + 추론(INFERENCE) + 확인 불가(UNKNOWN)" 3구분 표기다. security alerts, private advisory, 실제 테스트 커버리지, 내부 CI 상태는 공개 메타데이터로 확인 불가하여 UNKNOWN으로 처리했다.</p>
+      <ul><li>Repository (가상): https://github.com/owner/fastapi-starter</li><li>Repository API (가상): https://api.github.com/repos/owner/fastapi-starter</li><li>Contents API (가상): https://api.github.com/repos/owner/fastapi-starter/contents?ref=main</li><li>Commits API (가상): https://api.github.com/repos/owner/fastapi-starter/commits</li><li>Community Profile API (가상): https://api.github.com/repos/owner/fastapi-starter/community/profile</li></ul>
+    </aside>
+</main>
+
+
+</body>
+</html>

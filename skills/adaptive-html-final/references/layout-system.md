@@ -27,8 +27,9 @@
 - 검정 `.try` 안에 밝은 카드가 들어가면 카드 내부 텍스트 색상 상속을 반드시 리셋한다.
 - 검정 `.try` 안의 `.tag` pill은 dark-section의 흐린 텍스트를 상속하지 말고 밝은 pill + 진한 텍스트로 표시한다.
 - `blog_writer`는 에세이 톤을 유지하되, section h2 앞에는 CSS counter 기반 번호 badge를 붙여 다른 모드와 진행감을 맞춘다.
-- `seo_dashboard`의 SERP preview 제목은 검색결과의 의미만 차용하고, 색상/폰트/크기는 editorial dashboard의 균형을 따른다.
+- `seo_dashboard`의 SERP preview 제목은 검색결과의 의미만 차용하고, 색상/폰트/크기는 editorial dashboard의 균형을 따른다. 상세 미리보기는 `serp-shell`/`serp-box`/`serp-rule-grid` 정본 구조를 사용한다.
 - `.platform-grid`는 section이 아니라 section 내부 wrapper에만 붙인다.
+- `platform_blog`의 변환 전략은 `platform-split`/`platform-anchor`/`platform-route-grid`, 플랫폼별 산출 카드는 `platform-output-grid`/`platform-output-card`를 사용한다. final 페이지 전용 `platform-transform-*`류 prefix는 쓰지 않는다.
 - 모바일에서 4열 이상 표가 빽빽하면 `.mobile-card-table` 패턴으로 행 카드화한다.
 - case-study timeline은 단일 대형 카드보다 개별 step card가 기본이다.
 - `github_analysis`는 `.repo-signal-grid` 같은 내부 wrapper에만 grid를 적용하고, `.repo-health`/`.security-license` 같은 semantic section 자체를 grid로 만들지 않는다.
