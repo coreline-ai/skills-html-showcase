@@ -223,12 +223,12 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ### 🧩 스킬 적용용 단일 템플릿 HTML 미리보기 (final_20260604)
 
-스킬의 모든 자산·패턴을 한 파일에 담은 **단일 템플릿 HTML** 2종입니다. 클릭하면 전체 화면으로 확인할 수 있습니다.
+스킬의 모든 자산·패턴을 한 파일에 담은 **단일 템플릿 HTML** 2종입니다. 썸네일을 클릭하면 GitHub Pages에서 전체 화면으로 열립니다.
 
 <table>
 <tr>
-<td width="50%" valign="top"><b><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html">▶ Skill Template HTML (와이드·3-테마)</a></b><br><code>final_20260604/index.html</code><br>13모드·프로파일·3-테마·vt/wg·soft-shape·workflow 도판·body-icon을 한 페이지에 집약한 적용용 마스터 템플릿. 상단 테마 스위처로 라이트/화이트/다크 전환.</td>
-<td width="50%" valign="top"><b><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html">▶ Skill Template HTML (beginner-width 변형)</a></b><br><code>final_20260604/index-beginner-width.html</code><br>본문 가독 폭(beginner-width)으로 조판한 변형본. 아이콘+텍스트 배치를 섹션 #37 컴팩트 아이콘 세트 기준으로 통일.</td>
+<td width="50%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html"><img src="docs/screenshots/template-final-index-dark2.png" width="100%" alt="final_20260604 index.html — 와이드 마스터 템플릿 (Dark2 테마)"></a><br><b>▶ Skill Template HTML (와이드 · 4-테마)</b><br><code>final_20260604/index.html</code><br>13모드·프로파일·vt/wg·soft-shape·workflow 도판·body-icon을 한 페이지에 집약한 적용용 마스터 템플릿. 상단 스위처로 <b>라이트/화이트/다크/다크2</b> 전환(스크린샷은 <b>Dark2</b> 테마).<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html">▶ 라이브</a> · <a href="output/final_20260604/index.html"><code>로컬</code></a></td>
+<td width="50%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html"><img src="docs/screenshots/template-final-beginner-width.png" width="100%" alt="final_20260604 index-beginner-width.html — beginner-width 변형 (라이트 테마)"></a><br><b>▶ Skill Template HTML (beginner-width 변형)</b><br><code>final_20260604/index-beginner-width.html</code><br>본문 가독 폭(beginner-width)으로 조판한 변형본. 아이콘+텍스트 배치를 컴팩트 아이콘 세트 기준으로 통일(라이트/화이트/다크 3-테마, 스크린샷은 라이트).<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html">▶ 라이브</a> · <a href="output/final_20260604/index-beginner-width.html"><code>로컬</code></a></td>
 </tr>
 </table>
 
