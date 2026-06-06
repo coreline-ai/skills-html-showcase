@@ -183,6 +183,19 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ## 🖼️ 쇼케이스 갤러리
 
+### 🆕 최신 실전 산출물 데모 (v5.4.2, 게이트 OK)
+
+최근 생성한 **실전 산출물 2종**입니다. 썸네일을 클릭하면 GitHub Pages에서 실제 결과물이 바로 열립니다(상단 스위처로 라이트·화이트·다크 전환).
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/github-analysis-skills-html-showcase-20260606_005440/index.html"><img src="docs/screenshots/demo-github-analysis.png" width="100%" alt="github_analysis 데모 — skills-html-showcase 저장소 분석 리포트"></a><br><b>🔎 <code>github_analysis</code> · 저장소 분석 리포트</b><br>이 저장소(<code>coreline-ai/skills-html-showcase</code>)를 사용/채택/감사 의사결정용으로 분석한 14번째 모드 산출물. 결론 직후 <b>chip-nav 목차(toc-map)</b>, references 투어 <b>다단(col-list)</b> 적용.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/github-analysis-skills-html-showcase-20260606_005440/index.html">▶ 라이브 열기</a> · <a href="output/github-analysis-skills-html-showcase-20260606_005440/index.html"><code>로컬 파일</code></a></td>
+<td width="50%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/grok-india-appstore-guide-20260606_074130/index.html"><img src="docs/screenshots/demo-grok-india-appstore.png" width="100%" alt="grok 데모 — 인도 App Store로 Grok·SuperGrok 구독 가이드"></a><br><b>🧾 <code>checklist_playbook</code> · 실전 가이드</b><br>인도 App Store(별도 Apple 계정 + Gift Card)로 Grok·SuperGrok을 구독하는 실전 순서·체크리스트. 단계별 카드·표·주의 패턴 적용.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/grok-india-appstore-guide-20260606_074130/index.html">▶ 라이브 열기</a> · <a href="output/grok-india-appstore-guide-20260606_074130/index.html"><code>로컬 파일</code></a></td>
+</tr>
+</table>
+
+> 🌐 라이브(GitHub Pages): **[github_analysis 열기](https://coreline-ai.github.io/skills-html-showcase/output/github-analysis-skills-html-showcase-20260606_005440/index.html)** · **[grok 가이드 열기](https://coreline-ai.github.io/skills-html-showcase/output/grok-india-appstore-guide-20260606_074130/index.html)** · 로컬 확인은 `python3 -m http.server 8080` 후 `http://localhost:8080/output/<dir>/index.html`
+
 ### 🌐 라이브 캐노니컬 갤러리 — 13-topics (v5.2.3, 게이트 OK)
 
 현재 스킬 **v5.2.3**의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 13명 전문가 에이전트가 모든 얕은 섹션을 보강한 **캐노니컬 산출물**입니다. 메인 화면과 13개 모드 페이지를 웹에서 바로 볼 수 있습니다.
