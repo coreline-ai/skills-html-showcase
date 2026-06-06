@@ -1,5 +1,33 @@
 # Changelog — adaptive-html-final
 
+## v5.4.2 (2026-06-06) — 텍스트 전용 뷰 bullet(text-bullet-view)
+
+`final_20260604` section 7의 `assets/editorial-patterns.css` code-path bullet 리듬을 정본 헬퍼로 승격. 체크리스트/요약 카드처럼 **텍스트만 있는 뷰**가 카드 안에서 밋밋하게 보일 때, 기존 `.ba-bullet`을 재사용해 작은 써클 마커를 붙인다. 이미 아이콘·번호·상태칩이 있는 뷰에는 중복 적용하지 않는 opt-in 규칙이다.
+
+### 추가 (`assets/editorial-patterns.css`, CONDITIONAL)
+- `.text-bullet-view`: flex row + 문장 정렬.
+- `.text-bullet-view > .ba-bullet`: 라이트/화이트/다크 토큰 보정. 기존 `.ba-bullet` 재사용, 새 마커 시스템을 만들지 않음.
+
+### 문서
+- editorial-pattern-system.md: `text-bullet-view` 마크업과 자동 판단 규칙 추가.
+- SKILL.md: editorial-patterns.css opt-in 헬퍼 목록에 `text-bullet-view` 추가.
+
+### 영향
+- CONDITIONAL 변경 → 코어 해시 불변. 텍스트만 있는 카드/체크 항목에만 opt-in으로 적용해 기존 레이아웃 회귀 0.
+
+## v5.4.1 (2026-06-06) — 평면 리스트 자동 다단(col-list)
+
+짧은 항목(파일명·태그·키워드)이 6개 이상인 평면 `ul`/`ol`이 세로 1열로 적층돼 가로 공백을 낭비하던 문제를, **다단 그리드(auto-fill, 폭을 꽉 채워 ≈3개+/행)** 로 자동 처리하는 정본 유틸 `col-list`를 신설. 밀도 판단을 스킬이 기본값으로 수행.
+
+### 추가 (`assets/editorial-patterns.css`, CONDITIONAL)
+- `ul.col-list`/`ol.col-list` 그리드 + `.col-list li code` 처리. 560px 이하 2열. 스킬 토큰.
+
+### 문서
+- editorial-pattern-system.md: `.col-list` 헬퍼 + **자동 판단 규칙**(짧은 항목 6+ → 기본 다단). github-analysis-system.md: references/파일 투어에 col-list 명시.
+
+### 영향
+- CONDITIONAL 변경 → 인라인 베이스라인(13-topics, windows-audio, github-analysis) 재인라인+스냅샷+integrity 갱신. 코어 해시 불변. validate OK, governance 29/29.
+
 ## v5.4.0 (2026-06-06) — 템플릿 목차 chip-nav(toc-map) 정본 승격
 
 `final_20260604` 쇼케이스에만 있던 **템플릿 목차**(번호 pill이 한 줄에서 wrap 되는 chip-row) 레이아웃을 정본 컴포넌트로 승격. 데모용 `imported-toc-*` 어휘는 denylist에 남기고, 정식 출력용 정본 클래스 `toc-map`/`toc-pills`/`toc-pill`을 신설.

@@ -3118,7 +3118,7 @@ body h2,body h3,body h4{font-family:var(--report-sans)!important;font-weight:800
 
 
 /* final_20260605 index-wide sync: theme/style fixes from beginner-width, with original page-wide width preserved. */
-/* final_20260605 CSS-only theme switcher: Light / White / Dark, no JS. */
+/* final_20260605 CSS-only theme switcher: Light / Light2 / White / Dark / Dark2, no JS. */
 .ahf-theme-input{
   position:fixed;
   inline-size:1px;
@@ -3160,6 +3160,7 @@ body h2,body h3,body h4{font-family:var(--report-sans)!important;font-weight:800
   user-select:none;
 }
 #ahf-light:checked ~ .ahf-themebar label[for="ahf-light"],
+#ahf-light2:checked ~ .ahf-themebar label[for="ahf-light2"],
 #ahf-white:checked ~ .ahf-themebar label[for="ahf-white"],
 #ahf-dark:checked ~ .ahf-themebar label[for="ahf-dark"]{
   background:var(--accent);
@@ -3185,6 +3186,36 @@ body:has(#ahf-light:checked){
   --pill-accent-border:#e8b8b2;
   --pill-accent-ink:#b72d38;
   --pill-accent-dot:#e63946;
+  color-scheme:light;
+}
+body:has(#ahf-light2:checked){
+  --bg:#f5f6f8;
+  --ink:#16161d;
+  --ink-soft:#2c3140;
+  --ink-mute:#5b6270;
+  --line:#e6e8ec;
+  --card:#ffffff;
+  --accent:#e23b2e;
+  --accent-2:#b72d38;
+  --accent-soft:#fdecea;
+  --chip-ink:#5b6270;
+  --pill-bg:#ffffff;
+  --pill-bg-hover:#fafbfc;
+  --pill-border:#e6e8ec;
+  --pill-ink:#5b6270;
+  --pill-accent-bg:#fdecea;
+  --pill-accent-border:#f6c8c4;
+  --pill-accent-ink:#b72d38;
+  --pill-accent-dot:#e23b2e;
+  --term-bg:#fffbeb;
+  --term-border:#fde68a;
+  --analogy-bg:#fafbfc;
+  --analogy-border:#d9dee7;
+  --danger-bg:#fff1f2;
+  --danger-border:#fecdd3;
+  --good-bg:#f0fdf4;
+  --good-border:#bbf7d0;
+  --code:#0f1117;
   color-scheme:light;
 }
 body:has(#ahf-white:checked){
@@ -3264,6 +3295,7 @@ body:has(:is(#ahf-dark,#ahf-dark2):checked){
   color-scheme:dark;
 }
 body:has(#ahf-light:checked),
+body:has(#ahf-light2:checked),
 body:has(#ahf-white:checked){
   background:var(--bg)!important;
   color:var(--ink)!important;
@@ -3273,6 +3305,7 @@ body:has(:is(#ahf-dark,#ahf-dark2):checked){
   color:var(--ink)!important;
 }
 body:has(#ahf-light:checked) .page-wide.v5-home,
+body:has(#ahf-light2:checked) .page-wide.v5-home,
 body:has(#ahf-white:checked) .page-wide.v5-home{
   --copy-surface:#ffffff;
   --copy-surface-2:#fffdfb;
@@ -3288,6 +3321,17 @@ body:has(#ahf-white:checked) .page-wide.v5-home{
   --copy-line:#e5e7eb;
   --copy-line-strong:#d1d5db;
   --copy-hover:#f9fafb;
+}
+body:has(#ahf-light2:checked) .page-wide.v5-home{
+  --copy-surface:#ffffff;
+  --copy-surface-2:#ffffff;
+  --copy-surface-3:#fafbfc;
+  --copy-line:#e6e8ec;
+  --copy-line-strong:#d1d5db;
+  --copy-hover:#fafbfc;
+  --vt-paper:#ffffff;
+  --vt-wash:#ffffff;
+  --vt-soft:#fafbfc;
 }
 body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home{
   --copy-surface:#1b1d23;
@@ -3339,6 +3383,7 @@ body:has(:is(#ahf-dark,#ahf-dark2):checked) #ahf-dark:checked ~ .ahf-themebar la
 .ahf-color-audit-sub{margin:3px 0 0;font-size:11px;line-height:1.35;color:var(--ink-soft)}
 .ahf-color-audit-badge{display:inline-flex;align-items:center;min-height:23px;border:1px solid var(--pill-border);border-radius:999px;padding:3px 8px;background:var(--pill-bg);color:var(--pill-ink);font-size:10.5px;font-weight:900;white-space:nowrap}
 .ahf-color-audit-badge::after{content:"Light"}
+body:has(#ahf-light2:checked) .ahf-color-audit-badge::after{content:"Light2"}
 body:has(#ahf-white:checked) .ahf-color-audit-badge::after{content:"White"}
 body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit-badge::after{content:"Dark"}
 .ahf-color-audit table{width:100%!important;min-width:0!important;margin:0!important;border:0!important;border-collapse:separate!important;border-spacing:0 5px!important;table-layout:fixed;background:transparent!important}
@@ -3391,6 +3436,7 @@ body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit-badge::after{conten
   text-overflow:clip;
 }
 .ahf-color-value::after{content:attr(data-light)}
+body:has(#ahf-light2:checked) .ahf-color-value::after{content:attr(data-light2)}
 body:has(#ahf-white:checked) .ahf-color-value::after{content:attr(data-white)}
 body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-value::after{content:attr(data-dark)}
 .ahf-color-swatch.sw-bg{background:var(--bg)}
@@ -3425,6 +3471,15 @@ body:has(#ahf-light:checked) .ahf-color-audit{
   --copy-line-strong:#c9bdad;
   --copy-hover:#fff7f5;
 }
+body:has(#ahf-light2:checked) .ahf-color-audit{
+  --copy-surface:#ffffff;
+  --copy-surface-2:#ffffff;
+  --copy-surface-3:#fafbfc;
+  --copy-line:#e6e8ec;
+  --copy-line-strong:#d1d5db;
+  --copy-hover:#fafbfc;
+  background:rgba(255,255,255,.95);
+}
 body:has(#ahf-white:checked) .ahf-color-audit{
   --copy-surface:#ffffff;
   --copy-surface-2:#fbfbfb;
@@ -3448,6 +3503,18 @@ body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit{
 }
 body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit th,
 body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit td{border-color:var(--copy-line)}
+/* final_20260606 Light2: report.html 기반 연회색 3영역 테마(page #f5f6f8 / card #fff / header·quote #fafbfc). */
+body:has(#ahf-light2:checked){
+  background:#f5f6f8!important;
+}
+body:has(#ahf-light2:checked) .page-wide.v5-home :is(.pattern-hero-note,.source-preserve,.source-preserve-static,.core-insight,.connection-card,.ba-col,.impact-card,.final-hero-map,.vt-adapt-demo,.new-template-card,.wg-card,.widget-card,.soft-workflow-map,.serp-card,.variant-card,.triage-card,.feature-card,.section-card){
+  background:#ffffff!important;
+  border-color:#e6e8ec!important;
+}
+body:has(#ahf-light2:checked) .page-wide.v5-home :is(.quote,.prompt-box,.md-excerpt,.vt-adapt-head,.vt-card-head,.raci-head,.risk-head,.table-head,.final-hero-map-result,.lens-chip,.toc-map,.ahf-color-audit thead th){
+  background:#fafbfc!important;
+  border-color:#e6e8ec!important;
+}
 @media(max-width:1720px){
   .ahf-color-audit{width:258px;padding:10px}
   .ahf-color-audit th,.ahf-color-audit td{padding:5px!important}
@@ -5148,12 +5215,14 @@ body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.seo-snippet-checks span,.pl
 </style>
 </head>
 <body>
-<input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-light">
+<input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-light" checked>
+<input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-light2">
 <input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-white">
 <input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-dark">
-<input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-dark2" checked>
+<input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-dark2">
 <div class="ahf-themebar" aria-label="테마 선택">
   <label for="ahf-light">Light</label>
+  <label for="ahf-light2">Light2</label>
   <label for="ahf-white">White</label>
   <label for="ahf-dark">Dark</label>
   <label for="ahf-dark2">Dark2</label>
@@ -5167,30 +5236,30 @@ body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.seo-snippet-checks span,.pl
     <caption>현재 선택 테마 기준 배경색/테두리 토큰 값</caption>
     <thead><tr><th scope="col">Token</th><th scope="col">색</th><th scope="col">현재값</th></tr></thead>
     <tbody>
-      <tr><th scope="row"><code>--bg</code><span class="ahf-color-role">page</span></th><td><span class="ahf-color-swatch sw-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f5f5f0" data-white="#ffffff" data-dark="#111216" data-dark2="#0f1014"></code></td></tr>
-      <tr><th scope="row"><code>--card</code><span class="ahf-color-role">base card</span></th><td><span class="ahf-color-swatch sw-card" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-white="#ffffff" data-dark="#1b1d23" data-dark2="#181a20"></code></td></tr>
-      <tr><th scope="row"><code>--copy-surface</code><span class="ahf-color-role">section/card</span></th><td><span class="ahf-color-swatch sw-copy-surface" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-white="#ffffff" data-dark="#1b1d23" data-dark2="#181a20"></code></td></tr>
-      <tr><th scope="row"><code>--copy-surface-2</code><span class="ahf-color-role">subtle view</span></th><td><span class="ahf-color-swatch sw-copy-surface-2" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fffdfb" data-white="#fbfbfb" data-dark="#20232a" data-dark2="#1f2229"></code></td></tr>
-      <tr><th scope="row"><code>--copy-surface-3</code><span class="ahf-color-role">header tint</span></th><td><span class="ahf-color-swatch sw-copy-surface-3" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f9f7f1" data-white="#f8fafc" data-dark="#252830" data-dark2="#252934"></code></td></tr>
-      <tr><th scope="row"><code>--copy-hover</code><span class="ahf-color-role">hover fill</span></th><td><span class="ahf-color-swatch sw-copy-hover" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fff7f5" data-white="#f9fafb" data-dark="#242731" data-dark2="#242832"></code></td></tr>
-      <tr><th scope="row"><code>--line</code><span class="ahf-color-role">global border</span></th><td><span class="ahf-color-swatch sw-line" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#d8d8d0" data-white="#e5e7eb" data-dark="#383941" data-dark2="#343842"></code></td></tr>
-      <tr><th scope="row"><code>--copy-line</code><span class="ahf-color-role">view border</span></th><td><span class="ahf-color-swatch sw-copy-line" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#d8d8d0" data-white="#e5e7eb" data-dark="#3a3c45" data-dark2="#373b45"></code></td></tr>
-      <tr><th scope="row"><code>--copy-line-strong</code><span class="ahf-color-role">strong border</span></th><td><span class="ahf-color-swatch sw-copy-line-strong" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#c9bdad" data-white="#d1d5db" data-dark="#4c4d57" data-dark2="#464b56"></code></td></tr>
-      <tr><th scope="row"><code>--pill-bg</code><span class="ahf-color-role">chip bg</span></th><td><span class="ahf-color-swatch sw-pill-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-white="#ffffff" data-dark="#22242b" data-dark2="#20232a"></code></td></tr>
-      <tr><th scope="row"><code>--pill-bg-hover</code><span class="ahf-color-role">chip hover</span></th><td><span class="ahf-color-swatch sw-pill-bg-hover" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fff7f5" data-white="#f9fafb" data-dark="#2a2d35" data-dark2="#262a32"></code></td></tr>
-      <tr><th scope="row"><code>--pill-border</code><span class="ahf-color-role">chip border</span></th><td><span class="ahf-color-swatch sw-pill-border" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#d8d8d0" data-white="#e5e7eb" data-dark="#3c3e47" data-dark2="#383d47"></code></td></tr>
-      <tr><th scope="row"><code>--accent-soft</code><span class="ahf-color-role">red soft</span></th><td><span class="ahf-color-swatch sw-accent-soft" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fce4e6" data-white="#fff1f2" data-dark="#342127" data-dark2="#2b2822"></code></td></tr>
-      <tr><th scope="row"><code>--term-bg</code><span class="ahf-color-role">warning/gold</span></th><td><span class="ahf-color-swatch sw-term-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fffaf2" data-white="#fffbeb" data-dark="#2a2318" data-dark2="#27231c"></code></td></tr>
-      <tr><th scope="row"><code>--danger-bg</code><span class="ahf-color-role">risk/red</span></th><td><span class="ahf-color-swatch sw-danger-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fff0ee" data-white="#fff1f2" data-dark="#2a1717" data-dark2="#241c20"></code></td></tr>
-      <tr><th scope="row"><code>--good-bg</code><span class="ahf-color-role">success/green</span></th><td><span class="ahf-color-swatch sw-good-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#eef7f1" data-white="#f0fdf4" data-dark="#10261b" data-dark2="#1b231d"></code></td></tr>
-      <tr><th scope="row"><code>--analogy-bg</code><span class="ahf-color-role">analogy/blue</span></th><td><span class="ahf-color-swatch sw-analogy-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f0f4f8" data-white="#f8fafc" data-dark="#172330" data-dark2="#1d2428"></code></td></tr>
-      <tr><th scope="row"><code>--code</code><span class="ahf-color-role">code block</span></th><td><span class="ahf-color-swatch sw-code" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#1f1f1d" data-white="#1f1f1d" data-dark="#0c0d11" data-dark2="#0b0c10"></code></td></tr>
-      <tr><th scope="row"><code>--hl-yellow</code><span class="ahf-color-role">highlight</span></th><td><span class="ahf-color-swatch sw-hl-yellow" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffe9a3" data-white="#ffe9a3" data-dark="#4a3c18" data-dark2="#332d1d"></code></td></tr>
-      <tr><th scope="row"><code>--hl-blue</code><span class="ahf-color-role">highlight</span></th><td><span class="ahf-color-swatch sw-hl-blue" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#cfe5f5" data-white="#cfe5f5" data-dark="#1d3448" data-dark2="#1d252b"></code></td></tr>
-      <tr><th scope="row"><code>--hl-pink</code><span class="ahf-color-role">highlight</span></th><td><span class="ahf-color-swatch sw-hl-pink" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fbd3da" data-white="#fbd3da" data-dark="#43242d" data-dark2="#302126"></code></td></tr>
-      <tr><th scope="row"><code>--vt-paper</code><span class="ahf-color-role">vt template</span></th><td><span class="ahf-color-swatch sw-vt-paper" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-white="#ffffff" data-dark="#ffffff" data-dark2="#181a20"></code></td></tr>
-      <tr><th scope="row"><code>--vt-wash</code><span class="ahf-color-role">vt frame</span></th><td><span class="ahf-color-swatch sw-vt-wash" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#faf9f5" data-white="#faf9f5" data-dark="#faf9f5" data-dark2="#1f2229"></code></td></tr>
-      <tr><th scope="row"><code>--vt-soft</code><span class="ahf-color-role">vt header</span></th><td><span class="ahf-color-swatch sw-vt-soft" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f0eee6" data-white="#f0eee6" data-dark="#f0eee6" data-dark2="#252934"></code></td></tr>
+      <tr><th scope="row"><code>--bg</code><span class="ahf-color-role">page</span></th><td><span class="ahf-color-swatch sw-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f5f5f0" data-light2="#f5f6f8" data-white="#ffffff" data-dark="#111216" data-dark2="#0f1014"></code></td></tr>
+      <tr><th scope="row"><code>--card</code><span class="ahf-color-role">base card</span></th><td><span class="ahf-color-swatch sw-card" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-light2="#ffffff" data-white="#ffffff" data-dark="#1b1d23" data-dark2="#181a20"></code></td></tr>
+      <tr><th scope="row"><code>--copy-surface</code><span class="ahf-color-role">section/card</span></th><td><span class="ahf-color-swatch sw-copy-surface" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-light2="#ffffff" data-white="#ffffff" data-dark="#1b1d23" data-dark2="#181a20"></code></td></tr>
+      <tr><th scope="row"><code>--copy-surface-2</code><span class="ahf-color-role">subtle view</span></th><td><span class="ahf-color-swatch sw-copy-surface-2" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fffdfb" data-light2="#ffffff" data-white="#fbfbfb" data-dark="#20232a" data-dark2="#1f2229"></code></td></tr>
+      <tr><th scope="row"><code>--copy-surface-3</code><span class="ahf-color-role">header tint</span></th><td><span class="ahf-color-swatch sw-copy-surface-3" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f9f7f1" data-light2="#fafbfc" data-white="#f8fafc" data-dark="#252830" data-dark2="#252934"></code></td></tr>
+      <tr><th scope="row"><code>--copy-hover</code><span class="ahf-color-role">hover fill</span></th><td><span class="ahf-color-swatch sw-copy-hover" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fff7f5" data-light2="#fafbfc" data-white="#f9fafb" data-dark="#242731" data-dark2="#242832"></code></td></tr>
+      <tr><th scope="row"><code>--line</code><span class="ahf-color-role">global border</span></th><td><span class="ahf-color-swatch sw-line" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#d8d8d0" data-light2="#e6e8ec" data-white="#e5e7eb" data-dark="#383941" data-dark2="#343842"></code></td></tr>
+      <tr><th scope="row"><code>--copy-line</code><span class="ahf-color-role">view border</span></th><td><span class="ahf-color-swatch sw-copy-line" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#d8d8d0" data-light2="#e6e8ec" data-white="#e5e7eb" data-dark="#3a3c45" data-dark2="#373b45"></code></td></tr>
+      <tr><th scope="row"><code>--copy-line-strong</code><span class="ahf-color-role">strong border</span></th><td><span class="ahf-color-swatch sw-copy-line-strong" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#c9bdad" data-light2="#d1d5db" data-white="#d1d5db" data-dark="#4c4d57" data-dark2="#464b56"></code></td></tr>
+      <tr><th scope="row"><code>--pill-bg</code><span class="ahf-color-role">chip bg</span></th><td><span class="ahf-color-swatch sw-pill-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-light2="#ffffff" data-white="#ffffff" data-dark="#22242b" data-dark2="#20232a"></code></td></tr>
+      <tr><th scope="row"><code>--pill-bg-hover</code><span class="ahf-color-role">chip hover</span></th><td><span class="ahf-color-swatch sw-pill-bg-hover" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fff7f5" data-light2="#fafbfc" data-white="#f9fafb" data-dark="#2a2d35" data-dark2="#262a32"></code></td></tr>
+      <tr><th scope="row"><code>--pill-border</code><span class="ahf-color-role">chip border</span></th><td><span class="ahf-color-swatch sw-pill-border" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#d8d8d0" data-light2="#e6e8ec" data-white="#e5e7eb" data-dark="#3c3e47" data-dark2="#383d47"></code></td></tr>
+      <tr><th scope="row"><code>--accent-soft</code><span class="ahf-color-role">red soft</span></th><td><span class="ahf-color-swatch sw-accent-soft" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fce4e6" data-light2="#fdecea" data-white="#fff1f2" data-dark="#342127" data-dark2="#2b2822"></code></td></tr>
+      <tr><th scope="row"><code>--term-bg</code><span class="ahf-color-role">warning/gold</span></th><td><span class="ahf-color-swatch sw-term-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fffaf2" data-light2="#fffbeb" data-white="#fffbeb" data-dark="#2a2318" data-dark2="#27231c"></code></td></tr>
+      <tr><th scope="row"><code>--danger-bg</code><span class="ahf-color-role">risk/red</span></th><td><span class="ahf-color-swatch sw-danger-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fff0ee" data-light2="#fff1f2" data-white="#fff1f2" data-dark="#2a1717" data-dark2="#241c20"></code></td></tr>
+      <tr><th scope="row"><code>--good-bg</code><span class="ahf-color-role">success/green</span></th><td><span class="ahf-color-swatch sw-good-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#eef7f1" data-light2="#f0fdf4" data-white="#f0fdf4" data-dark="#10261b" data-dark2="#1b231d"></code></td></tr>
+      <tr><th scope="row"><code>--analogy-bg</code><span class="ahf-color-role">analogy/blue</span></th><td><span class="ahf-color-swatch sw-analogy-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f0f4f8" data-light2="#fafbfc" data-white="#f8fafc" data-dark="#172330" data-dark2="#1d2428"></code></td></tr>
+      <tr><th scope="row"><code>--code</code><span class="ahf-color-role">code block</span></th><td><span class="ahf-color-swatch sw-code" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#1f1f1d" data-light2="#0f1117" data-white="#1f1f1d" data-dark="#0c0d11" data-dark2="#0b0c10"></code></td></tr>
+      <tr><th scope="row"><code>--hl-yellow</code><span class="ahf-color-role">highlight</span></th><td><span class="ahf-color-swatch sw-hl-yellow" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffe9a3" data-light2="#ffe9a3" data-white="#ffe9a3" data-dark="#4a3c18" data-dark2="#332d1d"></code></td></tr>
+      <tr><th scope="row"><code>--hl-blue</code><span class="ahf-color-role">highlight</span></th><td><span class="ahf-color-swatch sw-hl-blue" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#cfe5f5" data-light2="#cfe5f5" data-white="#cfe5f5" data-dark="#1d3448" data-dark2="#1d252b"></code></td></tr>
+      <tr><th scope="row"><code>--hl-pink</code><span class="ahf-color-role">highlight</span></th><td><span class="ahf-color-swatch sw-hl-pink" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fbd3da" data-light2="#fbd3da" data-white="#fbd3da" data-dark="#43242d" data-dark2="#302126"></code></td></tr>
+      <tr><th scope="row"><code>--vt-paper</code><span class="ahf-color-role">vt template</span></th><td><span class="ahf-color-swatch sw-vt-paper" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-light2="#ffffff" data-white="#ffffff" data-dark="#ffffff" data-dark2="#181a20"></code></td></tr>
+      <tr><th scope="row"><code>--vt-wash</code><span class="ahf-color-role">vt frame</span></th><td><span class="ahf-color-swatch sw-vt-wash" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#faf9f5" data-light2="#ffffff" data-white="#faf9f5" data-dark="#faf9f5" data-dark2="#1f2229"></code></td></tr>
+      <tr><th scope="row"><code>--vt-soft</code><span class="ahf-color-role">vt header</span></th><td><span class="ahf-color-swatch sw-vt-soft" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f0eee6" data-light2="#fafbfc" data-white="#f0eee6" data-dark="#f0eee6" data-dark2="#252934"></code></td></tr>
     </tbody>
   </table>
 </aside>

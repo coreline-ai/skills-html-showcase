@@ -1406,6 +1406,15 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 .toc-pill:hover{border-color:var(--accent);color:var(--accent)}
 .toc-pill b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:999px;background:var(--accent-soft);color:var(--accent-2);font-size:10.5px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
 @media(max-width:700px){.toc-map{padding:15px 16px}.toc-pill{white-space:normal;line-height:1.25;min-height:32px;padding:5px 11px}}
+/* 평면 리스트 자동 다단 (col-list) — 짧은 항목(파일명·태그·키워드)이 6개 이상인 ul/ol을 한 줄에 여러 개로 채워 세로 1열 적층의 가로 공백 낭비를 없앤다. auto-fill로 폭을 꽉 채움(≈3개+/행). v5.4.1 */
+ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:7px 10px}
+.col-list li{margin:0;min-width:0;color:var(--ink-soft);font-size:13.5px;line-height:1.4}
+.col-list li code{display:inline-block;max-width:100%;overflow-wrap:anywhere}
+@media(max-width:560px){ul.col-list,ol.col-list{grid-template-columns:1fr 1fr}}
+/* 텍스트 전용 뷰 bullet (text-bullet-view) — final_20260604 section 7의 code-path bullet 리듬을 정본화. 텍스트만 있는 카드/체크 항목 앞에 작은 써클을 붙여 스캔성을 높인다. opt-in, 무 JS, 3테마 토큰. v5.4.2 */
+.text-bullet-view{display:flex;align-items:flex-start;gap:10px;line-height:1.62}
+.text-bullet-view>.ba-bullet{margin-top:.72em;background:var(--ink-mute);box-shadow:0 0 0 4px var(--bg)}
+:root:has(#ahf-dark:checked) .text-bullet-view>.ba-bullet{background:var(--accent-2);box-shadow:0 0 0 4px var(--card)}
 
 .layout-beginner .hero-analogy{margin-top:8px}
 .layout-beginner .beginner-zero{border-top:1px solid var(--line);padding-top:28px}
@@ -1744,7 +1753,7 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
       <div class="repo-identity-grid"><article class="repo-card"><h3>README.md</h3><p>root</p></article><article class="repo-card"><h3>Guide.md</h3><p>root</p></article><article class="repo-card"><h3>AGENTS.md</h3><p>root</p></article><article class="repo-card"><h3>skills</h3><p>root</p></article><article class="repo-card"><h3>output</h3><p>root</p></article><article class="repo-card"><h3>skills/adaptive-html-final</h3><p>skill</p></article><article class="repo-card"><h3>manifest.json</h3><p>skill</p></article><article class="repo-card"><h3>assets</h3><p>skill</p></article><article class="repo-card"><h3>references</h3><p>skill</p></article><article class="repo-card"><h3>scripts</h3><p>skill</p></article><article class="repo-card"><h3>tests</h3><p>skill</p></article><article class="repo-card"><h3>recipes</h3><p>skill</p></article></div>
       <h3>references 투어</h3>
       <p>GitHub 원격 기준 references는 15개로 관측된다.</p>
-      <ul><li><code>blog-seo-system.md</code></li><li><code>body-icon-system.md</code></li><li><code>design-dna.md</code></li><li><code>editorial-design-system.md</code></li><li><code>editorial-pattern-system.md</code></li><li><code>eval-rubric.md</code></li><li><code>layout-system.md</code></li><li><code>mode-selection.md</code></li><li><code>platform-system.md</code></li><li><code>quality-gates.md</code></li><li><code>skill-audit-system.md</code></li><li><code>visual-html-system.md</code></li><li><code>visual-template-system.md</code></li><li><code>widget-system.md</code></li><li><code>writing-system.md</code></li></ul>
+      <ul class="col-list"><li><code>blog-seo-system.md</code></li><li><code>body-icon-system.md</code></li><li><code>design-dna.md</code></li><li><code>editorial-design-system.md</code></li><li><code>editorial-pattern-system.md</code></li><li><code>eval-rubric.md</code></li><li><code>layout-system.md</code></li><li><code>mode-selection.md</code></li><li><code>platform-system.md</code></li><li><code>quality-gates.md</code></li><li><code>skill-audit-system.md</code></li><li><code>visual-html-system.md</code></li><li><code>visual-template-system.md</code></li><li><code>widget-system.md</code></li><li><code>writing-system.md</code></li></ul>
     </section>
   <section class="release-roadmap">
       <h2 id="release-roadmap"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M13 7v26"/><circle class="bi-dot" cx="13" cy="10" r="3"/><circle class="bi-accent" cx="13" cy="20" r="3"/><circle class="bi-soft" cx="13" cy="30" r="3"/><path class="bi-line" d="M21 11h10M21 20h7M21 30h9"/></svg></span><span class="num" aria-hidden="true">6</span> 릴리스와 배포 신호</h2>

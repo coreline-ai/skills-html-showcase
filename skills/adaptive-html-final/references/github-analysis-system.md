@@ -32,7 +32,7 @@
 1. **한 줄 결론** — 사용/검토/보류/대체 탐색 중 무엇인가?
 2. **이 저장소는 무엇인가** — 목적, 대상 사용자, 핵심 가치.
 3. **바로 실행 가능한가** — 설치/quickstart/예제/환경 요구사항.
-4. **어디부터 읽으면 되는가** — README, src, docs, tests, config, CI.
+4. **어디부터 읽으면 되는가** — README, src, docs, tests, config, CI. 디렉터리/파일 투어와 `references 투어`처럼 **짧은 항목이 6개 이상인 평면 목록은 `<ul class="col-list">`(다단 그리드)로 렌더**해 세로 1열 적층의 빈 공간을 없앤다(editorial-pattern-system.md `.col-list`).
 5. **살아 있는 프로젝트인가** — 최근 커밋, 릴리스, 이슈/PR 응답, contributor spread.
 6. **채택 리스크는 무엇인가** — 라이선스, security policy, test/CI, stale activity, dependency hints.
 7. **내 다음 행동은 무엇인가** — 30분 검토, 1일 POC, 보류, 대체안 탐색 체크리스트.

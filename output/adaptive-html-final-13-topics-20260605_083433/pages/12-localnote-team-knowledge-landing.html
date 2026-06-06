@@ -1406,6 +1406,15 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 .toc-pill:hover{border-color:var(--accent);color:var(--accent)}
 .toc-pill b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:999px;background:var(--accent-soft);color:var(--accent-2);font-size:10.5px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
 @media(max-width:700px){.toc-map{padding:15px 16px}.toc-pill{white-space:normal;line-height:1.25;min-height:32px;padding:5px 11px}}
+/* 평면 리스트 자동 다단 (col-list) — 짧은 항목(파일명·태그·키워드)이 6개 이상인 ul/ol을 한 줄에 여러 개로 채워 세로 1열 적층의 가로 공백 낭비를 없앤다. auto-fill로 폭을 꽉 채움(≈3개+/행). v5.4.1 */
+ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:7px 10px}
+.col-list li{margin:0;min-width:0;color:var(--ink-soft);font-size:13.5px;line-height:1.4}
+.col-list li code{display:inline-block;max-width:100%;overflow-wrap:anywhere}
+@media(max-width:560px){ul.col-list,ol.col-list{grid-template-columns:1fr 1fr}}
+/* 텍스트 전용 뷰 bullet (text-bullet-view) — final_20260604 section 7의 code-path bullet 리듬을 정본화. 텍스트만 있는 카드/체크 항목 앞에 작은 써클을 붙여 스캔성을 높인다. opt-in, 무 JS, 3테마 토큰. v5.4.2 */
+.text-bullet-view{display:flex;align-items:flex-start;gap:10px;line-height:1.62}
+.text-bullet-view>.ba-bullet{margin-top:.72em;background:var(--ink-mute);box-shadow:0 0 0 4px var(--bg)}
+:root:has(#ahf-dark:checked) .text-bullet-view>.ba-bullet{background:var(--accent-2);box-shadow:0 0 0 4px var(--card)}
 
 /* adaptive-html-final shape-visuals — 본문 설명 시작부 보조 SVG 도형(8000x6000, warm soft).
    무 JS · 프로파일 무관 조건부 인라인. 도형은 시각 앵커이고 핵심 정보는 항상 HTML 텍스트로 둔다.
