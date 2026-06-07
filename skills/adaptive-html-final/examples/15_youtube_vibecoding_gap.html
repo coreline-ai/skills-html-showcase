@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: ea12b7d8c49888dd72715223326ce213e85e5bce000c6b40fd3d5e10de42797e */
+/* adaptive-html-final-core-css-sha256: 7f7b40d2d179e7fd392cd6c582749fffbd46b48948f40218caf6cf145c231c45 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -134,6 +134,8 @@ h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;
 h2 .no.is-key,h2 .num.is-key{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;line-height:1.7}
 h3{font-family:var(--serif);font-size:19px;font-weight:800;line-height:1.45;letter-spacing:-.015em;margin:32px 0 12px;color:var(--ink)}
+/* 견고성 전역 안전망: 긴 URL·무공백 토큰 등 어떤 내용이 와도 가로 오버플로로 외형이 깨지지 않게 일반 텍스트 요소에 줄바꿈 강제(테이블 셀은 min-content 영향 피하려 components.css의 break-word 유지). 내용 무관 외형 고정. */
+h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,summary,.sub,.kicker,.meta,.lead{overflow-wrap:anywhere}
 section>h3:first-child,
 article>h3:first-child,
 .box>h3:first-child,
@@ -1746,9 +1748,9 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
   .final-seo-set .grid,.final-seo-set .seo-grid{grid-template-columns:1fr}
   .layout-blog article>section>h2:first-child::before{width:30px;height:30px;margin-right:9px;font-size:13px;vertical-align:2px}
 }
-/* === 완성본 표준 승격 v5.3.1 — 무클래스 콘텐츠 섹션 카드 뷰 === */
-.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
-.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}
+/* === 완성본 표준 승격 — layout main 직접/article 콘텐츠 섹션 카드 뷰(.try 제외, class 무관). v5.9 전역 시각 정본 === */
+.page>section:not(.try),.page>article>section:not(.try),.page-wide>section:not(.try),.page-wide>article>section:not(.try){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not(.try)>h2:first-child,.page>article>section:not(.try)>h2:first-child,.page-wide>section:not(.try)>h2:first-child,.page-wide>article>section:not(.try)>h2:first-child{margin-top:0}
 
 @media print{
   *{print-color-adjust:exact;-webkit-print-color-adjust:exact}

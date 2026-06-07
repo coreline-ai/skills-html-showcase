@@ -133,6 +133,7 @@
 - **R3 — wg-03 좌우 컬럼 높이 통일.** diff(좌)/리뷰 노트(우)는 `.wg-03-grid{align-items:stretch}`로 같은 높이여야 한다. `start`면 짧은 쪽 아래에 틈이 생겨 뷰가 어긋난다. (자동: `wg03_grid_not_stretch`)
 - **R4 — 표 모바일 안전.** components.css `table{min-width:420px}` 때문에 모든 `<table>`은 `.table-scroll`(overflow-x:auto) 래핑 또는 `.mobile-card-table`/`.final-matrix` 카드 변환으로 모바일 가로 넘침을 막아야 한다. (자동: `table_no_mobile_safe_wrapper`)
 - **R5 — 와이드 리포트 본문 폭 상한.** `.page-wide`의 분석 폭 레이아웃(expert/compare/seo/platform/landing/case/checklist/reference/audit/skill-audit)은 본문 `p/ul/ol`을 60rem로 넓힌다(`.page-wide.layout-*>section>p{max-width:60rem}`). 기본 46rem만 상속하면 와이드 섹션에서 본문이 1/3만 차서 깨져 보인다. (자동: `wide_layout_prose_cap_missing`)
+- **R6 — expert Validation Checklist 오염 금지.** `layout-expert`의 `.validation-checklist`는 완료 기준·명령 증빙·렌더 증빙·최종 판정만 담는다. `wg-03`(Annotated PR)·`wg-17`(PR Writeup)을 여기에 중첩하면 검증 섹션이 코드 리뷰/릴리즈 노트 섹션으로 변질되고 길고 산만한 뷰가 된다. 이 두 위젯은 별도 코드 리뷰/릴리즈 섹션에서만 사용한다. (자동: `expert_validation_widget_misuse`)
 - **md-excerpt — SKILL.md/마크다운/코드 발췌 표기.** "개선본 발췌 · SKILL.md" 같은 원문/마크다운 발췌는 `.prompt-box`의 `<p>`+`<br>` 텍스트가 아니라 `md-excerpt` 패턴(`<figure class="md-excerpt"><figcaption class="case-label">…</figcaption><pre class="code"><code>…</code></pre></figure>`)으로, `##`·`-`·`name:` 같은 마크다운 문법이 실제 소스처럼 코드 블럭에 보이게 한다. 실제 줄바꿈으로 작성한다. (skill-audit-system.md "발췌·예시 출력 표기 규칙" 참조)
 
 

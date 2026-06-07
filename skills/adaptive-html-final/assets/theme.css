@@ -119,6 +119,8 @@ h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;
 h2 .no.is-key,h2 .num.is-key{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;line-height:1.7}
 h3{font-family:var(--serif);font-size:19px;font-weight:800;line-height:1.45;letter-spacing:-.015em;margin:32px 0 12px;color:var(--ink)}
+/* 견고성 전역 안전망: 긴 URL·무공백 토큰 등 어떤 내용이 와도 가로 오버플로로 외형이 깨지지 않게 일반 텍스트 요소에 줄바꿈 강제(테이블 셀은 min-content 영향 피하려 components.css의 break-word 유지). 내용 무관 외형 고정. */
+h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,summary,.sub,.kicker,.meta,.lead{overflow-wrap:anywhere}
 section>h3:first-child,
 article>h3:first-child,
 .box>h3:first-child,

@@ -490,12 +490,11 @@ def section_surface_contract_gate(text: str, style: str) -> list:
     if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', text, re.I):
         return []
     norm = re.sub(r'\s+', '', style)
-    # 전역 통일 규칙(.page/.page-wide 접두)이어야 한다 — github 전용 .layout-github>section 규칙으로는 불충분.
-    if re.search(r'\.page(-wide)?>section:not\(\.try\)[^{]*\{[^}]*background:var\(--card\)', norm) or \
-       re.search(r'\.page(-wide)?>article>section[^{]*\{[^}]*background:var\(--card\)', norm):
+    # 직접 섹션 규칙 .page(-wide)?>section:not(.try) 카드 규칙이어야 한다 — article>section 우회나 :not([class])로는 불충분(직접 섹션이 class 있어도 카드여야 함).
+    if re.search(r'\.page(-wide)?>section:not\(\.try\)[^{]*\{[^}]*background:var\(--card\)', norm):
         return []
     return [{'type': 'section_surface_css_missing',
-             'detail': '전역 통일 섹션 surface(.page-wide>section:not(.try) card 규칙) 미인라인 — 모드 무관 섹션 카드 계약 위반.'}]
+             'detail': '직접 섹션 통일 surface(.page-wide>section:not(.try) card 규칙) 미인라인 — class 무관 직접 섹션 카드 계약 위반.'}]
 
 
 MODE_DEPTH_MIN_AVG = 400   # visible chars per h2 section on mode pages
@@ -665,6 +664,180 @@ def skill_doc_consistency_gate(skill_dir: Path) -> list:
     return issues
 
 
+def _direct_child_blocks(html: str, tag: str):
+    """Yield (attrs, inner_html) for direct child blocks of `tag` in an HTML fragment.
+
+    Regex-only gates previously treated nested widget `<section>` blocks as if
+    they were direct layout sections. The visual contract is intentionally
+    scoped to `main > section` and `main > article > section`; widgets nested
+    inside those sections keep their own namespace/title system.
+    """
+    depth = 0
+    tag_l = tag.lower()
+    void_tags = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
+    token_re = re.compile(r'<(/?)([a-zA-Z][\w:-]*)([^>]*)>', re.I)
+    for m in token_re.finditer(html):
+        closing = bool(m.group(1))
+        name = m.group(2).lower()
+        attrs = m.group(3) or ''
+        self_closing = attrs.rstrip().endswith('/') or name in void_tags
+        if not closing and name == tag_l and depth == 0:
+            yield attrs, _inner_html(html, m.end(), tag_l)
+        if closing:
+            depth = max(depth - 1, 0)
+        elif not self_closing:
+            depth += 1
+
+
+def direct_section_h2_icon_gate(text: str) -> list:
+    """전 모드 공통: layout-*의 직접 콘텐츠 섹션 첫 h2는 body-icon을 가진다.
+
+    범위는 `main > section` 및 `main > article > section`이다. 위젯/비주얼 템플릿이
+    콘텐츠 섹션 내부에 자체 `<section>`을 쓰는 것은 별도 네임스페이스 계약이므로
+    여기서 직접 섹션으로 오판하지 않는다.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    main_open = re.search(r'<main\b([^>]*)>', body, re.I)
+    if not main_open or not re.search(r'class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', main_open.group(1), re.I):
+        return []
+    main_inner = _inner_html(body, main_open.end(), 'main')
+    candidates = list(_direct_child_blocks(main_inner, 'section'))
+    for _article_attrs, article_inner in _direct_child_blocks(main_inner, 'article'):
+        candidates.extend(_direct_child_blocks(article_inner, 'section'))
+    issues = []
+    for attrs, inner in candidates:
+        cm = re.search(r'class\s*=\s*["\']([^"\']*)', attrs)
+        cls = cm.group(1) if cm else ''
+        if 'try' in cls.split():
+            continue
+        h2 = re.search(r'<h2\b[^>]*>([\s\S]*?)</h2>', inner, re.I)
+        if h2 and 'body-icon' not in h2.group(1):
+            issues.append({'type': 'direct_section_h2_missing_body_icon',
+                           'h2': re.sub(r'<[^>]+>', '', h2.group(1)).strip()[:50],
+                           'detail': '직접 콘텐츠 섹션 첫 h2는 body-icon→(num)→title 정본을 따른다(아이콘 필수).'})
+    return issues
+
+
+
+
+def toc_map_contract_gate(text: str) -> list:
+    """toc-map 목차는 정본 chip-nav 구조를 써야 한다.
+
+    `.toc-map` 안에 bare `<a>`만 넣으면 CSS가 `.toc-pill`에 걸리지 않아
+    번호와 텍스트가 붙은 밑줄 링크로 렌더링된다. 정본은
+    `.toc-map` + `.toc-pills` + `a.toc-pill > b` 구조다.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    issues = []
+    for m in re.finditer(r'<(?P<tag>section|nav|div|ol|ul)\b(?P<attrs>[^>]*)class\s*=\s*["\'][^"\']*\btoc-map\b[^"\']*["\'][^>]*>', body, re.I):
+        inner = _inner_html(body, m.end(), m.group('tag').lower())
+        if 'toc-pills' not in inner or 'toc-pill' not in inner:
+            issues.append({'type': 'toc_map_contract_missing_pills',
+                           'detail': 'toc-map은 .toc-pills 래퍼와 a.toc-pill 항목을 써야 한다. bare <a><span>…</span> 구조는 목차가 붙어 보이는 회귀를 만든다.'})
+            continue
+        bad_links = re.findall(r'<a\b(?![^>]*class\s*=\s*["\'][^"\']*\btoc-pill\b)', inner, re.I)
+        if bad_links:
+            issues.append({'type': 'toc_map_contract_bare_link',
+                           'detail': 'toc-map 내부 링크는 모두 class="toc-pill"이어야 한다.'})
+        if re.search(r'<a\b[^>]*class\s*=\s*["\'][^"\']*\btoc-pill\b[^>]*>(?![\s\S]*?<b>)', inner, re.I):
+            issues.append({'type': 'toc_map_contract_missing_number_badge',
+                           'detail': 'toc-pill은 번호 배지 <b>N</b>를 포함해야 한다.'})
+    return issues
+
+
+
+
+def expert_decision_grid_section_gate(text: str) -> list:
+    """Expert layout regression guard: `.decision-grid` is an inner grid helper, not a direct section class.
+
+    If a direct expert section uses class `decision-grid`, the global grid selector can turn
+    the whole section into columns and push content into the first column, causing large blank
+    space and mobile overflow. Use `section.decision-section` + inner `.expert-inner-grid` or
+    `div.decision-grid` instead.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    main_open = re.search(r'<main\b([^>]*)>', body, re.I)
+    if not main_open or not re.search(r'class\s*=\s*["\'][^"\']*\blayout-expert\b', main_open.group(1), re.I):
+        return []
+    main_inner = _inner_html(body, main_open.end(), 'main')
+    for attrs, _inner in _direct_child_blocks(main_inner, 'section'):
+        cm = re.search(r'class\s*=\s*["\']([^"\']*)', attrs)
+        cls = cm.group(1).split() if cm else []
+        if 'decision-grid' in cls:
+            return [{'type': 'expert_decision_grid_section_collision',
+                     'detail': 'layout-expert 직접 section에 decision-grid class 금지. section은 decision-section, grid는 내부 wrapper(.expert-inner-grid/div.decision-grid)에 둔다.'}]
+    return []
+
+
+def expert_validation_checklist_widget_gate(text: str) -> list:
+    """Expert validation checklist is an evidence/checklist section, not a PR/release section.
+
+    `wg-03`(Annotated PR) and `wg-17`(PR Writeup) are valid expert widgets, but nesting
+    them inside `.validation-checklist` makes the completion-evidence section render as
+    a long code-review/release-note block. Keep those widgets in their own review/release
+    sections and keep validation to evidence matrix / quality-gate / checklist content.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    main_open = re.search(r'<main\b([^>]*)>', body, re.I)
+    if not main_open or not re.search(r'class\s*=\s*["\'][^"\']*\blayout-expert\b', main_open.group(1), re.I):
+        return []
+    main_inner = _inner_html(body, main_open.end(), 'main')
+    issues = []
+    for attrs, inner in _direct_child_blocks(main_inner, 'section'):
+        cm = re.search(r'class\s*=\s*["\']([^"\']*)', attrs)
+        cls = cm.group(1).split() if cm else []
+        if 'validation-checklist' not in cls:
+            continue
+        if re.search(r'class\s*=\s*["\'][^"\']*\bwg-(?:03|17)\b', inner, re.I):
+            issues.append({'type': 'expert_validation_widget_misuse',
+                           'detail': 'layout-expert .validation-checklist 안에 wg-03/wg-17 금지. 검증 섹션은 완료 기준·명령 증빙·렌더 증빙·판정 전용으로 유지한다.'})
+    return issues
+
+
+def header_contract_gate(text: str) -> list:
+    """고정 계약(필수): layout-* 콘텐츠 페이지는 상단에 정본 <header class="header">를 갖는다 —
+    kicker + h1(1) + sub + meta. generated-row는 권고. 헤더 형태를 고정해 모드·내용 무관하게
+    시작부가 일관되게 보이도록(자유 본문 앞 불변부)."""
+    if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', text, re.I):
+        return []
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    hm = re.search(r'<header\b[^>]*class\s*=\s*["\'][^"\']*\bheader\b', body, re.I)
+    if not hm:
+        return [{'type': 'header_contract_missing_header', 'detail': '정본 <header class="header"> 없음(헤더 형태 고정 위반).'}]
+    gt = body.find('>', hm.start())
+    header_inner = _inner_html(body, gt + 1, 'header')
+    issues = []
+    for name, pat in (('kicker', r'class\s*=\s*["\'][^"\']*\bkicker\b'),
+                      ('sub', r'class\s*=\s*["\'][^"\']*\bsub\b'),
+                      ('meta', r'class\s*=\s*["\'][^"\']*\bmeta\b')):
+        if not re.search(pat, header_inner, re.I):
+            issues.append({'type': 'header_contract_missing_part', 'part': name,
+                           'detail': '정본 헤더 고정: kicker·h1·sub·meta 필요 — .%s 누락.' % name})
+    if not re.search(r'<h1\b', header_inner, re.I):
+        issues.append({'type': 'header_contract_missing_part', 'part': 'h1', 'detail': '정본 헤더에 h1 누락.'})
+    return issues
+
+
+def closing_summary_recommendation(text: str) -> list:
+    """권고(warning, 강제 아님): layout-* 페이지의 마지막 직접 섹션은 정리/Next-Actions(.try) 형태를 권한다.
+    마무리 섹션 형태 일관성 권고 — 없어도 실패는 아님."""
+    if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', text, re.I):
+        return []
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    mo = re.search(r'<main\b[^>]*>', body, re.I)
+    if not mo:
+        return []
+    main_inner = _inner_html(body, mo.end(), 'main')
+    secs = list(_direct_child_blocks(main_inner, 'section'))
+    if not secs:
+        return []
+    cm = re.search(r'class\s*=\s*["\']([^"\']*)', secs[-1][0])
+    if not cm or 'try' not in cm.group(1).split():
+        return [{'type': 'closing_summary_recommended',
+                 'detail': '마지막 정리 섹션(.try Next Actions) 권고 — 마무리 일관성(권고, 강제 아님).'}]
+    return []
+
+
 def validate(root: Path, skill_dir: Path | None = None, profile: str | None = None) -> dict:
     issues = []
     warnings = []
@@ -807,6 +980,24 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for surf_issue in section_surface_contract_gate(text, style):
             surf_issue['page'] = rel
             issues.append(surf_issue)
+        for dsi_issue in direct_section_h2_icon_gate(text):
+            dsi_issue['page'] = rel
+            issues.append(dsi_issue)
+        for hdr_issue in header_contract_gate(text):
+            hdr_issue['page'] = rel
+            issues.append(hdr_issue)
+        for cls_warn in closing_summary_recommendation(text):
+            cls_warn['page'] = rel
+            warnings.append(cls_warn)
+        for toc_issue in toc_map_contract_gate(text):
+            toc_issue['page'] = rel
+            issues.append(toc_issue)
+        for expert_grid_issue in expert_decision_grid_section_gate(text):
+            expert_grid_issue['page'] = rel
+            issues.append(expert_grid_issue)
+        for expert_val_issue in expert_validation_checklist_widget_gate(text):
+            expert_val_issue['page'] = rel
+            issues.append(expert_val_issue)
         for dp_issue in mode_depth_gate(text):
             dp_issue['page'] = rel
             issues.append(dp_issue)

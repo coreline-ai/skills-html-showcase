@@ -65,7 +65,7 @@
 | Mode | 권장 위젯 | 쓰임 |
 |---|---|---|
 | skill_audit | **03 Annotated PR**, 11 Weekly Status, **17 PR Writeup** | 코드/diff 진단, 감사 진행 상태, 변경 요약 |
-| expert_html | **04 Module Map**, **16 Implementation Plan**, 01, 03, 11, 12, 13, 17, 18, 19 | 아키텍처·실행계획·리포트·코드 리뷰·회고 |
+| expert_html | **04 Module Map**, **16 Implementation Plan**, 01, 03, 11, 12, 13, 17, 18, 19 | 아키텍처·실행계획·리포트·코드 리뷰·회고. 단, `.validation-checklist` 안에는 `wg-03`/`wg-17`을 넣지 않는다(검증 섹션은 증빙 매트릭스·quality-gate 전용). |
 | article_html | **02 Visual Design Directions**, **10 SVG Figure Sheet**, 04, 07, 09, 13, 14 | 시안 비교·일러스트·발표·흐름 |
 | education_html | **14 Feature Explainer**, **15 Concept Explainer**, 06, 07, 08, 09, 10, 13, 20 | 학습/탭 코드·개념·인터랙션 설명·UX 흐름 |
 | github_analysis | **11 Weekly Status**, **04 Module Map**, **14 Feature Explainer**, **16 Implementation Plan**, 17, 18 | 저장소 활동/건강도, 코드 구조, quickstart, 후속 실행, PR·이슈 신호 |

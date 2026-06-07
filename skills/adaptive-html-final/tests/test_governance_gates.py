@@ -196,5 +196,51 @@ check("section-surface gate flags missing surface rule", surf_missing and surf_m
 surf_nonlayout = v.section_surface_contract_gate('<main id="main" class="page-wide"><section><h2>catalog</h2></section></main>', '.ahf-themebar{}')
 check("section-surface gate ignores non-layout (catalog/index) pages", surf_nonlayout == [])
 
+# 강화된 section-surface: 직접 >section:not(.try) 카드 규칙 필수, article>section 우회는 불충분.
+surf_direct = '.page-wide>section:not(.try){background:var(--card);border:1px solid var(--line)}'
+check("section-surface gate passes direct :not(.try) card rule",
+      v.section_surface_contract_gate('<main id="main" class="page-wide layout-checklist"><section class="risk-matrix"><h2>x</h2></section></main>', surf_direct) == [])
+surf_bypass = '.page-wide>article>section{background:var(--card)}'  # 우회만 있음
+check("section-surface gate now REJECTS article-only bypass",
+      v.section_surface_contract_gate('<main id="main" class="page-wide layout-checklist"><section><h2>x</h2></section></main>', surf_bypass) and v.section_surface_contract_gate('<main id="main" class="page-wide layout-checklist"><section><h2>x</h2></section></main>', surf_bypass)[0]["type"]=="section_surface_css_missing")
+
+# direct_section_h2_icon_gate: 직접 섹션 첫 h2는 body-icon 필수(번호 무관), .try 제외.
+dsi_bad = v.direct_section_h2_icon_gate('<main id="main" class="page-wide layout-seo"><section class="serp-box"><h2>검색 미리보기</h2></section></main>')
+check("direct-section h2 gate catches missing icon (numbered or not)", dsi_bad and dsi_bad[0]["type"]=="direct_section_h2_missing_body_icon")
+dsi_ok = v.direct_section_h2_icon_gate('<main id="main" class="page-wide layout-seo"><section class="serp-box"><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>검색 미리보기</h2></section></main>')
+check("direct-section h2 gate passes icon-only (no num) section", dsi_ok == [])
+dsi_try = v.direct_section_h2_icon_gate('<main id="main" class="page-wide layout-github"><section class="try"><h2>Next Actions</h2></section></main>')
+check("direct-section h2 gate ignores .try hero", dsi_try == [])
+dsi_nonlayout = v.direct_section_h2_icon_gate('<main id="main" class="page-wide"><section><h2>catalog</h2></section></main>')
+check("direct-section h2 gate ignores non-layout pages", dsi_nonlayout == [])
+dsi_nested_widget = v.direct_section_h2_icon_gate('<main id="main" class="page-wide layout-seo"><section><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>검색 미리보기</h2><section class="wg-11"><h2>위젯 자체 제목</h2></section></section></main>')
+check("direct-section h2 gate ignores nested widget sections", dsi_nested_widget == [])
+dsi_article_bad = v.direct_section_h2_icon_gate('<main id="main" class="page-wide layout-blog"><article><section><h2>본문 섹션</h2></section></article></main>')
+check("direct-section h2 gate catches article direct sections", dsi_article_bad and dsi_article_bad[0]["type"]=="direct_section_h2_missing_body_icon")
+
+toc_bad = v.toc_map_contract_gate('<main id="main" class="page layout-blog"><nav class="toc-map"><a href="#a"><span>1</span>붙은 목차</a></nav></main>')
+check("toc-map gate catches bare collapsed links", toc_bad and toc_bad[0]["type"]=="toc_map_contract_missing_pills")
+toc_ok = v.toc_map_contract_gate('<main id="main" class="page layout-blog"><nav class="toc-map"><span class="label">글의 흐름</span><div class="toc-pills"><a class="toc-pill" href="#a"><b>1</b>첫 섹션</a></div></nav></main>')
+check("toc-map gate accepts canonical chip nav", toc_ok == [])
+expert_grid_bad = v.expert_decision_grid_section_gate('<main id="main" class="page-wide layout-expert"><section class="decision-grid"><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>판단</h2></section></main>')
+check("expert decision-grid gate catches direct section collision", expert_grid_bad and expert_grid_bad[0]["type"]=="expert_decision_grid_section_collision")
+expert_grid_ok = v.expert_decision_grid_section_gate('<main id="main" class="page-wide layout-expert"><section class="decision-section"><div class="expert-inner-grid"><article>card</article></div></section></main>')
+check("expert decision-grid gate accepts section plus inner grid", expert_grid_ok == [])
+expert_val_bad = v.expert_validation_checklist_widget_gate('<main id="main" class="page-wide layout-expert"><section class="validation-checklist"><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>검증</h2><section class="wg-03"><h3>패치 리뷰</h3></section></section></main>')
+check("expert validation checklist gate catches wg-03/wg-17 misuse", expert_val_bad and expert_val_bad[0]["type"]=="expert_validation_widget_misuse")
+expert_val_ok = v.expert_validation_checklist_widget_gate('<main id="main" class="page-wide layout-expert"><section class="validation-checklist"><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>검증</h2><section class="vt-shell"><div class="qg-grid"></div></section><div class="validation-evidence-grid"></div></section><section class="wg-17"><h3>릴리즈 노트</h3></section></main>')
+check("expert validation checklist gate accepts evidence/quality gate only", expert_val_ok == [])
+
+# 고정 계약: 헤더 형태(필수) + 마무리 정리 섹션(권고).
+_hdr_ok = '<main id="main" class="page-wide layout-expert"><header class="header"><p class="kicker">K</p><h1>T</h1><p class="sub">s</p><div class="meta"><span>m</span></div></header><section class="try"><h2>x</h2></section></main>'
+check("header gate passes canonical header(kicker.h1.sub.meta)", v.header_contract_gate(_hdr_ok) == [])
+_hb = v.header_contract_gate('<main id="main" class="page-wide layout-expert"><header class="header"><h1>T</h1></header><section><h2>x</h2></section></main>')
+check("header gate flags missing kicker/sub/meta", {i.get("part") for i in _hb} >= {"kicker","sub","meta"})
+check("header gate flags missing header.header", v.header_contract_gate('<main id="main" class="page-wide layout-seo"><section><h2>x</h2></section></main>')[0]["type"]=="header_contract_missing_header")
+check("header gate ignores non-layout pages", v.header_contract_gate('<main id="main" class="page-wide"><h1>x</h1></main>') == [])
+check("closing recommendation silent when last section .try", v.closing_summary_recommendation(_hdr_ok) == [])
+_nt = '<main id="main" class="page-wide layout-expert"><section><h2>a</h2></section><section><h2>b</h2></section></main>'
+check("closing recommendation warns when last section not .try", v.closing_summary_recommendation(_nt) and v.closing_summary_recommendation(_nt)[0]["type"]=="closing_summary_recommended")
+
 print(f"\n{_checks - _fails}/{_checks} checks passed")
 sys.exit(1 if _fails else 0)
