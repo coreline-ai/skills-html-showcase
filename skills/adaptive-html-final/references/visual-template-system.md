@@ -46,7 +46,7 @@
 ```json
 {
   "type": "card-grid",
-  "title": "14개 모드별 최적 이미지 타입",
+  "title": "16개 모드별 최적 이미지 타입",
   "subtitle": "모드마다 정보 구조를 보강하는 시각물을 붙입니다",
   "items": [
     {"label": "beginner", "title": "비유 일러스트", "description": "개념을 생활 장면으로 설명"},

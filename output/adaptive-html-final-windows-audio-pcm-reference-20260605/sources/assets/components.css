@@ -218,5 +218,10 @@ details p{margin-bottom:0}
   .mobile-card-table tbody th{color:var(--ink);font-weight:800;background:transparent}
   .mobile-card-table tbody th::before{content:"";display:none}
 }
+@media(max-width:520px){
+  /* 좁은 화면(≤520px): 일반 표는 min-width 해제 → 컨테이너 폭에 맞춰 줄바꿈(우측 컬럼이 화면 밖으로 잘려 보이던 착시 제거, QA). 다열·중요 표는 .mobile-card-table 사용 권장 */
+  table,.table{min-width:0}
+  th,td,.table th,.table td{padding:8px 9px;font-size:12.5px}
+}
 /* === 완성본 표준 승격 v5.3.1 — source-note 투명 === */
 .source-note{background:transparent}

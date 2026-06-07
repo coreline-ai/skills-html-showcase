@@ -7,21 +7,21 @@
 # 🎨 Adaptive HTML Final
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
-[![version](https://img.shields.io/badge/version-5.3.0-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
-[![modes](https://img.shields.io/badge/modes-14-2a7d5a)](#-14개-모드)
+[![version](https://img.shields.io/badge/version-5.7.0-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
+[![modes](https://img.shields.io/badge/modes-16-2a7d5a)](#-16개-모드)
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
-[![themes](https://img.shields.io/badge/themes-light·white·dark-111827)](#-최근-업데이트)
+[![themes](https://img.shields.io/badge/themes-8--theme-111827)](#-최근-업데이트)
 [![libraries](https://img.shields.io/badge/view%20widgets-20-e63946)](#️-비주얼-프로파일) [![svg→html](https://img.shields.io/badge/svg→html%20templates-21-d99a38)](#️-비주얼-프로파일)
 [![lang](https://img.shields.io/badge/lang-한국어-0b7285)](#)
 [![external JS](https://img.shields.io/badge/external%20JS-0-success)](#-품질-게이트)
 [![cross-agent](https://img.shields.io/badge/cross--agent-AGENTS.md-6e40c9)](AGENTS.md)
 [![python](https://img.shields.io/badge/SVG%20render-stdlib%20only-3776AB?logo=python&logoColor=white)](skills/adaptive-html-final/scripts/render_visual_svg.py)
 
-**입력 자료를 14개 모드로 라우팅해 전문가급 한국어 HTML 콘텐츠를 만드는 단일 통합 스킬 — GitHub 저장소 분석, 3-테마(라이트·화이트·다크), 비주얼 프로파일(위젯형·도식형·자동) 선택**
+**입력 자료를 16개 모드로 라우팅해 전문가급 한국어 HTML 콘텐츠를 만드는 단일 통합 스킬 — GitHub 저장소·YouTube 영상·매뉴얼 분석, 8-테마, 비주얼 프로파일(위젯형·도식형·자동) 선택**
 
-URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill`·GitHub 저장소 URL을 받아 학습자료, 전문가 리포트, GitHub 저장소 분석, 아티클, 교육 모듈, 블로그 원고, SEO 대시보드, 플랫폼 변환, 스킬 감사, 레퍼런스, 비교, 케이스 스터디, 랜딩, 체크리스트로 변환합니다.
+URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill`·GitHub 저장소 URL·YouTube URL/자막·제품 매뉴얼을 받아 학습자료, 전문가 리포트, 저장소/영상/매뉴얼 분석, 아티클, 교육 모듈, 블로그 원고, SEO 대시보드, 플랫폼 변환, 스킬 감사, 레퍼런스, 비교, 케이스 스터디, 랜딩, 체크리스트로 변환합니다.
 
-[Overview](#-overview) · [최근 업데이트](#-최근-업데이트) · [모드](#-14개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [쇼케이스 갤러리](#️-쇼케이스-갤러리) · [스킬 구조](#️-스킬-구조) · [사용법](#-사용법)
+[Overview](#-overview) · [최근 업데이트](#-최근-업데이트) · [모드](#-16개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [쇼케이스 갤러리](#️-쇼케이스-갤러리) · [스킬 구조](#️-스킬-구조) · [사용법](#-사용법)
 
 </div>
 
@@ -46,7 +46,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 | 사실성 | 확인되지 않은 최신 정보·수치·가격·날짜는 단정하지 않고 `확인 필요`로 표시 |
 | 무 JS | 외부/동작 JavaScript 미사용 (JSON-LD 메타데이터만 허용) |
 | 단일 HTML | 코어 CSS(theme·components·visual-components·layouts·print)와 조건부 자산을 inline으로 포함한 자기완결 HTML + 합본 해시 마커 |
-| **3-테마** | `#ahf-light` / `#ahf-white` / `#ahf-dark` 라디오 세그먼트 스위처 기반 CSS-only 테마. 기본 라이트, 완전 화이트, proper-black 다크 |
+| **8-테마** | `#ahf-light`/`#ahf-light2`/`#ahf-white`/`#ahf-dark`/`#ahf-dark2`/`#ahf-blue`/`#ahf-skyblue`/`#ahf-sepia` 라디오 세그먼트 스위처 기반 CSS-only 테마 |
 | **비주얼 프로파일** | 기동 시 `widget`(인터랙티브 위젯) / `diagram`(SVG→HTML 도식) / `auto`(둘 다, 기본) 선택 — 코어 공유, 프로파일이 라이브러리만 게이트 |
 | **두 위젯 라이브러리** | CSS 뷰 위젯 `wg-01~20`(인터랙션) + SVG→HTML 템플릿 `vt-` 21종(본문 삽입 도식), 둘 다 무 JS·네임스페이스 격리 |
 | 크로스-에이전트 결정론 | 루트 [`AGENTS.md`](AGENTS.md)가 결정론 진입점 — Claude Code·Codex·Gemini가 동일 인자로 동일 출력. 정적 게이트 `validate_output.py --profile` |
@@ -56,6 +56,23 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 ---
 
 ## 🆕 최근 업데이트
+
+### v5.7.0 (2026-06-07) — YouTube Analysis + Manual Analysis 15·16번째 모드 추가
+
+> **전문가 전략 한 줄 결론:** YouTube 분석은 “영상 요약”이 아니라 타임스탬프 근거·댓글 신호·주장 위험·재사용 전략을 분리하는 콘텐츠 실사 리포트이고, Manual 분석은 “문서 요약”이 아니라 역할별 첫 성공 경로·안전 조건·트러블슈팅·운영 런북으로 재배열하는 실행 매뉴얼입니다.
+
+| 영역 | 변경 내용 |
+|---|---|
+| 신규 모드 | `youtube_analysis`, `manual_analysis` 추가 — 전체 라우터 16모드 |
+| 레이아웃 | `assets/layouts/youtube-analysis.html`, `assets/layouts/manual-analysis.html`, `.layout-youtube`/`.layout-manual` CSS 추가 |
+| 전략 문서 | `references/youtube-analysis-system.md`, `references/manual-analysis-system.md`, 전용 recipe 2종 추가 |
+| 검증 게이트 | `validate_output.py`에 YouTube evidence/source limits/no-embed 계약과 Manual role/safety/troubleshooting/source limits 계약 추가 |
+| 예제/스모크 | `examples/15_youtube_vibecoding_gap.html`, `examples/16_manual_product_runbook.html`, 신규 output 2종 게이트 OK |
+
+최신 스모크 산출물:
+
+- [`output/youtube-analysis-vibecoding-gap-20260607_001503/`](output/youtube-analysis-vibecoding-gap-20260607_001503/) — `validate_output.py` OK
+- [`output/manual-analysis-product-runbook-20260607_001503/`](output/manual-analysis-product-runbook-20260607_001503/) — `validate_output.py` OK
 
 ### v5.3.0 (2026-06-06) — GitHub Analysis 14번째 모드 추가
 
@@ -158,7 +175,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ---
 
-## 📦 14개 모드
+## 📦 16개 모드
 
 요청에서 여러 트리거가 감지되면 우선순위가 높은 모드가 선택되며, 사용자가 모드를 명시하면 그 지시가 우선합니다.
 
@@ -169,27 +186,29 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 | 3 | `seo_dashboard` | 제목·메타·태그·검색 의도 설계 | `seo-dashboard.html` |
 | 4 | `education_html` | 강의·온보딩·실습·퀴즈 | `course-module.html` |
 | 5 | `github_analysis` | GitHub 저장소 URL/owner/repo 실사·README·이슈·릴리스·라이선스 분석 | `github-analysis.html` |
-| 6 | `expert_html` | 전문가 리포트·아키텍처·리스크 진단 | `expert-report.html` |
-| 7 | `article_html` | 공개 아티클·매거진형 글 | `magazine-article.html` |
-| 8 | `blog_writer` | 블로그 글·포스팅·경험담 | `personal-blog-essay.html` |
-| 9 | `beginner_html` | 초보자 설명·비유·용어 풀이 | `beginner-learning.html` |
-| 10 | `reference_html` | 레퍼런스·매뉴얼·API 문서 | `reference-manual.html` |
-| 11 | `comparison_html` | 비교·장단점·선택 기준 | `comparison-matrix.html` |
-| 12 | `case_study_html` | 사례 연구·회고·프로젝트 기록 | `case-study.html` |
-| 13 | `landing_brief_html` | 소개·랜딩·요약 페이지 | `landing-brief.html` |
-| 14 | `checklist_playbook` | 체크리스트·운영 절차·플레이북 | `checklist-playbook.html` |
+| 6 | `youtube_analysis` | YouTube URL/자막/댓글 발췌를 근거 지도·주장 위험·재사용 전략으로 분석 | `youtube-analysis.html` |
+| 7 | `manual_analysis` | 제품/운영 매뉴얼을 역할별 실행 경로·안전 조건·트러블슈팅으로 재구성 | `manual-analysis.html` |
+| 8 | `expert_html` | 전문가 리포트·아키텍처·리스크 진단 | `expert-report.html` |
+| 9 | `article_html` | 공개 아티클·매거진형 글 | `magazine-article.html` |
+| 10 | `blog_writer` | 블로그 글·포스팅·경험담 | `personal-blog-essay.html` |
+| 11 | `beginner_html` | 초보자 설명·비유·용어 풀이 | `beginner-learning.html` |
+| 12 | `reference_html` | 레퍼런스·API 문서·치트시트·옵션표 | `reference-manual.html` |
+| 13 | `comparison_html` | 비교·장단점·선택 기준 | `comparison-matrix.html` |
+| 14 | `case_study_html` | 사례 연구·회고·프로젝트 기록 | `case-study.html` |
+| 15 | `landing_brief_html` | 소개·랜딩·요약 페이지 | `landing-brief.html` |
+| 16 | `checklist_playbook` | 체크리스트·운영 절차·플레이북 | `checklist-playbook.html` |
 
 ---
 
 ## 🖼️ 쇼케이스 갤러리
 
-### 🆕 최신 실전 산출물 데모 (v5.4.2, 게이트 OK)
+### 🆕 최신 실전 산출물 데모 (v5.7.0, 게이트 OK)
 
-최근 생성한 **실전 산출물 3종**입니다. 썸네일을 클릭하면 GitHub Pages에서 실제 결과물이 바로 열립니다(상단 스위처로 라이트·화이트·다크 전환).
+최근 생성한 **실전 산출물 3종 + 신규 모드 smoke 2종**입니다. 썸네일을 클릭하면 GitHub Pages에서 실제 결과물이 바로 열립니다(상단 스위처로 8테마 전환).
 
 <table>
 <tr>
-<td width="33%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/github-analysis-skills-html-showcase-20260606_005440/index.html"><img src="docs/screenshots/demo-github-analysis.png" width="100%" alt="github_analysis 데모 — skills-html-showcase 저장소 분석 리포트"></a><br><b>🔎 <code>github_analysis</code></b><br>저장소 분석 리포트. 사용/채택/감사 의사결정용 14번째 모드. 결론 직후 <b>chip-nav 목차(toc-map)</b> + references 투어 <b>다단(col-list)</b>.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/github-analysis-skills-html-showcase-20260606_005440/index.html">▶ 라이브</a> · <a href="output/github-analysis-skills-html-showcase-20260606_005440/index.html"><code>로컬</code></a></td>
+<td width="33%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/github-analysis-skills-html-showcase-20260606_005440/index.html"><img src="docs/screenshots/demo-github-analysis.png" width="100%" alt="github_analysis 데모 — skills-html-showcase 저장소 분석 리포트"></a><br><b>🔎 <code>github_analysis</code></b><br>저장소 분석 리포트. 사용/채택/감사 의사결정용 GitHub 분석 모드. 결론 직후 <b>chip-nav 목차(toc-map)</b> + references 투어 <b>다단(col-list)</b>.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/github-analysis-skills-html-showcase-20260606_005440/index.html">▶ 라이브</a> · <a href="output/github-analysis-skills-html-showcase-20260606_005440/index.html"><code>로컬</code></a></td>
 <td width="33%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/grok-india-appstore-guide-20260606_074130/index.html"><img src="docs/screenshots/demo-grok-india-appstore.png" width="100%" alt="grok 데모 — 인도 App Store로 Grok·SuperGrok 구독 가이드"></a><br><b>🧾 <code>checklist_playbook</code></b><br>인도 App Store(별도 Apple 계정 + Gift Card)로 Grok·SuperGrok 구독하는 실전 순서·체크리스트. 단계별 카드·표·주의 패턴.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/grok-india-appstore-guide-20260606_074130/index.html">▶ 라이브</a> · <a href="output/grok-india-appstore-guide-20260606_074130/index.html"><code>로컬</code></a></td>
 <td width="33%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-windows-audio-pcm-reference-20260605/index.html"><img src="docs/screenshots/demo-windows-audio-pcm.png" width="100%" alt="reference_html 데모 — Windows 오디오 PCM·DAC 제어 레퍼런스"></a><br><b>📘 <code>reference_html</code></b><br>Windows 오디오 PCM·DAC 제어 레퍼런스. WASAPI·ASIO·WDK/WaveRT·APO 스택을 정리한 기술 매뉴얼. 표·코드·핵심 callout.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-windows-audio-pcm-reference-20260605/index.html">▶ 라이브</a> · <a href="output/adaptive-html-final-windows-audio-pcm-reference-20260605/index.html"><code>로컬</code></a></td>
 </tr>
@@ -228,7 +247,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 <table>
 <tr>
 <td width="50%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html"><img src="docs/screenshots/template-final-index-dark2.png" width="100%" alt="final_20260604 index.html — 와이드 마스터 템플릿 (Dark2 테마)"></a><br><b>▶ Skill Template HTML (와이드 · 4-테마)</b><br><code>final_20260604/index.html</code><br>13모드·프로파일·vt/wg·soft-shape·workflow 도판·body-icon을 한 페이지에 집약한 적용용 마스터 템플릿. 상단 스위처로 <b>라이트/화이트/다크/다크2</b> 전환(스크린샷은 <b>Dark2</b> 테마).<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html">▶ 라이브</a> · <a href="output/final_20260604/index.html"><code>로컬</code></a></td>
-<td width="50%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html"><img src="docs/screenshots/template-final-beginner-width.png" width="100%" alt="final_20260604 index-beginner-width.html — beginner-width 변형 (라이트 테마)"></a><br><b>▶ Skill Template HTML (beginner-width 변형)</b><br><code>final_20260604/index-beginner-width.html</code><br>본문 가독 폭(beginner-width)으로 조판한 변형본. 아이콘+텍스트 배치를 컴팩트 아이콘 세트 기준으로 통일(라이트/화이트/다크 3-테마, 스크린샷은 라이트).<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html">▶ 라이브</a> · <a href="output/final_20260604/index-beginner-width.html"><code>로컬</code></a></td>
+<td width="50%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html"><img src="docs/screenshots/template-final-beginner-width.png" width="100%" alt="final_20260604 index-beginner-width.html — beginner-width 변형 (라이트 테마)"></a><br><b>▶ Skill Template HTML (beginner-width 변형)</b><br><code>final_20260604/index-beginner-width.html</code><br>본문 가독 폭(beginner-width)으로 조판한 변형본. 아이콘+텍스트 배치를 컴팩트 아이콘 세트 기준으로 통일(8-테마, 스크린샷은 라이트).<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html">▶ 라이브</a> · <a href="output/final_20260604/index-beginner-width.html"><code>로컬</code></a></td>
 </tr>
 </table>
 
@@ -275,7 +294,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ## 🎚️ 비주얼 프로파일
 
-스킬을 **기동할 때 비주얼 스타일을 고를 수 있습니다.** 코어(14모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 *어느 라이브러리·삽입 단계·CSS 번들*을 쓸지만 게이트합니다. 세 프로파일 모두 **외부/동작 JS 0**.
+스킬을 **기동할 때 비주얼 스타일을 고를 수 있습니다.** 코어(16모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 *어느 라이브러리·삽입 단계·CSS 번들*을 쓸지만 게이트합니다. 세 프로파일 모두 **외부/동작 JS 0**.
 
 <table>
 <tr>
@@ -325,14 +344,14 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 theme.css        색/폰트/폭 토큰(:root) · skip · focus-visible · reduced-motion   ← 코어 해시
 components.css    term · analogy · danger · good · hero-analogy · try · tbl · faq · cta-box ...  ← 코어 해시
 visual-components.css   figure.visual-figure (8000×6000 SVG 삽입 셸)               ← 코어 해시 · v4.2
-layouts.css       14개 모드별 그리드/구조 (+ github-analysis 레이아웃 포함)              ← 코어 해시
+layouts.css       16개 모드별 그리드/구조 (+ github/youtube/manual 분석 레이아웃 포함)              ← 코어 해시
 print.css         인쇄 대응(print-color-adjust · break-inside)                    ← 코어 해시
 widgets.css       CSS 뷰 위젯 wg-01~20 (탭·플로우·아코디언, 무 JS)  ← v4.4 · widget/auto 프로파일 조건부 인라인
 visual-html.css   SVG→HTML 템플릿 vt- 21종 (본문 삽입 도식)        ← v4.5+ · diagram/auto 프로파일 조건부 인라인
 body-icons.css    본문 아이콘 bi- 32종                                      ← 프로파일 무관 장식 자산
 editorial-patterns.css  chronology/source/insight/a11y 등 본문 패턴 8종      ← 프로파일 무관 구조 자산
 shape-visuals.css · workflow-visuals.css  soft-shape 36종 + workflow 도판 10종 ← 프로파일 무관 시각 앵커
-theme-dark.css    CSS-only 3-테마 토큰 오버라이드 + 라디오 세그먼트 스위처       ← v5.2 · print 뒤 항상 인라인(코어 해시 제외)
+theme-dark.css    CSS-only 8-테마 토큰 오버라이드 + 라디오 세그먼트 스위처       ← v5.2 · print 뒤 항상 인라인(코어 해시 제외)
 ```
 
 > 코어 해시는 **5종**(theme·components·visual-components·layouts·print)의 합본 SHA-256(`adaptive-html-final-core-css-sha256` 마커)이며, `widgets.css`·`visual-html.css`·`theme-dark.css`는 해시 대상이 아닌 조건부/후행 인라인 자산이다.
@@ -356,15 +375,15 @@ theme-dark.css    CSS-only 3-테마 토큰 오버라이드 + 라디오 세그먼
 skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트
-│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.3.0)
-│   ├── assets/                        # base.html · CSS · 위젯/도식/패턴/테마 자산 · 14개 레이아웃 골격
+│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.7.0)
+│   ├── assets/                        # base.html · CSS · 위젯/도식/패턴/테마 자산 · 16개 레이아웃 골격
 │   ├── references/                    # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/비주얼 규칙
-│   ├── recipes/       (14)            # 14개 모드별 대표 프롬프트
+│   ├── recipes/       (16)            # 16개 모드별 대표 프롬프트
 │   ├── schemas/       (3)             # blog-meta · quality-report · visual-brief
 │   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트
 │   ├── visual-templates/ (7)         # 8000×6000 SVG 템플릿
 │   ├── scripts/                       # render_visual_svg.py · validate_output.py 등
-│   └── examples/      (8)            # 예시 결과물
+│   └── examples/      (17)           # 16개 모드 예시 + index
 ├── output/
 │   ├── adaptive-html-final-showcase-v4/   # 13모드 쇼케이스 (canonical 13-mode 데모)
 │   │   ├── pages/     (15)            # 13모드 + 비주얼 데모 + SVG 갤러리
@@ -376,7 +395,7 @@ skills-html-showcase/
 │   └── archive/                      # v4~v5.0 시점 고정 리뷰/분석/계획 기록 (SUPERSEDED)
 ├── demo/ · orginal_skill/            # 이전 계열 데모 · 원본 스킬
 ├── AGENTS.md                         # 크로스-에이전트 결정론 진입점
-└── Guide.md                          # 사용 가이드 (v5.3.0+)
+└── Guide.md                          # 사용 가이드 (v5.7.0+)
 ```
 
 ---
@@ -389,12 +408,12 @@ skills-html-showcase/
 
 | 항목 | 결과 |
 |---|---|
-| skip link ↔ `<main id="main">` | **14 / 14** (접근성 회귀 가드로 고정) |
-| 단일 `h1` 원칙 | 14 / 14 레이아웃 계약 |
+| skip link ↔ `<main id="main">` | **16 / 16** (접근성 회귀 가드로 고정) |
+| 단일 `h1` 원칙 | 16 / 16 레이아웃 계약 |
 | 외부 동작 JS | **0건** |
 | 미정의 CSS 클래스 | **0개** (레이아웃↔CSS 차집합 0) |
 | manifest ↔ 디스크 레이아웃 매핑 | 차집합 0 |
-| recipes 커버리지 | 14 / 14 모드 |
+| recipes 커버리지 | 16 / 16 모드 |
 | blog-writer 상세 규칙 흡수 | 8 / 8 (제목 4계열·도입부 3유형·본문 밀도·톤 매핑·100점·메타·플랫폼·박스) |
 
 ### 버전 진화
@@ -414,6 +433,7 @@ skills-html-showcase/
 | `v5.2.2` | body-icons.css에 **아이콘 박스 테마 적응**(white=순백/dark=카드 표면) + lede-note 라벨 정렬 승격. 조건부 자산만 변경 → 코어 해시 불변 |
 | `v5.2.3` | editorial-patterns.css **가독성 승격** — a11y 카드/그리드/포인트 간격, impact 카드 아이콘 하단 여백. 조건부 자산만 변경 → 코어 해시 불변 |
 | `v5.3.0` | **GitHub Analysis 14번째 모드** — `github_analysis`, `github-analysis.html`, `.layout-github`, GitHub 분석 전략/recipe/검증 문서 추가 |
+| `v5.7.0` | **YouTube/Manual Analysis 15·16번째 모드** — `youtube_analysis`/`manual_analysis`, 전용 레이아웃·전략 문서·계약 게이트·예제/output 추가 |
 
 > 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) · 프로파일 분리 계획(아카이브): [`docs/archive/implement_visual_profile_separation.md`](docs/archive/implement_visual_profile_separation.md)
 
@@ -428,7 +448,7 @@ skills-html-showcase/
 - [x] `h1` 정확히 1개 · 주요 `h2`에 `.h2-sub`(모드 한정 권장)
 - [x] `#main` skip link target · `:focus-visible` · `prefers-reduced-motion`
 - [x] 모바일 1컬럼 전환 · 표는 `.tbl` 래퍼(가로 스크롤)
-- [x] 3-테마 스위처는 `name="ahf-theme"` 라디오 계약을 사용하고 legacy `#theme-toggle` 없음
+- [x] 8-테마 스위처는 `name="ahf-theme"` 라디오 계약을 사용하고 legacy `#theme-toggle` 없음
 - [x] 외부/동작 JS 0 · 확인되지 않은 최신 정보 단정 금지 · 출처 추측 금지
 - [x] 교육용=퀴즈+정답 · 전문가용=리스크+검증 · 블로그/SEO=제목+메타+태그 · 감사=개선본
 - [x] 비주얼: 8000×6000 캔버스 · `figure`+`figcaption` · 의미 있는 `alt` · 캔버스 잘림 없음

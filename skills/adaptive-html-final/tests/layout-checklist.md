@@ -87,3 +87,6 @@ python3 scripts/validate_output.py <산출물 디렉터리> --skill-dir <스킬 
 - [ ] 검정 CTA(`.try`, `.try.soft-cta`) 내부 링크가 `--link-on-dark` 토큰으로 밝게 재정의되어 dark 배경에서 4.5:1 이상 대비를 유지한다(`missing_try_dark_link_contrast_reset` 게이트).
 - [ ] expert executive summary 4카드가 orphan 없이 2×2로 안정적으로 배치되고, case-study timeline이 단일 대형 카드가 아니라 개별 step card로 보인다.
 - [ ] 390px 모바일에서 복잡한 표는 `.mobile-card-table`(`data-label` 기반 행 카드) 패턴으로 잘리지 않게 표시한다.
+
+| youtube-analysis.html | youtube_analysis | source trust, evidence map, comment signals, opportunity, source limits | .page-wide (1020) |
+| manual-analysis.html | manual_analysis | source/version, role router, first success, safety, troubleshooting | .page-wide (1020) |

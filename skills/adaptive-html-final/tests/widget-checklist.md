@@ -137,3 +137,10 @@ done
 ```
 
 - [ ] `:target-within`을 쓰는 모든 파일에 일반 `:target` 형제 폴백 규칙이 함께 있다(`:target-within` 단독 의존 0건).
+
+
+## 신규 모드 위젯 매핑
+
+- youtube_analysis: wg-11/13/14/16/18 기본, wg-15/20 조건부.
+- manual_analysis: wg-04/13/16/18/11/14 기본.
+- 두 모드 모두 wg-NN 네임스페이스 밖의 임의 widget-* 클래스 금지.

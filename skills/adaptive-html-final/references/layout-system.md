@@ -7,6 +7,8 @@
 | article_html | magazine-article.html | 780 | lead, quote, argument, case, takeaway | prose rhythm, pull quote |
 | education_html | course-module.html | 780 | goals, practice, quiz, answer | learning cards, details answers |
 | github_analysis | github-analysis.html | 1020 | verdict, question toc, repo identity, quickstart, health signals, file tour, risks, final decision | evidence cards, repo signal grids, vt hero/file/risk views |
+| youtube_analysis | youtube-analysis.html | 1020 | source trust, TL;DW, evidence map, chapter flow, comment signals, opportunity, source limits | timeline/risk/quality views, evidence cards |
+| manual_analysis | manual-analysis.html | 1020 | source snapshot, role router, first success, prerequisites, recipes, troubleshooting, audit | hero/checklist/quality/file views, role cards |
 | blog_writer | personal-blog-essay.html | 780 | hook, view, CTA | essay sections, restrained boxes |
 | seo_dashboard | seo-dashboard.html | 1020 | SERP, candidates, tags | SERP card, tables/cards |
 | platform_blog | platform-adaptation.html | 1020 | cards, comparison, checklist | platform grid |
@@ -34,6 +36,8 @@
 - case-study timeline은 단일 대형 카드보다 개별 step card가 기본이다.
 - `github_analysis`는 `.repo-signal-grid` 같은 내부 wrapper에만 grid를 적용하고, `.repo-health`/`.security-license` 같은 semantic section 자체를 grid로 만들지 않는다.
 - GitHub에서 확인할 수 없는 보안 설정·비공개 취약점·내부 운영 상태는 `확인 불가` 카드로 남기고 추측 점수를 만들지 않는다.
+- `youtube_analysis`는 `.youtube-*-grid` 같은 내부 wrapper에만 grid를 적용하고, semantic section 자체를 grid로 만들지 않는다. iframe/embed는 금지한다.
+- `manual_analysis`는 `.manual-*-grid` 같은 내부 wrapper에만 grid를 적용하고, 입력에 없는 역할 카드를 만들지 않는다.
 - 검정 `.try` 안의 링크는 `--link-on-dark`를 써서 충분한 대비를 확보한다.
 - case-study timeline의 왼쪽 강조선은 section 또는 내부 card 중 하나만 사용한다.
 
@@ -47,6 +51,8 @@
 | article_html | hero-map, decision-tree | 주장 구조·쟁점 흐름 |
 | education_html | timeline, checklist-flow | 학습 경로·실습 절차·퀴즈 전 체크 |
 | github_analysis | hero-map, file-tour, risk-matrix, quality-gate | 저장소 판단 흐름·코드 구조·리스크·검증 기준 |
+| youtube_analysis | timeline, risk-matrix, quality-gate | 영상 근거 흐름·주장 리스크·검증 기준 |
+| manual_analysis | hero-map, checklist-flow, quality-gate, file-tour | 역할별 경로·절차·안전 게이트·출처 구조 |
 | blog_writer | hero-map, timeline | 경험 흐름·문제 해결 여정 |
 | seo_dashboard | card-grid, matrix | 키워드 클러스터·SERP·제목 후보 비교 |
 | platform_blog | card-grid, matrix, checklist-flow | 플랫폼별 변환·발행 체크 |

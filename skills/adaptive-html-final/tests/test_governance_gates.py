@@ -124,5 +124,17 @@ github_ok = '<main id="main" class="page-wide layout-github"><header class="head
 github_ok_css = '.layout-github>section{background:var(--card)}.body-icon{}'
 check("github visual gate passes current contract", v.github_analysis_visual_contract_gate(github_ok, github_ok_css) == [])
 
+# YouTube/manual contract gates: new modes must be executable, source-bounded outputs.
+youtube_bad = '<main id="main" class="page-wide layout-youtube"><h1>x</h1><section><h2>요약</h2><p>embed 없음</p></section></main>'
+yt_bad = v.youtube_analysis_contract_gate(youtube_bad, '.layout-youtube>section{background:var(--card)}')
+check("youtube contract gate catches missing evidence/limits", {"youtube_evidence_map_missing", "youtube_source_limits_missing", "youtube_observed_at_missing"}.issubset({i["type"] for i in yt_bad}))
+youtube_ok = '<main id="main" class="page-wide layout-youtube"><h1>x</h1><section><h2>Video Evidence Map</h2><p>FACT: transcript에 있는 주장. INFERENCE: 댓글 반복 질문. observed_at: 2026-06-06. Source Limits: UNKNOWN 지표는 확인 필요.</p></section></main>'
+check("youtube contract gate passes evidence/limits", v.youtube_analysis_contract_gate(youtube_ok, '.layout-youtube>section{background:var(--card)}') == [])
+manual_bad = '<main id="main" class="page-wide layout-manual"><h1>x</h1><section><h2>요약</h2><p>절차만 있음</p></section></main>'
+man_bad = v.manual_analysis_contract_gate(manual_bad, '.layout-manual>section{background:var(--card)}')
+check("manual contract gate catches missing role/safety/troubleshooting", {"manual_role_router_missing", "manual_prerequisites_safety_missing", "manual_troubleshooting_missing"}.issubset({i["type"] for i in man_bad}))
+manual_ok = '<main id="main" class="page-wide layout-manual"><h1>x</h1><section><h2>Source & Version Snapshot</h2><p>Reader Role Router: 관리자. Prerequisites/Safety: 권한 확인. Troubleshooting: 증상/원인/진단. Source Limits: UNKNOWN은 확인 불가.</p></section></main>'
+check("manual contract gate passes executable manual", v.manual_analysis_contract_gate(manual_ok, '.layout-manual>section{background:var(--card)}') == [])
+
 print(f"\n{_checks - _fails}/{_checks} checks passed")
 sys.exit(1 if _fails else 0)

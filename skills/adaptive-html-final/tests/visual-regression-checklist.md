@@ -59,3 +59,10 @@ python3 scripts/validate_output.py <산출물 디렉터리> --skill-dir <스킬 
 - [ ] 모든 `<table>`에 `<caption>`이 보인다(`table_missing_caption` 게이트).
 - [ ] 390px 모바일에서 복잡한 표가 `.mobile-card-table`(`data-label` 기반 행 카드)로 잘리지 않고 보인다.
 - [ ] expert executive summary 4카드가 2×2로 안정 배치되고, case-study timeline이 단일 대형 카드가 아니라 개별 step card로 보인다.
+
+
+## 신규 모드 시각 회귀
+
+- [ ] youtube_analysis: 390px에서 evidence/comment/opportunity grid가 1열로 접힌다.
+- [ ] manual_analysis: role/task/troubleshooting grid가 1열로 접히고 긴 절차 표는 table-scroll 또는 mobile-card-table을 쓴다.
+- [ ] 8테마에서 두 신규 모드의 카드 배경·텍스트 대비가 유지된다.

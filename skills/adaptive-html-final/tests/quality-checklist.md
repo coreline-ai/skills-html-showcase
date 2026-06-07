@@ -48,3 +48,11 @@
 - [ ] `comparison_html`이면 → `.winners:not(section)`/`.tradeoffs:not(section)` 의미형 블록이 h3와 ul을 서로 다른 grid column으로 찢지 않는다. (auto)
 - [ ] `case_study_html`이면 → timeline section과 timeline card의 left rule이 중복되지 않으며, 순서형 목록에는 굵은 accent left rule을 추가하지 않는다. (auto)
 - [ ] 스킬 감사이면 → 개선본 SKILL.md까지 포함한다.
+
+
+## youtube_analysis / manual_analysis
+
+- [ ] youtube_analysis는 Video Evidence Map, Source Limits, FACT/INFERENCE/UNKNOWN, observed_at를 포함한다.
+- [ ] youtube_analysis는 iframe/embed/autoplay를 포함하지 않는다.
+- [ ] manual_analysis는 Source & Version Snapshot, Reader Role Router, Prerequisites/Safety, Troubleshooting, Source Limits를 포함한다.
+- [ ] manual_analysis의 stale/누락/모순 지적은 원문 근거 또는 확인 불가 라벨을 가진다.

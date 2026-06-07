@@ -1,6 +1,6 @@
 # Editorial Design System
 
-`adaptive-html-final`은 14개 모드 구조를 유지하되, 출력물은 고급 한국어 기술 블로그/학습지처럼 보여야 한다.
+`adaptive-html-final`은 16개 모드 구조를 유지하되, 출력물은 고급 한국어 기술 블로그/학습지처럼 보여야 한다.
 
 ## 디자인 토큰
 
@@ -135,7 +135,7 @@
 
 ## 테마 시스템 — 3종 (v5.2.0 · `assets/theme-dark.css`, 선택 슬롯)
 
-**CSS-only 3-테마**: 라이트(크림 기본) · **화이트(순백)** · 다크. 라디오 그룹 + `:has()`로 전환하며 **무 JS**. 코어 CSS는 수정하지 않는다(라이트 byte-안정, 해시-safe).
+**CSS-only 8-테마**: 라이트(크림 기본) · 그레이(light2) · 화이트(순백) · 다크 · 로즈(dark2) · 블루 · 스카이 · 세피아. 라디오 그룹 + `:has()`로 전환하며 **무 JS**. 코어 CSS는 수정하지 않는다(라이트 byte-안정, 해시-safe).
 
 - **모델 — `:root` 토큰 오버라이드.** `:root:has(#ahf-white:checked)`=순백 토큰(neutral만: `--bg/--card/--line/--ink*/--dark*/--code/--vt-*` 쿨·순백, accent·콜아웃은 유지), `:root:has(#ahf-dark:checked)`=다크 토큰(37개)+표면 보정. 토큰을 쓰는 모든 컴포넌트가 자동 추종. `!important` 0.
 - **기본=라이트(크림).** 라디오 마크업이 없으면 그대로 라이트. (OS 자동 다크가 필요하면 `#ahf-dark`에 `@media(prefers-color-scheme:dark)` 한 줄 추가 가능 — 기본은 명시 선택.)

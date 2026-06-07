@@ -69,6 +69,8 @@
 | article_html | **02 Visual Design Directions**, **10 SVG Figure Sheet**, 04, 07, 09, 13, 14 | 시안 비교·일러스트·발표·흐름 |
 | education_html | **14 Feature Explainer**, **15 Concept Explainer**, 06, 07, 08, 09, 10, 13, 20 | 학습/탭 코드·개념·인터랙션 설명·UX 흐름 |
 | github_analysis | **11 Weekly Status**, **04 Module Map**, **14 Feature Explainer**, **16 Implementation Plan**, 17, 18 | 저장소 활동/건강도, 코드 구조, quickstart, 후속 실행, PR·이슈 신호 |
+| youtube_analysis | **11 Weekly Status**, **13 Annotated Flowchart**, **14 Feature Explainer**, **16 Implementation Plan**, 18 | 영상 메타/댓글 신호, 타임스탬프 흐름, 콘텐츠 기회, 제작 실행 |
+| manual_analysis | **04 Module Map**, **13 Annotated Flowchart**, **16 Implementation Plan**, **18 Ticket Triage Board**, 11, 14 | 문서 구조, 절차, 운영 계획, 문제/위험 트리아지 |
 | beginner_html | **15 Concept Explainer**, 10, 13 | 개념 교육·개념도·절차 |
 | blog_writer | **17 PR Writeup** | 개발 회고 |
 | seo_dashboard | **11 Weekly Status** | 지표 대시보드 |
@@ -92,21 +94,21 @@ GitHub 분석은 위젯을 과삽입하지 않는다. `wg-11`로 최근 활동·
 | 01 | Three Code Approaches | comparison_html, expert_html |
 | 02 | Visual Design Directions | article_html / landing_brief_html, platform_blog, reference_html |
 | 03 | Annotated Pull Request | skill_audit, expert_html, reference_html |
-| 04 | Module Map | github_analysis, expert_html, reference_html, article_html |
+| 04 | Module Map | manual_analysis, github_analysis, expert_html, reference_html, article_html |
 | 05 | Living Design System | reference_html, landing_brief_html |
 | 06 | Component Variants | reference_html, education_html |
 | 07 | Animation Sandbox | reference_html / education_html, article_html |
 | 08 | Clickable Flow | landing_brief_html, education_html |
 | 09 | Arrow-Key Slide Deck | article_html / landing_brief_html, education_html |
 | 10 | SVG Figure Sheet | article_html, beginner_html, education_html |
-| 11 | Weekly Status | github_analysis, seo_dashboard, expert_html, checklist_playbook |
+| 11 | Weekly Status | youtube_analysis, github_analysis, manual_analysis, seo_dashboard, expert_html, checklist_playbook |
 | 12 | Incident Timeline | case_study_html, expert_html |
-| 13 | Annotated Flowchart | education_html / beginner_html, checklist_playbook, expert_html, article_html |
-| 14 | Feature Explainer | github_analysis, education_html, reference_html, article_html |
+| 13 | Annotated Flowchart | manual_analysis, youtube_analysis, education_html / beginner_html, checklist_playbook, expert_html, article_html |
+| 14 | Feature Explainer | youtube_analysis, manual_analysis, github_analysis, education_html, reference_html, article_html |
 | 15 | Concept Explainer | beginner_html, education_html, reference_html |
-| 16 | Implementation Plan | github_analysis, expert_html, landing_brief_html, checklist_playbook |
+| 16 | Implementation Plan | manual_analysis, youtube_analysis, github_analysis, expert_html, landing_brief_html, checklist_playbook |
 | 17 | PR Writeup | github_analysis, skill_audit, blog_writer, expert_html |
-| 18 | Ticket Triage Board | github_analysis, checklist_playbook, expert_html |
+| 18 | Ticket Triage Board | manual_analysis, youtube_analysis, github_analysis, checklist_playbook, expert_html |
 | 19 | Feature Flag Editor | checklist_playbook, reference_html, expert_html |
 | 20 | Prompt Tuner | reference_html, education_html |
 

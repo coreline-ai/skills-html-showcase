@@ -117,3 +117,22 @@
 - **R4 — 표 모바일 안전.** components.css `table{min-width:420px}` 때문에 모든 `<table>`은 `.table-scroll`(overflow-x:auto) 래핑 또는 `.mobile-card-table`/`.final-matrix` 카드 변환으로 모바일 가로 넘침을 막아야 한다. (자동: `table_no_mobile_safe_wrapper`)
 - **R5 — 와이드 리포트 본문 폭 상한.** `.page-wide`의 분석 폭 레이아웃(expert/compare/seo/platform/landing/case/checklist/reference/audit/skill-audit)은 본문 `p/ul/ol`을 60rem로 넓힌다(`.page-wide.layout-*>section>p{max-width:60rem}`). 기본 46rem만 상속하면 와이드 섹션에서 본문이 1/3만 차서 깨져 보인다. (자동: `wide_layout_prose_cap_missing`)
 - **md-excerpt — SKILL.md/마크다운/코드 발췌 표기.** "개선본 발췌 · SKILL.md" 같은 원문/마크다운 발췌는 `.prompt-box`의 `<p>`+`<br>` 텍스트가 아니라 `md-excerpt` 패턴(`<figure class="md-excerpt"><figcaption class="case-label">…</figcaption><pre class="code"><code>…</code></pre></figure>`)으로, `##`·`-`·`name:` 같은 마크다운 문법이 실제 소스처럼 코드 블럭에 보이게 한다. 실제 줄바꿈으로 작성한다. (skill-audit-system.md "발췌·예시 출력 표기 규칙" 참조)
+
+
+## YouTube / Manual Mode Gates
+
+### youtube_analysis
+
+- `layout-youtube`가 있고 `.layout-youtube>section` 카드 셸 CSS가 인라인되어야 한다.
+- `Video Evidence Map` 또는 한국어 동등 섹션이 있어야 한다.
+- `Source Limits` 또는 출처 한계/확인 필요 섹션이 있어야 한다.
+- `FACT`/`INFERENCE`/`UNKNOWN` 중 최소 2종 이상을 표시한다.
+- `observed_at` 또는 “분석 기준 시각”을 표시한다.
+- YouTube iframe/embed/autoplay 링크는 금지한다.
+
+### manual_analysis
+
+- `layout-manual`이 있고 `.layout-manual>section` 카드 셸 CSS가 인라인되어야 한다.
+- `Source & Version Snapshot`, `Reader Role Router`, `Prerequisites/Safety`, `Troubleshooting`, `Source Limits` 또는 한국어 동등 섹션이 있어야 한다.
+- 누락·stale·모순 지적에는 원문 근거/위치가 필요하며, 근거가 없으면 `확인 불가`로 쓴다.
+- 입력에 없는 역할 카드는 만들지 않는다.

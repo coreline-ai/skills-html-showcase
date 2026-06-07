@@ -1,5 +1,44 @@
 # Changelog — adaptive-html-final
 
+## v5.7.0 (2026-06-07) — YouTube Analysis + Manual Analysis 15·16번째 모드
+
+기존 v5.6.0 QA 보정(core-insight 인용 폰트·risk-* 카드 간격)을 포함한 상태에서 `adaptive-html-final`을 16모드로 확장했다.
+
+- **신규 모드 2종**: `youtube_analysis`(YouTube URL/자막/댓글 → Video Evidence Map, FACT/INFERENCE/UNKNOWN, 댓글 신호, Claim Risk, 재사용 전략)과 `manual_analysis`(매뉴얼 원문 → Source & Version, Reader Role Router, First Success, Safety, Troubleshooting, Runbook) 추가.
+- **레이아웃/자산**: `assets/layouts/youtube-analysis.html`, `assets/layouts/manual-analysis.html`, `.layout-youtube`, `.layout-manual`, wide prose-cap 셀렉터 추가.
+- **전략/프롬프트**: `references/youtube-analysis-system.md`, `references/manual-analysis-system.md`, `recipes/youtube-analysis.prompt.md`, `recipes/manual-analysis.prompt.md` 추가.
+- **검증기**: `validate_output.py`에 YouTube no-embed/evidence/source-limits/observed_at 계약과 Manual role/safety/troubleshooting/source-limits 계약 추가. governance 36/36.
+- **예제/산출물**: `examples/15_youtube_vibecoding_gap.html`, `examples/16_manual_product_runbook.html`, output smoke 2종 추가. baseline 4종과 examples 01~16/index는 v5.7.0 자산·manifest·integrity로 재동기화.
+
+## v5.6.0 (2026-06-06) — core-insight 인용 폰트·risk-* 카드 간격(완성본 정합)
+
+final_20260604(완성본) 패턴에 맞춘 2건 QA 수정.
+
+- **core-insight 인용 폰트**: `.core-insight blockquote` `var(--serif-kr)`(Noto Serif KR) → **`var(--serif)`**(Pretendard) — 완성본과 동일한 인용 모양으로 통일. editorial-patterns.css(CONDITIONAL).
+- **risk-\* 우선순위 카드 간격**: `.risk-high/.risk-mid/.risk-low`를 완성본 `.access-check-rule` 방식으로 — `border-left:5px`(라인만) → **자체 카드(`border:1px`+`border-left:4px`+`padding:14px 16px`)**. host(decision-card 유무) 무관하게 좌측 색 라인과 항상 동일 간격. layouts.css(CORE) → 코어 해시 재산정·베이스라인 4종 재동기화.
+
+## v5.5.9 (2026-06-06) — 모바일 표 카드화(#4 정석)
+
+4열 이상 표 42개(examples 14모드)를 `.mobile-card-table` + 헤더 기반 `data-label`로 retrofit. ≤760px에서 thead 숨김·행→카드 전환으로 우측 컬럼 잘림 완전 해소. 스킬 CSS(.mobile-card-table)는 기존, 마크업만 정합. 코어 불변 → 베이스라인 영향 없음.
+
+## v5.5.8 (2026-06-06) — col-list 다단 수정(#6)
+
+`<div class="col-list"><ul>`(바깥 div에 클래스 → grid 미적용) → 정본 `<ul class="col-list">`로 정정(examples 09·10). col-list를 문장 항목에도 자연스럽게: `minmax(170px)→minmax(min(100%,230px))`, 모바일 1열. editorial-patterns.css(CONDITIONAL) 변경 → 베이스라인 재동기화.
+
+## v5.5.7 (2026-06-06) — 레이아웃 QA 수정(캡처 기반)
+
+실제 예제 캡처 QA로 발견한 레이아웃 문제 수정.
+
+- **#2 expert decision-grid**: `.layout-expert .decision-grid:not(section)` → `:not(section)` 제거. `<section class="decision-grid">`도 3열 반응형 grid(세로 적층 회귀 해소, github 패턴과 일치).
+- **#3 blog 번호 중복**: `h2:first-child:has(.num)::before{content:none}` — `.num`(빨간 원) 있으면 layout-blog 자동 카운터(회색 원) 숨김(이중 번호 제거).
+- **#7 github 좌측 강조선**: 전 섹션 `border-left:4px accent` 반복 제거 → `.github-verdict`(한 줄 결론) 한 곳만(경고 리포트 느낌 해소).
+- **#4 모바일 표**: ≤520px에서 일반 표 `min-width:0`(우측 컬럼 잘림 착시 제거). 중요·다열 표는 `.mobile-card-table` 권장.
+- **테마바**: box-shadow `0 6px18 .18`→`0 3px10 .10`(상단 그림자 과함 완화).
+- examples 14모드 전부 8테마 셸로 재생성(테마바 계약 통일), 09 reference 목차를 `.toc-map`+`.toc-pills` 칩 구조로 교정.
+
+### 영향
+- layouts.css·components.css(코어) 수정 → 코어 해시 리베이스, 베이스라인 4종 전체 재동기화. validate 4/4 OK, governance 32/32.
+
 ## v5.5.6 (2026-06-06) — 테마 라벨 개선
 
 의미 불명확한 숫자 라벨을 색 성격 기반으로 변경: **라이트2→그레이**(쿨 뉴트럴), **다크2→로즈**(웜 로즈/모브). id(`ahf-light2`/`ahf-dark2`)는 토큰·게이트 안정성을 위해 유지하고 보이는 라벨만 변경.

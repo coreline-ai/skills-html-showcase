@@ -1,6 +1,6 @@
 {
   "name": "adaptive-html-final",
-  "version": "5.5.6",
+  "version": "5.7.0",
   "language": "ko",
   "entry": "SKILL.md",
   "assets": [
@@ -28,16 +28,21 @@
     "model": "token-only :root override · CSS-only radios (:has)",
     "themes": [
       "light(크림 기본)",
+      "light2(그레이)",
       "white(순백)",
-      "dark(proper-black)"
+      "dark(proper-black)",
+      "dark2(로즈)",
+      "blue(딥 네이비)",
+      "skyblue(라이트 블루)",
+      "sepia(종이빛)"
     ],
-    "switcher": "라디오 name=ahf-theme: #ahf-light(checked)/#ahf-white/#ahf-dark + .ahf-themebar 세그먼트(input:checked + label=accent). 마크업 없으면 라이트 고정",
+    "switcher": "라디오 name=ahf-theme: #ahf-light(checked)/#ahf-light2/#ahf-white/#ahf-dark/#ahf-dark2/#ahf-blue/#ahf-skyblue/#ahf-sepia + .ahf-themebar 4x2 세그먼트. 마크업 없으면 라이트 고정",
     "default": "light",
     "hash_safe": true,
     "no_js": true,
     "important": 0,
     "reference": "references/editorial-design-system.md",
-    "note": "v5.2.0. 코어 CSS 무수정(라이트 byte-안정). white=neutral 토큰만 순백(accent·콜아웃 유지), dark=37토큰+표면 보정(prompt-box/code/th/status-pill/timeline-card/serp-url/core-insight/try-tag/vt-pill + wf-board 라이트 컨텍스트)."
+    "note": "v5.7.0. CSS-only 8테마(light/light2/white/dark/dark2/blue/skyblue/sepia). 코어 CSS 해시에는 포함하지 않는 token override이며, theme switcher는 base.html 라디오 계약으로 제공한다."
   },
   "body_icons": {
     "css": "assets/body-icons.css",
@@ -93,6 +98,8 @@
   "layouts": [
     "beginner-learning.html",
     "github-analysis.html",
+    "youtube-analysis.html",
+    "manual-analysis.html",
     "expert-report.html",
     "magazine-article.html",
     "course-module.html",
@@ -108,10 +115,10 @@
   ],
   "examples": {
     "dir": "examples/",
-    "count": 14,
+    "count": 16,
     "index": "examples/index.html",
-    "purpose": "14모드 풀 스킬급 참조 예제 — 실제 코어 CSS 인라인·3-테마 스위처·body-icon·editorial 컴포넌트로 생성된 자기완결 HTML(무 JS). 모드별 시그니처 구조 확인용. 정식 캐노니컬 산출물은 output/ 참조.",
-    "fidelity": "skill-core-inlined + 3-theme(ahf-theme) + body-icons + editorial components",
+    "purpose": "16모드 풀 스킬급 참조 예제 — 실제 코어 CSS 인라인·8-테마 스위처·body-icon·editorial/vt/wg 컴포넌트로 생성된 자기완결 HTML(무 JS). 모드별 시그니처 구조 확인용.",
+    "fidelity": "skill-core-inlined + 8-theme(ahf-theme) + body-icons + editorial components + vt/wg auto profile",
     "files": [
       "01_beginner_passkey_login.html",
       "02_expert_llm_gateway_report.html",
@@ -127,9 +134,11 @@
       "12_landing_pagercalm_brief.html",
       "13_checklist_data_migration.html",
       "14_github_analysis_fastapi_starter.html",
+      "15_youtube_vibecoding_gap.html",
+      "16_manual_product_runbook.html",
       "index.html"
     ],
-    "version": "5.4.3"
+    "version": "5.7.0"
   },
   "modes": [
     {
@@ -151,6 +160,14 @@
     {
       "id": "github_analysis",
       "layout": "github-analysis.html"
+    },
+    {
+      "id": "youtube_analysis",
+      "layout": "youtube-analysis.html"
+    },
+    {
+      "id": "manual_analysis",
+      "layout": "manual-analysis.html"
     },
     {
       "id": "expert_html",
@@ -204,6 +221,7 @@
     "adaptive-html-blog-writer-v2"
   ],
   "changes": [
+    "v5.7.0: youtube_analysis(15) + manual_analysis(16) 신규 모드 추가 — youtube-analysis/manual-analysis 레이아웃, references/recipes, 16모드 라우터·manifest·AGENTS 동기화, 전용 validate_output 계약 게이트(youtube/manual), 8테마 theme_system 정합화.",
     "v5.4.3: final_20260604 검수 템플릿 P0 4종 승격 — wg-11 상태판(KPI/진척/완료·진행·리스크), wg-16 거버넌스 운영 팩(마일스톤/플로우/리스크), seo_dashboard SERP premium(`serp-*`), platform_blog transform/output cards(`platform-split`/`platform-output-*`). final 전용 prefix는 사용하지 않고 정본 namespace로 토큰화.",
     "v5.3.0: github_analysis 14번째 모드 추가 — GitHub 저장소 URL/owner/repo를 사용자 질문 중심 HTML 분석 리포트로 변환하는 레이아웃·라우터·문서 계약 추가.",
     "blog-seo-system / writing-system / platform-system / editorial-design-system references를 blog-writer 상세본으로 흡수",

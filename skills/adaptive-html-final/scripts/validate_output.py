@@ -423,6 +423,51 @@ def github_analysis_visual_contract_gate(text: str, style: str) -> list:
     return issues
 
 
+def youtube_analysis_contract_gate(text: str, style: str) -> list:
+    """YouTube-analysis outputs must expose evidence, limits, and no-embed contracts."""
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-youtube\b', body_only, re.I):
+        return []
+    issues = []
+    if '.layout-youtube>section' not in style.replace(' ', ''):
+        issues.append({'type': 'youtube_section_card_css_missing'})
+    if re.search(r'<iframe\b|youtube\.com/embed|youtu\.be/[^\s"\']+[?&]autoplay', body_only, re.I):
+        issues.append({'type': 'youtube_embed_or_autoplay_forbidden'})
+    if not re.search(r'Video Evidence Map|영상\s*근거|근거\s*지도|타임스탬프', body_only, re.I):
+        issues.append({'type': 'youtube_evidence_map_missing'})
+    if not re.search(r'Source Limits|출처\s*한계|확인\s*필요|확인\s*불가', body_only, re.I):
+        issues.append({'type': 'youtube_source_limits_missing'})
+    found = sum(1 for pat in (r'\bFACT\b|사실', r'\bINFERENCE\b|추론', r'\bUNKNOWN\b|확인\s*불가|확인\s*필요') if re.search(pat, body_only, re.I))
+    if found < 2:
+        issues.append({'type': 'youtube_fact_inference_unknown_labels_missing', 'count': found})
+    if not re.search(r'observed_at|분석\s*기준\s*시각|분석\s*기준일', body_only, re.I):
+        issues.append({'type': 'youtube_observed_at_missing'})
+    return issues
+
+
+def manual_analysis_contract_gate(text: str, style: str) -> list:
+    """Manual-analysis outputs must be role-based, executable, and source-bounded."""
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-manual\b', body_only, re.I):
+        return []
+    issues = []
+    if '.layout-manual>section' not in style.replace(' ', ''):
+        issues.append({'type': 'manual_section_card_css_missing'})
+    required = [
+        ('manual_source_version_missing', r'Source\s*&\s*Version|출처.*버전|버전.*출처|source snapshot'),
+        ('manual_role_router_missing', r'Reader\s*Role\s*Router|역할별|독자\s*경로|role router'),
+        ('manual_prerequisites_safety_missing', r'Prerequisites|Safety|사전조건|안전|권한|위험'),
+        ('manual_troubleshooting_missing', r'Troubleshooting|트러블슈팅|문제\s*해결|증상|원인|진단'),
+        ('manual_source_limits_missing', r'Source\s*Limits|출처\s*한계|확인\s*불가|UNKNOWN'),
+    ]
+    for typ, pat in required:
+        if not re.search(pat, body_only, re.I):
+            issues.append({'type': typ})
+    if re.search(r'\bstale\b|오래된|모순', body_only, re.I) and not re.search(r'근거|원문|위치|확인\s*불가', body_only, re.I):
+        issues.append({'type': 'manual_audit_claim_without_source'})
+    return issues
+
+
 def _inner_html(text: str, open_end: int, tag: str) -> str:
     """Inner HTML of the element whose opening tag ends at open_end, by balancing nested
     <tag>/</tag>. Falls back to a bounded window if the tag never closes (malformed)."""
@@ -629,6 +674,12 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for gh_issue in github_analysis_visual_contract_gate(text, style):
             gh_issue['page'] = rel
             issues.append(gh_issue)
+        for yt_issue in youtube_analysis_contract_gate(text, style):
+            yt_issue['page'] = rel
+            issues.append(yt_issue)
+        for man_issue in manual_analysis_contract_gate(text, style):
+            man_issue['page'] = rel
+            issues.append(man_issue)
         for ri_issue in role_img_buries_text_gate(text):
             ri_issue['page'] = rel
             issues.append(ri_issue)
@@ -744,7 +795,7 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
                                'detail': 'table{min-width:420px}이라 390px에서 넘침. .table-scroll로 감싸거나 반응형 표(mobile-card/final-matrix) 사용.'})
                 break
         # R5: wide-report layouts must carry the prose width override (else body prose is capped at ~2/3).
-        wide = re.search(r'class=["\'][^"\']*\blayout-(expert|github|compare|seo|platform|landing|case|checklist|reference|audit|skill-audit)\b', text)
+        wide = re.search(r'class=["\'][^"\']*\blayout-(expert|github|youtube|manual|compare|seo|platform|landing|case|checklist|reference|audit|skill-audit)\b', text)
         if wide and '.page-wide>section>p' in style:
             if 'max-width:60rem' not in style.replace(' ', ''):
                 issues.append({'page': rel, 'type': 'wide_layout_prose_cap_missing',

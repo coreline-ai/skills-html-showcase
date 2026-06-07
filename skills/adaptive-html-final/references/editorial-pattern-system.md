@@ -1,6 +1,6 @@
 # Editorial Pattern System
 
-현행 14개 모드와 별개로 새 모드를 늘리지 않고, **필요한 섹션에 선택 삽입하는 작은 본문 구조 패턴 8종**이다. 큰 SVG 시스템이 아니라 본문 흐름에 붙는 카드·타임라인·콜아웃·마크다운 발췌·접근성 체크리스트 중심이며, 외부/동작 JS 0, 스킬 디자인 토큰 + body icon(`bi-`)을 쓴다.
+현행 16개 모드와 별개로 새 모드를 늘리지 않고, **필요한 섹션에 선택 삽입하는 작은 본문 구조 패턴 8종**이다. 큰 SVG 시스템이 아니라 본문 흐름에 붙는 카드·타임라인·콜아웃·마크다운 발췌·접근성 체크리스트 중심이며, 외부/동작 JS 0, 스킬 디자인 토큰 + body icon(`bi-`)을 쓴다.
 
 - **자산**: `assets/editorial-patterns.css`(패턴 CSS) + `assets/editorial-pattern-templates/01..08.html`(삽입 골격) + body icon(`assets/body-icons.css`)
 - **프로파일 무관**: widget/diagram/auto 어디서나 사용(본문 구조 보조). 조건부 인라인(`{{EDITORIAL_PATTERNS_CSS}}` 슬롯).
@@ -60,7 +60,7 @@ SKILL.md·마크다운·코드 원문 발췌는 `.prompt-box`(텍스트 인용)�
 - **`.source-preserve-static`** — `source-preserve`의 **접기 없는 정적 변형**(`<details>` 대신 `<div class="source-preserve source-preserve-static">` + `.source-preserve-title`(div) + `.source-body`, `role="group"`/`aria-labelledby`). 무 JS.
 - **`.core-insight--neutral`** — `core-insight`의 그라데이션 없는 중립 변형. **베어 `.core-insight`를 덮어쓰지 않는다**(opt-in). blockquote는 `var(--sans)`.
 - **before/after 강조** — `.ba-emphasis-line`(강조 문장) + `.ba-bullet`(장식 마커, `aria-hidden="true"`). `.ba-col.after .ba-bullet`는 accent, 기본은 `--ink-mute`(토큰화, warm 리터럴 미사용).
-- **`.toc-map`(템플릿 목차 chip-nav)** — 섹션 목차를 **번호 pill이 한 줄에서 wrap 되는 chip-row**로 보여주는 정본 목차 카드(`final_20260604`의 `imported-toc-*` 데모를 정본 이름으로 승격). 리스트형 `.toc`(components.css)와 별개의 opt-in 컴포넌트로, 항목이 6개 이상이거나 가로로 훑게 하고 싶을 때 쓴다. 번호 배지는 `--accent-soft`/`--accent-2` 토큰으로 3테마 자동 적응. 마크업:
+- **`.toc-map`(템플릿 목차 chip-nav)** — 섹션 목차를 **번호 pill이 한 줄에서 wrap 되는 chip-row**로 보여주는 정본 목차 카드(`final_20260604`의 `imported-toc-*` 데모를 정본 이름으로 승격). 리스트형 `.toc`(components.css)와 별개의 opt-in 컴포넌트로, 항목이 6개 이상이거나 가로로 훑게 하고 싶을 때 쓴다. 번호 배지는 `--accent-soft`/`--accent-2` 토큰으로 8테마 자동 적응. 마크업:
   ```html
   <section class="toc-map" aria-labelledby="toc-map-title">
     <div class="label" id="toc-map-title">템플릿 목차</div>

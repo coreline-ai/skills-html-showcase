@@ -37,7 +37,7 @@
 :root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .wf-board{--ink:#242421;--ink-soft:#66584c;--ink-mute:#66584c;--vt-ink:#242421;--vt-muted:#66584c;--card:#fffaf4;--line:#ead8c7;--accent-2:#b72d38;--good-label-ink:#1f6f4e;--danger-label-ink:#c62433;--accent:#e63946;--wf-warm:#c2560f;--wf-warm2:#d9742a}
 
 /* ===== 테마 스위처 — 정형화 버튼 그리드(라디오 8: 4열 균일폭 4+4, 라이트·그레이·화이트·다크·로즈·블루·스카이·세피아) ===== */
-.ahf-themebar{position:fixed;top:14px;right:16px;z-index:600;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:276px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:5px;box-shadow:0 6px 18px rgba(0,0,0,.18);margin:0}
+.ahf-themebar{position:fixed;top:14px;right:16px;z-index:600;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:276px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:5px;box-shadow:0 3px 10px rgba(0,0,0,.10);margin:0}
 .ahf-themebar input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
 .ahf-themebar label{display:flex;align-items:center;justify-content:center;min-height:30px;padding:5px 4px;border-radius:9px;font-size:12px;font-weight:700;color:var(--ink-mute);cursor:pointer;white-space:nowrap;text-align:center;transition:background .15s,color .15s}
 .ahf-themebar label:hover{background:var(--accent-soft);color:var(--ink)}
