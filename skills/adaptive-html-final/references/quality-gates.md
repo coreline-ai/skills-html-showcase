@@ -51,6 +51,11 @@
 - 제목은 구체적이어야 한다.
 - 첫 문단은 독자에게 얻을 가치를 알려야 한다.
 - 마지막에는 다음 행동 또는 체크리스트가 있어야 한다.
+- 마지막 결론은 “이것은 예제 문서/모드 예시” 설명이 아니라 해당 주제의 실제 판정·권고·다음 행동이어야 한다.
+- `/tmp` 임시 스크립트나 일반 루프로 만든 `mini-card`/`col-list` 반복 문서는 실패다. helper script를 쓰더라도 repo 안의 base.html·layout 파일·vt/wg 템플릿을 실제로 읽어 placeholder를 채워야 한다.
+- 선택된 layout 파일의 핵심 정보 구조가 본문에 보여야 한다. `layout-*` 클래스만 붙이고 임의 섹션을 나열하면 실패다.
+- 8개 이상 섹션 문서에서 `.mini-card`/`.col-list`가 주 구조를 독점하면 실패다. 표·vt-다이어그램·wg-위젯·원문 발췌·체크리스트·의사결정 구조를 섹션 목적에 맞게 섞는다.
+- “Generated example”, “전문 예제”, “예제 문서”, “기준 1/2/3”, “placeholder/TBD” 같은 생성 잔여 문구는 실패다.
 - 전문가 리포트는 요약 카드 수준을 넘어 운영모델/RACI, 리스크 통제, 로드맵, 검증 증빙까지 포함해야 한다.
 - 전문가 리포트의 핵심 표/매트릭스는 특별한 이유가 없으면 5개 안팎 이상의 항목을 포함한다.
 - 출처는 본문 흐름을 방해하지 않게 `.source-note`와 source hub로 분리한다.
@@ -59,6 +64,18 @@
 - SEO 결과물은 title/meta/tag/final set을 포함한다.
 - platform 결과물은 플랫폼별 차이를 실제 발행 관점에서 분리한다.
 - platform 변환 전략은 `platform-split`/`platform-route-card`/`platform-output-card` 정본 구조를 사용한다. `platform-transform-*`, `platform-conversion-*`, `platform-branch-*`, `platform-title-*`, `platform-mini-*`는 출력 금지다.
+
+## Skill Execution Fidelity Gate
+
+`validate_output.py OK`는 필요조건이지 충분조건이 아니다. 다음 항목은 산출물 완료 전 수동·보조 자동 검수로 반드시 확인한다.
+
+- **Layout-first**: `assets/layouts/<layout>.html`의 placeholder를 먼저 채우고, 그 다음 필요한 추가 섹션을 붙인다. 처음부터 자유형 `<main>`을 합성하지 않는다.
+- **Mode signature**: 각 모드의 핵심 질문이 첫 2~3섹션 안에 보인다. 예: GitHub 분석은 “살아 있는 프로젝트인가/채택해도 되는가”, SEO는 “검색 의도와 SERP 약속”, 교육은 “학습목표→실습→퀴즈→정답”.
+- **Reference baseline**: 같은 모드의 `examples/*.html` 또는 사용자가 지정한 정답지보다 헤더·목차·테마바·섹션 카드 밀도·결론 품질이 후퇴하면 실패다.
+- **Template diversity**: vt/wg 템플릿은 장식 삽입이 아니라 정보 구조에 맞아야 한다. 같은 카드 그리드를 5회 이상 반복해 정보 구조를 대체하지 않는다.
+- **No example voice**: 산출물 내부에서 “예제”, “샘플”, “모드 시연”을 자기 설명으로 쓰지 않는다. 필요한 경우 footer/metadata에만 생성 정보를 둔다.
+- **Browser spot check**: 제출 전 가능하면 1280px와 390px 캡처를 확인한다. validator 통과 후에도 시각적으로 기존 검수본보다 낮으면 재작성한다.
+- **보조 자동 검사**: 전문/데모/벤치마크 산출물은 `scripts/quality_contract_check.py <output_dir>`를 실행해 placeholder 문구와 반복 구조를 먼저 걸러낸다.
 
 ## HTML Gate
 

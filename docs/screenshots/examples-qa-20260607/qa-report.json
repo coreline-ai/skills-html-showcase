@@ -1,0 +1,1081 @@
+[
+ {
+  "file": "01_beginner_passkey_login.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 7994,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [
+     "B.@10.5"
+    ],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 11171,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [
+     "B.@10.5"
+    ],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "02_expert_llm_gateway_report.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 6051,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 15,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 9375,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 15,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "03_article_side_project_signal.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 5684,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 7788,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "04_education_git_rebase_workshop.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 9333,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 12289,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "05_blog_deepwork_4day_retro.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 5645,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": null,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 8336,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": null,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "06_seo_prompt_engineering_dashboard.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 6301,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 9580,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "07_platform_tech_retro_adaptation.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 8327,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [
+     "SPAN.platform-kicker@10.5"
+    ],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 12832,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [
+     "SPAN.platform-kicker@10.5"
+    ],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "08_skill_audit_codereview_bot.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 6657,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 9750,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     },
+     {
+      "el": "TABLE.table",
+      "right": 460,
+      "left": 39
+     },
+     {
+      "el": "CAPTION.",
+      "right": 460,
+      "left": 39
+     },
+     {
+      "el": "THEAD.",
+      "right": 459,
+      "left": 40
+     },
+     {
+      "el": "TR.",
+      "right": 459,
+      "left": 40
+     },
+     {
+      "el": "TH.",
+      "right": 459,
+      "left": 389
+     },
+     {
+      "el": "TBODY.",
+      "right": 459,
+      "left": 40
+     },
+     {
+      "el": "TD.",
+      "right": 459,
+      "left": 389
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "09_reference_regex.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 9575,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 12740,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "10_comparison_message_queue.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 6212,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 9806,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     },
+     {
+      "el": "TABLE.table",
+      "right": 446,
+      "left": 39
+     },
+     {
+      "el": "CAPTION.",
+      "right": 446,
+      "left": 39
+     },
+     {
+      "el": "THEAD.",
+      "right": 446,
+      "left": 40
+     },
+     {
+      "el": "TR.",
+      "right": 446,
+      "left": 40
+     },
+     {
+      "el": "TH.",
+      "right": 446,
+      "left": 318
+     },
+     {
+      "el": "TBODY.",
+      "right": 446,
+      "left": 40
+     },
+     {
+      "el": "TD.",
+      "right": 446,
+      "left": 318
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "11_case_study_search_index_outage.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 8683,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 13123,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     },
+     {
+      "el": "TABLE.",
+      "right": 394,
+      "left": 39
+     },
+     {
+      "el": "CAPTION.",
+      "right": 394,
+      "left": 39
+     },
+     {
+      "el": "THEAD.",
+      "right": 394,
+      "left": 40
+     },
+     {
+      "el": "TR.",
+      "right": 394,
+      "left": 40
+     },
+     {
+      "el": "TH.",
+      "right": 394,
+      "left": 317
+     },
+     {
+      "el": "TBODY.",
+      "right": 394,
+      "left": 40
+     },
+     {
+      "el": "TD.",
+      "right": 394,
+      "left": 317
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "12_landing_pagercalm_brief.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 6159,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 9237,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "13_checklist_data_migration.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 5826,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 15,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 9594,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     },
+     {
+      "el": "CODE.",
+      "right": 423,
+      "left": 57
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 15,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "14_github_analysis_fastapi_starter.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 7588,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [
+     "B.@10.5"
+    ],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 12944,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     },
+     {
+      "el": "TABLE.",
+      "right": 405,
+      "left": 41
+     },
+     {
+      "el": "CAPTION.",
+      "right": 405,
+      "left": 41
+     },
+     {
+      "el": "THEAD.",
+      "right": 404,
+      "left": 42
+     },
+     {
+      "el": "TR.",
+      "right": 404,
+      "left": 42
+     },
+     {
+      "el": "TH.",
+      "right": 404,
+      "left": 313
+     },
+     {
+      "el": "TBODY.",
+      "right": 404,
+      "left": 42
+     },
+     {
+      "el": "TD.",
+      "right": 404,
+      "left": 313
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [
+     "B.@10.5"
+    ],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "15_youtube_vibecoding_gap.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 7047,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [
+     "B.@10.5"
+    ],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 12474,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 16,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [
+     "B.@10.5"
+    ],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ },
+ {
+  "file": "16_manual_product_runbook.html",
+  "viewports": {
+   "desktop": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 7198,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 42,
+     "h2": 29,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [
+     "B.@10.5",
+     "SPAN.wg-13-step@10.0"
+    ],
+    "h1": 42,
+    "clippedCaptions": 0
+   },
+   "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 12439,
+    "hOverflow": false,
+    "overflowEls": [
+     {
+      "el": "A.skip",
+      "right": -910,
+      "left": -999
+     }
+    ],
+    "fonts": {
+     "h1": 27,
+     "h2": 23,
+     "h2sub": 14,
+     "p": 15.5,
+     "li": 13.5,
+     "caption": 13,
+     "figcaption": null,
+     "meta": 12
+    },
+    "tinyFonts": [
+     "B.@10.5",
+     "SPAN.wg-13-step@10.0"
+    ],
+    "h1": 27,
+    "clippedCaptions": 0
+   }
+  }
+ }
+]

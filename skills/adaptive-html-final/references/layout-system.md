@@ -21,6 +21,16 @@
 
 모든 레이아웃은 `source-note`를 마지막에 둘 수 있어야 한다.
 
+## Layout-First Contract
+
+레이아웃은 클래스 이름이 아니라 **정보 구조 계약**이다. 새 산출물을 만들 때는 다음 순서를 지킨다.
+
+1. 선택 모드의 `assets/layouts/<layout>.html`을 먼저 열고, placeholder 목록을 추출한다.
+2. 각 placeholder를 모드별 필수 블록과 연결한다. 연결되지 않은 필수 블록이 있으면 섹션을 새로 만들기 전에 layout mapping을 보강한다.
+3. vt-템플릿과 wg-위젯은 placeholder의 정보 구조를 강화하는 위치에 넣는다. “모든 섹션에 카드 3개” 같은 반복 배치는 레이아웃 사용이 아니다.
+4. 최종 `<main>`에는 선택 layout의 독자 흐름이 남아 있어야 한다. 예: `github_analysis`는 판정→질문 목차→repo identity→quickstart→health→code tour→risk→decision 흐름, `education_html`은 목표→시작 전→개념→예시→실습→퀴즈→정답 흐름이다.
+5. 기존 검수 예제보다 단순한 자유형 섹션 나열로 후퇴하면 실패다. layout 클래스만 맞아도 정보 구조가 다르면 layout fit 0점이다.
+
 ## Layout Safety Notes
 
 - 섹션 간 간격은 `section{margin}`으로 통제한다. `section > h2:first-child`와 카드 컴포넌트 첫 h2/h3는 `margin-top:0`이어야 하며, 카드 안쪽에 큰 빈 상단 여백을 만들지 않는다.

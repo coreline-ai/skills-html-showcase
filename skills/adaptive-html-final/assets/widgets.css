@@ -105,20 +105,20 @@
 .wg-03-jump-link.wg-03-sev-warn{background:var(--hl-yellow);border-color:var(--term-border);color:var(--ink)}
 .wg-03-jump-link.wg-03-sev-info{background:var(--hl-blue);border-color:var(--analogy-border);color:var(--analogy-label-ink)}
 .wg-03-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--space-4);align-items:stretch}
-.wg-03-diff{background:var(--code);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs);align-self:stretch}
+.wg-03-diff{background:var(--card);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs);align-self:stretch}
 .wg-03-row{display:flex;align-items:stretch;position:relative;line-height:1.7;border-left:3px solid transparent}
 .wg-03-ln{flex:0 0 auto;width:38px;text-align:right;padding:0 8px;color:var(--ink-mute);user-select:none;background:var(--card)}
 /* reset skill's generic code{} (light bg/padding/border) so the dark diff shows + code stays visible */
 .wg-03-diff code,.wg-03-code{background:none;border:0;border-radius:0;font-size:inherit}
-.wg-03-code{flex:1;padding:0 10px;white-space:pre;overflow-x:auto;color:#e2e2dc}
-.wg-03-ctx .wg-03-code{color:#bcbcb6}
+.wg-03-code{flex:1;padding:0 10px;white-space:pre;overflow-x:auto;color:var(--ink)}
+.wg-03-ctx .wg-03-code{color:var(--ink-soft)}
 .wg-03-add{background:rgba(63,142,108,.18);border-left-color:var(--good-accent)}
-.wg-03-add .wg-03-code{color:#cfeede}
+.wg-03-add .wg-03-code{color:var(--good-label-ink)}
 .wg-03-del{background:rgba(230,57,70,.16);border-left-color:var(--accent)}
-.wg-03-del .wg-03-code{color:#f5cfcf}
+.wg-03-del .wg-03-code{color:var(--danger-label-ink)}
 .wg-03-sign{display:inline-block;width:1ch;font-weight:700}
-.wg-03-add .wg-03-sign{color:#7fe0b0}
-.wg-03-del .wg-03-sign{color:#ff9a9a}
+.wg-03-add .wg-03-sign{color:var(--good-accent)}
+.wg-03-del .wg-03-sign{color:var(--accent)}
 .wg-03-dot{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;text-decoration:none;color:var(--on-accent);font-family:var(--sans)}
 .wg-03-dot.wg-03-sev-critical{background:var(--accent)}
 .wg-03-dot.wg-03-sev-warn{background:var(--term-accent)}
@@ -164,8 +164,8 @@
 .wg-04-node-entry rect{fill:var(--analogy-bg);stroke:var(--analogy-accent)}
 .wg-04-node-core rect{fill:var(--card);stroke:var(--ink)}
 .wg-04-node-leaf rect{fill:var(--bg);stroke:var(--line)}
-.wg-04-node-crit rect{stroke:var(--accent);stroke-width:3}
-.wg-04-node-crit text{fill:var(--accent-2);font-weight:800}
+.wg-04-node-crit rect{stroke:var(--accent);stroke-width:1.6}
+.wg-04-node-crit text{fill:var(--accent-2);font-weight:600}
 .wg-04-node:hover rect{transform:translateY(-2px)}
 .wg-04-path{margin-top:var(--space-4);background:var(--danger-bg);border:1px solid var(--danger-border);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2) var(--space-3)}
 .wg-04-path-label{font-size:var(--fs-xs);font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);border-radius:999px;padding:3px 10px}
@@ -228,7 +228,7 @@
 .wg-06-cap{caption-side:top;text-align:left;font-size:var(--fs-xs);color:var(--ink-mute);padding:0 0 var(--space-3)}
 .wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-cap,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-rowhead,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet th,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-statetag{color:#fff}
 .wg-06-table th{font-size:var(--fs-xs);font-weight:700;color:var(--ink);text-align:center;padding:var(--space-2);border-bottom:2px solid var(--line)}
-.wg-06-rowhead{text-align:left!important;color:var(--ink-soft);white-space:nowrap}
+.wg-06-rowhead{text-align:left!important;color:var(--ink-soft);white-space:nowrap}.wg-06-table th{background:transparent}
 .wg-06-table td{padding:var(--space-3) var(--space-2);border-bottom:1px dashed var(--line);text-align:center;vertical-align:top}
 .wg-06-stack{display:inline-flex;flex-direction:column;align-items:center;gap:var(--space-2)}
 .wg-06-statetag{font-size:11px;color:var(--ink-mute);font-family:ui-monospace,Menlo,monospace}
@@ -598,7 +598,7 @@
 .wg-15-table th,.wg-15-table td{padding:var(--space-3) var(--space-4);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
 .wg-15-table thead th{background:var(--bg);font-weight:700;color:var(--ink);font-size:var(--fs-xs)}
 .wg-15-table thead th:last-child{color:var(--accent-2)}
-.wg-15-table tbody th{font-weight:600;color:var(--ink-soft)}
+.wg-15-table tbody th{font-weight:600;color:var(--ink-soft);background:transparent}
 .wg-15-table tbody tr:last-child td,.wg-15-table tbody tr:last-child th{border-bottom:none}
 .wg-15-good{color:var(--good-label-ink);font-weight:700}
 .wg-15-good::before{content:"\2191 ";font-weight:700}

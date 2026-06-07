@@ -1,5 +1,23 @@
 # Changelog — adaptive-html-final
 
+## v5.8.1 (2026-06-07) — generated-date 모바일 오버플로 수정(코어)
+
+16모드 예제 전수 캡처 QA(1280/390px, `docs/screenshots/examples-qa-20260607/`)에서 발견된 P0 레이아웃 결함 수정.
+
+- **코어 수정**: `theme.css` `.generated-date`를 `flex:0 0 auto` → `flex:1 1 auto;min-width:0;overflow-wrap:anywhere`. 긴 observed_at/input tier 한 줄이 모바일 390px에서 페이지 가로 스크롤(15번 520px·16번 473px)을 만들던 문제 해소. 긴 헤더 메타를 쓰는 youtube/manual 모드에서 발현.
+- **재동기화**: examples 01~16 + index 17개 파일의 인라인 코어 CSS·`adaptive-html-final-core-css-sha256` 마커를 새 해시로 일괄 갱신(verbatim 검증 통과).
+- **QA 기록**: 폰트 스케일은 16모드 전수 동일(h1 42/27, h2 29/23, p 16/16) 합격. 관찰 항목 — ⑫ p 15px, 마이크로 폰트(<11px) 5곳, 모바일 표 스크롤 컨테이너 처리(⑧⑩⑪⑭)는 수용 범위로 기록.
+
+## v5.8.0 (2026-06-07) — youtube/manual 깊이 계약 + 넓고-얇음 게이트
+
+8mode 데모에서 youtube/manual 출력이 섹션 수는 최다(12~13 h2)인데 본문은 타 모드의 절반(섹션당 ~310자 vs ~835자+)으로 나온 품질 격차의 근본 원인 4종을 수정했다.
+
+- **예제 증보(앵커 교정)**: `examples/15`(2,916→6,101자)·`examples/16`(2,914→5,973자)를 함대 수준으로 재작성. Evidence Map 6행·타임라인 5항목, 레시피 6필드·감사 지적 3건+원문 위치, h2-sub 9개씩, 무 JS 유지.
+- **SKILL.md 정량 하한**: §4 youtube_analysis(Evidence Map 5행+, 타임라인 4항목+, 카드당 2문장+)·manual_analysis(레시피 4개 식별·6필드, 증상 시나리오 3개·4단, 감사 지적 3건+위치) 깊이 하한 명문화. §7 품질 게이트 2줄 추가. “블록 수 충족 ≠ 완료”.
+- **참조 문서 증보**: `references/youtube-analysis-system.md`(57→117줄)·`manual-analysis-system.md`(64→127줄) — 블록별 깊이 하한 표, HTML 구성 계약, 흔한 실패 패턴, source note 계약, 완료 게이트 추가(github-analysis-system 수준 정합).
+- **검증기 게이트 2종**: `mode_section_depth_too_thin`(layout-* 모드 페이지, h2≥6에서 섹션당 가시 텍스트 평균 400자 미만 차단)과 `profile_vt_template_missing`(diagram/auto 프로파일 모드 페이지의 vt- 0개 = §0.6 위반 차단). index/galleries는 제외. governance 51/51.
+- **주의(의도된 breaking)**: 기존 출력 중 vt- 없는 auto 출력과 넓고-얇은 출력은 이제 validate FAILED가 정상이다. 재생성 대상으로 취급한다.
+
 ## v5.7.0 (2026-06-07) — YouTube Analysis + Manual Analysis 15·16번째 모드
 
 기존 v5.6.0 QA 보정(core-insight 인용 폰트·risk-* 카드 간격)을 포함한 상태에서 `adaptive-html-final`을 16모드로 확장했다.
@@ -9,12 +27,13 @@
 - **전략/프롬프트**: `references/youtube-analysis-system.md`, `references/manual-analysis-system.md`, `recipes/youtube-analysis.prompt.md`, `recipes/manual-analysis.prompt.md` 추가.
 - **검증기**: `validate_output.py`에 YouTube no-embed/evidence/source-limits/observed_at 계약과 Manual role/safety/troubleshooting/source-limits 계약 추가. governance 36/36.
 - **예제/산출물**: `examples/15_youtube_vibecoding_gap.html`, `examples/16_manual_product_runbook.html`, output smoke 2종 추가. baseline 4종과 examples 01~16/index는 v5.7.0 자산·manifest·integrity로 재동기화.
+- **품질 계약 보강**: layout-first 실행 계약, 임시 제너레이터 금지, 예제/placeholder 문구 금지, 카드/리스트 반복 방지, 기존 검수 예제 대비 후퇴 금지 규칙을 SKILL.md·quality/eval/layout/test 문서에 추가. 보조 검사 `scripts/quality_contract_check.py`로 “validator OK지만 붕어빵 출력”인 회귀를 사전 차단.
 
 ## v5.6.0 (2026-06-06) — core-insight 인용 폰트·risk-* 카드 간격(완성본 정합)
 
 final_20260604(완성본) 패턴에 맞춘 2건 QA 수정.
 
-- **core-insight 인용 폰트**: `.core-insight blockquote` `var(--serif-kr)`(Noto Serif KR) → **`var(--serif)`**(Pretendard) — 완성본과 동일한 인용 모양으로 통일. editorial-patterns.css(CONDITIONAL).
+- **core-insight 인용 폰트**: `.core-insight blockquote` `var(--serif-kr)`(Noto Serif KR) → **`var(--sans)` + `font-weight:800` + `letter-spacing:-.02em`**(Pretendard 굵게) — final_20260604는 Noto Serif KR 웹폰트를 로드하지 않아 인용구가 굵은 Pretendard 폴백으로 렌더되므로, 그 실제 모습(굵은 산세리프)에 맞춰 통일. editorial-patterns.css(CONDITIONAL).
 - **risk-\* 우선순위 카드 간격**: `.risk-high/.risk-mid/.risk-low`를 완성본 `.access-check-rule` 방식으로 — `border-left:5px`(라인만) → **자체 카드(`border:1px`+`border-left:4px`+`padding:14px 16px`)**. host(decision-card 유무) 무관하게 좌측 색 라인과 항상 동일 간격. layouts.css(CORE) → 코어 해시 재산정·베이스라인 4종 재동기화.
 
 ## v5.5.9 (2026-06-06) — 모바일 표 카드화(#4 정석)
@@ -174,27 +193,20 @@ v5.3.4에서 table을 width:auto로 줄여 빈 공간이 생기던 문제를 되
 ### 영향
 - 코어(components.css) 리베이스 → 베이스라인 4종 v5.3.5 재생성, validate OK.
 
-## v5.3.4 (2026-06-06) — 표 셀 줄바꿈/열폭 정돈
+## v5.3.4 (2026-06-06) — 표 셀 줄바꿈/열폭 정돈 + `.pull-quote--note` 변형 + 검정 `.try` 안 `.hl` 가독성 수정
 
-표 셀의 `overflow-wrap:anywhere`가 auto-layout 최소폭을 ~1글자로 만들어, 공간이 남는데도 긴 토큰(예: `validate_output.py`)이 2줄로 쪼개지고 짧은 열은 과폭이 되던(날것의) 문제 수정.
+> 정정: 원래 동일한 `v5.3.4` 번호로 **두 번** 기록돼 있던 항목을 하나로 병합(릴리스 번호 중복 제거).
+
+표 셀의 `overflow-wrap:anywhere`가 auto-layout 최소폭을 ~1글자로 만들어, 공간이 남는데도 긴 토큰(예: `validate_output.py`)이 2줄로 쪼개지고 짧은 열은 과폭이 되던(날것의) 문제 수정. 더불어 본문 인라인 면책/주석 문구가 editorial pull-quote(세리프 20px italic)로 과하게 잡히던 문제와, 검정 `.try` hero CTA 안에서 `.hl`(노란 언더라인 밴드)이 밝은 본문색과 겹쳐 강조어가 묻히던 문제를 **추가형(additive) 규칙**으로 해결. 기존 `.pull-quote`·`.hl` 규칙은 그대로 두어 전 모드 회귀 0.
 
 ### 변경 (`assets/components.css`)
 - `td,th`를 `overflow-wrap:anywhere` 그룹에서 제외.
 - `th,td`에 `overflow-wrap:break-word;word-break:keep-all` 적용 → 열폭이 내용(가장 긴 단어) 기준으로 잡혀 공간 있으면 단일행, 긴 URL/SHA는 넘칠 때만 분리, 한국어는 어절 단위 줄바꿈.
-
-### 영향
-- 코어(components.css) 리베이스 → 베이스라인 4종 v5.3.4 재생성, validate OK.
-
-## v5.3.4 (2026-06-06) — `.pull-quote--note` 변형 + 검정 `.try` 안 `.hl` 가독성 수정
-
-본문 인라인 면책/주석 문구가 editorial pull-quote(세리프 20px italic)로 과하게 잡히던 문제와, 검정 `.try` hero CTA 안에서 `.hl`(노란 언더라인 밴드)이 밝은 본문색과 겹쳐 강조어가 묻히던 문제를 **추가형(additive) 규칙**으로 해결. 기존 `.pull-quote`·`.hl` 규칙은 그대로 두어 전 모드 회귀 0.
-
-### 변경 (`assets/components.css`, additive)
-- `.pull-quote--note`: 본문 sans(`var(--sans)`)·15px·upright·`--ink-mute` — pull-quote가 아닌 인라인 주석/면책용 compact 변형(opt-in).
-- `.try .hl`: 어두운 `.try` 안에서 언더라인 그라디언트를 솔리드 칩(`background-color:var(--c)`)+`color:var(--ink)`로 전환해 강조어가 선명히 보이도록 보정(`!important` 미사용, `.try .hl` 스코프 한정).
+- `.pull-quote--note`(additive): 본문 sans(`var(--sans)`)·15px·upright·`--ink-mute` — pull-quote가 아닌 인라인 주석/면책용 compact 변형(opt-in).
+- `.try .hl`(additive): 어두운 `.try` 안에서 언더라인 그라디언트를 솔리드 칩(`background-color:var(--c)`)+`color:var(--ink)`로 전환해 강조어가 선명히 보이도록 보정(`!important` 미사용, `.try .hl` 스코프 한정).
 
 ### 영향·검증
-- 코어 해시 리베이스 → 현재 green 출력 베이스라인 전체를 콘텐츠 보존 재동기화(인라인 core CSS·해시 마커·`sources/assets/components.css`·`css-integrity.json`·매니페스트). governance 29/29, validate OK.
+- 코어(components.css) 리베이스 → 베이스라인 4종 v5.3.4 재생성, 인라인 core CSS·해시 마커·`sources/assets/components.css`·`css-integrity.json`·매니페스트 콘텐츠 보존 재동기화. governance 29/29, validate OK.
 
 ## v5.3.3 (2026-06-06) — github_analysis Next Actions를 검정 hero로 복원
 

@@ -13,7 +13,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: 3ac799d7f91b7358d25bbab8272634b897da411072fef8f99227a6935619a049 */
+/* adaptive-html-final-core-css-sha256: ea12b7d8c49888dd72715223326ce213e85e5bce000c6b40fd3d5e10de42797e */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -113,7 +113,7 @@ h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.22;font
 .meta span,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--chip-ink)}
 /* header generated-row + 적용 기준 lens chips (final_20260604, 토큰화 → 다크 자동) */
 .generated-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 0 0;flex-wrap:wrap}
-.generated-date{margin:0;flex:0 0 auto;font-size:13px;color:var(--ink-mute)}
+.generated-date{margin:0;flex:1 1 auto;min-width:0;overflow-wrap:anywhere;font-size:13px;color:var(--ink-mute)}
 .lens-strip{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;margin-left:auto}
 .lens-strip-label{font-size:11px;font-weight:900;letter-spacing:.04em;color:var(--ink-mute);margin-right:2px;line-height:1}
 .lens-chip{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border:1px dashed var(--line);border-radius:8px;background:var(--card);color:var(--chip-ink);font-size:12px;line-height:1;font-weight:700}
@@ -1879,7 +1879,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 <ul class="col-list"><li>공개키 암호</li><li>개인키 / 공개키</li><li>WebAuthn</li><li>FIDO2</li><li>챌린지(challenge)</li><li>서명(signature)</li><li>도메인 바인딩</li><li>생체 잠금 해제</li><li>동기화 패스키</li><li>기기 바운드 패스키</li><li>복구 코드</li><li>2단계 인증(2FA)</li></ul>
 <div class="term"><div class="label">용어</div><span class="word">동기화 패스키 vs 기기 바운드 패스키</span><p class="meaning">동기화 패스키는 같은 계정의 여러 기기로 백업·공유되어 분실에 강하다. 기기 바운드 패스키는 한 기기(또는 보안키)에만 남아 더 엄격하지만, 잃으면 그 키로는 못 들어간다. 편의와 엄격함의 선택이다.</p></div></section>
 
-<section class="try"><div class="label">NEXT ACTION</div><h2><span class="num" aria-hidden="true">7</span>오늘 10분 안에 패스키 직접 켜보기</h2><p>완벽한 이해보다, 실제로 한 번 만들어 “비밀번호 없이 로그인되는” 감각을 느끼는 것이 목표다. 패스키를 지원하는 서비스(메일·계정 설정 등) 하나를 골라 따라 해 보자.</p><ol><li>지원 서비스의 <strong>보안/로그인 설정</strong>에서 “패스키 추가”를 찾는다.</li><li>화면이 지문·얼굴·PIN을 요구하면 진행한다 — 이때 <strong>기기 안에서 열쇠 한 쌍이 생성</strong>된다.</li><li>로그아웃한 뒤 다시 “패스키로 로그인”을 눌러, <strong>비밀번호 없이</strong> 들어가지는지 확인한다.</li><li><strong>복구 경로</strong>를 점검한다: 둘째 기기 등록 또는 동기화가 켜져 있는지 본다.</li><li>잘 되면, 같은 방식으로 메일·결제·클라우드 등 중요한 계정으로 넓혀 간다.</li></ol></section>
+<section class="try"><div class="label">NEXT ACTION</div><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="num" aria-hidden="true">7</span>오늘 10분 안에 패스키 직접 켜보기</h2><p>완벽한 이해보다, 실제로 한 번 만들어 “비밀번호 없이 로그인되는” 감각을 느끼는 것이 목표다. 패스키를 지원하는 서비스(메일·계정 설정 등) 하나를 골라 따라 해 보자.</p><ol><li>지원 서비스의 <strong>보안/로그인 설정</strong>에서 “패스키 추가”를 찾는다.</li><li>화면이 지문·얼굴·PIN을 요구하면 진행한다 — 이때 <strong>기기 안에서 열쇠 한 쌍이 생성</strong>된다.</li><li>로그아웃한 뒤 다시 “패스키로 로그인”을 눌러, <strong>비밀번호 없이</strong> 들어가지는지 확인한다.</li><li><strong>복구 경로</strong>를 점검한다: 둘째 기기 등록 또는 동기화가 켜져 있는지 본다.</li><li>잘 되면, 같은 방식으로 메일·결제·클라우드 등 중요한 계정으로 넓혀 간다.</li></ol></section>
 
 <aside class="source-note"><div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="10" y="7" width="20" height="26" rx="3"/><path class="bi-line" d="M15 14h10M15 20h10M15 26h7"/><path class="bi-accent-line" d="M27 7v8h-8"/></svg></span>Source Note</div><p>adaptive-html-final beginner_html 모드로 작성. WebAuthn/FIDO2의 공개키 암호 개념을 인감·도장 비유와 등록·로그인 흐름으로 풀고, 용어카드·비유·함정·실습·다음 단계의 beginner 레이아웃 시그니처를 따랐다. 서비스별 설정 명칭과 동기화·복구 동작은 플랫폼에 따라 다를 수 있다.</p></aside>
 </main>

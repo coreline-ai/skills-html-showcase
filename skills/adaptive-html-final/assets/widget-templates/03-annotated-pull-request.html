@@ -17,18 +17,18 @@
 .wg-03-jump-link.wg-03-sev-warn{background:var(--hl-yellow);border-color:var(--term-border);color:var(--ink)}
 .wg-03-jump-link.wg-03-sev-info{background:var(--hl-blue);border-color:var(--analogy-border);color:var(--analogy-label-ink)}
 .wg-03-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--space-4);align-items:start}
-.wg-03-diff{background:var(--code);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs)}
+.wg-03-diff{background:var(--card);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs)}
 .wg-03-row{display:flex;align-items:stretch;position:relative;line-height:1.7;border-left:3px solid transparent}
 .wg-03-ln{flex:0 0 auto;width:38px;text-align:right;padding:0 8px;color:var(--ink-mute);user-select:none;background:var(--card)}
-.wg-03-code{flex:1;padding:0 10px;white-space:pre;overflow-x:auto;color:#e2e2dc}
-.wg-03-ctx .wg-03-code{color:#bcbcb6}
+.wg-03-code{flex:1;padding:0 10px;white-space:pre;overflow-x:auto;color:var(--ink)}
+.wg-03-ctx .wg-03-code{color:var(--ink-soft)}
 .wg-03-add{background:rgba(63,142,108,.18);border-left-color:var(--good-accent)}
-.wg-03-add .wg-03-code{color:#cfeede}
+.wg-03-add .wg-03-code{color:var(--good-label-ink)}
 .wg-03-del{background:rgba(230,57,70,.16);border-left-color:var(--accent)}
-.wg-03-del .wg-03-code{color:#f5cfcf}
+.wg-03-del .wg-03-code{color:var(--danger-label-ink)}
 .wg-03-sign{display:inline-block;width:1ch;font-weight:700}
-.wg-03-add .wg-03-sign{color:#7fe0b0}
-.wg-03-del .wg-03-sign{color:#ff9a9a}
+.wg-03-add .wg-03-sign{color:var(--good-accent)}
+.wg-03-del .wg-03-sign{color:var(--accent)}
 .wg-03-dot{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;text-decoration:none;color:var(--on-accent);font-family:var(--sans)}
 .wg-03-dot.wg-03-sev-critical{background:var(--accent)}
 .wg-03-dot.wg-03-sev-warn{background:var(--term-accent)}

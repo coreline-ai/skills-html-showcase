@@ -7,7 +7,13 @@
 ## 공통 게이트 (전 모드)
 
 - [ ] 요청 목적과 선택 모드가 일치한다.
+- [ ] 선택 모드의 `assets/layouts/<layout>.html` 정보 구조를 실제 본문에 적용했다. `layout-*` 클래스만 붙인 자유형 `<main>`이 아니다.
 - [ ] 선택 모드의 필수 블록이 모두 있다.
+- [ ] 같은 모드의 기존 검수 예제 또는 지정 정답지보다 헤더·목차·섹션 밀도·결론 품질이 후퇴하지 않았다.
+- [ ] `.mini-card`/`.col-list`가 대부분 섹션의 주 구조를 차지하지 않는다. 카드·표·vt·wg·체크리스트·원문 발췌가 섹션 목적별로 섞여 있다.
+- [ ] “Generated example”, “전문 예제”, “예제 문서”, “기준 1/2/3”, `placeholder/TBD` 같은 임시 생성 문구가 없다.
+- [ ] 마지막 결론은 해당 문서의 실제 판단·권고·다음 행동이며, “이것은 예제/샘플” 자기 설명이 아니다.
+- [ ] 전문/데모/벤치마크 산출물은 `scripts/quality_contract_check.py <output_dir>`를 통과했다.
 - [ ] 공통 디자인 토큰을 임의 변경하지 않았다(색/폭/간격 토큰은 theme.css `:root` 기준 유지).
 - [ ] output HTML이 최신 CSS asset 합본을 사용한다. `sources/css-integrity.json`와 인라인 `adaptive-html-final-core-css-sha256` hash가 현재 skill asset hash와 일치한다. (auto)
 - [ ] h1은 하나다. (auto)

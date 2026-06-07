@@ -14,7 +14,7 @@
 
 - **저장소**: `skills-html-showcase` — 다중 모드 한국어 HTML 생성 스킬 `adaptive-html-final`과 그 자산·검증·예제를 담은 쇼케이스 저장소.
 - **스킬**: `adaptive-html-final` — 입력(URL/PDF/텍스트/이미지/메모/기술자료/블로그 초안/SKILL.md/GitHub 저장소 URL/YouTube URL/매뉴얼 텍스트)을 받아 **외부 동작 JS 없는** editorial HTML(학습자료·전문가 리포트·GitHub 저장소 분석·YouTube 분석·매뉴얼 분석·아티클·교육 모듈·블로그·SEO 대시보드·플랫폼 블로그·스킬 감사·레퍼런스·비교·케이스 스터디·랜딩·체크리스트)을 생성한다.
-- **현재 버전**: **5.7.0** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
+- **현재 버전**: **5.8.1** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
 - **스킬 위치(저장소 루트 기준 상대 경로 — 체크아웃 위치 무관 이식성)**: `skills/adaptive-html-final/`
   - 본체: `skills/adaptive-html-final/SKILL.md`
   - 매니페스트: `skills/adaptive-html-final/manifest.json`
@@ -32,6 +32,8 @@
 4. **검증 게이트가 완료 기준.** §6의 `validate_output.py`가 `OK`를 내야만 작업 완료로 간주한다.
 5. **단일 출처 위임.** 세부 글쓰기/디자인 규칙은 SKILL.md·references가 정본이다. 이 문서와 충돌하면 위 우선순위를 따른다.
 6. **불변식 우선.** §5의 절대 불변식은 어떤 사용자 요청보다 우선한다(특히 외부/동작 JS 0).
+7. **임시 생성기 금지.** `/tmp` 일회성 스크립트나 일반 루프로 `mini-card`/`col-list`를 반복 합성한 HTML은 스킬 산출물이 아니다. helper script를 쓰더라도 repo 안에서 base.html·layout 파일·vt/wg 템플릿을 실제로 읽어 placeholder를 채우는 방식이어야 한다.
+8. **검증 OK만으로 품질 완료 금지.** `validate_output.py OK`는 필요조건이다. 전문/데모/벤치마크 산출물은 layout-first 계약, 모드별 필수 블록, 템플릿 다양성, 예제 문구 제거, 브라우저 캡쳐 품질까지 확인해야 완료다.
 
 ---
 
@@ -75,6 +77,7 @@
 1. **모드 결정** — §3 결정표로 모드·`.layout-*`·layout 파일을 확정한다(추측 금지).
 2. **골격 로드** — `skills/adaptive-html-final/assets/base.html`을 기본 골격으로 사용하고, §3의 layout 파일 본문을 적용한다.
 3. **콘텐츠 채우기** — 모드별 필수 블록(SKILL.md §4)을 채운다.
+3.5. **Layout-first 품질 계약 적용** — 선택된 `assets/layouts/<layout 파일>`의 placeholder를 모드별 필수 블록에 먼저 매핑한다. `layout-*` 클래스만 붙인 자유형 `<main>` 합성, 모든 섹션을 같은 카드/리스트 패턴으로 찍어내는 방식, “Generated example/전문 예제/기준 1” 같은 임시 문구는 실패다. 같은 모드의 `examples/*.html` 또는 사용자가 지정한 검수본보다 단순한 구조로 후퇴하면 작성 완료로 보지 않는다.
 4. **CSS 인라인 (순서 고정, `base.html` 슬롯 대응)** — 아래 순서로만 인라인한다.
 
    | 순서 | 자산 (skills/adaptive-html-final/assets/) | base.html 슬롯 | 비고 |
@@ -130,7 +133,7 @@
 5. **16모드 라우터 고정.** §3 결정표 외 모드를 만들지 않는다.
 6. **코어 CSS 5종 해시 + 조건부 인라인.** 코어 해시 대상은 **5종**(`theme→components→visual-components→layouts→print`)이며 이 합본의 SHA-256 마커를 반드시 포함한다. `widgets.css`·`visual-html.css`는 **해시 대상이 아닌 조건부 인라인**으로, 프로파일에 따라 포함 여부가 갈린다(widget=widgets만/diagram=visual-html만/auto=둘 다). 인라인 동작 순서는 `theme→components→visual-components→(widgets)→(visual-html)→layouts→print`(미사용 라이브러리는 생략, 코어 5종 해시 산식·순서는 불변).
 7. **구조 보장.** `<html lang="ko">`, viewport, title, meta description, `h1` 정확히 1개, `<main id="main">`.
-8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(버전 **5.7.0** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
+8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(버전 **5.8.1** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
 9. **8-테마 단일 계약.** 테마는 `theme-dark.css`의 라디오 `name="ahf-theme"`(light/light2/white/dark/dark2/blue/skyblue/sepia) 1종만 사용한다. legacy `#theme-toggle` 마크업·스크립트형 테마 토글은 금지.
 
 ---
@@ -149,6 +152,13 @@ python3 skills/adaptive-html-final/scripts/validate_output.py \
 - 마지막 줄이 `OK`가 아니면(`FAILED`/`ISSUE`) 수정 후 재실행한다.
 - JSON 상세가 필요하면 `--json`을 추가한다.
 - 검증 명령은 §1의 상대 경로 규칙을 따른다. 다른 체크아웃의 과거 절대 경로를 사용하지 않는다.
+- 전문/데모/벤치마크 산출물은 이어서 보조 품질 게이트도 실행한다. 이 게이트는 placeholder 문구·카드 반복·붕어빵 구조를 잡기 위한 보조 검사이며, 실패하면 `validate_output.py OK`여도 완료가 아니다.
+
+```bash
+# cwd = 저장소 루트(skills-html-showcase)
+python3 skills/adaptive-html-final/scripts/quality_contract_check.py <output_dir>
+```
+
 - **현행 골든(레퍼런스) 출력:** `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 스킬 자산 기준으로 검증을 통과한 13-topic 캐노니컬 예시다. 14번째 `github_analysis` 이후 신규 15/16모드 쇼케이스는 별도 smoke output으로 검증한다.
 - **역사적 골든:** `output/adaptive-html-final-showcase-v6/`는 v4.5/v6 동결 시점 예시이므로 현재 검증 기준선으로 사용하지 않는다.
 

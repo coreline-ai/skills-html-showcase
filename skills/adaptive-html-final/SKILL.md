@@ -27,7 +27,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.7.0 · "YouTube 분석 + Manual 분석 2개 신규 모드 추가 — 16모드 라우터, 8테마 계약, 전용 계약 게이트" (이전 5.6.0)
+> Version 5.8.1 · "generated-date 모바일 오버플로 코어 수정 + 예제 17종 해시 재동기화" (이전 5.8.0 — youtube/manual 깊이 계약·넓고-얇음 게이트)
 
 ## 0. Identity
 
@@ -53,6 +53,9 @@ description: |
    - (2) **SVG→HTML 템플릿 `vt-` 21종** = `assets/visual-html.css` + `assets/visual-html-templates/01..21.html`. 본문에 그대로 삽입하는 in-flow 다이어그램(이미지가 아닌 네이티브 HTML 구조도)이다(Step 4.7). 두 라이브러리를 혼동하거나 한쪽으로 대체하지 않는다.
 3. **비주얼 프로파일 → 16모드 라우터(§3) 순서가 단일 진입점**이다. (a) 먼저 비주얼 프로파일(`widget`=v5 / `diagram`=v6 / `auto`=기본)을 결정한다 — 인자 `profile=widget|diagram|auto` 또는 별칭 `style=v5|v6`를 `trim→lowercase→정규화`(둘 다 오면 `profile=` 우선, 무효 토큰은 `invalid_profile` 실패). 인자 미지정 시 **비대화형(AGENTS.md 경유 Codex/Gemini)은 무조건 `auto`·질문 금지**, 대화형(Claude 대화)은 1회 질문 가능(결정론 보장은 인자 명시 경로 한정). (b) 이어 모드 선택 → 레이아웃 → 프로파일에 따라 vt-템플릿(diagram·auto)·wg-위젯(widget·auto)을 §0.6에서 고른다. 프로파일이 §0.6 결정표의 **어느 열을 쓸지** 게이트한다(widget=wg 열만/diagram=vt 열만/auto=둘 다).
 4. **코어 CSS 인라인 + 해시 마커.** 출력은 `theme.css + components.css + visual-components.css + layouts.css + print.css`를 코어로 인라인하고, 인라인 `<style>`에 `adaptive-html-final-core-css-sha256: <64hex>` 주석 마커를 남긴다. `widgets.css`(위젯 사용 시)와 `visual-html.css`(vt-템플릿 사용 시)는 조건부 인라인이며, 인라인 순서는 §5 Step 5의 합본 순서를 따른다.
+5. **전 모드 공통 시각 정본(github 전용→전역 승격).** 모드와 무관하게 다음을 지킨다 — 검증기 `numbered_h2_body_icon_gate`·`section_surface_contract_gate`가 전역 강제한다.
+   - **번호 단 섹션 h2는 body-icon을 함께 단다**: `<h2><span class="body-icon …"><svg aria-hidden></svg></span><span class="num">N</span>제목</h2>` 정본. 번호 칩(`.num`/`.no`)이 있는데 body-icon이 없으면 실패(`numbered_h2_missing_body_icon`). (예제 16모드 전부가 이 정본을 따른다.)
+   - **주요(무클래스) 콘텐츠 섹션은 통일 카드 surface 위에 둔다**: `.page(-wide)?>section:not([class])`(및 `>article>section`)에 카드 배경·보더(layouts.css v5.3.1 규칙)를 유지한다. 이 통일 규칙이 인라인 CSS에서 빠지면 실패(`section_surface_css_missing`). 검정 `.try`(Next Actions hero)·자체 surface 보유 특수 블록은 제외(이중 카드 방지).
 
 **운영 원칙:**
 
@@ -174,7 +177,7 @@ assets/base.html       = 단일 HTML 렌더링 기본 골격
 assets/layouts/*.html  = 모드별 골격
 visual-templates/*.svg.tpl = 8000×6000 SVG 인포그래픽 템플릿
 scripts/render_visual_svg.py = visual brief → SVG 렌더러
-examples/01..16_*.html = 16모드 경량 참조 예제(자기완결·무 JS·인라인 스타일, 모드별 시그니처 구조 확인용) + examples/index.html 갤러리
+examples/01..16_*.html = 16모드 풀 스킬급 참조 예제(실제 코어 CSS 인라인·8테마 스위처·body-icon·editorial/vt/wg 컴포넌트, 자기완결·무 JS, 모드별 시그니처 구조 확인용) + examples/index.html 갤러리
 ```
 
 공개 블로그 품질이 필요하면 `<head>`에 Pretendard Variable + Noto Serif KR 폰트 링크를 포함한다. 오프라인/내부 문서이면 fallback으로도 동작한다.
@@ -273,8 +276,8 @@ TODO_CHECK = 추가 확인이 필요한 주장
 - article: lead, pull quote, argument, case, takeaway
 - education: goals, before start, lesson, example, practice, quiz, answer
 - github_analysis: verdict, question toc, repo identity, quickstart readiness, health signals, code/file tour, release/activity timeline, security/license, risk matrix, final decision, next actions, source limits. GitHub UI/REST에서 확인 가능한 FACT와 합리적 INFERENCE, UNKNOWN을 분리하고 각 핵심 판단에 근거 링크/근거 필드를 둔다. “살아 있는 프로젝트인가/운영 상태” 섹션은 `wg-11` KPI+진척+상태보드 구조를 우선 사용한다.
-- youtube_analysis: source & trust snapshot, TL;DW + watching decision, Video Evidence Map, chapter/retention story, comment signal wall, opportunity matrix, claim/evidence/risk, video blueprint, reuse pack, next actions, source limits. URL만 있으면 메타 중심·확인 필요로 제한하고, transcript/comment가 있을 때만 FACT 근거를 확장한다. YouTube iframe/embed와 비공개 analytics 추정은 금지한다.
-- manual_analysis: source & version snapshot, reader role router, first success path, prerequisites & safety, task recipes, reference extract, decision guide, troubleshooting, operations runbook, manual audit, next actions, source limits. 입력 원문에 없는 버전·권한·SLA는 UNKNOWN으로 남기고, 누락/stale/모순 지적은 원문 근거 위치를 둔다.
+- youtube_analysis: source & trust snapshot, TL;DW + watching decision, Video Evidence Map, chapter/retention story, comment signal wall, opportunity matrix, claim/evidence/risk, video blueprint, reuse pack, next actions, source limits. URL만 있으면 메타 중심·확인 필요로 제한하고, transcript/comment가 있을 때만 FACT 근거를 확장한다. YouTube iframe/embed와 비공개 analytics 추정은 금지한다. **정량 하한:** Evidence Map 표는 최소 5행(주장·근거·판정·다음 확인), 타임라인 항목 최소 4개(각 항목에 판정 근거 1문장 이상), 기회·리스크·재가공 카드는 카드당 2문장 이상(판정 근거 + 다음 행동), 주요 h2에 h2-sub 부착. 각 섹션이 1~2문장 요약으로 끝나면 미완성으로 간주한다(블록 수 충족 ≠ 완료).
+- manual_analysis: source & version snapshot, reader role router, first success path, prerequisites & safety, task recipes, reference extract, decision guide, troubleshooting, operations runbook, manual audit, next actions, source limits. 입력 원문에 없는 버전·권한·SLA는 UNKNOWN으로 남기고, 누락/stale/모순 지적은 원문 근거 위치를 둔다. **정량 하한:** task recipe 표준 구조는 6필드(목적·사전조건·절차·완료 기준·롤백·원문 근거)이고 작성 가능 레시피를 최소 4개 식별, troubleshooting 증상 시나리오 최소 3개(증상→가능 원인→진단 순서→복구 4단 고정), 역할 라우터는 역할별 권장 읽기 순서·이관 기준 포함, manual audit 지적은 건당 원문 위치 명시 + 최소 3건, 주요 h2에 h2-sub 부착. 각 카드가 1문장으로 끝나면 미완성으로 간주한다.
 - blog: hook, personal note, view, example, how-to, soft CTA
 - seo: primary keyword, SERP preview, title candidates, meta candidates, tag cluster. SERP preview는 `serp-shell`/`serp-box`/`serp-rule-grid` premium 구조를 우선 사용한다.
 - platform: original summary, transform strategy, platform cards, comparison table, publish checklist. 변환 전략은 `platform-split`/`platform-anchor`/`platform-route-grid`, 플랫폼별 결과는 `platform-output-grid`/`platform-output-card` 구조를 우선 사용한다.
@@ -284,6 +287,19 @@ TODO_CHECK = 추가 확인이 필요한 주장
 - case study: situation, timeline, decisions, results, lessons
 - landing brief: hero, value props, how it works, FAQ, CTA
 - checklist: use case, check grid, failure modes, done criteria
+
+### Step 4.1 — Layout-First Execution Contract (회귀 방지 필수)
+
+이 단계는 `validate_output.py`보다 앞선 **생성 품질 계약**이다. 정적 검증을 통과하더라도 이 계약을 어기면 스킬 산출물로 간주하지 않는다.
+
+1. **레이아웃 골격 우선**: 최종 HTML의 `<main>`은 반드시 Step 4에서 선택한 `assets/layouts/<layout>.html`의 정보 구조를 기준으로 만든다. 임의 `<main>`을 새로 짜서 `layout-*` 클래스만 붙이는 방식은 실패다.
+2. **placeholder → 실제 섹션 매핑**: layout 파일의 핵심 placeholder를 먼저 표로 풀어 쓴 뒤, 각 placeholder에 모드별 필수 블록·권장 vt-템플릿·권장 wg-위젯을 배정한다. 배정되지 않은 필수 블록이 있으면 작성하지 말고 계획을 먼저 보완한다.
+3. **임시 제너레이터 금지**: `/tmp` 스크립트나 일회성 루프가 `mini-card`/`col-list`/일반 카드만 반복해서 본문을 합성하면 실패다. helper script를 쓰더라도 repo 안에 두고, base.html·layout 파일·템플릿 파일을 실제로 읽어 placeholder를 채우는 방식이어야 한다.
+4. **참조 예제 기준선**: 새 산출물은 같은 모드의 `skills/adaptive-html-final/examples/*.html` 또는 사용자가 지정한 검수본의 헤더 리듬·테마바·목차·섹션 밀도·결론 품질을 기준선으로 삼는다. 기존 예제보다 단순한 카드 반복으로 후퇴하면 실패다.
+5. **모드별 특성 우선**: `skill_audit`은 진단/라인 감사/개선본, `platform_blog`는 플랫폼별 변환 결과, `seo_dashboard`는 SERP/키워드/메타 후보, `education_html`은 학습목표/실습/퀴즈/정답, `github_analysis`는 repo 판정/근거/UNKNOWN/source limits가 눈에 보여야 한다. 모든 모드가 같은 중간 섹션 틀을 쓰면 실패다.
+6. **예제 말투 금지**: 최종 산출물은 “이 모드 예제”, “Generated example”, “전문 예제”, “기준 1/2/3” 같은 placeholder 문구를 쓰지 않는다. 결론은 예제 설명이 아니라 해당 문서의 실제 판단·권고·다음 행동이어야 한다.
+7. **구조 다양성**: 8개 이상 섹션 문서에서 `.mini-card`/`.col-list`만 주 반복 구조가 되면 실패다. 카드·표·vt-다이어그램·wg-위젯·원문 발췌·체크리스트·의사결정 트리 중 섹션 목적에 맞는 구조를 섞는다.
+8. **validator는 필요조건**: `scripts/validate_output.py` OK는 HTML/자산/무JS/회귀 게이트 통과일 뿐이다. 전문성·모드 적합성·반복 템플릿 여부는 이 계약과 `references/quality-gates.md`를 별도로 통과해야 한다.
 
 ### Step 4.5 — Visual Brief Planning (SVG 인포그래픽 — hero/별첨/다운로드 전용)
 
@@ -386,7 +402,7 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 ### Step 5 — HTML Rendering
 
 1. `assets/base.html` 또는 로컬 CSS 연결형 HTML을 사용한다.
-2. 선택된 `assets/layouts/*.html` 골격을 적용한다.
+2. 선택된 `assets/layouts/*.html` 골격을 적용한다. **layout 골격을 적용하지 않은 임의 `<main>` 합성은 금지**한다. 대량 생성이 필요하면 먼저 layout placeholder 매핑을 만들고, helper script는 그 매핑을 채우는 용도로만 사용한다.
 3. CSS는 `theme.css + components.css + visual-components.css + widgets.css(widget·auto) + visual-html.css(diagram·auto) + body-icons.css(본문 아이콘 사용 시) + editorial-patterns.css(본문 패턴 사용 시) + shape-visuals.css(soft-shape 사용 시) + workflow-visuals.css(workflow 도판 사용 시) + layouts.css + print.css + theme-dark.css(8-테마 토큰 오버라이드, 항상)` 순서로 합친다. 코어 해시는 `theme.css + components.css + visual-components.css + layouts.css + print.css` 5종만 대상이며(`theme-dark.css`는 코어 해시 제외, print 뒤 맨끝), `base.html`의 각 CSS 슬롯은 미사용 시 빈 문자열로 치환한다. `base.html`의 `ahf-theme` 라디오 8-세그먼트 스위처는 기본 필수 UI이며 라이트/그레이/화이트/다크/로즈/블루/스카이/세피아 전환을 무 JS로 제공한다.
 4. 섹션 wrapper와 grid/card wrapper를 분리한다. `section.matrix`, `section.serp-preview`, `section.value-grid`, `section.check-grid`, `section.priority-roadmap` 같은 semantic section에는 `display:grid`를 직접 걸지 말고, 내부에 `.card-grid`, `.grid-2`, `.grid-3`, `.matrix:not(section)` 같은 별도 wrapper를 둔다.
    - `section > h2:first-child`는 내부 top margin이 0이어야 한다. 섹션 간 간격은 `section{margin}`으로 제어하고, 카드 내부 첫 heading의 `margin-top:64px`가 빈 공간을 만들게 두지 않는다.
@@ -401,7 +417,9 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 9. 시각 템플릿은 `<figure class="visual-figure"> <img width="8000" height="6000" alt="..."> <figcaption>...</figcaption> </figure>` 구조로 삽입한다.
 10. `assets/base.html`은 `{{BODY}}` 다음 줄에 선택적 `{{FOOTER}}` 슬롯을 둔다.
 11. 결과 폴더를 만들면 사용한 CSS asset snapshot과 합본 해시를 남긴다. 권장 위치는 `sources/assets/*.css`, `sources/css-integrity.json`, 인라인 CSS 주석 `adaptive-html-final-core-css-sha256: ...`이다.
-12. `scripts/validate_output.py <output_dir> --skill-dir <skill_dir>`로 정적 게이트를 실행하고, 가능하면 Playwright 390/1280px 렌더 검증까지 수행한다. 푸터가 필요하면 이 슬롯에 채우고, 불필요하면 비워서 footer 없이 렌더링한다.
+12. `scripts/validate_output.py <output_dir> --skill-dir <skill_dir>`로 정적 게이트를 실행한다.
+13. 전문/데모/벤치마크 산출물은 `scripts/quality_contract_check.py <output_dir>`도 실행해 placeholder 문구·카드 반복·붕어빵 구조를 걸러낸다. 이 스크립트는 `validate_output.py`의 대체가 아니라 보조 품질 게이트다.
+14. 가능하면 Playwright 390/1280px 렌더 검증까지 수행한다. 푸터가 필요하면 이 슬롯에 채우고, 불필요하면 비워서 footer 없이 렌더링한다.
 
 ### Step 6 — Visual Composition Gate
 
@@ -419,7 +437,12 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 ```text
 [ ] `scripts/validate_output.py`가 OK다(완료 필수 게이트). 외부/동작 JS 0(JSON-LD만 허용).
 [ ] 요청 목적과 선택 모드가 §0.6 캐노니컬 결정표(모드→layout→vt-→wg-)와 일치한다.
+[ ] 선택된 layout 파일의 정보 구조를 실제 본문에 적용했다. `layout-*` 클래스만 붙인 임의 `<main>` 합성이 아니다.
 [ ] 선택 모드의 필수 블록이 모두 있다.
+[ ] 같은 모드의 참조 예제 또는 지정 검수본보다 단순한 카드 반복 구조로 후퇴하지 않았다.
+[ ] `.mini-card`/`.col-list` 반복이 문서의 주 구조가 아니며, 섹션 목적별로 표·vt·wg·원문 발췌·체크리스트·의사결정 구조를 섞었다.
+[ ] “Generated example”, “전문 예제”, “예제 문서”, “기준 1/2/3”, “placeholder/TBD” 같은 임시 생성 문구가 없다.
+[ ] 마지막 결론은 예제 설명이 아니라 해당 주제의 실제 판정·권고·다음 행동이다.
 [ ] 공통 디자인 토큰을 임의 변경하지 않았다.
 [ ] output HTML이 최신 CSS asset 합본을 사용한다. `sources/css-integrity.json`와 인라인 CSS hash가 현재 skill asset hash와 일치한다.
 [ ] h1은 하나다.
@@ -452,8 +475,11 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 [ ] 교육용은 퀴즈와 정답이 있다.
 [ ] 전문가용은 executive summary, 운영모델/RACI 또는 동등한 실행 구조, 리스크 매트릭스, 로드맵, 검증 기준이 모두 있다.
 [ ] 전문가용은 각 핵심 섹션이 1~2문장 요약만으로 끝나지 않고 의사결정에 필요한 근거·담당·산출물·검증 방법을 포함한다.
+[ ] YouTube 분석은 정량 하한(Evidence Map 5행+, 타임라인 4항목+, 카드당 2문장+, h2-sub)을 충족하고 섹션이 요약 1~2문장으로 끝나지 않는다.
+[ ] Manual 분석은 정량 하한(레시피 4개 식별·6필드, 증상 시나리오 3개·4단 구조, 감사 지적 3건+원문 위치, h2-sub)을 충족한다.
 [ ] 스킬 감사는 개선본까지 포함한다.
 [ ] 출처 대량 목록은 source-note/source hub로 정리했다.
+[ ] `scripts/quality_contract_check.py <output_dir>`가 OK다(전문/데모/벤치마크 산출물 필수 보조 게이트).
 ```
 
 ## 8. References

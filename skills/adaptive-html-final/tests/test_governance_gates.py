@@ -136,5 +136,65 @@ check("manual contract gate catches missing role/safety/troubleshooting", {"manu
 manual_ok = '<main id="main" class="page-wide layout-manual"><h1>x</h1><section><h2>Source & Version Snapshot</h2><p>Reader Role Router: 관리자. Prerequisites/Safety: 권한 확인. Troubleshooting: 증상/원인/진단. Source Limits: UNKNOWN은 확인 불가.</p></section></main>'
 check("manual contract gate passes executable manual", v.manual_analysis_contract_gate(manual_ok, '.layout-manual>section{background:var(--card)}') == [])
 
+# Depth + profile-vt gates: anti wide-and-thin (the 8mode-demo youtube/manual failure).
+thin_body = '<main id="main" class="page-wide layout-youtube"><h1>x</h1>' + ''.join(
+    f'<section><h2>{i}</h2><p>한 문장 요약.</p></section>' for i in range(8)) + '</main>'
+thin_page = '<html><body>' + thin_body + '</body></html>'
+check("depth gate catches wide-and-thin mode page",
+      any(i["type"] == "mode_section_depth_too_thin" for i in v.mode_depth_gate(thin_page)))
+rich_page = '<html><body><main id="main" class="page-wide layout-youtube"><h1>x</h1>' + ''.join(
+    f'<section><h2>{i}</h2><p>{"근거와 해석이 충분히 담긴 본문 문장. " * 30}</p></section>' for i in range(8)) + '</main></body></html>'
+check("depth gate passes rich mode page", v.mode_depth_gate(rich_page) == [])
+index_page = '<html><body><main id="main" class="page-wide"><h1>x</h1>' + '<h2>a</h2>' * 10 + '</body></html>'
+check("depth gate skips non-mode (index) pages", v.mode_depth_gate(index_page) == [])
+few_sections = '<html><body><main id="main" class="page-wide layout-landing"><h1>x</h1><section><h2>1</h2><p>짧음</p></section></main></body></html>'
+check("depth gate skips few-section pages", v.mode_depth_gate(few_sections) == [])
+no_vt = '<html><body><main id="main" class="page-wide layout-expert"><h1>x</h1><section><h2>1</h2><p>본문</p></section></main></body></html>'
+check("profile-vt gate catches auto profile without vt-",
+      any(i["type"] == "profile_vt_template_missing" for i in v.profile_vt_required_gate(no_vt, "auto")))
+with_vt = no_vt.replace('<p>본문</p>', '<div class="vt-shell"><div class="rm-grid">x</div></div><p>본문</p>')
+check("profile-vt gate passes when vt- present", v.profile_vt_required_gate(with_vt, "auto") == [])
+check("profile-vt gate skips widget profile", v.profile_vt_required_gate(no_vt, "widget") == [])
+check("profile-vt gate skips index pages", v.profile_vt_required_gate(index_page, "auto") == [])
+# Anchor lock: the shipped 15/16 examples must satisfy the depth gate (anti-thin anchors).
+for _ex in ("15_youtube_vibecoding_gap.html", "16_manual_product_runbook.html"):
+    _t = (SKILL / "examples" / _ex).read_text(encoding="utf-8")
+    check(f"example {_ex.split('_')[0]} satisfies depth gate", v.mode_depth_gate(_t) == [])
+
+# Source-doc consistency gate: catches editorial drift the value/hash/count gates can't.
+# 1) CHANGELOG duplicate version numbers (the v5.3.4-twice bug).
+check("changelog dup-version gate catches a repeated version",
+      v.changelog_duplicate_versions("## v5.3.4 (x)\n\n## v5.3.5\n\n## v5.3.4 (y)\n") == ["5.3.4"])
+check("changelog dup-version gate passes a clean changelog",
+      v.changelog_duplicate_versions("## v5.7.0\n\n## v5.6.0\n\n## v5.5.9\n") == [])
+# 2) SKILL.md↔manifest examples-fidelity contradiction (경량 vs 풀 스킬급).
+check("examples-fidelity gate catches 경량/풀스킬급 contradiction",
+      v.examples_fidelity_conflict("examples = 16모드 경량 참조 예제", '"purpose":"16모드 풀 스킬급 참조 예제"') is True)
+check("examples-fidelity gate passes when both say 풀 스킬급",
+      v.examples_fidelity_conflict("examples = 16모드 풀 스킬급 참조 예제", '"purpose":"16모드 풀 스킬급 참조 예제"') is False)
+# 3) Against the REAL skill: must be clean now (proves the two fixes landed).
+_doc_issues = v.skill_doc_consistency_gate(SKILL)
+check("real skill doc-consistency gate is clean (no dup version / no contradiction)",
+      _doc_issues == [])
+if _doc_issues:
+    print("  detail:", _doc_issues)
+
+# Global numbered-h2 body-icon contract (전 모드 공통, github 전용→전역 승격).
+icon_bad = v.numbered_h2_body_icon_gate('<main id="main" class="page-wide layout-checklist"><section><h2><span class="num">1</span> 점검</h2></section></main>')
+check("body-icon gate catches numbered h2 without icon", icon_bad and icon_bad[0]["type"] == "numbered_h2_missing_body_icon")
+icon_ok = v.numbered_h2_body_icon_gate('<main id="main"><section><h2><span class="body-icon body-icon--sm"><svg aria-hidden="true"></svg></span><span class="num">1</span> 점검</h2></section></main>')
+check("body-icon gate passes example-style h2 (icon+num)", icon_ok == [])
+icon_plain = v.numbered_h2_body_icon_gate('<main id="main"><section><h2>번호 없는 제목</h2></section></main>')
+check("body-icon gate ignores un-numbered h2", icon_plain == [])
+
+# Global section-surface contract (>section:not(.try) card; .try hero 제외).
+surf_css_ok = '.page-wide>section:not(.try):not(.no-surface),.page>article>section{background:var(--card);border:1px solid var(--line)}'
+check("section-surface gate passes when unified surface CSS inlined",
+      v.section_surface_contract_gate('<main id="main" class="page-wide layout-blog"><article><section><h2>x</h2></section></article></main>', surf_css_ok) == [])
+surf_missing = v.section_surface_contract_gate('<main id="main" class="page-wide layout-checklist"><section><h2>x</h2></section></main>', '.ahf-themebar{}')
+check("section-surface gate flags missing surface rule", surf_missing and surf_missing[0]["type"] == "section_surface_css_missing")
+surf_nonlayout = v.section_surface_contract_gate('<main id="main" class="page-wide"><section><h2>catalog</h2></section></main>', '.ahf-themebar{}')
+check("section-surface gate ignores non-layout (catalog/index) pages", surf_nonlayout == [])
+
 print(f"\n{_checks - _fails}/{_checks} checks passed")
 sys.exit(1 if _fails else 0)

@@ -468,6 +468,84 @@ def manual_analysis_contract_gate(text: str, style: str) -> list:
     return issues
 
 
+def numbered_h2_body_icon_gate(text: str) -> list:
+    """전 모드 공통 시각 정본: 번호 칩(.num/.no)을 단 섹션 h2는 body-icon도 함께 단다.
+    16개 예제가 numbered h2에 body-icon을 ~100% 적용하는 정본을 성문화(github 전용 계약의 전역화).
+    마크업 레벨 검사(인라인 <style>은 제외)."""
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    issues = []
+    for m in re.finditer(r'<h2\b[^>]*>([\s\S]*?)</h2>', body, re.I):
+        inner = m.group(1)
+        if re.search(r'class\s*=\s*["\'][^"\']*\b(?:num|no)\b', inner) and 'body-icon' not in inner:
+            issues.append({'type': 'numbered_h2_missing_body_icon',
+                           'h2': re.sub(r'<[^>]+>', '', inner).strip()[:60],
+                           'detail': '번호 단 섹션 h2는 body-icon→번호→제목 정본을 따른다(예제 전 모드 공통).'})
+    return issues
+
+
+def section_surface_contract_gate(text: str, style: str) -> list:
+    """전 모드 공통: layout-* 콘텐츠 페이지의 주요 섹션은 통일된 card/view surface 위에 둔다.
+    정적 검사 — 통일 섹션 surface 규칙(>section:not(.try) 또는 >article>section의 card 배경)이
+    인라인 CSS에 존재하는지로 회귀를 막는다. .try(검정 hero)는 제외. github 전용 surface 계약의 전역 승격."""
+    if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', text, re.I):
+        return []
+    norm = re.sub(r'\s+', '', style)
+    # 전역 통일 규칙(.page/.page-wide 접두)이어야 한다 — github 전용 .layout-github>section 규칙으로는 불충분.
+    if re.search(r'\.page(-wide)?>section:not\(\.try\)[^{]*\{[^}]*background:var\(--card\)', norm) or \
+       re.search(r'\.page(-wide)?>article>section[^{]*\{[^}]*background:var\(--card\)', norm):
+        return []
+    return [{'type': 'section_surface_css_missing',
+             'detail': '전역 통일 섹션 surface(.page-wide>section:not(.try) card 규칙) 미인라인 — 모드 무관 섹션 카드 계약 위반.'}]
+
+
+MODE_DEPTH_MIN_AVG = 400   # visible chars per h2 section on mode pages
+MODE_DEPTH_MIN_H2 = 6      # gate only fires on many-section mode pages
+
+
+def _visible_body_text(text: str) -> str:
+    """Visible prose of the page body: <body> without <style>/<script>, tags stripped,
+    whitespace collapsed. Used by the depth gate."""
+    body = re.search(r'<body\b[^>]*>([\s\S]*?)</body>', text, re.I)
+    body = body.group(1) if body else text
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', body, flags=re.I)
+    body = re.sub(r'<script\b[^>]*>[\s\S]*?</script>', '', body, flags=re.I)
+    return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body)).strip()
+
+
+def mode_depth_gate(text: str) -> list:
+    """Anti wide-and-thin gate. Mode pages (main.layout-*) with many h2 sections must
+    carry per-section prose. Catches the v5.7.0 failure mode where youtube/manual
+    filled 12-13 section skeletons with ~300 visible chars per section while passing
+    every structural gate (SKILL.md §4 정량 하한의 정적 근사)."""
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-[a-z]', body_only, re.I):
+        return []
+    h2 = len(re.findall(r'<h2\b', body_only, re.I))
+    if h2 < MODE_DEPTH_MIN_H2:
+        return []
+    visible = len(_visible_body_text(text))
+    avg = visible // h2
+    if avg < MODE_DEPTH_MIN_AVG:
+        return [{'type': 'mode_section_depth_too_thin', 'h2_count': h2,
+                 'visible_chars': visible, 'avg_per_h2': avg, 'min_avg': MODE_DEPTH_MIN_AVG,
+                 'detail': '섹션 수 대비 본문이 얇다(넓고 얇은 출력). SKILL.md §4 정량 하한 미달 — 섹션을 줄이거나 각 섹션의 근거·해석을 채워 재생성한다.'}]
+    return []
+
+
+def profile_vt_required_gate(text: str, profile: str | None) -> list:
+    """§0.6 계약: diagram/auto 프로파일 출력은 모드 페이지마다 vt- 템플릿을 최소 1회
+    삽입해야 한다. index/galleries(layout- 없는 main)는 대상이 아니다."""
+    if profile not in ('diagram', 'auto'):
+        return []
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-[a-z]', body_only, re.I):
+        return []
+    if re.search(r'class=["\'][^"\']*\bvt-[a-z]', body_only, re.I):
+        return []
+    return [{'type': 'profile_vt_template_missing', 'profile': profile,
+             'detail': 'diagram/auto 프로파일 모드 페이지에 vt- 템플릿이 없다. §0.6 해당 모드 행의 1순위 vt-템플릿을 최소 1회 삽입한다.'}]
+
+
 def _inner_html(text: str, open_end: int, tag: str) -> str:
     """Inner HTML of the element whose opening tag ends at open_end, by balancing nested
     <tag>/</tag>. Falls back to a bounded window if the tag never closes (malformed)."""
@@ -541,6 +619,49 @@ def skill_asset_lint(skill_dir: Path) -> list:
     if bad_callout:
         issues.append({'type': 'bare_callout_modifier', 'count': len(bad_callout), 'detail': bad_callout[:30],
                        'note': '비콜아웃 셀렉터의 베어 .good/.danger/.term/.analogy 수식자 금지 → 네임스페이스형(--ok/--done)으로 개명.'})
+    return issues
+
+
+def changelog_duplicate_versions(changelog_text: str) -> list:
+    """Pure correctness: a CHANGELOG must not repeat a version header. Returns the
+    list of versions that appear more than once (in file order, de-duplicated)."""
+    seen, dups, out = set(), set(), []
+    for ver in re.findall(r'(?m)^##\s+v(\d+\.\d+\.\d+)\b', changelog_text):
+        if ver in seen and ver not in dups:
+            dups.add(ver); out.append(ver)
+        seen.add(ver)
+    return out
+
+
+def examples_fidelity_conflict(skill_md: str, manifest_json: str) -> bool:
+    """Pure correctness: SKILL.md and manifest must not describe the examples with
+    opposite fidelity adjectives (one '경량/lightweight', the other '풀 스킬급/full
+    skill-grade'). This is the SKILL.md↔manifest contradiction that no other gate saw.
+    Intentionally NOT a length/trigger heuristic — only a same-subject contradiction."""
+    def fid(text):
+        light = bool(re.search(r'경량\s*참조\s*예제|light\s*weight|lightweight', text, re.I))
+        full = bool(re.search(r'풀\s*스킬급|full[-\s]*skill[-\s]*grade', text, re.I))
+        return light, full
+    s_light, s_full = fid(skill_md)
+    m_light, m_full = fid(manifest_json)
+    return (s_light and m_full) or (s_full and m_light)
+
+
+def skill_doc_consistency_gate(skill_dir: Path) -> list:
+    """Source-doc correctness gate (run when --skill-dir given). Catches the editorial
+    drift the value/hash/count gates structurally cannot: duplicate CHANGELOG versions
+    and SKILL.md↔manifest examples-fidelity contradiction. No length/trigger rules."""
+    issues = []
+    changelog = skill_dir / 'CHANGELOG.md'
+    if changelog.exists():
+        for ver in changelog_duplicate_versions(changelog.read_text(encoding='utf-8')):
+            issues.append({'type': 'changelog_duplicate_version', 'version': ver})
+    skill_md_p, manifest_p = skill_dir / 'SKILL.md', skill_dir / 'manifest.json'
+    if skill_md_p.exists() and manifest_p.exists():
+        if examples_fidelity_conflict(skill_md_p.read_text(encoding='utf-8'),
+                                      manifest_p.read_text(encoding='utf-8')):
+            issues.append({'type': 'examples_fidelity_contradiction',
+                           'detail': 'SKILL.md와 manifest가 examples를 경량 vs 풀 스킬급으로 상반 서술.'})
     return issues
 
 
@@ -680,6 +801,18 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for man_issue in manual_analysis_contract_gate(text, style):
             man_issue['page'] = rel
             issues.append(man_issue)
+        for icon_issue in numbered_h2_body_icon_gate(text):
+            icon_issue['page'] = rel
+            issues.append(icon_issue)
+        for surf_issue in section_surface_contract_gate(text, style):
+            surf_issue['page'] = rel
+            issues.append(surf_issue)
+        for dp_issue in mode_depth_gate(text):
+            dp_issue['page'] = rel
+            issues.append(dp_issue)
+        for vtm_issue in profile_vt_required_gate(text, declared_profile):
+            vtm_issue['page'] = rel
+            issues.append(vtm_issue)
         for ri_issue in role_img_buries_text_gate(text):
             ri_issue['page'] = rel
             issues.append(ri_issue)
@@ -885,6 +1018,9 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         # Phase 0 merge-protection lints on the skill's own CSS assets.
         for a_issue in skill_asset_lint(skill_dir):
             issues.append(a_issue)
+        # Source-doc correctness (duplicate CHANGELOG versions, SKILL↔manifest contradiction).
+        for d_issue in skill_doc_consistency_gate(skill_dir):
+            issues.append(d_issue)
     return {'root': str(root), 'profile': declared_profile, 'html_count': len(htmls), 'issues': issues, 'warnings': warnings, 'ok': not issues}
 
 

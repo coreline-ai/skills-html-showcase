@@ -1,22 +1,39 @@
 {
+  // ───────────────────────────────────────────────────────────────
+  // 목표: 탐색기에 git 수정 표시(금색)만 남기고, 빨강/노랑 "문제(Problems)" 표시는 모두 제거.
+  // 방법: explorer 데코레이션은 끄지 않고(=git 유지), 문제 마커를 만드는 내장 진단기를 전부 차단.
+  // 적용 후 1회 "Developer: Reload Window"로 이미 떠 있는 캐시 마커를 비우면 재발 없음.
+  // ───────────────────────────────────────────────────────────────
+
+  // ★ 핵심: 탐색기의 "문제(빨강/노랑)" 데코레이션만 끔 → git(SCM) 표시는 유지. 저장 즉시 적용(리로드 불필요)
+  "problems.decorations.enabled": false,
+
+  // HTML / CSS / LESS / SCSS 내장 검증 끄기
   "html.validate.enable": false,
   "html.validate.styles": false,
   "html.validate.scripts": false,
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "htmlhint.exclude": {
-    "**/output/**/*": true,
-    "output/**/*": true
-  },
-  "markdownlint.config": {
-    "default": false
-  },
+
+  // JS / TS / JSON 내장 검증 끄기
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": false,
+  "json.validate.enable": false,
+
+  // Python(Pylance) 진단 끄기: 워크스페이스 전체 분석 금지 + 타입검사 off + 전 파일 무시
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.typeCheckingMode": "off",
+  "python.analysis.ignore": ["**"],
+  "python.linting.enabled": false,
+
+  // (참고) 아래 확장들은 현재 미설치라 무효지만, 설치 대비 제외 규칙 유지
+  "htmlhint.exclude": { "**/output/**/*": true, "output/**/*": true },
+  "markdownlint.config": { "default": false },
   "markdownlint.run": "off",
   "sonarlint.analyzerProperties": {
-    "sonar.exclusions": "**/output/**,**/output/**/*"
+    "sonar.exclusions": "**/output/**,**/output/**/*,**/skills/**"
   },
-  "eslint.options": {
-    "ignorePattern": ["**/output/**"]
-  }
+  "eslint.enable": false,
+  "eslint.options": { "ignorePattern": ["**/output/**", "**/skills/**"] }
 }
