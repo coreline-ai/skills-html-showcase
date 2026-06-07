@@ -545,6 +545,208 @@ def profile_vt_required_gate(text: str, profile: str | None) -> list:
              'detail': 'diagram/auto 프로파일 모드 페이지에 vt- 템플릿이 없다. §0.6 해당 모드 행의 1순위 vt-템플릿을 최소 1회 삽입한다.'}]
 
 
+MODE_TEMPLATE_CONTRACTS = {
+    'layout-beginner': {
+        'mode': 'beginner_html',
+        'primary_vt': 'concept-explainer',
+        'vt_markers': (r'\bconcept-ring\b',),
+        'recommended_wg': ('wg-10', 'wg-13', 'wg-15'),
+    },
+    'layout-expert': {
+        'mode': 'expert_html',
+        'primary_vt': 'risk-matrix',
+        'vt_markers': (r'\brm-grid\b',),
+        'recommended_wg': ('wg-03', 'wg-04', 'wg-11', 'wg-12', 'wg-16', 'wg-17'),
+    },
+    'layout-article': {
+        'mode': 'article_html',
+        'primary_vt': 'decision-tree',
+        'vt_markers': (r'\bdt-q\b', r'\bdt-options\b'),
+        'recommended_wg': ('wg-02', 'wg-04', 'wg-07', 'wg-09', 'wg-10', 'wg-13', 'wg-14'),
+    },
+    'layout-education': {
+        'mode': 'education_html',
+        'primary_vt': 'timeline',
+        'vt_markers': (r'\btl-item\b',),
+        'recommended_wg': ('wg-06', 'wg-07', 'wg-08', 'wg-13', 'wg-14', 'wg-15', 'wg-20'),
+    },
+    'layout-blog': {
+        'mode': 'blog_writer',
+        'primary_vt': 'timeline',
+        'vt_markers': (r'\btl-item\b',),
+        'recommended_wg': ('wg-17',),
+    },
+    'layout-seo': {
+        'mode': 'seo_dashboard',
+        'primary_vt': 'card-grid',
+        'vt_markers': (r'\bcg-grid\b',),
+        'recommended_wg': ('wg-11',),
+    },
+    'layout-platform': {
+        'mode': 'platform_blog',
+        'primary_vt': 'card-grid',
+        'vt_markers': (r'\bcg-grid\b',),
+        'recommended_wg': ('wg-02',),
+    },
+    'layout-audit': {
+        'mode': 'skill_audit',
+        'primary_vt': 'quality-gate',
+        'vt_markers': (r'\bqg-grid\b',),
+        'recommended_wg': ('wg-03', 'wg-11', 'wg-17'),
+    },
+    'layout-reference': {
+        'mode': 'reference_html',
+        'primary_vt': 'file-tour',
+        'vt_markers': (r'\bft-card\b',),
+        'recommended_wg': ('wg-04', 'wg-05', 'wg-06', 'wg-14', 'wg-19', 'wg-20'),
+    },
+    'layout-compare': {
+        'mode': 'comparison_html',
+        'primary_vt': 'comparison-cards',
+        'vt_markers': (r'\bcmp-card\b',),
+        'recommended_wg': ('wg-01', 'wg-02'),
+    },
+    'layout-case': {
+        'mode': 'case_study_html',
+        'primary_vt': 'incident-summary',
+        'vt_markers': (r'\binc-head\b', r'\binc-card\b'),
+        'recommended_wg': ('wg-12',),
+    },
+    'layout-landing': {
+        'mode': 'landing_brief_html',
+        'primary_vt': 'hero-map',
+        'vt_markers': (r'\bhm-grid\b',),
+        'recommended_wg': ('wg-02', 'wg-05', 'wg-08', 'wg-09', 'wg-16'),
+    },
+    'layout-checklist': {
+        'mode': 'checklist_playbook',
+        'primary_vt': 'checklist-flow',
+        'vt_markers': (r'\bcf-item\b',),
+        'recommended_wg': ('wg-11', 'wg-13', 'wg-16', 'wg-18', 'wg-19'),
+    },
+    'layout-github': {
+        'mode': 'github_analysis',
+        'primary_vt': 'hero-map',
+        'vt_markers': (r'\bhm-grid\b',),
+        'recommended_wg': ('wg-11', 'wg-04', 'wg-14', 'wg-16', 'wg-17', 'wg-18'),
+    },
+    'layout-youtube': {
+        'mode': 'youtube_analysis',
+        'primary_vt': 'timeline',
+        'vt_markers': (r'\btl-item\b',),
+        'recommended_wg': ('wg-11', 'wg-13', 'wg-14', 'wg-16', 'wg-18'),
+    },
+    'layout-manual': {
+        'mode': 'manual_analysis',
+        'primary_vt': 'hero-map',
+        'vt_markers': (r'\bhm-grid\b',),
+        'recommended_wg': ('wg-04', 'wg-13', 'wg-16', 'wg-18', 'wg-11', 'wg-14'),
+    },
+}
+
+
+def _mode_contract_for_main(text: str) -> tuple[str | None, dict | None]:
+    main = re.search(r'<main\b([^>]*)>', text, re.I)
+    if not main:
+        return None, None
+    attrs = main.group(1)
+    for layout_class, contract in MODE_TEMPLATE_CONTRACTS.items():
+        if re.search(r'class\s*=\s*["\'][^"\']*\b' + re.escape(layout_class) + r'\b', attrs, re.I):
+            return layout_class, contract
+    return None, None
+
+
+def mode_template_contract_gate(text: str, profile: str | None) -> list:
+    """§0.6 mode-specific proof gate.
+
+    `profile_vt_required_gate` only proves that *some* vt template exists. This gate
+    locks the canonical mode row: diagram/auto must include that mode's 1st-priority
+    vt marker, and widget/auto must include at least one recommended `wg-NN-` marker.
+    It prevents 16-mode examples from silently falling back to one generic card/list
+    structure while still passing broad structural checks.
+    """
+    if profile not in ('widget', 'diagram', 'auto'):
+        return []
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    _layout, contract = _mode_contract_for_main(body_only)
+    if not contract:
+        return []
+    issues = []
+    if profile in ('diagram', 'auto'):
+        has_primary_vt = any(re.search(pat, body_only, re.I) for pat in contract['vt_markers'])
+        if not (re.search(r'class=["\'][^"\']*\bvt-(?:shell|frame)\b', body_only, re.I) and has_primary_vt):
+            issues.append({'type': 'mode_primary_vt_missing',
+                           'mode': contract['mode'],
+                           'expected': contract['primary_vt'],
+                           'detail': 'auto/diagram 출력은 해당 모드 결정표의 1순위 vt 템플릿을 최소 1회 포함해야 한다.'})
+    if profile in ('widget', 'auto'):
+        found = [wg for wg in contract['recommended_wg']
+                 if re.search(r'class=["\'][^"\']*\b' + re.escape(wg) + r'(?:-|\\b)', body_only, re.I)]
+        if not found:
+            issues.append({'type': 'mode_recommended_wg_missing',
+                           'mode': contract['mode'],
+                           'expected_any': list(contract['recommended_wg']),
+                           'detail': 'auto/widget 출력은 해당 모드의 권장 wg 위젯 중 최소 1개를 포함해야 한다(예제/쇼케이스 품질 계약).'})
+    return issues
+
+
+def direct_section_title_icon_policy_gate(text: str) -> list:
+    """Every direct content section must expose a visible h2 with a body icon.
+
+    Earlier gates checked only h2s that already existed, allowing titleless
+    summary/verdict/toc cards to slip through. Current examples treat every direct
+    view surface as a titled card: `body-icon → (num/no) → title`. `.try` keeps its
+    own dark CTA treatment but still goes through the same h2 icon check below.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    main_open = re.search(r'<main\b([^>]*)>', body, re.I)
+    if not main_open or not re.search(r'class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', main_open.group(1), re.I):
+        return []
+    main_inner = _inner_html(body, main_open.end(), 'main')
+    candidates = list(_direct_child_blocks(main_inner, 'section'))
+    for _article_attrs, article_inner in _direct_child_blocks(main_inner, 'article'):
+        candidates.extend(_direct_child_blocks(article_inner, 'section'))
+    issues = []
+    for attrs, inner in candidates:
+        h2 = re.search(r'<h2\b[^>]*>([\s\S]*?)</h2>', inner, re.I)
+        if not h2:
+            cm = re.search(r'class\s*=\s*["\']([^"\']*)', attrs)
+            issues.append({'type': 'direct_section_h2_missing',
+                           'class': cm.group(1) if cm else '',
+                           'detail': '직접 콘텐츠 섹션은 제목 없는 카드로 시작하지 않는다. h2 + body-icon을 추가한다.'})
+            continue
+        if 'body-icon' not in h2.group(1):
+            issues.append({'type': 'direct_section_h2_missing_body_icon',
+                           'h2': re.sub(r'<[^>]+>', '', h2.group(1)).strip()[:50],
+                           'detail': '직접 콘텐츠 섹션 첫 h2는 body-icon→(num)→title 정본을 따른다(아이콘 필수).'})
+    return issues
+
+
+def body_icon_diversity_gate(text: str) -> list:
+    """Guard against one SVG icon being stamped onto every section title."""
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-[a-z-]+', body, re.I):
+        return []
+    svgs = []
+    for h2 in re.findall(r'<h2\b[^>]*>[\s\S]*?</h2>', body, re.I):
+        if 'body-icon' not in h2:
+            continue
+        m = re.search(r'<span\b[^>]*class=["\'][^"\']*\bbody-icon\b[\s\S]*?<svg\b[\s\S]*?</svg>\s*</span>', h2, re.I)
+        if m:
+            svgs.append(hashlib.sha1(m.group(0).encode('utf-8')).hexdigest())
+    if len(svgs) < 6:
+        return []
+    unique = len(set(svgs))
+    min_unique = 5 if len(svgs) >= 9 else 4
+    if unique < min_unique:
+        return [{'type': 'body_icon_diversity_too_low',
+                 'count': len(svgs),
+                 'unique': unique,
+                 'min_unique': min_unique,
+                 'detail': '섹션 의미별 body-icon을 구분해야 한다. 동일 SVG 반복 주입은 금지.'}]
+    return []
+
+
 def _inner_html(text: str, open_end: int, tag: str) -> str:
     """Inner HTML of the element whose opening tag ends at open_end, by balancing nested
     <tag>/</tag>. Falls back to a bounded window if the tag never closes (malformed)."""
@@ -980,9 +1182,12 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for surf_issue in section_surface_contract_gate(text, style):
             surf_issue['page'] = rel
             issues.append(surf_issue)
-        for dsi_issue in direct_section_h2_icon_gate(text):
+        for dsi_issue in direct_section_title_icon_policy_gate(text):
             dsi_issue['page'] = rel
             issues.append(dsi_issue)
+        for div_issue in body_icon_diversity_gate(text):
+            div_issue['page'] = rel
+            issues.append(div_issue)
         for hdr_issue in header_contract_gate(text):
             hdr_issue['page'] = rel
             issues.append(hdr_issue)
@@ -1004,6 +1209,9 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for vtm_issue in profile_vt_required_gate(text, declared_profile):
             vtm_issue['page'] = rel
             issues.append(vtm_issue)
+        for mtc_issue in mode_template_contract_gate(text, declared_profile):
+            mtc_issue['page'] = rel
+            issues.append(mtc_issue)
         for ri_issue in role_img_buries_text_gate(text):
             ri_issue['page'] = rel
             issues.append(ri_issue)

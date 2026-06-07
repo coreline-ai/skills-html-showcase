@@ -108,6 +108,7 @@ vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..2
 13. GitHub 저장소 분석은 README 미화가 아니라 사용/채택/감사 의사결정을 돕는 실사 리포트로 작성하며, 관측 사실·추론·확인 불가를 명확히 분리한다.
 14. YouTube 분석은 영상 내용을 사실처럼 과잉 생성하지 않고 입력 tier(URL only/metadata/transcript+comments)를 명시해 FACT/INFERENCE/UNKNOWN을 나눈다.
 15. Manual 분석은 레퍼런스 재요약이 아니라 역할별 실행 경로, 사전조건, 검증, 문제 해결, 출처 한계를 포함하는 사용 가능한 매뉴얼로 재구성한다.
+16. **Fresh Extension Rule.** 기존 13모드 결과물 뒤에 14/15/16 같은 확장 모드를 다시 만들 때는 이전 페이지 본문·이전 대화 산출물·기존 14/15/16 예제를 소스처럼 재사용하지 않는다. 새 출력 폴더를 만들고 `sources/fresh-generation-rule.json`에 `fresh_run=true`, `reused_previous_pages=false`, `mode_scope`를 기록한 뒤, 각 모드는 전용 layout/recipe/reference와 새 주제만으로 최소 10개 직접 섹션을 구성한다.
 
 ## 2. Supported Input Types
 

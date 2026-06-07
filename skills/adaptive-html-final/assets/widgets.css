@@ -80,7 +80,7 @@
 .wg-02-desc{font-size:var(--fs-xs);color:var(--ink-soft);margin:var(--space-1) 0 var(--space-2);line-height:1.6}
 .wg-02-palette{list-style:none;display:flex;gap:6px;margin:0;padding:0}
 .wg-02-palette li{flex:1;height:26px;border-radius:var(--radius-sm);border:1px solid var(--line);display:grid;place-items:center}
-.wg-02-palette li span{font-size:9px;font-weight:700;color:#fff;mix-blend-mode:difference;letter-spacing:.02em}
+.wg-02-palette li span{font-size:10.5px;font-weight:700;line-height:1;color:#1a1a1a;background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.08);border-radius:5px;padding:3px 5px;mix-blend-mode:normal;text-shadow:none;letter-spacing:.02em}
 .wg-02-badge{position:absolute;top:var(--space-3);right:var(--space-4);font-size:10px;font-weight:800;color:var(--on-accent);background:var(--accent);border-radius:999px;padding:2px var(--space-2);opacity:0;transform:scale(.8);transition:opacity .2s ease,transform .2s ease}
 .wg-02-radio:checked+.wg-02-card .wg-02-badge{opacity:1;transform:scale(1)}
 .wg-02-foot{margin:var(--space-5) 0 0;font-size:var(--fs-xs);color:var(--ink-mute);line-height:1.7;border-top:1px solid var(--line);padding-top:var(--space-3)}
@@ -838,3 +838,36 @@
 .wg-20-foot{margin-top:var(--space-4);font-size:var(--fs-xs);color:var(--ink-mute);line-height:1.6}
 .wg-20-foot code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--accent-2)}
 @media(max-width:760px){.wg-20-grid{grid-template-columns:1fr}}
+
+/* === 카탈로그 reverse-sync (index_diff visual QA patch) — wg 대비·레이아웃·모바일 보정 ===
+   P1 대비: wg-02 팔레트 라벨 가독성·CTA/뱃지/wg-13/wg-17/wg-01 강조색을 accent-2로, wg-20-var solid.
+   P2 균형: wg-08 proto·wg-09 deck 폭 클램프, wg-05 패딩 클램프·스크롤 마진.
+   모바일(≤560): wg-04 SVG 폭 수용, wg-03 diff 줄바꿈, wg-16 표→카드(헤더 숨김+라벨).
+   source-order로 기존 규칙을 덮으므로 !important 불필요. */
+.wg-02-palette li{min-height:30px}
+.wg-02-pv-cta,.wg-06-btn--primary,.wg-07-pill,.wg-09-next{background:var(--accent-2);color:#fff}
+.wg-20-chip:has(+ input:checked){background:var(--accent-2);color:#fff}
+.wg-02-pv-cta--c{background:#5f88a2;color:#fff}
+.wg-02-badge{font-size:11px;background:var(--accent-2)}
+.wg-13-step{font-size:11px}.wg-13-node--decide .wg-13-step{background:#9b6a20;color:#fff;border-color:#9b6a20}
+.wg-17-h3-no,.wg-01-rank-pick,.wg-01-pick-badge{background:var(--accent-2);color:#fff}
+.wg-20-var{color:#6f4a08;background:#fff3c4;border:1px solid #e0bf73}
+.wg-20-pane{min-height:128px}
+.wg-08-proto{max-width:min(620px,100%)}.wg-08-device{max-width:520px;margin:0 auto}
+.wg-09-deck{max-width:min(760px,100%)}.wg-09-slide{min-height:320px}
+.wg-05-dls{padding:clamp(20px,3vw,36px)}.wg-05-group{scroll-margin-top:18px}
+@media(max-width:560px){
+  .wg-04-diagram{overflow:hidden}.wg-04-svg{min-width:0;width:100%;height:auto}.wg-04-legend{gap:10px 14px}.wg-04-path{align-items:flex-start}.wg-04-path-chain{display:flex;flex-wrap:wrap;gap:6px;line-height:1.8}.wg-04-path-note{line-height:1.65}
+  .wg-03-grid{grid-template-columns:1fr}.wg-03-diff{overflow:visible}.wg-03-row{display:grid;grid-template-columns:34px minmax(0,1fr) 22px;align-items:start;line-height:1.55}.wg-03-ln{width:auto;padding:0 6px}.wg-03-code{white-space:pre-wrap;overflow:visible;overflow-wrap:anywhere;word-break:break-word;padding:0 6px}.wg-03-dot{position:static;transform:none;align-self:center;justify-self:center;margin:2px 0}.wg-03-note-body{overflow-wrap:anywhere}
+  .wg-16-table-wrap .table-scroll{overflow:visible;border:0;border-radius:0;background:transparent}
+  .wg-16-table caption{display:block;width:100%;box-sizing:border-box;caption-side:top;text-align:left;padding:0 0 10px;margin:0 0 8px;color:var(--ink);font-size:13px;font-weight:850;line-height:1.5;white-space:normal}
+  .wg-16-table{display:block;min-width:0;width:100%;border:0;background:transparent;overflow:visible}
+  .wg-16-table thead{display:none}
+  .wg-16-table tbody{display:grid;width:100%;gap:10px}
+  .wg-16-table tr{display:block;width:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:0}
+  .wg-16-table tbody th{display:block;width:auto;box-sizing:border-box;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;padding:12px 14px;background:var(--bg);border-bottom:1px solid var(--line);line-height:1.45}
+  .wg-16-table td{display:grid;width:auto;box-sizing:border-box;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);line-height:1.55}
+  .wg-16-table td:nth-of-type(1)::before{content:"가능성"}.wg-16-table td:nth-of-type(2)::before{content:"영향"}.wg-16-table td:nth-of-type(3)::before{content:"완화책"}
+  .wg-16-table td::before{font-size:11px;font-weight:850;color:var(--ink-mute);letter-spacing:.04em}
+  .wg-16-table td:last-child{border-bottom:0;align-items:start}
+}

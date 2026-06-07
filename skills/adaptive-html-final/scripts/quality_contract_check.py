@@ -32,6 +32,21 @@ REPEATED_PLACEHOLDER_PATTERNS: list[tuple[str, re.Pattern[str], int]] = [
     ("numbered_generic_section", re.compile(r"섹션\s*[0-9]+"), 3),
 ]
 
+TRY_CARD_CONTRAST_CLASSES = (
+    "repo-card",
+    "repo-signal",
+    "repo-question",
+    "repo-evidence",
+    "youtube-card",
+    "youtube-signal",
+    "youtube-evidence",
+    "youtube-opportunity",
+    "manual-card",
+    "manual-step",
+    "manual-role",
+    "manual-trouble",
+)
+
 
 @dataclass
 class Issue:
@@ -129,6 +144,18 @@ def check_html(path: Path) -> list[Issue]:
     conclusion_tail = body[-2500:]
     if re.search(r"이\s*(문서|페이지|결과물)은\s*(예제|샘플)", conclusion_tail):
         issues.append(Issue(path, "example_conclusion", "마지막 결론이 실제 판단이 아니라 예제 설명입니다."))
+
+    if 'class="try"' in body or "class='try'" in body or " try " in body:
+        for card_class in TRY_CARD_CONTRAST_CLASSES:
+            if card_class in body and f".try .{card_class} p" not in html:
+                issues.append(
+                    Issue(
+                        path,
+                        "try_card_contrast_guard_missing",
+                        f".try 내부 .{card_class} 카드가 있지만 p/li 텍스트 색상 reset CSS가 없습니다.",
+                    )
+                )
+                break
 
     return issues
 
