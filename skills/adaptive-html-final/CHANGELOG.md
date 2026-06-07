@@ -1,5 +1,11 @@
 # Changelog — adaptive-html-final
 
+## v5.9.1 (2026-06-07) — wg-10 figure sheet 모드 데모 섹션 한정 full-width
+
+- **wg-10 svg figure sheet**: `.mode-template-contract .wg-10-sheet{width:100%;max-width:100%}` 추가. 모드 정본 템플릿 데모 섹션 안에서만 카드 전체 폭(1280px 620→974)으로 풀고, 일반 본문의 wg-10은 620px 유지 → 본문 가독성 보존. 스코프 한정 패치(전역 확장 회피).
+- 직계 자식 `>` 대신 descendant 셀렉터로 적용(생성기가 위젯을 figure/div로 감싸도 동작). source-order로 base를 덮어 `!important` 불필요.
+- examples 17종 재인라인 + `examples/sources` 스냅샷·css-integrity 갱신. 거버넌스 77/77, examples 검증 0 issue.
+
 ## v5.9.0 (2026-06-07) — 카탈로그 reverse-sync 반응형·폭·대비 계약 + 시각 정본 게이트
 
 `templates/final_20260604` 카탈로그에서 검증한 시각 QA 패치를 스킬 자산(`visual-html.css`·`widgets.css`)에 정식 편입. 추가 규칙은 모두 source-order로 base를 덮어 `!important` 없이 적용했고, 조건부 CSS만 바뀌어 core 해시는 불변.

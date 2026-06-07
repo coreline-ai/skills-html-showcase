@@ -27,7 +27,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.9.0 · "카탈로그 reverse-sync 반응형·폭·대비 계약 일괄 반영 + 시각 정본 게이트 3종" (이전 5.8.1 — generated-date 모바일 오버플로 코어 수정)
+> Version 5.9.1 · "wg-10 figure sheet: 모드 정본 데모 섹션 한정 full-width (본문 가독성 보존)" (이전 5.9.0 — 카탈로그 reverse-sync 반응형·폭·대비 계약 + 시각 정본 게이트 3종)
 
 ## 0. Identity
 

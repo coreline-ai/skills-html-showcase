@@ -960,3 +960,8 @@
   .wg-17 .wg-17-meta{gap:6px;flex-wrap:wrap}
   .wg-17 .wg-17-summary{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center}
 }
+
+/* === wg-10 svg figure sheet: 모드 정본 데모 섹션(.mode-template-contract) 안에서만 카드 전체 폭 ===
+   본문 전체를 넓히면 가독성이 떨어지므로, 추천 위젯이 들어가는 contract 섹션으로만 스코프 한정.
+   (직계 자식 `>` 대신 descendant — 생성기가 위젯을 figure/div로 감싸도 동작하도록.) */
+.mode-template-contract .wg-10-sheet{width:100%;max-width:100%}

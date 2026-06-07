@@ -1686,6 +1686,11 @@ details p{margin-bottom:0}
   .wg-17 .wg-17-summary{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center}
 }
 
+/* === wg-10 svg figure sheet: 모드 정본 데모 섹션(.mode-template-contract) 안에서만 카드 전체 폭 ===
+   본문 전체를 넓히면 가독성이 떨어지므로, 추천 위젯이 들어가는 contract 섹션으로만 스코프 한정.
+   (직계 자식 `>` 대신 descendant — 생성기가 위젯을 figure/div로 감싸도 동작하도록.) */
+.mode-template-contract .wg-10-sheet{width:100%;max-width:100%}
+
 /* SVG-to-HTML view template system — native, in-flow, harmonized with adaptive-html-final */
 :root{--vt-paper:#fff;--vt-wash:#faf9f5;--vt-soft:#f0eee6;--vt-line:var(--line);--vt-ink:var(--ink);--vt-muted:var(--ink-mute);--vt-red:var(--accent);--vt-red2:var(--accent-2);--vt-blue:#3a6280;--vt-green:#2a7d5a;--vt-gold:#d99a38;--vt-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
 body{background:var(--vt-wash)}
