@@ -14,7 +14,7 @@
 
 - **저장소**: `skills-html-showcase` — 다중 모드 한국어 HTML 생성 스킬 `adaptive-html-final`과 그 자산·검증·예제를 담은 쇼케이스 저장소.
 - **스킬**: `adaptive-html-final` — 입력(URL/PDF/텍스트/이미지/메모/기술자료/블로그 초안/SKILL.md/GitHub 저장소 URL/YouTube URL/매뉴얼 텍스트)을 받아 **외부 동작 JS 없는** editorial HTML(학습자료·전문가 리포트·GitHub 저장소 분석·YouTube 분석·매뉴얼 분석·아티클·교육 모듈·블로그·SEO 대시보드·플랫폼 블로그·스킬 감사·레퍼런스·비교·케이스 스터디·랜딩·체크리스트)을 생성한다.
-- **현재 버전**: **5.8.1** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
+- **현재 버전**: **5.9.1** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
 - **스킬 위치(저장소 루트 기준 상대 경로 — 체크아웃 위치 무관 이식성)**: `skills/adaptive-html-final/`
   - 본체: `skills/adaptive-html-final/SKILL.md`
   - 매니페스트: `skills/adaptive-html-final/manifest.json`
@@ -133,7 +133,7 @@
 5. **16모드 라우터 고정.** §3 결정표 외 모드를 만들지 않는다.
 6. **코어 CSS 5종 해시 + 조건부 인라인.** 코어 해시 대상은 **5종**(`theme→components→visual-components→layouts→print`)이며 이 합본의 SHA-256 마커를 반드시 포함한다. `widgets.css`·`visual-html.css`는 **해시 대상이 아닌 조건부 인라인**으로, 프로파일에 따라 포함 여부가 갈린다(widget=widgets만/diagram=visual-html만/auto=둘 다). 인라인 동작 순서는 `theme→components→visual-components→(widgets)→(visual-html)→layouts→print`(미사용 라이브러리는 생략, 코어 5종 해시 산식·순서는 불변).
 7. **구조 보장.** `<html lang="ko">`, viewport, title, meta description, `h1` 정확히 1개, `<main id="main">`.
-8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(버전 **5.8.1** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
+8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(현재 버전 **5.9.1** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
 9. **8-테마 단일 계약.** 테마는 `theme-dark.css`의 라디오 `name="ahf-theme"`(light/light2/white/dark/dark2/blue/skyblue/sepia) 1종만 사용한다. legacy `#theme-toggle` 마크업·스크립트형 테마 토글은 금지.
 
 ---

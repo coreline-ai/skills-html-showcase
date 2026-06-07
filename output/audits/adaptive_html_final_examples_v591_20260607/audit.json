@@ -1,0 +1,1450 @@
+{
+  "generatedAt": "2026-06-07T14:09:31.669Z",
+  "manifestVersion": "5.9.1",
+  "total": 32,
+  "pass": 32,
+  "fail": 0,
+  "results": [
+    {
+      "file": "01_beginner_passkey_login.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 9,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [
+          {
+            "width": 974,
+            "parentWidth": 1020,
+            "ratio": 0.955
+          }
+        ],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n7\n오늘 10분 안에 패스키 직접 켜보기\n\n완벽한 이해보다, 실제로 한 번 만들어 “비밀번호 없이 로그인되는” 감각을 느끼는 것이 목표다. 패스키를 지원하는 서비스(메일·계정 설정 등) 하나를 골라 따라 해 보자.\n\n지원 서비스의 보안/로그인 설정에서 “패스키 추가"
+      },
+      "screenshot": "screenshots/01_beginner_passkey_login__desktop.png"
+    },
+    {
+      "file": "01_beginner_passkey_login.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 9,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [
+          {
+            "width": 312,
+            "parentWidth": 358,
+            "ratio": 0.872
+          }
+        ],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n7\n오늘 10분 안에 패스키 직접 켜보기\n\n완벽한 이해보다, 실제로 한 번 만들어 “비밀번호 없이 로그인되는” 감각을 느끼는 것이 목표다. 패스키를 지원하는 서비스(메일·계정 설정 등) 하나를 골라 따라 해 보자.\n\n지원 서비스의 보안/로그인 설정에서 “패스키 추가"
+      },
+      "screenshot": "screenshots/01_beginner_passkey_login__mobile.png"
+    },
+    {
+      "file": "02_expert_llm_gateway_report.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 10,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n비차단 프록시 4주를 먼저 잠근다\n\n강제하지 말고 옵트인 프록시부터 세워 가용성·지연·비용 기준선을 모은다. 키 회수와 강제 경유는 그 데이터가 직접 호출과 동등함을 증명한 뒤에만 진행한다.\n\n이중화·헬스체크·비상 fallback 경로를 먼저 구성한다.\n옵트인 팀 "
+      },
+      "screenshot": "screenshots/02_expert_llm_gateway_report__desktop.png"
+    },
+    {
+      "file": "02_expert_llm_gateway_report.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 10,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n비차단 프록시 4주를 먼저 잠근다\n\n강제하지 말고 옵트인 프록시부터 세워 가용성·지연·비용 기준선을 모은다. 키 회수와 강제 경유는 그 데이터가 직접 호출과 동등함을 증명한 뒤에만 진행한다.\n\n이중화·헬스체크·비상 fallback 경로를 먼저 구성한다.\n옵트인 팀 "
+      },
+      "screenshot": "screenshots/02_expert_llm_gateway_report__mobile.png"
+    },
+    {
+      "file": "03_article_side_project_signal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 11,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n이력서에 붙일 증거 하나를 이번 달에 완성한다\n\n새 프로젝트를 거창하게 시작하지 말고, 작아도 끝까지 가는 결과물 하나를 골라 배포와 README까지 마무리한다. 강한 신호는 규모가 아니라 완결성에서 나온다.\n\n3주 안에 출시 가능한 가장 작은 아이디어 하나를 고른"
+      },
+      "screenshot": "screenshots/03_article_side_project_signal__desktop.png"
+    },
+    {
+      "file": "03_article_side_project_signal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 11,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n이력서에 붙일 증거 하나를 이번 달에 완성한다\n\n새 프로젝트를 거창하게 시작하지 말고, 작아도 끝까지 가는 결과물 하나를 골라 배포와 README까지 마무리한다. 강한 신호는 규모가 아니라 완결성에서 나온다.\n\n3주 안에 출시 가능한 가장 작은 아이디어 하나를 고른"
+      },
+      "screenshot": "screenshots/03_article_side_project_signal__mobile.png"
+    },
+    {
+      "file": "04_education_git_rebase_workshop.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 14,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n실습용 저장소에서 로컬 브랜치 하나를 골라 git rebase main으로 정리한다.\ngit rebase -i HEAD~3으로 squash·reword를 한 번씩 적용한다.\n충돌을 일부러 만들고 add → --continue 절차로 끝까지 해결한다."
+      },
+      "screenshot": "screenshots/04_education_git_rebase_workshop__desktop.png"
+    },
+    {
+      "file": "04_education_git_rebase_workshop.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 14,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n실습용 저장소에서 로컬 브랜치 하나를 골라 git rebase main으로 정리한다.\ngit rebase -i HEAD~3으로 squash·reword를 한 번씩 적용한다.\n충돌을 일부러 만들고 add → --continue 절차로 끝까지 해결한다."
+      },
+      "screenshot": "screenshots/04_education_git_rebase_workshop__mobile.png"
+    },
+    {
+      "file": "05_blog_deepwork_4day_retro.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 0,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "",
+        "lastText": ""
+      },
+      "screenshot": "screenshots/05_blog_deepwork_4day_retro__desktop.png"
+    },
+    {
+      "file": "05_blog_deepwork_4day_retro.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 0,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "",
+        "lastText": ""
+      },
+      "screenshot": "screenshots/05_blog_deepwork_4day_retro__mobile.png"
+    },
+    {
+      "file": "06_seo_prompt_engineering_dashboard.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 12,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n추천 제목과 메타 설명을 최종 1개씩 고정하고 slug를 prompt-engineering-basics로 맞춘다.\n검색 의도 4개(정의·예시·비교·활용)를 H2 구조로 배치하고 중복 키워드를 정리한다.\n나쁜 예 → 좋은 예 전후 비교 5쌍과 복사용 "
+      },
+      "screenshot": "screenshots/06_seo_prompt_engineering_dashboard__desktop.png"
+    },
+    {
+      "file": "06_seo_prompt_engineering_dashboard.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 12,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n추천 제목과 메타 설명을 최종 1개씩 고정하고 slug를 prompt-engineering-basics로 맞춘다.\n검색 의도 4개(정의·예시·비교·활용)를 H2 구조로 배치하고 중복 키워드를 정리한다.\n나쁜 예 → 좋은 예 전후 비교 5쌍과 복사용 "
+      },
+      "screenshot": "screenshots/06_seo_prompt_engineering_dashboard__mobile.png"
+    },
+    {
+      "file": "07_platform_tech_retro_adaptation.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 13,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n회고를 사실·감정·증거·교훈으로 분해하고, 변경 금지할 결론 한 문장을 고정한다.\n티스토리 허브 초안에 검색 질문형 H2와 원인 분석표를 채운다.\n벨로그 기록의 환경·코드·실패 로그를 자기 환경에서 다시 검증한다.\n브런치 장면 도입과 LinkedIn"
+      },
+      "screenshot": "screenshots/07_platform_tech_retro_adaptation__desktop.png"
+    },
+    {
+      "file": "07_platform_tech_retro_adaptation.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 13,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          },
+          {
+            "tag": "table",
+            "cls": "",
+            "left": 39,
+            "right": 396,
+            "width": 357,
+            "display": "table",
+            "text": "플랫폼별 발행 톤 비교: 문장 리듬·용어 밀도·증거 무게·감정 강도\n톤 방향\t대표 플랫폼\t문장 리듬\t전문용어 밀도\t증거 무게\t감정 강도\n검색 친"
+          },
+          {
+            "tag": "caption",
+            "cls": "",
+            "left": 39,
+            "right": 396,
+            "width": 357,
+            "display": "table-caption",
+            "text": "플랫폼별 발행 톤 비교: 문장 리듬·용어 밀도·증거 무게·감정 강도"
+          },
+          {
+            "tag": "thead",
+            "cls": "",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "display": "table-header-group",
+            "text": "톤 방향\t대표 플랫폼\t문장 리듬\t전문용어 밀도\t증거 무게\t감정 강도"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "display": "table-row",
+            "text": "톤 방향\t대표 플랫폼\t문장 리듬\t전문용어 밀도\t증거 무게\t감정 강도"
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "left": 355,
+            "right": 395,
+            "width": 40,
+            "display": "table-cell",
+            "text": "감정 강도"
+          },
+          {
+            "tag": "tbody",
+            "cls": "",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "display": "table-row-group",
+            "text": "검색 친화 정보형\t티스토리\t중간 길이, H2마다 한 질문\t중간(용어+설명 병기)\t표·체크리스트 중심\t낮음\n재현 가능 기록형\t벨로그\t호흡 긴 단계"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "display": "table-row",
+            "text": "검색 친화 정보형\t티스토리\t중간 길이, H2마다 한 질문\t중간(용어+설명 병기)\t표·체크리스트 중심\t낮음"
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "left": 355,
+            "right": 395,
+            "width": 40,
+            "display": "table-cell",
+            "text": "낮음"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "display": "table-row",
+            "text": "재현 가능 기록형\t벨로그\t호흡 긴 단계 서술\t높음(코드·버전 노출)\t코드·로그·지표 중심\t낮음"
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "left": 355,
+            "right": 395,
+            "width": 40,
+            "display": "table-cell",
+            "text": "낮음"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "display": "table-row",
+            "text": "서사 공감형\t브런치\t짧은 문단, 장면 전환\t낮음(비유로 대체)\t장면·인용 중심\t높음"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n회고를 사실·감정·증거·교훈으로 분해하고, 변경 금지할 결론 한 문장을 고정한다.\n티스토리 허브 초안에 검색 질문형 H2와 원인 분석표를 채운다.\n벨로그 기록의 환경·코드·실패 로그를 자기 환경에서 다시 검증한다.\n브런치 장면 도입과 LinkedIn"
+      },
+      "screenshot": "screenshots/07_platform_tech_retro_adaptation__mobile.png"
+    },
+    {
+      "file": "08_skill_audit_codereview_bot.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 9,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n목적을 “위험 변경의 병합 차단”으로 좁히고 스타일 린트는 비목적으로 명시한다.\n출력 스키마를 file·line·severity·rationale·blocking으로 고정한다.\n차단 finding이 있으면 approve를 금지하고, 디프 부족 시 리"
+      },
+      "screenshot": "screenshots/08_skill_audit_codereview_bot__desktop.png"
+    },
+    {
+      "file": "08_skill_audit_codereview_bot.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 9,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          },
+          {
+            "tag": "table",
+            "cls": "table",
+            "left": 39,
+            "right": 447,
+            "width": 408,
+            "display": "table",
+            "text": "표 2 — 입력/출력 계약 (현재 vs 권장)\n계약\t현재\t권장\t누락 시 동작\n입력: 디프\tPR 본문 텍스트만\tunified diff + 변경 파"
+          },
+          {
+            "tag": "caption",
+            "cls": "",
+            "left": 39,
+            "right": 447,
+            "width": 408,
+            "display": "table-caption",
+            "text": "표 2 — 입력/출력 계약 (현재 vs 권장)"
+          },
+          {
+            "tag": "thead",
+            "cls": "",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "display": "table-header-group",
+            "text": "계약\t현재\t권장\t누락 시 동작"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "display": "table-row",
+            "text": "계약\t현재\t권장\t누락 시 동작"
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "left": 382,
+            "right": 446,
+            "width": 65,
+            "display": "table-cell",
+            "text": "누락 시 동작"
+          },
+          {
+            "tag": "tbody",
+            "cls": "",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "display": "table-row-group",
+            "text": "입력: 디프\tPR 본문 텍스트만\tunified diff + 변경 파일 목록\t리뷰 중단, 입력 부족 반환\n입력: 맥락\t없음\tCI 상태, 연결 이슈"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "display": "table-row",
+            "text": "입력: 디프\tPR 본문 텍스트만\tunified diff + 변경 파일 목록\t리뷰 중단, 입력 부족 반환"
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "left": 382,
+            "right": 446,
+            "width": 65,
+            "display": "table-cell",
+            "text": "리뷰 중단, 입력 부족 반환"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "display": "table-row",
+            "text": "입력: 맥락\t없음\tCI 상태, 연결 이슈, 기존 리뷰 코멘트\t맥락 없음 표기 후 보수적 판정"
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "left": 382,
+            "right": 446,
+            "width": 65,
+            "display": "table-cell",
+            "text": "맥락 없음 표기 후 보수적 판정"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "display": "table-row",
+            "text": "출력: 코멘트 구조\t자유 서술\tfile·line·severity·rationale·suggested_fix\t스키마 위반으로 실패"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n목적을 “위험 변경의 병합 차단”으로 좁히고 스타일 린트는 비목적으로 명시한다.\n출력 스키마를 file·line·severity·rationale·blocking으로 고정한다.\n차단 finding이 있으면 approve를 금지하고, 디프 부족 시 리"
+      },
+      "screenshot": "screenshots/08_skill_audit_codereview_bot__mobile.png"
+    },
+    {
+      "file": "09_reference_regex.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 14,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 적용하기\n지금 쓰는 입력 검증 정규식에 ^ $ 앵커가 빠진 곳이 없는지 점검한다.\n리터럴로 쓰려던 .이 이스케이프됐는지(\\.) 확인한다.\n탐욕 수량자 .*를 게으름(.*?)이나 부정 클래스([^x]*)로 바꿀 수 있는지 본다.\n사용 중인 엔진(JS·PCRE·P"
+      },
+      "screenshot": "screenshots/09_reference_regex__desktop.png"
+    },
+    {
+      "file": "09_reference_regex.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 14,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 적용하기\n지금 쓰는 입력 검증 정규식에 ^ $ 앵커가 빠진 곳이 없는지 점검한다.\n리터럴로 쓰려던 .이 이스케이프됐는지(\\.) 확인한다.\n탐욕 수량자 .*를 게으름(.*?)이나 부정 클래스([^x]*)로 바꿀 수 있는지 본다.\n사용 중인 엔진(JS·PCRE·P"
+      },
+      "screenshot": "screenshots/09_reference_regex__mobile.png"
+    },
+    {
+      "file": "10_comparison_message_queue.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 9,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n워크로드를 한 줄로 분류한다 — \"1:1 작업 큐\"인가, \"1:N 이벤트\"인가, \"재처리가 필요한 로그\"인가.\n3절 매트릭스에서 우리 사업 요구에 해당하는 행만 골라 탈락 후보를 지운다.\n남은 후보를 실데이터·실제 메시지 크기·순서/복제 기능을 켠 "
+      },
+      "screenshot": "screenshots/10_comparison_message_queue__desktop.png"
+    },
+    {
+      "file": "10_comparison_message_queue.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 9,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          },
+          {
+            "tag": "table",
+            "cls": "table",
+            "left": 39,
+            "right": 424,
+            "width": 385,
+            "display": "table",
+            "text": "선택 질문과 1차 후보\n질문\t예라면\t아니오라면\t검증 자료\n같은 이벤트를 여러 소비자가 독립적으로 읽거나, 과거로 돌아가 재처리해야 하는가?\tKa"
+          },
+          {
+            "tag": "caption",
+            "cls": "",
+            "left": 39,
+            "right": 424,
+            "width": 385,
+            "display": "table-caption",
+            "text": "선택 질문과 1차 후보"
+          },
+          {
+            "tag": "thead",
+            "cls": "",
+            "left": 40,
+            "right": 424,
+            "width": 384,
+            "display": "table-header-group",
+            "text": "질문\t예라면\t아니오라면\t검증 자료"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 424,
+            "width": 384,
+            "display": "table-row",
+            "text": "질문\t예라면\t아니오라면\t검증 자료"
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "left": 308,
+            "right": 424,
+            "width": 116,
+            "display": "table-cell",
+            "text": "검증 자료"
+          },
+          {
+            "tag": "tbody",
+            "cls": "",
+            "left": 40,
+            "right": 424,
+            "width": 384,
+            "display": "table-row-group",
+            "text": "같은 이벤트를 여러 소비자가 독립적으로 읽거나, 과거로 돌아가 재처리해야 하는가?\tKafka를 첫 후보로 둔다.\t꺼내면 사라지는 큐(Rabbit"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 424,
+            "width": 384,
+            "display": "table-row",
+            "text": "같은 이벤트를 여러 소비자가 독립적으로 읽거나, 과거로 돌아가 재처리해야 하는가?\tKafka를 첫 후보로 둔다.\t꺼내면 사라지는 큐(Rabbit"
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "left": 308,
+            "right": 424,
+            "width": 116,
+            "display": "table-cell",
+            "text": "소비자 수, replay 시나리오, 보존 기간 요구"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 424,
+            "width": 384,
+            "display": "table-row",
+            "text": "복잡한 라우팅·우선순위·요청응답 패턴이 핵심인가?\tRabbitMQ를 검토한다.\t단순 작업 분배면 SQS로 시작한다.\texchange/bindin"
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "left": 308,
+            "right": 424,
+            "width": 116,
+            "display": "table-cell",
+            "text": "exchange/binding 설계, 우선순위 요건"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 424,
+            "width": 384,
+            "display": "table-row",
+            "text": "운영 인력이 적고 이미 AWS 위에 있는가?\tSQS를 기본값으로 둔다.\t멀티클라우드·온프렘이면 Kafka/RabbitMQ 운영 비용을 비교한다."
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n워크로드를 한 줄로 분류한다 — \"1:1 작업 큐\"인가, \"1:N 이벤트\"인가, \"재처리가 필요한 로그\"인가.\n3절 매트릭스에서 우리 사업 요구에 해당하는 행만 골라 탈락 후보를 지운다.\n남은 후보를 실데이터·실제 메시지 크기·순서/복제 기능을 켠 "
+      },
+      "screenshot": "screenshots/10_comparison_message_queue__mobile.png"
+    },
+    {
+      "file": "11_case_study_search_index_outage.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 12,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\nfreshness lag 알림을 배포한다(10분 초과 시 온콜 호출).\n인덱서 dead-man switch를 런북에 넣는다.\n색인과 검색 서빙의 디스크 볼륨을 분리한다.\n30일 안에 색인 정지 게임데이를 진행한다."
+      },
+      "screenshot": "screenshots/11_case_study_search_index_outage__desktop.png"
+    },
+    {
+      "file": "11_case_study_search_index_outage.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 12,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\nfreshness lag 알림을 배포한다(10분 초과 시 온콜 호출).\n인덱서 dead-man switch를 런북에 넣는다.\n색인과 검색 서빙의 디스크 볼륨을 분리한다.\n30일 안에 색인 정지 게임데이를 진행한다."
+      },
+      "screenshot": "screenshots/11_case_study_search_index_outage__mobile.png"
+    },
+    {
+      "file": "12_landing_pagercalm_brief.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 9,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n\n아래 네 단계는 PagerCalm의 약속을 한 주 안에 직접 확인하는 가장 짧은 경로다. 완벽한 규칙 설정을 목표로 하지 말고, 다음 새벽에 깨우지 않아도 될 알림 하나를 미루는 순간까지만 가는 것을 목표로 한다.\n\n기존 알림을 PagerCalm으"
+      },
+      "screenshot": "screenshots/12_landing_pagercalm_brief__desktop.png"
+    },
+    {
+      "file": "12_landing_pagercalm_brief.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 9,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTION\n바로 실행할 일\n\n아래 네 단계는 PagerCalm의 약속을 한 주 안에 직접 확인하는 가장 짧은 경로다. 완벽한 규칙 설정을 목표로 하지 말고, 다음 새벽에 깨우지 않아도 될 알림 하나를 미루는 순간까지만 가는 것을 목표로 한다.\n\n기존 알림을 PagerCalm으"
+      },
+      "screenshot": "screenshots/12_landing_pagercalm_brief__mobile.png"
+    },
+    {
+      "file": "13_checklist_data_migration.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 9,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "FINAL APPROVAL\n컷오버 최종 승인 기준\n\n아래 다섯 조건이 동시에 충족될 때만 1% 그림자 읽기 컷오버를 승인한다. 하나라도 비면 No-Go이며, 100% 전환은 7일 안정화 관찰과 회고가 끝난 뒤 별도 승인한다.\n\n사전 백업 — 복원 리허설 1회 성공, RPO·RTO 측정·"
+      },
+      "screenshot": "screenshots/13_checklist_data_migration__desktop.png"
+    },
+    {
+      "file": "13_checklist_data_migration.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 9,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          },
+          {
+            "tag": "code",
+            "cls": "",
+            "left": 57,
+            "right": 423,
+            "width": 366,
+            "display": "inline",
+            "text": "cutover(table):\n    assert backup.restore_verified            # 복원 리허설 통과 전제\n   "
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "FINAL APPROVAL\n컷오버 최종 승인 기준\n\n아래 다섯 조건이 동시에 충족될 때만 1% 그림자 읽기 컷오버를 승인한다. 하나라도 비면 No-Go이며, 100% 전환은 7일 안정화 관찰과 회고가 끝난 뒤 별도 승인한다.\n\n사전 백업 — 복원 리허설 1회 성공, RPO·RTO 측정·"
+      },
+      "screenshot": "screenshots/13_checklist_data_migration__mobile.png"
+    },
+    {
+      "file": "14_github_analysis_fastapi_starter.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 12,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTIONS\n권장하는 다음 할 일\n로컬 부팅 검증: docker compose up으로 app+DB를 띄우고 quickstart 절차를 실제로 통과시켜 본다.\n테스트·커버리지 측정: pytest --cov를 실행해 UNKNOWN이던 커버리지 수치를 직접 확정한다.\n의존성 보안"
+      },
+      "screenshot": "screenshots/14_github_analysis_fastapi_starter__desktop.png"
+    },
+    {
+      "file": "14_github_analysis_fastapi_starter.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 12,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          },
+          {
+            "tag": "table",
+            "cls": "",
+            "left": 39,
+            "right": 436,
+            "width": 397,
+            "display": "table",
+            "text": "도입 리스크 매트릭스 (가상 예시값)\n리스크\t심각도\t근거 (FACT/UNKNOWN)\t권장 조치\n보안 정책 부재\t높음\tSECURITY.md 없음("
+          },
+          {
+            "tag": "caption",
+            "cls": "",
+            "left": 39,
+            "right": 436,
+            "width": 397,
+            "display": "table-caption",
+            "text": "도입 리스크 매트릭스 (가상 예시값)"
+          },
+          {
+            "tag": "thead",
+            "cls": "",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "display": "table-header-group",
+            "text": "리스크\t심각도\t근거 (FACT/UNKNOWN)\t권장 조치"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "display": "table-row",
+            "text": "리스크\t심각도\t근거 (FACT/UNKNOWN)\t권장 조치"
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "left": 314,
+            "right": 436,
+            "width": 122,
+            "display": "table-cell",
+            "text": "권장 조치"
+          },
+          {
+            "tag": "tbody",
+            "cls": "",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "display": "table-row-group",
+            "text": "보안 정책 부재\t높음\tSECURITY.md 없음(FACT) · alert 상태 UNKNOWN\t의존성 스캔 + 자체 보안 검토 후 도입\n테스트 커"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "display": "table-row",
+            "text": "보안 정책 부재\t높음\tSECURITY.md 없음(FACT) · alert 상태 UNKNOWN\t의존성 스캔 + 자체 보안 검토 후 도입"
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "left": 314,
+            "right": 436,
+            "width": 122,
+            "display": "table-cell",
+            "text": "의존성 스캔 + 자체 보안 검토 후 도입"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "display": "table-row",
+            "text": "테스트 커버리지 불명\t중간\ttests/ 존재(FACT) · 커버리지 수치 UNKNOWN\t로컬 pytest+coverage로 직접 측정"
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "left": 314,
+            "right": 436,
+            "width": 122,
+            "display": "table-cell",
+            "text": "로컬 pytest+coverage로 직접 측정"
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "display": "table-row",
+            "text": "CHANGELOG 부재\t중간\t릴리스 노트만 있음(FACT)\t버전 태그에 핀하고 노트 직접 검토"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "NEXT ACTIONS\n권장하는 다음 할 일\n로컬 부팅 검증: docker compose up으로 app+DB를 띄우고 quickstart 절차를 실제로 통과시켜 본다.\n테스트·커버리지 측정: pytest --cov를 실행해 UNKNOWN이던 커버리지 수치를 직접 확정한다.\n의존성 보안"
+      },
+      "screenshot": "screenshots/14_github_analysis_fastapi_starter__mobile.png"
+    },
+    {
+      "file": "15_youtube_vibecoding_gap.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 11,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "10\nNext Actions\n\n다음 생성부터는 YouTube URL만 붙여도 `youtube_analysis`가 우선 선택되며, 자막·댓글·메타가 없으면 UNKNOWN을 명확히 표시합니다. 이 리포트를 실제 의사결정으로 잇는 권장 순서는 다음과 같습니다.\n\n전체 자막·댓글을 수집해 §3"
+      },
+      "screenshot": "screenshots/15_youtube_vibecoding_gap__desktop.png"
+    },
+    {
+      "file": "15_youtube_vibecoding_gap.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 11,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "10\nNext Actions\n\n다음 생성부터는 YouTube URL만 붙여도 `youtube_analysis`가 우선 선택되며, 자막·댓글·메타가 없으면 UNKNOWN을 명확히 표시합니다. 이 리포트를 실제 의사결정으로 잇는 권장 순서는 다음과 같습니다.\n\n전체 자막·댓글을 수집해 §3"
+      },
+      "screenshot": "screenshots/15_youtube_vibecoding_gap__mobile.png"
+    },
+    {
+      "file": "16_manual_product_runbook.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 1600,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 1280,
+        "docSW": 1280,
+        "overflowX": 0,
+        "mainWidth": 1020,
+        "directSections": 12,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "11\nNext Actions\n\n다음 작업에서는 원문 매뉴얼을 붙이면 `manual_analysis`가 역할별 경로, 첫 성공, 안전 조건, 문제 해결, 운영 런북으로 재구성합니다. 이 문서를 실제 운영 매뉴얼로 확정하기 위한 순서는 다음과 같습니다.\n\n§10 감사 결함 3건을 소유자에게"
+      },
+      "screenshot": "screenshots/16_manual_product_runbook__desktop.png"
+    },
+    {
+      "file": "16_manual_product_runbook.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 1200,
+      "status": "PASS",
+      "issues": [],
+      "metrics": {
+        "vw": 390,
+        "docSW": 390,
+        "overflowX": 0,
+        "mainWidth": 358,
+        "directSections": 12,
+        "sectionIssues": [],
+        "overflow": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "display": "block",
+            "text": "본문 바로가기"
+          }
+        ],
+        "wg10": [],
+        "h2MissingIcons": [],
+        "lastClass": "try",
+        "lastText": "11\nNext Actions\n\n다음 작업에서는 원문 매뉴얼을 붙이면 `manual_analysis`가 역할별 경로, 첫 성공, 안전 조건, 문제 해결, 운영 런북으로 재구성합니다. 이 문서를 실제 운영 매뉴얼로 확정하기 위한 순서는 다음과 같습니다.\n\n§10 감사 결함 3건을 소유자에게"
+      },
+      "screenshot": "screenshots/16_manual_product_runbook__mobile.png"
+    }
+  ]
+}

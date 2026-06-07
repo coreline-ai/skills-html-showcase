@@ -290,6 +290,7 @@
 /* === 완성본 표준 승격 — layout main 직접/article 콘텐츠 섹션 카드 뷰(.try 제외, class 무관). v5.9 전역 시각 정본 === */
 .page>section:not(.try),.page>article>section:not(.try),.page-wide>section:not(.try),.page-wide>article>section:not(.try){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
 .page>section:not(.try)>h2:first-child,.page>article>section:not(.try)>h2:first-child,.page-wide>section:not(.try)>h2:first-child,.page-wide>article>section:not(.try)>h2:first-child{margin-top:0}
+.page>section.lead:not(.try),.page>article>section.lead:not(.try),.page-wide>section.lead:not(.try),.page-wide>article>section.lead:not(.try){max-width:none;width:auto;font-size:inherit;color:inherit}
 /* try/soft-cta 내부 일반 카드 대비 reset — 부모 .try.soft-cta p 색이 흰 카드에 상속되는 회귀 방지 */
 .try.soft-cta .summary-card,.try.soft-cta .cta-box,.try.soft-cta .card-block,.try.soft-cta .mini-card{color:var(--ink);background:var(--card);border-color:var(--line)}
 .try.soft-cta .summary-card p,.try.soft-cta .cta-box p,.try.soft-cta .card-block p,.try.soft-cta .mini-card p,.try.soft-cta .summary-card li,.try.soft-cta .cta-box li,.try.soft-cta .card-block li,.try.soft-cta .mini-card li{color:var(--ink-soft)}

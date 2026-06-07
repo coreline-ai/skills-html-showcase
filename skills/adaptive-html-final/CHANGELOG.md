@@ -5,6 +5,7 @@
 - **wg-10 svg figure sheet**: `.mode-template-contract .wg-10-sheet{width:100%;max-width:100%}` 추가. 모드 정본 템플릿 데모 섹션 안에서만 카드 전체 폭(1280px 620→974)으로 풀고, 일반 본문의 wg-10은 620px 유지 → 본문 가독성 보존. 스코프 한정 패치(전역 확장 회피).
 - 직계 자식 `>` 대신 descendant 셀렉터로 적용(생성기가 위젯을 figure/div로 감싸도 동작). source-order로 base를 덮어 `!important` 불필요.
 - examples 17종 재인라인 + `examples/sources` 스냅샷·css-integrity 갱신. 거버넌스 77/77, examples 검증 0 issue.
+- **section.lead wrapper reset**: article 예제의 `<section class="lead">`가 theme.css의 prose용 `.lead{max-width:820px}`를 상속해 직접 섹션 카드가 1020→820px로 좁아지는 문제를 layouts.css에서 직접 섹션 한정으로 해소. 텍스트 `.lead` 유틸은 유지.
 
 ## v5.9.0 (2026-06-07) — 카탈로그 reverse-sync 반응형·폭·대비 계약 + 시각 정본 게이트
 
