@@ -3070,7 +3070,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
     </article>
   </div>
 
-  <p class="wg-09-hint">하단 점 또는 슬라이드 내 이전/다음 링크로 이동 &middot; 트랙을 좌우로 스와이프/스크롤(scroll-snap). 화살표키 이동은 JS 필요.</p>
+  <p class="wg-09-hint">카탈로그 보기에서는 슬라이드를 화면 폭에 맞춰 카드 그리드로 펼쳐 표시합니다. 원본 상호작용은 점/이전·다음 링크 기반이며 JS가 필요 없습니다.</p>
 </section>
 </section>
 <section class="tpl-item"><h2>wg 10 · svg figure sheet</h2>
@@ -4317,6 +4317,97 @@ $ gh mq add 4821 --priority hotfix
   .wg-16-table td::before{font-size:11px;font-weight:850;color:var(--ink-mute);letter-spacing:.04em}
   .wg-16-table td:last-child{border-bottom:0;align-items:start}
 }
+
+/* 2026-06-07 responsive final pass — remove internal horizontal tracks from catalog view. */
+.tpl-item{max-width:100%;min-width:0}
+.tpl-item :is(.wg-07-anim,.wg-07-track,.wg-08-proto,.wg-08-device,.wg-08-viewport,.wg-09-deck,.wg-09-track,.wg-15-demo,.wg-15-stage,.wg-16-panel,.wg-16-flow,.diff-report .table-scroll){max-width:100%;min-width:0}
+.wg-07-stage,.wg-08-device,.wg-15-demo,.wg-16-panel{overflow:hidden}
+.wg-09-deck{width:100%}
+.wg-09-bar{flex-wrap:wrap;align-items:flex-start}
+.wg-09-dots{flex-wrap:wrap;justify-content:flex-end}
+.wg-09-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));overflow:visible;scroll-snap-type:none;scroll-behavior:auto;gap:var(--space-4)}
+.wg-09-slide{flex:initial;width:100%;min-width:0;min-height:260px;scroll-snap-align:unset;scroll-margin:0;overflow-wrap:anywhere}
+.wg-09-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:var(--space-3)}
+.wg-09-stat{min-width:0}
+.wg-09-cta-row{flex-wrap:wrap}
+.diff-report .table-scroll{overflow:visible;border:0;border-radius:0;background:transparent}
+.diff-report table{min-width:0!important;width:100%;table-layout:fixed}
+.diff-report th,.diff-report td{white-space:normal;overflow-wrap:anywhere;word-break:keep-all;line-height:1.62}
+.diff-report code{white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:760px){
+  .wg-09-track{grid-template-columns:1fr}
+  .wg-09-slide{min-height:220px;padding:22px}
+  .diff-report table{display:block;border:0;background:transparent}
+  .diff-report caption{display:block;caption-side:top;text-align:left;padding:0 0 10px;margin:0;color:var(--ink);font-size:13px;font-weight:850;line-height:1.5;white-space:normal}
+  .diff-report thead{display:none}
+  .diff-report tbody{display:grid;gap:10px;width:100%}
+  .diff-report tr{display:block;width:100%;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+  .diff-report td{display:grid;grid-template-columns:76px minmax(0,1fr);gap:10px;align-items:start;width:100%;padding:10px 12px;border:0;border-bottom:1px solid var(--line)}
+  .diff-report td:last-child{border-bottom:0}
+  .diff-report td:nth-child(1)::before{content:"우선순위"}.diff-report td:nth-child(2)::before{content:"섹션"}.diff-report td:nth-child(3)::before{content:"발견 문제"}.diff-report td:nth-child(4)::before{content:"변경 내용"}.diff-report td:nth-child(5)::before{content:"확인 기준"}
+  .diff-report td::before{font-size:11px;font-weight:900;color:var(--ink-mute);letter-spacing:.02em}
+}
+@media(max-width:560px){
+  .wg-07-track{grid-template-columns:1fr!important}
+  .wg-08-viewport{height:auto;min-height:360px}
+  .wg-15-ring{transform:scale(.92);transform-origin:center}
+}
+
+/* 2026-06-07 responsive table/code pass — mobile/tablet card stacks. */
+@media(max-width:900px){
+  .wg-03-diff{overflow:visible}.wg-03-row{display:grid;grid-template-columns:34px minmax(0,1fr) 22px;align-items:start;line-height:1.55}.wg-03-code{white-space:pre-wrap;overflow:visible;overflow-wrap:anywhere;word-break:break-word;min-width:0}.wg-03-note-body{overflow-wrap:anywhere}
+  .wg-16-table-wrap .table-scroll{overflow:visible;border:0;border-radius:0;background:transparent}
+  .wg-16-table caption{display:block;width:100%;box-sizing:border-box;caption-side:top;text-align:left;padding:0 0 10px;margin:0 0 8px;color:var(--ink);font-size:13px;font-weight:850;line-height:1.5;white-space:normal}
+  .wg-16-table{display:block;min-width:0;width:100%;border:0;background:transparent;overflow:visible}
+  .wg-16-table thead{display:none}.wg-16-table tbody{display:grid;width:100%;gap:10px}.wg-16-table tr{display:block;width:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:0}.wg-16-table tbody th{display:block;width:auto!important;box-sizing:border-box;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;padding:12px 14px;background:var(--bg);border-bottom:1px solid var(--line);line-height:1.45}.wg-16-table td{display:grid;width:auto!important;box-sizing:border-box;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);line-height:1.55}.wg-16-table td:nth-of-type(1)::before{content:"가능성"}.wg-16-table td:nth-of-type(2)::before{content:"영향"}.wg-16-table td:nth-of-type(3)::before{content:"완화책"}.wg-16-table td::before{font-size:11px;font-weight:850;color:var(--ink-mute);letter-spacing:.04em}.wg-16-table td:last-child{border-bottom:0;align-items:start}
+}
+@media(max-width:760px){
+  .wg-06-sheet{overflow:visible;border:0;background:transparent;padding:0}
+  .wg-06-table{display:block;min-width:0!important;width:100%;border:0;background:transparent}
+  .wg-06-cap{display:block;caption-side:top;text-align:left;padding:0 0 10px;margin:0;color:var(--ink-mute);line-height:1.5;white-space:normal}
+  .wg-06-table thead{display:none}.wg-06-table tbody{display:grid;gap:10px;width:100%}
+  .wg-06-table tr{display:block;width:100%;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+  .wg-06-table th.wg-06-rowhead{display:block;width:100%;box-sizing:border-box;padding:12px 14px;background:var(--bg);border-bottom:1px solid var(--line);white-space:normal;text-align:left!important}
+  .wg-06-table td{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:center;width:100%;box-sizing:border-box;padding:11px 14px;border:0;border-bottom:1px solid var(--line);text-align:left}
+  .wg-06-table td:last-child{border-bottom:0}.wg-06-table td:nth-of-type(1)::before{content:"Default"}.wg-06-table td:nth-of-type(2)::before{content:"Hover"}.wg-06-table td:nth-of-type(3)::before{content:"Focus"}.wg-06-table td:nth-of-type(4)::before{content:"Disabled"}.wg-06-table td::before{font-size:11px;font-weight:900;color:var(--ink-mute);letter-spacing:.02em}.wg-06-stack{align-items:flex-start}.wg-06-btn{white-space:normal}
+}
+
+/* 2026-06-07 responsive visual cleanup — avoid clipped animated/absolute affordances. */
+.tpl-item > h2 + section{margin-top:32px}
+.wg-08-screen{transform:none!important}
+.wg-15-na{top:0}.wg-15-nb{right:0}.wg-15-nc{bottom:0}.wg-15-nd{left:0}
+.wg-16-fnode{overflow-wrap:anywhere;word-break:keep-all}
+@media(max-width:760px){
+  .wg-07-box--slide{animation-name:wg-07-slide-mobile!important}.wg-07-box--spin{animation-name:wg-07-spin-mobile!important}
+  @keyframes wg-07-slide-mobile{from{transform:translateX(-8%)}to{transform:translateX(8%)}}
+  @keyframes wg-07-spin-mobile{from{transform:rotate(-6deg) scale(.96)}to{transform:rotate(18deg) scale(.96)}}
+}
+
+/* 2026-06-07 final containment — no off-canvas decorative motion in catalog screenshots. */
+.wg-07-box{animation:none!important;transform:none!important}
+.wg-16-fnode:not(:last-child)::after{right:6px}
+.wg-16-fnode{padding-right:28px}
+
+@media(max-width:920px){.dt-arrow{width:12px}.dt-arrow:after{right:0}}
+
+/* 2026-06-07 vt timeline/incident marker fix — show left step numbers instead of clipped ol markers. */
+.tl{list-style:none;counter-reset:tl-step;padding-left:42px;margin-left:0}
+.tl:before{left:15px}
+.tl-item{counter-increment:tl-step}
+.tl-item:before{content:counter(tl-step);left:-38px;top:13px;width:24px;height:24px;display:grid;place-items:center;border-radius:999px;background:var(--vt-red);color:var(--on-accent);font-size:12px;font-weight:900;line-height:1;box-shadow:0 0 0 4px var(--vt-wash);z-index:1}
+@media(max-width:560px){.tl{padding-left:38px}.tl:before{left:13px}.tl-item:before{left:-35px}}
+
+/* 2026-06-07 wg14/wg15 width pass — use full catalog card width, not reading-column width. */
+.tpl-item > .wg-14,.tpl-item > .wg-15{width:100%;max-width:100%}
+.tpl-item > .wg-14 :is(.wg-14-tldr,.wg-14-acc,.wg-14-tabs,.wg-14-faq),.tpl-item > .wg-15 :is(.wg-15-table,.wg-15-steps){width:100%;max-width:100%}
+@media(min-width:980px){.tpl-item > .wg-15 .wg-15-stage{grid-template-columns:minmax(220px,280px) minmax(0,1fr)}}
+@media(max-width:560px){.tpl-item > .wg-14 .wg-14-tldr{display:grid;grid-template-columns:1fr}.tpl-item > .wg-14 .wg-14-tablist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.tpl-item > .wg-14 .wg-14-tab{padding-inline:10px;min-width:0;overflow-wrap:anywhere}}
+
+/* 2026-06-07 wg17 width pass — PR writeup should use full catalog card width. */
+.tpl-item > .wg-17{width:100%;max-width:100%}
+.tpl-item > .wg-17 :is(.wg-17-head,.wg-17-block,.wg-17-bna,.wg-17-files){width:100%;max-width:100%;min-width:0}
+.tpl-item > .wg-17 :is(.wg-17-tag,.wg-17-h,.wg-17-file-sum,.wg-17-file-body,code){overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:760px){.tpl-item > .wg-17 .wg-17-bna{grid-template-columns:1fr}.tpl-item > .wg-17 .wg-17-arrow{transform:rotate(90deg);justify-self:center}.tpl-item > .wg-17 .wg-17-head-meta{gap:6px;flex-wrap:wrap}.tpl-item > .wg-17 .wg-17-file-sum{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px}}
 </style>
 
 

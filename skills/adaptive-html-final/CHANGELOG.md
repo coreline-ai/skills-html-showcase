@@ -1,5 +1,17 @@
 # Changelog — adaptive-html-final
 
+## v5.9.0 (2026-06-07) — 카탈로그 reverse-sync 반응형·폭·대비 계약 + 시각 정본 게이트
+
+`templates/final_20260604` 카탈로그에서 검증한 시각 QA 패치를 스킬 자산(`visual-html.css`·`widgets.css`)에 정식 편입. 추가 규칙은 모두 source-order로 base를 덮어 `!important` 없이 적용했고, 조건부 CSS만 바뀌어 core 해시는 불변.
+
+- **반응형/overflow(모바일·태블릿)**: vt-03 risk matrix 1열·vt-19 feature-flag·vt-21 soft-workflow·vt-02 화살표 pseudo 중앙정렬·vt-12 타임라인; wg-03 diff(≤900)·wg-04 SVG·wg-06 변형표→Variant 카드(≤760)·wg-07 애니메이션 이동폭 축소·wg-08 뷰포트 가변·wg-15 ring 노드 내측·wg-16 리스크표 카드화(≤900)+플로우 노드 보정.
+- **카드 전체 폭(1280px)**: wg-14·wg-15·wg-17 내부 본문 780(max-reading)→974로 확장, 내부 블록 100%·긴 branch/tag/code 줄바꿈·모바일 Before/After 1열·파일 summary 그리드. wg-15는 넓은 화면 ring↔설명 좌우 배치.
+- **대비 통일**: wg-02 팔레트 라벨 solid-bg 가독성, CTA/뱃지/wg-13/wg-17/wg-01 강조색 accent-2, wg-20-var solid.
+- **vt-12 타임라인 스텝 번호**: 기본 ol marker 제거 → `counter-reset`/`counter-increment`로 빨간 원 안 1·2·3 명시, 390px 선/숫자/카드 미겹침.
+- **카탈로그 1:1 동기화(사용자 지시)**: wg-09 가로 슬라이드 deck→반응형 카드 그리드(scroll-snap 제거), wg-07 애니메이션 정적화. 향후 카탈로그↔자산 동기화가 mechanical하도록 일치.
+- **시각 정본 게이트 3종 추가**: `direct_section_title_icon_policy_gate`(제목 없는 카드 시작 금지+직접 섹션 h2 body-icon 필수), `body_icon_diversity_gate`(동일 SVG 반복 주입 차단), `mode_template_contract_gate`(diagram/auto는 모드 1순위 vt, widget/auto는 권장 wg 사용 강제).
+- **examples 17종 재인라인** + `examples/sources` 자산 스냅샷·`css-integrity.json` 해시 갱신(verbatim·무결성 검증 통과). 거버넌스 77/77, 허용 외 `!important` 0.
+
 ## v5.8.1 (2026-06-07) — generated-date 모바일 오버플로 수정(코어)
 
 16모드 예제 전수 캡처 QA(1280/390px, `docs/screenshots/examples-qa-20260607/`)에서 발견된 P0 레이아웃 결함 수정.

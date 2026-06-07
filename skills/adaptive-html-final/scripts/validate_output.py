@@ -751,12 +751,14 @@ def _inner_html(text: str, open_end: int, tag: str) -> str:
     """Inner HTML of the element whose opening tag ends at open_end, by balancing nested
     <tag>/</tag>. Falls back to a bounded window if the tag never closes (malformed)."""
     depth = 1
-    window = text[open_end:open_end + 20000]
+    # Generated examples can legitimately exceed 20k after CSS/template proof sections.
+    # A short window truncated `<main>` and made early direct sections look titleless.
+    window = text[open_end:]
     for mm in re.finditer(r'<(/?)' + re.escape(tag) + r'\b', window, re.I):
         depth += -1 if mm.group(1) else 1
         if depth == 0:
             return window[:mm.start()]
-    return window[:1800]
+    return window[:200000]
 
 
 def role_img_buries_text_gate(text: str) -> list:

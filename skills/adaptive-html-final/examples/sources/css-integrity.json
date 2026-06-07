@@ -1,0 +1,34 @@
+{
+  "core_css_sha256": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+  "asset_order": [
+    "theme.css",
+    "components.css",
+    "visual-components.css",
+    "layouts.css",
+    "print.css"
+  ],
+  "asset_sha256": {
+    "theme.css": "cbb9b82da238bcffa18d3216f2f7b98433d9bde5f923edb35ed548ab7df52e6b",
+    "components.css": "bbe55ea9ec7be6fe7049a690c42833c692526a1ed1cc2f998ea821421efc02c7",
+    "visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
+    "layouts.css": "251f962780ed4a7a672b91e0f35027b267ebe8a6994dfc653ce58297549866b8",
+    "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
+    "widgets.css": "33b5806f6b5747e8959c809337dd37ce2d89b57e5e17e013088cd87cdbed6b89",
+    "visual-html.css": "9ed75e419fc123c149f149017bccda6a986221b1adba5351ab3b183dd7756ace",
+    "body-icons.css": "abf84aa13dc11168c18e3aa1d19abe0efed039b89cfd942257c4057ee081bf7c",
+    "editorial-patterns.css": "48311f96b358eda7dfe48296d23ee2d8e779c79e23813e098d66d9ad83254177",
+    "shape-visuals.css": "cd4d0f0d9112eb8212564ed05753817d69e1b49ec3fa378c7f3887cdc545e817",
+    "workflow-visuals.css": "3dd9135960bf8ceef96008a6ec0cd40329bbf3bfd8c040120429cfc68673cd8c",
+    "theme-dark.css": "96df50de2fe103e8e1c9ded3279f5d5cd4e88a0ee53af45f937b9817882ad812"
+  },
+  "profile": "auto",
+  "conditional_assets": [
+    "widgets.css",
+    "visual-html.css",
+    "body-icons.css",
+    "editorial-patterns.css",
+    "shape-visuals.css",
+    "workflow-visuals.css",
+    "theme-dark.css"
+  ]
+}
