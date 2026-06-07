@@ -1,5 +1,5 @@
 {
-  "core_css_sha256": "78f7c0f836948338a066ddc3392ecddecdba4f437e6d19ec05059c168b6ca19c",
+  "core_css_sha256": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
   "asset_order": [
     "theme.css",
     "components.css",
@@ -7,29 +7,21 @@
     "layouts.css",
     "print.css"
   ],
-  "conditional_asset_order": [
-    "widgets.css",
-    "visual-html.css",
-    "body-icons.css",
-    "editorial-patterns.css",
-    "shape-visuals.css",
-    "workflow-visuals.css",
-    "theme-dark.css"
-  ],
   "asset_sha256": {
-    "theme.css": "03dcc7114abfb97191add249d53d2301b0f30b3d5a0613e96661d3936869f8d2",
-    "components.css": "f0647d0429fd6366804b07b1f1bed10420792dae0a22c15d18e5b6bd341fafe0",
+    "theme.css": "cbb9b82da238bcffa18d3216f2f7b98433d9bde5f923edb35ed548ab7df52e6b",
+    "components.css": "bbe55ea9ec7be6fe7049a690c42833c692526a1ed1cc2f998ea821421efc02c7",
     "visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
-    "widgets.css": "ce038131dc852a0e08b60884f9aa15d9e670561854c0b1bb53a9d197f0a47659",
-    "visual-html.css": "1605be2efce87dd167413f96c8143e6beff083fe2fdfd29c70a0f867b45b9b2b",
-    "body-icons.css": "cb70e7ad8e17e08c0c3c0386d867a6f30d2169acc73473d82816fc5ca75e320d",
-    "editorial-patterns.css": "f9f1b6f3162087fb6ed0e9b071ce249605675e42f6ec166acef5e177f04bc427",
+    "layouts.css": "6e23a894d1c757af6158692a83831f47913a23ed8e315f62dad298d4fea68102",
+    "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
+    "widgets.css": "565f035e0cef13f1972a2b1557650914b2ce771bf183459bf9ba4235514782cf",
+    "visual-html.css": "91f84a64d36f476e5b25129471fd453aeac3e345e17016bf534589e3e44ff7a7",
+    "body-icons.css": "abf84aa13dc11168c18e3aa1d19abe0efed039b89cfd942257c4057ee081bf7c",
+    "editorial-patterns.css": "48311f96b358eda7dfe48296d23ee2d8e779c79e23813e098d66d9ad83254177",
     "shape-visuals.css": "cd4d0f0d9112eb8212564ed05753817d69e1b49ec3fa378c7f3887cdc545e817",
     "workflow-visuals.css": "3dd9135960bf8ceef96008a6ec0cd40329bbf3bfd8c040120429cfc68673cd8c",
-    "layouts.css": "195f1d3479a6a4ed7c299c3a437b381d79839e9aca460ec0a5ead4bea3ccc39f",
-    "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
-    "theme-dark.css": "54e927c1b9c58d5fd0bf0fc6baf38777fcc9e8445c744f440f325d187f864588"
+    "theme-dark.css": "7861b7077e8ebc59cc0501642bb44f29e57ce48198d24bed886f87464ccfe20a"
   },
   "profile": "auto",
-  "skill_version": "5.2.0"
+  "skill_version": "5.8.1",
+  "sync_note": "perfect sync 329b6326"
 }

@@ -1,0 +1,135 @@
+{
+  "h1": "온콜 인시던트 런북을 실제 실행 매뉴얼로 바꾸기",
+  "h1HasBodyIcon": false,
+  "sectionCount": 12,
+  "uniqueIconSignatures": 11,
+  "iconShapes": [
+    {
+      "index": 1,
+      "title": "1 실행 가능 판정",
+      "hasBodyIcon": true,
+      "firstTag": "path",
+      "firstClass": "bi-soft",
+      "firstD": "M20 7l11 5v8c0 7-4.5 11.5-11 14-6.5-2.5-"
+    },
+    {
+      "index": 2,
+      "title": "2 Source & Version Snapshot",
+      "hasBodyIcon": true,
+      "firstTag": "path",
+      "firstClass": "bi-fill",
+      "firstD": "M12 7h12l5 5v21H12z"
+    },
+    {
+      "index": 3,
+      "title": "3 Reader Role Router",
+      "hasBodyIcon": true,
+      "firstTag": "circle",
+      "firstClass": "bi-soft",
+      "firstD": null
+    },
+    {
+      "index": 4,
+      "title": "4 First Success Path",
+      "hasBodyIcon": true,
+      "firstTag": "path",
+      "firstClass": "bi-line",
+      "firstD": "M8 28h8c5 0 7-3 7-8V9"
+    },
+    {
+      "index": 5,
+      "title": "5 Prerequisites & Safety",
+      "hasBodyIcon": true,
+      "firstTag": "path",
+      "firstClass": "bi-soft",
+      "firstD": "M20 6l10 5v7c0 7-4 12-10 15-6-3-10-8-10-"
+    },
+    {
+      "index": 6,
+      "title": "6 Task Recipes",
+      "hasBodyIcon": true,
+      "firstTag": "rect",
+      "firstClass": "bi-fill",
+      "firstD": null
+    },
+    {
+      "index": 7,
+      "title": "7 Reference Extract",
+      "hasBodyIcon": true,
+      "firstTag": "path",
+      "firstClass": "bi-fill",
+      "firstD": "M10 9h15l5 5v17H10z"
+    },
+    {
+      "index": 8,
+      "title": "8 Decision Guide",
+      "hasBodyIcon": true,
+      "firstTag": "path",
+      "firstClass": "bi-soft",
+      "firstD": "M20 6l13 14-13 14L7 20z"
+    },
+    {
+      "index": 9,
+      "title": "9 Troubleshooting",
+      "hasBodyIcon": true,
+      "firstTag": "path",
+      "firstClass": "bi-soft",
+      "firstD": "M20 7l13 23H7z"
+    },
+    {
+      "index": 10,
+      "title": "10 Operations Runbook",
+      "hasBodyIcon": true,
+      "firstTag": "circle",
+      "firstClass": "bi-soft",
+      "firstD": null
+    },
+    {
+      "index": 11,
+      "title": "11 Manual Audit",
+      "hasBodyIcon": true,
+      "firstTag": "circle",
+      "firstClass": "bi-fill",
+      "firstD": null
+    },
+    {
+      "index": 12,
+      "title": "12 Next Actions & Source Limits",
+      "hasBodyIcon": true,
+      "firstTag": "path",
+      "firstClass": "bi-line",
+      "firstD": "M12 8v24"
+    }
+  ],
+  "lastClass": "try",
+  "lastBg": "rgb(26, 26, 26)",
+  "cards": [
+    {
+      "index": 1,
+      "className": "manual-card",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "pColor": "rgb(74, 74, 74)",
+      "liColor": "rgb(74, 74, 74)",
+      "hColor": "rgb(26, 26, 26)",
+      "text": "다음 행동 v1.0 확정 순서 Service owner가 P1/P2 SLA와 rollback 승인권자를 확정한다. Comms owner가 외부 공지 문구와 다음 업데이트 주기를 승인한다. On-call engineer가 첫 성공 경로를 dry-run으로 1회 수행한다. IC가 UNKNOWN 항목을 모두 해소한 뒤 manual status를 owner review에서 확정으로 바꾼다."
+    },
+    {
+      "index": 2,
+      "className": "manual-card manual-unknown",
+      "bg": "rgb(252, 228, 230)",
+      "color": "rgb(26, 26, 26)",
+      "pColor": "rgb(74, 74, 74)",
+      "hColor": "rgb(26, 26, 26)",
+      "text": "SOURCE LIMITS 확인하지 못한 항목 실제 제품 버전, 계정 권한 정책, 고객별 SLA 예외, 법무 승인 문구, 배포 시스템 명령어는 입력 원문에 없다. 이 HTML은 소유자 검토 전 실행 초안이며 최종 운영 정책을 대체하지 않는다."
+    }
+  ],
+  "overflowX": false,
+  "scrollWidth": 1280,
+  "clientWidth": 1280,
+  "mobile390": {
+    "overflowX": false,
+    "scrollWidth": 390,
+    "clientWidth": 390
+  }
+}

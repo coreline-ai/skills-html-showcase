@@ -1,0 +1,2478 @@
+{
+  "generatedAt": "2026-06-07T11:53:10.489Z",
+  "expectedCoreHash": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+  "baseUrl": "http://localhost:8080/skills/adaptive-html-final/examples/",
+  "cacheIsolation": "new browser context per mode+viewport, unique cache-busting query",
+  "results": [
+    {
+      "num": "01",
+      "mode": "beginner_html",
+      "file": "01_beginner_passkey_login.html",
+      "static": {
+        "file": "01_beginner_passkey_login.html",
+        "mode": "beginner_html",
+        "layoutFile": "beginner-learning.html",
+        "layoutClass": "layout-beginner",
+        "htmlSize": 204769,
+        "declaredVersion58": false,
+        "title": "패스키(Passkey)로 비밀번호 없이 로그인 이해하기",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": true,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "01_beginner_passkey_login.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "01_beginner_passkey_login.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "01_beginner_passkey_login.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/01_beginner_passkey_login.html?v=543&audit=01-390-1780833152809",
+          "title": "패스키(Passkey)로 비밀번호 없이 로그인 이해하기",
+          "h1": "패스키(Passkey)로 비밀번호 없이 로그인 이해하기",
+          "mainClass": "page-wide layout-beginner",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "7 오늘 10분 안에 패스키 직접 켜보기",
+            "top": 11740.109375,
+            "bottom": 12367.859375,
+            "height": 627.75,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 6688
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/01_beginner_passkey_login.html?v=543&audit=01-1280-1780833151746",
+          "title": "패스키(Passkey)로 비밀번호 없이 로그인 이해하기",
+          "h1": "패스키(Passkey)로 비밀번호 없이 로그인 이해하기",
+          "mainClass": "page-wide layout-beginner",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "7 오늘 10분 안에 패스키 직접 켜보기",
+            "top": 7596.421875,
+            "bottom": 8021.296875,
+            "height": 424.875,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 6688
+        }
+      }
+    },
+    {
+      "num": "02",
+      "mode": "expert_html",
+      "file": "02_expert_llm_gateway_report.html",
+      "static": {
+        "file": "02_expert_llm_gateway_report.html",
+        "mode": "expert_html",
+        "layoutFile": "expert-report.html",
+        "layoutClass": "layout-expert",
+        "htmlSize": 204151,
+        "declaredVersion58": false,
+        "title": "사내 LLM 게이트웨이 도입 타당성 진단 리포트",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "02_expert_llm_gateway_report.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "02_expert_llm_gateway_report.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "02_expert_llm_gateway_report.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          },
+          {
+            "type": "expert_decision_grid_section_collision",
+            "detail": "layout-expert 직접 section에 decision-grid class 금지. section은 decision-section, grid는 내부 wrapper(.expert-inner-grid/div.decision-grid)에 둔다.",
+            "page": "02_expert_llm_gateway_report.html"
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/02_expert_llm_gateway_report.html?v=543&audit=02-390-1780833155046",
+          "title": "사내 LLM 게이트웨이 도입 타당성 진단 리포트",
+          "h1": "사내 LLM 게이트웨이 도입 타당성 진단 리포트",
+          "mainClass": "page-wide layout-expert",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 9,
+          "directNonTryCount": 8,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            },
+            {
+              "index": 2,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "비차단 프록시 4주를 먼저 잠근다",
+            "top": 9708.109375,
+            "bottom": 10302.859375,
+            "height": 594.75,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5652
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/02_expert_llm_gateway_report.html?v=543&audit=02-1280-1780833153979",
+          "title": "사내 LLM 게이트웨이 도입 타당성 진단 리포트",
+          "h1": "사내 LLM 게이트웨이 도입 타당성 진단 리포트",
+          "mainClass": "page-wide layout-expert",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 9,
+          "directNonTryCount": 8,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            },
+            {
+              "index": 2,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "비차단 프록시 4주를 먼저 잠근다",
+            "top": 5784.875,
+            "bottom": 6172.859375,
+            "height": 387.984375,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5652
+        }
+      }
+    },
+    {
+      "num": "03",
+      "mode": "article_html",
+      "file": "03_article_side_project_signal.html",
+      "static": {
+        "file": "03_article_side_project_signal.html",
+        "mode": "article_html",
+        "layoutFile": "magazine-article.html",
+        "layoutClass": "layout-article",
+        "htmlSize": 201453,
+        "declaredVersion58": false,
+        "title": "사이드 프로젝트가 이력서보다 강한 이유",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "03_article_side_project_signal.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "03_article_side_project_signal.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "03_article_side_project_signal.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/03_article_side_project_signal.html?v=543&audit=03-390-1780833157482",
+          "title": "사이드 프로젝트가 이력서보다 강한 이유",
+          "h1": "사이드 프로젝트가 이력서보다 강한 이유",
+          "mainClass": "page-wide layout-article",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 10,
+          "directNonTryCount": 9,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            },
+            {
+              "index": 2,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "이력서에 붙일 증거 하나를 이번 달에 완성한다",
+            "top": 8662.546875,
+            "bottom": 9264.796875,
+            "height": 602.25,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5068
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/03_article_side_project_signal.html?v=543&audit=03-1280-1780833156197",
+          "title": "사이드 프로젝트가 이력서보다 강한 이유",
+          "h1": "사이드 프로젝트가 이력서보다 강한 이유",
+          "mainClass": "page-wide layout-article",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 10,
+          "directNonTryCount": 9,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            },
+            {
+              "index": 2,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "이력서에 붙일 증거 하나를 이번 달에 완성한다",
+            "top": 5478.109375,
+            "bottom": 5893.984375,
+            "height": 415.875,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5068
+        }
+      }
+    },
+    {
+      "num": "04",
+      "mode": "education_html",
+      "file": "04_education_git_rebase_workshop.html",
+      "static": {
+        "file": "04_education_git_rebase_workshop.html",
+        "mode": "education_html",
+        "layoutFile": "course-module.html",
+        "layoutClass": "layout-education",
+        "htmlSize": 207680,
+        "declaredVersion58": false,
+        "title": "Git rebase 안전하게 쓰기 3일 워크숍",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "04_education_git_rebase_workshop.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "04_education_git_rebase_workshop.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "04_education_git_rebase_workshop.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/04_education_git_rebase_workshop.html?v=543&audit=04-390-1780833160411",
+          "title": "Git rebase 안전하게 쓰기 3일 워크숍",
+          "h1": "Git rebase 안전하게 쓰기 3일 워크숍",
+          "mainClass": "page-wide layout-education",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 13,
+          "directNonTryCount": 12,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            },
+            {
+              "index": 2,
+              "text": ""
+            },
+            {
+              "index": 3,
+              "text": ""
+            },
+            {
+              "index": 6,
+              "text": ""
+            },
+            {
+              "index": 9,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 12189.921875,
+            "bottom": 12686.296875,
+            "height": 496.375,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 7869
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/04_education_git_rebase_workshop.html?v=543&audit=04-1280-1780833159342",
+          "title": "Git rebase 안전하게 쓰기 3일 워크숍",
+          "h1": "Git rebase 안전하게 쓰기 3일 워크숍",
+          "mainClass": "page-wide layout-education",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 13,
+          "directNonTryCount": 12,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            },
+            {
+              "index": 2,
+              "text": ""
+            },
+            {
+              "index": 3,
+              "text": ""
+            },
+            {
+              "index": 6,
+              "text": ""
+            },
+            {
+              "index": 9,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 8746.671875,
+            "bottom": 9090.765625,
+            "height": 344.09375,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 7869
+        }
+      }
+    },
+    {
+      "num": "05",
+      "mode": "blog_writer",
+      "file": "05_blog_deepwork_4day_retro.html",
+      "static": {
+        "file": "05_blog_deepwork_4day_retro.html",
+        "mode": "blog_writer",
+        "layoutFile": "personal-blog-essay.html",
+        "layoutClass": "layout-blog",
+        "htmlSize": 201460,
+        "declaredVersion58": false,
+        "title": "주 4일 딥워크 루틴 90일 실험기",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "05_blog_deepwork_4day_retro.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "05_blog_deepwork_4day_retro.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "05_blog_deepwork_4day_retro.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/05_blog_deepwork_4day_retro.html?v=543&audit=05-390-1780833162925",
+          "title": "주 4일 딥워크 루틴 90일 실험기",
+          "h1": "주 4일 딥워크 루틴 90일 실험기",
+          "mainClass": "page-wide layout-blog",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "독자가 따라 할 7일 축소 실험",
+            "top": 8451.796875,
+            "bottom": 9212.453125,
+            "height": 760.65625,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5495
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/05_blog_deepwork_4day_retro.html?v=543&audit=05-1280-1780833161652",
+          "title": "주 4일 딥워크 루틴 90일 실험기",
+          "h1": "주 4일 딥워크 루틴 90일 실험기",
+          "mainClass": "page-wide layout-blog",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "독자가 따라 할 7일 축소 실험",
+            "top": 5135.78125,
+            "bottom": 5624.765625,
+            "height": 488.984375,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5495
+        }
+      }
+    },
+    {
+      "num": "06",
+      "mode": "seo_dashboard",
+      "file": "06_seo_prompt_engineering_dashboard.html",
+      "static": {
+        "file": "06_seo_prompt_engineering_dashboard.html",
+        "mode": "seo_dashboard",
+        "layoutFile": "seo-dashboard.html",
+        "layoutClass": "layout-seo",
+        "htmlSize": 203296,
+        "declaredVersion58": false,
+        "title": "'프롬프트 엔지니어링 입문' 글 SEO 설계 대시보드",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "06_seo_prompt_engineering_dashboard.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "06_seo_prompt_engineering_dashboard.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "06_seo_prompt_engineering_dashboard.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/06_seo_prompt_engineering_dashboard.html?v=543&audit=06-390-1780833165443",
+          "title": "'프롬프트 엔지니어링 입문' 글 SEO 설계 대시보드",
+          "h1": "‘프롬프트 엔지니어링 입문’ 글 SEO 설계 대시보드",
+          "mainClass": "page-wide layout-seo",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 11,
+          "directNonTryCount": 10,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 10438.828125,
+            "bottom": 10897.703125,
+            "height": 458.875,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5661
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/06_seo_prompt_engineering_dashboard.html?v=543&audit=06-1280-1780833164394",
+          "title": "'프롬프트 엔지니어링 입문' 글 SEO 설계 대시보드",
+          "h1": "‘프롬프트 엔지니어링 입문’ 글 SEO 설계 대시보드",
+          "mainClass": "page-wide layout-seo",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 11,
+          "directNonTryCount": 10,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 5920.125,
+            "bottom": 6226.71875,
+            "height": 306.59375,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5661
+        }
+      }
+    },
+    {
+      "num": "07",
+      "mode": "platform_blog",
+      "file": "07_platform_tech_retro_adaptation.html",
+      "static": {
+        "file": "07_platform_tech_retro_adaptation.html",
+        "mode": "platform_blog",
+        "layoutFile": "platform-adaptation.html",
+        "layoutClass": "layout-platform",
+        "htmlSize": 207377,
+        "declaredVersion58": false,
+        "title": "기술 회고 글을 4개 플랫폼으로 변환하기",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "07_platform_tech_retro_adaptation.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "07_platform_tech_retro_adaptation.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "07_platform_tech_retro_adaptation.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/07_platform_tech_retro_adaptation.html?v=543&audit=07-390-1780833167744",
+          "title": "기술 회고 글을 4개 플랫폼으로 변환하기",
+          "h1": "기술 회고 글을 4개 플랫폼으로 변환하기",
+          "mainClass": "page-wide layout-platform",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 12,
+          "directNonTryCount": 11,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 13086,
+            "bottom": 13502.875,
+            "height": 416.875,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 6910
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/07_platform_tech_retro_adaptation.html?v=543&audit=07-1280-1780833166648",
+          "title": "기술 회고 글을 4개 플랫폼으로 변환하기",
+          "h1": "기술 회고 글을 4개 플랫폼으로 변환하기",
+          "mainClass": "page-wide layout-platform",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 12,
+          "directNonTryCount": 11,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 7991.6875,
+            "bottom": 8307.28125,
+            "height": 315.59375,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 6910
+        }
+      }
+    },
+    {
+      "num": "08",
+      "mode": "skill_audit",
+      "file": "08_skill_audit_codereview_bot.html",
+      "static": {
+        "file": "08_skill_audit_codereview_bot.html",
+        "mode": "skill_audit",
+        "layoutFile": "skill-audit-report.html",
+        "layoutClass": "layout-skill-audit",
+        "htmlSize": 202819,
+        "declaredVersion58": false,
+        "title": "사내 코드리뷰 봇 스킬 감사 리포트",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "08_skill_audit_codereview_bot.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "08_skill_audit_codereview_bot.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "08_skill_audit_codereview_bot.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/08_skill_audit_codereview_bot.html?v=543&audit=08-390-1780833170171",
+          "title": "사내 코드리뷰 봇 스킬 감사 리포트",
+          "h1": "사내 코드리뷰 봇 스킬 감사 리포트",
+          "mainClass": "page-wide layout-audit",
+          "hasExpectedLayoutClass": false,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 10316.25,
+            "bottom": 10770.75,
+            "height": 454.5,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 6233
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/08_skill_audit_codereview_bot.html?v=543&audit=08-1280-1780833168979",
+          "title": "사내 코드리뷰 봇 스킬 감사 리포트",
+          "h1": "사내 코드리뷰 봇 스킬 감사 리포트",
+          "mainClass": "page-wide layout-audit",
+          "hasExpectedLayoutClass": false,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 6270.03125,
+            "bottom": 6597.03125,
+            "height": 327,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 6233
+        }
+      }
+    },
+    {
+      "num": "09",
+      "mode": "reference_html",
+      "file": "09_reference_regex.html",
+      "static": {
+        "file": "09_reference_regex.html",
+        "mode": "reference_html",
+        "layoutFile": "reference-manual.html",
+        "layoutClass": "layout-reference",
+        "htmlSize": 211982,
+        "declaredVersion58": false,
+        "title": "정규식(Regex) 실무 레퍼런스",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "09_reference_regex.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "09_reference_regex.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "09_reference_regex.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          },
+          {
+            "type": "toc_map_contract_missing_pills",
+            "detail": "toc-map은 .toc-pills 래퍼와 a.toc-pill 항목을 써야 한다. bare <a><span>…</span> 구조는 목차가 붙어 보이는 회귀를 만든다.",
+            "page": "09_reference_regex.html"
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/09_reference_regex.html?v=543&audit=09-390-1780833172433",
+          "title": "정규식(Regex) 실무 레퍼런스",
+          "h1": "정규식(Regex) 실무 레퍼런스",
+          "mainClass": "page-wide layout-reference",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 13,
+          "directNonTryCount": 12,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            },
+            {
+              "index": 2,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 적용하기",
+            "top": 13088.4375,
+            "bottom": 13521.8125,
+            "height": 433.375,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 7284
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/09_reference_regex.html?v=543&audit=09-1280-1780833171390",
+          "title": "정규식(Regex) 실무 레퍼런스",
+          "h1": "정규식(Regex) 실무 레퍼런스",
+          "mainClass": "page-wide layout-reference",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 13,
+          "directNonTryCount": 12,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            },
+            {
+              "index": 2,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 적용하기",
+            "top": 9090.828125,
+            "bottom": 9397.421875,
+            "height": 306.59375,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 7284
+        }
+      }
+    },
+    {
+      "num": "10",
+      "mode": "comparison_html",
+      "file": "10_comparison_message_queue.html",
+      "static": {
+        "file": "10_comparison_message_queue.html",
+        "mode": "comparison_html",
+        "layoutFile": "comparison-matrix.html",
+        "layoutClass": "layout-comparison",
+        "htmlSize": 204469,
+        "declaredVersion58": false,
+        "title": "메시지 큐 3종 비교 — Kafka·RabbitMQ·SQS",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "10_comparison_message_queue.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "10_comparison_message_queue.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "10_comparison_message_queue.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/10_comparison_message_queue.html?v=543&audit=10-390-1780833174788",
+          "title": "메시지 큐 3종 비교 — Kafka·RabbitMQ·SQS",
+          "h1": "메시지 큐 3종 비교 — Kafka · RabbitMQ · AWS SQS",
+          "mainClass": "page-wide layout-compare",
+          "hasExpectedLayoutClass": false,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 10273.703125,
+            "bottom": 10760.078125,
+            "height": 486.375,
+            "color": "rgb(26, 26, 26)",
+            "bg": "rgb(255, 255, 255)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 7194
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/10_comparison_message_queue.html?v=543&audit=10-1280-1780833173669",
+          "title": "메시지 큐 3종 비교 — Kafka·RabbitMQ·SQS",
+          "h1": "메시지 큐 3종 비교 — Kafka · RabbitMQ · AWS SQS",
+          "mainClass": "page-wide layout-compare",
+          "hasExpectedLayoutClass": false,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 5942.484375,
+            "bottom": 6251.078125,
+            "height": 308.59375,
+            "color": "rgb(26, 26, 26)",
+            "bg": "rgb(255, 255, 255)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 7194
+        }
+      }
+    },
+    {
+      "num": "11",
+      "mode": "case_study_html",
+      "file": "11_case_study_search_index_outage.html",
+      "static": {
+        "file": "11_case_study_search_index_outage.html",
+        "mode": "case_study_html",
+        "layoutFile": "case-study.html",
+        "layoutClass": "layout-case",
+        "htmlSize": 208650,
+        "declaredVersion58": false,
+        "title": "검색 인덱스 장애 6시간 회고",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "11_case_study_search_index_outage.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "11_case_study_search_index_outage.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "11_case_study_search_index_outage.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/11_case_study_search_index_outage.html?v=543&audit=11-390-1780833177382",
+          "title": "검색 인덱스 장애 6시간 회고",
+          "h1": "검색 인덱스 장애 6시간 회고",
+          "mainClass": "page-wide layout-case",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 11,
+          "directNonTryCount": 10,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 13961.203125,
+            "bottom": 14345.578125,
+            "height": 384.375,
+            "color": "rgb(26, 26, 26)",
+            "bg": "rgb(255, 255, 255)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 7382
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/11_case_study_search_index_outage.html?v=543&audit=11-1280-1780833176023",
+          "title": "검색 인덱스 장애 6시간 회고",
+          "h1": "검색 인덱스 장애 6시간 회고",
+          "mainClass": "page-wide layout-case",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 11,
+          "directNonTryCount": 10,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 8396.71875,
+            "bottom": 8705.3125,
+            "height": 308.59375,
+            "color": "rgb(26, 26, 26)",
+            "bg": "rgb(255, 255, 255)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 7382
+        }
+      }
+    },
+    {
+      "num": "12",
+      "mode": "landing_brief_html",
+      "file": "12_landing_pagercalm_brief.html",
+      "static": {
+        "file": "12_landing_pagercalm_brief.html",
+        "mode": "landing_brief_html",
+        "layoutFile": "landing-brief.html",
+        "layoutClass": "layout-landing",
+        "htmlSize": 201590,
+        "declaredVersion58": false,
+        "title": "온콜 피로도 관리 도구 'PagerCalm' 랜딩 브리프",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "12_landing_pagercalm_brief.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "12_landing_pagercalm_brief.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "12_landing_pagercalm_brief.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/12_landing_pagercalm_brief.html?v=543&audit=12-390-1780833179988",
+          "title": "온콜 피로도 관리 도구 'PagerCalm' 랜딩 브리프",
+          "h1": "온콜 당번이 잠을 되찾는 온콜 피로도 관리 도구",
+          "mainClass": "page-wide layout-landing",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 8840.421875,
+            "bottom": 9831.515625,
+            "height": 991.09375,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 4774
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/12_landing_pagercalm_brief.html?v=543&audit=12-1280-1780833178812",
+          "title": "온콜 피로도 관리 도구 'PagerCalm' 랜딩 브리프",
+          "h1": "온콜 당번이 잠을 되찾는 온콜 피로도 관리 도구",
+          "mainClass": "page-wide layout-landing",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "바로 실행할 일",
+            "top": 5394.109375,
+            "bottom": 6050.765625,
+            "height": 656.65625,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 4774
+        }
+      }
+    },
+    {
+      "num": "13",
+      "mode": "checklist_playbook",
+      "file": "13_checklist_data_migration.html",
+      "static": {
+        "file": "13_checklist_data_migration.html",
+        "mode": "checklist_playbook",
+        "layoutFile": "checklist-playbook.html",
+        "layoutClass": "layout-checklist",
+        "htmlSize": 202563,
+        "declaredVersion58": false,
+        "title": "데이터 마이그레이션 안전 플레이북",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "13_checklist_data_migration.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "13_checklist_data_migration.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "13_checklist_data_migration.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/13_checklist_data_migration.html?v=543&audit=13-390-1780833182274",
+          "title": "데이터 마이그레이션 안전 플레이북",
+          "h1": "데이터 마이그레이션 안전 플레이북",
+          "mainClass": "page-wide layout-checklist",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "컷오버 최종 승인 기준",
+            "top": 9541.015625,
+            "bottom": 10135.765625,
+            "height": 594.75,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5678
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/13_checklist_data_migration.html?v=543&audit=13-1280-1780833181144",
+          "title": "데이터 마이그레이션 안전 플레이북",
+          "h1": "데이터 마이그레이션 안전 플레이북",
+          "mainClass": "page-wide layout-checklist",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 8,
+          "directNonTryCount": 7,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "컷오버 최종 승인 기준",
+            "top": 5363.71875,
+            "bottom": 5779.59375,
+            "height": 415.875,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5678
+        }
+      }
+    },
+    {
+      "num": "14",
+      "mode": "github_analysis",
+      "file": "14_github_analysis_fastapi_starter.html",
+      "static": {
+        "file": "14_github_analysis_fastapi_starter.html",
+        "mode": "github_analysis",
+        "layoutFile": "github-analysis.html",
+        "layoutClass": "layout-github",
+        "htmlSize": 209227,
+        "declaredVersion58": false,
+        "title": "GitHub 저장소 분석 리포트 (owner/fastapi-starter)",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": false,
+        "wgRecommendedDetected": [],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "14_github_analysis_fastapi_starter.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "14_github_analysis_fastapi_starter.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "14_github_analysis_fastapi_starter.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": [
+          {
+            "type": "try_card_contrast_guard_missing",
+            "detail": ".try 내부 .repo-card 카드가 있지만 p/li 텍스트 색상 reset CSS가 없습니다."
+          }
+        ]
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/14_github_analysis_fastapi_starter.html?v=543&audit=14-390-1780833184493",
+          "title": "GitHub 저장소 분석 리포트 (owner/fastapi-starter)",
+          "h1": "owner/fastapi-starter 저장소 분석 리포트",
+          "mainClass": "page-wide layout-github",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 11,
+          "directNonTryCount": 10,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 2,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "권장하는 다음 할 일",
+            "top": 12049.296875,
+            "bottom": 12568.5,
+            "height": 519.203125,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 6583
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/14_github_analysis_fastapi_starter.html?v=543&audit=14-1280-1780833183417",
+          "title": "GitHub 저장소 분석 리포트 (owner/fastapi-starter)",
+          "h1": "owner/fastapi-starter 저장소 분석 리포트",
+          "mainClass": "page-wide layout-github",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 11,
+          "directNonTryCount": 10,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 2,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "권장하는 다음 할 일",
+            "top": 6875.625,
+            "bottom": 7218.015625,
+            "height": 342.390625,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 6583
+        }
+      }
+    },
+    {
+      "num": "15",
+      "mode": "youtube_analysis",
+      "file": "15_youtube_vibecoding_gap.html",
+      "static": {
+        "file": "15_youtube_vibecoding_gap.html",
+        "mode": "youtube_analysis",
+        "layoutFile": "youtube-analysis.html",
+        "layoutClass": "layout-youtube",
+        "htmlSize": 205274,
+        "declaredVersion58": false,
+        "title": "YouTube Analysis · 바이브코딩 영상 분석",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": true,
+        "wgRecommendedDetected": [
+          "wg-11"
+        ],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "15_youtube_vibecoding_gap.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "15_youtube_vibecoding_gap.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "15_youtube_vibecoding_gap.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": [
+          {
+            "type": "try_card_contrast_guard_missing",
+            "detail": ".try 내부 .youtube-card 카드가 있지만 p/li 텍스트 색상 reset CSS가 없습니다."
+          }
+        ]
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/15_youtube_vibecoding_gap.html?v=543&audit=15-390-1780833186806",
+          "title": "YouTube Analysis · 바이브코딩 영상 분석",
+          "h1": "바이브코딩 영상은 실제로 팀 생산성을 올리는가",
+          "mainClass": "page-wide layout-youtube",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 11,
+          "directNonTryCount": 10,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "10 Next Actions",
+            "top": 12511.328125,
+            "bottom": 13044.171875,
+            "height": 532.84375,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 6062
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/15_youtube_vibecoding_gap.html?v=543&audit=15-1280-1780833185733",
+          "title": "YouTube Analysis · 바이브코딩 영상 분석",
+          "h1": "바이브코딩 영상은 실제로 팀 생산성을 올리는가",
+          "mainClass": "page-wide layout-youtube",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 11,
+          "directNonTryCount": 10,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "10 Next Actions",
+            "top": 6577.875,
+            "bottom": 6929.65625,
+            "height": 351.78125,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 6062
+        }
+      }
+    },
+    {
+      "num": "16",
+      "mode": "manual_analysis",
+      "file": "16_manual_product_runbook.html",
+      "static": {
+        "file": "16_manual_product_runbook.html",
+        "mode": "manual_analysis",
+        "layoutFile": "manual-analysis.html",
+        "layoutClass": "layout-manual",
+        "htmlSize": 205330,
+        "declaredVersion58": false,
+        "title": "Manual Analysis · 제품 운영 매뉴얼",
+        "hrefInIndex": true,
+        "vtPrimaryDetected": true,
+        "wgRecommendedDetected": [
+          "wg-13"
+        ],
+        "hasJsonLd": false,
+        "behavioralScriptCount": 0,
+        "forbiddenPrimitiveCount": 0,
+        "validateIssues": [
+          {
+            "page": "16_manual_product_runbook.html",
+            "type": "inline_css_hash_mismatch",
+            "expected": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
+            "actual": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918"
+          },
+          {
+            "page": "16_manual_product_runbook.html",
+            "type": "inline_core_css_not_verbatim",
+            "asset": "layouts.css",
+            "detail": "코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다."
+          },
+          {
+            "page": "16_manual_product_runbook.html",
+            "type": "theme_dark_css_not_inlined",
+            "detail": "theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다."
+          }
+        ],
+        "qualityIssues": []
+      },
+      "viewports": {
+        "390": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/16_manual_product_runbook.html?v=543&audit=16-390-1780833189208",
+          "title": "Manual Analysis · 제품 운영 매뉴얼",
+          "h1": "제품 운영 매뉴얼을 역할별 실행 문서로 바꾸기",
+          "mainClass": "page-wide layout-manual",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "overflowX": false,
+          "directSectionCount": 12,
+          "directNonTryCount": 11,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "11 Next Actions",
+            "top": 12361.28125,
+            "bottom": 12894.125,
+            "height": 532.84375,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5946
+        },
+        "1280": {
+          "url": "http://localhost:8080/skills/adaptive-html-final/examples/16_manual_product_runbook.html?v=543&audit=16-1280-1780833188070",
+          "title": "Manual Analysis · 제품 운영 매뉴얼",
+          "h1": "제품 운영 매뉴얼을 역할별 실행 문서로 바꾸기",
+          "mainClass": "page-wide layout-manual",
+          "hasExpectedLayoutClass": true,
+          "clientWidth": 1280,
+          "scrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "overflowX": false,
+          "directSectionCount": 12,
+          "directNonTryCount": 11,
+          "lastDirectIsTry": true,
+          "firstH2MissingIcon": [],
+          "directSectionNoH2": [
+            {
+              "index": 1,
+              "text": ""
+            }
+          ],
+          "numberedH2MissingIcon": [],
+          "iconTypes": [],
+          "iconVarietyCount": 0,
+          "missingSurface": [],
+          "themeRadios": 8,
+          "themeLabels": [
+            "라이트",
+            "그레이",
+            "화이트",
+            "다크",
+            "로즈",
+            "블루",
+            "스카이",
+            "세피아"
+          ],
+          "scriptCount": 0,
+          "forbiddenPrimitiveCount": 0,
+          "coreHashInlined": "329b6326d5f3e0059cbfa4fd4e348e2cdb0c590a0eb20b38235e195c66b42918",
+          "coreHashMatchesLatest": false,
+          "hasThemeDarkCss": true,
+          "hasDiffOldHash": true,
+          "lastSection": {
+            "text": "11 Next Actions",
+            "top": 6611.859375,
+            "bottom": 6963.640625,
+            "height": 351.78125,
+            "color": "rgb(245, 245, 240)",
+            "bg": "rgb(26, 26, 26)",
+            "display": "block",
+            "visibility": "visible"
+          },
+          "tinyText": [],
+          "mainTextChars": 5946
+        }
+      }
+    }
+  ]
+}

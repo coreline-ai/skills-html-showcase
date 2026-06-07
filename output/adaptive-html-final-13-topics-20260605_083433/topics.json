@@ -89,5 +89,23 @@
     "title": "AI 기능 출시 전 안전성 플레이북",
     "layout": "checklist-playbook.html",
     "file": "13-ai-feature-release-safety-playbook.html"
+  },
+  {
+    "id": 14,
+    "mode": "github_analysis",
+    "title": "astral-sh/uv 저장소 채택 실사 리포트",
+    "file": "pages/14-github-analysis-astral-uv-adoption-due-diligence.html"
+  },
+  {
+    "id": 15,
+    "mode": "youtube_analysis",
+    "title": "AI 회의록 자동화 영상 분석",
+    "file": "pages/15-youtube-analysis-ai-meeting-action-automation.html"
+  },
+  {
+    "id": 16,
+    "mode": "manual_analysis",
+    "title": "CSV→Postgres 마이그레이션 운영 매뉴얼 분석",
+    "file": "pages/16-manual-analysis-csv-to-postgres-migration-runbook.html"
   }
 ]

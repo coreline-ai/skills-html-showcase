@@ -1,0 +1,192 @@
+{
+  "mode": "11_beginner_html",
+  "generated_at": "2026-06-07T08:26:27.333654+00:00",
+  "page": "output/adaptive-html-final-sequential-16-modes-20260607_105404/pages/11_beginner_browser_cache_everyday_library.html",
+  "local_link": "http://localhost:8080/output/adaptive-html-final-sequential-16-modes-20260607_105404/pages/11_beginner_browser_cache_everyday_library.html",
+  "constraints": {
+    "previous_html_reused": false,
+    "common_generator_used": false,
+    "mode_specific_assets_only": true,
+    "skill_version": "5.8.1"
+  },
+  "before_metrics": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "screenshot": "/Users/hwanchoi/project_202606/skills-html-showcase/output/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode11-beginner-before-1280.png",
+      "metrics": {
+        "h1": 1,
+        "mainClass": "page layout-beginner",
+        "themebar": true,
+        "themeRadioCount": 8,
+        "toc": true,
+        "heroAnalogy": true,
+        "sections": 6,
+        "h2": 7,
+        "numberedH2": 6,
+        "numberedIcon": 6,
+        "h2IconComplete": true,
+        "vtShells": 3,
+        "widgets": [
+          "wg-15"
+        ],
+        "terms": 4,
+        "traps": 3,
+        "practice": true,
+        "finalChecklist": true,
+        "overflowX": false,
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "textChars": 4375
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "screenshot": "/Users/hwanchoi/project_202606/skills-html-showcase/output/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode11-beginner-before-390.png",
+      "metrics": {
+        "h1": 1,
+        "mainClass": "page layout-beginner",
+        "themebar": true,
+        "themeRadioCount": 8,
+        "toc": true,
+        "heroAnalogy": true,
+        "sections": 6,
+        "h2": 7,
+        "numberedH2": 6,
+        "numberedIcon": 6,
+        "h2IconComplete": true,
+        "vtShells": 3,
+        "widgets": [
+          "wg-15"
+        ],
+        "terms": 4,
+        "traps": 3,
+        "practice": true,
+        "finalChecklist": true,
+        "overflowX": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "textChars": 4375
+      }
+    }
+  ],
+  "after_metrics": [
+    {
+      "width": 1280,
+      "title": "브라우저 캐시를 동네 도서관처럼 이해하기",
+      "h1": 1,
+      "mainClass": "page layout-beginner",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "tocLinks": 6,
+      "heroAnalogy": true,
+      "contentSections": 6,
+      "directSectionSurfaceCandidate": 5,
+      "h2": 7,
+      "directH2": 6,
+      "numberedH2": 6,
+      "numberedIcon": 6,
+      "directH2Icon": 6,
+      "vtShells": 3,
+      "widgets": [
+        "wg-13",
+        "wg-15"
+      ],
+      "termCards": 5,
+      "dangerCards": 3,
+      "summaryCards": 6,
+      "practice": true,
+      "finalChecklist": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "textChars": 3850,
+      "bodyIconSvgAriaHidden": true,
+      "forbiddenScript": false,
+      "bodyOnlyHtmlLength": 12944
+    },
+    {
+      "width": 390,
+      "title": "브라우저 캐시를 동네 도서관처럼 이해하기",
+      "h1": 1,
+      "mainClass": "page layout-beginner",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "tocLinks": 6,
+      "heroAnalogy": true,
+      "contentSections": 6,
+      "directSectionSurfaceCandidate": 5,
+      "h2": 7,
+      "directH2": 6,
+      "numberedH2": 6,
+      "numberedIcon": 6,
+      "directH2Icon": 6,
+      "vtShells": 3,
+      "widgets": [
+        "wg-13",
+        "wg-15"
+      ],
+      "termCards": 5,
+      "dangerCards": 3,
+      "summaryCards": 6,
+      "practice": true,
+      "finalChecklist": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "textChars": 3850,
+      "bodyIconSvgAriaHidden": true,
+      "forbiddenScript": false,
+      "bodyOnlyHtmlLength": 12944
+    }
+  ],
+  "screenshots": {
+    "before_1280": "output/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode11-beginner-before-1280.png",
+    "before_390": "output/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode11-beginner-before-390.png",
+    "after_1280": "output/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode11-beginner-after-1280.png",
+    "after_390": "output/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode11-beginner-after-390.png"
+  },
+  "isolated_validation": {
+    "ok": true,
+    "html_count": 1,
+    "issue_count": 0,
+    "issues": [],
+    "quality": "OK — quality contract guard passed (1 HTML content file(s))"
+  },
+  "full_output_validation_after_mode": {
+    "ok": false,
+    "issue_count": 57,
+    "top_issue_types": [
+      [
+        "direct_section_h2_missing_body_icon",
+        18
+      ],
+      [
+        "inline_css_hash_mismatch",
+        13
+      ],
+      [
+        "inline_core_css_not_verbatim",
+        13
+      ],
+      [
+        "section_surface_css_missing",
+        13
+      ]
+    ],
+    "note": "예상 잔여: 아직 최신 core hash/body-icon/surface 규칙으로 재생성되지 않은 이전 모드와 index가 남아 있음. 11번은 isolated OK."
+  },
+  "manual_visual_review": {
+    "desktop": "1280 캡처에서 헤더/목차/hero analogy/6개 본문 블록/최종 체크리스트가 단일 beginner 학습 흐름으로 보이며, 직접 섹션은 카드 surface 안에 있음.",
+    "mobile": "390 캡처에서 가로 overflow 없음. 카드와 vt/wg 블록이 단일 컬럼으로 접히며 텍스트 잘림 없음.",
+    "text": "초보자용 비유, 용어 5개, 함정 3개, 직접 점검 순서, 마지막 체크리스트로 구성. 자기 설명식 예제 문구 없음."
+  },
+  "next_mode": "12_reference_html"
+}

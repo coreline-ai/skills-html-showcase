@@ -1,0 +1,34 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>01 Width Root Cause</title><style>body{margin:0;background:#f6f7f9;color:#16181d;font-family:-apple-system,BlinkMacSystemFont,"Pretendard",sans-serif;line-height:1.65}main{max-width:1120px;margin:0 auto;padding:38px 20px 80px}h1{font-size:32px;letter-spacing:-.04em}h2{margin-top:32px}h3{margin-top:24px}table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid #dfe3ea;border-radius:16px;overflow:hidden;background:#fff;margin:14px 0 24px;font-size:14px}th,td{padding:10px 12px;border-bottom:1px solid #e5e7eb;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#fff1f2;color:#a3222b}tr:last-child td{border-bottom:0}p{color:#4b5563}pre{background:#15171c;color:#f4f4ef;border-radius:14px;padding:16px;overflow:auto}.links{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}.links a{padding:8px 12px;border:1px solid #dfe3ea;border-radius:999px;background:#fff;color:#c62433;text-decoration:none;font-weight:800;font-size:13px}</style></head><body><main><div class="links"><a href="./01-width-rootcause.md">Audit MD</a><a href="./01-width-rootcause.json">Audit JSON</a><a href="./1280-08.png">Section 8 1280 capture</a><a href="./390-08.png">Section 8 390 capture</a></div><h1>01 beginner passkey 가로 너비 미충족 원인 분석</h1><h2>결론</h2><p>`01_beginner_passkey_login.html`의 가로 너비 미충족은 최신 스킬 assets 누락이 아니라, 현재 최신 assets 안에 남아 있는 폭 제한 정책 때문입니다.</p><p class="bullet">• `widgets.css`, `visual-html.css`, `layouts.css`, `theme-dark.css`는 01 HTML에 모두 인라인되어 있음</p><p class="bullet">• `examples/sources/assets/widgets.css`, `visual-html.css`도 현재 skill assets와 byte 일치</p><p class="bullet">• `validate_output.py`, `quality_contract_check.py`, `completion_check.py`는 모두 통과 상태</p><h2>실제 측정</h2><p>1280px에서 `main.page-wide.layout-beginner`의 직접 섹션 폭은 약 `1020px`입니다. 그러나 내부 prose와 일부 위젯은 아래처럼 제한됩니다.</p><table><tr><th>대상</th><th>실제 폭</th><th>원인</th></tr><tr><td>section card</td><td>1020px</td><td>`.page-wide`가 `--max-wide` 기준으로 넓게 잡힘</td></tr><tr><td>일반 `p`, `ol`, `ul`, `.h2-sub`</td><td>736px</td><td>`theme.css`의 `.page-wide&gt;section&gt;p/ul/ol { max-width:46rem }`</td></tr><tr><td>`wg-10-sheet`</td><td>620px</td><td>`widgets.css`의 `.wg-10-sheet { max-width:620px; margin:0 auto }`</td></tr></table><h2>원인 CSS</h2><h3>1. 넓은 섹션 안의 본문 읽기폭 제한</h3><p>`skills/adaptive-html-final/assets/theme.css`</p><pre><code>.page-wide&gt;section&gt;p,
+.page-wide&gt;section&gt;ul,
+.page-wide&gt;section&gt;ol,
+.page-wide&gt;article&gt;p,
+.page-wide&gt;article&gt;ul,
+.page-wide&gt;article&gt;ol,
+.page-wide&gt;p {
+  max-width: 46rem;
+}
+</code></pre><p>이 규칙은 prose readability를 위한 정책입니다. 즉 카드/섹션은 넓고, 설명 문단은 좁게 유지합니다. 그래서 1280px에서 섹션은 1020px인데 본문은 736px로 보입니다.</p><h3>2. beginner 모드가 60rem 예외 목록에서 빠져 있음</h3><p>같은 `theme.css`에는 일부 모드만 section prose를 `60rem`까지 넓히는 예외가 있습니다.</p><pre><code>.page-wide.layout-github&gt;section&gt;p,
+.page-wide.layout-youtube&gt;section&gt;p,
+.page-wide.layout-manual&gt;section&gt;p,
+.page-wide.layout-expert&gt;section&gt;p,
+...
+.page-wide.layout-reference&gt;section&gt;p,
+.page-wide.layout-audit&gt;section&gt;p {
+  max-width: 60rem;
+}
+</code></pre><p>하지만 `layout-beginner`는 이 예외 목록에 없습니다. 따라서 beginner는 기본 `46rem` 정책을 탑니다.</p><h3>3. `wg-10` 위젯 자체가 620px 고정 성격</h3><p>`skills/adaptive-html-final/assets/widgets.css`</p><pre><code>.wg-10-sheet {
+  font-family: var(--sans);
+  color: var(--ink);
+  max-width: 620px;
+  margin: 0 auto;
+}
+</code></pre><p>`01_beginner_passkey_login.html`의 `모드 정본 템플릿 적용 확인` 섹션에는 추천 위젯으로 `wg-10`이 들어가는데, 이 위젯은 assets 원본에서 620px로 제한되어 있습니다. 그래서 섹션 폭 1020px 안에서 가운데 620px만 사용합니다.</p><h2>판정</h2><table><tr><th>질문</th><th>답</th></tr><tr><td>최신 스킬 assets가 01 HTML에 없는가?</td><td>아니오. 최신 assets는 인라인되어 있음</td></tr><tr><td>`widgets.css` / `visual-html.css` 스냅샷이 오래됐는가?</td><td>현재는 최신과 byte 일치</td></tr><tr><td>검증 실패인가?</td><td>아니오. 검증은 통과</td></tr><tr><td>왜 가로폭이 안 차 보이는가?</td><td>`theme.css`의 prose max-width 46rem + `widgets.css`의 `wg-10` max-width 620px 때문</td></tr><tr><td>스킬에 추가로 필요한가?</td><td>예. “넓은 카드 안의 핵심 위젯은 full width 가능” 정책이 assets에 아직 없음</td></tr></table><h2>스킬 반영 필요 사항</h2><p>최소 패치 방향은 둘 중 하나입니다.</p><h3>A안 — beginner prose만 더 넓힘</h3><p>`theme.css`의 60rem 예외 목록에 `layout-beginner`를 추가합니다.</p><pre><code>.page-wide.layout-beginner&gt;section&gt;p,
+.page-wide.layout-beginner&gt;section&gt;ul,
+.page-wide.layout-beginner&gt;section&gt;ol {
+  max-width: 60rem;
+}
+</code></pre><p>효과: 일반 본문과 `.h2-sub`가 736px에서 약 960px까지 넓어집니다.</p><h3>B안 — mode-template-contract 내부 위젯은 full width</h3><p>`widgets.css` 또는 `layouts.css`에 아래 같은 계약을 추가합니다.</p><pre><code>.mode-template-contract &gt; .wg-10-sheet {
+  width: 100%;
+  max-width: 100%;
+}
+</code></pre><p>효과: `모드 정본 템플릿 적용 확인` 섹션의 `wg-10`이 섹션 폭을 채웁니다.</p><h3>권장</h3><p class="bullet">• prose는 읽기폭 제한을 유지할 가치가 있으므로 무조건 full-width로 풀지 않는 것이 좋습니다.</p><p class="bullet">• 다만 `mode-template-contract`는 “스킬 템플릿 적용 증명 섹션”이므로, 여기에 들어가는 추천 위젯은 섹션 폭을 더 적극적으로 쓰는 편이 맞습니다.</p><p class="bullet">• 따라서 **B안 우선**, 필요 시 `layout-beginner`에만 60rem 예외를 추가하는 순서가 안전합니다.</p></main></body></html>

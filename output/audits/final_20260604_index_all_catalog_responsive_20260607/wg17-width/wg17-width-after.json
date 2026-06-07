@@ -1,0 +1,200 @@
+{
+  "url": "http://localhost:8080/templates/final_20260604/index-all-templates-catalog.html?v=wg17-width-1780836782752",
+  "rows": [
+    {
+      "viewport": "390",
+      "info": {
+        "title": "wg 17 · pr writeup",
+        "section": {
+          "left": 14,
+          "right": 376,
+          "width": 362,
+          "clientWidth": 360,
+          "scrollWidth": 360
+        },
+        "main": {
+          "tag": "section",
+          "cls": "wg-17",
+          "left": 37,
+          "right": 353,
+          "width": 316,
+          "clientWidth": 316,
+          "scrollWidth": 316
+        },
+        "children": [
+          {
+            "tag": "header",
+            "cls": "wg-17-head",
+            "text": "PR 작성 · @JIWON feat: 세션 토큰 자동 갱신 미들웨어 도입 feature/token-refre",
+            "left": 37,
+            "right": 353,
+            "width": 316,
+            "clientWidth": 316,
+            "scrollWidth": 316
+          },
+          {
+            "tag": "div",
+            "cls": "wg-17-block",
+            "text": "1 동기 (왜?) 만료된 액세스 토큰으로 인한 401 재시도가 일일 약 3,200건 발생했습니다. 클라이언트",
+            "left": 37,
+            "right": 353,
+            "width": 316,
+            "clientWidth": 316,
+            "scrollWidth": 316
+          },
+          {
+            "tag": "div",
+            "cls": "wg-17-block",
+            "text": "2 Before / After BEFORE 토큰 만료 시 401 → 클라이언트 재로그인 갱신 로직이 각 핸들",
+            "left": 37,
+            "right": 353,
+            "width": 316,
+            "clientWidth": 316,
+            "scrollWidth": 316
+          },
+          {
+            "tag": "div",
+            "cls": "wg-17-block",
+            "text": "3 파일별 워크스루 각 항목을 펼쳐 변경 의도를 확인하세요. middleware/refreshToken.ts",
+            "left": 37,
+            "right": 353,
+            "width": 316,
+            "clientWidth": 316,
+            "scrollWidth": 316
+          }
+        ],
+        "offenders": []
+      }
+    },
+    {
+      "viewport": "768",
+      "info": {
+        "title": "wg 17 · pr writeup",
+        "section": {
+          "left": 22,
+          "right": 746,
+          "width": 724,
+          "clientWidth": 722,
+          "scrollWidth": 722
+        },
+        "main": {
+          "tag": "section",
+          "cls": "wg-17",
+          "left": 45,
+          "right": 723,
+          "width": 678,
+          "clientWidth": 678,
+          "scrollWidth": 678
+        },
+        "children": [
+          {
+            "tag": "header",
+            "cls": "wg-17-head",
+            "text": "PR 작성 · @JIWON feat: 세션 토큰 자동 갱신 미들웨어 도입 feature/token-refre",
+            "left": 45,
+            "right": 723,
+            "width": 678,
+            "clientWidth": 678,
+            "scrollWidth": 678
+          },
+          {
+            "tag": "div",
+            "cls": "wg-17-block",
+            "text": "1 동기 (왜?) 만료된 액세스 토큰으로 인한 401 재시도가 일일 약 3,200건 발생했습니다. 클라이언트",
+            "left": 45,
+            "right": 723,
+            "width": 678,
+            "clientWidth": 678,
+            "scrollWidth": 678
+          },
+          {
+            "tag": "div",
+            "cls": "wg-17-block",
+            "text": "2 Before / After BEFORE 토큰 만료 시 401 → 클라이언트 재로그인 갱신 로직이 각 핸들",
+            "left": 45,
+            "right": 723,
+            "width": 678,
+            "clientWidth": 678,
+            "scrollWidth": 678
+          },
+          {
+            "tag": "div",
+            "cls": "wg-17-block",
+            "text": "3 파일별 워크스루 각 항목을 펼쳐 변경 의도를 확인하세요. middleware/refreshToken.ts",
+            "left": 45,
+            "right": 723,
+            "width": 678,
+            "clientWidth": 678,
+            "scrollWidth": 678
+          }
+        ],
+        "offenders": []
+      }
+    },
+    {
+      "viewport": "1280",
+      "info": {
+        "title": "wg 17 · pr writeup",
+        "section": {
+          "left": 130,
+          "right": 1150,
+          "width": 1020,
+          "clientWidth": 1018,
+          "scrollWidth": 1018
+        },
+        "main": {
+          "tag": "section",
+          "cls": "wg-17",
+          "left": 153,
+          "right": 1127,
+          "width": 974,
+          "clientWidth": 974,
+          "scrollWidth": 974
+        },
+        "children": [
+          {
+            "tag": "header",
+            "cls": "wg-17-head",
+            "text": "PR 작성 · @JIWON feat: 세션 토큰 자동 갱신 미들웨어 도입 feature/token-refre",
+            "left": 153,
+            "right": 1127,
+            "width": 974,
+            "clientWidth": 974,
+            "scrollWidth": 974
+          },
+          {
+            "tag": "div",
+            "cls": "wg-17-block",
+            "text": "1 동기 (왜?) 만료된 액세스 토큰으로 인한 401 재시도가 일일 약 3,200건 발생했습니다. 클라이언트",
+            "left": 153,
+            "right": 1127,
+            "width": 974,
+            "clientWidth": 974,
+            "scrollWidth": 974
+          },
+          {
+            "tag": "div",
+            "cls": "wg-17-block",
+            "text": "2 Before / After BEFORE 토큰 만료 시 401 → 클라이언트 재로그인 갱신 로직이 각 핸들",
+            "left": 153,
+            "right": 1127,
+            "width": 974,
+            "clientWidth": 974,
+            "scrollWidth": 974
+          },
+          {
+            "tag": "div",
+            "cls": "wg-17-block",
+            "text": "3 파일별 워크스루 각 항목을 펼쳐 변경 의도를 확인하세요. middleware/refreshToken.ts",
+            "left": 153,
+            "right": 1127,
+            "width": 974,
+            "clientWidth": 974,
+            "scrollWidth": 974
+          }
+        ],
+        "offenders": []
+      }
+    }
+  ]
+}

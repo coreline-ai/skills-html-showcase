@@ -1,0 +1,24 @@
+{
+  "run": "sequential-16-modes",
+  "completed": [
+    "01_skill_audit",
+    "02_platform_blog",
+    "03_seo_dashboard",
+    "04_education_html",
+    "05_github_analysis",
+    "06_youtube_analysis",
+    "07_manual_analysis",
+    "08_expert_html",
+    "09_article_html",
+    "10_blog_writer",
+    "11_beginner_html",
+    "12_reference_html",
+    "13_comparison_html",
+    "14_case_study_html",
+    "15_landing_brief_html",
+    "16_checklist_playbook"
+  ],
+  "policy": "one mode per turn; stop after report; no common body generator reuse; no previous HTML body reuse",
+  "last_completed": "16_checklist_playbook",
+  "next_mode": null
+}

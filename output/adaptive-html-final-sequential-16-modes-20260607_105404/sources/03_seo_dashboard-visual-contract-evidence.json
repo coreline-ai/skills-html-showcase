@@ -1,0 +1,59 @@
+{
+  "mode": "03_seo_dashboard",
+  "file": "pages/03_seo_dashboard_internal_rag_guide.html",
+  "link": "http://localhost:8080/output/adaptive-html-final-sequential-16-modes-20260607_105404/pages/03_seo_dashboard_internal_rag_guide.html",
+  "policy": "previous HTML body not reused by render script; common generator not used; seo_dashboard layout/recipe/references/templates consulted for this page only",
+  "materials_sha256": {
+    "skills/adaptive-html-final/SKILL.md": "08d27b0eab2a5afbc73f37a74d596fcdce53101789381c23c7d26cd212871626",
+    "skills/adaptive-html-final/recipes/seo.prompt.md": "55c56ffec03b27e33f238211b59e1d79e767588bbac266c2182a9a26bfe02004",
+    "skills/adaptive-html-final/assets/layouts/seo-dashboard.html": "647a613ff1e11d1307d3932823e91b7243989322916a561f9872aeff15eaef4d",
+    "skills/adaptive-html-final/references/layout-system.md": "e0274c4634e2d4354c0d49167d90f016dee62ccca7e28599aba32ce729208c6d",
+    "skills/adaptive-html-final/references/blog-seo-system.md": "f6fa0356a563ea1c82e6a099bbc7c9d2ad945e909f1c7c1ff90ab6a06bc03d45",
+    "skills/adaptive-html-final/references/body-icon-system.md": "3b2729a18456e3d049a7f35890ec612f66528552c969db445914bc8847151bfa",
+    "skills/adaptive-html-final/references/visual-html-system.md": "757dbca98bc7952b1db492022da014749f9141e6716fc4cc20a72af6e29e80c5",
+    "skills/adaptive-html-final/references/widget-system.md": "cc2e4bbb245ddd46106c2f5e0b22ce3920e6ff172c0f0fe4f3a4505cd61755e1",
+    "skills/adaptive-html-final/assets/visual-html-templates/07-card-grid.html": "99c40c0b313b71198c03b4dbaa80ef1ab3fb27940e8530d08afdf6f1d688bdb9",
+    "skills/adaptive-html-final/assets/visual-html-templates/13-comparison-cards.html": "96ae65f89b0f7c36928a477be4eb830076fb147dea9eb41bde32a9a5d9f6353e",
+    "skills/adaptive-html-final/assets/visual-html-templates/20-prompt-tuner.html": "34f4a5b6c9842eb07d2ec89d3ca8b3f05341f59c5404ba46739941ca1deb0d2b",
+    "skills/adaptive-html-final/assets/widget-templates/11-weekly-status.html": "51014e3e7dc29fd5020f813b6b7a4e279de1014946514a2b9b4c82b3bb6a5278"
+  },
+  "used_materials": [
+    "skills/adaptive-html-final/SKILL.md",
+    "skills/adaptive-html-final/recipes/seo.prompt.md",
+    "skills/adaptive-html-final/assets/layouts/seo-dashboard.html",
+    "skills/adaptive-html-final/references/layout-system.md",
+    "skills/adaptive-html-final/references/blog-seo-system.md",
+    "skills/adaptive-html-final/references/body-icon-system.md",
+    "skills/adaptive-html-final/references/visual-html-system.md",
+    "skills/adaptive-html-final/references/widget-system.md",
+    "skills/adaptive-html-final/assets/visual-html-templates/07-card-grid.html",
+    "skills/adaptive-html-final/assets/visual-html-templates/13-comparison-cards.html",
+    "skills/adaptive-html-final/assets/visual-html-templates/20-prompt-tuner.html",
+    "skills/adaptive-html-final/assets/widget-templates/11-weekly-status.html"
+  ],
+  "visual_contract": {
+    "direct_sections_use_view_surface": true,
+    "numbered_h2_order": "body-icon body-icon--sm -> num -> title",
+    "serp_premium_classes": [
+      "serp-shell",
+      "serp-box",
+      "serp-rule-grid",
+      "serp-variant-strip"
+    ],
+    "forbidden_seo_prefixes_absent": true,
+    "title_candidates_count": 10,
+    "vt_required": [
+      "card-grid"
+    ],
+    "vt_used": [
+      "card-grid",
+      "comparison-cards",
+      "prompt-tuner"
+    ],
+    "wg_used": [
+      "11-weekly-status"
+    ],
+    "table_mobile_safe": "table-scroll + mobile-card-table"
+  },
+  "next_mode": "04_education_html"
+}

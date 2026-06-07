@@ -1,0 +1,341 @@
+{
+  "url": "http://localhost:8080/templates/final_20260604/index-all-templates-catalog.html?v=wg14-wg15-width-1780836634272",
+  "rows": [
+    {
+      "viewport": "390",
+      "target": "wg14-feature-explainer",
+      "info": {
+        "title": "wg 14 · feature explainer",
+        "section": {
+          "left": 14,
+          "right": 376,
+          "width": 362,
+          "clientWidth": 360,
+          "scrollWidth": 360
+        },
+        "main": {
+          "tag": "section",
+          "cls": "wg-14",
+          "left": 37,
+          "right": 353,
+          "width": 316,
+          "clientWidth": 316,
+          "scrollWidth": 316
+        },
+        "children": [
+          {
+            "tag": "h2",
+            "cls": "",
+            "text": "wg 14 · feature explainer",
+            "left": 37,
+            "right": 353,
+            "width": 316,
+            "clientWidth": 316,
+            "scrollWidth": 316
+          },
+          {
+            "tag": "style",
+            "cls": "",
+            "text": ".wg-14{font-family:var(--sans);color:var(--ink);max-width:va",
+            "left": 0,
+            "right": 0,
+            "width": 0,
+            "clientWidth": 0,
+            "scrollWidth": 0
+          },
+          {
+            "tag": "section",
+            "cls": "wg-14",
+            "text": "기능 안내 · V2.8 릴리스 스마트 머지 큐 (Smart Merge Queue) PR을 자동으로 줄 세워 ",
+            "left": 37,
+            "right": 353,
+            "width": 316,
+            "clientWidth": 316,
+            "scrollWidth": 316
+          }
+        ],
+        "offenders": []
+      }
+    },
+    {
+      "viewport": "390",
+      "target": "wg15-concept-explainer",
+      "info": {
+        "title": "wg 15 · concept explainer",
+        "section": {
+          "left": 14,
+          "right": 376,
+          "width": 362,
+          "clientWidth": 360,
+          "scrollWidth": 360
+        },
+        "main": {
+          "tag": "section",
+          "cls": "wg-15",
+          "left": 37,
+          "right": 353,
+          "width": 316,
+          "clientWidth": 316,
+          "scrollWidth": 316
+        },
+        "children": [
+          {
+            "tag": "h2",
+            "cls": "",
+            "text": "wg 15 · concept explainer",
+            "left": 37,
+            "right": 353,
+            "width": 316,
+            "clientWidth": 316,
+            "scrollWidth": 316
+          },
+          {
+            "tag": "style",
+            "cls": "",
+            "text": ".wg-15{font-family:var(--sans);color:var(--ink);max-width:va",
+            "left": 0,
+            "right": 0,
+            "width": 0,
+            "clientWidth": 0,
+            "scrollWidth": 0
+          },
+          {
+            "tag": "section",
+            "cls": "wg-15",
+            "text": "개념 교보재 · 분산 시스템 컨시스턴트 해싱 (Consistent Hashing) 노드를 원형 해시 링 위에",
+            "left": 37,
+            "right": 353,
+            "width": 316,
+            "clientWidth": 316,
+            "scrollWidth": 316
+          }
+        ],
+        "offenders": []
+      }
+    },
+    {
+      "viewport": "768",
+      "target": "wg14-feature-explainer",
+      "info": {
+        "title": "wg 14 · feature explainer",
+        "section": {
+          "left": 22,
+          "right": 746,
+          "width": 724,
+          "clientWidth": 722,
+          "scrollWidth": 722
+        },
+        "main": {
+          "tag": "section",
+          "cls": "wg-14",
+          "left": 45,
+          "right": 723,
+          "width": 678,
+          "clientWidth": 678,
+          "scrollWidth": 678
+        },
+        "children": [
+          {
+            "tag": "h2",
+            "cls": "",
+            "text": "wg 14 · feature explainer",
+            "left": 45,
+            "right": 723,
+            "width": 678,
+            "clientWidth": 678,
+            "scrollWidth": 678
+          },
+          {
+            "tag": "style",
+            "cls": "",
+            "text": ".wg-14{font-family:var(--sans);color:var(--ink);max-width:va",
+            "left": 0,
+            "right": 0,
+            "width": 0,
+            "clientWidth": 0,
+            "scrollWidth": 0
+          },
+          {
+            "tag": "section",
+            "cls": "wg-14",
+            "text": "기능 안내 · V2.8 릴리스 스마트 머지 큐 (Smart Merge Queue) PR을 자동으로 줄 세워 ",
+            "left": 45,
+            "right": 723,
+            "width": 678,
+            "clientWidth": 678,
+            "scrollWidth": 678
+          }
+        ],
+        "offenders": []
+      }
+    },
+    {
+      "viewport": "768",
+      "target": "wg15-concept-explainer",
+      "info": {
+        "title": "wg 15 · concept explainer",
+        "section": {
+          "left": 22,
+          "right": 746,
+          "width": 724,
+          "clientWidth": 722,
+          "scrollWidth": 722
+        },
+        "main": {
+          "tag": "section",
+          "cls": "wg-15",
+          "left": 45,
+          "right": 723,
+          "width": 678,
+          "clientWidth": 678,
+          "scrollWidth": 678
+        },
+        "children": [
+          {
+            "tag": "h2",
+            "cls": "",
+            "text": "wg 15 · concept explainer",
+            "left": 45,
+            "right": 723,
+            "width": 678,
+            "clientWidth": 678,
+            "scrollWidth": 678
+          },
+          {
+            "tag": "style",
+            "cls": "",
+            "text": ".wg-15{font-family:var(--sans);color:var(--ink);max-width:va",
+            "left": 0,
+            "right": 0,
+            "width": 0,
+            "clientWidth": 0,
+            "scrollWidth": 0
+          },
+          {
+            "tag": "section",
+            "cls": "wg-15",
+            "text": "개념 교보재 · 분산 시스템 컨시스턴트 해싱 (Consistent Hashing) 노드를 원형 해시 링 위에",
+            "left": 45,
+            "right": 723,
+            "width": 678,
+            "clientWidth": 678,
+            "scrollWidth": 678
+          }
+        ],
+        "offenders": []
+      }
+    },
+    {
+      "viewport": "1280",
+      "target": "wg14-feature-explainer",
+      "info": {
+        "title": "wg 14 · feature explainer",
+        "section": {
+          "left": 130,
+          "right": 1150,
+          "width": 1020,
+          "clientWidth": 1018,
+          "scrollWidth": 1018
+        },
+        "main": {
+          "tag": "section",
+          "cls": "wg-14",
+          "left": 153,
+          "right": 933,
+          "width": 780,
+          "clientWidth": 780,
+          "scrollWidth": 780
+        },
+        "children": [
+          {
+            "tag": "h2",
+            "cls": "",
+            "text": "wg 14 · feature explainer",
+            "left": 153,
+            "right": 1127,
+            "width": 974,
+            "clientWidth": 974,
+            "scrollWidth": 974
+          },
+          {
+            "tag": "style",
+            "cls": "",
+            "text": ".wg-14{font-family:var(--sans);color:var(--ink);max-width:va",
+            "left": 0,
+            "right": 0,
+            "width": 0,
+            "clientWidth": 0,
+            "scrollWidth": 0
+          },
+          {
+            "tag": "section",
+            "cls": "wg-14",
+            "text": "기능 안내 · V2.8 릴리스 스마트 머지 큐 (Smart Merge Queue) PR을 자동으로 줄 세워 ",
+            "left": 153,
+            "right": 933,
+            "width": 780,
+            "clientWidth": 780,
+            "scrollWidth": 780
+          }
+        ],
+        "offenders": []
+      }
+    },
+    {
+      "viewport": "1280",
+      "target": "wg15-concept-explainer",
+      "info": {
+        "title": "wg 15 · concept explainer",
+        "section": {
+          "left": 130,
+          "right": 1150,
+          "width": 1020,
+          "clientWidth": 1018,
+          "scrollWidth": 1018
+        },
+        "main": {
+          "tag": "section",
+          "cls": "wg-15",
+          "left": 153,
+          "right": 933,
+          "width": 780,
+          "clientWidth": 780,
+          "scrollWidth": 780
+        },
+        "children": [
+          {
+            "tag": "h2",
+            "cls": "",
+            "text": "wg 15 · concept explainer",
+            "left": 153,
+            "right": 1127,
+            "width": 974,
+            "clientWidth": 974,
+            "scrollWidth": 974
+          },
+          {
+            "tag": "style",
+            "cls": "",
+            "text": ".wg-15{font-family:var(--sans);color:var(--ink);max-width:va",
+            "left": 0,
+            "right": 0,
+            "width": 0,
+            "clientWidth": 0,
+            "scrollWidth": 0
+          },
+          {
+            "tag": "section",
+            "cls": "wg-15",
+            "text": "개념 교보재 · 분산 시스템 컨시스턴트 해싱 (Consistent Hashing) 노드를 원형 해시 링 위에",
+            "left": 153,
+            "right": 933,
+            "width": 780,
+            "clientWidth": 780,
+            "scrollWidth": 780
+          }
+        ],
+        "offenders": []
+      }
+    }
+  ]
+}

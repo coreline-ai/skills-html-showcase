@@ -1,0 +1,188 @@
+{
+  "mode": "12_reference_html",
+  "generated_at": "2026-06-07T08:30:46.011505+00:00",
+  "page": "output/adaptive-html-final-sequential-16-modes-20260607_105404/pages/12_reference_feature_flag_lifecycle_manual.html",
+  "local_link": "http://localhost:8080/output/adaptive-html-final-sequential-16-modes-20260607_105404/pages/12_reference_feature_flag_lifecycle_manual.html",
+  "constraints": {
+    "previous_html_reused": false,
+    "common_generator_used": false,
+    "mode_specific_assets_only": true,
+    "skill_version": "5.8.1"
+  },
+  "before_metrics": [
+    {
+      "width": 1280,
+      "title": "Feature Flag Lifecycle Reference",
+      "h1": 1,
+      "mainClass": "page-wide layout-reference",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "h2": 7,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-06",
+        "wg-14"
+      ],
+      "tables": 4,
+      "codeBlocks": 6,
+      "quickReference": true,
+      "refGrid": true,
+      "patterns": true,
+      "examples": true,
+      "checklist": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "textChars": 4639
+    },
+    {
+      "width": 390,
+      "title": "Feature Flag Lifecycle Reference",
+      "h1": 1,
+      "mainClass": "page-wide layout-reference",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "h2": 7,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-06",
+        "wg-14"
+      ],
+      "tables": 4,
+      "codeBlocks": 6,
+      "quickReference": true,
+      "refGrid": true,
+      "patterns": true,
+      "examples": true,
+      "checklist": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "textChars": 4639
+    }
+  ],
+  "after_metrics": [
+    {
+      "width": 1280,
+      "title": "Feature Flag Lifecycle Reference",
+      "h1": 1,
+      "mainClass": "page-wide layout-reference",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "directSectionSurfaceCandidate": 4,
+      "h2": 5,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-06",
+        "wg-14"
+      ],
+      "tables": 3,
+      "tablesWithCaption": 3,
+      "codeBlocks": 8,
+      "quickReference": true,
+      "refGrid": true,
+      "patterns": true,
+      "examples": true,
+      "checklist": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "textChars": 4183,
+      "bodyIconSvgAriaHidden": true,
+      "forbiddenScript": false
+    },
+    {
+      "width": 390,
+      "title": "Feature Flag Lifecycle Reference",
+      "h1": 1,
+      "mainClass": "page-wide layout-reference",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "directSectionSurfaceCandidate": 4,
+      "h2": 5,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-06",
+        "wg-14"
+      ],
+      "tables": 3,
+      "tablesWithCaption": 3,
+      "codeBlocks": 8,
+      "quickReference": true,
+      "refGrid": true,
+      "patterns": true,
+      "examples": true,
+      "checklist": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "textChars": 4183,
+      "bodyIconSvgAriaHidden": true,
+      "forbiddenScript": false
+    }
+  ],
+  "screenshots": {
+    "before_1280": "sources/screenshots/mode12-reference-before-1280.png",
+    "before_390": "sources/screenshots/mode12-reference-before-390.png",
+    "after_1280": "sources/screenshots/mode12-reference-after-1280.png",
+    "after_390": "sources/screenshots/mode12-reference-after-390.png"
+  },
+  "isolated_validation": {
+    "validate_output": "HTML files: 1\nOK",
+    "quality": "OK — quality contract guard passed (1 HTML content file(s))",
+    "ok": true
+  },
+  "full_output_validation_after_mode": {
+    "ok": false,
+    "issue_count": 52,
+    "top_issue_types": [
+      [
+        "direct_section_h2_missing_body_icon",
+        16
+      ],
+      [
+        "inline_css_hash_mismatch",
+        12
+      ],
+      [
+        "inline_core_css_not_verbatim",
+        12
+      ],
+      [
+        "section_surface_css_missing",
+        12
+      ]
+    ],
+    "note": "예상 잔여: 아직 최신 core hash/body-icon/surface 규칙으로 재생성되지 않은 이전 모드와 index가 남아 있음. 12번은 isolated OK."
+  },
+  "manual_visual_review": {
+    "desktop": "1280 캡처에서 Quick Reference 표, concept/API 카드, wg-06 상태 매트릭스, file-tour/flowchart, 예시 코드, 최종 체크리스트가 reference manual 구조로 분리됨.",
+    "mobile": "390 캡처에서 표/코드가 내부 스크롤 또는 단일 컬럼으로 접히고 document overflow는 없음.",
+    "text": "벤더 중립 범위와 확인 필요 조건을 source note에 명시했고, 실제 API 단정 대신 의사 계약으로 제한함."
+  },
+  "next_mode": "13_comparison_html"
+}

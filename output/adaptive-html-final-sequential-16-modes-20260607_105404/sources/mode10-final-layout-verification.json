@@ -1,0 +1,85 @@
+{
+  "tocText": "글의 흐름 문제를 본 순간부터 작은 기록 습관으로 이어지는 개인 블로그 구조입니다. 1 왜 지금 2 내 관점 3 작은 사례 4 시작법 5 마무리",
+  "toc": {
+    "x": 273,
+    "y": -4010.953125,
+    "width": 734,
+    "height": 126.8125,
+    "display": "block",
+    "gridTemplateColumns": "none",
+    "gap": "normal",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(26, 26, 26)",
+    "border": "1px solid rgb(216, 216, 208)"
+  },
+  "tocPills": {
+    "x": 294,
+    "y": -3935.140625,
+    "width": 692,
+    "height": 30,
+    "display": "flex",
+    "gridTemplateColumns": "none",
+    "gap": "7px",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(26, 26, 26)",
+    "border": "0px none rgb(26, 26, 26)"
+  },
+  "tocLinkCount": 5,
+  "bareTocLinks": 0,
+  "last": {
+    "x": 250,
+    "y": 376.109375,
+    "width": 780,
+    "height": 565.46875,
+    "display": "block",
+    "gridTemplateColumns": "none",
+    "gap": "normal",
+    "bg": "rgb(26, 26, 26)",
+    "color": "rgb(245, 245, 240)",
+    "border": ""
+  },
+  "lastGrid": {
+    "x": 278,
+    "y": 504.90625,
+    "width": 727,
+    "height": 351.78125,
+    "display": "grid",
+    "gridTemplateColumns": "356.5px 356.5px",
+    "gap": "14px",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(245, 245, 240)",
+    "border": "0px none rgb(245, 245, 240)"
+  },
+  "lastCardColors": [
+    {
+      "text": "관찰 어떤 화면, 문장, 검증 결과에서 문제를 봤나요?",
+      "pColor": "rgb(74, 74, 74)",
+      "bg": "rgb(255, 255, 255)"
+    },
+    {
+      "text": "판단 그 문제를 왜 회귀나 품질 저하로 봤나요?",
+      "pColor": "rgb(74, 74, 74)",
+      "bg": "rgb(255, 255, 255)"
+    },
+    {
+      "text": "대안 어떤 방식은 하지 않기로 했나요?",
+      "pColor": "rgb(74, 74, 74)",
+      "bg": "rgb(255, 255, 255)"
+    },
+    {
+      "text": "검증 다음에는 무엇을 보면 고쳐졌다고 말할 수 있나요?",
+      "pColor": "rgb(74, 74, 74)",
+      "bg": "rgb(255, 255, 255)"
+    }
+  ],
+  "overflowX": false,
+  "scrollWidth": 1280,
+  "clientWidth": 1280,
+  "mobile": {
+    "overflowX": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "tocLinkCount": 5,
+    "bareTocLinks": 0
+  }
+}

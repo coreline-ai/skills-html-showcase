@@ -1,5 +1,5 @@
 {
-  "core_css_sha256": "3ac799d7f91b7358d25bbab8272634b897da411072fef8f99227a6935619a049",
+  "core_css_sha256": "7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb",
   "asset_order": [
     "theme.css",
     "components.css",
@@ -17,7 +17,7 @@
     "editorial-patterns.css": "48311f96b358eda7dfe48296d23ee2d8e779c79e23813e098d66d9ad83254177",
     "shape-visuals.css": "cd4d0f0d9112eb8212564ed05753817d69e1b49ec3fa378c7f3887cdc545e817",
     "workflow-visuals.css": "3dd9135960bf8ceef96008a6ec0cd40329bbf3bfd8c040120429cfc68673cd8c",
-    "layouts.css": "52f28c97a295cfb3b22c1f6a3c4b3aad2acaa496f3160ae91f24e65fae1973cb",
+    "layouts.css": "251f962780ed4a7a672b91e0f35027b267ebe8a6994dfc653ce58297549866b8",
     "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
     "theme-dark.css": "7861b7077e8ebc59cc0501642bb44f29e57ce48198d24bed886f87464ccfe20a"
   },

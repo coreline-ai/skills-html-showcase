@@ -1,0 +1,54 @@
+{
+  "h1": "AI 리뷰 노트를 프롬프트 앞에 두었더니 달라진 것",
+  "sectionCount": 6,
+  "lastClass": "try soft-cta",
+  "lastH2": "6 오늘 바로 남길 리뷰 노트",
+  "lastBg": "rgb(26, 26, 26)",
+  "lastColor": "rgb(245, 245, 240)",
+  "cards": [
+    {
+      "index": 1,
+      "className": "summary-card",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "pColor": "rgb(208, 208, 200)",
+      "hColor": "rgb(26, 26, 26)",
+      "text": "관찰 어떤 화면, 문장, 검증 결과에서 문제를 봤나요?"
+    },
+    {
+      "index": 2,
+      "className": "summary-card",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "pColor": "rgb(208, 208, 200)",
+      "hColor": "rgb(26, 26, 26)",
+      "text": "판단 그 문제를 왜 회귀나 품질 저하로 봤나요?"
+    },
+    {
+      "index": 3,
+      "className": "summary-card",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "pColor": "rgb(208, 208, 200)",
+      "hColor": "rgb(26, 26, 26)",
+      "text": "대안 어떤 방식은 하지 않기로 했나요?"
+    },
+    {
+      "index": 4,
+      "className": "summary-card",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "pColor": "rgb(208, 208, 200)",
+      "hColor": "rgb(26, 26, 26)",
+      "text": "검증 다음에는 무엇을 보면 고쳐졌다고 말할 수 있나요?"
+    }
+  ],
+  "overflowX": false,
+  "scrollWidth": 1280,
+  "clientWidth": 1280,
+  "mobile390": {
+    "overflowX": false,
+    "scrollWidth": 390,
+    "clientWidth": 390
+  }
+}

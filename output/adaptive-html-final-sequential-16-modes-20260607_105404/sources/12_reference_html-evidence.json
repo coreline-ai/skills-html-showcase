@@ -1,0 +1,34 @@
+{
+  "mode": "reference_html",
+  "sequence": "12/16",
+  "topic": "Feature Flag Lifecycle Reference",
+  "layout": "reference-manual.html",
+  "profile": "auto",
+  "read_for_this_mode": [
+    "recipes/reference.prompt.md",
+    "assets/layouts/reference-manual.html",
+    "references/layout-system.md",
+    "references/writing-system.md",
+    "references/visual-html-system.md",
+    "references/widget-system.md",
+    "assets/visual-html-templates/09-file-tour.html",
+    "assets/visual-html-templates/10-flowchart.html",
+    "assets/visual-html-templates/07-card-grid.html",
+    "assets/widget-templates/06-component-variants.html",
+    "assets/widget-templates/14-feature-explainer.html",
+    "assets/widget-templates/19-feature-flag-editor.html"
+  ],
+  "template_binding": {
+    "vt": [
+      "file-tour",
+      "flowchart",
+      "card-grid"
+    ],
+    "wg": [
+      "06-component-variants",
+      "14-feature-explainer",
+      "19-feature-flag-editor"
+    ]
+  },
+  "non_reuse_policy": "본문은 이전 HTML에서 가져오지 않고 reference 전용 계약에 맞춰 신규 작성. 인덱스만 누적 링크 갱신."
+}

@@ -1,0 +1,263 @@
+{
+  "title": "온콜 인시던트 런북 실행 매뉴얼 분석",
+  "h1": "온콜 인시던트 런북을 실제 실행 매뉴얼로 바꾸기",
+  "h1HasBodyIcon": false,
+  "themeRadioCount": 8,
+  "sectionCount": 12,
+  "directSections": [
+    {
+      "index": 1,
+      "className": "manual-verdict",
+      "h2Text": "1 실행 가능 판정",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "rect": {
+        "x": 130,
+        "y": 358.625,
+        "width": 1020,
+        "height": 745.421875
+      }
+    },
+    {
+      "index": 2,
+      "className": "source-version",
+      "h2Text": "2 Source & Version Snapshot",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "rect": {
+        "x": 130,
+        "y": 1362.84375,
+        "width": 1020,
+        "height": 647
+      }
+    },
+    {
+      "index": 3,
+      "className": "role-router",
+      "h2Text": "3 Reader Role Router",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "rect": {
+        "x": 130,
+        "y": 2057.84375,
+        "width": 1020,
+        "height": 605.71875
+      }
+    },
+    {
+      "index": 4,
+      "className": "first-success",
+      "h2Text": "4 First Success Path",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "rect": {
+        "x": 130,
+        "y": 2711.5625,
+        "width": 1020,
+        "height": 795.375
+      }
+    },
+    {
+      "index": 5,
+      "className": "prerequisites-safety",
+      "h2Text": "5 Prerequisites & Safety",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "rect": {
+        "x": 130,
+        "y": 3554.9375,
+        "width": 1020,
+        "height": 734.390625
+      }
+    },
+    {
+      "index": 6,
+      "className": "task-recipes",
+      "h2Text": "6 Task Recipes",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "rect": {
+        "x": 130,
+        "y": 4337.328125,
+        "width": 1020,
+        "height": 731.796875
+      }
+    },
+    {
+      "index": 7,
+      "className": "reference-extract",
+      "h2Text": "7 Reference Extract",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "rect": {
+        "x": 130,
+        "y": 5117.125,
+        "width": 1020,
+        "height": 1045.890625
+      }
+    },
+    {
+      "index": 8,
+      "className": "decision-guide",
+      "h2Text": "8 Decision Guide",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "rect": {
+        "x": 130,
+        "y": 6211.015625,
+        "width": 1020,
+        "height": 794.125
+      }
+    },
+    {
+      "index": 9,
+      "className": "troubleshooting",
+      "h2Text": "9 Troubleshooting",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "rect": {
+        "x": 130,
+        "y": 7053.140625,
+        "width": 1020,
+        "height": 907.25
+      }
+    },
+    {
+      "index": 10,
+      "className": "operations-runbook",
+      "h2Text": "10 Operations Runbook",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "rect": {
+        "x": 130,
+        "y": 8008.390625,
+        "width": 1020,
+        "height": 1140.578125
+      }
+    },
+    {
+      "index": 11,
+      "className": "manual-audit",
+      "h2Text": "11 Manual Audit",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "rect": {
+        "x": 130,
+        "y": 9196.96875,
+        "width": 1020,
+        "height": 1076.484375
+      }
+    },
+    {
+      "index": 12,
+      "className": "try",
+      "h2Text": "12 Next Actions & Source Limits",
+      "hasBodyIcon": true,
+      "hasNum": true,
+      "svgAriaHidden": "true",
+      "bg": "rgb(26, 26, 26)",
+      "color": "rgb(245, 245, 240)",
+      "border": "0px none rgb(245, 245, 240)",
+      "rect": {
+        "x": 130,
+        "y": 10325.453125,
+        "width": 1020,
+        "height": 1055.03125
+      }
+    }
+  ],
+  "missingIcon": [],
+  "lastSection": {
+    "index": 12,
+    "className": "try",
+    "h2Text": "12 Next Actions & Source Limits",
+    "hasBodyIcon": true,
+    "hasNum": true,
+    "svgAriaHidden": "true",
+    "bg": "rgb(26, 26, 26)",
+    "color": "rgb(245, 245, 240)",
+    "border": "0px none rgb(245, 245, 240)",
+    "rect": {
+      "x": 130,
+      "y": 10325.453125,
+      "width": 1020,
+      "height": 1055.03125
+    }
+  },
+  "lastText": "12 Next Actions & Source Limits 초안을 확정하기 위한 남은 작업과 확인 불가 항목을 닫는다. 확정 계획 Owner review 이후 발행 순서 SLA·권한·공지 승인 문구를 확정한 뒤 v1.0 매뉴얼로 태그한다. 매뉴얼 확정 작업 계획 순서 작업 소유자 완료 기준 1 P1/P2 SLA 문구 승인 Service owner oncall-runbook.md §1.2 갱신 2 rollback 승인권자 확정 Incident Commander rollback-checklist.md §3 역할 문구 교체 3 외부 공지 문구 검토 Comms owner incident-template.md §2 승인 기록 다음 행동 v1.0 확정 순서 Service owner가 P1/P2 SLA와 rollback 승인권자를 확정한다. Comms owner가 외부 공지 문구와 다음 업데이트 주기를 승인한다. On-call engineer가 첫 성공 경로를 dry-run으로 1회 수행한다. IC가 UNKNOWN 항목을 모두 해소한 뒤 manual status를 owner review에서 확정으로 바꾼다. SOURCE LIMITS 확인하지 못한 항목 실제 제품 버전, 계정 권한 정책, 고객별 SLA 예외, 법무 승인 문구, 배포 시스템 명령어는 입력 원문에 없다. 이 HTML은 소유자 검토 전 실행 초안이며 최종 운영 정책을 대체하지 않는다.",
+  "lastCards": [
+    {
+      "index": 1,
+      "className": "manual-card",
+      "text": "다음 행동 v1.0 확정 순서 Service owner가 P1/P2 SLA와 rollback 승인권자를 확정한다. Comms owner가 외부 공지 문구와 다음 업데이트 주기를 승인한다. On-call engineer가 첫 성공 경로를 dry-run으로 1회 수행한다. IC가 UNKNO",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(245, 245, 240)",
+      "border": "1px solid rgb(216, 216, 208)",
+      "paragraphColor": "rgb(208, 208, 200)",
+      "headingColor": "rgb(183, 45, 56)"
+    },
+    {
+      "index": 2,
+      "className": "manual-card manual-unknown",
+      "text": "SOURCE LIMITS 확인하지 못한 항목 실제 제품 버전, 계정 권한 정책, 고객별 SLA 예외, 법무 승인 문구, 배포 시스템 명령어는 입력 원문에 없다. 이 HTML은 소유자 검토 전 실행 초안이며 최종 운영 정책을 대체하지 않는다.",
+      "bg": "rgb(252, 228, 230)",
+      "color": "rgb(245, 245, 240)",
+      "border": "1px dashed rgb(216, 216, 208)",
+      "paragraphColor": "rgb(208, 208, 200)",
+      "headingColor": "rgb(183, 45, 56)"
+    }
+  ],
+  "overflowX": false,
+  "scrollWidth": 1280,
+  "clientWidth": 1280,
+  "mobile390": {
+    "overflowX": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "lastWidth": 358
+  }
+}
