@@ -1,0 +1,36 @@
+[
+  {
+    "width": 1280,
+    "title": "Adaptive HTML Final 순차 생성 검증판",
+    "h1": 1,
+    "mainClass": "page-wide layout-landing",
+    "themeRadioCount": 8,
+    "themebar": true,
+    "directSections": 2,
+    "h2": 2,
+    "directH2Icon": 1,
+    "linksToPages": 16,
+    "overflowX": false,
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "coreHash": "3f98efd634262e48b3b118079cd62859406f34ac97bc59b74af876b13b8292b2",
+    "forbiddenScript": false
+  },
+  {
+    "width": 390,
+    "title": "Adaptive HTML Final 순차 생성 검증판",
+    "h1": 1,
+    "mainClass": "page-wide layout-landing",
+    "themeRadioCount": 8,
+    "themebar": true,
+    "directSections": 2,
+    "h2": 2,
+    "directH2Icon": 1,
+    "linksToPages": 16,
+    "overflowX": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "coreHash": "3f98efd634262e48b3b118079cd62859406f34ac97bc59b74af876b13b8292b2",
+    "forbiddenScript": false
+  }
+]

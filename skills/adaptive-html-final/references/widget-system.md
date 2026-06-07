@@ -26,7 +26,7 @@
 | 01 | Three Code Approaches | 같은 문제의 구현/대안 코드 3안을 장단점·트레이드오프와 함께 나란히 비교 | comparison_html, expert_html | 부분 — 카드·태그 정적, 코드 블록 `tabindex`로 포커스·가로 스크롤, hover transition. 라이브 실행/구문 토글만 JS | `assets/widget-templates/01-three-code-approaches.html` |
 | 02 | Visual Design Directions | 디자인 시안 3방향을 미니 라이브 렌더로 비교·선택 | article_html / landing_brief_html, platform_blog, reference_html | CSS-only — `radio:checked + .card` 인접 셀렉터로 테두리·뱃지·`○→●` 전환. 토큰 편집/export만 JS | `assets/widget-templates/02-visual-design-directions.html` |
 | 03 | Annotated Pull Request | 코드/diff에 심각도별 인라인 주석을 단 리뷰·진단 뷰 | skill_audit, expert_html, reference_html | 부분 — severity 색+라벨+아이콘(`!`/`i`), `:target`로 라인 점프. 코멘트 펼침/작성만 JS | `assets/widget-templates/03-annotated-pull-request.html` |
-| 04 | Module Map | 아키텍처/모듈 의존 구조를 노드·엣지로 시각화 | expert_html, reference_html, article_html | 부분 — SVG 노드/엣지 정적, 핵심 경로는 색+굵기+범례+경로 칩, hover transition. 클릭 확장·드래그·줌만 JS | `assets/widget-templates/04-module-map.html` |
+| 04 | Module Map | 아키텍처/모듈 의존 구조를 노드·엣지로 시각화 | expert_html, github_analysis, reference_html, article_html | 부분 — SVG 노드/엣지 정적, 핵심 경로는 색+굵기+범례+경로 칩, hover transition. 클릭 확장·드래그·줌만 JS | `assets/widget-templates/04-module-map.html` |
 | 05 | Living Design System | 디자인 토큰(색·타이포·스페이싱)을 접기형으로 문서화 | reference_html, landing_brief_html | 부분 — `<details>/<summary>` 네이티브 접기, 토큰 값 텍스트 노출. 클릭 복사(클립보드 API)만 JS | `assets/widget-templates/05-living-design-system.html` |
 | 06 | Component Variants | 컴포넌트 상태/변형(default·hover·disabled·다크)을 매트릭스로 문서화 | reference_html, education_html | CSS-only — `radio:checked ~` 형제로 라이트/다크 토글, 상태는 `.wg-06-is-*` 고정 + statetag 라벨 | `assets/widget-templates/06-component-variants.html` |
 | 07 | Animation Sandbox | 애니메이션 프리셋(slide/fade/scale/rotate·duration·easing)을 설명·실연 | reference_html / education_html, article_html | CSS-only — `@keyframes` 자동재생 + `radio:checked + :has()`로 `--wg07-dur/ease` 교체, readout도 `:has()`. 자유값 슬라이더만 JS. `:has()` 미지원 시 기본 프리셋 폴백 | `assets/widget-templates/07-animation-sandbox.html` |
@@ -35,16 +35,16 @@
 > **wg-08 static 변형(`.wg-08-static-*`)**: `:target`/`:has`를 쓰지 않는 **읽기 전용 정적 스테퍼**(번호+커넥터, `--hot`/`--ok` 상태). 인터랙션이 불가/불필요한 환경(이식성 우선)에서 클릭 플로우 대신 사용. 마크업: `.wg-08-static > .wg-08-static-step(.wg-08-static-step--hot/--ok) > .wg-08-static-no + div(h3+p)`. `final_20260604`의 `static-flow-*`를 정본 네임스페이스로 개명·토큰화한 것.
 | 09 | Arrow-Key Slide Deck | 발표형 슬라이드 덱(좌우 슬라이드 전환) | article_html / landing_brief_html, education_html | **JS 필요** — `scroll-snap`(스와이프) + 점/앵커(`:target`) 2중 CSS-only 경로 제공. 화살표키 이동·자동재생은 JS 필수. 무JS에선 트랙 포커스 후 스크롤/Tab+Enter로 접근 | `assets/widget-templates/09-arrow-key-slide-deck.html` |
 | 10 | SVG Figure Sheet | 일러스트/개념도 4종 SVG 시트(개념 도해) | article_html, beginner_html, education_html | CSS-only — 순수 인라인 SVG, fill/stroke 전부 theme 토큰 `var()`, `role=img`+`<title>` 라벨. 정적 시트 | `assets/widget-templates/10-svg-figure-sheet.html` |
-| 11 | Weekly Status | 주간 지표/진행률 대시보드 리포트 (거버넌스·운영 상태 보드의 **정본**) | seo_dashboard, expert_html, checklist_playbook | CSS-only — 막대 `width%` + `@keyframes` 그로우, 완료/진행/리스크를 색+점+라벨+`wg-11-fill-risk` **빗금**으로 이중 표기(색-단독 회귀 방지). 정적 데이터. ≤480px에서 막대 라벨이 위로 적층 | `assets/widget-templates/11-weekly-status.html` |
+| 11 | Weekly Status | 주간 지표/진행률 대시보드 리포트 (거버넌스·운영 상태 보드의 **정본**) | github_analysis, seo_dashboard, expert_html, checklist_playbook | CSS-only — `final_20260604` section 28의 KPI/status board를 정본화. 4 KPI 카드 + 워크스트림 진행률 + 완료/진행/리스크 3열을 기본 구조로 쓰고, 막대 `width%` + `@keyframes` 그로우, 색+점+라벨+`wg-11-fill-risk` **빗금**으로 이중 표기. ≤480px에서 막대 라벨이 위로 적층 | `assets/widget-templates/11-weekly-status.html` |
 
-> **상태/거버넌스 보드는 wg-11로 통일**: 별도 `edge-status-*`/색-단독 진행바를 새로 만들지 않는다. wg-11은 빗금(`wg-11-fill-risk`)이라는 색 외 단서를 이미 갖춘 정본 소스이므로, 진행률·KPI·완료/리스크 보드는 wg-11을 재사용한다(WCAG 1.4.1).
+> **상태/거버넌스 보드는 wg-11로 통일**: 별도 `edge-status-*`/색-단독 진행바를 새로 만들지 않는다. final 검수본의 시각 밀도는 `wg-11-kpi-*`, `wg-11-col-*`, `wg-11-tk`, `wg-11-flag`로 흡수했다. 저장소 health, 운영 주간 리포트, 거버넌스 M1/M2 상태판은 모두 wg-11을 재사용한다(WCAG 1.4.1).
 | 12 | Incident Timeline | 사고 회고/포스트모템 타임라인 + 액션 체크리스트 | case_study_html, expert_html | 부분 — `checkbox:checked + label` 완료 표시(취소선·체크마크), 타임라인 정적. 상태 저장·집계만 JS | `assets/widget-templates/12-incident-timeline.html` |
 | 13 | Annotated Flowchart | 절차·흐름 다이어그램에 단계별 상세 주석 | education_html / beginner_html, checklist_playbook, expert_html, article_html | CSS-only — 단계 박스 앵커로 `<details>` 점프(`:target` 하이라이트), 실패 경로는 danger 색+`!`+'실패 경로' 라벨, 화살표는 텍스트 글리프 | `assets/widget-templates/13-annotated-flowchart.html` |
-| 14 | Feature Explainer | 기능 설명 + 탭 전환 코드 예제(CLI/API 등) + FAQ | education_html, reference_html, article_html | CSS-only — `radio:checked ~` 형제로 코드 패널 탭, `<details>` 접기·FAQ. JS 없음 | `assets/widget-templates/14-feature-explainer.html` |
+| 14 | Feature Explainer | 기능 설명 + 탭 전환 코드 예제(CLI/API 등) + FAQ | github_analysis, education_html, reference_html, article_html | CSS-only — `radio:checked ~` 형제로 코드 패널 탭, `<details>` 접기·FAQ. JS 없음 | `assets/widget-templates/14-feature-explainer.html` |
 | 15 | Concept Explainer | 개념을 단계 전환·비교표로 푸는 교보재 | beginner_html, education_html, reference_html | CSS-only — `radio:checked ~` 형제로 패널·링 노드 동시 갱신, 비교표 정적, 화살표·경고 글리프. JS 없음 | `assets/widget-templates/15-concept-explainer.html` |
-| 16 | Implementation Plan | 실행 계획/로드맵(마일스톤·플로우·리스크·목업) | expert_html, landing_brief_html, checklist_playbook | CSS-only — 시맨틱 정적 마크업, 리스크 레벨 색+`●◐○` 이중 표기, 플로우 화살표 `role=img` 설명. JS 없음 | `assets/widget-templates/16-implementation-plan.html` |
-| 17 | PR Writeup | 변경 요약/개발 회고(파일별 접기 + Before/After) | skill_audit, blog_writer, expert_html | CSS-only — 파일별 `<details>/<summary>` 접기, 캐럿 회전은 `[open]`+transition, Before/After 정적 그리드. diff 펼침·인라인 주석만 JS | `assets/widget-templates/17-pr-writeup.html` |
-| 18 | Ticket Triage Board | 트리아지/운영 칸반 보드(우선순위·상태) | checklist_playbook, expert_html | **JS 필요** — 정적 칸반이 기본: 우선순위 칩+컬럼 보더 색+도트/카운트, 색 외 `●`/`✓` 단서, hover/focus 리프트 transition. **완전 인터랙션(드래그앤드롭 이동·실시간 카운트)은 선택적 점진 향상으로만 JS 추가**, 스킬 기본은 무JS 근사 | `assets/widget-templates/18-ticket-triage-board.html` |
+| 16 | Implementation Plan | 실행 계획/로드맵(마일스톤·플로우·리스크·운영 모델) | github_analysis, expert_html, landing_brief_html, checklist_playbook | CSS-only — `final_20260604` section 27의 거버넌스 운영 팩을 정본화. 마일스톤 타임라인 + 데이터/운영 플로우 + 리스크 표를 한 블록에 묶고, 리스크 레벨은 색+`●◐○` 이중 표기. 텍스트 포함 컨테이너에 `role="img"`를 쓰지 않는다. JS 없음 | `assets/widget-templates/16-implementation-plan.html` |
+| 17 | PR Writeup | 변경 요약/개발 회고(파일별 접기 + Before/After) | github_analysis, skill_audit, blog_writer, expert_html | CSS-only — 파일별 `<details>/<summary>` 접기, 캐럿 회전은 `[open]`+transition, Before/After 정적 그리드. diff 펼침·인라인 주석만 JS | `assets/widget-templates/17-pr-writeup.html` |
+| 18 | Ticket Triage Board | 트리아지/운영 칸반 보드(우선순위·상태) | github_analysis, checklist_playbook, expert_html | **JS 필요** — 정적 칸반이 기본: 우선순위 칩+컬럼 보더 색+도트/카운트, 색 외 `●`/`✓` 단서, hover/focus 리프트 transition. **완전 인터랙션(드래그앤드롭 이동·실시간 카운트)은 선택적 점진 향상으로만 JS 추가**, 스킬 기본은 무JS 근사 | `assets/widget-templates/18-ticket-triage-board.html` |
 | 19 | Feature Flag Editor | 배포/피처 플래그 토글 편집 뷰 | checklist_playbook, reference_html, expert_html | 부분 — `checkbox:checked + label`로 트랙 색·노브·ON/OFF 즉시 전환, 경고는 `⚠`+텍스트, 키보드 포커스·focus-visible 링. 의존성 자동 비활성·JSON export·서버 반영만 JS | `assets/widget-templates/19-feature-flag-editor.html` |
 | 20 | Prompt Tuner | 프롬프트 템플릿 문서·샘플 전환 뷰 | reference_html, education_html | 부분(편집 본질) — `radio:checked ~ .grid` 형제로 샘플 입력/렌더 탭 전환, `{{...}}` 변수 정적 강조, 칩 라디오 키보드 이동·focus-visible. **완전 인터랙션(라이브 편집·변수 치환·LLM 재생성)은 선택적 점진 향상으로만 JS 추가**, 스킬 기본은 무JS 근사 | `assets/widget-templates/20-prompt-tuner.html` |
 
@@ -65,9 +65,12 @@
 | Mode | 권장 위젯 | 쓰임 |
 |---|---|---|
 | skill_audit | **03 Annotated PR**, 11 Weekly Status, **17 PR Writeup** | 코드/diff 진단, 감사 진행 상태, 변경 요약 |
-| expert_html | **04 Module Map**, **16 Implementation Plan**, 01, 03, 11, 12, 13, 17, 18, 19 | 아키텍처·실행계획·리포트·코드 리뷰·회고 |
+| expert_html | **04 Module Map**, **16 Implementation Plan**, 01, 03, 11, 12, 13, 17, 18, 19 | 아키텍처·실행계획·리포트·코드 리뷰·회고. 단, `.validation-checklist` 안에는 `wg-03`/`wg-17`을 넣지 않는다(검증 섹션은 증빙 매트릭스·quality-gate 전용). |
 | article_html | **02 Visual Design Directions**, **10 SVG Figure Sheet**, 04, 07, 09, 13, 14 | 시안 비교·일러스트·발표·흐름 |
 | education_html | **14 Feature Explainer**, **15 Concept Explainer**, 06, 07, 08, 09, 10, 13, 20 | 학습/탭 코드·개념·인터랙션 설명·UX 흐름 |
+| github_analysis | **11 Weekly Status**, **04 Module Map**, **14 Feature Explainer**, **16 Implementation Plan**, 17, 18 | 저장소 활동/건강도, 코드 구조, quickstart, 후속 실행, PR·이슈 신호 |
+| youtube_analysis | **11 Weekly Status**, **13 Annotated Flowchart**, **14 Feature Explainer**, **16 Implementation Plan**, 18 | 영상 메타/댓글 신호, 타임스탬프 흐름, 콘텐츠 기회, 제작 실행 |
+| manual_analysis | **04 Module Map**, **13 Annotated Flowchart**, **16 Implementation Plan**, **18 Ticket Triage Board**, 11, 14 | 문서 구조, 절차, 운영 계획, 문제/위험 트리아지 |
 | beginner_html | **15 Concept Explainer**, 10, 13 | 개념 교육·개념도·절차 |
 | blog_writer | **17 PR Writeup** | 개발 회고 |
 | seo_dashboard | **11 Weekly Status** | 지표 대시보드 |
@@ -78,6 +81,10 @@
 | landing_brief_html | **08 Clickable Flow**, 02, 05, 09, 16 | 프로토타입·시안·발표·로드맵 |
 | checklist_playbook | **13 Annotated Flowchart**, **18 Ticket Triage Board**, **19 Feature Flag Editor**, 11, 12, 16 | 절차·트리아지·플래그·운영 체크 |
 
+### github_analysis 조합 가이드
+
+GitHub 분석은 위젯을 과삽입하지 않는다. `wg-11`로 최근 활동·릴리스·이슈 상태 같은 관측 신호를 요약하고, 저장소 구조가 복잡할 때만 `wg-04`를 추가한다. 실행/설치가 핵심이면 `wg-14`, 채택 후 계획이 필요하면 `wg-16`, PR/이슈 흐름을 보여줄 필요가 있을 때만 `wg-17` 또는 `wg-18`을 쓴다.
+
 ### 위젯 → 모드 역참조
 
 빠른 선택을 위한 역방향 인덱스다.
@@ -87,21 +94,21 @@
 | 01 | Three Code Approaches | comparison_html, expert_html |
 | 02 | Visual Design Directions | article_html / landing_brief_html, platform_blog, reference_html |
 | 03 | Annotated Pull Request | skill_audit, expert_html, reference_html |
-| 04 | Module Map | expert_html, reference_html, article_html |
+| 04 | Module Map | manual_analysis, github_analysis, expert_html, reference_html, article_html |
 | 05 | Living Design System | reference_html, landing_brief_html |
 | 06 | Component Variants | reference_html, education_html |
 | 07 | Animation Sandbox | reference_html / education_html, article_html |
 | 08 | Clickable Flow | landing_brief_html, education_html |
 | 09 | Arrow-Key Slide Deck | article_html / landing_brief_html, education_html |
 | 10 | SVG Figure Sheet | article_html, beginner_html, education_html |
-| 11 | Weekly Status | seo_dashboard, expert_html, checklist_playbook |
+| 11 | Weekly Status | youtube_analysis, github_analysis, manual_analysis, seo_dashboard, expert_html, checklist_playbook |
 | 12 | Incident Timeline | case_study_html, expert_html |
-| 13 | Annotated Flowchart | education_html / beginner_html, checklist_playbook, expert_html, article_html |
-| 14 | Feature Explainer | education_html, reference_html, article_html |
+| 13 | Annotated Flowchart | manual_analysis, youtube_analysis, education_html / beginner_html, checklist_playbook, expert_html, article_html |
+| 14 | Feature Explainer | youtube_analysis, manual_analysis, github_analysis, education_html, reference_html, article_html |
 | 15 | Concept Explainer | beginner_html, education_html, reference_html |
-| 16 | Implementation Plan | expert_html, landing_brief_html, checklist_playbook |
-| 17 | PR Writeup | skill_audit, blog_writer, expert_html |
-| 18 | Ticket Triage Board | checklist_playbook, expert_html |
+| 16 | Implementation Plan | manual_analysis, youtube_analysis, github_analysis, expert_html, landing_brief_html, checklist_playbook |
+| 17 | PR Writeup | github_analysis, skill_audit, blog_writer, expert_html |
+| 18 | Ticket Triage Board | manual_analysis, youtube_analysis, github_analysis, checklist_playbook, expert_html |
 | 19 | Feature Flag Editor | checklist_playbook, reference_html, expert_html |
 | 20 | Prompt Tuner | reference_html, education_html |
 

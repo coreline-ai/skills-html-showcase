@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: 78f7c0f836948338a066ddc3392ecddecdba4f437e6d19ec05059c168b6ca19c */
+/* adaptive-html-final-core-css-sha256: 7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -96,10 +96,10 @@ a:hover{color:var(--accent)}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 /* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
-.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
+.page-wide.layout-github>section>p,.page-wide.layout-github>section>ul,.page-wide.layout-github>section>ol,.page-wide.layout-youtube>section>p,.page-wide.layout-youtube>section>ul,.page-wide.layout-youtube>section>ol,.page-wide.layout-manual>section>p,.page-wide.layout-manual>section>ul,.page-wide.layout-manual>section>ol,.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
-/* no-SVG single-column header: cap the stack to one editorial measure (≈ reference copy column) so edges align */
-.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:48rem}
+/* header content fills its container width (.page / .page-wide) so the header matches the sections below — v5.2.1 (이전: 48rem 단일 측정 캡) */
+.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:none}
 /* kicker — final_20260604 header: 점 달린 pill eyebrow(토큰화 → 다크 자동 대응) */
 .kicker{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:7px 13px 7px 11px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:13px;letter-spacing:.14em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:24px}
 .kicker::before{content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--accent)}
@@ -165,6 +165,10 @@ footer p{font-size:13px;color:var(--ink-mute)}
   .page,.page-wide,.wrap{width:min(100% - 32px,var(--max-reading))}
   h1{font-size:27px}
 }
+/* === 완성본 표준 승격 v5.3.1 — 헤더 리듬 === */
+.header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
+.header .kicker::before{width:6px;height:6px}
+.header .sub{text-align:justify;word-break:keep-all}
 
 /* Editorial components for adaptive-html-blog-writer-v2. */
 .box,.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px;margin:24px 0}
@@ -185,7 +189,7 @@ footer p{font-size:13px;color:var(--ink-mute)}
 
 
 /* Robust wrapping for long URLs, code tokens, and Korean/English mixed labels. */
-.source-note,.source-box,.source-list,.card-block,.mini-card,.term,.analogy,.danger,.good,td,th,caption,a,code{overflow-wrap:anywhere}
+.source-note,.source-box,.source-list,.card-block,.mini-card,.term,.analogy,.danger,.good,caption,a,code{overflow-wrap:anywhere}
 .tbl,.table-scroll{max-width:100%}
 .caption{font-size:12px;color:var(--ink-mute);margin:8px 0 0}
 
@@ -257,10 +261,12 @@ code{font-family:"SF Mono",Menlo,Consolas,monospace;background:#ececea;padding:1
 pre,.code{background:var(--code);color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;white-space:pre-wrap}
 pre code,.code code{background:none;color:inherit;padding:0;font-size:13px}
 blockquote,.pull-quote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-family:var(--serif-kr);font-size:20px;line-height:1.65;font-style:italic}
+.pull-quote--note{font-family:var(--sans);font-size:15px;line-height:1.7;font-style:normal;color:var(--ink-mute)}
 .tbl,.table-scroll{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
 table,.table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:18px 0}
 caption{caption-side:top;text-align:left;font-size:13px;line-height:1.6;color:var(--ink);font-weight:800;margin:0;padding:0 0 8px;white-space:normal;overflow:visible}
-th,td,.table th,.table td{border:1px solid var(--line);padding:10px 14px;text-align:left;color:var(--ink-soft);vertical-align:top}
+th,td,.table th,.table td{border:1px solid var(--line);padding:10px 14px;text-align:left;color:var(--ink-soft);vertical-align:top;overflow-wrap:break-word;word-break:keep-all}
+td a,th a,.table td a,.table th a{overflow-wrap:normal;word-break:keep-all}
 th,.table th{background:var(--ink);color:#fff;font-weight:800;font-size:13px}
 tbody tr:nth-child(even) td,.table tbody tr:nth-child(even) td{background:rgba(0,0,0,.025)}
 .status-pill{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 9px;font-size:12px;line-height:1.45;color:var(--ink-mute);margin:3px 4px 3px 0;text-align:center;white-space:normal}
@@ -276,6 +282,7 @@ details p{margin-bottom:0}
 .try h2,.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
 .try h2 .no,.try h2 .num{background:#fff;color:var(--dark)}
 .try p{color:#d0d0c8}.try ol,.try ul{padding-left:20px;color:#d0d0c8}.try li{margin-bottom:12px;font-size:15px;line-height:1.7}.try strong{color:#fff}
+.try .hl{background-image:none;background-color:var(--c);background-size:100% 100%;color:var(--ink);animation:none}
 .try .box,
 .try .summary-card,
 .try .cta-box,
@@ -383,6 +390,13 @@ details p{margin-bottom:0}
   .mobile-card-table tbody th{color:var(--ink);font-weight:800;background:transparent}
   .mobile-card-table tbody th::before{content:"";display:none}
 }
+@media(max-width:520px){
+  /* 좁은 화면(≤520px): 일반 표는 min-width 해제 → 컨테이너 폭에 맞춰 줄바꿈(우측 컬럼이 화면 밖으로 잘려 보이던 착시 제거, QA). 다열·중요 표는 .mobile-card-table 사용 권장 */
+  table,.table{min-width:0}
+  th,td,.table th,.table td{padding:8px 9px;font-size:12.5px}
+}
+/* === 완성본 표준 승격 v5.3.1 — source-note 투명 === */
+.source-note{background:transparent}
 
 /* Visual Template System: responsive figure shell for 8000x6000 SVG infographics. */
 .visual-figure,.figure-wide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:14px;margin:22px 0 28px;overflow:hidden}
@@ -802,44 +816,49 @@ details p{margin-bottom:0}
 .wg-11{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide)}
 .wg-11-head{border-bottom:1px solid var(--line);padding-bottom:var(--space-4);margin-bottom:var(--space-5)}
 .wg-11-kicker{font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
-.wg-11-h{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.3;margin:0 0 var(--space-2);color:var(--ink)}
-.wg-11-lead{font-size:var(--fs-sm);color:var(--ink-soft);margin:0}
-.wg-11-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3);margin-bottom:var(--space-6)}
-.wg-11-kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);text-align:center;display:flex;flex-direction:column;gap:var(--space-1)}
-.wg-11-kpi-v{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;color:var(--ink);line-height:1}
-.wg-11-kpi-v.wg-11-warn{color:var(--accent)}
-.wg-11-kpi-l{font-size:var(--fs-xs);color:var(--ink-mute)}
-.wg-11-h3{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;margin:0 0 var(--space-4);color:var(--ink)}
-.wg-11-bars{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-6)}
-.wg-11-bar-row{display:grid;grid-template-columns:140px 1fr 44px;align-items:center;gap:var(--space-3)}
-.wg-11-bar-label{font-size:var(--fs-sm);color:var(--ink-soft);font-weight:600}
-.wg-11-track{height:18px;background:var(--bg);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.wg-11-h{font-family:var(--sans);font-size:var(--fs-xl);font-weight:850;letter-spacing:-.025em;line-height:1.3;margin:0 0 var(--space-2);color:var(--ink)}
+.wg-11-lead{font-size:var(--fs-sm);color:var(--ink-soft);margin:0;line-height:1.65}
+.wg-11-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-3);margin:0 0 var(--space-6)}
+.wg-11-kpi{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink-mute);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);display:flex;flex-direction:column;justify-content:center;gap:var(--space-1);min-height:86px}
+.wg-11-kpi-good{border-left-color:var(--good-label-ink)}
+.wg-11-kpi-prog{border-left-color:var(--term-accent)}
+.wg-11-kpi-risk{border-left-color:var(--accent)}
+.wg-11-kpi-v{font-family:var(--sans);font-size:clamp(22px,3.2vw,var(--fs-xl));font-weight:900;letter-spacing:-.03em;color:var(--accent);line-height:1.05;font-variant-numeric:tabular-nums}
+.wg-11-kpi-good .wg-11-kpi-v{color:var(--good-label-ink)}
+.wg-11-kpi-prog .wg-11-kpi-v{color:var(--term-label-ink)}
+.wg-11-kpi-v.wg-11-warn,.wg-11-kpi-risk .wg-11-kpi-v{color:var(--accent)}
+.wg-11-kpi-l{font-size:var(--fs-xs);font-weight:750;line-height:1.35;color:var(--ink-soft)}
+.wg-11-h3{font-family:var(--sans);font-size:var(--fs-lg);font-weight:850;letter-spacing:-.02em;margin:var(--space-6) 0 var(--space-3);color:var(--ink)}
+.wg-11-bars{display:grid;gap:9px;margin-bottom:var(--space-6)}
+.wg-11-bar-row{display:grid;grid-template-columns:minmax(120px,150px) 1fr 46px;align-items:center;gap:var(--space-3)}
+.wg-11-bar-label{font-size:var(--fs-sm);line-height:1.35;color:var(--ink);font-weight:750}
+.wg-11-track{height:10px;background:var(--bg);border:1px solid var(--line);border-radius:999px;overflow:hidden}
 .wg-11-fill{height:100%;border-radius:999px;animation:wg-11-grow 1s cubic-bezier(.2,.8,.2,1) both}
-.wg-11-fill-good{background:var(--good-accent)}
-.wg-11-fill-prog{background:var(--analogy-accent)}
-.wg-11-fill-risk{background:var(--accent);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.22) 0,rgba(255,255,255,.22) 5px,transparent 5px,transparent 10px)}
-.wg-11-bar-pct{font-size:var(--fs-xs);font-weight:700;color:var(--ink-soft);text-align:right;font-variant-numeric:tabular-nums}
+.wg-11-fill-good{background:var(--good-label-ink)}
+.wg-11-fill-prog{background:var(--accent)}
+.wg-11-fill-risk{background:var(--term-accent);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.26) 0,rgba(255,255,255,.26) 5px,transparent 5px,transparent 10px)}
+.wg-11-bar-pct{font-size:var(--fs-xs);font-weight:800;color:var(--ink-soft);text-align:right;font-variant-numeric:tabular-nums}
 @keyframes wg-11-grow{from{width:0 !important}}
 @media(prefers-reduced-motion:reduce){.wg-11-fill{animation:none}}
-.wg-11-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
-.wg-11-col{border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);background:var(--card);border-top:3px solid var(--line)}
-.wg-11-col-good{border-top-color:var(--good-accent);background:var(--good-bg)}
-.wg-11-col-prog{border-top-color:var(--analogy-accent);background:var(--analogy-bg)}
-.wg-11-col-risk{border-top-color:var(--accent);background:var(--danger-bg)}
-.wg-11-col-h{display:flex;align-items:center;gap:var(--space-2);font-size:var(--fs-sm);font-weight:800;margin:0 0 var(--space-3)}
+.wg-11-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3);align-items:stretch}
+.wg-11-col{border:1px solid var(--line);border-left:4px solid var(--ink-mute);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);background:var(--card);min-width:0}
+.wg-11-col-good{border-left-color:var(--good-label-ink)}
+.wg-11-col-prog{border-left-color:var(--term-accent)}
+.wg-11-col-risk{border-left-color:var(--accent)}
+.wg-11-col-h{display:flex;align-items:center;gap:var(--space-2);font-size:var(--fs-sm);font-weight:850;letter-spacing:-.01em;margin:0 0 var(--space-2);color:var(--ink)}
 .wg-11-col-good .wg-11-col-h{color:var(--good-label-ink)}
-.wg-11-col-prog .wg-11-col-h{color:var(--analogy-label-ink)}
+.wg-11-col-prog .wg-11-col-h{color:var(--term-label-ink)}
 .wg-11-col-risk .wg-11-col-h{color:var(--danger-label-ink)}
-.wg-11-dot{width:9px;height:9px;border-radius:50%;flex:none}
-.wg-11-col-good .wg-11-dot{background:var(--good-accent)}
-.wg-11-col-prog .wg-11-dot{background:var(--analogy-accent)}
+.wg-11-dot{width:9px;height:9px;border-radius:50%;flex:none;background:var(--ink-mute);box-shadow:0 0 0 3px var(--bg)}
+.wg-11-col-good .wg-11-dot{background:var(--good-label-ink)}
+.wg-11-col-prog .wg-11-dot{background:var(--term-accent)}
 .wg-11-col-risk .wg-11-dot{background:var(--accent)}
-.wg-11-col-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-2)}
-.wg-11-col-list li{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;padding-left:16px;position:relative}
-.wg-11-col-list li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:1px;background:currentColor;opacity:.5}
-.wg-11-tk{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 5px;color:var(--ink-mute);vertical-align:1px}
-.wg-11-flag{display:inline-block;font-size:11px;font-weight:800;background:var(--accent);color:var(--on-accent);border-radius:var(--radius-sm);padding:1px 6px}
-@media(max-width:760px){.wg-11-kpis{grid-template-columns:repeat(2,1fr)}.wg-11-cols{grid-template-columns:1fr}.wg-11-bar-row{grid-template-columns:110px 1fr 40px}}
+.wg-11-col-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.wg-11-col-list li{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.5;padding-left:16px;position:relative;word-break:keep-all}
+.wg-11-col-list li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:999px;background:currentColor;opacity:.5}
+.wg-11-tk{display:inline-flex;align-items:center;min-height:21px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:0 7px;color:var(--ink-mute);vertical-align:1px;white-space:nowrap}
+.wg-11-flag{display:inline-flex;align-items:center;min-height:21px;font-size:11px;font-weight:850;background:var(--danger-bg);color:var(--danger-label-ink);border:1px solid var(--danger-border);border-radius:999px;padding:0 7px;vertical-align:1px;white-space:nowrap}
+@media(max-width:760px){.wg-11-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.wg-11-cols{grid-template-columns:1fr}.wg-11-bar-row{grid-template-columns:110px 1fr 40px}}
 @media(max-width:480px){.wg-11-kpis{grid-template-columns:1fr}.wg-11-bar-row{grid-template-columns:1fr auto;row-gap:var(--space-1)}.wg-11-bar-label{grid-column:1 / -1}}
 
 /* ===== 12 Incident Timeline (css-partial) ===== */
@@ -1039,45 +1058,51 @@ details p{margin-bottom:0}
 /* ===== 16 Implementation Plan (css-only) ===== */
 .wg-16{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide)}
 .wg-16-head{border-bottom:1px solid var(--line);padding-bottom:var(--space-4);margin-bottom:var(--space-5)}
-.wg-16-kicker{font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
-.wg-16-h{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.3;margin:0 0 var(--space-2);color:var(--ink)}
+.wg-16-kicker{font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;font-weight:850;color:var(--accent-2);margin:0 0 var(--space-2)}
+.wg-16-h{font-family:var(--sans);font-size:var(--fs-xl);font-weight:850;letter-spacing:-.025em;line-height:1.3;margin:0 0 var(--space-2);color:var(--ink)}
 .wg-16-lead{font-size:var(--fs-sm);color:var(--ink-soft);margin:0;line-height:1.7}
-.wg-16-h3{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;margin:var(--space-6) 0 var(--space-4);color:var(--ink)}
-.wg-16-ms{list-style:none;margin:0;padding:0;position:relative}
-.wg-16-ms::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.wg-16-ms-item{display:grid;grid-template-columns:20px 1fr;gap:var(--space-4);margin-bottom:var(--space-3);position:relative}
-.wg-16-ms-mark{display:flex;justify-content:center;padding-top:14px}
-.wg-16-ms-node{width:14px;height:14px;border-radius:50%;background:var(--card);border:3px solid var(--ink-mute);z-index:1}
-.wg-16-done .wg-16-ms-node{background:var(--good-accent);border-color:var(--good-accent)}
-.wg-16-active .wg-16-ms-node{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.wg-16-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-5);margin:var(--space-4) 0 0}
+.wg-16-h3{font-family:var(--sans);font-size:var(--fs-lg);font-weight:850;letter-spacing:-.02em;margin:var(--space-6) 0 var(--space-3);color:var(--ink)}
+.wg-16-panel>.wg-16-h3:first-child{margin-top:0}
+.wg-16-ms{list-style:none;margin:0;padding:0;position:relative;display:grid;gap:var(--space-3)}
+.wg-16-ms-item{display:grid;grid-template-columns:28px 1fr;gap:var(--space-3);position:relative;align-items:stretch}
+.wg-16-ms-mark{display:flex;justify-content:center;position:relative}
+.wg-16-ms-mark::before{content:"";position:absolute;top:16px;bottom:calc(-1 * var(--space-3) - 16px);width:2px;background:var(--line)}
+.wg-16-ms-item:last-child .wg-16-ms-mark::before{display:none}
+.wg-16-ms-node{position:relative;z-index:1;width:14px;height:14px;border-radius:50%;background:var(--ink-mute);box-shadow:0 0 0 5px var(--bg);margin-top:14px}
+.wg-16-done .wg-16-ms-node{background:var(--good-label-ink)}
+.wg-16-active .wg-16-ms-node{background:var(--accent)}
 .wg-16-ms-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4)}
-.wg-16-active .wg-16-ms-card{border-color:var(--accent);border-left:3px solid var(--accent)}
-.wg-16-ms-top{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3)}
-.wg-16-ms-name{font-size:var(--fs-sm);font-weight:700;color:var(--ink)}
-.wg-16-badge{flex:none;font-size:var(--fs-xs);font-weight:700;border-radius:999px;padding:2px 10px;background:var(--bg);border:1px solid var(--line);color:var(--ink-mute)}
+.wg-16-active .wg-16-ms-card{border-color:var(--danger-border);border-left:4px solid var(--accent)}
+.wg-16-ms-top{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);margin:0 0 4px}
+.wg-16-ms-name{font-size:var(--fs-sm);line-height:1.35;font-weight:850;color:var(--ink)}
+.wg-16-badge{display:inline-flex;align-items:center;min-height:24px;flex:none;font-size:var(--fs-xs);line-height:1;font-weight:850;border-radius:999px;padding:0 10px;background:var(--bg);border:1px solid var(--line);color:var(--ink-mute);white-space:nowrap}
 .wg-16-bd-done{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
-.wg-16-bd-active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-2)}
-.wg-16-ms-desc{font-size:var(--fs-xs);color:var(--ink-soft);margin:var(--space-1) 0 0;line-height:1.6}
-.wg-16-flow{display:flex;align-items:stretch;flex-wrap:wrap;gap:var(--space-2);padding:var(--space-4);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md)}
-.wg-16-fnode{flex:1 1 110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:var(--space-3);background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-md);font-size:var(--fs-sm);font-weight:700;color:var(--ink);text-align:center}
-.wg-16-fnode-s{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:500;color:var(--ink-mute)}
-.wg-16-fnode-q{background:var(--term-bg);border-color:var(--term-border)}
-.wg-16-fnode-hot{background:var(--accent-soft);border-color:var(--accent)}
+.wg-16-bd-active{background:var(--danger-bg);border-color:var(--danger-border);color:var(--accent-2)}
+.wg-16-ms-desc{font-size:var(--fs-xs);color:var(--ink-soft);margin:0;line-height:1.55}
+.wg-16-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-3);align-items:stretch;padding:var(--space-4);background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-md)}
+.wg-16-fnode{position:relative;display:flex;flex-direction:column;justify-content:center;gap:3px;min-width:0;padding:var(--space-3);background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink-mute);border-radius:var(--radius-md);font-size:var(--fs-sm);font-weight:850;color:var(--ink);text-align:left}
+.wg-16-fnode:not(:last-child)::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:var(--accent);font-weight:900;z-index:1}
+.wg-16-fnode-s{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:600;color:var(--ink-mute);overflow-wrap:anywhere}
+.wg-16-fnode-q{border-left-color:var(--term-accent);background:var(--term-bg)}
+.wg-16-fnode-hot{border-left-color:var(--accent);background:var(--danger-bg)}
+.wg-16-fnode-good{border-left-color:var(--good-label-ink);background:var(--good-bg)}
 .wg-16-fnode-hot,.wg-16-fnode-hot .wg-16-fnode-s{color:var(--accent-2)}
-.wg-16-farrow{display:flex;align-items:center;color:var(--ink-mute);font-size:var(--fs-lg);font-weight:700;flex:none}
-.wg-16-table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+.wg-16-farrow{display:none}
+.wg-16-table-wrap{margin:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.wg-16-table{width:100%;min-width:680px;border-collapse:collapse;font-size:var(--fs-sm);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
 .wg-16-table th,.wg-16-table td{padding:var(--space-3) var(--space-4);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-.wg-16-table thead th{background:var(--bg);font-size:var(--fs-xs);font-weight:700;color:var(--ink)}
-.wg-16-table tbody th{font-weight:600;color:var(--ink);background:var(--card);white-space:nowrap}
+.wg-16-table thead th{background:var(--bg);font-size:var(--fs-xs);font-weight:850;color:var(--ink)}
+.wg-16-table tbody th{font-weight:750;color:var(--ink);background:var(--card);white-space:nowrap}
 .wg-16-table td{color:var(--ink-soft);line-height:1.55}
 .wg-16-table tbody tr:last-child td,.wg-16-table tbody tr:last-child th{border-bottom:none}
-.wg-16-lv{display:inline-block;font-size:11px;font-weight:800;border-radius:var(--radius-sm);padding:1px 8px}
-.wg-16-lv-hi{background:var(--danger-bg);color:var(--danger-label-ink);border:1px solid var(--danger-border)}
-.wg-16-lv-hi::before{content:"\25CF "}
-.wg-16-lv-mid{background:var(--term-bg);color:var(--term-label-ink);border:1px solid var(--term-border)}
-.wg-16-lv-mid::before{content:"\25D0 "}
-.wg-16-lv-lo{background:var(--good-bg);color:var(--good-label-ink);border:1px solid var(--good-border)}
-.wg-16-lv-lo::before{content:"\25CB "}
+.wg-16-lv{display:inline-flex;align-items:center;min-height:23px;font-size:11px;line-height:1;font-weight:850;border-radius:999px;padding:0 8px;white-space:nowrap;border:1px solid var(--line);background:var(--bg);color:var(--ink-mute)}
+.wg-16-lv-hi{background:var(--danger-bg);color:var(--danger-label-ink);border-color:var(--danger-border)}
+.wg-16-lv-hi::before{content:"\25CF\00a0"}
+.wg-16-lv-mid{background:var(--term-bg);color:var(--term-label-ink);border-color:var(--term-border)}
+.wg-16-lv-mid::before{content:"\25D0\00a0"}
+.wg-16-lv-lo{background:var(--good-bg);color:var(--good-label-ink);border-color:var(--good-border)}
+.wg-16-lv-lo::before{content:"\25CB\00a0"}
 .wg-16-mock{border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:var(--card)}
 .wg-16-mock-bar{display:flex;align-items:center;gap:6px;padding:var(--space-2) var(--space-3);background:var(--bg);border-bottom:1px solid var(--line)}
 .wg-16-mock-dot{width:9px;height:9px;border-radius:50%;background:var(--line)}
@@ -1088,7 +1113,8 @@ details p{margin-bottom:0}
 .wg-16-mock-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
 .wg-16-mock-tile{height:56px;border-radius:var(--radius-md);background:repeating-linear-gradient(45deg,var(--bg),var(--bg) 8px,var(--card) 8px,var(--card) 16px);border:1px dashed var(--line)}
 .wg-16-mock-cap{font-size:var(--fs-xs);color:var(--ink-mute);text-align:center;margin:var(--space-2) 0 0}
-@media(max-width:640px){.wg-16{max-width:var(--max-reading)}.wg-16-flow{flex-direction:column}.wg-16-farrow{transform:rotate(90deg);align-self:center}.wg-16-mock-tiles{grid-template-columns:1fr}}
+@media(max-width:900px){.wg-16-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.wg-16-fnode:not(:last-child)::after{display:none}}
+@media(max-width:640px){.wg-16{max-width:var(--max-reading)}.wg-16-panel{padding:var(--space-4)}.wg-16-flow{grid-template-columns:1fr}.wg-16-ms-top{align-items:flex-start;flex-direction:column}.wg-16-mock-tiles{grid-template-columns:1fr}}
 
 /* ===== 17 PR Writeup (css-only) ===== */
 .wg-17{font-family:var(--sans);color:var(--ink);max-width:var(--max-reading);margin:0 auto}
@@ -1255,6 +1281,8 @@ body{background:var(--vt-wash)}
 /* 21 soft-workflow-map */.wf-board{--wf-warm:#ff812f;--wf-warm2:#ffbd72;--wf-edge:#ead8c7;position:relative;background:linear-gradient(135deg,#fff2e4 0%,#fffaf5 52%,#f8e1cf 100%);border:1px solid var(--wf-edge);border-radius:18px;padding:30px;overflow:hidden}.wf-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px}.wf-newbadge{display:inline-flex;align-items:center;background:var(--vt-ink);color:#fff;border-radius:999px;padding:9px 22px;font-weight:900;font-size:18px}.wf-aistack{display:flex;align-items:center;gap:12px}.wf-aibadge{width:54px;height:54px;border-radius:16px;background:#242421;color:var(--wf-warm2);display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:26px}.wf-bag{width:48px;height:48px;border:1px solid var(--wf-edge);border-radius:16px;background:#fff5e9;display:grid;place-items:center;color:var(--wf-warm);font-size:24px}.wf-map{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:24px;align-items:center}.wf-col{display:grid;gap:16px}.wf-card{background:rgba(255,250,244,.92);border:1px solid var(--wf-edge);border-radius:16px;padding:18px;min-height:112px;box-shadow:0 14px 28px rgba(172,124,83,.13)}.wf-card strong{display:block;font-weight:900;margin-bottom:6px;color:var(--vt-ink)}.wf-card p{font-size:14px;line-height:1.6;color:var(--ink-mute);margin:0}.wf-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:10px;background:var(--card);box-shadow:inset 0 0 0 1px var(--wf-edge);color:var(--wf-warm)}.wf-center{position:relative;background:#fffaf5;border:1px solid var(--wf-edge);border-radius:22px;padding:22px;box-shadow:0 24px 50px rgba(172,124,83,.2)}.wf-codewin{height:120px;border-radius:15px;background:#2b2e36;margin:-44px auto 16px;width:80%;box-shadow:0 20px 34px rgba(31,31,29,.22);padding:16px}.wf-codewin span{display:block;height:8px;border-radius:999px;margin:9px;background:#7f8cff}.wf-codewin span:nth-child(2){width:64%;background:var(--wf-warm2)}.wf-codewin span:nth-child(3){width:82%;background:#72d9aa}.wf-dash{border-radius:16px;background:#f1e8ff;border:1px solid #d9caff;padding:14px;margin-bottom:16px}.wf-dashbar{height:32px;width:54%;border-radius:11px;background:linear-gradient(90deg,#cdb7ff,#9a75ff);margin-bottom:12px}.wf-dashblock{height:64px;border-radius:11px;background:var(--card)}.wf-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.wf-metric{background:var(--card);border:1px solid var(--wf-edge);border-radius:14px;padding:13px;text-align:center}.wf-metric b{display:block;color:#1683a3;font-size:26px;font-family:var(--serif)}.wf-metric span{font-size:12px;color:var(--ink-mute)}.wf-pipes{margin-top:16px;display:grid;gap:9px}.wf-pipe{display:grid;grid-template-columns:22px 1fr 1.4fr;gap:11px;align-items:center}.wf-pipe i{width:22px;height:22px;border-radius:50%;background:var(--wf-warm)}.wf-pipe:nth-child(2) i{background:#9a75ff}.wf-pipe:nth-child(3) i{background:#61d1a0}.wf-pipe:nth-child(4) i{background:#ff6b6b}.wf-pipe span{height:8px;border-radius:999px;background:#eadbd0}.wf-bottom{margin-top:24px;background:#fff6ed;border:1px solid var(--wf-edge);border-radius:999px;height:50px;display:flex;align-items:center;padding:0 10px 0 18px;gap:16px}.wf-rail-short{width:72px;height:13px;border-radius:999px;background:#f1dac5}.wf-rail-long{width:340px;max-width:46%;height:13px;border-radius:999px;background:#e8d4c2}.wf-arrow{margin-left:auto;width:120px;height:42px;border-radius:999px;background:linear-gradient(135deg,var(--wf-warm2),#ff7a2c);display:flex;align-items:center;justify-content:flex-end;padding-right:11px;box-shadow:0 8px 18px rgba(255,122,44,.25)}.wf-arrow i{width:32px;height:32px;border-radius:50%;background:var(--card);display:grid;place-items:center;color:var(--wf-warm);font-weight:900;font-style:normal}
 @media(max-width:820px){.wf-map{grid-template-columns:1fr}.wf-codewin{margin-top:0}.wf-board{padding:22px}}
 @media(max-width:520px){.wf-metrics{grid-template-columns:1fr}.wf-pipes{display:none}.wf-rail-long{display:none}.wf-arrow{width:96px}}
+/* === 완성본 표준 승격 v5.3.1 — vt-frame 내부 박스 평면화 === */
+.vt-frame{background:transparent;border:0}
 
 /* adaptive-html-final body icons — compact editorial inline SVG, namespaced bi-, uses skill tokens. 외부/동작 JS 0. */
 .body-icon{width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(245,245,240,.72));display:inline-grid;place-items:center;flex:0 0 auto;vertical-align:middle}
@@ -1271,7 +1299,21 @@ body{background:var(--vt-wash)}
 .body-icon .bi-accent-box{fill:var(--accent);stroke:var(--accent);stroke-width:1.6}
 .body-icon .bi-dot{fill:#7ea66a;stroke:var(--ink-mute);stroke-width:1.3}
 .body-icon .bi-dot-box{fill:#7ea66a;stroke:#7ea66a;stroke-width:1.5}
+/* icon + text alignment: 헤딩/라벨이 body-icon을 직접 자식으로 가지면 왼쪽 아이콘 + 일정 간격으로 정렬(무 JS, :has). v5.2.1 */
+.label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+h1:has(> .body-icon),h2:has(> .body-icon){display:flex;align-items:center;gap:10px}
+h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
+.mini-card h3 .body-icon,.card-block h3 .body-icon{align-self:flex-start;margin-top:1px}
+/* lede-note 등 컨텍스트 라벨도 아이콘+텍스트 정렬(고특이도 .lede-note .label{display:block}를 이김). v5.2.2 */
+.lede-note .label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+/* 아이콘 박스 배경 테마 적응(white/light2/dark/dark2) — 하드코딩 흰빛 그라디언트가 다크 계열에서 떠 보이던 문제 해소. SVG 칠은 토큰으로 이미 적응. v5.2.2 · dark2/light2 확장 v5.5.0 */
+:root:has(:is(#ahf-white,#ahf-light2,#ahf-skyblue):checked) .body-icon{background:linear-gradient(180deg,#ffffff,#f4f5f8)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .body-icon{background:linear-gradient(180deg,var(--vt-soft),var(--card));border-color:var(--line)}
+:root:has(#ahf-sepia:checked) .body-icon{background:linear-gradient(180deg,var(--card),var(--bg));border-color:var(--line)}
 @media(prefers-reduced-motion:reduce){.body-icon{transition:none}}
+/* === 완성본 표준 승격 v5.3.1 — 섹션 제목 앞 큰 아이콘(42px) === */
+h2>.body-icon,h3>.body-icon{width:42px;height:42px;border-radius:12px}
+h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 
 /* adaptive-html-final editorial patterns — small content-structure blocks for in-mode insertion. 무 JS, 스킬 토큰. */
 .source-preserve{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:0;margin:18px 0}
@@ -1293,7 +1335,7 @@ body{background:var(--vt-wash)}
 .chron-card h3{font-family:var(--sans);font-size:16px;margin:0 0 4px}
 .chron-card p{font-size:14.5px;margin:0}
 .core-insight{background:linear-gradient(135deg,var(--accent-soft),rgba(255,255,255,.6));border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:22px 24px;margin:18px 0}
-.core-insight blockquote{font-family:var(--serif-kr);font-size:22px;line-height:1.65;color:var(--ink);border:0;margin:0 0 12px;padding:0;font-style:normal}
+.core-insight blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.02em;font-size:22px;line-height:1.65;color:var(--ink);border:0;margin:0 0 12px;padding:0;font-style:normal}
 .core-insight p{margin:0}
 /* core-insight--neutral — 그라데이션 없는 중립 callout 변형(opt-in). 베어 .core-insight를 덮어쓰지 않는다(전 모드 회귀 방지). */
 .core-insight--neutral{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
@@ -1322,6 +1364,7 @@ body{background:var(--vt-wash)}
 .ba-col.after .ba-bullet{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
 .impact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:18px 0}
 .impact-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px}
+.impact-card .body-icon{display:grid;margin-bottom:12px}
 .impact-card h3{font-family:var(--sans);font-size:15.5px;margin:0 0 6px}
 .impact-card p{font-size:13.5px;margin:0}
 @media(max-width:940px){.impact-grid{grid-template-columns:1fr 1fr}}
@@ -1335,14 +1378,14 @@ body{background:var(--vt-wash)}
 /* a11y-checklist — 접근성 30분 점검 그리드 + 실패 모드 표 + 릴리스 준비 체크리스트(다크 패널). 무 JS, 스킬 토큰, 색 외 텍스트 단서(PASS/FAIL). access-* 페이지 어휘를 a11y-* 정본 네임스페이스로 개명. */
 .a11y-check{margin:18px 0 0;border-top:1px solid var(--line);padding-top:18px}
 .a11y-lead{margin:0 0 12px;color:var(--ink-soft);font-size:13.8px;line-height:1.58;max-width:60rem}
-.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 0}
-.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;row-gap:18px;margin:12px 0 0}
+.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:12px}
 .a11y-card h4{font-family:var(--sans);font-size:15px;line-height:1.32;font-weight:800;letter-spacing:-.018em;margin:0;color:var(--ink)}
 .a11y-card p{margin:0;color:var(--ink-soft);font-size:12.8px;line-height:1.48;word-break:keep-all}
 .a11y-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:22px}
 .a11y-card-head>span:first-child{font-size:10.8px;line-height:1.15;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
 .a11y-time{display:inline-flex;align-items:center;min-height:22px;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:2px 7px;color:var(--chip-ink);font-size:11px;font-weight:800;white-space:nowrap}
-.a11y-points{display:grid;gap:5px;margin:1px 0 0;padding:0;list-style:none}
+.a11y-points{display:grid;gap:9px;margin:1px 0 0;padding:0;list-style:none}
 .a11y-points li{display:grid;grid-template-columns:46px 1fr;gap:7px;align-items:start;margin:0;color:var(--ink-soft);font-size:12.4px;line-height:1.38}
 .a11y-pass,.a11y-fail{display:inline-flex;align-items:center;justify-content:center;min-height:20px;border-radius:999px;border:1px solid var(--line);padding:0 6px;font-size:9.8px;line-height:1;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
 .a11y-pass{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
@@ -1372,6 +1415,24 @@ body{background:var(--vt-wash)}
 @media(max-width:980px){.a11y-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:820px){.a11y-notes,.a11y-release ol{grid-template-columns:1fr}}
 @media(max-width:620px){.a11y-grid{grid-template-columns:1fr}.a11y-check{padding-top:16px}.a11y-rule{grid-template-columns:1fr}.a11y-card{padding:12px 13px}.a11y-points li{grid-template-columns:44px 1fr}.a11y-subhead{font-size:16px}.a11y-note{padding:12px 13px}.a11y-release{padding:16px}.a11y-release li{font-size:12.8px}}
+/* 템플릿 목차 chip-nav (toc-map) — 번호 pill이 한 줄에서 wrap 되는 섹션 목차. final_20260604 표준 승격, 정본 이름. 8테마 토큰. v5.4.0 */
+.toc-map{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px 20px 20px;margin:24px 0}
+.toc-map>.label{display:block;font-size:14px;line-height:1.35;font-weight:900;letter-spacing:-.01em;text-transform:none;color:var(--ink);margin:0 0 4px}
+.toc-map>p{margin:0 0 13px;color:var(--ink-mute);font-size:13.5px;line-height:1.55}
+.toc-pills{display:flex;flex-wrap:wrap;gap:7px;margin:0}
+.toc-pill{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:0 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--chip-ink);font-size:12.5px;line-height:1;font-weight:700;text-decoration:none;white-space:nowrap}
+.toc-pill:hover{border-color:var(--accent);color:var(--accent)}
+.toc-pill b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:999px;background:var(--accent-soft);color:var(--accent-2);font-size:10.5px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+@media(max-width:700px){.toc-map{padding:15px 16px}.toc-pill{white-space:normal;line-height:1.25;min-height:32px;padding:5px 11px}}
+/* 평면 리스트 자동 다단 (col-list) — 짧은 항목(파일명·태그·키워드)이 6개 이상인 ul/ol을 한 줄에 여러 개로 채워 세로 1열 적층의 가로 공백 낭비를 없앤다. auto-fill로 폭을 꽉 채움(≈3개+/행). v5.4.1 */
+ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:8px 12px}
+.col-list li{margin:0;min-width:0;color:var(--ink-soft);font-size:13.5px;line-height:1.4}
+.col-list li code{display:inline-block;max-width:100%;overflow-wrap:anywhere}
+@media(max-width:560px){ul.col-list,ol.col-list{grid-template-columns:1fr}}
+/* 텍스트 전용 뷰 bullet (text-bullet-view) — final_20260604 section 7의 code-path bullet 리듬을 정본화. 텍스트만 있는 카드/체크 항목 앞에 작은 써클을 붙여 스캔성을 높인다. opt-in, 무 JS, 8테마 토큰. v5.4.2 */
+.text-bullet-view{display:flex;align-items:flex-start;gap:10px;line-height:1.62}
+.text-bullet-view>.ba-bullet{margin-top:.72em;background:var(--ink-mute);box-shadow:0 0 0 4px var(--bg)}
+:root:has(#ahf-dark:checked) .text-bullet-view>.ba-bullet{background:var(--accent-2);box-shadow:0 0 0 4px var(--card)}
 
 /* adaptive-html-final shape-visuals — 본문 설명 시작부 보조 SVG 도형(8000x6000, warm soft).
    무 JS · 프로파일 무관 조건부 인라인. 도형은 시각 앵커이고 핵심 정보는 항상 HTML 텍스트로 둔다.
@@ -1410,7 +1471,7 @@ body{background:var(--vt-wash)}
 
 /* Expert mode: section wrappers stay in normal document flow; only inner grids/cards are gridded. */
 .layout-expert .summary-grid,
-.layout-expert .decision-grid:not(section),
+.layout-expert .decision-grid,
 .layout-expert .decision-grid>.grid,
 .layout-expert .architecture-grid,
 .layout-expert .risk-grid,
@@ -1418,7 +1479,40 @@ body{background:var(--vt-wash)}
 .layout-expert .decision-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
 .layout-expert .executive-summary,.layout-expert .validation-checklist{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px}
 .layout-expert .executive-summary .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.risk-high{border-left:5px solid var(--accent)}.risk-mid{border-left:5px solid #d99a38}.risk-low{border-left:5px solid #7ea66a}
+/* risk-* 우선순위 카드 — 완성본(final_20260604 .access-check-rule) 방식: 4px 좌측 라인 + 자체 padding으로 host(decision-card 유무) 무관하게 라인과 동일 간격. (QA) */
+.risk-high,.risk-mid,.risk-low{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:var(--radius-md);padding:14px 16px}
+.risk-high{border-left-color:var(--accent)}.risk-mid{border-left-color:#d99a38}.risk-low{border-left-color:#7ea66a}
+
+/* GitHub analysis mode: repository due-diligence report with evidence-first cards. */
+.layout-github .repo-signal-grid,
+.layout-github .repo-identity-grid,
+.layout-github .repo-health-grid,
+.layout-github .repo-action-grid,
+.layout-github .repo-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-github>section:not(.try),
+.layout-github>.source-note,
+.layout-github>.github-question-toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
+/* 좌측 accent 강조선은 '한 줄 결론'(verdict) 한 곳만 — 전 섹션 반복 시 경고 리포트처럼 보이던 문제 해소 (QA) */
+.layout-github>.github-verdict{border-left:4px solid var(--accent)}
+/* .try(Next Actions)는 base 검정 hero CTA 유지 — 라이트/화이트/다크 모두 dark 패널 (v5.3.3) */
+.layout-github>section .vt-shell{margin-bottom:0}
+.layout-github .repo-card,
+.layout-github .repo-signal,
+.layout-github .repo-question,
+.layout-github .repo-evidence{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px;min-width:0}
+.layout-github .repo-card h3,
+.layout-github .repo-signal h3,
+.layout-github .repo-question h3,
+.layout-github .repo-evidence h3{margin-top:0;color:var(--accent-2)}
+.layout-github .repo-signal .label,
+.layout-github .repo-evidence .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink)}
+/* code-tour(어디부터 읽으면 되는가): 파일명/역할 카드는 좌우 정렬 row로 — 세로 적층의 빈약함 해소 (v5.3.6) */
+.layout-github .code-tour .repo-card{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 16px}
+.layout-github .code-tour .repo-card h3{margin:0;font-size:14.5px}
+.layout-github .code-tour .repo-card p{margin:0;color:var(--chip-ink);font-size:12.5px;white-space:nowrap;flex:0 0 auto}
+.layout-github .repo-score{display:inline-grid;place-items:center;min-width:48px;height:48px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:900 16px/1 var(--sans);margin:0 10px 8px 0}
+.layout-github .repo-unknown{border-style:dashed;background:var(--accent-soft)}
+.layout-github .github-question-toc{margin:24px 0 34px}
 
 .layout-article .article-header{margin-bottom:28px}.layout-article .lead{font-size:18px;color:var(--ink-soft)}.layout-article .article-takeaway{background:var(--accent-soft)}.layout-article article section{margin:54px 0}
 .layout-article .pull-quote{font-size:22px;color:var(--ink);border-color:var(--accent);font-style:normal}
@@ -1433,6 +1527,7 @@ body{background:var(--vt-wash)}
 .layout-blog article{counter-reset:blog-section}
 .layout-blog article section{border-bottom:1px solid var(--line);padding-bottom:28px;margin:52px 0}
 .layout-blog article>section{counter-increment:blog-section}
+.layout-blog article>section>h2:first-child:has(.num)::before{content:none}
 .layout-blog article>section>h2:first-child::before{
   content:counter(blog-section);
   display:inline-grid;
@@ -1451,8 +1546,10 @@ body{background:var(--vt-wash)}
 }
 .layout-blog article section:last-child{border-bottom:0}
 
-.layout-seo .serp-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
-.layout-seo .serp-title{color:var(--ink);font-family:var(--sans);font-size:clamp(17px,2vw,18px);line-height:1.45;font-weight:800;letter-spacing:-.012em;margin:2px 0 8px}
+.layout-seo .serp-shell{display:grid;grid-template-columns:1.04fr .96fr;gap:14px;align-items:stretch}
+.layout-seo .serp-box{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px;min-width:0}
+.layout-seo .serp-result{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 17px;min-width:0}
+.layout-seo .serp-title{color:var(--ink);font-family:var(--sans);font-size:clamp(18px,2vw,20px);line-height:1.35;font-weight:850;letter-spacing:-.025em;margin:2px 0 8px}
 .layout-seo .serp-url{color:#1f6f4e;font-size:12.5px;margin-bottom:6px;font-weight:700}
 .layout-seo .serp-desc{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.62}
 .layout-seo .serp-dots{display:flex;align-items:center;gap:9px;margin:0 0 14px;color:var(--chip-ink);font-size:12.5px;font-weight:700;line-height:1.2}
@@ -1463,9 +1560,15 @@ body{background:var(--vt-wash)}
 .layout-seo .serp-rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;min-width:0}
 .layout-seo .serp-rule{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;min-width:0}
 .layout-seo .serp-rule.is-wide{grid-column:1/-1;border-left:4px solid var(--accent)}
+.layout-seo .serp-rule-kicker{display:block;margin:0 0 5px;font-size:10.8px;line-height:1.15;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
 .layout-seo .serp-rule h3{font-family:var(--sans);font-size:16px;line-height:1.34;font-weight:800;letter-spacing:-.018em;margin:0 0 6px;color:var(--ink)}
 .layout-seo .serp-rule p{margin:0;color:var(--ink-soft);font-size:13.2px;line-height:1.56;word-break:keep-all}
-@media(max-width:620px){.layout-seo .serp-rule-grid{grid-template-columns:1fr}}
+.layout-seo .serp-variant-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:10px 0 0}
+.layout-seo .serp-variant{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px 14px;min-width:0}
+.layout-seo .serp-variant b{display:block;margin:0 0 4px;font-size:12px;line-height:1.2;color:var(--accent-2);letter-spacing:.08em;text-transform:uppercase}
+.layout-seo .serp-variant p{margin:0;font-size:13px;line-height:1.5;color:var(--ink-soft);word-break:keep-all}
+@media(max-width:860px){.layout-seo .serp-shell,.layout-seo .serp-rule-grid,.layout-seo .serp-variant-strip{grid-template-columns:1fr}.layout-seo .serp-rule.is-wide{grid-column:auto}}
+@media(max-width:430px){.layout-seo .serp-box,.layout-seo .serp-result,.layout-seo .serp-rule,.layout-seo .serp-variant{padding:13px 14px}.layout-seo .serp-title{font-size:18px}}
 .layout-seo .seo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .layout-seo .title-candidates,.layout-seo .meta-candidates,.layout-seo .keyword-cluster{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px}
 
@@ -1479,7 +1582,93 @@ body{background:var(--vt-wash)}
 .layout-platform .platform-card.is-essay{border-left:4px solid var(--term-accent)}
 .layout-platform .platform-card h3{margin-top:0;color:var(--accent-2)}
 .layout-platform .original-summary,.layout-platform .platform-strategy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
-@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid:not(section),.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+.layout-platform .platform-split{display:grid;grid-template-columns:.82fr 1.18fr;gap:14px;align-items:stretch}
+.layout-platform .platform-anchor{background:var(--dark);color:#fff;border-radius:15px;padding:18px;display:grid;align-content:center;min-height:220px;position:relative;overflow:hidden}
+.layout-platform .platform-anchor::after{content:"";position:absolute;right:-34px;top:-38px;width:130px;height:130px;border-radius:999px;background:rgba(230,57,70,.2)}
+.layout-platform .platform-kicker{display:block;margin:0 0 6px;color:var(--accent-2);font-size:10.5px;line-height:1.15;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.layout-platform .platform-anchor .platform-kicker{color:#ffb6c0}
+.layout-platform .platform-anchor h3{font-family:var(--sans);font-size:22px;line-height:1.28;letter-spacing:-.02em;margin:0 0 10px;color:#fff}
+.layout-platform .platform-anchor p{margin:0;color:#d8d8d0;font-size:13.5px;line-height:1.58}
+.layout-platform .platform-route-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.layout-platform .platform-route-card{display:grid;grid-template-columns:12px 1fr;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;min-width:0}
+.layout-platform .platform-route-card::before{content:"";width:8px;height:8px;margin-top:5px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.layout-platform .platform-route-card.is-search::before{background:var(--analogy-accent);box-shadow:0 0 0 3px var(--analogy-bg)}
+.layout-platform .platform-route-card.is-dev::before{background:var(--good-label-ink);box-shadow:0 0 0 3px var(--good-bg)}
+.layout-platform .platform-route-card.is-story::before{background:var(--term-accent);box-shadow:0 0 0 3px var(--term-bg)}
+.layout-platform .platform-route-card h3,.layout-platform .platform-output-card h3,.layout-platform .platform-guard h3,.layout-platform .platform-analogy h3{font-family:var(--sans);font-size:15.5px;line-height:1.34;font-weight:850;letter-spacing:-.018em;margin:0 0 5px;color:var(--ink)}
+.layout-platform .platform-route-card p,.layout-platform .platform-output-card p,.layout-platform .platform-output-card li,.layout-platform .platform-guard p,.layout-platform .platform-analogy p{margin:0;font-size:13.2px;line-height:1.5;color:var(--ink-soft);word-break:keep-all}
+.layout-platform .platform-analogy{margin-top:12px;background:var(--term-bg);border:1px solid var(--term-border);border-left:4px solid var(--term-accent);border-radius:14px;padding:14px 16px}
+.layout-platform .platform-analogy p{color:var(--term-ink)}
+.layout-platform .platform-output-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.layout-platform .platform-output-card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:15px 16px;min-width:0}
+.layout-platform .platform-output-card.is-search{border-left:4px solid var(--analogy-accent)}
+.layout-platform .platform-output-card.is-dev{border-left:4px solid var(--good-label-ink)}
+.layout-platform .platform-output-card.is-story{border-left:4px solid var(--term-accent)}
+.layout-platform .platform-output-card.is-essay{border-left:4px solid var(--accent)}
+.layout-platform .platform-prompt-box{margin:9px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 11px;color:var(--ink);font-size:13px;line-height:1.45;font-weight:760}
+.layout-platform .platform-output-card ul{margin:9px 0;padding-left:17px}
+.layout-platform .platform-output-card li + li{margin-top:3px}
+.layout-platform .platform-tags{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}
+.layout-platform .platform-tags span{display:inline-flex;align-items:center;min-height:23px;padding:3px 8px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--chip-ink);font-size:11.5px;line-height:1.15;font-weight:760}
+.layout-platform .platform-guard{margin-top:12px;background:var(--danger-bg);border:1px solid var(--danger-border);border-left:4px solid var(--accent);border-radius:14px;padding:14px 16px}
+.layout-platform .platform-guard .platform-kicker{color:var(--danger-label-ink)}
+.layout-platform .platform-guard p{color:var(--danger-ink)}
+@media(max-width:900px){.layout-platform .platform-split,.layout-platform .platform-output-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid,.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-github .repo-signal-grid,.layout-github .repo-identity-grid,.layout-github .repo-health-grid,.layout-github .repo-action-grid,.layout-github .repo-evidence-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+@media(max-width:620px){.layout-platform .platform-route-grid{grid-template-columns:1fr}.layout-platform .platform-anchor{min-height:0;padding:16px}.layout-platform .platform-anchor h3{font-size:19px}.layout-platform .platform-output-card{padding:14px}}
+
+/* YouTube analysis mode: evidence-first video report. */
+.layout-youtube .youtube-signal-grid,
+.layout-youtube .youtube-evidence-grid,
+.layout-youtube .youtube-chapter-grid,
+.layout-youtube .youtube-comment-grid,
+.layout-youtube .youtube-opportunity-grid,
+.layout-youtube .youtube-blueprint-grid,
+.layout-youtube .youtube-reuse-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-youtube>section:not(.try),
+.layout-youtube>.source-note,
+.layout-youtube>.youtube-question-toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
+.layout-youtube>.youtube-verdict{border-left:4px solid var(--accent)}
+.layout-youtube>section .vt-shell{margin-bottom:0}
+.layout-youtube .youtube-card,
+.layout-youtube .youtube-signal,
+.layout-youtube .youtube-evidence,
+.layout-youtube .youtube-opportunity{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px;min-width:0}
+.layout-youtube .youtube-card h3,
+.layout-youtube .youtube-signal h3,
+.layout-youtube .youtube-evidence h3,
+.layout-youtube .youtube-opportunity h3{margin-top:0;color:var(--accent-2)}
+.layout-youtube .youtube-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink);font-weight:800}
+.layout-youtube .youtube-badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;color:var(--ink-soft);background:var(--accent-soft)}
+.layout-youtube .youtube-fact{border-left:4px solid var(--good-accent)}
+.layout-youtube .youtube-inference{border-left:4px solid var(--accent)}
+.layout-youtube .youtube-unknown{border-left:4px solid var(--danger-accent);border-style:dashed}
+
+/* Manual analysis mode: role-based execution manual. */
+.layout-manual .manual-role-grid,
+.layout-manual .manual-step-grid,
+.layout-manual .manual-reference-grid,
+.layout-manual .manual-trouble-grid,
+.layout-manual .manual-audit-grid,
+.layout-manual .manual-runbook-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-manual>section:not(.try),
+.layout-manual>.source-note,
+.layout-manual>.manual-reader-toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
+.layout-manual>.manual-verdict{border-left:4px solid var(--accent)}
+.layout-manual>section .vt-shell{margin-bottom:0}
+.layout-manual .manual-card,
+.layout-manual .manual-role,
+.layout-manual .manual-step,
+.layout-manual .manual-trouble{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px;min-width:0}
+.layout-manual .manual-card h3,
+.layout-manual .manual-role h3,
+.layout-manual .manual-step h3,
+.layout-manual .manual-trouble h3{margin-top:0;color:var(--accent-2)}
+.layout-manual .manual-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink);font-weight:800}
+.layout-manual .manual-safe{border-left:4px solid var(--good-accent)}
+.layout-manual .manual-risk{border-left:4px solid var(--danger-accent)}
+.layout-manual .manual-unknown{border-style:dashed;background:var(--accent-soft)}
+@media(max-width:760px){.layout-youtube .youtube-signal-grid,.layout-youtube .youtube-evidence-grid,.layout-youtube .youtube-chapter-grid,.layout-youtube .youtube-comment-grid,.layout-youtube .youtube-opportunity-grid,.layout-youtube .youtube-blueprint-grid,.layout-youtube .youtube-reuse-grid,.layout-manual .manual-role-grid,.layout-manual .manual-step-grid,.layout-manual .manual-reference-grid,.layout-manual .manual-trouble-grid,.layout-manual .manual-audit-grid,.layout-manual .manual-runbook-grid{grid-template-columns:1fr}}
 
 /* Ultimate extra modes */
 .layout-audit .audit-row{display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr .6fr;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}
@@ -1506,7 +1695,7 @@ body{background:var(--vt-wash)}
    .winners:not(section), or .tradeoffs:not(section) for actual grid layout. */
 
 .audit-header,.blog-header,.case-header,.checklist-header,.compare-header,
-.course-header,.landing-header,.platform-header,.reference-header,
+.course-header,.github-header,.landing-header,.platform-header,.reference-header,
 .report-header,.seo-header{margin-bottom:42px;padding-bottom:32px;border-bottom:1px solid var(--line)}
 
 /* Semantic section wrappers: normal flow only. */
@@ -1514,7 +1703,9 @@ body{background:var(--vt-wash)}
 .decision-context,.decisions,.results,.winners,.tradeoffs,.how-it-works,.failure-modes,
 .patterns,.examples,.line-audit,.content-outline,.seo-overview,.before-start,
 .beginner-analogy,.beginner-practice,.beginner-terms,.beginner-traps,.example-block,
-.lesson-step,.publish-checklist,.related-list,.soft-cta{margin:46px 0}
+.lesson-step,.publish-checklist,.related-list,.soft-cta,.github-verdict,.repo-identity,
+.quickstart-readiness,.repo-health,.code-tour,.release-roadmap,.security-license,
+.decision-tree{margin:46px 0}
 
 /* Actual reusable grid/card wrappers. Never apply these to a section containing h2/h2-sub. */
 .grid-2,.cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
@@ -1555,6 +1746,9 @@ body{background:var(--vt-wash)}
   .final-seo-set .grid,.final-seo-set .seo-grid{grid-template-columns:1fr}
   .layout-blog article>section>h2:first-child::before{width:30px;height:30px;margin-right:9px;font-size:13px;vertical-align:2px}
 }
+/* === 완성본 표준 승격 v5.3.1 — 무클래스 콘텐츠 섹션 카드 뷰 === */
+.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}
 
 @media print{
   *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
@@ -1568,44 +1762,82 @@ body{background:var(--vt-wash)}
   a::after{content:" (" attr(href) ")";font-size:11px;color:#555}
 }
 
-/* adaptive-html-final 테마 시스템 (v5.2) — CSS-only 3-테마: 라이트(크림 기본)·화이트(순백)·다크.
-   라디오 #ahf-light/#ahf-white/#ahf-dark(name=ahf-theme) + :has(). 무 JS · 강제선언 0 · 코어 무수정. 마크업 없으면 라이트 기본. */
+/* adaptive-html-final 테마 시스템 (v5.5) — CSS-only 8-테마: 라이트·그레이(쿨 뉴트럴)·스카이블루·세피아·화이트·다크·로즈(웜)·블루(딥네이비). id는 안정성 위해 ahf-light2/ahf-dark2 유지.
+   라디오 #ahf-light/#ahf-light2/#ahf-white/#ahf-dark/#ahf-dark2(name=ahf-theme) + :has(). 무 JS · 강제선언 0 · 코어 무수정. 마크업 없으면 라이트 기본.
+   light2/dark2는 final_20260604 표준에서 승격(확장 테마). 둘은 항상 함께 제공한다. */
 
 /* ===== 화이트(순백) ===== */
 :root:has(#ahf-white:checked){--bg:#ffffff;--card:#ffffff;--line:#e4e4ea;--ink:#16181d;--ink-soft:#43474e;--ink-mute:#6b6f78;--chip-ink:#6b6f78;--dark:#16181d;--dark-soft:#23262d;--code:#1b1e24;--vt-paper:#ffffff;--vt-wash:#ffffff;--vt-soft:#f2f3f6;color-scheme:light}
 
+/* ===== 그레이(쿨 뉴트럴 — gray-blue, label '그레이' / id ahf-light2) ===== */
+:root:has(#ahf-light2:checked){--bg:#f5f6f8;--ink:#16161d;--ink-soft:#2c3140;--ink-mute:#5b6270;--line:#e6e8ec;--card:#ffffff;--accent:#e23b2e;--accent-2:#b72d38;--accent-soft:#fdecea;--chip-ink:#5b6270;--dark:#16161d;--dark-soft:#23262d;--code:#0f1117;--on-accent:#ffffff;--term-bg:#fffbeb;--term-border:#fde68a;--analogy-bg:#fafbfc;--analogy-border:#d9dee7;--danger-bg:#fff1f2;--danger-border:#fecdd3;--good-bg:#f0fdf4;--good-border:#bbf7d0;--vt-paper:#ffffff;--vt-wash:#f5f6f8;--vt-soft:#eef0f3;color-scheme:light}
+
+/* ===== 스카이블루(라이트 배경 + 블루 분위기) ===== */
+:root:has(#ahf-skyblue:checked){--bg:#eef4fb;--ink:#15233a;--ink-soft:#3a4a63;--ink-mute:#647088;--line:#d4e0f0;--card:#ffffff;--accent:#2f6fdb;--accent-2:#1d4fa6;--accent-soft:#e3edfb;--chip-ink:#647088;--on-accent:#ffffff;--dark:#15233a;--dark-soft:#22324a;--code:#0f1b2d;--term-bg:#fff8e6;--term-border:#f3dca0;--analogy-bg:#eaf2fd;--analogy-border:#c2d8f2;--analogy-label-ink:#3f6bb0;--analogy-accent:#2f6fdb;--danger-bg:#fdeef0;--danger-border:#f4c4cb;--good-bg:#eafaf1;--good-border:#bfe6cf;--hl-yellow:#fff1b8;--hl-blue:#d6e6fb;--hl-pink:#fbe0e6;--vt-paper:#ffffff;--vt-wash:#eef4fb;--vt-soft:#e3edf8;--vt-blue:#2f6fdb;color-scheme:light}
+
+/* ===== 세피아(따뜻한 종이빛 리딩 — 장문 가독성·저블루라이트) ===== */
+:root:has(#ahf-sepia:checked){--bg:#f4ecd8;--ink:#3a2f25;--ink-soft:#5c4d3e;--ink-mute:#857260;--line:#e2d6bb;--card:#fbf6e9;--accent:#a85c32;--accent-2:#7e4426;--accent-soft:#f0e2cf;--chip-ink:#857260;--on-accent:#fbf6e9;--dark:#2d2418;--dark-soft:#3a2f23;--code:#2d2418;--term-bg:#f7eed6;--term-border:#e3cf9f;--analogy-bg:#f1ecd9;--analogy-border:#ddcfac;--analogy-label-ink:#7a6233;--analogy-accent:#9a7b3d;--danger-bg:#f7e6df;--danger-border:#e3b9a6;--good-bg:#edf0da;--good-border:#cdd6a8;--good-label-ink:#5f7034;--hl-yellow:#f3e2a8;--hl-blue:#dfe6d2;--hl-pink:#f1ddcf;--vt-paper:#fbf6e9;--vt-wash:#f4ecd8;--vt-soft:#efe6cf;--vt-gold:#a85c32;color-scheme:light}
+
 /* ===== 다크(명시) + 표면 보정 ===== */
 :root:has(#ahf-dark:checked){--bg:#0c0d10;--ink:#ececea;--ink-soft:#c3c3bc;--ink-mute:#9a9a92;--line:#2c2d34;--card:#1a1c22;--accent:#ff6b75;--accent-2:#ff909a;--accent-soft:#3a2228;--link-on-dark:#ffb6c0;--chip-ink:#a8a8a1;--on-accent:#0c0d10;--dark:#000000;--dark-soft:#0c0d10;--code:#070809;--vt-paper:#1a1c22;--vt-wash:#0c0d10;--vt-soft:#23252c;--vt-blue:#7fb0d8;--vt-green:#60ba8b;--vt-gold:#e0b357;--term-bg:#241f13;--term-border:#48402a;--term-ink:#ead9b2;--term-label-ink:#e3bd6a;--term-accent:#d7a657;--analogy-bg:#15212e;--analogy-border:#2e4458;--analogy-ink:#bfd6e8;--analogy-label-ink:#9cc2de;--analogy-accent:#79a8c8;--danger-bg:#291513;--danger-border:#5c2f2a;--danger-ink:#f2c6c0;--danger-label-ink:#ff8c87;--good-bg:#0f2419;--good-border:#244b37;--good-ink:#bfe2cf;--good-label-ink:#80d2a7;--good-accent:#60ba8b;--hl-yellow:#6a5618;--hl-blue:#21405c;--hl-pink:#5a2530;--focus:#5a86ee;color-scheme:dark}
-:root:has(#ahf-dark:checked) .prompt-box{background:var(--card)}
-:root:has(#ahf-dark:checked) code{background:var(--code);color:var(--ink)}
-:root:has(#ahf-dark:checked) th,:root:has(#ahf-dark:checked) .table th{background:var(--line);color:var(--ink)}
-:root:has(#ahf-dark:checked) .status-pill{background:var(--card)}
-:root:has(#ahf-dark:checked) .timeline-card{background:var(--card)}
-:root:has(#ahf-dark:checked) .layout-seo .serp-url{color:var(--good-accent)}
-:root:has(#ahf-dark:checked) .core-insight{background:linear-gradient(135deg,var(--accent-soft),var(--card))}
-:root:has(#ahf-dark:checked) .try .tag,:root:has(#ahf-dark:checked) .try.soft-cta .tag{background:var(--card);border-color:var(--line)}
-:root:has(#ahf-dark:checked) .vt-pill.hot{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink)}
-:root:has(#ahf-dark:checked) .vt-pill.good{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
-:root:has(#ahf-dark:checked) .vt-pill.watch{background:var(--term-bg);border-color:var(--term-border);color:var(--term-label-ink)}
-:root:has(#ahf-dark:checked) .wf-board{--ink:#242421;--ink-soft:#66584c;--ink-mute:#66584c;--vt-ink:#242421;--vt-muted:#66584c;--card:#fffaf4;--line:#ead8c7;--accent-2:#b72d38;--good-label-ink:#1f6f4e;--danger-label-ink:#c62433;--accent:#e63946;--wf-warm:#c2560f;--wf-warm2:#d9742a}
 
-/* ===== 세그먼트 스위처(라디오 3단) ===== */
-.ahf-themebar{position:fixed;top:14px;right:16px;z-index:600;display:inline-flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.18);margin:0}
+/* ===== 로즈(웜 로즈/모브 — desaturated rose, label '로즈' / id ahf-dark2) ===== */
+:root:has(#ahf-dark2:checked){--bg:#0f1014;--ink:#ece8df;--ink-soft:#c8c2b7;--ink-mute:#9d968b;--line:#333640;--card:#191b21;--accent:#c8747c;--accent-2:#d9a0a5;--accent-soft:#2d2024;--link-on-dark:#e6b8bd;--chip-ink:#c8c2b7;--on-accent:#0f1014;--dark:#0b0c10;--dark-soft:#14161b;--code:#0b0c10;--term-bg:#27231c;--term-border:#4b412b;--term-ink:#d8c89e;--term-label-ink:#b8a06f;--term-accent:#b8a06f;--analogy-bg:#18232b;--analogy-border:#2d4251;--analogy-ink:#bfd0db;--analogy-label-ink:#8fa9b8;--analogy-accent:#7f9daf;--danger-bg:#2b1e21;--danger-border:#593238;--danger-ink:#dfb8bd;--danger-label-ink:#d79aa1;--danger-accent:#c8747c;--good-bg:#18251d;--good-border:#324a39;--good-ink:#c5d9cb;--good-label-ink:#8fb59d;--good-accent:#7fa98f;--hl-yellow:#3b331f;--hl-blue:#1d2d39;--hl-pink:#35232a;--focus:#829ce5;--vt-paper:#191b21;--vt-wash:#0f1014;--vt-soft:#252832;--vt-line:#373a44;--vt-ink:#ece8df;--vt-blue:#7fb0d8;--vt-green:#7fa98f;--vt-gold:#b8a06f;color-scheme:dark}
+
+/* ===== 블루(딥 네이비 — dark2 표본 기반, blue accent) ===== */
+:root:has(#ahf-blue:checked){--bg:#0d1320;--ink:#e7edf7;--ink-soft:#bcc7da;--ink-mute:#8a97ad;--line:#273245;--card:#151d2c;--accent:#5b9cf0;--accent-2:#92bdff;--accent-soft:#15263f;--link-on-dark:#a9cbff;--chip-ink:#bcc7da;--on-accent:#0d1320;--dark:#080d16;--dark-soft:#101725;--code:#080d16;--term-bg:#221f12;--term-border:#473f25;--term-ink:#e0d3a6;--term-label-ink:#c9b06f;--term-accent:#c9b06f;--analogy-bg:#12243a;--analogy-border:#27425f;--analogy-ink:#bcd3ea;--analogy-label-ink:#8fb2d6;--analogy-accent:#6f9fcf;--danger-bg:#2a1719;--danger-border:#5a2f33;--danger-ink:#e6bcc0;--danger-label-ink:#e08c92;--danger-accent:#d2727a;--good-bg:#13241c;--good-border:#2c4a39;--good-ink:#c2dccd;--good-label-ink:#86bd9f;--good-accent:#79b394;--hl-yellow:#3a3320;--hl-blue:#16304b;--hl-pink:#352230;--focus:#5b9cf0;--vt-paper:#151d2c;--vt-wash:#0d1320;--vt-soft:#1b2536;--vt-line:#2b3850;--vt-ink:#e7edf7;--vt-blue:#7fb0e8;--vt-green:#79b394;--vt-gold:#c9b06f;color-scheme:dark}
+
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .prompt-box{background:var(--card)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) code{background:var(--code);color:var(--ink)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) th,:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .table th{background:var(--line);color:var(--ink)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .status-pill{background:var(--card)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .timeline-card{background:var(--card)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .layout-seo .serp-url{color:var(--good-accent)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .core-insight{background:linear-gradient(135deg,var(--accent-soft),var(--card))}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .try .tag,:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .try.soft-cta .tag{background:var(--card);border-color:var(--line)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .vt-pill.hot{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .vt-pill.good{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .vt-pill.watch{background:var(--term-bg);border-color:var(--term-border);color:var(--term-label-ink)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .wf-board{--ink:#242421;--ink-soft:#66584c;--ink-mute:#66584c;--vt-ink:#242421;--vt-muted:#66584c;--card:#fffaf4;--line:#ead8c7;--accent-2:#b72d38;--good-label-ink:#1f6f4e;--danger-label-ink:#c62433;--accent:#e63946;--wf-warm:#c2560f;--wf-warm2:#d9742a}
+
+/* ===== 테마 스위처 — 정형화 버튼 그리드(라디오 8: 4열 균일폭 4+4, 라이트·그레이·화이트·다크·로즈·블루·스카이·세피아) ===== */
+.ahf-themebar{position:fixed;top:14px;right:16px;z-index:600;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:276px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:5px;box-shadow:0 3px 10px rgba(0,0,0,.10);margin:0}
 .ahf-themebar input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
-.ahf-themebar label{display:inline-flex;align-items:center;min-height:30px;padding:4px 13px;border-radius:999px;font-size:12px;font-weight:700;color:var(--ink-mute);cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
-.ahf-themebar label:hover{color:var(--ink)}
+.ahf-themebar label{display:flex;align-items:center;justify-content:center;min-height:30px;padding:5px 4px;border-radius:9px;font-size:12px;font-weight:700;color:var(--ink-mute);cursor:pointer;white-space:nowrap;text-align:center;transition:background .15s,color .15s}
+.ahf-themebar label:hover{background:var(--accent-soft);color:var(--ink)}
 .ahf-themebar input:checked + label{background:var(--accent-2);color:var(--on-accent,#fff)}
 .ahf-themebar input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
-@media(max-width:560px){.ahf-themebar{position:static;width:max-content;max-width:calc(100% - 28px);margin:10px auto 16px}}
+@media(max-width:560px){.ahf-themebar{position:static;width:276px;max-width:calc(100% - 28px);margin:10px auto 16px}}
 @media print{.ahf-themebar{display:none}}
+
 </style>
 
+<style>
+/* page-local presentation tweaks (mode page) — 헤더 미세 튜닝(인덱스와 동일). 아이콘 정렬·헤더 폭은 스킬 v5.2.1 기본값 */
+.header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
+.header .kicker::before{width:6px;height:6px}
+.header .sub{text-align:justify;word-break:keep-all}
+/* 헤딩 아이콘 크기 확대 — 참조 사이트(final_20260604 .pattern-head .body-icon=42px)처럼. 2026-06-05 followup-final */
+h2>.body-icon,h3>.body-icon{width:42px;height:42px;border-radius:12px}
+h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
+/* source-note 배경 투명 (08과 동일). 2026-06-05 */
+.source-note{background:transparent}
+:root:has(#ahf-dark:checked) .source-note{background:transparent}
+/* 모든 플레인 콘텐츠 섹션을 카드 뷰로(다른 섹션과 동일 표면). 2026-06-05 */
+.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}
+</style>
 </head>
 <body>
 <fieldset class="ahf-themebar" aria-label="테마 선택">
   <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">그레이</label>
   <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
   <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark2"><label for="ahf-dark2">로즈</label>
+  <input type="radio" name="ahf-theme" id="ahf-blue"><label for="ahf-blue">블루</label>
+  <input type="radio" name="ahf-theme" id="ahf-skyblue"><label for="ahf-skyblue">스카이</label>
+  <input type="radio" name="ahf-theme" id="ahf-sepia"><label for="ahf-sepia">세피아</label>
 </fieldset>
 <a class="skip" href="#main">본문 바로가기</a>
 <div class="reading-progress" aria-hidden="true"></div>
@@ -1614,49 +1846,25 @@ body{background:var(--vt-wash)}
 <section class="summary-card"><div class="label">Overview</div><p><strong>지식관리는 저장량 게임이 아니라 다시 꺼내 쓰는 확률 게임이었다.</strong> 두 번째 뇌를 작게 만든다는 것은 야망을 포기하는 일이 아니라, 실제로 다시 생각할 수 있는 크기까지 시스템을 되찾는 일이었다.</p></section>
 
 <div class="lede-note"><span class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span>Goal</span><p>이 글은 노트 앱을 더 잘 꾸미는 법이 아니라, 30일 동안 저장량을 줄여 회수율을 올린 기준을 기록한다. 독자는 오늘 지울 노트, 고칠 제목, 남길 회고 문장을 바로 정할 수 있어야 한다.</p></div>
-<!-- template-showcase:start vt-04 timeline -->
-<div class="summary-card template-showcase"><div class="label">TEMPLATE CHECK · vt-04 timeline</div>
-<section class="vt-shell"><div class="vt-frame"><ol class="tl"><li class="tl-item"><b>1-7일: 버리기</b><p class="vt-text">열지 않는 노트, 중복 태그, 링크만 있는 노트를 표시하고 줄였다.</p></li><li class="tl-item"><b>8-14일: 질문형 제목</b><p class="vt-text">흐릿한 제목을 “무엇을 해결하려는가?” 형태로 바꿨다.</p></li><li class="tl-item"><b>15-21일: 30분 회고</b><p class="vt-text">금요일마다 이번 주 노트 세 개만 다시 읽고 다음 행동 하나를 남겼다.</p></li><li class="tl-item"><b>22-30일: 회수율 점검</b><p class="vt-text">쓸 곳이 있는 링크만 저장하고, 실제 작업 중 다시 찾히는지 확인했다.</p></li></ol></div></section>
-</div>
-<!-- template-showcase:end vt-04 timeline -->
-<section><h2><span class="no is-key" aria-hidden="true">1</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M16 16c.7-3 7-3.5 8 0 .8 2.6-2.4 3.8-4 5.4V24"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span>왜 두 번째 뇌를 다시 작게 만들기로 했나</h2><p>처음에는 더 잘 기억하고 싶어서 노트를 늘렸다. 읽은 글, 떠오른 아이디어, 회의 메모, 작업 로그, 나중에 참고할 링크까지 전부 저장했다. 저장하는 순간에는 안심이 됐다. 중요한 것을 잃어버리지 않았다는 감각이 있었고, 언젠가 이 조각들이 멋진 생각으로 이어질 것 같았다.</p><p>그런데 어느 순간부터 노트 앱을 여는 일이 숙제처럼 느껴졌다. 저장한 것은 많았지만 다시 꺼내 쓰는 것은 적었다. 검색창에 단어를 넣어도 비슷한 제목의 노트가 여러 개 나왔고, 태그는 많았지만 결정에는 별 도움이 되지 않았다.</p><p>그래서 30일 동안 목표를 바꿨다. 더 많이 저장하는 시스템이 아니라, 더 쉽게 다시 만나는 시스템을 만들기로 했다. 핵심 질문은 하나였다. “이 노트는 미래의 내가 실제로 다시 쓸 수 있는가?”</p></section>
-<section><h2><span class="no" aria-hidden="true">2</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span>실패한 거대한 시스템: 완벽했지만 매일 쓰기 어려웠다</h2><p>이전 시스템은 겉으로 보기에는 그럴듯했다. 영역별 폴더, 프로젝트별 폴더, 상태별 태그, 자료 유형별 태그, 주제별 태그가 있었다. 어떤 노트를 어디에 넣어야 할지 결정하는 데만 작은 판단이 필요했다.</p><p>거대한 시스템은 내가 컨디션이 좋고 시간이 있을 때만 작동했다. 바쁜 날에는 임시 보관함에 넣어두고, 피곤한 날에는 제목도 대충 붙였다. 그렇게 쌓인 임시 노트는 다음 주의 나에게 빚이 됐다.</p><p>가장 큰 실패는 “분류를 잘하면 생각도 좋아질 것”이라는 착각이었다. 실제로 필요한 것은 완벽한 위치가 아니라 다시 읽을 이유였다.</p><div class="source-preserve source-preserve-static" role="group" aria-labelledby="source-small-brain-rule"><div id="source-small-brain-rule" class="source-preserve-title">실험 원문 기준 · raw rule preserved</div><div class="source-body"><p><strong>30일 기준:</strong> 더 많이 저장하지 않는다. 다시 쓸 수 없는 노트는 빚으로 본다. 새 노트에는 질문, 관찰, 다음 행동 중 하나를 반드시 남긴다.</p></div></div></section>
-<section><h2><span class="no" aria-hidden="true">3</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M13 7v26"/><circle class="bi-dot" cx="13" cy="10" r="3"/><circle class="bi-accent" cx="13" cy="20" r="3"/><circle class="bi-soft" cx="13" cy="30" r="3"/><path class="bi-line" d="M21 11h10M21 20h7M21 30h9"/></svg></span>1주차: 버리기 전에는 아무것도 단순해지지 않는다</h2><p>첫 주에는 새 규칙을 만들지 않았다. 대신 열지 않는 노트, 중복된 태그, 출처만 있고 내 생각이 없는 링크를 지웠다. 삭제가 어려웠던 이유는 정보가 아까워서가 아니라, 예전에 노력한 흔적을 버리는 것 같아서였다.</p><p>삭제 기준은 단순하게 잡았다. 최근에도 쓸 이유가 떠오르지 않는 노트, 제목만 봐서는 무엇을 도와주는지 알 수 없는 노트, 링크만 있고 내 문장이 없는 노트는 후보로 올렸다.</p><p>첫 주가 끝났을 때 가장 크게 줄어든 것은 노트 수보다 죄책감이었다. “언젠가 읽어야 하는 것”이 줄어드니 앱을 여는 마음이 가벼워졌다.</p></section>
-<section><h2><span class="no" aria-hidden="true">4</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="9" width="18" height="22" rx="3"/><path class="bi-line" d="M13 16h8M13 22h7"/><path class="bi-accent-line" d="M24 28l8-8 3 3-8 8-5 1z"/></svg></span>2주차: 노트 제목을 질문으로 바꾸자 검색이 달라졌다</h2><p>둘째 주에는 제목을 바꿨다. “회의 메모”, “좋은 글”, “마케팅 아이디어”처럼 흐릿한 제목을 질문형으로 고쳤다. 예를 들면 “신규 기능을 왜 사용자가 놓쳤을까?”, “반복되는 일정 지연은 어디서 시작됐나?” 같은 식이다.</p><p>질문형 제목의 장점은 노트가 저장된 이유를 동시에 보여준다는 것이다. 나중에 검색할 때도 단어가 아니라 상황으로 접근할 수 있었다. “이 자료가 뭐였지?”가 아니라 “그때 내가 풀려고 했던 문제가 뭐였지?”라고 찾게 됐다.</p><p>질문으로 시작하면 본문도 답을 향해 움직인다. 단순 요약보다 관찰, 판단, 다음 행동이 자연스럽게 붙었다.</p></section>
-<section><h2><span class="no" aria-hidden="true">5</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-soft" x="9" y="8" width="22" height="24" rx="4"/><path class="bi-line" d="M15 15h10M15 21h10M15 27h6"/><circle class="bi-accent" cx="28" cy="12" r="2"/></svg></span>3주차: 금요일 30분 회고가 시스템의 심장이 됐다</h2><p>셋째 주에는 회고 시간을 고정했다. 매주 금요일, 길어도 30분만 쓰기로 했다. 이 시간에 하는 일은 거창하지 않았다. 이번 주에 쌓인 노트 중 다시 볼 만한 것 세 개를 고르고, 버릴 것 몇 개를 지우고, 다음 주에 써먹을 문장을 하나 남겼다.</p><p>회고의 기준도 “무엇을 배웠나”에서 “무엇이 바뀌었나”로 바꿨다. 배운 것은 많아 보이지만 행동으로 이어지지 않으면 금방 흐려졌다. 대신 어떤 결정을 다르게 했는지, 다음 주에 반복하지 않을 실수는 무엇인지 적었다.</p><p>30분 회고가 생기자 입력을 덜 두려워하게 됐다. 완벽하게 정리해서 넣어야 한다는 압박이 줄었다.</p>
+
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M16 16c.7-3 7-3.5 8 0 .8 2.6-2.4 3.8-4 5.4V24"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="no is-key" aria-hidden="true">1</span>왜 두 번째 뇌를 다시 작게 만들기로 했나</h2><p>처음에는 더 잘 기억하고 싶어서 노트를 늘렸다. 읽은 글, 떠오른 아이디어, 회의 메모, 작업 로그, 나중에 참고할 링크까지 전부 저장했다. 저장하는 순간에는 안심이 됐다. 중요한 것을 잃어버리지 않았다는 감각이 있었고, 언젠가 이 조각들이 멋진 생각으로 이어질 것 같았다.</p><p>그런데 어느 순간부터 노트 앱을 여는 일이 숙제처럼 느껴졌다. 저장한 것은 많았지만 다시 꺼내 쓰는 것은 적었다. 검색창에 단어를 넣어도 비슷한 제목의 노트가 여러 개 나왔고, 태그는 많았지만 결정에는 별 도움이 되지 않았다.</p><p>그래서 30일 동안 목표를 바꿨다. 더 많이 저장하는 시스템이 아니라, 더 쉽게 다시 만나는 시스템을 만들기로 했다. 핵심 질문은 하나였다. “이 노트는 미래의 내가 실제로 다시 쓸 수 있는가?”</p><p>지금 와서 보면 방향이 어긋난 신호는 진작에 있었다. 아래 증상이 두 개 이상 겹친다면, 당신의 두 번째 뇌도 저장은 늘었지만 회수는 멈춘 상태일 가능성이 높다. 나는 다섯 개 중 네 개에 해당했다.</p><ul><li>같은 주제의 노트를 검색하면 비슷한 제목이 서너 개씩 나온다.</li><li>저장은 매일 하는데 다시 열어 본 노트는 지난주에 한두 개뿐이다.</li><li>“나중에 읽기”에 넣은 링크가 100개를 넘었고 줄어든 적이 없다.</li><li>노트 앱을 여는 일이 설렘이 아니라 부채감으로 느껴진다.</li><li>태그를 다는 데는 시간을 쓰지만 태그로 무언가를 찾은 기억은 없다.</li></ul><div class="analogy"><div class="label">비유</div><p>두 번째 뇌는 냉장고와 같았다. 큰 냉장고를 사면 더 많이 넣을 수 있지만, 그렇다고 더 잘 먹게 되는 것은 아니다. 안쪽 깊은 곳에 넣어 둔 재료는 유통기한이 지날 때까지 잊힌다.</p><p>작은 냉장고는 강제로 선택하게 만든다. 무엇을 넣을지, 무엇을 먼저 먹을지 매주 결정하게 된다. 내가 30일 동안 한 일은 더 큰 냉장고를 사는 대신, 매주 안을 들여다보게 되는 작은 냉장고로 바꾼 것이었다.</p></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="no" aria-hidden="true">2</span>실패한 거대한 시스템: 완벽했지만 매일 쓰기 어려웠다</h2><p>이전 시스템은 겉으로 보기에는 그럴듯했다. 영역별 폴더, 프로젝트별 폴더, 상태별 태그, 자료 유형별 태그, 주제별 태그가 있었다. 어떤 노트를 어디에 넣어야 할지 결정하는 데만 작은 판단이 필요했다.</p><p>거대한 시스템은 내가 컨디션이 좋고 시간이 있을 때만 작동했다. 바쁜 날에는 임시 보관함에 넣어두고, 피곤한 날에는 제목도 대충 붙였다. 그렇게 쌓인 임시 노트는 다음 주의 나에게 빚이 됐다.</p><p>가장 큰 실패는 “분류를 잘하면 생각도 좋아질 것”이라는 착각이었다. 실제로 필요한 것은 완벽한 위치가 아니라 다시 읽을 이유였다.</p><p>거대한 시스템이 무너지는 방식은 늘 똑같았다. 화려한 구조는 컨디션이 좋은 날을 기준으로 설계되는데, 정작 그 시스템을 가장 많이 쓰는 시간은 피곤하고 바쁜 날이다. 설계 기준과 사용 현실이 어긋나면 시스템은 평균적인 날에 무너진다.</p><div class="danger"><div class="label">실패 패턴</div><div class="name">“가장 좋은 날”을 기준으로 만든 시스템</div><p>나는 주말 오후, 커피를 마시며 여유로울 때 폴더 구조와 태그 체계를 설계했다. 그런데 노트를 실제로 적는 순간은 회의 직후, 지하철 안, 잠들기 직전이었다. 입력 비용이 높은 시스템은 가장 바쁜 날 가장 먼저 버려진다.</p><p>교훈은 분명했다. 시스템은 평균적인 날, 그러니까 조금 피곤하고 시간이 없는 날에도 유지되는 크기여야 한다. 최고의 날에만 작동하는 시스템은 사실상 작동하지 않는 시스템이다.</p></div><div class="source-preserve source-preserve-static" role="group" aria-labelledby="source-small-brain-rule"><div id="source-small-brain-rule" class="source-preserve-title">실험 원문 기준 · raw rule preserved</div><div class="source-body"><p><strong>30일 기준:</strong> 더 많이 저장하지 않는다. 다시 쓸 수 없는 노트는 빚으로 본다. 새 노트에는 질문, 관찰, 다음 행동 중 하나를 반드시 남긴다.</p></div></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M13 7v26"/><circle class="bi-dot" cx="13" cy="10" r="3"/><circle class="bi-accent" cx="13" cy="20" r="3"/><circle class="bi-soft" cx="13" cy="30" r="3"/><path class="bi-line" d="M21 11h10M21 20h7M21 30h9"/></svg></span><span class="no" aria-hidden="true">3</span>1주차: 버리기 전에는 아무것도 단순해지지 않는다</h2><p>첫 주에는 새 규칙을 만들지 않았다. 대신 열지 않는 노트, 중복된 태그, 출처만 있고 내 생각이 없는 링크를 지웠다. 삭제가 어려웠던 이유는 정보가 아까워서가 아니라, 예전에 노력한 흔적을 버리는 것 같아서였다.</p><p>삭제 기준은 단순하게 잡았다. 최근에도 쓸 이유가 떠오르지 않는 노트, 제목만 봐서는 무엇을 도와주는지 알 수 없는 노트, 링크만 있고 내 문장이 없는 노트는 후보로 올렸다.</p><p>첫 주가 끝났을 때 가장 크게 줄어든 것은 노트 수보다 죄책감이었다. “언젠가 읽어야 하는 것”이 줄어드니 앱을 여는 마음이 가벼워졌다.</p><p>막막하게 “정리해야지” 하면 한 시간을 봐도 한 개도 못 지운다. 그래서 판단을 자동화했다. 노트를 하나씩 열지 않고, 아래 기준으로 빠르게 분류만 했다. 결정을 단순하게 만드는 것이 삭제보다 먼저였다.</p><div class="tbl table-scroll"><table><caption>1주차 삭제 분류 기준 — 한 노트당 5초 안에 판단</caption><thead><tr><th>신호</th><th>처리</th><th>왜 이렇게 했나</th></tr></thead><tbody><tr><td>최근에도 다시 쓸 이유가 떠오르지 않음</td><td>삭제 후보</td><td>저장 비용은 이미 지불됐고, 보관 비용만 남는다</td></tr><tr><td>제목만 봐서는 무엇을 돕는지 모름</td><td>제목 수정 또는 삭제</td><td>검색에서 영영 안 잡히면 없는 것과 같다</td></tr><tr><td>링크만 있고 내 문장이 한 줄도 없음</td><td>한 문장 추가 아니면 삭제</td><td>북마크는 지식이 아니다</td></tr><tr><td>중복된 같은 주제 노트 3개 이상</td><td>하나로 합치기</td><td>분산된 노트는 어느 것도 신뢰받지 못한다</td></tr></tbody></table></div><div class="good"><div class="label">효과</div><div class="name">지운 만큼 가벼워진다</div><p>정보를 잃을까 두려웠지만, 한 달이 지나도 “그때 지운 노트가 필요한데” 싶었던 적은 한 번도 없었다. 정작 필요한 정보는 대개 다시 찾을 수 있고, 진짜 중요한 것은 머릿속에 이미 남아 있었다.</p></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="9" width="18" height="22" rx="3"/><path class="bi-line" d="M13 16h8M13 22h7"/><path class="bi-accent-line" d="M24 28l8-8 3 3-8 8-5 1z"/></svg></span><span class="no" aria-hidden="true">4</span>2주차: 노트 제목을 질문으로 바꾸자 검색이 달라졌다</h2><p>둘째 주에는 제목을 바꿨다. “회의 메모”, “좋은 글”, “마케팅 아이디어”처럼 흐릿한 제목을 질문형으로 고쳤다. 예를 들면 “신규 기능을 왜 사용자가 놓쳤을까?”, “반복되는 일정 지연은 어디서 시작됐나?” 같은 식이다.</p><p>질문형 제목의 장점은 노트가 저장된 이유를 동시에 보여준다는 것이다. 나중에 검색할 때도 단어가 아니라 상황으로 접근할 수 있었다. “이 자료가 뭐였지?”가 아니라 “그때 내가 풀려고 했던 문제가 뭐였지?”라고 찾게 됐다.</p><p>질문으로 시작하면 본문도 답을 향해 움직인다. 단순 요약보다 관찰, 판단, 다음 행동이 자연스럽게 붙었다.</p><p>처음에는 모든 제목을 질문형으로 바꾸기가 어색했다. 그래서 규칙을 하나 정했다. 제목을 적기 전에 “내가 이 노트를 다시 열 때 머릿속에 떠오를 말”을 그대로 쓰는 것이다. 우리는 보통 “그 자료 어디 갔지”가 아니라 “그때 그 문제 어떻게 됐더라”로 기억을 더듬기 때문이다. 실제 변환은 이렇게 진행했다.</p><pre><code>흐릿한 제목            →  다시 찾게 되는 질문형 제목
+"회의 메모"            →  "출시 일정이 또 밀린 진짜 이유는?"
+"좋은 글"             →  "온보딩 이탈을 줄인 글에서 가져올 한 가지는?"
+"마케팅 아이디어"       →  "재방문 사용자에게 뭘 먼저 보여줘야 하나?"
+"API 정리"           →  "결제 실패는 어디서 가장 자주 터지나?"</code></pre><div class="term"><div class="label">규칙</div><span class="word">질문형 제목의 3초 테스트</span><p class="meaning">제목만 읽었을 때 3초 안에 “아, 그거”라고 떠오르지 않으면 아직 흐린 제목이다. 명사 나열은 분류에는 좋지만 회상에는 약하다. 회상은 언제나 상황과 질문으로 일어난다.</p></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-soft" x="9" y="8" width="22" height="24" rx="4"/><path class="bi-line" d="M15 15h10M15 21h10M15 27h6"/><circle class="bi-accent" cx="28" cy="12" r="2"/></svg></span><span class="no" aria-hidden="true">5</span>3주차: 금요일 30분 회고가 시스템의 심장이 됐다</h2><p>셋째 주에는 회고 시간을 고정했다. 매주 금요일, 길어도 30분만 쓰기로 했다. 이 시간에 하는 일은 거창하지 않았다. 이번 주에 쌓인 노트 중 다시 볼 만한 것 세 개를 고르고, 버릴 것 몇 개를 지우고, 다음 주에 써먹을 문장을 하나 남겼다.</p><p>회고의 기준도 “무엇을 배웠나”에서 “무엇이 바뀌었나”로 바꿨다. 배운 것은 많아 보이지만 행동으로 이어지지 않으면 금방 흐려졌다. 대신 어떤 결정을 다르게 했는지, 다음 주에 반복하지 않을 실수는 무엇인지 적었다.</p><p>30분 회고가 생기자 입력을 덜 두려워하게 됐다. 완벽하게 정리해서 넣어야 한다는 압박이 줄었다.</p><p>회고가 흐지부지되지 않으려면 “무엇을 할지”가 매주 똑같아야 했다. 그래서 30분을 네 칸으로 쪼개 타이머를 맞췄다. 시간이 정해져 있으니 완벽주의가 끼어들 틈이 없었고, 끝나면 깔끔하게 닫혔다.</p><ol><li><strong>10분 · 훑기</strong> — 이번 주에 쌓인 노트를 빠르게 스크롤하며 다시 볼 만한 것 세 개에만 별표를 단다. 읽지 않고 표시만 한다.</li><li><strong>8분 · 버리기</strong> — 한 주가 지나도 다시 쓸 이유가 안 떠오르는 노트를 망설임 없이 지운다. 보통 다섯에서 열 개가 사라진다.</li><li><strong>7분 · 잇기</strong> — 별표 친 세 개를 지금 진행 중인 프로젝트나 다른 노트에 연결한다. 연결이 안 되면 “왜 남겨야 하는지” 한 문장을 붙인다.</li><li><strong>5분 · 한 문장</strong> — 다음 주에 써먹을 결정이나 다짐을 딱 한 문장 남긴다. 이 문장이 다음 주 회고의 출발점이 된다.</li></ol><div class="analogy"><div class="label">관점</div><p>회고는 노트를 “정리”하는 시간이 아니라 노트와 “다시 만나는” 시간이다. 정리는 미래의 검색을 위한 투자이고, 회고는 지금의 나에게 주는 배당이다. 배당이 없는 투자는 오래 못 간다.</p><p>금요일 30분을 심장이라고 부른 이유가 여기 있다. 입력과 삭제가 아무리 많아도, 다시 만나는 펌프질이 없으면 시스템은 결국 멈춘 저장소가 된다.</p></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="11" cy="20" r="5"/><circle class="bi-soft" cx="29" cy="11" r="5"/><circle class="bi-accent" cx="29" cy="29" r="5"/><path class="bi-line" d="M16 18l8-5M16 22l8 5"/></svg></span><span class="no" aria-hidden="true">6</span>4주차: 링크를 줄이고 회수율을 올렸다</h2><p>넷째 주에는 링크 저장 규칙을 손봤다. 예전에는 읽을 만하면 저장했다. 지금은 다음 행동이 있을 때만 저장한다. 인용할 문장이 있는가, 지금 하는 프로젝트에 연결되는가, 내 질문에 답을 주는가. 이 셋 중 하나가 없으면 저장하지 않았다.</p><p>링크 노트에는 반드시 한 문장을 붙였다. “왜 저장했나” 또는 “어디에 쓸 것인가”를 적는 문장이다. 이 문장이 없으면 링크는 지식이 아니라 북마크였다.</p><p>링크를 줄이자 오히려 읽은 것들이 더 오래 남았다. 저장량은 줄었지만 회수율은 올라갔다.</p><p>회수율이라는 말을 거창하게 쓰지는 않았다. 그냥 “저장한 것 중에 한 달 안에 다시 열어 본 비율”로 거칠게 셌다. 정확한 수치라기보다 방향을 보는 지표였다. 아래는 내 30일 기록을 단순화한 예시이며, 실제 숫자는 사람마다 다를 것이다.</p><div class="tbl table-scroll"><table><caption>링크 규칙 변경 전후 — 저자 개인 기록 기반 예시(가상 수치)</caption><thead><tr><th>주차</th><th>새로 저장한 링크</th><th>그중 다시 열어 본 수</th><th>거친 회수율</th></tr></thead><tbody><tr><td>1주차(규칙 전)</td><td>약 40</td><td>약 4</td><td>낮음(예시 10%)</td></tr><tr><td>4주차(규칙 후)</td><td>약 9</td><td>약 6</td><td>높음(예시 67%)</td></tr></tbody></table></div><p class="caption">위 수치는 개념을 설명하기 위한 저자 추정치이며 측정 기준이 느슨하므로 그대로 인용하지 말 것.</p><div class="good"><div class="label">저장한다</div><div class="name">세 관문 중 하나라도 통과할 때</div><p>인용할 문장이 있다, 지금 진행 중인 프로젝트에 연결된다, 내가 적어 둔 질문에 답을 준다. 이 셋 중 하나라도 해당하면 저장하고, 반드시 “왜 저장했나” 한 문장을 같이 적었다.</p></div><div class="danger"><div class="label">저장하지 않는다</div><div class="name">“언젠가 읽겠지”라는 막연함</div><p>읽을 만하다는 느낌만으로 저장한 링크는 거의 다시 열리지 않았다. 그런 글은 차라리 지금 5분 읽고 핵심 한 문장만 노트에 남기는 편이 회수율이 훨씬 높았다.</p></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-soft" x="9" y="8" width="22" height="24" rx="4"/><path class="bi-line" d="M15 15h10M15 21h10M15 27h6"/><circle class="bi-accent" cx="28" cy="12" r="2"/></svg></span><span class="no" aria-hidden="true">7</span>작게 만든 원칙: 입력, 정리, 회수의 최소 규칙</h2><p>입력 규칙은 하나다. 새 노트는 질문, 관찰, 다음 행동 중 하나를 포함해야 한다. 셋 다 없어도 되지만 하나는 있어야 한다. 단순 복사, 단순 링크, 단순 감탄은 입력이 아니라 보관이기 때문이다.</p><p>정리 규칙은 더 작다. 태그를 늘리지 않고, 폴더를 깊게 만들지 않고, 임시함을 오래 두지 않는다. 정리가 막힐 때는 새 분류를 만들지 않고 노트 제목을 고친다.</p><p>회수 규칙은 주간 회고와 프로젝트 연결이다. 어떤 노트가 여러 번 회수되면 그때만 더 정리한다. 처음부터 완성된 지식 카드로 만들지 않는다.</p><p>세 규칙을 한눈에 정리하면 이렇다. 외우기 쉬워야 매일 지킬 수 있어서, 각 단계마다 규칙은 하나씩만 남겼다.</p><div class="card-grid"><article class="mini-card"><h3>입력 · 한 줄 규칙</h3><p>새 노트에는 질문, 관찰, 다음 행동 중 최소 하나를 남긴다. 셋 다 없는 단순 복사·링크·감탄은 입력이 아니라 보관으로 본다.</p></article><article class="mini-card"><h3>정리 · 늘리지 않기</h3><p>태그를 늘리거나 폴더를 깊게 파지 않는다. 분류가 막히면 새 카테고리를 만드는 대신 제목을 고친다. 임시함은 한 주 이상 묵히지 않는다.</p></article><article class="mini-card"><h3>회수 · 나중에 정리</h3><p>정리는 미리 하지 않고 회수가 일어난 다음에 한다. 여러 번 다시 열린 노트만 다듬어 지식 카드로 키운다. 안 열리는 노트는 그냥 둔다.</p></article></div><div class="term"><div class="label">핵심</div><span class="word">완성을 뒤로 미루기</span><p class="meaning">예전에는 저장하는 순간 완벽하게 정리하려 했다. 지금은 “일단 거칠게 남기고, 다시 만났을 때만 다듬는다”로 바꿨다. 정리 비용을 회수가 증명된 노트에만 쓰는 것, 이것이 시스템을 작게 유지하는 가장 큰 비결이었다.</p></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="22" rx="3"/><rect class="bi-fill" x="16" y="9" width="8" height="22" rx="3"/><rect class="bi-soft" x="25" y="9" width="8" height="22" rx="3"/><path class="bi-accent-line" d="M27 18h4"/><circle class="bi-accent" cx="29" cy="26" r="2.5"/></svg></span><span class="no" aria-hidden="true">8</span>도구 선택 기준과 실제 유지비</h2><p>도구를 고를 때 가장 중요하게 본 것은 기능 수가 아니었다. 빠르게 열리는지, 검색이 편한지, 모바일에서 한 줄 입력이 가능한지, 내보내기가 가능한지, 그리고 시스템이 망가졌을 때 복구하기 쉬운지가 기준이었다.</p><p>나에게 맞지 않았던 도구는 대부분 “정리하고 싶게 만드는 도구”였다. 화면은 아름다웠지만 입력 전에 구조를 생각하게 만들었다. 반대로 오래 남은 도구는 대충 적어도 나중에 고칠 수 있는 도구였다.</p><p>유지비도 따로 계산했다. 매일 쓰는 입력 시간, 금요일 회고 시간, 한 달에 한 번 버리는 시간, 도구 변경으로 생기는 이전 비용까지 포함했다.</p><p>도구를 새로 고르거나 갈아탈지 고민될 때, 나는 기능표를 비교하는 대신 아래 다섯 질문에 답했다. 다섯 개 중 셋 이상이 “아니오”면 그 도구는 내 평균적인 날을 버티지 못한다.</p><div class="tbl table-scroll"><table><caption>도구 선택 5가지 질문 — 기능 수 대신 매일의 마찰을 본다</caption><thead><tr><th>질문</th><th>왜 중요한가</th></tr></thead><tbody><tr><td>2초 안에 열려 바로 적을 수 있는가</td><td>입력 마찰이 크면 바쁜 날 가장 먼저 버려진다</td></tr><tr><td>검색이 빠르고 결과가 예측되는가</td><td>회수가 안 되면 저장은 의미가 없다</td></tr><tr><td>모바일에서 한 줄 입력이 되는가</td><td>좋은 메모는 대부분 책상이 아닌 곳에서 떠오른다</td></tr><tr><td>일반 텍스트로 내보낼 수 있는가</td><td>도구에 갇히면 시스템을 줄이는 자유를 잃는다</td></tr><tr><td>망가졌을 때 복구가 쉬운가</td><td>작은 시스템의 강점은 빠른 재건이다</td></tr></tbody></table></div><div class="danger"><div class="label">함정</div><div class="name">정리하고 싶게 만드는 도구</div><p>화면이 아름답고 기능이 많은 도구는 입력 전에 “어디에, 어떻게 넣을까”를 먼저 생각하게 만든다. 그 0.5초의 망설임이 매일 쌓이면, 결국 적기 전에 포기하게 된다. 나에게 오래 남은 도구는 항상 “대충 적어도 나중에 고칠 수 있는” 쪽이었다.</p></div><p>유지비는 돈이 아니라 시간으로 환산했다. 아래는 내 한 달치 시간 가계부의 예시다(실제 시간은 사람마다 다르다).</p><div class="tbl table-scroll"><table><caption>작은 시스템의 월간 유지비 — 시간 기준 예시(가상 추정)</caption><thead><tr><th>항목</th><th>빈도</th><th>회당 시간(예시)</th></tr></thead><tbody><tr><td>일상 입력</td><td>매일</td><td>합쳐서 하루 5분 내외</td></tr><tr><td>금요일 회고</td><td>주 1회</td><td>30분</td></tr><tr><td>월말 대청소</td><td>월 1회</td><td>30분</td></tr><tr><td>도구 이전</td><td>거의 없음</td><td>0(되도록 안 바꾼다)</td></tr></tbody></table></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M7 14l13-6 13 6-13 6z"/><path class="bi-line" d="M12 18v7c4 4 12 4 16 0v-7"/><path class="bi-accent-line" d="M33 15v10"/></svg></span><span class="no is-key" aria-hidden="true">9</span>Before / After: 저장하는 사람에서 다시 꺼내 쓰는 사람으로</h2><p>이전에는 많이 저장할수록 안심했다. 지금은 다시 꺼내 쓸 수 있을 때만 안심한다. 예전의 기준은 “빠뜨리지 않았는가”였고, 지금의 기준은 “다음 행동을 돕는가”다.</p><div class="tbl table-scroll"><table><caption>개인 지식관리 Before / After</caption><thead><tr><th>항목</th><th>이전 방식</th><th>현재 방식</th><th>달라진 점</th></tr></thead><tbody><tr><td>태그</td><td>많고 겹쳤다</td><td>7개 이하로 제한</td><td>분류 고민이 줄었다</td></tr><tr><td>제목</td><td>회의 메모, 좋은 글처럼 흐릿했다</td><td>질문형 제목</td><td>검색이 상황 중심으로 바뀌었다</td></tr><tr><td>링크</td><td>읽을 만하면 저장</td><td>쓸 곳이 있을 때 저장</td><td>다시 읽는 비율이 높아졌다</td></tr><tr><td>회고</td><td>기분이 좋을 때만 했다</td><td>금요일 30분 고정</td><td>망가져도 복구하기 쉬워졌다</td></tr></tbody></table></div><p>작아진 시스템은 무너지지 않는 시스템이 아니라, 무너져도 다시 세우기 쉬운 시스템이었다.</p><div class="ba"><div class="ba-col before"><span class="ba-label">Before</span><p>많이 저장할수록 안심했고, 태그와 폴더를 늘리면 생각도 정리될 거라고 믿었다.</p></div><div class="ba-arrow" aria-hidden="true">&rarr;</div><div class="ba-col after"><span class="ba-label">After</span><p>다시 꺼내 쓸 수 있을 때만 저장하고, 제목·링크·회고가 다음 행동을 돕는지 먼저 본다.</p></div></div>
 
 
-<!-- template-showcase:start vt-11 weekly-status -->
-<div class="summary-card template-showcase"><div class="label">TEMPLATE CHECK · vt-11 weekly-status</div>
-<section class="vt-shell"><div class="vt-frame"><div class="wk-bars"><div class="wk-row"><strong>삭제</strong><div class="wk-bar"><div class="wk-fill" style="width:88%"></div></div><span>88%</span></div><div class="wk-row"><strong>질문형 제목</strong><div class="wk-bar"><div class="wk-fill" style="width:74%"></div></div><span>74%</span></div><div class="wk-row"><strong>회고 루틴</strong><div class="wk-bar"><div class="wk-fill" style="width:100%"></div></div><span>100%</span></div></div><div class="wk-cols"><div class="wk-col"><b>완료</b><p class="vt-text">열지 않는 노트와 중복 태그를 줄였다.</p></div><div class="wk-col"><b>진행</b><p class="vt-text">링크 저장 이유를 한 문장으로 붙인다.</p></div><div class="wk-col"><b>리스크</b><p class="vt-text">바쁜 주에는 회고 시간이 쉽게 밀린다.</p></div></div></div></section>
-</div>
-<!-- template-showcase:end vt-11 weekly-status -->
+
 </section>
-<section><h2><span class="no" aria-hidden="true">6</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="11" cy="20" r="5"/><circle class="bi-soft" cx="29" cy="11" r="5"/><circle class="bi-accent" cx="29" cy="29" r="5"/><path class="bi-line" d="M16 18l8-5M16 22l8 5"/></svg></span>4주차: 링크를 줄이고 회수율을 올렸다</h2><p>넷째 주에는 링크 저장 규칙을 손봤다. 예전에는 읽을 만하면 저장했다. 지금은 다음 행동이 있을 때만 저장한다. 인용할 문장이 있는가, 지금 하는 프로젝트에 연결되는가, 내 질문에 답을 주는가. 이 셋 중 하나가 없으면 저장하지 않았다.</p><p>링크 노트에는 반드시 한 문장을 붙였다. “왜 저장했나” 또는 “어디에 쓸 것인가”를 적는 문장이다. 이 문장이 없으면 링크는 지식이 아니라 북마크였다.</p><p>링크를 줄이자 오히려 읽은 것들이 더 오래 남았다. 저장량은 줄었지만 회수율은 올라갔다.</p></section>
-<section><h2><span class="no" aria-hidden="true">7</span>작게 만든 원칙: 입력, 정리, 회수의 최소 규칙</h2><p>입력 규칙은 하나다. 새 노트는 질문, 관찰, 다음 행동 중 하나를 포함해야 한다. 셋 다 없어도 되지만 하나는 있어야 한다. 단순 복사, 단순 링크, 단순 감탄은 입력이 아니라 보관이기 때문이다.</p><p>정리 규칙은 더 작다. 태그를 늘리지 않고, 폴더를 깊게 만들지 않고, 임시함을 오래 두지 않는다. 정리가 막힐 때는 새 분류를 만들지 않고 노트 제목을 고친다.</p><p>회수 규칙은 주간 회고와 프로젝트 연결이다. 어떤 노트가 여러 번 회수되면 그때만 더 정리한다. 처음부터 완성된 지식 카드로 만들지 않는다.</p></section>
-<section><h2><span class="no" aria-hidden="true">8</span>도구 선택 기준과 실제 유지비</h2><p>도구를 고를 때 가장 중요하게 본 것은 기능 수가 아니었다. 빠르게 열리는지, 검색이 편한지, 모바일에서 한 줄 입력이 가능한지, 내보내기가 가능한지, 그리고 시스템이 망가졌을 때 복구하기 쉬운지가 기준이었다.</p><p>나에게 맞지 않았던 도구는 대부분 “정리하고 싶게 만드는 도구”였다. 화면은 아름다웠지만 입력 전에 구조를 생각하게 만들었다. 반대로 오래 남은 도구는 대충 적어도 나중에 고칠 수 있는 도구였다.</p><p>유지비도 따로 계산했다. 매일 쓰는 입력 시간, 금요일 회고 시간, 한 달에 한 번 버리는 시간, 도구 변경으로 생기는 이전 비용까지 포함했다.</p></section>
-<section><h2><span class="no is-key" aria-hidden="true">9</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M7 14l13-6 13 6-13 6z"/><path class="bi-line" d="M12 18v7c4 4 12 4 16 0v-7"/><path class="bi-accent-line" d="M33 15v10"/></svg></span>Before / After: 저장하는 사람에서 다시 꺼내 쓰는 사람으로</h2><p>이전에는 많이 저장할수록 안심했다. 지금은 다시 꺼내 쓸 수 있을 때만 안심한다. 예전의 기준은 “빠뜨리지 않았는가”였고, 지금의 기준은 “다음 행동을 돕는가”다.</p><div class="tbl table-scroll"><table><caption>개인 지식관리 Before / After</caption><thead><tr><th>항목</th><th>이전 방식</th><th>현재 방식</th><th>달라진 점</th></tr></thead><tbody><tr><td>태그</td><td>많고 겹쳤다</td><td>7개 이하로 제한</td><td>분류 고민이 줄었다</td></tr><tr><td>제목</td><td>회의 메모, 좋은 글처럼 흐릿했다</td><td>질문형 제목</td><td>검색이 상황 중심으로 바뀌었다</td></tr><tr><td>링크</td><td>읽을 만하면 저장</td><td>쓸 곳이 있을 때 저장</td><td>다시 읽는 비율이 높아졌다</td></tr><tr><td>회고</td><td>기분이 좋을 때만 했다</td><td>금요일 30분 고정</td><td>망가져도 복구하기 쉬워졌다</td></tr></tbody></table></div><p>작아진 시스템은 무너지지 않는 시스템이 아니라, 무너져도 다시 세우기 쉬운 시스템이었다.</p><div class="ba"><div class="ba-col before"><span class="ba-label">Before</span><p>많이 저장할수록 안심했고, 태그와 폴더를 늘리면 생각도 정리될 거라고 믿었다.</p></div><div class="ba-arrow" aria-hidden="true">&rarr;</div><div class="ba-col after"><span class="ba-label">After</span><p>다시 꺼내 쓸 수 있을 때만 저장하고, 제목·링크·회고가 다음 행동을 돕는지 먼저 본다.</p></div></div>
-
-
-<!-- template-showcase:start vt-13 comparison-cards -->
-<div class="summary-card template-showcase"><div class="label">TEMPLATE CHECK · vt-13 comparison-cards</div>
-<section class="vt-shell"><div class="vt-frame"><div class="cmp"><article class="cmp-card"><h3>Before</h3><ul><li>저장량 중심</li><li>태그 과다</li><li>임시함 부채</li></ul></article><article class="cmp-card pick"><h3>After</h3><ul><li>회수율 중심</li><li>질문형 제목</li><li>주간 복구 루틴</li></ul></article><article class="cmp-card"><h3>Next</h3><ul><li>월말 삭제</li><li>회수 안 된 노트 점검</li><li>규칙 하나 더 제거</li></ul></article></div></div></section>
-</div>
-<!-- template-showcase:end vt-13 comparison-cards -->
-</section>
-<section><h2><span class="no" aria-hidden="true">10</span><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M16 8v9l-7 13c-1 2 0 3 2 3h18c2 0 3-1 2-3l-7-13V8"/><path class="bi-soft" d="M13 27h14l2 4H11z"/><path class="bi-accent-line" d="M16 8h8"/></svg></span>다음 실험: 더 줄일 것과 남겨둘 것</h2><p>다음 실험은 두 가지다. 첫째, 월말에 한 번도 회수되지 않은 노트를 확인하려고 한다. 전부 지우겠다는 뜻은 아니다. 다만 왜 다시 읽히지 않았는지 보려고 한다. 제목이 흐린지, 질문이 없는지, 실제 프로젝트와 연결되지 않았는지 확인할 것이다.</p><p>둘째, 노트의 최종 목적지를 줄이려고 한다. 지금은 질문 노트, 회고 노트, 링크 노트로 나누었지만 이것도 더 줄일 수 있을지 모른다. 어쩌면 모든 노트는 결국 “지금 내가 더 잘 결정하기 위한 기록”으로 충분할 수도 있다.</p><p>30일 뒤의 결론은 단순하다. 두 번째 뇌는 크게 만들수록 똑똑해지는 것이 아니었다. 내가 매주 다시 만날 수 있을 만큼 작을 때, 비로소 생각을 돕기 시작했다.</p>
-
-
-<!-- template-showcase:start wg-17 pr-writeup -->
-<div class="summary-card template-showcase"><div class="label">TEMPLATE CHECK · wg-17 pr-writeup</div>
-<section class="wg-17" aria-labelledby="blog-wg17-title">
-  <header class="wg-17-head"><p class="wg-17-kicker">CHANGE WRITEUP TEMPLATE</p><h2 id="blog-wg17-title" class="wg-17-title">refactor: 두 번째 뇌를 작게 만들기</h2><div class="wg-17-meta"><span class="wg-17-chip wg-17-chip-branch">big-system → small-system</span><span class="wg-17-chip wg-17-chip-add">+회수율</span><span class="wg-17-chip wg-17-chip-del">-관리비</span></div></header>
-  <div class="wg-17-block"><h3 class="wg-17-h3"><span class="wg-17-h3-no">1</span> Before / After</h3><div class="wg-17-ba"><div class="wg-17-ba-col wg-17-ba-before"><p class="wg-17-ba-tag">Before</p><ul class="wg-17-ba-list"><li>태그와 폴더가 많음</li><li>링크만 저장</li><li>회고가 불규칙</li></ul></div><div class="wg-17-ba-arrow" aria-hidden="true">→</div><div class="wg-17-ba-col wg-17-ba-after"><p class="wg-17-ba-tag">After</p><ul class="wg-17-ba-list"><li>질문형 제목</li><li>저장 이유 한 문장</li><li>금요일 30분 회고</li></ul></div></div></div>
-  <div class="wg-17-block"><h3 class="wg-17-h3"><span class="wg-17-h3-no">2</span> 파일별 워크스루처럼 읽는 습관</h3><details class="wg-17-file" open><summary class="wg-17-summary"><span class="wg-17-file-name">notes/inbox.md</span><span class="wg-17-file-stat"><span class="wg-17-add">정리</span></span><span class="wg-17-caret" aria-hidden="true"></span></summary><div class="wg-17-file-body"><p class="wg-17-p">임시함은 바로 쓸 것, 보류할 것, 지울 것 세 종류만 남긴다.</p></div></details><details class="wg-17-file"><summary class="wg-17-summary"><span class="wg-17-file-name">weekly/review.md</span><span class="wg-17-file-stat"><span class="wg-17-add">회수</span></span><span class="wg-17-caret" aria-hidden="true"></span></summary><div class="wg-17-file-body"><p class="wg-17-p">다시 쓸 노트 3개와 다음 행동 1개만 남긴다.</p></div></details></div>
-</section>
-</div>
-<!-- template-showcase:end wg-17 pr-writeup -->
-</section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M16 8v9l-7 13c-1 2 0 3 2 3h18c2 0 3-1 2-3l-7-13V8"/><path class="bi-soft" d="M13 27h14l2 4H11z"/><path class="bi-accent-line" d="M16 8h8"/></svg></span><span class="no" aria-hidden="true">10</span>다음 실험: 더 줄일 것과 남겨둘 것</h2><p>다음 실험은 두 가지다. 첫째, 월말에 한 번도 회수되지 않은 노트를 확인하려고 한다. 전부 지우겠다는 뜻은 아니다. 다만 왜 다시 읽히지 않았는지 보려고 한다. 제목이 흐린지, 질문이 없는지, 실제 프로젝트와 연결되지 않았는지 확인할 것이다.</p><p>둘째, 노트의 최종 목적지를 줄이려고 한다. 지금은 질문 노트, 회고 노트, 링크 노트로 나누었지만 이것도 더 줄일 수 있을지 모른다. 어쩌면 모든 노트는 결국 “지금 내가 더 잘 결정하기 위한 기록”으로 충분할 수도 있다.</p><p>30일 뒤의 결론은 단순하다. 두 번째 뇌는 크게 만들수록 똑똑해지는 것이 아니었다. 내가 매주 다시 만날 수 있을 만큼 작을 때, 비로소 생각을 돕기 시작했다.</p><p>다음 30일에 남겨 둘 것과 더 줄여 볼 것을 미리 적어 둔다. 회고가 그렇듯, 다음 실험도 “무엇이 바뀌었나”로 평가할 생각이다.</p><div class="card-grid"><article class="mini-card"><h3>남겨 둘 것</h3><p>금요일 30분 회고, 질문형 제목, 링크 3관문. 셋은 이미 회수율로 효과가 증명됐으니 건드리지 않는다.</p></article><article class="mini-card"><h3>더 줄여 볼 것</h3><p>질문·회고·링크로 나눈 세 갈래 노트 유형. 어쩌면 “지금 더 잘 결정하기 위한 기록” 하나로 합쳐도 충분할지 본다.</p></article><article class="mini-card"><h3>관찰만 할 것</h3><p>한 달간 한 번도 안 열린 노트. 지우기 전에 왜 안 읽혔는지(흐린 제목인지, 질문이 없는지)부터 들여다본다.</p></article></div><div class="faq"><div class="label">FAQ</div><dl><dt>노트를 줄이면 중요한 걸 잃지 않나요?</dt><dd>저도 그게 가장 두려웠습니다. 그런데 한 달이 지나도 “지운 게 필요한데” 싶었던 적이 없었어요. 진짜 중요한 정보는 대개 다시 찾을 수 있고, 핵심은 이미 머리에 남습니다. 불안하면 지우는 대신 “보류” 폴더에 90일만 두고, 그동안 안 열리면 그때 지워도 늦지 않습니다.</dd><dt>어떤 앱을 써야 하나요?</dt><dd>특정 앱을 추천하지는 않습니다. 8번 섹션의 다섯 질문에 가장 많이 “예”라고 답하는 도구면 충분합니다. 지금 쓰는 도구가 그 다섯을 통과한다면 굳이 갈아탈 이유도 없습니다. 도구 교체 자체가 가장 큰 숨은 유지비입니다.</dd><dt>바빠서 금요일 회고를 못 하면요?</dt><dd>30분이 부담되면 10분으로 줄이고 “다시 볼 것 3개 별표”만 하세요. 빈도와 분량 중에서는 빈도를 지키는 쪽이 훨씬 중요합니다. 한 주 걸렀다면 자책하지 말고 다음 금요일에 그냥 다시 시작하면 됩니다.</dd></dl></div><div class="cta-box"><div class="label">Soft CTA</div><p>거창하게 시스템을 새로 만들 필요는 없습니다. 이번 주 금요일, 타이머를 30분 맞추고 노트 앱을 열어 <strong>다시 볼 것 3개, 버릴 것 3개, 다음 한 문장</strong>만 골라 보세요. 그 한 번이 두 번째 뇌를 다시 작게 만드는 첫 펌프질입니다.</p></div></section>
 <section class="try"><div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M13 20l5 5 10-11"/></svg></span>7-DAY SMALLER SYSTEM</div><h2>독자가 따라 할 7일 축소 실험</h2><ol><li>최근 한 달간 다시 열지 않은 노트와 링크만 있는 노트를 표시한다.</li><li>임시함을 바로 쓸 노트, 보류할 노트, 지울 노트로만 나눈다.</li><li>자주 찾을 노트 10개의 제목을 질문형으로 바꾼다.</li><li>저장 링크마다 왜 저장했는지 한 문장을 붙인다.</li><li>태그를 7개 이하로 제한하고 애매한 태그는 제목으로 흡수한다.</li><li>20분 회고로 다시 쓸 것 3개, 버릴 것 3개, 다음 행동 1개를 고른다.</li><li>바쁜 날에도 유지할 수 없는 규칙 하나를 삭제한다.</li></ol></section>
 <aside class="source-note">
 

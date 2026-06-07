@@ -1,0 +1,7 @@
+interface:
+  display_name: "HTML Exporter"
+  short_description: "Export HTML outputs to PDF, PNG, and WebP."
+  brand_color: "#2563EB"
+  default_prompt: "Use $html-exporter to export this output directory to PDF, PNG, and WebP and report manifest checks."
+policy:
+  allow_implicit_invocation: true

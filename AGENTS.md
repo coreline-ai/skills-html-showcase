@@ -13,14 +13,14 @@
 ## 1. 저장소·스킬 한 줄 정의
 
 - **저장소**: `skills-html-showcase` — 다중 모드 한국어 HTML 생성 스킬 `adaptive-html-final`과 그 자산·검증·예제를 담은 쇼케이스 저장소.
-- **스킬**: `adaptive-html-final` — 입력(URL/PDF/텍스트/이미지/메모/기술자료/블로그 초안/SKILL.md)을 받아 **외부 동작 JS 없는** editorial HTML(학습자료·전문가 리포트·아티클·교육 모듈·블로그·SEO 대시보드·플랫폼 블로그·스킬 감사·레퍼런스·비교·케이스 스터디·랜딩·체크리스트)을 생성한다.
-- **현재 버전**: **5.2.0** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
-- **스킬 위치(절대 경로)**: `/Users/hwanchoi/project_202605/skills-html-showcase/skills/adaptive-html-final/`
+- **스킬**: `adaptive-html-final` — 입력(URL/PDF/텍스트/이미지/메모/기술자료/블로그 초안/SKILL.md/GitHub 저장소 URL/YouTube URL/매뉴얼 텍스트)을 받아 **외부 동작 JS 없는** editorial HTML(학습자료·전문가 리포트·GitHub 저장소 분석·YouTube 분석·매뉴얼 분석·아티클·교육 모듈·블로그·SEO 대시보드·플랫폼 블로그·스킬 감사·레퍼런스·비교·케이스 스터디·랜딩·체크리스트)을 생성한다.
+- **현재 버전**: **5.9.1** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
+- **스킬 위치(저장소 루트 기준 상대 경로 — 체크아웃 위치 무관 이식성)**: `skills/adaptive-html-final/`
   - 본체: `skills/adaptive-html-final/SKILL.md`
   - 매니페스트: `skills/adaptive-html-final/manifest.json`
   - 참조: `skills/adaptive-html-final/references/`
   - 검증기: `skills/adaptive-html-final/scripts/validate_output.py`
-- **경로 폴백(결정론)**: 위 절대 경로가 현재 체크아웃에 존재하지 않을 때만, 현재 저장소 루트 기준 `skills/adaptive-html-final/`을 동일 스킬 디렉터리로 사용한다. 임의 검색 경로를 만들지 않는다.
+- **경로 규칙(결정론)**: 명령은 항상 **저장소 루트에서** 위 상대 경로로 실행한다. 머신 고정 절대 경로(`/Users/...`)를 하드코딩하지 않는다 — 체크아웃 위치가 달라지면 스테일이 되기 때문이다. 임의 검색 경로를 만들지 않는다.
 
 ---
 
@@ -32,12 +32,14 @@
 4. **검증 게이트가 완료 기준.** §6의 `validate_output.py`가 `OK`를 내야만 작업 완료로 간주한다.
 5. **단일 출처 위임.** 세부 글쓰기/디자인 규칙은 SKILL.md·references가 정본이다. 이 문서와 충돌하면 위 우선순위를 따른다.
 6. **불변식 우선.** §5의 절대 불변식은 어떤 사용자 요청보다 우선한다(특히 외부/동작 JS 0).
+7. **임시 생성기 금지.** `/tmp` 일회성 스크립트나 일반 루프로 `mini-card`/`col-list`를 반복 합성한 HTML은 스킬 산출물이 아니다. helper script를 쓰더라도 repo 안에서 base.html·layout 파일·vt/wg 템플릿을 실제로 읽어 placeholder를 채우는 방식이어야 한다.
+8. **검증 OK만으로 품질 완료 금지.** `validate_output.py OK`는 필요조건이다. 전문/데모/벤치마크 산출물은 layout-first 계약, 모드별 필수 블록, 템플릿 다양성, 예제 문구 제거, 브라우저 캡쳐 품질까지 확인해야 완료다.
 
 ---
 
-## 3. 모드 라우팅 결정표 (13 모드)
+## 3. 모드 라우팅 결정표 (16 모드)
 
-여러 트리거가 겹치면 `skills/adaptive-html-final/SKILL.md` §3의 Priority(1=skill_audit … 13=checklist_playbook)를 따른다.
+여러 트리거가 겹치면 `skills/adaptive-html-final/SKILL.md` §3의 Priority(1=skill_audit … 16=checklist_playbook)를 따른다.
 사용자가 모드를 명시하면 그 지시가 최우선. **vt-템플릿의 첫 항목이 1순위이며 단일 출처다** (캐노니컬 매핑).
 
 > **프로파일별 컬럼 사용(§4 Step 0에서 결정된 프로파일 적용):** `diagram`=**"1순위 vt-템플릿" 컬럼만** 사용(markup `vt-`), `widget`=**"권장 wg-위젯" 컬럼만** 사용(markup `wg-`), `auto`=**두 컬럼 모두**(vt- 1순위 + wg- 보강, 현행). layout·트리거(코어)는 프로파일과 무관하게 동일하다.
@@ -48,12 +50,15 @@
 | `expert_html` | 전문가, 리포트, 진단, 아키텍처, 리스크 | `.layout-expert` | `expert-report.html` | **risk-matrix** → raci → quality-gate → implementation-plan → soft-workflow-map | wg-03, wg-04, wg-11, wg-12, wg-16, wg-17 |
 | `article_html` | 공개 글, 아티클, 기사, GitHub Pages | `.layout-article` | `magazine-article.html` | **decision-tree** → comparison-cards → concept-explainer | wg-02, wg-04, wg-07, wg-09, wg-10, wg-13, wg-14 |
 | `education_html` | 교육, 강의, 온보딩, 실습, 퀴즈 | `.layout-education` | `course-module.html` | **timeline** → checklist-flow → concept-explainer → soft-workflow-map | wg-06, wg-07, wg-08, wg-13, wg-14, wg-15, wg-20 |
+| `github_analysis` | GitHub 저장소 URL, owner/repo, README·Issues·Releases·License 분석 | `.layout-github` | `github-analysis.html` | **hero-map** → quality-gate → file-tour → risk-matrix → timeline → decision-tree → checklist-flow | wg-11, wg-04, wg-14, wg-16, wg-17, wg-18 |
+| `youtube_analysis` | YouTube URL, youtu.be, Shorts, 영상 요약, 트랜스크립트·댓글·챕터 분석, 콘텐츠 갭 | `.layout-youtube` | `youtube-analysis.html` | **timeline** → risk-matrix → quality-gate → decision-tree → comparison-cards → checklist-flow | wg-11, wg-13, wg-14, wg-16, wg-18 |
+| `manual_analysis` | 매뉴얼 분석, 사용 설명서 제작, 운영 매뉴얼, 절차서, 트러블슈팅, 제품 가이드 | `.layout-manual` | `manual-analysis.html` | **hero-map** → checklist-flow → quality-gate → file-tour → process-swimlane → decision-tree → risk-matrix | wg-04, wg-13, wg-16, wg-18, wg-11, wg-14 |
 | `blog_writer` | 블로그 글, 포스팅, 경험담, 내 생각 | `.layout-blog` | `personal-blog-essay.html` | **timeline** → weekly-status → comparison-cards | wg-17 |
 | `seo_dashboard` | SEO, 제목, 메타, 태그, 검색 의도 | `.layout-seo` | `seo-dashboard.html` | **card-grid** → comparison-cards → prompt-tuner | wg-11 |
 | `platform_blog` | 티스토리, 벨로그, 네이버, 워드프레스, 플랫폼별 | `.layout-platform` | `platform-adaptation.html` | **card-grid** → comparison-cards → pr-writeup | wg-02 |
-| `skill_audit` | 스킬 분석, SKILL.md 개선, .skill 통합, 한 줄 분석 | `.layout-skill-audit` | `skill-audit-report.html` | **quality-gate** → file-tour → prompt-tuner → implementation-plan → soft-workflow-map | wg-03, wg-11, wg-17 |
-| `reference_html` | 레퍼런스, 매뉴얼, API 문서 | `.layout-reference` | `reference-manual.html` | **file-tour** → flowchart → card-grid | wg-04, wg-05, wg-06, wg-14, wg-19, wg-20 |
-| `comparison_html` | 비교, 장단점, 선택 기준 | `.layout-comparison` | `comparison-matrix.html` | **comparison-cards** → decision-tree → risk-matrix | wg-01, wg-02 |
+| `skill_audit` | 스킬 분석, SKILL.md 개선, .skill 통합, 한 줄 분석 | `.layout-audit` | `skill-audit-report.html` | **quality-gate** → file-tour → prompt-tuner → implementation-plan → soft-workflow-map | wg-03, wg-11, wg-17 |
+| `reference_html` | 레퍼런스, API 문서, 치트시트, 옵션표 | `.layout-reference` | `reference-manual.html` | **file-tour** → flowchart → card-grid | wg-04, wg-05, wg-06, wg-14, wg-19, wg-20 |
+| `comparison_html` | 비교, 장단점, 선택 기준 | `.layout-compare` | `comparison-matrix.html` | **comparison-cards** → decision-tree → risk-matrix | wg-01, wg-02 |
 | `case_study_html` | 사례 연구, 회고, 프로젝트 기록 | `.layout-case` | `case-study.html` | **incident-summary** → timeline → process-swimlane | wg-12 |
 | `landing_brief_html` | 소개 페이지, 랜딩, 요약 페이지 | `.layout-landing` | `landing-brief.html` | **hero-map** → card-grid → feature-flag → soft-workflow-map | wg-02, wg-05, wg-08, wg-09, wg-16 |
 | `checklist_playbook` | 체크리스트, 운영 절차, 플레이북 | `.layout-checklist` | `checklist-playbook.html` | **checklist-flow** → quality-gate → process-swimlane → implementation-plan → triage-board | wg-11, wg-13, wg-16, wg-18, wg-19 |
@@ -72,6 +77,7 @@
 1. **모드 결정** — §3 결정표로 모드·`.layout-*`·layout 파일을 확정한다(추측 금지).
 2. **골격 로드** — `skills/adaptive-html-final/assets/base.html`을 기본 골격으로 사용하고, §3의 layout 파일 본문을 적용한다.
 3. **콘텐츠 채우기** — 모드별 필수 블록(SKILL.md §4)을 채운다.
+3.5. **Layout-first 품질 계약 적용** — 선택된 `assets/layouts/<layout 파일>`의 placeholder를 모드별 필수 블록에 먼저 매핑한다. `layout-*` 클래스만 붙인 자유형 `<main>` 합성, 모든 섹션을 같은 카드/리스트 패턴으로 찍어내는 방식, “Generated example/전문 예제/기준 1” 같은 임시 문구는 실패다. 같은 모드의 `examples/*.html` 또는 사용자가 지정한 검수본보다 단순한 구조로 후퇴하면 작성 완료로 보지 않는다.
 4. **CSS 인라인 (순서 고정, `base.html` 슬롯 대응)** — 아래 순서로만 인라인한다.
 
    | 순서 | 자산 (skills/adaptive-html-final/assets/) | base.html 슬롯 | 비고 |
@@ -87,7 +93,7 @@
    | 5.8 | `workflow-visuals.css` | `{{WORKFLOW_VISUALS_CSS}}` | soft 워크플로우 도판(`.workflow-figure`/`.workflow-img`, `assets/workflow-svgs/` 10종) 사용 시. **프로파일 무관**(대표 도판). 해시 대상 아님 |
    | 6 | `layouts.css` | `{{LAYOUTS_CSS}}` | **코어 해시 대상** |
    | 7 | `print.css` | `{{PRINT_CSS}}` | **코어 해시 대상** |
-   | 8 | `theme-dark.css` | `{{THEME_DARK_CSS}}` | **3-테마(light/white/dark) 토큰 오버라이드 + 다크 표면 보정**. print 뒤 맨끝(코어를 이긴다). **항상 인라인**(마크업 없으면 라이트 고정이라 비용 0). 코어를 byte-수정하지 않으므로 라이트 산출은 안정. 해시 대상 아님 |
+   | 8 | `theme-dark.css` | `{{THEME_DARK_CSS}}` | **8-테마(light/light2/white/dark/dark2/blue/skyblue/sepia) 토큰 오버라이드 + 다크 표면 보정**. print 뒤 맨끝(코어를 이긴다). **항상 인라인**(마크업 없으면 라이트 고정이라 비용 0). 코어를 byte-수정하지 않으므로 라이트 산출은 안정. 해시 대상 아님 |
 
    - **코어 CSS 해시 마커**: 코어 해시는 `theme.css + components.css + visual-components.css + layouts.css + print.css` 5종을 이 순서로 `\n` 결합한 SHA-256이다(검증기 `asset_order` 기준; `widgets.css`·`visual-html.css`는 코어 해시에서 제외). 인라인 코어 `<style>` 안에 다음 주석 마커를 넣는다.
      ```
@@ -106,8 +112,8 @@
      - **미사용 라이브러리 슬롯은 빈 문자열로 치환**(슬롯 삭제 아님, `{{...}}` 잔존 금지). 빈 슬롯이 byte 차이를 만들지 않도록 **합본 단계에서 잉여 빈 줄을 제거(개행 정규화)**한다.
      - 코어 5종 해시 마커는 프로파일과 무관하게 **항상 동일 값**(조건부 인라인은 해시 산식에서 제외).
      - `auto` = **혼합/기본 번들**(widget+diagram 둘 다)이며 **회귀-0 기준선**(Phase -1 baseline 과 SHA256 diff 0). `v5=widget`·`v6=diagram`은 단일 라이브러리 별칭이고 `auto`는 그 둘을 합친 기본값이다(`auto ≠ diagram`).
-5. **base.html 슬롯 채우기** — `{{TITLE}}`, `{{DESCRIPTION}}`, `{{JSON_LD_BLOCK}}`(허용되는 JSON-LD만), `{{BODY}}`, `{{FOOTER}}`(불필요하면 비움), `{{THEME_DARK_CSS}}`(3-테마 CSS, 항상 인라인).
-   - **테마 스위처(선택)**: 사용자가 라이트/화이트/다크 선택 UI를 요청하면 `<body>` 첫 자식으로 라디오 `name="ahf-theme"` 3개(`#ahf-light` checked · `#ahf-white` · `#ahf-dark`) + `.ahf-themebar` 세그먼트 라벨을 삽입한다. 미요청 시 스위처 없이 라이트 고정. legacy `#theme-toggle` 마크업은 금지(v5.2는 `ahf-theme` 단일 계약).
+5. **base.html 슬롯 채우기** — `{{TITLE}}`, `{{DESCRIPTION}}`, `{{JSON_LD_BLOCK}}`(허용되는 JSON-LD만), `{{BODY}}`, `{{FOOTER}}`(불필요하면 비움), `{{THEME_DARK_CSS}}`(8-테마 CSS, 항상 인라인).
+   - **테마 스위처(기본 필수)**: 모든 생성 출력은 `<body>` 첫 자식으로 라디오 `name="ahf-theme"` 8개(`#ahf-light` checked · `#ahf-light2` · `#ahf-white` · `#ahf-dark` · `#ahf-dark2` · `#ahf-blue` · `#ahf-skyblue` · `#ahf-sepia`) + `.ahf-themebar` 세그먼트 라벨을 포함한다. legacy `#theme-toggle` 마크업은 금지(v5.2+는 `ahf-theme` 단일 계약).
 6. **vt-템플릿 삽입 (diagram·auto 프로파일에서만 — widget 프로파일은 생략)** — §3의 **1순위 vt-템플릿을 최소 1회** `assets/visual-html-templates/NN-*.html` 골격에서 복사해 본문 다이어그램으로 삽입한다(콘텐츠만 교체, `.vt-*` 네임스페이스 유지). 후순위 템플릿 추가·1순위 생략은 "해당 모드 1순위가 그 섹션 정보 구조에 명백히 부적합"할 때만 허용하며, 그 경우에도 §3 같은 행의 후순위에서 순서대로 고른다(임의 선택 금지). 판단이 서지 않으면 1순위를 쓴다.
 7. **wg-위젯 삽입 (widget·auto 프로파일에서만 — diagram 프로파일은 생략)** — 구조형 정보일 때만 §3 권장 wg-위젯을 `assets/widget-templates/NN-*.html` 골격에서 복사. `wg-NN-` 네임스페이스만 사용, 인터랙션은 `<details>/:checked/:target/CSS-anim`만. 단순 prose/표로 충분하면 넣지 않는다(과삽입 금지).
 8. **footer 처리** — 필요 시 `{{FOOTER}}`에 채우고, 불필요하면 슬롯을 비워 footer 없이 렌더링.
@@ -124,28 +130,37 @@
    - (2) SVG→HTML 템플릿 `vt-` 21종: `assets/visual-html.css` + `assets/visual-html-templates/01..21.html` (본문 삽입 다이어그램).
 3. **네임스페이스 고정.** 위젯은 `wg-NN-` 접두사만, 비주얼 템플릿은 `.vt-*` 접두사만 사용. 충돌·누수 0.
 4. **인터랙션 한정.** `<details>` / `:checked` / `:target` / CSS 애니메이션만. JS 필요 위젯(18 triage, 20 prompt-tuner)은 무 JS 근사로 삽입.
-5. **13모드 라우터 고정.** §3 결정표 외 모드를 만들지 않는다.
+5. **16모드 라우터 고정.** §3 결정표 외 모드를 만들지 않는다.
 6. **코어 CSS 5종 해시 + 조건부 인라인.** 코어 해시 대상은 **5종**(`theme→components→visual-components→layouts→print`)이며 이 합본의 SHA-256 마커를 반드시 포함한다. `widgets.css`·`visual-html.css`는 **해시 대상이 아닌 조건부 인라인**으로, 프로파일에 따라 포함 여부가 갈린다(widget=widgets만/diagram=visual-html만/auto=둘 다). 인라인 동작 순서는 `theme→components→visual-components→(widgets)→(visual-html)→layouts→print`(미사용 라이브러리는 생략, 코어 5종 해시 산식·순서는 불변).
 7. **구조 보장.** `<html lang="ko">`, viewport, title, meta description, `h1` 정확히 1개, `<main id="main">`.
-8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(버전 **5.2.0** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
-9. **3-테마 단일 계약.** 테마는 `theme-dark.css`의 라디오 `name="ahf-theme"`(light/white/dark) 1종만 사용한다. legacy `#theme-toggle` 마크업·스크립트형 테마 토글은 금지.
+8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(현재 버전 **5.9.1** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
+9. **8-테마 단일 계약.** 테마는 `theme-dark.css`의 라디오 `name="ahf-theme"`(light/light2/white/dark/dark2/blue/skyblue/sepia) 1종만 사용한다. legacy `#theme-toggle` 마크업·스크립트형 테마 토글은 금지.
 
 ---
 
 ## 6. 필수 검증 명령 (완료 기준)
 
-작업 디렉터리 무관하게 절대 경로 사용. **`OK`가 나와야만 완료.**
+**저장소 루트에서** 실행한다(상대 경로 — 체크아웃 위치 무관). **`OK`가 나와야만 완료.**
 
 ```bash
-python3 /Users/hwanchoi/project_202605/skills-html-showcase/skills/adaptive-html-final/scripts/validate_output.py \
+# cwd = 저장소 루트(skills-html-showcase)
+python3 skills/adaptive-html-final/scripts/validate_output.py \
   <output_dir> \
-  --skill-dir /Users/hwanchoi/project_202605/skills-html-showcase/skills/adaptive-html-final
+  --skill-dir skills/adaptive-html-final
 ```
 
 - 마지막 줄이 `OK`가 아니면(`FAILED`/`ISSUE`) 수정 후 재실행한다.
 - JSON 상세가 필요하면 `--json`을 추가한다.
-- 위 절대 경로가 없는 체크아웃에서는 §1의 경로 폴백에 따라 `python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> --skill-dir skills/adaptive-html-final`을 사용한다.
-- **골든(레퍼런스) 출력:** `output/adaptive-html-final-showcase-v6/`는 위 검증을 통과하는 정답 예시다(v6 동결 시점 기준 13모드 × vt-템플릿 20종 적용; 이후 추가된 21-soft-workflow-map은 후순위라 v6 미사용, `sources/css-integrity.json` 포함). 새 출력의 구조·`sources/` 구성·통과 여부를 이 폴더와 대조하라.
+- 검증 명령은 §1의 상대 경로 규칙을 따른다. 다른 체크아웃의 과거 절대 경로를 사용하지 않는다.
+- 전문/데모/벤치마크 산출물은 이어서 보조 품질 게이트도 실행한다. 이 게이트는 placeholder 문구·카드 반복·붕어빵 구조를 잡기 위한 보조 검사이며, 실패하면 `validate_output.py OK`여도 완료가 아니다.
+
+```bash
+# cwd = 저장소 루트(skills-html-showcase)
+python3 skills/adaptive-html-final/scripts/quality_contract_check.py <output_dir>
+```
+
+- **현행 골든(레퍼런스) 출력:** `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 스킬 자산 기준으로 검증을 통과한 13-topic 캐노니컬 예시다. 14번째 `github_analysis` 이후 신규 15/16모드 쇼케이스는 별도 smoke output으로 검증한다.
+- **역사적 골든:** `output/adaptive-html-final-showcase-v6/`는 v4.5/v6 동결 시점 예시이므로 현재 검증 기준선으로 사용하지 않는다.
 
 **무 JS grep (불변식 1 보조 확인)** — JSON-LD 외 `<script>`가 0이어야 한다.
 
@@ -175,9 +190,12 @@ grep -rniE 'draggable=|contenteditable=' <output_dir>/*.html && echo "FORBIDDEN 
 |---|---|
 | 스킬 전체 워크플로우·모드·품질 게이트 | `SKILL.md` |
 | 버전·자산·레이아웃·위젯·스크립트 목록 | `manifest.json` |
-| 13모드 라우팅 상세 | `references/mode-selection.md` |
+| 16모드 라우팅 상세 | `references/mode-selection.md` |
 | 레이아웃별 블록 | `references/layout-system.md` |
 | 모드별 글쓰기 원칙 | `references/writing-system.md` |
+| GitHub 저장소 분석 전략 | `references/github-analysis-system.md` |
+| YouTube 분석 전략 | `references/youtube-analysis-system.md` |
+| 매뉴얼 분석 전략 | `references/manual-analysis-system.md` |
 | 디자인 토큰·DNA | `references/design-dna.md`, `references/editorial-design-system.md` |
 | 블로그/SEO/플랫폼 | `references/blog-seo-system.md`, `references/platform-system.md` |
 | 스킬 감사 기준 | `references/skill-audit-system.md` |

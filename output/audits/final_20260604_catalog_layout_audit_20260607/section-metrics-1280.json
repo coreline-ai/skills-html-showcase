@@ -1,0 +1,2034 @@
+{
+  "url": "http://localhost:8080/templates/final_20260604/index-all-templates-catalog.html?v=layout-audit-20260607",
+  "title": "전 템플릿 카탈로그 (assets 정본)",
+  "viewport": {
+    "w": 1280,
+    "h": 1000
+  },
+  "page": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "scrollHeight": 32540,
+    "overflowX": false
+  },
+  "list": [
+    {
+      "index": 0,
+      "type": "header",
+      "heading": "전 템플릿 카탈로그 — vt 21 + wg 20",
+      "rect": {
+        "top": 60,
+        "w": 1020,
+        "h": 239
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 1,
+      "type": "section",
+      "heading": "vt 01 · hero map",
+      "rect": {
+        "top": 347,
+        "w": 1020,
+        "h": 411
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 2,
+      "type": "section",
+      "heading": "vt 02 · decision tree",
+      "rect": {
+        "top": 806,
+        "w": 1020,
+        "h": 506
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 3,
+      "type": "section",
+      "heading": "vt 03 · risk matrix",
+      "rect": {
+        "top": 1360,
+        "w": 1020,
+        "h": 518
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 4,
+      "type": "section",
+      "heading": "vt 04 · timeline",
+      "rect": {
+        "top": 1926,
+        "w": 1020,
+        "h": 695
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 5,
+      "type": "section",
+      "heading": "vt 05 · checklist flow",
+      "rect": {
+        "top": 2669,
+        "w": 1020,
+        "h": 507
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 3,
+      "overflow": [
+        {
+          "tag": "span",
+          "cls": "cf-check",
+          "text": "✓",
+          "client": [
+            24,
+            24
+          ],
+          "scroll": [
+            24,
+            29
+          ]
+        },
+        {
+          "tag": "span",
+          "cls": "cf-check",
+          "text": "✓",
+          "client": [
+            24,
+            24
+          ],
+          "scroll": [
+            24,
+            29
+          ]
+        },
+        {
+          "tag": "span",
+          "cls": "cf-check",
+          "text": "✓",
+          "client": [
+            24,
+            24
+          ],
+          "scroll": [
+            24,
+            29
+          ]
+        }
+      ],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 6,
+      "type": "section",
+      "heading": "vt 06 · quality gate",
+      "rect": {
+        "top": 3224,
+        "w": 1020,
+        "h": 490
+      },
+      "textIssueCount": 1,
+      "textIssues": [
+        {
+          "tag": "span",
+          "cls": "qg-final-label",
+          "text": "PRE-FLIGHT",
+          "ratio": 3.45,
+          "color": "rgb(230, 57, 70)",
+          "bg": "rgb(252, 228, 230)",
+          "font": 12
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 7,
+      "type": "section",
+      "heading": "vt 07 · card grid",
+      "rect": {
+        "top": 3763,
+        "w": 1020,
+        "h": 448
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 8,
+      "type": "section",
+      "heading": "vt 08 · raci",
+      "rect": {
+        "top": 4258,
+        "w": 1020,
+        "h": 397
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 9,
+      "type": "section",
+      "heading": "vt 09 · file tour",
+      "rect": {
+        "top": 4704,
+        "w": 1020,
+        "h": 746
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 10,
+      "type": "section",
+      "heading": "vt 10 · flowchart",
+      "rect": {
+        "top": 5498,
+        "w": 1020,
+        "h": 405
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 11,
+      "type": "section",
+      "heading": "vt 11 · weekly status",
+      "rect": {
+        "top": 5951,
+        "w": 1020,
+        "h": 503
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 12,
+      "type": "section",
+      "heading": "vt 12 · incident summary",
+      "rect": {
+        "top": 6502,
+        "w": 1020,
+        "h": 674
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 13,
+      "type": "section",
+      "heading": "vt 13 · comparison cards",
+      "rect": {
+        "top": 7225,
+        "w": 1020,
+        "h": 388
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 14,
+      "type": "section",
+      "heading": "vt 14 · process swimlane",
+      "rect": {
+        "top": 7661,
+        "w": 1020,
+        "h": 425
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 15,
+      "type": "section",
+      "heading": "vt 15 · concept explainer",
+      "rect": {
+        "top": 8133,
+        "w": 1020,
+        "h": 408
+      },
+      "textIssueCount": 5,
+      "textIssues": [
+        {
+          "tag": "span",
+          "cls": "vt-num",
+          "text": "?",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "b",
+          "cls": "",
+          "text": "1",
+          "ratio": 4.17,
+          "color": "rgb(230, 57, 70)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 16
+        },
+        {
+          "tag": "b",
+          "cls": "",
+          "text": "2",
+          "ratio": 4.17,
+          "color": "rgb(230, 57, 70)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 16
+        },
+        {
+          "tag": "b",
+          "cls": "",
+          "text": "3",
+          "ratio": 4.17,
+          "color": "rgb(230, 57, 70)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 16
+        },
+        {
+          "tag": "b",
+          "cls": "",
+          "text": "4",
+          "ratio": 4.17,
+          "color": "rgb(230, 57, 70)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 16
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 16,
+      "type": "section",
+      "heading": "vt 16 · implementation plan",
+      "rect": {
+        "top": 8590,
+        "w": 1020,
+        "h": 445
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 17,
+      "type": "section",
+      "heading": "vt 17 · pr writeup",
+      "rect": {
+        "top": 9083,
+        "w": 1020,
+        "h": 493
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 18,
+      "type": "section",
+      "heading": "vt 18 · triage board",
+      "rect": {
+        "top": 9624,
+        "w": 1020,
+        "h": 364
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 19,
+      "type": "section",
+      "heading": "vt 19 · feature flag",
+      "rect": {
+        "top": 10036,
+        "w": 1020,
+        "h": 507
+      },
+      "textIssueCount": 1,
+      "textIssues": [
+        {
+          "tag": "span",
+          "cls": "flag-state warn",
+          "text": "WARN",
+          "ratio": 2.43,
+          "color": "rgb(217, 154, 56)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 11
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 20,
+      "type": "section",
+      "heading": "vt 20 · prompt tuner",
+      "rect": {
+        "top": 10592,
+        "w": 1020,
+        "h": 322
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 21,
+      "type": "section",
+      "heading": "vt 21 · soft workflow map",
+      "rect": {
+        "top": 10961,
+        "w": 1020,
+        "h": 956
+      },
+      "textIssueCount": 7,
+      "textIssues": [
+        {
+          "tag": "div",
+          "cls": "wf-icon",
+          "text": "◉",
+          "ratio": 2.49,
+          "color": "rgb(255, 129, 47)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 16
+        },
+        {
+          "tag": "div",
+          "cls": "wf-icon",
+          "text": "▦",
+          "ratio": 2.49,
+          "color": "rgb(255, 129, 47)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 16
+        },
+        {
+          "tag": "div",
+          "cls": "wf-icon",
+          "text": "▧",
+          "ratio": 2.49,
+          "color": "rgb(255, 129, 47)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 16
+        },
+        {
+          "tag": "div",
+          "cls": "wf-icon",
+          "text": "⌕",
+          "ratio": 2.49,
+          "color": "rgb(255, 129, 47)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 16
+        },
+        {
+          "tag": "div",
+          "cls": "wf-icon",
+          "text": "♟",
+          "ratio": 2.49,
+          "color": "rgb(255, 129, 47)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 16
+        },
+        {
+          "tag": "div",
+          "cls": "wf-icon",
+          "text": "▣",
+          "ratio": 2.49,
+          "color": "rgb(255, 129, 47)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 16
+        },
+        {
+          "tag": "i",
+          "cls": "",
+          "text": "→",
+          "ratio": 2.49,
+          "color": "rgb(255, 129, 47)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 16
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 22,
+      "type": "section",
+      "heading": "wg 01 · three code approaches",
+      "rect": {
+        "top": 11966,
+        "w": 1020,
+        "h": 757
+      },
+      "textIssueCount": 2,
+      "textIssues": [
+        {
+          "tag": "span",
+          "cls": "wg-01-rank wg-01-rank-pick",
+          "text": "B",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 16
+        },
+        {
+          "tag": "span",
+          "cls": "wg-01-pick-badge",
+          "text": "권장",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 11
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 23,
+      "type": "section",
+      "heading": "wg 02 · visual design directions",
+      "rect": {
+        "top": 12771,
+        "w": 1020,
+        "h": 726
+      },
+      "textIssueCount": 21,
+      "textIssues": [
+        {
+          "tag": "div",
+          "cls": "wg-02-pv-cta wg-02-pv-cta--a",
+          "text": "읽어보기",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 11
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "text": "bg",
+          "ratio": 1.09,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(245, 245, 240)",
+          "font": 9
+        },
+        {
+          "tag": "li",
+          "cls": "",
+          "text": "ink",
+          "ratio": 1.96,
+          "color": "rgb(74, 74, 74)",
+          "bg": "rgb(26, 26, 26)",
+          "font": 16
+        },
+        {
+          "tag": "li",
+          "cls": "",
+          "text": "accent",
+          "ratio": 2.13,
+          "color": "rgb(74, 74, 74)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 16
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "text": "accent",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 9
+        },
+        {
+          "tag": "span",
+          "cls": "wg-02-badge",
+          "text": "선택됨",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 10
+        },
+        {
+          "tag": "div",
+          "cls": "wg-02-preview wg-02-preview--b",
+          "text": "대시보드",
+          "ratio": 1,
+          "color": "rgb(26, 26, 26)",
+          "bg": "rgb(26, 26, 26)",
+          "font": 16
+        },
+        {
+          "tag": "div",
+          "cls": "wg-02-pv-cta wg-02-pv-cta--b",
+          "text": "대시보드",
+          "ratio": 3.96,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 11
+        },
+        {
+          "tag": "li",
+          "cls": "",
+          "text": "dark",
+          "ratio": 1.96,
+          "color": "rgb(74, 74, 74)",
+          "bg": "rgb(26, 26, 26)",
+          "font": 16
+        },
+        {
+          "tag": "li",
+          "cls": "",
+          "text": "good",
+          "ratio": 2.24,
+          "color": "rgb(74, 74, 74)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 16
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "text": "good",
+          "ratio": 3.96,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 9
+        },
+        {
+          "tag": "li",
+          "cls": "",
+          "text": "accent",
+          "ratio": 2.13,
+          "color": "rgb(74, 74, 74)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 16
+        }
+      ],
+      "smallFontCount": 12,
+      "smallFonts": [
+        {
+          "tag": "span",
+          "cls": "",
+          "text": "bg",
+          "font": 9
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "text": "ink",
+          "font": 9
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "text": "accent",
+          "font": 9
+        },
+        {
+          "tag": "span",
+          "cls": "wg-02-badge",
+          "text": "선택됨",
+          "font": 10
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "text": "dark",
+          "font": 9
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "text": "good",
+          "font": 9
+        },
+        {
+          "tag": "span",
+          "cls": "",
+          "text": "accent",
+          "font": 9
+        },
+        {
+          "tag": "span",
+          "cls": "wg-02-badge",
+          "text": "선택됨",
+          "font": 10
+        }
+      ],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 24,
+      "type": "section",
+      "heading": "wg 03 · annotated pull request",
+      "rect": {
+        "top": 13545,
+        "w": 1020,
+        "h": 619
+      },
+      "textIssueCount": 38,
+      "textIssues": [
+        {
+          "tag": "div",
+          "cls": "wg-03-row wg-03-del",
+          "text": "17 − for (let i = 0; i < max; i++) {",
+          "ratio": 4.18,
+          "color": "rgb(26, 26, 26)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "code",
+          "cls": "wg-03-code",
+          "text": "− for (let i = 0; i < max; i++) {",
+          "ratio": 1.36,
+          "color": "rgb(198, 36, 51)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "span",
+          "cls": "wg-03-sign",
+          "text": "−",
+          "ratio": 1,
+          "color": "rgb(230, 57, 70)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "div",
+          "cls": "wg-03-row wg-03-add wg-03-flag",
+          "text": "18 + for (let i = 0; i < max; i++) { !",
+          "ratio": 4.39,
+          "color": "rgb(26, 26, 26)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 13
+        },
+        {
+          "tag": "code",
+          "cls": "wg-03-code",
+          "text": "+ for (let i = 0; i < max; i++) {",
+          "ratio": 1.54,
+          "color": "rgb(31, 111, 78)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 13
+        },
+        {
+          "tag": "span",
+          "cls": "wg-03-sign",
+          "text": "+",
+          "ratio": 1,
+          "color": "rgb(63, 142, 108)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 13
+        },
+        {
+          "tag": "a",
+          "cls": "wg-03-dot wg-03-sev-critical",
+          "text": "!",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 11
+        },
+        {
+          "tag": "div",
+          "cls": "wg-03-row wg-03-add",
+          "text": "19 + try {",
+          "ratio": 4.39,
+          "color": "rgb(26, 26, 26)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 13
+        },
+        {
+          "tag": "code",
+          "cls": "wg-03-code",
+          "text": "+ try {",
+          "ratio": 1.54,
+          "color": "rgb(31, 111, 78)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 13
+        },
+        {
+          "tag": "span",
+          "cls": "wg-03-sign",
+          "text": "+",
+          "ratio": 1,
+          "color": "rgb(63, 142, 108)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 13
+        },
+        {
+          "tag": "div",
+          "cls": "wg-03-row wg-03-add",
+          "text": "20 + return await gateway.charge(order);",
+          "ratio": 4.39,
+          "color": "rgb(26, 26, 26)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 13
+        },
+        {
+          "tag": "code",
+          "cls": "wg-03-code",
+          "text": "+ return await gateway.charge(order);",
+          "ratio": 1.54,
+          "color": "rgb(31, 111, 78)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 13
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 25,
+      "type": "section",
+      "heading": "wg 04 · module map",
+      "rect": {
+        "top": 14212,
+        "w": 1020,
+        "h": 884
+      },
+      "textIssueCount": 4,
+      "textIssues": [
+        {
+          "tag": "span",
+          "cls": "wg-04-path-label",
+          "text": "핵심 경로",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "code",
+          "cls": "",
+          "text": "api",
+          "ratio": 1.46,
+          "color": "rgb(183, 45, 56)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13.5
+        },
+        {
+          "tag": "code",
+          "cls": "",
+          "text": "payment",
+          "ratio": 1.46,
+          "color": "rgb(183, 45, 56)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13.5
+        },
+        {
+          "tag": "code",
+          "cls": "",
+          "text": "gateway",
+          "ratio": 1.46,
+          "color": "rgb(183, 45, 56)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13.5
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 26,
+      "type": "section",
+      "heading": "wg 05 · living design system",
+      "rect": {
+        "top": 15145,
+        "w": 1020,
+        "h": 2374
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 27,
+      "type": "section",
+      "heading": "wg 06 · component variants",
+      "rect": {
+        "top": 17566,
+        "w": 1020,
+        "h": 1256
+      },
+      "textIssueCount": 9,
+      "textIssues": [
+        {
+          "tag": "label",
+          "cls": "wg-06-bg-label",
+          "text": "라이트",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "button",
+          "cls": "wg-06-btn wg-06-btn--primary wg-06-lg",
+          "text": "저장 L",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 18
+        },
+        {
+          "tag": "button",
+          "cls": "wg-06-btn wg-06-btn--primary wg-06-md",
+          "text": "저장 M",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 14
+        },
+        {
+          "tag": "button",
+          "cls": "wg-06-btn wg-06-btn--primary wg-06-sm",
+          "text": "저장 S",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "button",
+          "cls": "wg-06-btn wg-06-btn--primary wg-06-md wg-06-is-focus",
+          "text": "저장",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 14
+        },
+        {
+          "tag": "button",
+          "cls": "wg-06-btn wg-06-btn--primary wg-06-md",
+          "text": "저장",
+          "ratio": 4.01,
+          "color": "rgb(102, 102, 102)",
+          "bg": "rgb(216, 216, 208)",
+          "font": 14
+        },
+        {
+          "tag": "button",
+          "cls": "wg-06-btn wg-06-btn--secondary wg-06-md",
+          "text": "취소",
+          "ratio": 4.01,
+          "color": "rgb(102, 102, 102)",
+          "bg": "rgb(216, 216, 208)",
+          "font": 14
+        },
+        {
+          "tag": "button",
+          "cls": "wg-06-btn wg-06-btn--ghost wg-06-md",
+          "text": "더보기",
+          "ratio": 4.01,
+          "color": "rgb(102, 102, 102)",
+          "bg": "rgb(216, 216, 208)",
+          "font": 14
+        },
+        {
+          "tag": "button",
+          "cls": "wg-06-btn wg-06-btn--danger wg-06-md",
+          "text": "삭제",
+          "ratio": 4.01,
+          "color": "rgb(102, 102, 102)",
+          "bg": "rgb(216, 216, 208)",
+          "font": 14
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 28,
+      "type": "section",
+      "heading": "wg 07 · animation sandbox",
+      "rect": {
+        "top": 18870,
+        "w": 1020,
+        "h": 874
+      },
+      "textIssueCount": 8,
+      "textIssues": [
+        {
+          "tag": "label",
+          "cls": "wg-07-pill",
+          "text": "보통 1.2s",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "label",
+          "cls": "wg-07-pill",
+          "text": "ease-out",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "div",
+          "cls": "wg-07-stage",
+          "text": "slide fade scale rotate",
+          "ratio": 1,
+          "color": "rgb(26, 26, 26)",
+          "bg": "rgb(26, 26, 26)",
+          "font": 16
+        },
+        {
+          "tag": "div",
+          "cls": "wg-07-track",
+          "text": "slide fade scale rotate",
+          "ratio": 1,
+          "color": "rgb(26, 26, 26)",
+          "bg": "rgb(26, 26, 26)",
+          "font": 16
+        },
+        {
+          "tag": "div",
+          "cls": "wg-07-box wg-07-box--slide",
+          "text": "slide",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "div",
+          "cls": "wg-07-box wg-07-box--fade",
+          "text": "fade",
+          "ratio": 3.96,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(63, 142, 108)",
+          "font": 13
+        },
+        {
+          "tag": "div",
+          "cls": "wg-07-box wg-07-box--scale",
+          "text": "scale",
+          "ratio": 3.7,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(94, 138, 168)",
+          "font": 13
+        },
+        {
+          "tag": "div",
+          "cls": "wg-07-box wg-07-box--spin",
+          "text": "rotate",
+          "ratio": 2.93,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(201, 138, 46)",
+          "font": 13
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 2,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "wg-07-stage",
+          "text": "slide fade scale rotate",
+          "client": [
+            908,
+            251
+          ],
+          "scroll": [
+            923,
+            266
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "wg-07-track",
+          "text": "slide fade scale rotate",
+          "client": [
+            860,
+            203
+          ],
+          "scroll": [
+            899,
+            242
+          ]
+        }
+      ],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 29,
+      "type": "section",
+      "heading": "wg 08 · clickable flow",
+      "rect": {
+        "top": 19792,
+        "w": 1020,
+        "h": 626
+      },
+      "textIssueCount": 2,
+      "textIssues": [
+        {
+          "tag": "div",
+          "cls": "wg-08-device",
+          "text": "화면 A 장바구니 무선 키보드 49,000원 USB-C 허브 32,000원 합계 81,000원 결제하기 →",
+          "ratio": 1,
+          "color": "rgb(26, 26, 26)",
+          "bg": "rgb(26, 26, 26)",
+          "font": 16
+        },
+        {
+          "tag": "a",
+          "cls": "wg-08-cta",
+          "text": "결제하기 →",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 16
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 1,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "wg-08-viewport",
+          "text": "화면 A 장바구니 무선 키보드 49,000원 USB-C 허브 32,000원 합계 81,000원 결제하기 →",
+          "client": [
+            452,
+            360
+          ],
+          "scroll": [
+            468,
+            396
+          ]
+        }
+      ],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 2,
+      "emptyBlocks": [
+        {
+          "tag": "article",
+          "cls": "wg-08-screen",
+          "rect": {
+            "w": 452,
+            "h": 360
+          }
+        },
+        {
+          "tag": "article",
+          "cls": "wg-08-screen",
+          "rect": {
+            "w": 452,
+            "h": 360
+          }
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "type": "section",
+      "heading": "wg 09 · arrow key slide deck",
+      "rect": {
+        "top": 20465,
+        "w": 1020,
+        "h": 550
+      },
+      "textIssueCount": 8,
+      "textIssues": [
+        {
+          "tag": "a",
+          "cls": "wg-09-next",
+          "text": "다음 →",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 14
+        },
+        {
+          "tag": "a",
+          "cls": "wg-09-next",
+          "text": "다음 →",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 14
+        },
+        {
+          "tag": "a",
+          "cls": "wg-09-next",
+          "text": "다음 →",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 14
+        },
+        {
+          "tag": "article",
+          "cls": "wg-09-slide wg-09-slide--end",
+          "text": "04 / 04 다음 단계 차단 이슈 해소 후 Q3 계획 확정. 질문 환영합니다. ← 이전 처음으로",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 16
+        },
+        {
+          "tag": "span",
+          "cls": "wg-09-no",
+          "text": "04 / 04",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "p",
+          "cls": "wg-09-lead",
+          "text": "차단 이슈 해소 후 Q3 계획 확정. 질문 환영합니다.",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 18
+        },
+        {
+          "tag": "div",
+          "cls": "wg-09-cta-row",
+          "text": "← 이전 처음으로",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 16
+        },
+        {
+          "tag": "a",
+          "cls": "wg-09-prev",
+          "text": "← 이전",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 14
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 1,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "wg-09-track",
+          "text": "01 / 04 2026 제품 로드맵 플랫폼 팀 분기 발표 · 2026-05-30 다음 → 02 / 04 Q2 핵심 목표 배포 파이프라인 자동화 완료 p95 응답시간 320ms → ",
+          "client": [
+            640,
+            369
+          ],
+          "scroll": [
+            2608,
+            369
+          ]
+        }
+      ],
+      "clippedCount": 32,
+      "clipped": [
+        {
+          "tag": "article",
+          "cls": "wg-09-slide",
+          "text": "02 / 04 Q2 핵심 목표 배포 파이프라인 자동화 완료 p95 응답시간 320ms → 180ms 다국어 지원 3개 언어 추가 ← 이전 다음 →",
+          "rect": {
+            "x": 976,
+            "w": 640
+          }
+        },
+        {
+          "tag": "span",
+          "cls": "wg-09-no",
+          "text": "02 / 04",
+          "rect": {
+            "x": 1009,
+            "w": 574
+          }
+        },
+        {
+          "tag": "h2",
+          "cls": "wg-09-title",
+          "text": "Q2 핵심 목표",
+          "rect": {
+            "x": 1009,
+            "w": 574
+          }
+        },
+        {
+          "tag": "ul",
+          "cls": "wg-09-points",
+          "text": "배포 파이프라인 자동화 완료 p95 응답시간 320ms → 180ms 다국어 지원 3개 언어 추가",
+          "rect": {
+            "x": 1033,
+            "w": 550
+          }
+        },
+        {
+          "tag": "li",
+          "cls": "",
+          "text": "배포 파이프라인 자동화 완료",
+          "rect": {
+            "x": 1033,
+            "w": 550
+          }
+        },
+        {
+          "tag": "li",
+          "cls": "",
+          "text": "p95 응답시간 320ms → 180ms",
+          "rect": {
+            "x": 1033,
+            "w": 550
+          }
+        },
+        {
+          "tag": "li",
+          "cls": "",
+          "text": "다국어 지원 3개 언어 추가",
+          "rect": {
+            "x": 1033,
+            "w": 550
+          }
+        },
+        {
+          "tag": "div",
+          "cls": "wg-09-cta-row",
+          "text": "← 이전 다음 →",
+          "rect": {
+            "x": 1009,
+            "w": 574
+          }
+        },
+        {
+          "tag": "a",
+          "cls": "wg-09-next",
+          "text": "다음 →",
+          "rect": {
+            "x": 1509,
+            "w": 74
+          }
+        },
+        {
+          "tag": "article",
+          "cls": "wg-09-slide",
+          "text": "03 / 04 진행 현황 87% 스프린트 소진율 14 완료 티켓 2 차단 이슈 ← 이전 다음 →",
+          "rect": {
+            "x": 1632,
+            "w": 640
+          }
+        }
+      ],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 31,
+      "type": "section",
+      "heading": "wg 10 · svg figure sheet",
+      "rect": {
+        "top": 21063,
+        "w": 1020,
+        "h": 374
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 32,
+      "type": "section",
+      "heading": "wg 11 · weekly status",
+      "rect": {
+        "top": 21485,
+        "w": 1020,
+        "h": 796
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 33,
+      "type": "section",
+      "heading": "wg 12 · incident timeline",
+      "rect": {
+        "top": 22329,
+        "w": 1020,
+        "h": 1352
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 34,
+      "type": "section",
+      "heading": "wg 13 · annotated flowchart",
+      "rect": {
+        "top": 23729,
+        "w": 1020,
+        "h": 1209
+      },
+      "textIssueCount": 1,
+      "textIssues": [
+        {
+          "tag": "span",
+          "cls": "wg-13-step",
+          "text": "2",
+          "ratio": 2.93,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(201, 138, 46)",
+          "font": 10
+        }
+      ],
+      "smallFontCount": 7,
+      "smallFonts": [
+        {
+          "tag": "span",
+          "cls": "wg-13-step",
+          "text": "시작",
+          "font": 10
+        },
+        {
+          "tag": "span",
+          "cls": "wg-13-step",
+          "text": "완료",
+          "font": 10
+        },
+        {
+          "tag": "span",
+          "cls": "wg-13-tag",
+          "text": "1단계",
+          "font": 10
+        },
+        {
+          "tag": "span",
+          "cls": "wg-13-tag",
+          "text": "2단계",
+          "font": 10
+        },
+        {
+          "tag": "span",
+          "cls": "wg-13-tag wg-13-tag--fail",
+          "text": "실패",
+          "font": 10
+        },
+        {
+          "tag": "span",
+          "cls": "wg-13-tag",
+          "text": "3단계",
+          "font": 10
+        },
+        {
+          "tag": "span",
+          "cls": "wg-13-tag wg-13-tag--ok",
+          "text": "완료",
+          "font": 10
+        }
+      ],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 35,
+      "type": "section",
+      "heading": "wg 14 · feature explainer",
+      "rect": {
+        "top": 24986,
+        "w": 1020,
+        "h": 1536
+      },
+      "textIssueCount": 1,
+      "textIssues": [
+        {
+          "tag": "span",
+          "cls": "wg-14-sum-no",
+          "text": "01",
+          "ratio": 4.17,
+          "color": "rgb(230, 57, 70)",
+          "bg": "rgb(255, 255, 255)",
+          "font": 13
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 36,
+      "type": "section",
+      "heading": "wg 15 · concept explainer",
+      "rect": {
+        "top": 26571,
+        "w": 1020,
+        "h": 1033
+      },
+      "textIssueCount": 1,
+      "textIssues": [
+        {
+          "tag": "span",
+          "cls": "wg-15-stepnum",
+          "text": "1",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 2,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "wg-15-stage",
+          "text": "A B C D k1 k2 0° / 360° 1. 노드를 링 위에 해시한다 각 노드 ID를 해시해 0~360° 원형 공간의 한 점에 놓습니다. A·B·C 세 노드가 링 위 서로 다른",
+          "client": [
+            746,
+            180
+          ],
+          "scroll": [
+            746,
+            193
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "wg-15-ring",
+          "text": "A B C D k1 k2 0° / 360°",
+          "client": [
+            176,
+            176
+          ],
+          "scroll": [
+            191,
+            191
+          ]
+        }
+      ],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 37,
+      "type": "section",
+      "heading": "wg 16 · implementation plan",
+      "rect": {
+        "top": 27651,
+        "w": 1020,
+        "h": 1332
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 7,
+      "overflow": [
+        {
+          "tag": "li",
+          "cls": "wg-16-ms-item wg-16-done",
+          "text": "M0 · 착수 정렬 완료 스폰서·RACI 합의, 단가 산식 초안 고시. ~D0.",
+          "client": [
+            924,
+            74
+          ],
+          "scroll": [
+            924,
+            102
+          ]
+        },
+        {
+          "tag": "li",
+          "cls": "wg-16-ms-item wg-16-active",
+          "text": "M1 · 계측 표준화 (0~30일) 진행 중 텔레메트리 스키마 강제, 단가 대시보드 가동. 커버리지 95% 목표.",
+          "client": [
+            924,
+            74
+          ],
+          "scroll": [
+            924,
+            102
+          ]
+        },
+        {
+          "tag": "li",
+          "cls": "wg-16-ms-item",
+          "text": "M2 · 게이트 자동화 (31~60일) 예정 CI에 cost-budget·eval 이중 게이트 적용, 우회 승인 로그화.",
+          "client": [
+            924,
+            74
+          ],
+          "scroll": [
+            924,
+            102
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "wg-16-fnode",
+          "text": "엣지 디바이스 추론 런타임",
+          "client": [
+            163,
+            72
+          ],
+          "scroll": [
+            181,
+            72
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "wg-16-fnode",
+          "text": "텔레메트리 tokens·energy",
+          "client": [
+            163,
+            72
+          ],
+          "scroll": [
+            181,
+            72
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "wg-16-fnode wg-16-fnode-good",
+          "text": "수집기 집계·태깅",
+          "client": [
+            163,
+            72
+          ],
+          "scroll": [
+            181,
+            72
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "wg-16-fnode wg-16-fnode-hot",
+          "text": "비용 원장 cost-per-1k",
+          "client": [
+            163,
+            72
+          ],
+          "scroll": [
+            181,
+            72
+          ]
+        }
+      ],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 38,
+      "type": "section",
+      "heading": "wg 17 · pr writeup",
+      "rect": {
+        "top": 29031,
+        "w": 1020,
+        "h": 1068
+      },
+      "textIssueCount": 6,
+      "textIssues": [
+        {
+          "tag": "span",
+          "cls": "wg-17-h3-no",
+          "text": "1",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 14
+        },
+        {
+          "tag": "span",
+          "cls": "wg-17-h3-no",
+          "text": "2",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 14
+        },
+        {
+          "tag": "span",
+          "cls": "wg-17-h3-no",
+          "text": "3",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 14
+        },
+        {
+          "tag": "code",
+          "cls": "",
+          "text": "exp",
+          "ratio": 1,
+          "color": "rgb(26, 26, 26)",
+          "bg": "rgb(26, 26, 26)",
+          "font": 14.4
+        },
+        {
+          "tag": "code",
+          "cls": "",
+          "text": "ensureFreshToken(req,res)",
+          "ratio": 1,
+          "color": "rgb(26, 26, 26)",
+          "bg": "rgb(26, 26, 26)",
+          "font": 12.6
+        },
+        {
+          "tag": "code",
+          "cls": "",
+          "text": "WWW-Authenticate",
+          "ratio": 1,
+          "color": "rgb(26, 26, 26)",
+          "bg": "rgb(26, 26, 26)",
+          "font": 12.6
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 39,
+      "type": "section",
+      "heading": "wg 18 · ticket triage board",
+      "rect": {
+        "top": 30147,
+        "w": 1020,
+        "h": 766
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 40,
+      "type": "section",
+      "heading": "wg 19 · feature flag editor",
+      "rect": {
+        "top": 30961,
+        "w": 1020,
+        "h": 797
+      },
+      "textIssueCount": 0,
+      "textIssues": [],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    },
+    {
+      "index": 41,
+      "type": "section",
+      "heading": "wg 20 · prompt tuner",
+      "rect": {
+        "top": 31806,
+        "w": 1020,
+        "h": 586
+      },
+      "textIssueCount": 3,
+      "textIssues": [
+        {
+          "tag": "label",
+          "cls": "wg-20-chip",
+          "text": "환불 문의",
+          "ratio": 4.17,
+          "color": "rgb(255, 255, 255)",
+          "bg": "rgb(230, 57, 70)",
+          "font": 13
+        },
+        {
+          "tag": "span",
+          "cls": "wg-20-var",
+          "text": "{{message}}",
+          "ratio": 1.94,
+          "color": "rgb(138, 94, 16)",
+          "bg": "rgb(201, 138, 46)",
+          "font": 13
+        },
+        {
+          "tag": "span",
+          "cls": "wg-20-var",
+          "text": "{{tone}}",
+          "ratio": 1.94,
+          "color": "rgb(138, 94, 16)",
+          "bg": "rgb(201, 138, 46)",
+          "font": 13
+        }
+      ],
+      "smallFontCount": 0,
+      "smallFonts": [],
+      "overflowCount": 0,
+      "overflow": [],
+      "clippedCount": 0,
+      "clipped": [],
+      "emptyBlockCount": 0,
+      "emptyBlocks": []
+    }
+  ]
+}

@@ -21,6 +21,7 @@
 
 - **위치**: 섹션 제목(h2/h3) 앞, 콜아웃(term/danger/good) 라벨 옆, 카드 헤더, source-note 라벨 등 **의미가 분명한 곳에만**. 한 화면에 과용 금지(섹션당 1~3개 권장).
 - **접근성**: 아이콘은 `aria-hidden="true"`(장식). 의미는 반드시 인접 텍스트로 전달(아이콘만으로 정보 전달 금지). 색 외 단서 유지.
+- **반복 금지**: 한 문서의 직접 섹션 h2에 동일 SVG를 전부 반복하지 않는다. 섹션의 정보 역할에 맞춰 최소 4종 이상을 섞고, manual/reference/github/youtube처럼 섹션 기능이 뚜렷한 모드는 각 주요 섹션마다 의미 아이콘을 다르게 고른다.
 - **무 JS**: 정적 인라인 SVG만. 애니메이션/호버 동작 JS 금지.
 
 ## 32종 카탈로그
@@ -68,6 +69,7 @@
 | `expert_html` | `warning` · `decision` · `metric` · `security` |
 | `article_html` | `idea` · `quote` · `connection` |
 | `education_html` | `learning` · `check` · `timeline` |
+| `github_analysis` | `file` · `metric` · `security` · `decision` |
 | `blog_writer` | `idea` · `timeline` · `note` |
 | `seo_dashboard` | `search` · `question` · `compare` |
 | `platform_blog` | `platform` · `edit` · `compare` |

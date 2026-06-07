@@ -1,0 +1,30 @@
+{
+  "mode": "comparison_html",
+  "sequence": "13/16",
+  "topic": "사내 문서 검색 아키텍처 선택 매트릭스",
+  "layout": "comparison-matrix.html",
+  "profile": "auto",
+  "read_for_this_mode": [
+    "recipes/comparison.prompt.md",
+    "assets/layouts/comparison-matrix.html",
+    "references/layout-system.md",
+    "references/writing-system.md",
+    "references/visual-html-system.md",
+    "references/widget-system.md",
+    "assets/visual-html-templates/13-comparison-cards.html",
+    "assets/visual-html-templates/02-decision-tree.html",
+    "assets/visual-html-templates/03-risk-matrix.html",
+    "assets/widget-templates/01-three-code-approaches.html"
+  ],
+  "template_binding": {
+    "vt": [
+      "comparison-cards",
+      "decision-tree",
+      "risk-matrix"
+    ],
+    "wg": [
+      "01-three-code-approaches"
+    ]
+  },
+  "non_reuse_policy": "본문은 이전 HTML에서 가져오지 않고 comparison 전용 계약에 맞춰 신규 작성. 인덱스만 누적 링크 갱신."
+}

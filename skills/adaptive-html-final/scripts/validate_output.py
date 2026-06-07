@@ -198,30 +198,41 @@ _STYLE_ALIAS = {'v5': 'widget', 'v6': 'diagram'}
 
 
 def _resolve_profile(profile_arg, root: Path, issues: list):
-    """Profile resolution priority: --profile arg (1st) -> sources/profile.json (2nd) -> None (fallback).
+    """Profile resolution priority: --profile arg (1st) -> sources/profile.json (2nd).
 
     Accepts canonical names or style aliases (v5/v6). Invalid/out-of-range tokens append an
-    'invalid_profile' issue and resolve to None (no silent auto fallback). Returns one of
-    VALID_PROFILES or None.
+    'invalid_profile' issue and resolve to None (no silent auto fallback). `sources/profile.json`
+    is mandatory for deterministic outputs; when --profile and profile.json are both present,
+    they must agree after alias normalization. Returns one of VALID_PROFILES or None.
     """
+    pj = root / 'sources' / 'profile.json'
+    file_profile = None
+    if pj.exists():
+        try:
+            v = json.loads(pj.read_text(encoding='utf-8')).get('profile')
+            file_profile = _STYLE_ALIAS.get(str(v).strip().lower(), str(v).strip().lower()) if v is not None else None
+            if file_profile not in VALID_PROFILES:
+                issues.append({'type': 'invalid_profile', 'source': 'sources/profile.json', 'value': v})
+                file_profile = None
+        except Exception as e:
+            issues.append({'type': 'profile_json_parse_error', 'detail': str(e)})
+    else:
+        issues.append({'type': 'missing_profile_json',
+                       'detail': '결정론 출력은 sources/profile.json에 profile=widget|diagram|auto를 기록해야 한다.'})
+
     if profile_arg:
         p = str(profile_arg).strip().lower()
         p = _STYLE_ALIAS.get(p, p)
+        if p in VALID_PROFILES and file_profile and p != file_profile:
+            issues.append({'type': 'profile_mismatch',
+                           'source': '--profile vs sources/profile.json',
+                           'arg': p,
+                           'profile_json': file_profile})
         if p in VALID_PROFILES:
             return p
         issues.append({'type': 'invalid_profile', 'source': '--profile', 'value': str(profile_arg)})
         return None
-    pj = root / 'sources' / 'profile.json'
-    if pj.exists():
-        try:
-            v = json.loads(pj.read_text(encoding='utf-8')).get('profile')
-            v = _STYLE_ALIAS.get(str(v).strip().lower(), str(v).strip().lower()) if v is not None else None
-            if v in VALID_PROFILES:
-                return v
-            issues.append({'type': 'invalid_profile', 'source': 'sources/profile.json', 'value': v})
-        except Exception as e:
-            issues.append({'type': 'profile_json_parse_error', 'detail': str(e)})
-    return None
+    return file_profile
 
 
 def cross_leak_gate(text: str, declared_profile) -> list:
@@ -315,7 +326,8 @@ def bespoke_prefix_gate(text: str) -> list:
 
 def global_no_js_gate(text: str) -> list:
     """Invariant #1 enforced GLOBALLY (not only inside wg-/vt- areas): the only allowed
-    <script> is type=application/ld+json; no draggable/contenteditable anywhere."""
+    <script> is type=application/ld+json; no event handler attributes, javascript: href,
+    draggable/contenteditable anywhere."""
     issues = []
     bad_scripts = 0
     for sm in re.finditer(r'<script\b([^>]*)>', text, re.I):
@@ -329,6 +341,13 @@ def global_no_js_gate(text: str) -> list:
     forbidden = sorted({fm.group(1).lower() for fm in re.finditer(r'\b(draggable|contenteditable)\s*=', text, re.I)})
     if forbidden:
         issues.append({'type': 'forbidden_primitive_global', 'detail': forbidden})
+    handlers = sorted({fm.group(1).lower() for fm in re.finditer(r'\s(on[a-z][a-z0-9_-]*)\s*=', text, re.I)})
+    if handlers:
+        issues.append({'type': 'event_handler_global', 'detail': handlers,
+                       'note': '무 JS 불변식: onclick/onload 등 인라인 이벤트 핸들러 금지.'})
+    if re.search(r'\bhref\s*=\s*["\']\s*javascript:', text, re.I):
+        issues.append({'type': 'javascript_href_global',
+                       'note': '무 JS 불변식: href="javascript:..." 금지.'})
     return issues
 
 
@@ -342,16 +361,404 @@ def legacy_theme_toggle_gate(text: str) -> list:
     return []
 
 
+def theme_switcher_contract_gate(text: str, style: str) -> list:
+    """When the v5.2+ theme CSS is inlined, the visible CSS-only switcher must ship too.
+
+    A past regression in the GitHub-analysis output inlined theme-dark.css but omitted
+    the #ahf-light/#ahf-white/#ahf-dark radio markup, leaving users unable to change
+    light/white/dark modes even though the stylesheet existed. Keep the contract
+    explicit so a CSS-only "support" claim cannot pass without the control surface.
+    """
+    has_theme_css = '.ahf-themebar' in style or '#ahf-dark:checked' in style or 'name=ahf-theme' in style
+    if not has_theme_css:
+        return []
+    issues = []
+    if not re.search(r'<fieldset\b[^>]*class=["\'][^"\']*\bahf-themebar\b', text, re.I):
+        issues.append({'type': 'theme_switcher_missing_fieldset'})
+    _radio_n = len(re.findall(r'<input\b[^>]*name=["\']ahf-theme["\']', text, re.I))
+    if _radio_n < 3:
+        issues.append({'type': 'theme_switcher_radio_count',
+                       'detail': 'name="ahf-theme" 라디오는 최소 3개(light/white/dark)여야 하며 확장 테마(light2/dark2/blue …)를 추가할 수 있다.'})
+    # 5-radio 확장 테마(light2/dark2)를 쓰면 둘 다 있어야 한다(반쪽 확장 금지).
+    _has_l2 = bool(re.search(r'id=["\']ahf-light2["\']', text, re.I))
+    _has_d2 = bool(re.search(r'id=["\']ahf-dark2["\']', text, re.I))
+    if _has_l2 != _has_d2:
+        issues.append({'type': 'theme_switcher_extended_pair',
+                       'detail': '확장 테마는 light2·dark2를 함께 제공해야 한다.'})
+    for _id in ('ahf-light', 'ahf-white', 'ahf-dark'):
+        if not re.search(r'<input\b[^>]*id=["\']' + re.escape(_id) + r'["\'][^>]*name=["\']ahf-theme["\']', text, re.I) \
+           and not re.search(r'<input\b[^>]*name=["\']ahf-theme["\'][^>]*id=["\']' + re.escape(_id) + r'["\']', text, re.I):
+            issues.append({'type': 'theme_switcher_missing_radio', 'id': _id})
+        if not re.search(r'<label\b[^>]*for=["\']' + re.escape(_id) + r'["\']', text, re.I):
+            issues.append({'type': 'theme_switcher_missing_label', 'for': _id})
+    if not re.search(r'<input\b(?=[^>]*id=["\']ahf-light["\'])(?=[^>]*name=["\']ahf-theme["\'])(?=[^>]*\bchecked\b)', text, re.I):
+        issues.append({'type': 'theme_switcher_light_not_default'})
+    return issues
+
+
+def github_analysis_visual_contract_gate(text: str, style: str) -> list:
+    """GitHub-analysis outputs must follow the current showcase visual contract.
+
+    This protects the 14th mode from drifting back to a raw report: latest header
+    rhythm (generated-row/lens-strip), section-card shell, and body icons before
+    numbered headings are all required for `.layout-github`.
+    """
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-github\b', body_only, re.I):
+        return []
+    issues = []
+    if 'generated-row' not in body_only or 'lens-strip' not in body_only:
+        issues.append({'type': 'github_header_generated_row_missing'})
+    if '.layout-github>section' not in style.replace(' ', ''):
+        issues.append({'type': 'github_section_card_css_missing'})
+    if '.body-icon' not in style:
+        issues.append({'type': 'github_body_icons_css_missing'})
+    h2s = re.findall(r'<h2\b[^>]*>[\s\S]*?</h2>', body_only, re.I)
+    numbered = [h for h in h2s if re.search(r'<span\b[^>]*class=["\'][^"\']*\bnum\b', h, re.I)]
+    missing_icon = [h[:120] for h in numbered if not re.search(r'<span\b[^>]*class=["\'][^"\']*\bbody-icon\b', h, re.I)]
+    if missing_icon:
+        issues.append({'type': 'github_numbered_heading_icon_missing',
+                       'count': len(missing_icon),
+                       'detail': missing_icon[:5]})
+    return issues
+
+
+def youtube_analysis_contract_gate(text: str, style: str) -> list:
+    """YouTube-analysis outputs must expose evidence, limits, and no-embed contracts."""
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-youtube\b', body_only, re.I):
+        return []
+    issues = []
+    if '.layout-youtube>section' not in style.replace(' ', ''):
+        issues.append({'type': 'youtube_section_card_css_missing'})
+    if re.search(r'<iframe\b|youtube\.com/embed|youtu\.be/[^\s"\']+[?&]autoplay', body_only, re.I):
+        issues.append({'type': 'youtube_embed_or_autoplay_forbidden'})
+    if not re.search(r'Video Evidence Map|영상\s*근거|근거\s*지도|타임스탬프', body_only, re.I):
+        issues.append({'type': 'youtube_evidence_map_missing'})
+    if not re.search(r'Source Limits|출처\s*한계|확인\s*필요|확인\s*불가', body_only, re.I):
+        issues.append({'type': 'youtube_source_limits_missing'})
+    found = sum(1 for pat in (r'\bFACT\b|사실', r'\bINFERENCE\b|추론', r'\bUNKNOWN\b|확인\s*불가|확인\s*필요') if re.search(pat, body_only, re.I))
+    if found < 2:
+        issues.append({'type': 'youtube_fact_inference_unknown_labels_missing', 'count': found})
+    if not re.search(r'observed_at|분석\s*기준\s*시각|분석\s*기준일', body_only, re.I):
+        issues.append({'type': 'youtube_observed_at_missing'})
+    return issues
+
+
+def manual_analysis_contract_gate(text: str, style: str) -> list:
+    """Manual-analysis outputs must be role-based, executable, and source-bounded."""
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-manual\b', body_only, re.I):
+        return []
+    issues = []
+    if '.layout-manual>section' not in style.replace(' ', ''):
+        issues.append({'type': 'manual_section_card_css_missing'})
+    required = [
+        ('manual_source_version_missing', r'Source\s*&\s*Version|출처.*버전|버전.*출처|source snapshot'),
+        ('manual_role_router_missing', r'Reader\s*Role\s*Router|역할별|독자\s*경로|role router'),
+        ('manual_prerequisites_safety_missing', r'Prerequisites|Safety|사전조건|안전|권한|위험'),
+        ('manual_troubleshooting_missing', r'Troubleshooting|트러블슈팅|문제\s*해결|증상|원인|진단'),
+        ('manual_source_limits_missing', r'Source\s*Limits|출처\s*한계|확인\s*불가|UNKNOWN'),
+    ]
+    for typ, pat in required:
+        if not re.search(pat, body_only, re.I):
+            issues.append({'type': typ})
+    if re.search(r'\bstale\b|오래된|모순', body_only, re.I) and not re.search(r'근거|원문|위치|확인\s*불가', body_only, re.I):
+        issues.append({'type': 'manual_audit_claim_without_source'})
+    return issues
+
+
+def numbered_h2_body_icon_gate(text: str) -> list:
+    """전 모드 공통 시각 정본: 번호 칩(.num/.no)을 단 섹션 h2는 body-icon도 함께 단다.
+    16개 예제가 numbered h2에 body-icon을 ~100% 적용하는 정본을 성문화(github 전용 계약의 전역화).
+    마크업 레벨 검사(인라인 <style>은 제외)."""
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    issues = []
+    for m in re.finditer(r'<h2\b[^>]*>([\s\S]*?)</h2>', body, re.I):
+        inner = m.group(1)
+        if re.search(r'class\s*=\s*["\'][^"\']*\b(?:num|no)\b', inner) and 'body-icon' not in inner:
+            issues.append({'type': 'numbered_h2_missing_body_icon',
+                           'h2': re.sub(r'<[^>]+>', '', inner).strip()[:60],
+                           'detail': '번호 단 섹션 h2는 body-icon→번호→제목 정본을 따른다(예제 전 모드 공통).'})
+    return issues
+
+
+def section_surface_contract_gate(text: str, style: str) -> list:
+    """전 모드 공통: layout-* 콘텐츠 페이지의 주요 섹션은 통일된 card/view surface 위에 둔다.
+    정적 검사 — 통일 섹션 surface 규칙(>section:not(.try) 또는 >article>section의 card 배경)이
+    인라인 CSS에 존재하는지로 회귀를 막는다. .try(검정 hero)는 제외. github 전용 surface 계약의 전역 승격."""
+    if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', text, re.I):
+        return []
+    norm = re.sub(r'\s+', '', style)
+    # 직접 섹션 규칙 .page(-wide)?>section:not(.try) 카드 규칙이어야 한다 — article>section 우회나 :not([class])로는 불충분(직접 섹션이 class 있어도 카드여야 함).
+    if re.search(r'\.page(-wide)?>section:not\(\.try\)[^{]*\{[^}]*background:var\(--card\)', norm):
+        return []
+    return [{'type': 'section_surface_css_missing',
+             'detail': '직접 섹션 통일 surface(.page-wide>section:not(.try) card 규칙) 미인라인 — class 무관 직접 섹션 카드 계약 위반.'}]
+
+
+MODE_DEPTH_MIN_AVG = 400   # visible chars per h2 section on mode pages
+MODE_DEPTH_MIN_H2 = 6      # gate only fires on many-section mode pages
+
+
+def _visible_body_text(text: str) -> str:
+    """Visible prose of the page body: <body> without <style>/<script>, tags stripped,
+    whitespace collapsed. Used by the depth gate."""
+    body = re.search(r'<body\b[^>]*>([\s\S]*?)</body>', text, re.I)
+    body = body.group(1) if body else text
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', body, flags=re.I)
+    body = re.sub(r'<script\b[^>]*>[\s\S]*?</script>', '', body, flags=re.I)
+    return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body)).strip()
+
+
+def mode_depth_gate(text: str) -> list:
+    """Anti wide-and-thin gate. Mode pages (main.layout-*) with many h2 sections must
+    carry per-section prose. Catches the v5.7.0 failure mode where youtube/manual
+    filled 12-13 section skeletons with ~300 visible chars per section while passing
+    every structural gate (SKILL.md §4 정량 하한의 정적 근사)."""
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-[a-z]', body_only, re.I):
+        return []
+    h2 = len(re.findall(r'<h2\b', body_only, re.I))
+    if h2 < MODE_DEPTH_MIN_H2:
+        return []
+    visible = len(_visible_body_text(text))
+    avg = visible // h2
+    if avg < MODE_DEPTH_MIN_AVG:
+        return [{'type': 'mode_section_depth_too_thin', 'h2_count': h2,
+                 'visible_chars': visible, 'avg_per_h2': avg, 'min_avg': MODE_DEPTH_MIN_AVG,
+                 'detail': '섹션 수 대비 본문이 얇다(넓고 얇은 출력). SKILL.md §4 정량 하한 미달 — 섹션을 줄이거나 각 섹션의 근거·해석을 채워 재생성한다.'}]
+    return []
+
+
+def profile_vt_required_gate(text: str, profile: str | None) -> list:
+    """§0.6 계약: diagram/auto 프로파일 출력은 모드 페이지마다 vt- 템플릿을 최소 1회
+    삽입해야 한다. index/galleries(layout- 없는 main)는 대상이 아니다."""
+    if profile not in ('diagram', 'auto'):
+        return []
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-[a-z]', body_only, re.I):
+        return []
+    if re.search(r'class=["\'][^"\']*\bvt-[a-z]', body_only, re.I):
+        return []
+    return [{'type': 'profile_vt_template_missing', 'profile': profile,
+             'detail': 'diagram/auto 프로파일 모드 페이지에 vt- 템플릿이 없다. §0.6 해당 모드 행의 1순위 vt-템플릿을 최소 1회 삽입한다.'}]
+
+
+MODE_TEMPLATE_CONTRACTS = {
+    'layout-beginner': {
+        'mode': 'beginner_html',
+        'primary_vt': 'concept-explainer',
+        'vt_markers': (r'\bconcept-ring\b',),
+        'recommended_wg': ('wg-10', 'wg-13', 'wg-15'),
+    },
+    'layout-expert': {
+        'mode': 'expert_html',
+        'primary_vt': 'risk-matrix',
+        'vt_markers': (r'\brm-grid\b',),
+        'recommended_wg': ('wg-03', 'wg-04', 'wg-11', 'wg-12', 'wg-16', 'wg-17'),
+    },
+    'layout-article': {
+        'mode': 'article_html',
+        'primary_vt': 'decision-tree',
+        'vt_markers': (r'\bdt-q\b', r'\bdt-options\b'),
+        'recommended_wg': ('wg-02', 'wg-04', 'wg-07', 'wg-09', 'wg-10', 'wg-13', 'wg-14'),
+    },
+    'layout-education': {
+        'mode': 'education_html',
+        'primary_vt': 'timeline',
+        'vt_markers': (r'\btl-item\b',),
+        'recommended_wg': ('wg-06', 'wg-07', 'wg-08', 'wg-13', 'wg-14', 'wg-15', 'wg-20'),
+    },
+    'layout-blog': {
+        'mode': 'blog_writer',
+        'primary_vt': 'timeline',
+        'vt_markers': (r'\btl-item\b',),
+        'recommended_wg': ('wg-17',),
+    },
+    'layout-seo': {
+        'mode': 'seo_dashboard',
+        'primary_vt': 'card-grid',
+        'vt_markers': (r'\bcg-grid\b',),
+        'recommended_wg': ('wg-11',),
+    },
+    'layout-platform': {
+        'mode': 'platform_blog',
+        'primary_vt': 'card-grid',
+        'vt_markers': (r'\bcg-grid\b',),
+        'recommended_wg': ('wg-02',),
+    },
+    'layout-audit': {
+        'mode': 'skill_audit',
+        'primary_vt': 'quality-gate',
+        'vt_markers': (r'\bqg-grid\b',),
+        'recommended_wg': ('wg-03', 'wg-11', 'wg-17'),
+    },
+    'layout-reference': {
+        'mode': 'reference_html',
+        'primary_vt': 'file-tour',
+        'vt_markers': (r'\bft-card\b',),
+        'recommended_wg': ('wg-04', 'wg-05', 'wg-06', 'wg-14', 'wg-19', 'wg-20'),
+    },
+    'layout-compare': {
+        'mode': 'comparison_html',
+        'primary_vt': 'comparison-cards',
+        'vt_markers': (r'\bcmp-card\b',),
+        'recommended_wg': ('wg-01', 'wg-02'),
+    },
+    'layout-case': {
+        'mode': 'case_study_html',
+        'primary_vt': 'incident-summary',
+        'vt_markers': (r'\binc-head\b', r'\binc-card\b'),
+        'recommended_wg': ('wg-12',),
+    },
+    'layout-landing': {
+        'mode': 'landing_brief_html',
+        'primary_vt': 'hero-map',
+        'vt_markers': (r'\bhm-grid\b',),
+        'recommended_wg': ('wg-02', 'wg-05', 'wg-08', 'wg-09', 'wg-16'),
+    },
+    'layout-checklist': {
+        'mode': 'checklist_playbook',
+        'primary_vt': 'checklist-flow',
+        'vt_markers': (r'\bcf-item\b',),
+        'recommended_wg': ('wg-11', 'wg-13', 'wg-16', 'wg-18', 'wg-19'),
+    },
+    'layout-github': {
+        'mode': 'github_analysis',
+        'primary_vt': 'hero-map',
+        'vt_markers': (r'\bhm-grid\b',),
+        'recommended_wg': ('wg-11', 'wg-04', 'wg-14', 'wg-16', 'wg-17', 'wg-18'),
+    },
+    'layout-youtube': {
+        'mode': 'youtube_analysis',
+        'primary_vt': 'timeline',
+        'vt_markers': (r'\btl-item\b',),
+        'recommended_wg': ('wg-11', 'wg-13', 'wg-14', 'wg-16', 'wg-18'),
+    },
+    'layout-manual': {
+        'mode': 'manual_analysis',
+        'primary_vt': 'hero-map',
+        'vt_markers': (r'\bhm-grid\b',),
+        'recommended_wg': ('wg-04', 'wg-13', 'wg-16', 'wg-18', 'wg-11', 'wg-14'),
+    },
+}
+
+
+def _mode_contract_for_main(text: str) -> tuple[str | None, dict | None]:
+    main = re.search(r'<main\b([^>]*)>', text, re.I)
+    if not main:
+        return None, None
+    attrs = main.group(1)
+    for layout_class, contract in MODE_TEMPLATE_CONTRACTS.items():
+        if re.search(r'class\s*=\s*["\'][^"\']*\b' + re.escape(layout_class) + r'\b', attrs, re.I):
+            return layout_class, contract
+    return None, None
+
+
+def mode_template_contract_gate(text: str, profile: str | None) -> list:
+    """§0.6 mode-specific proof gate.
+
+    `profile_vt_required_gate` only proves that *some* vt template exists. This gate
+    locks the canonical mode row: diagram/auto must include that mode's 1st-priority
+    vt marker, and widget/auto must include at least one recommended `wg-NN-` marker.
+    It prevents 16-mode examples from silently falling back to one generic card/list
+    structure while still passing broad structural checks.
+    """
+    if profile not in ('widget', 'diagram', 'auto'):
+        return []
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    _layout, contract = _mode_contract_for_main(body_only)
+    if not contract:
+        return []
+    issues = []
+    if profile in ('diagram', 'auto'):
+        has_primary_vt = any(re.search(pat, body_only, re.I) for pat in contract['vt_markers'])
+        if not (re.search(r'class=["\'][^"\']*\bvt-(?:shell|frame)\b', body_only, re.I) and has_primary_vt):
+            issues.append({'type': 'mode_primary_vt_missing',
+                           'mode': contract['mode'],
+                           'expected': contract['primary_vt'],
+                           'detail': 'auto/diagram 출력은 해당 모드 결정표의 1순위 vt 템플릿을 최소 1회 포함해야 한다.'})
+    if profile in ('widget', 'auto'):
+        found = [wg for wg in contract['recommended_wg']
+                 if re.search(r'class=["\'][^"\']*\b' + re.escape(wg) + r'(?:-|\\b)', body_only, re.I)]
+        if not found:
+            issues.append({'type': 'mode_recommended_wg_missing',
+                           'mode': contract['mode'],
+                           'expected_any': list(contract['recommended_wg']),
+                           'detail': 'auto/widget 출력은 해당 모드의 권장 wg 위젯 중 최소 1개를 포함해야 한다(예제/쇼케이스 품질 계약).'})
+    return issues
+
+
+def direct_section_title_icon_policy_gate(text: str) -> list:
+    """Every direct content section must expose a visible h2 with a body icon.
+
+    Earlier gates checked only h2s that already existed, allowing titleless
+    summary/verdict/toc cards to slip through. Current examples treat every direct
+    view surface as a titled card: `body-icon → (num/no) → title`. `.try` keeps its
+    own dark CTA treatment but still goes through the same h2 icon check below.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    main_open = re.search(r'<main\b([^>]*)>', body, re.I)
+    if not main_open or not re.search(r'class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', main_open.group(1), re.I):
+        return []
+    main_inner = _inner_html(body, main_open.end(), 'main')
+    candidates = list(_direct_child_blocks(main_inner, 'section'))
+    for _article_attrs, article_inner in _direct_child_blocks(main_inner, 'article'):
+        candidates.extend(_direct_child_blocks(article_inner, 'section'))
+    issues = []
+    for attrs, inner in candidates:
+        h2 = re.search(r'<h2\b[^>]*>([\s\S]*?)</h2>', inner, re.I)
+        if not h2:
+            cm = re.search(r'class\s*=\s*["\']([^"\']*)', attrs)
+            issues.append({'type': 'direct_section_h2_missing',
+                           'class': cm.group(1) if cm else '',
+                           'detail': '직접 콘텐츠 섹션은 제목 없는 카드로 시작하지 않는다. h2 + body-icon을 추가한다.'})
+            continue
+        if 'body-icon' not in h2.group(1):
+            issues.append({'type': 'direct_section_h2_missing_body_icon',
+                           'h2': re.sub(r'<[^>]+>', '', h2.group(1)).strip()[:50],
+                           'detail': '직접 콘텐츠 섹션 첫 h2는 body-icon→(num)→title 정본을 따른다(아이콘 필수).'})
+    return issues
+
+
+def body_icon_diversity_gate(text: str) -> list:
+    """Guard against one SVG icon being stamped onto every section title."""
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-[a-z-]+', body, re.I):
+        return []
+    svgs = []
+    for h2 in re.findall(r'<h2\b[^>]*>[\s\S]*?</h2>', body, re.I):
+        if 'body-icon' not in h2:
+            continue
+        m = re.search(r'<span\b[^>]*class=["\'][^"\']*\bbody-icon\b[\s\S]*?<svg\b[\s\S]*?</svg>\s*</span>', h2, re.I)
+        if m:
+            svgs.append(hashlib.sha1(m.group(0).encode('utf-8')).hexdigest())
+    if len(svgs) < 6:
+        return []
+    unique = len(set(svgs))
+    min_unique = 5 if len(svgs) >= 9 else 4
+    if unique < min_unique:
+        return [{'type': 'body_icon_diversity_too_low',
+                 'count': len(svgs),
+                 'unique': unique,
+                 'min_unique': min_unique,
+                 'detail': '섹션 의미별 body-icon을 구분해야 한다. 동일 SVG 반복 주입은 금지.'}]
+    return []
+
+
 def _inner_html(text: str, open_end: int, tag: str) -> str:
     """Inner HTML of the element whose opening tag ends at open_end, by balancing nested
     <tag>/</tag>. Falls back to a bounded window if the tag never closes (malformed)."""
     depth = 1
-    window = text[open_end:open_end + 20000]
+    # Generated examples can legitimately exceed 20k after CSS/template proof sections.
+    # A short window truncated `<main>` and made early direct sections look titleless.
+    window = text[open_end:]
     for mm in re.finditer(r'<(/?)' + re.escape(tag) + r'\b', window, re.I):
         depth += -1 if mm.group(1) else 1
         if depth == 0:
             return window[:mm.start()]
-    return window[:1800]
+    return window[:200000]
 
 
 def role_img_buries_text_gate(text: str) -> list:
@@ -418,6 +825,223 @@ def skill_asset_lint(skill_dir: Path) -> list:
     return issues
 
 
+def changelog_duplicate_versions(changelog_text: str) -> list:
+    """Pure correctness: a CHANGELOG must not repeat a version header. Returns the
+    list of versions that appear more than once (in file order, de-duplicated)."""
+    seen, dups, out = set(), set(), []
+    for ver in re.findall(r'(?m)^##\s+v(\d+\.\d+\.\d+)\b', changelog_text):
+        if ver in seen and ver not in dups:
+            dups.add(ver); out.append(ver)
+        seen.add(ver)
+    return out
+
+
+def examples_fidelity_conflict(skill_md: str, manifest_json: str) -> bool:
+    """Pure correctness: SKILL.md and manifest must not describe the examples with
+    opposite fidelity adjectives (one '경량/lightweight', the other '풀 스킬급/full
+    skill-grade'). This is the SKILL.md↔manifest contradiction that no other gate saw.
+    Intentionally NOT a length/trigger heuristic — only a same-subject contradiction."""
+    def fid(text):
+        light = bool(re.search(r'경량\s*참조\s*예제|light\s*weight|lightweight', text, re.I))
+        full = bool(re.search(r'풀\s*스킬급|full[-\s]*skill[-\s]*grade', text, re.I))
+        return light, full
+    s_light, s_full = fid(skill_md)
+    m_light, m_full = fid(manifest_json)
+    return (s_light and m_full) or (s_full and m_light)
+
+
+def skill_doc_consistency_gate(skill_dir: Path) -> list:
+    """Source-doc correctness gate (run when --skill-dir given). Catches the editorial
+    drift the value/hash/count gates structurally cannot: duplicate CHANGELOG versions
+    and SKILL.md↔manifest examples-fidelity contradiction. No length/trigger rules."""
+    issues = []
+    changelog = skill_dir / 'CHANGELOG.md'
+    if changelog.exists():
+        for ver in changelog_duplicate_versions(changelog.read_text(encoding='utf-8')):
+            issues.append({'type': 'changelog_duplicate_version', 'version': ver})
+    skill_md_p, manifest_p = skill_dir / 'SKILL.md', skill_dir / 'manifest.json'
+    if skill_md_p.exists() and manifest_p.exists():
+        if examples_fidelity_conflict(skill_md_p.read_text(encoding='utf-8'),
+                                      manifest_p.read_text(encoding='utf-8')):
+            issues.append({'type': 'examples_fidelity_contradiction',
+                           'detail': 'SKILL.md와 manifest가 examples를 경량 vs 풀 스킬급으로 상반 서술.'})
+    return issues
+
+
+def _direct_child_blocks(html: str, tag: str):
+    """Yield (attrs, inner_html) for direct child blocks of `tag` in an HTML fragment.
+
+    Regex-only gates previously treated nested widget `<section>` blocks as if
+    they were direct layout sections. The visual contract is intentionally
+    scoped to `main > section` and `main > article > section`; widgets nested
+    inside those sections keep their own namespace/title system.
+    """
+    depth = 0
+    tag_l = tag.lower()
+    void_tags = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
+    token_re = re.compile(r'<(/?)([a-zA-Z][\w:-]*)([^>]*)>', re.I)
+    for m in token_re.finditer(html):
+        closing = bool(m.group(1))
+        name = m.group(2).lower()
+        attrs = m.group(3) or ''
+        self_closing = attrs.rstrip().endswith('/') or name in void_tags
+        if not closing and name == tag_l and depth == 0:
+            yield attrs, _inner_html(html, m.end(), tag_l)
+        if closing:
+            depth = max(depth - 1, 0)
+        elif not self_closing:
+            depth += 1
+
+
+def direct_section_h2_icon_gate(text: str) -> list:
+    """전 모드 공통: layout-*의 직접 콘텐츠 섹션 첫 h2는 body-icon을 가진다.
+
+    범위는 `main > section` 및 `main > article > section`이다. 위젯/비주얼 템플릿이
+    콘텐츠 섹션 내부에 자체 `<section>`을 쓰는 것은 별도 네임스페이스 계약이므로
+    여기서 직접 섹션으로 오판하지 않는다.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    main_open = re.search(r'<main\b([^>]*)>', body, re.I)
+    if not main_open or not re.search(r'class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', main_open.group(1), re.I):
+        return []
+    main_inner = _inner_html(body, main_open.end(), 'main')
+    candidates = list(_direct_child_blocks(main_inner, 'section'))
+    for _article_attrs, article_inner in _direct_child_blocks(main_inner, 'article'):
+        candidates.extend(_direct_child_blocks(article_inner, 'section'))
+    issues = []
+    for attrs, inner in candidates:
+        cm = re.search(r'class\s*=\s*["\']([^"\']*)', attrs)
+        cls = cm.group(1) if cm else ''
+        if 'try' in cls.split():
+            continue
+        h2 = re.search(r'<h2\b[^>]*>([\s\S]*?)</h2>', inner, re.I)
+        if h2 and 'body-icon' not in h2.group(1):
+            issues.append({'type': 'direct_section_h2_missing_body_icon',
+                           'h2': re.sub(r'<[^>]+>', '', h2.group(1)).strip()[:50],
+                           'detail': '직접 콘텐츠 섹션 첫 h2는 body-icon→(num)→title 정본을 따른다(아이콘 필수).'})
+    return issues
+
+
+
+
+def toc_map_contract_gate(text: str) -> list:
+    """toc-map 목차는 정본 chip-nav 구조를 써야 한다.
+
+    `.toc-map` 안에 bare `<a>`만 넣으면 CSS가 `.toc-pill`에 걸리지 않아
+    번호와 텍스트가 붙은 밑줄 링크로 렌더링된다. 정본은
+    `.toc-map` + `.toc-pills` + `a.toc-pill > b` 구조다.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    issues = []
+    for m in re.finditer(r'<(?P<tag>section|nav|div|ol|ul)\b(?P<attrs>[^>]*)class\s*=\s*["\'][^"\']*\btoc-map\b[^"\']*["\'][^>]*>', body, re.I):
+        inner = _inner_html(body, m.end(), m.group('tag').lower())
+        if 'toc-pills' not in inner or 'toc-pill' not in inner:
+            issues.append({'type': 'toc_map_contract_missing_pills',
+                           'detail': 'toc-map은 .toc-pills 래퍼와 a.toc-pill 항목을 써야 한다. bare <a><span>…</span> 구조는 목차가 붙어 보이는 회귀를 만든다.'})
+            continue
+        bad_links = re.findall(r'<a\b(?![^>]*class\s*=\s*["\'][^"\']*\btoc-pill\b)', inner, re.I)
+        if bad_links:
+            issues.append({'type': 'toc_map_contract_bare_link',
+                           'detail': 'toc-map 내부 링크는 모두 class="toc-pill"이어야 한다.'})
+        if re.search(r'<a\b[^>]*class\s*=\s*["\'][^"\']*\btoc-pill\b[^>]*>(?![\s\S]*?<b>)', inner, re.I):
+            issues.append({'type': 'toc_map_contract_missing_number_badge',
+                           'detail': 'toc-pill은 번호 배지 <b>N</b>를 포함해야 한다.'})
+    return issues
+
+
+
+
+def expert_decision_grid_section_gate(text: str) -> list:
+    """Expert layout regression guard: `.decision-grid` is an inner grid helper, not a direct section class.
+
+    If a direct expert section uses class `decision-grid`, the global grid selector can turn
+    the whole section into columns and push content into the first column, causing large blank
+    space and mobile overflow. Use `section.decision-section` + inner `.expert-inner-grid` or
+    `div.decision-grid` instead.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    main_open = re.search(r'<main\b([^>]*)>', body, re.I)
+    if not main_open or not re.search(r'class\s*=\s*["\'][^"\']*\blayout-expert\b', main_open.group(1), re.I):
+        return []
+    main_inner = _inner_html(body, main_open.end(), 'main')
+    for attrs, _inner in _direct_child_blocks(main_inner, 'section'):
+        cm = re.search(r'class\s*=\s*["\']([^"\']*)', attrs)
+        cls = cm.group(1).split() if cm else []
+        if 'decision-grid' in cls:
+            return [{'type': 'expert_decision_grid_section_collision',
+                     'detail': 'layout-expert 직접 section에 decision-grid class 금지. section은 decision-section, grid는 내부 wrapper(.expert-inner-grid/div.decision-grid)에 둔다.'}]
+    return []
+
+
+def expert_validation_checklist_widget_gate(text: str) -> list:
+    """Expert validation checklist is an evidence/checklist section, not a PR/release section.
+
+    `wg-03`(Annotated PR) and `wg-17`(PR Writeup) are valid expert widgets, but nesting
+    them inside `.validation-checklist` makes the completion-evidence section render as
+    a long code-review/release-note block. Keep those widgets in their own review/release
+    sections and keep validation to evidence matrix / quality-gate / checklist content.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    main_open = re.search(r'<main\b([^>]*)>', body, re.I)
+    if not main_open or not re.search(r'class\s*=\s*["\'][^"\']*\blayout-expert\b', main_open.group(1), re.I):
+        return []
+    main_inner = _inner_html(body, main_open.end(), 'main')
+    issues = []
+    for attrs, inner in _direct_child_blocks(main_inner, 'section'):
+        cm = re.search(r'class\s*=\s*["\']([^"\']*)', attrs)
+        cls = cm.group(1).split() if cm else []
+        if 'validation-checklist' not in cls:
+            continue
+        if re.search(r'class\s*=\s*["\'][^"\']*\bwg-(?:03|17)\b', inner, re.I):
+            issues.append({'type': 'expert_validation_widget_misuse',
+                           'detail': 'layout-expert .validation-checklist 안에 wg-03/wg-17 금지. 검증 섹션은 완료 기준·명령 증빙·렌더 증빙·판정 전용으로 유지한다.'})
+    return issues
+
+
+def header_contract_gate(text: str) -> list:
+    """고정 계약(필수): layout-* 콘텐츠 페이지는 상단에 정본 <header class="header">를 갖는다 —
+    kicker + h1(1) + sub + meta. generated-row는 권고. 헤더 형태를 고정해 모드·내용 무관하게
+    시작부가 일관되게 보이도록(자유 본문 앞 불변부)."""
+    if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', text, re.I):
+        return []
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    hm = re.search(r'<header\b[^>]*class\s*=\s*["\'][^"\']*\bheader\b', body, re.I)
+    if not hm:
+        return [{'type': 'header_contract_missing_header', 'detail': '정본 <header class="header"> 없음(헤더 형태 고정 위반).'}]
+    gt = body.find('>', hm.start())
+    header_inner = _inner_html(body, gt + 1, 'header')
+    issues = []
+    for name, pat in (('kicker', r'class\s*=\s*["\'][^"\']*\bkicker\b'),
+                      ('sub', r'class\s*=\s*["\'][^"\']*\bsub\b'),
+                      ('meta', r'class\s*=\s*["\'][^"\']*\bmeta\b')):
+        if not re.search(pat, header_inner, re.I):
+            issues.append({'type': 'header_contract_missing_part', 'part': name,
+                           'detail': '정본 헤더 고정: kicker·h1·sub·meta 필요 — .%s 누락.' % name})
+    if not re.search(r'<h1\b', header_inner, re.I):
+        issues.append({'type': 'header_contract_missing_part', 'part': 'h1', 'detail': '정본 헤더에 h1 누락.'})
+    return issues
+
+
+def closing_summary_recommendation(text: str) -> list:
+    """권고(warning, 강제 아님): layout-* 페이지의 마지막 직접 섹션은 정리/Next-Actions(.try) 형태를 권한다.
+    마무리 섹션 형태 일관성 권고 — 없어도 실패는 아님."""
+    if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', text, re.I):
+        return []
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    mo = re.search(r'<main\b[^>]*>', body, re.I)
+    if not mo:
+        return []
+    main_inner = _inner_html(body, mo.end(), 'main')
+    secs = list(_direct_child_blocks(main_inner, 'section'))
+    if not secs:
+        return []
+    cm = re.search(r'class\s*=\s*["\']([^"\']*)', secs[-1][0])
+    if not cm or 'try' not in cm.group(1).split():
+        return [{'type': 'closing_summary_recommended',
+                 'detail': '마지막 정리 섹션(.try Next Actions) 권고 — 마무리 일관성(권고, 강제 아님).'}]
+    return []
+
+
 def validate(root: Path, skill_dir: Path | None = None, profile: str | None = None) -> dict:
     issues = []
     warnings = []
@@ -425,6 +1049,7 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
     expected_css_hash = None
     expected_asset_hashes = None
     all_skill_css_hashes = None
+    asset_texts = {}
     asset_order = ['theme.css', 'components.css', 'visual-components.css', 'layouts.css', 'print.css']
     conditional_order = ['widgets.css', 'visual-html.css', 'body-icons.css', 'editorial-patterns.css', 'shape-visuals.css', 'workflow-visuals.css', 'theme-dark.css']
     if skill_dir:
@@ -467,6 +1092,33 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
                 issues.append({'page': rel, 'type': 'missing_inline_css_hash_marker'})
             elif m.group(1) != expected_css_hash:
                 issues.append({'page': rel, 'type': 'inline_css_hash_mismatch', 'expected': expected_css_hash, 'actual': m.group(1)})
+            for name in asset_order:
+                if asset_texts.get(name) and asset_texts[name] not in style:
+                    issues.append({'page': rel, 'type': 'inline_core_css_not_verbatim', 'asset': name,
+                                   'detail': '코어 CSS는 asset 원문을 byte-for-byte 인라인해야 한다.'})
+        if skill_dir:
+            theme_dark_path = skill_dir / 'assets' / 'theme-dark.css'
+            if theme_dark_path.exists():
+                theme_dark_text = theme_dark_path.read_text(encoding='utf-8')
+                if theme_dark_text not in style:
+                    issues.append({'page': rel, 'type': 'theme_dark_css_not_inlined',
+                                   'detail': 'theme-dark.css는 print.css 뒤 맨끝에 항상 원문 인라인해야 한다.'})
+            profile_assets = {
+                'widget': {'required': ['widgets.css'], 'forbidden': ['visual-html.css']},
+                'diagram': {'required': ['visual-html.css'], 'forbidden': ['widgets.css']},
+                'auto': {'required': ['widgets.css', 'visual-html.css'], 'forbidden': []},
+            }.get(declared_profile)
+            if profile_assets:
+                for name in profile_assets['required']:
+                    p = skill_dir / 'assets' / name
+                    if p.exists() and p.read_text(encoding='utf-8') not in style:
+                        issues.append({'page': rel, 'type': 'profile_required_css_not_inlined',
+                                       'profile': declared_profile, 'asset': name})
+                for name in profile_assets['forbidden']:
+                    p = skill_dir / 'assets' / name
+                    if p.exists() and p.read_text(encoding='utf-8') in style:
+                        issues.append({'page': rel, 'type': 'profile_forbidden_css_inlined',
+                                       'profile': declared_profile, 'asset': name})
         if re.search(r'(?:caption|\.caption)[^{]*\{[^}]*margin-[^:]+:\s*-', style, re.I|re.S) or re.search(r'(?:caption|\.caption)[^{]*\{[^}]*margin\s*:[^;}]*-', style, re.I|re.S):
             issues.append({'page': rel, 'type': 'caption_negative_margin'})
         # Known old regression: semantic section wrapper classes must not be direct grid/card selectors.
@@ -514,6 +1166,54 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for tg_issue in legacy_theme_toggle_gate(text):
             tg_issue['page'] = rel
             issues.append(tg_issue)
+        for ts_issue in theme_switcher_contract_gate(text, style):
+            ts_issue['page'] = rel
+            issues.append(ts_issue)
+        for gh_issue in github_analysis_visual_contract_gate(text, style):
+            gh_issue['page'] = rel
+            issues.append(gh_issue)
+        for yt_issue in youtube_analysis_contract_gate(text, style):
+            yt_issue['page'] = rel
+            issues.append(yt_issue)
+        for man_issue in manual_analysis_contract_gate(text, style):
+            man_issue['page'] = rel
+            issues.append(man_issue)
+        for icon_issue in numbered_h2_body_icon_gate(text):
+            icon_issue['page'] = rel
+            issues.append(icon_issue)
+        for surf_issue in section_surface_contract_gate(text, style):
+            surf_issue['page'] = rel
+            issues.append(surf_issue)
+        for dsi_issue in direct_section_title_icon_policy_gate(text):
+            dsi_issue['page'] = rel
+            issues.append(dsi_issue)
+        for div_issue in body_icon_diversity_gate(text):
+            div_issue['page'] = rel
+            issues.append(div_issue)
+        for hdr_issue in header_contract_gate(text):
+            hdr_issue['page'] = rel
+            issues.append(hdr_issue)
+        for cls_warn in closing_summary_recommendation(text):
+            cls_warn['page'] = rel
+            warnings.append(cls_warn)
+        for toc_issue in toc_map_contract_gate(text):
+            toc_issue['page'] = rel
+            issues.append(toc_issue)
+        for expert_grid_issue in expert_decision_grid_section_gate(text):
+            expert_grid_issue['page'] = rel
+            issues.append(expert_grid_issue)
+        for expert_val_issue in expert_validation_checklist_widget_gate(text):
+            expert_val_issue['page'] = rel
+            issues.append(expert_val_issue)
+        for dp_issue in mode_depth_gate(text):
+            dp_issue['page'] = rel
+            issues.append(dp_issue)
+        for vtm_issue in profile_vt_required_gate(text, declared_profile):
+            vtm_issue['page'] = rel
+            issues.append(vtm_issue)
+        for mtc_issue in mode_template_contract_gate(text, declared_profile):
+            mtc_issue['page'] = rel
+            issues.append(mtc_issue)
         for ri_issue in role_img_buries_text_gate(text):
             ri_issue['page'] = rel
             issues.append(ri_issue)
@@ -629,7 +1329,7 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
                                'detail': 'table{min-width:420px}이라 390px에서 넘침. .table-scroll로 감싸거나 반응형 표(mobile-card/final-matrix) 사용.'})
                 break
         # R5: wide-report layouts must carry the prose width override (else body prose is capped at ~2/3).
-        wide = re.search(r'class=["\'][^"\']*\blayout-(expert|compare|seo|platform|landing|case|checklist|reference|audit|skill-audit)\b', text)
+        wide = re.search(r'class=["\'][^"\']*\blayout-(expert|github|youtube|manual|compare|seo|platform|landing|case|checklist|reference|audit|skill-audit)\b', text)
         if wide and '.page-wide>section>p' in style:
             if 'max-width:60rem' not in style.replace(' ', ''):
                 issues.append({'page': rel, 'type': 'wide_layout_prose_cap_missing',
@@ -719,6 +1419,9 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         # Phase 0 merge-protection lints on the skill's own CSS assets.
         for a_issue in skill_asset_lint(skill_dir):
             issues.append(a_issue)
+        # Source-doc correctness (duplicate CHANGELOG versions, SKILL↔manifest contradiction).
+        for d_issue in skill_doc_consistency_gate(skill_dir):
+            issues.append(d_issue)
     return {'root': str(root), 'profile': declared_profile, 'html_count': len(htmls), 'issues': issues, 'warnings': warnings, 'ok': not issues}
 
 
@@ -727,7 +1430,7 @@ def main():
     ap.add_argument('output_dir', type=Path)
     ap.add_argument('--skill-dir', type=Path)
     ap.add_argument('--json', action='store_true')
-    ap.add_argument('--profile', default=None, help='widget|diagram|auto (or style alias v5|v6). 미지정 시 sources/profile.json → 폴백(교차 게이트 미적용)')
+    ap.add_argument('--profile', default=None, help='widget|diagram|auto (or style alias v5|v6). sources/profile.json 필수, 둘 다 지정 시 일치해야 함')
     ns = ap.parse_args()
     result = validate(ns.output_dir.resolve(), ns.skill_dir.resolve() if ns.skill_dir else None, ns.profile)
     if ns.json:

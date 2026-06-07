@@ -1,0 +1,131 @@
+{
+  "section2": {
+    "tag": "SECTION",
+    "className": "decision-section",
+    "id": "",
+    "text": "2 Decision Cards · 도입 판단 4가지 각 판단은 근거와 실행 포인트를 함께 가져야 운영 의사결정에 쓸 수 있습니다. 01 · 1모드 1턴 고정 판단: 대량 생성은 품질보다 속도를 최적화해 공통 구조 복사를 재발시킵니다. 실행: tracker의 last_completed와 next_mode를 근거로 한 모드만 완료 처리합니다. 02 · 생성과 검증 분리 판단: 생성자가 자기 결과를 바로 통과 처리하면 전문성 결함을 과소평가합니다. 실행: static, quality, browser gate 결과를 각각 evidence에 남깁니다. 03 · layout-first 강제 판단: layout 클래스만 붙인 자유형 main은 최신 스킬 결과물이 아닙니다. 실행: slot를 먼저 매핑하고 추가 블록은 해당 섹션 내부에만 넣습니다. 04 · 중간 성공과 전체 성공 분리 판단: 한 페이지가 통과해도 잔여 페이지가 남으면 목표는 미완성입니다. 실행: isolated OK, full OK, residual issue count를 함께 기록합니다. 작업 R A C I 모드별 생성 Mode owner Editor lead Layout QA Requester 정적 게",
+    "rect": {
+      "x": 130,
+      "y": 1105.890625,
+      "width": 1020,
+      "height": 895.296875
+    },
+    "display": "block",
+    "gridTemplateColumns": "none",
+    "gap": "normal",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(26, 26, 26)",
+    "border": "1px solid rgb(216, 216, 208)",
+    "padding": "22px 24px"
+  },
+  "h2": "2 Decision Cards · 도입 판단 4가지",
+  "h2Icon": true,
+  "grid": {
+    "tag": "DIV",
+    "className": "expert-inner-grid",
+    "id": "",
+    "text": "01 · 1모드 1턴 고정 판단: 대량 생성은 품질보다 속도를 최적화해 공통 구조 복사를 재발시킵니다. 실행: tracker의 last_completed와 next_mode를 근거로 한 모드만 완료 처리합니다. 02 · 생성과 검증 분리 판단: 생성자가 자기 결과를 바로 통과 처리하면 전문성 결함을 과소평가합니다. 실행: static, quality, browser gate 결과를 각각 evidence에 남깁니다. 03 · layout-first 강제 판단: layout 클래스만 붙인 자유형 main은 최신 스킬 결과물이 아닙니다. 실행: slot를 먼저 매핑하고 추가 블록은 해당 섹션 내부에만 넣습니다. 04 · 중간 성공과 전체 성공 분리 판단: 한 페이지가 통과해도 잔여 페이지가 남으면 목표는 미완성입니다. 실행: isolated OK, full OK, residual issue count를 함께 기록합니다.",
+    "rect": {
+      "x": 155,
+      "y": 1292.6875,
+      "width": 970,
+      "height": 340.546875
+    },
+    "display": "grid",
+    "gridTemplateColumns": "478px 478px",
+    "gap": "14px",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(26, 26, 26)",
+    "border": "0px none rgb(26, 26, 26)",
+    "padding": "0px"
+  },
+  "cards": [
+    {
+      "index": 1,
+      "text": "01 · 1모드 1턴 고정 판단: 대량 생성은 품질보다 속도를 최적화해 공통 구조 복사를 재발시킵니다. 실행: tracker의 last_completed와 next_mode를 근거로 한 모드만 완료 처리합니다.",
+      "rect": {
+        "x": 155,
+        "y": 1292.6875,
+        "width": 478,
+        "height": 177.21875
+      },
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "pColor": "rgb(74, 74, 74)"
+    },
+    {
+      "index": 2,
+      "text": "02 · 생성과 검증 분리 판단: 생성자가 자기 결과를 바로 통과 처리하면 전문성 결함을 과소평가합니다. 실행: static, quality, browser gate 결과를 각각 evidence에 남깁니다.",
+      "rect": {
+        "x": 647,
+        "y": 1292.6875,
+        "width": 478,
+        "height": 177.21875
+      },
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "pColor": "rgb(74, 74, 74)"
+    },
+    {
+      "index": 3,
+      "text": "03 · layout-first 강제 판단: layout 클래스만 붙인 자유형 main은 최신 스킬 결과물이 아닙니다. 실행: slot를 먼저 매핑하고 추가 블록은 해당 섹션 내부에만 넣습니다.",
+      "rect": {
+        "x": 155,
+        "y": 1483.90625,
+        "width": 478,
+        "height": 149.328125
+      },
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "pColor": "rgb(74, 74, 74)"
+    },
+    {
+      "index": 4,
+      "text": "04 · 중간 성공과 전체 성공 분리 판단: 한 페이지가 통과해도 잔여 페이지가 남으면 목표는 미완성입니다. 실행: isolated OK, full OK, residual issue count를 함께 기록합니다.",
+      "rect": {
+        "x": 647,
+        "y": 1483.90625,
+        "width": 478,
+        "height": 149.328125
+      },
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "pColor": "rgb(74, 74, 74)"
+    }
+  ],
+  "raci": {
+    "tag": "SECTION",
+    "className": "vt-shell",
+    "id": "",
+    "text": "작업 R A C I 모드별 생성 Mode owner Editor lead Layout QA Requester 정적 게이트 QA agent Skill owner CSS owner Mode owner 시각 검수 Design QA Editor lead Browser QA Requester 회귀 승인 Integrator Skill owner All mode owners Team",
+    "rect": {
+      "x": 155,
+      "y": 1651.234375,
+      "width": 970,
+      "height": 326.953125
+    },
+    "display": "block",
+    "gridTemplateColumns": "none",
+    "gap": "normal",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(26, 26, 26)",
+    "border": "1px solid rgb(216, 216, 208)",
+    "padding": "24px"
+  },
+  "directSectionClass": "decision-section",
+  "overflowX": false,
+  "scrollWidth": 1280,
+  "clientWidth": 1280,
+  "mobile": {
+    "overflowX": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "sectionRect": {
+      "x": 16,
+      "y": -226.796875,
+      "width": 358,
+      "height": 1453.609375
+    },
+    "gridColumns": "155px 155px"
+  }
+}

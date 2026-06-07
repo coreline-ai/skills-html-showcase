@@ -1,0 +1,42 @@
+{
+  "mode": "16_checklist_playbook",
+  "topic": "Feature Flag Release Safety Playbook",
+  "file": "pages/16_checklist_feature_flag_release_safety_playbook.html",
+  "layout": "checklist-playbook.html",
+  "recipe": "recipes/checklist.prompt.md",
+  "profile": "auto",
+  "vt_templates": [
+    "05-checklist-flow",
+    "06-quality-gate",
+    "14-process-swimlane",
+    "16-implementation-plan",
+    "18-triage-board"
+  ],
+  "wg_widgets": [
+    "13-annotated-flowchart",
+    "18-ticket-triage-board",
+    "19-feature-flag-editor"
+  ],
+  "fresh_context_policy": {
+    "previous_html_body_reused": false,
+    "common_content_generator_used": false,
+    "mode_specific_files_read": [
+      "recipes/checklist.prompt.md",
+      "assets/layouts/checklist-playbook.html",
+      "references/layout-system.md",
+      "references/writing-system.md",
+      "references/visual-html-system.md",
+      "references/widget-system.md",
+      "assets/visual-html-templates/05-checklist-flow.html",
+      "assets/visual-html-templates/06-quality-gate.html",
+      "assets/visual-html-templates/14-process-swimlane.html",
+      "assets/visual-html-templates/16-implementation-plan.html",
+      "assets/visual-html-templates/18-triage-board.html",
+      "assets/widget-templates/13-annotated-flowchart.html",
+      "assets/widget-templates/18-ticket-triage-board.html",
+      "assets/widget-templates/19-feature-flag-editor.html",
+      "assets/widget-templates/11-weekly-status.html",
+      "assets/widget-templates/16-implementation-plan.html"
+    ]
+  }
+}

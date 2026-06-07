@@ -1,0 +1,784 @@
+{
+  "page": {
+    "scrollWidth": 393,
+    "clientWidth": 390,
+    "overflowX": true,
+    "scrollHeight": 45892
+  },
+  "list": [
+    {
+      "index": 0,
+      "heading": "전 템플릿 카탈로그 — vt 21 + wg 20",
+      "rect": {
+        "w": 358,
+        "h": 248,
+        "top": 40
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 1,
+      "heading": "vt 01 · hero map",
+      "rect": {
+        "w": 358,
+        "h": 782,
+        "top": 336
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 2,
+      "heading": "vt 02 · decision tree",
+      "rect": {
+        "w": 358,
+        "h": 919,
+        "top": 1166
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 3,
+      "heading": "vt 03 · risk matrix",
+      "rect": {
+        "w": 358,
+        "h": 423,
+        "top": 2133
+      },
+      "overflowCount": 1,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "rm-grid",
+          "text": "가능성 낮음 중간 높음 영향 큼 PII 로그 권한 우회 진료 판단 영향 중간 운영 지연 수동 복구 오류 폭증 영향 작음 문구 모호 태그 누락 색 대비",
+          "client": [
+            254,
+            254
+          ],
+          "scroll": [
+            294,
+            254
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "heading": "vt 04 · timeline",
+      "rect": {
+        "w": 358,
+        "h": 748,
+        "top": 2605
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 5,
+      "heading": "vt 05 · checklist flow",
+      "rect": {
+        "w": 358,
+        "h": 561,
+        "top": 3400
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 6,
+      "heading": "vt 06 · quality gate",
+      "rect": {
+        "w": 358,
+        "h": 679,
+        "top": 4010
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 7,
+      "heading": "vt 07 · card grid",
+      "rect": {
+        "w": 358,
+        "h": 1147,
+        "top": 4737
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 8,
+      "heading": "vt 08 · raci",
+      "rect": {
+        "w": 358,
+        "h": 355,
+        "top": 5932
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 9,
+      "heading": "vt 09 · file tour",
+      "rect": {
+        "w": 358,
+        "h": 703,
+        "top": 6335
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 10,
+      "heading": "vt 10 · flowchart",
+      "rect": {
+        "w": 358,
+        "h": 842,
+        "top": 7086
+      },
+      "overflowCount": 1,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "fc",
+          "text": "입력 1단계 → 검증 2단계 → 분기 3단계 → 실행 4단계 → 감사 5단계",
+          "client": [
+            254,
+            672
+          ],
+          "scroll": [
+            254,
+            680
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "heading": "vt 11 · weekly status",
+      "rect": {
+        "w": 358,
+        "h": 945,
+        "top": 7976
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 12,
+      "heading": "vt 12 · incident summary",
+      "rect": {
+        "w": 358,
+        "h": 846,
+        "top": 8969
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 13,
+      "heading": "vt 13 · comparison cards",
+      "rect": {
+        "w": 358,
+        "h": 726,
+        "top": 9863
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 14,
+      "heading": "vt 14 · process swimlane",
+      "rect": {
+        "w": 358,
+        "h": 1227,
+        "top": 10637
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 15,
+      "heading": "vt 15 · concept explainer",
+      "rect": {
+        "w": 358,
+        "h": 715,
+        "top": 11912
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 16,
+      "heading": "vt 16 · implementation plan",
+      "rect": {
+        "w": 358,
+        "h": 654,
+        "top": 12675
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 17,
+      "heading": "vt 17 · pr writeup",
+      "rect": {
+        "w": 358,
+        "h": 558,
+        "top": 13377
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 18,
+      "heading": "vt 18 · triage board",
+      "rect": {
+        "w": 358,
+        "h": 661,
+        "top": 13983
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 19,
+      "heading": "vt 19 · feature flag",
+      "rect": {
+        "w": 358,
+        "h": 492,
+        "top": 14691
+      },
+      "overflowCount": 3,
+      "overflow": [
+        {
+          "tag": "section",
+          "cls": "vt-shell",
+          "text": "html_view_templates 20개 HTML 템플릿 활성화 ON svg_hero_only SVG는 hero/별첨에만 사용 (점진 확대) WARN legacy_svg_ever",
+          "client": [
+            310,
+            378
+          ],
+          "scroll": [
+            353,
+            378
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "vt-frame",
+          "text": "html_view_templates 20개 HTML 템플릿 활성화 ON svg_hero_only SVG는 hero/별첨에만 사용 (점진 확대) WARN legacy_svg_ever",
+          "client": [
+            278,
+            346
+          ],
+          "scroll": [
+            337,
+            346
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "flag-list",
+          "text": "html_view_templates 20개 HTML 템플릿 활성화 ON svg_hero_only SVG는 hero/별첨에만 사용 (점진 확대) WARN legacy_svg_ever",
+          "client": [
+            254,
+            322
+          ],
+          "scroll": [
+            325,
+            322
+          ]
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "heading": "vt 20 · prompt tuner",
+      "rect": {
+        "w": 358,
+        "h": 413,
+        "top": 15231
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 21,
+      "heading": "vt 21 · soft workflow map",
+      "rect": {
+        "w": 358,
+        "h": 2141,
+        "top": 15692
+      },
+      "overflowCount": 2,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "wf-board",
+          "text": "파이프라인 AI ▣ ◉ 입력 수집 URL·PDF·메모·회의록을 원문 보존 카드로 먼저 고정한다. ▦ 역할 분리 리서치·반론·구조화·QA를 별도 단계로 나눠 검토한다. ▧ 출력 변환",
+          "client": [
+            252,
+            1969
+          ],
+          "scroll": [
+            273,
+            1969
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "wf-top",
+          "text": "파이프라인 AI ▣",
+          "client": [
+            208,
+            54
+          ],
+          "scroll": [
+            251,
+            54
+          ]
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "heading": "wg 01 · three code approaches",
+      "rect": {
+        "w": 358,
+        "h": 2008,
+        "top": 17880
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 23,
+      "heading": "wg 02 · visual design directions",
+      "rect": {
+        "w": 358,
+        "h": 1378,
+        "top": 19936
+      },
+      "overflowCount": 1,
+      "overflow": [
+        {
+          "tag": "legend",
+          "cls": "wg-02-sr",
+          "text": "디자인 방향 선택",
+          "client": [
+            1,
+            1
+          ],
+          "scroll": [
+            14,
+            195
+          ]
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "heading": "wg 03 · annotated pull request",
+      "rect": {
+        "w": 358,
+        "h": 1066,
+        "top": 21363
+      },
+      "overflowCount": 5,
+      "overflow": [
+        {
+          "tag": "code",
+          "cls": "wg-03-code",
+          "text": "− for (let i = 0; i < max; i++) {",
+          "client": [
+            271,
+            22
+          ],
+          "scroll": [
+            280,
+            22
+          ]
+        },
+        {
+          "tag": "code",
+          "cls": "wg-03-code",
+          "text": "+ for (let i = 0; i < max; i++) {",
+          "client": [
+            271,
+            22
+          ],
+          "scroll": [
+            280,
+            22
+          ]
+        },
+        {
+          "tag": "code",
+          "cls": "wg-03-code",
+          "text": "+ return await gateway.charge(order);",
+          "client": [
+            271,
+            22
+          ],
+          "scroll": [
+            341,
+            22
+          ]
+        },
+        {
+          "tag": "code",
+          "cls": "wg-03-code",
+          "text": "− throw new Error('charge failed');",
+          "client": [
+            271,
+            22
+          ],
+          "scroll": [
+            295,
+            22
+          ]
+        },
+        {
+          "tag": "code",
+          "cls": "wg-03-code",
+          "text": "+ throw new PaymentError('retry exhausted', order.id);",
+          "client": [
+            271,
+            22
+          ],
+          "scroll": [
+            440,
+            22
+          ]
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "heading": "wg 04 · module map",
+      "rect": {
+        "w": 358,
+        "h": 829,
+        "top": 22476
+      },
+      "overflowCount": 1,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "wg-04-diagram",
+          "text": "api (진입점) payment cart order gateway db logger",
+          "client": [
+            310,
+            317
+          ],
+          "scroll": [
+            544,
+            317
+          ]
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "heading": "wg 05 · living design system",
+      "rect": {
+        "w": 358,
+        "h": 3225,
+        "top": 23354
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 27,
+      "heading": "wg 06 · component variants",
+      "rect": {
+        "w": 358,
+        "h": 1281,
+        "top": 26627
+      },
+      "overflowCount": 1,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "wg-06-sheet table-scroll",
+          "text": "행 = 변형 · 열 = 상태 · 셀 내부 = 크기(L/M/S) Variant \\ State Default Hover Focus Disabled Primary 저장 L 저장 M 저장",
+          "client": [
+            276,
+            731
+          ],
+          "scroll": [
+            584,
+            731
+          ]
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "heading": "wg 07 · animation sandbox",
+      "rect": {
+        "w": 358,
+        "h": 1168,
+        "top": 27956
+      },
+      "overflowCount": 1,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "wg-07-track",
+          "text": "slide fade scale rotate",
+          "client": [
+            230,
+            230
+          ],
+          "scroll": [
+            240,
+            240
+          ]
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "heading": "wg 08 · clickable flow",
+      "rect": {
+        "w": 358,
+        "h": 638,
+        "top": 29172
+      },
+      "overflowCount": 1,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "wg-08-viewport",
+          "text": "화면 A 장바구니 무선 키보드 49,000원 USB-C 허브 32,000원 합계 81,000원 결제하기 →",
+          "client": [
+            284,
+            360
+          ],
+          "scroll": [
+            300,
+            391
+          ]
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "heading": "wg 09 · arrow key slide deck",
+      "rect": {
+        "w": 358,
+        "h": 641,
+        "top": 29858
+      },
+      "overflowCount": 1,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "wg-09-track",
+          "text": "01 / 04 2026 제품 로드맵 플랫폼 팀 분기 발표 · 2026-05-30 다음 → 02 / 04 Q2 핵심 목표 배포 파이프라인 자동화 완료 p95 응답시간 320ms → ",
+          "client": [
+            312,
+            424
+          ],
+          "scroll": [
+            1296,
+            424
+          ]
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "heading": "wg 10 · svg figure sheet",
+      "rect": {
+        "w": 358,
+        "h": 583,
+        "top": 30547
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 32,
+      "heading": "wg 11 · weekly status",
+      "rect": {
+        "w": 358,
+        "h": 1462,
+        "top": 31179
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 33,
+      "heading": "wg 12 · incident timeline",
+      "rect": {
+        "w": 358,
+        "h": 1559,
+        "top": 32689
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 34,
+      "heading": "wg 13 · annotated flowchart",
+      "rect": {
+        "w": 358,
+        "h": 1366,
+        "top": 34297
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 35,
+      "heading": "wg 14 · feature explainer",
+      "rect": {
+        "w": 358,
+        "h": 1774,
+        "top": 35710
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 36,
+      "heading": "wg 15 · concept explainer",
+      "rect": {
+        "w": 358,
+        "h": 1393,
+        "top": 37532
+      },
+      "overflowCount": 1,
+      "overflow": [
+        {
+          "tag": "div",
+          "cls": "wg-15-ring",
+          "text": "A B C D k1 k2 0° / 360°",
+          "client": [
+            176,
+            176
+          ],
+          "scroll": [
+            191,
+            191
+          ]
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "heading": "wg 16 · implementation plan",
+      "rect": {
+        "w": 358,
+        "h": 1870,
+        "top": 38973
+      },
+      "overflowCount": 4,
+      "overflow": [
+        {
+          "tag": "li",
+          "cls": "wg-16-ms-item wg-16-done",
+          "text": "M0 · 착수 정렬 완료 스폰서·RACI 합의, 단가 산식 초안 고시. ~D0.",
+          "client": [
+            278,
+            125
+          ],
+          "scroll": [
+            278,
+            153
+          ]
+        },
+        {
+          "tag": "li",
+          "cls": "wg-16-ms-item wg-16-active",
+          "text": "M1 · 계측 표준화 (0~30일) 진행 중 텔레메트리 스키마 강제, 단가 대시보드 가동. 커버리지 95% 목표.",
+          "client": [
+            278,
+            125
+          ],
+          "scroll": [
+            278,
+            153
+          ]
+        },
+        {
+          "tag": "li",
+          "cls": "wg-16-ms-item",
+          "text": "M2 · 게이트 자동화 (31~60일) 예정 CI에 cost-budget·eval 이중 게이트 적용, 우회 승인 로그화.",
+          "client": [
+            278,
+            125
+          ],
+          "scroll": [
+            278,
+            153
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "table-scroll",
+          "text": "거버넌스 도입 리스크 — 가능성·영향·완화책 리스크 가능성 영향 완화책 계측 누락 잔존 중 높음 미태깅 배포 차단 + 누락 알림 게이트가 배포 지연 중 중 게이트 캐싱·병렬화, 임",
+          "client": [
+            278,
+            257
+          ],
+          "scroll": [
+            680,
+            257
+          ]
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "heading": "wg 17 · pr writeup",
+      "rect": {
+        "w": 358,
+        "h": 1586,
+        "top": 40891
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 39,
+      "heading": "wg 18 · ticket triage board",
+      "rect": {
+        "w": 358,
+        "h": 1454,
+        "top": 42525
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 40,
+      "heading": "wg 19 · feature flag editor",
+      "rect": {
+        "w": 358,
+        "h": 938,
+        "top": 44028
+      },
+      "overflowCount": 0,
+      "overflow": []
+    },
+    {
+      "index": 41,
+      "heading": "wg 20 · prompt tuner",
+      "rect": {
+        "w": 358,
+        "h": 759,
+        "top": 45014
+      },
+      "overflowCount": 0,
+      "overflow": []
+    }
+  ]
+}

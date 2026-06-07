@@ -1,0 +1,30 @@
+{
+  "mode": "blog_writer",
+  "sequence": "10/16",
+  "topic": "AI와 일한 4일, 내가 고친 것은 문장이 아니라 기준이었다",
+  "layout": "personal-blog-essay.html",
+  "profile": "auto",
+  "read_for_this_mode": [
+    "recipes/blog.prompt.md",
+    "assets/layouts/personal-blog-essay.html",
+    "references/layout-system.md",
+    "references/writing-system.md",
+    "references/visual-html-system.md",
+    "references/widget-system.md",
+    "assets/visual-html-templates/04-timeline.html",
+    "assets/visual-html-templates/11-weekly-status.html",
+    "assets/visual-html-templates/13-comparison-cards.html",
+    "assets/widget-templates/17-pr-writeup.html"
+  ],
+  "template_binding": {
+    "vt": [
+      "timeline",
+      "weekly-status",
+      "comparison-cards"
+    ],
+    "wg": [
+      "17-pr-writeup"
+    ]
+  },
+  "non_reuse_policy": "본문은 이전 HTML에서 가져오지 않고 blog 전용 계약에 맞춰 신규 작성. 인덱스만 누적 링크 갱신."
+}

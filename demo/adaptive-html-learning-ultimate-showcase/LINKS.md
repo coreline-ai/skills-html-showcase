@@ -1,8 +1,8 @@
 # Adaptive HTML Learning Ultimate Showcase Links
 
-생성일: 2026-05-30  
-서버: http://127.0.0.1:8795  
-스킬: adaptive-html-learning-ultimate  
+생성일: 2026-05-30
+서버: http://127.0.0.1:8795
+스킬: adaptive-html-learning-ultimate
 지원 모드: 13개 전체
 
 | Mode | Link |
@@ -25,7 +25,7 @@
 
 ## Local path
 
-`/Users/hwanchoi/project_202605/CoreMCP/packages/coreline-auth/adaptive-html-learning-ultimate-showcase`
+`<coreline-auth-root>/adaptive-html-learning-ultimate-showcase`
 
 ## Verification
 

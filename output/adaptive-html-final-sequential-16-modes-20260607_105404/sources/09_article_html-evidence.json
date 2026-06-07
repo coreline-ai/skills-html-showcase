@@ -1,0 +1,32 @@
+{
+  "mode": "article_html",
+  "sequence": "09/16",
+  "topic": "프롬프트보다 판단 로그가 먼저다",
+  "layout": "magazine-article.html",
+  "profile": "auto",
+  "read_for_this_mode": [
+    "recipes/article.prompt.md",
+    "assets/layouts/magazine-article.html",
+    "references/layout-system.md",
+    "references/writing-system.md",
+    "references/visual-html-system.md",
+    "references/widget-system.md",
+    "assets/visual-html-templates/02-decision-tree.html",
+    "assets/visual-html-templates/13-comparison-cards.html",
+    "assets/visual-html-templates/15-concept-explainer.html",
+    "assets/widget-templates/13-annotated-flowchart.html",
+    "assets/widget-templates/14-feature-explainer.html"
+  ],
+  "template_binding": {
+    "vt": [
+      "decision-tree",
+      "comparison-cards",
+      "concept-explainer"
+    ],
+    "wg": [
+      "13-annotated-flowchart",
+      "14-feature-explainer"
+    ]
+  },
+  "non_reuse_policy": "본문은 이전 HTML에서 가져오지 않고 article 전용 계약에 맞춰 신규 작성. 인덱스만 누적 링크 갱신."
+}

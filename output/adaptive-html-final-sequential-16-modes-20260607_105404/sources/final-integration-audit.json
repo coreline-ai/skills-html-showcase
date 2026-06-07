@@ -1,0 +1,52 @@
+{
+  "run": "final_integration_audit_and_skill_patch_summary",
+  "timestamp": "2026-06-07T08:53:35.797118+00:00",
+  "output_dir": "output/adaptive-html-final-sequential-16-modes-20260607_105404",
+  "html_files": 17,
+  "mode_pages": 16,
+  "completed_modes": [
+    "01_skill_audit",
+    "02_platform_blog",
+    "03_seo_dashboard",
+    "04_education_html",
+    "05_github_analysis",
+    "06_youtube_analysis",
+    "07_manual_analysis",
+    "08_expert_html",
+    "09_article_html",
+    "10_blog_writer",
+    "11_beginner_html",
+    "12_reference_html",
+    "13_comparison_html",
+    "14_case_study_html",
+    "15_landing_brief_html",
+    "16_checklist_playbook"
+  ],
+  "validation": {
+    "validate_output": "OK",
+    "quality_contract": "OK — quality contract guard passed (16 HTML content file(s))",
+    "governance": "65/65 checks passed"
+  },
+  "final_link": "http://localhost:8080/output/adaptive-html-final-sequential-16-modes-20260607_105404/index.html",
+  "screenshots": [
+    "sources/screenshots/final-index-after-1280.png",
+    "sources/screenshots/final-index-after-390.png"
+  ],
+  "patch_findings": [
+    {
+      "issue": "earlier pages/index held stale inline core CSS after layouts.css surface rule changed",
+      "cause": "asset/snapshot sync was only isolated per later mode, not full-output integration after skill asset patch",
+      "fix": "rerendered modes 01-07 with current assets and synced index inline style to current core hash"
+    },
+    {
+      "issue": "direct_section_h2_icon_gate flagged nested widget sections as top-level content sections",
+      "cause": "regex stopped at any nested <section> instead of parsing main > section and main > article > section directness",
+      "fix": "patched validator to check only direct content sections and added governance tests for nested widget ignore + article direct section catch"
+    },
+    {
+      "issue": "common/batch generation produced copy-like mode pages and missed latest visual contract",
+      "cause": "context dilution and generator-level reuse bypassed mode recipes/templates",
+      "fix": "documented/enforced one-mode-per-context, no previous HTML body reuse, no common generator, isolated validate before integration"
+    }
+  ]
+}

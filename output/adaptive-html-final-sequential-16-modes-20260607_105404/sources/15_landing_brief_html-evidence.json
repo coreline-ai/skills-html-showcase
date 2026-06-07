@@ -1,0 +1,36 @@
+{
+  "mode": "15_landing_brief_html",
+  "topic": "LaunchBrief Studio · 출시 판단 정렬 랜딩 브리프",
+  "file": "pages/15_landing_brief_launchbrief_studio.html",
+  "layout": "landing-brief.html",
+  "recipe": "recipes/landing-brief.prompt.md",
+  "profile": "auto",
+  "vt_templates": [
+    "01-hero-map",
+    "07-card-grid",
+    "19-feature-flag",
+    "21-soft-workflow-map"
+  ],
+  "wg_widgets": [
+    "08-clickable-flow",
+    "16-implementation-plan"
+  ],
+  "fresh_context_policy": {
+    "previous_html_body_reused": false,
+    "common_content_generator_used": false,
+    "mode_specific_files_read": [
+      "recipes/landing-brief.prompt.md",
+      "assets/layouts/landing-brief.html",
+      "references/layout-system.md",
+      "references/writing-system.md",
+      "references/visual-html-system.md",
+      "references/widget-system.md",
+      "assets/visual-html-templates/01-hero-map.html",
+      "assets/visual-html-templates/07-card-grid.html",
+      "assets/visual-html-templates/19-feature-flag.html",
+      "assets/visual-html-templates/21-soft-workflow-map.html",
+      "assets/widget-templates/08-clickable-flow.html",
+      "assets/widget-templates/16-implementation-plan.html"
+    ]
+  }
+}

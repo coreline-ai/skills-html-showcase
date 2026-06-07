@@ -1,7 +1,7 @@
 from pathlib import Path
 from html import escape
 
-ROOT = Path('/Users/hwanchoi/project_202605/skills-html-showcase')
+ROOT = Path('<repo-root>')
 SKILL = ROOT / 'skills/adaptive-html-final'
 OUT = ROOT / 'output/adaptive-html-final-showcase'
 PAGES = OUT / 'pages'

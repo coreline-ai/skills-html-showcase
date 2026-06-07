@@ -1,0 +1,33 @@
+{
+  "mode": "beginner_html",
+  "sequence": "11/16",
+  "topic": "브라우저 캐시를 도서관 대출 카드처럼 이해하기",
+  "layout": "beginner-learning.html",
+  "profile": "auto",
+  "read_for_this_mode": [
+    "recipes/beginner.prompt.md",
+    "assets/layouts/beginner-learning.html",
+    "references/layout-system.md",
+    "references/writing-system.md",
+    "references/visual-html-system.md",
+    "references/widget-system.md",
+    "references/body-icon-system.md",
+    "assets/visual-html-templates/15-concept-explainer.html",
+    "assets/visual-html-templates/01-hero-map.html",
+    "assets/visual-html-templates/05-checklist-flow.html",
+    "assets/widget-templates/15-concept-explainer.html",
+    "assets/widget-templates/13-annotated-flowchart.html"
+  ],
+  "template_binding": {
+    "vt": [
+      "concept-explainer",
+      "hero-map",
+      "checklist-flow"
+    ],
+    "wg": [
+      "15-concept-explainer",
+      "13-annotated-flowchart"
+    ]
+  },
+  "non_reuse_policy": "본문은 이전 HTML에서 가져오지 않고 beginner 전용 계약에 맞춰 신규 작성. 인덱스만 누적 링크 갱신."
+}

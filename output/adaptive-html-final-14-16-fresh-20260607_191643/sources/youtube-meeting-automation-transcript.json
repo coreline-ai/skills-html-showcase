@@ -1,0 +1,23 @@
+{
+  "title": "AI 회의록 자동화: 녹취에서 실행계획까지",
+  "source_tier": "transcript packet",
+  "observed_at": "2026-06-07T19:16:43+09:00",
+  "chapters": [
+    "Hook",
+    "Demo",
+    "Workflow",
+    "Security caveat",
+    "CTA"
+  ],
+  "claims": [
+    "요약보다 액션 추출이 중요하다",
+    "owner와 due date가 없으면 알림이 무의미하다",
+    "human review가 필요하다"
+  ],
+  "comment_clusters": [
+    "보안 질문",
+    "Notion/Jira 연동 질문",
+    "한국어 회의 품질 질문",
+    "가격 질문"
+  ]
+}

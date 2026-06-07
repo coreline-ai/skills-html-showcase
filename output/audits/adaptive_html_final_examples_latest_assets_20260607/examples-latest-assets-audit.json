@@ -1,0 +1,4327 @@
+{
+  "generated": "2026-06-07T13:09:31.177Z",
+  "base": "http://localhost:8080/skills/adaptive-html-final/examples/",
+  "results": [
+    {
+      "num": "01",
+      "mode": "beginner_html",
+      "file": "01_beginner_passkey_login.html",
+      "viewport": "390",
+      "shot": "screenshots/01-beginner_html-390.png",
+      "info": {
+        "title": "패스키(Passkey)로 비밀번호 없이 로그인 이해하기",
+        "h1": "패스키(Passkey)로 비밀번호 없이 로그인 이해하기",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n비밀번호의 진짜 문제",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\n패스키는 열쇠 “한 쌍”이다",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n등록과 로그인, 두 개의 흐름",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n왜 비밀번호보다 안전한가",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n초보자가 자주 헷갈리는 것들",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n패스키와 다른 로그인 방법 비교",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try",
+            "title": "7\n오늘 10분 안에 패스키 직접 켜보기",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "01",
+      "mode": "beginner_html",
+      "file": "01_beginner_passkey_login.html",
+      "viewport": "1280",
+      "shot": "screenshots/01-beginner_html-1280.png",
+      "info": {
+        "title": "패스키(Passkey)로 비밀번호 없이 로그인 이해하기",
+        "h1": "패스키(Passkey)로 비밀번호 없이 로그인 이해하기",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n비밀번호의 진짜 문제",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\n패스키는 열쇠 “한 쌍”이다",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n등록과 로그인, 두 개의 흐름",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n왜 비밀번호보다 안전한가",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n초보자가 자주 헷갈리는 것들",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n패스키와 다른 로그인 방법 비교",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try",
+            "title": "7\n오늘 10분 안에 패스키 직접 켜보기",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "02",
+      "mode": "expert_html",
+      "file": "02_expert_llm_gateway_report.html",
+      "viewport": "390",
+      "shot": "screenshots/02-expert_html-390.png",
+      "info": {
+        "title": "사내 LLM 게이트웨이 도입 타당성 진단 리포트",
+        "h1": "사내 LLM 게이트웨이 도입 타당성 진단 리포트",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "executive-summary",
+            "title": "Executive Summary",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "decision-section",
+            "title": "0\nDecision Cards · 도입 판단",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "1\n문제 정의와 진단 기준",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "2\n현재 구조 대 게이트웨이 구조",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "3\n위험 매트릭스와 완화책",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "4\n도입 우선순위와 단계별 로드맵",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "5\n검증 기준 — 무엇을 보면 성공/실패인가",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "6\n자주 나오는 반론과 답",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "try",
+            "title": "비차단 프록시 4주를 먼저 잠근다",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "02",
+      "mode": "expert_html",
+      "file": "02_expert_llm_gateway_report.html",
+      "viewport": "1280",
+      "shot": "screenshots/02-expert_html-1280.png",
+      "info": {
+        "title": "사내 LLM 게이트웨이 도입 타당성 진단 리포트",
+        "h1": "사내 LLM 게이트웨이 도입 타당성 진단 리포트",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "executive-summary",
+            "title": "Executive Summary",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "decision-section",
+            "title": "0\nDecision Cards · 도입 판단",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "1\n문제 정의와 진단 기준",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "2\n현재 구조 대 게이트웨이 구조",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "3\n위험 매트릭스와 완화책",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "4\n도입 우선순위와 단계별 로드맵",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "5\n검증 기준 — 무엇을 보면 성공/실패인가",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "6\n자주 나오는 반론과 답",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "try",
+            "title": "비차단 프록시 4주를 먼저 잠근다",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "03",
+      "mode": "article_html",
+      "file": "03_article_side_project_signal.html",
+      "viewport": "390",
+      "shot": "screenshots/03-article_html-390.png",
+      "info": {
+        "title": "사이드 프로젝트가 이력서보다 강한 이유",
+        "h1": "사이드 프로젝트가 이력서보다 강한 이유",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "lead",
+            "title": "도입 문제 제기",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "article-takeaway box",
+            "title": "핵심 주장",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "1\n문제 제기: 이력서는 왜 점점 덜 믿기는가",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "2\n핵심 논지: 강한 신호는 검증 비용이 낮은 신호다",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "3\n대조: 같은 역량, 두 가지 제출 방식",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "4\n연결 분석: 사이드 프로젝트가 한 번에 증명하는 세 가지",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "5\n반론: 그렇다면 이력서는 필요 없는가",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "6\n강한 사이드 프로젝트의 조건",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "",
+            "title": "7\n효과 측정: 신호가 닿았는지 어떻게 아는가",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "try",
+            "title": "이력서에 붙일 증거 하나를 이번 달에 완성한다",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "legend",
+            "cls": "wg-02-sr",
+            "text": "디자인 방향 선택",
+            "left": 56,
+            "right": 57,
+            "width": 1,
+            "clientWidth": 1,
+            "scrollWidth": 14,
+            "overflowScroll": 13
+          },
+          {
+            "tag": "div",
+            "cls": "dt-arrow",
+            "text": "",
+            "left": 194,
+            "right": 196,
+            "width": 2,
+            "clientWidth": 2,
+            "scrollWidth": 7,
+            "overflowScroll": 5
+          },
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "03",
+      "mode": "article_html",
+      "file": "03_article_side_project_signal.html",
+      "viewport": "1280",
+      "shot": "screenshots/03-article_html-1280.png",
+      "info": {
+        "title": "사이드 프로젝트가 이력서보다 강한 이유",
+        "h1": "사이드 프로젝트가 이력서보다 강한 이유",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "lead",
+            "title": "도입 문제 제기",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "article-takeaway box",
+            "title": "핵심 주장",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "1\n문제 제기: 이력서는 왜 점점 덜 믿기는가",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "2\n핵심 논지: 강한 신호는 검증 비용이 낮은 신호다",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "3\n대조: 같은 역량, 두 가지 제출 방식",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "4\n연결 분석: 사이드 프로젝트가 한 번에 증명하는 세 가지",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "5\n반론: 그렇다면 이력서는 필요 없는가",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "6\n강한 사이드 프로젝트의 조건",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "",
+            "title": "7\n효과 측정: 신호가 닿았는지 어떻게 아는가",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "try",
+            "title": "이력서에 붙일 증거 하나를 이번 달에 완성한다",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "legend",
+            "cls": "wg-02-sr",
+            "text": "디자인 방향 선택",
+            "left": 186,
+            "right": 187,
+            "width": 1,
+            "clientWidth": 1,
+            "scrollWidth": 14,
+            "overflowScroll": 13
+          },
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "04",
+      "mode": "education_html",
+      "file": "04_education_git_rebase_workshop.html",
+      "viewport": "390",
+      "shot": "screenshots/04-education_html-390.png",
+      "info": {
+        "title": "Git rebase 안전하게 쓰기 3일 워크숍",
+        "h1": "Git rebase 안전하게 쓰기 3일 워크숍",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "learning-goals",
+            "title": "학습 목표",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "3일 학습 로드맵: 무엇이 언제 가능해지는가",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "1\nDay 1 — rebase가 실제로 하는 일",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "2\nDay 1 예제 — merge와 rebase를 직접 비교",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "practice-card",
+            "title": "실습 카드",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "3\nDay 2 — interactive rebase로 히스토리 정리",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "4\nDay 2 — 충돌을 절차대로 해결하기",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "practice-card",
+            "title": "실습 카드",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "",
+            "title": "5\nDay 3 — reflog: 사고가 나도 복구한다",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "",
+            "title": "6\nDay 3 — 원격 갱신은 force-with-lease로",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "quiz-box",
+            "title": "7\n퀴즈와 평가 루브릭",
+            "hasIcon": true
+          },
+          {
+            "i": 13,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 14,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "04",
+      "mode": "education_html",
+      "file": "04_education_git_rebase_workshop.html",
+      "viewport": "1280",
+      "shot": "screenshots/04-education_html-1280.png",
+      "info": {
+        "title": "Git rebase 안전하게 쓰기 3일 워크숍",
+        "h1": "Git rebase 안전하게 쓰기 3일 워크숍",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "learning-goals",
+            "title": "학습 목표",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "3일 학습 로드맵: 무엇이 언제 가능해지는가",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "1\nDay 1 — rebase가 실제로 하는 일",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "2\nDay 1 예제 — merge와 rebase를 직접 비교",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "practice-card",
+            "title": "실습 카드",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "3\nDay 2 — interactive rebase로 히스토리 정리",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "4\nDay 2 — 충돌을 절차대로 해결하기",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "practice-card",
+            "title": "실습 카드",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "",
+            "title": "5\nDay 3 — reflog: 사고가 나도 복구한다",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "",
+            "title": "6\nDay 3 — 원격 갱신은 force-with-lease로",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "quiz-box",
+            "title": "7\n퀴즈와 평가 루브릭",
+            "hasIcon": true
+          },
+          {
+            "i": 13,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 14,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "05",
+      "mode": "blog_writer",
+      "file": "05_blog_deepwork_4day_retro.html",
+      "viewport": "390",
+      "shot": "screenshots/05-blog_writer-390.png",
+      "info": {
+        "title": "주 4일 딥워크 루틴 90일 실험기",
+        "h1": "주 4일 딥워크 루틴 90일 실험기",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "",
+            "title": "1\n왜 일하는 날을 하루 줄이기로 했나",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "2\n실험 설계: 무엇을 재고 무엇을 바꿨나",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "3\n1~30일: 시간을 줄이자 방해가 먼저 드러났다",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "4\n31~60일: 오전 딥워크 블록이 자리를 잡았다",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "5\n61~90일: 숫자로 본 변화",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "6\n딥워크를 지킨 세 가지 규칙",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "7\n90일 뒤 남길 것과 바꿀 것",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try soft-cta",
+            "title": "독자가 따라 할 7일 축소 실험",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "05",
+      "mode": "blog_writer",
+      "file": "05_blog_deepwork_4day_retro.html",
+      "viewport": "1280",
+      "shot": "screenshots/05-blog_writer-1280.png",
+      "info": {
+        "title": "주 4일 딥워크 루틴 90일 실험기",
+        "h1": "주 4일 딥워크 루틴 90일 실험기",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "",
+            "title": "1\n왜 일하는 날을 하루 줄이기로 했나",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "2\n실험 설계: 무엇을 재고 무엇을 바꿨나",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "3\n1~30일: 시간을 줄이자 방해가 먼저 드러났다",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "4\n31~60일: 오전 딥워크 블록이 자리를 잡았다",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "5\n61~90일: 숫자로 본 변화",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "6\n딥워크를 지킨 세 가지 규칙",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "7\n90일 뒤 남길 것과 바꿀 것",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try soft-cta",
+            "title": "독자가 따라 할 7일 축소 실험",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "06",
+      "mode": "seo_dashboard",
+      "file": "06_seo_prompt_engineering_dashboard.html",
+      "viewport": "390",
+      "shot": "screenshots/06-seo_dashboard-390.png",
+      "info": {
+        "title": "'프롬프트 엔지니어링 입문' 글 SEO 설계 대시보드",
+        "h1": "‘프롬프트 엔지니어링 입문’ 글 SEO 설계 대시보드",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "serp-box",
+            "title": "검색 결과 미리보기",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "1\nSEO 전략 브리프",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "2\n검색 의도와 키워드 클러스터",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "3\n제목·메타 후보와 SERP 문안",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "4\n콘텐츠 각도 선택",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "5\n원고 요청문 튜닝",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "6\n내부 링크와 구조화 데이터",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "",
+            "title": "7\nFAQ 설계",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "",
+            "title": "8\n콘텐츠 품질 게이트",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "06",
+      "mode": "seo_dashboard",
+      "file": "06_seo_prompt_engineering_dashboard.html",
+      "viewport": "1280",
+      "shot": "screenshots/06-seo_dashboard-1280.png",
+      "info": {
+        "title": "'프롬프트 엔지니어링 입문' 글 SEO 설계 대시보드",
+        "h1": "‘프롬프트 엔지니어링 입문’ 글 SEO 설계 대시보드",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "serp-box",
+            "title": "검색 결과 미리보기",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "1\nSEO 전략 브리프",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "2\n검색 의도와 키워드 클러스터",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "3\n제목·메타 후보와 SERP 문안",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "4\n콘텐츠 각도 선택",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "5\n원고 요청문 튜닝",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "6\n내부 링크와 구조화 데이터",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "",
+            "title": "7\nFAQ 설계",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "",
+            "title": "8\n콘텐츠 품질 게이트",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "07",
+      "mode": "platform_blog",
+      "file": "07_platform_tech_retro_adaptation.html",
+      "viewport": "390",
+      "shot": "screenshots/07-platform_blog-390.png",
+      "info": {
+        "title": "기술 회고 글을 4개 플랫폼으로 변환하기",
+        "h1": "기술 회고 글을 4개 플랫폼으로 변환하기",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n원본 회고 분해",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "하나의 회고가 네 플랫폼으로 연결되는 관계",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "2\n플랫폼별 발행 전략 카드",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "3\n플랫폼별 발행 톤",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "4\n플랫폼 변환표",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "5\n발행 형식 선택과 순서",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "6\n발행 패키지 변경 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "",
+            "title": "7\n제목·메타·태그·CTA 운영표",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "",
+            "title": "8\n발행 체크리스트와 일정",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "",
+            "title": "9\n발행 후 검증 루프",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 13,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "div",
+            "cls": "tbl table-scroll",
+            "text": "플랫폼별 발행 톤 비교: 문장 리듬·용어 밀도·증거 무게·감정 강도 톤 방향 대표 플랫폼 문장 리듬 전문용어",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 357,
+            "overflowScroll": 45
+          },
+          {
+            "tag": "div",
+            "cls": "tbl table-scroll",
+            "text": "플랫폼별 제목·메타·태그·CTA 운영표 플랫폼 제목 기준 설명/도입 태그 CTA 티스토리 검색 키워드 + 문",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 354,
+            "overflowScroll": 42
+          },
+          {
+            "tag": "div",
+            "cls": "tbl table-scroll",
+            "text": "발행 형식 비교: 준비 난이도·검색 수명·전환 기여·적합 시점 형식 플랫폼 준비 난이도 검색 수명 전환 기여",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 328,
+            "overflowScroll": 16
+          },
+          {
+            "tag": "legend",
+            "cls": "wg-02-sr",
+            "text": "디자인 방향 선택",
+            "left": 56,
+            "right": 57,
+            "width": 1,
+            "clientWidth": 1,
+            "scrollWidth": 14,
+            "overflowScroll": 13
+          },
+          {
+            "tag": "table",
+            "cls": "",
+            "text": "플랫폼별 발행 톤 비교: 문장 리듬·용어 밀도·증거 무게·감정 강도 톤 방향 대표 플랫폼 문장 리듬 전문용어",
+            "left": 39,
+            "right": 396,
+            "width": 357,
+            "clientWidth": 357,
+            "scrollWidth": 356,
+            "overflowScroll": -1
+          },
+          {
+            "tag": "caption",
+            "cls": "",
+            "text": "플랫폼별 발행 톤 비교: 문장 리듬·용어 밀도·증거 무게·감정 강도",
+            "left": 39,
+            "right": 396,
+            "width": 357,
+            "clientWidth": 357,
+            "scrollWidth": 357,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "thead",
+            "cls": "",
+            "text": "톤 방향 대표 플랫폼 문장 리듬 전문용어 밀도 증거 무게 감정 강도",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "clientWidth": 356,
+            "scrollWidth": 356,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "톤 방향 대표 플랫폼 문장 리듬 전문용어 밀도 증거 무게 감정 강도",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "clientWidth": 356,
+            "scrollWidth": 356,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "감정 강도",
+            "left": 355,
+            "right": 395,
+            "width": 40,
+            "clientWidth": 39,
+            "scrollWidth": 39,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tbody",
+            "cls": "",
+            "text": "검색 친화 정보형 티스토리 중간 길이, H2마다 한 질문 중간(용어+설명 병기) 표·체크리스트 중심 낮음 재",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "clientWidth": 356,
+            "scrollWidth": 356,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "검색 친화 정보형 티스토리 중간 길이, H2마다 한 질문 중간(용어+설명 병기) 표·체크리스트 중심 낮음",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "clientWidth": 356,
+            "scrollWidth": 356,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "낮음",
+            "left": 355,
+            "right": 395,
+            "width": 40,
+            "clientWidth": 39,
+            "scrollWidth": 39,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "재현 가능 기록형 벨로그 호흡 긴 단계 서술 높음(코드·버전 노출) 코드·로그·지표 중심 낮음",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "clientWidth": 356,
+            "scrollWidth": 356,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "낮음",
+            "left": 355,
+            "right": 395,
+            "width": 40,
+            "clientWidth": 39,
+            "scrollWidth": 39,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "서사 공감형 브런치 짧은 문단, 장면 전환 낮음(비유로 대체) 장면·인용 중심 높음",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "clientWidth": 356,
+            "scrollWidth": 356,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "높음",
+            "left": 355,
+            "right": 395,
+            "width": 40,
+            "clientWidth": 39,
+            "scrollWidth": 39,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "인사이트 시그널형 LinkedIn 훅 한 줄 + 불릿 중간(직무 언어) 핵심 지표 1~2개 중간",
+            "left": 40,
+            "right": 395,
+            "width": 356,
+            "clientWidth": 356,
+            "scrollWidth": 356,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "중간",
+            "left": 355,
+            "right": 395,
+            "width": 40,
+            "clientWidth": 39,
+            "scrollWidth": 39,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "div",
+            "cls": "tbl table-scroll",
+            "text": "기술 회고 원본의 플랫폼별 변환표 회고 원본 티스토리 벨로그 브런치 LinkedIn 장애 발생 상황 검색 질",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 316,
+            "overflowScroll": 4
+          },
+          {
+            "tag": "table",
+            "cls": "",
+            "text": "플랫폼별 제목·메타·태그·CTA 운영표 플랫폼 제목 기준 설명/도입 태그 CTA 티스토리 검색 키워드 + 문",
+            "left": 39,
+            "right": 393,
+            "width": 354,
+            "clientWidth": 354,
+            "scrollWidth": 353,
+            "overflowScroll": -1
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "07",
+      "mode": "platform_blog",
+      "file": "07_platform_tech_retro_adaptation.html",
+      "viewport": "1280",
+      "shot": "screenshots/07-platform_blog-1280.png",
+      "info": {
+        "title": "기술 회고 글을 4개 플랫폼으로 변환하기",
+        "h1": "기술 회고 글을 4개 플랫폼으로 변환하기",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n원본 회고 분해",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "하나의 회고가 네 플랫폼으로 연결되는 관계",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "2\n플랫폼별 발행 전략 카드",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "3\n플랫폼별 발행 톤",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "4\n플랫폼 변환표",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "5\n발행 형식 선택과 순서",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "6\n발행 패키지 변경 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "",
+            "title": "7\n제목·메타·태그·CTA 운영표",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "",
+            "title": "8\n발행 체크리스트와 일정",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "",
+            "title": "9\n발행 후 검증 루프",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 13,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "legend",
+            "cls": "wg-02-sr",
+            "text": "디자인 방향 선택",
+            "left": 186,
+            "right": 187,
+            "width": 1,
+            "clientWidth": 1,
+            "scrollWidth": 14,
+            "overflowScroll": 13
+          },
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "08",
+      "mode": "skill_audit",
+      "file": "08_skill_audit_codereview_bot.html",
+      "viewport": "390",
+      "shot": "screenshots/08-skill_audit-390.png",
+      "info": {
+        "title": "사내 코드리뷰 봇 스킬 감사 리포트",
+        "h1": "사내 코드리뷰 봇 스킬 감사 리포트",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "executive-summary",
+            "title": "Executive Summary",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n목적과 트리거 점검",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\n입력·출력 계약",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n개선 전 / 후",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n품질 게이트: 통과 / 미흡",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n입력 부족 대응과 실패 모드",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n권장 조치와 패치 범위",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "div",
+            "cls": "table-scroll",
+            "text": "표 2 — 입력/출력 계약 (현재 vs 권장) 계약 현재 권장 누락 시 동작 입력: 디프 PR 본문 텍스트만",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 408,
+            "overflowScroll": 96
+          },
+          {
+            "tag": "table",
+            "cls": "table",
+            "text": "표 2 — 입력/출력 계약 (현재 vs 권장) 계약 현재 권장 누락 시 동작 입력: 디프 PR 본문 텍스트만",
+            "left": 39,
+            "right": 447,
+            "width": 408,
+            "clientWidth": 408,
+            "scrollWidth": 407,
+            "overflowScroll": -1
+          },
+          {
+            "tag": "caption",
+            "cls": "",
+            "text": "표 2 — 입력/출력 계약 (현재 vs 권장)",
+            "left": 39,
+            "right": 447,
+            "width": 408,
+            "clientWidth": 408,
+            "scrollWidth": 408,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "thead",
+            "cls": "",
+            "text": "계약 현재 권장 누락 시 동작",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "clientWidth": 407,
+            "scrollWidth": 407,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "계약 현재 권장 누락 시 동작",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "clientWidth": 407,
+            "scrollWidth": 407,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "누락 시 동작",
+            "left": 382,
+            "right": 446,
+            "width": 65,
+            "clientWidth": 64,
+            "scrollWidth": 64,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tbody",
+            "cls": "",
+            "text": "입력: 디프 PR 본문 텍스트만 unified diff + 변경 파일 목록 리뷰 중단, 입력 부족 반환 입력",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "clientWidth": 407,
+            "scrollWidth": 407,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "입력: 디프 PR 본문 텍스트만 unified diff + 변경 파일 목록 리뷰 중단, 입력 부족 반환",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "clientWidth": 407,
+            "scrollWidth": 407,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "리뷰 중단, 입력 부족 반환",
+            "left": 382,
+            "right": 446,
+            "width": 65,
+            "clientWidth": 64,
+            "scrollWidth": 64,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "입력: 맥락 없음 CI 상태, 연결 이슈, 기존 리뷰 코멘트 맥락 없음 표기 후 보수적 판정",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "clientWidth": 407,
+            "scrollWidth": 407,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "맥락 없음 표기 후 보수적 판정",
+            "left": 382,
+            "right": 446,
+            "width": 65,
+            "clientWidth": 64,
+            "scrollWidth": 64,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "출력: 코멘트 구조 자유 서술 file·line·severity·rationale·suggested_fix ",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "clientWidth": 407,
+            "scrollWidth": 407,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "스키마 위반으로 실패",
+            "left": 382,
+            "right": 446,
+            "width": 65,
+            "clientWidth": 64,
+            "scrollWidth": 64,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "출력: 판정 없음 blocking: true|false + 사유 기본값 blocking 금지(보수적 차단)",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "clientWidth": 407,
+            "scrollWidth": 407,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "기본값 blocking 금지(보수적 차단)",
+            "left": 382,
+            "right": 446,
+            "width": 65,
+            "clientWidth": 64,
+            "scrollWidth": 64,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "출력: 요약 코멘트 나열 차단 N건·경고 M건 헤드라인 요약 누락 시 게이트 미통과",
+            "left": 40,
+            "right": 446,
+            "width": 407,
+            "clientWidth": 407,
+            "scrollWidth": 407,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "요약 누락 시 게이트 미통과",
+            "left": 382,
+            "right": 446,
+            "width": 65,
+            "clientWidth": 64,
+            "scrollWidth": 64,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "div",
+            "cls": "table-scroll",
+            "text": "표 5 — 권장 조치 우선순위·기대효과·검증방법 우선순위 조치 기대효과 검증방법 P1 severity·blo",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 358,
+            "overflowScroll": 46
+          },
+          {
+            "tag": "div",
+            "cls": "table-scroll",
+            "text": "표 3 — 개선 전/후 라인 매핑과 심각도 대상 라인 (전) 문제 권장 수정 (후) 심각도 “Approve ",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 341,
+            "overflowScroll": 29
+          },
+          {
+            "tag": "table",
+            "cls": "table",
+            "text": "표 5 — 권장 조치 우선순위·기대효과·검증방법 우선순위 조치 기대효과 검증방법 P1 severity·blo",
+            "left": 39,
+            "right": 397,
+            "width": 358,
+            "clientWidth": 358,
+            "scrollWidth": 358,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "08",
+      "mode": "skill_audit",
+      "file": "08_skill_audit_codereview_bot.html",
+      "viewport": "1280",
+      "shot": "screenshots/08-skill_audit-1280.png",
+      "info": {
+        "title": "사내 코드리뷰 봇 스킬 감사 리포트",
+        "h1": "사내 코드리뷰 봇 스킬 감사 리포트",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "executive-summary",
+            "title": "Executive Summary",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n목적과 트리거 점검",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\n입력·출력 계약",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n개선 전 / 후",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n품질 게이트: 통과 / 미흡",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n입력 부족 대응과 실패 모드",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n권장 조치와 패치 범위",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "09",
+      "mode": "reference_html",
+      "file": "09_reference_regex.html",
+      "viewport": "390",
+      "shot": "screenshots/09-reference_html-390.png",
+      "info": {
+        "title": "정규식(Regex) 실무 레퍼런스",
+        "h1": "정규식(Regex) 실무 레퍼런스",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "toc",
+            "title": "문서 목차",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "1\n빠른 레퍼런스",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "2\n메타문자와 문자 클래스",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "3\n앵커와 경계",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "4\n수량자와 탐욕/게으름",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "5\n그룹과 캡처",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "6\n룩어라운드 비교",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "",
+            "title": "7\n플래그",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "",
+            "title": "8\n실무 예시 패턴",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "",
+            "title": "9\n흔한 실수",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "",
+            "title": "10\n한눈 치트시트",
+            "hasIcon": true
+          },
+          {
+            "i": 13,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 14,
+            "cls": "try",
+            "title": "바로 적용하기",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "09",
+      "mode": "reference_html",
+      "file": "09_reference_regex.html",
+      "viewport": "1280",
+      "shot": "screenshots/09-reference_html-1280.png",
+      "info": {
+        "title": "정규식(Regex) 실무 레퍼런스",
+        "h1": "정규식(Regex) 실무 레퍼런스",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "toc",
+            "title": "문서 목차",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "1\n빠른 레퍼런스",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "2\n메타문자와 문자 클래스",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "3\n앵커와 경계",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "4\n수량자와 탐욕/게으름",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "5\n그룹과 캡처",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "6\n룩어라운드 비교",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "",
+            "title": "7\n플래그",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "",
+            "title": "8\n실무 예시 패턴",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "",
+            "title": "9\n흔한 실수",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "",
+            "title": "10\n한눈 치트시트",
+            "hasIcon": true
+          },
+          {
+            "i": 13,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 14,
+            "cls": "try",
+            "title": "바로 적용하기",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "10",
+      "mode": "comparison_html",
+      "file": "10_comparison_message_queue.html",
+      "viewport": "390",
+      "shot": "screenshots/10-comparison_html-390.png",
+      "info": {
+        "title": "메시지 큐 3종 비교 — Kafka·RabbitMQ·SQS",
+        "h1": "메시지 큐 3종 비교 — Kafka · RabbitMQ · AWS SQS",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n결론 먼저: 상황별 추천",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\n선택 문제 정의",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n핵심 비교 매트릭스",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n선택 기준 — 무엇을 보고 고를까",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n벤치마크를 그대로 믿지 말 것",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n운영·재처리 함정 정리",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "div",
+            "cls": "table-scroll",
+            "text": "메시지 큐 3종 핵심 비교 매트릭스 — 7개 결정 기준 × 3개 큐 기준 Apache Kafka Rabbit",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 482,
+            "overflowScroll": 170
+          },
+          {
+            "tag": "table",
+            "cls": "table",
+            "text": "메시지 큐 3종 핵심 비교 매트릭스 — 7개 결정 기준 × 3개 큐 기준 Apache Kafka Rabbit",
+            "left": 39,
+            "right": 521,
+            "width": 482,
+            "clientWidth": 482,
+            "scrollWidth": 482,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "caption",
+            "cls": "",
+            "text": "메시지 큐 3종 핵심 비교 매트릭스 — 7개 결정 기준 × 3개 큐",
+            "left": 39,
+            "right": 521,
+            "width": 482,
+            "clientWidth": 482,
+            "scrollWidth": 482,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "thead",
+            "cls": "",
+            "text": "기준 Apache Kafka RabbitMQ AWS SQS",
+            "left": 40,
+            "right": 521,
+            "width": 481,
+            "clientWidth": 481,
+            "scrollWidth": 481,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "기준 Apache Kafka RabbitMQ AWS SQS",
+            "left": 40,
+            "right": 521,
+            "width": 481,
+            "clientWidth": 481,
+            "scrollWidth": 481,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "AWS SQS",
+            "left": 423,
+            "right": 521,
+            "width": 98,
+            "clientWidth": 97,
+            "scrollWidth": 97,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tbody",
+            "cls": "",
+            "text": "처리 모델 분산 커밋 로그. 메시지를 읽어도 사라지지 않고 오프셋만 전진한다. 발행-구독·스트림 처리에 최적",
+            "left": 40,
+            "right": 521,
+            "width": 481,
+            "clientWidth": 481,
+            "scrollWidth": 481,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "처리 모델 분산 커밋 로그. 메시지를 읽어도 사라지지 않고 오프셋만 전진한다. 발행-구독·스트림 처리에 최적",
+            "left": 40,
+            "right": 521,
+            "width": 481,
+            "clientWidth": 481,
+            "scrollWidth": 481,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "관리형 풀(pull) 큐. 컨슈머가 polling으로 받고, 처리 후 명시적으로 삭제. Standard/FI",
+            "left": 423,
+            "right": 521,
+            "width": 98,
+            "clientWidth": 97,
+            "scrollWidth": 97,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "순서 보장 파티션 단위로 순서 보장. 같은 key는 같은 파티션→전역 순서가 아니라 파티션 내 순서. 단일 ",
+            "left": 40,
+            "right": 521,
+            "width": 481,
+            "clientWidth": 481,
+            "scrollWidth": 481,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "Standard는 best-effort(순서·중복 비보장), FIFO 큐는 메시지 그룹 단위 순서 + 정확히",
+            "left": 423,
+            "right": 521,
+            "width": 98,
+            "clientWidth": 97,
+            "scrollWidth": 97,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "지연 (latency) 배치·버퍼링 전제라 µs~ms대 가능하나 튜닝에 좌우. tail latency는 파티",
+            "left": 40,
+            "right": 521,
+            "width": 481,
+            "clientWidth": 481,
+            "scrollWidth": 481,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "네트워크 호출 기반이라 수~수십 ms. long polling으로 빈 응답을 줄이지만 본질적으로 큐 중 가장",
+            "left": 423,
+            "right": 521,
+            "width": 98,
+            "clientWidth": 97,
+            "scrollWidth": 97,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "처리량 (throughput) 가장 높음. 파티션 수평 확장으로 초당 수십만~수백만 건. 대용량 스트리밍의 ",
+            "left": 40,
+            "right": 521,
+            "width": 481,
+            "clientWidth": 481,
+            "scrollWidth": 481,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "실질적으로 무제한에 가깝게 자동 확장(Standard). FIFO는 그룹당 처리량 상한이 있어 설계 주의.",
+            "left": 423,
+            "right": 521,
+            "width": 98,
+            "clientWidth": 97,
+            "scrollWidth": 97,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "운영 난이도 가장 높음. 브로커·ZooKeeper/KRaft·파티션·컨슈머 그룹·리밸런싱·디스크 관리. 전담",
+            "left": 40,
+            "right": 521,
+            "width": 481,
+            "clientWidth": 481,
+            "scrollWidth": 481,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "가장 낮음. 서버·패치·스케일을 AWS가 담당. 큐 생성과 IAM 설정만으로 시작.",
+            "left": 423,
+            "right": 521,
+            "width": 98,
+            "clientWidth": 97,
+            "scrollWidth": 97,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "재처리 (replay) 네이티브 강점. 오프셋을 되감아 과거 메시지를 다시 읽고, 신규 소비자도 처음부터 소",
+            "left": 40,
+            "right": 521,
+            "width": 481,
+            "clientWidth": 481,
+            "scrollWidth": 481,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "받아서 삭제하면 사라짐. 실패분은 DLQ로 격리해 재처리하지만 \"임의 과거 시점 replay\"는 불가.",
+            "left": 423,
+            "right": 521,
+            "width": 98,
+            "clientWidth": 97,
+            "scrollWidth": 97,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "비용 인프라(브로커·디스크·네트워크) + 운영 인건비가 핵심. 자체 운영은 트래픽이 클수록 단가 유리, 작으",
+            "left": 40,
+            "right": 521,
+            "width": 481,
+            "clientWidth": 481,
+            "scrollWidth": 481,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "10",
+      "mode": "comparison_html",
+      "file": "10_comparison_message_queue.html",
+      "viewport": "1280",
+      "shot": "screenshots/10-comparison_html-1280.png",
+      "info": {
+        "title": "메시지 큐 3종 비교 — Kafka·RabbitMQ·SQS",
+        "h1": "메시지 큐 3종 비교 — Kafka · RabbitMQ · AWS SQS",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n결론 먼저: 상황별 추천",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\n선택 문제 정의",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n핵심 비교 매트릭스",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n선택 기준 — 무엇을 보고 고를까",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n벤치마크를 그대로 믿지 말 것",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n운영·재처리 함정 정리",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "11",
+      "mode": "case_study_html",
+      "file": "11_case_study_search_index_outage.html",
+      "viewport": "390",
+      "shot": "screenshots/11-case_study_html-390.png",
+      "info": {
+        "title": "검색 인덱스 장애 6시간 회고",
+        "h1": "검색 인덱스 장애 6시간 회고",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n사고 한 줄 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\n왜 6시간 동안 아무도 몰랐나",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n분 단위 상세 타임라인",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n영향 분석",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n대응 swimlane",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n근본 원인",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "7\n재발 감지 지표",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "",
+            "title": "8\n수정 계획",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "",
+            "title": "9\n회고 결론",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "div",
+            "cls": "tbl table-scroll",
+            "text": "검색 인덱스 장애 영향 분석 (가상) 영향 영역 관측값 사용자/사업 영향 증거 후속 조치 셀러 신규 등록 2",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 337,
+            "overflowScroll": 25
+          },
+          {
+            "tag": "div",
+            "cls": "tbl table-scroll",
+            "text": "검색 인덱스 장애 분 단위 타임라인 (가상 재구성, KST) 시각 단계 이벤트 담당 조치 03:08 전조 마",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 331,
+            "overflowScroll": 19
+          },
+          {
+            "tag": "div",
+            "cls": "tbl table-scroll",
+            "text": "재발 방지 액션 계획 (가상) 액션 소유자 기한 검증 방법 완료 기준 freshness lag 알림 sear",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 328,
+            "overflowScroll": 16
+          },
+          {
+            "tag": "div",
+            "cls": "tbl table-scroll",
+            "text": "대응 레인별 동작과 핸드오프 (가상) 단계 CS/Ops Search SRE Search Platform On",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 319,
+            "overflowScroll": 7
+          },
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "11",
+      "mode": "case_study_html",
+      "file": "11_case_study_search_index_outage.html",
+      "viewport": "1280",
+      "shot": "screenshots/11-case_study_html-1280.png",
+      "info": {
+        "title": "검색 인덱스 장애 6시간 회고",
+        "h1": "검색 인덱스 장애 6시간 회고",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n사고 한 줄 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\n왜 6시간 동안 아무도 몰랐나",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n분 단위 상세 타임라인",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n영향 분석",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n대응 swimlane",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n근본 원인",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "",
+            "title": "7\n재발 감지 지표",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "",
+            "title": "8\n수정 계획",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "",
+            "title": "9\n회고 결론",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "12",
+      "mode": "landing_brief_html",
+      "file": "12_landing_pagercalm_brief.html",
+      "viewport": "390",
+      "shot": "screenshots/12-landing_brief_html-390.png",
+      "info": {
+        "title": "온콜 피로도 관리 도구 'PagerCalm' 랜딩 브리프",
+        "h1": "온콜 당번이 잠을 되찾는 온콜 피로도 관리 도구",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "hero-analogy",
+            "title": "제품 한 문장",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n지금 온콜 당번이 겪는 문제",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\nPagerCalm이 작동하는 방식",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n핵심 기능",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n지표와 신뢰",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n요금",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n자주 묻는 질문과 도입 흐름",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "legend",
+            "cls": "wg-02-sr",
+            "text": "디자인 방향 선택",
+            "left": 56,
+            "right": 57,
+            "width": 1,
+            "clientWidth": 1,
+            "scrollWidth": 14,
+            "overflowScroll": 13
+          },
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "12",
+      "mode": "landing_brief_html",
+      "file": "12_landing_pagercalm_brief.html",
+      "viewport": "1280",
+      "shot": "screenshots/12-landing_brief_html-1280.png",
+      "info": {
+        "title": "온콜 피로도 관리 도구 'PagerCalm' 랜딩 브리프",
+        "h1": "온콜 당번이 잠을 되찾는 온콜 피로도 관리 도구",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "hero-analogy",
+            "title": "제품 한 문장",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n지금 온콜 당번이 겪는 문제",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\nPagerCalm이 작동하는 방식",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n핵심 기능",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n지표와 신뢰",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n요금",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n자주 묻는 질문과 도입 흐름",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try",
+            "title": "바로 실행할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "legend",
+            "cls": "wg-02-sr",
+            "text": "디자인 방향 선택",
+            "left": 186,
+            "right": 187,
+            "width": 1,
+            "clientWidth": 1,
+            "scrollWidth": 14,
+            "overflowScroll": 13
+          },
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "13",
+      "mode": "checklist_playbook",
+      "file": "13_checklist_data_migration.html",
+      "viewport": "390",
+      "shot": "screenshots/13-checklist_playbook-390.png",
+      "info": {
+        "title": "데이터 마이그레이션 안전 플레이북",
+        "h1": "데이터 마이그레이션 안전 플레이북",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n마이그레이션 5대 원칙",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\n단계별 점검표",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n품질 게이트",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n위험 신호와 안전 신호",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n컷오버와 롤백 절차",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n실패 모드와 롤백 기준",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try",
+            "title": "컷오버 최종 승인 기준",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "thead",
+            "cls": "",
+            "text": "단계 확인 항목 담당 상태",
+            "left": 39,
+            "right": 40,
+            "width": 1,
+            "clientWidth": 1,
+            "scrollWidth": 58,
+            "overflowScroll": 57
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "확인 항목",
+            "left": 52,
+            "right": 52,
+            "width": 0,
+            "clientWidth": 0,
+            "scrollWidth": 45,
+            "overflowScroll": 45
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "단계 확인 항목 담당 상태",
+            "left": 39,
+            "right": 65,
+            "width": 26,
+            "clientWidth": 24,
+            "scrollWidth": 57,
+            "overflowScroll": 33
+          },
+          {
+            "tag": "code",
+            "cls": "",
+            "text": "cutover(table): assert backup.restore_verified # 복원 리허설 통과 전",
+            "left": 57,
+            "right": 423,
+            "width": 366,
+            "clientWidth": 0,
+            "scrollWidth": 0,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "단계",
+            "left": 52,
+            "right": 52,
+            "width": 0,
+            "clientWidth": 0,
+            "scrollWidth": 21,
+            "overflowScroll": 21
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "담당",
+            "left": 52,
+            "right": 52,
+            "width": 0,
+            "clientWidth": 0,
+            "scrollWidth": 21,
+            "overflowScroll": 21
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "상태",
+            "left": 52,
+            "right": 52,
+            "width": 0,
+            "clientWidth": 0,
+            "scrollWidth": 21,
+            "overflowScroll": 21
+          },
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "13",
+      "mode": "checklist_playbook",
+      "file": "13_checklist_data_migration.html",
+      "viewport": "1280",
+      "shot": "screenshots/13-checklist_playbook-1280.png",
+      "info": {
+        "title": "데이터 마이그레이션 안전 플레이북",
+        "h1": "데이터 마이그레이션 안전 플레이북",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "summary-card",
+            "title": "핵심 요약",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "",
+            "title": "1\n마이그레이션 5대 원칙",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "",
+            "title": "2\n단계별 점검표",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "",
+            "title": "3\n품질 게이트",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "",
+            "title": "4\n위험 신호와 안전 신호",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "",
+            "title": "5\n컷오버와 롤백 절차",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "",
+            "title": "6\n실패 모드와 롤백 기준",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "try",
+            "title": "컷오버 최종 승인 기준",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "14",
+      "mode": "github_analysis",
+      "file": "14_github_analysis_fastapi_starter.html",
+      "viewport": "390",
+      "shot": "screenshots/14-github_analysis-390.png",
+      "info": {
+        "title": "GitHub 저장소 분석 리포트 (owner/fastapi-starter)",
+        "h1": "owner/fastapi-starter 저장소 분석 리포트",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "github-verdict",
+            "title": "1\n한 줄 결론",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "toc-map",
+            "title": "문서 목차",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "repo-identity",
+            "title": "2\n저장소 정체 · 무엇을 담고 있나",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "quickstart-readiness",
+            "title": "3\n바로 실행 가능한가",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "repo-health",
+            "title": "4\n살아 있는 프로젝트인가",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "code-tour",
+            "title": "5\n어디부터 읽으면 되는가",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "release-roadmap",
+            "title": "6\n릴리스와 배포 신호",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "security-license",
+            "title": "7\n보안·라이선스·커뮤니티 신뢰",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "risk-matrix",
+            "title": "8\n도입 리스크 매트릭스",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "decision-tree",
+            "title": "9\n최종 판단 · 무엇을 해야 하나",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "try",
+            "title": "권장하는 다음 할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "div",
+            "cls": "table-scroll",
+            "text": "도입 리스크 매트릭스 (가상 예시값) 리스크 심각도 근거 (FACT/UNKNOWN) 권장 조치 보안 정책 부",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 397,
+            "overflowScroll": 85
+          },
+          {
+            "tag": "table",
+            "cls": "",
+            "text": "도입 리스크 매트릭스 (가상 예시값) 리스크 심각도 근거 (FACT/UNKNOWN) 권장 조치 보안 정책 부",
+            "left": 39,
+            "right": 436,
+            "width": 397,
+            "clientWidth": 397,
+            "scrollWidth": 397,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "caption",
+            "cls": "",
+            "text": "도입 리스크 매트릭스 (가상 예시값)",
+            "left": 39,
+            "right": 436,
+            "width": 397,
+            "clientWidth": 397,
+            "scrollWidth": 397,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "thead",
+            "cls": "",
+            "text": "리스크 심각도 근거 (FACT/UNKNOWN) 권장 조치",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "clientWidth": 396,
+            "scrollWidth": 396,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "리스크 심각도 근거 (FACT/UNKNOWN) 권장 조치",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "clientWidth": 396,
+            "scrollWidth": 396,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "권장 조치",
+            "left": 314,
+            "right": 436,
+            "width": 122,
+            "clientWidth": 121,
+            "scrollWidth": 121,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tbody",
+            "cls": "",
+            "text": "보안 정책 부재 높음 SECURITY.md 없음(FACT) · alert 상태 UNKNOWN 의존성 스캔 +",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "clientWidth": 396,
+            "scrollWidth": 396,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "보안 정책 부재 높음 SECURITY.md 없음(FACT) · alert 상태 UNKNOWN 의존성 스캔 +",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "clientWidth": 396,
+            "scrollWidth": 396,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "의존성 스캔 + 자체 보안 검토 후 도입",
+            "left": 314,
+            "right": 436,
+            "width": 122,
+            "clientWidth": 121,
+            "scrollWidth": 121,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "테스트 커버리지 불명 중간 tests/ 존재(FACT) · 커버리지 수치 UNKNOWN 로컬 pytest+c",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "clientWidth": 396,
+            "scrollWidth": 396,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "로컬 pytest+coverage로 직접 측정",
+            "left": 314,
+            "right": 436,
+            "width": 122,
+            "clientWidth": 121,
+            "scrollWidth": 121,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "CHANGELOG 부재 중간 릴리스 노트만 있음(FACT) 버전 태그에 핀하고 노트 직접 검토",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "clientWidth": 396,
+            "scrollWidth": 396,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "버전 태그에 핀하고 노트 직접 검토",
+            "left": 314,
+            "right": 436,
+            "width": 122,
+            "clientWidth": 121,
+            "scrollWidth": 121,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "의존성 노후 가능성 중간 핀 최신성 UNKNOWN 도입 시 lock 갱신·취약점 재확인",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "clientWidth": 396,
+            "scrollWidth": 396,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "도입 시 lock 갱신·취약점 재확인",
+            "left": 314,
+            "right": 436,
+            "width": 122,
+            "clientWidth": 121,
+            "scrollWidth": 121,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "단일 메인테이너 추정 낮음 contributor 다수 여부 UNKNOWN (INFERENCE) 버스팩터 가정",
+            "left": 40,
+            "right": 436,
+            "width": 396,
+            "clientWidth": 396,
+            "scrollWidth": 396,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "td",
+            "cls": "",
+            "text": "버스팩터 가정하에 fork 전략 준비",
+            "left": 314,
+            "right": 436,
+            "width": 122,
+            "clientWidth": 121,
+            "scrollWidth": 121,
+            "overflowScroll": 0
+          },
+          {
+            "tag": "div",
+            "cls": "table-scroll",
+            "text": "릴리스/태그 상태 (가상 예시값) 항목 관측값 판단 GitHub Releases 3 (FACT) 최신 v1.",
+            "left": 39,
+            "right": 351,
+            "width": 312,
+            "clientWidth": 312,
+            "scrollWidth": 333,
+            "overflowScroll": 21
+          },
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "14",
+      "mode": "github_analysis",
+      "file": "14_github_analysis_fastapi_starter.html",
+      "viewport": "1280",
+      "shot": "screenshots/14-github_analysis-1280.png",
+      "info": {
+        "title": "GitHub 저장소 분석 리포트 (owner/fastapi-starter)",
+        "h1": "owner/fastapi-starter 저장소 분석 리포트",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "github-verdict",
+            "title": "1\n한 줄 결론",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "toc-map",
+            "title": "문서 목차",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "repo-identity",
+            "title": "2\n저장소 정체 · 무엇을 담고 있나",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "quickstart-readiness",
+            "title": "3\n바로 실행 가능한가",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "repo-health",
+            "title": "4\n살아 있는 프로젝트인가",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "code-tour",
+            "title": "5\n어디부터 읽으면 되는가",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "release-roadmap",
+            "title": "6\n릴리스와 배포 신호",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "security-license",
+            "title": "7\n보안·라이선스·커뮤니티 신뢰",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "risk-matrix",
+            "title": "8\n도입 리스크 매트릭스",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "decision-tree",
+            "title": "9\n최종 판단 · 무엇을 해야 하나",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "mode-template-contract",
+            "title": "T\n모드 정본 템플릿 적용 확인",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "try",
+            "title": "권장하는 다음 할 일",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "15",
+      "mode": "youtube_analysis",
+      "file": "15_youtube_vibecoding_gap.html",
+      "viewport": "390",
+      "shot": "screenshots/15-youtube_analysis-390.png",
+      "info": {
+        "title": "YouTube Analysis · 바이브코딩 영상 분석",
+        "h1": "바이브코딩 영상은 실제로 팀 생산성을 올리는가",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "youtube-verdict",
+            "title": "분석 결론",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "source-trust",
+            "title": "1\nSource Trust · 출처 신뢰도",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "watching-decision",
+            "title": "2\nWatching Decision · 볼지 말지 판단",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "video-evidence-map",
+            "title": "3\nVideo Evidence Map · 영상 근거 지도",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "chapter-retention",
+            "title": "4\nChapter Retention · 이탈 방지 구조",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "comment-signals",
+            "title": "5\nComment Signals · 댓글 신호",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "opportunity-matrix",
+            "title": "6\nOpportunity Matrix · 콘텐츠 기회",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "claim-risk",
+            "title": "7\nClaim Risk · 과장 위험",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "video-blueprint",
+            "title": "8\nVideo Blueprint · 다음 영상 설계",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "reuse-pack",
+            "title": "9\nReuse Pack · 재가공 패키지",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "try",
+            "title": "10\nNext Actions",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "thead",
+            "cls": "",
+            "text": "주장 근거 판정 다음 확인",
+            "left": 39,
+            "right": 40,
+            "width": 1,
+            "clientWidth": 1,
+            "scrollWidth": 67,
+            "overflowScroll": 66
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "주장 근거 판정 다음 확인",
+            "left": 39,
+            "right": 65,
+            "width": 26,
+            "clientWidth": 24,
+            "scrollWidth": 66,
+            "overflowScroll": 42
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "다음 확인",
+            "left": 52,
+            "right": 70,
+            "width": 18,
+            "clientWidth": 18,
+            "scrollWidth": 54,
+            "overflowScroll": 36
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "주장",
+            "left": 52,
+            "right": 70,
+            "width": 18,
+            "clientWidth": 18,
+            "scrollWidth": 30,
+            "overflowScroll": 12
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "근거",
+            "left": 52,
+            "right": 70,
+            "width": 18,
+            "clientWidth": 18,
+            "scrollWidth": 30,
+            "overflowScroll": 12
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "판정",
+            "left": 52,
+            "right": 70,
+            "width": 18,
+            "clientWidth": 18,
+            "scrollWidth": 30,
+            "overflowScroll": 12
+          },
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "15",
+      "mode": "youtube_analysis",
+      "file": "15_youtube_vibecoding_gap.html",
+      "viewport": "1280",
+      "shot": "screenshots/15-youtube_analysis-1280.png",
+      "info": {
+        "title": "YouTube Analysis · 바이브코딩 영상 분석",
+        "h1": "바이브코딩 영상은 실제로 팀 생산성을 올리는가",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "youtube-verdict",
+            "title": "분석 결론",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "source-trust",
+            "title": "1\nSource Trust · 출처 신뢰도",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "watching-decision",
+            "title": "2\nWatching Decision · 볼지 말지 판단",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "video-evidence-map",
+            "title": "3\nVideo Evidence Map · 영상 근거 지도",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "chapter-retention",
+            "title": "4\nChapter Retention · 이탈 방지 구조",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "comment-signals",
+            "title": "5\nComment Signals · 댓글 신호",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "opportunity-matrix",
+            "title": "6\nOpportunity Matrix · 콘텐츠 기회",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "claim-risk",
+            "title": "7\nClaim Risk · 과장 위험",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "video-blueprint",
+            "title": "8\nVideo Blueprint · 다음 영상 설계",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "reuse-pack",
+            "title": "9\nReuse Pack · 재가공 패키지",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "try",
+            "title": "10\nNext Actions",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "16",
+      "mode": "manual_analysis",
+      "file": "16_manual_product_runbook.html",
+      "viewport": "390",
+      "shot": "screenshots/16-manual_analysis-390.png",
+      "info": {
+        "title": "Manual Analysis · 제품 운영 매뉴얼",
+        "h1": "제품 운영 매뉴얼을 역할별 실행 문서로 바꾸기",
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "manual-verdict",
+            "title": "매뉴얼 결론",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "source-version",
+            "title": "1\nSource & Version Snapshot",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "role-router",
+            "title": "2\nReader Role Router · 역할별 독자 경로",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "first-success",
+            "title": "3\nFirst Success Path · 첫 성공 경로",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "prerequisites-safety",
+            "title": "4\nPrerequisites / Safety · 사전조건과 안전",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "task-recipes",
+            "title": "5\nTask Recipes · 작업 레시피",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "reference-extract",
+            "title": "6\nReference Extract · 원문 보존",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "decision-guide",
+            "title": "7\nDecision Guide · 선택 기준",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "troubleshooting",
+            "title": "8\nTroubleshooting · 증상별 문제 해결",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "operations-runbook",
+            "title": "9\nOperations Runbook · 운영 절차",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "manual-audit",
+            "title": "10\nManual Audit · 품질 감사",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "try",
+            "title": "11\nNext Actions",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "thead",
+            "cls": "",
+            "text": "필드 내용 누락 시 위험",
+            "left": 39,
+            "right": 40,
+            "width": 1,
+            "clientWidth": 1,
+            "scrollWidth": 80,
+            "overflowScroll": 79
+          },
+          {
+            "tag": "tr",
+            "cls": "",
+            "text": "필드 내용 누락 시 위험",
+            "left": 39,
+            "right": 65,
+            "width": 26,
+            "clientWidth": 24,
+            "scrollWidth": 79,
+            "overflowScroll": 55
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "누락 시 위험",
+            "left": 52,
+            "right": 70,
+            "width": 18,
+            "clientWidth": 18,
+            "scrollWidth": 67,
+            "overflowScroll": 49
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "필드",
+            "left": 52,
+            "right": 70,
+            "width": 18,
+            "clientWidth": 18,
+            "scrollWidth": 30,
+            "overflowScroll": 12
+          },
+          {
+            "tag": "th",
+            "cls": "",
+            "text": "내용",
+            "left": 52,
+            "right": 70,
+            "width": 18,
+            "clientWidth": 18,
+            "scrollWidth": 30,
+            "overflowScroll": 12
+          },
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    },
+    {
+      "num": "16",
+      "mode": "manual_analysis",
+      "file": "16_manual_product_runbook.html",
+      "viewport": "1280",
+      "shot": "screenshots/16-manual_analysis-1280.png",
+      "info": {
+        "title": "Manual Analysis · 제품 운영 매뉴얼",
+        "h1": "제품 운영 매뉴얼을 역할별 실행 문서로 바꾸기",
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "overflowX": false,
+        "themeRadios": 8,
+        "sections": [
+          {
+            "i": 1,
+            "cls": "manual-verdict",
+            "title": "매뉴얼 결론",
+            "hasIcon": true
+          },
+          {
+            "i": 2,
+            "cls": "source-version",
+            "title": "1\nSource & Version Snapshot",
+            "hasIcon": true
+          },
+          {
+            "i": 3,
+            "cls": "role-router",
+            "title": "2\nReader Role Router · 역할별 독자 경로",
+            "hasIcon": true
+          },
+          {
+            "i": 4,
+            "cls": "first-success",
+            "title": "3\nFirst Success Path · 첫 성공 경로",
+            "hasIcon": true
+          },
+          {
+            "i": 5,
+            "cls": "prerequisites-safety",
+            "title": "4\nPrerequisites / Safety · 사전조건과 안전",
+            "hasIcon": true
+          },
+          {
+            "i": 6,
+            "cls": "task-recipes",
+            "title": "5\nTask Recipes · 작업 레시피",
+            "hasIcon": true
+          },
+          {
+            "i": 7,
+            "cls": "reference-extract",
+            "title": "6\nReference Extract · 원문 보존",
+            "hasIcon": true
+          },
+          {
+            "i": 8,
+            "cls": "decision-guide",
+            "title": "7\nDecision Guide · 선택 기준",
+            "hasIcon": true
+          },
+          {
+            "i": 9,
+            "cls": "troubleshooting",
+            "title": "8\nTroubleshooting · 증상별 문제 해결",
+            "hasIcon": true
+          },
+          {
+            "i": 10,
+            "cls": "operations-runbook",
+            "title": "9\nOperations Runbook · 운영 절차",
+            "hasIcon": true
+          },
+          {
+            "i": 11,
+            "cls": "manual-audit",
+            "title": "10\nManual Audit · 품질 감사",
+            "hasIcon": true
+          },
+          {
+            "i": 12,
+            "cls": "try",
+            "title": "11\nNext Actions",
+            "hasIcon": true
+          }
+        ],
+        "missingTitleOrIcon": [],
+        "offenders": [
+          {
+            "tag": "a",
+            "cls": "skip",
+            "text": "본문 바로가기",
+            "left": -999,
+            "right": -885,
+            "width": 114,
+            "clientWidth": 114,
+            "scrollWidth": 114,
+            "overflowScroll": 0
+          }
+        ],
+        "hasWidgets": true,
+        "hasVisual": true
+      }
+    }
+  ]
+}

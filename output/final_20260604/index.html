@@ -3113,196 +3113,2161 @@ body h2,body h3,body h4{font-family:var(--report-sans)!important;font-weight:800
 
 
 
-/* ===== DARK THEME (default; toggle #theme-toggle -> original light) — no JS, :has() gated ===== */
-:root:not(:has(#theme-toggle:checked)){
-  --bg:#15161a;--ink:#ececE6;--ink-soft:#c3c3bc;--ink-mute:#9a9a92;--line:#34353d;--card:#1e2026;
-  --accent:#ff6b75;--accent-2:#ff909a;--accent-soft:#3a2228;--link-on-dark:#ffb6c0;--chip-ink:#a8a8a1;
-  --dark:#0d0e11;--dark-soft:#15171b;--code:#0e0f13;
-  --term-bg:#241f13;--term-border:#48402a;--term-ink:#ead9b2;--term-label-ink:#e3bd6a;--term-accent:#d7a657;
-  --analogy-bg:#15212e;--analogy-border:#2e4458;--analogy-ink:#bfd6e8;--analogy-label-ink:#9cc2de;--analogy-accent:#79a8c8;
-  --danger-bg:#291513;--danger-border:#5c2f2a;--danger-ink:#f2c6c0;--danger-label-ink:#ff8c87;--danger-accent:#e26d64;
-  --good-bg:#0f2419;--good-border:#244b37;--good-ink:#bfe2cf;--good-label-ink:#80d2a7;--good-accent:#60ba8b;
-  --hl-yellow:#6a5618;--hl-blue:#21405c;--hl-pink:#5a2530;
-  --pill-bg:#262830;--pill-bg-hover:#2f313a;--pill-border:#3b3d47;--pill-ink:#c3c3bc;
-  --pill-accent-bg:#2a2820;--pill-accent-border:#4a4332;--pill-accent-ink:#dccdb2;--pill-accent-dot:#b7a892;--hm-c:#b7a892;
-  --focus:#5a86ee;color-scheme:dark;
+
+/* final_20260605: removed legacy dark toggle block; ahf-theme radio contract is the only theme system. */
+
+
+/* final_20260605 index-wide sync: theme/style fixes from beginner-width, with original page-wide width preserved. */
+/* final_20260605 CSS-only theme switcher: Light / Light2 / White / Dark / Dark2, no JS. */
+.ahf-theme-input{
+  position:fixed;
+  inline-size:1px;
+  block-size:1px;
+  opacity:0;
+  pointer-events:none;
 }
-:root:not(:has(#theme-toggle:checked)) html,:root:not(:has(#theme-toggle:checked)) body{background:var(--bg);color:var(--ink)}
-:root:not(:has(#theme-toggle:checked)) :is(.access-check-card,
-.access-check-rule,
-.access-check-time,
-.access-release-ready .access-subnum,
-.access-release-ready li,
-.access-release-ready li::before,
-.ba-col.after,
-.ba-col.before,
-.body-icon-gallery-note span,
-.dark .widget-pv-body span,
-.dark .widget-pv-line,
-.edge-failure-note,
-.edge-flag,
-.edge-gov-badge,
-.edge-gov-badge.done,
-.edge-gov-demo,
-.edge-gov-flow,
-.edge-gov-level,
-.edge-status-track,
-.edge-ticket,
-.figure-wide,
-.final-body-icon-card,
-.final-hero-map,
-.final-hero-map-result,
-.final-softshape-card,
-.header .meta span,
-.header .meta span:hover,
-.hero-analogy,
-.imported-toc-card,
-.imported-toc-card a.imported-toc-chip:hover,
-.imported-toc-chip,
-.imported-toc-chip b,
-.kicker,
-.landing-action-btn,
-.landing-action-panel,
-.landing-action-proof,
-.lens-chip,
-.meta span,
-.new-template-card,
-.pattern-meta span,
-.pattern-meta span:hover,
-.pattern-nav a,
-.pattern-shell,
-.platform-branch-card,
-.platform-conversion-card,
-.platform-mini-tags span,
-.platform-title-prompt,
-.platform-transform-section .platform-lead-card,
-.prompt-box,
-.seo-result-card,
-.seo-rule-card,
-.seo-snippet-checks span,
-.seo-snippet-preview,
-.seo-variant,
-.shape-example-brief,
-.shape-example-output,
-.shape-example-quote,
-.shape-example-rule,
-.shape-example-visual,
-.shape-step-card,
-.shape-step-card.good,
-.soft .widget-pv-body span,
-.soft-shape-theme-note span,
-.soft-shape-use-card,
-.soft-shape-use-card.good,
-.static-flow-no,
-.static-flow-step,
-.status-pill,
-.tag,
-.template-addition-note span,
-.timeline-card,
-.token-rhythm-row,
-.token-rhythm-row code,
-.token-swatch,
-.top-shape-anchor,
-.variant-card,
-.variant-card.is-danger .variant-demo-btn,
-.variant-card.is-disabled,
-.variant-demo-btn,
-.visual-figure,
-.vt-adapt-demo,
-.vt-adapt-pill,
-.vt-adapt-result,
-.vt-check-item,
-.vt-concept-step,
-.vt-file-card,
-.vt-file-head,
-.vt-file-note,
-.vt-flag,
-.vt-flow-node,
-.vt-qg-final,
-.vt-raci .a,
-.vt-raci .h,
-.vt-raci .r,
-.vt-raci div,
-.vt-risk-cell,
-.vt-risk-head,
-.vt-soft-panel,
-.vt-soft-stat div,
-.vt-swimlane .h,
-.vt-swimlane .role,
-.vt-swimlane div,
-.vt-ticket,
-.vt-timeline li,
-.vt-toggle:after,
-.vt-track,
-.vt-triage-col,
-.widget-adapt-meta span,
-.widget-chip-row span,
-.widget-count,
-.widget-design-preview,
-.widget-diff-row .ln,
-.widget-feature-step,
-.widget-flow-detail,
-.widget-node,
-.widget-node span,
-.widget-pri.low,
-.widget-procon>div,
-.widget-review-note,
-.widget-soft-card,
-.widget-triage-col){background:var(--card)!important;border-color:var(--line)!important}
-:root:not(:has(#theme-toggle:checked)) :is(.final-softshape-card img,
-.shape-example-output img,
-.shape-step-card img,
-.top-shape-anchor img){background:#23252b!important}
-:root:not(:has(#theme-toggle:checked)) :is(.ba-col.before .ba-label,
-.conn-strength,
-.edge-flag,
-.edge-gov-badge,
-.edge-gov-level,
-.edge-ticket,
-.final-hero-map-card.map .final-hero-map-kicker,
-.hero-analogy,
-.imported-toc-chip b,
-.layout-seo .serp-url,
-.lens-chip,
-.pattern-meta span,
-.try h2,
-.try h3,
-.vt-adapt-pill,
-a::after,
-body,
-code){color:var(--ink)!important}
-:root:not(:has(#theme-toggle:checked)) :is(code,.code,.code-path,pre,pre code,.token-rhythm-row code,.widget-diff-row .ln){background:#0f1013!important;color:#e4e4dd!important;border-color:var(--line)!important}
-:root:not(:has(#theme-toggle:checked)) th,:root:not(:has(#theme-toggle:checked)) .table th{background:#262830!important;color:var(--ink)}
-:root:not(:has(#theme-toggle:checked)) table,:root:not(:has(#theme-toggle:checked)) .table,:root:not(:has(#theme-toggle:checked)) td{background:var(--card);border-color:var(--line)}
-:root:not(:has(#theme-toggle:checked)) .vt-toggle:after{background:#cfd2da!important}
-:root:not(:has(#theme-toggle:checked)) .access-release-ready li::before{background:var(--good-accent)!important}
-:root:not(:has(#theme-toggle:checked)) .reading-progress{background:var(--accent)}
-/* ===== THEME TOGGLE BUTTON (always present, token-based so it adapts) ===== */
-#theme-toggle{position:fixed;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
-.theme-switch{position:fixed;top:14px;right:16px;z-index:500;display:inline-flex;align-items:center;justify-content:center;
-  width:44px;height:44px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;
-  cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.28);transition:border-color .15s,background .15s}
-.theme-switch:hover{border-color:var(--accent);color:var(--accent)}
-#theme-toggle:focus-visible + .theme-switch{outline:3px solid var(--focus);outline-offset:3px}
-.theme-switch svg{display:block}
-.theme-switch .ts-moon{display:none}
-:root:has(#theme-toggle:checked) .theme-switch .ts-sun{display:none}
-:root:has(#theme-toggle:checked) .theme-switch .ts-moon{display:block}
-@media print{.theme-switch,#theme-toggle{display:none}}
+.ahf-themebar{
+  position:fixed;
+  top:14px;
+  right:14px;
+  z-index:500;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  padding:5px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(255,255,255,.82);
+  color:var(--chip-ink);
+  box-shadow:0 12px 26px rgba(31,28,24,.10);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.ahf-themebar label{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:30px;
+  min-width:58px;
+  padding:0 11px;
+  border:1px solid transparent;
+  border-radius:999px;
+  color:inherit;
+  font-size:12px;
+  line-height:1;
+  font-weight:850;
+  cursor:pointer;
+  user-select:none;
+}
+#ahf-light:checked ~ .ahf-themebar label[for="ahf-light"],
+#ahf-light2:checked ~ .ahf-themebar label[for="ahf-light2"],
+#ahf-white:checked ~ .ahf-themebar label[for="ahf-white"],
+#ahf-dark:checked ~ .ahf-themebar label[for="ahf-dark"]{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#fff;
+}
+body:has(#ahf-light:checked){
+  --bg:#f5f5f0;
+  --ink:#1a1a1a;
+  --ink-soft:#4a4a4a;
+  --ink-mute:#666666;
+  --line:#d8d8d0;
+  --card:#ffffff;
+  --accent:#e63946;
+  --accent-2:#b72d38;
+  --accent-soft:#fce4e6;
+  --chip-ink:#6a6a6a;
+  --pill-bg:#ffffff;
+  --pill-bg-hover:#fff7f5;
+  --pill-border:#d8d8d0;
+  --pill-ink:#6a6a6a;
+  --pill-accent-bg:#fff0ee;
+  --pill-accent-border:#e8b8b2;
+  --pill-accent-ink:#b72d38;
+  --pill-accent-dot:#e63946;
+  color-scheme:light;
+}
+body:has(#ahf-light2:checked){
+  --bg:#f5f6f8;
+  --ink:#16161d;
+  --ink-soft:#2c3140;
+  --ink-mute:#5b6270;
+  --line:#e6e8ec;
+  --card:#ffffff;
+  --accent:#e23b2e;
+  --accent-2:#b72d38;
+  --accent-soft:#fdecea;
+  --chip-ink:#5b6270;
+  --pill-bg:#ffffff;
+  --pill-bg-hover:#fafbfc;
+  --pill-border:#e6e8ec;
+  --pill-ink:#5b6270;
+  --pill-accent-bg:#fdecea;
+  --pill-accent-border:#f6c8c4;
+  --pill-accent-ink:#b72d38;
+  --pill-accent-dot:#e23b2e;
+  --term-bg:#fffbeb;
+  --term-border:#fde68a;
+  --analogy-bg:#fafbfc;
+  --analogy-border:#d9dee7;
+  --danger-bg:#fff1f2;
+  --danger-border:#fecdd3;
+  --good-bg:#f0fdf4;
+  --good-border:#bbf7d0;
+  --code:#0f1117;
+  color-scheme:light;
+}
+body:has(#ahf-white:checked){
+  --bg:#ffffff;
+  --ink:#111827;
+  --ink-soft:#374151;
+  --ink-mute:#6b7280;
+  --line:#e5e7eb;
+  --card:#ffffff;
+  --accent:#e63946;
+  --accent-2:#b72d38;
+  --accent-soft:#fff1f2;
+  --chip-ink:#5f6772;
+  --pill-bg:#ffffff;
+  --pill-bg-hover:#f9fafb;
+  --pill-border:#e5e7eb;
+  --pill-ink:#5f6772;
+  --pill-accent-bg:#fff1f2;
+  --pill-accent-border:#fecdd3;
+  --pill-accent-ink:#b72d38;
+  --pill-accent-dot:#e63946;
+  --term-bg:#fffbeb;
+  --term-border:#fde68a;
+  --analogy-bg:#f8fafc;
+  --analogy-border:#cbd5e1;
+  --danger-bg:#fff1f2;
+  --danger-border:#fecdd3;
+  --good-bg:#f0fdf4;
+  --good-border:#bbf7d0;
+  color-scheme:light;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked){
+  --bg:#111216;
+  --ink:#f2f0ea;
+  --ink-soft:#cbc8be;
+  --ink-mute:#9e9a90;
+  --line:#383941;
+  --card:#1b1d23;
+  --accent:#ef737d;
+  --accent-2:#f0949d;
+  --accent-soft:#342127;
+  --chip-ink:#d6d1c6;
+  --dark:#0d0e12;
+  --dark-soft:#181a20;
+  --code:#0c0d11;
+  --term-bg:#2a2318;
+  --term-border:#5a472c;
+  --term-ink:#ead7ae;
+  --term-label-ink:#e0b867;
+  --term-accent:#d7a655;
+  --analogy-bg:#172330;
+  --analogy-border:#33495e;
+  --analogy-ink:#c3d9ea;
+  --analogy-label-ink:#a6c8df;
+  --analogy-accent:#7ba9c8;
+  --danger-bg:#2a1717;
+  --danger-border:#643139;
+  --danger-ink:#f1c5c9;
+  --danger-label-ink:#ff9aa2;
+  --good-bg:#10261b;
+  --good-border:#2f5a40;
+  --good-ink:#c5e6d3;
+  --good-label-ink:#8dd6ac;
+  --good-accent:#65bd8d;
+  --hl-yellow:#4a3c18;
+  --hl-blue:#1d3448;
+  --hl-pink:#43242d;
+  --pill-bg:#22242b;
+  --pill-bg-hover:#2a2d35;
+  --pill-border:#3c3e47;
+  --pill-ink:#d7d2c8;
+  --pill-accent-bg:#29261f;
+  --pill-accent-border:#5a5140;
+  --pill-accent-ink:#e7dac1;
+  --pill-accent-dot:#b9ab92;
+  --focus:#7aa2ff;
+  color-scheme:dark;
+}
+body:has(#ahf-light:checked),
+body:has(#ahf-light2:checked),
+body:has(#ahf-white:checked){
+  background:var(--bg)!important;
+  color:var(--ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked){
+  background:radial-gradient(circle at 50% -220px,rgba(239,115,125,.10),transparent 420px),#111216!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home,
+body:has(#ahf-light2:checked) .page-wide.v5-home,
+body:has(#ahf-white:checked) .page-wide.v5-home{
+  --copy-surface:#ffffff;
+  --copy-surface-2:#fffdfb;
+  --copy-surface-3:#f9f7f1;
+  --copy-line:#d8d8d0;
+  --copy-line-strong:#c9bdad;
+  --copy-hover:#fff7f5;
+}
+body:has(#ahf-white:checked) .page-wide.v5-home{
+  --copy-surface:#ffffff;
+  --copy-surface-2:#fbfbfb;
+  --copy-surface-3:#f8fafc;
+  --copy-line:#e5e7eb;
+  --copy-line-strong:#d1d5db;
+  --copy-hover:#f9fafb;
+}
+body:has(#ahf-light2:checked) .page-wide.v5-home{
+  --copy-surface:#ffffff;
+  --copy-surface-2:#ffffff;
+  --copy-surface-3:#fafbfc;
+  --copy-line:#e6e8ec;
+  --copy-line-strong:#d1d5db;
+  --copy-hover:#fafbfc;
+  --vt-paper:#ffffff;
+  --vt-wash:#ffffff;
+  --vt-soft:#fafbfc;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home{
+  --copy-surface:#1b1d23;
+  --copy-surface-2:#20232a;
+  --copy-surface-3:#252830;
+  --copy-line:#3a3c45;
+  --copy-line-strong:#4c4d57;
+  --copy-hover:#242731;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-themebar{
+  background:rgba(27,29,35,.86);
+  border-color:var(--copy-line);
+  color:var(--pill-ink);
+  box-shadow:0 14px 30px rgba(0,0,0,.26);
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) #ahf-light:checked ~ .ahf-themebar label[for="ahf-light"],
+body:has(:is(#ahf-dark,#ahf-dark2):checked) #ahf-white:checked ~ .ahf-themebar label[for="ahf-white"],
+body:has(:is(#ahf-dark,#ahf-dark2):checked) #ahf-dark:checked ~ .ahf-themebar label[for="ahf-dark"]{
+  color:#111216;
+}
+/* final_20260605 background color audit table: fixed reference below the theme selector, CSS-only. */
+.ahf-color-audit{
+  --copy-surface:#ffffff;
+  --copy-surface-2:#fffdfb;
+  --copy-surface-3:#f9f7f1;
+  --copy-line:#d8d8d0;
+  --copy-line-strong:#c9bdad;
+  --copy-hover:#fff7f5;
+  position:fixed;
+  top:64px;
+  right:14px;
+  z-index:490;
+  width:330px;
+  max-height:calc(100vh - 84px);
+  overflow:auto;
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.94);
+  color:var(--ink);
+  box-shadow:0 14px 30px rgba(31,28,24,.10);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  font-family:var(--sans);
+}
+.ahf-color-audit *{box-sizing:border-box}
+.ahf-color-audit-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin:0 0 9px}
+.ahf-color-audit-title{margin:0;font-size:13px;line-height:1.25;font-weight:900;letter-spacing:-.01em;color:var(--ink)}
+.ahf-color-audit-sub{margin:3px 0 0;font-size:11px;line-height:1.35;color:var(--ink-soft)}
+.ahf-color-audit-badge{display:inline-flex;align-items:center;min-height:23px;border:1px solid var(--pill-border);border-radius:999px;padding:3px 8px;background:var(--pill-bg);color:var(--pill-ink);font-size:10.5px;font-weight:900;white-space:nowrap}
+.ahf-color-audit-badge::after{content:"Light"}
+body:has(#ahf-light2:checked) .ahf-color-audit-badge::after{content:"Light2"}
+body:has(#ahf-white:checked) .ahf-color-audit-badge::after{content:"White"}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit-badge::after{content:"Dark"}
+.ahf-color-audit table{width:100%!important;min-width:0!important;margin:0!important;border:0!important;border-collapse:separate!important;border-spacing:0 5px!important;table-layout:fixed;background:transparent!important}
+.ahf-color-audit caption{caption-side:top;text-align:left;margin:0 0 5px!important;color:var(--ink-mute)!important;background:transparent!important;font-size:10.5px;line-height:1.3;font-weight:800}
+.ahf-color-audit th,.ahf-color-audit td{padding:6px 7px!important;border-top:1px solid var(--copy-line)!important;border-bottom:1px solid var(--copy-line)!important;background:var(--copy-surface)!important;color:var(--ink)!important;vertical-align:middle!important}
+.ahf-color-audit th:first-child{border-left:1px solid var(--copy-line)!important;border-radius:10px 0 0 10px!important}
+.ahf-color-audit td:last-child{border-right:1px solid var(--copy-line)!important;border-radius:0 10px 10px 0!important}
+.ahf-color-audit thead th{background:var(--copy-surface-3)!important;color:var(--ink)!important;font-size:10.5px;line-height:1.2;font-weight:900;text-align:left}
+.ahf-color-audit tbody th{width:130px;color:var(--ink)!important;font-size:11px;line-height:1.2;text-align:left}
+.ahf-color-audit code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:10.5px;line-height:1.15;color:inherit!important;background:transparent!important;border:0!important;padding:0!important;white-space:nowrap}
+.ahf-color-role{display:block;margin-top:2px;color:var(--ink-mute);font-size:9.5px;font-weight:750;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Fill the full color column cell, not a tiny chip. */
+.ahf-color-audit tbody td:nth-child(2){
+  padding:0!important;
+  background:transparent!important;
+}
+.ahf-color-swatch{
+  display:block;
+  width:100%;
+  min-height:42px;
+  height:100%;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08), inset 0 0 0 2px rgba(255,255,255,.18);
+}
+.ahf-color-value{display:inline-block;color:var(--ink-soft);font-weight:850;letter-spacing:-.02em}
+/* final_20260605 color token table text fit: shrink/wrap long token labels inside cells. */
+.ahf-color-audit tbody th{
+  min-width:0;
+  overflow:hidden;
+}
+.ahf-color-audit tbody th code{
+  display:block;
+  max-width:100%;
+  font-size:9.2px!important;
+  line-height:1.08;
+  letter-spacing:-.065em;
+  white-space:nowrap!important;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+.ahf-color-audit .ahf-color-value{
+  max-width:100%;
+  font-size:9.6px!important;
+  line-height:1.1;
+  letter-spacing:-.045em;
+  white-space:nowrap!important;
+  overflow:hidden;
+  text-overflow:clip;
+}
+.ahf-color-value::after{content:attr(data-light)}
+body:has(#ahf-light2:checked) .ahf-color-value::after{content:attr(data-light2)}
+body:has(#ahf-white:checked) .ahf-color-value::after{content:attr(data-white)}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-value::after{content:attr(data-dark)}
+.ahf-color-swatch.sw-bg{background:var(--bg)}
+.ahf-color-swatch.sw-card{background:var(--card)}
+.ahf-color-swatch.sw-copy-surface{background:var(--copy-surface)}
+.ahf-color-swatch.sw-copy-surface-2{background:var(--copy-surface-2)}
+.ahf-color-swatch.sw-copy-surface-3{background:var(--copy-surface-3)}
+.ahf-color-swatch.sw-copy-hover{background:var(--copy-hover)}
+.ahf-color-swatch.sw-line{background:var(--line)}
+.ahf-color-swatch.sw-copy-line{background:var(--copy-line)}
+.ahf-color-swatch.sw-copy-line-strong{background:var(--copy-line-strong)}
+.ahf-color-swatch.sw-pill-bg{background:var(--pill-bg)}
+.ahf-color-swatch.sw-pill-bg-hover{background:var(--pill-bg-hover)}
+.ahf-color-swatch.sw-pill-border{background:var(--pill-border)}
+.ahf-color-swatch.sw-accent-soft{background:var(--accent-soft)}
+.ahf-color-swatch.sw-term-bg{background:var(--term-bg)}
+.ahf-color-swatch.sw-danger-bg{background:var(--danger-bg)}
+.ahf-color-swatch.sw-good-bg{background:var(--good-bg)}
+.ahf-color-swatch.sw-analogy-bg{background:var(--analogy-bg)}
+.ahf-color-swatch.sw-code{background:var(--code)}
+.ahf-color-swatch.sw-hl-yellow{background:var(--hl-yellow)}
+.ahf-color-swatch.sw-hl-blue{background:var(--hl-blue)}
+.ahf-color-swatch.sw-hl-pink{background:var(--hl-pink)}
+.ahf-color-swatch.sw-vt-paper{background:var(--vt-paper,#fff)}
+.ahf-color-swatch.sw-vt-wash{background:var(--vt-wash,#faf9f5)}
+.ahf-color-swatch.sw-vt-soft{background:var(--vt-soft,#f0eee6)}
+body:has(#ahf-light:checked) .ahf-color-audit{
+  --copy-surface:#ffffff;
+  --copy-surface-2:#fffdfb;
+  --copy-surface-3:#f9f7f1;
+  --copy-line:#d8d8d0;
+  --copy-line-strong:#c9bdad;
+  --copy-hover:#fff7f5;
+}
+body:has(#ahf-light2:checked) .ahf-color-audit{
+  --copy-surface:#ffffff;
+  --copy-surface-2:#ffffff;
+  --copy-surface-3:#fafbfc;
+  --copy-line:#e6e8ec;
+  --copy-line-strong:#d1d5db;
+  --copy-hover:#fafbfc;
+  background:rgba(255,255,255,.95);
+}
+body:has(#ahf-white:checked) .ahf-color-audit{
+  --copy-surface:#ffffff;
+  --copy-surface-2:#fbfbfb;
+  --copy-surface-3:#f8fafc;
+  --copy-line:#e5e7eb;
+  --copy-line-strong:#d1d5db;
+  --copy-hover:#f9fafb;
+  background:rgba(255,255,255,.96);
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit{
+  --copy-surface:#1b1d23;
+  --copy-surface-2:#20232a;
+  --copy-surface-3:#252830;
+  --copy-line:#3a3c45;
+  --copy-line-strong:#4c4d57;
+  --copy-hover:#242731;
+  background:rgba(27,29,35,.94);
+  border-color:var(--copy-line);
+  color:var(--ink);
+  box-shadow:0 14px 30px rgba(0,0,0,.30);
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit th,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit td{border-color:var(--copy-line)}
+/* final_20260606 Light2: report.html 기반 연회색 3영역 테마(page #f5f6f8 / card #fff / header·quote #fafbfc). */
+body:has(#ahf-light2:checked){
+  background:#f5f6f8!important;
+}
+body:has(#ahf-light2:checked) .page-wide.v5-home :is(.pattern-hero-note,.source-preserve,.source-preserve-static,.core-insight,.connection-card,.ba-col,.impact-card,.final-hero-map,.vt-adapt-demo,.new-template-card,.wg-card,.widget-card,.soft-workflow-map,.serp-card,.variant-card,.triage-card,.feature-card,.section-card){
+  background:#ffffff!important;
+  border-color:#e6e8ec!important;
+}
+body:has(#ahf-light2:checked) .page-wide.v5-home :is(.quote,.prompt-box,.md-excerpt,.vt-adapt-head,.vt-card-head,.raci-head,.risk-head,.table-head,.final-hero-map-result,.lens-chip,.toc-map,.ahf-color-audit thead th){
+  background:#fafbfc!important;
+  border-color:#e6e8ec!important;
+}
+@media(max-width:1720px){
+  .ahf-color-audit{width:258px;padding:10px}
+  .ahf-color-audit th,.ahf-color-audit td{padding:5px!important}
+  .ahf-color-audit tbody th{width:110px}
+  .ahf-color-audit code{font-size:9.8px}
+  .ahf-color-audit tbody th code{font-size:7.4px!important;letter-spacing:-.12em}
+  .ahf-color-audit .ahf-color-value{font-size:8.9px!important}
+  .ahf-color-role{display:none}
+  .ahf-color-swatch{width:100%;height:auto;min-height:32px}
+}
+@media(max-width:1580px){
+  .ahf-color-audit{
+    position:static;
+    width:min(var(--max-wide),calc(100% - 44px));
+    max-height:none;
+    margin:72px auto 12px;
+  }
+}
+@media(max-width:700px){
+  .ahf-color-audit{margin-top:62px;width:calc(100% - 24px);padding:10px;border-radius:14px}
+  .ahf-color-audit table{font-size:10px}
+  .ahf-color-audit th,.ahf-color-audit td{padding:5px}
+  .ahf-color-audit tbody th{width:116px}
+  .ahf-color-audit tbody th code{font-size:8px!important;letter-spacing:-.1em}
+  .ahf-color-audit .ahf-color-value{font-size:8.8px!important}
+  .ahf-color-role{display:none}
+}
+
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .pattern-shell,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .pattern-hero-note,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .imported-toc-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .source-note,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-hero-map,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-vt-section > .vt-adapt-demo,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-soft-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .mini-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .chron-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .conn-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .ba-col,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .impact-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .access-check-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-failure-note,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-status-kpi,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-status-col,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .platform-conversion-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .new-template-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-body-icon-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .soft-shape-use-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-triage-col,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-ticket,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .token-swatch,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .variant-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .static-flow-step{
+  background:var(--copy-surface)!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .pattern-nav a,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .meta span,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .pattern-meta span,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .imported-toc-chip,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-chip-row span,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .platform-mini-tags span,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .template-addition-note span,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .lens-chip,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .code-path{
+  background:var(--pill-bg)!important;
+  border-color:var(--pill-border)!important;
+  color:var(--pill-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .body-icon,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home h2 .no,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home h2 .num,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-soft-stat div,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .access-check-time{
+  background:var(--copy-surface-3)!important;
+  border-color:var(--copy-line-strong)!important;
+  color:var(--ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .body-icon .bi-fill{fill:var(--copy-surface-2)!important;stroke:var(--ink-mute)!important}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .body-icon .bi-soft{fill:#46391b!important;stroke:var(--ink-mute)!important}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home h1,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home h2,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home h3,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home h4,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home strong,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home b,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .module-node text{
+  color:var(--ink)!important;
+  fill:var(--ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home p,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home li,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home dd,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .sub,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .lead,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .h2-sub,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-ticket{
+  color:var(--ink-soft)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-vt-section .vt-adapt-card.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-vt-section .vt-soft-panel.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-soft-panel.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-node.ok,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-ticket.done{
+  background:linear-gradient(180deg,rgba(18,44,31,.95),rgba(25,35,30,.95))!important;
+  border-color:var(--good-border)!important;
+  color:var(--good-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.gold,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-node.decision{
+  background:var(--term-bg)!important;
+  border-color:var(--term-border)!important;
+  color:var(--term-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.accent,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-node.fail{
+  background:var(--danger-bg)!important;
+  border-color:var(--danger-border)!important;
+  color:var(--danger-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-count,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .static-click-flow-section .static-flow-step:not(.hot):not(.good) .static-flow-no{
+  background:var(--ink)!important;
+  border-color:var(--ink)!important;
+  color:var(--bg)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .module-map-section .new-template-module-map,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-design-preview,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .landing-action-panel,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .landing-action-proof,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .seo-snippet-preview,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .platform-title-prompt{
+  background:var(--copy-surface)!important;
+  border-color:var(--copy-line)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .module-map-section .module-node rect{
+  fill:var(--copy-surface-3)!important;
+  stroke:var(--copy-line-strong)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .module-map-section .module-edge{
+  stroke:var(--ink-mute)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-softshape-card img,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .shape-step-card img,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .shape-example-output img,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .shape-example-visual img{
+  background:#191b21!important;
+  border-color:var(--copy-line)!important;
+}
+/* final_20260605 dark restore: recover the previously fixed dark surfaces after the theme switcher overrides. */
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home table,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .table,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home th,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home td,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-raci div,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-swimlane div,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-risk-cell,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .rm-cell,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .raci div,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .lane-step,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .lane-label{
+  background:var(--copy-surface-2)!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink-soft)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home th,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .table th,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-raci .h,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-swimlane .h,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-swimlane .role,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-file-head,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-risk-head,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .rm-head,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .raci .h,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .raci .task{
+  background:var(--copy-surface-3)!important;
+  color:var(--ink)!important;
+  border-color:var(--copy-line-strong)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home pre,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .code,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-code-box,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home code{
+  background:var(--code)!important;
+  color:#e9e6d9!important;
+  border-color:#30323a!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .source-preserve,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .source-preserve-static,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .source-preserve-static .source-body,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .core-insight,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-result,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-qg-final,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .access-release-ready{
+  background:var(--copy-surface-2)!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-weekly-status-section .vt-adapt-grid-4 .vt-adapt-card.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-vt-section .vt-adapt-card.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-vt-section .vt-soft-panel.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-soft-panel.good{
+  background:linear-gradient(180deg,rgba(18,44,31,.95),rgba(25,35,30,.95))!important;
+  border-color:var(--good-border)!important;
+  border-left-color:var(--good-accent)!important;
+  color:var(--good-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.good h3,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.good h4,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.good b,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-soft-panel.good h3,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-soft-panel.good b{
+  color:var(--good-label-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.good p,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-soft-panel.good p{
+  color:var(--good-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.gold,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-node.decision,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-pill.watch{
+  background:var(--term-bg)!important;
+  border-color:var(--term-border)!important;
+  border-left-color:var(--term-accent)!important;
+  color:var(--term-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.gold h3,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.gold b{
+  color:var(--term-label-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.accent,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-node.fail,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-pill.hot{
+  background:var(--danger-bg)!important;
+  border-color:var(--danger-border)!important;
+  border-left-color:var(--accent)!important;
+  color:var(--danger-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.accent h3,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.accent b{
+  color:var(--accent-2)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-flow-node,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-check-item,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-file-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-flag,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-triage-col,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-ticket,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-triage-col,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-ticket,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-review-note,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-flow-detail,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-feature-step,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-tldr,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .token-rhythm-row,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .platform-branch-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .platform-guard-card{
+  background:var(--copy-surface-2)!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-check{
+  background:var(--good-accent)!important;
+  color:var(--bg)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-toggle:after,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .switch:after{
+  background:#cfd2da!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-flag-icon{
+  background:var(--copy-surface-3)!important;
+  border-color:var(--copy-line-strong)!important;
+  box-shadow:none!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-flag-icon .fi-line{stroke:var(--ink-mute)!important}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-flag-icon .fi-strong{stroke:var(--ink)!important}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-flag-icon .fi-muted-fill{
+  fill:#2f323b!important;
+  stroke:var(--copy-line-strong)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .module-map-section .module-node.entry rect{
+  fill:rgba(217,154,56,.16)!important;
+  stroke:var(--term-border)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .module-map-section .module-node.hot rect{
+  fill:rgba(230,57,70,.16)!important;
+  stroke:var(--accent)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .module-map-section .module-node.good rect{
+  fill:rgba(101,189,141,.18)!important;
+  stroke:var(--good-border)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .module-map-section #module-arrow path{
+  fill:var(--ink-mute)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .module-map-section #module-arrow-hot path{
+  fill:var(--accent)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-design-preview.dark{background:#15171d!important}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-design-preview.soft{background:#1a2230!important}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-pv-body span{background:rgba(255,255,255,.18)!important}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-pv-cta{
+  color:var(--bg)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .access-release-ready .access-subnum{
+  background:var(--ink)!important;
+  border-color:var(--ink)!important;
+  color:var(--bg)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-gov-badge.done{
+  background:rgba(101,189,141,.18)!important;
+  border-color:var(--good-border)!important;
+  color:var(--good-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-gov-badge.active,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-flag{
+  background:var(--danger-bg)!important;
+  border-color:var(--danger-border)!important;
+  color:var(--danger-label-ink)!important;
+}
+@media(max-width:700px){
+  .ahf-themebar{
+    top:8px;
+    right:8px;
+    transform:scale(.92);
+    transform-origin:100% 0;
+  }
+}
+/* final_20260605 left-accent restore: copy the left color language from index.html into the themed beginner-width page. */
+.page-wide.v5-home .pattern-hero-note,
+.page-wide.v5-home .source-preserve,
+.page-wide.v5-home .source-preserve-static,
+.page-wide.v5-home .core-insight,
+.page-wide.v5-home .vt-qg-final,
+.page-wide.v5-home .platform-lead-card,
+.page-wide.v5-home .shape-example-brief,
+.page-wide.v5-home .seo-rule-card.is-wide,
+.page-wide.v5-home .widget-soft-card.is-pick,
+.page-wide.v5-home .widget-design-card.is-pick,
+.page-wide.v5-home .widget-review-note.critical,
+.page-wide.v5-home .widget-tldr,
+.page-wide.v5-home .new-template-card.hot,
+.page-wide.v5-home .platform-conversion-card.essay{
+  border-left:4px solid var(--accent)!important;
+}
+.page-wide.v5-home .final-hero-map-card.problem,
+.page-wide.v5-home .vt-adapt-card.accent,
+.page-wide.v5-home .edge-gov-fnode.hot,
+.page-wide.v5-home .edge-status-kpi.risk,
+.page-wide.v5-home .edge-status-col.risk,
+.page-wide.v5-home .edge-failure-note.trap,
+.page-wide.v5-home .widget-ticket.active,
+.page-wide.v5-home .landing-action-proof.criteria,
+.page-wide.v5-home .landing-action-proof.next,
+.page-wide.v5-home .shape-example-output{
+  border-left:4px solid var(--accent)!important;
+}
+.page-wide.v5-home .final-hero-map-card.map,
+.page-wide.v5-home .vt-adapt-card.neutral,
+.page-wide.v5-home .edge-gov-fnode,
+.page-wide.v5-home .edge-status-col.progress,
+.page-wide.v5-home .soft-shape-use-card.neutral,
+.page-wide.v5-home .new-template-card,
+.page-wide.v5-home .platform-conversion-card.search{
+  border-left:4px solid #8a7a65!important;
+}
+.page-wide.v5-home .final-hero-map-card.action,
+.page-wide.v5-home .vt-adapt-card.good,
+.page-wide.v5-home .vt-soft-panel.good,
+.page-wide.v5-home .edge-gov-fnode.good,
+.page-wide.v5-home .edge-status-col.good,
+.page-wide.v5-home .edge-failure-note.solution,
+.page-wide.v5-home .soft-shape-use-card.good,
+.page-wide.v5-home .new-template-card.good,
+.page-wide.v5-home .platform-conversion-card.dev,
+.page-wide.v5-home .widget-ticket.done{
+  border-left:4px solid var(--good-label-ink)!important;
+}
+.page-wide.v5-home .vt-adapt-card.gold,
+.page-wide.v5-home .edge-failure-note.case,
+.page-wide.v5-home .soft-shape-use-card.gold,
+.page-wide.v5-home .widget-review-note.warn,
+.page-wide.v5-home .platform-conversion-card.story{
+  border-left:4px solid var(--term-accent)!important;
+}
+.page-wide.v5-home .widget-review-note.info,
+.page-wide.v5-home .platform-conversion-card.search{
+  border-left-color:var(--analogy-accent)!important;
+}
+.page-wide.v5-home .vt-file-note{
+  border-left:3px solid var(--accent)!important;
+}
+.page-wide.v5-home .vt-risk-cell.vt-risk-high,
+.page-wide.v5-home .rm-risk.high{
+  border-left:4px solid var(--accent)!important;
+}
+.page-wide.v5-home .vt-risk-cell.vt-risk-med,
+.page-wide.v5-home .rm-risk.med{
+  border-left:4px solid var(--term-accent)!important;
+}
+.page-wide.v5-home .vt-risk-cell.vt-risk-low,
+.page-wide.v5-home .rm-risk.low{
+  border-left:4px solid var(--good-label-ink)!important;
+}
+.page-wide.v5-home .final-hero-map-result,
+.page-wide.v5-home .vt-adapt-result{
+  border-left:4px solid var(--copy-line-strong)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .pattern-hero-note,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .source-preserve,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .source-preserve-static,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .core-insight,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-qg-final,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .platform-lead-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .shape-example-brief,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .seo-rule-card.is-wide,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-soft-card.is-pick,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-design-card.is-pick,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-review-note.critical,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-tldr,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .new-template-card.hot,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .platform-conversion-card.essay,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-hero-map-card.problem,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.accent,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-gov-fnode.hot,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-status-kpi.risk,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-status-col.risk,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-failure-note.trap,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-ticket.active,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .landing-action-proof.criteria,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .landing-action-proof.next,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .shape-example-output{
+  border-left-color:var(--accent)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-hero-map-card.map,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.neutral,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-gov-fnode,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-status-col.progress,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .soft-shape-use-card.neutral,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .new-template-card,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .platform-conversion-card.search{
+  border-left-color:#8a7a65!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-hero-map-card.action,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-soft-panel.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-gov-fnode.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-status-col.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-failure-note.solution,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .soft-shape-use-card.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .new-template-card.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .platform-conversion-card.dev,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-ticket.done{
+  border-left-color:var(--good-label-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-adapt-card.gold,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-failure-note.case,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .soft-shape-use-card.gold,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-review-note.warn,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .platform-conversion-card.story{
+  border-left-color:var(--term-accent)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-risk-cell.vt-risk-high,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .rm-risk.high{
+  border-left:4px solid var(--accent)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-risk-cell.vt-risk-med,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .rm-risk.med{
+  border-left:4px solid var(--term-accent)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-risk-cell.vt-risk-low,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .rm-risk.low{
+  border-left:4px solid var(--good-label-ink)!important;
+}
+/* final_20260605 light surface harmonization: remove dark fallback panels from the light/white reading view. */
+body:has(#ahf-light:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready,
+body:has(#ahf-white:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready{
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+  border:1px solid var(--copy-line)!important;
+  border-left:4px solid var(--good-label-ink)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready .access-subtitle,
+body:has(#ahf-white:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready .access-subtitle,
+body:has(#ahf-light:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready strong,
+body:has(#ahf-white:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready strong{
+  color:var(--ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready > p,
+body:has(#ahf-white:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready > p,
+body:has(#ahf-light:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready li,
+body:has(#ahf-white:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready li{
+  color:var(--ink-soft)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready li,
+body:has(#ahf-white:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready li{
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .edge-access-followup-section .access-subnum,
+body:has(#ahf-white:checked) .page-wide.v5-home .edge-access-followup-section .access-subnum,
+body:has(#ahf-light:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready li::before,
+body:has(#ahf-white:checked) .page-wide.v5-home .edge-access-followup-section .access-release-ready li::before{
+  background:var(--good-bg)!important;
+  border:1px solid var(--good-border)!important;
+  color:var(--good-label-ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .edge-access-followup-section code,
+body:has(#ahf-white:checked) .page-wide.v5-home .edge-access-followup-section code{
+  background:var(--copy-surface-3)!important;
+  border:1px solid var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-anchor-card,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-anchor-card,
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-branch-card,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-branch-card,
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-conversion-card,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-conversion-card,
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-title-prompt,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-title-prompt,
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-mini-tags span,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-mini-tags span{
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-analogy-card,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-analogy-card{
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+  border:1px solid var(--copy-line)!important;
+  border-left:4px solid var(--term-accent)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-guard-card,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-guard-card{
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+  border:1px solid var(--copy-line)!important;
+  border-left:4px solid var(--accent)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-conversion-card.search,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-conversion-card.search{
+  border-left:4px solid var(--analogy-accent)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-conversion-card.dev,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-conversion-card.dev{
+  border-left:4px solid var(--good-label-ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-conversion-card.story,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-conversion-card.story{
+  border-left:4px solid var(--term-accent)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-conversion-card.essay,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-conversion-card.essay{
+  border-left:4px solid var(--accent)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-anchor-card .platform-kicker,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-anchor-card .platform-kicker,
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section .platform-kicker,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section .platform-kicker{
+  color:var(--accent-2)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section h3,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section h3{
+  color:var(--ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section p,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section p,
+body:has(#ahf-light:checked) .page-wide.v5-home .platform-transform-section li,
+body:has(#ahf-white:checked) .page-wide.v5-home .platform-transform-section li{
+  color:var(--ink-soft)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-weekly-status-section .vt-fill.good,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-weekly-status-section .vt-fill.good{
+  background:var(--good-label-ink)!important;
+  background-image:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .edge-gov-section .edge-gov-fnode.good,
+body:has(#ahf-white:checked) .page-wide.v5-home .edge-gov-section .edge-gov-fnode.good{
+  background:var(--good-bg)!important;
+  background-image:none!important;
+  border-color:var(--good-border)!important;
+  border-left-color:var(--good-label-ink)!important;
+  color:var(--good-ink)!important;
+}
+/* final_20260605 soft-workflow light tone: keep semantic rails, but use the same quiet paper surface. */
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-adapt-demo,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-adapt-demo,
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-panel,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-panel,
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-stat div,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-stat div,
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-adapt-result,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-adapt-result{
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-panel.accent,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-panel.accent{
+  border-left:4px solid var(--accent)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-panel.good,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-panel.good{
+  border-left:4px solid var(--good-label-ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-panel p,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-panel p,
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-adapt-result span,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-adapt-result span{
+  color:var(--ink-soft)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-panel.good h3,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-soft-workflow-section .vt-soft-panel.good h3{
+  color:var(--good-label-ink)!important;
+}
+/* final_20260605 source excerpt light code block: keep the figure quiet, wrap the config itself as a light code block. */
+body:has(#ahf-light:checked) .page-wide.v5-home .source-config-excerpt,
+body:has(#ahf-white:checked) .page-wide.v5-home .source-config-excerpt{
+  background:transparent!important;
+  background-image:none!important;
+  border-color:transparent!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .source-config-excerpt pre.code,
+body:has(#ahf-white:checked) .page-wide.v5-home .source-config-excerpt pre.code{
+  background:var(--copy-surface-3)!important;
+  background-image:none!important;
+  border:1px solid var(--copy-line)!important;
+  color:var(--ink-soft)!important;
+  padding:14px 16px!important;
+  border-radius:12px!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .source-config-excerpt code,
+body:has(#ahf-white:checked) .page-wide.v5-home .source-config-excerpt code{
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  color:inherit!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .source-config-excerpt pre.code,
+body:has(#ahf-white:checked) .page-wide.v5-home .source-config-excerpt pre.code{
+  white-space:pre-wrap!important;
+  overflow-wrap:anywhere!important;
+}
+/* final_20260605 hero-map light surface: match section 8 views to the same plain card background. */
+body:has(#ahf-light:checked) .page-wide.v5-home .final-hero-map,
+body:has(#ahf-white:checked) .page-wide.v5-home .final-hero-map,
+body:has(#ahf-light:checked) .page-wide.v5-home .final-hero-map-card,
+body:has(#ahf-white:checked) .page-wide.v5-home .final-hero-map-card,
+body:has(#ahf-light:checked) .page-wide.v5-home .final-hero-map-result,
+body:has(#ahf-white:checked) .page-wide.v5-home .final-hero-map-result{
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+}
+/* final_20260605 risk-matrix light surface: make the table cells use the same plain view background. */
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-risk-matrix-section .vt-adapt-demo,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-risk-matrix-section .vt-adapt-demo,
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-risk-matrix-section .vt-risk-grid,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-risk-matrix-section .vt-risk-grid,
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-risk-matrix-section .vt-risk-cell,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-risk-matrix-section .vt-risk-cell,
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-risk-matrix-section .vt-risk-head,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-risk-matrix-section .vt-risk-head{
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+}
+/* final_20260605 file-tour light surface: align section 15 file cards with the same plain view background. */
+body:has(#ahf-light:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-adapt-demo,
+body:has(#ahf-white:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-adapt-demo,
+body:has(#ahf-light:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-file-list,
+body:has(#ahf-white:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-file-list,
+body:has(#ahf-light:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-file-card,
+body:has(#ahf-white:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-file-card,
+body:has(#ahf-light:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-file-head,
+body:has(#ahf-white:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-file-head,
+body:has(#ahf-light:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-file-body,
+body:has(#ahf-white:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-file-body,
+body:has(#ahf-light:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-file-note,
+body:has(#ahf-white:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-09) .vt-file-note{
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+}
+/* final_20260605 risk-matrix header tint: match the top header row to checklist-flow view fill. */
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-risk-matrix-section .vt-risk-grid .vt-risk-cell:nth-child(-n+4),
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-risk-matrix-section .vt-risk-grid .vt-risk-cell:nth-child(-n+4){
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+/* final_20260605 raci header tint: match 작업/R/A/C/I header cells to checklist-flow view fill. */
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-raci-section .vt-raci div:nth-child(-n+5),
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-raci-section .vt-raci div:nth-child(-n+5){
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+/* final_20260605 serp preview light surface: unify inner promise cards with other section view backgrounds. */
+body:has(#ahf-light:checked) .page-wide.v5-home .seo-intent-snippet-section :is(.seo-snippet-preview,.seo-result-card,.seo-rule-card,.seo-variant),
+body:has(#ahf-white:checked) .page-wide.v5-home .seo-intent-snippet-section :is(.seo-snippet-preview,.seo-result-card,.seo-rule-card,.seo-variant){
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .seo-intent-snippet-section :is(.seo-result-desc,.seo-rule-card p,.seo-variant p),
+body:has(#ahf-white:checked) .page-wide.v5-home .seo-intent-snippet-section :is(.seo-result-desc,.seo-rule-card p,.seo-variant p){
+  color:var(--ink-soft)!important;
+}
+
+/* final_20260605 component variants contrast: restore visible Primary/Disabled button text after global surface overrides. */
+.page-wide.v5-home .component-variants-section .variant-card.is-active .variant-demo-btn{
+  background:var(--accent)!important;
+  background-image:none!important;
+  border-color:var(--accent)!important;
+  color:#fff!important;
+}
+.page-wide.v5-home .component-variants-section .variant-card.is-disabled{
+  opacity:1!important;
+}
+.page-wide.v5-home .component-variants-section .variant-card.is-disabled .variant-demo-btn{
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink-soft)!important;
+}
+
+/* final_20260605 process-swimlane light tint: match lane header/role cells to the 14 RACI view color. */
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-process-swimlane-section .vt-swimlane :is(.h,.role),
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-process-swimlane-section .vt-swimlane :is(.h,.role){
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+
+/* final_20260605 vt status groups light surface: unify 11/12/17/18 views with the plain card background. */
+body:has(#ahf-light:checked) .page-wide.v5-home :is(.vt-checklist-flow-section,.vt-weekly-status-section,.vt-incident-summary-section) :is(.vt-adapt-demo,.vt-check-list,.vt-check-item,.vt-adapt-grid-2,.vt-adapt-grid-3,.vt-adapt-grid-4,.vt-adapt-card,.vt-timeline li),
+body:has(#ahf-white:checked) .page-wide.v5-home :is(.vt-checklist-flow-section,.vt-weekly-status-section,.vt-incident-summary-section) :is(.vt-adapt-demo,.vt-check-list,.vt-check-item,.vt-adapt-grid-2,.vt-adapt-grid-3,.vt-adapt-grid-4,.vt-adapt-card,.vt-timeline li),
+body:has(#ahf-light:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-06) :is(.vt-adapt-demo,.vt-adapt-grid-2,.vt-adapt-card,.vt-qg-final),
+body:has(#ahf-white:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-06) :is(.vt-adapt-demo,.vt-adapt-grid-2,.vt-adapt-card,.vt-qg-final){
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home :is(.vt-weekly-status-section,.vt-incident-summary-section,.final-vt-section:has(#vt-final-06)) .vt-adapt-card.accent,
+body:has(#ahf-white:checked) .page-wide.v5-home :is(.vt-weekly-status-section,.vt-incident-summary-section,.final-vt-section:has(#vt-final-06)) .vt-adapt-card.accent,
+body:has(#ahf-light:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-06) .vt-qg-final,
+body:has(#ahf-white:checked) .page-wide.v5-home .final-vt-section:has(#vt-final-06) .vt-qg-final{
+  border-left-color:var(--accent)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home :is(.vt-weekly-status-section,.vt-incident-summary-section,.final-vt-section:has(#vt-final-06)) .vt-adapt-card.gold,
+body:has(#ahf-white:checked) .page-wide.v5-home :is(.vt-weekly-status-section,.vt-incident-summary-section,.final-vt-section:has(#vt-final-06)) .vt-adapt-card.gold{
+  border-left-color:var(--term-accent)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home :is(.vt-weekly-status-section,.vt-incident-summary-section,.final-vt-section:has(#vt-final-06)) .vt-adapt-card.good,
+body:has(#ahf-white:checked) .page-wide.v5-home :is(.vt-weekly-status-section,.vt-incident-summary-section,.final-vt-section:has(#vt-final-06)) .vt-adapt-card.good{
+  border-left-color:var(--good-label-ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .vt-weekly-status-section .vt-adapt-card.neutral,
+body:has(#ahf-white:checked) .page-wide.v5-home .vt-weekly-status-section .vt-adapt-card.neutral{
+  border-left-color:#8a7a65!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home :is(.vt-checklist-flow-section,.vt-weekly-status-section,.vt-incident-summary-section,.final-vt-section:has(#vt-final-06)) :is(.vt-adapt-card p,.vt-check-item p,.vt-timeline li p),
+body:has(#ahf-white:checked) .page-wide.v5-home :is(.vt-checklist-flow-section,.vt-weekly-status-section,.vt-incident-summary-section,.final-vt-section:has(#vt-final-06)) :is(.vt-adapt-card p,.vt-check-item p,.vt-timeline li p){
+  color:var(--ink-soft)!important;
+}
+/* final_20260605 light shadow reset: remove all section shadow effects in Light/White modes. */
+body:has(#ahf-light:checked) .page-wide.v5-home,
+body:has(#ahf-light:checked) .page-wide.v5-home *,
+body:has(#ahf-light:checked) .page-wide.v5-home *::before,
+body:has(#ahf-light:checked) .page-wide.v5-home *::after,
+body:has(#ahf-white:checked) .page-wide.v5-home,
+body:has(#ahf-white:checked) .page-wide.v5-home *,
+body:has(#ahf-white:checked) .page-wide.v5-home *::before,
+body:has(#ahf-white:checked) .page-wide.v5-home *::after{
+  box-shadow:none!important;
+  text-shadow:none!important;
+  filter:none!important;
+}
+/* final_20260605 anchor usability: this page is very long, so smooth scrolling made internal links feel broken. */
+html{scroll-behavior:auto}
+
+
+
+/* final_20260605 index-wide color panel placement: keep the original 1020px content width and pin the tool panel under the theme buttons on desktop. */
+@media(min-width:701px) and (max-width:1580px){
+  .ahf-color-audit{
+    position:fixed;
+    top:64px;
+    right:14px;
+    z-index:490;
+    width:220px;
+    max-height:calc(100vh - 84px);
+    margin:0;
+    overflow:auto;
+    padding:9px;
+  }
+  .ahf-color-audit-head{gap:6px;margin-bottom:7px}
+  .ahf-color-audit-title{font-size:11px}
+  .ahf-color-audit-sub,.ahf-color-audit caption{font-size:9px}
+  .ahf-color-audit-badge{min-height:20px;padding:2px 6px;font-size:9px}
+  .ahf-color-audit th,.ahf-color-audit td{padding:4px!important}
+  .ahf-color-audit tbody th{width:72px}
+  .ahf-color-audit tbody th code{font-size:6.7px!important;letter-spacing:-.14em}
+  .ahf-color-audit .ahf-color-value{font-size:8.2px!important;letter-spacing:-.07em}
+  .ahf-color-swatch{min-height:28px}
+}
+
+
+/* final_20260605 index-wide color table code reset: prevent the legacy code dark pill from leaking into token labels/values. */
+html body .ahf-color-audit code,
+html body .ahf-color-audit .ahf-color-value{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  color:var(--ink)!important;
+  padding:0!important;
+}
+html body .ahf-color-audit .ahf-color-value{
+  color:var(--ink-soft)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit code,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit .ahf-color-value{
+  color:var(--ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit .ahf-color-value{
+  color:var(--ink-soft)!important;
+}
+
+
+/* final_20260605 index-wide color table strong theme reset: beat legacy code selector specificity. */
+body:has(#ahf-light:checked) .ahf-color-audit code,
+body:has(#ahf-light:checked) .ahf-color-audit .ahf-color-value,
+body:has(#ahf-white:checked) .ahf-color-audit code,
+body:has(#ahf-white:checked) .ahf-color-audit .ahf-color-value,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit code,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit .ahf-color-value{
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  padding:0!important;
+}
+body:has(#ahf-light:checked) .ahf-color-audit code,
+body:has(#ahf-white:checked) .ahf-color-audit code,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit code{
+  color:var(--ink)!important;
+}
+body:has(#ahf-light:checked) .ahf-color-audit .ahf-color-value,
+body:has(#ahf-white:checked) .ahf-color-audit .ahf-color-value,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .ahf-color-audit .ahf-color-value{
+  color:var(--ink-soft)!important;
+}
+
+
+/* final_20260605 index-wide color table sibling reset: strongest local reset for audit-table code cells. */
+html body #ahf-light:checked ~ .ahf-color-audit code,
+html body #ahf-light:checked ~ .ahf-color-audit .ahf-color-value,
+html body #ahf-white:checked ~ .ahf-color-audit code,
+html body #ahf-white:checked ~ .ahf-color-audit .ahf-color-value,
+html body #ahf-dark:checked ~ .ahf-color-audit code,
+html body #ahf-dark:checked ~ .ahf-color-audit .ahf-color-value{
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  padding:0!important;
+}
+html body #ahf-light:checked ~ .ahf-color-audit code,
+html body #ahf-white:checked ~ .ahf-color-audit code,
+html body #ahf-dark:checked ~ .ahf-color-audit code{
+  color:var(--ink)!important;
+}
+html body #ahf-light:checked ~ .ahf-color-audit .ahf-color-value,
+html body #ahf-white:checked ~ .ahf-color-audit .ahf-color-value,
+html body #ahf-dark:checked ~ .ahf-color-audit .ahf-color-value{
+  color:var(--ink-soft)!important;
+}
+
+
+/* final_20260605 index-wide audit code specificity lock: override legacy code background only inside the audit table. */
+#ahf-light:checked ~ .ahf-color-audit code:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset),
+#ahf-white:checked ~ .ahf-color-audit code:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset),
+#ahf-dark:checked ~ .ahf-color-audit code:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset),
+#ahf-light:checked ~ .ahf-color-audit .ahf-color-value:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset),
+#ahf-white:checked ~ .ahf-color-audit .ahf-color-value:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset),
+#ahf-dark:checked ~ .ahf-color-audit .ahf-color-value:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset){
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  padding:0!important;
+}
+#ahf-light:checked ~ .ahf-color-audit code:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset),
+#ahf-white:checked ~ .ahf-color-audit code:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset),
+#ahf-dark:checked ~ .ahf-color-audit code:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset){
+  color:var(--ink)!important;
+}
+#ahf-light:checked ~ .ahf-color-audit .ahf-color-value:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset),
+#ahf-white:checked ~ .ahf-color-audit .ahf-color-value:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset),
+#ahf-dark:checked ~ .ahf-color-audit .ahf-color-value:not(#ahf-audit-reset#ahf-audit-reset#ahf-audit-reset){
+  color:var(--ink-soft)!important;
+}
+
+
+/* final_20260605 index-wide audit table cell specificity lock: keep token/value cells in the selected theme surface. */
+#ahf-light:checked ~ .ahf-color-audit th:not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell),
+#ahf-light:checked ~ .ahf-color-audit td:not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell),
+#ahf-white:checked ~ .ahf-color-audit th:not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell),
+#ahf-white:checked ~ .ahf-color-audit td:not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell),
+#ahf-dark:checked ~ .ahf-color-audit th:not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell),
+#ahf-dark:checked ~ .ahf-color-audit td:not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell){
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+#ahf-light:checked ~ .ahf-color-audit thead th:not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell),
+#ahf-white:checked ~ .ahf-color-audit thead th:not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell),
+#ahf-dark:checked ~ .ahf-color-audit thead th:not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell){
+  background:var(--copy-surface-3)!important;
+  color:var(--ink)!important;
+}
+#ahf-light:checked ~ .ahf-color-audit tbody td:nth-child(2):not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell),
+#ahf-white:checked ~ .ahf-color-audit tbody td:nth-child(2):not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell),
+#ahf-dark:checked ~ .ahf-color-audit tbody td:nth-child(2):not(#ahf-audit-cell#ahf-audit-cell#ahf-audit-cell){
+  background:transparent!important;
+  padding:0!important;
+}
+
+
+/* final_20260605 index-wide light dark-leak cleanup: convert remaining code/table/preview dark panels to the selected light surfaces. */
+body:has(#ahf-light:checked) .page-wide.v5-home :is(.edge-gov-risk-table,.edge-failure-table) :is(table,thead,tbody,tr,th,td),
+body:has(#ahf-white:checked) .page-wide.v5-home :is(.edge-gov-risk-table,.edge-failure-table) :is(table,thead,tbody,tr,th,td){
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink-soft)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home :is(.edge-gov-risk-table,.edge-failure-table) :is(thead th,tbody th),
+body:has(#ahf-white:checked) .page-wide.v5-home :is(.edge-gov-risk-table,.edge-failure-table) :is(thead th,tbody th){
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  color:var(--ink)!important;
+  font-weight:850!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home :is(.widget-code-box,.widget-feature-code,.vt-pr-box),
+body:has(#ahf-white:checked) .page-wide.v5-home :is(.widget-code-box,.widget-feature-code,.vt-pr-box){
+  background:var(--copy-surface-3)!important;
+  background-image:none!important;
+  border:1px solid var(--copy-line)!important;
+  color:var(--ink-soft)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home :is(.widget-code-box,.widget-feature-code,.vt-pr-box) :is(b,strong),
+body:has(#ahf-white:checked) .page-wide.v5-home :is(.widget-code-box,.widget-feature-code,.vt-pr-box) :is(b,strong){
+  color:var(--accent-2)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home :is(.widget-code-box,.widget-feature-code,.vt-pr-box) :is(i,em),
+body:has(#ahf-white:checked) .page-wide.v5-home :is(.widget-code-box,.widget-feature-code,.vt-pr-box) :is(i,em){
+  color:var(--term-label-ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .widget-diff,
+body:has(#ahf-white:checked) .page-wide.v5-home .widget-diff{
+  background:var(--copy-surface-3)!important;
+  background-image:none!important;
+  border:1px solid var(--copy-line)!important;
+  color:var(--ink-soft)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .widget-diff-row .ln,
+body:has(#ahf-white:checked) .page-wide.v5-home .widget-diff-row .ln{
+  background:var(--copy-surface-2)!important;
+  color:var(--ink-mute)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .widget-diff-row code,
+body:has(#ahf-white:checked) .page-wide.v5-home .widget-diff-row code{
+  background:transparent!important;
+  color:var(--ink-soft)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .widget-diff-row.add,
+body:has(#ahf-white:checked) .page-wide.v5-home .widget-diff-row.add{
+  background:var(--good-bg)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .widget-diff-row.del,
+body:has(#ahf-white:checked) .page-wide.v5-home .widget-diff-row.del{
+  background:var(--danger-bg)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .widget-diff-row.add code,
+body:has(#ahf-white:checked) .page-wide.v5-home .widget-diff-row.add code{
+  color:var(--good-label-ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .widget-diff-row.del code,
+body:has(#ahf-white:checked) .page-wide.v5-home .widget-diff-row.del code{
+  color:var(--accent-2)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .widget-design-preview.dark,
+body:has(#ahf-white:checked) .page-wide.v5-home .widget-design-preview.dark{
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-light:checked) .page-wide.v5-home .widget-design-preview.dark i,
+body:has(#ahf-white:checked) .page-wide.v5-home .widget-design-preview.dark i{
+  border:1px solid var(--copy-line)!important;
+}
+
+
+/* final_20260605 header full-width cleanup: after removing the left SVG, let the copy occupy the whole page-wide row. */
+.page-wide.v5-home > header.header-editorial-visual-layout{
+  grid-template-columns:1fr!important;
+  gap:16px!important;
+  align-items:start!important;
+}
+.page-wide.v5-home > header.header-editorial-visual-layout > .kicker{
+  grid-column:1 / -1!important;
+  grid-row:1!important;
+}
+.page-wide.v5-home > header.header-editorial-visual-layout > .header-copy{
+  grid-column:1 / -1!important;
+  grid-row:2!important;
+  width:100%!important;
+  max-width:none!important;
+}
+.page-wide.v5-home > header.header-editorial-visual-layout > .header-copy :is(h1,.sub,.meta,.generated-row){
+  max-width:none!important;
+}
+.page-wide.v5-home > header.header-editorial-visual-layout > .header-copy .generated-row{
+  width:100%!important;
+}
+
+
+/* final_20260605 index-wide dark mode sync: match beginner-width dark surfaces without changing the fixed wide content width. */
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(.source-preserve,.source-preserve-static,.source-config-excerpt,.final-hero-map-card.action,.widget-ticket.done){
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+  box-shadow:0 10px 24px rgba(0,0,0,.16)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(.pattern-hero-note,.source-preserve,.source-preserve-static){
+  border-left-color:var(--accent)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .source-preserve-static .source-body{
+  background:var(--copy-surface-2)!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .source-config-excerpt pre.code{
+  background:var(--code)!important;
+  border-color:#30323a!important;
+  color:#e9e6d9!important;
+  box-shadow:none!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-hero-map-card.action{
+  border-left-color:var(--good-label-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-gov-fnode.good{
+  background:linear-gradient(180deg,rgba(18,44,31,.95),rgba(25,35,30,.95))!important;
+  border-color:var(--good-border)!important;
+  border-left-color:var(--good-label-ink)!important;
+  color:var(--ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-design-preview.dark{
+  background:#15171d!important;
+  border-color:var(--copy-line)!important;
+  box-shadow:0 10px 24px rgba(0,0,0,.14)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(.ba-col.after,.widget-soft-card.is-pick,.widget-design-card.is-pick){
+  box-shadow:none!important;
+}
+
+
+/* final_20260605 dark mode specificity lock: preserve semantic left rails after the dark surface sync. */
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .source-preserve.source-preserve-static,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .source-preserve{
+  border-left:4px solid var(--accent)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-ticket.done{
+  background:linear-gradient(180deg,rgba(18,44,31,.95),rgba(25,35,30,.95))!important;
+  border-color:var(--good-border)!important;
+  border-left:4px solid var(--good-label-ink)!important;
+  color:var(--good-ink)!important;
+  box-shadow:0 10px 24px rgba(0,0,0,.16)!important;
+}
+
+
+/* final_20260605 dark integrated cleanup: remove remaining light-mode residue discovered by full-page dark audit. */
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(
+  .kicker,
+  .meta span,
+  .pattern-meta span,
+  .status-pill,
+  .tag,
+  .tag-list .tag,
+  .imported-toc-chip,
+  .lens-chip,
+  .code-path,
+  .widget-chip-row span,
+  .widget-adapt-meta span,
+  .body-icon-gallery-note span,
+  .soft-shape-theme-note span,
+  .seo-snippet-checks span,
+  .platform-mini-tags span,
+  .template-addition-note span
+){
+  background:var(--pill-bg)!important;
+  background-image:none!important;
+  border-color:var(--pill-border)!important;
+  color:var(--pill-ink)!important;
+  box-shadow:none!important;
+  text-shadow:none!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .imported-toc-chip b{
+  background:var(--copy-surface-3)!important;
+  border:1px solid var(--copy-line-strong)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(
+  .final-hero-map-result,
+  .vt-file-note,
+  .vt-timeline li,
+  .vt-concept-step,
+  .vt-soft-panel,
+  .edge-gov-flow,
+  .edge-gov-badge,
+  .edge-ticket,
+  .access-check-rule,
+  .widget-good,
+  .widget-bad,
+  .widget-node,
+  .widget-node.round,
+  .widget-flow-detail,
+  .widget-feature-step,
+  .widget-procon > div,
+  .seo-result-card,
+  .seo-rule-card,
+  .seo-variant,
+  .platform-lead-card,
+  .platform-title-prompt,
+  .variant-demo-btn
+){
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(.vt-file-note,.final-hero-map-result,.access-check-rule,.platform-lead-card) :is(p,span,li,small),
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(.widget-good,.widget-bad,.widget-node,.seo-rule-card,.seo-variant) :is(p,span,li,small){
+  color:var(--ink-soft)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(.vt-adapt-pill,.edge-gov-badge,.edge-ticket,.widget-pri.low){
+  background:var(--pill-bg)!important;
+  background-image:none!important;
+  border:1px solid var(--pill-border)!important;
+  color:var(--pill-ink)!important;
+  box-shadow:none!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(.vt-track,.edge-status-track){
+  background:var(--copy-surface-3)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  box-shadow:none!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-soft-panel.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .edge-gov-fnode.good,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-ticket.done{
+  background:linear-gradient(180deg,rgba(18,44,31,.95),rgba(25,35,30,.95))!important;
+  border-color:var(--good-border)!important;
+  border-left-color:var(--good-label-ink)!important;
+  color:var(--good-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .vt-soft-panel.accent,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-node.fail{
+  background:var(--danger-bg)!important;
+  border-color:var(--danger-border)!important;
+  border-left-color:var(--accent)!important;
+  color:var(--danger-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(.vt-concept-step b,.vt-num,.widget-diff-dot,.widget-pv-cta,.variant-card.is-active .variant-demo-btn,.landing-action-btn.primary){
+  color:var(--bg)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(.widget-diff-dot.warn,.widget-diff-dot.info){
+  color:#111216!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .component-variants-section .variant-card.is-active .variant-demo-btn{
+  background:var(--accent)!important;
+  border-color:var(--accent)!important;
+  color:var(--bg)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .component-variants-section .variant-card.is-disabled .variant-demo-btn{
+  background:var(--copy-surface-3)!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink-soft)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .seo-snippet-checks span.ok{
+  background:var(--good-bg)!important;
+  border-color:var(--good-border)!important;
+  color:var(--good-label-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .ba-col.before{
+  box-shadow:inset 3px 0 0 #8a7a65!important;
+}
+
+
+/* final_20260605 dark flowchart/label contrast lock. */
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-node span,
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-design-body .picked{
+  background:var(--copy-surface-3)!important;
+  background-image:none!important;
+  border:1px solid var(--copy-line-strong)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-design-body .picked{
+  background:var(--accent)!important;
+  border-color:var(--accent)!important;
+  color:var(--bg)!important;
+}
+
+
+/* final_20260605 dark designer polish: improve small label readability after parallel review. */
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home :is(.ba-label,.final-hero-map-kicker,.conn-strength){
+  color:var(--term-label-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .ba-col.after .ba-label{
+  color:var(--accent-2)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .final-hero-map-card.action .final-hero-map-kicker{
+  color:var(--good-label-ink)!important;
+}
+body:has(:is(#ahf-dark,#ahf-dark2):checked) .page-wide.v5-home .widget-diff-row .ln{
+  background:rgba(255,255,255,.06)!important;
+  color:var(--ink-mute)!important;
+}
+
+
+/* final_20260605 Dark2 Premium: low-chroma editorial dark theme, CSS-only. */
+#ahf-dark2:checked ~ .ahf-themebar label[for="ahf-dark2"]{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#0f1014;
+}
+body:has(#ahf-dark2:checked){
+  --bg:#0f1014;
+  --ink:#ece8df;
+  --ink-soft:#c8c2b7;
+  --ink-mute:#9d968b;
+  --line:#333640;
+  --card:#191b21;
+  --accent:#c8747c;
+  --accent-2:#d9a0a5;
+  --accent-soft:#2d2024;
+  --chip-ink:#c8c2b7;
+  --dark:#0b0c10;
+  --dark-soft:#14161b;
+  --code:#0b0c10;
+  --term-bg:#27231c;
+  --term-border:#4b412b;
+  --term-ink:#d8c89e;
+  --term-label-ink:#b8a06f;
+  --term-accent:#b8a06f;
+  --analogy-bg:#18232b;
+  --analogy-border:#2d4251;
+  --analogy-ink:#bfd0db;
+  --analogy-label-ink:#8fa9b8;
+  --analogy-accent:#7f9daf;
+  --danger-bg:#2b1e21;
+  --danger-border:#593238;
+  --danger-ink:#dfb8bd;
+  --danger-label-ink:#d79aa1;
+  --danger-accent:#c8747c;
+  --good-bg:#18251d;
+  --good-border:#324a39;
+  --good-ink:#c5d9cb;
+  --good-label-ink:#8fb59d;
+  --good-accent:#7fa98f;
+  --hl-yellow:#3b331f;
+  --hl-blue:#1d2d39;
+  --hl-pink:#35232a;
+  --pill-bg:#22242b;
+  --pill-bg-hover:#292c34;
+  --pill-border:#3b3e48;
+  --pill-ink:#cfc8bd;
+  --pill-accent-bg:#2a2523;
+  --pill-accent-border:#50433d;
+  --pill-accent-ink:#d5b9a7;
+  --pill-accent-dot:#a68f7d;
+  --focus:#829ce5;
+  --vt-paper:#191b21;
+  --vt-wash:#202228;
+  --vt-soft:#252832;
+  --vt-line:#373a44;
+  --vt-ink:#ece8df;
+  color-scheme:dark;
+}
+body:has(#ahf-dark2:checked){
+  background:radial-gradient(circle at 50% -260px,rgba(200,116,124,.055),transparent 430px),#0f1014!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home,
+body:has(#ahf-dark2:checked) .ahf-color-audit{
+  --copy-surface:#191b21;
+  --copy-surface-2:#202228;
+  --copy-surface-3:#252832;
+  --copy-line:#373a44;
+  --copy-line-strong:#484b56;
+  --copy-hover:#24272f;
+  --vt-paper:#191b21;
+  --vt-wash:#202228;
+  --vt-soft:#252832;
+  --vt-line:#373a44;
+  --vt-ink:#ece8df;
+}
+body:has(#ahf-dark2:checked) .ahf-color-audit-badge::after{content:"Dark2"}
+body:has(#ahf-dark2:checked) .ahf-color-value::after{content:attr(data-dark2)}
+body:has(#ahf-dark2:checked) .ahf-color-audit{
+  background:rgba(18,19,24,.94)!important;
+  border-color:var(--copy-line)!important;
+  box-shadow:0 18px 34px rgba(0,0,0,.34)!important;
+}
+body:has(#ahf-dark2:checked) .ahf-color-swatch{
+  filter:saturate(.62) brightness(.9);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(
+  .pattern-shell,.pattern-hero-note,.imported-toc-card,.source-note,.final-hero-map,
+  .final-vt-section > .vt-adapt-demo,.vt-adapt-demo,.widget-soft-card,.mini-card,
+  .chron-card,.conn-card,.ba-col,.impact-card,.final-body-icon-card,.soft-shape-use-card,
+  .new-template-card,.variant-card,.static-flow-step,.token-swatch,.landing-action-panel,
+  .landing-action-proof,.seo-snippet-preview,.platform-title-prompt,.platform-anchor-card,
+  .platform-branch-card,.platform-conversion-card,.platform-analogy-card,.platform-guard-card
+){
+  background:var(--copy-surface)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(
+  .final-hero-map-card,.final-hero-map-result,.vt-adapt-card,.vt-soft-panel,.vt-triage-col,
+  .vt-flow-node,.vt-concept-step,.vt-file-card,.vt-file-body,.vt-file-note,.vt-ticket,
+  .vt-qg-final,.vt-adapt-result,.vt-check-item,.vt-flag,.vt-risk-cell,.vt-timeline li,
+  .edge-gov-flow,.edge-gov-fnode,.edge-status-kpi,.edge-status-col,.edge-failure-note,
+  .access-check-card,.access-check-rule,.access-release-ready li,.widget-review-note,
+  .widget-flow-detail,.widget-feature-step,.widget-triage-col,.widget-ticket,.widget-node,
+  .widget-path,.widget-good,.widget-bad,.widget-procon > div,.seo-result-card,.seo-rule-card,
+  .seo-variant,.platform-lead-card,.token-rhythm-row
+){
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(
+  .good,.vt-adapt-card.good,.vt-soft-panel.good,.edge-gov-fnode.good,.edge-status-col.good,
+  .edge-failure-note.solution,.soft-shape-use-card.good,.new-template-card.good,
+  .platform-conversion-card.dev,.widget-node.ok,.widget-ticket.done,
+  .final-hero-map-card.action
+){
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  border-left-color:var(--good-label-ink)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(
+  .danger,.vt-adapt-card.accent,.vt-soft-panel.accent,.edge-gov-fnode.hot,
+  .edge-status-kpi.risk,.edge-status-col.risk,.edge-failure-note.trap,
+  .widget-node.fail,.widget-ticket.active,.platform-guard-card,.platform-conversion-card.essay,
+  .final-hero-map-card.problem
+){
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  border-left-color:var(--accent)!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(
+  .term,.analogy,.vt-adapt-card.gold,.edge-failure-note.case,.soft-shape-use-card.gold,
+  .widget-node.decision,.widget-review-note.warn,.platform-analogy-card,.platform-conversion-card.story
+){
+  background:var(--copy-surface-2)!important;
+  background-image:none!important;
+  border-color:var(--copy-line)!important;
+  border-left-color:var(--term-accent)!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(
+  .kicker,.meta span,.pattern-meta span,.status-pill,.tag,.tag-list .tag,.imported-toc-chip,
+  .lens-chip,.code-path,.widget-chip-row span,.widget-adapt-meta span,.body-icon-gallery-note span,
+  .soft-shape-theme-note span,.seo-snippet-checks span,.platform-mini-tags span,.template-addition-note span,
+  .vt-adapt-pill,.edge-gov-badge,.edge-ticket,.widget-pri,.widget-node span
+){
+  background:var(--pill-bg)!important;
+  background-image:none!important;
+  border-color:var(--pill-border)!important;
+  color:var(--pill-ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.body-icon,h2 .no,h2 .num,.imported-toc-chip b,.access-subnum,.widget-count,.static-flow-no){
+  background:var(--copy-surface-3)!important;
+  background-image:none!important;
+  border-color:var(--copy-line-strong)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.body-icon .bi-fill){fill:var(--copy-surface-2)!important;stroke:var(--ink-mute)!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.body-icon .bi-soft){fill:#302d25!important;stroke:var(--ink-mute)!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.body-icon .bi-accent,.body-icon .bi-accent-box){fill:var(--accent)!important;stroke:var(--accent)!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.body-icon .bi-accent-line){stroke:var(--accent)!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.vt-fill.good,.edge-status-fill.good,.vt-toggle.on){
+  background:#6f927c!important;
+  background-image:none!important;
+  color:#0f1014!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.vt-check,.widget-pv-cta,.landing-action-btn.primary,.component-variants-section .variant-card.is-active .variant-demo-btn){
+  background:var(--accent)!important;
+  border-color:var(--accent)!important;
+  color:#0f1014!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.vt-track,.edge-status-track){
+  background:var(--copy-surface-3)!important;
+  background-image:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.ba-label,.final-hero-map-kicker,.conn-strength,.widget-kicker,.vt-adapt-kicker,.case-label){
+  color:var(--term-label-ink)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.ba-col.after .ba-label,.final-hero-map-card.problem .final-hero-map-kicker,.widget-review-note.critical .widget-kicker){
+  color:var(--accent-2)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.final-hero-map-card.action .final-hero-map-kicker,.edge-gov-fnode.good b){
+  color:var(--good-label-ink)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(pre,.code,.widget-code-box,.vt-pr-box,.widget-diff,code){
+  background:var(--code)!important;
+  color:#e4dfd2!important;
+  border-color:#2f323a!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.widget-diff-row.add,.widget-diff-row.del){
+  background:rgba(255,255,255,.035)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-diff-row .ln{
+  background:rgba(255,255,255,.045)!important;
+  color:var(--ink-mute)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.widget-diff-dot,.widget-diff-dot.warn,.widget-diff-dot.info,.widget-design-body .picked){
+  background:var(--copy-surface-3)!important;
+  border:1px solid var(--copy-line-strong)!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-design-preview.dark{
+  background:#14161b!important;
+  border-color:var(--copy-line)!important;
+  box-shadow:none!important;
+}
+
+
+/* final_20260605 Dark2 Premium v2: graphite/champagne refinement from parallel designer review. */
+body:has(#ahf-dark2:checked){
+  --bg:#0f1014;
+  --card:#181a20;
+  --copy-surface:#181a20;
+  --copy-surface-2:#1f2229;
+  --copy-surface-3:#252934;
+  --line:#343842;
+  --copy-line:#373b45;
+  --copy-line-strong:#464b56;
+  --copy-hover:#242832;
+  --ink:#f1eee7;
+  --ink-soft:#c8c1b5;
+  --ink-mute:#8f887c;
+  --accent:#d6b879;
+  --accent-2:#ead7a6;
+  --accent-soft:#2b261d;
+  --danger-bg:#241c20;
+  --danger-border:#473137;
+  --danger-ink:#d9b7bb;
+  --danger-label-ink:#c98288;
+  --danger-accent:#c98288;
+  --good-bg:#1b231d;
+  --good-border:#334338;
+  --good-ink:#cbd8c8;
+  --good-label-ink:#9fb89c;
+  --good-accent:#9fb89c;
+  --term-bg:#27231c;
+  --term-border:#4b412b;
+  --term-ink:#d8c89e;
+  --term-label-ink:#d6b879;
+  --term-accent:#d6b879;
+  --analogy-bg:#1b242a;
+  --analogy-border:#33414a;
+  --analogy-ink:#c4d0d7;
+  --analogy-label-ink:#98abb7;
+  --analogy-accent:#98abb7;
+  --pill-bg:#20232a;
+  --pill-bg-hover:#262a32;
+  --pill-border:#383d47;
+  --pill-ink:#cec7bb;
+  --code:#0b0c10;
+  --hl-yellow:#332d1d;
+  --hl-blue:#1c2a34;
+  --hl-pink:#302126;
+  --vt-paper:#181a20;
+  --vt-wash:#1f2229;
+  --vt-soft:#252934;
+  --vt-line:#373b45;
+  --vt-ink:#f1eee7;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home,
+body:has(#ahf-dark2:checked) .ahf-color-audit{
+  --copy-surface:#181a20;
+  --copy-surface-2:#1f2229;
+  --copy-surface-3:#252934;
+  --copy-line:#373b45;
+  --copy-line-strong:#464b56;
+  --copy-hover:#242832;
+  --vt-paper:#181a20;
+  --vt-wash:#1f2229;
+  --vt-soft:#252934;
+  --vt-line:#373b45;
+  --vt-ink:#f1eee7;
+}
+#ahf-dark2:checked ~ .ahf-themebar label[for="ahf-dark2"]{
+  background:#d6b879!important;
+  border-color:#d6b879!important;
+  color:#0f1014!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(
+  .vt-adapt-card,.vt-soft-panel,.new-template-card,.widget-ticket,.edge-gov-fnode,
+  .edge-status-col,.edge-failure-note,.final-hero-map-card,.platform-conversion-card,
+  .widget-node,.widget-review-note,.seo-rule-card,.seo-variant,.variant-card
+){
+  background:linear-gradient(180deg,var(--copy-surface),var(--copy-surface-2))!important;
+  border-color:var(--copy-line)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(
+  .good,.vt-adapt-card.good,.vt-soft-panel.good,.edge-gov-fnode.good,.edge-status-col.good,
+  .edge-failure-note.solution,.new-template-card.good,.platform-conversion-card.dev,.widget-node.ok,.widget-ticket.done
+){
+  background:linear-gradient(180deg,var(--copy-surface),var(--copy-surface-2))!important;
+  border-left-color:#9fb89c!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(
+  .gold,.term,.vt-adapt-card.gold,.edge-failure-note.case,.widget-review-note.warn,.platform-conversion-card.story,.widget-node.decision
+){
+  background:linear-gradient(180deg,var(--copy-surface),var(--copy-surface-2))!important;
+  border-left-color:#d6b879!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(
+  .accent,.hot,.risk,.danger,.vt-adapt-card.accent,.vt-soft-panel.accent,.edge-gov-fnode.hot,
+  .edge-status-kpi.risk,.edge-status-col.risk,.edge-failure-note.trap,.widget-node.fail,
+  .widget-ticket.active,.platform-conversion-card.essay,.final-hero-map-card.problem
+){
+  background:linear-gradient(180deg,var(--copy-surface),var(--copy-surface-2))!important;
+  border-left-color:#c98288!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.vt-fill,.edge-status-fill){
+  background:#8f7658!important;
+  background-image:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.vt-fill.good,.edge-status-fill.good){background:#778b78!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.vt-fill.gold,.edge-status-fill.warn){background:#8c7857!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.vt-toggle.on){background:#778b78!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.vt-toggle.warn){background:#8c7857!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.widget-pv-cta,.landing-action-btn.primary,.component-variants-section .variant-card.is-active .variant-demo-btn){
+  background:#d6b879!important;
+  border-color:#d6b879!important;
+  color:#0f1014!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .access-subnum:not(#dark2-lock#dark2-lock#dark2-lock),
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-count:not(#dark2-lock#dark2-lock#dark2-lock),
+body:has(#ahf-dark2:checked) .page-wide.v5-home .static-flow-no:not(#dark2-lock#dark2-lock#dark2-lock),
+body:has(#ahf-dark2:checked) .page-wide.v5-home .token-chip:not(#dark2-lock#dark2-lock#dark2-lock){
+  background:var(--copy-surface-3)!important;
+  background-image:none!important;
+  border:1px solid var(--copy-line-strong)!important;
+  color:var(--ink)!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-diff-dot:not(#dark2-lock#dark2-lock#dark2-lock),
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-diff-dot.warn:not(#dark2-lock#dark2-lock#dark2-lock),
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-diff-dot.info:not(#dark2-lock#dark2-lock#dark2-lock){
+  background:var(--copy-surface-3)!important;
+  border:1px solid var(--copy-line-strong)!important;
+  color:var(--ink)!important;
+}
+body:has(#ahf-dark2:checked) .ahf-color-audit{
+  background:rgba(18,20,25,.88)!important;
+  border-color:#343842!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.42)!important;
+}
+body:has(#ahf-dark2:checked) .ahf-color-swatch{
+  min-height:24px!important;
+  border-radius:6px!important;
+  filter:saturate(.52) brightness(.86)!important;
+}
+body:has(#ahf-dark2:checked) .ahf-color-audit tbody td:nth-child(2){padding:2px!important;background:var(--copy-surface)!important}
+
+/* final_20260605 Dark2 Premium v3: remove bright swatch/CTA blocks after visual audit. */
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.vt-fill,.edge-status-fill){
+  background:#70685a!important;
+  background-image:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.vt-fill.good,.edge-status-fill.good,.vt-toggle.on){background:#687264!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.vt-fill.gold,.edge-status-fill.warn,.vt-toggle.warn){background:#746a5a!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-pv-cta{
+  background:#2b261d!important;
+  border:1px solid #5e5137!important;
+  color:#ead7a6!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-design-body .picked{
+  background:#2b261d!important;
+  border:1px solid #5e5137!important;
+  color:#ead7a6!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-palette i{
+  border-color:var(--copy-line-strong)!important;
+  box-shadow:none!important;
+  filter:saturate(.72) brightness(.82)!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-palette i[style*="--bg"]{background:#0f1014!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-palette i[style*="--ink"]{background:#7b7468!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-palette i[style*="--accent"]{background:#8c7857!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-palette i[style*="--dark"]{background:#0b0c10!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-palette i[style*="--good-label-ink"]{background:#687264!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-palette i[style*="--analogy-bg"]{background:#1b242a!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-palette i[style*="--analogy-accent"]{background:#65747f!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-palette i[style*="--accent-soft"]{background:#2b261d!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-design-preview.soft{
+  background:#171d24!important;
+  border-color:var(--copy-line)!important;
+}
+
+/* final_20260605 Dark2 Premium v4: high-specificity low-chroma CTA and accent lock. */
+body:has(#ahf-dark2:checked){
+  --accent-soft:#2b2822;
+  --analogy-bg:#1d2428;
+  --analogy-border:#353d44;
+  --hl-blue:#1d252b;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-pv-cta:not(#dark2-premium#dark2-premium#dark2-premium),
+body:has(#ahf-dark2:checked) .page-wide.v5-home .component-variants-section .variant-card.is-active .variant-demo-btn:not(#dark2-premium#dark2-premium#dark2-premium),
+body:has(#ahf-dark2:checked) .page-wide.v5-home .landing-action-btn.primary:not(#dark2-premium#dark2-premium#dark2-premium){
+  background:#2b261d!important;
+  background-image:none!important;
+  border:1px solid #5e5137!important;
+  color:#ead7a6!important;
+  box-shadow:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-palette i[style*="--accent"]{background:#746a5a!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-palette i[style*="--analogy-bg"]{background:#1d2428!important}
+body:has(#ahf-dark2:checked) .page-wide.v5-home .widget-design-preview.soft:not(#dark2-premium#dark2-premium#dark2-premium){
+  background:#1d2228!important;
+  background-image:none!important;
+}
+body:has(#ahf-dark2:checked) .page-wide.v5-home :is(.seo-snippet-checks span,.platform-mini-tags span,.template-addition-note span,.widget-chip-row span):not(#dark2-premium#dark2-premium#dark2-premium){
+  background:#20232a!important;
+  border-color:#383d47!important;
+  color:var(--pill-ink)!important;
+}
+
 </style>
 </head>
 <body>
-<input type="checkbox" id="theme-toggle" aria-label="라이트/다크 테마 전환"><label for="theme-toggle" class="theme-switch" title="테마 전환 (라이트 / 다크)"><svg class="ts-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3 19 19M19 5l-1.7 1.7M6.7 17.3 5 19"/></svg><svg class="ts-moon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 1 1 9.4 4 6.6 6.6 0 0 0 20 14.6z"/></svg><span style="position:absolute;left:-9999px">테마 전환</span></label>
-
+<input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-light" checked>
+<input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-light2">
+<input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-white">
+<input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-dark">
+<input class="ahf-theme-input" type="radio" name="ahf-theme" id="ahf-dark2">
+<div class="ahf-themebar" aria-label="테마 선택">
+  <label for="ahf-light">Light</label>
+  <label for="ahf-light2">Light2</label>
+  <label for="ahf-white">White</label>
+  <label for="ahf-dark">Dark</label>
+  <label for="ahf-dark2">Dark2</label>
+</div>
+<aside class="ahf-color-audit" aria-label="현재 테마 배경색 컬러 리스트">
+  <div class="ahf-color-audit-head">
+    <div><h2 class="ahf-color-audit-title">Background Color Tokens</h2><p class="ahf-color-audit-sub">테마 선택에 따라 현재값이 바뀝니다.</p></div>
+    <span class="ahf-color-audit-badge" aria-label="현재 선택 테마"></span>
+  </div>
+  <table>
+    <caption>현재 선택 테마 기준 배경색/테두리 토큰 값</caption>
+    <thead><tr><th scope="col">Token</th><th scope="col">색</th><th scope="col">현재값</th></tr></thead>
+    <tbody>
+      <tr><th scope="row"><code>--bg</code><span class="ahf-color-role">page</span></th><td><span class="ahf-color-swatch sw-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f5f5f0" data-light2="#f5f6f8" data-white="#ffffff" data-dark="#111216" data-dark2="#0f1014"></code></td></tr>
+      <tr><th scope="row"><code>--card</code><span class="ahf-color-role">base card</span></th><td><span class="ahf-color-swatch sw-card" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-light2="#ffffff" data-white="#ffffff" data-dark="#1b1d23" data-dark2="#181a20"></code></td></tr>
+      <tr><th scope="row"><code>--copy-surface</code><span class="ahf-color-role">section/card</span></th><td><span class="ahf-color-swatch sw-copy-surface" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-light2="#ffffff" data-white="#ffffff" data-dark="#1b1d23" data-dark2="#181a20"></code></td></tr>
+      <tr><th scope="row"><code>--copy-surface-2</code><span class="ahf-color-role">subtle view</span></th><td><span class="ahf-color-swatch sw-copy-surface-2" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fffdfb" data-light2="#ffffff" data-white="#fbfbfb" data-dark="#20232a" data-dark2="#1f2229"></code></td></tr>
+      <tr><th scope="row"><code>--copy-surface-3</code><span class="ahf-color-role">header tint</span></th><td><span class="ahf-color-swatch sw-copy-surface-3" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f9f7f1" data-light2="#fafbfc" data-white="#f8fafc" data-dark="#252830" data-dark2="#252934"></code></td></tr>
+      <tr><th scope="row"><code>--copy-hover</code><span class="ahf-color-role">hover fill</span></th><td><span class="ahf-color-swatch sw-copy-hover" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fff7f5" data-light2="#fafbfc" data-white="#f9fafb" data-dark="#242731" data-dark2="#242832"></code></td></tr>
+      <tr><th scope="row"><code>--line</code><span class="ahf-color-role">global border</span></th><td><span class="ahf-color-swatch sw-line" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#d8d8d0" data-light2="#e6e8ec" data-white="#e5e7eb" data-dark="#383941" data-dark2="#343842"></code></td></tr>
+      <tr><th scope="row"><code>--copy-line</code><span class="ahf-color-role">view border</span></th><td><span class="ahf-color-swatch sw-copy-line" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#d8d8d0" data-light2="#e6e8ec" data-white="#e5e7eb" data-dark="#3a3c45" data-dark2="#373b45"></code></td></tr>
+      <tr><th scope="row"><code>--copy-line-strong</code><span class="ahf-color-role">strong border</span></th><td><span class="ahf-color-swatch sw-copy-line-strong" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#c9bdad" data-light2="#d1d5db" data-white="#d1d5db" data-dark="#4c4d57" data-dark2="#464b56"></code></td></tr>
+      <tr><th scope="row"><code>--pill-bg</code><span class="ahf-color-role">chip bg</span></th><td><span class="ahf-color-swatch sw-pill-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-light2="#ffffff" data-white="#ffffff" data-dark="#22242b" data-dark2="#20232a"></code></td></tr>
+      <tr><th scope="row"><code>--pill-bg-hover</code><span class="ahf-color-role">chip hover</span></th><td><span class="ahf-color-swatch sw-pill-bg-hover" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fff7f5" data-light2="#fafbfc" data-white="#f9fafb" data-dark="#2a2d35" data-dark2="#262a32"></code></td></tr>
+      <tr><th scope="row"><code>--pill-border</code><span class="ahf-color-role">chip border</span></th><td><span class="ahf-color-swatch sw-pill-border" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#d8d8d0" data-light2="#e6e8ec" data-white="#e5e7eb" data-dark="#3c3e47" data-dark2="#383d47"></code></td></tr>
+      <tr><th scope="row"><code>--accent-soft</code><span class="ahf-color-role">red soft</span></th><td><span class="ahf-color-swatch sw-accent-soft" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fce4e6" data-light2="#fdecea" data-white="#fff1f2" data-dark="#342127" data-dark2="#2b2822"></code></td></tr>
+      <tr><th scope="row"><code>--term-bg</code><span class="ahf-color-role">warning/gold</span></th><td><span class="ahf-color-swatch sw-term-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fffaf2" data-light2="#fffbeb" data-white="#fffbeb" data-dark="#2a2318" data-dark2="#27231c"></code></td></tr>
+      <tr><th scope="row"><code>--danger-bg</code><span class="ahf-color-role">risk/red</span></th><td><span class="ahf-color-swatch sw-danger-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fff0ee" data-light2="#fff1f2" data-white="#fff1f2" data-dark="#2a1717" data-dark2="#241c20"></code></td></tr>
+      <tr><th scope="row"><code>--good-bg</code><span class="ahf-color-role">success/green</span></th><td><span class="ahf-color-swatch sw-good-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#eef7f1" data-light2="#f0fdf4" data-white="#f0fdf4" data-dark="#10261b" data-dark2="#1b231d"></code></td></tr>
+      <tr><th scope="row"><code>--analogy-bg</code><span class="ahf-color-role">analogy/blue</span></th><td><span class="ahf-color-swatch sw-analogy-bg" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f0f4f8" data-light2="#fafbfc" data-white="#f8fafc" data-dark="#172330" data-dark2="#1d2428"></code></td></tr>
+      <tr><th scope="row"><code>--code</code><span class="ahf-color-role">code block</span></th><td><span class="ahf-color-swatch sw-code" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#1f1f1d" data-light2="#0f1117" data-white="#1f1f1d" data-dark="#0c0d11" data-dark2="#0b0c10"></code></td></tr>
+      <tr><th scope="row"><code>--hl-yellow</code><span class="ahf-color-role">highlight</span></th><td><span class="ahf-color-swatch sw-hl-yellow" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffe9a3" data-light2="#ffe9a3" data-white="#ffe9a3" data-dark="#4a3c18" data-dark2="#332d1d"></code></td></tr>
+      <tr><th scope="row"><code>--hl-blue</code><span class="ahf-color-role">highlight</span></th><td><span class="ahf-color-swatch sw-hl-blue" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#cfe5f5" data-light2="#cfe5f5" data-white="#cfe5f5" data-dark="#1d3448" data-dark2="#1d252b"></code></td></tr>
+      <tr><th scope="row"><code>--hl-pink</code><span class="ahf-color-role">highlight</span></th><td><span class="ahf-color-swatch sw-hl-pink" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#fbd3da" data-light2="#fbd3da" data-white="#fbd3da" data-dark="#43242d" data-dark2="#302126"></code></td></tr>
+      <tr><th scope="row"><code>--vt-paper</code><span class="ahf-color-role">vt template</span></th><td><span class="ahf-color-swatch sw-vt-paper" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#ffffff" data-light2="#ffffff" data-white="#ffffff" data-dark="#ffffff" data-dark2="#181a20"></code></td></tr>
+      <tr><th scope="row"><code>--vt-wash</code><span class="ahf-color-role">vt frame</span></th><td><span class="ahf-color-swatch sw-vt-wash" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#faf9f5" data-light2="#ffffff" data-white="#faf9f5" data-dark="#faf9f5" data-dark2="#1f2229"></code></td></tr>
+      <tr><th scope="row"><code>--vt-soft</code><span class="ahf-color-role">vt header</span></th><td><span class="ahf-color-swatch sw-vt-soft" aria-hidden="true"></span></td><td><code class="ahf-color-value" data-light="#f0eee6" data-light2="#fafbfc" data-white="#f0eee6" data-dark="#f0eee6" data-dark2="#252934"></code></td></tr>
+    </tbody>
+  </table>
+</aside>
 <div class="reading-progress" aria-hidden="true"></div>
 <a class="skip" href="#main">본문 바로가기</a>
 <main id="main" class="page-wide v5-home">
   <header class="header header-editorial-visual-layout">
     <div class="kicker"><span class="kicker-text">Adaptive HTML Final · Single Template HTML</span></div>
-    <figure class="top-shape-anchor" aria-labelledby="top-shape-title">
-      <img src="sources/soft-shape-svgs-current-theme/connector-nodes.svg" alt="스킬 적용용 단일 HTML 템플릿 구조를 보여주는 연결 노드 도형" width="8000" height="6000">
-      <figcaption><span id="top-shape-title">Template Map</span><strong>스킬 적용 구조</strong></figcaption>
-    </figure>
     <div class="header-copy">
       <h1>Adaptive HTML Final 스킬 적용용 단일 템플릿 HTML</h1>
       <p class="sub">6개 editorial 패턴, visual/html 템플릿, compact body icon, 신규 위젯, 플랫폼 변환 카드, QA Gate를 한 파일에서 검토·도입할 수 있게 정리한 최종 템플릿 샘플입니다.</p>
@@ -3746,7 +5711,7 @@ l, r = <em>0</em>, len(arr)-<em>1</em>
 
   <!-- final_20260604 soft shape visual pack import start -->
   <section class="pattern-shell soft-shape-theme-section">
-    <div class="pattern-head"><span class="body-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l5 9 10 2-7 7 2 10-10-5-10 5 2-10-7-7 10-2z"/><path class="bi-accent-line" d="M14 25l6-6 6 6"/><circle class="bi-accent" cx="20" cy="19" r="2.5"/></svg></span><div><h2 id="soft-shape-visual-pack"><span class="no">38</span>Soft Shape Visual Pack · 현재 테마 적용</h2><p class="h2-sub">soft-shape-visual-pack의 36개 SVG 도형을 final_20260604 팔레트, Pretendard 톤, 중립 카드 배경에 맞춰 재색상화하고 마지막 참고 섹션으로 추가했습니다.</p></div></div>
+    <div class="pattern-head"><span class="body-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l5 9 10 2-7 7 2 10-10-5-10 5 2-10-7-7 10-2z"/><path class="bi-accent-line" d="M14 25l6-6 6 6"/><circle class="bi-accent" cx="20" cy="19" r="2.5"/></svg></span><div><h2 id="soft-shape-visual-pack"><span class="no">38</span>Soft Shape Visual Pack · 현재 테마 적용</h2><p class="h2-sub">soft-shape-visual-pack의 SVG 도형 활용 기준을 final_20260604 팔레트, Pretendard 톤, 중립 카드 배경에 맞춰 정리했습니다.</p></div></div>
 
     <div class="soft-shape-theme-note"><span>36 themed SVG shapes</span><span>8000×6000 source 유지</span><span>final_20260604 palette</span><span>본문 보조 이미지 전용</span></div>
 
@@ -3758,183 +5723,11 @@ l, r = <em>0</em>, len(arr)-<em>1</em>
       <article class="soft-shape-use-card gold"><h3>과삽입 금지 기준</h3><p>한 섹션에 여러 SVG를 넣지 않습니다. 카드·표·본문 텍스트가 이미 충분하면 도형은 생략하는 것이 더 전문적입니다.</p></article>
     </div>
 
-    <h3 class="soft-shape-subhead">36개 테마 적용 SVG 도형</h3>
-    <div class="final-softshape-grid" aria-label="현재 테마가 적용된 soft shape SVG 도형 36종">
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/circle-focus.svg" alt="원형 포커스 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">01 · circle-focus</span><h3>원형 포커스</h3><p>핵심 개념 하나를 강조할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/rounded-rect.svg" alt="라운드 카드 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">02 · rounded-rect</span><h3>라운드 카드</h3><p>정리된 정보 블록을 설명할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/triangle-priority.svg" alt="삼각 우선순위 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">03 · triangle-priority</span><h3>삼각 우선순위</h3><p>위계와 우선순위를 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/diamond-decision.svg" alt="다이아몬드 결정 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">04 · diamond-decision</span><h3>다이아몬드 결정</h3><p>선택 지점과 판단 조건을 나타낼 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/hex-system.svg" alt="육각 시스템 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">05 · hex-system</span><h3>육각 시스템</h3><p>모듈/시스템 구성요소를 말할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/pill-label.svg" alt="필 라벨 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">06 · pill-label</span><h3>필 라벨</h3><p>상태·분류·태그를 부드럽게 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/star-insight.svg" alt="스타 인사이트 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">07 · star-insight</span><h3>스타 인사이트</h3><p>중요 발견이나 추천을 강조할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/blob-idea.svg" alt="블롭 아이디어 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">08 · blob-idea</span><h3>블롭 아이디어</h3><p>정형화 전의 아이디어를 표현할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/target-goal.svg" alt="타깃 목표 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">09 · target-goal</span><h3>타깃 목표</h3><p>목표와 기준선을 맞출 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/orbit-context.svg" alt="오비트 맥락 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">10 · orbit-context</span><h3>오비트 맥락</h3><p>중심 개념 주변 요소를 설명할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/venn-overlap.svg" alt="벤 다이어그램 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">11 · venn-overlap</span><h3>벤 다이어그램</h3><p>겹치는 조건과 공통분모를 설명할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/matrix-quadrant.svg" alt="사분면 매트릭스 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">12 · matrix-quadrant</span><h3>사분면 매트릭스</h3><p>2축 기준의 판단표를 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/grid-set.svg" alt="그리드 묶음 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">13 · grid-set</span><h3>그리드 묶음</h3><p>여러 항목을 균등하게 나열할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/stack-layers.svg" alt="스택 레이어 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">14 · stack-layers</span><h3>스택 레이어</h3><p>계층·레이어·의존성을 설명할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/funnel-filter.svg" alt="퍼널 필터 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">15 · funnel-filter</span><h3>퍼널 필터</h3><p>후보를 좁혀가는 과정을 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/pyramid-levels.svg" alt="피라미드 단계 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">16 · pyramid-levels</span><h3>피라미드 단계</h3><p>기초→상위 단계 구조를 말할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/ladder-growth.svg" alt="성장 사다리 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">17 · ladder-growth</span><h3>성장 사다리</h3><p>점진적 성숙도나 레벨업을 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/timeline-steps.svg" alt="타임라인 단계 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">18 · timeline-steps</span><h3>타임라인 단계</h3><p>시간 순서의 진행을 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/cycle-loop.svg" alt="순환 루프 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">19 · cycle-loop</span><h3>순환 루프</h3><p>반복 개선 사이클을 설명할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/flow-arrow.svg" alt="흐름 화살표 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">20 · flow-arrow</span><h3>흐름 화살표</h3><p>입력→처리→결과 흐름을 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/branch-tree.svg" alt="분기 트리 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">21 · branch-tree</span><h3>분기 트리</h3><p>선택지와 하위 경로를 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/connector-nodes.svg" alt="연결 노드 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">22 · connector-nodes</span><h3>연결 노드</h3><p>관계와 의존성을 설명할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/swimlane-process.svg" alt="스윔레인 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">23 · swimlane-process</span><h3>스윔레인</h3><p>역할별 병렬 진행을 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/wave-change.svg" alt="웨이브 변화 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">24 · wave-change</span><h3>웨이브 변화</h3><p>변동·추세·감정 흐름을 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/bar-metric.svg" alt="막대 지표 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">25 · bar-metric</span><h3>막대 지표</h3><p>수치 비교를 간단히 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/line-chart.svg" alt="라인 차트 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">26 · line-chart</span><h3>라인 차트</h3><p>시간에 따른 추세를 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/donut-ratio.svg" alt="도넛 비율 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">27 · donut-ratio</span><h3>도넛 비율</h3><p>구성비나 점유율을 설명할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/spark-card.svg" alt="스파크 카드 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">28 · spark-card</span><h3>스파크 카드</h3><p>짧은 성과 요약을 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/shield-check.svg" alt="쉴드 검증 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">29 · shield-check</span><h3>쉴드 검증</h3><p>보안·품질·검수 기준을 말할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/warning-gap.svg" alt="경고 갭 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">30 · warning-gap</span><h3>경고 갭</h3><p>위험·누락·주의점을 강조할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/quote-source.svg" alt="원문 인용 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">31 · quote-source</span><h3>원문 인용</h3><p>원문 보존 또는 출처를 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/checklist-done.svg" alt="체크리스트 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">32 · checklist-done</span><h3>체크리스트</h3><p>완료 조건과 점검 항목을 보여줄 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/document-card.svg" alt="문서 카드 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">33 · document-card</span><h3>문서 카드</h3><p>자료·문서·레퍼런스 대입용</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/code-window.svg" alt="코드 윈도우 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">34 · code-window</span><h3>코드 윈도우</h3><p>개발·자동화 흐름을 설명할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/search-lens.svg" alt="검색 렌즈 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">35 · search-lens</span><h3>검색 렌즈</h3><p>검색·탐색·리서치 단계를 말할 때</p></div>
-      </article>
-      <article class="final-softshape-card">
-        <img src="sources/soft-shape-svgs-current-theme/conversation-bubble.svg" alt="대화 버블 도형 이미지" loading="lazy" width="8000" height="6000">
-        <div class="final-softshape-body"><span class="final-softshape-kicker">36 · conversation-bubble</span><h3>대화 버블</h3><p>인터뷰·피드백·메시지를 설명할 때</p></div>
-      </article>
-    </div>
+    <div class="template-addition-note" aria-label="soft shape 정리 기준"><span>도형 전체 갤러리 삭제</span><span>필요 섹션에 1개만 사용</span><span>본문 텍스트 우선</span><span>테마 표면 통일</span></div>
   </section>
   <!-- final_20260604 soft shape visual pack import end -->
 
 
-  <!-- final_20260604 soft shape applied example start -->
-  <section class="pattern-shell soft-shape-applied-section">
-    <div class="pattern-head"><span class="body-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M8 30h24"/><rect class="bi-soft" x="10" y="18" width="5" height="12" rx="1"/><rect class="bi-fill" x="18" y="12" width="5" height="18" rx="1"/><rect class="bi-accent-box" x="26" y="8" width="5" height="22" rx="1"/></svg></span><div><h2 id="soft-shape-applied-example"><span class="no">39</span>실제 적용 예 · 질문을 실행 계획으로 바꾸는 도형 섹션</h2><p class="h2-sub">S1의 도형을 장식이 아니라 읽기 흐름의 앵커로 사용하는 예시입니다. 검색 렌즈, 퍼널, 결정 다이아몬드, 체크리스트 도형이 각각 문단의 역할을 먼저 알려줍니다.</p></div></div>
-    <div class="shape-example-stage">
-      <aside class="shape-example-brief" aria-label="적용 예시 문제 정의">
-        <div class="shape-example-visual"><img src="sources/soft-shape-svgs-current-theme/search-lens.svg" alt="검색 렌즈 도형으로 질문 탐색을 표현" loading="lazy" width="8000" height="6000"></div>
-        <div><span class="shape-example-kicker">Reader Question</span><h3>“이 기능을 지금 도입해도 될까?”</h3><p>긴 설명 대신, 독자가 실제로 판단해야 하는 질문을 먼저 고정합니다. 도형은 이 질문이 ‘탐색’ 단계임을 직관적으로 알려줍니다.</p></div>
-        <div class="shape-example-quote">도형의 역할: 예쁜 이미지가 아니라, 다음 문단을 어떤 관점으로 읽어야 하는지 미리 알려주는 시각 표지판.</div>
-      </aside>
-      <div>
-        <div class="shape-example-route" aria-label="도형을 적용한 4단 판단 흐름">
-          <article class="shape-step-card accent"><img src="sources/soft-shape-svgs-current-theme/search-lens.svg" alt="검색 렌즈"><div><span class="shape-example-kicker">01 Search</span><h3>질문을 좁힌다</h3><p>사용자, 비용, 리스크 중 무엇을 먼저 검증할지 정합니다.</p></div></article>
-          <article class="shape-step-card gold"><img src="sources/soft-shape-svgs-current-theme/funnel-filter.svg" alt="퍼널 필터"><div><span class="shape-example-kicker">02 Filter</span><h3>후보를 걸러낸다</h3><p>근거 없는 요구, 중복 요구, 지금 하지 않아도 되는 일을 분리합니다.</p></div></article>
-          <article class="shape-step-card"><img src="sources/soft-shape-svgs-current-theme/diamond-decision.svg" alt="결정 다이아몬드"><div><span class="shape-example-kicker">03 Decide</span><h3>분기 기준을 둔다</h3><p>효과가 크고 되돌릴 수 있으면 진행, 불확실하면 실험으로 낮춥니다.</p></div></article>
-          <article class="shape-step-card good"><img src="sources/soft-shape-svgs-current-theme/checklist-done.svg" alt="체크리스트 완료"><div><span class="shape-example-kicker">04 Ship</span><h3>완료 조건으로 닫는다</h3><p>성공 지표, 롤백 조건, 검수 담당자를 문서 하단에 고정합니다.</p></div></article>
-        </div>
-        <div class="shape-example-output"><img src="sources/soft-shape-svgs-current-theme/document-card.svg" alt="문서 카드 도형"><div><span class="shape-example-kicker">Applied Output</span><h3>결과: 독자는 그림을 확대하지 않고도 흐름을 이해한다</h3><p>도형은 각 문단의 의미를 미리 암시하고, 실제 판단 근거는 HTML 텍스트·카드·체크리스트로 남습니다.</p></div></div>
-        <div class="shape-example-rules" aria-label="도형 적용 규칙">
-          <div class="shape-example-rule"><b>1섹션 1대표 도형</b>시각물은 방향 제시만 담당합니다.</div>
-          <div class="shape-example-rule"><b>도형 의미 고정</b>같은 도형은 같은 의미로 반복합니다.</div>
-          <div class="shape-example-rule"><b>텍스트 우선</b>핵심 판단은 항상 선택 가능한 문장으로 둡니다.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- final_20260604 soft shape applied example end -->
 
 
   <!-- final_20260604 landing action CTA import start -->
@@ -4128,7 +5921,7 @@ l, r = <em>0</em>, len(arr)-<em>1</em>
   </section>
   <!-- final_20260604 platform observability sections import end -->
 
-  <section class="source-note" id="qa-gate"><div class="label">QA Gate</div><p>완료 기준: 외부/동작 JS 0, h1 1개, main id, table caption, 모바일 390px에서 timeline/card overflow 없음, 한 페이지에서 6개 editorial 패턴, vt-gallery 19개 템플릿, 본문 아이콘 32종, soft-shape SVG 36종, 실제 적용 예, 랜딩 CTA, SEO SERP 약속 카드, 접근성 30분 점검 그리드·실패 모드·완료 기준, 위젯 갤러리 6개 선택 섹션과 신규 선별 템플릿 4개(module-map, living-design-system, component-variants, static-click-flow), 플랫폼 변환 전략/카드 2개를 함께 넣더라도 본문 리듬이 깨지지 않을 것.</p></section>
+  <section class="source-note" id="qa-gate"><div class="label">QA Gate</div><p>완료 기준: 외부/동작 JS 0, h1 1개, main id, table caption, 모바일 390px에서 timeline/card overflow 없음, 한 페이지에서 6개 editorial 패턴, vt-gallery 19개 템플릿, 본문 아이콘 32종, soft-shape 활용 기준, 랜딩 CTA, SEO SERP 약속 카드, 접근성 30분 점검 그리드·실패 모드·완료 기준, 위젯 갤러리 6개 선택 섹션과 신규 선별 템플릿 4개(module-map, living-design-system, component-variants, static-click-flow), 플랫폼 변환 전략/카드 2개를 함께 넣더라도 본문 리듬이 깨지지 않을 것.</p></section>
   <footer class="template-footer" aria-label="문서 푸터">Coreline-ai 2026</footer>
 </main>
 </body>

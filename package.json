@@ -1,0 +1,18 @@
+{
+  "name": "skills-html-showcase",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Build-time export tooling for adaptive-html-final showcase outputs.",
+  "scripts": {
+    "export:output": "node scripts/export_output.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "playwright": "^1.60.0"
+  },
+  "optionalDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

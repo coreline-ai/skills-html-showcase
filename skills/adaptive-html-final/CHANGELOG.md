@@ -1,5 +1,324 @@
 # Changelog — adaptive-html-final
 
+## v5.9.1 (2026-06-07) — wg-10 figure sheet 모드 데모 섹션 한정 full-width
+
+- **wg-10 svg figure sheet**: `.mode-template-contract .wg-10-sheet{width:100%;max-width:100%}` 추가. 모드 정본 템플릿 데모 섹션 안에서만 카드 전체 폭(1280px 620→974)으로 풀고, 일반 본문의 wg-10은 620px 유지 → 본문 가독성 보존. 스코프 한정 패치(전역 확장 회피).
+- 직계 자식 `>` 대신 descendant 셀렉터로 적용(생성기가 위젯을 figure/div로 감싸도 동작). source-order로 base를 덮어 `!important` 불필요.
+- examples 17종 재인라인 + `examples/sources` 스냅샷·css-integrity 갱신. 거버넌스 77/77, examples 검증 0 issue.
+- **section.lead wrapper reset**: article 예제의 `<section class="lead">`가 theme.css의 prose용 `.lead{max-width:820px}`를 상속해 직접 섹션 카드가 1020→820px로 좁아지는 문제를 layouts.css에서 직접 섹션 한정으로 해소. 텍스트 `.lead` 유틸은 유지.
+
+## v5.9.0 (2026-06-07) — 카탈로그 reverse-sync 반응형·폭·대비 계약 + 시각 정본 게이트
+
+`templates/final_20260604` 카탈로그에서 검증한 시각 QA 패치를 스킬 자산(`visual-html.css`·`widgets.css`)에 정식 편입. 추가 규칙은 모두 source-order로 base를 덮어 `!important` 없이 적용했고, 조건부 CSS만 바뀌어 core 해시는 불변.
+
+- **반응형/overflow(모바일·태블릿)**: vt-03 risk matrix 1열·vt-19 feature-flag·vt-21 soft-workflow·vt-02 화살표 pseudo 중앙정렬·vt-12 타임라인; wg-03 diff(≤900)·wg-04 SVG·wg-06 변형표→Variant 카드(≤760)·wg-07 애니메이션 이동폭 축소·wg-08 뷰포트 가변·wg-15 ring 노드 내측·wg-16 리스크표 카드화(≤900)+플로우 노드 보정.
+- **카드 전체 폭(1280px)**: wg-14·wg-15·wg-17 내부 본문 780(max-reading)→974로 확장, 내부 블록 100%·긴 branch/tag/code 줄바꿈·모바일 Before/After 1열·파일 summary 그리드. wg-15는 넓은 화면 ring↔설명 좌우 배치.
+- **대비 통일**: wg-02 팔레트 라벨 solid-bg 가독성, CTA/뱃지/wg-13/wg-17/wg-01 강조색 accent-2, wg-20-var solid.
+- **vt-12 타임라인 스텝 번호**: 기본 ol marker 제거 → `counter-reset`/`counter-increment`로 빨간 원 안 1·2·3 명시, 390px 선/숫자/카드 미겹침.
+- **카탈로그 1:1 동기화(사용자 지시)**: wg-09 가로 슬라이드 deck→반응형 카드 그리드(scroll-snap 제거), wg-07 애니메이션 정적화. 향후 카탈로그↔자산 동기화가 mechanical하도록 일치.
+- **시각 정본 게이트 3종 추가**: `direct_section_title_icon_policy_gate`(제목 없는 카드 시작 금지+직접 섹션 h2 body-icon 필수), `body_icon_diversity_gate`(동일 SVG 반복 주입 차단), `mode_template_contract_gate`(diagram/auto는 모드 1순위 vt, widget/auto는 권장 wg 사용 강제).
+- **examples 17종 재인라인** + `examples/sources` 자산 스냅샷·`css-integrity.json` 해시 갱신(verbatim·무결성 검증 통과). 거버넌스 77/77, 허용 외 `!important` 0.
+
+## v5.8.1 (2026-06-07) — generated-date 모바일 오버플로 수정(코어)
+
+16모드 예제 전수 캡처 QA(1280/390px, `docs/screenshots/examples-qa-20260607/`)에서 발견된 P0 레이아웃 결함 수정.
+
+- **코어 수정**: `theme.css` `.generated-date`를 `flex:0 0 auto` → `flex:1 1 auto;min-width:0;overflow-wrap:anywhere`. 긴 observed_at/input tier 한 줄이 모바일 390px에서 페이지 가로 스크롤(15번 520px·16번 473px)을 만들던 문제 해소. 긴 헤더 메타를 쓰는 youtube/manual 모드에서 발현.
+- **재동기화**: examples 01~16 + index 17개 파일의 인라인 코어 CSS·`adaptive-html-final-core-css-sha256` 마커를 새 해시로 일괄 갱신(verbatim 검증 통과).
+- **QA 기록**: 폰트 스케일은 16모드 전수 동일(h1 42/27, h2 29/23, p 16/16) 합격. 관찰 항목 — ⑫ p 15px, 마이크로 폰트(<11px) 5곳, 모바일 표 스크롤 컨테이너 처리(⑧⑩⑪⑭)는 수용 범위로 기록.
+
+## v5.8.0 (2026-06-07) — youtube/manual 깊이 계약 + 넓고-얇음 게이트
+
+8mode 데모에서 youtube/manual 출력이 섹션 수는 최다(12~13 h2)인데 본문은 타 모드의 절반(섹션당 ~310자 vs ~835자+)으로 나온 품질 격차의 근본 원인 4종을 수정했다.
+
+- **예제 증보(앵커 교정)**: `examples/15`(2,916→6,101자)·`examples/16`(2,914→5,973자)를 함대 수준으로 재작성. Evidence Map 6행·타임라인 5항목, 레시피 6필드·감사 지적 3건+원문 위치, h2-sub 9개씩, 무 JS 유지.
+- **SKILL.md 정량 하한**: §4 youtube_analysis(Evidence Map 5행+, 타임라인 4항목+, 카드당 2문장+)·manual_analysis(레시피 4개 식별·6필드, 증상 시나리오 3개·4단, 감사 지적 3건+위치) 깊이 하한 명문화. §7 품질 게이트 2줄 추가. “블록 수 충족 ≠ 완료”.
+- **참조 문서 증보**: `references/youtube-analysis-system.md`(57→117줄)·`manual-analysis-system.md`(64→127줄) — 블록별 깊이 하한 표, HTML 구성 계약, 흔한 실패 패턴, source note 계약, 완료 게이트 추가(github-analysis-system 수준 정합).
+- **검증기 게이트 2종**: `mode_section_depth_too_thin`(layout-* 모드 페이지, h2≥6에서 섹션당 가시 텍스트 평균 400자 미만 차단)과 `profile_vt_template_missing`(diagram/auto 프로파일 모드 페이지의 vt- 0개 = §0.6 위반 차단). index/galleries는 제외. governance 51/51.
+- **주의(의도된 breaking)**: 기존 출력 중 vt- 없는 auto 출력과 넓고-얇은 출력은 이제 validate FAILED가 정상이다. 재생성 대상으로 취급한다.
+
+## v5.7.0 (2026-06-07) — YouTube Analysis + Manual Analysis 15·16번째 모드
+
+기존 v5.6.0 QA 보정(core-insight 인용 폰트·risk-* 카드 간격)을 포함한 상태에서 `adaptive-html-final`을 16모드로 확장했다.
+
+- **신규 모드 2종**: `youtube_analysis`(YouTube URL/자막/댓글 → Video Evidence Map, FACT/INFERENCE/UNKNOWN, 댓글 신호, Claim Risk, 재사용 전략)과 `manual_analysis`(매뉴얼 원문 → Source & Version, Reader Role Router, First Success, Safety, Troubleshooting, Runbook) 추가.
+- **레이아웃/자산**: `assets/layouts/youtube-analysis.html`, `assets/layouts/manual-analysis.html`, `.layout-youtube`, `.layout-manual`, wide prose-cap 셀렉터 추가.
+- **전략/프롬프트**: `references/youtube-analysis-system.md`, `references/manual-analysis-system.md`, `recipes/youtube-analysis.prompt.md`, `recipes/manual-analysis.prompt.md` 추가.
+- **검증기**: `validate_output.py`에 YouTube no-embed/evidence/source-limits/observed_at 계약과 Manual role/safety/troubleshooting/source-limits 계약 추가. governance 36/36.
+- **예제/산출물**: `examples/15_youtube_vibecoding_gap.html`, `examples/16_manual_product_runbook.html`, output smoke 2종 추가. baseline 4종과 examples 01~16/index는 v5.7.0 자산·manifest·integrity로 재동기화.
+- **품질 계약 보강**: layout-first 실행 계약, 임시 제너레이터 금지, 예제/placeholder 문구 금지, 카드/리스트 반복 방지, 기존 검수 예제 대비 후퇴 금지 규칙을 SKILL.md·quality/eval/layout/test 문서에 추가. 보조 검사 `scripts/quality_contract_check.py`로 “validator OK지만 붕어빵 출력”인 회귀를 사전 차단.
+
+## v5.6.0 (2026-06-06) — core-insight 인용 폰트·risk-* 카드 간격(완성본 정합)
+
+final_20260604(완성본) 패턴에 맞춘 2건 QA 수정.
+
+- **core-insight 인용 폰트**: `.core-insight blockquote` `var(--serif-kr)`(Noto Serif KR) → **`var(--sans)` + `font-weight:800` + `letter-spacing:-.02em`**(Pretendard 굵게) — final_20260604는 Noto Serif KR 웹폰트를 로드하지 않아 인용구가 굵은 Pretendard 폴백으로 렌더되므로, 그 실제 모습(굵은 산세리프)에 맞춰 통일. editorial-patterns.css(CONDITIONAL).
+- **risk-\* 우선순위 카드 간격**: `.risk-high/.risk-mid/.risk-low`를 완성본 `.access-check-rule` 방식으로 — `border-left:5px`(라인만) → **자체 카드(`border:1px`+`border-left:4px`+`padding:14px 16px`)**. host(decision-card 유무) 무관하게 좌측 색 라인과 항상 동일 간격. layouts.css(CORE) → 코어 해시 재산정·베이스라인 4종 재동기화.
+
+## v5.5.9 (2026-06-06) — 모바일 표 카드화(#4 정석)
+
+4열 이상 표 42개(examples 14모드)를 `.mobile-card-table` + 헤더 기반 `data-label`로 retrofit. ≤760px에서 thead 숨김·행→카드 전환으로 우측 컬럼 잘림 완전 해소. 스킬 CSS(.mobile-card-table)는 기존, 마크업만 정합. 코어 불변 → 베이스라인 영향 없음.
+
+## v5.5.8 (2026-06-06) — col-list 다단 수정(#6)
+
+`<div class="col-list"><ul>`(바깥 div에 클래스 → grid 미적용) → 정본 `<ul class="col-list">`로 정정(examples 09·10). col-list를 문장 항목에도 자연스럽게: `minmax(170px)→minmax(min(100%,230px))`, 모바일 1열. editorial-patterns.css(CONDITIONAL) 변경 → 베이스라인 재동기화.
+
+## v5.5.7 (2026-06-06) — 레이아웃 QA 수정(캡처 기반)
+
+실제 예제 캡처 QA로 발견한 레이아웃 문제 수정.
+
+- **#2 expert decision-grid**: `.layout-expert .decision-grid:not(section)` → `:not(section)` 제거. `<section class="decision-grid">`도 3열 반응형 grid(세로 적층 회귀 해소, github 패턴과 일치).
+- **#3 blog 번호 중복**: `h2:first-child:has(.num)::before{content:none}` — `.num`(빨간 원) 있으면 layout-blog 자동 카운터(회색 원) 숨김(이중 번호 제거).
+- **#7 github 좌측 강조선**: 전 섹션 `border-left:4px accent` 반복 제거 → `.github-verdict`(한 줄 결론) 한 곳만(경고 리포트 느낌 해소).
+- **#4 모바일 표**: ≤520px에서 일반 표 `min-width:0`(우측 컬럼 잘림 착시 제거). 중요·다열 표는 `.mobile-card-table` 권장.
+- **테마바**: box-shadow `0 6px18 .18`→`0 3px10 .10`(상단 그림자 과함 완화).
+- examples 14모드 전부 8테마 셸로 재생성(테마바 계약 통일), 09 reference 목차를 `.toc-map`+`.toc-pills` 칩 구조로 교정.
+
+### 영향
+- layouts.css·components.css(코어) 수정 → 코어 해시 리베이스, 베이스라인 4종 전체 재동기화. validate 4/4 OK, governance 32/32.
+
+## v5.5.6 (2026-06-06) — 테마 라벨 개선
+
+의미 불명확한 숫자 라벨을 색 성격 기반으로 변경: **라이트2→그레이**(쿨 뉴트럴), **다크2→로즈**(웜 로즈/모브). id(`ahf-light2`/`ahf-dark2`)는 토큰·게이트 안정성을 위해 유지하고 보이는 라벨만 변경.
+
+## v5.5.5 (2026-06-06) — 세피아 테마 추가(8테마)
+
+**세피아**(따뜻한 종이빛 #f4ecd8 + 시에나 accent #a85c32, 저블루라이트 리딩) 추가. 장문 가독성에 최적. 8테마 → 테마바 4+4 균일 그리드.
+
+### 변경
+- `theme-dark.css`: `:root:has(#ahf-sepia:checked)` 라이트 종이빛 토큰 블록.
+- `body-icons.css`: 세피아 전용 종이빛 아이콘 박스(`linear-gradient(--card,--bg)`).
+- `base.html`: 세피아 라디오(8번째).
+
+### 적용
+- examples/01 반영(8테마·4+4 균일 확인), 베이스라인 4종 재동기화.
+
+## v5.5.4 (2026-06-06) — 테마 스위처 정형화 버튼 그리드
+
+가변폭 알약(ragged wrap) → **균일폭 버튼 4열 그리드**로 정렬. 7테마가 동일 크기 버튼으로 4+3 배치.
+
+### 변경
+- `theme-dark.css` `.ahf-themebar`: `display:grid;grid-template-columns:repeat(4,1fr);width:276px`, 라벨 `justify-content:center;border-radius:9px`, hover 배경. 모든 버튼 폭 동일(검증 63px×7).
+
+### 적용
+- examples/01 반영, 베이스라인 4종 재동기화.
+
+## v5.5.3 (2026-06-06) — 스카이블루 테마 추가(7테마)
+
+**스카이블루**(라이트 배경 #eef4fb + 블루 분위기 accent #2f6fdb) 추가. 7테마(라이트·라이트2·스카이블루·화이트·다크·다크2·블루).
+
+### 변경
+- `theme-dark.css`: `:root:has(#ahf-skyblue:checked)` 라이트 토큰 블록(블루 accent/analogy). 테마바 `max-width:286px`로 7개 2줄(4+3).
+- `body-icons.css`: 흰 아이콘 박스 그룹에 skyblue 합류(`:is(#ahf-white,#ahf-light2,#ahf-skyblue)`).
+- `base.html`: 스카이 라디오.
+
+### 적용
+- examples/01 반영(7테마·2줄 확인), 베이스라인 4종 재동기화.
+
+## v5.5.2 (2026-06-06) — 테마 스위처 2줄 wrap
+
+6테마로 길어진 `.ahf-themebar`를 **2줄(3+3)** 로 wrap. `display:flex;flex-wrap:wrap;justify-content:flex-end;max-width:208px;border-radius:16px`.
+
+### 적용
+- theme-dark.css `.ahf-themebar` 한 줄→두 줄. examples/01 반영, 베이스라인 4종 재동기화.
+
+## v5.5.1 (2026-06-06) — 블루 테마 추가(6테마)
+
+다크2의 완전 토큰 구조를 표본으로 **블루 테마(딥 네이비 #0d1320 + blue accent #5b9cf0)** 추가. 6테마(라이트·라이트2·화이트·다크·다크2·블루).
+
+### 변경
+- `theme-dark.css`: `:root:has(#ahf-blue:checked)` 토큰 블록(term/analogy/danger/good/hl/vt 전 토큰) + 다크 동반 규칙을 `:is(#ahf-dark,#ahf-dark2,#ahf-blue)` 공유.
+- `body-icons.css`: 아이콘 박스 다크 적응에 #ahf-blue 합류.
+- `base.html`: 테마바에 블루 라디오.
+- `validate_output.py`: 테마 게이트 라디오 수 `≥3`(확장 테마 자유 추가) 허용. governance 6-radio 통과 케이스 추가.
+
+### 적용
+- examples/01에 우선 적용(6테마 작동 확인). 베이스라인 4종 재동기화.
+
+## v5.5.0 (2026-06-06) — CSS-only 5-테마 확장(라이트2·다크2)
+
+final_20260604 표준의 **라이트2(쿨 뉴트럴 gray-blue)·다크2(웜 로즈/모브)** 를 정식 테마로 승격. 3-테마 → 5-테마(라이트·라이트2·화이트·다크·다크2).
+
+### 변경
+- `assets/theme-dark.css`: `:root:has(#ahf-light2/#ahf-dark2:checked)` 토큰 블록 추가, 다크 동반 규칙을 `:is(#ahf-dark,#ahf-dark2)` 공유로 전환, 5-세그먼트 스위처.
+- `assets/base.html`: 테마바에 라이트2·다크2 라디오/라벨 추가(라이트 기본 유지).
+- `scripts/validate_output.py`: 테마 스위처 게이트가 3개(light/white/dark) 또는 5개(+light2/dark2) 허용. 확장 시 light2·dark2 쌍 강제.
+- governance 테스트에 5-radio 통과 + 반쪽 확장 거부 케이스 추가.
+
+### 적용
+- examples/01_beginner_passkey_login.html에 우선 적용(5-테마 작동 확인). 나머지 예제·산출물은 후속 롤아웃.
+
+## v5.4.2 (2026-06-06) — 텍스트 전용 뷰 bullet(text-bullet-view)
+
+`final_20260604` section 7의 `assets/editorial-patterns.css` code-path bullet 리듬을 정본 헬퍼로 승격. 체크리스트/요약 카드처럼 **텍스트만 있는 뷰**가 카드 안에서 밋밋하게 보일 때, 기존 `.ba-bullet`을 재사용해 작은 써클 마커를 붙인다. 이미 아이콘·번호·상태칩이 있는 뷰에는 중복 적용하지 않는 opt-in 규칙이다.
+
+### 추가 (`assets/editorial-patterns.css`, CONDITIONAL)
+- `.text-bullet-view`: flex row + 문장 정렬.
+- `.text-bullet-view > .ba-bullet`: 라이트/화이트/다크 토큰 보정. 기존 `.ba-bullet` 재사용, 새 마커 시스템을 만들지 않음.
+
+### 문서
+- editorial-pattern-system.md: `text-bullet-view` 마크업과 자동 판단 규칙 추가.
+- SKILL.md: editorial-patterns.css opt-in 헬퍼 목록에 `text-bullet-view` 추가.
+
+### 영향
+- CONDITIONAL 변경 → 코어 해시 불변. 텍스트만 있는 카드/체크 항목에만 opt-in으로 적용해 기존 레이아웃 회귀 0.
+
+## v5.4.1 (2026-06-06) — 평면 리스트 자동 다단(col-list)
+
+짧은 항목(파일명·태그·키워드)이 6개 이상인 평면 `ul`/`ol`이 세로 1열로 적층돼 가로 공백을 낭비하던 문제를, **다단 그리드(auto-fill, 폭을 꽉 채워 ≈3개+/행)** 로 자동 처리하는 정본 유틸 `col-list`를 신설. 밀도 판단을 스킬이 기본값으로 수행.
+
+### 추가 (`assets/editorial-patterns.css`, CONDITIONAL)
+- `ul.col-list`/`ol.col-list` 그리드 + `.col-list li code` 처리. 560px 이하 2열. 스킬 토큰.
+
+### 문서
+- editorial-pattern-system.md: `.col-list` 헬퍼 + **자동 판단 규칙**(짧은 항목 6+ → 기본 다단). github-analysis-system.md: references/파일 투어에 col-list 명시.
+
+### 영향
+- CONDITIONAL 변경 → 인라인 베이스라인(13-topics, windows-audio, github-analysis) 재인라인+스냅샷+integrity 갱신. 코어 해시 불변. validate OK, governance 29/29.
+
+## v5.4.0 (2026-06-06) — 템플릿 목차 chip-nav(toc-map) 정본 승격
+
+`final_20260604` 쇼케이스에만 있던 **템플릿 목차**(번호 pill이 한 줄에서 wrap 되는 chip-row) 레이아웃을 정본 컴포넌트로 승격. 데모용 `imported-toc-*` 어휘는 denylist에 남기고, 정식 출력용 정본 클래스 `toc-map`/`toc-pills`/`toc-pill`을 신설.
+
+### 추가 (`assets/editorial-patterns.css`, CONDITIONAL)
+- `.toc-map`(카드) + `.toc-pills`(flex-wrap) + `.toc-pill`(번호 pill) + `.toc-pill b`(번호 배지) — 모두 스킬 토큰 사용, 3테마 자동 적응(배지 `--accent-soft`/`--accent-2`). 무 JS.
+- 리스트형 `.toc`(components.css)와 별개의 opt-in 컴포넌트. 항목이 많거나 가로로 훑게 할 때 사용.
+
+### 문서
+- references/editorial-pattern-system.md `callout·변형 헬퍼`에 `toc-map` 마크업/사용 규약 추가. SKILL.md asset 설명 갱신.
+
+### 영향
+- CONDITIONAL 자산 변경 → 이를 인라인하는 베이스라인 2종(13-topics, windows-audio) 재인라인+스냅샷+integrity 갱신. 코어 해시 불변. validate 4/4 OK, governance 29/29.
+
+## v5.3.6 (2026-06-06) — code-tour 카드 좌우 정렬
+
+`어디부터 읽으면 되는가`(code-tour)의 repo-card가 파일명(위)+역할(아래)로 세로 적층돼 빈약/날것이던 레이아웃을, **좌우 정렬 row(파일명 좌 · 역할 우)** 로 변경.
+
+### 변경 (`assets/layouts.css`)
+- `.layout-github .code-tour .repo-card{display:flex;justify-content:space-between;align-items:baseline}` + h3/p 마진·크기 정리, 패딩 축소.
+
+### 영향
+- 코어(layouts.css) 리베이스 → 베이스라인 4종 v5.3.6 재생성, validate OK.
+
+## v5.3.5 (2026-06-06) — 표 풀폭 복원 + 링크 단일행
+
+v5.3.4에서 table을 width:auto로 줄여 빈 공간이 생기던 문제를 되돌림. **풀폭 채움(width:100%)** 유지하면서 효율 배치.
+
+### 변경 (`assets/components.css`)
+- `table{width:auto→100%}`, `min-width:420px` 복원 → 표가 컨테이너 폭을 채움(빈 공간 없음).
+- `th,td{overflow-wrap:break-word;word-break:keep-all}` 유지 → 긴 토큰(validate_output.py)이 공간 있으면 단일행, 슬랙은 내용 많은 열(설명)이 흡수.
+- `td a,th a{overflow-wrap:normal}` 추가 → 표 내 링크(예: commit)가 squeeze된 열에서 `comm/it`로 쪼개지던 문제 해소(링크는 한 토큰 유지).
+
+### 영향
+- 코어(components.css) 리베이스 → 베이스라인 4종 v5.3.5 재생성, validate OK.
+
+## v5.3.4 (2026-06-06) — 표 셀 줄바꿈/열폭 정돈 + `.pull-quote--note` 변형 + 검정 `.try` 안 `.hl` 가독성 수정
+
+> 정정: 원래 동일한 `v5.3.4` 번호로 **두 번** 기록돼 있던 항목을 하나로 병합(릴리스 번호 중복 제거).
+
+표 셀의 `overflow-wrap:anywhere`가 auto-layout 최소폭을 ~1글자로 만들어, 공간이 남는데도 긴 토큰(예: `validate_output.py`)이 2줄로 쪼개지고 짧은 열은 과폭이 되던(날것의) 문제 수정. 더불어 본문 인라인 면책/주석 문구가 editorial pull-quote(세리프 20px italic)로 과하게 잡히던 문제와, 검정 `.try` hero CTA 안에서 `.hl`(노란 언더라인 밴드)이 밝은 본문색과 겹쳐 강조어가 묻히던 문제를 **추가형(additive) 규칙**으로 해결. 기존 `.pull-quote`·`.hl` 규칙은 그대로 두어 전 모드 회귀 0.
+
+### 변경 (`assets/components.css`)
+- `td,th`를 `overflow-wrap:anywhere` 그룹에서 제외.
+- `th,td`에 `overflow-wrap:break-word;word-break:keep-all` 적용 → 열폭이 내용(가장 긴 단어) 기준으로 잡혀 공간 있으면 단일행, 긴 URL/SHA는 넘칠 때만 분리, 한국어는 어절 단위 줄바꿈.
+- `.pull-quote--note`(additive): 본문 sans(`var(--sans)`)·15px·upright·`--ink-mute` — pull-quote가 아닌 인라인 주석/면책용 compact 변형(opt-in).
+- `.try .hl`(additive): 어두운 `.try` 안에서 언더라인 그라디언트를 솔리드 칩(`background-color:var(--c)`)+`color:var(--ink)`로 전환해 강조어가 선명히 보이도록 보정(`!important` 미사용, `.try .hl` 스코프 한정).
+
+### 영향·검증
+- 코어(components.css) 리베이스 → 베이스라인 4종 v5.3.4 재생성, 인라인 core CSS·해시 마커·`sources/assets/components.css`·`css-integrity.json`·매니페스트 콘텐츠 보존 재동기화. governance 29/29, validate OK.
+
+## v5.3.3 (2026-06-06) — github_analysis Next Actions를 검정 hero로 복원
+
+v5.3.2에서 `.try`를 라이트 카드로 바꿨으나, 의도는 **base 검정 hero CTA 유지**였음. `.layout-github>section`(카드)에서 `.try`를 `:not(.try)`로 제외하고 `.layout-github>.try` 오버라이드 전부 제거 → base `.try{background:var(--dark);color:#f5f5f0}`(라이트/화이트/다크 모두 검정 패널 + 라이트 텍스트) 적용.
+
+- `assets/layouts.css`: `.layout-github>section:not(.try)`, `.layout-github>.try` 오버라이드 삭제.
+- 코어 리베이스 → 베이스라인 4종 v5.3.3 재생성, validate OK.
+
+## v5.3.2 (2026-06-06) — github_analysis Next Actions(.try) 배경 버그 수정
+
+`layout-github`의 최종 `.try`(Next Actions)가 텍스트만 `var(--ink)`로 바꾸고 배경은 base `.try{background:var(--dark)}`(라이트에서 검정)를 그대로 둬, **라이트 테마에서 검정 배경 + 어두운 텍스트(거의 안 보임)** 로 나오던 버그 수정.
+
+### 변경 (`assets/layouts.css`)
+- `.layout-github>.try`에 `background:var(--card)` + border(+left accent) 추가 → 라이트=라이트 카드/어두운 텍스트, 다크=다크 카드/밝은 텍스트로 테마 추종.
+- `.label`(accent-2)·`strong`(ink)·`a`(accent-2)·`h2 .no/.num`(accent bg) 대비 보정.
+
+### 영향·검증
+- 코어(layouts.css) 변경 → core-css-sha256 리베이스. 게이트 통과 베이스라인 4종(13-topics·github_analysis·windows-audio·grok-india) v5.3.2 재생성, validate OK.
+
+## v5.3.1 (2026-06-06) — 완성본(reference) 표준화: 페이지-로컬 디자인을 스킬 기본값으로 승격
+
+`windows-audio-pcm-reference`(완성본, v5.2.3)에만 page-local로 있던 핵심 디자인을 **스킬 기본값으로 승격**해, 신규 출력(예: github_analysis v5.3.0)이 완성본과 다르게 회귀하던 문제를 근본 해소. 무 JS, `!important` 0.
+
+### 승격 (회귀 안전 배치)
+- **layouts.css(코어)**: `.page/.page-wide > section:not([class])`(+article) 무클래스 콘텐츠 섹션을 카드 뷰(`var(--card)`+border+radius+padding)로 감싸고 첫 h2 top-margin 리셋. 13-topics 전 13모드에서 이미 검증된 규칙.
+- **theme.css(코어)**: `.header .kicker` 폰트 11px·축소 패딩, `.header .sub{text-align:justify;word-break:keep-all}` — 헤더 리듬 표준화.
+- **components.css(코어)**: `.source-note{background:transparent}` — 최하단 노트 평면.
+- **body-icons.css(조건부)**: `h2/h3 > .body-icon{42px}` — 섹션 제목 앞 큰 아이콘.
+- **visual-html.css(조건부)**: `.vt-frame{background:transparent;border:0}` — 다이어그램 내부 박스 평면(외곽 vt-shell 단일 뷰).
+
+### 회귀 방지 결정
+- **core-insight는 승격 제외**: bare `.core-insight` 전역 오버라이드는 accent-gradient hero 콜아웃을 전 모드 회귀시키므로, 기존 `.core-insight--neutral` opt-in 모디파이어로만 평면 처리(스킬 안전장치 유지).
+
+### 영향·검증
+- 코어 자산(theme/components/layouts) 변경 → **core-css-sha256 리베이스**. 게이트 통과 베이스라인(13-topics·github_analysis·windows-audio-reference)을 v5.3.1로 재생성(재인라인·코어 마커·스냅샷·css-integrity), page-local 중복 제거, `validate_output.py` **OK** 유지.
+
+## v5.3.0 (2026-06-06) — GitHub Analysis 14번째 모드 추가
+
+GitHub 저장소 URL 또는 `owner/repo` 입력을 사용자 질문 중심의 HTML 실사 리포트로 변환하는 `github_analysis` 모드를 추가했다. 목적은 README 재요약이 아니라 “이 저장소를 이해·실행·채택·감사해도 되는가?”를 판단하게 하는 것이다.
+
+### 추가
+- **신규 모드**: `github_analysis` — priority 5, layout `github-analysis.html`, class `.layout-github`.
+- **신규 레이아웃**: `assets/layouts/github-analysis.html` — verdict, question toc, repo identity, quickstart readiness, repo health, code tour, releases/roadmap, security/license, risk matrix, final decision, next actions, source note.
+- **신규 CSS**: `assets/layouts.css`에 `.layout-github` repo signal/card/grid 스타일 추가.
+- **와이드 폭 보정**: `assets/theme.css`의 `.page-wide` prose override에 `.layout-github`를 포함해 GitHub 분석 본문이 1020px 와이드 레이아웃 리듬을 따른다.
+- **신규 전략 문서**: `references/github-analysis-system.md` — FACT/INFERENCE/UNKNOWN 분리, GitHub 표면별 수집 항목, 판단 모델, source note 계약.
+- **신규 recipe**: `recipes/github-analysis.prompt.md`.
+- **개발 계획**: `dev-plan/implement_20260606_003800.md`.
+
+### 매핑
+- vt 1순위: `hero-map`; 보강: `quality-gate`, `file-tour`, `risk-matrix`, `timeline`, `decision-tree`, `checklist-flow`.
+- wg 1순위: `wg-11 Weekly Status`; 보강: `wg-04 Module Map`, `wg-14 Feature Explainer`, `wg-16 Implementation Plan`, `wg-17 PR Writeup`, `wg-18 Ticket Triage Board`.
+
+### 영향·검증
+- `manifest.json` 버전 `5.3.0`, modes/layouts 14개로 갱신.
+- `AGENTS.md`, `SKILL.md`, `references/mode-selection.md`, layout/visual/widget/writing references, tests/golden prompts/checklists, README/Guide 동기화.
+- `layouts.css`가 코어 CSS 자산이라 신규 출력의 core-css-sha256은 재계산이 필요하다. 기존 `13-topics` 산출물은 v5.2.3 캐노니컬 기준선으로 유지하며, 14-mode 쇼케이스 재생성은 후속 작업이다.
+
+## v5.2.3 (2026-06-05) — editorial-patterns 가독성 승격
+
+쇼케이스에서 반복 적용하던 일반 가독성 보정을 스킬 기본값으로 승격. 무 JS, `!important` 0, 조건부 자산(`editorial-patterns.css`)만 변경 — **코어 해시 불변**.
+
+### 변경 (`assets/editorial-patterns.css`)
+- **`.a11y-card`** 내부 줄 간격 `gap:8px → 12px`, **`.a11y-points`** `gap:5px → 9px` — 접근성 점검 카드의 헤드/제목/PASS·FAIL 줄이 너무 붙던 문제 완화.
+- **`.impact-card .body-icon`** `display:grid;margin-bottom:12px` 추가 — impact 카드에서 아이콘이 제목/수치에 바로 붙던 문제 해소(아이콘 ↔ 텍스트 12px 간격).
+
+### 영향·검증
+- `editorial-patterns.css`는 조건부 자산이라 **core-css-sha256 불변**. `output/adaptive-html-final-13-topics-20260605_083433/`의 인라인 `editorial-patterns.css`·스냅샷·`css-integrity.json`·source manifest를 v5.2.3로 재생성, `validate_output.py` **OK** 유지.
+
+## v5.2.2 (2026-06-05) — 아이콘 박스 테마 적응 + lede-note 라벨 정렬
+
+쇼케이스/템플릿 점검에서 확정된 보편 결함을 스킬 기본값으로 승격. 무 JS(`:has()`), `!important` 0, 조건부 자산(`body-icons.css`)만 변경 — **코어 해시 불변**.
+
+### 변경 (`assets/body-icons.css`)
+- **아이콘 박스 배경 테마 적응**: `.body-icon` 박스 배경이 하드코딩 흰빛 그라디언트라 다크/화이트 테마에서 그대로 떠 보이던 문제를 해소. `:root:has(#ahf-white:checked)`=순백, `:root:has(#ahf-dark:checked)`=카드 표면(`var(--vt-soft)`→`var(--card)`, border `var(--line)`). 라이트는 기존 크림빛 유지. SVG 칠(bi-*)은 이미 토큰 기반이라 그대로 적응.
+- **lede-note 라벨 정렬**: `.lede-note .label{display:block}`(고특이도)이 v5.2.1의 `.label:has(>.body-icon){display:flex}`를 무력화하던 문제를 `.lede-note .label:has(>.body-icon)`(0,3,0)로 보강.
+
+### 영향·검증
+- `body-icons.css`는 조건부 자산이라 **core-css-sha256 불변**. `output/adaptive-html-final-13-topics-20260605_083433/`의 인라인 `body-icons.css`·스냅샷·`css-integrity.json`(conditional hash)·source manifest를 v5.2.2로 재생성, `validate_output.py` **OK** 유지.
+- 같은 결함을 가진 `output/final_20260604/index*.html`(반례 데모)도 향후 재인라인 시 자동 적용.
+
+## v5.2.1 (2026-06-05) — body-icon 정렬 규칙 + 헤더 폭 정련
+
+쇼케이스 인덱스 검수에서 확정된 정렬·폭 개선 2건을 스킬 기본값으로 승격. 전부 무 JS(`:has()`), `!important` 0.
+
+### 변경
+- **`assets/body-icons.css`**: `body-icon`을 직접 자식으로 갖는 `.label`/`h1`/`h2`/`h3`를 **flex 왼쪽 아이콘 + 일정 간격(gap 8~10px)**으로 정렬. `.mini-card`/`.card-block` 카드 제목 아이콘은 2줄 제목에서 상단 정렬(`align-self:flex-start`). 헤딩·라벨 전반의 아이콘↔텍스트 간격 일관화.
+- **`assets/theme.css`**: `.header` 콘텐츠의 **48rem 단일 측정 캡 해제**(`max-width:none`). 헤더가 `.page`/`.page-wide` 컨테이너 폭에 맞춰 **아래 섹션과 동일 폭**으로 정렬(특히 wide 레이아웃에서 헤더가 768px로 좁던 문제 해소).
+
+### 영향·검증
+- `theme.css`가 코어 해시 자산이라 **core-css-sha256 변경** → `output/adaptive-html-final-13-topics-20260605_083433/` 기준선의 인라인 CSS·코어 마커·CSS 스냅샷·`css-integrity.json`을 v5.2.1로 재생성, `validate_output.py` **OK** 유지.
+- 인덱스 전용 미세 튜닝(상단 kicker 폰트 11px, 인트로 `text-align:justify`)은 갤러리 취향이라 스킬에 승격하지 않고 해당 `index.html` 페이지-로컬 오버라이드로만 유지.
+
 ## v5.2.0 (2026-06-05) — CSS-only 3-테마 시스템 (라이트·완전 화이트·다크)
 
 기존 라이트(크림)/다크 2-테마에 **완전 화이트(순백) 테마**를 추가해 **3-테마**로 확장. 단일 체크박스 토글을 **라디오 3-세그먼트 스위처**(`name=ahf-theme`: `#ahf-light`/`#ahf-white`/`#ahf-dark`)로 교체. 전부 `:has()` 기반 **무 JS**, 코어 CSS 무수정(해시-safe), `!important` 0.

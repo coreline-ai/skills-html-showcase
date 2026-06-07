@@ -1,0 +1,32 @@
+{
+  "mode": "14_case_study_html",
+  "topic": "검색 인덱스 지연 장애 47분 회고",
+  "file": "pages/14_case_study_search_index_lag_postmortem.html",
+  "layout": "case-study.html",
+  "recipe": "recipes/case-study.prompt.md",
+  "profile": "auto",
+  "vt_templates": [
+    "12-incident-summary",
+    "04-timeline",
+    "14-process-swimlane"
+  ],
+  "wg_widgets": [
+    "12-incident-timeline"
+  ],
+  "fresh_context_policy": {
+    "previous_html_body_reused": false,
+    "common_content_generator_used": false,
+    "mode_specific_files_read": [
+      "recipes/case-study.prompt.md",
+      "assets/layouts/case-study.html",
+      "references/layout-system.md",
+      "references/writing-system.md",
+      "references/visual-html-system.md",
+      "references/widget-system.md",
+      "assets/visual-html-templates/12-incident-summary.html",
+      "assets/visual-html-templates/04-timeline.html",
+      "assets/visual-html-templates/14-process-swimlane.html",
+      "assets/widget-templates/12-incident-timeline.html"
+    ]
+  }
+}

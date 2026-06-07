@@ -1,6 +1,6 @@
 # Layout Checklist
 
-13개 레이아웃의 mode ↔ 파일 ↔ 필수블록 ↔ 폭클래스를 한눈에 검증한다.
+14개 레이아웃의 mode ↔ 파일 ↔ 필수블록 ↔ 폭클래스를 한눈에 검증한다.
 폭클래스: `.page` = `--max-reading`(780px), `.page-wide` = `--max-wide`(1020px).
 
 ## 자동 검증 (먼저 실행)
@@ -21,6 +21,7 @@ python3 scripts/validate_output.py <산출물 디렉터리> --skill-dir <스킬 
 | platform-adaptation.html | platform_blog | original-summary, platform-strategy, platform-grid, platform-comparison-table | .page-wide (1020) |
 | seo-dashboard.html | seo_dashboard | seo-overview, serp-preview, title-candidates, meta-candidates, keyword-cluster, content-outline | .page-wide (1020) |
 | course-module.html | education_html | learning-goals, before-start, lesson-step, example-block, practice-card, quiz-box, answer-box, try | .page (780) |
+| github-analysis.html | github_analysis | github-verdict, github-question-toc, repo-identity, quickstart-readiness, repo-health, code-tour, release-roadmap, security-license, risk-matrix, decision-tree, try | .page-wide (1020) |
 | expert-report.html | expert_html | executive-summary, decision-grid, architecture-map, risk-matrix, priority-roadmap, validation-checklist, try | .page-wide (1020) |
 | magazine-article.html | article_html | header(lead), pull-quote, article(problem/context/core-argument/case/conclusion), article-takeaway, related-list, source-note | .page (780) |
 | personal-blog-essay.html | blog_writer | header(hook), personal-note, article(why-now/my-view/example/how-to-start/closing), soft-cta, source-note | .page (780) |
@@ -79,10 +80,13 @@ python3 scripts/validate_output.py <산출물 디렉터리> --skill-dir <스킬 
 
 ## v4.3.3 Responsive Polish Regression Gate
 
-13개 모드 전수 캡쳐 감사에서 확인된 platform/table/dark CTA 회귀를 재확인한다. `validate_output.py`가 정적으로 막는 항목이다.
+기존 13개 모드 전수 캡쳐 감사에서 확인된 platform/table/dark CTA 회귀와 신규 github_analysis 레이아웃을 함께 재확인한다. `validate_output.py`가 정적으로 막는 항목이다.
 
 - [ ] `platform-grid`가 semantic `<section>`에 직접 걸리지 않는다 — `<section class="platform-grid">`는 실패다. grid는 내부 wrapper(`.layout-platform .platform-grid:not(section)`)에만 적용한다(`platform_grid_used_as_section`, `platform_grid_selector_allows_section_grid` 게이트).
 - [ ] 모든 `<table>`에 `<caption>`이 있다 — caption 없는 표는 실패다(`table_missing_caption` 게이트).
 - [ ] 검정 CTA(`.try`, `.try.soft-cta`) 내부 링크가 `--link-on-dark` 토큰으로 밝게 재정의되어 dark 배경에서 4.5:1 이상 대비를 유지한다(`missing_try_dark_link_contrast_reset` 게이트).
 - [ ] expert executive summary 4카드가 orphan 없이 2×2로 안정적으로 배치되고, case-study timeline이 단일 대형 카드가 아니라 개별 step card로 보인다.
 - [ ] 390px 모바일에서 복잡한 표는 `.mobile-card-table`(`data-label` 기반 행 카드) 패턴으로 잘리지 않게 표시한다.
+
+| youtube-analysis.html | youtube_analysis | source trust, evidence map, comment signals, opportunity, source limits | .page-wide (1020) |
+| manual-analysis.html | manual_analysis | source/version, role router, first success, safety, troubleshooting | .page-wide (1020) |

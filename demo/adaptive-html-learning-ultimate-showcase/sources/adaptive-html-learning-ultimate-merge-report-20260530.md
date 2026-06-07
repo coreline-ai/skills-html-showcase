@@ -4,13 +4,13 @@
 
 ## 통합 목표
 
-`adaptive-html-blog-writer-v2`의 현재 editorial 디자인 시스템을 유지하면서 `/Users/hwanchoi/Downloads/adaptive-html-learning-ultimate.skill`의 확장 라우터, 평가 체계, 추가 레이아웃, recipes, schemas를 통합했다.
+`adaptive-html-blog-writer-v2`의 현재 editorial 디자인 시스템을 유지하면서 `<downloads-dir>/adaptive-html-learning-ultimate.skill`의 확장 라우터, 평가 체계, 추가 레이아웃, recipes, schemas를 통합했다.
 
 ## 결과
 
-- 최종 신규 스킬: `/Users/hwanchoi/.codex/skills/adaptive-html-learning-ultimate`
-- 기존 v2 동기화: `/Users/hwanchoi/.codex/skills/adaptive-html-blog-writer-v2`
-- 배포 패키지: `/Users/hwanchoi/Downloads/adaptive-html-learning-ultimate-merged.skill`
+- 최종 신규 스킬: `<codex-skills-dir>/adaptive-html-learning-ultimate`
+- 기존 v2 동기화: `<codex-skills-dir>/adaptive-html-blog-writer-v2`
+- 배포 패키지: `<downloads-dir>/adaptive-html-learning-ultimate-merged.skill`
 
 ## 유지한 현재 디자인
 

@@ -1,0 +1,17 @@
+/* adaptive-html-final shape-visuals — 본문 설명 시작부 보조 SVG 도형(8000x6000, warm soft).
+   무 JS · 프로파일 무관 조건부 인라인. 도형은 시각 앵커이고 핵심 정보는 항상 HTML 텍스트로 둔다.
+   삽입 표준: figure.shape-figure 안에 img.shape-img(8000x6000 svg, 비어있지 않은 alt 필수). figcaption은 선택(앵커라서).
+   alt는 shape_visual_gate가, svg 파일 존재는 broken_local_ref가 검사한다. 삽입 예시는 references/visual-template-system.md 참조. */
+.shape-figure{max-width:420px;margin:6px 0 18px}
+.shape-figure img,.shape-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#fff4e8;border:1px solid var(--line);border-radius:16px}
+.shape-figure figcaption{margin-top:8px;font-size:13px;color:var(--ink-mute);line-height:1.5}
+/* 제목 아래 대표 도형 + 옆 설명(읽기 전 구조 프리뷰) */
+.shape-lead{display:grid;grid-template-columns:210px 1fr;gap:22px;align-items:center;margin:18px 0}
+.shape-lead .shape-figure{max-width:210px;margin:0}
+.shape-lead-body>:first-child{margin-top:0}
+.shape-lead-body>:last-child{margin-bottom:0}
+/* 도형 갤러리(여러 개념을 균등 나열할 때만) */
+.shape-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:18px 0}
+.shape-grid .shape-figure{max-width:none;margin:0}
+@media(max-width:760px){.shape-lead{grid-template-columns:1fr}.shape-lead .shape-figure{max-width:300px}.shape-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:430px){.shape-grid{grid-template-columns:1fr}}

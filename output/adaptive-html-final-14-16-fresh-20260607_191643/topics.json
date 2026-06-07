@@ -1,0 +1,23 @@
+[
+  {
+    "mode": "14",
+    "mode_id": "github_analysis",
+    "file": "14_github_analysis_astral_uv_adoption_due_diligence.html",
+    "title": "astral-sh/uv 저장소 채택 실사 리포트",
+    "desc": "GitHub API 스냅샷 기반 저장소 채택 실사"
+  },
+  {
+    "mode": "15",
+    "mode_id": "youtube_analysis",
+    "file": "15_youtube_analysis_ai_meeting_action_automation.html",
+    "title": "AI 회의록 자동화 영상 분석",
+    "desc": "트랜스크립트 패킷 기반 영상 근거·댓글·재가공 분석"
+  },
+  {
+    "mode": "16",
+    "mode_id": "manual_analysis",
+    "file": "16_manual_analysis_csv_to_postgres_migration_runbook.html",
+    "title": "CSV→Postgres 데이터 마이그레이션 운영 매뉴얼 분석",
+    "desc": "역할별 실행 경로와 운영 런북 중심 매뉴얼 재구성"
+  }
+]

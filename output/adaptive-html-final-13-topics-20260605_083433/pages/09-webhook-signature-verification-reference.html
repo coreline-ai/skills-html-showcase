@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: 78f7c0f836948338a066ddc3392ecddecdba4f437e6d19ec05059c168b6ca19c */
+/* adaptive-html-final-core-css-sha256: 7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -96,10 +96,10 @@ a:hover{color:var(--accent)}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 /* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
-.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
+.page-wide.layout-github>section>p,.page-wide.layout-github>section>ul,.page-wide.layout-github>section>ol,.page-wide.layout-youtube>section>p,.page-wide.layout-youtube>section>ul,.page-wide.layout-youtube>section>ol,.page-wide.layout-manual>section>p,.page-wide.layout-manual>section>ul,.page-wide.layout-manual>section>ol,.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
-/* no-SVG single-column header: cap the stack to one editorial measure (≈ reference copy column) so edges align */
-.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:48rem}
+/* header content fills its container width (.page / .page-wide) so the header matches the sections below — v5.2.1 (이전: 48rem 단일 측정 캡) */
+.header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:none}
 /* kicker — final_20260604 header: 점 달린 pill eyebrow(토큰화 → 다크 자동 대응) */
 .kicker{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:7px 13px 7px 11px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:13px;letter-spacing:.14em;color:var(--accent-2);font-weight:800;text-transform:uppercase;margin-bottom:24px}
 .kicker::before{content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--accent)}
@@ -165,6 +165,10 @@ footer p{font-size:13px;color:var(--ink-mute)}
   .page,.page-wide,.wrap{width:min(100% - 32px,var(--max-reading))}
   h1{font-size:27px}
 }
+/* === 완성본 표준 승격 v5.3.1 — 헤더 리듬 === */
+.header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
+.header .kicker::before{width:6px;height:6px}
+.header .sub{text-align:justify;word-break:keep-all}
 
 /* Editorial components for adaptive-html-blog-writer-v2. */
 .box,.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px;margin:24px 0}
@@ -185,7 +189,7 @@ footer p{font-size:13px;color:var(--ink-mute)}
 
 
 /* Robust wrapping for long URLs, code tokens, and Korean/English mixed labels. */
-.source-note,.source-box,.source-list,.card-block,.mini-card,.term,.analogy,.danger,.good,td,th,caption,a,code{overflow-wrap:anywhere}
+.source-note,.source-box,.source-list,.card-block,.mini-card,.term,.analogy,.danger,.good,caption,a,code{overflow-wrap:anywhere}
 .tbl,.table-scroll{max-width:100%}
 .caption{font-size:12px;color:var(--ink-mute);margin:8px 0 0}
 
@@ -257,10 +261,12 @@ code{font-family:"SF Mono",Menlo,Consolas,monospace;background:#ececea;padding:1
 pre,.code{background:var(--code);color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;white-space:pre-wrap}
 pre code,.code code{background:none;color:inherit;padding:0;font-size:13px}
 blockquote,.pull-quote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-family:var(--serif-kr);font-size:20px;line-height:1.65;font-style:italic}
+.pull-quote--note{font-family:var(--sans);font-size:15px;line-height:1.7;font-style:normal;color:var(--ink-mute)}
 .tbl,.table-scroll{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
 table,.table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:18px 0}
 caption{caption-side:top;text-align:left;font-size:13px;line-height:1.6;color:var(--ink);font-weight:800;margin:0;padding:0 0 8px;white-space:normal;overflow:visible}
-th,td,.table th,.table td{border:1px solid var(--line);padding:10px 14px;text-align:left;color:var(--ink-soft);vertical-align:top}
+th,td,.table th,.table td{border:1px solid var(--line);padding:10px 14px;text-align:left;color:var(--ink-soft);vertical-align:top;overflow-wrap:break-word;word-break:keep-all}
+td a,th a,.table td a,.table th a{overflow-wrap:normal;word-break:keep-all}
 th,.table th{background:var(--ink);color:#fff;font-weight:800;font-size:13px}
 tbody tr:nth-child(even) td,.table tbody tr:nth-child(even) td{background:rgba(0,0,0,.025)}
 .status-pill{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 9px;font-size:12px;line-height:1.45;color:var(--ink-mute);margin:3px 4px 3px 0;text-align:center;white-space:normal}
@@ -276,6 +282,7 @@ details p{margin-bottom:0}
 .try h2,.try h3{font-family:var(--serif);font-size:22px;color:#fff;margin:0 0 18px;line-height:1.5}
 .try h2 .no,.try h2 .num{background:#fff;color:var(--dark)}
 .try p{color:#d0d0c8}.try ol,.try ul{padding-left:20px;color:#d0d0c8}.try li{margin-bottom:12px;font-size:15px;line-height:1.7}.try strong{color:#fff}
+.try .hl{background-image:none;background-color:var(--c);background-size:100% 100%;color:var(--ink);animation:none}
 .try .box,
 .try .summary-card,
 .try .cta-box,
@@ -383,6 +390,13 @@ details p{margin-bottom:0}
   .mobile-card-table tbody th{color:var(--ink);font-weight:800;background:transparent}
   .mobile-card-table tbody th::before{content:"";display:none}
 }
+@media(max-width:520px){
+  /* 좁은 화면(≤520px): 일반 표는 min-width 해제 → 컨테이너 폭에 맞춰 줄바꿈(우측 컬럼이 화면 밖으로 잘려 보이던 착시 제거, QA). 다열·중요 표는 .mobile-card-table 사용 권장 */
+  table,.table{min-width:0}
+  th,td,.table th,.table td{padding:8px 9px;font-size:12.5px}
+}
+/* === 완성본 표준 승격 v5.3.1 — source-note 투명 === */
+.source-note{background:transparent}
 
 /* Visual Template System: responsive figure shell for 8000x6000 SVG infographics. */
 .visual-figure,.figure-wide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:14px;margin:22px 0 28px;overflow:hidden}
@@ -802,44 +816,49 @@ details p{margin-bottom:0}
 .wg-11{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide)}
 .wg-11-head{border-bottom:1px solid var(--line);padding-bottom:var(--space-4);margin-bottom:var(--space-5)}
 .wg-11-kicker{font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
-.wg-11-h{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.3;margin:0 0 var(--space-2);color:var(--ink)}
-.wg-11-lead{font-size:var(--fs-sm);color:var(--ink-soft);margin:0}
-.wg-11-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3);margin-bottom:var(--space-6)}
-.wg-11-kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);text-align:center;display:flex;flex-direction:column;gap:var(--space-1)}
-.wg-11-kpi-v{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;color:var(--ink);line-height:1}
-.wg-11-kpi-v.wg-11-warn{color:var(--accent)}
-.wg-11-kpi-l{font-size:var(--fs-xs);color:var(--ink-mute)}
-.wg-11-h3{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;margin:0 0 var(--space-4);color:var(--ink)}
-.wg-11-bars{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-6)}
-.wg-11-bar-row{display:grid;grid-template-columns:140px 1fr 44px;align-items:center;gap:var(--space-3)}
-.wg-11-bar-label{font-size:var(--fs-sm);color:var(--ink-soft);font-weight:600}
-.wg-11-track{height:18px;background:var(--bg);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.wg-11-h{font-family:var(--sans);font-size:var(--fs-xl);font-weight:850;letter-spacing:-.025em;line-height:1.3;margin:0 0 var(--space-2);color:var(--ink)}
+.wg-11-lead{font-size:var(--fs-sm);color:var(--ink-soft);margin:0;line-height:1.65}
+.wg-11-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-3);margin:0 0 var(--space-6)}
+.wg-11-kpi{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink-mute);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);display:flex;flex-direction:column;justify-content:center;gap:var(--space-1);min-height:86px}
+.wg-11-kpi-good{border-left-color:var(--good-label-ink)}
+.wg-11-kpi-prog{border-left-color:var(--term-accent)}
+.wg-11-kpi-risk{border-left-color:var(--accent)}
+.wg-11-kpi-v{font-family:var(--sans);font-size:clamp(22px,3.2vw,var(--fs-xl));font-weight:900;letter-spacing:-.03em;color:var(--accent);line-height:1.05;font-variant-numeric:tabular-nums}
+.wg-11-kpi-good .wg-11-kpi-v{color:var(--good-label-ink)}
+.wg-11-kpi-prog .wg-11-kpi-v{color:var(--term-label-ink)}
+.wg-11-kpi-v.wg-11-warn,.wg-11-kpi-risk .wg-11-kpi-v{color:var(--accent)}
+.wg-11-kpi-l{font-size:var(--fs-xs);font-weight:750;line-height:1.35;color:var(--ink-soft)}
+.wg-11-h3{font-family:var(--sans);font-size:var(--fs-lg);font-weight:850;letter-spacing:-.02em;margin:var(--space-6) 0 var(--space-3);color:var(--ink)}
+.wg-11-bars{display:grid;gap:9px;margin-bottom:var(--space-6)}
+.wg-11-bar-row{display:grid;grid-template-columns:minmax(120px,150px) 1fr 46px;align-items:center;gap:var(--space-3)}
+.wg-11-bar-label{font-size:var(--fs-sm);line-height:1.35;color:var(--ink);font-weight:750}
+.wg-11-track{height:10px;background:var(--bg);border:1px solid var(--line);border-radius:999px;overflow:hidden}
 .wg-11-fill{height:100%;border-radius:999px;animation:wg-11-grow 1s cubic-bezier(.2,.8,.2,1) both}
-.wg-11-fill-good{background:var(--good-accent)}
-.wg-11-fill-prog{background:var(--analogy-accent)}
-.wg-11-fill-risk{background:var(--accent);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.22) 0,rgba(255,255,255,.22) 5px,transparent 5px,transparent 10px)}
-.wg-11-bar-pct{font-size:var(--fs-xs);font-weight:700;color:var(--ink-soft);text-align:right;font-variant-numeric:tabular-nums}
+.wg-11-fill-good{background:var(--good-label-ink)}
+.wg-11-fill-prog{background:var(--accent)}
+.wg-11-fill-risk{background:var(--term-accent);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.26) 0,rgba(255,255,255,.26) 5px,transparent 5px,transparent 10px)}
+.wg-11-bar-pct{font-size:var(--fs-xs);font-weight:800;color:var(--ink-soft);text-align:right;font-variant-numeric:tabular-nums}
 @keyframes wg-11-grow{from{width:0 !important}}
 @media(prefers-reduced-motion:reduce){.wg-11-fill{animation:none}}
-.wg-11-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
-.wg-11-col{border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);background:var(--card);border-top:3px solid var(--line)}
-.wg-11-col-good{border-top-color:var(--good-accent);background:var(--good-bg)}
-.wg-11-col-prog{border-top-color:var(--analogy-accent);background:var(--analogy-bg)}
-.wg-11-col-risk{border-top-color:var(--accent);background:var(--danger-bg)}
-.wg-11-col-h{display:flex;align-items:center;gap:var(--space-2);font-size:var(--fs-sm);font-weight:800;margin:0 0 var(--space-3)}
+.wg-11-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3);align-items:stretch}
+.wg-11-col{border:1px solid var(--line);border-left:4px solid var(--ink-mute);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);background:var(--card);min-width:0}
+.wg-11-col-good{border-left-color:var(--good-label-ink)}
+.wg-11-col-prog{border-left-color:var(--term-accent)}
+.wg-11-col-risk{border-left-color:var(--accent)}
+.wg-11-col-h{display:flex;align-items:center;gap:var(--space-2);font-size:var(--fs-sm);font-weight:850;letter-spacing:-.01em;margin:0 0 var(--space-2);color:var(--ink)}
 .wg-11-col-good .wg-11-col-h{color:var(--good-label-ink)}
-.wg-11-col-prog .wg-11-col-h{color:var(--analogy-label-ink)}
+.wg-11-col-prog .wg-11-col-h{color:var(--term-label-ink)}
 .wg-11-col-risk .wg-11-col-h{color:var(--danger-label-ink)}
-.wg-11-dot{width:9px;height:9px;border-radius:50%;flex:none}
-.wg-11-col-good .wg-11-dot{background:var(--good-accent)}
-.wg-11-col-prog .wg-11-dot{background:var(--analogy-accent)}
+.wg-11-dot{width:9px;height:9px;border-radius:50%;flex:none;background:var(--ink-mute);box-shadow:0 0 0 3px var(--bg)}
+.wg-11-col-good .wg-11-dot{background:var(--good-label-ink)}
+.wg-11-col-prog .wg-11-dot{background:var(--term-accent)}
 .wg-11-col-risk .wg-11-dot{background:var(--accent)}
-.wg-11-col-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-2)}
-.wg-11-col-list li{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;padding-left:16px;position:relative}
-.wg-11-col-list li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:1px;background:currentColor;opacity:.5}
-.wg-11-tk{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 5px;color:var(--ink-mute);vertical-align:1px}
-.wg-11-flag{display:inline-block;font-size:11px;font-weight:800;background:var(--accent);color:var(--on-accent);border-radius:var(--radius-sm);padding:1px 6px}
-@media(max-width:760px){.wg-11-kpis{grid-template-columns:repeat(2,1fr)}.wg-11-cols{grid-template-columns:1fr}.wg-11-bar-row{grid-template-columns:110px 1fr 40px}}
+.wg-11-col-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.wg-11-col-list li{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.5;padding-left:16px;position:relative;word-break:keep-all}
+.wg-11-col-list li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:999px;background:currentColor;opacity:.5}
+.wg-11-tk{display:inline-flex;align-items:center;min-height:21px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:0 7px;color:var(--ink-mute);vertical-align:1px;white-space:nowrap}
+.wg-11-flag{display:inline-flex;align-items:center;min-height:21px;font-size:11px;font-weight:850;background:var(--danger-bg);color:var(--danger-label-ink);border:1px solid var(--danger-border);border-radius:999px;padding:0 7px;vertical-align:1px;white-space:nowrap}
+@media(max-width:760px){.wg-11-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.wg-11-cols{grid-template-columns:1fr}.wg-11-bar-row{grid-template-columns:110px 1fr 40px}}
 @media(max-width:480px){.wg-11-kpis{grid-template-columns:1fr}.wg-11-bar-row{grid-template-columns:1fr auto;row-gap:var(--space-1)}.wg-11-bar-label{grid-column:1 / -1}}
 
 /* ===== 12 Incident Timeline (css-partial) ===== */
@@ -1039,45 +1058,51 @@ details p{margin-bottom:0}
 /* ===== 16 Implementation Plan (css-only) ===== */
 .wg-16{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide)}
 .wg-16-head{border-bottom:1px solid var(--line);padding-bottom:var(--space-4);margin-bottom:var(--space-5)}
-.wg-16-kicker{font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
-.wg-16-h{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.3;margin:0 0 var(--space-2);color:var(--ink)}
+.wg-16-kicker{font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;font-weight:850;color:var(--accent-2);margin:0 0 var(--space-2)}
+.wg-16-h{font-family:var(--sans);font-size:var(--fs-xl);font-weight:850;letter-spacing:-.025em;line-height:1.3;margin:0 0 var(--space-2);color:var(--ink)}
 .wg-16-lead{font-size:var(--fs-sm);color:var(--ink-soft);margin:0;line-height:1.7}
-.wg-16-h3{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;margin:var(--space-6) 0 var(--space-4);color:var(--ink)}
-.wg-16-ms{list-style:none;margin:0;padding:0;position:relative}
-.wg-16-ms::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.wg-16-ms-item{display:grid;grid-template-columns:20px 1fr;gap:var(--space-4);margin-bottom:var(--space-3);position:relative}
-.wg-16-ms-mark{display:flex;justify-content:center;padding-top:14px}
-.wg-16-ms-node{width:14px;height:14px;border-radius:50%;background:var(--card);border:3px solid var(--ink-mute);z-index:1}
-.wg-16-done .wg-16-ms-node{background:var(--good-accent);border-color:var(--good-accent)}
-.wg-16-active .wg-16-ms-node{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.wg-16-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-5);margin:var(--space-4) 0 0}
+.wg-16-h3{font-family:var(--sans);font-size:var(--fs-lg);font-weight:850;letter-spacing:-.02em;margin:var(--space-6) 0 var(--space-3);color:var(--ink)}
+.wg-16-panel>.wg-16-h3:first-child{margin-top:0}
+.wg-16-ms{list-style:none;margin:0;padding:0;position:relative;display:grid;gap:var(--space-3)}
+.wg-16-ms-item{display:grid;grid-template-columns:28px 1fr;gap:var(--space-3);position:relative;align-items:stretch}
+.wg-16-ms-mark{display:flex;justify-content:center;position:relative}
+.wg-16-ms-mark::before{content:"";position:absolute;top:16px;bottom:calc(-1 * var(--space-3) - 16px);width:2px;background:var(--line)}
+.wg-16-ms-item:last-child .wg-16-ms-mark::before{display:none}
+.wg-16-ms-node{position:relative;z-index:1;width:14px;height:14px;border-radius:50%;background:var(--ink-mute);box-shadow:0 0 0 5px var(--bg);margin-top:14px}
+.wg-16-done .wg-16-ms-node{background:var(--good-label-ink)}
+.wg-16-active .wg-16-ms-node{background:var(--accent)}
 .wg-16-ms-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4)}
-.wg-16-active .wg-16-ms-card{border-color:var(--accent);border-left:3px solid var(--accent)}
-.wg-16-ms-top{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3)}
-.wg-16-ms-name{font-size:var(--fs-sm);font-weight:700;color:var(--ink)}
-.wg-16-badge{flex:none;font-size:var(--fs-xs);font-weight:700;border-radius:999px;padding:2px 10px;background:var(--bg);border:1px solid var(--line);color:var(--ink-mute)}
+.wg-16-active .wg-16-ms-card{border-color:var(--danger-border);border-left:4px solid var(--accent)}
+.wg-16-ms-top{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);margin:0 0 4px}
+.wg-16-ms-name{font-size:var(--fs-sm);line-height:1.35;font-weight:850;color:var(--ink)}
+.wg-16-badge{display:inline-flex;align-items:center;min-height:24px;flex:none;font-size:var(--fs-xs);line-height:1;font-weight:850;border-radius:999px;padding:0 10px;background:var(--bg);border:1px solid var(--line);color:var(--ink-mute);white-space:nowrap}
 .wg-16-bd-done{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
-.wg-16-bd-active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-2)}
-.wg-16-ms-desc{font-size:var(--fs-xs);color:var(--ink-soft);margin:var(--space-1) 0 0;line-height:1.6}
-.wg-16-flow{display:flex;align-items:stretch;flex-wrap:wrap;gap:var(--space-2);padding:var(--space-4);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md)}
-.wg-16-fnode{flex:1 1 110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:var(--space-3);background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-md);font-size:var(--fs-sm);font-weight:700;color:var(--ink);text-align:center}
-.wg-16-fnode-s{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:500;color:var(--ink-mute)}
-.wg-16-fnode-q{background:var(--term-bg);border-color:var(--term-border)}
-.wg-16-fnode-hot{background:var(--accent-soft);border-color:var(--accent)}
+.wg-16-bd-active{background:var(--danger-bg);border-color:var(--danger-border);color:var(--accent-2)}
+.wg-16-ms-desc{font-size:var(--fs-xs);color:var(--ink-soft);margin:0;line-height:1.55}
+.wg-16-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-3);align-items:stretch;padding:var(--space-4);background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-md)}
+.wg-16-fnode{position:relative;display:flex;flex-direction:column;justify-content:center;gap:3px;min-width:0;padding:var(--space-3);background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink-mute);border-radius:var(--radius-md);font-size:var(--fs-sm);font-weight:850;color:var(--ink);text-align:left}
+.wg-16-fnode:not(:last-child)::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:var(--accent);font-weight:900;z-index:1}
+.wg-16-fnode-s{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:600;color:var(--ink-mute);overflow-wrap:anywhere}
+.wg-16-fnode-q{border-left-color:var(--term-accent);background:var(--term-bg)}
+.wg-16-fnode-hot{border-left-color:var(--accent);background:var(--danger-bg)}
+.wg-16-fnode-good{border-left-color:var(--good-label-ink);background:var(--good-bg)}
 .wg-16-fnode-hot,.wg-16-fnode-hot .wg-16-fnode-s{color:var(--accent-2)}
-.wg-16-farrow{display:flex;align-items:center;color:var(--ink-mute);font-size:var(--fs-lg);font-weight:700;flex:none}
-.wg-16-table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+.wg-16-farrow{display:none}
+.wg-16-table-wrap{margin:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.wg-16-table{width:100%;min-width:680px;border-collapse:collapse;font-size:var(--fs-sm);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
 .wg-16-table th,.wg-16-table td{padding:var(--space-3) var(--space-4);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-.wg-16-table thead th{background:var(--bg);font-size:var(--fs-xs);font-weight:700;color:var(--ink)}
-.wg-16-table tbody th{font-weight:600;color:var(--ink);background:var(--card);white-space:nowrap}
+.wg-16-table thead th{background:var(--bg);font-size:var(--fs-xs);font-weight:850;color:var(--ink)}
+.wg-16-table tbody th{font-weight:750;color:var(--ink);background:var(--card);white-space:nowrap}
 .wg-16-table td{color:var(--ink-soft);line-height:1.55}
 .wg-16-table tbody tr:last-child td,.wg-16-table tbody tr:last-child th{border-bottom:none}
-.wg-16-lv{display:inline-block;font-size:11px;font-weight:800;border-radius:var(--radius-sm);padding:1px 8px}
-.wg-16-lv-hi{background:var(--danger-bg);color:var(--danger-label-ink);border:1px solid var(--danger-border)}
-.wg-16-lv-hi::before{content:"\25CF "}
-.wg-16-lv-mid{background:var(--term-bg);color:var(--term-label-ink);border:1px solid var(--term-border)}
-.wg-16-lv-mid::before{content:"\25D0 "}
-.wg-16-lv-lo{background:var(--good-bg);color:var(--good-label-ink);border:1px solid var(--good-border)}
-.wg-16-lv-lo::before{content:"\25CB "}
+.wg-16-lv{display:inline-flex;align-items:center;min-height:23px;font-size:11px;line-height:1;font-weight:850;border-radius:999px;padding:0 8px;white-space:nowrap;border:1px solid var(--line);background:var(--bg);color:var(--ink-mute)}
+.wg-16-lv-hi{background:var(--danger-bg);color:var(--danger-label-ink);border-color:var(--danger-border)}
+.wg-16-lv-hi::before{content:"\25CF\00a0"}
+.wg-16-lv-mid{background:var(--term-bg);color:var(--term-label-ink);border-color:var(--term-border)}
+.wg-16-lv-mid::before{content:"\25D0\00a0"}
+.wg-16-lv-lo{background:var(--good-bg);color:var(--good-label-ink);border-color:var(--good-border)}
+.wg-16-lv-lo::before{content:"\25CB\00a0"}
 .wg-16-mock{border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:var(--card)}
 .wg-16-mock-bar{display:flex;align-items:center;gap:6px;padding:var(--space-2) var(--space-3);background:var(--bg);border-bottom:1px solid var(--line)}
 .wg-16-mock-dot{width:9px;height:9px;border-radius:50%;background:var(--line)}
@@ -1088,7 +1113,8 @@ details p{margin-bottom:0}
 .wg-16-mock-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
 .wg-16-mock-tile{height:56px;border-radius:var(--radius-md);background:repeating-linear-gradient(45deg,var(--bg),var(--bg) 8px,var(--card) 8px,var(--card) 16px);border:1px dashed var(--line)}
 .wg-16-mock-cap{font-size:var(--fs-xs);color:var(--ink-mute);text-align:center;margin:var(--space-2) 0 0}
-@media(max-width:640px){.wg-16{max-width:var(--max-reading)}.wg-16-flow{flex-direction:column}.wg-16-farrow{transform:rotate(90deg);align-self:center}.wg-16-mock-tiles{grid-template-columns:1fr}}
+@media(max-width:900px){.wg-16-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.wg-16-fnode:not(:last-child)::after{display:none}}
+@media(max-width:640px){.wg-16{max-width:var(--max-reading)}.wg-16-panel{padding:var(--space-4)}.wg-16-flow{grid-template-columns:1fr}.wg-16-ms-top{align-items:flex-start;flex-direction:column}.wg-16-mock-tiles{grid-template-columns:1fr}}
 
 /* ===== 17 PR Writeup (css-only) ===== */
 .wg-17{font-family:var(--sans);color:var(--ink);max-width:var(--max-reading);margin:0 auto}
@@ -1255,6 +1281,8 @@ body{background:var(--vt-wash)}
 /* 21 soft-workflow-map */.wf-board{--wf-warm:#ff812f;--wf-warm2:#ffbd72;--wf-edge:#ead8c7;position:relative;background:linear-gradient(135deg,#fff2e4 0%,#fffaf5 52%,#f8e1cf 100%);border:1px solid var(--wf-edge);border-radius:18px;padding:30px;overflow:hidden}.wf-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px}.wf-newbadge{display:inline-flex;align-items:center;background:var(--vt-ink);color:#fff;border-radius:999px;padding:9px 22px;font-weight:900;font-size:18px}.wf-aistack{display:flex;align-items:center;gap:12px}.wf-aibadge{width:54px;height:54px;border-radius:16px;background:#242421;color:var(--wf-warm2);display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:26px}.wf-bag{width:48px;height:48px;border:1px solid var(--wf-edge);border-radius:16px;background:#fff5e9;display:grid;place-items:center;color:var(--wf-warm);font-size:24px}.wf-map{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:24px;align-items:center}.wf-col{display:grid;gap:16px}.wf-card{background:rgba(255,250,244,.92);border:1px solid var(--wf-edge);border-radius:16px;padding:18px;min-height:112px;box-shadow:0 14px 28px rgba(172,124,83,.13)}.wf-card strong{display:block;font-weight:900;margin-bottom:6px;color:var(--vt-ink)}.wf-card p{font-size:14px;line-height:1.6;color:var(--ink-mute);margin:0}.wf-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:10px;background:var(--card);box-shadow:inset 0 0 0 1px var(--wf-edge);color:var(--wf-warm)}.wf-center{position:relative;background:#fffaf5;border:1px solid var(--wf-edge);border-radius:22px;padding:22px;box-shadow:0 24px 50px rgba(172,124,83,.2)}.wf-codewin{height:120px;border-radius:15px;background:#2b2e36;margin:-44px auto 16px;width:80%;box-shadow:0 20px 34px rgba(31,31,29,.22);padding:16px}.wf-codewin span{display:block;height:8px;border-radius:999px;margin:9px;background:#7f8cff}.wf-codewin span:nth-child(2){width:64%;background:var(--wf-warm2)}.wf-codewin span:nth-child(3){width:82%;background:#72d9aa}.wf-dash{border-radius:16px;background:#f1e8ff;border:1px solid #d9caff;padding:14px;margin-bottom:16px}.wf-dashbar{height:32px;width:54%;border-radius:11px;background:linear-gradient(90deg,#cdb7ff,#9a75ff);margin-bottom:12px}.wf-dashblock{height:64px;border-radius:11px;background:var(--card)}.wf-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.wf-metric{background:var(--card);border:1px solid var(--wf-edge);border-radius:14px;padding:13px;text-align:center}.wf-metric b{display:block;color:#1683a3;font-size:26px;font-family:var(--serif)}.wf-metric span{font-size:12px;color:var(--ink-mute)}.wf-pipes{margin-top:16px;display:grid;gap:9px}.wf-pipe{display:grid;grid-template-columns:22px 1fr 1.4fr;gap:11px;align-items:center}.wf-pipe i{width:22px;height:22px;border-radius:50%;background:var(--wf-warm)}.wf-pipe:nth-child(2) i{background:#9a75ff}.wf-pipe:nth-child(3) i{background:#61d1a0}.wf-pipe:nth-child(4) i{background:#ff6b6b}.wf-pipe span{height:8px;border-radius:999px;background:#eadbd0}.wf-bottom{margin-top:24px;background:#fff6ed;border:1px solid var(--wf-edge);border-radius:999px;height:50px;display:flex;align-items:center;padding:0 10px 0 18px;gap:16px}.wf-rail-short{width:72px;height:13px;border-radius:999px;background:#f1dac5}.wf-rail-long{width:340px;max-width:46%;height:13px;border-radius:999px;background:#e8d4c2}.wf-arrow{margin-left:auto;width:120px;height:42px;border-radius:999px;background:linear-gradient(135deg,var(--wf-warm2),#ff7a2c);display:flex;align-items:center;justify-content:flex-end;padding-right:11px;box-shadow:0 8px 18px rgba(255,122,44,.25)}.wf-arrow i{width:32px;height:32px;border-radius:50%;background:var(--card);display:grid;place-items:center;color:var(--wf-warm);font-weight:900;font-style:normal}
 @media(max-width:820px){.wf-map{grid-template-columns:1fr}.wf-codewin{margin-top:0}.wf-board{padding:22px}}
 @media(max-width:520px){.wf-metrics{grid-template-columns:1fr}.wf-pipes{display:none}.wf-rail-long{display:none}.wf-arrow{width:96px}}
+/* === 완성본 표준 승격 v5.3.1 — vt-frame 내부 박스 평면화 === */
+.vt-frame{background:transparent;border:0}
 
 /* adaptive-html-final body icons — compact editorial inline SVG, namespaced bi-, uses skill tokens. 외부/동작 JS 0. */
 .body-icon{width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(245,245,240,.72));display:inline-grid;place-items:center;flex:0 0 auto;vertical-align:middle}
@@ -1271,7 +1299,21 @@ body{background:var(--vt-wash)}
 .body-icon .bi-accent-box{fill:var(--accent);stroke:var(--accent);stroke-width:1.6}
 .body-icon .bi-dot{fill:#7ea66a;stroke:var(--ink-mute);stroke-width:1.3}
 .body-icon .bi-dot-box{fill:#7ea66a;stroke:#7ea66a;stroke-width:1.5}
+/* icon + text alignment: 헤딩/라벨이 body-icon을 직접 자식으로 가지면 왼쪽 아이콘 + 일정 간격으로 정렬(무 JS, :has). v5.2.1 */
+.label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+h1:has(> .body-icon),h2:has(> .body-icon){display:flex;align-items:center;gap:10px}
+h3:has(> .body-icon){display:flex;align-items:center;gap:8px}
+.mini-card h3 .body-icon,.card-block h3 .body-icon{align-self:flex-start;margin-top:1px}
+/* lede-note 등 컨텍스트 라벨도 아이콘+텍스트 정렬(고특이도 .lede-note .label{display:block}를 이김). v5.2.2 */
+.lede-note .label:has(> .body-icon){display:flex;align-items:center;gap:8px}
+/* 아이콘 박스 배경 테마 적응(white/light2/dark/dark2) — 하드코딩 흰빛 그라디언트가 다크 계열에서 떠 보이던 문제 해소. SVG 칠은 토큰으로 이미 적응. v5.2.2 · dark2/light2 확장 v5.5.0 */
+:root:has(:is(#ahf-white,#ahf-light2,#ahf-skyblue):checked) .body-icon{background:linear-gradient(180deg,#ffffff,#f4f5f8)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .body-icon{background:linear-gradient(180deg,var(--vt-soft),var(--card));border-color:var(--line)}
+:root:has(#ahf-sepia:checked) .body-icon{background:linear-gradient(180deg,var(--card),var(--bg));border-color:var(--line)}
 @media(prefers-reduced-motion:reduce){.body-icon{transition:none}}
+/* === 완성본 표준 승격 v5.3.1 — 섹션 제목 앞 큰 아이콘(42px) === */
+h2>.body-icon,h3>.body-icon{width:42px;height:42px;border-radius:12px}
+h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 
 /* adaptive-html-final editorial patterns — small content-structure blocks for in-mode insertion. 무 JS, 스킬 토큰. */
 .source-preserve{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:0;margin:18px 0}
@@ -1293,7 +1335,7 @@ body{background:var(--vt-wash)}
 .chron-card h3{font-family:var(--sans);font-size:16px;margin:0 0 4px}
 .chron-card p{font-size:14.5px;margin:0}
 .core-insight{background:linear-gradient(135deg,var(--accent-soft),rgba(255,255,255,.6));border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:22px 24px;margin:18px 0}
-.core-insight blockquote{font-family:var(--serif-kr);font-size:22px;line-height:1.65;color:var(--ink);border:0;margin:0 0 12px;padding:0;font-style:normal}
+.core-insight blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.02em;font-size:22px;line-height:1.65;color:var(--ink);border:0;margin:0 0 12px;padding:0;font-style:normal}
 .core-insight p{margin:0}
 /* core-insight--neutral — 그라데이션 없는 중립 callout 변형(opt-in). 베어 .core-insight를 덮어쓰지 않는다(전 모드 회귀 방지). */
 .core-insight--neutral{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
@@ -1322,6 +1364,7 @@ body{background:var(--vt-wash)}
 .ba-col.after .ba-bullet{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
 .impact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:18px 0}
 .impact-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px}
+.impact-card .body-icon{display:grid;margin-bottom:12px}
 .impact-card h3{font-family:var(--sans);font-size:15.5px;margin:0 0 6px}
 .impact-card p{font-size:13.5px;margin:0}
 @media(max-width:940px){.impact-grid{grid-template-columns:1fr 1fr}}
@@ -1335,14 +1378,14 @@ body{background:var(--vt-wash)}
 /* a11y-checklist — 접근성 30분 점검 그리드 + 실패 모드 표 + 릴리스 준비 체크리스트(다크 패널). 무 JS, 스킬 토큰, 색 외 텍스트 단서(PASS/FAIL). access-* 페이지 어휘를 a11y-* 정본 네임스페이스로 개명. */
 .a11y-check{margin:18px 0 0;border-top:1px solid var(--line);padding-top:18px}
 .a11y-lead{margin:0 0 12px;color:var(--ink-soft);font-size:13.8px;line-height:1.58;max-width:60rem}
-.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 0}
-.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.a11y-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;row-gap:18px;margin:12px 0 0}
+.a11y-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;min-width:0;display:flex;flex-direction:column;gap:12px}
 .a11y-card h4{font-family:var(--sans);font-size:15px;line-height:1.32;font-weight:800;letter-spacing:-.018em;margin:0;color:var(--ink)}
 .a11y-card p{margin:0;color:var(--ink-soft);font-size:12.8px;line-height:1.48;word-break:keep-all}
 .a11y-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:22px}
 .a11y-card-head>span:first-child{font-size:10.8px;line-height:1.15;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
 .a11y-time{display:inline-flex;align-items:center;min-height:22px;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:2px 7px;color:var(--chip-ink);font-size:11px;font-weight:800;white-space:nowrap}
-.a11y-points{display:grid;gap:5px;margin:1px 0 0;padding:0;list-style:none}
+.a11y-points{display:grid;gap:9px;margin:1px 0 0;padding:0;list-style:none}
 .a11y-points li{display:grid;grid-template-columns:46px 1fr;gap:7px;align-items:start;margin:0;color:var(--ink-soft);font-size:12.4px;line-height:1.38}
 .a11y-pass,.a11y-fail{display:inline-flex;align-items:center;justify-content:center;min-height:20px;border-radius:999px;border:1px solid var(--line);padding:0 6px;font-size:9.8px;line-height:1;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
 .a11y-pass{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
@@ -1372,6 +1415,24 @@ body{background:var(--vt-wash)}
 @media(max-width:980px){.a11y-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:820px){.a11y-notes,.a11y-release ol{grid-template-columns:1fr}}
 @media(max-width:620px){.a11y-grid{grid-template-columns:1fr}.a11y-check{padding-top:16px}.a11y-rule{grid-template-columns:1fr}.a11y-card{padding:12px 13px}.a11y-points li{grid-template-columns:44px 1fr}.a11y-subhead{font-size:16px}.a11y-note{padding:12px 13px}.a11y-release{padding:16px}.a11y-release li{font-size:12.8px}}
+/* 템플릿 목차 chip-nav (toc-map) — 번호 pill이 한 줄에서 wrap 되는 섹션 목차. final_20260604 표준 승격, 정본 이름. 8테마 토큰. v5.4.0 */
+.toc-map{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px 20px 20px;margin:24px 0}
+.toc-map>.label{display:block;font-size:14px;line-height:1.35;font-weight:900;letter-spacing:-.01em;text-transform:none;color:var(--ink);margin:0 0 4px}
+.toc-map>p{margin:0 0 13px;color:var(--ink-mute);font-size:13.5px;line-height:1.55}
+.toc-pills{display:flex;flex-wrap:wrap;gap:7px;margin:0}
+.toc-pill{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:0 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--chip-ink);font-size:12.5px;line-height:1;font-weight:700;text-decoration:none;white-space:nowrap}
+.toc-pill:hover{border-color:var(--accent);color:var(--accent)}
+.toc-pill b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:999px;background:var(--accent-soft);color:var(--accent-2);font-size:10.5px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+@media(max-width:700px){.toc-map{padding:15px 16px}.toc-pill{white-space:normal;line-height:1.25;min-height:32px;padding:5px 11px}}
+/* 평면 리스트 자동 다단 (col-list) — 짧은 항목(파일명·태그·키워드)이 6개 이상인 ul/ol을 한 줄에 여러 개로 채워 세로 1열 적층의 가로 공백 낭비를 없앤다. auto-fill로 폭을 꽉 채움(≈3개+/행). v5.4.1 */
+ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:8px 12px}
+.col-list li{margin:0;min-width:0;color:var(--ink-soft);font-size:13.5px;line-height:1.4}
+.col-list li code{display:inline-block;max-width:100%;overflow-wrap:anywhere}
+@media(max-width:560px){ul.col-list,ol.col-list{grid-template-columns:1fr}}
+/* 텍스트 전용 뷰 bullet (text-bullet-view) — final_20260604 section 7의 code-path bullet 리듬을 정본화. 텍스트만 있는 카드/체크 항목 앞에 작은 써클을 붙여 스캔성을 높인다. opt-in, 무 JS, 8테마 토큰. v5.4.2 */
+.text-bullet-view{display:flex;align-items:flex-start;gap:10px;line-height:1.62}
+.text-bullet-view>.ba-bullet{margin-top:.72em;background:var(--ink-mute);box-shadow:0 0 0 4px var(--bg)}
+:root:has(#ahf-dark:checked) .text-bullet-view>.ba-bullet{background:var(--accent-2);box-shadow:0 0 0 4px var(--card)}
 
 /* adaptive-html-final shape-visuals — 본문 설명 시작부 보조 SVG 도형(8000x6000, warm soft).
    무 JS · 프로파일 무관 조건부 인라인. 도형은 시각 앵커이고 핵심 정보는 항상 HTML 텍스트로 둔다.
@@ -1410,7 +1471,7 @@ body{background:var(--vt-wash)}
 
 /* Expert mode: section wrappers stay in normal document flow; only inner grids/cards are gridded. */
 .layout-expert .summary-grid,
-.layout-expert .decision-grid:not(section),
+.layout-expert .decision-grid,
 .layout-expert .decision-grid>.grid,
 .layout-expert .architecture-grid,
 .layout-expert .risk-grid,
@@ -1418,7 +1479,40 @@ body{background:var(--vt-wash)}
 .layout-expert .decision-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
 .layout-expert .executive-summary,.layout-expert .validation-checklist{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px}
 .layout-expert .executive-summary .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.risk-high{border-left:5px solid var(--accent)}.risk-mid{border-left:5px solid #d99a38}.risk-low{border-left:5px solid #7ea66a}
+/* risk-* 우선순위 카드 — 완성본(final_20260604 .access-check-rule) 방식: 4px 좌측 라인 + 자체 padding으로 host(decision-card 유무) 무관하게 라인과 동일 간격. (QA) */
+.risk-high,.risk-mid,.risk-low{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:var(--radius-md);padding:14px 16px}
+.risk-high{border-left-color:var(--accent)}.risk-mid{border-left-color:#d99a38}.risk-low{border-left-color:#7ea66a}
+
+/* GitHub analysis mode: repository due-diligence report with evidence-first cards. */
+.layout-github .repo-signal-grid,
+.layout-github .repo-identity-grid,
+.layout-github .repo-health-grid,
+.layout-github .repo-action-grid,
+.layout-github .repo-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-github>section:not(.try),
+.layout-github>.source-note,
+.layout-github>.github-question-toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
+/* 좌측 accent 강조선은 '한 줄 결론'(verdict) 한 곳만 — 전 섹션 반복 시 경고 리포트처럼 보이던 문제 해소 (QA) */
+.layout-github>.github-verdict{border-left:4px solid var(--accent)}
+/* .try(Next Actions)는 base 검정 hero CTA 유지 — 라이트/화이트/다크 모두 dark 패널 (v5.3.3) */
+.layout-github>section .vt-shell{margin-bottom:0}
+.layout-github .repo-card,
+.layout-github .repo-signal,
+.layout-github .repo-question,
+.layout-github .repo-evidence{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px;min-width:0}
+.layout-github .repo-card h3,
+.layout-github .repo-signal h3,
+.layout-github .repo-question h3,
+.layout-github .repo-evidence h3{margin-top:0;color:var(--accent-2)}
+.layout-github .repo-signal .label,
+.layout-github .repo-evidence .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink)}
+/* code-tour(어디부터 읽으면 되는가): 파일명/역할 카드는 좌우 정렬 row로 — 세로 적층의 빈약함 해소 (v5.3.6) */
+.layout-github .code-tour .repo-card{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 16px}
+.layout-github .code-tour .repo-card h3{margin:0;font-size:14.5px}
+.layout-github .code-tour .repo-card p{margin:0;color:var(--chip-ink);font-size:12.5px;white-space:nowrap;flex:0 0 auto}
+.layout-github .repo-score{display:inline-grid;place-items:center;min-width:48px;height:48px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:900 16px/1 var(--sans);margin:0 10px 8px 0}
+.layout-github .repo-unknown{border-style:dashed;background:var(--accent-soft)}
+.layout-github .github-question-toc{margin:24px 0 34px}
 
 .layout-article .article-header{margin-bottom:28px}.layout-article .lead{font-size:18px;color:var(--ink-soft)}.layout-article .article-takeaway{background:var(--accent-soft)}.layout-article article section{margin:54px 0}
 .layout-article .pull-quote{font-size:22px;color:var(--ink);border-color:var(--accent);font-style:normal}
@@ -1433,6 +1527,7 @@ body{background:var(--vt-wash)}
 .layout-blog article{counter-reset:blog-section}
 .layout-blog article section{border-bottom:1px solid var(--line);padding-bottom:28px;margin:52px 0}
 .layout-blog article>section{counter-increment:blog-section}
+.layout-blog article>section>h2:first-child:has(.num)::before{content:none}
 .layout-blog article>section>h2:first-child::before{
   content:counter(blog-section);
   display:inline-grid;
@@ -1451,8 +1546,10 @@ body{background:var(--vt-wash)}
 }
 .layout-blog article section:last-child{border-bottom:0}
 
-.layout-seo .serp-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
-.layout-seo .serp-title{color:var(--ink);font-family:var(--sans);font-size:clamp(17px,2vw,18px);line-height:1.45;font-weight:800;letter-spacing:-.012em;margin:2px 0 8px}
+.layout-seo .serp-shell{display:grid;grid-template-columns:1.04fr .96fr;gap:14px;align-items:stretch}
+.layout-seo .serp-box{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px;min-width:0}
+.layout-seo .serp-result{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 17px;min-width:0}
+.layout-seo .serp-title{color:var(--ink);font-family:var(--sans);font-size:clamp(18px,2vw,20px);line-height:1.35;font-weight:850;letter-spacing:-.025em;margin:2px 0 8px}
 .layout-seo .serp-url{color:#1f6f4e;font-size:12.5px;margin-bottom:6px;font-weight:700}
 .layout-seo .serp-desc{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.62}
 .layout-seo .serp-dots{display:flex;align-items:center;gap:9px;margin:0 0 14px;color:var(--chip-ink);font-size:12.5px;font-weight:700;line-height:1.2}
@@ -1463,9 +1560,15 @@ body{background:var(--vt-wash)}
 .layout-seo .serp-rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;min-width:0}
 .layout-seo .serp-rule{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;min-width:0}
 .layout-seo .serp-rule.is-wide{grid-column:1/-1;border-left:4px solid var(--accent)}
+.layout-seo .serp-rule-kicker{display:block;margin:0 0 5px;font-size:10.8px;line-height:1.15;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
 .layout-seo .serp-rule h3{font-family:var(--sans);font-size:16px;line-height:1.34;font-weight:800;letter-spacing:-.018em;margin:0 0 6px;color:var(--ink)}
 .layout-seo .serp-rule p{margin:0;color:var(--ink-soft);font-size:13.2px;line-height:1.56;word-break:keep-all}
-@media(max-width:620px){.layout-seo .serp-rule-grid{grid-template-columns:1fr}}
+.layout-seo .serp-variant-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:10px 0 0}
+.layout-seo .serp-variant{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px 14px;min-width:0}
+.layout-seo .serp-variant b{display:block;margin:0 0 4px;font-size:12px;line-height:1.2;color:var(--accent-2);letter-spacing:.08em;text-transform:uppercase}
+.layout-seo .serp-variant p{margin:0;font-size:13px;line-height:1.5;color:var(--ink-soft);word-break:keep-all}
+@media(max-width:860px){.layout-seo .serp-shell,.layout-seo .serp-rule-grid,.layout-seo .serp-variant-strip{grid-template-columns:1fr}.layout-seo .serp-rule.is-wide{grid-column:auto}}
+@media(max-width:430px){.layout-seo .serp-box,.layout-seo .serp-result,.layout-seo .serp-rule,.layout-seo .serp-variant{padding:13px 14px}.layout-seo .serp-title{font-size:18px}}
 .layout-seo .seo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .layout-seo .title-candidates,.layout-seo .meta-candidates,.layout-seo .keyword-cluster{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px}
 
@@ -1479,7 +1582,93 @@ body{background:var(--vt-wash)}
 .layout-platform .platform-card.is-essay{border-left:4px solid var(--term-accent)}
 .layout-platform .platform-card h3{margin-top:0;color:var(--accent-2)}
 .layout-platform .original-summary,.layout-platform .platform-strategy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
-@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid:not(section),.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+.layout-platform .platform-split{display:grid;grid-template-columns:.82fr 1.18fr;gap:14px;align-items:stretch}
+.layout-platform .platform-anchor{background:var(--dark);color:#fff;border-radius:15px;padding:18px;display:grid;align-content:center;min-height:220px;position:relative;overflow:hidden}
+.layout-platform .platform-anchor::after{content:"";position:absolute;right:-34px;top:-38px;width:130px;height:130px;border-radius:999px;background:rgba(230,57,70,.2)}
+.layout-platform .platform-kicker{display:block;margin:0 0 6px;color:var(--accent-2);font-size:10.5px;line-height:1.15;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.layout-platform .platform-anchor .platform-kicker{color:#ffb6c0}
+.layout-platform .platform-anchor h3{font-family:var(--sans);font-size:22px;line-height:1.28;letter-spacing:-.02em;margin:0 0 10px;color:#fff}
+.layout-platform .platform-anchor p{margin:0;color:#d8d8d0;font-size:13.5px;line-height:1.58}
+.layout-platform .platform-route-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.layout-platform .platform-route-card{display:grid;grid-template-columns:12px 1fr;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;min-width:0}
+.layout-platform .platform-route-card::before{content:"";width:8px;height:8px;margin-top:5px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.layout-platform .platform-route-card.is-search::before{background:var(--analogy-accent);box-shadow:0 0 0 3px var(--analogy-bg)}
+.layout-platform .platform-route-card.is-dev::before{background:var(--good-label-ink);box-shadow:0 0 0 3px var(--good-bg)}
+.layout-platform .platform-route-card.is-story::before{background:var(--term-accent);box-shadow:0 0 0 3px var(--term-bg)}
+.layout-platform .platform-route-card h3,.layout-platform .platform-output-card h3,.layout-platform .platform-guard h3,.layout-platform .platform-analogy h3{font-family:var(--sans);font-size:15.5px;line-height:1.34;font-weight:850;letter-spacing:-.018em;margin:0 0 5px;color:var(--ink)}
+.layout-platform .platform-route-card p,.layout-platform .platform-output-card p,.layout-platform .platform-output-card li,.layout-platform .platform-guard p,.layout-platform .platform-analogy p{margin:0;font-size:13.2px;line-height:1.5;color:var(--ink-soft);word-break:keep-all}
+.layout-platform .platform-analogy{margin-top:12px;background:var(--term-bg);border:1px solid var(--term-border);border-left:4px solid var(--term-accent);border-radius:14px;padding:14px 16px}
+.layout-platform .platform-analogy p{color:var(--term-ink)}
+.layout-platform .platform-output-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.layout-platform .platform-output-card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:15px 16px;min-width:0}
+.layout-platform .platform-output-card.is-search{border-left:4px solid var(--analogy-accent)}
+.layout-platform .platform-output-card.is-dev{border-left:4px solid var(--good-label-ink)}
+.layout-platform .platform-output-card.is-story{border-left:4px solid var(--term-accent)}
+.layout-platform .platform-output-card.is-essay{border-left:4px solid var(--accent)}
+.layout-platform .platform-prompt-box{margin:9px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 11px;color:var(--ink);font-size:13px;line-height:1.45;font-weight:760}
+.layout-platform .platform-output-card ul{margin:9px 0;padding-left:17px}
+.layout-platform .platform-output-card li + li{margin-top:3px}
+.layout-platform .platform-tags{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}
+.layout-platform .platform-tags span{display:inline-flex;align-items:center;min-height:23px;padding:3px 8px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--chip-ink);font-size:11.5px;line-height:1.15;font-weight:760}
+.layout-platform .platform-guard{margin-top:12px;background:var(--danger-bg);border:1px solid var(--danger-border);border-left:4px solid var(--accent);border-radius:14px;padding:14px 16px}
+.layout-platform .platform-guard .platform-kicker{color:var(--danger-label-ink)}
+.layout-platform .platform-guard p{color:var(--danger-ink)}
+@media(max-width:900px){.layout-platform .platform-split,.layout-platform .platform-output-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid,.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-github .repo-signal-grid,.layout-github .repo-identity-grid,.layout-github .repo-health-grid,.layout-github .repo-action-grid,.layout-github .repo-evidence-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+@media(max-width:620px){.layout-platform .platform-route-grid{grid-template-columns:1fr}.layout-platform .platform-anchor{min-height:0;padding:16px}.layout-platform .platform-anchor h3{font-size:19px}.layout-platform .platform-output-card{padding:14px}}
+
+/* YouTube analysis mode: evidence-first video report. */
+.layout-youtube .youtube-signal-grid,
+.layout-youtube .youtube-evidence-grid,
+.layout-youtube .youtube-chapter-grid,
+.layout-youtube .youtube-comment-grid,
+.layout-youtube .youtube-opportunity-grid,
+.layout-youtube .youtube-blueprint-grid,
+.layout-youtube .youtube-reuse-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-youtube>section:not(.try),
+.layout-youtube>.source-note,
+.layout-youtube>.youtube-question-toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
+.layout-youtube>.youtube-verdict{border-left:4px solid var(--accent)}
+.layout-youtube>section .vt-shell{margin-bottom:0}
+.layout-youtube .youtube-card,
+.layout-youtube .youtube-signal,
+.layout-youtube .youtube-evidence,
+.layout-youtube .youtube-opportunity{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px;min-width:0}
+.layout-youtube .youtube-card h3,
+.layout-youtube .youtube-signal h3,
+.layout-youtube .youtube-evidence h3,
+.layout-youtube .youtube-opportunity h3{margin-top:0;color:var(--accent-2)}
+.layout-youtube .youtube-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink);font-weight:800}
+.layout-youtube .youtube-badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;color:var(--ink-soft);background:var(--accent-soft)}
+.layout-youtube .youtube-fact{border-left:4px solid var(--good-accent)}
+.layout-youtube .youtube-inference{border-left:4px solid var(--accent)}
+.layout-youtube .youtube-unknown{border-left:4px solid var(--danger-accent);border-style:dashed}
+
+/* Manual analysis mode: role-based execution manual. */
+.layout-manual .manual-role-grid,
+.layout-manual .manual-step-grid,
+.layout-manual .manual-reference-grid,
+.layout-manual .manual-trouble-grid,
+.layout-manual .manual-audit-grid,
+.layout-manual .manual-runbook-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-manual>section:not(.try),
+.layout-manual>.source-note,
+.layout-manual>.manual-reader-toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
+.layout-manual>.manual-verdict{border-left:4px solid var(--accent)}
+.layout-manual>section .vt-shell{margin-bottom:0}
+.layout-manual .manual-card,
+.layout-manual .manual-role,
+.layout-manual .manual-step,
+.layout-manual .manual-trouble{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px;min-width:0}
+.layout-manual .manual-card h3,
+.layout-manual .manual-role h3,
+.layout-manual .manual-step h3,
+.layout-manual .manual-trouble h3{margin-top:0;color:var(--accent-2)}
+.layout-manual .manual-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink);font-weight:800}
+.layout-manual .manual-safe{border-left:4px solid var(--good-accent)}
+.layout-manual .manual-risk{border-left:4px solid var(--danger-accent)}
+.layout-manual .manual-unknown{border-style:dashed;background:var(--accent-soft)}
+@media(max-width:760px){.layout-youtube .youtube-signal-grid,.layout-youtube .youtube-evidence-grid,.layout-youtube .youtube-chapter-grid,.layout-youtube .youtube-comment-grid,.layout-youtube .youtube-opportunity-grid,.layout-youtube .youtube-blueprint-grid,.layout-youtube .youtube-reuse-grid,.layout-manual .manual-role-grid,.layout-manual .manual-step-grid,.layout-manual .manual-reference-grid,.layout-manual .manual-trouble-grid,.layout-manual .manual-audit-grid,.layout-manual .manual-runbook-grid{grid-template-columns:1fr}}
 
 /* Ultimate extra modes */
 .layout-audit .audit-row{display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr .6fr;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}
@@ -1506,7 +1695,7 @@ body{background:var(--vt-wash)}
    .winners:not(section), or .tradeoffs:not(section) for actual grid layout. */
 
 .audit-header,.blog-header,.case-header,.checklist-header,.compare-header,
-.course-header,.landing-header,.platform-header,.reference-header,
+.course-header,.github-header,.landing-header,.platform-header,.reference-header,
 .report-header,.seo-header{margin-bottom:42px;padding-bottom:32px;border-bottom:1px solid var(--line)}
 
 /* Semantic section wrappers: normal flow only. */
@@ -1514,7 +1703,9 @@ body{background:var(--vt-wash)}
 .decision-context,.decisions,.results,.winners,.tradeoffs,.how-it-works,.failure-modes,
 .patterns,.examples,.line-audit,.content-outline,.seo-overview,.before-start,
 .beginner-analogy,.beginner-practice,.beginner-terms,.beginner-traps,.example-block,
-.lesson-step,.publish-checklist,.related-list,.soft-cta{margin:46px 0}
+.lesson-step,.publish-checklist,.related-list,.soft-cta,.github-verdict,.repo-identity,
+.quickstart-readiness,.repo-health,.code-tour,.release-roadmap,.security-license,
+.decision-tree{margin:46px 0}
 
 /* Actual reusable grid/card wrappers. Never apply these to a section containing h2/h2-sub. */
 .grid-2,.cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
@@ -1555,6 +1746,9 @@ body{background:var(--vt-wash)}
   .final-seo-set .grid,.final-seo-set .seo-grid{grid-template-columns:1fr}
   .layout-blog article>section>h2:first-child::before{width:30px;height:30px;margin-right:9px;font-size:13px;vertical-align:2px}
 }
+/* === 완성본 표준 승격 v5.3.1 — 무클래스 콘텐츠 섹션 카드 뷰 === */
+.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}
 
 @media print{
   *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
@@ -1568,44 +1762,88 @@ body{background:var(--vt-wash)}
   a::after{content:" (" attr(href) ")";font-size:11px;color:#555}
 }
 
-/* adaptive-html-final 테마 시스템 (v5.2) — CSS-only 3-테마: 라이트(크림 기본)·화이트(순백)·다크.
-   라디오 #ahf-light/#ahf-white/#ahf-dark(name=ahf-theme) + :has(). 무 JS · 강제선언 0 · 코어 무수정. 마크업 없으면 라이트 기본. */
+/* adaptive-html-final 테마 시스템 (v5.5) — CSS-only 8-테마: 라이트·그레이(쿨 뉴트럴)·스카이블루·세피아·화이트·다크·로즈(웜)·블루(딥네이비). id는 안정성 위해 ahf-light2/ahf-dark2 유지.
+   라디오 #ahf-light/#ahf-light2/#ahf-white/#ahf-dark/#ahf-dark2(name=ahf-theme) + :has(). 무 JS · 강제선언 0 · 코어 무수정. 마크업 없으면 라이트 기본.
+   light2/dark2는 final_20260604 표준에서 승격(확장 테마). 둘은 항상 함께 제공한다. */
 
 /* ===== 화이트(순백) ===== */
 :root:has(#ahf-white:checked){--bg:#ffffff;--card:#ffffff;--line:#e4e4ea;--ink:#16181d;--ink-soft:#43474e;--ink-mute:#6b6f78;--chip-ink:#6b6f78;--dark:#16181d;--dark-soft:#23262d;--code:#1b1e24;--vt-paper:#ffffff;--vt-wash:#ffffff;--vt-soft:#f2f3f6;color-scheme:light}
 
+/* ===== 그레이(쿨 뉴트럴 — gray-blue, label '그레이' / id ahf-light2) ===== */
+:root:has(#ahf-light2:checked){--bg:#f5f6f8;--ink:#16161d;--ink-soft:#2c3140;--ink-mute:#5b6270;--line:#e6e8ec;--card:#ffffff;--accent:#e23b2e;--accent-2:#b72d38;--accent-soft:#fdecea;--chip-ink:#5b6270;--dark:#16161d;--dark-soft:#23262d;--code:#0f1117;--on-accent:#ffffff;--term-bg:#fffbeb;--term-border:#fde68a;--analogy-bg:#fafbfc;--analogy-border:#d9dee7;--danger-bg:#fff1f2;--danger-border:#fecdd3;--good-bg:#f0fdf4;--good-border:#bbf7d0;--vt-paper:#ffffff;--vt-wash:#f5f6f8;--vt-soft:#eef0f3;color-scheme:light}
+
+/* ===== 스카이블루(라이트 배경 + 블루 분위기) ===== */
+:root:has(#ahf-skyblue:checked){--bg:#eef4fb;--ink:#15233a;--ink-soft:#3a4a63;--ink-mute:#647088;--line:#d4e0f0;--card:#ffffff;--accent:#2f6fdb;--accent-2:#1d4fa6;--accent-soft:#e3edfb;--chip-ink:#647088;--on-accent:#ffffff;--dark:#15233a;--dark-soft:#22324a;--code:#0f1b2d;--term-bg:#fff8e6;--term-border:#f3dca0;--analogy-bg:#eaf2fd;--analogy-border:#c2d8f2;--analogy-label-ink:#3f6bb0;--analogy-accent:#2f6fdb;--danger-bg:#fdeef0;--danger-border:#f4c4cb;--good-bg:#eafaf1;--good-border:#bfe6cf;--hl-yellow:#fff1b8;--hl-blue:#d6e6fb;--hl-pink:#fbe0e6;--vt-paper:#ffffff;--vt-wash:#eef4fb;--vt-soft:#e3edf8;--vt-blue:#2f6fdb;color-scheme:light}
+
+/* ===== 세피아(따뜻한 종이빛 리딩 — 장문 가독성·저블루라이트) ===== */
+:root:has(#ahf-sepia:checked){--bg:#f4ecd8;--ink:#3a2f25;--ink-soft:#5c4d3e;--ink-mute:#857260;--line:#e2d6bb;--card:#fbf6e9;--accent:#a85c32;--accent-2:#7e4426;--accent-soft:#f0e2cf;--chip-ink:#857260;--on-accent:#fbf6e9;--dark:#2d2418;--dark-soft:#3a2f23;--code:#2d2418;--term-bg:#f7eed6;--term-border:#e3cf9f;--analogy-bg:#f1ecd9;--analogy-border:#ddcfac;--analogy-label-ink:#7a6233;--analogy-accent:#9a7b3d;--danger-bg:#f7e6df;--danger-border:#e3b9a6;--good-bg:#edf0da;--good-border:#cdd6a8;--good-label-ink:#5f7034;--hl-yellow:#f3e2a8;--hl-blue:#dfe6d2;--hl-pink:#f1ddcf;--vt-paper:#fbf6e9;--vt-wash:#f4ecd8;--vt-soft:#efe6cf;--vt-gold:#a85c32;color-scheme:light}
+
 /* ===== 다크(명시) + 표면 보정 ===== */
 :root:has(#ahf-dark:checked){--bg:#0c0d10;--ink:#ececea;--ink-soft:#c3c3bc;--ink-mute:#9a9a92;--line:#2c2d34;--card:#1a1c22;--accent:#ff6b75;--accent-2:#ff909a;--accent-soft:#3a2228;--link-on-dark:#ffb6c0;--chip-ink:#a8a8a1;--on-accent:#0c0d10;--dark:#000000;--dark-soft:#0c0d10;--code:#070809;--vt-paper:#1a1c22;--vt-wash:#0c0d10;--vt-soft:#23252c;--vt-blue:#7fb0d8;--vt-green:#60ba8b;--vt-gold:#e0b357;--term-bg:#241f13;--term-border:#48402a;--term-ink:#ead9b2;--term-label-ink:#e3bd6a;--term-accent:#d7a657;--analogy-bg:#15212e;--analogy-border:#2e4458;--analogy-ink:#bfd6e8;--analogy-label-ink:#9cc2de;--analogy-accent:#79a8c8;--danger-bg:#291513;--danger-border:#5c2f2a;--danger-ink:#f2c6c0;--danger-label-ink:#ff8c87;--good-bg:#0f2419;--good-border:#244b37;--good-ink:#bfe2cf;--good-label-ink:#80d2a7;--good-accent:#60ba8b;--hl-yellow:#6a5618;--hl-blue:#21405c;--hl-pink:#5a2530;--focus:#5a86ee;color-scheme:dark}
-:root:has(#ahf-dark:checked) .prompt-box{background:var(--card)}
-:root:has(#ahf-dark:checked) code{background:var(--code);color:var(--ink)}
-:root:has(#ahf-dark:checked) th,:root:has(#ahf-dark:checked) .table th{background:var(--line);color:var(--ink)}
-:root:has(#ahf-dark:checked) .status-pill{background:var(--card)}
-:root:has(#ahf-dark:checked) .timeline-card{background:var(--card)}
-:root:has(#ahf-dark:checked) .layout-seo .serp-url{color:var(--good-accent)}
-:root:has(#ahf-dark:checked) .core-insight{background:linear-gradient(135deg,var(--accent-soft),var(--card))}
-:root:has(#ahf-dark:checked) .try .tag,:root:has(#ahf-dark:checked) .try.soft-cta .tag{background:var(--card);border-color:var(--line)}
-:root:has(#ahf-dark:checked) .vt-pill.hot{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink)}
-:root:has(#ahf-dark:checked) .vt-pill.good{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
-:root:has(#ahf-dark:checked) .vt-pill.watch{background:var(--term-bg);border-color:var(--term-border);color:var(--term-label-ink)}
-:root:has(#ahf-dark:checked) .wf-board{--ink:#242421;--ink-soft:#66584c;--ink-mute:#66584c;--vt-ink:#242421;--vt-muted:#66584c;--card:#fffaf4;--line:#ead8c7;--accent-2:#b72d38;--good-label-ink:#1f6f4e;--danger-label-ink:#c62433;--accent:#e63946;--wf-warm:#c2560f;--wf-warm2:#d9742a}
 
-/* ===== 세그먼트 스위처(라디오 3단) ===== */
-.ahf-themebar{position:fixed;top:14px;right:16px;z-index:600;display:inline-flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.18);margin:0}
+/* ===== 로즈(웜 로즈/모브 — desaturated rose, label '로즈' / id ahf-dark2) ===== */
+:root:has(#ahf-dark2:checked){--bg:#0f1014;--ink:#ece8df;--ink-soft:#c8c2b7;--ink-mute:#9d968b;--line:#333640;--card:#191b21;--accent:#c8747c;--accent-2:#d9a0a5;--accent-soft:#2d2024;--link-on-dark:#e6b8bd;--chip-ink:#c8c2b7;--on-accent:#0f1014;--dark:#0b0c10;--dark-soft:#14161b;--code:#0b0c10;--term-bg:#27231c;--term-border:#4b412b;--term-ink:#d8c89e;--term-label-ink:#b8a06f;--term-accent:#b8a06f;--analogy-bg:#18232b;--analogy-border:#2d4251;--analogy-ink:#bfd0db;--analogy-label-ink:#8fa9b8;--analogy-accent:#7f9daf;--danger-bg:#2b1e21;--danger-border:#593238;--danger-ink:#dfb8bd;--danger-label-ink:#d79aa1;--danger-accent:#c8747c;--good-bg:#18251d;--good-border:#324a39;--good-ink:#c5d9cb;--good-label-ink:#8fb59d;--good-accent:#7fa98f;--hl-yellow:#3b331f;--hl-blue:#1d2d39;--hl-pink:#35232a;--focus:#829ce5;--vt-paper:#191b21;--vt-wash:#0f1014;--vt-soft:#252832;--vt-line:#373a44;--vt-ink:#ece8df;--vt-blue:#7fb0d8;--vt-green:#7fa98f;--vt-gold:#b8a06f;color-scheme:dark}
+
+/* ===== 블루(딥 네이비 — dark2 표본 기반, blue accent) ===== */
+:root:has(#ahf-blue:checked){--bg:#0d1320;--ink:#e7edf7;--ink-soft:#bcc7da;--ink-mute:#8a97ad;--line:#273245;--card:#151d2c;--accent:#5b9cf0;--accent-2:#92bdff;--accent-soft:#15263f;--link-on-dark:#a9cbff;--chip-ink:#bcc7da;--on-accent:#0d1320;--dark:#080d16;--dark-soft:#101725;--code:#080d16;--term-bg:#221f12;--term-border:#473f25;--term-ink:#e0d3a6;--term-label-ink:#c9b06f;--term-accent:#c9b06f;--analogy-bg:#12243a;--analogy-border:#27425f;--analogy-ink:#bcd3ea;--analogy-label-ink:#8fb2d6;--analogy-accent:#6f9fcf;--danger-bg:#2a1719;--danger-border:#5a2f33;--danger-ink:#e6bcc0;--danger-label-ink:#e08c92;--danger-accent:#d2727a;--good-bg:#13241c;--good-border:#2c4a39;--good-ink:#c2dccd;--good-label-ink:#86bd9f;--good-accent:#79b394;--hl-yellow:#3a3320;--hl-blue:#16304b;--hl-pink:#352230;--focus:#5b9cf0;--vt-paper:#151d2c;--vt-wash:#0d1320;--vt-soft:#1b2536;--vt-line:#2b3850;--vt-ink:#e7edf7;--vt-blue:#7fb0e8;--vt-green:#79b394;--vt-gold:#c9b06f;color-scheme:dark}
+
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .prompt-box{background:var(--card)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) code{background:var(--code);color:var(--ink)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) th,:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .table th{background:var(--line);color:var(--ink)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .status-pill{background:var(--card)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .timeline-card{background:var(--card)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .layout-seo .serp-url{color:var(--good-accent)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .core-insight{background:linear-gradient(135deg,var(--accent-soft),var(--card))}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .try .tag,:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .try.soft-cta .tag{background:var(--card);border-color:var(--line)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .vt-pill.hot{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger-label-ink)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .vt-pill.good{background:var(--good-bg);border-color:var(--good-border);color:var(--good-label-ink)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .vt-pill.watch{background:var(--term-bg);border-color:var(--term-border);color:var(--term-label-ink)}
+:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .wf-board{--ink:#242421;--ink-soft:#66584c;--ink-mute:#66584c;--vt-ink:#242421;--vt-muted:#66584c;--card:#fffaf4;--line:#ead8c7;--accent-2:#b72d38;--good-label-ink:#1f6f4e;--danger-label-ink:#c62433;--accent:#e63946;--wf-warm:#c2560f;--wf-warm2:#d9742a}
+
+/* ===== 테마 스위처 — 정형화 버튼 그리드(라디오 8: 4열 균일폭 4+4, 라이트·그레이·화이트·다크·로즈·블루·스카이·세피아) ===== */
+.ahf-themebar{position:fixed;top:14px;right:16px;z-index:600;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:276px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:5px;box-shadow:0 3px 10px rgba(0,0,0,.10);margin:0}
 .ahf-themebar input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
-.ahf-themebar label{display:inline-flex;align-items:center;min-height:30px;padding:4px 13px;border-radius:999px;font-size:12px;font-weight:700;color:var(--ink-mute);cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
-.ahf-themebar label:hover{color:var(--ink)}
+.ahf-themebar label{display:flex;align-items:center;justify-content:center;min-height:30px;padding:5px 4px;border-radius:9px;font-size:12px;font-weight:700;color:var(--ink-mute);cursor:pointer;white-space:nowrap;text-align:center;transition:background .15s,color .15s}
+.ahf-themebar label:hover{background:var(--accent-soft);color:var(--ink)}
 .ahf-themebar input:checked + label{background:var(--accent-2);color:var(--on-accent,#fff)}
 .ahf-themebar input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
-@media(max-width:560px){.ahf-themebar{position:static;width:max-content;max-width:calc(100% - 28px);margin:10px auto 16px}}
+@media(max-width:560px){.ahf-themebar{position:static;width:276px;max-width:calc(100% - 28px);margin:10px auto 16px}}
 @media print{.ahf-themebar{display:none}}
+
 </style>
 
+<style>
+/* page-local presentation tweaks (mode page) — 헤더 미세 튜닝(인덱스와 동일). 아이콘 정렬·헤더 폭은 스킬 v5.2.1 기본값 */
+.header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
+.header .kicker::before{width:6px;height:6px}
+.header .sub{text-align:justify;word-break:keep-all}
+/* 헤딩 아이콘 크기 확대 — 참조 사이트(final_20260604 .pattern-head .body-icon=42px)처럼. 2026-06-05 followup-final */
+h2>.body-icon,h3>.body-icon{width:42px;height:42px;border-radius:12px}
+h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
+/* source-note 배경 투명 (08과 동일). 2026-06-05 */
+.source-note{background:transparent}
+:root:has(#ahf-dark:checked) .source-note{background:transparent}
+/* core-insight: 뷰 배경 var(--card) + 인용문 sans/bold (08과 동일). 2026-06-05 */
+.core-insight blockquote{font-family:var(--sans);font-size:17px;line-height:1.58;letter-spacing:-.01em;font-weight:700}
+:root:has(#ahf-dark:checked) .core-insight{background:var(--card)}
+/* vt-frame 내부 박스 평면화 (08과 동일). 2026-06-05 */
+.vt-frame{background:transparent;border:0}
+:root:has(#ahf-dark:checked) .vt-frame{background:transparent}
+/* 모든 플레인 콘텐츠 섹션을 카드 뷰로(다른 섹션과 동일 표면). 2026-06-05 */
+.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}
+</style>
 </head>
 <body>
 <fieldset class="ahf-themebar" aria-label="테마 선택">
   <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">그레이</label>
   <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
   <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark2"><label for="ahf-dark2">로즈</label>
+  <input type="radio" name="ahf-theme" id="ahf-blue"><label for="ahf-blue">블루</label>
+  <input type="radio" name="ahf-theme" id="ahf-skyblue"><label for="ahf-skyblue">스카이</label>
+  <input type="radio" name="ahf-theme" id="ahf-sepia"><label for="ahf-sepia">세피아</label>
 </fieldset>
 <a class="skip" href="#main">본문 바로가기</a>
 <div class="reading-progress" aria-hidden="true"></div>
@@ -1617,7 +1855,7 @@ body{background:var(--vt-wash)}
     <p><strong>서명 검증은 비즈니스 로직보다 먼저 실패해야 한다.</strong> 수신 서버는 raw body를 한 번도 변형하지 않은 상태로 보존하고, 제공자가 문서화한 signing input을 HMAC으로 계산한 뒤 헤더 서명과 constant-time으로 비교한다. 통과한 요청만 timestamp, event id, secret rotation, idempotency 정책을 지나 도메인 핸들러로 들어간다.</p>
   </section>
 
-  <div class="core-insight"><blockquote>“Webhook 서명은 가공하지 않은 raw body로 HMAC을 다시 계산하고, 그 결과를 반드시 constant-time(상수 시간)으로 비교하며, timestamp 허용 윈도우를 함께 강제하라.”</blockquote><p>이 세 가지가 한 묶음이어야 보안이 성립한다. raw body 대신 파싱·재직렬화한 본문을 쓰면 정상 요청까지 서명이 어긋나고, 일반 문자열 비교(<code>==</code>)는 응답 시간 차이로 올바른 서명을 한 바이트씩 추측당할 수 있으며(타이밍 공격), timestamp 윈도우가 없으면 과거의 유효한 요청이 그대로 재전송(replay)된다. 셋 중 하나라도 빠지면 나머지 검증은 우회 가능한 보안으로 전락한다.</p></div>
+  <div class="core-insight core-insight--neutral"><blockquote>“Webhook 서명은 가공하지 않은 raw body로 HMAC을 다시 계산하고, 그 결과를 반드시 constant-time(상수 시간)으로 비교하며, timestamp 허용 윈도우를 함께 강제하라.”</blockquote><p>이 세 가지가 한 묶음이어야 보안이 성립한다. raw body 대신 파싱·재직렬화한 본문을 쓰면 정상 요청까지 서명이 어긋나고, 일반 문자열 비교(<code>==</code>)는 응답 시간 차이로 올바른 서명을 한 바이트씩 추측당할 수 있으며(타이밍 공격), timestamp 윈도우가 없으면 과거의 유효한 요청이 그대로 재전송(replay)된다. 셋 중 하나라도 빠지면 나머지 검증은 우회 가능한 보안으로 전락한다.</p></div>
 
   <section class="vt-shell" aria-label="Webhook 서명 검증 파일 개요">
     <div class="vt-frame">
@@ -1628,16 +1866,7 @@ body{background:var(--vt-wash)}
   <section>
     <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-accent-box" x="8" y="10" width="6" height="6" rx="1.5"/><rect class="bi-soft" x="17" y="10" width="6" height="6" rx="1.5"/><rect class="bi-fill" x="26" y="10" width="6" height="6" rx="1.5"/><path class="bi-line" d="M9 23h22M9 28h17M9 33h12"/></svg></span><span class="no is-key">1</span>빠른 레퍼런스</h2>
     <p class="h2-sub">구현자가 먼저 확인해야 할 입력, 계산식, 저장 정책을 한 화면에 둔다.</p>
-    <!-- template-showcase:start vt-07 card-grid -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · vt-07 card-grid</div>
-      <div class="vt-shell">
-        <div class="vt-frame">
-          <div class="cg-grid"><article class="cg-card"><em>01</em><b>Raw body</b><p>검증 전 parse, trim, pretty-print 금지</p></article><article class="cg-card"><em>02</em><b>Signing input</b><p><code>timestamp + "." + raw_body</code>처럼 제공자별 규칙 고정</p></article><article class="cg-card"><em>03</em><b>Digest</b><p>HMAC-SHA256, hex/base64, prefix를 문서와 일치</p></article><article class="cg-card"><em>04</em><b>Compare</b><p>길이와 값을 constant-time 비교</p></article><article class="cg-card"><em>05</em><b>Timestamp</b><p>기본 5분 내외 window로 지연 요청 거절</p></article><article class="cg-card"><em>06</em><b>Replay</b><p>event id 또는 signature nonce를 TTL 캐시에 기록</p></article><article class="cg-card"><em>07</em><b>Rotation</b><p>현재 secret 우선, 이전 secret은 종료일 포함</p></article><article class="cg-card"><em>08</em><b>Observability</b><p>secret과 payload 원문 없이 request id 중심 로그</p></article></div>
-        </div>
-      </div>
-    </div>
-    <!-- template-showcase:end vt-07 card-grid -->
+    
     <div class="tbl table-scroll">
       <table>
         <caption>Webhook 서명 검증 빠른 규칙</caption>
@@ -1653,18 +1882,30 @@ body{background:var(--vt-wash)}
   </section>
 
   <section>
-    <h2><span class="no">2</span>vt-09 파일 투어</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M11 7h12l6 6v20H11z"/><path class="bi-line" d="M23 7v7h6M16 20h9M16 26h7"/><circle class="bi-accent" cx="15" cy="14" r="2"/></svg></span><span class="no">2</span>vt-09 파일 투어</h2>
     <p class="h2-sub">1순위 vt=file-tour로 검증 경계와 파일 책임을 고정한다.</p>
-    <!-- template-showcase:start vt-09 file-tour -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · vt-09 file-tour</div>
-      <div class="vt-shell">
-        <div class="vt-frame">
-          <div class="ft"><article class="ft-card"><div class="ft-head"><span>webhook.ts</span><span>entry</span></div><div class="ft-body"><p class="vt-text">HTTP 어댑터에서 raw body와 헤더를 검증 모듈로 넘긴다.</p><div class="ft-note"><b>Review note</b><br>프레임워크 body parser가 원문을 바꾸는지 통합 테스트로 확인</div></div></article><article class="ft-card"><div class="ft-head"><span>signature.ts</span><span>crypto</span></div><div class="ft-body"><p class="vt-text">signing input 생성, HMAC 계산, prefix/인코딩 파싱, constant-time 비교를 담당한다.</p><div class="ft-note"><b>Review note</b><br>secret을 문자열 로그, 예외 메시지, span attribute에 남기지 않음</div></div></article><article class="ft-card"><div class="ft-head"><span>replay-cache.ts</span><span>cache</span></div><div class="ft-body"><p class="vt-text">timestamp window와 event id TTL 캐시를 묶어 replay decision을 반환한다.</p><div class="ft-note"><b>Review note</b><br>검증 성공 이벤트만 저장하고 처리 실패와 재시도 정책을 분리</div></div></article><article class="ft-card"><div class="ft-head"><span>test-vectors.spec</span><span>proof</span></div><div class="ft-body"><p class="vt-text">정상 서명, 변조 payload, 만료 timestamp, 이전 secret, 중복 event를 fixture로 검증한다.</p><div class="ft-note"><b>Review note</b><br>테스트 벡터는 secret rotation 때 함께 갱신</div></div></article></div>
-        </div>
-      </div>
+
+    <p>위 파일 개요 카드는 검증 코드를 <strong>네 개의 단일 책임 모듈</strong>로 나눈 형태다. 핵심 설계 원칙은 "신뢰 경계(trust boundary)를 코드 구조로 드러내는 것"이다. 즉 <code>signature.ts</code>를 통과하기 전까지의 모든 입력은 잠재적 공격자가 만든 값으로 취급하고, 통과한 뒤에야 <code>handler.ts</code>에서 비즈니스 의미를 부여한다.</p>
+    <p>모듈을 이렇게 분리하면 테스트도 분리된다. <code>signature.ts</code>는 입력 바이트와 secret만으로 결정되므로 외부 의존성 없이 테스트 벡터로 검증할 수 있고, <code>replay-cache.ts</code>는 시간·중복만 다루므로 가짜 시계(fake clock)와 인메모리 캐시로 단위 테스트가 가능하다. <code>handler.ts</code>는 이미 "검증된 이벤트"만 받는다는 전제 아래 도메인 로직에 집중한다.</p>
+
+    <div class="tbl table-scroll">
+      <table>
+        <caption>vt-09 파일별 책임과 실패 경계</caption>
+        <thead><tr><th>파일</th><th>입력</th><th>책임</th><th>실패 시 반환</th><th>신뢰 수준</th></tr></thead>
+        <tbody>
+          <tr><td><code>webhook.ts</code></td><td>HTTP 요청 객체</td><td>raw body bytes, 헤더, request id 추출. 파싱·인코딩 변환 금지</td><td>400 형식 오류(헤더 자체 누락 시)</td><td>전부 untrusted</td></tr>
+          <tr><td><code>signature.ts</code></td><td>raw body, timestamp, secret 목록</td><td>signing input 구성 → HMAC 계산 → constant-time 비교</td><td>401 <code>invalid_signature</code></td><td>여기서 신뢰 경계 통과</td></tr>
+          <tr><td><code>replay-cache.ts</code></td><td>event id, timestamp, 현재 시각</td><td>window 초과·중복 수신 차단, accepted 기록</td><td>400 <code>stale_request</code> / 200 <code>already_processed</code></td><td>서명은 통과, 신선도 미확인</td></tr>
+          <tr><td><code>handler.ts</code></td><td>검증된 이벤트</td><td>도메인 처리, 멱등 실행, 처리 실패 분리 기록</td><td>500 <code>processing_failed</code>(재시도 유도)</td><td>trusted</td></tr>
+        </tbody>
+      </table>
     </div>
-    <!-- template-showcase:end vt-09 file-tour -->
+
+    <div class="good">
+      <div class="label">설계 원칙</div>
+      <div class="name">검증 경계를 import 방향으로 강제한다</div>
+      <p><code>handler.ts</code>가 <code>webhook.ts</code>의 raw 입력을 직접 import하지 못하게 하면, 검증을 건너뛴 본문이 도메인 로직에 도달하는 실수를 컴파일 단계에서 막을 수 있다. 검증된 이벤트는 별도 타입(예: <code>VerifiedEvent</code>)으로만 핸들러에 전달한다.</p>
+    </div>
   </section>
 
   <section>
@@ -1694,17 +1935,7 @@ body{background:var(--vt-wash)}
   <section>
     <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="no">4</span>vt-10 검증 플로우</h2>
     <p class="h2-sub">후순위 vt=flowchart로 수신부터 핸들러 전달까지의 실패 지점을 순서화한다.</p>
-    <!-- template-showcase:start vt-10 flowchart -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · vt-10 flowchart</div>
-      <div class="vt-shell">
-        <div class="vt-frame">
-          <div class="fc"><div class="fc-node hot"><b>수신</b><p class="vt-text">raw body 보존</p></div><div class="fc-arrow">→</div><div class="fc-node"><b>파싱</b><p class="vt-text">헤더·prefix·timestamp</p></div><div class="fc-arrow">→</div><div class="fc-node hot"><b>HMAC</b><p class="vt-text">expected digest 계산</p></div><div class="fc-arrow">→</div><div class="fc-node"><b>Replay</b><p class="vt-text">window·event id TTL</p></div><div class="fc-arrow">→</div><div class="fc-node"><b>처리</b><p class="vt-text">멱등 핸들러</p></div></div>
-          <p class="vt-text">서명 불일치는 즉시 401로 종료한다. timestamp 만료는 400으로 종료하고, 중복 event id는 이미 처리된 성공으로 응답해 제공자의 재시도 폭주를 막는다.</p>
-        </div>
-      </div>
-    </div>
-    <!-- template-showcase:end vt-10 flowchart -->
+    
     <pre><code>function verifyWebhook(rawBody, headers, secrets) {
   const timestamp = requireHeader(headers, "x-webhook-timestamp");
   const received = parseSignature(requireHeader(headers, "x-webhook-signature"));
@@ -1719,127 +1950,102 @@ body{background:var(--vt-wash)}
   </section>
 
   <section>
-    <h2><span class="no">5</span>wg-04 모듈 맵</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M8 11l8-3 8 3 8-3v21l-8 3-8-3-8 3z"/><path class="bi-line" d="M16 8v21M24 11v21"/><path class="bi-accent-line" d="M12 22c4-6 10 3 16-4"/></svg></span><span class="no">5</span>wg-04 모듈 맵</h2>
     <p class="h2-sub">권장 wg-04를 API 레퍼런스의 구현 경계 맵으로 사용한다.</p>
-    <!-- template-showcase:start wg-04 module-map -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · wg-04 module-map</div>
-      <section class="wg-04" aria-labelledby="ref-wg04-title">
-        <header class="wg-04-head">
-          <p class="wg-04-kicker">SECURITY MODULE MAP</p>
-          <h2 id="ref-wg04-title" class="wg-04-title">Webhook 검증 의존성 맵</h2>
-          <p class="wg-04-lead">붉은 굵은 경로가 요청을 신뢰 가능한 이벤트로 바꾸는 <strong class="wg-04-crit-word">보안 핵심 경로</strong>다. 이 경로에는 business parser, DB write, 외부 API 호출을 넣지 않는다.</p>
-          <ul class="wg-04-legend" aria-label="범례">
-            <li><span class="wg-04-lg wg-04-lg-entry" aria-hidden="true"></span> 진입점</li>
-            <li><span class="wg-04-lg wg-04-lg-core" aria-hidden="true"></span> 검증 코어</li>
-            <li><span class="wg-04-lg wg-04-lg-leaf" aria-hidden="true"></span> 외부/저장소</li>
-            <li><span class="wg-04-lg wg-04-lg-crit" aria-hidden="true"></span> 핵심 경로</li>
-          </ul>
-        </header>
-        <div class="wg-04-diagram">
-          <svg viewBox="0 0 640 360" class="wg-04-svg" role="img" aria-labelledby="ref-wg04-svg-t ref-wg04-svg-d">
-            <title id="ref-wg04-svg-t">Webhook 검증 모듈 의존성 다이어그램</title>
-            <desc id="ref-wg04-svg-d">HTTP entry에서 raw body capture, signature verifier, replay guard를 거쳐 verified event handler로 이어지는 그래프. secret store와 replay cache는 검증 코어의 leaf 의존성이다.</desc>
-            <defs>
-              <marker id="ref-wg04-arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--ink-mute)"></path></marker>
-              <marker id="ref-wg04-arrow-crit" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--accent)"></path></marker>
-            </defs>
-            <g class="wg-04-edges">
-              <path class="wg-04-edge wg-04-edge-crit" d="M120,70 L120,145" marker-end="url(#ref-wg04-arrow-crit)"></path>
-              <path class="wg-04-edge wg-04-edge-crit" d="M120,190 L120,270" marker-end="url(#ref-wg04-arrow-crit)"></path>
-              <path class="wg-04-edge" d="M180,165 L300,165" marker-end="url(#ref-wg04-arrow)"></path>
-              <path class="wg-04-edge" d="M180,175 L470,175" marker-end="url(#ref-wg04-arrow)"></path>
-              <path class="wg-04-edge wg-04-edge-crit" d="M180,290 L300,290" marker-end="url(#ref-wg04-arrow-crit)"></path>
-              <path class="wg-04-edge" d="M365,290 L470,210" marker-end="url(#ref-wg04-arrow)"></path>
-            </g>
-            <g class="wg-04-node wg-04-node-entry">
-              <rect x="55" y="30" width="130" height="40" rx="8"></rect>
-              <text x="120" y="55">http entry</text>
-            </g>
-            <g class="wg-04-node wg-04-node-core wg-04-node-crit">
-              <rect x="55" y="150" width="130" height="40" rx="8"></rect>
-              <text x="120" y="175">raw body</text>
-            </g>
-            <g class="wg-04-node wg-04-node-leaf">
-              <rect x="255" y="145" width="130" height="40" rx="8"></rect>
-              <text x="320" y="170">secret store</text>
-            </g>
-            <g class="wg-04-node wg-04-node-leaf">
-              <rect x="430" y="145" width="130" height="40" rx="8"></rect>
-              <text x="495" y="170">clock source</text>
-            </g>
-            <g class="wg-04-node wg-04-node-core wg-04-node-crit">
-              <rect x="55" y="270" width="130" height="40" rx="8"></rect>
-              <text x="120" y="295">signature</text>
-            </g>
-            <g class="wg-04-node wg-04-node-core wg-04-node-crit">
-              <rect x="255" y="270" width="130" height="40" rx="8"></rect>
-              <text x="320" y="295">replay guard</text>
-            </g>
-            <g class="wg-04-node wg-04-node-leaf">
-              <rect x="430" y="270" width="130" height="40" rx="8"></rect>
-              <text x="495" y="295">event handler</text>
-            </g>
-          </svg>
-        </div>
-        <div class="wg-04-path" role="note">
-          <span class="wg-04-path-label">핵심 경로</span>
-          <span class="wg-04-path-chain"><code>raw body</code> <span aria-hidden="true">→</span> <code>signature</code> <span aria-hidden="true">→</span> <code>replay guard</code></span>
-          <span class="wg-04-path-note">이 경로가 실패하면 핸들러는 호출하지 않는다.</span>
-        </div>
-      </section>
+
+    <p>파일 투어가 "어떤 파일이 무엇을 하는가"라면, 모듈 맵은 "각 책임이 외부 세계와 어떤 계약(interface)으로 연결되는가"를 보여준다. 검증 파이프라인은 아래 다섯 개의 책임 단위로 쪼개 두면 교체·테스트·감사가 모두 쉬워진다. 각 단위는 순수 함수에 가깝게 유지하고, 부수효과(캐시 쓰기, 로깅)는 경계 바깥으로 밀어낸다.</p>
+
+    <div class="card-grid">
+      <article class="mini-card"><h3>1. Extract</h3><p>HTTP 어댑터에서 raw body(bytes), 서명·시간·id 헤더를 꺼낸다. 프레임워크 의존성은 이 단위에만 가둔다. 출력은 순수 데이터 구조.</p></article>
+      <article class="mini-card"><h3>2. Canonicalize</h3><p>제공자 규칙대로 signing input을 만든다. <code>timestamp + "." + body</code>, version prefix 부착 등 차이를 여기서 흡수한다.</p></article>
+      <article class="mini-card"><h3>3. Compute &amp; Compare</h3><p>secret 목록으로 HMAC을 계산하고 constant-time으로 비교한다. rotation을 위해 secret을 배열로 받는 것이 핵심.</p></article>
+      <article class="mini-card"><h3>4. Freshness</h3><p>timestamp window와 event id TTL 캐시로 만료·중복을 거른다. 시계와 캐시를 주입(inject)해 테스트 가능하게.</p></article>
+      <article class="mini-card"><h3>5. Dispatch</h3><p>검증된 이벤트를 멱등 핸들러에 넘긴다. 처리 실패는 검증 실패와 다른 status code 계열로 분리.</p></article>
+      <article class="mini-card"><h3>0. Config</h3><p>secret, 허용 알고리즘, window, TTL, provider 매핑을 한곳에서 주입한다. 환경별(test/prod) 분리는 여기서 보장한다.</p></article>
     </div>
-    <!-- template-showcase:end wg-04 module-map -->
+
+    <div class="tbl table-scroll">
+      <table>
+        <caption>wg-04 모듈별 입출력 계약과 교체 가능성</caption>
+        <thead><tr><th>모듈</th><th>입력 → 출력</th><th>순수성</th><th>교체 사례</th></tr></thead>
+        <tbody>
+          <tr><td>Extract</td><td>HTTP req → <code>{ rawBody, headers, requestId }</code></td><td>I/O 경계(불순)</td><td>Express → Fastify → Lambda</td></tr>
+          <tr><td>Canonicalize</td><td>raw + meta → signing input bytes</td><td>순수</td><td>제공자 A/B 규칙</td></tr>
+          <tr><td>Compute &amp; Compare</td><td>input + secrets → <code>{ ok, secretId }</code></td><td>순수</td><td>SHA256 → SHA512</td></tr>
+          <tr><td>Freshness</td><td>id + ts + now + cache → 신선도 판정</td><td>캐시 부수효과</td><td>인메모리 → Redis</td></tr>
+          <tr><td>Dispatch</td><td>VerifiedEvent → 처리 결과</td><td>도메인 부수효과</td><td>동기 처리 → 큐 적재</td></tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <section>
-    <h2><span class="no">6</span>wg-14 기능 설명</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-accent-box" x="8" y="10" width="6" height="6" rx="1.5"/><rect class="bi-soft" x="17" y="10" width="6" height="6" rx="1.5"/><rect class="bi-fill" x="26" y="10" width="6" height="6" rx="1.5"/><path class="bi-line" d="M9 23h22M9 28h17M9 33h12"/></svg></span><span class="no">6</span>wg-14 기능 설명</h2>
     <p class="h2-sub">권장 wg-14로 검증 기능을 접이식 API 설명으로 만든다.</p>
-    <!-- template-showcase:start wg-14 feature-explainer -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · wg-14 feature-explainer</div>
-      <section class="wg-14" aria-labelledby="ref-wg14-title">
-        <p class="wg-14-kicker">REFERENCE FEATURE</p><h2 id="ref-wg14-title" class="wg-14-h">Webhook 서명 검증 API</h2><p class="wg-14-lead">검증 API는 HTTP raw input을 받아 <code>accepted</code>, <code>rejected</code>, <code>already_processed</code> 중 하나의 결정만 반환한다. 도메인 이벤트 변환은 이 결정 뒤에서만 수행한다.</p>
-        <div class="wg-14-tldr" role="note" aria-label="핵심 요약"><span class="wg-14-tldr-tag">TL;DR</span><p class="wg-14-tldr-body"><strong>검증 함수는 순수하게 유지</strong>한다. 입력은 raw body와 headers, 출력은 status/code/secretId/replayKey뿐이다.</p></div>
-        <div class="wg-14-acc">
-          <details class="wg-14-sec" open><summary class="wg-14-sum"><span class="wg-14-sum-no">01</span> 입력 계약 <span class="wg-14-chev" aria-hidden="true"></span></summary><div class="wg-14-sec-body"><ol class="wg-14-flow"><li><span class="wg-14-flow-n">1</span><code>rawBody: string | Buffer</code></li><li><span class="wg-14-flow-n">2</span><code>headers: SignatureHeaders</code></li><li><span class="wg-14-flow-n">3</span><code>secrets: ActiveSecret[]</code></li><li><span class="wg-14-flow-n">4</span><code>now: Clock</code></li></ol></div></details>
-          <details class="wg-14-sec"><summary class="wg-14-sum"><span class="wg-14-sum-no">02</span> 출력 계약 <span class="wg-14-chev" aria-hidden="true"></span></summary><div class="wg-14-sec-body"><p><code>{ ok: true, eventId, replayKey, secretId }</code> 또는 <code>{ ok: false, status, code }</code>만 반환한다. secret 값과 raw payload는 출력하지 않는다.</p></div></details>
-          <details class="wg-14-sec"><summary class="wg-14-sum"><span class="wg-14-sum-no">03</span> 실패 코드 <span class="wg-14-chev" aria-hidden="true"></span></summary><div class="wg-14-sec-body"><p><code>missing_signature</code>, <code>invalid_signature</code>, <code>stale_request</code>, <code>replay_detected</code>, <code>unsupported_algorithm</code>을 최소 코드로 둔다.</p></div></details>
-        </div>
-      </section>
+
+    <p>검증 모듈을 라이브러리로 제공한다면 호출자가 가장 먼저 묻는 질문은 정해져 있다. "무엇을 넘기고, 무엇을 돌려받으며, 실패는 어떻게 구분하는가"다. 아래는 그 핵심 API를 질의응답 형태로 정리한 것이다.</p>
+
+    <div class="term">
+      <div class="label">핵심 함수</div>
+      <span class="word">verify(rawBody, headers, secrets, options) → Result</span>
+      <p class="meaning"><code>Result</code>는 성공 시 <code>{ ok: true, secretId, eventId }</code>, 실패 시 <code>{ ok: false, status, code }</code>를 돌려준다. 예외(throw)는 입력 자체가 잘못된 프로그래밍 오류에만 쓰고, 검증 실패는 정상 반환값으로 표현한다. 그래야 호출자가 try/catch 없이 분기할 수 있다.</p>
     </div>
-    <!-- template-showcase:end wg-14 feature-explainer -->
+
+    <div class="faq">
+      <div class="label">API 동작</div>
+      <dl>
+        <dt>raw body는 어떤 타입으로 넘겨야 하나?</dt>
+        <dd>반드시 <strong>bytes/Buffer</strong>로 넘긴다. 문자열로 받으면 charset 변환 과정에서 바이트가 바뀔 수 있어 서명이 어긋난다. 프레임워크의 body parser를 끄고 raw 핸들러를 쓰는 것이 전제다.</dd>
+        <dt>secret을 왜 단일 값이 아니라 배열로 받나?</dt>
+        <dd>secret rotation 때문이다. 신규·구버전 secret을 모두 넘기면 어느 하나라도 일치할 때 통과시키되, 어느 secret이 맞았는지(<code>secretId</code>)를 반환해 구버전 사용량을 모니터링하고 종료일에 안전하게 제거할 수 있다.</dd>
+        <dt>options에는 무엇이 들어가나?</dt>
+        <dd>허용 알고리즘, timestamp window(초), 서명 헤더·시간 헤더 이름, 인코딩(hex/base64), event id 추출 경로 등 제공자별 차이를 흡수하는 설정이 들어간다. 기본값은 가장 엄격한 쪽으로 둔다.</dd>
+        <dt>검증과 멱등 처리는 한 함수에서 하나?</dt>
+        <dd>아니다. <code>verify</code>는 서명·신선도 판정까지만 책임지고, event id 중복 차단과 멱등 실행은 호출자(또는 replay-cache 모듈)가 결정한다. 캐시 백엔드 선택을 강제하지 않기 위해서다.</dd>
+        <dt>비동기인가 동기인가?</dt>
+        <dd>HMAC 계산 자체는 동기로 충분하다. 다만 secret을 외부 비밀 저장소에서 가져오거나 replay 캐시를 조회하는 단계는 비동기일 수 있으므로, 이 경계는 <code>verify</code> 바깥에 둔다.</dd>
+      </dl>
+    </div>
   </section>
 
   <section>
-    <h2><span class="no">7</span>wg-19 정책 토글</h2>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><span class="no">7</span>wg-19 정책 토글</h2>
     <p class="h2-sub">권장 wg-19로 운영 정책의 기본 상태와 rotation 예외를 명확히 드러낸다.</p>
-    <!-- template-showcase:start wg-19 feature-flag-editor -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · wg-19 feature-flag-editor</div>
-      <section class="wg-19-editor" aria-label="Webhook 검증 정책 토글">
-        <header class="wg-19-head"><h2 class="wg-19-title">Webhook 검증 정책</h2><p class="wg-19-hint">토글은 CSS-only 상태 표시다. 실제 서버 반영은 배포 설정과 config audit로 관리한다.</p></header>
-        <ul class="wg-19-list"><li class="wg-19-row"><div class="wg-19-info"><span class="wg-19-key">require_signature</span><span class="wg-19-desc">서명 없는 요청을 모든 환경에서 차단</span></div><span class="wg-19-env">prod</span><input class="wg-19-cb" type="checkbox" id="ref-wg19-f1" checked><label class="wg-19-toggle" for="ref-wg19-f1"><span class="wg-19-knob"></span><span class="wg-19-state wg-19-state--on">ON</span><span class="wg-19-state wg-19-state--off">OFF</span></label></li><li class="wg-19-row"><div class="wg-19-info"><span class="wg-19-key">replay_cache</span><span class="wg-19-desc">event id 중복 차단, TTL 10분</span><span class="wg-19-dep" role="note">TTL은 provider retry 정책보다 길게</span></div><span class="wg-19-env">prod</span><input class="wg-19-cb" type="checkbox" id="ref-wg19-f2" checked><label class="wg-19-toggle" for="ref-wg19-f2"><span class="wg-19-knob"></span><span class="wg-19-state wg-19-state--on">ON</span><span class="wg-19-state wg-19-state--off">OFF</span></label></li><li class="wg-19-row"><div class="wg-19-info"><span class="wg-19-key">accept_previous_secret</span><span class="wg-19-desc">rotation 기간 동안 이전 secret 허용</span><span class="wg-19-dep wg-19-dep--warn" role="note">종료일과 owner 필수</span></div><span class="wg-19-env wg-19-env--stg">staging</span><input class="wg-19-cb" type="checkbox" id="ref-wg19-f3"><label class="wg-19-toggle" for="ref-wg19-f3"><span class="wg-19-knob"></span><span class="wg-19-state wg-19-state--on">ON</span><span class="wg-19-state wg-19-state--off">OFF</span></label></li></ul>
-      </section>
+
+    <p>검증 정책은 코드만큼이나 "기본값(default)"이 중요하다. 보안 토글은 <strong>안전한 쪽이 기본 ON</strong>이어야 하고, 느슨하게 푸는 것은 항상 명시적·한시적이어야 한다. 아래 표는 각 토글의 권장 기본 상태와, 예외적으로 풀 때의 종료 조건을 정리한 것이다.</p>
+
+    <div class="tbl table-scroll">
+      <table>
+        <caption>wg-19 검증 정책 토글과 예외 종료 조건</caption>
+        <thead><tr><th>정책 토글</th><th>권장 기본</th><th>예외(완화) 사용 사례</th><th>예외 종료 조건</th></tr></thead>
+        <tbody>
+          <tr><td>서명 검증 필수</td><td>ON</td><td>없음 (절대 끄지 않음)</td><td>해당 없음</td></tr>
+          <tr><td>timestamp window 강제</td><td>ON · 300초</td><td>대량 배치 재전송 마이그레이션</td><td>마이그레이션 종료일 / 작업 종료 즉시</td></tr>
+          <tr><td>event id 중복 차단</td><td>ON</td><td>의도적 재처리(reprocess) 작업</td><td>운영자 승인 + 작업 윈도우</td></tr>
+          <tr><td>이전 secret 허용(rotation)</td><td>OFF</td><td>secret 교체 기간</td><td>rotation 종료일 + owner 지정</td></tr>
+          <tr><td>약한 알고리즘(SHA1) 허용</td><td>OFF</td><td>레거시 제공자 한시 지원</td><td>제공자 업그레이드 완료일</td></tr>
+          <tr><td>검증 실패 상세 로그</td><td>ON(레벨 분리)</td><td>디버그 시 일시 verbose</td><td>secret·서명 원문은 항상 redaction</td></tr>
+        </tbody>
+      </table>
     </div>
-    <!-- template-showcase:end wg-19 feature-flag-editor -->
+
+    <div class="good">
+      <div class="label">권장</div>
+      <div class="name">완화 토글에는 항상 만료와 책임자를 붙인다</div>
+      <p>rotation, 레거시 알고리즘 허용 같은 예외는 feature flag로 만들되 <strong>종료일(expiry)</strong>과 <strong>owner</strong>를 필수 메타데이터로 둔다. 만료가 지나면 자동으로 엄격 모드로 되돌아가게 하면, "임시로 풀어둔 예외"가 영구적인 약점으로 굳는 것을 막는다.</p>
+    </div>
+
+    <div class="danger">
+      <div class="label">Anti-pattern</div>
+      <div class="name">전역 환경변수로 검증을 끄는 스위치</div>
+      <p><code>SKIP_WEBHOOK_VERIFY=true</code> 같은 전역 우회 스위치는 테스트용으로 만들어졌더라도 운영에 새어 들어가는 순간 모든 위조 요청을 통과시킨다. 검증 우회는 명시적 테스트 코드 경로로만 가능하게 하고, 운영 빌드에는 아예 포함하지 않는다.</p>
+    </div>
   </section>
 
   <section>
     <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="26" height="22" rx="4"/><path class="bi-accent-line" d="M16 16l-5 4 5 4M24 16l5 4-5 4"/><path class="bi-line" d="M21 14l-3 12"/></svg></span><span class="no">8</span>wg-20 테스트 벡터</h2>
     <p class="h2-sub">권장 wg-20으로 fixture 입력과 기대 결과를 CSS-only 탭처럼 비교한다.</p>
-    <!-- template-showcase:start wg-20 prompt-tuner -->
-    <div class="summary-card template-showcase">
-      <div class="label">TEMPLATE CHECK · wg-20 prompt-tuner</div>
-      <section class="wg-20-tuner" aria-label="Webhook 검증 테스트 케이스 튜너">
-        <header class="wg-20-head"><h2 class="wg-20-title">서명 검증 테스트 벡터 튜너</h2><p class="wg-20-hint">예시는 <code>HMAC_SHA256(secret, timestamp + "." + raw_body)</code>의 hex digest다. secret은 테스트 전용 값이다.</p></header>
-        <fieldset class="wg-20-samples"><legend class="wg-20-legend">fixture</legend><input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s1" checked><label class="wg-20-chip" for="wg-20-s1">정상 서명</label><input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s2"><label class="wg-20-chip" for="wg-20-s2">중복 event</label><input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s3"><label class="wg-20-chip" for="wg-20-s3">이전 secret</label></fieldset>
-        <div class="wg-20-grid"><div class="wg-20-pane"><div class="wg-20-pane-head">검증 템플릿</div><pre class="wg-20-tpl">input = <span class="wg-20-var">{{timestamp}}</span> + "." + <span class="wg-20-var">{{raw_body}}</span>
-signature = "v1=" + HMAC_SHA256_HEX(<span class="wg-20-var">{{secret}}</span>, input)
-compare(signature, header_signature)</pre></div><div class="wg-20-pane"><div class="wg-20-pane-head">샘플 입력</div><div class="wg-20-input wg-20-input--s1"><span class="wg-20-k">timestamp</span>1700000000<br><span class="wg-20-k">event</span>evt_valid_001<br><span class="wg-20-k">secret</span>whsec_test_1234567890</div><div class="wg-20-input wg-20-input--s2"><span class="wg-20-k">timestamp</span>1700000100<br><span class="wg-20-k">event</span>evt_replay_001<br><span class="wg-20-k">cache</span>already contains event id</div><div class="wg-20-input wg-20-input--s3"><span class="wg-20-k">timestamp</span>1700000200<br><span class="wg-20-k">event</span>evt_rotation_001<br><span class="wg-20-k">secret</span>whsec_previous_0987654321</div></div><div class="wg-20-pane"><div class="wg-20-pane-head">기대 결과</div><div class="wg-20-out wg-20-out--s1">digest b66a20dcd19dcaa9e3b20f16fa04f59772552b37ccaa0ef25fe831fc1dcb8689 · 200 accepted</div><div class="wg-20-out wg-20-out--s2">digest 8a0ae221c821d438e942646e263040fc098daeedf13b6b39878d855c3a288ee0 · 200 already processed</div><div class="wg-20-out wg-20-out--s3">digest f4d4640282faa5000fdc030c31bfcfff83fafe74c159f8be66645c5b9902013f · accepted with previous_secret until rotation deadline</div></div></div>
-      </section>
-    </div>
-    <!-- template-showcase:end wg-20 prompt-tuner -->
+    
     <div class="tbl table-scroll">
       <table>
         <caption>Webhook 서명 검증 테스트 벡터</caption>
@@ -1897,6 +2103,102 @@ compare(signature, header_signature)</pre></div><div class="wg-20-pane"><div cla
       <li>accepted 이벤트 기록은 핸들러 실행 전후의 race를 고려한다.</li>
       <li>테스트 벡터는 CI에서 매번 실행하고 secret rotation PR에 포함한다.</li>
     </ol>
+  </section>
+
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="26" height="22" rx="4"/><path class="bi-accent-line" d="M16 16l-5 4 5 4M24 16l5 4-5 4"/><path class="bi-line" d="M21 14l-3 12"/></svg></span><span class="no">11</span>언어별 검증 코드 예시</h2>
+    <p class="h2-sub">HMAC-SHA256 서명 검증을 Node.js와 Python으로 정리한다. 핵심은 상수시간 비교, 타임스탬프 허용오차, 원문 바이트 그대로 사용 세 가지다.</p>
+    <p>아래 두 예시는 모두 같은 규칙을 따른다. <strong>파싱 전 raw body</strong>를 그대로 서명 입력으로 쓰고, 직접 만든 서명과 헤더 서명을 <strong>상수시간(constant-time)</strong>으로 비교하며, 타임스탬프가 허용오차(여기서는 300초)를 벗어나면 즉시 거부한다.</p>
+    <h3>Node.js (Express, crypto)</h3>
+    <pre><code>const crypto = require("crypto");
+
+// raw body 보존: express.raw({ type: "*/*" }) 등으로
+// 파싱 전 원문 Buffer를 그대로 받아야 한다.
+function verify(rawBody, headers, secret) {
+  const sig = headers["x-signature"];          // hex 인코딩 서명
+  const ts  = Number(headers["x-timestamp"]);  // unix seconds
+
+  // 1) 타임스탬프 허용오차 (재생공격 1차 방어)
+  const now = Math.floor(Date.now() / 1000);
+  if (!ts || Math.abs(now - ts) &gt; 300) return false;  // ±5분
+
+  // 2) signing input = timestamp + "." + raw body (원문 바이트 그대로)
+  const signedPayload = Buffer.concat([
+    Buffer.from(`${ts}.`),
+    rawBody,                                    // 절대 JSON.stringify 재직렬화 금지
+  ]);
+
+  // 3) 서버측 서명 계산
+  const expected = crypto
+    .createHmac("sha256", secret)
+    .update(signedPayload)
+    .digest();                                  // Buffer
+
+  // 4) 상수시간 비교 (길이 다르면 throw → catch에서 false)
+  let received;
+  try { received = Buffer.from(sig, "hex"); } catch { return false; }
+  if (received.length !== expected.length) return false;
+  return crypto.timingSafeEqual(received, expected);
+}</code></pre>
+    <h3>Python (Flask, hmac)</h3>
+    <pre><code>import hmac, hashlib, time
+
+# raw body 보존: Flask는 request.get_data() 로 원문 bytes 를 얻는다.
+def verify(raw_body: bytes, headers, secret: str) -&gt; bool:
+    sig = headers.get("X-Signature", "")        # hex 인코딩 서명
+    ts_raw = headers.get("X-Timestamp", "")
+    if not ts_raw.isdigit():
+        return False
+    ts = int(ts_raw)
+
+    # 1) 타임스탬프 허용오차 (±5분)
+    if abs(int(time.time()) - ts) &gt; 300:
+        return False
+
+    # 2) signing input = "{ts}." + 원문 바이트 그대로
+    signed_payload = f"{ts}.".encode() + raw_body
+
+    # 3) 서버측 서명 계산
+    expected = hmac.new(
+        secret.encode(), signed_payload, hashlib.sha256
+    ).hexdigest()
+
+    # 4) 상수시간 비교 — hmac.compare_digest 사용
+    return hmac.compare_digest(sig, expected)</code></pre>
+    <div class="danger">
+      <div class="label">흔한 구현 실수</div>
+      <div class="name">검증을 통과시키거나 우회시키는 패턴</div>
+      <p>아래 실수는 정상 요청을 401로 떨어뜨리거나, 반대로 위조 요청을 통과시킨다.</p>
+    </div>
+    <ul>
+      <li><strong>재직렬화된 body 사용</strong> — <code>JSON.parse</code> 후 다시 <code>stringify</code>한 문자열로 서명을 계산하면 키 순서, 공백, 유니코드 이스케이프가 달라져 정상 요청도 항상 실패한다. 반드시 raw 바이트를 쓴다.</li>
+      <li><strong>일반 비교(<code>==</code>, <code>===</code>) 사용</strong> — 문자열 비교는 첫 불일치에서 조기 반환되어 타이밍 공격에 노출된다. <code>timingSafeEqual</code> / <code>compare_digest</code>를 쓴다.</li>
+      <li><strong>길이 검사 누락</strong> — <code>timingSafeEqual</code>은 길이가 다르면 throw하므로 try/catch나 사전 길이 비교가 없으면 500이 난다.</li>
+      <li><strong>타임스탬프 미검증</strong> — 서명만 맞으면 통과시키면, 가로챈 과거 요청을 무한 재전송하는 재생공격을 막지 못한다.</li>
+      <li><strong>hex/base64 인코딩 혼동</strong> — 제공자가 base64로 보내는데 hex로 디코딩하면 항상 실패한다. 제공자 문서의 인코딩을 확인한다.</li>
+      <li><strong>secret을 환경별로 분리하지 않음</strong> — 테스트 secret과 운영 secret을 같이 쓰면 로그 유출 시 운영까지 뚫린다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-accent-box" x="8" y="10" width="6" height="6" rx="1.5"/><rect class="bi-soft" x="17" y="10" width="6" height="6" rx="1.5"/><rect class="bi-fill" x="26" y="10" width="6" height="6" rx="1.5"/><path class="bi-line" d="M9 23h22M9 28h17M9 33h12"/></svg></span><span class="no">12</span>빠른 레퍼런스 표</h2>
+    <p class="h2-sub">구현 전 한 번에 확인할 검증 항목을 헤더, 알고리즘, 허용오차, 재생공격 방지, 실패 응답으로 정리했다. 실제 값은 제공자 문서를 기준으로 채운다.</p>
+    <div class="tbl table-scroll">
+      <table>
+        <caption>Webhook 서명 검증 항목별 빠른 레퍼런스</caption>
+        <thead><tr><th>항목</th><th>일반적 값 / 예시</th><th>확인 포인트</th><th>틀렸을 때 증상</th></tr></thead>
+        <tbody>
+          <tr><td>서명 헤더 이름</td><td><code>X-Signature</code>, <code>X-Hub-Signature-256</code> 등</td><td>제공자별로 이름과 prefix(<code>sha256=</code>)가 다름</td><td>헤더 누락으로 항상 거부</td></tr>
+          <tr><td>해시 알고리즘</td><td>HMAC-SHA256</td><td>SHA1/SHA512 여부, base64 vs hex 인코딩</td><td>서명 불일치로 정상 요청 401</td></tr>
+          <tr><td>Signing input</td><td><code>{timestamp}.{raw body}</code></td><td>구분자, timestamp 포함 여부, 원문 바이트 사용</td><td>전 요청 검증 실패</td></tr>
+          <tr><td>타임스탬프 허용오차</td><td>±300초 (5분)</td><td>서버 시계 동기(NTP), 양방향 오차 허용</td><td>지연 요청 또는 재생 통과</td></tr>
+          <tr><td>재생공격 방지</td><td>timestamp window + nonce/event id 캐시</td><td>처리한 event id를 TTL 동안 저장</td><td>중복 결제, 중복 알림</td></tr>
+          <tr><td>비교 방식</td><td>constant-time 비교</td><td><code>timingSafeEqual</code> / <code>compare_digest</code></td><td>타이밍 공격 노출</td></tr>
+          <tr><td>실패 시 응답 코드</td><td><code>401</code>(서명 불일치), <code>400</code>(형식 오류), <code>409</code>(중복)</td><td>provider retry 정책과 일치 여부</td><td>무한 재시도 또는 이벤트 유실</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>응답 코드는 제공자 retry 정책과 맞춰야 한다. 일시 오류가 아닌 검증 실패에 <code>5xx</code>를 반환하면 제공자가 같은 위조 요청을 계속 재전송할 수 있으므로, 영구 거부는 <code>4xx</code>로 응답한다.</p>
   </section>
 
   <section class="try"><div class="label">NEXT ACTION</div><h2>바로 실행할 일</h2><ol><li>현재 프레임워크의 raw body 보존 방식을 확인한다.</li><li>제공자별 signing input을 표로 고정한다.</li><li>위 테스트 벡터를 unit/integration test로 옮긴다.</li><li>replay cache TTL과 secret rotation 종료일을 운영 문서에 적는다.</li></ol></section>

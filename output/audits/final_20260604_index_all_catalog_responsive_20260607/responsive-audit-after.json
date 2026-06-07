@@ -1,0 +1,92 @@
+{
+  "url": "http://localhost:8080/templates/final_20260604/index-all-templates-catalog.html?v=responsive-audit-1780836801120",
+  "results": [
+    {
+      "viewport": "390",
+      "pageInfo": {
+        "vw": 390,
+        "docClient": 390,
+        "docScroll": 390,
+        "bodyScroll": 390,
+        "bodyClient": 390,
+        "title": "전 템플릿 카탈로그 Diff · 레이아웃 보정판"
+      },
+      "offenders": [
+        {
+          "tag": "a",
+          "cls": "skip",
+          "text": "본문 바로가기",
+          "left": -999,
+          "right": -885,
+          "width": 114,
+          "clientWidth": 114,
+          "scrollWidth": 114,
+          "overflowScroll": 0,
+          "horizontalBox": -1275,
+          "sectionIndex": 0,
+          "sectionTitle": "",
+          "sectionClass": "skip"
+        }
+      ],
+      "badSections": []
+    },
+    {
+      "viewport": "768",
+      "pageInfo": {
+        "vw": 768,
+        "docClient": 768,
+        "docScroll": 768,
+        "bodyScroll": 768,
+        "bodyClient": 768,
+        "title": "전 템플릿 카탈로그 Diff · 레이아웃 보정판"
+      },
+      "offenders": [
+        {
+          "tag": "a",
+          "cls": "skip",
+          "text": "본문 바로가기",
+          "left": -999,
+          "right": -885,
+          "width": 114,
+          "clientWidth": 114,
+          "scrollWidth": 114,
+          "overflowScroll": 0,
+          "horizontalBox": -1653,
+          "sectionIndex": 0,
+          "sectionTitle": "",
+          "sectionClass": "skip"
+        }
+      ],
+      "badSections": []
+    },
+    {
+      "viewport": "1280",
+      "pageInfo": {
+        "vw": 1280,
+        "docClient": 1280,
+        "docScroll": 1280,
+        "bodyScroll": 1280,
+        "bodyClient": 1280,
+        "title": "전 템플릿 카탈로그 Diff · 레이아웃 보정판"
+      },
+      "offenders": [
+        {
+          "tag": "a",
+          "cls": "skip",
+          "text": "본문 바로가기",
+          "left": -999,
+          "right": -885,
+          "width": 114,
+          "clientWidth": 114,
+          "scrollWidth": 114,
+          "overflowScroll": 0,
+          "horizontalBox": -2165,
+          "sectionIndex": 0,
+          "sectionTitle": "",
+          "sectionClass": "skip"
+        }
+      ],
+      "badSections": []
+    }
+  ]
+}

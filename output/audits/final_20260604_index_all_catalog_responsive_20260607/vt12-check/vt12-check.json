@@ -1,0 +1,221 @@
+{
+  "url": "http://localhost:8080/templates/final_20260604/index-all-templates-catalog.html?v=vt12-check-1780836507653",
+  "result": [
+    {
+      "viewport": "390",
+      "info": {
+        "title": "vt 12 · incident summary",
+        "boxes": [
+          {
+            "i": 4,
+            "tag": "div",
+            "cls": "inc-head",
+            "text": "영향 결제 승인 지연 18분 원인 재시도 큐 적체 조치 백오프와 알림 조정",
+            "left": 66,
+            "right": 324,
+            "top": 232,
+            "bottom": 540,
+            "w": 258,
+            "h": 308,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgba(0, 0, 0, 0)",
+            "color": "rgb(26, 26, 26)"
+          },
+          {
+            "i": 5,
+            "tag": "div",
+            "cls": "inc-card impact",
+            "text": "영향 결제 승인 지연 18분",
+            "left": 66,
+            "right": 324,
+            "top": 232,
+            "bottom": 328,
+            "w": 258,
+            "h": 96,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgb(255, 255, 255)",
+            "color": "rgb(26, 26, 26)"
+          },
+          {
+            "i": 8,
+            "tag": "div",
+            "cls": "inc-card cause",
+            "text": "원인 재시도 큐 적체",
+            "left": 66,
+            "right": 324,
+            "top": 338,
+            "bottom": 434,
+            "w": 258,
+            "h": 96,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgb(255, 255, 255)",
+            "color": "rgb(26, 26, 26)"
+          },
+          {
+            "i": 11,
+            "tag": "div",
+            "cls": "inc-card action",
+            "text": "조치 백오프와 알림 조정",
+            "left": 66,
+            "right": 324,
+            "top": 444,
+            "bottom": 540,
+            "w": 258,
+            "h": 96,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgb(255, 255, 255)",
+            "color": "rgb(26, 26, 26)"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "768",
+      "info": {
+        "title": "vt 12 · incident summary",
+        "boxes": [
+          {
+            "i": 4,
+            "tag": "div",
+            "cls": "inc-head",
+            "text": "영향 결제 승인 지연 18분 원인 재시도 큐 적체 조치 백오프와 알림 조정",
+            "left": 88,
+            "right": 680,
+            "top": 231,
+            "bottom": 541,
+            "w": 592,
+            "h": 311,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgba(0, 0, 0, 0)",
+            "color": "rgb(26, 26, 26)"
+          },
+          {
+            "i": 5,
+            "tag": "div",
+            "cls": "inc-card impact",
+            "text": "영향 결제 승인 지연 18분",
+            "left": 88,
+            "right": 680,
+            "top": 231,
+            "bottom": 328,
+            "w": 592,
+            "h": 97,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgb(255, 255, 255)",
+            "color": "rgb(26, 26, 26)"
+          },
+          {
+            "i": 8,
+            "tag": "div",
+            "cls": "inc-card cause",
+            "text": "원인 재시도 큐 적체",
+            "left": 88,
+            "right": 680,
+            "top": 338,
+            "bottom": 435,
+            "w": 592,
+            "h": 97,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgb(255, 255, 255)",
+            "color": "rgb(26, 26, 26)"
+          },
+          {
+            "i": 11,
+            "tag": "div",
+            "cls": "inc-card action",
+            "text": "조치 백오프와 알림 조정",
+            "left": 88,
+            "right": 680,
+            "top": 445,
+            "bottom": 541,
+            "w": 592,
+            "h": 97,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgb(255, 255, 255)",
+            "color": "rgb(26, 26, 26)"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "1280",
+      "info": {
+        "title": "vt 12 · incident summary",
+        "boxes": [
+          {
+            "i": 4,
+            "tag": "div",
+            "cls": "inc-head",
+            "text": "영향 결제 승인 지연 18분 원인 재시도 큐 적체 조치 백오프와 알림 조정",
+            "left": 196,
+            "right": 1084,
+            "top": 240,
+            "bottom": 337,
+            "w": 888,
+            "h": 97,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgba(0, 0, 0, 0)",
+            "color": "rgb(26, 26, 26)"
+          },
+          {
+            "i": 5,
+            "tag": "div",
+            "cls": "inc-card impact",
+            "text": "영향 결제 승인 지연 18분",
+            "left": 196,
+            "right": 485,
+            "top": 240,
+            "bottom": 337,
+            "w": 289,
+            "h": 97,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgb(255, 255, 255)",
+            "color": "rgb(26, 26, 26)"
+          },
+          {
+            "i": 8,
+            "tag": "div",
+            "cls": "inc-card cause",
+            "text": "원인 재시도 큐 적체",
+            "left": 495,
+            "right": 785,
+            "top": 240,
+            "bottom": 337,
+            "w": 289,
+            "h": 97,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgb(255, 255, 255)",
+            "color": "rgb(26, 26, 26)"
+          },
+          {
+            "i": 11,
+            "tag": "div",
+            "cls": "inc-card action",
+            "text": "조치 백오프와 알림 조정",
+            "left": 795,
+            "right": 1084,
+            "top": 240,
+            "bottom": 337,
+            "w": 289,
+            "h": 97,
+            "overflow": "visible",
+            "z": "auto",
+            "bg": "rgb(255, 255, 255)",
+            "color": "rgb(26, 26, 26)"
+          }
+        ]
+      }
+    }
+  ]
+}

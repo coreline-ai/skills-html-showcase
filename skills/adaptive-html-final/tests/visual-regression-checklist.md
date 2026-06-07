@@ -14,6 +14,16 @@ python3 scripts/validate_output.py <산출물 디렉터리> --skill-dir <스킬 
 - `--skill-dir`를 주면 CSS asset hash/snapshot, 인라인 CSS hash marker, source manifest version 동기화까지 확인한다.
 - 이 스크립트는 dark CTA 링크 대비(`--link-on-dark`), platform section grid, table caption 누락, blog section counter, SEO SERP literal style 등 아래 v4.3.0~v4.3.3 절의 회귀를 정적으로 막는다. 통과 후 Playwright 390px/1440px 캡쳐로 시각 확인한다.
 
+전문/데모/벤치마크 산출물은 정적 게이트 뒤에 붕어빵 생성 방지 보조 검사를 실행한다.
+
+```
+python3 scripts/quality_contract_check.py <산출물 디렉터리>
+```
+
+- `Generated example`, “전문 예제”, “예제 문서”, “기준 1/2/3”, placeholder/TBD가 남으면 캡쳐 전 재작성한다.
+- `.mini-card`/`.col-list` 반복이 과하면 캡쳐 전 섹션 정보 구조를 다시 설계한다.
+- 이 검사는 품질 냄새를 잡는 보조 게이트이며, 통과해도 브라우저 캡쳐에서 기존 검수 예제보다 낮으면 재작성한다.
+
 - [ ] 배경색이 따뜻한 오프화이트다 — `--bg` = `#f5f5f0`(hex 동등).
 - [ ] h2 앞 번호가 빨간 원형이다 — `.no`/`.num`이 `var(--accent)` 배경, `border-radius:50%`, 약 34x34px 원형 유지.
 - [ ] 본문 폭이 토큰값을 따른다 — `.page` ≤ `--max-reading`(780px), `.page-wide` ≤ `--max-wide`(1020px).
@@ -59,3 +69,10 @@ python3 scripts/validate_output.py <산출물 디렉터리> --skill-dir <스킬 
 - [ ] 모든 `<table>`에 `<caption>`이 보인다(`table_missing_caption` 게이트).
 - [ ] 390px 모바일에서 복잡한 표가 `.mobile-card-table`(`data-label` 기반 행 카드)로 잘리지 않고 보인다.
 - [ ] expert executive summary 4카드가 2×2로 안정 배치되고, case-study timeline이 단일 대형 카드가 아니라 개별 step card로 보인다.
+
+
+## 신규 모드 시각 회귀
+
+- [ ] youtube_analysis: 390px에서 evidence/comment/opportunity grid가 1열로 접힌다.
+- [ ] manual_analysis: role/task/troubleshooting grid가 1열로 접히고 긴 절차 표는 table-scroll 또는 mobile-card-table을 쓴다.
+- [ ] 8테마에서 두 신규 모드의 카드 배경·텍스트 대비가 유지된다.

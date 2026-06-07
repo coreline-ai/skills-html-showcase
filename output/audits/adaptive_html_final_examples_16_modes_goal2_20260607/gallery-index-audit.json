@@ -1,0 +1,26 @@
+{
+  "390": {
+    "title": "Adaptive HTML Final · 16모드 예제 갤러리",
+    "h1": "Adaptive HTML Final · 16모드 예제 갤러리",
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "bodyScrollWidth": 390,
+    "overflowX": false,
+    "links": 16,
+    "themeRadios": 8,
+    "sections": 1,
+    "lastText": "16\n모드별 예제\n01 · beginner_html\n\n패스키(Passkey)로 비밀번호 없이 로그인 이해하기\n\n02 · expert_html\n\n사내 LLM 게이트웨이 도입 타당성 진단 리포트\n\n03 · article_html\n\n사이드 프로젝트가 이력서보다 강한 이유\n\n04 · education_html\n\nGit rebase 안전하게 쓰기 3일 워크숍\n\n05"
+  },
+  "1280": {
+    "title": "Adaptive HTML Final · 16모드 예제 갤러리",
+    "h1": "Adaptive HTML Final · 16모드 예제 갤러리",
+    "clientWidth": 1280,
+    "scrollWidth": 1280,
+    "bodyScrollWidth": 1280,
+    "overflowX": false,
+    "links": 16,
+    "themeRadios": 8,
+    "sections": 1,
+    "lastText": "16\n모드별 예제\n01 · beginner_html\n\n패스키(Passkey)로 비밀번호 없이 로그인 이해하기\n\n02 · expert_html\n\n사내 LLM 게이트웨이 도입 타당성 진단 리포트\n\n03 · article_html\n\n사이드 프로젝트가 이력서보다 강한 이유\n\n04 · education_html\n\nGit rebase 안전하게 쓰기 3일 워크숍\n\n05"
+  }
+}

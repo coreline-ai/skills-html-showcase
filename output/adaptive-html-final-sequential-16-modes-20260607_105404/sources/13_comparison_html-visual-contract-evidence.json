@@ -1,0 +1,184 @@
+{
+  "mode": "13_comparison_html",
+  "generated_at": "2026-06-07T08:34:15.552377+00:00",
+  "page": "output/adaptive-html-final-sequential-16-modes-20260607_105404/pages/13_comparison_internal_search_architecture_matrix.html",
+  "local_link": "http://localhost:8080/output/adaptive-html-final-sequential-16-modes-20260607_105404/pages/13_comparison_internal_search_architecture_matrix.html",
+  "constraints": {
+    "previous_html_reused": false,
+    "common_generator_used": false,
+    "mode_specific_assets_only": true,
+    "skill_version": "5.8.1"
+  },
+  "before_metrics": [
+    {
+      "width": 1280,
+      "title": "Internal Search Architecture Decision Matrix",
+      "h1": 1,
+      "mainClass": "page-wide layout-compare",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "h2": 6,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-01"
+      ],
+      "tables": 1,
+      "codeBlocks": 6,
+      "decisionContext": true,
+      "matrix": true,
+      "winners": true,
+      "tradeoffs": true,
+      "recommendation": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "textChars": 4771
+    },
+    {
+      "width": 390,
+      "title": "Internal Search Architecture Decision Matrix",
+      "h1": 1,
+      "mainClass": "page-wide layout-compare",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "h2": 6,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-01"
+      ],
+      "tables": 1,
+      "codeBlocks": 6,
+      "decisionContext": true,
+      "matrix": true,
+      "winners": true,
+      "tradeoffs": true,
+      "recommendation": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "textChars": 4771
+    }
+  ],
+  "after_metrics": [
+    {
+      "width": 1280,
+      "title": "Internal Search Architecture Decision Matrix",
+      "h1": 1,
+      "mainClass": "page-wide layout-compare",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "directSectionSurfaceCandidate": 4,
+      "h2": 5,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-01"
+      ],
+      "tables": 1,
+      "tablesWithCaption": 1,
+      "codeBlocks": 6,
+      "decisionContext": true,
+      "matrix": true,
+      "winners": true,
+      "tradeoffs": true,
+      "recommendation": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "textChars": 4046,
+      "bodyIconSvgAriaHidden": true,
+      "forbiddenScript": false
+    },
+    {
+      "width": 390,
+      "title": "Internal Search Architecture Decision Matrix",
+      "h1": 1,
+      "mainClass": "page-wide layout-compare",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "directSectionSurfaceCandidate": 4,
+      "h2": 5,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-01"
+      ],
+      "tables": 1,
+      "tablesWithCaption": 1,
+      "codeBlocks": 6,
+      "decisionContext": true,
+      "matrix": true,
+      "winners": true,
+      "tradeoffs": true,
+      "recommendation": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "textChars": 4046,
+      "bodyIconSvgAriaHidden": true,
+      "forbiddenScript": false
+    }
+  ],
+  "screenshots": {
+    "before_1280": "sources/screenshots/mode13-comparison-before-1280.png",
+    "before_390": "sources/screenshots/mode13-comparison-before-390.png",
+    "after_1280": "sources/screenshots/mode13-comparison-after-1280.png",
+    "after_390": "sources/screenshots/mode13-comparison-after-390.png"
+  },
+  "isolated_validation": {
+    "validate_output": "HTML files: 1\nOK",
+    "quality": "OK — quality contract guard passed (1 HTML content file(s))",
+    "ok": true
+  },
+  "full_output_validation_after_mode": {
+    "ok": false,
+    "issue_count": 48,
+    "top_issue_types": [
+      [
+        "direct_section_h2_missing_body_icon",
+        15
+      ],
+      [
+        "inline_css_hash_mismatch",
+        11
+      ],
+      [
+        "inline_core_css_not_verbatim",
+        11
+      ],
+      [
+        "section_surface_css_missing",
+        11
+      ]
+    ],
+    "note": "예상 잔여: 아직 최신 core hash/body-icon/surface 규칙으로 재생성되지 않은 이전 모드와 index가 남아 있음. 13번은 isolated OK."
+  },
+  "manual_visual_review": {
+    "desktop": "1280 캡처에서 Decision Context, Matrix, Winners, Tradeoffs, Recommendation이 비교 문서 구조로 분리되고 vt comparison/decision/risk와 wg-01 접근 비교가 과삽입 없이 배치됨.",
+    "mobile": "390 캡처에서 표는 가로 스크롤 컨테이너 안에 유지되고 문서 전체 overflow는 없음. 카드/위젯은 단일 컬럼으로 접힘.",
+    "text": "가격/성능 수치를 단정하지 않고 운영 복잡도·검색 품질·권한 안전성·팀 역량 기준으로 비교함."
+  },
+  "next_mode": "14_case_study_html"
+}

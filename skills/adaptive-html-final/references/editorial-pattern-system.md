@@ -1,6 +1,6 @@
 # Editorial Pattern System
 
-기존 13개 모드를 늘리지 않고, **필요한 섹션에 선택 삽입하는 작은 본문 구조 패턴 8종**이다. 큰 SVG 시스템이 아니라 본문 흐름에 붙는 카드·타임라인·콜아웃·마크다운 발췌·접근성 체크리스트 중심이며, 외부/동작 JS 0, 스킬 디자인 토큰 + body icon(`bi-`)을 쓴다.
+현행 16개 모드와 별개로 새 모드를 늘리지 않고, **필요한 섹션에 선택 삽입하는 작은 본문 구조 패턴 8종**이다. 큰 SVG 시스템이 아니라 본문 흐름에 붙는 카드·타임라인·콜아웃·마크다운 발췌·접근성 체크리스트 중심이며, 외부/동작 JS 0, 스킬 디자인 토큰 + body icon(`bi-`)을 쓴다.
 
 - **자산**: `assets/editorial-patterns.css`(패턴 CSS) + `assets/editorial-pattern-templates/01..08.html`(삽입 골격) + body icon(`assets/body-icons.css`)
 - **프로파일 무관**: widget/diagram/auto 어디서나 사용(본문 구조 보조). 조건부 인라인(`{{EDITORIAL_PATTERNS_CSS}}` 슬롯).
@@ -9,12 +9,12 @@
 
 | pattern | 이름 | 아이콘 | 추천 모드 |
 |---|---|---|---|
-| `chronology` | 증류 연대기 (timeline) | `timeline` | expert_html · case_study_html · skill_audit · education_html |
-| `source-preserve` | 원문 보존 카드 | `source` | reference_html · article_html · blog_writer · skill_audit |
-| `core-insight` | 핵심 아이디어 callout | `idea` | article_html · blog_writer · expert_html · landing_brief_html |
-| `connection` | 연결 분석 카드 | `connection` | reference_html · skill_audit · article_html · comparison_html |
+| `chronology` | 증류 연대기 (timeline) | `timeline` | expert_html · case_study_html · skill_audit · education_html · github_analysis |
+| `source-preserve` | 원문 보존 카드 | `source` | reference_html · article_html · blog_writer · skill_audit · github_analysis |
+| `core-insight` | 핵심 아이디어 callout | `idea` | article_html · blog_writer · expert_html · landing_brief_html · github_analysis |
+| `connection` | 연결 분석 카드 | `connection` | reference_html · skill_audit · article_html · comparison_html · github_analysis |
 | `before-after` | Before / After 윤문 | `edit` | platform_blog · blog_writer · skill_audit · comparison_html |
-| `md-excerpt` | SKILL.md/마크다운/코드 원문 발췌 | `source` | skill_audit · reference_html · article_html |
+| `md-excerpt` | SKILL.md/마크다운/코드 원문 발췌 | `source` | skill_audit · reference_html · article_html · github_analysis |
 | `impact-grid` | 콘텐츠 전환 impact grid | `impact` | platform_blog · landing_brief_html · seo_dashboard · checklist_playbook |
 | `accessibility-checklist` | 접근성 30분 점검 + 실패 모드 + 릴리스 체크 | `shield` | skill_audit · checklist_playbook · expert_html · reference_html |
 
@@ -60,6 +60,22 @@ SKILL.md·마크다운·코드 원문 발췌는 `.prompt-box`(텍스트 인용)�
 - **`.source-preserve-static`** — `source-preserve`의 **접기 없는 정적 변형**(`<details>` 대신 `<div class="source-preserve source-preserve-static">` + `.source-preserve-title`(div) + `.source-body`, `role="group"`/`aria-labelledby`). 무 JS.
 - **`.core-insight--neutral`** — `core-insight`의 그라데이션 없는 중립 변형. **베어 `.core-insight`를 덮어쓰지 않는다**(opt-in). blockquote는 `var(--sans)`.
 - **before/after 강조** — `.ba-emphasis-line`(강조 문장) + `.ba-bullet`(장식 마커, `aria-hidden="true"`). `.ba-col.after .ba-bullet`는 accent, 기본은 `--ink-mute`(토큰화, warm 리터럴 미사용).
+- **`.toc-map`(템플릿 목차 chip-nav)** — 섹션 목차를 **번호 pill이 한 줄에서 wrap 되는 chip-row**로 보여주는 정본 목차 카드(`final_20260604`의 `imported-toc-*` 데모를 정본 이름으로 승격). 리스트형 `.toc`(components.css)와 별개의 opt-in 컴포넌트로, 항목이 6개 이상이거나 가로로 훑게 하고 싶을 때 쓴다. 번호 배지는 `--accent-soft`/`--accent-2` 토큰으로 8테마 자동 적응. 마크업:
+  ```html
+  <section class="toc-map" aria-labelledby="toc-map-title">
+    <div class="label" id="toc-map-title">템플릿 목차</div>
+    <p>이 페이지에서 확인할 영역을 섹션 순서대로 묶었습니다.</p>
+    <nav class="toc-pills" aria-label="섹션 목차">
+      <a class="toc-pill" href="#p1"><b>1</b>첫 섹션</a>
+      <a class="toc-pill" href="#p2"><b>2</b>둘째 섹션</a>
+    </nav>
+  </section>
+  ```
+  주의: 데모용 `imported-toc-*` 어휘는 `bespoke_namespace_class` denylist에 그대로 남으므로 정식 출력에는 **`toc-map`/`toc-pills`/`toc-pill`** 정본 클래스만 쓴다.
+- **`.col-list`(평면 리스트 자동 다단)** — 짧은 항목(파일명·태그·키워드 등)이 **6개 이상**인 평면 `ul`/`ol`은 세로 1열로 적층하지 말고 `class="col-list"`를 붙여 **다단 그리드(auto-fill, 폭을 꽉 채워 ≈3개+/행)** 로 렌더한다. 가로 공백 낭비와 "빈약한 긴 목록"을 막는 **밀도 판단의 기본값**이다. 마크업: `<ul class="col-list"><li><code>a.md</code></li>…</ul>`.
+  - **자동 판단 규칙(작성자가 매번 손보지 않아도 되게):** 항목이 모두 한 줄(짧은 토큰)이고 개수가 6개 이상이면 `col-list`를 **기본 적용**한다. 항목에 설명 문장이 붙는 리스트(긴 본문)는 일반 리스트를 유지한다. github_analysis의 `references 투어`, 태그 목록, 파일/모듈 인덱스가 대표 사례다.
+- **`.text-bullet-view`(텍스트 전용 뷰 bullet)** — 체크리스트/요약 카드처럼 **텍스트만 있는 뷰가 카드 안에서 밋밋하게 보일 때** `final_20260604` section 7의 작은 써클 bullet 리듬을 정본으로 적용한다. `text-bullet-view`는 레이아웃만 담당하고, 마커는 기존 `.ba-bullet`을 재사용한다. 마크업: `<div class="check-item text-bullet-view"><span class="ba-bullet" aria-hidden="true"></span><span>확인할 문장</span></div>`.
+  - **자동 판단 규칙:** 아이콘/번호/상태칩 없이 문장만 들어 있는 카드형 항목이 3개 이상 반복되면 `text-bullet-view`를 기본 적용한다. 이미 `cf-check`, `body-icon`, 번호 pill, 상태 badge가 있는 뷰에는 중복 장식이므로 적용하지 않는다.
 
 ## 데모 하네스 (pattern-shell) — 생성 출력 아님
 
