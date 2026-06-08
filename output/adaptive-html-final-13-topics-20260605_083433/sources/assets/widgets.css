@@ -2,9 +2,10 @@
 
 /* ===== 01 Three Code Approaches (css-partial) ===== */
 .wg-01{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide);min-width:0;margin:0 auto}
+.mode-template-contract .wg-01,.wg-01-contract+.wg-01,.tpl-item .wg-01{margin-top:var(--space-5)}
 .wg-01-head{margin-bottom:var(--space-5)}
 .wg-01-kicker{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
-.wg-01-title{font-family:var(--serif);font-size:var(--fs-2xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-3)}
+.wg-01-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-3)}
 .wg-01-lead{font-size:var(--fs-base);color:var(--ink-soft);margin:0;line-height:1.7}
 .wg-01-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);max-width:100%;min-width:0}
 .wg-01-card{display:flex;flex-direction:column;min-width:0;max-width:100%;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-4);transition:box-shadow .2s ease,transform .2s ease}
@@ -14,7 +15,7 @@
 .wg-01-card-head>div{min-width:0}
 .wg-01-rank{flex:0 0 auto;display:inline-grid;place-items:center;width:34px;height:34px;border:2px solid var(--ink);border-radius:999px;font-weight:800;font-size:var(--fs-base);line-height:1}
 .wg-01-rank-pick{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
-.wg-01-card-title{font-family:var(--serif);font-size:var(--fs-md);font-weight:700;margin:0;line-height:1.4}
+.wg-01-card-title{font-family:var(--sans);font-size:var(--fs-base);font-weight:700;margin:0;line-height:1.42}
 .wg-01-card-sub{font-size:var(--fs-xs);color:var(--ink-mute);margin:var(--space-1) 0 0}
 .wg-01-pick-badge{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.04em;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:2px 8px;vertical-align:2px;margin-left:var(--space-1)}
 .wg-01-code{background:var(--code);color:#e8e8e3;border-radius:var(--radius-md);padding:var(--space-3);font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs);line-height:1.65;overflow-x:auto;margin:0 0 var(--space-3);max-width:100%;box-sizing:border-box;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}
@@ -80,7 +81,7 @@
 .wg-02-desc{font-size:var(--fs-xs);color:var(--ink-soft);margin:var(--space-1) 0 var(--space-2);line-height:1.6}
 .wg-02-palette{list-style:none;display:flex;gap:6px;margin:0;padding:0}
 .wg-02-palette li{flex:1;height:26px;border-radius:var(--radius-sm);border:1px solid var(--line);display:grid;place-items:center}
-.wg-02-palette li span{font-size:9px;font-weight:700;color:#fff;mix-blend-mode:difference;letter-spacing:.02em}
+.wg-02-palette li span{font-size:10.5px;font-weight:700;line-height:1;color:#1a1a1a;background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.08);border-radius:5px;padding:3px 5px;mix-blend-mode:normal;text-shadow:none;letter-spacing:.02em}
 .wg-02-badge{position:absolute;top:var(--space-3);right:var(--space-4);font-size:10px;font-weight:800;color:var(--on-accent);background:var(--accent);border-radius:999px;padding:2px var(--space-2);opacity:0;transform:scale(.8);transition:opacity .2s ease,transform .2s ease}
 .wg-02-radio:checked+.wg-02-card .wg-02-badge{opacity:1;transform:scale(1)}
 .wg-02-foot{margin:var(--space-5) 0 0;font-size:var(--fs-xs);color:var(--ink-mute);line-height:1.7;border-top:1px solid var(--line);padding-top:var(--space-3)}
@@ -105,20 +106,20 @@
 .wg-03-jump-link.wg-03-sev-warn{background:var(--hl-yellow);border-color:var(--term-border);color:var(--ink)}
 .wg-03-jump-link.wg-03-sev-info{background:var(--hl-blue);border-color:var(--analogy-border);color:var(--analogy-label-ink)}
 .wg-03-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--space-4);align-items:stretch}
-.wg-03-diff{background:var(--code);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs);align-self:stretch}
+.wg-03-diff{background:var(--card);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs);align-self:stretch}
 .wg-03-row{display:flex;align-items:stretch;position:relative;line-height:1.7;border-left:3px solid transparent}
 .wg-03-ln{flex:0 0 auto;width:38px;text-align:right;padding:0 8px;color:var(--ink-mute);user-select:none;background:var(--card)}
 /* reset skill's generic code{} (light bg/padding/border) so the dark diff shows + code stays visible */
 .wg-03-diff code,.wg-03-code{background:none;border:0;border-radius:0;font-size:inherit}
-.wg-03-code{flex:1;padding:0 10px;white-space:pre;overflow-x:auto;color:#e2e2dc}
-.wg-03-ctx .wg-03-code{color:#bcbcb6}
+.wg-03-code{flex:1;padding:0 10px;white-space:pre;overflow-x:auto;color:var(--ink)}
+.wg-03-ctx .wg-03-code{color:var(--ink-soft)}
 .wg-03-add{background:rgba(63,142,108,.18);border-left-color:var(--good-accent)}
-.wg-03-add .wg-03-code{color:#cfeede}
+.wg-03-add .wg-03-code{color:var(--good-label-ink)}
 .wg-03-del{background:rgba(230,57,70,.16);border-left-color:var(--accent)}
-.wg-03-del .wg-03-code{color:#f5cfcf}
+.wg-03-del .wg-03-code{color:var(--danger-label-ink)}
 .wg-03-sign{display:inline-block;width:1ch;font-weight:700}
-.wg-03-add .wg-03-sign{color:#7fe0b0}
-.wg-03-del .wg-03-sign{color:#ff9a9a}
+.wg-03-add .wg-03-sign{color:var(--good-accent)}
+.wg-03-del .wg-03-sign{color:var(--accent)}
 .wg-03-dot{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;text-decoration:none;color:var(--on-accent);font-family:var(--sans)}
 .wg-03-dot.wg-03-sev-critical{background:var(--accent)}
 .wg-03-dot.wg-03-sev-warn{background:var(--term-accent)}
@@ -143,9 +144,10 @@
 
 /* ===== 04 Module Map (css-partial) ===== */
 .wg-04{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide);margin:0 auto}
+.mode-template-contract .wg-04,.wg-04-contract+.wg-04,.tpl-item .wg-04{margin-top:var(--space-5)}
 .wg-04-head{margin-bottom:var(--space-4)}
 .wg-04-kicker{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
-.wg-04-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-2)}
+.wg-04-title{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;line-height:1.38;margin:0 0 var(--space-2)}
 .wg-04-lead{font-size:var(--fs-base);color:var(--ink-soft);line-height:1.7;margin:0 0 var(--space-3)}
 .wg-04-crit-word{color:var(--accent-2)}
 .wg-04-legend{list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-4);margin:0;padding:0;font-size:var(--fs-xs);color:var(--ink-soft)}
@@ -160,12 +162,12 @@
 .wg-04-edge{stroke:var(--ink-mute);stroke-width:1.6;fill:none}
 .wg-04-edge-crit{stroke:var(--accent);stroke-width:3}
 .wg-04-node rect{stroke-width:1.6;transition:transform .18s ease}
-.wg-04-node text{font-family:var(--sans);font-size:14px;font-weight:600;text-anchor:middle;fill:var(--ink)}
+.wg-04-node text{font-family:var(--sans);font-size:12.5px;font-weight:600;text-anchor:middle;fill:var(--ink)}
 .wg-04-node-entry rect{fill:var(--analogy-bg);stroke:var(--analogy-accent)}
 .wg-04-node-core rect{fill:var(--card);stroke:var(--ink)}
 .wg-04-node-leaf rect{fill:var(--bg);stroke:var(--line)}
-.wg-04-node-crit rect{stroke:var(--accent);stroke-width:3}
-.wg-04-node-crit text{fill:var(--accent-2);font-weight:800}
+.wg-04-node-crit rect{stroke:var(--accent);stroke-width:1.6}
+.wg-04-node-crit text{fill:var(--accent-2);font-weight:600}
 .wg-04-node:hover rect{transform:translateY(-2px)}
 .wg-04-path{margin-top:var(--space-4);background:var(--danger-bg);border:1px solid var(--danger-border);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2) var(--space-3)}
 .wg-04-path-label{font-size:var(--fs-xs);font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);border-radius:999px;padding:3px 10px}
@@ -228,7 +230,7 @@
 .wg-06-cap{caption-side:top;text-align:left;font-size:var(--fs-xs);color:var(--ink-mute);padding:0 0 var(--space-3)}
 .wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-cap,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-rowhead,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet th,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-statetag{color:#fff}
 .wg-06-table th{font-size:var(--fs-xs);font-weight:700;color:var(--ink);text-align:center;padding:var(--space-2);border-bottom:2px solid var(--line)}
-.wg-06-rowhead{text-align:left!important;color:var(--ink-soft);white-space:nowrap}
+.wg-06-rowhead{text-align:left!important;color:var(--ink-soft);white-space:nowrap}.wg-06-table th{background:transparent}
 .wg-06-table td{padding:var(--space-3) var(--space-2);border-bottom:1px dashed var(--line);text-align:center;vertical-align:top}
 .wg-06-stack{display:inline-flex;flex-direction:column;align-items:center;gap:var(--space-2)}
 .wg-06-statetag{font-size:11px;color:var(--ink-mute);font-family:ui-monospace,Menlo,monospace}
@@ -598,7 +600,7 @@
 .wg-15-table th,.wg-15-table td{padding:var(--space-3) var(--space-4);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
 .wg-15-table thead th{background:var(--bg);font-weight:700;color:var(--ink);font-size:var(--fs-xs)}
 .wg-15-table thead th:last-child{color:var(--accent-2)}
-.wg-15-table tbody th{font-weight:600;color:var(--ink-soft)}
+.wg-15-table tbody th{font-weight:600;color:var(--ink-soft);background:transparent}
 .wg-15-table tbody tr:last-child td,.wg-15-table tbody tr:last-child th{border-bottom:none}
 .wg-15-good{color:var(--good-label-ink);font-weight:700}
 .wg-15-good::before{content:"\2191 ";font-weight:700}
@@ -838,3 +840,131 @@
 .wg-20-foot{margin-top:var(--space-4);font-size:var(--fs-xs);color:var(--ink-mute);line-height:1.6}
 .wg-20-foot code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--accent-2)}
 @media(max-width:760px){.wg-20-grid{grid-template-columns:1fr}}
+
+/* === 카탈로그 reverse-sync (index_diff visual QA patch) — wg 대비·레이아웃·모바일 보정 ===
+   P1 대비: wg-02 팔레트 라벨 가독성·CTA/뱃지/wg-13/wg-17/wg-01 강조색을 accent-2로, wg-20-var solid.
+   P2 균형: wg-08 proto·wg-09 deck 폭 클램프, wg-05 패딩 클램프·스크롤 마진.
+   모바일(≤560): wg-04 SVG 폭 수용, wg-03 diff 줄바꿈, wg-16 표→카드(헤더 숨김+라벨).
+   source-order로 기존 규칙을 덮으므로 !important 불필요. */
+.wg-02-palette li{min-height:30px}
+.wg-02-pv-cta,.wg-06-btn--primary,.wg-07-pill,.wg-09-next{background:var(--accent-2);color:#fff}
+.wg-20-chip:has(+ input:checked){background:var(--accent-2);color:#fff}
+.wg-02-pv-cta--c{background:#5f88a2;color:#fff}
+.wg-02-badge{font-size:11px;background:var(--accent-2)}
+.wg-13-step{font-size:11px}.wg-13-node--decide .wg-13-step{background:#9b6a20;color:#fff;border-color:#9b6a20}
+.wg-17-h3-no,.wg-01-rank-pick,.wg-01-pick-badge{background:var(--accent-2);color:#fff}
+.wg-20-var{color:#6f4a08;background:#fff3c4;border:1px solid #e0bf73}
+.wg-20-pane{min-height:128px}
+.wg-08-proto{max-width:min(620px,100%)}.wg-08-device{max-width:520px;margin:0 auto}
+.wg-09-deck{max-width:min(760px,100%)}.wg-09-slide{min-height:320px}
+.wg-05-dls{padding:clamp(20px,3vw,36px)}.wg-05-group{scroll-margin-top:18px}
+@media(max-width:560px){
+  .wg-04-diagram{overflow:hidden}.wg-04-svg{min-width:0;width:100%;height:auto}.wg-04-legend{gap:10px 14px}.wg-04-path{align-items:flex-start}.wg-04-path-chain{display:flex;flex-wrap:wrap;gap:6px;line-height:1.8}.wg-04-path-note{line-height:1.65}
+  .wg-03-grid{grid-template-columns:1fr}.wg-03-diff{overflow:visible}.wg-03-row{display:grid;grid-template-columns:34px minmax(0,1fr) 22px;align-items:start;line-height:1.55}.wg-03-ln{width:auto;padding:0 6px}.wg-03-code{white-space:pre-wrap;overflow:visible;overflow-wrap:anywhere;word-break:break-word;padding:0 6px}.wg-03-dot{position:static;transform:none;align-self:center;justify-self:center;margin:2px 0}.wg-03-note-body{overflow-wrap:anywhere}
+  .wg-16-table-wrap .table-scroll{overflow:visible;border:0;border-radius:0;background:transparent}
+  .wg-16-table caption{display:block;width:100%;box-sizing:border-box;caption-side:top;text-align:left;padding:0 0 10px;margin:0 0 8px;color:var(--ink);font-size:13px;font-weight:850;line-height:1.5;white-space:normal}
+  .wg-16-table{display:block;min-width:0;width:100%;border:0;background:transparent;overflow:visible}
+  .wg-16-table thead{display:none}
+  .wg-16-table tbody{display:grid;width:100%;gap:10px}
+  .wg-16-table tr{display:block;width:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:0}
+  .wg-16-table tbody th{display:block;width:auto;box-sizing:border-box;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;padding:12px 14px;background:var(--bg);border-bottom:1px solid var(--line);line-height:1.45}
+  .wg-16-table td{display:grid;width:auto;box-sizing:border-box;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);line-height:1.55}
+  .wg-16-table td:nth-of-type(1)::before{content:"가능성"}.wg-16-table td:nth-of-type(2)::before{content:"영향"}.wg-16-table td:nth-of-type(3)::before{content:"완화책"}
+  .wg-16-table td::before{font-size:11px;font-weight:850;color:var(--ink-mute);letter-spacing:.04em}
+  .wg-16-table td:last-child{border-bottom:0;align-items:start}
+}
+
+/* === 카탈로그 reverse-sync (2026-06-07 responsive pass) — 추가 모바일/태블릿 보정 ===
+   off-canvas/overflow 견고화. wg-09 가로 deck 정체성은 유지(track→grid 변환은 카탈로그 전용),
+   wg-07 애니메이션 제거(animation:none)도 카탈로그 정적 캡쳐 전용이라 미반영 — 대신 모바일 이동폭 축소. */
+/* wg-09 slide deck: 바/도트/스탯/CTA 줄바꿈 + 슬라이드 본문 줄바꿈(내부 가로 overflow 방지) */
+.wg-09-bar{flex-wrap:wrap;align-items:flex-start}
+.wg-09-dots{flex-wrap:wrap;justify-content:flex-end}
+.wg-09-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:var(--space-3)}
+.wg-09-cta-row{flex-wrap:wrap}
+.wg-09-slide{overflow-wrap:anywhere}
+/* wg-08 clickable flow: 디바이스 컨테인(숨김 화면 translate는 기존 자산에서 이미 제거됨) */
+.wg-08-device{overflow:hidden}
+/* wg-15 concept explainer: ring 노드를 링 안쪽으로(−15px 돌출 overflow 제거) */
+.wg-15-na{top:0}.wg-15-nb{right:0}.wg-15-nc{bottom:0}.wg-15-nd{left:0}
+/* wg-16 implementation plan: 플로우 노드 줄바꿈·커넥터 위치·패널 컨테인 */
+.wg-16-panel{overflow:hidden}
+.wg-16-fnode{overflow-wrap:anywhere;word-break:keep-all;padding-right:28px}
+.wg-16-fnode:not(:last-child)::after{right:6px}
+/* wg-16 리스크 테이블 ≤900 카드화 + wg-03 diff ≤900 줄바꿈(태블릿까지 확장) */
+@media(max-width:900px){
+  .wg-03-diff{overflow:visible}.wg-03-row{display:grid;grid-template-columns:34px minmax(0,1fr) 22px;align-items:start;line-height:1.55}.wg-03-code{white-space:pre-wrap;overflow:visible;overflow-wrap:anywhere;word-break:break-word;min-width:0}.wg-03-note-body{overflow-wrap:anywhere}
+  .wg-16-table-wrap .table-scroll{overflow:visible;border:0;border-radius:0;background:transparent}
+  .wg-16-table caption{display:block;width:100%;box-sizing:border-box;caption-side:top;text-align:left;padding:0 0 10px;margin:0 0 8px;color:var(--ink);font-size:13px;font-weight:850;line-height:1.5;white-space:normal}
+  .wg-16-table{display:block;min-width:0;width:100%;border:0;background:transparent;overflow:visible}
+  .wg-16-table thead{display:none}.wg-16-table tbody{display:grid;width:100%;gap:10px}
+  .wg-16-table tr{display:block;width:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:0}
+  .wg-16-table tbody th{display:block;width:auto;box-sizing:border-box;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;padding:12px 14px;background:var(--bg);border-bottom:1px solid var(--line);line-height:1.45}
+  .wg-16-table td{display:grid;width:auto;box-sizing:border-box;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);line-height:1.55}
+  .wg-16-table td:nth-of-type(1)::before{content:"가능성"}.wg-16-table td:nth-of-type(2)::before{content:"영향"}.wg-16-table td:nth-of-type(3)::before{content:"완화책"}
+  .wg-16-table td::before{font-size:11px;font-weight:850;color:var(--ink-mute);letter-spacing:.04em}
+  .wg-16-table td:last-child{border-bottom:0;align-items:start}
+}
+/* wg-06 component variants: 변형 상태 표 ≤760 Variant별 카드 스택 */
+@media(max-width:760px){
+  .wg-06-sheet{overflow:visible;border:0;background:transparent;padding:0}
+  .wg-06-table{display:block;min-width:0;width:100%;border:0;background:transparent}
+  .wg-06-cap{display:block;caption-side:top;text-align:left;padding:0 0 10px;margin:0;color:var(--ink-mute);line-height:1.5;white-space:normal}
+  .wg-06-table thead{display:none}.wg-06-table tbody{display:grid;gap:10px;width:100%}
+  .wg-06-table tr{display:block;width:100%;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+  .wg-06-table th.wg-06-rowhead{display:block;width:100%;box-sizing:border-box;padding:12px 14px;background:var(--bg);border-bottom:1px solid var(--line);white-space:normal}
+  .wg-06-table td{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:center;width:100%;box-sizing:border-box;padding:11px 14px;border:0;border-bottom:1px solid var(--line);text-align:left}
+  .wg-06-table td:last-child{border-bottom:0}
+  .wg-06-table td:nth-of-type(1)::before{content:"Default"}.wg-06-table td:nth-of-type(2)::before{content:"Hover"}.wg-06-table td:nth-of-type(3)::before{content:"Focus"}.wg-06-table td:nth-of-type(4)::before{content:"Disabled"}
+  .wg-06-table td::before{font-size:11px;font-weight:900;color:var(--ink-mute);letter-spacing:.02em}.wg-06-stack{align-items:flex-start}.wg-06-btn{white-space:normal}
+}
+/* wg-07 animation sandbox: 모바일에서 슬라이드/스핀 이동폭 축소(off-canvas overflow 방지) + 트랙 1열 */
+@media(max-width:760px){
+  .wg-07-box--slide{animation-name:wg-07-slide-mobile}.wg-07-box--spin{animation-name:wg-07-spin-mobile}
+  @keyframes wg-07-slide-mobile{from{transform:translateX(-8%)}to{transform:translateX(8%)}}
+  @keyframes wg-07-spin-mobile{from{transform:rotate(-6deg) scale(.96)}to{transform:rotate(18deg) scale(.96)}}
+}
+@media(max-width:560px){
+  .wg-07-track{grid-template-columns:1fr}
+  .wg-08-viewport{height:auto;min-height:360px}
+  .wg-15-ring{transform:scale(.92);transform-origin:center}
+}
+
+/* === 카탈로그 1:1 동기화 (사용자 지시 2026-06-07) — 카탈로그와 자산을 일치시켜 향후 동기화 유지 ===
+   카탈로그 정적 뷰의 두 변경을 자산에도 동일 반영. !important는 린트상 source-order로 대체. */
+/* wg-09: 가로 슬라이드 deck → 반응형 카드 그리드(scroll-snap 제거, 전 슬라이드 펼침) */
+.wg-09-deck{width:100%}
+.wg-09-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));overflow:visible;scroll-snap-type:none;scroll-behavior:auto;gap:var(--space-4)}
+.wg-09-slide{flex:initial;width:100%;min-width:0;min-height:260px;scroll-snap-align:unset;scroll-margin:0;overflow-wrap:anywhere}
+@media(max-width:760px){.wg-09-track{grid-template-columns:1fr}.wg-09-slide{min-height:220px;padding:22px}}
+/* wg-07: 애니메이션 자체 제거(정적) — .wg-07-box가 변형 클래스와 동반되어 source-order로 덮힘 */
+.wg-07-box{animation:none;transform:none}
+
+/* === 카탈로그 reverse-sync (2026-06-07) — wg-14/wg-15 카드 전체 폭 사용 ===
+   1280px에서 내부 본문이 780px(max-reading)에 묶이던 것을 섹션 카드 폭(≈974px)까지 확장.
+   넓은 화면 wg-15 단계 설명 좌우 배치 + 모바일 wg-14 TL;DR/탭 미붕괴 보정. (.tpl-item 프리픽스는 카탈로그 전용이라 제거) */
+.wg-14,.wg-15{width:100%;max-width:100%}
+.wg-14 :is(.wg-14-tldr,.wg-14-acc,.wg-14-tabs,.wg-14-faq),.wg-15 :is(.wg-15-table,.wg-15-steps){width:100%;max-width:100%}
+@media(min-width:980px){.wg-15 .wg-15-stage{grid-template-columns:minmax(220px,280px) minmax(0,1fr)}}
+@media(max-width:560px){.wg-14 .wg-14-tldr{display:grid;grid-template-columns:1fr}.wg-14 .wg-14-tablist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.wg-14 .wg-14-tab{padding-inline:10px;min-width:0;overflow-wrap:anywhere}}
+
+/* === 카탈로그 reverse-sync (2026-06-07) — wg-17 PR writeup 카드 전체 폭 사용 ===
+   1280px 내부 본문 780(max-reading)→974로 확장. head/block/Before·After/files 100% 폭,
+   긴 branch·tag·code 줄바꿈, 모바일 Before/After 1열 + 파일 summary 그리드 보정.
+   ※ 카탈로그 규칙은 .wg-17-bna/files/arrow/file-sum 명을 썼으나 실제 자산은
+     .wg-17-ba/file/ba-arrow/summary/meta — 실제 클래스로 매핑 적용. */
+.wg-17{width:100%;max-width:100%}
+.wg-17 :is(.wg-17-head,.wg-17-block,.wg-17-ba,.wg-17-file){width:100%;max-width:100%;min-width:0}
+.wg-17 :is(.wg-17-chip,.wg-17-ba-tag,.wg-17-title,.wg-17-file-name,.wg-17-summary,.wg-17-file-body,code){overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:760px){
+  .wg-17 .wg-17-ba{grid-template-columns:1fr}
+  .wg-17 .wg-17-ba-arrow{transform:rotate(90deg);justify-self:center}
+  .wg-17 .wg-17-meta{gap:6px;flex-wrap:wrap}
+  .wg-17 .wg-17-summary{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center}
+}
+
+/* === wg-10 svg figure sheet: 모드 정본 데모 섹션(.mode-template-contract) 안에서만 카드 전체 폭 + 상단 간격 ===
+   본문 전체를 넓히면 가독성이 떨어지므로, 추천 위젯이 들어가는 contract 섹션으로만 스코프 한정.
+   wg-10 루트의 margin:0 auto가 section 기본 상단 여백을 덮어쓰므로 contract 구간에서만 복구.
+   (직계 자식 `>` 대신 descendant — 생성기가 위젯을 figure/div로 감싸도 동작하도록.) */
+.mode-template-contract .wg-10-sheet{width:100%;max-width:100%;margin:var(--space-5) auto 0}

@@ -1,18 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>벡터 검색 선택 기준: 전용 Vector DB vs pgvector vs 검색 엔진</title>
-<meta name="description" content="문서 검색과 추천 시스템을 만들 때 어떤 저장소를 고를지 기능, 운영, 비용, 전환 가능성으로 비교한다.">
-<meta property="og:title" content="벡터 검색 선택 기준: 전용 Vector DB vs pgvector vs 검색 엔진">
-<meta property="og:description" content="문서 검색과 추천 시스템을 만들 때 어떤 저장소를 고를지 기능, 운영, 비용, 전환 가능성으로 비교한다.">
-<meta property="og:type" content="article">
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<meta content="문서 검색과 추천 시스템을 만들 때 어떤 저장소를 고를지 기능, 운영, 비용, 전환 가능성으로 비교한다." name="description"/>
+<meta content="벡터 검색 선택 기준: 전용 Vector DB vs pgvector vs 검색 엔진" property="og:title"/>
+<meta content="문서 검색과 추천 시스템을 만들 때 어떤 저장소를 고를지 기능, 운영, 비용, 전환 가능성으로 비교한다." property="og:description"/>
+<meta content="article" property="og:type"/>
+<link href="https://cdn.jsdelivr.net" rel="preconnect"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
-/* adaptive-html-final-core-css-sha256: 7e4e9bd4137c409af3a6cad47eff4c0c9e5b7ce0743ee86a6ab59bef7b2876cb */
+/* adaptive-html-final-core-css-sha256: 0448efba947b0b096f28d7ee16dde7344245d35a2cc702e16f6d69c73631bd50 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -112,7 +113,7 @@ h1{font-family:var(--serif);font-size:clamp(31px,4vw,42px);line-height:1.22;font
 .meta span,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--chip-ink)}
 /* header generated-row + 적용 기준 lens chips (final_20260604, 토큰화 → 다크 자동) */
 .generated-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 0 0;flex-wrap:wrap}
-.generated-date{margin:0;flex:0 0 auto;font-size:13px;color:var(--ink-mute)}
+.generated-date{margin:0;flex:1 1 auto;min-width:0;overflow-wrap:anywhere;font-size:13px;color:var(--ink-mute)}
 .lens-strip{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;margin-left:auto}
 .lens-strip-label{font-size:11px;font-weight:900;letter-spacing:.04em;color:var(--ink-mute);margin-right:2px;line-height:1}
 .lens-chip{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border:1px dashed var(--line);border-radius:8px;background:var(--card);color:var(--chip-ink);font-size:12px;line-height:1;font-weight:700}
@@ -134,6 +135,8 @@ h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;
 h2 .no.is-key,h2 .num.is-key{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;line-height:1.7}
 h3{font-family:var(--serif);font-size:19px;font-weight:800;line-height:1.45;letter-spacing:-.015em;margin:32px 0 12px;color:var(--ink)}
+/* 견고성 전역 안전망: 긴 URL·무공백 토큰 등 어떤 내용이 와도 가로 오버플로로 외형이 깨지지 않게 일반 텍스트 요소에 줄바꿈 강제(테이블 셀은 min-content 영향 피하려 components.css의 break-word 유지). 내용 무관 외형 고정. */
+h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,summary,.sub,.kicker,.meta,.lead{overflow-wrap:anywhere}
 section>h3:first-child,
 article>h3:first-child,
 .box>h3:first-child,
@@ -415,9 +418,10 @@ details p{margin-bottom:0}
 
 /* ===== 01 Three Code Approaches (css-partial) ===== */
 .wg-01{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide);min-width:0;margin:0 auto}
+.mode-template-contract .wg-01,.wg-01-contract+.wg-01,.tpl-item .wg-01{margin-top:var(--space-5)}
 .wg-01-head{margin-bottom:var(--space-5)}
 .wg-01-kicker{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
-.wg-01-title{font-family:var(--serif);font-size:var(--fs-2xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-3)}
+.wg-01-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-3)}
 .wg-01-lead{font-size:var(--fs-base);color:var(--ink-soft);margin:0;line-height:1.7}
 .wg-01-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);max-width:100%;min-width:0}
 .wg-01-card{display:flex;flex-direction:column;min-width:0;max-width:100%;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-4);transition:box-shadow .2s ease,transform .2s ease}
@@ -427,7 +431,7 @@ details p{margin-bottom:0}
 .wg-01-card-head>div{min-width:0}
 .wg-01-rank{flex:0 0 auto;display:inline-grid;place-items:center;width:34px;height:34px;border:2px solid var(--ink);border-radius:999px;font-weight:800;font-size:var(--fs-base);line-height:1}
 .wg-01-rank-pick{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
-.wg-01-card-title{font-family:var(--serif);font-size:var(--fs-md);font-weight:700;margin:0;line-height:1.4}
+.wg-01-card-title{font-family:var(--sans);font-size:var(--fs-base);font-weight:700;margin:0;line-height:1.42}
 .wg-01-card-sub{font-size:var(--fs-xs);color:var(--ink-mute);margin:var(--space-1) 0 0}
 .wg-01-pick-badge{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.04em;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:2px 8px;vertical-align:2px;margin-left:var(--space-1)}
 .wg-01-code{background:var(--code);color:#e8e8e3;border-radius:var(--radius-md);padding:var(--space-3);font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs);line-height:1.65;overflow-x:auto;margin:0 0 var(--space-3);max-width:100%;box-sizing:border-box;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}
@@ -493,7 +497,7 @@ details p{margin-bottom:0}
 .wg-02-desc{font-size:var(--fs-xs);color:var(--ink-soft);margin:var(--space-1) 0 var(--space-2);line-height:1.6}
 .wg-02-palette{list-style:none;display:flex;gap:6px;margin:0;padding:0}
 .wg-02-palette li{flex:1;height:26px;border-radius:var(--radius-sm);border:1px solid var(--line);display:grid;place-items:center}
-.wg-02-palette li span{font-size:9px;font-weight:700;color:#fff;mix-blend-mode:difference;letter-spacing:.02em}
+.wg-02-palette li span{font-size:10.5px;font-weight:700;line-height:1;color:#1a1a1a;background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.08);border-radius:5px;padding:3px 5px;mix-blend-mode:normal;text-shadow:none;letter-spacing:.02em}
 .wg-02-badge{position:absolute;top:var(--space-3);right:var(--space-4);font-size:10px;font-weight:800;color:var(--on-accent);background:var(--accent);border-radius:999px;padding:2px var(--space-2);opacity:0;transform:scale(.8);transition:opacity .2s ease,transform .2s ease}
 .wg-02-radio:checked+.wg-02-card .wg-02-badge{opacity:1;transform:scale(1)}
 .wg-02-foot{margin:var(--space-5) 0 0;font-size:var(--fs-xs);color:var(--ink-mute);line-height:1.7;border-top:1px solid var(--line);padding-top:var(--space-3)}
@@ -518,20 +522,20 @@ details p{margin-bottom:0}
 .wg-03-jump-link.wg-03-sev-warn{background:var(--hl-yellow);border-color:var(--term-border);color:var(--ink)}
 .wg-03-jump-link.wg-03-sev-info{background:var(--hl-blue);border-color:var(--analogy-border);color:var(--analogy-label-ink)}
 .wg-03-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--space-4);align-items:stretch}
-.wg-03-diff{background:var(--code);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs);align-self:stretch}
+.wg-03-diff{background:var(--card);border-radius:var(--radius-md);overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs);align-self:stretch}
 .wg-03-row{display:flex;align-items:stretch;position:relative;line-height:1.7;border-left:3px solid transparent}
 .wg-03-ln{flex:0 0 auto;width:38px;text-align:right;padding:0 8px;color:var(--ink-mute);user-select:none;background:var(--card)}
 /* reset skill's generic code{} (light bg/padding/border) so the dark diff shows + code stays visible */
 .wg-03-diff code,.wg-03-code{background:none;border:0;border-radius:0;font-size:inherit}
-.wg-03-code{flex:1;padding:0 10px;white-space:pre;overflow-x:auto;color:#e2e2dc}
-.wg-03-ctx .wg-03-code{color:#bcbcb6}
+.wg-03-code{flex:1;padding:0 10px;white-space:pre;overflow-x:auto;color:var(--ink)}
+.wg-03-ctx .wg-03-code{color:var(--ink-soft)}
 .wg-03-add{background:rgba(63,142,108,.18);border-left-color:var(--good-accent)}
-.wg-03-add .wg-03-code{color:#cfeede}
+.wg-03-add .wg-03-code{color:var(--good-label-ink)}
 .wg-03-del{background:rgba(230,57,70,.16);border-left-color:var(--accent)}
-.wg-03-del .wg-03-code{color:#f5cfcf}
+.wg-03-del .wg-03-code{color:var(--danger-label-ink)}
 .wg-03-sign{display:inline-block;width:1ch;font-weight:700}
-.wg-03-add .wg-03-sign{color:#7fe0b0}
-.wg-03-del .wg-03-sign{color:#ff9a9a}
+.wg-03-add .wg-03-sign{color:var(--good-accent)}
+.wg-03-del .wg-03-sign{color:var(--accent)}
 .wg-03-dot{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;text-decoration:none;color:var(--on-accent);font-family:var(--sans)}
 .wg-03-dot.wg-03-sev-critical{background:var(--accent)}
 .wg-03-dot.wg-03-sev-warn{background:var(--term-accent)}
@@ -556,9 +560,10 @@ details p{margin-bottom:0}
 
 /* ===== 04 Module Map (css-partial) ===== */
 .wg-04{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide);margin:0 auto}
+.mode-template-contract .wg-04,.wg-04-contract+.wg-04,.tpl-item .wg-04{margin-top:var(--space-5)}
 .wg-04-head{margin-bottom:var(--space-4)}
 .wg-04-kicker{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
-.wg-04-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-2)}
+.wg-04-title{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;line-height:1.38;margin:0 0 var(--space-2)}
 .wg-04-lead{font-size:var(--fs-base);color:var(--ink-soft);line-height:1.7;margin:0 0 var(--space-3)}
 .wg-04-crit-word{color:var(--accent-2)}
 .wg-04-legend{list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-4);margin:0;padding:0;font-size:var(--fs-xs);color:var(--ink-soft)}
@@ -573,12 +578,12 @@ details p{margin-bottom:0}
 .wg-04-edge{stroke:var(--ink-mute);stroke-width:1.6;fill:none}
 .wg-04-edge-crit{stroke:var(--accent);stroke-width:3}
 .wg-04-node rect{stroke-width:1.6;transition:transform .18s ease}
-.wg-04-node text{font-family:var(--sans);font-size:14px;font-weight:600;text-anchor:middle;fill:var(--ink)}
+.wg-04-node text{font-family:var(--sans);font-size:12.5px;font-weight:600;text-anchor:middle;fill:var(--ink)}
 .wg-04-node-entry rect{fill:var(--analogy-bg);stroke:var(--analogy-accent)}
 .wg-04-node-core rect{fill:var(--card);stroke:var(--ink)}
 .wg-04-node-leaf rect{fill:var(--bg);stroke:var(--line)}
-.wg-04-node-crit rect{stroke:var(--accent);stroke-width:3}
-.wg-04-node-crit text{fill:var(--accent-2);font-weight:800}
+.wg-04-node-crit rect{stroke:var(--accent);stroke-width:1.6}
+.wg-04-node-crit text{fill:var(--accent-2);font-weight:600}
 .wg-04-node:hover rect{transform:translateY(-2px)}
 .wg-04-path{margin-top:var(--space-4);background:var(--danger-bg);border:1px solid var(--danger-border);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2) var(--space-3)}
 .wg-04-path-label{font-size:var(--fs-xs);font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);border-radius:999px;padding:3px 10px}
@@ -641,7 +646,7 @@ details p{margin-bottom:0}
 .wg-06-cap{caption-side:top;text-align:left;font-size:var(--fs-xs);color:var(--ink-mute);padding:0 0 var(--space-3)}
 .wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-cap,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-rowhead,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet th,.wg-06-bg-input#wg-06-bg-dark:checked ~ .wg-06-sheet .wg-06-statetag{color:#fff}
 .wg-06-table th{font-size:var(--fs-xs);font-weight:700;color:var(--ink);text-align:center;padding:var(--space-2);border-bottom:2px solid var(--line)}
-.wg-06-rowhead{text-align:left!important;color:var(--ink-soft);white-space:nowrap}
+.wg-06-rowhead{text-align:left!important;color:var(--ink-soft);white-space:nowrap}.wg-06-table th{background:transparent}
 .wg-06-table td{padding:var(--space-3) var(--space-2);border-bottom:1px dashed var(--line);text-align:center;vertical-align:top}
 .wg-06-stack{display:inline-flex;flex-direction:column;align-items:center;gap:var(--space-2)}
 .wg-06-statetag{font-size:11px;color:var(--ink-mute);font-family:ui-monospace,Menlo,monospace}
@@ -1011,7 +1016,7 @@ details p{margin-bottom:0}
 .wg-15-table th,.wg-15-table td{padding:var(--space-3) var(--space-4);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
 .wg-15-table thead th{background:var(--bg);font-weight:700;color:var(--ink);font-size:var(--fs-xs)}
 .wg-15-table thead th:last-child{color:var(--accent-2)}
-.wg-15-table tbody th{font-weight:600;color:var(--ink-soft)}
+.wg-15-table tbody th{font-weight:600;color:var(--ink-soft);background:transparent}
 .wg-15-table tbody tr:last-child td,.wg-15-table tbody tr:last-child th{border-bottom:none}
 .wg-15-good{color:var(--good-label-ink);font-weight:700}
 .wg-15-good::before{content:"\2191 ";font-weight:700}
@@ -1252,6 +1257,134 @@ details p{margin-bottom:0}
 .wg-20-foot code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--accent-2)}
 @media(max-width:760px){.wg-20-grid{grid-template-columns:1fr}}
 
+/* === 카탈로그 reverse-sync (index_diff visual QA patch) — wg 대비·레이아웃·모바일 보정 ===
+   P1 대비: wg-02 팔레트 라벨 가독성·CTA/뱃지/wg-13/wg-17/wg-01 강조색을 accent-2로, wg-20-var solid.
+   P2 균형: wg-08 proto·wg-09 deck 폭 클램프, wg-05 패딩 클램프·스크롤 마진.
+   모바일(≤560): wg-04 SVG 폭 수용, wg-03 diff 줄바꿈, wg-16 표→카드(헤더 숨김+라벨).
+   source-order로 기존 규칙을 덮으므로 !important 불필요. */
+.wg-02-palette li{min-height:30px}
+.wg-02-pv-cta,.wg-06-btn--primary,.wg-07-pill,.wg-09-next{background:var(--accent-2);color:#fff}
+.wg-20-chip:has(+ input:checked){background:var(--accent-2);color:#fff}
+.wg-02-pv-cta--c{background:#5f88a2;color:#fff}
+.wg-02-badge{font-size:11px;background:var(--accent-2)}
+.wg-13-step{font-size:11px}.wg-13-node--decide .wg-13-step{background:#9b6a20;color:#fff;border-color:#9b6a20}
+.wg-17-h3-no,.wg-01-rank-pick,.wg-01-pick-badge{background:var(--accent-2);color:#fff}
+.wg-20-var{color:#6f4a08;background:#fff3c4;border:1px solid #e0bf73}
+.wg-20-pane{min-height:128px}
+.wg-08-proto{max-width:min(620px,100%)}.wg-08-device{max-width:520px;margin:0 auto}
+.wg-09-deck{max-width:min(760px,100%)}.wg-09-slide{min-height:320px}
+.wg-05-dls{padding:clamp(20px,3vw,36px)}.wg-05-group{scroll-margin-top:18px}
+@media(max-width:560px){
+  .wg-04-diagram{overflow:hidden}.wg-04-svg{min-width:0;width:100%;height:auto}.wg-04-legend{gap:10px 14px}.wg-04-path{align-items:flex-start}.wg-04-path-chain{display:flex;flex-wrap:wrap;gap:6px;line-height:1.8}.wg-04-path-note{line-height:1.65}
+  .wg-03-grid{grid-template-columns:1fr}.wg-03-diff{overflow:visible}.wg-03-row{display:grid;grid-template-columns:34px minmax(0,1fr) 22px;align-items:start;line-height:1.55}.wg-03-ln{width:auto;padding:0 6px}.wg-03-code{white-space:pre-wrap;overflow:visible;overflow-wrap:anywhere;word-break:break-word;padding:0 6px}.wg-03-dot{position:static;transform:none;align-self:center;justify-self:center;margin:2px 0}.wg-03-note-body{overflow-wrap:anywhere}
+  .wg-16-table-wrap .table-scroll{overflow:visible;border:0;border-radius:0;background:transparent}
+  .wg-16-table caption{display:block;width:100%;box-sizing:border-box;caption-side:top;text-align:left;padding:0 0 10px;margin:0 0 8px;color:var(--ink);font-size:13px;font-weight:850;line-height:1.5;white-space:normal}
+  .wg-16-table{display:block;min-width:0;width:100%;border:0;background:transparent;overflow:visible}
+  .wg-16-table thead{display:none}
+  .wg-16-table tbody{display:grid;width:100%;gap:10px}
+  .wg-16-table tr{display:block;width:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:0}
+  .wg-16-table tbody th{display:block;width:auto;box-sizing:border-box;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;padding:12px 14px;background:var(--bg);border-bottom:1px solid var(--line);line-height:1.45}
+  .wg-16-table td{display:grid;width:auto;box-sizing:border-box;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);line-height:1.55}
+  .wg-16-table td:nth-of-type(1)::before{content:"가능성"}.wg-16-table td:nth-of-type(2)::before{content:"영향"}.wg-16-table td:nth-of-type(3)::before{content:"완화책"}
+  .wg-16-table td::before{font-size:11px;font-weight:850;color:var(--ink-mute);letter-spacing:.04em}
+  .wg-16-table td:last-child{border-bottom:0;align-items:start}
+}
+
+/* === 카탈로그 reverse-sync (2026-06-07 responsive pass) — 추가 모바일/태블릿 보정 ===
+   off-canvas/overflow 견고화. wg-09 가로 deck 정체성은 유지(track→grid 변환은 카탈로그 전용),
+   wg-07 애니메이션 제거(animation:none)도 카탈로그 정적 캡쳐 전용이라 미반영 — 대신 모바일 이동폭 축소. */
+/* wg-09 slide deck: 바/도트/스탯/CTA 줄바꿈 + 슬라이드 본문 줄바꿈(내부 가로 overflow 방지) */
+.wg-09-bar{flex-wrap:wrap;align-items:flex-start}
+.wg-09-dots{flex-wrap:wrap;justify-content:flex-end}
+.wg-09-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:var(--space-3)}
+.wg-09-cta-row{flex-wrap:wrap}
+.wg-09-slide{overflow-wrap:anywhere}
+/* wg-08 clickable flow: 디바이스 컨테인(숨김 화면 translate는 기존 자산에서 이미 제거됨) */
+.wg-08-device{overflow:hidden}
+/* wg-15 concept explainer: ring 노드를 링 안쪽으로(−15px 돌출 overflow 제거) */
+.wg-15-na{top:0}.wg-15-nb{right:0}.wg-15-nc{bottom:0}.wg-15-nd{left:0}
+/* wg-16 implementation plan: 플로우 노드 줄바꿈·커넥터 위치·패널 컨테인 */
+.wg-16-panel{overflow:hidden}
+.wg-16-fnode{overflow-wrap:anywhere;word-break:keep-all;padding-right:28px}
+.wg-16-fnode:not(:last-child)::after{right:6px}
+/* wg-16 리스크 테이블 ≤900 카드화 + wg-03 diff ≤900 줄바꿈(태블릿까지 확장) */
+@media(max-width:900px){
+  .wg-03-diff{overflow:visible}.wg-03-row{display:grid;grid-template-columns:34px minmax(0,1fr) 22px;align-items:start;line-height:1.55}.wg-03-code{white-space:pre-wrap;overflow:visible;overflow-wrap:anywhere;word-break:break-word;min-width:0}.wg-03-note-body{overflow-wrap:anywhere}
+  .wg-16-table-wrap .table-scroll{overflow:visible;border:0;border-radius:0;background:transparent}
+  .wg-16-table caption{display:block;width:100%;box-sizing:border-box;caption-side:top;text-align:left;padding:0 0 10px;margin:0 0 8px;color:var(--ink);font-size:13px;font-weight:850;line-height:1.5;white-space:normal}
+  .wg-16-table{display:block;min-width:0;width:100%;border:0;background:transparent;overflow:visible}
+  .wg-16-table thead{display:none}.wg-16-table tbody{display:grid;width:100%;gap:10px}
+  .wg-16-table tr{display:block;width:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:0}
+  .wg-16-table tbody th{display:block;width:auto;box-sizing:border-box;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;padding:12px 14px;background:var(--bg);border-bottom:1px solid var(--line);line-height:1.45}
+  .wg-16-table td{display:grid;width:auto;box-sizing:border-box;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);line-height:1.55}
+  .wg-16-table td:nth-of-type(1)::before{content:"가능성"}.wg-16-table td:nth-of-type(2)::before{content:"영향"}.wg-16-table td:nth-of-type(3)::before{content:"완화책"}
+  .wg-16-table td::before{font-size:11px;font-weight:850;color:var(--ink-mute);letter-spacing:.04em}
+  .wg-16-table td:last-child{border-bottom:0;align-items:start}
+}
+/* wg-06 component variants: 변형 상태 표 ≤760 Variant별 카드 스택 */
+@media(max-width:760px){
+  .wg-06-sheet{overflow:visible;border:0;background:transparent;padding:0}
+  .wg-06-table{display:block;min-width:0;width:100%;border:0;background:transparent}
+  .wg-06-cap{display:block;caption-side:top;text-align:left;padding:0 0 10px;margin:0;color:var(--ink-mute);line-height:1.5;white-space:normal}
+  .wg-06-table thead{display:none}.wg-06-table tbody{display:grid;gap:10px;width:100%}
+  .wg-06-table tr{display:block;width:100%;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+  .wg-06-table th.wg-06-rowhead{display:block;width:100%;box-sizing:border-box;padding:12px 14px;background:var(--bg);border-bottom:1px solid var(--line);white-space:normal}
+  .wg-06-table td{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:center;width:100%;box-sizing:border-box;padding:11px 14px;border:0;border-bottom:1px solid var(--line);text-align:left}
+  .wg-06-table td:last-child{border-bottom:0}
+  .wg-06-table td:nth-of-type(1)::before{content:"Default"}.wg-06-table td:nth-of-type(2)::before{content:"Hover"}.wg-06-table td:nth-of-type(3)::before{content:"Focus"}.wg-06-table td:nth-of-type(4)::before{content:"Disabled"}
+  .wg-06-table td::before{font-size:11px;font-weight:900;color:var(--ink-mute);letter-spacing:.02em}.wg-06-stack{align-items:flex-start}.wg-06-btn{white-space:normal}
+}
+/* wg-07 animation sandbox: 모바일에서 슬라이드/스핀 이동폭 축소(off-canvas overflow 방지) + 트랙 1열 */
+@media(max-width:760px){
+  .wg-07-box--slide{animation-name:wg-07-slide-mobile}.wg-07-box--spin{animation-name:wg-07-spin-mobile}
+  @keyframes wg-07-slide-mobile{from{transform:translateX(-8%)}to{transform:translateX(8%)}}
+  @keyframes wg-07-spin-mobile{from{transform:rotate(-6deg) scale(.96)}to{transform:rotate(18deg) scale(.96)}}
+}
+@media(max-width:560px){
+  .wg-07-track{grid-template-columns:1fr}
+  .wg-08-viewport{height:auto;min-height:360px}
+  .wg-15-ring{transform:scale(.92);transform-origin:center}
+}
+
+/* === 카탈로그 1:1 동기화 (사용자 지시 2026-06-07) — 카탈로그와 자산을 일치시켜 향후 동기화 유지 ===
+   카탈로그 정적 뷰의 두 변경을 자산에도 동일 반영. !important는 린트상 source-order로 대체. */
+/* wg-09: 가로 슬라이드 deck → 반응형 카드 그리드(scroll-snap 제거, 전 슬라이드 펼침) */
+.wg-09-deck{width:100%}
+.wg-09-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));overflow:visible;scroll-snap-type:none;scroll-behavior:auto;gap:var(--space-4)}
+.wg-09-slide{flex:initial;width:100%;min-width:0;min-height:260px;scroll-snap-align:unset;scroll-margin:0;overflow-wrap:anywhere}
+@media(max-width:760px){.wg-09-track{grid-template-columns:1fr}.wg-09-slide{min-height:220px;padding:22px}}
+/* wg-07: 애니메이션 자체 제거(정적) — .wg-07-box가 변형 클래스와 동반되어 source-order로 덮힘 */
+.wg-07-box{animation:none;transform:none}
+
+/* === 카탈로그 reverse-sync (2026-06-07) — wg-14/wg-15 카드 전체 폭 사용 ===
+   1280px에서 내부 본문이 780px(max-reading)에 묶이던 것을 섹션 카드 폭(≈974px)까지 확장.
+   넓은 화면 wg-15 단계 설명 좌우 배치 + 모바일 wg-14 TL;DR/탭 미붕괴 보정. (.tpl-item 프리픽스는 카탈로그 전용이라 제거) */
+.wg-14,.wg-15{width:100%;max-width:100%}
+.wg-14 :is(.wg-14-tldr,.wg-14-acc,.wg-14-tabs,.wg-14-faq),.wg-15 :is(.wg-15-table,.wg-15-steps){width:100%;max-width:100%}
+@media(min-width:980px){.wg-15 .wg-15-stage{grid-template-columns:minmax(220px,280px) minmax(0,1fr)}}
+@media(max-width:560px){.wg-14 .wg-14-tldr{display:grid;grid-template-columns:1fr}.wg-14 .wg-14-tablist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.wg-14 .wg-14-tab{padding-inline:10px;min-width:0;overflow-wrap:anywhere}}
+
+/* === 카탈로그 reverse-sync (2026-06-07) — wg-17 PR writeup 카드 전체 폭 사용 ===
+   1280px 내부 본문 780(max-reading)→974로 확장. head/block/Before·After/files 100% 폭,
+   긴 branch·tag·code 줄바꿈, 모바일 Before/After 1열 + 파일 summary 그리드 보정.
+   ※ 카탈로그 규칙은 .wg-17-bna/files/arrow/file-sum 명을 썼으나 실제 자산은
+     .wg-17-ba/file/ba-arrow/summary/meta — 실제 클래스로 매핑 적용. */
+.wg-17{width:100%;max-width:100%}
+.wg-17 :is(.wg-17-head,.wg-17-block,.wg-17-ba,.wg-17-file){width:100%;max-width:100%;min-width:0}
+.wg-17 :is(.wg-17-chip,.wg-17-ba-tag,.wg-17-title,.wg-17-file-name,.wg-17-summary,.wg-17-file-body,code){overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:760px){
+  .wg-17 .wg-17-ba{grid-template-columns:1fr}
+  .wg-17 .wg-17-ba-arrow{transform:rotate(90deg);justify-self:center}
+  .wg-17 .wg-17-meta{gap:6px;flex-wrap:wrap}
+  .wg-17 .wg-17-summary{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center}
+}
+
+/* === wg-10 svg figure sheet: 모드 정본 데모 섹션(.mode-template-contract) 안에서만 카드 전체 폭 + 상단 간격 ===
+   본문 전체를 넓히면 가독성이 떨어지므로, 추천 위젯이 들어가는 contract 섹션으로만 스코프 한정.
+   wg-10 루트의 margin:0 auto가 section 기본 상단 여백을 덮어쓰므로 contract 구간에서만 복구.
+   (직계 자식 `>` 대신 descendant — 생성기가 위젯을 figure/div로 감싸도 동작하도록.) */
+.mode-template-contract .wg-10-sheet{width:100%;max-width:100%;margin:var(--space-5) auto 0}
+
 /* SVG-to-HTML view template system — native, in-flow, harmonized with adaptive-html-final */
 :root{--vt-paper:#fff;--vt-wash:#faf9f5;--vt-soft:#f0eee6;--vt-line:var(--line);--vt-ink:var(--ink);--vt-muted:var(--ink-mute);--vt-red:var(--accent);--vt-red2:var(--accent-2);--vt-blue:#3a6280;--vt-green:#2a7d5a;--vt-gold:#d99a38;--vt-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
 body{background:var(--vt-wash)}
@@ -1261,14 +1394,14 @@ body{background:var(--vt-wash)}
 /* 03 risk matrix */.rm-grid{display:grid;grid-template-columns:90px repeat(3,1fr);gap:8px}.rm-cell{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:72px}.rm-head{background:var(--vt-soft);font-weight:800;text-align:center}.rm-risk{border-left:4px solid var(--c);font-size:13px}.rm-risk.high{--c:var(--vt-red)}.rm-risk.med{--c:var(--vt-gold)}.rm-risk.low{--c:var(--vt-green)}
 /* 04 timeline */.tl{position:relative;display:grid;gap:12px;padding-left:28px}.tl:before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:3px;background:var(--vt-red);border-radius:99px}.tl-item{position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}.tl-item:before{content:"";position:absolute;left:-24px;top:16px;width:14px;height:14px;border-radius:99px;background:var(--vt-red)}
 /* 05 checklist */.cf{display:grid;gap:10px}.cf-item{display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.cf-check{width:24px;height:24px;border-radius:7px;background:var(--vt-green);color:var(--on-accent);display:grid;place-items:center;font-weight:900}.cf-state{font-family:var(--vt-mono);font-size:11px;color:var(--ink-mute)}
-/* 06 quality gate */.qg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.qg-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--vt-green);border-radius:12px;padding:12px}.qg-card.warn{border-left-color:var(--vt-gold)}.qg-card.block{border-left-color:var(--vt-red)}.qg-final{margin-top:10px;background:var(--accent-soft);color:var(--ink);border:1px solid var(--accent-2);border-radius:13px;padding:15px;font-weight:900}
+/* 06 quality gate */.qg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.qg-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--vt-green);border-radius:12px;padding:12px}.qg-card.warn{border-left-color:var(--vt-gold)}.qg-card.block{border-left-color:var(--vt-red)}.qg-final{margin-top:10px;background:var(--accent-soft);color:var(--ink);border:1px solid var(--accent-2);border-radius:13px;padding:15px;font-weight:400;line-height:1.6;font-size:13px}.qg-final-label{display:block;color:var(--accent-2);font-weight:800;font-size:12px;letter-spacing:.06em;margin-bottom:5px}
 /* 07 card grid */.cg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.cg-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.cg-card em{font-style:normal;font-family:var(--vt-mono);font-size:11px;color:var(--vt-red2);font-weight:900}.cg-card b{display:block;margin:5px 0}.cg-card p{font-size:12.5px;margin:0;color:var(--ink-soft)}
 /* 08 raci */.raci{display:grid;grid-template-columns:1.2fr repeat(4,.7fr);gap:6px}.raci div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px;font-size:13px;text-align:center}.raci .h{background:var(--vt-soft);font-weight:900}.raci .task{text-align:left;font-weight:800}.raci .r{background:var(--danger-bg);color:var(--danger-label-ink);font-weight:900}.raci .a{background:var(--good-bg);color:var(--good-label-ink);font-weight:900}
 /* 09 file tour */.ft{display:grid;gap:10px}.ft-card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}.ft-head{background:var(--vt-soft);padding:10px 12px;font-family:var(--vt-mono);font-size:12px;display:flex;justify-content:space-between}.ft-body{padding:12px}.ft-note{border-left:3px solid var(--vt-red);background:var(--accent-soft);border-radius:8px;padding:10px;font-size:13px}
 /* 10 flowchart */.fc{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:center}.fc-node{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.fc-node.hot{border-color:var(--vt-red);box-shadow:inset 0 3px 0 var(--vt-red)}.fc-arrow{text-align:center;font-weight:900;color:var(--ink-mute)}
 /* 11 weekly */.wk-bars{display:grid;gap:10px}.wk-row{display:grid;grid-template-columns:130px 1fr 44px;gap:10px;align-items:center}.wk-bar{height:12px;background:var(--vt-soft);border-radius:99px;overflow:hidden}.wk-fill{height:100%;background:var(--vt-red);border-radius:99px}.wk-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.wk-col{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
 /* 12 incident */.inc-head{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.inc-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.inc-card.impact{border-top:4px solid var(--vt-red)}.inc-card.cause{border-top:4px solid var(--vt-gold)}.inc-card.action{border-top:4px solid var(--vt-green)}
-/* 13 comparison */.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cmp-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}.cmp-card.pick{border:2px solid var(--vt-red)}.cmp-card ul{font-size:13px;margin:8px 0 0 18px}
+/* 13 comparison */.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cmp-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.cmp-card .vt-kicker{font-size:14px;line-height:1;margin-bottom:4px}.cmp-card h3{margin:2px 0 0;font-size:16px;line-height:1.35}.cmp-card.pick{border:2px solid var(--vt-red)}.cmp-card ul{font-size:12.8px;line-height:1.45;margin:6px 0 0 16px}.mode-template-contract .vt-shell{background:transparent;border:0;padding:0;margin:18px 0}
 /* 14 swimlane */.swim{display:grid;gap:8px}.lane{display:grid;grid-template-columns:110px repeat(4,1fr);gap:8px}.lane-label{font-weight:900;color:var(--vt-red2);padding:10px}.lane-step{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px}.lane-step.blank{opacity:.22}
 /* 15 concept */.concept-ring{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px}.concept-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.concept-step{border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.concept-step b{display:block;color:var(--vt-red)}
 /* 16 plan */.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.milestone{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.milestone b{display:block}.plan-risk{border-left:4px solid var(--vt-gold)}
@@ -1283,6 +1416,33 @@ body{background:var(--vt-wash)}
 @media(max-width:520px){.wf-metrics{grid-template-columns:1fr}.wf-pipes{display:none}.wf-rail-long{display:none}.wf-arrow{width:96px}}
 /* === 완성본 표준 승격 v5.3.1 — vt-frame 내부 박스 평면화 === */
 .vt-frame{background:transparent;border:0}
+/* RACI mobile fit: 390px 캡쳐에서 오른쪽 I 열이 잘려 보이지 않도록 5열을 축소해 안쪽에 맞춘다. */
+@media(max-width:560px){.raci{grid-template-columns:48px repeat(4,minmax(42px,1fr));gap:4px;overflow:visible}.raci div{padding:7px 5px;font-size:11.5px;line-height:1.35;overflow-wrap:anywhere;word-break:keep-all}.raci .task{text-align:center}}
+
+/* === 카탈로그 reverse-sync (index_diff visual QA patch) — vt 모바일·대비 보정 ===
+   vt-03 risk matrix: 모바일에서 가로스크롤 대신 1열 스택. vt-19 feature-flag: 컨트롤 풀폭.
+   vt-21 soft-workflow-map: 좁은 폭에서 카드/뱃지 축소·단일열. wf-icon/flag-state.warn 대비 강화.
+   source-order로 기존 규칙을 덮으므로 !important 불필요. */
+.wf-icon{color:#c2560f}
+.flag-state.warn{color:#8a5e10}
+@media(max-width:560px){
+  .rm-grid{grid-template-columns:1fr;overflow:visible}.rm-cell{min-height:0;text-align:left}.rm-head{font-size:12.5px;background:var(--vt-soft)}
+  .flag{grid-template-columns:1fr;align-items:flex-start}.flag-ctl{width:100%;justify-content:space-between}.flag-state{font-size:12px}.switch{flex:0 0 auto}
+  .wf-board{padding:20px 18px;overflow:hidden}.wf-top{flex-wrap:wrap}.wf-newbadge{font-size:16px;padding:8px 18px}.wf-aibadge{width:48px;height:48px;font-size:23px}.wf-bag{width:44px;height:44px}.wf-map{grid-template-columns:1fr}.wf-center{box-shadow:0 18px 36px rgba(172,124,83,.14)}.wf-bottom{height:auto;min-height:48px}.wf-rail-long{max-width:38%;width:120px}.wf-arrow{width:96px}
+}
+
+/* === 카탈로그 reverse-sync (2026-06-07) — vt-02 decision-tree 화살표 pseudo overflow 보정 ===
+   ≤920 좁은 폭에서 .dt-arrow:after가 우측으로 미세하게 삐져나오던 것을 안쪽(right:0)으로 정렬. */
+@media(max-width:920px){.dt-arrow:after{right:auto;left:50%;transform:translateX(-50%)}}
+
+/* === 카탈로그 reverse-sync (2026-06-07) — vt-12 incident-summary 타임라인 스텝 번호 ===
+   기본 ol marker 제거 → counter-reset/increment로 1·2·3 명시 숫자 생성 →
+   빨간 원(.tl-item:before) 안에 숫자 표시 → 390px에서도 선/숫자/카드 미겹침. */
+.tl{list-style:none;counter-reset:tl-step;padding-left:42px;margin-left:0}
+.tl:before{left:15px}
+.tl-item{counter-increment:tl-step}
+.tl-item:before{content:counter(tl-step);left:-38px;top:13px;width:24px;height:24px;display:grid;place-items:center;border-radius:999px;background:var(--vt-red);color:var(--on-accent);font-size:12px;font-weight:900;line-height:1;box-shadow:0 0 0 4px var(--vt-wash);z-index:1}
+@media(max-width:560px){.tl{padding-left:38px}.tl:before{left:13px}.tl-item:before{left:-35px}}
 
 /* adaptive-html-final body icons — compact editorial inline SVG, namespaced bi-, uses skill tokens. 외부/동작 JS 0. */
 .body-icon{width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(245,245,240,.72));display:inline-grid;place-items:center;flex:0 0 auto;vertical-align:middle}
@@ -1340,6 +1500,9 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 /* core-insight--neutral — 그라데이션 없는 중립 callout 변형(opt-in). 베어 .core-insight를 덮어쓰지 않는다(전 모드 회귀 방지). */
 .core-insight--neutral{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
 .core-insight--neutral blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.025em;line-height:1.42}
+/* core-insight--plain-text — 사고 원인/판단 문장을 hero quote가 아닌 일반 본문 크기 callout으로 낮추는 opt-in 변형. */
+.core-insight--plain-text blockquote{font-size:var(--fs-base);font-weight:650;letter-spacing:0;line-height:1.72;color:var(--ink-soft)}
+.core-insight--plain-text p{font-size:var(--fs-sm);line-height:1.65;color:var(--ink-mute)}
 /* lede-note — Goal/도입 강조 카드(좌측 accent rail). pattern-hero-note(페이지 어휘)를 정본 callout으로 개명, .label은 공유 uppercase 규약으로 복귀. */
 .lede-note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:16px 24px 17px;margin:24px 0 34px}
 .lede-note .label{display:block;font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
@@ -1428,10 +1591,19 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:8px 12px}
 .col-list li{margin:0;min-width:0;color:var(--ink-soft);font-size:13.5px;line-height:1.4}
 .col-list li code{display:inline-block;max-width:100%;overflow-wrap:anywhere}
-@media(max-width:560px){ul.col-list,ol.col-list{grid-template-columns:1fr}}
+.col-list>ul,.col-list>ol{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:12px 14px}
+.col-list>ul li,.col-list>ol li{line-height:1.55}
+@media(max-width:560px){ul.col-list,ol.col-list,.col-list>ul,.col-list>ol{grid-template-columns:1fr}}
+/* 비교/판단 보조 기준 표 — label:detail 리스트가 4개 이상이면 col-list 대신 table-scroll 안의 table.criteria-table로 렌더한다. v5.4.3 */
+.criteria-table td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
+.criteria-table td:nth-child(3){font-weight:750;color:var(--ink)}
+.criteria-table td{vertical-align:top}
+@media(max-width:560px){.criteria-table td:first-child{white-space:normal}}
 /* 텍스트 전용 뷰 bullet (text-bullet-view) — final_20260604 section 7의 code-path bullet 리듬을 정본화. 텍스트만 있는 카드/체크 항목 앞에 작은 써클을 붙여 스캔성을 높인다. opt-in, 무 JS, 8테마 토큰. v5.4.2 */
 .text-bullet-view{display:flex;align-items:flex-start;gap:10px;line-height:1.62}
 .text-bullet-view>.ba-bullet{margin-top:.72em;background:var(--ink-mute);box-shadow:0 0 0 4px var(--bg)}
+.text-bullet-view--center{align-items:center}
+.text-bullet-view--center>.ba-bullet{margin-top:0}
 :root:has(#ahf-dark:checked) .text-bullet-view>.ba-bullet{background:var(--accent-2);box-shadow:0 0 0 4px var(--card)}
 
 /* adaptive-html-final shape-visuals — 본문 설명 시작부 보조 SVG 도형(8000x6000, warm soft).
@@ -1471,7 +1643,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 
 /* Expert mode: section wrappers stay in normal document flow; only inner grids/cards are gridded. */
 .layout-expert .summary-grid,
-.layout-expert .decision-grid,
+.layout-expert div.decision-grid,
 .layout-expert .decision-grid>.grid,
 .layout-expert .architecture-grid,
 .layout-expert .risk-grid,
@@ -1479,6 +1651,18 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .layout-expert .decision-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
 .layout-expert .executive-summary,.layout-expert .validation-checklist{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px}
 .layout-expert .executive-summary .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.layout-expert .validation-checklist .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* Skill audit decision cards: keep P1/P2/P3 action views separated and compact. */
+.layout-audit div.decision-grid,
+.layout-skill-audit div.decision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start;margin:20px 0 24px}
+.layout-audit .decision-card,
+.layout-skill-audit .decision-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:13px 15px 14px;min-height:0}
+.layout-audit .decision-card h3,
+.layout-skill-audit .decision-card h3{margin:0 0 7px;font-size:18px;line-height:1.35}
+.layout-audit .decision-card p,
+.layout-skill-audit .decision-card p{margin:0;font-size:14.2px;line-height:1.62}
+.layout-audit .decision-card p+p,
+.layout-skill-audit .decision-card p+p{margin-top:7px}
 /* risk-* 우선순위 카드 — 완성본(final_20260604 .access-check-rule) 방식: 4px 좌측 라인 + 자체 padding으로 host(decision-card 유무) 무관하게 라인과 동일 간격. (QA) */
 .risk-high,.risk-mid,.risk-low{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:var(--radius-md);padding:14px 16px}
 .risk-high{border-left-color:var(--accent)}.risk-mid{border-left-color:#d99a38}.risk-low{border-left-color:#7ea66a}
@@ -1614,7 +1798,8 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .layout-platform .platform-guard .platform-kicker{color:var(--danger-label-ink)}
 .layout-platform .platform-guard p{color:var(--danger-ink)}
 @media(max-width:900px){.layout-platform .platform-split,.layout-platform .platform-output-grid{grid-template-columns:1fr}}
-@media(max-width:760px){.layout-expert .summary-grid,.layout-expert .decision-grid,.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-github .repo-signal-grid,.layout-github .repo-identity-grid,.layout-github .repo-health-grid,.layout-github .repo-action-grid,.layout-github .repo-evidence-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+@media(max-width:760px){.layout-expert .summary-grid,.layout-expert div.decision-grid,.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-expert .validation-checklist .card-grid,.layout-github .repo-signal-grid,.layout-github .repo-identity-grid,.layout-github .repo-health-grid,.layout-github .repo-action-grid,.layout-github .repo-evidence-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+@media(max-width:760px){.layout-audit div.decision-grid,.layout-skill-audit div.decision-grid{grid-template-columns:1fr;gap:18px;margin:18px 0 22px}.layout-audit .decision-card,.layout-skill-audit .decision-card{padding:13px 14px}}
 @media(max-width:620px){.layout-platform .platform-route-grid{grid-template-columns:1fr}.layout-platform .platform-anchor{min-height:0;padding:16px}.layout-platform .platform-anchor h3{font-size:19px}.layout-platform .platform-output-card{padding:14px}}
 
 /* YouTube analysis mode: evidence-first video report. */
@@ -1675,6 +1860,11 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .layout-audit .score-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
 .layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .layout-reference .quick-reference{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px}
+.layout-compare div.decision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch;margin:20px 0 24px}
+.layout-compare .decision-card{display:flex;flex-direction:column;gap:9px;min-width:0}
+.layout-compare .decision-card h3{margin:0;font-size:17px;line-height:1.38;color:var(--ink)}
+.layout-compare .decision-card p{margin:0;font-size:14.2px;line-height:1.62;color:var(--ink-soft)}
+.layout-compare .decision-card p+p{margin-top:0}
 .layout-compare .matrix:not(section),.layout-compare .matrix>.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .layout-compare .winner-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
 .layout-case .timeline{border-left:0;padding-left:0}
@@ -1687,7 +1877,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .layout-landing .hero-analogy{font-size:18px}
 .layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .layout-checklist .check-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px}
-@media(max-width:760px){.layout-audit .audit-row,.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid,.layout-compare .matrix:not(section),.layout-compare .matrix>.grid,.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid,.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{grid-template-columns:1fr}}
+@media(max-width:760px){.layout-audit .audit-row,.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid,.layout-compare div.decision-grid,.layout-compare .matrix:not(section),.layout-compare .matrix>.grid,.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid,.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{grid-template-columns:1fr}}
 
 /* ── Section-level classes (v4.3.0) ─────────────────────────────
    IMPORTANT: semantic section wrappers must not become card grids.
@@ -1732,6 +1922,13 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .soft-cta strong{color:var(--ink)}
 .try.soft-cta{background:var(--dark);border-color:var(--dark);border-left-color:var(--accent);color:#f5f5f0}
 .try.soft-cta p,.try.soft-cta li{color:#d0d0c8}.try.soft-cta strong{color:#fff}
+
+/* try/CTA 내부 커스텀 카드 대비 reset — 부모 .try의 밝은 텍스트가 흰 카드에 상속되는 회귀 방지 */
+.try .repo-card,.try .repo-signal,.try .repo-question,.try .repo-evidence,.try .youtube-card,.try .youtube-signal,.try .youtube-evidence,.try .youtube-opportunity,.try .manual-card,.try .manual-step,.try .manual-role,.try .manual-trouble,.try.soft-cta .repo-card,.try.soft-cta .repo-signal,.try.soft-cta .repo-question,.try.soft-cta .repo-evidence,.try.soft-cta .youtube-card,.try.soft-cta .youtube-signal,.try.soft-cta .youtube-evidence,.try.soft-cta .youtube-opportunity,.try.soft-cta .manual-card,.try.soft-cta .manual-step,.try.soft-cta .manual-role,.try.soft-cta .manual-trouble{color:var(--ink);background:var(--card);border-color:var(--line)}
+.try .repo-card p,.try .repo-card li,.try .repo-card ul,.try .repo-card ol,.try .repo-signal p,.try .repo-signal li,.try .repo-question p,.try .repo-question li,.try .repo-evidence p,.try .repo-evidence li,.try .youtube-card p,.try .youtube-card li,.try .youtube-card ul,.try .youtube-card ol,.try .youtube-signal p,.try .youtube-signal li,.try .youtube-evidence p,.try .youtube-evidence li,.try .youtube-opportunity p,.try .youtube-opportunity li,.try .manual-card p,.try .manual-card li,.try .manual-card ul,.try .manual-card ol,.try .manual-step p,.try .manual-step li,.try .manual-role p,.try .manual-role li,.try .manual-trouble p,.try .manual-trouble li,.try.soft-cta .repo-card p,.try.soft-cta .repo-card li,.try.soft-cta .repo-card ul,.try.soft-cta .repo-card ol,.try.soft-cta .youtube-card p,.try.soft-cta .youtube-card li,.try.soft-cta .youtube-card ul,.try.soft-cta .youtube-card ol,.try.soft-cta .manual-card p,.try.soft-cta .manual-card li,.try.soft-cta .manual-card ul,.try.soft-cta .manual-card ol{color:var(--ink-soft)}
+.try .repo-card h3,.try .repo-card h4,.try .repo-card strong,.try .repo-card b,.try .repo-signal h3,.try .repo-question h3,.try .repo-evidence h3,.try .youtube-card h3,.try .youtube-card h4,.try .youtube-card strong,.try .youtube-card b,.try .youtube-signal h3,.try .youtube-evidence h3,.try .youtube-opportunity h3,.try .manual-card h3,.try .manual-card h4,.try .manual-card strong,.try .manual-card b,.try .manual-step h3,.try .manual-role h3,.try .manual-trouble h3,.try.soft-cta .repo-card h3,.try.soft-cta .repo-card h4,.try.soft-cta .repo-card strong,.try.soft-cta .repo-card b,.try.soft-cta .youtube-card h3,.try.soft-cta .youtube-card h4,.try.soft-cta .youtube-card strong,.try.soft-cta .youtube-card b,.try.soft-cta .manual-card h3,.try.soft-cta .manual-card h4,.try.soft-cta .manual-card strong,.try.soft-cta .manual-card b{color:var(--ink)}
+.try .repo-card .label,.try .repo-signal .label,.try .repo-evidence .label,.try .youtube-card .label,.try .youtube-signal .label,.try .youtube-evidence .label,.try .manual-card .manual-label,.try .manual-step .manual-label,.try .manual-role .manual-label,.try .manual-trouble .manual-label{color:var(--accent-2)}
+.try .repo-unknown,.try .youtube-unknown,.try .manual-card.manual-unknown,.try .manual-step.manual-unknown,.try .manual-role.manual-unknown,.try .manual-trouble.manual-unknown{background:var(--accent-soft);color:var(--ink);border-color:var(--line)}
 .try.soft-cta .label{color:var(--accent)}
 .layout-comparison .try,.layout-compare .try,.layout-case .try{background:var(--card);color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
 .layout-comparison .try .label,.layout-compare .try .label,.layout-case .try .label{color:var(--accent-2)}
@@ -1746,9 +1943,16 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
   .final-seo-set .grid,.final-seo-set .seo-grid{grid-template-columns:1fr}
   .layout-blog article>section>h2:first-child::before{width:30px;height:30px;margin-right:9px;font-size:13px;vertical-align:2px}
 }
-/* === 완성본 표준 승격 v5.3.1 — 무클래스 콘텐츠 섹션 카드 뷰 === */
-.page>section:not([class]),.page>article>section:not([class]),.page-wide>section:not([class]),.page-wide>article>section:not([class]){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
-.page>section:not([class])>h2:first-child,.page>article>section:not([class])>h2:first-child,.page-wide>section:not([class])>h2:first-child,.page-wide>article>section:not([class])>h2:first-child{margin-top:0}
+/* === 완성본 표준 승격 — layout main 직접/article 콘텐츠 섹션 카드 뷰(.try 제외, class 무관). v5.9 전역 시각 정본 === */
+.page>section:not(.try),.page>article>section:not(.try),.page-wide>section:not(.try),.page-wide>article>section:not(.try){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
+.page>section:not(.try)>h2:first-child,.page>article>section:not(.try)>h2:first-child,.page-wide>section:not(.try)>h2:first-child,.page-wide>article>section:not(.try)>h2:first-child{margin-top:0}
+.page>section.lead:not(.try),.page>article>section.lead:not(.try),.page-wide>section.lead:not(.try),.page-wide>article>section.lead:not(.try){max-width:none;width:auto;font-size:inherit;color:inherit}
+/* try/soft-cta 내부 일반 카드 대비 reset — 부모 .try.soft-cta p 색이 흰 카드에 상속되는 회귀 방지 */
+.try.soft-cta .summary-card,.try.soft-cta .cta-box,.try.soft-cta .card-block,.try.soft-cta .mini-card{color:var(--ink);background:var(--card);border-color:var(--line)}
+.try.soft-cta .summary-card p,.try.soft-cta .cta-box p,.try.soft-cta .card-block p,.try.soft-cta .mini-card p,.try.soft-cta .summary-card li,.try.soft-cta .cta-box li,.try.soft-cta .card-block li,.try.soft-cta .mini-card li{color:var(--ink-soft)}
+.try.soft-cta .summary-card h3,.try.soft-cta .summary-card h4,.try.soft-cta .cta-box h3,.try.soft-cta .cta-box h4,.try.soft-cta .card-block h3,.try.soft-cta .mini-card h3,.try.soft-cta .summary-card strong,.try.soft-cta .summary-card b{color:var(--ink)}
+.layout-blog .try.soft-cta .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:760px){.layout-blog .try.soft-cta .card-grid{grid-template-columns:1fr}}
 
 @media print{
   *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
@@ -1785,7 +1989,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 :root:has(#ahf-dark2:checked){--bg:#0f1014;--ink:#ece8df;--ink-soft:#c8c2b7;--ink-mute:#9d968b;--line:#333640;--card:#191b21;--accent:#c8747c;--accent-2:#d9a0a5;--accent-soft:#2d2024;--link-on-dark:#e6b8bd;--chip-ink:#c8c2b7;--on-accent:#0f1014;--dark:#0b0c10;--dark-soft:#14161b;--code:#0b0c10;--term-bg:#27231c;--term-border:#4b412b;--term-ink:#d8c89e;--term-label-ink:#b8a06f;--term-accent:#b8a06f;--analogy-bg:#18232b;--analogy-border:#2d4251;--analogy-ink:#bfd0db;--analogy-label-ink:#8fa9b8;--analogy-accent:#7f9daf;--danger-bg:#2b1e21;--danger-border:#593238;--danger-ink:#dfb8bd;--danger-label-ink:#d79aa1;--danger-accent:#c8747c;--good-bg:#18251d;--good-border:#324a39;--good-ink:#c5d9cb;--good-label-ink:#8fb59d;--good-accent:#7fa98f;--hl-yellow:#3b331f;--hl-blue:#1d2d39;--hl-pink:#35232a;--focus:#829ce5;--vt-paper:#191b21;--vt-wash:#0f1014;--vt-soft:#252832;--vt-line:#373a44;--vt-ink:#ece8df;--vt-blue:#7fb0d8;--vt-green:#7fa98f;--vt-gold:#b8a06f;color-scheme:dark}
 
 /* ===== 블루(딥 네이비 — dark2 표본 기반, blue accent) ===== */
-:root:has(#ahf-blue:checked){--bg:#0d1320;--ink:#e7edf7;--ink-soft:#bcc7da;--ink-mute:#8a97ad;--line:#273245;--card:#151d2c;--accent:#5b9cf0;--accent-2:#92bdff;--accent-soft:#15263f;--link-on-dark:#a9cbff;--chip-ink:#bcc7da;--on-accent:#0d1320;--dark:#080d16;--dark-soft:#101725;--code:#080d16;--term-bg:#221f12;--term-border:#473f25;--term-ink:#e0d3a6;--term-label-ink:#c9b06f;--term-accent:#c9b06f;--analogy-bg:#12243a;--analogy-border:#27425f;--analogy-ink:#bcd3ea;--analogy-label-ink:#8fb2d6;--analogy-accent:#6f9fcf;--danger-bg:#2a1719;--danger-border:#5a2f33;--danger-ink:#e6bcc0;--danger-label-ink:#e08c92;--danger-accent:#d2727a;--good-bg:#13241c;--good-border:#2c4a39;--good-ink:#c2dccd;--good-label-ink:#86bd9f;--good-accent:#79b394;--hl-yellow:#3a3320;--hl-blue:#16304b;--hl-pink:#352230;--focus:#5b9cf0;--vt-paper:#151d2c;--vt-wash:#0d1320;--vt-soft:#1b2536;--vt-line:#2b3850;--vt-ink:#e7edf7;--vt-blue:#7fb0e8;--vt-green:#79b394;--vt-gold:#c9b06f;color-scheme:dark}
+:root:has(#ahf-blue:checked){--bg:#0a1a3c;--ink:#e7edf7;--ink-soft:#bcc7da;--ink-mute:#8a97ad;--line:#2c3e63;--card:#13294e;--accent:#5b9cf0;--accent-2:#92bdff;--accent-soft:#16345e;--link-on-dark:#a9cbff;--chip-ink:#bcc7da;--on-accent:#0d1320;--dark:#06122c;--dark-soft:#11203f;--code:#06122c;--term-bg:#221f12;--term-border:#473f25;--term-ink:#e0d3a6;--term-label-ink:#c9b06f;--term-accent:#c9b06f;--analogy-bg:#12243a;--analogy-border:#27425f;--analogy-ink:#bcd3ea;--analogy-label-ink:#8fb2d6;--analogy-accent:#6f9fcf;--danger-bg:#2a1719;--danger-border:#5a2f33;--danger-ink:#e6bcc0;--danger-label-ink:#e08c92;--danger-accent:#d2727a;--good-bg:#13241c;--good-border:#2c4a39;--good-ink:#c2dccd;--good-label-ink:#86bd9f;--good-accent:#79b394;--hl-yellow:#3a3320;--hl-blue:#16304b;--hl-pink:#352230;--focus:#5b9cf0;--vt-paper:#151d2c;--vt-wash:#0d1320;--vt-soft:#1b2536;--vt-line:#2b3850;--vt-ink:#e7edf7;--vt-blue:#7fb0e8;--vt-green:#79b394;--vt-gold:#c9b06f;color-scheme:dark}
 
 :root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) .prompt-box{background:var(--card)}
 :root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked) code{background:var(--code);color:var(--ink)}
@@ -1809,9 +2013,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .ahf-themebar input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
 @media(max-width:560px){.ahf-themebar{position:static;width:276px;max-width:calc(100% - 28px);margin:10px auto 16px}}
 @media print{.ahf-themebar{display:none}}
-
 </style>
-
 <style>
 /* page-local presentation tweaks (mode page) — 헤더 미세 튜닝(인덱스와 동일). 아이콘 정렬·헤더 폭은 스킬 v5.2.1 기본값 */
 .header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
@@ -1832,109 +2034,104 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 </style>
 </head>
 <body>
-<fieldset class="ahf-themebar" aria-label="테마 선택">
-  <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
-  <input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">그레이</label>
-  <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
-  <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
-  <input type="radio" name="ahf-theme" id="ahf-dark2"><label for="ahf-dark2">로즈</label>
-  <input type="radio" name="ahf-theme" id="ahf-blue"><label for="ahf-blue">블루</label>
-  <input type="radio" name="ahf-theme" id="ahf-skyblue"><label for="ahf-skyblue">스카이</label>
-  <input type="radio" name="ahf-theme" id="ahf-sepia"><label for="ahf-sepia">세피아</label>
+<fieldset aria-label="테마 선택" class="ahf-themebar">
+<input checked="" id="ahf-light" name="ahf-theme" type="radio"/><label for="ahf-light">라이트</label>
+<input id="ahf-light2" name="ahf-theme" type="radio"/><label for="ahf-light2">그레이</label>
+<input id="ahf-white" name="ahf-theme" type="radio"/><label for="ahf-white">화이트</label>
+<input id="ahf-dark" name="ahf-theme" type="radio"/><label for="ahf-dark">다크</label>
+<input id="ahf-dark2" name="ahf-theme" type="radio"/><label for="ahf-dark2">로즈</label>
+<input id="ahf-blue" name="ahf-theme" type="radio"/><label for="ahf-blue">블루</label>
+<input id="ahf-skyblue" name="ahf-theme" type="radio"/><label for="ahf-skyblue">스카이</label>
+<input id="ahf-sepia" name="ahf-theme" type="radio"/><label for="ahf-sepia">세피아</label>
 </fieldset>
 <a class="skip" href="#main">본문 바로가기</a>
-<div class="reading-progress" aria-hidden="true"></div>
-<main id="main" class="page-wide layout-compare layout-comparison">
-  <header class="header"><div class="kicker"><span class="kicker-text">COMPARISON MATRIX · VECTOR SEARCH</span></div><h1>벡터 검색 선택 기준: 전용 Vector DB vs pgvector vs 검색 엔진</h1><p class="sub">문서 검색과 추천 시스템을 만들 때 어떤 저장소를 고를지 기능, 운영, 비용, 전환 가능성으로 비교한다.</p><div class="meta"><span>comparison_html</span><span>comparison-matrix.html</span><span>profile auto</span><span>adaptive-html-final v5.2.0</span><span>무 JS</span></div><div class="generated-row"><p class="generated-date">Generated · 2026-06-05 08:34 KST</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">comparison-cards</span><span class="lens-chip">decision-tree</span><span class="lens-chip">risk-matrix</span><span class="lens-chip">MVP 판단</span><span class="lens-chip">운영 비용</span></div></div></header>
-
-  <section class="summary-card">
-    <div class="label">Overview</div>
-    <p><strong>벡터 검색 선택은 벤치마크보다 운영 맥락이 먼저다.</strong> 같은 recall 수치라도 권한 필터, 하이브리드 랭킹, 색인 재생성 시간, 장애 대응 방식이 다르면 정답이 바뀐다. 이 문서는 전용 Vector DB, PostgreSQL pgvector, 검색 엔진 하이브리드를 제품명이 아니라 실패 모드와 운영 모델 기준으로 비교한다.</p>
-  </section>
-
-  <section class="vt-shell" aria-label="벡터 검색 선택지 요약">
-    <div class="vt-frame">
-      <div class="cmp"><article class="cmp-card"><div class="vt-kicker">Scale First</div><h3>전용 Vector DB</h3><ul><li>대규모 ANN, 분산 색인, 고 QPS 검색에 초점</li><li>새 운영 도메인과 별도 권한 모델이 생김</li><li>SLO가 명확한 검색 제품에 적합</li></ul></article><article class="cmp-card pick"><div class="vt-kicker">Stack First</div><h3>PostgreSQL pgvector</h3><ul><li>기존 DB, 트랜잭션, 권한, 백업 체계를 재사용</li><li>MVP와 내부 도구에 빠르게 적용</li><li>대규모 저지연과 복잡한 랭킹은 별도 검증 필요</li></ul></article><article class="cmp-card"><div class="vt-kicker">Relevance First</div><h3>검색 엔진 하이브리드</h3><ul><li>키워드, 필터, 동의어, 벡터를 함께 운영</li><li>랭킹 설명과 검색 품질 디버깅에 강함</li><li>색인 파이프라인과 relevance 운영 부담이 큼</li></ul></article></div>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M16 16c.7-3 7-3.5 8 0 .8 2.6-2.4 3.8-4 5.4V24"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="no is-key">1</span>선택 문제 정의</h2>
-    <p class="h2-sub">저장소 선택은 "가장 빠른 ANN"이 아니라 "우리 제품의 검색 실패를 가장 빨리 줄이는 운영 모델"을 고르는 문제다.</p>
-    <div class="grid-2">
-      <article class="mini-card"><h3>제품 단계</h3><p>MVP는 통합과 학습 비용이 더 중요하고, 성장 단계는 평가 데이터셋과 검색 로그가 더 중요하다. 대규모 단계는 SLO와 capacity plan이 먼저다.</p></article>
-      <article class="mini-card"><h3>검색 유형</h3><p>Q&A·RAG는 의미 검색 비중이 높지만, 문서 제목·코드·상품명은 키워드와 exact match가 여전히 중요하다.</p></article>
-      <article class="mini-card"><h3>권한과 필터</h3><p>tenant, workspace, ACL, publication status 필터가 검색 조건에 깊게 들어갈수록 기존 DB나 검색 엔진의 장점이 커진다.</p></article>
-      <article class="mini-card"><h3>이전 가능성</h3><p>embedding, chunk id, ranking rule, evaluation set을 저장소와 분리하면 pgvector에서 전용 DB 또는 검색 엔진으로 넘어가기 쉽다.</p></article>
-    </div>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>선택 질문과 1차 후보</caption>
-        <thead><tr><th>질문</th><th>예라면</th><th>아니오라면</th><th>검증 자료</th></tr></thead>
-        <tbody>
-          <tr><td>이미 PostgreSQL이 핵심 데이터 저장소인가?</td><td>pgvector를 첫 후보로 둔다.</td><td>검색 스택 또는 전용 DB 도입 비용을 비교한다.</td><td>권한 쿼리, DB 부하, 백업 정책</td></tr>
-          <tr><td>키워드 검색 실패가 사용자 불만의 큰 비중인가?</td><td>검색 엔진 하이브리드를 검토한다.</td><td>벡터 단독 MVP도 가능하다.</td><td>검색 로그, zero-result rate</td></tr>
-          <tr><td>p95 latency와 QPS SLO가 명확한가?</td><td>전용 Vector DB를 벤치마크한다.</td><td>평가셋과 운영 로그부터 만든다.</td><td>load test, recall/latency curve</td></tr>
-          <tr><td>권한 필터가 복잡하고 자주 바뀌는가?</td><td>DB 또는 검색 엔진 필터 모델을 우선한다.</td><td>전용 DB의 metadata filter로 충분한지 확인한다.</td><td>ACL matrix, tenant cardinality</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="22" rx="3"/><rect class="bi-fill" x="16" y="9" width="8" height="22" rx="3"/><rect class="bi-soft" x="25" y="9" width="8" height="22" rx="3"/><path class="bi-accent-line" d="M27 18h4"/><circle class="bi-accent" cx="29" cy="26" r="2.5"/></svg></span><span class="no">2</span>vt-13 비교 카드</h2>
-    <p class="h2-sub">1순위 vt=comparison-cards로 세 후보의 승리 조건과 경고 조건을 한눈에 둔다.</p>
-    <p>세 후보는 "더 좋은 검색"이 아니라 <strong>서로 다른 제약을 먼저 푸는 도구</strong>다. 전용 Vector DB는 스케일 제약을, pgvector는 통합·일관성 제약을, 검색 엔진은 랭킹 품질 제약을 가장 먼저 해결한다. 따라서 비교는 "어떤 제약이 우리 제품을 먼저 무너뜨리는가"에서 시작해야 한다.</p>
-    <p>아래 카드는 각 후보가 <strong>명백히 이기는 상황(승리 조건)</strong>과 <strong>고르면 후회하기 쉬운 상황(경고 조건)</strong>을 짝지어 정리한 것이다. 두 조건이 모두 맞아떨어질 때 그 후보가 1차 후보가 된다.</p>
-    <div class="card-grid">
-      <article class="mini-card">
-        <h3>전용 Vector DB</h3>
-        <p><strong>승리 조건.</strong> 벡터 수가 수천만 이상이고 p95 latency·QPS SLO가 계약 수준으로 엄격하다. 검색 자체가 제품의 핵심 기능이다.</p>
-        <p><strong>경고 조건.</strong> MVP 단계, 권한 필터가 복잡하고 자주 바뀌며, 운영 인력이 적다면 새 운영 도메인과 동기화 부담이 이득보다 크다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>PostgreSQL pgvector</h3>
-        <p><strong>승리 조건.</strong> 이미 PostgreSQL이 핵심 저장소이고, 권한·트랜잭션 일관성이 중요하며, 빠른 통합으로 검색 가설을 먼저 검증하고 싶다.</p>
-        <p><strong>경고 조건.</strong> 수천만 벡터·엄격한 tail latency가 처음부터 사업 요구라면 baseline 이상으로 쓰기 어렵다. 대형 인덱스 재빌드가 DB 전체를 흔든다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>검색 엔진 하이브리드</h3>
-        <p><strong>승리 조건.</strong> 키워드·정확 문구·동의어·벡터가 모두 중요하고, 랭킹을 설명·디버깅·튜닝하는 빈도가 높다.</p>
-        <p><strong>경고 조건.</strong> 검색 스택이 없고 색인 파이프라인·analyzer·relevance 운영을 감당할 인력이 없다면 도입 비용이 가장 크다.</p>
-      </article>
-    </div>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>후보별 승리 조건 · 경고 조건 · 결정적 질문</caption>
-        <thead><tr><th>후보</th><th>한 줄 정체성</th><th>승리 조건</th><th>경고 조건</th><th>결정적 질문</th></tr></thead>
-        <tbody>
-          <tr><td>전용 Vector DB</td><td>스케일 우선</td><td>수천만+ 벡터, 엄격한 p95/QPS</td><td>MVP·복잡한 권한·소수 인력</td><td>검색 SLO가 계약 수준인가?</td></tr>
-          <tr><td>pgvector</td><td>스택 우선</td><td>Postgres 기반, 권한·일관성 중시</td><td>처음부터 대규모 tail latency 요구</td><td>이미 PostgreSQL이 핵심인가?</td></tr>
-          <tr><td>검색 엔진 하이브리드</td><td>랭킹 품질 우선</td><td>키워드+벡터 혼합, 랭킹 디버깅 잦음</td><td>색인·relevance 운영 인력 부재</td><td>키워드 실패가 불만의 큰 비중인가?</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="analogy">
-      <div class="label">읽는 법</div>
-      <p>세 카드를 동시에 만족하는 경우는 거의 없다. 승리 조건이 2개 이상 겹치면 결정적 질문으로 우선순위를 가른다. 어느 카드의 경고 조건이 우리 현실과 정확히 일치한다면, 그 후보는 매력적인 벤치마크 수치와 무관하게 1차 후보에서 내린다.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="22" rx="3"/><rect class="bi-fill" x="16" y="9" width="8" height="22" rx="3"/><rect class="bi-soft" x="25" y="9" width="8" height="22" rx="3"/><path class="bi-accent-line" d="M27 18h4"/><circle class="bi-accent" cx="29" cy="26" r="2.5"/></svg></span><span class="no">3</span>wg-01 세 가지 접근</h2>
-    <p class="h2-sub">권장 wg-01을 세 가지 구현 패턴과 코드 모양 비교로 변환했다.</p>
-    <p>같은 "임베딩으로 유사 문서 찾기"라도 저장소에 따라 쿼리 모양이 완전히 다르다. 아래 세 코드는 모두 <strong>동일한 질의 임베딩 <code>$q</code>로 상위 10개 chunk를 권한 필터와 함께 조회</strong>하는 같은 일을 하지만, 운영 책임이 어디에 놓이는지가 다르다.</p>
-    <p>pgvector는 검색이 SQL 한 문장 안에 들어와 권한·조인·트랜잭션을 함께 처리한다. 전용 Vector DB는 검색을 별도 서비스 호출로 분리하고 권한 필터를 metadata로 복제한다. 검색 엔진 하이브리드는 키워드와 벡터 점수를 한 쿼리에서 합치는 대신 색인 파이프라인 책임이 생긴다.</p>
-    <h3>패턴 A · pgvector (SQL 안에서 끝낸다)</h3>
-    <pre><code>SELECT c.document_id, c.chunk_id,
+<div aria-hidden="true" class="reading-progress"></div>
+<main class="page-wide layout-compare layout-comparison" id="main">
+<header class="header"><div class="kicker"><span class="kicker-text">COMPARISON MATRIX · VECTOR SEARCH</span></div><h1>벡터 검색 선택 기준: 전용 Vector DB vs pgvector vs 검색 엔진</h1><p class="sub">문서 검색과 추천 시스템을 만들 때 어떤 저장소를 고를지 기능, 운영, 비용, 전환 가능성으로 비교한다.</p><div class="meta"><span>comparison_html</span><span>comparison-matrix.html</span><span>profile auto</span><span>adaptive-html-final v5.9.1</span><span>무 JS</span></div><div class="generated-row"><p class="generated-date">Generated · 2026-06-05 08:34 KST</p><div aria-label="적용 렌즈" class="lens-strip"><span class="lens-strip-label">LENS</span><span class="lens-chip">comparison-cards</span><span class="lens-chip">decision-tree</span><span class="lens-chip">risk-matrix</span><span class="lens-chip">MVP 판단</span><span class="lens-chip">운영 비용</span></div></div></header>
+<section class="summary-card"><h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><rect class="bi-fill" height="24" rx="4" width="24" x="8" y="8"></rect><path class="bi-accent-line" d="M14 20l4 4 9-10"></path><path class="bi-line" d="M14 29h14"></path></svg></span>Overview</h2>
+<div class="label">Overview</div>
+<p><strong>벡터 검색 선택은 벤치마크보다 운영 맥락이 먼저다.</strong> 같은 recall 수치라도 권한 필터, 하이브리드 랭킹, 색인 재생성 시간, 장애 대응 방식이 다르면 정답이 바뀐다. 이 문서는 전용 Vector DB, PostgreSQL pgvector, 검색 엔진 하이브리드를 제품명이 아니라 실패 모드와 운영 모델 기준으로 비교한다.</p>
+</section>
+<div aria-label="벡터 검색 선택지 요약" class="vt-shell">
+<div class="vt-frame">
+<div class="cmp"><article class="cmp-card"><div class="vt-kicker">Scale First</div><h3>전용 Vector DB</h3><ul><li>대규모 ANN, 분산 색인, 고 QPS 검색에 초점</li><li>새 운영 도메인과 별도 권한 모델이 생김</li><li>SLO가 명확한 검색 제품에 적합</li></ul></article><article class="cmp-card pick"><div class="vt-kicker">Stack First</div><h3>PostgreSQL pgvector</h3><ul><li>기존 DB, 트랜잭션, 권한, 백업 체계를 재사용</li><li>MVP와 내부 도구에 빠르게 적용</li><li>대규모 저지연과 복잡한 랭킹은 별도 검증 필요</li></ul></article><article class="cmp-card"><div class="vt-kicker">Relevance First</div><h3>검색 엔진 하이브리드</h3><ul><li>키워드, 필터, 동의어, 벡터를 함께 운영</li><li>랭킹 설명과 검색 품질 디버깅에 강함</li><li>색인 파이프라인과 relevance 운영 부담이 큼</li></ul></article></div>
+</div>
+</div>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><circle class="bi-fill" cx="20" cy="20" r="13"></circle><path class="bi-accent-line" d="M16 16c.7-3 7-3.5 8 0 .8 2.6-2.4 3.8-4 5.4V24"></path><circle class="bi-accent" cx="20" cy="29" r="2"></circle></svg></span><span class="no is-key">1</span>선택 문제 정의</h2>
+<p class="h2-sub">저장소 선택은 "가장 빠른 ANN"이 아니라 "우리 제품의 검색 실패를 가장 빨리 줄이는 운영 모델"을 고르는 문제다.</p>
+<div class="grid-2">
+<article class="mini-card"><h3>제품 단계</h3><p>MVP는 통합과 학습 비용이 더 중요하고, 성장 단계는 평가 데이터셋과 검색 로그가 더 중요하다. 대규모 단계는 SLO와 capacity plan이 먼저다.</p></article>
+<article class="mini-card"><h3>검색 유형</h3><p>Q&amp;A·RAG는 의미 검색 비중이 높지만, 문서 제목·코드·상품명은 키워드와 exact match가 여전히 중요하다.</p></article>
+<article class="mini-card"><h3>권한과 필터</h3><p>tenant, workspace, ACL, publication status 필터가 검색 조건에 깊게 들어갈수록 기존 DB나 검색 엔진의 장점이 커진다.</p></article>
+<article class="mini-card"><h3>이전 가능성</h3><p>embedding, chunk id, ranking rule, evaluation set을 저장소와 분리하면 pgvector에서 전용 DB 또는 검색 엔진으로 넘어가기 쉽다.</p></article>
+</div>
+<div class="tbl table-scroll">
+<table>
+<caption>선택 질문과 1차 후보</caption>
+<thead><tr><th>질문</th><th>예라면</th><th>아니오라면</th><th>검증 자료</th></tr></thead>
+<tbody>
+<tr><td>이미 PostgreSQL이 핵심 데이터 저장소인가?</td><td>pgvector를 첫 후보로 둔다.</td><td>검색 스택 또는 전용 DB 도입 비용을 비교한다.</td><td>권한 쿼리, DB 부하, 백업 정책</td></tr>
+<tr><td>키워드 검색 실패가 사용자 불만의 큰 비중인가?</td><td>검색 엔진 하이브리드를 검토한다.</td><td>벡터 단독 MVP도 가능하다.</td><td>검색 로그, zero-result rate</td></tr>
+<tr><td>p95 latency와 QPS SLO가 명확한가?</td><td>전용 Vector DB를 벤치마크한다.</td><td>평가셋과 운영 로그부터 만든다.</td><td>load test, recall/latency curve</td></tr>
+<tr><td>권한 필터가 복잡하고 자주 바뀌는가?</td><td>DB 또는 검색 엔진 필터 모델을 우선한다.</td><td>전용 DB의 metadata filter로 충분한지 확인한다.</td><td>ACL matrix, tenant cardinality</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><rect class="bi-fill" height="22" rx="3" width="8" x="7" y="9"></rect><rect class="bi-fill" height="22" rx="3" width="8" x="16" y="9"></rect><rect class="bi-soft" height="22" rx="3" width="8" x="25" y="9"></rect><path class="bi-accent-line" d="M27 18h4"></path><circle class="bi-accent" cx="29" cy="26" r="2.5"></circle></svg></span><span class="no">2</span>vt-13 비교 카드</h2>
+<p class="h2-sub">1순위 vt=comparison-cards로 세 후보의 승리 조건과 경고 조건을 한눈에 둔다.</p>
+<p>세 후보는 "더 좋은 검색"이 아니라 <strong>서로 다른 제약을 먼저 푸는 도구</strong>다. 전용 Vector DB는 스케일 제약을, pgvector는 통합·일관성 제약을, 검색 엔진은 랭킹 품질 제약을 가장 먼저 해결한다. 따라서 비교는 "어떤 제약이 우리 제품을 먼저 무너뜨리는가"에서 시작해야 한다.</p>
+<p>아래 카드는 각 후보가 <strong>명백히 이기는 상황(승리 조건)</strong>과 <strong>고르면 후회하기 쉬운 상황(경고 조건)</strong>을 짝지어 정리한 것이다. 두 조건이 모두 맞아떨어질 때 그 후보가 1차 후보가 된다.</p>
+<div class="card-grid">
+<article class="mini-card">
+<h3>전용 Vector DB</h3>
+<p><strong>승리 조건.</strong> 벡터 수가 수천만 이상이고 p95 latency·QPS SLO가 계약 수준으로 엄격하다. 검색 자체가 제품의 핵심 기능이다.</p>
+<p><strong>경고 조건.</strong> MVP 단계, 권한 필터가 복잡하고 자주 바뀌며, 운영 인력이 적다면 새 운영 도메인과 동기화 부담이 이득보다 크다.</p>
+</article>
+<article class="mini-card">
+<h3>PostgreSQL pgvector</h3>
+<p><strong>승리 조건.</strong> 이미 PostgreSQL이 핵심 저장소이고, 권한·트랜잭션 일관성이 중요하며, 빠른 통합으로 검색 가설을 먼저 검증하고 싶다.</p>
+<p><strong>경고 조건.</strong> 수천만 벡터·엄격한 tail latency가 처음부터 사업 요구라면 baseline 이상으로 쓰기 어렵다. 대형 인덱스 재빌드가 DB 전체를 흔든다.</p>
+</article>
+<article class="mini-card">
+<h3>검색 엔진 하이브리드</h3>
+<p><strong>승리 조건.</strong> 키워드·정확 문구·동의어·벡터가 모두 중요하고, 랭킹을 설명·디버깅·튜닝하는 빈도가 높다.</p>
+<p><strong>경고 조건.</strong> 검색 스택이 없고 색인 파이프라인·analyzer·relevance 운영을 감당할 인력이 없다면 도입 비용이 가장 크다.</p>
+</article>
+</div>
+<div class="tbl table-scroll">
+<table>
+<caption>후보별 승리 조건 · 경고 조건 · 결정적 질문</caption>
+<thead><tr><th>후보</th><th>한 줄 정체성</th><th>승리 조건</th><th>경고 조건</th><th>결정적 질문</th></tr></thead>
+<tbody>
+<tr><td>전용 Vector DB</td><td>스케일 우선</td><td>수천만+ 벡터, 엄격한 p95/QPS</td><td>MVP·복잡한 권한·소수 인력</td><td>검색 SLO가 계약 수준인가?</td></tr>
+<tr><td>pgvector</td><td>스택 우선</td><td>Postgres 기반, 권한·일관성 중시</td><td>처음부터 대규모 tail latency 요구</td><td>이미 PostgreSQL이 핵심인가?</td></tr>
+<tr><td>검색 엔진 하이브리드</td><td>랭킹 품질 우선</td><td>키워드+벡터 혼합, 랭킹 디버깅 잦음</td><td>색인·relevance 운영 인력 부재</td><td>키워드 실패가 불만의 큰 비중인가?</td></tr>
+</tbody>
+</table>
+</div>
+<div class="analogy">
+<div class="label">읽는 법</div>
+<p>세 카드를 동시에 만족하는 경우는 거의 없다. 승리 조건이 2개 이상 겹치면 결정적 질문으로 우선순위를 가른다. 어느 카드의 경고 조건이 우리 현실과 정확히 일치한다면, 그 후보는 매력적인 벤치마크 수치와 무관하게 1차 후보에서 내린다.</p>
+</div>
+</section>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><rect class="bi-fill" height="22" rx="3" width="8" x="7" y="9"></rect><rect class="bi-fill" height="22" rx="3" width="8" x="16" y="9"></rect><rect class="bi-soft" height="22" rx="3" width="8" x="25" y="9"></rect><path class="bi-accent-line" d="M27 18h4"></path><circle class="bi-accent" cx="29" cy="26" r="2.5"></circle></svg></span><span class="no">3</span>wg-01 세 가지 접근</h2>
+<p class="h2-sub">권장 wg-01을 세 가지 구현 패턴과 코드 모양 비교로 변환했다.</p>
+<p>같은 "임베딩으로 유사 문서 찾기"라도 저장소에 따라 쿼리 모양이 완전히 다르다. 아래 세 코드는 모두 <strong>동일한 질의 임베딩 <code>$q</code>로 상위 10개 chunk를 권한 필터와 함께 조회</strong>하는 같은 일을 하지만, 운영 책임이 어디에 놓이는지가 다르다.</p>
+<p>pgvector는 검색이 SQL 한 문장 안에 들어와 권한·조인·트랜잭션을 함께 처리한다. 전용 Vector DB는 검색을 별도 서비스 호출로 분리하고 권한 필터를 metadata로 복제한다. 검색 엔진 하이브리드는 키워드와 벡터 점수를 한 쿼리에서 합치는 대신 색인 파이프라인 책임이 생긴다.</p>
+<h3>패턴 A · pgvector (SQL 안에서 끝낸다)</h3>
+<pre><code>SELECT c.document_id, c.chunk_id,
        c.embedding &lt;=&gt; $q AS distance
 FROM doc_chunks c
 WHERE can_read($user_id, c.document_id)   -- 기존 권한 함수 재사용
   AND c.workspace_id = $ws
 ORDER BY c.embedding &lt;=&gt; $q               -- 코사인/내적 거리
 LIMIT 10;</code></pre>
-    <h3>패턴 B · 전용 Vector DB (검색을 서비스로 분리)</h3>
-    <pre><code>// 권한은 metadata filter로 복제해 두어야 한다
+<h3>패턴 B · 전용 Vector DB (검색을 서비스로 분리)</h3>
+<pre><code>// 권한은 metadata filter로 복제해 두어야 한다
 const res = await vectorDb.query({
   vector: q,
   topK: 10,
@@ -1942,8 +2139,8 @@ const res = await vectorDb.query({
 });
 // 원본 본문은 다시 기본 DB에서 조회 (join이 앱 코드로 이동)
 const docs = await db.loadChunks(res.matches.map(m =&gt; m.id));</code></pre>
-    <h3>패턴 C · 검색 엔진 하이브리드 (한 쿼리에서 점수 융합)</h3>
-    <pre><code>// BM25 키워드 점수와 vector 점수를 한 번에 결합
+<h3>패턴 C · 검색 엔진 하이브리드 (한 쿼리에서 점수 융합)</h3>
+<pre><code>// BM25 키워드 점수와 vector 점수를 한 번에 결합
 {
   "query": { "bool": {
     "filter": [{ "term": { "workspace_id": "ws-1" } }],
@@ -1954,196 +2151,190 @@ const docs = await db.loadChunks(res.matches.map(m =&gt; m.id));</code></pre>
   }},
   "size": 10
 }</code></pre>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>세 구현 패턴의 책임 배치 비교</caption>
-        <thead><tr><th>관점</th><th>패턴 A · pgvector</th><th>패턴 B · 전용 DB</th><th>패턴 C · 검색 엔진</th></tr></thead>
-        <tbody>
-          <tr><td>권한 처리</td><td>기존 SQL 함수 그대로</td><td>metadata로 복제·동기화</td><td>색인 문서에 권한 metadata 복제</td></tr>
-          <tr><td>본문 조인</td><td>같은 쿼리 안</td><td>앱 코드에서 2차 조회</td><td>색인에 본문 포함 또는 2차 조회</td></tr>
-          <tr><td>키워드 결합</td><td>SQL로 수동 융합</td><td>외부 rerank 필요</td><td>BM25+vector 네이티브</td></tr>
-          <tr><td>운영 책임 위치</td><td>DB 한 곳</td><td>DB + 벡터 서비스</td><td>DB + 색인 파이프라인</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="term">
-      <div class="label">참고</div>
-      <span class="word">코드는 개념 예시</span>
-      <p>위 SQL·API 모양은 패턴 차이를 보이기 위한 예시이며, 거리 연산자·필터 문법·knn 옵션은 제품·버전마다 다르다. 실제 구현 전 해당 저장소의 현재 문서로 문법과 인덱스 옵션을 확인해야 한다.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="no">4</span>wg-02 선택 방향</h2>
-    <p class="h2-sub">권장 wg-02로 상황별 추천을 선택 카드로 보여준다.</p>
-    <p>승리·경고 조건만으로 가르기 애매한 실제 상황을 다섯 가지로 나눠, 각 상황에서 <strong>먼저 손대야 할 후보와 다음 검증 한 가지</strong>를 묶었다. 추천은 고정값이 아니라, 표의 "전환 신호"가 켜지면 다음 후보로 넘어가도록 설계했다.</p>
-    <div class="card-grid">
-      <article class="mini-card">
-        <h3>Postgres 기반 MVP</h3>
-        <p>이미 PostgreSQL을 쓰고, 검색 가설을 빠르게 검증하고 싶은 초기 제품.</p>
-        <p><strong>pgvector로 시작.</strong> 저장소 추가 0개로 의미 검색을 켜고 recall@10 기준선을 만든다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>검색이 제품의 본질</h3>
-        <p>검색 품질·속도가 곧 매출이고 p95/QPS가 계약 SLO로 묶인 단계.</p>
-        <p><strong>전용 Vector DB를 부하 테스트.</strong> 실데이터로 recall/latency curve와 비용을 함께 본다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>키워드가 자주 실패</h3>
-        <p>상품명·코드·정확 문구·동의어 질의에서 zero-result가 많은 카탈로그형 검색.</p>
-        <p><strong>검색 엔진 하이브리드 검토.</strong> BM25와 vector를 rank fusion으로 합친다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>권한이 복잡하고 자주 변함</h3>
-        <p>tenant·ACL·publication status가 검색 조건에 깊게 얽힌 B2B SaaS.</p>
-        <p><strong>SQL 권한을 재사용하는 pgvector 우선.</strong> filter leakage 0건을 회귀 기준으로 둔다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>검색 실패를 아직 못 잰다</h3>
-        <p>"검색이 별로다"는 느낌만 있고 측정 지표·로그가 없는 상태.</p>
-        <p><strong>저장소보다 평가셋 먼저.</strong> 질문 100개와 공통 result contract부터 만든다.</p>
-      </article>
-      <article class="mini-card">
-        <h3>대규모로 가는 중인 pgvector</h3>
-        <p>pgvector로 잘 굴러왔지만 벡터 수·QPS가 빠르게 커지는 성장기.</p>
-        <p><strong>임계점 모니터링.</strong> p95 SLO 반복 위반이 보이면 전용 DB 병렬 검증을 시작한다.</p>
-      </article>
-    </div>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>상황 → 1차 후보 → 다음 검증 → 전환 신호</caption>
-        <thead><tr><th>상황</th><th>1차 후보</th><th>다음 검증 한 가지</th><th>다음 후보로 넘기는 전환 신호</th></tr></thead>
-        <tbody>
-          <tr><td>Postgres 기반 MVP</td><td>pgvector</td><td>recall@10 기준선 측정</td><td>p95 SLO 반복 위반 또는 벡터 수천만 돌파</td></tr>
-          <tr><td>검색이 제품의 본질</td><td>전용 Vector DB</td><td>실데이터 부하 테스트</td><td>키워드·정확 문구 실패가 크면 하이브리드 추가</td></tr>
-          <tr><td>키워드가 자주 실패</td><td>검색 엔진 하이브리드</td><td>BM25/vector weight 실험</td><td>색인·relevance 운영 부담이 과하면 재검토</td></tr>
-          <tr><td>권한이 복잡·잦은 변경</td><td>pgvector</td><td>filter leakage 0건 회귀 검증</td><td>스케일 한계 도달 시 metadata filter 모델 검토</td></tr>
-          <tr><td>검색 실패 미측정</td><td>가장 가까운 기존 스택</td><td>질문 100개 + result contract</td><td>측정값이 쌓이면 위 행들로 재진입</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="no">5</span>vt-02 의사결정 트리</h2>
-    <p class="h2-sub">후순위 vt=decision-tree로 선택 질문을 순서화한다.</p>
-    <p>여러 기준을 동시에 저울질하면 결론이 나지 않는다. 대신 <strong>가장 강하게 후보를 떨어뜨리는 질문부터 순서대로</strong> 통과시키면 선택지가 빠르게 좁혀진다. 아래는 위에서 아래로 한 번씩만 답하면 되는 결정 순서다.</p>
-    <ol class="timeline-card">
-      <li><strong>Q1 · 검색 실패를 수치로 재고 있는가?</strong> 아니라면 어떤 비교도 의미가 없다. 질문 100개·기대 문서·공통 result contract부터 만들고 가장 가까운 기존 스택(대개 pgvector)으로 기준선을 잡는다. 재고 있다면 Q2로.</li>
-      <li><strong>Q2 · 처음부터 수천만+ 벡터, 계약 수준 p95/QPS가 사업 요구인가?</strong> 그렇다면 pgvector는 baseline으로만 쓰고 전용 Vector DB를 부하 테스트 대상으로 올린다. 아니라면 Q3로.</li>
-      <li><strong>Q3 · 이미 PostgreSQL이 핵심 저장소이고 권한·일관성이 중요한가?</strong> 그렇다면 pgvector를 1차 후보로 확정하고 recall@10·filter leakage를 회귀 기준으로 둔다. 아니라면 Q4로.</li>
-      <li><strong>Q4 · 키워드·정확 문구·동의어 실패가 사용자 불만의 큰 비중인가?</strong> 그렇다면 검색 엔진 하이브리드를 검토해 BM25와 vector를 rank fusion으로 합친다. 아니라면 Q5로.</li>
-      <li><strong>Q5 · 위 어느 것도 강하게 해당하지 않는가?</strong> 가장 통합이 빠른 후보로 시작해 로그를 쌓고, 임계점(p95 반복 위반·벡터 급증·키워드 실패 누적)이 켜지면 Q2~Q4로 되돌아온다.</li>
-    </ol>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>결정 질문별 통과 결과</caption>
-        <thead><tr><th>질문</th><th>예 → 결과</th><th>아니오 → 다음</th></tr></thead>
-        <tbody>
-          <tr><td>Q1 검색 실패 측정 중?</td><td>Q2로 진행</td><td>평가셋·로그 먼저 (pgvector baseline)</td></tr>
-          <tr><td>Q2 대규모·엄격 SLO?</td><td>전용 Vector DB 부하 테스트</td><td>Q3로</td></tr>
-          <tr><td>Q3 Postgres 핵심 + 권한 중시?</td><td>pgvector 1차 확정</td><td>Q4로</td></tr>
-          <tr><td>Q4 키워드 실패가 큰가?</td><td>검색 엔진 하이브리드</td><td>Q5로</td></tr>
-          <tr><td>Q5 결정적 요인 없음?</td><td>최단 통합 후보로 시작 후 모니터링</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="good">
-      <div class="label">순서가 중요한 이유</div>
-      <p class="name">강한 제약을 먼저 적용한다</p>
-      <p>Q2(스케일·SLO)와 Q3(권한·일관성)는 후보를 가장 강하게 탈락시키는 질문이라 위에 둔다. Q4(랭킹 품질)는 보강 가능한 문제라 뒤에 둔다. 순서를 뒤집으면 좋아 보이는 후보를 먼저 골랐다가 스케일·권한 제약에서 다시 갈아엎게 된다.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="no">6</span>vt-03 리스크 매트릭스</h2>
-    <p class="h2-sub">후순위 vt=risk-matrix로 저장소 선택 뒤에 생기는 운영 리스크를 분류한다.</p>
-    <p>저장소를 고른 뒤 실제로 팀을 괴롭히는 것은 벤치마크 수치가 아니라 운영 리스크다. 아래는 각 리스크를 <strong>발생 가능성과 영향도</strong>로 나누고, 어느 후보에서 특히 커지는지와 완화책을 묶은 매트릭스다. 높음/높음 칸은 선택 전에 반드시 대비책을 준비해야 하는 항목이다.</p>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>저장소 선택 이후 운영 리스크 매트릭스</caption>
-        <thead><tr><th>리스크</th><th>가능성</th><th>영향도</th><th>특히 큰 후보</th><th>완화책</th></tr></thead>
-        <tbody>
-          <tr><td>권한 누출 (filter leakage)</td><td>중</td><td>높음</td><td>전용 DB·검색 엔진 (권한 복제형)</td><td>filter leakage 회귀 테스트, can_read 단일 출처</td></tr>
-          <tr><td>색인 동기화 지연</td><td>높음</td><td>중</td><td>전용 DB·검색 엔진</td><td>delete/권한 propagation SLO, idempotency key</td></tr>
-          <tr><td>재색인 다운타임</td><td>중</td><td>높음</td><td>pgvector (대형 HNSW 재빌드)</td><td>야간 배치, 온라인 빌드, 인덱스 alias 전환</td></tr>
-          <tr><td>임베딩 모델 교체 충돌</td><td>중</td><td>높음</td><td>세 후보 공통</td><td>embedding_version 필수, dual index 전략</td></tr>
-          <tr><td>벤더 종속·전환 비용</td><td>중</td><td>중</td><td>전용 DB·검색 엔진</td><td>공통 chunk schema와 검색 adapter를 저장소 밖에</td></tr>
-          <tr><td>관측 불가 (디버깅 불능)</td><td>높음</td><td>높음</td><td>세 후보 공통</td><td>query·candidate·score·feedback 공통 로그</td></tr>
-          <tr><td>비용 폭증 (QPS·storage)</td><td>중</td><td>중</td><td>전용 DB (managed plan)</td><td>capacity plan, replica 수·storage 모니터링</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="danger"><div class="label">Risk note</div><p>가장 비싼 실패는 "검색 품질이 낮다"가 아니라 왜 낮은지 설명할 로그와 평가셋이 없는 상태다. 어떤 저장소를 고르든 query, candidate, filter, score, click/feedback 로그를 공통 포맷으로 남겨야 한다.</p></div>
-    <div class="good">
-      <div class="label">우선순위 정하는 법</div>
-      <p class="name">높음/높음 먼저, 가능성 높음 다음</p>
-      <p>권한 누출·재색인 다운타임·관측 불가는 영향도가 높아 선택 단계에서 대비책이 없으면 후보를 보류한다. 색인 동기화 지연처럼 가능성은 높지만 영향이 중간인 항목은 propagation SLO를 정의해 운영으로 흡수한다. 모든 리스크를 동시에 막으려 하기보다 이 두 줄 순서로 처리한다.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="bi-soft" cx="20" cy="11" rx="11" ry="5"/><path class="bi-fill" d="M9 11v18c0 2.8 5 5 11 5s11-2.2 11-5V11"/><path class="bi-line" d="M9 20c0 2.8 5 5 11 5s11-2.2 11-5"/><circle class="bi-accent" cx="26" cy="28" r="2"/></svg></span><span class="no">7</span>상세 선택 매트릭스</h2>
-    <p class="h2-sub">선택 기준별로 강점, 약점, 필요한 보완책을 나눈다.</p>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>벡터 검색 저장소 상세 비교</caption>
-        <thead><tr><th>기준</th><th>전용 Vector DB</th><th>PostgreSQL pgvector</th><th>검색 엔진 하이브리드</th><th>판단 포인트</th></tr></thead>
-        <tbody>
-          <tr><td>초기 도입</td><td>서비스 계약, SDK, 별도 색인 필요</td><td>기존 DB에 extension과 index 추가</td><td>검색 스택이 있으면 확장, 없으면 도입 비용 큼</td><td>MVP는 통합 시간과 team familiarity가 중요</td></tr>
-          <tr><td>권한/필터</td><td>metadata filter와 ACL 동기화 필요</td><td>SQL 권한, tenant filter, row-level 정책 활용 가능</td><td>색인 문서에 권한 metadata를 복제</td><td>권한 변경 빈도와 cardinality를 측정</td></tr>
-          <tr><td>대규모 확장</td><td>가장 강한 후보, partition/replica 기능 확인</td><td>DB 자원과 index 튜닝 범위 안에서 확장</td><td>검색 엔진 shard/replica로 확장</td><td>벡터 수, QPS, p95, update rate를 함께 본다</td></tr>
-          <tr><td>하이브리드 랭킹</td><td>제품별 keyword 기능 또는 외부 rerank 필요</td><td>SQL로 조합 가능하지만 운영 편의성은 제한적</td><td>BM25, vector, filter, boost를 한 곳에서 조정</td><td>검색 품질 디버깅 빈도가 높으면 중요</td></tr>
-          <tr><td>데이터 일관성</td><td>원본 DB와 색인 동기화 지연 관리</td><td>동일 트랜잭션 또는 가까운 일관성 유지 쉬움</td><td>색인 refresh, delete propagation 관리</td><td>삭제/권한 변경의 반영 지연을 측정</td></tr>
-          <tr><td>관측 가능성</td><td>vendor metric와 app trace 연결 필요</td><td>SQL 로그, query plan, DB metric 활용</td><td>검색 로그와 ranking debug 도구 활용</td><td>candidate score와 user feedback을 남겨야 함</td></tr>
-          <tr><td>비용 구조</td><td>저장량, QPS, replica, managed plan 영향</td><td>기존 DB 비용에 CPU/RAM/index storage 추가</td><td>색인 storage, shard, ingest pipeline 비용</td><td>월 비용보다 재색인과 장애 대응 비용 포함</td></tr>
-          <tr><td>이전 가능성</td><td>API 추상화 필요</td><td>공통 chunk schema를 두면 이전 쉬움</td><td>색인 schema와 ranking rule 추상화 필요</td><td>검색 adapter와 평가셋을 저장소 밖에 둔다</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-line" d="M13 27h14"/><rect class="bi-soft" x="14" y="20" width="3" height="7" rx="1"/><rect class="bi-accent-box" x="19" y="15" width="3" height="12" rx="1"/><rect class="bi-dot-box" x="24" y="18" width="3" height="9" rx="1"/></svg></span><span class="no">8</span>평가 데이터셋과 벤치마크</h2>
-    <p class="h2-sub">처음부터 최종 스택을 고르기보다 공통 평가 질문과 실패 로그를 먼저 만든다.</p>
-    <div class="grid-2">
-      <article class="mini-card"><h3>질문 세트</h3><p>사용자 실제 질문, 내부 운영 질문, edge case를 섞어 최소 100개부터 시작한다. 각 질문은 기대 문서, 금지 문서, 필터 조건을 갖는다.</p></article>
-      <article class="mini-card"><h3>검색 로그</h3><p>query text, embedding model, filter, candidate id, score, rank, click, feedback을 공통 포맷으로 남긴다.</p></article>
-      <article class="mini-card"><h3>부하 시나리오</h3><p>cold cache, hot cache, index rebuild, peak QPS, 권한 필터 cardinality를 분리 측정한다.</p></article>
-      <article class="mini-card"><h3>회귀 기준</h3><p>새 저장소가 빠르더라도 recall@k와 forbidden-document leakage가 나빠지면 실패로 본다.</p></article>
-    </div>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>검색 평가 프로토콜</caption>
-        <thead><tr><th>측정</th><th>의미</th><th>실패 기준</th><th>적용 후보</th></tr></thead>
-        <tbody>
-          <tr><td>recall@10</td><td>정답 문서가 상위 10개 안에 들어오는 비율</td><td>기준선 대비 5% 이상 하락</td><td>세 후보 모두</td></tr>
-          <tr><td>nDCG@10</td><td>정답 순서와 랭킹 품질</td><td>중요 쿼리군에서 하락</td><td>하이브리드, 전용 DB rerank</td></tr>
-          <tr><td>p95 latency</td><td>사용자가 체감하는 검색 지연</td><td>SLO 초과 또는 tail spike</td><td>전용 DB, pgvector</td></tr>
-          <tr><td>filter leakage</td><td>권한 없는 문서 노출 여부</td><td>1건이라도 실패</td><td>세 후보 모두</td></tr>
-          <tr><td>reindex time</td><td>모델 교체나 schema 변경 복구 시간</td><td>운영 window 초과</td><td>전용 DB, 검색 엔진</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="no">9</span>운영 모델과 이전 가능성</h2>
-    <p class="h2-sub">저장소가 바뀌어도 chunk schema, adapter, 평가셋, 로그 포맷은 유지해야 한다.</p>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>운영 체크포인트</caption>
-        <thead><tr><th>영역</th><th>전용 Vector DB</th><th>pgvector</th><th>검색 엔진 하이브리드</th><th>공통 보완책</th></tr></thead>
-        <tbody>
-          <tr><td>색인 생성</td><td>비동기 upsert와 backfill worker</td><td>DB migration과 batch insert</td><td>ingest pipeline과 refresh policy</td><td>chunk idempotency key</td></tr>
-          <tr><td>장애 대응</td><td>vendor outage, quota, region failover</td><td>DB saturation, lock, vacuum 이슈</td><td>cluster health, shard relocation</td><td>read fallback과 degraded mode</td></tr>
-          <tr><td>삭제/권한 변경</td><td>metadata sync 지연 확인</td><td>원본 권한과 같은 transaction 경계 가능</td><td>색인 update 지연 확인</td><td>delete propagation SLO</td></tr>
-          <tr><td>모델 교체</td><td>dual index 전략 필요</td><td>새 embedding column 또는 table 필요</td><td>새 field/index alias 필요</td><td>embedding_version 필수</td></tr>
-          <tr><td>마이그레이션</td><td>adapter와 export job 필요</td><td>baseline 역할에 적합</td><td>ranking rule 이식 난이도 관리</td><td>공통 SearchResult contract</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <pre><code>type SearchResult = {
+<div class="tbl table-scroll">
+<table>
+<caption>세 구현 패턴의 책임 배치 비교</caption>
+<thead><tr><th>관점</th><th>패턴 A · pgvector</th><th>패턴 B · 전용 DB</th><th>패턴 C · 검색 엔진</th></tr></thead>
+<tbody>
+<tr><td>권한 처리</td><td>기존 SQL 함수 그대로</td><td>metadata로 복제·동기화</td><td>색인 문서에 권한 metadata 복제</td></tr>
+<tr><td>본문 조인</td><td>같은 쿼리 안</td><td>앱 코드에서 2차 조회</td><td>색인에 본문 포함 또는 2차 조회</td></tr>
+<tr><td>키워드 결합</td><td>SQL로 수동 융합</td><td>외부 rerank 필요</td><td>BM25+vector 네이티브</td></tr>
+<tr><td>운영 책임 위치</td><td>DB 한 곳</td><td>DB + 벡터 서비스</td><td>DB + 색인 파이프라인</td></tr>
+</tbody>
+</table>
+</div>
+<div class="term">
+<div class="label">참고</div>
+<span class="word">코드는 개념 예시</span>
+<p>위 SQL·API 모양은 패턴 차이를 보이기 위한 예시이며, 거리 연산자·필터 문법·knn 옵션은 제품·버전마다 다르다. 실제 구현 전 해당 저장소의 현재 문서로 문법과 인덱스 옵션을 확인해야 한다.</p>
+</div>
+</section>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"></path><path class="bi-line" d="M14 20h12"></path><path class="bi-accent-line" d="M22 16l4 4-4 4"></path></svg></span><span class="no">4</span>wg-02 선택 방향</h2>
+<p class="h2-sub">권장 wg-02로 상황별 추천을 선택 카드로 보여준다.</p>
+<p>승리·경고 조건만으로 가르기 애매한 실제 상황을 다섯 가지로 나눠, 각 상황에서 <strong>먼저 손대야 할 후보와 다음 검증 한 가지</strong>를 묶었다. 추천은 고정값이 아니라, 표의 "전환 신호"가 켜지면 다음 후보로 넘어가도록 설계했다.</p>
+<div class="card-grid">
+<article class="mini-card">
+<h3>Postgres 기반 MVP</h3>
+<p>이미 PostgreSQL을 쓰고, 검색 가설을 빠르게 검증하고 싶은 초기 제품.</p>
+<p><strong>pgvector로 시작.</strong> 저장소 추가 0개로 의미 검색을 켜고 recall@10 기준선을 만든다.</p>
+</article>
+<article class="mini-card">
+<h3>검색이 제품의 본질</h3>
+<p>검색 품질·속도가 곧 매출이고 p95/QPS가 계약 SLO로 묶인 단계.</p>
+<p><strong>전용 Vector DB를 부하 테스트.</strong> 실데이터로 recall/latency curve와 비용을 함께 본다.</p>
+</article>
+<article class="mini-card">
+<h3>키워드가 자주 실패</h3>
+<p>상품명·코드·정확 문구·동의어 질의에서 zero-result가 많은 카탈로그형 검색.</p>
+<p><strong>검색 엔진 하이브리드 검토.</strong> BM25와 vector를 rank fusion으로 합친다.</p>
+</article>
+<article class="mini-card">
+<h3>권한이 복잡하고 자주 변함</h3>
+<p>tenant·ACL·publication status가 검색 조건에 깊게 얽힌 B2B SaaS.</p>
+<p><strong>SQL 권한을 재사용하는 pgvector 우선.</strong> filter leakage 0건을 회귀 기준으로 둔다.</p>
+</article>
+<article class="mini-card">
+<h3>검색 실패를 아직 못 잰다</h3>
+<p>"검색이 별로다"는 느낌만 있고 측정 지표·로그가 없는 상태.</p>
+<p><strong>저장소보다 평가셋 먼저.</strong> 질문 100개와 공통 result contract부터 만든다.</p>
+</article>
+<article class="mini-card">
+<h3>대규모로 가는 중인 pgvector</h3>
+<p>pgvector로 잘 굴러왔지만 벡터 수·QPS가 빠르게 커지는 성장기.</p>
+<p><strong>임계점 모니터링.</strong> p95 SLO 반복 위반이 보이면 전용 DB 병렬 검증을 시작한다.</p>
+</article>
+</div>
+<div class="tbl table-scroll">
+<table>
+<caption>상황 → 1차 후보 → 다음 검증 → 전환 신호</caption>
+<thead><tr><th>상황</th><th>1차 후보</th><th>다음 검증 한 가지</th><th>다음 후보로 넘기는 전환 신호</th></tr></thead>
+<tbody>
+<tr><td>Postgres 기반 MVP</td><td>pgvector</td><td>recall@10 기준선 측정</td><td>p95 SLO 반복 위반 또는 벡터 수천만 돌파</td></tr>
+<tr><td>검색이 제품의 본질</td><td>전용 Vector DB</td><td>실데이터 부하 테스트</td><td>키워드·정확 문구 실패가 크면 하이브리드 추가</td></tr>
+<tr><td>키워드가 자주 실패</td><td>검색 엔진 하이브리드</td><td>BM25/vector weight 실험</td><td>색인·relevance 운영 부담이 과하면 재검토</td></tr>
+<tr><td>권한이 복잡·잦은 변경</td><td>pgvector</td><td>filter leakage 0건 회귀 검증</td><td>스케일 한계 도달 시 metadata filter 모델 검토</td></tr>
+<tr><td>검색 실패 미측정</td><td>가장 가까운 기존 스택</td><td>질문 100개 + result contract</td><td>측정값이 쌓이면 위 행들로 재진입</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"></path><path class="bi-line" d="M14 20h12"></path><path class="bi-accent-line" d="M22 16l4 4-4 4"></path></svg></span><span class="no">5</span>vt-02 의사결정 트리</h2>
+<p class="h2-sub">후순위 vt=decision-tree로 선택 질문을 순서화한다.</p>
+<p>여러 기준을 동시에 저울질하면 결론이 나지 않는다. 대신 <strong>가장 강하게 후보를 떨어뜨리는 질문부터 순서대로</strong> 통과시키면 선택지가 빠르게 좁혀진다. 아래는 위에서 아래로 한 번씩만 답하면 되는 결정 순서다.</p>
+<ol class="timeline-card">
+<li><strong>Q1 · 검색 실패를 수치로 재고 있는가?</strong> 아니라면 어떤 비교도 의미가 없다. 질문 100개·기대 문서·공통 result contract부터 만들고 가장 가까운 기존 스택(대개 pgvector)으로 기준선을 잡는다. 재고 있다면 Q2로.</li>
+<li><strong>Q2 · 처음부터 수천만+ 벡터, 계약 수준 p95/QPS가 사업 요구인가?</strong> 그렇다면 pgvector는 baseline으로만 쓰고 전용 Vector DB를 부하 테스트 대상으로 올린다. 아니라면 Q3로.</li>
+<li><strong>Q3 · 이미 PostgreSQL이 핵심 저장소이고 권한·일관성이 중요한가?</strong> 그렇다면 pgvector를 1차 후보로 확정하고 recall@10·filter leakage를 회귀 기준으로 둔다. 아니라면 Q4로.</li>
+<li><strong>Q4 · 키워드·정확 문구·동의어 실패가 사용자 불만의 큰 비중인가?</strong> 그렇다면 검색 엔진 하이브리드를 검토해 BM25와 vector를 rank fusion으로 합친다. 아니라면 Q5로.</li>
+<li><strong>Q5 · 위 어느 것도 강하게 해당하지 않는가?</strong> 가장 통합이 빠른 후보로 시작해 로그를 쌓고, 임계점(p95 반복 위반·벡터 급증·키워드 실패 누적)이 켜지면 Q2~Q4로 되돌아온다.</li>
+</ol>
+<div class="tbl table-scroll">
+<table>
+<caption>결정 질문별 통과 결과</caption>
+<thead><tr><th>질문</th><th>예 → 결과</th><th>아니오 → 다음</th></tr></thead>
+<tbody>
+<tr><td>Q1 검색 실패 측정 중?</td><td>Q2로 진행</td><td>평가셋·로그 먼저 (pgvector baseline)</td></tr>
+<tr><td>Q2 대규모·엄격 SLO?</td><td>전용 Vector DB 부하 테스트</td><td>Q3로</td></tr>
+<tr><td>Q3 Postgres 핵심 + 권한 중시?</td><td>pgvector 1차 확정</td><td>Q4로</td></tr>
+<tr><td>Q4 키워드 실패가 큰가?</td><td>검색 엔진 하이브리드</td><td>Q5로</td></tr>
+<tr><td>Q5 결정적 요인 없음?</td><td>최단 통합 후보로 시작 후 모니터링</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+<div class="good">
+<div class="label">순서가 중요한 이유</div>
+<p class="name">강한 제약을 먼저 적용한다</p>
+<p>Q2(스케일·SLO)와 Q3(권한·일관성)는 후보를 가장 강하게 탈락시키는 질문이라 위에 둔다. Q4(랭킹 품질)는 보강 가능한 문제라 뒤에 둔다. 순서를 뒤집으면 좋아 보이는 후보를 먼저 골랐다가 스케일·권한 제약에서 다시 갈아엎게 된다.</p>
+</div>
+</section>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><path class="bi-soft" d="M20 7l14 25H6L20 7z"></path><path class="bi-accent-line" d="M20 16v8"></path><circle class="bi-accent" cx="20" cy="29" r="2"></circle></svg></span><span class="no">6</span>vt-03 리스크 매트릭스</h2>
+<p class="h2-sub">후순위 vt=risk-matrix로 저장소 선택 뒤에 생기는 운영 리스크를 분류한다.</p>
+<p>저장소를 고른 뒤 실제로 팀을 괴롭히는 것은 벤치마크 수치가 아니라 운영 리스크다. 아래는 각 리스크를 <strong>발생 가능성과 영향도</strong>로 나누고, 어느 후보에서 특히 커지는지와 완화책을 묶은 매트릭스다. 높음/높음 칸은 선택 전에 반드시 대비책을 준비해야 하는 항목이다.</p>
+<div class="tbl table-scroll">
+<table>
+<caption>저장소 선택 이후 운영 리스크 매트릭스</caption>
+<thead><tr><th>리스크</th><th>가능성</th><th>영향도</th><th>특히 큰 후보</th><th>완화책</th></tr></thead>
+<tbody>
+<tr><td>권한 누출 (filter leakage)</td><td>중</td><td>높음</td><td>전용 DB·검색 엔진 (권한 복제형)</td><td>filter leakage 회귀 테스트, can_read 단일 출처</td></tr>
+<tr><td>색인 동기화 지연</td><td>높음</td><td>중</td><td>전용 DB·검색 엔진</td><td>delete/권한 propagation SLO, idempotency key</td></tr>
+<tr><td>재색인 다운타임</td><td>중</td><td>높음</td><td>pgvector (대형 HNSW 재빌드)</td><td>야간 배치, 온라인 빌드, 인덱스 alias 전환</td></tr>
+<tr><td>임베딩 모델 교체 충돌</td><td>중</td><td>높음</td><td>세 후보 공통</td><td>embedding_version 필수, dual index 전략</td></tr>
+<tr><td>벤더 종속·전환 비용</td><td>중</td><td>중</td><td>전용 DB·검색 엔진</td><td>공통 chunk schema와 검색 adapter를 저장소 밖에</td></tr>
+<tr><td>관측 불가 (디버깅 불능)</td><td>높음</td><td>높음</td><td>세 후보 공통</td><td>query·candidate·score·feedback 공통 로그</td></tr>
+<tr><td>비용 폭증 (QPS·storage)</td><td>중</td><td>중</td><td>전용 DB (managed plan)</td><td>capacity plan, replica 수·storage 모니터링</td></tr>
+</tbody>
+</table>
+</div>
+<div class="danger"><div class="label">Risk note</div><p>가장 비싼 실패는 "검색 품질이 낮다"가 아니라 왜 낮은지 설명할 로그와 평가셋이 없는 상태다. 어떤 저장소를 고르든 query, candidate, filter, score, click/feedback 로그를 공통 포맷으로 남겨야 한다.</p></div>
+<div class="good">
+<div class="label">우선순위 정하는 법</div>
+<p class="name">높음/높음 먼저, 가능성 높음 다음</p>
+<p>권한 누출·재색인 다운타임·관측 불가는 영향도가 높아 선택 단계에서 대비책이 없으면 후보를 보류한다. 색인 동기화 지연처럼 가능성은 높지만 영향이 중간인 항목은 propagation SLO를 정의해 운영으로 흡수한다. 모든 리스크를 동시에 막으려 하기보다 이 두 줄 순서로 처리한다.</p>
+</div>
+</section>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><ellipse class="bi-soft" cx="20" cy="11" rx="11" ry="5"></ellipse><path class="bi-fill" d="M9 11v18c0 2.8 5 5 11 5s11-2.2 11-5V11"></path><path class="bi-line" d="M9 20c0 2.8 5 5 11 5s11-2.2 11-5"></path><circle class="bi-accent" cx="26" cy="28" r="2"></circle></svg></span><span class="no">7</span>상세 선택 매트릭스</h2>
+<p class="h2-sub">선택 기준별로 강점, 약점, 필요한 보완책을 나눈다.</p>
+<div class="tbl table-scroll">
+<table>
+<caption>벡터 검색 저장소 상세 비교</caption>
+<thead><tr><th>기준</th><th>전용 Vector DB</th><th>PostgreSQL pgvector</th><th>검색 엔진 하이브리드</th><th>판단 포인트</th></tr></thead>
+<tbody>
+<tr><td>초기 도입</td><td>서비스 계약, SDK, 별도 색인 필요</td><td>기존 DB에 extension과 index 추가</td><td>검색 스택이 있으면 확장, 없으면 도입 비용 큼</td><td>MVP는 통합 시간과 team familiarity가 중요</td></tr>
+<tr><td>권한/필터</td><td>metadata filter와 ACL 동기화 필요</td><td>SQL 권한, tenant filter, row-level 정책 활용 가능</td><td>색인 문서에 권한 metadata를 복제</td><td>권한 변경 빈도와 cardinality를 측정</td></tr>
+<tr><td>대규모 확장</td><td>가장 강한 후보, partition/replica 기능 확인</td><td>DB 자원과 index 튜닝 범위 안에서 확장</td><td>검색 엔진 shard/replica로 확장</td><td>벡터 수, QPS, p95, update rate를 함께 본다</td></tr>
+<tr><td>하이브리드 랭킹</td><td>제품별 keyword 기능 또는 외부 rerank 필요</td><td>SQL로 조합 가능하지만 운영 편의성은 제한적</td><td>BM25, vector, filter, boost를 한 곳에서 조정</td><td>검색 품질 디버깅 빈도가 높으면 중요</td></tr>
+<tr><td>데이터 일관성</td><td>원본 DB와 색인 동기화 지연 관리</td><td>동일 트랜잭션 또는 가까운 일관성 유지 쉬움</td><td>색인 refresh, delete propagation 관리</td><td>삭제/권한 변경의 반영 지연을 측정</td></tr>
+<tr><td>관측 가능성</td><td>vendor metric와 app trace 연결 필요</td><td>SQL 로그, query plan, DB metric 활용</td><td>검색 로그와 ranking debug 도구 활용</td><td>candidate score와 user feedback을 남겨야 함</td></tr>
+<tr><td>비용 구조</td><td>저장량, QPS, replica, managed plan 영향</td><td>기존 DB 비용에 CPU/RAM/index storage 추가</td><td>색인 storage, shard, ingest pipeline 비용</td><td>월 비용보다 재색인과 장애 대응 비용 포함</td></tr>
+<tr><td>이전 가능성</td><td>API 추상화 필요</td><td>공통 chunk schema를 두면 이전 쉬움</td><td>색인 schema와 ranking rule 추상화 필요</td><td>검색 adapter와 평가셋을 저장소 밖에 둔다</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><rect class="bi-fill" height="24" rx="4" width="24" x="8" y="8"></rect><path class="bi-line" d="M13 27h14"></path><rect class="bi-soft" height="7" rx="1" width="3" x="14" y="20"></rect><rect class="bi-accent-box" height="12" rx="1" width="3" x="19" y="15"></rect><rect class="bi-dot-box" height="9" rx="1" width="3" x="24" y="18"></rect></svg></span><span class="no">8</span>평가 데이터셋과 벤치마크</h2>
+<p class="h2-sub">처음부터 최종 스택을 고르기보다 공통 평가 질문과 실패 로그를 먼저 만든다.</p>
+<div class="grid-2">
+<article class="mini-card"><h3>질문 세트</h3><p>사용자 실제 질문, 내부 운영 질문, edge case를 섞어 최소 100개부터 시작한다. 각 질문은 기대 문서, 금지 문서, 필터 조건을 갖는다.</p></article>
+<article class="mini-card"><h3>검색 로그</h3><p>query text, embedding model, filter, candidate id, score, rank, click, feedback을 공통 포맷으로 남긴다.</p></article>
+<article class="mini-card"><h3>부하 시나리오</h3><p>cold cache, hot cache, index rebuild, peak QPS, 권한 필터 cardinality를 분리 측정한다.</p></article>
+<article class="mini-card"><h3>회귀 기준</h3><p>새 저장소가 빠르더라도 recall@k와 forbidden-document leakage가 나빠지면 실패로 본다.</p></article>
+</div>
+<div class="tbl table-scroll">
+<table>
+<caption>검색 평가 프로토콜</caption>
+<thead><tr><th>측정</th><th>의미</th><th>실패 기준</th><th>적용 후보</th></tr></thead>
+<tbody>
+<tr><td>recall@10</td><td>정답 문서가 상위 10개 안에 들어오는 비율</td><td>기준선 대비 5% 이상 하락</td><td>세 후보 모두</td></tr>
+<tr><td>nDCG@10</td><td>정답 순서와 랭킹 품질</td><td>중요 쿼리군에서 하락</td><td>하이브리드, 전용 DB rerank</td></tr>
+<tr><td>p95 latency</td><td>사용자가 체감하는 검색 지연</td><td>SLO 초과 또는 tail spike</td><td>전용 DB, pgvector</td></tr>
+<tr><td>filter leakage</td><td>권한 없는 문서 노출 여부</td><td>1건이라도 실패</td><td>세 후보 모두</td></tr>
+<tr><td>reindex time</td><td>모델 교체나 schema 변경 복구 시간</td><td>운영 window 초과</td><td>전용 DB, 검색 엔진</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><rect class="bi-fill" height="8" rx="2" width="8" x="7" y="9"></rect><rect class="bi-soft" height="8" rx="2" width="8" x="25" y="9"></rect><rect class="bi-fill" height="8" rx="2" width="8" x="16" y="24"></rect><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"></path><circle class="bi-accent" cx="20" cy="28" r="2"></circle></svg></span><span class="no">9</span>운영 모델과 이전 가능성</h2>
+<p class="h2-sub">저장소가 바뀌어도 chunk schema, adapter, 평가셋, 로그 포맷은 유지해야 한다.</p>
+<div class="tbl table-scroll">
+<table>
+<caption>운영 체크포인트</caption>
+<thead><tr><th>영역</th><th>전용 Vector DB</th><th>pgvector</th><th>검색 엔진 하이브리드</th><th>공통 보완책</th></tr></thead>
+<tbody>
+<tr><td>색인 생성</td><td>비동기 upsert와 backfill worker</td><td>DB migration과 batch insert</td><td>ingest pipeline과 refresh policy</td><td>chunk idempotency key</td></tr>
+<tr><td>장애 대응</td><td>vendor outage, quota, region failover</td><td>DB saturation, lock, vacuum 이슈</td><td>cluster health, shard relocation</td><td>read fallback과 degraded mode</td></tr>
+<tr><td>삭제/권한 변경</td><td>metadata sync 지연 확인</td><td>원본 권한과 같은 transaction 경계 가능</td><td>색인 update 지연 확인</td><td>delete propagation SLO</td></tr>
+<tr><td>모델 교체</td><td>dual index 전략 필요</td><td>새 embedding column 또는 table 필요</td><td>새 field/index alias 필요</td><td>embedding_version 필수</td></tr>
+<tr><td>마이그레이션</td><td>adapter와 export job 필요</td><td>baseline 역할에 적합</td><td>ranking rule 이식 난이도 관리</td><td>공통 SearchResult contract</td></tr>
+</tbody>
+</table>
+</div>
+<pre><code>type SearchResult = {
   documentId: string;
   chunkId: string;
   score: number;
@@ -2151,107 +2342,204 @@ const docs = await db.loadChunks(res.matches.map(m =&gt; m.id));</code></pre>
   embeddingVersion: string;
   matchedFilters: string[];
 }</code></pre>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="no">10</span>권장 결론</h2>
-    <p class="h2-sub">초기 정답은 pgvector인 경우가 많지만, 최종 정답은 검색 로그와 SLO가 정한다.</p>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>상황별 최종 추천</caption>
-        <thead><tr><th>상황</th><th>추천</th><th>이유</th><th>다음 검증</th></tr></thead>
-        <tbody>
-          <tr><td>Postgres 기반 SaaS, 내부 문서 검색, 팀 규모 작음</td><td>pgvector</td><td>권한과 데이터 일관성을 빠르게 유지한다.</td><td>DB 부하와 recall@10 기준선 측정</td></tr>
-          <tr><td>검색이 제품 핵심이며 p95 latency/QPS SLO가 엄격함</td><td>전용 Vector DB</td><td>분산 ANN과 replica 운영이 유리하다.</td><td>실데이터 부하 테스트와 비용 시뮬레이션</td></tr>
-          <tr><td>키워드, 정확한 문구, 동의어, 벡터가 모두 중요함</td><td>검색 엔진 하이브리드</td><td>랭킹 설명과 relevance 운영 도구가 중요하다.</td><td>BM25/vector weight 실험과 query 분석</td></tr>
-          <tr><td>아직 검색 실패를 측정하지 못함</td><td>pgvector 또는 가장 가까운 기존 스택</td><td>저장소보다 평가셋과 로그가 먼저다.</td><td>100개 질문 세트와 공통 result contract 작성</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>가장 보수적인 실행 순서는 <strong>pgvector로 기준선을 만들고, 검색 로그가 쌓이면 하이브리드 또는 전용 Vector DB를 같은 평가셋으로 재검증</strong>하는 것이다. 단, 처음부터 대규모 SLO가 사업 요구라면 pgvector를 최종 후보가 아니라 baseline으로만 사용한다.</p>
-    <div class="ba">
-      <div class="ba-col before">
-        <span class="ba-label">Before · 키워드 단독 검색</span>
-        <p>원본 DB의 <code>LIKE '%query%'</code>와 BM25 키워드 매칭만 사용했다. 동의어, 오타, 의역, "주문 취소 방법" 같은 의도 질의를 놓쳐 zero-result rate가 높았다.</p>
-        <p class="ba-emphasis-line"><span class="ba-bullet" aria-hidden="true"></span><span>recall@10 0.41 · zero-result 18% · "의미는 같지만 단어가 다른" 질문에서 대량 누락</span></p>
-      </div>
-      <div class="ba-arrow" aria-hidden="true">→</div>
-      <div class="ba-col after">
-        <span class="ba-label">After · pgvector 임베딩 + 하이브리드</span>
-        <p>같은 <code>doc_chunks</code> 테이블에 <code>embedding vector</code> 컬럼을 더해 <code>ORDER BY embedding &lt;-&gt; $q</code>로 의미 검색을 켜고, 키워드 점수와 <strong>rank fusion</strong>으로 합쳤다. 권한 필터는 기존 SQL <code>can_read()</code>를 그대로 재사용했다.</p>
-        <p class="ba-emphasis-line"><span class="ba-bullet" aria-hidden="true"></span><span>recall@10 0.41 → 0.73 · zero-result 18% → 5% · 의역·동의어 질의 회수, 권한 누출 0건 유지</span></p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="bi-soft" cx="20" cy="11" rx="11" ry="5"/><path class="bi-fill" d="M9 11v18c0 2.8 5 5 11 5s11-2.2 11-5V11"/><path class="bi-line" d="M9 20c0 2.8 5 5 11 5s11-2.2 11-5"/><circle class="bi-accent" cx="26" cy="28" r="2"/></svg></span><span class="no">11</span>비용·운영 비교</h2>
-    <p class="h2-sub">기능 비교 다음에 실제 도입을 결정짓는 것은 운영 부담과 전환·복구 비용이다.</p>
-    <p>앞 절의 기능·품질 비교가 "할 수 있는가"를 다뤘다면, 이 절은 <strong>"누가 어떤 비용으로 운영하는가"</strong>를 다룬다. 같은 recall을 내더라도 운영 부담, 스케일 한계, 재색인 비용이 다르면 1년 차의 총비용은 크게 갈린다.</p>
-    <div class="tbl table-scroll">
-      <table>
-        <caption>운영·비용 차원에서 본 세 후보 비교</caption>
-        <thead><tr><th>비교 차원</th><th>PostgreSQL pgvector</th><th>전용 Vector DB</th><th>검색 엔진(하이브리드)</th></tr></thead>
-        <tbody>
-          <tr><td>운영 부담</td><td>기존 DB 운영에 흡수, 별도 시스템 0개</td><td>새 서비스/계약 1개 추가, on-call 범위 확대</td><td>색인·노드·플러그인까지 운영 표면이 가장 넓음</td></tr>
-          <tr><td>스케일 한계</td><td>단일 DB 자원과 index 튜닝 범위 안, 수백만 벡터까지 무난</td><td>분산 ANN·partition·replica로 수십억 벡터까지 확장</td><td>shard/replica로 수평 확장, 단 노드 운영 필요</td></tr>
-          <tr><td>인덱스 재빌드 비용</td><td>HNSW/IVFFlat 재빌드 시 CPU·메모리 점유, 대형 테이블은 다운타임 주의</td><td>온라인 재색인·롤링 빌드 지원 제품이 많아 영향 작음</td><td>새 인덱스에 reindex 후 alias 전환, 운영 노하우 필요</td></tr>
-          <tr><td>하이브리드 검색 지원</td><td>SQL로 BM25 점수와 조합 가능하나 수동 튜닝 부담</td><td>제품별 keyword/rerank 기능 또는 외부 rerank 결합</td><td>BM25·vector·filter·boost를 한 쿼리에서 조정, 가장 강함</td></tr>
-          <tr><td>백업/복구</td><td>기존 DB 백업·PITR에 그대로 포함, 별도 절차 불필요</td><td>벤더 스냅샷/복제에 의존, 원본 DB와 동기화 정책 필요</td><td>snapshot API와 색인 재생성 절차를 별도 관리</td></tr>
-          <tr><td>팀 학습 곡선</td><td>SQL을 아는 팀이면 거의 즉시 시작</td><td>새 SDK·쿼리 모델·운영 개념 학습 필요</td><td>색인 매핑·analyzer·ranking 튜닝까지 학습 폭이 큼</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="box">
-      <div class="label">읽는 법</div>
-      <p>위 표에서 <strong>한 행이라도 사업 요구를 명백히 위반하는 후보는 제외</strong>한다. 예를 들어 "수십억 벡터·엄격한 p95"가 요구라면 스케일 한계 행에서 pgvector가 탈락하고, "운영 인력 1명·백업은 DB 백업으로 끝내고 싶다"면 같은 행에서 pgvector가 가장 유리해진다.</p>
-    </div>
-    <div class="danger">
-      <div class="label">자주 빠지는 함정</div>
-      <p class="name">월 사용료만 비교하기</p>
-      <p>벤더의 월 요금만 보고 "전용 DB가 비싸다"고 결론짓기 쉽지만, 실제 비용은 <strong>재색인 다운타임, 원본 DB와의 동기화 장애 대응, on-call 시간</strong>까지 포함해야 한다. pgvector는 요금이 0에 가까워도 대형 인덱스 재빌드 시 DB 전체 성능이 흔들리는 숨은 비용이 있다.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="no">12</span>마이그레이션 경로 + 추천 근거</h2>
-    <p class="h2-sub">한 번에 정답을 고르려 하지 말고, pgvector에서 시작해 임계점에 도달하면 전환한다.</p>
-    <p>대부분의 팀에게 가장 안전한 전략은 <strong>저비용으로 시작해 데이터가 결정을 내리게 하는 단계적 전환</strong>이다. 아래는 pgvector 기준선에서 출발해 필요할 때만 전용 Vector DB로 넘어가는 표준 경로다.</p>
-    <ol class="timeline-card">
-      <li><strong>1단계 · pgvector로 기준선 구축.</strong> 기존 <code>doc_chunks</code> 테이블에 <code>embedding vector</code> 컬럼을 더하고, 권한 필터는 기존 SQL을 재사용한다. 저장소 변경 0개로 의미 검색을 켠다.</li>
-      <li><strong>2단계 · 평가셋과 로그 축적.</strong> 질문 100개와 기대 문서 세트로 recall@10·nDCG@10·p95 latency를 측정하고, 모든 쿼리 score와 user feedback을 로그로 남긴다.</li>
-      <li><strong>3단계 · 임계점 모니터링.</strong> 벡터 수·QPS·p95·재색인 빈도를 대시보드로 본다. <strong>p95가 SLO를 반복 위반하거나 벡터가 수천만을 넘기 시작하면</strong> 전환 신호로 본다.</li>
-      <li><strong>4단계 · 전용 DB로 점진 전환.</strong> 공통 chunk schema와 검색 adapter를 저장소 밖에 둔 덕분에, 같은 평가셋으로 전용 Vector DB를 병렬 검증한 뒤 트래픽을 단계적으로 옮긴다.</li>
-      <li><strong>5단계 · 하이브리드 보강(선택).</strong> 키워드·정확 문구 실패가 크면 검색 엔진을 더해 BM25와 vector를 rank fusion으로 합친다.</li>
-    </ol>
-    <div class="good">
-      <div class="label">전환을 미뤄도 되는 신호</div>
-      <p class="name">아직 pgvector로 충분하다</p>
-      <p>벡터가 수백만 이하이고, p95가 SLO 안에 있으며, 재색인이 야간 배치로 끝난다면 전용 DB 전환은 비용만 늘린다. <strong>저장소를 바꾸기 전에 index 파라미터·하드웨어·하이브리드 튜닝을 먼저 소진</strong>한다.</p>
-    </div>
-    <p>상황별로 정리하면 추천은 다음과 같다. 각 카드의 근거는 모두 11절의 운영·비용 차원에서 나온다.</p>
-    <div class="card-grid">
-      <div class="mini-card">
-        <h3>소규모 · 통합 우선</h3>
-        <p>Postgres 기반 SaaS, 내부 문서 검색, 운영 인력이 적은 팀.</p>
-        <p><strong>추천: pgvector.</strong> 운영 표면 0 추가, 권한·백업을 기존 DB에 흡수, 팀 학습 곡선이 가장 낮다.</p>
-      </div>
-      <div class="mini-card">
-        <h3>대규모 · SLO 엄격</h3>
-        <p>검색이 제품 핵심이고 수천만 벡터·엄격한 p95/QPS가 요구.</p>
-        <p><strong>추천: 전용 Vector DB.</strong> 분산 ANN·온라인 재색인·replica로 스케일 한계와 재빌드 비용을 흡수한다.</p>
-      </div>
-      <div class="mini-card">
-        <h3>하이브리드 · 랭킹 중시</h3>
-        <p>키워드·정확 문구·동의어·벡터가 모두 중요하고 랭킹 디버깅이 잦음.</p>
-        <p><strong>추천: 검색 엔진 하이브리드.</strong> BM25·vector·boost를 한 곳에서 조정하고 ranking debug 도구를 쓴다.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="try"><div class="label">NEXT ACTION</div><h2>바로 실행할 일</h2><ol><li>현재 문서 수, chunk 수, 예상 QPS, 권한 필터 cardinality를 수치화한다.</li><li>질문 100개와 기대 문서 세트를 만든다.</li><li>pgvector 기준선을 만들고 recall@10, nDCG@10, p95 latency를 기록한다.</li><li>키워드 실패가 크면 하이브리드 실험을, SLO가 빡빡하면 전용 Vector DB 부하 테스트를 진행한다.</li></ol></section>
-  <aside class="source-note"><div class="label">Source Note</div><p>기술 선택 기준 예시이며 특정 제품의 최신 성능, 가격, managed plan은 확인하지 않았다. 실제 도입 전에는 후보 제품의 현재 문서, 가격, SLA, regional availability를 별도로 검증해야 한다.</p></aside>
+</section>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"></path><path class="bi-line" d="M14 20h12"></path><path class="bi-accent-line" d="M22 16l4 4-4 4"></path></svg></span><span class="no">10</span>권장 결론</h2>
+<p class="h2-sub">초기 정답은 pgvector인 경우가 많지만, 최종 정답은 검색 로그와 SLO가 정한다.</p>
+<div class="tbl table-scroll">
+<table>
+<caption>상황별 최종 추천</caption>
+<thead><tr><th>상황</th><th>추천</th><th>이유</th><th>다음 검증</th></tr></thead>
+<tbody>
+<tr><td>Postgres 기반 SaaS, 내부 문서 검색, 팀 규모 작음</td><td>pgvector</td><td>권한과 데이터 일관성을 빠르게 유지한다.</td><td>DB 부하와 recall@10 기준선 측정</td></tr>
+<tr><td>검색이 제품 핵심이며 p95 latency/QPS SLO가 엄격함</td><td>전용 Vector DB</td><td>분산 ANN과 replica 운영이 유리하다.</td><td>실데이터 부하 테스트와 비용 시뮬레이션</td></tr>
+<tr><td>키워드, 정확한 문구, 동의어, 벡터가 모두 중요함</td><td>검색 엔진 하이브리드</td><td>랭킹 설명과 relevance 운영 도구가 중요하다.</td><td>BM25/vector weight 실험과 query 분석</td></tr>
+<tr><td>아직 검색 실패를 측정하지 못함</td><td>pgvector 또는 가장 가까운 기존 스택</td><td>저장소보다 평가셋과 로그가 먼저다.</td><td>100개 질문 세트와 공통 result contract 작성</td></tr>
+</tbody>
+</table>
+</div>
+<p>가장 보수적인 실행 순서는 <strong>pgvector로 기준선을 만들고, 검색 로그가 쌓이면 하이브리드 또는 전용 Vector DB를 같은 평가셋으로 재검증</strong>하는 것이다. 단, 처음부터 대규모 SLO가 사업 요구라면 pgvector를 최종 후보가 아니라 baseline으로만 사용한다.</p>
+<div class="ba">
+<div class="ba-col before">
+<span class="ba-label">Before · 키워드 단독 검색</span>
+<p>원본 DB의 <code>LIKE '%query%'</code>와 BM25 키워드 매칭만 사용했다. 동의어, 오타, 의역, "주문 취소 방법" 같은 의도 질의를 놓쳐 zero-result rate가 높았다.</p>
+<p class="ba-emphasis-line"><span aria-hidden="true" class="ba-bullet"></span><span>recall@10 0.41 · zero-result 18% · "의미는 같지만 단어가 다른" 질문에서 대량 누락</span></p>
+</div>
+<div aria-hidden="true" class="ba-arrow">→</div>
+<div class="ba-col after">
+<span class="ba-label">After · pgvector 임베딩 + 하이브리드</span>
+<p>같은 <code>doc_chunks</code> 테이블에 <code>embedding vector</code> 컬럼을 더해 <code>ORDER BY embedding &lt;-&gt; $q</code>로 의미 검색을 켜고, 키워드 점수와 <strong>rank fusion</strong>으로 합쳤다. 권한 필터는 기존 SQL <code>can_read()</code>를 그대로 재사용했다.</p>
+<p class="ba-emphasis-line"><span aria-hidden="true" class="ba-bullet"></span><span>recall@10 0.41 → 0.73 · zero-result 18% → 5% · 의역·동의어 질의 회수, 권한 누출 0건 유지</span></p>
+</div>
+</div>
+</section>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><ellipse class="bi-soft" cx="20" cy="11" rx="11" ry="5"></ellipse><path class="bi-fill" d="M9 11v18c0 2.8 5 5 11 5s11-2.2 11-5V11"></path><path class="bi-line" d="M9 20c0 2.8 5 5 11 5s11-2.2 11-5"></path><circle class="bi-accent" cx="26" cy="28" r="2"></circle></svg></span><span class="no">11</span>비용·운영 비교</h2>
+<p class="h2-sub">기능 비교 다음에 실제 도입을 결정짓는 것은 운영 부담과 전환·복구 비용이다.</p>
+<p>앞 절의 기능·품질 비교가 "할 수 있는가"를 다뤘다면, 이 절은 <strong>"누가 어떤 비용으로 운영하는가"</strong>를 다룬다. 같은 recall을 내더라도 운영 부담, 스케일 한계, 재색인 비용이 다르면 1년 차의 총비용은 크게 갈린다.</p>
+<div class="tbl table-scroll">
+<table>
+<caption>운영·비용 차원에서 본 세 후보 비교</caption>
+<thead><tr><th>비교 차원</th><th>PostgreSQL pgvector</th><th>전용 Vector DB</th><th>검색 엔진(하이브리드)</th></tr></thead>
+<tbody>
+<tr><td>운영 부담</td><td>기존 DB 운영에 흡수, 별도 시스템 0개</td><td>새 서비스/계약 1개 추가, on-call 범위 확대</td><td>색인·노드·플러그인까지 운영 표면이 가장 넓음</td></tr>
+<tr><td>스케일 한계</td><td>단일 DB 자원과 index 튜닝 범위 안, 수백만 벡터까지 무난</td><td>분산 ANN·partition·replica로 수십억 벡터까지 확장</td><td>shard/replica로 수평 확장, 단 노드 운영 필요</td></tr>
+<tr><td>인덱스 재빌드 비용</td><td>HNSW/IVFFlat 재빌드 시 CPU·메모리 점유, 대형 테이블은 다운타임 주의</td><td>온라인 재색인·롤링 빌드 지원 제품이 많아 영향 작음</td><td>새 인덱스에 reindex 후 alias 전환, 운영 노하우 필요</td></tr>
+<tr><td>하이브리드 검색 지원</td><td>SQL로 BM25 점수와 조합 가능하나 수동 튜닝 부담</td><td>제품별 keyword/rerank 기능 또는 외부 rerank 결합</td><td>BM25·vector·filter·boost를 한 쿼리에서 조정, 가장 강함</td></tr>
+<tr><td>백업/복구</td><td>기존 DB 백업·PITR에 그대로 포함, 별도 절차 불필요</td><td>벤더 스냅샷/복제에 의존, 원본 DB와 동기화 정책 필요</td><td>snapshot API와 색인 재생성 절차를 별도 관리</td></tr>
+<tr><td>팀 학습 곡선</td><td>SQL을 아는 팀이면 거의 즉시 시작</td><td>새 SDK·쿼리 모델·운영 개념 학습 필요</td><td>색인 매핑·analyzer·ranking 튜닝까지 학습 폭이 큼</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box">
+<div class="label">읽는 법</div>
+<p>위 표에서 <strong>한 행이라도 사업 요구를 명백히 위반하는 후보는 제외</strong>한다. 예를 들어 "수십억 벡터·엄격한 p95"가 요구라면 스케일 한계 행에서 pgvector가 탈락하고, "운영 인력 1명·백업은 DB 백업으로 끝내고 싶다"면 같은 행에서 pgvector가 가장 유리해진다.</p>
+</div>
+<div class="danger">
+<div class="label">자주 빠지는 함정</div>
+<p class="name">월 사용료만 비교하기</p>
+<p>벤더의 월 요금만 보고 "전용 DB가 비싸다"고 결론짓기 쉽지만, 실제 비용은 <strong>재색인 다운타임, 원본 DB와의 동기화 장애 대응, on-call 시간</strong>까지 포함해야 한다. pgvector는 요금이 0에 가까워도 대형 인덱스 재빌드 시 DB 전체 성능이 흔들리는 숨은 비용이 있다.</p>
+</div>
+</section>
+<section>
+<h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"></path><path class="bi-line" d="M14 20h12"></path><path class="bi-accent-line" d="M22 16l4 4-4 4"></path></svg></span><span class="no">12</span>마이그레이션 경로 + 추천 근거</h2>
+<p class="h2-sub">한 번에 정답을 고르려 하지 말고, pgvector에서 시작해 임계점에 도달하면 전환한다.</p>
+<p>대부분의 팀에게 가장 안전한 전략은 <strong>저비용으로 시작해 데이터가 결정을 내리게 하는 단계적 전환</strong>이다. 아래는 pgvector 기준선에서 출발해 필요할 때만 전용 Vector DB로 넘어가는 표준 경로다.</p>
+<ol class="timeline-card">
+<li><strong>1단계 · pgvector로 기준선 구축.</strong> 기존 <code>doc_chunks</code> 테이블에 <code>embedding vector</code> 컬럼을 더하고, 권한 필터는 기존 SQL을 재사용한다. 저장소 변경 0개로 의미 검색을 켠다.</li>
+<li><strong>2단계 · 평가셋과 로그 축적.</strong> 질문 100개와 기대 문서 세트로 recall@10·nDCG@10·p95 latency를 측정하고, 모든 쿼리 score와 user feedback을 로그로 남긴다.</li>
+<li><strong>3단계 · 임계점 모니터링.</strong> 벡터 수·QPS·p95·재색인 빈도를 대시보드로 본다. <strong>p95가 SLO를 반복 위반하거나 벡터가 수천만을 넘기 시작하면</strong> 전환 신호로 본다.</li>
+<li><strong>4단계 · 전용 DB로 점진 전환.</strong> 공통 chunk schema와 검색 adapter를 저장소 밖에 둔 덕분에, 같은 평가셋으로 전용 Vector DB를 병렬 검증한 뒤 트래픽을 단계적으로 옮긴다.</li>
+<li><strong>5단계 · 하이브리드 보강(선택).</strong> 키워드·정확 문구 실패가 크면 검색 엔진을 더해 BM25와 vector를 rank fusion으로 합친다.</li>
+</ol>
+<div class="good">
+<div class="label">전환을 미뤄도 되는 신호</div>
+<p class="name">아직 pgvector로 충분하다</p>
+<p>벡터가 수백만 이하이고, p95가 SLO 안에 있으며, 재색인이 야간 배치로 끝난다면 전용 DB 전환은 비용만 늘린다. <strong>저장소를 바꾸기 전에 index 파라미터·하드웨어·하이브리드 튜닝을 먼저 소진</strong>한다.</p>
+</div>
+<p>상황별로 정리하면 추천은 다음과 같다. 각 카드의 근거는 모두 11절의 운영·비용 차원에서 나온다.</p>
+<div class="card-grid">
+<div class="mini-card">
+<h3>소규모 · 통합 우선</h3>
+<p>Postgres 기반 SaaS, 내부 문서 검색, 운영 인력이 적은 팀.</p>
+<p><strong>추천: pgvector.</strong> 운영 표면 0 추가, 권한·백업을 기존 DB에 흡수, 팀 학습 곡선이 가장 낮다.</p>
+</div>
+<div class="mini-card">
+<h3>대규모 · SLO 엄격</h3>
+<p>검색이 제품 핵심이고 수천만 벡터·엄격한 p95/QPS가 요구.</p>
+<p><strong>추천: 전용 Vector DB.</strong> 분산 ANN·온라인 재색인·replica로 스케일 한계와 재빌드 비용을 흡수한다.</p>
+</div>
+<div class="mini-card">
+<h3>하이브리드 · 랭킹 중시</h3>
+<p>키워드·정확 문구·동의어·벡터가 모두 중요하고 랭킹 디버깅이 잦음.</p>
+<p><strong>추천: 검색 엔진 하이브리드.</strong> BM25·vector·boost를 한 곳에서 조정하고 ranking debug 도구를 쓴다.</p>
+</div>
+</div>
+</section>
+<section class="latest-skill-contract" data-skill-update="20260608"><h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><rect class="bi-fill" height="5" rx="2" width="24" x="8" y="9"></rect><rect class="bi-soft" height="5" rx="2" width="24" x="8" y="18"></rect><rect class="bi-soft" height="5" rx="2" width="16" x="8" y="27"></rect><circle class="bi-accent" cx="30" cy="29" r="3"></circle></svg></span><span class="num">16</span>최신 스킬 계약 적용 확인</h2><p class="h2-sub">comparison_html 모드의 v5.9.1 계약을 확인하기 위해 1순위 vt 템플릿과 권장 wg 위젯을 이 페이지 안에 함께 배치했습니다.</p><section aria-labelledby="wg-01-title" class="wg-01">
+<header class="wg-01-head">
+<p class="wg-01-kicker">코드 비교</p>
+<h2 class="wg-01-title" id="wg-01-title">한 문제, 세 가지 구현 접근</h2>
+<p class="wg-01-lead">문제: <strong>중복 없는 정수 배열에서 두 수의 합이 target이 되는 인덱스 쌍 찾기</strong>. 세 접근의 코드·장단점·트레이드오프를 나란히 비교합니다.</p>
+</header>
+<div class="wg-01-grid" role="list">
+<article aria-labelledby="wg-01-a1" class="wg-01-card" role="listitem">
+<div class="wg-01-card-head">
+<span aria-hidden="true" class="wg-01-rank">A</span>
+<div>
+<h3 class="wg-01-card-title" id="wg-01-a1">완전 탐색 (Brute Force)</h3>
+<p class="wg-01-card-sub">O(n²) · 추가 메모리 없음</p>
+</div>
+</div>
+<pre aria-label="완전 탐색 코드" class="wg-01-code" tabindex="0"><code><span class="wg-01-kw">def</span> <span class="wg-01-fn">two_sum</span>(nums, target):
+  <span class="wg-01-kw">for</span> i <span class="wg-01-kw">in</span> range(len(nums)):
+    <span class="wg-01-kw">for</span> j <span class="wg-01-kw">in</span> range(i+<span class="wg-01-num">1</span>, len(nums)):
+      <span class="wg-01-kw">if</span> nums[i]+nums[j] == target:
+        <span class="wg-01-kw">return</span> [i, j]
+  <span class="wg-01-kw">return</span> []</code></pre>
+<div class="wg-01-cols">
+<div class="wg-01-pros">
+<p class="wg-01-coltag wg-01-coltag-good"><span aria-hidden="true">▲</span> 장점</p>
+<ul><li>구현이 단순, 버그 위험 낮음</li><li>메모리 O(1)</li></ul>
+</div>
+<div class="wg-01-cons">
+<p class="wg-01-coltag wg-01-coltag-bad"><span aria-hidden="true">▼</span> 단점</p>
+<ul><li>큰 입력에서 느림</li><li>중첩 루프 확장성 낮음</li></ul>
+</div>
+</div>
+<div aria-label="트레이드오프 태그" class="wg-01-tags">
+<span class="wg-01-tag wg-01-tag-time">시간 O(n²)</span>
+<span class="wg-01-tag wg-01-tag-space">공간 O(1)</span>
+<span class="wg-01-tag">읽기 쉬움</span>
+</div>
+</article>
+<article aria-labelledby="wg-01-a2" class="wg-01-card wg-01-card-pick" role="listitem">
+<div class="wg-01-card-head">
+<span aria-hidden="true" class="wg-01-rank wg-01-rank-pick">B</span>
+<div>
+<h3 class="wg-01-card-title" id="wg-01-a2">해시맵 1-pass <span class="wg-01-pick-badge">권장</span></h3>
+<p class="wg-01-card-sub">O(n) · 메모리 트레이드</p>
+</div>
+</div>
+<pre aria-label="해시맵 코드" class="wg-01-code" tabindex="0"><code><span class="wg-01-kw">def</span> <span class="wg-01-fn">two_sum</span>(nums, target):
+  seen = {}
+  <span class="wg-01-kw">for</span> i, n <span class="wg-01-kw">in</span> enumerate(nums):
+    need = target - n
+    <span class="wg-01-kw">if</span> need <span class="wg-01-kw">in</span> seen:
+      <span class="wg-01-kw">return</span> [seen[need], i]
+    seen[n] = i
+  <span class="wg-01-kw">return</span> []</code></pre>
+<div class="wg-01-cols">
+<div class="wg-01-pros">
+<p class="wg-01-coltag wg-01-coltag-good"><span aria-hidden="true">▲</span> 장점</p>
+<ul><li>선형 시간, 단일 순회</li><li>대규모 입력에 안정적</li></ul>
+</div>
+<div class="wg-01-cons">
+<p class="wg-01-coltag wg-01-coltag-bad"><span aria-hidden="true">▼</span> 단점</p>
+<ul><li>O(n) 추가 메모리</li><li>해시 충돌 의존</li></ul>
+</div>
+</div>
+<div aria-label="트레이드오프 태그" class="wg-01-tags">
+<span class="wg-01-tag wg-01-tag-time">시간 O(n)</span>
+<span class="wg-01-tag wg-01-tag-space">공간 O(n)</span>
+<span class="wg-01-tag">실무 기본</span>
+</div>
+</article>
+<article aria-labelledby="wg-01-a3" class="wg-01-card" role="listitem">
+<div class="wg-01-card-head">
+<span aria-hidden="true" class="wg-01-rank">C</span>
+<div>
+<h3 class="wg-01-card-title" id="wg-01-a3">정렬 + 투 포인터</h3>
+<p class="wg-01-card-sub">O(n log n) · 인덱스 보존 필요</p>
+</div>
+</div>
+<pre aria-label="투 포인터 코드" class="wg-01-code" tabindex="0"><code><span class="wg-01-kw">def</span> <span class="wg-01-fn">two_sum</span>(nums, target):
+  arr = sorted(enumerate(nums), key=<span class="wg-01-kw">lambda</span> x: x[<span class="wg-01-num">1</span>])
+  l, r = <span class="wg-01-num">0</span>, len(arr)-<span class="wg-01-num">1</span>
+  <span class="wg-01-kw">while</span> l &lt; r:
+    s = arr[l][<span class="wg-01-num">1</span>] + arr[r][<span class="wg-01-num">1</span>]
+    <span class="wg-01-kw">if</span> s == target: <span class="wg-01-kw">return</span> [arr[l][<span class="wg-01-num">0</span>], arr[r][<span class="wg-01-num">0</span>]]
+    l, r = (l+<span class="wg-01-num">1</span>, r) <span class="wg-01-kw">if</span> s&lt;target <span class="wg-01-kw">else</span> (l, r-<span class="wg-01-num">1</span>)
+  <span class="wg-01-kw">return</span> []</code></pre>
+<div class="wg-01-cols">
+<div class="wg-01-pros">
+<p class="wg-01-coltag wg-01-coltag-good"><span aria-hidden="true">▲</span> 장점</p>
+<ul><li>정렬 데이터에 재사용 용이</li><li>공간 O(1)~O(n)</li></ul>
+</div>
+<div class="wg-01-cons">
+<p class="wg-01-coltag wg-01-coltag-bad"><span aria-hidden="true">▼</span> 단점</p>
+<ul><li>정렬 비용 발생</li><li>원본 인덱스 추적 복잡</li></ul>
+</div>
+</div>
+<div aria-label="트레이드오프 태그" class="wg-01-tags">
+<span class="wg-01-tag wg-01-tag-time">시간 O(n log n)</span>
+<span class="wg-01-tag wg-01-tag-space">공간 O(n)</span>
+<span class="wg-01-tag">정렬 의존</span>
+</div>
+</article>
+</div>
+</section></section><section class="try"><div class="label">NEXT ACTION</div><h2><span class="body-icon body-icon--sm"><svg aria-hidden="true" viewbox="0 0 40 40"><path class="bi-soft" d="M20 7l14 25H6L20 7z"></path><path class="bi-accent-line" d="M20 16v8"></path><circle class="bi-accent" cx="20" cy="29" r="2"></circle></svg></span>바로 실행할 일</h2><ol><li>현재 문서 수, chunk 수, 예상 QPS, 권한 필터 cardinality를 수치화한다.</li><li>질문 100개와 기대 문서 세트를 만든다.</li><li>pgvector 기준선을 만들고 recall@10, nDCG@10, p95 latency를 기록한다.</li><li>키워드 실패가 크면 하이브리드 실험을, SLO가 빡빡하면 전용 Vector DB 부하 테스트를 진행한다.</li></ol></section>
+<aside class="source-note"><div class="label">Source Note</div><p>기술 선택 기준 예시이며 특정 제품의 최신 성능, 가격, managed plan은 확인하지 않았다. 실제 도입 전에는 후보 제품의 현재 문서, 가격, SLA, regional availability를 별도로 검증해야 한다.</p></aside>
 </main>
-
 </body>
 </html>
