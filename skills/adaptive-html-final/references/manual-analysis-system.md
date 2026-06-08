@@ -86,6 +86,7 @@ source & version snapshot
 
 - 헤더는 `generated-row`(source snapshot 날짜 + manual status) + `lens-strip`(Role/Safety/Troubleshooting 칩)을 포함한다.
 - verdict(`manual-verdict`)는 본문 최상단, Reader Role Router 목차(`toc-map manual-reader-toc`)가 뒤따른다.
+- 목차 내부는 공식 카탈로그 `toc-map` chip-nav 구조(`span.label` + 설명 `p` + `.toc-pills` + `a.toc-pill > b`)로 작성한다. 구형 `.toc`/`ol` 또는 `.toc-map` 안의 bare link는 회귀다.
 - 번호가 있는 모든 섹션 `h2`는 `body-icon body-icon--sm` → `num` → 제목 순서를 유지하고, 주요 h2에는 `h2-sub`를 붙인다.
 - 권장 클래스: `.manual-reference-grid`/`.manual-card`+`.manual-label`(출처·선택 기준), `.manual-role-grid`/`.manual-role`(역할 경로), `.manual-step-grid`/`.manual-step`+`.manual-safe`(첫 성공 단계), `.manual-audit-grid`+`.manual-risk`/`.manual-unknown`(안전·감사), `.manual-trouble-grid`/`.manual-trouble`(4단 트러블슈팅), `.manual-runbook-grid`(운영 주기).
 - 평면 파일 목록이 6개 이상이면 `<ul class="col-list">` 다단 그리드로 렌더한다.

@@ -1,0 +1,49 @@
+{
+  "profile": "auto",
+  "core_css_sha256": "708674eeddea7017a1d97dc9ead0c8ce3714b7bd9e63b11d93d8e036d3709d2e",
+  "asset_order": [
+    "theme.css",
+    "components.css",
+    "visual-components.css",
+    "layouts.css",
+    "print.css"
+  ],
+  "conditional_asset_order": [
+    "widgets.css",
+    "visual-html.css",
+    "body-icons.css",
+    "editorial-patterns.css",
+    "shape-visuals.css",
+    "workflow-visuals.css",
+    "theme-dark.css"
+  ],
+  "inline_order": [
+    "theme.css",
+    "components.css",
+    "visual-components.css",
+    "widgets.css",
+    "visual-html.css",
+    "body-icons.css",
+    "editorial-patterns.css",
+    "shape-visuals.css",
+    "workflow-visuals.css",
+    "layouts.css",
+    "print.css",
+    "theme-dark.css"
+  ],
+  "asset_sha256": {
+    "theme.css": "5eba4190df59f9c4038c4a4c554e8d5463b966d37240dd664ab2e2228ea9f2de",
+    "components.css": "33afb3f8ba57ed4263d9bc8d6291774610047a8f35e125c43d26fa39bb3ce174",
+    "visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
+    "widgets.css": "1e79d05c95d0653e96b3213e4bddba12feb362a53ef90bd3560169057fec121a",
+    "visual-html.css": "1b1390637cd405d7a7221165d0e5aac18481dc044453dd8114531ce131f56fc5",
+    "body-icons.css": "abf84aa13dc11168c18e3aa1d19abe0efed039b89cfd942257c4057ee081bf7c",
+    "editorial-patterns.css": "d2ab22f7c0cf928f34fac7b911f3bd1100bc89b666dcb7c0d91fd4202f71a563",
+    "shape-visuals.css": "cd4d0f0d9112eb8212564ed05753817d69e1b49ec3fa378c7f3887cdc545e817",
+    "workflow-visuals.css": "3dd9135960bf8ceef96008a6ec0cd40329bbf3bfd8c040120429cfc68673cd8c",
+    "layouts.css": "5b2822f9ba79db9cea075990a6a7b6eec4d37e195ef199ffebf472efc080a7ef",
+    "print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
+    "theme-dark.css": "96df50de2fe103e8e1c9ded3279f5d5cd4e88a0ee53af45f937b9817882ad812"
+  },
+  "source_input": "/Users/hwanchoi/Downloads/2026-06-02-마음의 눈을 훈련하지 않으면 우리는 남의 세계에 산다.html"
+}

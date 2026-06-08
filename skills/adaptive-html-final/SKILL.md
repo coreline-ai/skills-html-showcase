@@ -27,7 +27,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.9.1 · "wg-10 figure sheet: 모드 정본 데모 섹션 한정 full-width (본문 가독성 보존)" (이전 5.9.0 — 카탈로그 reverse-sync 반응형·폭·대비 계약 + 시각 정본 게이트 3종)
+> Version 5.9.2 · "외부 세리프 폰트 금지 + pull-quote Pretendard + vt-02 decision-tree 정합성 보정 + toc-map·manual layout 회귀 방지" (이전 5.9.1 — wg-10 figure sheet: 모드 정본 데모 섹션 한정 full-width)
 
 ## 0. Identity
 
@@ -183,7 +183,7 @@ scripts/render_visual_svg.py = visual brief → SVG 렌더러
 examples/01..16_*.html = 16모드 풀 스킬급 참조 예제(실제 코어 CSS 인라인·8테마 스위처·body-icon·editorial/vt/wg 컴포넌트, 자기완결·무 JS, 모드별 시그니처 구조 확인용) + examples/index.html 갤러리
 ```
 
-공개 블로그 품질이 필요하면 `<head>`에 Pretendard Variable + Noto Serif KR 폰트 링크를 포함한다. 오프라인/내부 문서이면 fallback으로도 동작한다.
+공개 블로그 품질이 필요하면 `<head>`에 Pretendard Variable 폰트 링크를 포함한다. 오프라인/내부 문서이면 fallback으로도 동작한다.
 
 **SVG vs HTML 시각화 선택 규칙:** 본문 흐름 안에서 읽혀야 하는 구조도(절차·비교·리스크·RACI·타임라인·플로우 등)는 **SVG→HTML 템플릿(`vt-`)**을 쓴다. 이미지가 아니라 텍스트로 검색·복사·반응형이 되는 네이티브 HTML 다이어그램이므로 본문에 그대로 삽입한다(Step 4.7). 반대로 **hero 키비주얼·별첨 도판·다운로드용 한 장 인포그래픽**처럼 문서에서 분리해도 되는 큰 시각물은 `8000×6000` **SVG**(`visual-templates/*.svg.tpl` → `figure.visual-figure > img`)로 만든다(Step 4.5). 한 문서에 둘을 함께 써도 되지만, 본문 구조도를 SVG 이미지로, hero/별첨을 vt-HTML로 뒤바꾸지 않는다.
 
@@ -442,6 +442,7 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 [ ] `scripts/validate_output.py`가 OK다(완료 필수 게이트). 외부/동작 JS 0(JSON-LD만 허용).
 [ ] 요청 목적과 선택 모드가 §0.6 캐노니컬 결정표(모드→layout→vt-→wg-)와 일치한다.
 [ ] 선택된 layout 파일의 정보 구조를 실제 본문에 적용했다. `layout-*` 클래스만 붙인 임의 `<main>` 합성이 아니다.
+[ ] `github_analysis`/`youtube_analysis`/`manual_analysis`의 상단 목차는 공식 카탈로그 `toc-map` 계약(`toc-map` + `toc-pills` + `a.toc-pill > b`)을 사용했다. 구형 `.toc`/`ol` 목차는 회귀다.
 [ ] 선택 모드의 필수 블록이 모두 있다.
 [ ] 같은 모드의 참조 예제 또는 지정 검수본보다 단순한 카드 반복 구조로 후퇴하지 않았다.
 [ ] `.mini-card`/`.col-list` 반복이 문서의 주 구조가 아니며, 섹션 목적별로 표·vt·wg·원문 발췌·체크리스트·의사결정 구조를 섞었다.

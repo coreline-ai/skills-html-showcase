@@ -101,6 +101,7 @@ SOURCE_NOTE
 
 - `base.html`의 `ahf-theme` 라디오 3-세그먼트 스위처를 유지한다. `theme-dark.css`만 있고 전환 버튼이 없으면 실패다.
 - 헤더는 `generated-row` + `lens-strip`를 포함해 최신 13-topics 헤더 리듬과 맞춘다.
+- 질문형 목차는 공식 카탈로그의 `toc-map` chip-nav 계약을 따른다. 레이아웃 wrapper는 `toc-map github-question-toc`, 내부는 `span.label` + 설명 `p` + `.toc-pills` + `a.toc-pill > b` 구조이며, 구형 `.toc`/`ol` 목차나 bare link 목차는 회귀다.
 - 번호가 있는 모든 섹션 `h2`는 `body-icon body-icon--sm`을 번호 앞에 둔다. 예: `body-icon` → `num` → 제목.
 - `body-icons.css`를 조건부 자산으로 인라인하고 `sources/assets/body-icons.css`와 `css-integrity.json`에도 기록한다.
 - `.layout-github>section`은 카드/뷰 표면으로 감싸되, 내부 grid wrapper(`repo-*grid`)에만 grid를 적용한다.

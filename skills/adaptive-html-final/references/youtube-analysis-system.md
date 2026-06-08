@@ -78,6 +78,7 @@ source & trust snapshot
 
 - 헤더는 `generated-row`(observed_at + input tier) + `lens-strip`(FACT/INFERENCE/UNKNOWN 칩)을 포함한다.
 - verdict(`youtube-verdict`)는 본문 최상단에 두고, 질문 중심 목차(`toc-map youtube-question-toc`)가 뒤따른다.
+- 목차 내부는 공식 카탈로그 `toc-map` chip-nav 구조(`span.label` + 설명 `p` + `.toc-pills` + `a.toc-pill > b`)로 작성한다. 구형 `.toc`/`ol` 또는 `.toc-map` 안의 bare link는 회귀다.
 - 번호가 있는 모든 섹션 `h2`는 `body-icon body-icon--sm` → `num` → 제목 순서를 유지하고, 주요 h2에는 `h2-sub`를 붙인다.
 - 권장 클래스: `.youtube-signal-grid`(신뢰도 카드), `.youtube-evidence-grid`/`.youtube-card`(판단 카드), `.youtube-comment-grid`(댓글 신호), `.youtube-opportunity-grid`/`.youtube-opportunity`+`.youtube-badge`(기회 매트릭스), `.youtube-blueprint-grid`(설계), `.youtube-reuse-grid`(재가공).
 - Evidence Map 표는 visible `<caption>` + `mobile-card-table`(4열 이상) 계약을 따른다.

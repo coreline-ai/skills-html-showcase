@@ -7,7 +7,7 @@
 ## 고정 요소
 
 - 오프화이트 배경 `#f5f5f0`
-- Pretendard Variable + Noto Serif KR 조합
+- Pretendard Variable 단일 산세리프 조합
 - 빨간 원형 번호 h2
 - h2-sub 부제 리듬
 - 780px 읽기 폭 / 1020px 분석 폭

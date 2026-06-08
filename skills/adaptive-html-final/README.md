@@ -29,7 +29,7 @@
 
 - 10개 핵심/실사 모드: beginner, expert, article, education, github_analysis, youtube_analysis, manual_analysis, blog, seo, platform
 - 6개 확장 모드: skill_audit, reference, comparison, case_study, landing_brief, checklist_playbook
-- 디자인 유지: 오프화이트 배경, Pretendard + Noto Serif KR, h2 빨간 원번호, h2-sub, 의미 박스, source-note
+- 디자인 유지: 오프화이트 배경, Pretendard 단일 산세리프, h2 빨간 원번호, h2-sub, 의미 박스, source-note
 - 블로그 강점 흡수: 제목 4계열·도입부 3유형·본문 밀도·블로그 메타 스키마·플랫폼별 규칙·박스 선택 가이드(references 상세)
 - 접근성 수정: 16개 레이아웃 `<main>`에 `id="main"` 통일 (skip link 정상 동작)
 

@@ -1,0 +1,20 @@
+{
+  "source_url": "file:///Users/hwanchoi/Downloads/grok-india-account-guide%20(1).html",
+  "source_path": "/Users/hwanchoi/Downloads/grok-india-account-guide (1).html",
+  "source_size_bytes": 17624,
+  "source_title": "Grok 인도 App Store 계정 가입·결제 가이드",
+  "mode": "manual_analysis",
+  "layout": "manual-analysis.html",
+  "profile": "auto",
+  "primary_vt": "hero-map",
+  "supporting_vt": [
+    "checklist-flow",
+    "quality-gate",
+    "file-tour",
+    "decision-tree",
+    "process-swimlane"
+  ],
+  "recommended_wg_used": "wg-14",
+  "skill_version": "5.9.2",
+  "rewrite_note": "원본 절차형 가이드를 역할별 실행 매뉴얼로 재구성. 공식 정책/가격/약관 최신성은 UNKNOWN으로 분리."
+}

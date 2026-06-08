@@ -1,5 +1,12 @@
 # Changelog — adaptive-html-final
 
+## v5.9.2 (2026-06-08) — 폰트·decision-tree·toc-map 회귀 방지
+
+- **외부 세리프 폰트 금지**: `Noto Serif KR` 링크·스택·과거 `--serif-kr` 토큰을 제거하고 Pretendard/system sans로 통일. pull-quote/core-insight도 Pretendard 굵은 본문 리듬으로 고정.
+- **vt-02 decision-tree 정합성**: 공식 템플릿을 3카드 상단 행으로 보정하고, 카드 제목 margin/line-height 회귀를 `visual-html.css`에서 차단.
+- **toc-map 목차 회귀 방지**: 공식 카탈로그의 `toc-map` chip-nav를 analysis 목차 정본으로 승격. `github/youtube/manual` layout wrapper를 `toc-map *-toc`로 맞추고, validator가 구형 `.toc`/bare link 목차를 실패 처리한다.
+- **manual layout 보정**: direct section 안의 `div#anchor > h2` 구조도 제목 margin reset 대상에 포함해 카드 상단 85px 공백을 제거. 라이트 테마 `--danger-accent` 누락과 fallback을 보정해 RISK/TROUBLE 왼쪽 라인이 보이게 하고, `qg-final` 판정 문구를 14px/800으로 맞춤.
+
 ## v5.9.1 (2026-06-07) — wg-10 figure sheet 모드 데모 섹션 한정 full-width
 
 - **wg-10 svg figure sheet**: `.mode-template-contract .wg-10-sheet{width:100%;max-width:100%}` 추가. 모드 정본 템플릿 데모 섹션 안에서만 카드 전체 폭(1280px 620→974)으로 풀고, 일반 본문의 wg-10은 620px 유지 → 본문 가독성 보존. 스코프 한정 패치(전역 확장 회피).
@@ -52,7 +59,7 @@
 
 final_20260604(완성본) 패턴에 맞춘 2건 QA 수정.
 
-- **core-insight 인용 폰트**: `.core-insight blockquote` `var(--serif-kr)`(Noto Serif KR) → **`var(--sans)` + `font-weight:800` + `letter-spacing:-.02em`**(Pretendard 굵게) — final_20260604는 Noto Serif KR 웹폰트를 로드하지 않아 인용구가 굵은 Pretendard 폴백으로 렌더되므로, 그 실제 모습(굵은 산세리프)에 맞춰 통일. editorial-patterns.css(CONDITIONAL).
+- **core-insight 인용 폰트**: `.core-insight blockquote` `var(--sans)`(Pretendard) → **`var(--sans)` + `font-weight:800` + `letter-spacing:-.02em`**(Pretendard 굵게) — 인용구도 Pretendard 없이 굵은 산세리프로 통일. editorial-patterns.css(CONDITIONAL).
 - **risk-\* 우선순위 카드 간격**: `.risk-high/.risk-mid/.risk-low`를 완성본 `.access-check-rule` 방식으로 — `border-left:5px`(라인만) → **자체 카드(`border:1px`+`border-left:4px`+`padding:14px 16px`)**. host(decision-card 유무) 무관하게 좌측 색 라인과 항상 동일 간격. layouts.css(CORE) → 코어 해시 재산정·베이스라인 4종 재동기화.
 
 ## v5.5.9 (2026-06-06) — 모바일 표 카드화(#4 정석)
@@ -343,7 +350,7 @@ GitHub 저장소 URL 또는 `owner/repo` 입력을 사용자 질문 중심의 HT
 `output/final_20260604/index.html`의 **글꼴**과 **헤더 섹션(SVG 제외)**을 스킬에 반영하고, 다크 테마를 **"proper black"**으로 교정했다. 전문 시각 디자이너 + 레이아웃 스타일 디자이너 에이전트 2인 검토 결과를 반영. 코어 해시 재베이스라인(`b04221bd…`→`fea7b026…`). 무 JS·코어 `!important` 0 유지.
 
 ### 글꼴 — report 룩(sans 제목)
-- `--serif` 토큰을 Pretendard sans 스택으로 전환(제목·디스플레이가 Noto Serif KR → Pretendard sans). 진짜 세리프는 `--serif-kr`로 보존하고 `blockquote`/`.pull-quote`/`.core-insight blockquote`에만 적용(에디토리얼 대비).
+- `--serif` 토큰을 Pretendard sans 스택으로 전환(제목·디스플레이가 Pretendard → Pretendard sans). 진짜 세리프는 `--sans`로 보존하고 `blockquote`/`.pull-quote`/`.core-insight blockquote`에만 적용(에디토리얼 대비).
 - 디자이너 검토 반영: sans 제목은 700→**800** 무게 + 트래킹 강화(h1 -.025em/lh1.22, h2 -.02em/lh1.3, h3 -.015em).
 
 ### 헤더 — final_20260604 반영(SVG 제외)
@@ -683,7 +690,7 @@ ANALYSIS_adaptive-html-final.md(7-전문가 분석 + 적대적 검증)에서 확
 - **L8** `quality-report.schema.json`을 루브릭 구조(0~5 점수 + total + verdict + gates)로 확장 + 메타 식별자. eval-rubric/quality-gates/Blog Score 적용범위 명시.
 - **L9** 콜아웃 raw hex → `:root` 토큰 12종, AA 미달 색(.term/.danger/.good 라벨, .meta, .tag) 4.5:1 이상으로 상향, `prefers-reduced-motion` scroll 해제, print.css `print-color-adjust`/`break-inside`/`.skip{display:none}`.
 - **L10** h2-sub 강도를 '모드 한정 권장'으로 SKILL/quality-gates/editorial-design-system 통일, 트리거 tie-breaker 한 줄 추가.
-- **L11** 공개/SEO 예시 03/05/06에 폰트 링크(Pretendard + Noto Serif KR) 추가.
+- **L11** 공개/SEO 예시 03/05/06에 폰트 링크(Pretendard + Pretendard) 추가.
 
 ### 메타
 - version 4.0.0 → 4.1.0. 파일 수 51 → 59 (+accessibility-checklist, +recipe 7).

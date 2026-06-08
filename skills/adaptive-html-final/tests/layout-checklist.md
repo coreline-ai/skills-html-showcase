@@ -41,7 +41,7 @@ python3 scripts/validate_output.py <산출물 디렉터리> --skill-dir <스킬 
 - [ ] h1은 1개다.
 - [ ] CSS 기본 4개를 연결한다: `assets/theme.css`, `assets/components.css`, `assets/layouts.css`, `assets/print.css`. 시각 템플릿을 쓰면 `assets/visual-components.css`도 components 뒤에 포함한다.
 - [ ] output HTML이 최신 CSS asset 합본을 사용한다. `sources/assets/*.css`, `sources/css-integrity.json`, 인라인 CSS hash marker가 현재 skill asset과 일치한다.
-- [ ] 공개 블로그/아티클/SEO라면 Pretendard/Noto Serif KR 폰트 링크가 있다.
+- [ ] 공개 블로그/아티클/SEO라면 Pretendard 폰트 링크가 있다.
 - [ ] H1이 한국어 긴 제목에서 과도하게 크지 않다(`clamp()` 상한 42px 유지).
 - [ ] 주요 h2에 `.h2-sub`가 있다(모드 한정 권장).
 - [ ] `.term`, `.analogy`, `.danger`, `.good`, `.try`, `.source-note` 중 5개 이상을 적절히 사용한다.

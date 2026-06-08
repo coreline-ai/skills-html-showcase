@@ -6,7 +6,7 @@
 - 인쇄가 필요한 결과물은 `print.css`를 포함한다.
 - 색상 토큰을 페이지별로 임의 변경하지 않는다.
 - 외부 JS 없이 열려야 한다.
-- 공개 블로그형 결과물은 Pretendard Variable + Noto Serif KR 폰트 링크를 head에 포함한다.
+- 공개 블로그형 결과물은 Pretendard Variable 폰트 링크를 head에 포함한다.
 - output 폴더에는 사용 CSS snapshot(`sources/assets/*.css`)과 `sources/css-integrity.json`을 남기고, 인라인 CSS의 `adaptive-html-final-core-css-sha256` 주석이 현재 skill asset 합본 해시와 일치해야 한다.
 
 ## Layout Gate
@@ -73,6 +73,7 @@
 - **Layout-first**: `assets/layouts/<layout>.html`의 placeholder를 먼저 채우고, 그 다음 필요한 추가 섹션을 붙인다. 처음부터 자유형 `<main>`을 합성하지 않는다.
 - **Mode signature**: 각 모드의 핵심 질문이 첫 2~3섹션 안에 보인다. 예: GitHub 분석은 “살아 있는 프로젝트인가/채택해도 되는가”, SEO는 “검색 의도와 SERP 약속”, 교육은 “학습목표→실습→퀴즈→정답”.
 - **Reference baseline**: 같은 모드의 `examples/*.html` 또는 사용자가 지정한 정답지보다 헤더·목차·테마바·섹션 카드 밀도·결론 품질이 후퇴하면 실패다.
+- **TOC baseline**: `github_analysis`/`youtube_analysis`/`manual_analysis` 상단 목차는 공식 `toc-map` chip-nav(`toc-map` + `toc-pills` + `a.toc-pill > b`)를 써야 한다. `.toc`/`ol` 구형 목차, bare link 목차는 실패다.
 - **Template diversity**: vt/wg 템플릿은 장식 삽입이 아니라 정보 구조에 맞아야 한다. 같은 카드 그리드를 5회 이상 반복해 정보 구조를 대체하지 않는다.
 - **No example voice**: 산출물 내부에서 “예제”, “샘플”, “모드 시연”을 자기 설명으로 쓰지 않는다. 필요한 경우 footer/metadata에만 생성 정보를 둔다.
 - **Browser spot check**: 제출 전 가능하면 1280px와 390px 캡처를 확인한다. validator 통과 후에도 시각적으로 기존 검수본보다 낮으면 재작성한다.

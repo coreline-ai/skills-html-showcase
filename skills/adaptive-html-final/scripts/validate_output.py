@@ -822,6 +822,28 @@ def skill_asset_lint(skill_dir: Path) -> list:
     if bad_callout:
         issues.append({'type': 'bare_callout_modifier', 'count': len(bad_callout), 'detail': bad_callout[:30],
                        'note': '비콜아웃 셀렉터의 베어 .good/.danger/.term/.analogy 수식자 금지 → 네임스페이스형(--ok/--done)으로 개명.'})
+    # Gate D: the historical external Korean serif face is banned in canonical assets.
+    # The visual system is Pretendard/system-sans only; keeping the old serif token
+    # silently reintroduces pull-quote/font regressions in generated pages.
+    old_serif_name = 'Noto' + r'(?:\+| )' + 'Serif' + r'(?:\+| )' + 'KR'
+    old_serif_token = re.escape('--serif' + '-kr')
+    banned_font = re.compile(old_serif_name + '|' + old_serif_token, re.I)
+    bad_font = []
+    for p in sorted(assets.rglob('*')):
+        if not p.is_file() or p.suffix.lower() not in {'.css', '.html', '.svg', '.json'}:
+            continue
+        try:
+            text = p.read_text(encoding='utf-8')
+        except UnicodeDecodeError:
+            continue
+        for i, line in enumerate(text.splitlines(), 1):
+            if banned_font.search(line):
+                bad_font.append({'asset': str(p.relative_to(assets)), 'line': i})
+                break
+    if bad_font:
+        issues.append({'type': 'forbidden_noto_serif_kr_in_assets', 'count': len(bad_font),
+                       'detail': bad_font[:40],
+                       'note': '외부 세리프 폰트 및 과거 세리프 토큰은 스킬 assets에서 금지. Pretendard/system sans만 사용.'})
     return issues
 
 
@@ -946,6 +968,48 @@ def toc_map_contract_gate(text: str) -> list:
         if re.search(r'<a\b[^>]*class\s*=\s*["\'][^"\']*\btoc-pill\b[^>]*>(?![\s\S]*?<b>)', inner, re.I):
             issues.append({'type': 'toc_map_contract_missing_number_badge',
                            'detail': 'toc-pill은 번호 배지 <b>N</b>를 포함해야 한다.'})
+    return issues
+
+
+
+def analysis_toc_map_required_gate(text: str) -> list:
+    """Analysis modes must not fall back to the legacy `.toc` list.
+
+    The official catalog promotes `toc-map` as the current chip-nav TOC.
+    GitHub/YouTube/Manual analysis pages place this TOC immediately after the
+    verdict. A bare `.toc *-toc` wrapper can look acceptable in raw HTML but
+    renders as the old template, so make the current contract mandatory.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    required = (
+        ('layout-github', 'github-question-toc', 'github_analysis_toc_map_missing'),
+        ('layout-youtube', 'youtube-question-toc', 'youtube_analysis_toc_map_missing'),
+        ('layout-manual', 'manual-reader-toc', 'manual_analysis_toc_map_missing'),
+    )
+    issues = []
+    for layout_cls, toc_cls, issue_type in required:
+        if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\b' + re.escape(layout_cls) + r'\b', body, re.I):
+            continue
+        toc_match = re.search(
+            r'<(?P<tag>section|nav|div)\b(?P<attrs>[^>]*)class\s*=\s*["\'](?P<class>[^"\']*\b'
+            + re.escape(toc_cls)
+            + r'\b[^"\']*)["\'][^>]*>',
+            body,
+            re.I,
+        )
+        if not toc_match:
+            issues.append({'type': issue_type,
+                           'detail': f'{toc_cls} 목차 wrapper가 필요하다.'})
+            continue
+        classes = toc_match.group('class')
+        if not re.search(r'\btoc-map\b', classes):
+            issues.append({'type': issue_type,
+                           'detail': f'{toc_cls}는 구형 .toc가 아니라 공식 .toc-map chip-nav wrapper여야 한다.'})
+            continue
+        inner = _inner_html(body, toc_match.end(), toc_match.group('tag').lower())
+        if 'toc-pills' not in inner or 'toc-pill' not in inner:
+            issues.append({'type': issue_type,
+                           'detail': f'{toc_cls} 내부는 .toc-pills + a.toc-pill > b 구조여야 한다.'})
     return issues
 
 
@@ -1086,6 +1150,9 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         if parser.external_scripts:
             issues.append({'page': rel, 'type': 'external_script', 'detail': parser.external_scripts})
         style = '\n'.join(parser.styles)
+        if re.search(('Noto' + r'(?:\+| )' + 'Serif' + r'(?:\+| )' + 'KR' + '|' + re.escape('--serif' + '-kr')), text, re.I):
+            issues.append({'page': rel, 'type': 'forbidden_noto_serif_kr_in_output',
+                           'note': '출력 HTML은 외부 세리프 폰트 링크/스택 및 과거 세리프 토큰을 포함하면 안 된다. Pretendard/system sans만 사용.'})
         if expected_css_hash:
             m = re.search(r'adaptive-html-final-core-css-sha256:\s*([a-f0-9]{64})', style)
             if not m:
@@ -1199,6 +1266,9 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for toc_issue in toc_map_contract_gate(text):
             toc_issue['page'] = rel
             issues.append(toc_issue)
+        for toc_req_issue in analysis_toc_map_required_gate(text):
+            toc_req_issue['page'] = rel
+            issues.append(toc_req_issue)
         for expert_grid_issue in expert_decision_grid_section_gate(text):
             expert_grid_issue['page'] = rel
             issues.append(expert_grid_issue)

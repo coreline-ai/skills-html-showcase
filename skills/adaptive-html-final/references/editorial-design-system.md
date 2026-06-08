@@ -18,7 +18,7 @@
 
 ## 타이포그래피
 
-- H1/H2: `Noto Serif KR`
+- H1/H2: `Pretendard Variable`
 - 본문: `Pretendard Variable`
 - H1: 31~42px, line-height 1.3 이상
 - H2: 24~29px, 위쪽 여백 52~64px
