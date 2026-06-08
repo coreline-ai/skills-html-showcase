@@ -5,8 +5,21 @@
   // 적용 후 1회 "Developer: Reload Window"로 이미 떠 있는 캐시 마커를 비우면 재발 없음.
   // ───────────────────────────────────────────────────────────────
 
-  // ★ 핵심: 탐색기의 "문제(빨강/노랑)" 데코레이션만 끔 → git(SCM) 표시는 유지. 저장 즉시 적용(리로드 불필요)
+  // ★ Problems(린트) 데코레이션만 끔 → 빨강 에러·노랑 경고·"9+" 배지 제거. git 색과는 별개.
   "problems.decorations.enabled": false,
+
+  // ★ git 변경 색은 살림(modified=금색, untracked=초록). git만 색칠하고 Problems는 위에서 껐으므로
+  //    린트 빨강/노랑은 안 나온다. git 기본 '삭제(D)' 색만 빨강이라, 아래 colorCustomizations로 금색 처리.
+  "explorer.decorations.colors": true,
+  "workbench.colorCustomizations": {
+    // git 삭제/충돌은 기본 빨강 → 금색으로 바꿔 트리에 빨강이 전혀 안 뜨게.
+    "gitDecoration.deletedResourceForeground": "#d99a38",
+    "gitDecoration.conflictingResourceForeground": "#d99a38",
+    "gitDecoration.stageDeletedResourceForeground": "#d99a38",
+    // 혹시 남는 Problems 잔상 색도 중립화(이중 안전장치).
+    "list.errorForeground": "#cfcfcf",
+    "list.warningForeground": "#cfcfcf"
+  },
 
   // HTML / CSS / LESS / SCSS 내장 검증 끄기
   "html.validate.enable": false,
