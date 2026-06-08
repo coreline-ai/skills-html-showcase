@@ -7,14 +7,14 @@ body{background:var(--vt-wash)}
 /* 03 risk matrix */.rm-grid{display:grid;grid-template-columns:90px repeat(3,1fr);gap:8px}.rm-cell{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:72px}.rm-head{background:var(--vt-soft);font-weight:800;text-align:center}.rm-risk{border-left:4px solid var(--c);font-size:13px}.rm-risk.high{--c:var(--vt-red)}.rm-risk.med{--c:var(--vt-gold)}.rm-risk.low{--c:var(--vt-green)}
 /* 04 timeline */.tl{position:relative;display:grid;gap:12px;padding-left:28px}.tl:before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:3px;background:var(--vt-red);border-radius:99px}.tl-item{position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}.tl-item:before{content:"";position:absolute;left:-24px;top:16px;width:14px;height:14px;border-radius:99px;background:var(--vt-red)}
 /* 05 checklist */.cf{display:grid;gap:10px}.cf-item{display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.cf-check{width:24px;height:24px;border-radius:7px;background:var(--vt-green);color:var(--on-accent);display:grid;place-items:center;font-weight:900}.cf-state{font-family:var(--vt-mono);font-size:11px;color:var(--ink-mute)}
-/* 06 quality gate */.qg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.qg-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--vt-green);border-radius:12px;padding:12px}.qg-card.warn{border-left-color:var(--vt-gold)}.qg-card.block{border-left-color:var(--vt-red)}.qg-final{margin-top:10px;background:var(--accent-soft);color:var(--ink);border:1px solid var(--accent-2);border-radius:13px;padding:15px;font-weight:400;line-height:1.6;font-size:13px}.qg-final-label{display:block;color:var(--accent);font-weight:800;font-size:12px;letter-spacing:.06em;margin-bottom:5px}
+/* 06 quality gate */.qg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.qg-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--vt-green);border-radius:12px;padding:12px}.qg-card.warn{border-left-color:var(--vt-gold)}.qg-card.block{border-left-color:var(--vt-red)}.qg-final{margin-top:10px;background:var(--accent-soft);color:var(--ink);border:1px solid var(--accent-2);border-radius:13px;padding:15px;font-weight:400;line-height:1.6;font-size:13px}.qg-final-label{display:block;color:var(--accent-2);font-weight:800;font-size:12px;letter-spacing:.06em;margin-bottom:5px}
 /* 07 card grid */.cg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.cg-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.cg-card em{font-style:normal;font-family:var(--vt-mono);font-size:11px;color:var(--vt-red2);font-weight:900}.cg-card b{display:block;margin:5px 0}.cg-card p{font-size:12.5px;margin:0;color:var(--ink-soft)}
 /* 08 raci */.raci{display:grid;grid-template-columns:1.2fr repeat(4,.7fr);gap:6px}.raci div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px;font-size:13px;text-align:center}.raci .h{background:var(--vt-soft);font-weight:900}.raci .task{text-align:left;font-weight:800}.raci .r{background:var(--danger-bg);color:var(--danger-label-ink);font-weight:900}.raci .a{background:var(--good-bg);color:var(--good-label-ink);font-weight:900}
 /* 09 file tour */.ft{display:grid;gap:10px}.ft-card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}.ft-head{background:var(--vt-soft);padding:10px 12px;font-family:var(--vt-mono);font-size:12px;display:flex;justify-content:space-between}.ft-body{padding:12px}.ft-note{border-left:3px solid var(--vt-red);background:var(--accent-soft);border-radius:8px;padding:10px;font-size:13px}
 /* 10 flowchart */.fc{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:center}.fc-node{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.fc-node.hot{border-color:var(--vt-red);box-shadow:inset 0 3px 0 var(--vt-red)}.fc-arrow{text-align:center;font-weight:900;color:var(--ink-mute)}
 /* 11 weekly */.wk-bars{display:grid;gap:10px}.wk-row{display:grid;grid-template-columns:130px 1fr 44px;gap:10px;align-items:center}.wk-bar{height:12px;background:var(--vt-soft);border-radius:99px;overflow:hidden}.wk-fill{height:100%;background:var(--vt-red);border-radius:99px}.wk-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.wk-col{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
 /* 12 incident */.inc-head{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.inc-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.inc-card.impact{border-top:4px solid var(--vt-red)}.inc-card.cause{border-top:4px solid var(--vt-gold)}.inc-card.action{border-top:4px solid var(--vt-green)}
-/* 13 comparison */.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cmp-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}.cmp-card.pick{border:2px solid var(--vt-red)}.cmp-card ul{font-size:13px;margin:8px 0 0 18px}
+/* 13 comparison */.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cmp-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.cmp-card .vt-kicker{font-size:14px;line-height:1;margin-bottom:4px}.cmp-card h3{margin:2px 0 0;font-size:16px;line-height:1.35}.cmp-card.pick{border:2px solid var(--vt-red)}.cmp-card ul{font-size:12.8px;line-height:1.45;margin:6px 0 0 16px}.mode-template-contract .vt-shell{background:transparent;border:0;padding:0;margin:18px 0}
 /* 14 swimlane */.swim{display:grid;gap:8px}.lane{display:grid;grid-template-columns:110px repeat(4,1fr);gap:8px}.lane-label{font-weight:900;color:var(--vt-red2);padding:10px}.lane-step{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px}.lane-step.blank{opacity:.22}
 /* 15 concept */.concept-ring{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px}.concept-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.concept-step{border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.concept-step b{display:block;color:var(--vt-red)}
 /* 16 plan */.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.milestone{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.milestone b{display:block}.plan-risk{border-left:4px solid var(--vt-gold)}
@@ -31,3 +31,28 @@ body{background:var(--vt-wash)}
 .vt-frame{background:transparent;border:0}
 /* RACI mobile fit: 390px 캡쳐에서 오른쪽 I 열이 잘려 보이지 않도록 5열을 축소해 안쪽에 맞춘다. */
 @media(max-width:560px){.raci{grid-template-columns:48px repeat(4,minmax(42px,1fr));gap:4px;overflow:visible}.raci div{padding:7px 5px;font-size:11.5px;line-height:1.35;overflow-wrap:anywhere;word-break:keep-all}.raci .task{text-align:center}}
+
+/* === 카탈로그 reverse-sync (index_diff visual QA patch) — vt 모바일·대비 보정 ===
+   vt-03 risk matrix: 모바일에서 가로스크롤 대신 1열 스택. vt-19 feature-flag: 컨트롤 풀폭.
+   vt-21 soft-workflow-map: 좁은 폭에서 카드/뱃지 축소·단일열. wf-icon/flag-state.warn 대비 강화.
+   source-order로 기존 규칙을 덮으므로 !important 불필요. */
+.wf-icon{color:#c2560f}
+.flag-state.warn{color:#8a5e10}
+@media(max-width:560px){
+  .rm-grid{grid-template-columns:1fr;overflow:visible}.rm-cell{min-height:0;text-align:left}.rm-head{font-size:12.5px;background:var(--vt-soft)}
+  .flag{grid-template-columns:1fr;align-items:flex-start}.flag-ctl{width:100%;justify-content:space-between}.flag-state{font-size:12px}.switch{flex:0 0 auto}
+  .wf-board{padding:20px 18px;overflow:hidden}.wf-top{flex-wrap:wrap}.wf-newbadge{font-size:16px;padding:8px 18px}.wf-aibadge{width:48px;height:48px;font-size:23px}.wf-bag{width:44px;height:44px}.wf-map{grid-template-columns:1fr}.wf-center{box-shadow:0 18px 36px rgba(172,124,83,.14)}.wf-bottom{height:auto;min-height:48px}.wf-rail-long{max-width:38%;width:120px}.wf-arrow{width:96px}
+}
+
+/* === 카탈로그 reverse-sync (2026-06-07) — vt-02 decision-tree 화살표 pseudo overflow 보정 ===
+   ≤920 좁은 폭에서 .dt-arrow:after가 우측으로 미세하게 삐져나오던 것을 안쪽(right:0)으로 정렬. */
+@media(max-width:920px){.dt-arrow:after{right:auto;left:50%;transform:translateX(-50%)}}
+
+/* === 카탈로그 reverse-sync (2026-06-07) — vt-12 incident-summary 타임라인 스텝 번호 ===
+   기본 ol marker 제거 → counter-reset/increment로 1·2·3 명시 숫자 생성 →
+   빨간 원(.tl-item:before) 안에 숫자 표시 → 390px에서도 선/숫자/카드 미겹침. */
+.tl{list-style:none;counter-reset:tl-step;padding-left:42px;margin-left:0}
+.tl:before{left:15px}
+.tl-item{counter-increment:tl-step}
+.tl-item:before{content:counter(tl-step);left:-38px;top:13px;width:24px;height:24px;display:grid;place-items:center;border-radius:999px;background:var(--vt-red);color:var(--on-accent);font-size:12px;font-weight:900;line-height:1;box-shadow:0 0 0 4px var(--vt-wash);z-index:1}
+@media(max-width:560px){.tl{padding-left:38px}.tl:before{left:13px}.tl-item:before{left:-35px}}
