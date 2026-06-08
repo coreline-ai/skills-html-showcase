@@ -286,7 +286,7 @@ TODO_CHECK = 추가 확인이 필요한 주장
 - platform: original summary, transform strategy, platform cards, comparison table, publish checklist. 변환 전략은 `platform-split`/`platform-anchor`/`platform-route-grid`, 플랫폼별 결과는 `platform-output-grid`/`platform-output-card` 구조를 우선 사용한다.
 - skill_audit: purpose, trigger score, workflow score, line/section diagnosis, improved skill
 - reference: quick reference, concepts/API, patterns, examples, checklist
-- comparison: decision context, matrix, winners, tradeoffs, recommendation
+- comparison: decision context, matrix, winners, tradeoffs, recommendation. 보조 판단 기준이 4개 이상이고 각 항목이 `기준명: 설명` 형태라면 `.col-list`나 단순 카드 반복 대신 `<div class="table-scroll"><table class="table criteria-table">…</table></div>`를 우선 사용한다. 핵심 2~3개 분기는 카드/decision view로 두고, 추가 기준은 `기준 / 판단 포인트 / 유리한 후보 / 주의할 점` 표로 압축한다.
 - case study: situation, timeline, decisions, results, lessons
 - landing brief: hero, value props, how it works, FAQ, CTA
 - checklist: use case, check grid, failure modes, done criteria
@@ -302,6 +302,7 @@ TODO_CHECK = 추가 확인이 필요한 주장
 5. **모드별 특성 우선**: `skill_audit`은 진단/라인 감사/개선본, `platform_blog`는 플랫폼별 변환 결과, `seo_dashboard`는 SERP/키워드/메타 후보, `education_html`은 학습목표/실습/퀴즈/정답, `github_analysis`는 repo 판정/근거/UNKNOWN/source limits가 눈에 보여야 한다. 모든 모드가 같은 중간 섹션 틀을 쓰면 실패다.
 6. **예제 말투 금지**: 최종 산출물은 “이 모드 예제”, “Generated example”, “전문 예제”, “기준 1/2/3” 같은 placeholder 문구를 쓰지 않는다. 결론은 예제 설명이 아니라 해당 문서의 실제 판단·권고·다음 행동이어야 한다.
 7. **구조 다양성**: 8개 이상 섹션 문서에서 `.mini-card`/`.col-list`만 주 반복 구조가 되면 실패다. 카드·표·vt-다이어그램·wg-위젯·원문 발췌·체크리스트·의사결정 트리 중 섹션 목적에 맞는 구조를 섞는다.
+   - 특히 `comparison_html`의 선택 기준·트레이드오프 섹션에서 4개 이상의 보조 기준을 나열할 때는 `.col-list`보다 `.table.criteria-table`을 우선한다. 독자가 후보별 차이를 가로로 비교해야 하기 때문이다.
 8. **validator는 필요조건**: `scripts/validate_output.py` OK는 HTML/자산/무JS/회귀 게이트 통과일 뿐이다. 전문성·모드 적합성·반복 템플릿 여부는 이 계약과 `references/quality-gates.md`를 별도로 통과해야 한다.
 
 ### Step 4.5 — Visual Brief Planning (SVG 인포그래픽 — hero/별첨/다운로드 전용)

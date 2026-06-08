@@ -55,6 +55,7 @@
 - `/tmp` 임시 스크립트나 일반 루프로 만든 `mini-card`/`col-list` 반복 문서는 실패다. helper script를 쓰더라도 repo 안의 base.html·layout 파일·vt/wg 템플릿을 실제로 읽어 placeholder를 채워야 한다.
 - 선택된 layout 파일의 핵심 정보 구조가 본문에 보여야 한다. `layout-*` 클래스만 붙이고 임의 섹션을 나열하면 실패다.
 - 8개 이상 섹션 문서에서 `.mini-card`/`.col-list`가 주 구조를 독점하면 실패다. 표·vt-다이어그램·wg-위젯·원문 발췌·체크리스트·의사결정 구조를 섹션 목적에 맞게 섞는다.
+- `comparison_html`의 보조 선택 기준처럼 4개 이상의 `label: detail` 항목을 비교해야 하는 경우 `.col-list`를 기본값으로 쓰면 실패 위험이 높다. `.table-scroll > table.table.criteria-table`로 기준·판단 포인트·후보·주의점을 나눠 렌더한다.
 - “Generated example”, “전문 예제”, “예제 문서”, “기준 1/2/3”, “placeholder/TBD” 같은 생성 잔여 문구는 실패다.
 - 전문가 리포트는 요약 카드 수준을 넘어 운영모델/RACI, 리스크 통제, 로드맵, 검증 증빙까지 포함해야 한다.
 - 전문가 리포트의 핵심 표/매트릭스는 특별한 이유가 없으면 5개 안팎 이상의 항목을 포함한다.

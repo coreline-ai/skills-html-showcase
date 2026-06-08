@@ -12,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: ba385ece7fe071ac7377b2b42d41d68a9dbfe2b91557d632f5d48277020863e3 */
+/* adaptive-html-final-core-css-sha256: 0448efba947b0b096f28d7ee16dde7344245d35a2cc702e16f6d69c73631bd50 */
 
 /* BEGIN theme.css */
 :root{
@@ -425,9 +425,10 @@ details p{margin-bottom:0}
 
 /* ===== 01 Three Code Approaches (css-partial) ===== */
 .wg-01{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide);min-width:0;margin:0 auto}
+.mode-template-contract .wg-01,.wg-01-contract+.wg-01,.tpl-item .wg-01{margin-top:var(--space-5)}
 .wg-01-head{margin-bottom:var(--space-5)}
 .wg-01-kicker{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
-.wg-01-title{font-family:var(--serif);font-size:var(--fs-2xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-3)}
+.wg-01-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-3)}
 .wg-01-lead{font-size:var(--fs-base);color:var(--ink-soft);margin:0;line-height:1.7}
 .wg-01-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);max-width:100%;min-width:0}
 .wg-01-card{display:flex;flex-direction:column;min-width:0;max-width:100%;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-4);transition:box-shadow .2s ease,transform .2s ease}
@@ -437,7 +438,7 @@ details p{margin-bottom:0}
 .wg-01-card-head>div{min-width:0}
 .wg-01-rank{flex:0 0 auto;display:inline-grid;place-items:center;width:34px;height:34px;border:2px solid var(--ink);border-radius:999px;font-weight:800;font-size:var(--fs-base);line-height:1}
 .wg-01-rank-pick{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
-.wg-01-card-title{font-family:var(--serif);font-size:var(--fs-md);font-weight:700;margin:0;line-height:1.4}
+.wg-01-card-title{font-family:var(--sans);font-size:var(--fs-base);font-weight:700;margin:0;line-height:1.42}
 .wg-01-card-sub{font-size:var(--fs-xs);color:var(--ink-mute);margin:var(--space-1) 0 0}
 .wg-01-pick-badge{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.04em;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:2px 8px;vertical-align:2px;margin-left:var(--space-1)}
 .wg-01-code{background:var(--code);color:#e8e8e3;border-radius:var(--radius-md);padding:var(--space-3);font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:var(--fs-xs);line-height:1.65;overflow-x:auto;margin:0 0 var(--space-3);max-width:100%;box-sizing:border-box;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}
@@ -566,9 +567,10 @@ details p{margin-bottom:0}
 
 /* ===== 04 Module Map (css-partial) ===== */
 .wg-04{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide);margin:0 auto}
+.mode-template-contract .wg-04,.wg-04-contract+.wg-04,.tpl-item .wg-04{margin-top:var(--space-5)}
 .wg-04-head{margin-bottom:var(--space-4)}
 .wg-04-kicker{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
-.wg-04-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-2)}
+.wg-04-title{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;line-height:1.38;margin:0 0 var(--space-2)}
 .wg-04-lead{font-size:var(--fs-base);color:var(--ink-soft);line-height:1.7;margin:0 0 var(--space-3)}
 .wg-04-crit-word{color:var(--accent-2)}
 .wg-04-legend{list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-4);margin:0;padding:0;font-size:var(--fs-xs);color:var(--ink-soft)}
@@ -583,7 +585,7 @@ details p{margin-bottom:0}
 .wg-04-edge{stroke:var(--ink-mute);stroke-width:1.6;fill:none}
 .wg-04-edge-crit{stroke:var(--accent);stroke-width:3}
 .wg-04-node rect{stroke-width:1.6;transition:transform .18s ease}
-.wg-04-node text{font-family:var(--sans);font-size:14px;font-weight:600;text-anchor:middle;fill:var(--ink)}
+.wg-04-node text{font-family:var(--sans);font-size:12.5px;font-weight:600;text-anchor:middle;fill:var(--ink)}
 .wg-04-node-entry rect{fill:var(--analogy-bg);stroke:var(--analogy-accent)}
 .wg-04-node-core rect{fill:var(--card);stroke:var(--ink)}
 .wg-04-node-leaf rect{fill:var(--bg);stroke:var(--line)}
@@ -1384,10 +1386,11 @@ details p{margin-bottom:0}
   .wg-17 .wg-17-summary{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center}
 }
 
-/* === wg-10 svg figure sheet: 모드 정본 데모 섹션(.mode-template-contract) 안에서만 카드 전체 폭 ===
+/* === wg-10 svg figure sheet: 모드 정본 데모 섹션(.mode-template-contract) 안에서만 카드 전체 폭 + 상단 간격 ===
    본문 전체를 넓히면 가독성이 떨어지므로, 추천 위젯이 들어가는 contract 섹션으로만 스코프 한정.
+   wg-10 루트의 margin:0 auto가 section 기본 상단 여백을 덮어쓰므로 contract 구간에서만 복구.
    (직계 자식 `>` 대신 descendant — 생성기가 위젯을 figure/div로 감싸도 동작하도록.) */
-.mode-template-contract .wg-10-sheet{width:100%;max-width:100%}
+.mode-template-contract .wg-10-sheet{width:100%;max-width:100%;margin:var(--space-5) auto 0}
 /* END widgets.css */
 
 /* BEGIN visual-html.css */
@@ -1407,7 +1410,7 @@ body{background:var(--vt-wash)}
 /* 10 flowchart */.fc{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:center}.fc-node{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.fc-node.hot{border-color:var(--vt-red);box-shadow:inset 0 3px 0 var(--vt-red)}.fc-arrow{text-align:center;font-weight:900;color:var(--ink-mute)}
 /* 11 weekly */.wk-bars{display:grid;gap:10px}.wk-row{display:grid;grid-template-columns:130px 1fr 44px;gap:10px;align-items:center}.wk-bar{height:12px;background:var(--vt-soft);border-radius:99px;overflow:hidden}.wk-fill{height:100%;background:var(--vt-red);border-radius:99px}.wk-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.wk-col{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
 /* 12 incident */.inc-head{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.inc-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.inc-card.impact{border-top:4px solid var(--vt-red)}.inc-card.cause{border-top:4px solid var(--vt-gold)}.inc-card.action{border-top:4px solid var(--vt-green)}
-/* 13 comparison */.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cmp-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}.cmp-card.pick{border:2px solid var(--vt-red)}.cmp-card ul{font-size:13px;margin:8px 0 0 18px}
+/* 13 comparison */.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cmp-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.cmp-card .vt-kicker{font-size:14px;line-height:1;margin-bottom:4px}.cmp-card h3{margin:2px 0 0;font-size:16px;line-height:1.35}.cmp-card.pick{border:2px solid var(--vt-red)}.cmp-card ul{font-size:12.8px;line-height:1.45;margin:6px 0 0 16px}.mode-template-contract .vt-shell{background:transparent;border:0;padding:0;margin:18px 0}
 /* 14 swimlane */.swim{display:grid;gap:8px}.lane{display:grid;grid-template-columns:110px repeat(4,1fr);gap:8px}.lane-label{font-weight:900;color:var(--vt-red2);padding:10px}.lane-step{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px}.lane-step.blank{opacity:.22}
 /* 15 concept */.concept-ring{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px}.concept-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.concept-step{border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.concept-step b{display:block;color:var(--vt-red)}
 /* 16 plan */.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.milestone{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.milestone b{display:block}.plan-risk{border-left:4px solid var(--vt-gold)}
@@ -1449,7 +1452,6 @@ body{background:var(--vt-wash)}
 .tl-item{counter-increment:tl-step}
 .tl-item:before{content:counter(tl-step);left:-38px;top:13px;width:24px;height:24px;display:grid;place-items:center;border-radius:999px;background:var(--vt-red);color:var(--on-accent);font-size:12px;font-weight:900;line-height:1;box-shadow:0 0 0 4px var(--vt-wash);z-index:1}
 @media(max-width:560px){.tl{padding-left:38px}.tl:before{left:13px}.tl-item:before{left:-35px}}
-
 /* END visual-html.css */
 
 /* BEGIN body-icons.css */
@@ -1511,6 +1513,9 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 /* core-insight--neutral — 그라데이션 없는 중립 callout 변형(opt-in). 베어 .core-insight를 덮어쓰지 않는다(전 모드 회귀 방지). */
 .core-insight--neutral{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
 .core-insight--neutral blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.025em;line-height:1.42}
+/* core-insight--plain-text — 사고 원인/판단 문장을 hero quote가 아닌 일반 본문 크기 callout으로 낮추는 opt-in 변형. */
+.core-insight--plain-text blockquote{font-size:var(--fs-base);font-weight:650;letter-spacing:0;line-height:1.72;color:var(--ink-soft)}
+.core-insight--plain-text p{font-size:var(--fs-sm);line-height:1.65;color:var(--ink-mute)}
 /* lede-note — Goal/도입 강조 카드(좌측 accent rail). pattern-hero-note(페이지 어휘)를 정본 callout으로 개명, .label은 공유 uppercase 규약으로 복귀. */
 .lede-note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:16px 24px 17px;margin:24px 0 34px}
 .lede-note .label{display:block;font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
@@ -1599,10 +1604,19 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:8px 12px}
 .col-list li{margin:0;min-width:0;color:var(--ink-soft);font-size:13.5px;line-height:1.4}
 .col-list li code{display:inline-block;max-width:100%;overflow-wrap:anywhere}
-@media(max-width:560px){ul.col-list,ol.col-list{grid-template-columns:1fr}}
+.col-list>ul,.col-list>ol{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:12px 14px}
+.col-list>ul li,.col-list>ol li{line-height:1.55}
+@media(max-width:560px){ul.col-list,ol.col-list,.col-list>ul,.col-list>ol{grid-template-columns:1fr}}
+/* 비교/판단 보조 기준 표 — label:detail 리스트가 4개 이상이면 col-list 대신 table-scroll 안의 table.criteria-table로 렌더한다. v5.4.3 */
+.criteria-table td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
+.criteria-table td:nth-child(3){font-weight:750;color:var(--ink)}
+.criteria-table td{vertical-align:top}
+@media(max-width:560px){.criteria-table td:first-child{white-space:normal}}
 /* 텍스트 전용 뷰 bullet (text-bullet-view) — final_20260604 section 7의 code-path bullet 리듬을 정본화. 텍스트만 있는 카드/체크 항목 앞에 작은 써클을 붙여 스캔성을 높인다. opt-in, 무 JS, 8테마 토큰. v5.4.2 */
 .text-bullet-view{display:flex;align-items:flex-start;gap:10px;line-height:1.62}
 .text-bullet-view>.ba-bullet{margin-top:.72em;background:var(--ink-mute);box-shadow:0 0 0 4px var(--bg)}
+.text-bullet-view--center{align-items:center}
+.text-bullet-view--center>.ba-bullet{margin-top:0}
 :root:has(#ahf-dark:checked) .text-bullet-view>.ba-bullet{background:var(--accent-2);box-shadow:0 0 0 4px var(--card)}
 /* END editorial-patterns.css */
 
@@ -1657,6 +1671,17 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .layout-expert .executive-summary,.layout-expert .validation-checklist{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px 24px}
 .layout-expert .executive-summary .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .layout-expert .validation-checklist .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* Skill audit decision cards: keep P1/P2/P3 action views separated and compact. */
+.layout-audit div.decision-grid,
+.layout-skill-audit div.decision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start;margin:20px 0 24px}
+.layout-audit .decision-card,
+.layout-skill-audit .decision-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:13px 15px 14px;min-height:0}
+.layout-audit .decision-card h3,
+.layout-skill-audit .decision-card h3{margin:0 0 7px;font-size:18px;line-height:1.35}
+.layout-audit .decision-card p,
+.layout-skill-audit .decision-card p{margin:0;font-size:14.2px;line-height:1.62}
+.layout-audit .decision-card p+p,
+.layout-skill-audit .decision-card p+p{margin-top:7px}
 /* risk-* 우선순위 카드 — 완성본(final_20260604 .access-check-rule) 방식: 4px 좌측 라인 + 자체 padding으로 host(decision-card 유무) 무관하게 라인과 동일 간격. (QA) */
 .risk-high,.risk-mid,.risk-low{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:var(--radius-md);padding:14px 16px}
 .risk-high{border-left-color:var(--accent)}.risk-mid{border-left-color:#d99a38}.risk-low{border-left-color:#7ea66a}
@@ -1793,6 +1818,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .layout-platform .platform-guard p{color:var(--danger-ink)}
 @media(max-width:900px){.layout-platform .platform-split,.layout-platform .platform-output-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.layout-expert .summary-grid,.layout-expert div.decision-grid,.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-expert .validation-checklist .card-grid,.layout-github .repo-signal-grid,.layout-github .repo-identity-grid,.layout-github .repo-health-grid,.layout-github .repo-action-grid,.layout-github .repo-evidence-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+@media(max-width:760px){.layout-audit div.decision-grid,.layout-skill-audit div.decision-grid{grid-template-columns:1fr;gap:18px;margin:18px 0 22px}.layout-audit .decision-card,.layout-skill-audit .decision-card{padding:13px 14px}}
 @media(max-width:620px){.layout-platform .platform-route-grid{grid-template-columns:1fr}.layout-platform .platform-anchor{min-height:0;padding:16px}.layout-platform .platform-anchor h3{font-size:19px}.layout-platform .platform-output-card{padding:14px}}
 
 /* YouTube analysis mode: evidence-first video report. */
@@ -1853,6 +1879,11 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .layout-audit .score-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
 .layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .layout-reference .quick-reference{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:22px}
+.layout-compare div.decision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch;margin:20px 0 24px}
+.layout-compare .decision-card{display:flex;flex-direction:column;gap:9px;min-width:0}
+.layout-compare .decision-card h3{margin:0;font-size:17px;line-height:1.38;color:var(--ink)}
+.layout-compare .decision-card p{margin:0;font-size:14.2px;line-height:1.62;color:var(--ink-soft)}
+.layout-compare .decision-card p+p{margin-top:0}
 .layout-compare .matrix:not(section),.layout-compare .matrix>.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .layout-compare .winner-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:18px}
 .layout-case .timeline{border-left:0;padding-left:0}
@@ -1865,7 +1896,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .layout-landing .hero-analogy{font-size:18px}
 .layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .layout-checklist .check-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px}
-@media(max-width:760px){.layout-audit .audit-row,.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid,.layout-compare .matrix:not(section),.layout-compare .matrix>.grid,.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid,.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{grid-template-columns:1fr}}
+@media(max-width:760px){.layout-audit .audit-row,.layout-reference .ref-grid:not(section),.layout-reference .ref-grid>.grid,.layout-compare div.decision-grid,.layout-compare .matrix:not(section),.layout-compare .matrix>.grid,.layout-landing .value-grid:not(section),.layout-landing .value-grid>.grid,.layout-checklist .check-grid:not(section),.layout-checklist .check-grid>.grid{grid-template-columns:1fr}}
 
 /* ── Section-level classes (v4.3.0) ─────────────────────────────
    IMPORTANT: semantic section wrappers must not become card grids.
@@ -1941,6 +1972,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .try.soft-cta .summary-card h3,.try.soft-cta .summary-card h4,.try.soft-cta .cta-box h3,.try.soft-cta .cta-box h4,.try.soft-cta .card-block h3,.try.soft-cta .mini-card h3,.try.soft-cta .summary-card strong,.try.soft-cta .summary-card b{color:var(--ink)}
 .layout-blog .try.soft-cta .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:760px){.layout-blog .try.soft-cta .card-grid{grid-template-columns:1fr}}
+
 /* END layouts.css */
 
 /* BEGIN print.css */
@@ -2035,10 +2067,10 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
   <section class="role-router" id="man-role"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="9" width="24" height="22" rx="5"/><path class="bi-line" d="M14 16h12M14 22h8"/><path class="bi-accent-line" d="M23 23l3 3 5-7"/></svg></span><span class="num">2</span>Reader Role Router · 역할별 독자 경로</h2><p class="h2-sub">같은 매뉴얼이라도 역할마다 필요한 첫 페이지가 다릅니다 — 역할별 진입점과 읽기 순서를 먼저 고정합니다.</p><div class="manual-role-grid"><article class="manual-role"><h3>처음 쓰는 사용자</h3><p>첫 로그인, 기본 설정, 첫 성공 예제만 읽습니다. 권장 경로는 §3 첫 성공 경로 → §8 증상별 해결이며, 운영·권한 섹션은 건너뛰어도 첫 성공에 지장이 없습니다.</p></article><article class="manual-role"><h3>운영 담당자</h3><p>권한, 모니터링, 장애 대응, 롤백 절차를 우선 확인합니다. 권장 경로는 §4 안전 조건 → §9 운영 런북 → §5 작업 레시피 순이며, 위험 작업 전 §1의 승인 대기 항목을 반드시 확인합니다.</p></article><article class="manual-role"><h3>고객지원</h3><p>증상별 진단 질문과 안전한 안내 문구를 사용합니다. §8 트러블슈팅의 진단 순서를 그대로 따라가되, 권한 변경이 필요한 순간 §7 선택 기준에 따라 운영자에게 이관합니다.</p></article></div><div class="vt-shell"><div class="vt-shell-head"><div><div class="vt-id">VT-01 HERO MAP</div><h2>역할 → 첫 성공 → 복구 경로</h2><p>누구에게나 같은 목차를 강요하지 않고 역할별 경로를 분리합니다.</p></div><span class="vt-fit">role map</span></div><div class="vt-frame"><div class="hm-grid"><div class="hm-card"><h3>Reader</h3><p>사용자 / 운영 / 지원</p></div><div class="hm-card"><h3>Goal</h3><p>첫 성공 / 안정 운영 / 빠른 진단</p></div><div class="hm-card"><h3>Fallback</h3><p>권한 확인 / 롤백 / 에스컬레이션</p></div></div><div class="hm-result"><b>매뉴얼의 목적</b><span>읽는 시간을 줄이고 실패 시 복구 시간을 줄입니다.</span></div></div></div></section>
   <section class="first-success"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="5"/><path class="bi-accent-line" d="M14 21l4 4 9-11"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="num">3</span>First Success Path · 첫 성공 경로</h2><p class="h2-sub">신규 사용자가 30분 안에 “되는 상태”를 한 번 경험하게 만드는 최단 경로 — 각 단계에 성공 기준과 실패 분기를 붙입니다.</p><div class="manual-step-grid"><article class="manual-step"><span class="manual-safe">STEP 1</span><h3>접속 확인</h3><p>계정, 조직, 권한을 확인하고 실패 시 지원 채널로 이동합니다. 성공 기준은 대시보드에 조직명이 표시되는 것이며, 조직이 보이지 않으면 §8의 첫 번째 증상 시나리오로 분기합니다.</p></article><article class="manual-step"><span class="manual-safe">STEP 2</span><h3>기본 설정</h3><p>필수 설정만 먼저 완료하고 선택 설정은 뒤로 보냅니다. 필수는 알림 채널·기본 권한 그룹·백업 대상 3개뿐이며, 원문 FAQ의 12개 설정 항목 중 나머지 9개는 첫 성공 이후로 미뤄도 된다는 것이 재배열의 핵심입니다.</p></article><article class="manual-step"><span class="manual-safe">STEP 3</span><h3>검증</h3><p>성공 화면, 로그, 알림 수신 여부로 완료를 확인합니다. 세 가지 중 알림 수신이 가장 자주 누락되므로, 테스트 알림 발송 버튼으로 즉시 확인하고 미수신 시 STEP 2의 알림 채널 설정으로 되돌아갑니다.</p></article></div></section>
   <section class="prerequisites-safety" id="man-safety"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M20 12v11"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num">4</span>Prerequisites / Safety · 사전조건과 안전</h2><p class="h2-sub">되돌리기 어려운 작업일수록 절차보다 “하기 전 조건”이 중요합니다 — 경고는 실행 버튼보다 앞에 둡니다.</p><p>권한·요금·데이터 삭제·외부 공유처럼 되돌리기 어려운 작업은 실행 전 경고와 복구 조건을 함께 둡니다. 원문에서는 경고가 절차 끝의 “주의” 박스에 몰려 있었지만, 재구성본은 각 위험 작업의 첫 단계 앞으로 옮겼습니다.</p><div class="manual-audit-grid"><article class="manual-card"><span class="manual-risk">위험</span><h3>삭제/초기화</h3><p>백업과 승인자 확인 없이는 진행하지 않습니다. 복구 조건은 “백업 스냅샷 ID 확보 + 승인자 기록”이며, 둘 중 하나라도 없으면 이 절차는 시작 자체가 금지입니다.</p></article><article class="manual-card"><span class="manual-risk">권한</span><h3>관리자 작업</h3><p>역할이 맞지 않으면 화면이 다를 수 있으므로 권한을 먼저 확인합니다. 권한 부족 상태로 절반쯤 진행되는 절차가 가장 위험하므로, 시작 전에 관리자 메뉴 진입 가능 여부로 판별합니다.</p></article><article class="manual-card"><span class="manual-unknown">UNKNOWN</span><h3>버전 차이</h3><p>화면명·메뉴명이 오래된 경우 원문 위치와 확인 불가 표시를 남깁니다. 환불 정책 문구는 원문 두 곳(billing-policy.md, support-macro.md)이 서로 달라 소유자 확인 전까지 양쪽 모두 인용 보류 상태입니다.</p></article></div></section>
-  <section class="task-recipes" id="man-task"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="9" width="24" height="22" rx="5"/><path class="bi-line" d="M14 16h12M14 22h8"/><path class="bi-accent-line" d="M23 23l3 3 5-7"/></svg></span><span class="num">5</span>Task Recipes · 작업 레시피</h2><div class="vt-shell"><div class="vt-shell-head"><div><div class="vt-id">VT-05 CHECKLIST FLOW</div><h2>작업 전환 체크</h2><p>각 레시피는 목적, 사전조건, 절차, 성공 기준, 롤백으로 끝납니다.</p></div><span class="vt-fit">checklist flow</span></div><div class="vt-frame"><div class="cf"><div class="cf-item"><span class="cf-check">✓</span><b>목적 확인</b><span class="cf-state">PASS</span></div><div class="cf-item"><span class="cf-check">✓</span><b>권한/버전 확인</b><span class="cf-state">PASS</span></div><div class="cf-item"><span class="cf-check">✓</span><b>성공/복구 기준 기록</b><span class="cf-state">PASS</span></div></div></div></div><div class="tbl table-scroll mobile-card-table"><table class="table"><caption>작업 레시피 표준 구조</caption><thead><tr><th>필드</th><th>내용</th><th>누락 시 위험</th></tr></thead><tbody><tr><td data-label="필드">목적</td><td data-label="내용">무엇을 완료해야 하는가</td><td data-label="누락 시 위험">불필요한 절차 증가</td></tr><tr><td data-label="필드">사전조건</td><td data-label="내용">권한, 버전, 데이터 백업</td><td data-label="누락 시 위험">실패/손상 가능성</td></tr><tr><td data-label="필드">절차</td><td data-label="내용">번호 매긴 실행 단계 + 단계별 예상 화면</td><td data-label="누락 시 위험">중간 실패 지점 진단 불가</td></tr><tr><td data-label="필드">완료 기준</td><td data-label="내용">화면/로그/알림 기준</td><td data-label="누락 시 위험">성공 여부 모호</td></tr><tr><td data-label="필드">롤백</td><td data-label="내용">실패 시 되돌리는 단계와 소요 시간</td><td data-label="누락 시 위험">실패가 장애로 확대</td></tr><tr><td data-label="필드">원문 근거</td><td data-label="내용">출처 파일·항목 위치(예: ops/rollback.md §2)</td><td data-label="누락 시 위험">버전 갱신 시 추적 불가</td></tr></tbody></table></div><p>이 표준 구조를 6개 원문에 적용하면 백업 생성·권한 그룹 변경·결제 플랜 전환·조직 초대 4개 레시피가 즉시 작성 가능하고, 환불 처리 레시피만 §4의 UNKNOWN(정책 문구 모순) 해소 후 작성할 수 있습니다.</p></section>
+  <section class="task-recipes" id="man-task"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="9" width="24" height="22" rx="5"/><path class="bi-line" d="M14 16h12M14 22h8"/><path class="bi-accent-line" d="M23 23l3 3 5-7"/></svg></span><span class="num">5</span>Task Recipes · 작업 레시피</h2><p class="h2-sub">작성 가능한 작업을 최소 4개 식별하고, 각 레시피를 목적·사전조건·절차·완료 기준·롤백·원문 근거 6필드로 닫습니다.</p><div class="vt-shell"><div class="vt-shell-head"><div><div class="vt-id">VT-05 CHECKLIST FLOW</div><h2>작업 전환 체크</h2><p>각 레시피는 목적, 사전조건, 절차, 성공 기준, 롤백으로 끝납니다.</p></div><span class="vt-fit">checklist flow</span></div><div class="vt-frame"><div class="cf"><div class="cf-item"><span class="cf-check">✓</span><b>목적 확인</b><span class="cf-state">PASS</span></div><div class="cf-item"><span class="cf-check">✓</span><b>권한/버전 확인</b><span class="cf-state">PASS</span></div><div class="cf-item"><span class="cf-check">✓</span><b>성공/복구 기준 기록</b><span class="cf-state">PASS</span></div></div></div></div><div class="tbl table-scroll mobile-card-table"><table class="table"><caption>작업 레시피 표준 구조</caption><thead><tr><th>필드</th><th>내용</th><th>누락 시 위험</th></tr></thead><tbody><tr><td data-label="필드">목적</td><td data-label="내용">무엇을 완료해야 하는가</td><td data-label="누락 시 위험">불필요한 절차 증가</td></tr><tr><td data-label="필드">사전조건</td><td data-label="내용">권한, 버전, 데이터 백업</td><td data-label="누락 시 위험">실패/손상 가능성</td></tr><tr><td data-label="필드">절차</td><td data-label="내용">번호 매긴 실행 단계 + 단계별 예상 화면</td><td data-label="누락 시 위험">중간 실패 지점 진단 불가</td></tr><tr><td data-label="필드">완료 기준</td><td data-label="내용">화면/로그/알림 기준</td><td data-label="누락 시 위험">성공 여부 모호</td></tr><tr><td data-label="필드">롤백</td><td data-label="내용">실패 시 되돌리는 단계와 소요 시간</td><td data-label="누락 시 위험">실패가 장애로 확대</td></tr><tr><td data-label="필드">원문 근거</td><td data-label="내용">출처 파일·항목 위치(예: ops/rollback.md §2)</td><td data-label="누락 시 위험">버전 갱신 시 추적 불가</td></tr></tbody></table></div><p>이 표준 구조를 6개 원문에 적용하면 백업 생성·권한 그룹 변경·결제 플랜 전환·조직 초대 4개 레시피가 즉시 작성 가능하고, 환불 처리 레시피만 §4의 UNKNOWN(정책 문구 모순) 해소 후 작성할 수 있습니다.</p></section>
   <section class="reference-extract"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="14" cy="16" r="6"/><circle class="bi-fill" cx="27" cy="25" r="6"/><path class="bi-accent-line" d="M18 18l5 4"/></svg></span><span class="num">6</span>Reference Extract · 원문 보존</h2><p class="h2-sub">재구성은 원문을 대체하지 않습니다 — 모든 절차가 어느 원문에서 왔는지 추적 가능해야 갱신이 가능합니다.</p><p>매뉴얼 본문은 실행 흐름으로 재배열하되, 원문 위치·버전·주석은 별도 보존합니다. 아래 6개 파일이 이 문서의 전체 입력이며, 이 목록에 없는 정보(예: SLA 수치, 법무 문구)는 본문 어디에도 등장하지 않아야 합니다. 원문이 갱신되면 §1의 스냅샷 날짜와 함께 이 목록의 버전 주석부터 갱신합니다.</p><ul class="col-list"><li><code>FAQ-로그인.md</code></li><li><code>ops/rollback.md</code></li><li><code>release-note-2.4.md</code></li><li><code>support-macro.md</code></li><li><code>admin-permission.md</code></li><li><code>billing-policy.md</code></li></ul></section>
   <section class="decision-guide"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M20 12v11"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num">7</span>Decision Guide · 선택 기준</h2><p class="h2-sub">“누가 처리하는가”를 증상이 아니라 필요 권한 기준으로 판정합니다 — 이관 기준이 명확해야 핑퐁이 사라집니다.</p><div class="manual-reference-grid"><article class="manual-card"><h3>사용자 해결</h3><p>권한 변경 없이 화면에서 직접 해결 가능하면 사용자 경로로 안내합니다. 판정 질문은 “설정 화면에서 본인이 바꿀 수 있는 값인가”이며, 그렇다면 §3 경로의 해당 단계 링크만 전달합니다.</p></article><article class="manual-card"><h3>운영자 처리</h3><p>로그·설정·권한 확인이 필요한 경우 운영자 경로로 넘깁니다. 이관 시 필수 첨부는 조직 ID·발생 시각·재현 단계 3종이며, 이 정보 없이 넘기면 운영자가 다시 사용자에게 되묻는 왕복이 발생합니다.</p></article><article class="manual-card"><h3>개발 이관</h3><p>데이터 무결성, 반복 장애, 재현 가능한 버그는 이슈 템플릿으로 이관합니다. 운영자가 같은 증상을 2회 이상 수동 복구했다면 그 시점부터는 무조건 개발 이관 대상으로 승격합니다.</p></article></div></section>
-  <section class="troubleshooting" id="man-trouble"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M20 12v11"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num">8</span>Troubleshooting · 증상별 문제 해결</h2><p class="h2-sub">증상 → 가능 원인 → 진단 순서 → 복구의 4단 구조를 고정합니다 — 진단 없이 복구부터 시도하지 않게 하는 것이 목적입니다.</p><div class="manual-trouble-grid"><article class="manual-trouble"><h3>증상</h3><p>로그인은 되지만 조직이 보이지 않음. 신규 사용자 문의의 최다 빈도 증상이며 §3 STEP 1의 실패 분기가 이곳으로 연결됩니다.</p></article><article class="manual-trouble"><h3>가능 원인</h3><p>초대 미수락, 잘못된 워크스페이스, 권한 미부여. 발생 빈도 순으로 나열했으므로 진단도 같은 순서로 진행합니다.</p></article><article class="manual-trouble"><h3>진단</h3><p>초대 메일, 조직 ID, 관리자 권한 로그를 순서대로 확인. 각 단계는 권한 불필요 → 사용자 제공 → 운영자 권한 순으로 비용이 커지므로 순서를 건너뛰지 않습니다.</p></article><article class="manual-trouble"><h3>복구</h3><p>초대 재발송 → 권한 재부여 → 감사 로그 첨부 후 이관. 두 번째 복구 시도까지 실패하면 §7 기준에 따라 개발 이관으로 승격하고 수동 재시도를 멈춥니다.</p></article></div><p>원문에는 이 외에도 “알림이 오지 않음”, “결제 실패 반복”, “백업 복원 후 데이터 불일치” 세 가지 증상 시나리오가 있으며, 실제 생성물에서는 각 시나리오를 같은 4단 구조로 전개합니다. 백업 복원 불일치는 데이터 무결성 사안이므로 진단 1단계 후 바로 개발 이관 경로를 탑니다.</p></section>
+  <section class="troubleshooting" id="man-trouble"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M20 12v11"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num">8</span>Troubleshooting · 증상별 문제 해결</h2><p class="h2-sub">증상 → 가능 원인 → 진단 순서 → 복구의 4단 구조를 고정합니다 — 진단 없이 복구부터 시도하지 않게 하는 것이 목적입니다.</p><div class="manual-trouble-grid"><article class="manual-trouble manual-trouble-scenario"><h3>조직이 보이지 않음</h3><p><strong>증상:</strong> 로그인은 되지만 대시보드에 조직명이 표시되지 않습니다.</p><p><strong>가능 원인:</strong> 초대 미수락, 잘못된 워크스페이스, 권한 미부여가 빈도순 원인입니다.</p><p><strong>진단 순서:</strong> 초대 메일 → 조직 ID → 관리자 권한 로그를 확인합니다.</p><p><strong>복구:</strong> 초대 재발송 → 권한 재부여 → 감사 로그 첨부 후 이관 순으로 처리하고, 2회 실패 시 개발 이관합니다.</p></article><article class="manual-trouble manual-trouble-scenario"><h3>알림이 오지 않음</h3><p><strong>증상:</strong> 테스트 알림 버튼은 성공으로 보이지만 실제 채널에는 메시지가 도착하지 않습니다.</p><p><strong>가능 원인:</strong> 채널 URL 오기재, 조직 알림 권한 누락, 외부 메신저 rate limit입니다.</p><p><strong>진단 순서:</strong> 채널 URL 재확인 → 최근 발송 로그 → 외부 응답 코드 → rate limit 시간을 확인합니다.</p><p><strong>복구:</strong> 채널 재연결 후 테스트 알림을 재발송하고, rate limit이면 15분 대기 후 재시도합니다.</p></article><article class="manual-trouble manual-trouble-scenario"><h3>결제 실패 반복</h3><p><strong>증상:</strong> 카드 갱신 후에도 결제 실패 배지가 사라지지 않고 청구 알림이 반복됩니다.</p><p><strong>가능 원인:</strong> 결제 수단 미검증, 플랜 권한 부족, billing-policy.md와 support-macro.md의 정책 문구 불일치입니다.</p><p><strong>진단 순서:</strong> 결제 수단 상태 → 플랜 권한 → 최근 청구 이벤트 → 정책 문구 소유자 확인 순으로 봅니다.</p><p><strong>복구:</strong> 검증 완료 후 재청구를 1회만 실행하고, 정책 문구가 불일치하면 환불 안내를 보류한 채 소유자에게 이관합니다.</p></article><article class="manual-trouble manual-trouble-scenario"><h3>백업 복원 후 데이터 불일치</h3><p><strong>증상:</strong> 복원은 완료됐지만 일부 조직 설정이나 결제 상태가 이전 값과 다릅니다.</p><p><strong>가능 원인:</strong> 오래된 스냅샷, 부분 복원, 복원 후 캐시 미무효화, 마이그레이션 누락입니다.</p><p><strong>진단 순서:</strong> 스냅샷 ID → 복원 범위 → 감사 로그 → 핵심 테이블 diff를 확인합니다.</p><p><strong>복구:</strong> 사용자 안내보다 먼저 읽기 경로를 동결하고, 데이터 무결성 사안으로 개발 이관합니다.</p></article></div><p>모든 시나리오는 첫 응답에서 복구를 시작하지 않고 진단 순서를 먼저 완료합니다. 권한 변경·환불·데이터 무결성처럼 되돌리기 어려운 항목은 §7 이관 기준과 §10 감사 결함을 함께 확인한 뒤 처리합니다.</p></section>
   <section class="operations-runbook"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="9" width="24" height="22" rx="5"/><path class="bi-line" d="M14 16h12M14 22h8"/><path class="bi-accent-line" d="M23 23l3 3 5-7"/></svg></span><span class="num">9</span>Operations Runbook · 운영 절차</h2><p class="h2-sub">정기 점검을 주기별로 분리하고, 각 점검에 “이상일 때 어디로 가는가”를 붙여야 런북이 됩니다.</p><div class="manual-runbook-grid"><article class="manual-card"><h3>일일</h3><p>오류 알림, 큐 적체, 결제 실패율 확인. 결제 실패율이 평소 범위를 벗어나면 §8의 결제 실패 시나리오로 진입하고, 큐 적체는 30분 후 재확인에서도 지속될 때만 대응을 시작합니다.</p></article><article class="manual-card"><h3>주간</h3><p>반복 문의, 미해결 티켓, 문서 업데이트 후보 정리. 같은 증상 문의가 주 3회 이상이면 §8에 새 시나리오로 추가하고, 그 증상이 §3 첫 성공 경로와 관련되면 매뉴얼 자체의 결함으로 분류해 §10 감사 대상에 올립니다.</p></article><article class="manual-card"><h3>릴리스 전</h3><p>스크린샷 변경, API 옵션 변경, 안전 경고 문구 확인. 릴리스 메모와 매뉴얼의 버전 주석이 어긋난 채 배포되는 것이 가장 흔한 문서 사고이므로, 이 점검은 릴리스 승인 조건에 포함합니다(소유자 승인 대기 — §1).</p></article></div></section>
   <section class="manual-audit"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="5"/><path class="bi-accent-line" d="M14 21l4 4 9-11"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="num">10</span>Manual Audit · 품질 감사</h2><p class="h2-sub">매뉴얼 자체의 결함(누락·낡음·모순)을 찾아 원문 근거와 함께 기록합니다 — 지적에는 반드시 위치가 붙어야 합니다.</p><p>오래된 화면명이나 서로 모순되는 절차가 있으면 삭제하지 말고 원문 위치와 확인 불가를 남긴 뒤 소유자 검토로 보냅니다. 이번 감사에서 확인된 결함은 세 가지입니다. 환불 정책 문구 모순(billing-policy.md §3 vs support-macro.md §1), FAQ 스크린샷의 구버전 메뉴명(FAQ-로그인.md §2, 릴리스 2.4와 불일치), 롤백 절차의 소요 시간 미기재(ops/rollback.md §2 — 장애 대응 중 판단 지연 요인). 셋 모두 본문에서는 보류/주석 처리했고 소유자 검토 후 확정합니다.</p><div class="wg-13-fc"><h3 class="wg-13-h">검토 플로우 <span class="wg-13-sub">무 JS details/target 기반</span></h3><div class="wg-13-flow"><a class="wg-13-node wg-13-node--start" href="#man-source"><span class="wg-13-step">START</span>출처 확인</a><span class="wg-13-arrow">↓</span><a class="wg-13-node wg-13-node--decide" href="#man-safety"><span class="wg-13-step">CHECK</span>위험 절차 분리</a><span class="wg-13-arrow">↓</span><a class="wg-13-node wg-13-node--end" href="#man-trouble"><span class="wg-13-step">DONE</span>복구 경로 검증</a></div></div></section>
   <section class="try"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="5"/><path class="bi-accent-line" d="M14 21l4 4 9-11"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="num">11</span>Next Actions</h2><p>다음 작업에서는 원문 매뉴얼을 붙이면 `manual_analysis`가 역할별 경로, 첫 성공, 안전 조건, 문제 해결, 운영 런북으로 재구성합니다. 이 문서를 실제 운영 매뉴얼로 확정하기 위한 순서는 다음과 같습니다.</p><ol><li>§10 감사 결함 3건을 소유자에게 회람하고 환불 정책 정본을 확정</li><li>§5 작성 가능 레시피 4종을 표준 구조(6필드)로 작성 — 환불 레시피는 1번 완료 후</li><li>§8의 나머지 증상 시나리오 3종을 4단 구조로 전개</li><li>릴리스 2.5부터 “버전 주석 일치”를 릴리스 승인 조건에 추가(§9)</li></ol></section>

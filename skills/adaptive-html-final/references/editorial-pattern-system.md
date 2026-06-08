@@ -59,6 +59,7 @@ SKILL.md·마크다운·코드 원문 발췌는 `.prompt-box`(텍스트 인용)�
 - **`.lede-note`** — Goal/도입 강조 카드(좌측 accent rail). 페이지의 `pattern-hero-note`를 정본 callout으로 개명. `.label`은 공유 uppercase 규약(`.08em`/weight 800/accent-2)을 따른다. 마크업: `<div class="lede-note"><span class="label">Goal</span><p>…</p></div>`.
 - **`.source-preserve-static`** — `source-preserve`의 **접기 없는 정적 변형**(`<details>` 대신 `<div class="source-preserve source-preserve-static">` + `.source-preserve-title`(div) + `.source-body`, `role="group"`/`aria-labelledby`). 무 JS.
 - **`.core-insight--neutral`** — `core-insight`의 그라데이션 없는 중립 변형. **베어 `.core-insight`를 덮어쓰지 않는다**(opt-in). blockquote는 `var(--sans)`.
+- **`.core-insight--plain-text`** — 사고 원인·SLO 판단처럼 핵심 문장이지만 hero quote까지는 아닌 경우 쓰는 일반 본문 크기 변형. **베어 `.core-insight`를 덮어쓰지 않는다**(opt-in). blockquote는 `var(--fs-base)`/sans/normal letter-spacing으로 낮춘다.
 - **before/after 강조** — `.ba-emphasis-line`(강조 문장) + `.ba-bullet`(장식 마커, `aria-hidden="true"`). `.ba-col.after .ba-bullet`는 accent, 기본은 `--ink-mute`(토큰화, warm 리터럴 미사용).
 - **`.toc-map`(템플릿 목차 chip-nav)** — 섹션 목차를 **번호 pill이 한 줄에서 wrap 되는 chip-row**로 보여주는 정본 목차 카드(`final_20260604`의 `imported-toc-*` 데모를 정본 이름으로 승격). 리스트형 `.toc`(components.css)와 별개의 opt-in 컴포넌트로, 항목이 6개 이상이거나 가로로 훑게 하고 싶을 때 쓴다. 번호 배지는 `--accent-soft`/`--accent-2` 토큰으로 8테마 자동 적응. 마크업:
   ```html
@@ -72,7 +73,7 @@ SKILL.md·마크다운·코드 원문 발췌는 `.prompt-box`(텍스트 인용)�
   </section>
   ```
   주의: 데모용 `imported-toc-*` 어휘는 `bespoke_namespace_class` denylist에 그대로 남으므로 정식 출력에는 **`toc-map`/`toc-pills`/`toc-pill`** 정본 클래스만 쓴다.
-- **`.col-list`(평면 리스트 자동 다단)** — 짧은 항목(파일명·태그·키워드 등)이 **6개 이상**인 평면 `ul`/`ol`은 세로 1열로 적층하지 말고 `class="col-list"`를 붙여 **다단 그리드(auto-fill, 폭을 꽉 채워 ≈3개+/행)** 로 렌더한다. 가로 공백 낭비와 "빈약한 긴 목록"을 막는 **밀도 판단의 기본값**이다. 마크업: `<ul class="col-list"><li><code>a.md</code></li>…</ul>`.
+- **`.col-list`(평면 리스트 자동 다단)** — 짧은 항목(파일명·태그·키워드 등)이 **6개 이상**인 평면 `ul`/`ol`은 세로 1열로 적층하지 말고 `class="col-list"`를 붙여 **다단 그리드(auto-fill, 폭을 꽉 채워 ≈3개+/행)** 로 렌더한다. 가로 공백 낭비와 "빈약한 긴 목록"을 막는 **밀도 판단의 기본값**이다. 마크업: `<ul class="col-list"><li><code>a.md</code></li>…</ul>`. 기존 산출물 호환을 위해 `<div class="col-list"><ul>…</ul></div>` 래퍼형도 정본 지원하며, 이 경우 설명 문장이 붙은 항목을 고려해 행 간격과 줄간격을 더 넉넉하게 둔다.
   - **자동 판단 규칙(작성자가 매번 손보지 않아도 되게):** 항목이 모두 한 줄(짧은 토큰)이고 개수가 6개 이상이면 `col-list`를 **기본 적용**한다. 항목에 설명 문장이 붙는 리스트(긴 본문)는 일반 리스트를 유지한다. github_analysis의 `references 투어`, 태그 목록, 파일/모듈 인덱스가 대표 사례다.
 - **`.text-bullet-view`(텍스트 전용 뷰 bullet)** — 체크리스트/요약 카드처럼 **텍스트만 있는 뷰가 카드 안에서 밋밋하게 보일 때** `final_20260604` section 7의 작은 써클 bullet 리듬을 정본으로 적용한다. `text-bullet-view`는 레이아웃만 담당하고, 마커는 기존 `.ba-bullet`을 재사용한다. 마크업: `<div class="check-item text-bullet-view"><span class="ba-bullet" aria-hidden="true"></span><span>확인할 문장</span></div>`.
   - **자동 판단 규칙:** 아이콘/번호/상태칩 없이 문장만 들어 있는 카드형 항목이 3개 이상 반복되면 `text-bullet-view`를 기본 적용한다. 이미 `cf-check`, `body-icon`, 번호 pill, 상태 badge가 있는 뷰에는 중복 장식이므로 적용하지 않는다.

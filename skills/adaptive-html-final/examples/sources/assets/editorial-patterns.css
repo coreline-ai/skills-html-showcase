@@ -23,6 +23,9 @@
 /* core-insight--neutral — 그라데이션 없는 중립 callout 변형(opt-in). 베어 .core-insight를 덮어쓰지 않는다(전 모드 회귀 방지). */
 .core-insight--neutral{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
 .core-insight--neutral blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.025em;line-height:1.42}
+/* core-insight--plain-text — 사고 원인/판단 문장을 hero quote가 아닌 일반 본문 크기 callout으로 낮추는 opt-in 변형. */
+.core-insight--plain-text blockquote{font-size:var(--fs-base);font-weight:650;letter-spacing:0;line-height:1.72;color:var(--ink-soft)}
+.core-insight--plain-text p{font-size:var(--fs-sm);line-height:1.65;color:var(--ink-mute)}
 /* lede-note — Goal/도입 강조 카드(좌측 accent rail). pattern-hero-note(페이지 어휘)를 정본 callout으로 개명, .label은 공유 uppercase 규약으로 복귀. */
 .lede-note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:16px 24px 17px;margin:24px 0 34px}
 .lede-note .label{display:block;font-size:var(--fs-xs);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
@@ -111,8 +114,17 @@
 ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:8px 12px}
 .col-list li{margin:0;min-width:0;color:var(--ink-soft);font-size:13.5px;line-height:1.4}
 .col-list li code{display:inline-block;max-width:100%;overflow-wrap:anywhere}
-@media(max-width:560px){ul.col-list,ol.col-list{grid-template-columns:1fr}}
+.col-list>ul,.col-list>ol{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:12px 14px}
+.col-list>ul li,.col-list>ol li{line-height:1.55}
+@media(max-width:560px){ul.col-list,ol.col-list,.col-list>ul,.col-list>ol{grid-template-columns:1fr}}
+/* 비교/판단 보조 기준 표 — label:detail 리스트가 4개 이상이면 col-list 대신 table-scroll 안의 table.criteria-table로 렌더한다. v5.4.3 */
+.criteria-table td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
+.criteria-table td:nth-child(3){font-weight:750;color:var(--ink)}
+.criteria-table td{vertical-align:top}
+@media(max-width:560px){.criteria-table td:first-child{white-space:normal}}
 /* 텍스트 전용 뷰 bullet (text-bullet-view) — final_20260604 section 7의 code-path bullet 리듬을 정본화. 텍스트만 있는 카드/체크 항목 앞에 작은 써클을 붙여 스캔성을 높인다. opt-in, 무 JS, 8테마 토큰. v5.4.2 */
 .text-bullet-view{display:flex;align-items:flex-start;gap:10px;line-height:1.62}
 .text-bullet-view>.ba-bullet{margin-top:.72em;background:var(--ink-mute);box-shadow:0 0 0 4px var(--bg)}
+.text-bullet-view--center{align-items:center}
+.text-bullet-view--center>.ba-bullet{margin-top:0}
 :root:has(#ahf-dark:checked) .text-bullet-view>.ba-bullet{background:var(--accent-2);box-shadow:0 0 0 4px var(--card)}

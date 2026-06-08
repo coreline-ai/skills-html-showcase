@@ -14,7 +14,7 @@
 | platform_blog | platform-adaptation.html | 1020 | cards, comparison, checklist | platform grid |
 | skill_audit | skill-audit-report.html | 1020 | diagnosis, scores, line audit, improved skill | audit rows, score cards |
 | reference_html | reference-manual.html | 1020 | quick reference, concepts, patterns, examples | reference grid |
-| comparison_html | comparison-matrix.html | 1020 | context, matrix, winners, tradeoffs | decision cards |
+| comparison_html | comparison-matrix.html | 1020 | context, matrix, winners, tradeoffs | decision cards + criteria tables |
 | case_study_html | case-study.html | 780 | situation, timeline, decisions, results | timeline |
 | landing_brief_html | landing-brief.html | 1020 | hero, value props, how-it-works, FAQ, CTA | restrained editorial landing |
 | checklist_playbook | checklist-playbook.html | 1020 | use case, check grid, failure modes, done criteria | operation cards |
@@ -36,6 +36,7 @@
 - 섹션 간 간격은 `section{margin}`으로 통제한다. `section > h2:first-child`와 카드 컴포넌트 첫 h2/h3는 `margin-top:0`이어야 하며, 카드 안쪽에 큰 빈 상단 여백을 만들지 않는다.
 - 의미형 section wrapper는 normal flow를 유지한다. `section.priority-roadmap`, `section.timeline`, `section.value-grid` 등에 직접 grid를 걸지 않는다.
 - `.winners:not(section)`, `.tradeoffs:not(section)`는 h3+ul을 담는 텍스트 카드로 취급한다. h3와 목록을 2컬럼 grid item으로 나누지 말고, 실제 비교 카드가 필요할 때만 내부 `.grid-2`를 추가한다.
+- `comparison_html`에서 핵심 분기 2~3개는 카드/decision view로 보여주되, 그 아래 보조 기준이 4개 이상이고 각 항목이 `기준명: 설명` 형태라면 `.col-list` 대신 `.table.criteria-table`을 사용한다. 표는 반드시 `.table-scroll`로 감싸고 `caption`과 `th scope="col"`을 둔다.
 - 검정 `.try` 안에 밝은 카드가 들어가면 카드 내부 텍스트 색상 상속을 반드시 리셋한다.
 - 검정 `.try` 안의 `.tag` pill은 dark-section의 흐린 텍스트를 상속하지 말고 밝은 pill + 진한 텍스트로 표시한다.
 - `blog_writer`는 에세이 톤을 유지하되, section h2 앞에는 CSS counter 기반 번호 badge를 붙여 다른 모드와 진행감을 맞춘다.

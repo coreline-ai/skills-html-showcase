@@ -2,9 +2,10 @@
 <!-- SVG 노드/엣지 정적 렌더, 핵심 경로는 색 + 굵기 + 굵은 텍스트 + 범례 + 별도 경로 칩으로 색 외 단서 제공. 노드 호버는 CSS transition. 노드 클릭 확장·드래그 재배치·줌은 JS 필요(완전 인터랙션은 JS 필요). -->
 <style>
 .wg-04{font-family:var(--sans);color:var(--ink);max-width:var(--max-wide);margin:0 auto}
+.mode-template-contract .wg-04,.wg-04-contract+.wg-04,.tpl-item .wg-04{margin-top:var(--space-5)}
 .wg-04-head{margin-bottom:var(--space-4)}
 .wg-04-kicker{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent-2);margin:0 0 var(--space-2)}
-.wg-04-title{font-family:var(--serif);font-size:var(--fs-xl);font-weight:700;line-height:1.34;margin:0 0 var(--space-2)}
+.wg-04-title{font-family:var(--serif);font-size:var(--fs-lg);font-weight:700;line-height:1.38;margin:0 0 var(--space-2)}
 .wg-04-lead{font-size:var(--fs-base);color:var(--ink-soft);line-height:1.7;margin:0 0 var(--space-3)}
 .wg-04-crit-word{color:var(--accent-2)}
 .wg-04-legend{list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-4);margin:0;padding:0;font-size:var(--fs-xs);color:var(--ink-soft)}
@@ -19,7 +20,7 @@
 .wg-04-edge{stroke:var(--ink-mute);stroke-width:1.6;fill:none}
 .wg-04-edge-crit{stroke:var(--accent);stroke-width:3}
 .wg-04-node rect{stroke-width:1.6;transition:transform .18s ease}
-.wg-04-node text{font-family:var(--sans);font-size:14px;font-weight:600;text-anchor:middle;fill:var(--ink)}
+.wg-04-node text{font-family:var(--sans);font-size:12.5px;font-weight:600;text-anchor:middle;fill:var(--ink)}
 .wg-04-node-entry rect{fill:var(--analogy-bg);stroke:var(--analogy-accent)}
 .wg-04-node-core rect{fill:var(--card);stroke:var(--ink)}
 .wg-04-node-leaf rect{fill:var(--bg);stroke:var(--line)}
