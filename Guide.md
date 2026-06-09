@@ -282,7 +282,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py \
 # 최초 1회
 npm install
 
-# 기본: pdf,png,webp + light,light2,white,dark,dark2 요청
+# 기본: pdf,png,webp + light,light2,white,dark,dark2,blue,skyblue,sepia 요청
 node scripts/export_output.mjs output/final_20260604 --clean
 
 # 특정 포맷/테마만
@@ -297,7 +297,7 @@ node scripts/export_output.mjs output/final_20260604 \
 |---|---|
 | 렌더 엔진 | Node Playwright Chromium. `:has()` 기반 테마·인라인 CSS·대형 SVG 때문에 비-Chromium 변환기는 사용하지 않습니다 |
 | 출력 위치 | `<output_dir>/exports/pdf`, `exports/png`, `exports/webp`, `exports/export-manifest.json` |
-| 테마 | `light,light2,white,dark,dark2`를 요청하되 DOM radio가 없는 테마는 skip으로 기록 |
+| 테마 | `light,light2,white,dark,dark2,blue,skyblue,sepia`를 요청하되 DOM radio가 없는 테마는 skip으로 기록 |
 | PNG | full-page screenshot. `--scale` 요청값은 페이지 높이에 따라 `scale_used`로 자동 강등될 수 있습니다 |
 | WebP | PNG master에서 `sharp`로 파생. 긴 변 16383px 초과 시 WebP만 downscale, PNG master는 보존 |
 | PDF | fresh page/context에서 print PDF 1종 생성, controls/themebar는 export에서 숨김 |

@@ -6,7 +6,7 @@
 | expert_html | expert-report.html | 1020 | executive summary, risk, roadmap, validation | report cards, compact tables |
 | article_html | magazine-article.html | 780 | lead, quote, argument, case, takeaway | prose rhythm, pull quote |
 | education_html | course-module.html | 780 | goals, practice, quiz, answer | learning cards, details answers |
-| github_analysis | github-analysis.html | 1020 | verdict, question toc, repo identity, quickstart, health signals, file tour, risks, final decision | evidence cards, repo signal grids, vt hero/file/risk views |
+| github_analysis | github-analysis.html | 1020 | verdict, question toc, repo identity, quickstart, health signals, repo anatomy/file tour, risks, final decision | evidence cards, repo signal grids, stack map tables, vt hero/file/risk views |
 | youtube_analysis | youtube-analysis.html | 1020 | source trust, TL;DW, evidence map, chapter flow, comment signals, opportunity, source limits | timeline/risk/quality views, evidence cards |
 | manual_analysis | manual-analysis.html | 1020 | source snapshot, role router, first success, prerequisites, recipes, troubleshooting, audit | hero/checklist/quality/file views, role cards |
 | blog_writer | personal-blog-essay.html | 780 | hook, view, CTA | essay sections, restrained boxes |
@@ -28,7 +28,7 @@
 1. 선택 모드의 `assets/layouts/<layout>.html`을 먼저 열고, placeholder 목록을 추출한다.
 2. 각 placeholder를 모드별 필수 블록과 연결한다. 연결되지 않은 필수 블록이 있으면 섹션을 새로 만들기 전에 layout mapping을 보강한다.
 3. vt-템플릿과 wg-위젯은 placeholder의 정보 구조를 강화하는 위치에 넣는다. “모든 섹션에 카드 3개” 같은 반복 배치는 레이아웃 사용이 아니다.
-4. 최종 `<main>`에는 선택 layout의 독자 흐름이 남아 있어야 한다. 예: `github_analysis`는 판정→질문 목차→repo identity→quickstart→health→code tour→risk→decision 흐름, `education_html`은 목표→시작 전→개념→예시→실습→퀴즈→정답 흐름이다.
+4. 최종 `<main>`에는 선택 layout의 독자 흐름이 남아 있어야 한다. 예: `github_analysis`는 판정→질문 목차→repo identity→quickstart→health→code tour(repo anatomy pack 포함 가능)→risk→decision 흐름, `education_html`은 목표→시작 전→개념→예시→실습→퀴즈→정답 흐름이다.
 5. 기존 검수 예제보다 단순한 자유형 섹션 나열로 후퇴하면 실패다. layout 클래스만 맞아도 정보 구조가 다르면 layout fit 0점이다.
 
 ## Layout Safety Notes
@@ -46,6 +46,7 @@
 - 모바일에서 4열 이상 표가 빽빽하면 `.mobile-card-table` 패턴으로 행 카드화한다.
 - case-study timeline은 단일 대형 카드보다 개별 step card가 기본이다.
 - `github_analysis`는 `.repo-signal-grid` 같은 내부 wrapper에만 grid를 적용하고, `.repo-health`/`.security-license` 같은 semantic section 자체를 grid로 만들지 않는다.
+- `github_analysis`의 Repo Anatomy Pack은 새 semantic section이 아니라 기존 `.code-tour` 안에 들어가는 하위 패턴이다. 기술 스택 전체 지도는 `.table-scroll` 표, 아키텍처 심화 분석은 `.repo-evidence-grid`/`wg-04`, 디렉터리 구조 해부는 `vt-file-tour`/`md-excerpt`를 우선 사용한다.
 - GitHub에서 확인할 수 없는 보안 설정·비공개 취약점·내부 운영 상태는 `확인 불가` 카드로 남기고 추측 점수를 만들지 않는다.
 - `youtube_analysis`는 `.youtube-*-grid` 같은 내부 wrapper에만 grid를 적용하고, semantic section 자체를 grid로 만들지 않는다. iframe/embed는 금지한다.
 - `manual_analysis`는 `.manual-*-grid` 같은 내부 wrapper에만 grid를 적용하고, 입력에 없는 역할 카드를 만들지 않는다.
@@ -61,7 +62,7 @@
 | expert_html | hero-map, matrix, timeline, quality-gate | 운영모델·RACI·리스크·로드맵·검증 |
 | article_html | hero-map, decision-tree | 주장 구조·쟁점 흐름 |
 | education_html | timeline, checklist-flow | 학습 경로·실습 절차·퀴즈 전 체크 |
-| github_analysis | hero-map, file-tour, risk-matrix, quality-gate | 저장소 판단 흐름·코드 구조·리스크·검증 기준 |
+| github_analysis | hero-map, file-tour, risk-matrix, quality-gate | 저장소 판단 흐름·repo anatomy/file 구조·리스크·검증 기준 |
 | youtube_analysis | timeline, risk-matrix, quality-gate | 영상 근거 흐름·주장 리스크·검증 기준 |
 | manual_analysis | hero-map, checklist-flow, quality-gate, file-tour | 역할별 경로·절차·안전 게이트·출처 구조 |
 | blog_writer | hero-map, timeline | 경험 흐름·문제 해결 여정 |

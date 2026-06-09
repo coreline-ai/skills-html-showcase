@@ -16,7 +16,7 @@ Build-time helper for exporting finished HTML output directories to PDF, PNG, an
 - Use Chromium/Playwright for rendering. Do **not** use WeasyPrint/wkhtmltopdf for `:has()` theme outputs.
 - Treat source HTML as read-only. Do not inject JS or write generated `.html` outside `exports/`.
 - Write artifacts only under `<output_dir>/exports/{pdf,png,webp}/` plus `<output_dir>/exports/export-manifest.json`.
-- Request themes `light,light2,white,dark,dark2` by default; capture only DOM radios that exist: `input[name="ahf-theme"]#ahf-<theme>`.
+- Request themes `light,light2,white,dark,dark2,blue,skyblue,sepia` by default; capture only DOM radios that exist: `input[name="ahf-theme"]#ahf-<theme>`.
 - Hide export controls at render time only: `.ahf-themebar`, `.reading-progress`, `.skip`, `.ahf-color-audit`.
 - Confirm regression safety from manifest: `html_sha256_unchanged`, `sources_sha256_unchanged`, `validate_issues_unchanged`.
 
@@ -52,7 +52,7 @@ npm run export:output -- output/<dir> --clean
 ## Common commands
 
 ```bash
-# Default: pdf,png,webp + light,light2,white,dark,dark2
+# Default: pdf,png,webp + light,light2,white,dark,dark2,blue,skyblue,sepia
 npm run export:output -- output/final_20260604 --clean
 
 # PDF only
@@ -65,7 +65,7 @@ npm run export:output -- output/final_20260604 --formats png --themes dark --sca
 ## Allowed v1 options
 
 - `--formats pdf,png,webp`
-- `--themes light,light2,white,dark,dark2`
+- `--themes light,light2,white,dark,dark2,blue,skyblue,sepia`
 - `--scale 1|2|3`
 - `--viewport 1280x900`
 - `--require-webp`

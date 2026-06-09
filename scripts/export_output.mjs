@@ -24,7 +24,7 @@ const require = createRequire(import.meta.url);
 const TIMEOUTS = { nav: 30000, networkidle: 3000, fonts: 5000, imageDecode: 5000 };
 const DEFAULTS = {
   formats: ['pdf', 'png', 'webp'],
-  themes: ['light', 'light2', 'white', 'dark', 'dark2'],
+  themes: ['light', 'light2', 'white', 'dark', 'dark2', 'blue', 'skyblue', 'sepia'],
   scale: 2,
   viewport: { width: 1280, height: 900 },
   webpQuality: 85,
@@ -35,7 +35,7 @@ const DEFAULTS = {
 const RASTER_MAX = 16384;                 // scale downgrade threshold
 const PNG_PIXEL_MAX = 300_000_000;          // hard safety guard for one full-page PNG
 const VALID_FORMATS = new Set(['pdf', 'png', 'webp']);
-const VALID_THEMES = new Set(['light', 'light2', 'white', 'dark', 'dark2']);
+const VALID_THEMES = new Set(['light', 'light2', 'white', 'dark', 'dark2', 'blue', 'skyblue', 'sepia']);
 const VALID_SCALES = new Set([1, 2, 3]);
 const CONTROL_HIDE = ['.ahf-themebar', '.reading-progress', '.skip', '.ahf-color-audit'];
 const V2_FLAGS = [
@@ -75,7 +75,7 @@ class ExitError extends Error {
 function printHelp() {
   console.log(`Usage: node scripts/export_output.mjs <output_dir> [options]
   --formats <list>      pdf,png,webp (default: all)
-  --themes <list>       light,light2,white,dark,dark2 (DOM에 없는 테마는 skip)
+  --themes <list>       light,light2,white,dark,dark2,blue,skyblue,sepia (DOM에 없는 테마는 skip)
   --scale <1|2|3>       PNG deviceScaleFactor request (default: 2)
   --viewport <WxH>      Chromium viewport (default: 1280x900)
   --require-webp        Treat sharp absence/webp failure as hard fail

@@ -16,7 +16,7 @@
 |---|---|---|
 | Repository metadata | description, topics, stars/forks/watchers, default branch, archived/disabled 여부 | repo identity, maturity signal |
 | README / docs | 설치, quickstart, examples, screenshots, supported platforms | quickstart readiness |
-| Contents / file tree | package manifest, src, tests, docs, CI, security, license | file tour, module map |
+| Contents / file tree | package manifest, src, tests, docs, CI, security, license, layer boundaries | stack map, architecture map, file tour |
 | Releases / tags | 최근 릴리스, 버전 규칙, changelog | maintenance, adoption risk |
 | Issues / PRs | open/closed 흐름, stale 여부, maintainer response | governance and support signal |
 | Contributors / commits | 최근 커밋, contributor spread | bus factor inference |
@@ -32,7 +32,7 @@
 1. **한 줄 결론** — 사용/검토/보류/대체 탐색 중 무엇인가?
 2. **이 저장소는 무엇인가** — 목적, 대상 사용자, 핵심 가치.
 3. **바로 실행 가능한가** — 설치/quickstart/예제/환경 요구사항.
-4. **어디부터 읽으면 되는가** — README, src, docs, tests, config, CI. 디렉터리/파일 투어와 `references 투어`처럼 **짧은 항목이 6개 이상인 평면 목록은 `<ul class="col-list">`(다단 그리드)로 렌더**해 세로 1열 적층의 빈 공간을 없앤다(editorial-pattern-system.md `.col-list`).
+4. **어디부터 읽으면 되는가** — README, src, docs, tests, config, CI. 복잡한 저장소는 `CODE_TOUR` 안에 Repo Anatomy Pack(기술 스택 전체 지도 → 아키텍처 심화 분석 → 디렉터리 구조 해부)을 포함한다. 디렉터리/파일 투어와 `references 투어`처럼 **짧은 항목이 6개 이상인 평면 목록은 `<ul class="col-list">`(다단 그리드)로 렌더**해 세로 1열 적층의 빈 공간을 없앤다(editorial-pattern-system.md `.col-list`).
 5. **살아 있는 프로젝트인가** — 최근 커밋, 릴리스, 이슈/PR 응답, contributor spread.
 6. **채택 리스크는 무엇인가** — 라이선스, security policy, test/CI, stale activity, dependency hints.
 7. **내 다음 행동은 무엇인가** — 30분 검토, 1일 POC, 보류, 대체안 탐색 체크리스트.
@@ -45,7 +45,7 @@
 |---|---:|---|
 | Purpose fit | 15 | 내가 풀려는 문제와 README/설명이 직접 맞는가? |
 | Quickstart readiness | 20 | 10~30분 안에 설치/예제를 재현할 수 있는가? |
-| Code map clarity | 15 | 주요 파일/디렉터리와 실행 진입점을 찾을 수 있는가? |
+| Code map clarity | 15 | 주요 파일/디렉터리, 기술 계층, 실행 진입점, 검증 경로를 찾을 수 있는가? |
 | Maintenance signal | 20 | 최근 커밋/릴리스/이슈 응답이 살아 있는가? |
 | Governance trust | 15 | license, contributing, security policy, CI/test 흔적이 있는가? |
 | Adoption risk | 15 | stale, no release, no tests, unclear license 같은 차단 리스크가 있는가? |
@@ -106,6 +106,32 @@ SOURCE_NOTE
 - `body-icons.css`를 조건부 자산으로 인라인하고 `sources/assets/body-icons.css`와 `css-integrity.json`에도 기록한다.
 - `.layout-github>section`은 카드/뷰 표면으로 감싸되, 내부 grid wrapper(`repo-*grid`)에만 grid를 적용한다.
 
+### CODE_TOUR 하위 패턴: Repo Anatomy Pack
+
+복잡한 저장소(플러그인/스킬/어댑터/평가 스크립트/멀티 런타임처럼 계층이 많은 구조)는 `CODE_TOUR` 섹션 안에 다음 3개 블록을 순서대로 넣는다. 새 `wg-*`/`vt-*` 번호를 만들지 않고 기존 자산과 editorial 패턴만 조합한다.
+
+1. **기술 스택 전체 지도**
+   - 목적: 언어·프레임워크 나열이 아니라 `지식 계층 / 통합 계층 / 검증 계층 / 설정 계층`처럼 저장소가 움직이는 계층을 보여준다.
+   - 구조: `<div class="table-scroll"><table>...</table></div>`를 기본으로 쓰고, `<caption>`은 필수다.
+   - 열 권장: `계층`, `구성 요소`, `기술/형식`, `역할`, `근거`.
+   - 보조: 핵심 계층 3개만 요약할 때는 `.repo-evidence-grid` + `.repo-evidence`를 사용한다.
+
+2. **아키텍처 심화 분석**
+   - 목적: 입력이 어떤 통합 계층을 지나 지식/검증 계층으로 이동하고 어떤 결과를 만드는지 설명한다.
+   - 구조: `.repo-evidence-grid`로 설계 패턴/흐름/리스크 카드를 배치한다. 모듈 의존이 실제로 중요할 때만 `wg-04 Module Map`을 추가한다.
+   - 대표 도판이 필요하면 `workflow-figure` + `assets/workflow-svgs/04-layered-stack.svg`를 섹션 상단에 둔다. 핵심 정보는 반드시 HTML 텍스트/표로 반복해 이미지 내부 라벨에 의존하지 않는다.
+
+3. **디렉터리 구조 해부**
+   - 목적: 단순 tree dump가 아니라 `폴더 → 역할 → 읽는 이유 → 주의점`을 연결한다.
+   - 구조: `vt-file-tour`를 우선 사용하고, 실제 tree가 필요한 경우 `md-excerpt` 또는 `.code` 블록으로 보존한다.
+   - README에 있는 파일 트리가 실제 contents와 다르면 `FACT`로 차이를 적고, 오래된 tree는 `UNKNOWN`/한계로 분리한다.
+
+작성 금지:
+
+- `wg-21`, `vt-22`처럼 새 번호를 임의로 만들지 않는다.
+- `.repo-stack-*`, `.repo-architecture-*` 같은 새 CSS 네임스페이스를 즉흥 추가하지 않는다. 새 CSS가 필요하면 별도 패치에서 `layouts.css` 코어 해시·스냅샷·검증을 함께 갱신한다.
+- 기술 스택을 인기 기술 키워드 목록으로만 나열하지 않는다. 각 항목은 파일/README/package manifest 같은 근거와 연결한다.
+
 ## 6. vt-/wg- 선택
 
 프로파일별 선택은 SKILL.md §0.6이 단일 출처다.
@@ -114,12 +140,12 @@ SOURCE_NOTE
 |---|---|---|
 | vt-hero-map | 1 | 목적 → 신호 → 권장 행동 요약 |
 | vt-quality-gate | 2 | 채택 전 최소 검증 기준 |
-| vt-file-tour | 3 | README/src/tests/docs/CI/security 파일 투어 |
+| vt-file-tour | 3 | README/src/tests/docs/CI/security 파일 투어, 디렉터리 구조 해부 |
 | vt-risk-matrix | 4 | 채택 리스크 우선순위 |
 | vt-timeline | 5 | 커밋/릴리스/이슈 흐름 |
 | vt-decision-tree | 6 | 사용/검토/보류/대체 탐색 판단 |
 | wg-11 Weekly Status | 1 | repo health 지표 요약 |
-| wg-04 Module Map | 2 | 모듈/패키지 의존 경로 |
+| wg-04 Module Map | 2 | 모듈/패키지 의존 경로, 아키텍처 심화 분석 보강 |
 | wg-14 Feature Explainer | 3 | quickstart/API/CLI 사용법 |
 | wg-16 Implementation Plan | 4 | POC/도입 계획 |
 | wg-17 PR Writeup / wg-18 Triage Board | 선택 | PR/이슈 흐름이 중요한 경우만 |

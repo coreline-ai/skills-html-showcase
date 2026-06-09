@@ -509,7 +509,7 @@ python3 -m http.server 8788
 # 최초 1회
 npm install
 
-# 기본: pdf,png,webp + light,light2,white,dark,dark2 요청
+# 기본: pdf,png,webp + light,light2,white,dark,dark2,blue,skyblue,sepia 요청
 npm run export:output -- output/final_20260604 --clean
 
 # 13-topic 기준선 export
@@ -520,7 +520,7 @@ npm run export:output -- output/adaptive-html-final-13-topics-20260605_083433 --
 |---|---|
 | 엔진 | Playwright Chromium (`:has()` 테마·대형 SVG 충실도 유지) |
 | WebP | `sharp` optional dependency. 없으면 webp skip, `--require-webp`면 실패 |
-| 테마 | DOM radio `name="ahf-theme"`에 존재하는 테마만 캡처. 없는 `light2`/`dark2`는 skip 기록 |
+| 테마 | DOM radio `name="ahf-theme"`에 존재하는 테마만 캡처. 기본 요청은 `light,light2,white,dark,dark2,blue,skyblue,sepia`이며 없는 테마는 skip 기록 |
 | 긴 페이지 | `--scale 2` 요청 후 Chromium 안전선에 맞춰 `scale_used` 자동 강등. scale 1에서도 긴 페이지는 PNG master로 시도하고 WebP는 16383px로 downscale |
 | 산출물 | `<output_dir>/exports/{pdf,png,webp}/` + `exports/export-manifest.json` |
 | 커밋 정책 | `output/**/exports/`는 재생성 산출물이므로 `.gitignore` 처리 |

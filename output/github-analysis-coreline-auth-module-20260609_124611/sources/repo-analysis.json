@@ -1,0 +1,60 @@
+{
+  "repo": "coreline-ai/coreline-auth-module",
+  "url": "https://github.com/coreline-ai/coreline-auth-module",
+  "clone_commit": "103f2f47dda7aaaed563facc3df3f0b9a5cc6e77",
+  "clone_commit_short": "103f2f4",
+  "latest_commit_at": "2026-06-07T22:00:10+09:00",
+  "observed_at": "2026-06-09T12:46:11+09:00",
+  "skill_version": "5.9.2",
+  "profile": "auto",
+  "file_counts": {
+    "src/coreline_auth": {
+      "files": 44,
+      "py": 44
+    },
+    "tests": {
+      "files": 24,
+      "py": 24
+    },
+    "docs": {
+      "files": 36,
+      "py": 0
+    },
+    "demos": {
+      "files": 14,
+      "py": 14
+    },
+    "migrations": {
+      "files": 3,
+      "py": 2
+    }
+  },
+  "github_api_observed": {
+    "public": true,
+    "default_branch": "main",
+    "stars": 1,
+    "forks": 0,
+    "open_issues": 0,
+    "releases": 0,
+    "tags_from_shallow_clone": [],
+    "license": "MIT",
+    "language": "Python",
+    "topics": [
+      "auth",
+      "coreline-ai",
+      "dashboard",
+      "fastapi",
+      "mfa",
+      "open-source",
+      "postgres",
+      "python",
+      "rbac",
+      "redis",
+      "security"
+    ]
+  },
+  "local_test_attempt": {
+    "uv_run_pytest": "failed: uv command not found",
+    "python3_m_pytest": "failed: No module named pytest"
+  }
+}

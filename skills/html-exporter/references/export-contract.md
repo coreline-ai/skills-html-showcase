@@ -29,7 +29,7 @@ A good export has:
 }
 ```
 
-`light2` and `dark2` are requested by default but skipped if no matching DOM radio exists. This is normal for older or three-theme outputs.
+`light,light2,white,dark,dark2,blue,skyblue,sepia` are requested by default. Any requested theme without a matching DOM radio is skipped and recorded, which is normal for older three-theme or five-theme outputs.
 
 ## Exit codes
 

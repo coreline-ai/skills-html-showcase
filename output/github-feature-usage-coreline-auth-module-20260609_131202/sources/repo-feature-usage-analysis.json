@@ -1,0 +1,27 @@
+{
+  "repo": "coreline-ai/coreline-auth-module",
+  "url": "https://github.com/coreline-ai/coreline-auth-module",
+  "commit": "103f2f47dda7aaaed563facc3df3f0b9a5cc6e77",
+  "observed_at": "2026-06-09T13:12:02+09:00",
+  "refreshed_at": "2026-06-09T15:12:00+09:00",
+  "refresh_note": "GitHub main HEAD rechecked; commit unchanged. HTML refreshed against current adaptive-html-final skill assets and validation gates. Header forced line break removed and architecture workflow figure caption removed.",
+  "focus": "feature, usage, architecture, and directory oriented HTML report",
+  "skill_version": "5.9.2",
+  "profile": "auto",
+  "repo_snapshot": "sources/coreline-auth-module-snapshot",
+  "added_sections": [
+    "기술 스택 전체 지도",
+    "아키텍처 심화 분석",
+    "디렉토리 구조 해부"
+  ],
+  "screenshots": [
+    "01-login.png",
+    "02-signup.png",
+    "10-account-security.png",
+    "11-account-sessions.png",
+    "13-admin-users.png",
+    "15-admin-audit.png",
+    "16-system-readiness.png",
+    "17-system-email.png"
+  ]
+}
