@@ -1,6 +1,8 @@
 <div align="center">
 
-<img width="2752" height="1536" alt="뚝딱! 마법의 HTML 변신 도구" src="https://github.com/user-attachments/assets/73915e46-1a31-49b1-9023-dbd724c90534" />
+<img width="2752" height="1536" alt="똑똑한 HTML 요정 기능 소개" src="https://github.com/user-attachments/assets/18690d7b-ea95-430b-b450-7ae95a61999e" />
+
+<img width="0" height="0" alt="뚝딱! 마법의 HTML 변신 도구" src="https://github.com/user-attachments/assets/73915e46-1a31-49b1-9023-dbd724c90534" />
 
 <img width="0" height="0" alt="완벽한 HTML 변환 파이프라인 안내" src="https://github.com/user-attachments/assets/aad48544-f667-438a-a28b-5c55f38a1909" />
 
