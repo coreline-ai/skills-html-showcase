@@ -7,8 +7,8 @@
 # 🎨 Adaptive HTML Final
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
-[![version](https://img.shields.io/badge/version-5.9.2-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
-[![modes](https://img.shields.io/badge/modes-16-2a7d5a)](#-16개-모드)
+[![version](https://img.shields.io/badge/version-5.10.0-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
+[![modes](https://img.shields.io/badge/modes-17-2a7d5a)](#-17개-모드)
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
 [![themes](https://img.shields.io/badge/themes-8--theme-111827)](#-최근-업데이트)
 [![libraries](https://img.shields.io/badge/view%20widgets-20-e63946)](#️-비주얼-프로파일) [![svg→html](https://img.shields.io/badge/svg→html%20templates-21-d99a38)](#️-비주얼-프로파일)
@@ -17,11 +17,11 @@
 [![cross-agent](https://img.shields.io/badge/cross--agent-AGENTS.md-6e40c9)](AGENTS.md)
 [![python](https://img.shields.io/badge/SVG%20render-stdlib%20only-3776AB?logo=python&logoColor=white)](skills/adaptive-html-final/scripts/render_visual_svg.py)
 
-**입력 자료를 16개 모드로 라우팅해 전문가급 한국어 HTML 콘텐츠를 만드는 단일 통합 스킬 — GitHub 저장소·YouTube 영상·매뉴얼 분석, 8-테마, 비주얼 프로파일(위젯형·도식형·자동) 선택**
+**입력 자료를 17개 모드로 라우팅해 전문가급 한국어 HTML 콘텐츠를 만드는 단일 통합 스킬 — GitHub 저장소 실사·GitHub 기능/도입 가이드·YouTube 영상·매뉴얼 분석, 8-테마, 비주얼 프로파일(위젯형·도식형·자동) 선택**
 
 URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill`·GitHub 저장소 URL·YouTube URL/자막·제품 매뉴얼을 받아 학습자료, 전문가 리포트, 저장소/영상/매뉴얼 분석, 아티클, 교육 모듈, 블로그 원고, SEO 대시보드, 플랫폼 변환, 스킬 감사, 레퍼런스, 비교, 케이스 스터디, 랜딩, 체크리스트로 변환합니다.
 
-[Overview](#-overview) · [최근 업데이트](#-최근-업데이트) · [모드](#-16개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [쇼케이스 갤러리](#️-쇼케이스-갤러리) · [스킬 구조](#️-스킬-구조) · [사용법](#-사용법)
+[Overview](#-overview) · [최근 업데이트](#-최근-업데이트) · [모드](#-17개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [쇼케이스 갤러리](#️-쇼케이스-갤러리) · [스킬 구조](#️-스킬-구조) · [사용법](#-사용법)
 
 </div>
 
@@ -51,11 +51,26 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 | **두 위젯 라이브러리** | CSS 뷰 위젯 `wg-01~20`(인터랙션) + SVG→HTML 템플릿 `vt-` 21종(본문 삽입 도식), 둘 다 무 JS·네임스페이스 격리 |
 | 크로스-에이전트 결정론 | 루트 [`AGENTS.md`](AGENTS.md)가 결정론 진입점 — Claude Code·Codex·Gemini가 동일 인자로 동일 출력. 정적 게이트 `validate_output.py --profile` |
 | 접근성 | `lang="ko"` · skip link(`#main`) · 단일 `h1` · `:focus-visible` · `prefers-reduced-motion` · AA 대비 |
-| editorial DNA | 오프화이트 배경, Pretendard + Noto Serif KR, 의미 박스, h2 빨간 원번호 |
+| editorial DNA | 오프화이트 배경, **Pretendard 단일 sans 스택**(외부 세리프 폰트 금지, v5.9.2), 의미 박스, h2 빨간 원번호 |
 
 ---
 
 ## 🆕 최근 업데이트
+
+### v5.10.0 (2026-06-09) — 17번째 모드 `github_feature_usage` 추가 (GitHub 기능·도입 가이드)
+
+> **전략 한 줄 결론:** `github_analysis`가 "도입해도 되나?(실사·리스크·투자판단)"라면, `github_feature_usage`는 **"무엇을 해주나·어떻게 쓰나·어디에 맞나"**를 실제 화면(스크린샷) 중심으로 보여주는 도입 가이드다. 어조·형식이 달라 독립 레이아웃으로 분리했다.
+
+| 영역 | 변경 내용 |
+|---|---|
+| 신규 모드 | `github_feature_usage` 추가 — 전체 라우터 **17모드**. 트리거 tie-breaker로 `github_analysis`(실사)와 분리 |
+| 레이아웃 | `assets/layouts/github-feature-usage.html` + `.layout-github-feature` CSS. github의 카드/그리드 어휘(`repo-evidence-grid`·`repo-signal-grid`·`repo-action-grid`·`code-tour`)를 공유 + 기능 지도·**스크린샷 갤러리**(`feature-screens-grid`) 추가 |
+| 섹션 모델 | positioning → overview(hero) → feature toc → 기능 지도 → 핵심 기능(`wg-14`) → 기술스택 → 아키텍처 → 디렉토리 → 실제 화면 → 사용자/관리자 기능 → 시작 방법 → 적합성 → 도입 전 확인 → 최종 판단 |
+| 검증 게이트 | `MODE_TEMPLATE_CONTRACTS`에 `layout-github-feature` 등록 + `github_feature_usage_contract_gate`(섹션 카드·body-icon·기능지도/실제화면·출처 한계) 신설. `\blayout-github\b`가 `layout-github-feature`까지 오탐하던 경계 버그 수정 |
+| 전략 문서 | `references/github-feature-usage-system.md`(섹션 모델·스크린샷 계약·실사와의 차이) 추가 |
+| 거버넌스 | `test_governance_gates.py` 신규 게이트 테스트 3종 → **80/80 통과** |
+
+> v5.8.x~v5.9.x 누적: youtube/manual 깊이 계약 + 넓고-얇음 게이트(5.8), 시각 정본 게이트 3종·examples 재인라인(5.9.0), wg-10 데모 섹션 한정 full-width(5.9.1), 외부 세리프 폰트 금지·vt-02 정합·toc-map/manual 회귀 방지(5.9.2).
 
 ### v5.9.2 (2026-06-08) — 폰트·decision-tree·toc-map 회귀 방지
 
@@ -184,9 +199,9 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ---
 
-## 📦 16개 모드
+## 📦 17개 모드
 
-요청에서 여러 트리거가 감지되면 우선순위가 높은 모드가 선택되며, 사용자가 모드를 명시하면 그 지시가 우선합니다.
+요청에서 여러 트리거가 감지되면 우선순위가 높은 모드가 선택되며, 사용자가 모드를 명시하면 그 지시가 우선합니다. GitHub URL은 의도에 따라 분기됩니다 — **코드 건전성·리스크·투자판단 = `github_analysis`**, **기능·사용법·도입 가이드(실제 화면) = `github_feature_usage`**.
 
 | # | Mode | 언제 쓰나 | Layout |
 |--:|---|---|---|
@@ -194,7 +209,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 | 2 | `platform_blog` | 티스토리·벨로그·네이버·워드프레스 변환 | `platform-adaptation.html` |
 | 3 | `seo_dashboard` | 제목·메타·태그·검색 의도 설계 | `seo-dashboard.html` |
 | 4 | `education_html` | 강의·온보딩·실습·퀴즈 | `course-module.html` |
-| 5 | `github_analysis` | GitHub 저장소 URL/owner/repo 실사·README·이슈·릴리스·라이선스 분석 | `github-analysis.html` |
+| 5 | `github_analysis` | GitHub 저장소 URL/owner/repo **실사**·README·이슈·릴리스·라이선스·리스크 분석 | `github-analysis.html` |
 | 6 | `youtube_analysis` | YouTube URL/자막/댓글 발췌를 근거 지도·주장 위험·재사용 전략으로 분석 | `youtube-analysis.html` |
 | 7 | `manual_analysis` | 제품/운영 매뉴얼을 역할별 실행 경로·안전 조건·트러블슈팅으로 재구성 | `manual-analysis.html` |
 | 8 | `expert_html` | 전문가 리포트·아키텍처·리스크 진단 | `expert-report.html` |
@@ -206,12 +221,13 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 | 14 | `case_study_html` | 사례 연구·회고·프로젝트 기록 | `case-study.html` |
 | 15 | `landing_brief_html` | 소개·랜딩·요약 페이지 | `landing-brief.html` |
 | 16 | `checklist_playbook` | 체크리스트·운영 절차·플레이북 | `checklist-playbook.html` |
+| 17 | 🆕 `github_feature_usage` | GitHub 저장소를 **"무엇을 해주나·어떻게 쓰나·어디 맞나"** 기능·사용법·도입 가이드로, **실제 화면(스크린샷) 중심** | `github-feature-usage.html` |
 
 ---
 
 ## 🖼️ 쇼케이스 갤러리
 
-### 🆕 최신 실전 산출물 데모 (현행 스킬 v5.9.2 기준, 게이트 OK)
+### 🆕 최신 실전 산출물 데모 (현행 스킬 v5.10.0 기준, 게이트 OK)
 
 최근 생성한 **실전 산출물 3종 + 신규 모드 smoke 2종**입니다. 썸네일을 클릭하면 GitHub Pages에서 실제 결과물이 바로 열립니다(상단 스위처로 8테마 전환).
 
@@ -303,7 +319,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ## 🎚️ 비주얼 프로파일
 
-스킬을 **기동할 때 비주얼 스타일을 고를 수 있습니다.** 코어(16모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 *어느 라이브러리·삽입 단계·CSS 번들*을 쓸지만 게이트합니다. 세 프로파일 모두 **외부/동작 JS 0**.
+스킬을 **기동할 때 비주얼 스타일을 고를 수 있습니다.** 코어(17모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 *어느 라이브러리·삽입 단계·CSS 번들*을 쓸지만 게이트합니다. 세 프로파일 모두 **외부/동작 JS 0**.
 
 <table>
 <tr>
@@ -353,7 +369,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 theme.css        색/폰트/폭 토큰(:root) · skip · focus-visible · reduced-motion   ← 코어 해시
 components.css    term · analogy · danger · good · hero-analogy · try · tbl · faq · cta-box ...  ← 코어 해시
 visual-components.css   figure.visual-figure (8000×6000 SVG 삽입 셸)               ← 코어 해시 · v4.2
-layouts.css       16개 모드별 그리드/구조 (+ github/youtube/manual 분석 레이아웃 포함)              ← 코어 해시
+layouts.css       17개 모드별 그리드/구조 (+ github 실사·github 기능가이드·youtube·manual 분석 레이아웃)   ← 코어 해시
 print.css         인쇄 대응(print-color-adjust · break-inside)                    ← 코어 해시
 widgets.css       CSS 뷰 위젯 wg-01~20 (탭·플로우·아코디언, 무 JS)  ← v4.4 · widget/auto 프로파일 조건부 인라인
 visual-html.css   SVG→HTML 템플릿 vt- 21종 (본문 삽입 도식)        ← v4.5+ · diagram/auto 프로파일 조건부 인라인
@@ -384,15 +400,15 @@ theme-dark.css    CSS-only 8-테마 토큰 오버라이드 + 라디오 세그먼
 skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트
-│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.9.2)
-│   ├── assets/                        # base.html · CSS · 위젯/도식/패턴/테마 자산 · 16개 레이아웃 골격
-│   ├── references/                    # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/비주얼 규칙
-│   ├── recipes/       (16)            # 16개 모드별 대표 프롬프트
+│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.0 · 17모드)
+│   ├── assets/                        # base.html · CSS 12종 · 위젯/도식/패턴/테마 자산 · 17개 레이아웃 골격
+│   ├── references/    (19)            # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/GitHub·YouTube·Manual·기능가이드 규칙
+│   ├── recipes/       (17)            # 모드별 대표 프롬프트
 │   ├── schemas/       (3)             # blog-meta · quality-report · visual-brief
-│   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트
+│   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트 (80/80)
 │   ├── visual-templates/ (7)         # 8000×6000 SVG 템플릿
-│   ├── scripts/                       # render_visual_svg.py · validate_output.py 등
-│   └── examples/      (17)           # 16개 모드 예시 + index
+│   ├── scripts/                       # render_visual_svg.py · validate_output.py · completion_check.py 등
+│   └── examples/                     # 모드 예시 + index (최종 정형화 단계에서 재생성 예정)
 ├── output/
 │   ├── adaptive-html-final-showcase-v4/   # 13모드 쇼케이스 (canonical 13-mode 데모)
 │   │   ├── pages/     (15)            # 13모드 + 비주얼 데모 + SVG 갤러리
@@ -404,7 +420,7 @@ skills-html-showcase/
 │   └── archive/                      # v4~v5.0 시점 고정 리뷰/분석/계획 기록 (SUPERSEDED)
 ├── demo/ · orginal_skill/            # 이전 계열 데모 · 원본 스킬
 ├── AGENTS.md                         # 크로스-에이전트 결정론 진입점
-└── Guide.md                          # 사용 가이드 (v5.9.2+)
+└── Guide.md                          # 사용 가이드 (루트는 README·AGENTS·Guide 3종만 유지)
 ```
 
 ---
@@ -417,12 +433,12 @@ skills-html-showcase/
 
 | 항목 | 결과 |
 |---|---|
-| skip link ↔ `<main id="main">` | **16 / 16** (접근성 회귀 가드로 고정) |
-| 단일 `h1` 원칙 | 16 / 16 레이아웃 계약 |
+| skip link ↔ `<main id="main">` | **17 / 17** (접근성 회귀 가드로 고정) |
+| 단일 `h1` 원칙 | 17 / 17 레이아웃 계약 |
 | 외부 동작 JS | **0건** |
 | 미정의 CSS 클래스 | **0개** (레이아웃↔CSS 차집합 0) |
-| manifest ↔ 디스크 레이아웃 매핑 | 차집합 0 |
-| recipes 커버리지 | 16 / 16 모드 |
+| manifest ↔ 디스크 레이아웃 매핑 | 차집합 0 (17 / 17) |
+| 거버넌스 게이트 | `test_governance_gates.py` **80 / 80 통과** |
 | blog-writer 상세 규칙 흡수 | 8 / 8 (제목 4계열·도입부 3유형·본문 밀도·톤 매핑·100점·메타·플랫폼·박스) |
 
 ### 버전 진화
@@ -443,6 +459,10 @@ skills-html-showcase/
 | `v5.2.3` | editorial-patterns.css **가독성 승격** — a11y 카드/그리드/포인트 간격, impact 카드 아이콘 하단 여백. 조건부 자산만 변경 → 코어 해시 불변 |
 | `v5.3.0` | **GitHub Analysis 14번째 모드** — `github_analysis`, `github-analysis.html`, `.layout-github`, GitHub 분석 전략/recipe/검증 문서 추가 |
 | `v5.7.0` | **YouTube/Manual Analysis 15·16번째 모드** — `youtube_analysis`/`manual_analysis`, 전용 레이아웃·전략 문서·계약 게이트·예제/output 추가 |
+| `v5.8.x` | youtube/manual **깊이 계약**(정량 하한) + 넓고-얇음 게이트, generated-date 모바일 오버플로 코어 수정 |
+| `v5.9.0` | **시각 정본 게이트 3종**(섹션 surface·직접섹션 h2 body-icon·아이콘 다양성) + 카탈로그 reverse-sync 반응형/폭/대비 일괄 반영 |
+| `v5.9.1~5.9.2` | wg-10 데모 섹션 한정 full-width(5.9.1) · **외부 세리프 폰트 금지**·pull-quote Pretendard·vt-02 정합·toc-map/manual 회귀 방지(5.9.2) |
+| `v5.10.0` | **GitHub Feature-Usage 17번째 모드** — `github_feature_usage`, `github-feature-usage.html`, `.layout-github-feature`(github 컴포넌트 어휘 공유 + 스크린샷 갤러리), 계약 게이트·tie-breaker·경계 버그 수정. 거버넌스 80/80 |
 
 > 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) · 프로파일 분리 계획(아카이브): [`docs/archive/implement_visual_profile_separation.md`](docs/archive/implement_visual_profile_separation.md)
 
@@ -462,7 +482,7 @@ skills-html-showcase/
 - [x] 교육용=퀴즈+정답 · 전문가용=리스크+검증 · 블로그/SEO=제목+메타+태그 · 감사=개선본
 - [x] 비주얼: 8000×6000 캔버스 · `figure`+`figcaption` · 의미 있는 `alt` · 캔버스 잘림 없음
 
-> 🟢 **캐노니컬 빌드 기준선**: `output/adaptive-html-final-13-topics-20260605_083433/`(HTML 14개)는 현재 스킬 **v5.2.3**의 정적 품질 게이트를 **0 issue로 완전 통과**합니다 — 빌드 완성도 검증 기준선(13명 전문가 보강).
+> 🟢 **게이트 현황(v5.10.0)**: 거버넌스 `test_governance_gates.py` **80/80 통과**, 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시)을 정적으로 강제합니다. `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점의 캐노니컬 기준선이며, 그 후 코어 CSS가 진화(v5.3~v5.10)해 해시가 드리프트했으므로 **17모드 기준 캐노니컬 산출물·examples 재생성은 후속(정형화) 단계**입니다.
 
 ```bash
 # 재현 (저장소 루트에서)
@@ -543,5 +563,5 @@ npm run export:output -- output/adaptive-html-final-13-topics-20260605_083433 --
 별도 라이선스가 지정되지 않았습니다. 사용 전 저장소 소유자(`coreline-ai`)에게 확인하세요.
 
 <div align="center">
-<sub>생성 도구: <code>adaptive-html-final</code> v5.2.3 · 13-mode · 3-theme · 3-profile editorial HTML engine</sub>
+<sub>생성 도구: <code>adaptive-html-final</code> v5.10.0 · 17-mode · 8-theme · 3-profile editorial HTML engine</sub>
 </div>

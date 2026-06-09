@@ -1,5 +1,17 @@
 # Changelog — adaptive-html-final
 
+## v5.10.0 (2026-06-09) — 17번째 모드 `github_feature_usage` 추가 (GitHub 기능·도입 가이드)
+
+GitHub 저장소를 **"무엇을 해주나·어떻게 쓰나·어디에 맞나"** 기능·사용법·도입 가이드(실제 화면 중심)로 바꾸는 독립 모드 신설. `github_analysis`(실사/리스크/투자판단)와 어조·형식이 달라 별도 레이아웃으로 분리.
+
+- **레이아웃**: `layout-github-feature` + 스캐폴드 `assets/layouts/github-feature-usage.html`. 섹션 모델 = positioning → feature toc → 기능 지도 → 핵심 기능(wg-14) → 기술스택 → 아키텍처 → 디렉토리 → **실제 화면(스크린샷 갤러리)** → 사용자/관리자 기능 → 시작 방법 → 적합성 → 도입 전 확인 → 최종 판단 → next actions → source note.
+- **layouts.css**: `layout-github-feature` 섹션 카드 표면(=github 동일) + `.feature-map-grid`·`.feature-screens-grid`(figure/img/figcaption) 추가.
+- **검증기**: `MODE_TEMPLATE_CONTRACTS`에 `layout-github-feature`(primary `hero-map`, 권장 `wg-14`/`wg-04`/`wg-16`/`wg-11`/`wg-08`) 등록, toc-map 필수 목록 + `github_feature_usage_contract_gate`(섹션 카드·body-icon·기능지도/실제화면·출처한계) 신설·배선.
+- **SKILL.md**: 16→17 모드, §0.6 결정표 행, 트리거 Priority 17 + github_analysis와의 tie-breaker(실사 vs 사용설명), §4 섹션 모델·정량 하한, 템플릿 추천 목록.
+- **references**: `github-feature-usage-system.md` 신설(섹션 모델·스크린샷 계약·실사와의 차이·완료 게이트).
+- **manifest**: modes 17개·layouts에 `github-feature-usage.html` 등록, version 5.10.0.
+- 코어(layouts.css) 변경으로 core 해시 갱신 — examples 재인라인은 최종 정형화 단계에서 일괄 처리(보류).
+
 ## v5.9.2 (2026-06-08) — 폰트·decision-tree·toc-map 회귀 방지
 
 - **외부 세리프 폰트 금지**: `Noto Serif KR` 링크·스택·과거 `--serif-kr` 토큰을 제거하고 Pretendard/system sans로 통일. pull-quote/core-insight도 Pretendard 굵은 본문 리듬으로 고정.

@@ -124,6 +124,16 @@ github_ok = '<main id="main" class="page-wide layout-github"><header class="head
 github_ok_css = '.layout-github>section{background:var(--card)}.body-icon{}'
 check("github visual gate passes current contract", v.github_analysis_visual_contract_gate(github_ok, github_ok_css) == [])
 
+# github_feature_usage(17th mode): feature/usage/adoption guide contract.
+ghf_bad = '<main id="main" class="page-wide layout-github-feature"><header class="header"><h1>x</h1></header><section><h2>기능</h2><p>본문</p></section></main>'
+ghf_bad_types = {i["type"] for i in v.github_feature_usage_contract_gate(ghf_bad, '.layout-github .repo-card{}')}
+check("github_feature_usage gate catches missing card/icons/map/limits",
+      {"github_feature_section_card_css_missing", "github_feature_body_icons_css_missing", "github_feature_map_or_screens_missing", "github_feature_source_limits_missing"}.issubset(ghf_bad_types))
+ghf_ok = '<main id="main" class="page-wide layout-github-feature"><header class="header"><h1>x</h1></header><section class="feature-map"><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>기능 지도</h2></section><aside class="source-note">출처 한계</aside></main>'
+ghf_ok_css = '.layout-github-feature>section{background:var(--card)}.body-icon{}'
+check("github_feature_usage gate passes feature-usage contract", v.github_feature_usage_contract_gate(ghf_ok, ghf_ok_css) == [])
+check("github_feature_usage registered in MODE_TEMPLATE_CONTRACTS", v.MODE_TEMPLATE_CONTRACTS.get("layout-github-feature", {}).get("mode") == "github_feature_usage")
+
 # YouTube/manual contract gates: new modes must be executable, source-bounded outputs.
 youtube_bad = '<main id="main" class="page-wide layout-youtube"><h1>x</h1><section><h2>요약</h2><p>embed 없음</p></section></main>'
 yt_bad = v.youtube_analysis_contract_gate(youtube_bad, '.layout-youtube>section{background:var(--card)}')

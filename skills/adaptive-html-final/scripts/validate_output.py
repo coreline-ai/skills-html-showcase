@@ -404,7 +404,7 @@ def github_analysis_visual_contract_gate(text: str, style: str) -> list:
     numbered headings are all required for `.layout-github`.
     """
     body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
-    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-github\b', body_only, re.I):
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-github(?![\w-])', body_only, re.I):
         return []
     issues = []
     if 'generated-row' not in body_only or 'lens-strip' not in body_only:
@@ -442,6 +442,24 @@ def youtube_analysis_contract_gate(text: str, style: str) -> list:
         issues.append({'type': 'youtube_fact_inference_unknown_labels_missing', 'count': found})
     if not re.search(r'observed_at|분석\s*기준\s*시각|분석\s*기준일', body_only, re.I):
         issues.append({'type': 'youtube_observed_at_missing'})
+    return issues
+
+
+def github_feature_usage_contract_gate(text: str, style: str) -> list:
+    """GitHub feature-usage(17번째, 독립 모드) 계약: 도입 가이드 핵심 요소가 보여야 한다 —
+    섹션 카드 표면, body-icon, 기능 지도/실제 화면(스크린샷) 중 하나 이상, 출처 한계(source note)."""
+    body_only = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class=["\'][^"\']*\blayout-github-feature\b', body_only, re.I):
+        return []
+    issues = []
+    if '.layout-github-feature>section' not in style.replace(' ', ''):
+        issues.append({'type': 'github_feature_section_card_css_missing'})
+    if '.body-icon' not in style:
+        issues.append({'type': 'github_feature_body_icons_css_missing'})
+    if not re.search(r'feature-map|기능\s*지도|feature-screens|실제\s*화면', body_only, re.I):
+        issues.append({'type': 'github_feature_map_or_screens_missing'})
+    if not re.search(r'Source Limits|출처\s*한계|확인\s*필요|확인\s*불가|source-note', body_only, re.I):
+        issues.append({'type': 'github_feature_source_limits_missing'})
     return issues
 
 
@@ -642,6 +660,12 @@ MODE_TEMPLATE_CONTRACTS = {
         'vt_markers': (r'\bhm-grid\b',),
         'recommended_wg': ('wg-04', 'wg-13', 'wg-16', 'wg-18', 'wg-11', 'wg-14'),
     },
+    'layout-github-feature': {
+        'mode': 'github_feature_usage',
+        'primary_vt': 'hero-map',
+        'vt_markers': (r'\bhm-grid\b',),
+        'recommended_wg': ('wg-14', 'wg-04', 'wg-16', 'wg-11', 'wg-08'),
+    },
 }
 
 
@@ -651,7 +675,7 @@ def _mode_contract_for_main(text: str) -> tuple[str | None, dict | None]:
         return None, None
     attrs = main.group(1)
     for layout_class, contract in MODE_TEMPLATE_CONTRACTS.items():
-        if re.search(r'class\s*=\s*["\'][^"\']*\b' + re.escape(layout_class) + r'\b', attrs, re.I):
+        if re.search(r'class\s*=\s*["\'][^"\']*\b' + re.escape(layout_class) + r'(?![\w-])', attrs, re.I):
             return layout_class, contract
     return None, None
 
@@ -983,12 +1007,13 @@ def analysis_toc_map_required_gate(text: str) -> list:
     body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
     required = (
         ('layout-github', 'github-question-toc', 'github_analysis_toc_map_missing'),
+        ('layout-github-feature', 'feature-toc', 'github_feature_usage_toc_map_missing'),
         ('layout-youtube', 'youtube-question-toc', 'youtube_analysis_toc_map_missing'),
         ('layout-manual', 'manual-reader-toc', 'manual_analysis_toc_map_missing'),
     )
     issues = []
     for layout_cls, toc_cls, issue_type in required:
-        if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\b' + re.escape(layout_cls) + r'\b', body, re.I):
+        if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\b' + re.escape(layout_cls) + r'(?![\w-])', body, re.I):
             continue
         toc_match = re.search(
             r'<(?P<tag>section|nav|div)\b(?P<attrs>[^>]*)class\s*=\s*["\'](?P<class>[^"\']*\b'
@@ -1239,6 +1264,9 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for gh_issue in github_analysis_visual_contract_gate(text, style):
             gh_issue['page'] = rel
             issues.append(gh_issue)
+        for ghf_issue in github_feature_usage_contract_gate(text, style):
+            ghf_issue['page'] = rel
+            issues.append(ghf_issue)
         for yt_issue in youtube_analysis_contract_gate(text, style):
             yt_issue['page'] = rel
             issues.append(yt_issue)

@@ -5,7 +5,7 @@ description: |
   고품질 한국어 HTML 학습자료, 전문가 리포트, 공개 아티클, 교육 모듈, 블로그 원고, SEO 대시보드,
   플랫폼별 블로그 변환, 스킬 감사 리포트, 레퍼런스 매뉴얼, 비교 매트릭스, 케이스 스터디,
   랜딩 브리프, 체크리스트 플레이북, GitHub 저장소 분석 리포트, YouTube 영상 분석 리포트, 역할별 매뉴얼 분석 리포트까지 생성하는 최종형 다중 모드 스킬.
-  adaptive-html-learning-ultimate의 13개 모드 라우터·레이아웃·평가 루브릭을 뼈대로 삼고 GitHub 분석·YouTube 분석·매뉴얼 분석을 추가한 16개 모드 체계를,
+  adaptive-html-learning-ultimate의 13개 모드 라우터·레이아웃·평가 루브릭을 뼈대로 삼고 GitHub 분석·YouTube 분석·매뉴얼 분석·GitHub 기능/도입 가이드를 추가한 17개 모드 체계를,
   adaptive-html-blog-writer의 블로그 글쓰기·SEO·플랫폼·박스 선택 상세 규칙을 흡수하고,
   blog-demos급 editorial 디자인 시스템을 유지하고, 필요 시 8000×6000 SVG 인포그래픽 Visual Template System을 섹션별로 배치한다.
 
@@ -27,12 +27,12 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.9.2 · "외부 세리프 폰트 금지 + pull-quote Pretendard + vt-02 decision-tree 정합성 보정 + toc-map·manual layout 회귀 방지" (이전 5.9.1 — wg-10 figure sheet: 모드 정본 데모 섹션 한정 full-width)
+> Version 5.10.0 · "17번째 모드 github_feature_usage 추가 — GitHub 저장소 기능·사용법·도입 가이드(실제 화면 중심), 독립 layout-github-feature" (이전 5.9.2 — 외부 세리프 폰트 금지 + vt-02 정합 + toc-map/manual 회귀 방지)
 
 ## 0. Identity
 
 이 스킬은 `html-for-beginners` → `adaptive-html-blog-writer` → `adaptive-html-blog-writer-v2` → `adaptive-html-learning-ultimate` 계열을 하나로 합친 최종 통합본이다.
-`adaptive-html-learning-ultimate`의 13개 모드 라우터·레이아웃·평가 체계를 뼈대로 두고, GitHub 저장소를 의사결정형 리포트로 바꾸는 `github_analysis`, YouTube 영상을 근거·댓글·제작 액션으로 바꾸는 `youtube_analysis`, 원문 매뉴얼을 역할별 실행 문서로 재구성하는 `manual_analysis`를 추가해 16개 모드로 확장했다. `adaptive-html-blog-writer`의 블로그/SEO/플랫폼/박스 선택 상세 규칙은 references로 흡수했으며, 모든 레이아웃은 skip link 접근성 계약(`id="main"`)을 유지한다.
+`adaptive-html-learning-ultimate`의 13개 모드 라우터·레이아웃·평가 체계를 뼈대로 두고, GitHub 저장소를 의사결정형 리포트로 바꾸는 `github_analysis`, YouTube 영상을 근거·댓글·제작 액션으로 바꾸는 `youtube_analysis`, 원문 매뉴얼을 역할별 실행 문서로 재구성하는 `manual_analysis`, 그리고 저장소를 기능·사용법·도입 가이드(실제 화면 중심)로 바꾸는 `github_feature_usage`를 추가해 17개 모드로 확장했다. `adaptive-html-blog-writer`의 블로그/SEO/플랫폼/박스 선택 상세 규칙은 references로 흡수했으며, 모든 레이아웃은 skip link 접근성 계약(`id="main"`)을 유지한다.
 
 목표는 단순 HTML 생성이 아니라 다음 파이프라인을 안정적으로 실행하는 것이다.
 
@@ -76,6 +76,7 @@ description: |
 | article_html | magazine-article.html | decision-tree, comparison-cards, concept-explainer | wg-02, wg-04, wg-07, wg-09, wg-10, wg-13, wg-14 |
 | education_html | course-module.html | timeline, checklist-flow, concept-explainer, soft-workflow-map | wg-06, wg-07, wg-08, wg-13, wg-14, wg-15, wg-20 |
 | github_analysis | github-analysis.html | hero-map, quality-gate, file-tour, risk-matrix, timeline, decision-tree, checklist-flow | wg-11, wg-04, wg-14, wg-16, wg-17, wg-18 |
+| github_feature_usage | github-feature-usage.html | hero-map, card-grid, file-tour, decision-tree | wg-14, wg-04, wg-16, wg-11, wg-08 |
 | youtube_analysis | youtube-analysis.html | timeline, risk-matrix, quality-gate, decision-tree, comparison-cards, checklist-flow | wg-11, wg-13, wg-14, wg-16, wg-18 |
 | manual_analysis | manual-analysis.html | hero-map, checklist-flow, quality-gate, file-tour, process-swimlane, decision-tree, risk-matrix | wg-04, wg-13, wg-16, wg-18, wg-11, wg-14 |
 | blog_writer | personal-blog-essay.html | timeline, weekly-status, comparison-cards | wg-17 |
@@ -147,10 +148,11 @@ vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..2
 | 14 | case_study_html | 사례 연구, 회고, 프로젝트 기록 | case-study.html |
 | 15 | landing_brief_html | 소개 페이지, 랜딩, 요약 페이지 | landing-brief.html |
 | 16 | checklist_playbook | 체크리스트, 운영 절차, 플레이북 | checklist-playbook.html |
+| 17 | github_feature_usage | GitHub 저장소를 "무엇을 해주나/어떻게 쓰나/어디에 맞나" 기능·사용법·도입 가이드 관점으로, 실제 화면(스크린샷) 중심으로 | github-feature-usage.html |
 
 여러 트리거가 동시에 감지되면 Priority가 높은 모드를 우선한다. 단, 사용자가 명시적으로 특정 모드를 지정하면 그 지시가 우선한다.
 
-트리거 충돌 tie-breaker: 교육/강의 트리거와 공개글 트리거가 겹치면 `education_html`을 우선하고, GitHub 저장소 URL/`owner/repo` 분석이 명확하면 `github_analysis`를 우선한다. 단, GitHub Pages 배포가 단독으로 언급되면 `article_html`을 선택한다.
+트리거 충돌 tie-breaker: 교육/강의 트리거와 공개글 트리거가 겹치면 `education_html`을 우선하고, GitHub 저장소 URL/`owner/repo` 분석이 명확하면 `github_analysis`를 우선한다. 단, GitHub Pages 배포가 단독으로 언급되면 `article_html`을 선택한다. **GitHub URL이지만 의도가 코드 건전성·리스크·유지보수·도입 위험 평가(실사)면 `github_analysis`, "이 저장소/제품이 무엇을 해주는가·어떻게 쓰는가·기능 지도·실제 화면·도입 적합성"이면 `github_feature_usage`를 선택한다(둘 다 `layout-github`/`layout-github-feature`로 분리).**
 
 ## 4. Design System
 
@@ -279,6 +281,7 @@ TODO_CHECK = 추가 확인이 필요한 주장
 - article: lead, pull quote, argument, case, takeaway
 - education: goals, before start, lesson, example, practice, quiz, answer
 - github_analysis: verdict, question toc, repo identity, quickstart readiness, health signals, code/file tour, release/activity timeline, security/license, risk matrix, final decision, next actions, source limits. GitHub UI/REST에서 확인 가능한 FACT와 합리적 INFERENCE, UNKNOWN을 분리하고 각 핵심 판단에 근거 링크/근거 필드를 둔다. “살아 있는 프로젝트인가/운영 상태” 섹션은 `wg-11` KPI+진척+상태보드 구조를 우선 사용한다.
+- github_feature_usage: positioning(한 줄 정체성·대상 독자), **overview(hero-map 개요 시그널 — `hm-grid` + `repo-signal-grid`로 한눈 요약)**, feature toc, feature map(기능 지도), core capability(핵심 기능, `wg-14` Feature Explainer 우선), tech stack, architecture, directory orientation(`ft-card` file-tour), **actual screens(실제 화면 — 스크린샷 갤러리, `figure.feature-screens-grid` + caption + alt 필수)**, user features, admin features, getting started, where it fits(적합/부적합), pre-adoption check, final verdict(`repo-action-grid`), next actions, source limits. 기능·기술스택·아키텍처·사용자/관리자 기능·도입 확인은 github의 카드/그리드 어휘(`repo-evidence-grid`·`repo-signal-grid`·`repo-action-grid`·`code-tour`)를 그대로 쓴다 — `layout-github-feature`가 `layout-github`과 동일 컴포넌트 vocabulary를 공유한다. github_analysis가 "안전/건전/투자판단"이라면 이 모드는 **"무엇을 해주나·어떻게 쓰나·어디에 맞나"** 사용 설명에 무게를 둔다. 어조는 평가·온보딩 독자 대상의 안내체이며 실사 경고체와 다르다. **정량 하한:** 기능 지도 카드 최소 4개(각 기능에 한 줄 효용), 실제 화면 스크린샷 최소 3장(각 caption 1문장 + alt), 사용자/관리자 기능은 흐름(가입→…→종료 / 운영 항목)으로 서술, 시작 방법은 단계형, 주요 h2에 h2-sub 부착. 입력에 없는 버전·라이선스·성능 수치는 UNKNOWN으로 남기고 출처 한계를 둔다.
 - youtube_analysis: source & trust snapshot, TL;DW + watching decision, Video Evidence Map, chapter/retention story, comment signal wall, opportunity matrix, claim/evidence/risk, video blueprint, reuse pack, next actions, source limits. URL만 있으면 메타 중심·확인 필요로 제한하고, transcript/comment가 있을 때만 FACT 근거를 확장한다. YouTube iframe/embed와 비공개 analytics 추정은 금지한다. **정량 하한:** Evidence Map 표는 최소 5행(주장·근거·판정·다음 확인), 타임라인 항목 최소 4개(각 항목에 판정 근거 1문장 이상), 기회·리스크·재가공 카드는 카드당 2문장 이상(판정 근거 + 다음 행동), 주요 h2에 h2-sub 부착. 각 섹션이 1~2문장 요약으로 끝나면 미완성으로 간주한다(블록 수 충족 ≠ 완료).
 - manual_analysis: source & version snapshot, reader role router, first success path, prerequisites & safety, task recipes, reference extract, decision guide, troubleshooting, operations runbook, manual audit, next actions, source limits. 입력 원문에 없는 버전·권한·SLA는 UNKNOWN으로 남기고, 누락/stale/모순 지적은 원문 근거 위치를 둔다. **정량 하한:** task recipe 표준 구조는 6필드(목적·사전조건·절차·완료 기준·롤백·원문 근거)이고 작성 가능 레시피를 최소 4개 식별, troubleshooting 증상 시나리오 최소 3개(증상→가능 원인→진단 순서→복구 4단 고정), 역할 라우터는 역할별 권장 읽기 순서·이관 기준 포함, manual audit 지적은 건당 원문 위치 명시 + 최소 3건, 주요 h2에 h2-sub 부착. 각 카드가 1문장으로 끝나면 미완성으로 간주한다.
 - blog: hook, personal note, view, example, how-to, soft CTA
@@ -334,6 +337,7 @@ expert_html        → hero-map, matrix, timeline, quality-gate
 article_html       → hero-map, decision-tree
 education_html     → timeline, checklist-flow
 github_analysis    → hero-map, file-tour, risk-matrix, quality-gate
+github_feature_usage → hero-map, card-grid(기능 지도), file-tour, decision-tree
 youtube_analysis   → timeline, risk-matrix, quality-gate
 manual_analysis    → hero-map, checklist-flow, quality-gate
 blog_writer        → hero-map, timeline
@@ -373,6 +377,7 @@ expert_html        → 03 Annotated PR, 04 Module Map, 11 Weekly Status, 12 Inci
 reference_html     → 04 Module Map, 05 Living Design System, 06 Component Variants, 14 Feature Explainer, 19 Feature Flag Editor, 20 Prompt Tuner
 education_html     → 06 Component Variants, 07 Animation Sandbox, 08 Clickable Flow, 13 Annotated Flowchart, 14 Feature Explainer, 15 Concept Explainer, 20 Prompt Tuner
 github_analysis    → 11 Weekly Status, 04 Module Map, 14 Feature Explainer, 16 Implementation Plan, 17 PR Writeup, 18 Ticket Triage Board
+github_feature_usage → 14 Feature Explainer, 04 Module Map, 16 Implementation Plan, 11 Weekly Status, 08 Clickable Flow
 youtube_analysis   → 11 Weekly Status, 13 Annotated Flowchart, 14 Feature Explainer, 16 Implementation Plan, 18 Ticket Triage Board (15/20은 조건부)
 manual_analysis    → 04 Module Map, 13 Annotated Flowchart, 16 Implementation Plan, 18 Ticket Triage Board, 11 Weekly Status, 14 Feature Explainer
 beginner_html      → 10 SVG Figure Sheet, 13 Annotated Flowchart, 15 Concept Explainer
@@ -442,7 +447,7 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 [ ] `scripts/validate_output.py`가 OK다(완료 필수 게이트). 외부/동작 JS 0(JSON-LD만 허용).
 [ ] 요청 목적과 선택 모드가 §0.6 캐노니컬 결정표(모드→layout→vt-→wg-)와 일치한다.
 [ ] 선택된 layout 파일의 정보 구조를 실제 본문에 적용했다. `layout-*` 클래스만 붙인 임의 `<main>` 합성이 아니다.
-[ ] `github_analysis`/`youtube_analysis`/`manual_analysis`의 상단 목차는 공식 카탈로그 `toc-map` 계약(`toc-map` + `toc-pills` + `a.toc-pill > b`)을 사용했다. 구형 `.toc`/`ol` 목차는 회귀다.
+[ ] `github_analysis`/`github_feature_usage`/`youtube_analysis`/`manual_analysis`의 상단 목차는 공식 카탈로그 `toc-map` 계약(`toc-map` + `toc-pills` + `a.toc-pill > b`)을 사용했다. 구형 `.toc`/`ol` 목차는 회귀다.
 [ ] 선택 모드의 필수 블록이 모두 있다.
 [ ] 같은 모드의 참조 예제 또는 지정 검수본보다 단순한 카드 반복 구조로 후퇴하지 않았다.
 [ ] `.mini-card`/`.col-list` 반복이 문서의 주 구조가 아니며, 섹션 목적별로 표·vt·wg·원문 발췌·체크리스트·의사결정 구조를 섞었다.
@@ -493,10 +498,11 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 
 - `references/design-dna.md` — 디자인 토큰 원천
 - `references/editorial-design-system.md` — 현재 디자인 DNA와 컴포넌트 규칙
-- `references/mode-selection.md` — 16개 모드 라우팅
+- `references/mode-selection.md` — 17개 모드 라우팅
 - `references/layout-system.md` — 레이아웃별 블록
 - `references/writing-system.md` — 모드별 글쓰기 원칙
 - `references/github-analysis-system.md` — GitHub 저장소 분석 리포트 정보 구조·판단 기준·출처 한계
+- `references/github-feature-usage-system.md` — GitHub 기능·도입 가이드(17번째 모드) 섹션 모델·스크린샷 계약·실사와의 차이
 - `references/youtube-analysis-system.md` — YouTube 영상/댓글/트랜스크립트 분석 정보 구조·입력 tier·출처 한계
 - `references/manual-analysis-system.md` — 매뉴얼 분석/제작 정보 구조·역할별 실행 경로·품질 감사
 - `references/blog-seo-system.md` — 제목/메타/SERP/태그

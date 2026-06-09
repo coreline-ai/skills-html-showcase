@@ -1,6 +1,6 @@
 {
   "name": "adaptive-html-final",
-  "version": "5.9.2",
+  "version": "5.10.0",
   "language": "ko",
   "entry": "SKILL.md",
   "assets": [
@@ -98,6 +98,7 @@
   "layouts": [
     "beginner-learning.html",
     "github-analysis.html",
+    "github-feature-usage.html",
     "youtube-analysis.html",
     "manual-analysis.html",
     "expert-report.html",
@@ -160,6 +161,10 @@
     {
       "id": "github_analysis",
       "layout": "github-analysis.html"
+    },
+    {
+      "id": "github_feature_usage",
+      "layout": "github-feature-usage.html"
     },
     {
       "id": "youtube_analysis",
