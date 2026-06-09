@@ -88,7 +88,7 @@ em.t{font-style:normal;background:var(--accent-soft);color:var(--accent);padding
 code{font-family:"SF Mono",Menlo,Consolas,monospace;background:#ececea;padding:1px 6px;border-radius:3px;font-size:13.5px;color:#3a3a3a}
 pre,.code{background:var(--code);color:#e8e8e0;border-radius:6px;padding:16px 18px;margin:16px 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;white-space:pre-wrap}
 pre code,.code code{background:none;color:inherit;padding:0;font-size:13px}
-blockquote,.pull-quote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-family:var(--serif-kr);font-size:20px;line-height:1.65;font-style:italic}
+blockquote,.pull-quote{border-left:4px solid var(--line);padding:8px 0 8px 16px;margin:20px 0;color:var(--ink-soft);font-family:var(--sans);font-size:20px;line-height:1.65;font-style:normal;font-weight:650;letter-spacing:-.012em}
 .pull-quote--note{font-family:var(--sans);font-size:15px;line-height:1.7;font-style:normal;color:var(--ink-mute)}
 .tbl,.table-scroll{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
 table,.table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card);min-width:420px;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;margin:18px 0}

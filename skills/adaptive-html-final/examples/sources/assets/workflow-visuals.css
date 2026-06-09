@@ -3,9 +3,9 @@
    삽입 표준: figure.workflow-figure 안에 img.workflow-img(8000x6000 svg, 비어있지 않은 alt 필수). figcaption 권장(도판 결론 한 줄).
    alt는 workflow_visual_gate가, 8000x6000·svg 존재도 workflow_visual_gate가 검사. 핵심 정보는 본문 HTML 텍스트로 둔다(내부 노드 라벨에 의존 금지).
    삽입 예시는 references/visual-template-system.md 참조. */
-.workflow-figure{max-width:720px;margin:18px auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:12px;box-shadow:0 10px 26px rgba(31,31,29,.05)}
-.workflow-figure img,.workflow-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#fff4e8;border-radius:10px}
-.workflow-figure figcaption{margin-top:10px;font-size:13.5px;line-height:1.55;color:var(--ink-mute);text-align:center}
+.workflow-figure{max-width:720px;margin:18px auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:12px 12px 14px;box-shadow:0 10px 26px rgba(31,31,29,.05)}
+.workflow-figure img,.workflow-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#fff4e8;border:1px solid var(--line);border-radius:10px}
+.workflow-figure figcaption{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.55;color:var(--ink-mute);text-align:left}
 /* 여러 워크플로우 형식을 나란히 비교/나열할 때만 */
 .workflow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:18px 0}
 .workflow-grid .workflow-figure{max-width:none;margin:0}

@@ -81,7 +81,7 @@
 .wg-02-desc{font-size:var(--fs-xs);color:var(--ink-soft);margin:var(--space-1) 0 var(--space-2);line-height:1.6}
 .wg-02-palette{list-style:none;display:flex;gap:6px;margin:0;padding:0}
 .wg-02-palette li{flex:1;height:26px;border-radius:var(--radius-sm);border:1px solid var(--line);display:grid;place-items:center}
-.wg-02-palette li span{font-size:10.5px;font-weight:700;line-height:1;color:#1a1a1a;background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.08);border-radius:5px;padding:3px 5px;mix-blend-mode:normal;text-shadow:none;letter-spacing:.02em}
+.wg-02-palette li span{font-size:10.5px;line-height:1;color:#1a1a1a;background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.08);border-radius:5px;padding:3px 5px;mix-blend-mode:normal;text-shadow:none}
 .wg-02-badge{position:absolute;top:var(--space-3);right:var(--space-4);font-size:10px;font-weight:800;color:var(--on-accent);background:var(--accent);border-radius:999px;padding:2px var(--space-2);opacity:0;transform:scale(.8);transition:opacity .2s ease,transform .2s ease}
 .wg-02-radio:checked+.wg-02-card .wg-02-badge{opacity:1;transform:scale(1)}
 .wg-02-foot{margin:var(--space-5) 0 0;font-size:var(--fs-xs);color:var(--ink-mute);line-height:1.7;border-top:1px solid var(--line);padding-top:var(--space-3)}
@@ -834,6 +834,8 @@
 .wg-20-input{color:var(--ink-soft);background:var(--analogy-bg)}
 .wg-20-out{color:var(--good-ink);background:var(--good-bg)}
 .wg-20-k{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;font-weight:700;color:var(--analogy-label-ink);margin-right:var(--space-2)}
+/* 카탈로그 정합: :has() 기반 reveal도 함께 둠(시블링 ~ 방식과 병행, DOM 구조 무관하게 동작) */
+.wg-20-tuner:has(#wg-20-s1:checked) .wg-20-input--s1,.wg-20-tuner:has(#wg-20-s1:checked) .wg-20-out--s1,.wg-20-tuner:has(#wg-20-s2:checked) .wg-20-input--s2,.wg-20-tuner:has(#wg-20-s2:checked) .wg-20-out--s2,.wg-20-tuner:has(#wg-20-s3:checked) .wg-20-input--s3,.wg-20-tuner:has(#wg-20-s3:checked) .wg-20-out--s3{display:block}
 #wg-20-s1:checked ~ .wg-20-grid .wg-20-input--s1,#wg-20-s1:checked ~ .wg-20-grid .wg-20-out--s1{display:block}
 #wg-20-s2:checked ~ .wg-20-grid .wg-20-input--s2,#wg-20-s2:checked ~ .wg-20-grid .wg-20-out--s2{display:block}
 #wg-20-s3:checked ~ .wg-20-grid .wg-20-input--s3,#wg-20-s3:checked ~ .wg-20-grid .wg-20-out--s3{display:block}
@@ -881,6 +883,7 @@
 .wg-09-bar{flex-wrap:wrap;align-items:flex-start}
 .wg-09-dots{flex-wrap:wrap;justify-content:flex-end}
 .wg-09-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:var(--space-3)}
+.wg-09-stat{min-width:0}
 .wg-09-cta-row{flex-wrap:wrap}
 .wg-09-slide{overflow-wrap:anywhere}
 /* wg-08 clickable flow: 디바이스 컨테인(숨김 화면 translate는 기존 자산에서 이미 제거됨) */

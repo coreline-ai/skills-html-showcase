@@ -59,8 +59,46 @@
 .layout-github .repo-unknown{border-style:dashed;background:var(--accent-soft)}
 .layout-github .github-question-toc{margin:24px 0 34px}
 
+/* GitHub feature-usage mode (17th, independent): 기능·사용법·도입 가이드. due-diligence와 달리
+   "무엇을 해주나 / 어떻게 쓰나 / 어디 맞나 / 실제 화면"이 중심. 섹션 카드 표면은 github와 동일,
+   기능 지도·스크린샷 갤러리 그리드를 추가한다. */
+.layout-github-feature>section:not(.try),
+.layout-github-feature>.source-note,
+.layout-github-feature>.feature-toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 24px;box-sizing:border-box}
+.layout-github-feature>.feature-verdict{border-left:4px solid var(--accent)}
+.layout-github-feature>section .vt-shell{margin-bottom:0}
+.layout-github-feature .feature-map-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin:18px 0}
+.layout-github-feature .feature-screens-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin:18px 0}
+.layout-github-feature .feature-screens-grid figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;min-width:0}
+.layout-github-feature .feature-screens-grid img{display:block;width:100%;height:auto}
+.layout-github-feature .feature-screens-grid figcaption{padding:10px 14px;font-size:12.5px;color:var(--ink-soft);line-height:1.55}
+.layout-github-feature .feature-toc{margin:24px 0 34px}
+/* 실제 출력(정본)이 기능 지도·기술스택·아키텍처·사용자/관리자 기능·실제 화면을 github의 카드/그리드
+   어휘(repo-*, code-tour, evidence/signal/action grid, hm-grid, ft-card, wg-14)로 구성하므로
+   layout-github-feature도 동일 컴포넌트 어휘를 공유한다. */
+.layout-github-feature .repo-signal-grid,
+.layout-github-feature .repo-identity-grid,
+.layout-github-feature .repo-health-grid,
+.layout-github-feature .repo-action-grid,
+.layout-github-feature .repo-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.layout-github-feature .repo-card,
+.layout-github-feature .repo-signal,
+.layout-github-feature .repo-question,
+.layout-github-feature .repo-evidence{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px 18px;min-width:0}
+.layout-github-feature .repo-card h3,
+.layout-github-feature .repo-signal h3,
+.layout-github-feature .repo-question h3,
+.layout-github-feature .repo-evidence h3{margin-top:0;color:var(--accent-2)}
+.layout-github-feature .repo-signal .label,
+.layout-github-feature .repo-evidence .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink)}
+.layout-github-feature .code-tour .repo-card{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 16px}
+.layout-github-feature .code-tour .repo-card h3{margin:0;font-size:14.5px}
+.layout-github-feature .code-tour .repo-card p{margin:0;color:var(--chip-ink);font-size:12.5px;white-space:nowrap;flex:0 0 auto}
+.layout-github-feature .repo-score{display:inline-grid;place-items:center;min-width:48px;height:48px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:900 16px/1 var(--sans);margin:0 10px 8px 0}
+.layout-github-feature .repo-unknown{border-style:dashed;background:var(--accent-soft)}
+
 .layout-article .article-header{margin-bottom:28px}.layout-article .lead{font-size:18px;color:var(--ink-soft)}.layout-article .article-takeaway{background:var(--accent-soft)}.layout-article article section{margin:54px 0}
-.layout-article .pull-quote{font-size:22px;color:var(--ink);border-color:var(--accent);font-style:normal}
+.layout-article .pull-quote{font-family:var(--sans);font-size:22px;color:var(--ink);border-color:var(--accent);font-style:normal;font-weight:800;letter-spacing:-.025em}
 
 .layout-education .learning-goals{border:1px solid var(--good-border);background:var(--good-bg);border-radius:var(--radius-md);padding:22px}
 .layout-education .practice-card{border:1px dashed var(--accent);background:var(--card);border-radius:var(--radius-md);padding:22px}
@@ -159,7 +197,7 @@
 .layout-platform .platform-guard .platform-kicker{color:var(--danger-label-ink)}
 .layout-platform .platform-guard p{color:var(--danger-ink)}
 @media(max-width:900px){.layout-platform .platform-split,.layout-platform .platform-output-grid{grid-template-columns:1fr}}
-@media(max-width:760px){.layout-expert .summary-grid,.layout-expert div.decision-grid,.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-expert .validation-checklist .card-grid,.layout-github .repo-signal-grid,.layout-github .repo-identity-grid,.layout-github .repo-health-grid,.layout-github .repo-action-grid,.layout-github .repo-evidence-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
+@media(max-width:760px){.layout-expert .summary-grid,.layout-expert div.decision-grid,.layout-expert .decision-grid>.grid,.layout-expert .architecture-grid,.layout-expert .risk-grid,.layout-expert .roadmap-grid,.layout-expert .executive-summary .card-grid,.layout-expert .validation-checklist .card-grid,.layout-github .repo-signal-grid,.layout-github .repo-identity-grid,.layout-github .repo-health-grid,.layout-github .repo-action-grid,.layout-github .repo-evidence-grid,.layout-github-feature .repo-signal-grid,.layout-github-feature .repo-identity-grid,.layout-github-feature .repo-health-grid,.layout-github-feature .repo-action-grid,.layout-github-feature .repo-evidence-grid,.layout-seo .seo-grid,.layout-platform .platform-grid:not(section){grid-template-columns:1fr}}
 @media(max-width:760px){.layout-audit div.decision-grid,.layout-skill-audit div.decision-grid{grid-template-columns:1fr;gap:18px;margin:18px 0 22px}.layout-audit .decision-card,.layout-skill-audit .decision-card{padding:13px 14px}}
 @media(max-width:620px){.layout-platform .platform-route-grid{grid-template-columns:1fr}.layout-platform .platform-anchor{min-height:0;padding:16px}.layout-platform .platform-anchor h3{font-size:19px}.layout-platform .platform-output-card{padding:14px}}
 
@@ -188,7 +226,7 @@
 .layout-youtube .youtube-badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;color:var(--ink-soft);background:var(--accent-soft)}
 .layout-youtube .youtube-fact{border-left:4px solid var(--good-accent)}
 .layout-youtube .youtube-inference{border-left:4px solid var(--accent)}
-.layout-youtube .youtube-unknown{border-left:4px solid var(--danger-accent);border-style:dashed}
+.layout-youtube .youtube-unknown{border-left:4px solid var(--danger-accent,var(--accent-2));border-style:dashed}
 
 /* Manual analysis mode: role-based execution manual. */
 .layout-manual .manual-role-grid,
@@ -212,7 +250,7 @@
 .layout-manual .manual-trouble h3{margin-top:0;color:var(--accent-2)}
 .layout-manual .manual-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink);font-weight:800}
 .layout-manual .manual-safe{border-left:4px solid var(--good-accent)}
-.layout-manual .manual-risk{border-left:4px solid var(--danger-accent)}
+.layout-manual .manual-risk{border-left:4px solid var(--danger-accent,var(--accent-2))}
 .layout-manual .manual-unknown{border-style:dashed;background:var(--accent-soft)}
 @media(max-width:760px){.layout-youtube .youtube-signal-grid,.layout-youtube .youtube-evidence-grid,.layout-youtube .youtube-chapter-grid,.layout-youtube .youtube-comment-grid,.layout-youtube .youtube-opportunity-grid,.layout-youtube .youtube-blueprint-grid,.layout-youtube .youtube-reuse-grid,.layout-manual .manual-role-grid,.layout-manual .manual-step-grid,.layout-manual .manual-reference-grid,.layout-manual .manual-trouble-grid,.layout-manual .manual-audit-grid,.layout-manual .manual-runbook-grid{grid-template-columns:1fr}}
 
@@ -307,6 +345,7 @@
 /* === 완성본 표준 승격 — layout main 직접/article 콘텐츠 섹션 카드 뷰(.try 제외, class 무관). v5.9 전역 시각 정본 === */
 .page>section:not(.try),.page>article>section:not(.try),.page-wide>section:not(.try),.page-wide>article>section:not(.try){background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px}
 .page>section:not(.try)>h2:first-child,.page>article>section:not(.try)>h2:first-child,.page-wide>section:not(.try)>h2:first-child,.page-wide>article>section:not(.try)>h2:first-child{margin-top:0}
+.page>section:not(.try)>:first-child>h2:first-child,.page>article>section:not(.try)>:first-child>h2:first-child,.page-wide>section:not(.try)>:first-child>h2:first-child,.page-wide>article>section:not(.try)>:first-child>h2:first-child{margin-top:0}
 .page>section.lead:not(.try),.page>article>section.lead:not(.try),.page-wide>section.lead:not(.try),.page-wide>article>section.lead:not(.try){max-width:none;width:auto;font-size:inherit;color:inherit}
 /* try/soft-cta 내부 일반 카드 대비 reset — 부모 .try.soft-cta p 색이 흰 카드에 상속되는 회귀 방지 */
 .try.soft-cta .summary-card,.try.soft-cta .cta-box,.try.soft-cta .card-block,.try.soft-cta .mini-card{color:var(--ink);background:var(--card);border-color:var(--line)}

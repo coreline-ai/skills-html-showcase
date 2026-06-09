@@ -10,7 +10,10 @@ GitHub 저장소를 **"무엇을 해주나·어떻게 쓰나·어디에 맞나"*
 - **SKILL.md**: 16→17 모드, §0.6 결정표 행, 트리거 Priority 17 + github_analysis와의 tie-breaker(실사 vs 사용설명), §4 섹션 모델·정량 하한, 템플릿 추천 목록.
 - **references**: `github-feature-usage-system.md` 신설(섹션 모델·스크린샷 계약·실사와의 차이·완료 게이트).
 - **manifest**: modes 17개·layouts에 `github-feature-usage.html` 등록, version 5.10.0.
-- 코어(layouts.css) 변경으로 core 해시 갱신 — examples 재인라인은 최종 정형화 단계에서 일괄 처리(보류).
+- 코어(layouts.css) 변경으로 core 해시 갱신 → **examples 17종 v5.10.0 재인라인 + `examples/sources` 스냅샷·css-integrity 동기화**.
+- **github_feature_usage 예제 편입**: smoke output(github-feature-usage-coreline-auth)을 `examples/17_github_feature_usage_coreline_auth.html`로 복사·정합(`layout-github`→`layout-github-feature`, `github-question-toc`→`feature-toc`, `github-verdict`→`feature-verdict`). 실제 화면 스크린샷 8장을 `examples/assets/screenshots/`에 동봉, `examples/index.html` 갤러리에 17번 카드 추가. 디렉터리 검증 0 issue.
+- **외부 세리프 폰트 링크 20건 제거**: examples 전반의 `fonts.googleapis.com/css2?family=Noto+Serif+KR` 링크 삭제(v5.9.2 금지·미사용 dead link, `--serif`=Pretendard라 시각 영향 0) → `forbidden_noto_serif_kr_in_output` 해소.
+- **wg-03-grid 정합 교정**: 카탈로그-싱크에서 `align-items:start`로 바뀌어 R3 게이트(`wg03_grid_not_stretch`, diff/notes 동일높이)를 위반하던 것을 카탈로그·스킬 모두 `stretch`(정본)로 복원.
 
 ## v5.9.2 (2026-06-08) — 폰트·decision-tree·toc-map 회귀 방지
 

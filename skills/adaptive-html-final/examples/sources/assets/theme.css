@@ -15,6 +15,7 @@
   --analogy-border:#b8cad8;
   --danger-bg:#fff0ee;
   --danger-border:#e8b8b2;
+  --danger-accent:#c62433;
   --good-bg:#eef7f1;
   --good-border:#b8d8c2;
   --hl-yellow:#ffe9a3;
@@ -38,9 +39,8 @@
   --dark:#1a1a1a;
   --dark-soft:#242421;
   --code:#1f1f1d;
-  /* v5.1 글꼴: final_20260604 'report' 룩 — 제목/디스플레이를 Pretendard sans로 통일(이전 Noto Serif KR). 진짜 세리프는 --serif-kr로 보존. */
-  --serif:"Pretendard","Apple SD Gothic Neo",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
-  --serif-kr:"Noto Serif KR",Georgia,serif;
+  /* v5.9.2 글꼴: 외부 세리프 폰트 금지. 제목·본문·인용은 Pretendard/system sans로 통일. */
+  --serif:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
   --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;
   --radius-sm:5px;
   --radius-md:8px;
