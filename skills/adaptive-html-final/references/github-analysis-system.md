@@ -158,6 +158,7 @@ SOURCE_NOTE
 - 확인한 GitHub 표면: README, contents, releases, issues, PRs, license 등.
 - API/접근 한계: 비인증 60 req/h, 인증 5,000 req/h 같은 rate limit에 걸린 경우 표시.
 - 확인 불가 항목: security alerts, private roadmap, internal CI secrets, 실제 취약점 여부 등.
+- **공개용 output 기본값**: `sources/`에는 CSS 무결성 스냅샷, manifest, 요약 JSON만 둔다. 분석 대상 저장소 전체 복사본(`sources/<repo>-snapshot/`)은 공개 산출물에 포함하지 않는다. 재현/감사용 전체 snapshot이 필요하면 별도 비공개 output 또는 archive로 분리하고, 공개 HTML에는 `source_preservation_policy: public-output-summary-only` 같은 메타데이터만 남긴다.
 
 ## 8. 완료 게이트
 
@@ -169,3 +170,4 @@ SOURCE_NOTE
 - 리스크/상태는 색 외 라벨을 병기한다.
 - 긴 URL/패키지명/commit SHA는 `overflow-wrap:anywhere` 가능한 컴포넌트 안에 둔다.
 - `UNKNOWN`을 단점처럼 벌점화하기보다 한계로 분리한다.
+- 공개용 output에는 분석 대상 저장소 전체 snapshot 디렉터리를 포함하지 않는다. 필요한 경우 요약 JSON·파일 목록·커밋 SHA·확인한 표면만 남긴다.

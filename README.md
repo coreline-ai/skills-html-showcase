@@ -7,7 +7,7 @@
 # 🎨 Adaptive HTML Final
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
-[![version](https://img.shields.io/badge/version-5.7.0-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-5.9.2-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
 [![modes](https://img.shields.io/badge/modes-16-2a7d5a)](#-16개-모드)
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
 [![themes](https://img.shields.io/badge/themes-8--theme-111827)](#-최근-업데이트)
@@ -56,6 +56,15 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 ---
 
 ## 🆕 최근 업데이트
+
+### v5.9.2 (2026-06-08) — 폰트·decision-tree·toc-map 회귀 방지
+
+| 영역 | 변경 내용 |
+|---|---|
+| 폰트 정합성 | 외부 세리프 폰트 링크/스택/과거 세리프 토큰 금지, pull-quote를 Pretendard 굵은 sans 톤으로 통일 |
+| 시각 템플릿 | `vt-02 decision-tree` 3카드 정합성, h3 마진 보정, 본문 title spacing 회귀 방지 |
+| 공식 목차 | `toc-map` chip-nav 목차 계약을 layout·validator에 반영해 구형 목차 회귀 차단 |
+| 운영 기준 | `manifest.json` 기준 현행 버전은 **5.9.2**이며, 생성/검증 시 manifest와 source snapshot을 우선 확인 |
 
 ### v5.7.0 (2026-06-07) — YouTube Analysis + Manual Analysis 15·16번째 모드 추가
 
@@ -202,7 +211,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ## 🖼️ 쇼케이스 갤러리
 
-### 🆕 최신 실전 산출물 데모 (v5.7.0, 게이트 OK)
+### 🆕 최신 실전 산출물 데모 (현행 스킬 v5.9.2 기준, 게이트 OK)
 
 최근 생성한 **실전 산출물 3종 + 신규 모드 smoke 2종**입니다. 썸네일을 클릭하면 GitHub Pages에서 실제 결과물이 바로 열립니다(상단 스위처로 8테마 전환).
 
@@ -375,7 +384,7 @@ theme-dark.css    CSS-only 8-테마 토큰 오버라이드 + 라디오 세그먼
 skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트
-│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.7.0)
+│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.9.2)
 │   ├── assets/                        # base.html · CSS · 위젯/도식/패턴/테마 자산 · 16개 레이아웃 골격
 │   ├── references/                    # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/비주얼 규칙
 │   ├── recipes/       (16)            # 16개 모드별 대표 프롬프트
@@ -395,7 +404,7 @@ skills-html-showcase/
 │   └── archive/                      # v4~v5.0 시점 고정 리뷰/분석/계획 기록 (SUPERSEDED)
 ├── demo/ · orginal_skill/            # 이전 계열 데모 · 원본 스킬
 ├── AGENTS.md                         # 크로스-에이전트 결정론 진입점
-└── Guide.md                          # 사용 가이드 (v5.7.0+)
+└── Guide.md                          # 사용 가이드 (v5.9.2+)
 ```
 
 ---

@@ -8,7 +8,6 @@
   "focus": "feature, usage, architecture, and directory oriented HTML report",
   "skill_version": "5.9.2",
   "profile": "auto",
-  "repo_snapshot": "sources/coreline-auth-module-snapshot",
   "added_sections": [
     "기술 스택 전체 지도",
     "아키텍처 심화 분석",
@@ -23,5 +22,8 @@
     "15-admin-audit.png",
     "16-system-readiness.png",
     "17-system-email.png"
-  ]
+  ],
+  "source_preservation_policy": "public-output-summary-only",
+  "source_snapshot": "omitted",
+  "source_snapshot_reason": "공개용 output 기준: 분석 대상 저장소 전체 복사본은 포함하지 않고, HTML 본문·스크린샷·요약 JSON·CSS 무결성 스냅샷만 보존한다."
 }

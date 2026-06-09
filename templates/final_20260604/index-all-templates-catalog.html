@@ -6513,7 +6513,11 @@ $ gh mq add 4821 --priority hotfix
 .wg-16-fnode:not(:last-child)::after{right:6px}
 .wg-16-fnode{padding-right:28px}
 
-@media(max-width:920px){.dt-arrow{width:12px}.dt-arrow:after{right:0}}
+/* [스킬 기준 정합 2026-06-08] vt-02 decision-tree 화살표: 잘못된 override 제거.
+   기존 `.dt-arrow{width:12px}.dt-arrow:after{right:0}`는 ≤920 스택 레이아웃에서 화살표가
+   검은 블록으로 깨졌다. 인라인된 스킬 코어의 정답 규칙
+   `@media(max-width:920px){.dt-arrow:after{right:auto;left:50%;transform:translateX(-50%)}}`이
+   살아나도록 이 override를 삭제 — 스킬 자산과 동일 렌더. */
 
 /* 2026-06-07 vt timeline/incident marker fix — show left step numbers instead of clipped ol markers. */
 .tl{list-style:none;counter-reset:tl-step;padding-left:42px;margin-left:0}

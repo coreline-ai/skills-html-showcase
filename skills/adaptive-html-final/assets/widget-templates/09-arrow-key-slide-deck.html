@@ -1,14 +1,14 @@
-<!-- Widget 09: Arrow-Key Slide Deck | 프로토·다이어그램 | js-needed -->
-<!-- 슬라이드 이동은 scroll-snap(좌우 스와이프) + 점/링크 앵커(:target 점프) 2중 CSS-only 경로. 화살표키 키보드 이동과 자동 재생은 keydown 핸들러가 필요해 JS 없이는 불가 → 완전 인터랙션은 JS 필요. 현재는 트랙 포커스 후 스크롤/Tab+Enter 링크로 접근 가능. -->
+<!-- Widget 09: Arrow-Key Slide Deck | 프로토·다이어그램 | css-only -->
+<!-- final_20260604 카탈로그 정본과 동일하게 슬라이드 4장을 화면 폭에 맞춘 카드 그리드로 펼쳐 표시한다. 점/이전·다음 링크는 앵커 이동 보조로만 유지하며 JS는 필요 없다. -->
 <style>
-.wg-09-deck{font-family:var(--sans);color:var(--ink);max-width:640px;margin:0 auto}
-.wg-09-bar{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);margin-bottom:var(--space-3)}
+.wg-09-deck{font-family:var(--sans);color:var(--ink);max-width:min(760px,100%);width:100%;margin:0 auto}
+.wg-09-bar{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-3);margin-bottom:var(--space-3);flex-wrap:wrap}
 .wg-09-name{font-size:var(--fs-sm);font-weight:800;color:var(--ink-soft)}
-.wg-09-dots{display:flex;gap:var(--space-2)}
+.wg-09-dots{display:flex;gap:var(--space-2);flex-wrap:wrap;justify-content:flex-end}
 .wg-09-dots a{width:26px;height:26px;display:grid;place-items:center;font-size:var(--fs-xs);font-weight:700;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink-mute);text-decoration:none}
 .wg-09-dots a:hover{border-color:var(--accent);color:var(--accent)}
-.wg-09-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:var(--space-4);scroll-behavior:smooth;border-radius:var(--radius-lg);scrollbar-width:thin}
-.wg-09-slide{scroll-snap-align:center;flex:0 0 100%;min-height:300px;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4);scroll-margin:0}
+.wg-09-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));overflow:visible;scroll-snap-type:none;gap:var(--space-4);scroll-behavior:auto;border-radius:var(--radius-lg);scrollbar-width:thin}
+.wg-09-slide{scroll-snap-align:unset;flex:initial;width:100%;min-width:0;min-height:260px;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4);scroll-margin:0;overflow-wrap:anywhere}
 .wg-09-slide--title{background:var(--dark);color:#fff;border-color:var(--dark)}
 .wg-09-slide--title .wg-09-no{color:var(--link-on-dark)}.wg-09-slide--end .wg-09-no{color:var(--on-accent)}
 .wg-09-slide--title .wg-09-title{color:#fff}
@@ -19,11 +19,11 @@
 .wg-09-title{font-family:var(--serif);font-size:var(--fs-2xl);font-weight:700;margin:0;color:var(--ink)}
 .wg-09-lead{font-size:var(--fs-md);color:var(--ink-soft);margin:0}
 .wg-09-points{margin:0 0 0 var(--space-5);font-size:var(--fs-md);color:var(--ink-soft);display:flex;flex-direction:column;gap:var(--space-2)}
-.wg-09-stats{display:flex;gap:var(--space-4);flex-wrap:wrap}
+.wg-09-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:var(--space-3)}
 .wg-09-stat{flex:1;min-width:90px;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);text-align:center}
 .wg-09-stat strong{display:block;font-size:var(--fs-2xl);color:var(--accent-2);font-variant-numeric:tabular-nums;line-height:1.1}
 .wg-09-stat span{font-size:var(--fs-xs);color:var(--ink-mute)}
-.wg-09-cta-row{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3)}
+.wg-09-cta-row{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);flex-wrap:wrap}
 .wg-09-cta-row a:only-child{margin-left:auto}
 .wg-09-prev,.wg-09-next{font-size:var(--fs-sm);font-weight:800;text-decoration:none;padding:var(--space-2) var(--space-4);border-radius:999px;border:1px solid currentColor}
 .wg-09-next{background:var(--accent);color:var(--on-accent);border-color:var(--accent-2)}
@@ -33,6 +33,7 @@
 .wg-09-slide--title .wg-09-prev{color:#fff;border-color:rgba(255,255,255,.5)}.wg-09-slide--end .wg-09-prev{color:var(--on-accent);border-color:var(--on-accent)}
 .wg-09-slide--end .wg-09-next{background:var(--card);color:var(--accent-2);border-color:#fff}
 .wg-09-hint{font-size:var(--fs-xs);color:var(--ink-mute);margin-top:var(--space-3);text-align:center}
+@media(max-width:760px){.wg-09-track{grid-template-columns:1fr}.wg-09-slide{min-height:220px;padding:22px}}
 </style>
 <section class="wg-09-deck" aria-label="슬라이드 덱">
   <header class="wg-09-bar">
@@ -45,7 +46,7 @@
     </nav>
   </header>
 
-  <div class="wg-09-track" tabindex="0" aria-label="좌우 스크롤로 슬라이드 이동">
+  <div class="wg-09-track" tabindex="0" aria-label="카드 그리드로 펼친 슬라이드">
     <article id="wg-09-s1" class="wg-09-slide wg-09-slide--title" aria-label="슬라이드 1">
       <span class="wg-09-no">01 / 04</span>
       <h2 class="wg-09-title">2026 제품 로드맵</h2>

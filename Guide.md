@@ -1,7 +1,7 @@
 # adaptive-html-final 사용 가이드
 
-갱신일: 2026-06-07
-대상 스킬: `skills/adaptive-html-final` (**v5.7.0**)
+갱신일: 2026-06-09
+대상 스킬: `skills/adaptive-html-final` (**v5.9.2**)
 
 > 이 문서는 현행 운영본 기준 사용 가이드입니다. 결정론 실행 규칙의 단일 출처는 루트 [`AGENTS.md`](AGENTS.md) → [`skills/adaptive-html-final/SKILL.md`](skills/adaptive-html-final/SKILL.md) → `references/*`이며, 충돌 시 그 순서를 따릅니다. v4.x 시점의 리뷰·분석·계획 기록은 [`docs/archive/`](docs/archive/README.md)에 보관되어 있습니다.
 
@@ -32,7 +32,7 @@ html-for-beginners
 | 항목 | 값 |
 |---|---|
 | 스킬명 | `adaptive-html-final` |
-| version | **`5.7.0`** |
+| version | **`5.9.2`** |
 | 디렉토리 | `skills/adaptive-html-final/` |
 | 설치용 패키지 | `skills/adaptive-html-final.skill` |
 | 파일 수 | 90개+ |
@@ -323,7 +323,7 @@ v1 허용 옵션은 `--formats`, `--themes`, `--scale`, `--viewport`, `--require
 
 ## 11. 빌드 완성도 기준선 (Canonical Baseline)
 
-현재 스킬 v5.7.0 기준으로 15·16 신규 모드의 smoke 산출물은 정적 품질 게이트를 통과했습니다. 기존 13-topic 캐노니컬 산출물은 v5.2.3 기준선으로 보존합니다:
+현재 운영본은 v5.9.2이며, 아래 smoke 산출물은 각 생성 시점의 정적 품질 게이트를 통과한 기준선입니다. 기존 13-topic 캐노니컬 산출물은 v5.2.3 기준선으로 보존합니다:
 
 ```text
 output/adaptive-html-final-13-topics-20260605_083433/   (v5.2.3 기준선, HTML 14개, 게이트 OK)
@@ -347,4 +347,4 @@ output/manual-analysis-product-runbook-20260607_001503/      (v5.7.0 manual_anal
 
 ## 13. 한 줄 요약
 
-`adaptive-html-final`(**v5.7.0**)은 16개 모드 라우터 + editorial 디자인 시스템에 **비주얼 프로파일(widget·diagram·auto)·8-테마·vt-/wg- 시각 라이브러리·정적 품질 게이트**까지 갖춘, 외부 JS 0의 결정론적 단일 통합 운영본입니다.
+`adaptive-html-final`(**v5.9.2**)은 16개 모드 라우터 + editorial 디자인 시스템에 **비주얼 프로파일(widget·diagram·auto)·8-테마·vt-/wg- 시각 라이브러리·정적 품질 게이트**까지 갖춘, 외부 JS 0의 결정론적 단일 통합 운영본입니다.
