@@ -2090,6 +2090,20 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
   <section id="sec-quick">
     <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-accent-box" x="8" y="10" width="6" height="6" rx="1.5"/><rect class="bi-soft" x="17" y="10" width="6" height="6" rx="1.5"/><rect class="bi-fill" x="26" y="10" width="6" height="6" rx="1.5"/><path class="bi-line" d="M9 23h22M9 28h17M9 33h12"/></svg></span><span class="no is-key">1</span>빠른 레퍼런스</h2>
     <p class="h2-sub">패턴을 쓰기 직전에 가장 자주 확인하는 토큰을 한 표에 모았다. 나머지 절은 이 표의 항목을 깊게 푼 것이다.</p>
+
+    <section class="vt-shell">
+      <div class="vt-frame">
+        <div class="ft">
+          <article class="ft-card"><div class="ft-head"><span>2 · 메타문자·문자 클래스</span><span><code>. \d \w \s [ ]</code></span></div><div class="ft-body"><p class="vt-text">"어떤 문자 하나"를 정하는 토큰 묶음. 12개 메타문자의 이스케이프 규칙과 <code>\d \w \s</code> 축약 클래스, 대괄호 집합을 다룬다.</p><div class="ft-note"><b>먼저 고정할 것</b><br>리터럴로 쓸 점은 <code>.</code>이 아니라 <code>\.</code> — 이스케이프부터 확인한다.</div></div></article>
+          <article class="ft-card"><div class="ft-head"><span>3 · 앵커·경계</span><span><code>^ $ \b \B \A \z</code></span></div><div class="ft-body"><p class="vt-text">문자를 소비하지 않고 위치만 주장하는 zero-width 토큰. 양끝을 <code>^...$</code>로 고정해 "부분 일치"가 아닌 "전체 일치"를 강제한다.</p><div class="ft-note"><b>가장 흔한 버그</b><br>앵커 누락 검증은 <code>abc1234xyz</code>도 통과시킨다.</div></div></article>
+          <article class="ft-card"><div class="ft-head"><span>4 · 수량자·탐욕/게으름</span><span><code>* + ? {n,m} *?</code></span></div><div class="ft-body"><p class="vt-text">직전 토큰을 몇 번 반복할지 정한다. 같은 횟수라도 탐욕(greedy)·게으름(lazy)·소유(possessive)에 따라 매칭 범위가 달라진다.</p><div class="ft-note"><b>위험 신호</b><br>중첩 수량자 <code>(a+)+$</code>는 ReDoS(치명적 백트래킹)를 부른다.</div></div></article>
+          <article class="ft-card"><div class="ft-head"><span>5 · 그룹·캡처·역참조</span><span><code>( ) (?: ) (?&lt;n&gt; ) \1</code></span></div><div class="ft-body"><p class="vt-text">괄호로 "묶기"와 "캡처"를 동시에 한다. 캡처가 필요 없으면 비캡처 그룹, 추출/치환이 목적이면 이름 캡처를 쓴다.</p><div class="ft-note"><b>유지보수 팁</b><br>번호 <code>$1 $2</code>보다 이름 <code>$&lt;y&gt;</code> 캡처가 안전하다.</div></div></article>
+          <article class="ft-card"><div class="ft-head"><span>6 · 룩어라운드</span><span><code>(?= ) (?! ) (?&lt;= ) (?&lt;! )</code></span></div><div class="ft-body"><p class="vt-text">주변 조건만 확인하고 문자를 소비하지 않는다(zero-width). 캡처하지 않고 "추출 폭"만 정확히 만들 때 쓴다.</p><div class="ft-note"><b>방언 주의</b><br>가변 길이 후방탐색 지원은 엔진마다 다르다(JS 지원).</div></div></article>
+          <article class="ft-card"><div class="ft-head"><span>7 · 플래그</span><span><code>i g m s u x</code></span></div><div class="ft-body"><p class="vt-text">패턴 전체의 동작 모드를 바꾼다. 같은 패턴이라도 플래그에 따라 결과가 달라지는 전역 스위치다.</p><div class="ft-note"><b>단골 함정</b><br><code>g</code> 객체는 <code>lastIndex</code>를 기억 — 검증엔 <code>g</code>를 뺀다.</div></div></article>
+        </div>
+      </div>
+    </section>
+
     <div class="tbl table-scroll">
       <table>
         <caption>가장 자주 쓰는 정규식 토큰</caption>
@@ -2315,6 +2329,43 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
       <span class="word">^01[016789]-?\d{3,4}-?\d{4}$</span>
       <p class="meaning"><code>^...$</code>로 전체 일치를 강제하고, <code>01</code> 리터럴 뒤 <code>[016789]</code>로 통신사 자리, <code>-?</code>로 하이픈을 선택적(있어도 없어도)으로 허용, <code>\d{3,4}</code>로 국번 3~4자리, 마지막 <code>\d{4}</code>로 가입자 번호 4자리를 잡는다. 위치·문자·반복이 한 줄에 모두 들어 있다.</p>
     </div>
+
+    <section class="wg-20-tuner" aria-label="정규식 패턴 테스터">
+      <header class="wg-20-head">
+        <h2 class="wg-20-title">패턴 테스터 · 같은 입력, 다른 결과</h2>
+        <p class="wg-20-hint">테스트 입력을 골라 패턴이 무엇을 잡는지 비교합니다. 라이브 편집·재실행은 JS가 필요합니다.</p>
+      </header>
+      <fieldset class="wg-20-samples">
+        <legend class="wg-20-legend">테스트 입력</legend>
+        <input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s1" checked>
+        <label class="wg-20-chip" for="wg-20-s1">앵커: 4자리 숫자</label>
+        <input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s2">
+        <label class="wg-20-chip" for="wg-20-s2">탐욕 vs 게으름</label>
+        <input class="wg-20-radio" type="radio" name="wg-20-sample" id="wg-20-s3">
+        <label class="wg-20-chip" for="wg-20-s3">후방탐색: 가격</label>
+      </fieldset>
+      <div class="wg-20-grid">
+        <div class="wg-20-pane">
+          <div class="wg-20-pane-head">패턴</div>
+          <pre class="wg-20-tpl">앵커: <span class="wg-20-var">^\d{4}$</span>
+탐욕: <span class="wg-20-var">&lt;.*&gt;</span>  게으름: <span class="wg-20-var">&lt;.*?&gt;</span>
+후방탐색: <span class="wg-20-var">(?&lt;=\$)\d+</span></pre>
+        </div>
+        <div class="wg-20-pane">
+          <div class="wg-20-pane-head">테스트 입력</div>
+          <div class="wg-20-input wg-20-input--s1"><span class="wg-20-k">pattern</span><code>^\d{4}$</code><br><span class="wg-20-k">input</span>“abc1234” vs “2026”</div>
+          <div class="wg-20-input wg-20-input--s2"><span class="wg-20-k">pattern</span><code>&lt;.*&gt;</code> / <code>&lt;.*?&gt;</code><br><span class="wg-20-k">input</span>“&lt;b&gt;hi&lt;/b&gt;”</div>
+          <div class="wg-20-input wg-20-input--s3"><span class="wg-20-k">pattern</span><code>(?&lt;=\$)\d+</code><br><span class="wg-20-k">input</span>“총액 $1500 결제”</div>
+        </div>
+        <div class="wg-20-pane">
+          <div class="wg-20-pane-head">매칭 결과</div>
+          <div class="wg-20-out wg-20-out--s1">“abc1234”는 불일치(앵커가 전체를 강제), “2026”만 일치. 앵커 없는 <code>\d{4}</code>였다면 “abc1234”도 통과했을 것이다.</div>
+          <div class="wg-20-out wg-20-out--s2">탐욕 <code>&lt;.*&gt;</code>는 <code>&lt;b&gt;hi&lt;/b&gt;</code> 전체를 한 덩어리로, 게으름 <code>&lt;.*?&gt;</code>는 <code>&lt;b&gt;</code>만 잡는다. 첫 태그만 원하면 게으름.</div>
+          <div class="wg-20-out wg-20-out--s3"><code>$</code>는 결과에 포함되지 않고 <code>1500</code>만 잡힌다. 통화 기호를 캡처해 버리는 것보다 후방탐색이 의도를 명확히 드러낸다.</div>
+        </div>
+      </div>
+      <footer class="wg-20-foot">선택한 입력에 따라 <code>패턴</code>·<code>테스트 입력</code>·<code>매칭 결과</code>가 함께 바뀝니다. 실제 적용 전 엔진(JS·PCRE·Python)의 후방탐색·플래그 지원을 확인하세요.</footer>
+    </section>
   </section>
 
   <section id="sec-mistakes">
@@ -2358,86 +2409,6 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
         </tbody>
       </table>
     </div>
-  </section>
-
-
-  <section class="mode-template-contract" data-ahf-contract="mode-template" data-mode="reference_html"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num" aria-hidden="true">T</span>모드 정본 템플릿 적용 확인</h2><p class="h2-sub">최신 스킬 결정표의 1순위 vt와 추천 wg 사용 여부를 시각적으로 확인하기 위한 섹션입니다.</p><div class="mini-card"><h3>1순위 vt 템플릿</h3><p><code>file-tour</code> 구조를 본문 안에 실제 HTML 템플릿으로 삽입했습니다.</p></div>
-<section class="vt-shell">
-  <div class="vt-frame">
-    <div class="ft"><article class="ft-card"><div class="ft-head"><span>router.ts</span><span>focus</span></div><div class="ft-body"><p class="vt-text">요청 경로와 실패 처리를 확인합니다.</p><div class="ft-note"><b>Review note</b><br>분기 조건을 본문 밖에서 명확히 설명</div></div></article><article class="ft-card"><div class="ft-head"><span>policy.yml</span><span>risk</span></div><div class="ft-body"><p class="vt-text">허용/금지 범위를 분리합니다.</p><div class="ft-note"><b>Review note</b><br>정책이 UI 문구와 일치하는지 확인</div></div></article><article class="ft-card"><div class="ft-head"><span>eval.spec</span><span>proof</span></div><div class="ft-body"><p class="vt-text">릴리즈 전 회귀 테스트입니다.</p><div class="ft-note"><b>Review note</b><br>테스트 없는 항목은 출시 조건에서 제외</div></div></article></div>
-  </div>
-</section>
-<div class="mini-card wg-04-contract"><h3>추천 wg 위젯</h3><p><code>wg-04</code> 위젯을 모드별 보강 템플릿으로 포함했습니다.</p></div>
-<section class="wg-04" aria-labelledby="wg-04-title">
-  <header class="wg-04-head">
-    <p class="wg-04-kicker">패키지 구조</p>
-    <h2 id="wg-04-title" class="wg-04-title">모듈 의존성 맵 · @shop/checkout</h2>
-    <p class="wg-04-lead">노드는 패키지, 화살표는 의존 방향입니다. <strong class="wg-04-crit-word">붉은 굵은 경로</strong>가 결제 핵심 경로(critical path)입니다.</p>
-    <ul class="wg-04-legend" aria-label="범례">
-      <li><span class="wg-04-lg wg-04-lg-entry" aria-hidden="true"></span> 진입점</li>
-      <li><span class="wg-04-lg wg-04-lg-core" aria-hidden="true"></span> 도메인 코어</li>
-      <li><span class="wg-04-lg wg-04-lg-leaf" aria-hidden="true"></span> 외부/유틸</li>
-      <li><span class="wg-04-lg wg-04-lg-crit" aria-hidden="true"></span> 핵심 경로</li>
-    </ul>
-  </header>
-
-  <div class="wg-04-diagram">
-    <svg viewBox="0 0 640 360" class="wg-04-svg" role="img" aria-labelledby="wg-04-svg-t wg-04-svg-d">
-      <title id="wg-04-svg-t">@shop/checkout 패키지 의존성 다이어그램</title>
-      <desc id="wg-04-svg-d">api 진입점에서 cart, payment, order 코어를 거쳐 gateway, db, logger 유틸로 이어지는 그래프. 핵심 경로는 api → payment → gateway.</desc>
-      <defs>
-        <marker id="wg-04-arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--ink-mute)"></path></marker>
-        <marker id="wg-04-arrow-crit" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="var(--accent)"></path></marker>
-      </defs>
-
-      <g class="wg-04-edges">
-        <path class="wg-04-edge wg-04-edge-crit" d="M120,70 L120,150" marker-end="url(#wg-04-arrow-crit)"></path>
-        <path class="wg-04-edge" d="M155,55 L300,150" marker-end="url(#wg-04-arrow)"></path>
-        <path class="wg-04-edge" d="M150,60 L470,150" marker-end="url(#wg-04-arrow)"></path>
-        <path class="wg-04-edge wg-04-edge-crit" d="M120,190 L120,270" marker-end="url(#wg-04-arrow-crit)"></path>
-        <path class="wg-04-edge" d="M300,190 L160,265" marker-end="url(#wg-04-arrow)"></path>
-        <path class="wg-04-edge" d="M310,190 L310,270" marker-end="url(#wg-04-arrow)"></path>
-        <path class="wg-04-edge" d="M470,190 L330,270" marker-end="url(#wg-04-arrow)"></path>
-        <path class="wg-04-edge" d="M480,190 L500,270" marker-end="url(#wg-04-arrow)"></path>
-      </g>
-
-      <g class="wg-04-node wg-04-node-entry">
-        <rect x="60" y="30" width="120" height="40" rx="8"></rect>
-        <text x="120" y="55">api (진입점)</text>
-      </g>
-      <g class="wg-04-node wg-04-node-core wg-04-node-crit">
-        <rect x="60" y="150" width="120" height="40" rx="8"></rect>
-        <text x="120" y="175">payment</text>
-      </g>
-      <g class="wg-04-node wg-04-node-core">
-        <rect x="250" y="150" width="120" height="40" rx="8"></rect>
-        <text x="310" y="175">cart</text>
-      </g>
-      <g class="wg-04-node wg-04-node-core">
-        <rect x="420" y="150" width="120" height="40" rx="8"></rect>
-        <text x="480" y="175">order</text>
-      </g>
-      <g class="wg-04-node wg-04-node-leaf wg-04-node-crit">
-        <rect x="60" y="270" width="120" height="40" rx="8"></rect>
-        <text x="120" y="295">gateway</text>
-      </g>
-      <g class="wg-04-node wg-04-node-leaf">
-        <rect x="250" y="270" width="120" height="40" rx="8"></rect>
-        <text x="310" y="295">db</text>
-      </g>
-      <g class="wg-04-node wg-04-node-leaf">
-        <rect x="440" y="270" width="120" height="40" rx="8"></rect>
-        <text x="500" y="295">logger</text>
-      </g>
-    </svg>
-  </div>
-
-  <div class="wg-04-path" role="note">
-    <span class="wg-04-path-label">핵심 경로</span>
-    <span class="wg-04-path-chain"><code>api</code> <span aria-hidden="true">→</span> <code>payment</code> <span aria-hidden="true">→</span> <code>gateway</code></span>
-    <span class="wg-04-path-note">결제 실패 시 영향 범위 · 변경 시 최우선 회귀 테스트 대상</span>
-  </div>
-</section>
   </section>
 <section class="try"><div class="label">NEXT ACTION</div><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>바로 적용하기</h2><ol><li>지금 쓰는 입력 검증 정규식에 <code>^ $</code> 앵커가 빠진 곳이 없는지 점검한다.</li><li>리터럴로 쓰려던 <code>.</code>이 이스케이프됐는지(<code>\.</code>) 확인한다.</li><li>탐욕 수량자 <code>.*</code>를 게으름(<code>.*?</code>)이나 부정 클래스(<code>[^x]*</code>)로 바꿀 수 있는지 본다.</li><li>사용 중인 엔진(JS·PCRE·Python)의 후방탐색·인라인 플래그·<code>x</code> 지원 여부를 확정한다.</li></ol></section>
   <aside class="source-note"><div class="label">Source Note</div><p>표기는 PCRE/JavaScript 계열을 기준으로 했으며, 후방탐색 가변 길이·인라인 플래그·<code>\A \z</code>·<code>x</code> 모드 등은 엔진(방언)마다 지원이 다르다. 실제 적용 전 사용하는 언어·라이브러리의 문서를 확인한다. 이 문서는 동작 JS 없이 CSS-only 컴포넌트로 작성되었다.</p></aside>

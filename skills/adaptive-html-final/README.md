@@ -1,11 +1,12 @@
-# Adaptive HTML Final (v5.7.0)
+# Adaptive HTML Final (v5.10.0)
 
-`adaptive-html-learning-ultimate`(13모드 라우터·레이아웃·평가체계)에 GitHub·YouTube·Manual 분석 모드를 더한 16모드 체계와 `adaptive-html-blog-writer`(블로그·SEO·플랫폼 상세 규칙)를 하나로 합친 **최종 통합 한국어 HTML 콘텐츠 생성 스킬**입니다.
+`adaptive-html-learning-ultimate`(13모드 라우터·레이아웃·평가체계)에 GitHub 실사 분석, GitHub 기능·사용법·도입 가이드, YouTube 분석, Manual 분석 모드를 더한 17모드 체계와 `adaptive-html-blog-writer`(블로그·SEO·플랫폼 상세 규칙)를 하나로 합친 **최종 통합 한국어 HTML 콘텐츠 생성 스킬**입니다.
 
-> **v5.7.0 현재 요약**
+> **v5.10.0 현재 요약**
+> - 17번째 모드 `github_feature_usage`: GitHub 저장소를 "무엇을 해주나·어떻게 쓰나·어디에 맞나" 관점의 기능·사용법·도입 가이드 HTML로 변환. 실제 화면(스크린샷)·기능 지도·기술 스택·아키텍처·디렉터리 구조 해부를 포함한다.
 > - 15번째 모드 `youtube_analysis`: YouTube URL/자막/댓글 발췌를 Video Evidence Map, FACT/INFERENCE/UNKNOWN, 댓글 신호, Claim Risk, 재사용 전략 중심의 HTML 분석 리포트로 변환.
 > - 16번째 모드 `manual_analysis`: 제품/운영 매뉴얼을 Source & Version Snapshot, Reader Role Router, First Success Path, Prerequisites/Safety, Troubleshooting, Operations Runbook 중심의 역할별 실행 매뉴얼로 재구성.
-> - 신규 레이아웃 `assets/layouts/youtube-analysis.html`, `assets/layouts/manual-analysis.html`, 전략 문서 2종, recipe 2종, 계약 게이트, 예제/output smoke 산출물을 추가.
+> - 신규 레이아웃 `assets/layouts/github-feature-usage.html`, 전략 문서 `references/github-feature-usage-system.md`, recipe, 계약 게이트, 17번째 예제 `examples/17_github_feature_usage_coreline_auth.html`를 추가.
 
 > **현행 요약 (v4.1 → v4.5.0)**
 > - **v4.1**(정밀 분석 패치): 접근성 테스트 체크리스트 추가, 13개 모드 ID를 SKILL.md 라우터와 통일(`{id, layout}` 매핑), recipes 13/13 완비, blog-meta·quality-report 스키마 보강, 미정의 CSS 클래스 39개 정의로 차집합 0 달성.
@@ -13,7 +14,7 @@
 > - **v4.3.x**(반응형 폴리시 회귀 게이트): dark CTA 링크/태그 대비 회복(`--link-on-dark`), `platform-grid`를 inner wrapper 전용으로 제한, 390px용 `mobile-card-table` 패턴, case timeline을 개별 step card로 분리, blog 섹션 자동 번호·SEO SERP title 조정 — 그리고 이 모든 회귀를 정적으로 막는 `scripts/validate_output.py` 게이트.
 > - **v4.4.0**(뷰 위젯 시스템): 뷰 위젯 시스템(20종, CSS-only, `assets/widgets.css`) 정식 편입 — `wg-<id>-` 네임스페이스·무 JS 위젯 템플릿 `assets/widget-templates/*.html`, 선택·삽입·접근성 규칙 `references/widget-system.md`, 위젯 게이트 `tests/widget-checklist.md`.
 > - **v4.5.0**(SVG→HTML 템플릿 편입 & 하네스 정형화): SVG→HTML 뷰 템플릿 21종(`assets/visual-html.css`)과 본문 삽입 다이어그램 `assets/visual-html-templates/01..21.html`(`vt-`), 캐노니컬 모드→vt 매핑·결정론 진입점, 선택·삽입 규칙 `references/visual-html-system.md`. 무 JS 0 유지.
-> - **v4.5.0**(비주얼 프로파일 선택): 기동 시 비주얼 스타일 선택 — `profile=widget|diagram|auto`(별칭 `style=v5|v6`). 코어(16모드·레이아웃·코어 CSS)는 공유, 프로파일이 라이브러리·삽입단계·CSS 번들만 게이트. 검증기 `--profile`로 교차 누수 차단. `manifest.json` `profiles` 선언. 분리 계획: 루트 `implement_visual_profile_separation.md`.
+> - **v4.5.0**(비주얼 프로파일 선택): 기동 시 비주얼 스타일 선택 — `profile=widget|diagram|auto`(별칭 `style=v5|v6`). 코어(17모드·레이아웃·코어 CSS)는 공유, 프로파일이 라이브러리·삽입단계·CSS 번들만 게이트. 검증기 `--profile`로 교차 누수 차단. `manifest.json` `profiles` 선언. 분리 계획: 루트 `implement_visual_profile_separation.md`.
 
 ### 비주얼 프로파일 (스킬 기동 시 선택)
 
@@ -27,11 +28,11 @@
 
 ## 핵심
 
-- 10개 핵심/실사 모드: beginner, expert, article, education, github_analysis, youtube_analysis, manual_analysis, blog, seo, platform
+- 11개 핵심/실사/사용 가이드 모드: beginner, expert, article, education, github_analysis, github_feature_usage, youtube_analysis, manual_analysis, blog, seo, platform
 - 6개 확장 모드: skill_audit, reference, comparison, case_study, landing_brief, checklist_playbook
 - 디자인 유지: 오프화이트 배경, Pretendard 단일 산세리프, h2 빨간 원번호, h2-sub, 의미 박스, source-note
 - 블로그 강점 흡수: 제목 4계열·도입부 3유형·본문 밀도·블로그 메타 스키마·플랫폼별 규칙·박스 선택 가이드(references 상세)
-- 접근성 수정: 16개 레이아웃 `<main>`에 `id="main"` 통일 (skip link 정상 동작)
+- 접근성 수정: 17개 레이아웃 `<main>`에 `id="main"` 통일 (skip link 정상 동작)
 
 ## 통합 내역
 
@@ -52,17 +53,19 @@
 - `assets/layouts.css`: 모드별 레이아웃 차이
 - `assets/base.html`: 단일 HTML 렌더링 골격
 - `assets/print.css`: 인쇄 대응
-- `assets/layouts/*.html`: 16개 레이아웃 템플릿
+- `assets/layouts/*.html`: 17개 레이아웃 템플릿
 - `assets/layouts/github-analysis.html`: GitHub 저장소 분석 전용 레이아웃
+- `assets/layouts/github-feature-usage.html`: GitHub 기능·사용법·도입 가이드 전용 레이아웃
 - `assets/layouts/youtube-analysis.html`: YouTube 영상 분석 전용 레이아웃
 - `assets/layouts/manual-analysis.html`: 매뉴얼 제작/분석 전용 레이아웃
 - `visual-templates/*.svg.tpl`: 8000×6000 SVG 인포그래픽 템플릿 7종 (hero-map, card-grid, decision-tree, quality-gate, timeline, matrix, checklist-flow)
 - `scripts/render_visual_svg.py`: visual brief JSON을 8000×6000 SVG로 렌더링하는 stdlib-only 스크립트
 - `scripts/validate_output.py`: 생성된 output 디렉터리를 검사하는 정적 품질 게이트 (h1·`#main`·로컬 참조·caption·grid 회귀·source sync·visual figure 등)
 - `references/github-analysis-system.md`: GitHub 저장소 분석 정보 구조·판단 기준
+- `references/github-feature-usage-system.md`: GitHub 기능·사용법·도입 가이드 정보 구조·스크린샷 계약
 - `references/youtube-analysis-system.md`: YouTube 근거 지도·댓글 신호·주장 위험 분석 기준
 - `references/manual-analysis-system.md`: 역할별 매뉴얼·안전 조건·트러블슈팅 작성 기준
 - `references/*.md`: 필요 시 로드하는 세부 규칙 (`widget-system.md` 위젯 선택·삽입·접근성 규칙, `visual-html-system.md` SVG→HTML 템플릿 모드→vt 매핑·삽입 규칙 포함)
-- `recipes/*.md`: 대표 요청 프롬프트 (16모드)
+- `recipes/*.md`: 대표 요청 프롬프트 (17모드)
 - `tests/*.md`: 검증 체크리스트 6종 (accessibility, golden-prompts, layout, quality, visual-regression, widget-checklist)
 - `schemas/*.json`: 메타/품질/시각 스키마 3종 (blog-meta, quality-report, visual-brief)

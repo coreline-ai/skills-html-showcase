@@ -182,9 +182,52 @@ check("examples-fidelity gate catches 경량/풀스킬급 contradiction",
       v.examples_fidelity_conflict("examples = 16모드 경량 참조 예제", '"purpose":"16모드 풀 스킬급 참조 예제"') is True)
 check("examples-fidelity gate passes when both say 풀 스킬급",
       v.examples_fidelity_conflict("examples = 16모드 풀 스킬급 참조 예제", '"purpose":"16모드 풀 스킬급 참조 예제"') is False)
-# 3) Against the REAL skill: must be clean now (proves the two fixes landed).
+# 3) manifest internal version staleness (SoT must not contradict itself).
+stale_manifest = '{"version":"5.10.0","examples":{"version":"5.9.2"},"changes":["v5.9.2: old"],"releases":["v5.9.2: old"],"updated":"2026-06-07"}'
+stale_types = {i["type"] for i in v.manifest_version_consistency_gate(stale_manifest, "## v5.10.0 (2026-06-09)\\n")}
+check("manifest consistency gate catches stale examples/changes/releases/updated",
+      {"manifest_examples_version_mismatch", "manifest_changes_version_stale", "manifest_releases_version_stale", "manifest_updated_before_changelog"}.issubset(stale_types))
+clean_manifest = '{"version":"5.10.0","examples":{"version":"5.10.0"},"changes":["v5.10.0: ok"],"releases":["v5.10.0: ok"],"updated":"2026-06-09"}'
+check("manifest consistency gate passes current-version fields",
+      v.manifest_version_consistency_gate(clean_manifest, "## v5.10.0 (2026-06-09)\\n") == [])
+# 4) §0.6 canonical decision table must match validator contracts and widget-system.md.
+decision_fixture = '''
+## 0.6 Canonical Decision Table (모드 → layout → vt-템플릿 → wg-위젯)
+
+| Mode | Layout | vt-템플릿 (1순위→) | wg-위젯 (1순위→) |
+|---|---|---|---|
+| expert_html | expert-report.html | risk-matrix, raci | wg-03, wg-04 |
+
+vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`이다.
+'''
+bad_widget_fixture = '''
+| Mode | 권장 위젯 | 쓰임 |
+|---|---|---|
+| expert_html | **04 Module Map**, 01, 03 | stale |
+
+### 위젯 → 모드 역참조
+'''
+bad_contract_fixture = {
+    "layout-expert": {"mode": "expert_html", "primary_vt": "quality-gate", "recommended_wg": ("wg-04",)}
+}
+decision_bad_types = {i["type"] for i in v.decision_table_consistency_gate(decision_fixture, bad_widget_fixture, bad_contract_fixture)}
+check("decision-table gate catches validator/widget wg drift",
+      {"validator_decision_table_mismatch", "widget_system_wg_mapping_mismatch"}.issubset(decision_bad_types))
+current_decision_issues = v.decision_table_consistency_gate(
+    (SKILL / "SKILL.md").read_text(encoding="utf-8"),
+    (SKILL / "references" / "widget-system.md").read_text(encoding="utf-8"),
+)
+check("decision-table gate passes current §0.6/widget/validator mapping", current_decision_issues == [])
+# 5) visual-html-system.md must not present historical v6/20-template wording as current.
+stale_visual = '> 버전: 이 라이브러리 편입으로 스킬은 4.4.0 → **4.5.0**.\n- 모드별 실제 적용 갤러리: **`output/adaptive-html-final-showcase-v6`** — 20종 적용'
+stale_visual_types = {i["type"] for i in v.visual_html_system_staleness_gate(stale_visual)}
+check("visual-html staleness gate catches old version/gallery/count wording",
+      {"visual_html_intro_version_stale", "visual_html_gallery_baseline_stale", "visual_html_template_count_stale"}.issubset(stale_visual_types))
+check("visual-html staleness gate passes current reference doc",
+      v.visual_html_system_staleness_gate((SKILL / "references" / "visual-html-system.md").read_text(encoding="utf-8")) == [])
+# 6) Against the REAL skill: must be clean now (proves the source-doc fixes landed).
 _doc_issues = v.skill_doc_consistency_gate(SKILL)
-check("real skill doc-consistency gate is clean (no dup version / no contradiction)",
+check("real skill doc-consistency gate is clean (no dup/stale/contradiction)",
       _doc_issues == [])
 if _doc_issues:
     print("  detail:", _doc_issues)

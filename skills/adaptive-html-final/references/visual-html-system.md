@@ -4,7 +4,7 @@
 
 핵심 철학은 스킬 전체와 동일하게 **외부/동작 JS 0**이다. 본문 삽입형 다이어그램에는 `<script>`가 한 줄도 들어가지 않는다. 검색·복사·번역·스크린리더가 그대로 통하고, 모바일에서 자연스럽게 줄바꿈되며, 문서의 한 부분으로 읽힌다(허용되는 유일한 스크립트는 Article/Blog/SEO 모드의 `application/ld+json` JSON-LD 메타데이터뿐이며, 이는 동작 코드가 아니다).
 
-> 버전: 이 라이브러리 편입으로 스킬은 4.4.0 → **4.5.0**.
+> 도입 이력: 이 라이브러리는 v4.5.0에서 본문 삽입형 HTML 다이어그램으로 편입되었고, 현행 v5.10.0 기준은 `vt-` 21종 + 17모드 §0.6 매핑이다.
 
 ## 1. 목적 — 왜 대형 SVG 대신 본문형 HTML인가
 
@@ -55,6 +55,7 @@
 | article_html | **decision-tree** | comparison-cards, concept-explainer |
 | education_html | **timeline** | checklist-flow, concept-explainer, soft-workflow-map |
 | github_analysis | **hero-map** | quality-gate, file-tour, risk-matrix, timeline, decision-tree, checklist-flow |
+| github_feature_usage | **hero-map** | card-grid, file-tour, decision-tree |
 | youtube_analysis | **timeline** | risk-matrix, quality-gate, decision-tree, comparison-cards, checklist-flow |
 | manual_analysis | **hero-map** | checklist-flow, quality-gate, file-tour, process-swimlane, decision-tree, risk-matrix |
 | blog_writer | **timeline** | weekly-status, comparison-cards |
@@ -75,6 +76,15 @@ GitHub 저장소 분석은 첫 화면에서 판단 구조가 보여야 하므로
 - `file-tour`: README, package/manifest, src, tests, docs, CI, security 관련 파일 경로.
 - `risk-matrix`: 유지보수 정체, 빠진 라이선스, 취약한 quickstart, 테스트 부재, 릴리스 부재 등.
 - `quality-gate`: 사용/검토/보류 판단을 위한 최소 검증 조건.
+
+### github_feature_usage 권장 삽입 순서
+
+GitHub 기능·사용 가이드는 첫 화면에서 "무엇을 해주는가"가 보여야 하므로 `hero-map`을 1순위로 사용한다. 이후 기능 분류는 `card-grid`, 디렉터리 구조 해부는 `file-tour`, 도입 적합성 판단은 `decision-tree`로 보강한다.
+
+- `hero-map`: 제품 정체성 → 핵심 기능 → 시작 행동.
+- `card-grid`: 사용자 기능, 관리자 기능, 운영 기능, 연동 기능.
+- `file-tour`: 기능과 연결되는 주요 디렉터리/파일.
+- `decision-tree`: 맞는 사용처, 맞지 않는 사용처, 도입 전 확인.
 
 
 ### youtube_analysis 권장 삽입 순서
@@ -144,10 +154,11 @@ Manual 분석은 `hero-map`을 1순위로 사용해 독자 역할·목표·첫 �
 ## 7. 적용 갤러리
 
 - 카탈로그·전략 원본: `output/adaptive-html-final-html-view-templates-20-v1/`(초기 20종 라이브 데모 + `SVG_TO_HTML_TEMPLATE_STRATEGY.md`; 이후 21번째 `soft-workflow-map`이 후순위 템플릿으로 편입됨).
-- 모드별 실제 적용 갤러리: **`output/adaptive-html-final-showcase-v6`** — 본문에 `vt-` 템플릿이 삽입된 모드별 페이지와 QA 스크린샷을 확인한다. v6 골든은 동결 시점 기준 20종 적용이며, vt-21은 후순위라 골든 본문에는 필수 등장하지 않는다.
+- 현행 17모드 참조 예제: **`skills/adaptive-html-final/examples/`** — v5.10.0 스킬 자산 기준의 17모드 레퍼런스이며, §0.6의 1순위 vt 계약과 8테마/무JS 검증을 통과해야 한다.
+- 역사적 적용 갤러리: **`output/adaptive-html-final-showcase-v6`** — v4.5/v6 동결 시점의 모드별 페이지와 QA 스크린샷 확인용이다. 현재 17모드 기준선이나 21종 완전 적용 증거로 사용하지 않는다.
 
 ## 관련 문서
 
 - `references/widget-system.md` — CSS 뷰 위젯 `wg-01`~`20`(인터랙션 보조 뷰, 이 라이브러리와 별개).
 - `references/visual-template-system.md` — `8000×6000` SVG 인포그래픽(hero·별첨용, HTML 템플릿이 대체하는 대상).
-- `references/mode-selection.md` — 16개 모드 라우팅.
+- `references/mode-selection.md` — 17개 모드 라우팅.

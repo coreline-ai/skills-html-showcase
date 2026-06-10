@@ -13,8 +13,8 @@
 ## 1. 저장소·스킬 한 줄 정의
 
 - **저장소**: `skills-html-showcase` — 다중 모드 한국어 HTML 생성 스킬 `adaptive-html-final`과 그 자산·검증·예제를 담은 쇼케이스 저장소.
-- **스킬**: `adaptive-html-final` — 입력(URL/PDF/텍스트/이미지/메모/기술자료/블로그 초안/SKILL.md/GitHub 저장소 URL/YouTube URL/매뉴얼 텍스트)을 받아 **외부 동작 JS 없는** editorial HTML(학습자료·전문가 리포트·GitHub 저장소 분석·YouTube 분석·매뉴얼 분석·아티클·교육 모듈·블로그·SEO 대시보드·플랫폼 블로그·스킬 감사·레퍼런스·비교·케이스 스터디·랜딩·체크리스트)을 생성한다.
-- **현재 버전**: **5.9.2** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
+- **스킬**: `adaptive-html-final` — 입력(URL/PDF/텍스트/이미지/메모/기술자료/블로그 초안/SKILL.md/GitHub 저장소 URL/YouTube URL/매뉴얼 텍스트)을 받아 **외부 동작 JS 없는** editorial HTML(학습자료·전문가 리포트·GitHub 저장소 분석·GitHub 기능·사용법·도입 가이드·YouTube 분석·매뉴얼 분석·아티클·교육 모듈·블로그·SEO 대시보드·플랫폼 블로그·스킬 감사·레퍼런스·비교·케이스 스터디·랜딩·체크리스트)을 생성한다.
+- **현재 버전**: **5.10.0** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
 - **스킬 위치(저장소 루트 기준 상대 경로 — 체크아웃 위치 무관 이식성)**: `skills/adaptive-html-final/`
   - 본체: `skills/adaptive-html-final/SKILL.md`
   - 매니페스트: `skills/adaptive-html-final/manifest.json`
@@ -37,26 +37,27 @@
 
 ---
 
-## 3. 모드 라우팅 결정표 (16 모드)
+## 3. 모드 라우팅 결정표 (17 모드)
 
-여러 트리거가 겹치면 `skills/adaptive-html-final/SKILL.md` §3의 Priority(1=skill_audit … 16=checklist_playbook)를 따른다.
+여러 트리거가 겹치면 `skills/adaptive-html-final/SKILL.md` §3의 Priority(1=skill_audit … 17=checklist_playbook)를 따른다.
 사용자가 모드를 명시하면 그 지시가 최우선. **vt-템플릿의 첫 항목이 1순위이며 단일 출처다** (캐노니컬 매핑).
 
 > **프로파일별 컬럼 사용(§4 Step 0에서 결정된 프로파일 적용):** `diagram`=**"1순위 vt-템플릿" 컬럼만** 사용(markup `vt-`), `widget`=**"권장 wg-위젯" 컬럼만** 사용(markup `wg-`), `auto`=**두 컬럼 모두**(vt- 1순위 + wg- 보강, 현행). layout·트리거(코어)는 프로파일과 무관하게 동일하다.
 
 | Mode | 트리거(요약) | layout 클래스 | layout 파일 | 1순위 vt-템플릿 (이하 후순위) | 권장 wg-위젯 |
 |---|---|---|---|---|---|
-| `beginner_html` | 초보자, 쉽게, 비유로, 입문 | `.layout-beginner` | `beginner-learning.html` | **concept-explainer** → hero-map → checklist-flow | wg-10, wg-13, wg-15 |
-| `expert_html` | 전문가, 리포트, 진단, 아키텍처, 리스크 | `.layout-expert` | `expert-report.html` | **risk-matrix** → raci → quality-gate → implementation-plan → soft-workflow-map | wg-03, wg-04, wg-11, wg-12, wg-16, wg-17 |
-| `article_html` | 공개 글, 아티클, 기사, GitHub Pages | `.layout-article` | `magazine-article.html` | **decision-tree** → comparison-cards → concept-explainer | wg-02, wg-04, wg-07, wg-09, wg-10, wg-13, wg-14 |
+| `skill_audit` | 스킬 분석, SKILL.md 개선, .skill 통합, 한 줄 분석 | `.layout-audit` | `skill-audit-report.html` | **quality-gate** → file-tour → prompt-tuner → implementation-plan → soft-workflow-map | wg-03, wg-11, wg-17 |
+| `platform_blog` | 티스토리, 벨로그, 네이버, 워드프레스, 플랫폼별 | `.layout-platform` | `platform-adaptation.html` | **card-grid** → comparison-cards → pr-writeup | wg-02 |
+| `seo_dashboard` | SEO, 제목, 메타, 태그, 검색 의도 | `.layout-seo` | `seo-dashboard.html` | **card-grid** → comparison-cards → prompt-tuner | wg-11 |
 | `education_html` | 교육, 강의, 온보딩, 실습, 퀴즈 | `.layout-education` | `course-module.html` | **timeline** → checklist-flow → concept-explainer → soft-workflow-map | wg-06, wg-07, wg-08, wg-13, wg-14, wg-15, wg-20 |
 | `github_analysis` | GitHub 저장소 URL, owner/repo, README·Issues·Releases·License 분석 | `.layout-github` | `github-analysis.html` | **hero-map** → quality-gate → file-tour → risk-matrix → timeline → decision-tree → checklist-flow | wg-11, wg-04, wg-14, wg-16, wg-17, wg-18 |
+| `github_feature_usage` | GitHub 저장소 기능·사용법·도입 가이드, 실제 화면·스크린샷 중심 설명 | `.layout-github-feature` | `github-feature-usage.html` | **hero-map** → card-grid → file-tour → decision-tree | wg-14, wg-04, wg-16, wg-11, wg-08 |
 | `youtube_analysis` | YouTube URL, youtu.be, Shorts, 영상 요약, 트랜스크립트·댓글·챕터 분석, 콘텐츠 갭 | `.layout-youtube` | `youtube-analysis.html` | **timeline** → risk-matrix → quality-gate → decision-tree → comparison-cards → checklist-flow | wg-11, wg-13, wg-14, wg-16, wg-18 |
 | `manual_analysis` | 매뉴얼 분석, 사용 설명서 제작, 운영 매뉴얼, 절차서, 트러블슈팅, 제품 가이드 | `.layout-manual` | `manual-analysis.html` | **hero-map** → checklist-flow → quality-gate → file-tour → process-swimlane → decision-tree → risk-matrix | wg-04, wg-13, wg-16, wg-18, wg-11, wg-14 |
+| `expert_html` | 전문가, 리포트, 진단, 아키텍처, 리스크 | `.layout-expert` | `expert-report.html` | **risk-matrix** → raci → quality-gate → implementation-plan → soft-workflow-map | wg-03, wg-04, wg-11, wg-12, wg-16, wg-17 |
+| `article_html` | 공개 글, 아티클, 기사, GitHub Pages | `.layout-article` | `magazine-article.html` | **decision-tree** → comparison-cards → concept-explainer | wg-02, wg-04, wg-07, wg-09, wg-10, wg-13, wg-14 |
 | `blog_writer` | 블로그 글, 포스팅, 경험담, 내 생각 | `.layout-blog` | `personal-blog-essay.html` | **timeline** → weekly-status → comparison-cards | wg-17 |
-| `seo_dashboard` | SEO, 제목, 메타, 태그, 검색 의도 | `.layout-seo` | `seo-dashboard.html` | **card-grid** → comparison-cards → prompt-tuner | wg-11 |
-| `platform_blog` | 티스토리, 벨로그, 네이버, 워드프레스, 플랫폼별 | `.layout-platform` | `platform-adaptation.html` | **card-grid** → comparison-cards → pr-writeup | wg-02 |
-| `skill_audit` | 스킬 분석, SKILL.md 개선, .skill 통합, 한 줄 분석 | `.layout-audit` | `skill-audit-report.html` | **quality-gate** → file-tour → prompt-tuner → implementation-plan → soft-workflow-map | wg-03, wg-11, wg-17 |
+| `beginner_html` | 초보자, 쉽게, 비유로, 입문 | `.layout-beginner` | `beginner-learning.html` | **concept-explainer** → hero-map → checklist-flow | wg-10, wg-13, wg-15 |
 | `reference_html` | 레퍼런스, API 문서, 치트시트, 옵션표 | `.layout-reference` | `reference-manual.html` | **file-tour** → flowchart → card-grid | wg-04, wg-05, wg-06, wg-14, wg-19, wg-20 |
 | `comparison_html` | 비교, 장단점, 선택 기준 | `.layout-compare` | `comparison-matrix.html` | **comparison-cards** → decision-tree → risk-matrix | wg-01, wg-02 |
 | `case_study_html` | 사례 연구, 회고, 프로젝트 기록 | `.layout-case` | `case-study.html` | **incident-summary** → timeline → process-swimlane | wg-12 |
@@ -130,10 +131,10 @@
    - (2) SVG→HTML 템플릿 `vt-` 21종: `assets/visual-html.css` + `assets/visual-html-templates/01..21.html` (본문 삽입 다이어그램).
 3. **네임스페이스 고정.** 위젯은 `wg-NN-` 접두사만, 비주얼 템플릿은 `.vt-*` 접두사만 사용. 충돌·누수 0.
 4. **인터랙션 한정.** `<details>` / `:checked` / `:target` / CSS 애니메이션만. JS 필요 위젯(18 triage, 20 prompt-tuner)은 무 JS 근사로 삽입.
-5. **16모드 라우터 고정.** §3 결정표 외 모드를 만들지 않는다.
+5. **17모드 라우터 고정.** §3 결정표 외 모드를 만들지 않는다.
 6. **코어 CSS 5종 해시 + 조건부 인라인.** 코어 해시 대상은 **5종**(`theme→components→visual-components→layouts→print`)이며 이 합본의 SHA-256 마커를 반드시 포함한다. `widgets.css`·`visual-html.css`는 **해시 대상이 아닌 조건부 인라인**으로, 프로파일에 따라 포함 여부가 갈린다(widget=widgets만/diagram=visual-html만/auto=둘 다). 인라인 동작 순서는 `theme→components→visual-components→(widgets)→(visual-html)→layouts→print`(미사용 라이브러리는 생략, 코어 5종 해시 산식·순서는 불변).
 7. **구조 보장.** `<html lang="ko">`, viewport, title, meta description, `h1` 정확히 1개, `<main id="main">`.
-8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(현재 버전 **5.9.2** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
+8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(현재 버전 **5.10.0** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
 9. **8-테마 단일 계약.** 테마는 `theme-dark.css`의 라디오 `name="ahf-theme"`(light/light2/white/dark/dark2/blue/skyblue/sepia) 1종만 사용한다. legacy `#theme-toggle` 마크업·스크립트형 테마 토글은 금지.
 
 ---
@@ -159,7 +160,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py \
 python3 skills/adaptive-html-final/scripts/quality_contract_check.py <output_dir>
 ```
 
-- **현행 골든(레퍼런스) 출력:** `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 스킬 자산 기준으로 검증을 통과한 13-topic 캐노니컬 예시다. 14번째 `github_analysis` 이후 신규 15/16모드 쇼케이스는 별도 smoke output으로 검증한다.
+- **현행 레퍼런스 출력:** `skills/adaptive-html-final/examples/`는 v5.10.0 스킬 자산 기준의 17모드 참조 예제 세트다. `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점 13-topic 캐노니컬 예시로 보존하되, 최신 17모드 기준선으로 오해하지 않는다.
 - **역사적 골든:** `output/adaptive-html-final-showcase-v6/`는 v4.5/v6 동결 시점 예시이므로 현재 검증 기준선으로 사용하지 않는다.
 
 **무 JS grep (불변식 1 보조 확인)** — JSON-LD 외 `<script>`가 0이어야 한다.
@@ -190,10 +191,11 @@ grep -rniE 'draggable=|contenteditable=' <output_dir>/*.html && echo "FORBIDDEN 
 |---|---|
 | 스킬 전체 워크플로우·모드·품질 게이트 | `SKILL.md` |
 | 버전·자산·레이아웃·위젯·스크립트 목록 | `manifest.json` |
-| 16모드 라우팅 상세 | `references/mode-selection.md` |
+| 17모드 라우팅 상세 | `references/mode-selection.md` |
 | 레이아웃별 블록 | `references/layout-system.md` |
 | 모드별 글쓰기 원칙 | `references/writing-system.md` |
 | GitHub 저장소 분석 전략 | `references/github-analysis-system.md` |
+| GitHub 기능·사용법·도입 가이드 전략 | `references/github-feature-usage-system.md` |
 | YouTube 분석 전략 | `references/youtube-analysis-system.md` |
 | 매뉴얼 분석 전략 | `references/manual-analysis-system.md` |
 | 디자인 토큰·DNA | `references/design-dna.md`, `references/editorial-design-system.md` |

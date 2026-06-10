@@ -12,14 +12,14 @@ grep -c 'class="skip" href="#main"' assets/base.html
 
 - [ ] base.html에 `<a class="skip" href="#main">`가 정확히 1개 있다.
 
-## 2. 16개 레이아웃의 `<main id="main">`가 각각 정확히 1개
+## 2. 17개 레이아웃의 `<main id="main">`가 각각 정확히 1개
 
 ```bash
 for f in assets/layouts/*.html; do echo -n "$f: "; grep -c 'main id="main"' "$f"; done
-# 기대값: 16개 파일 모두 1 (16/16)
+# 기대값: 17개 파일 모두 1 (17/17)
 ```
 
-- [ ] `assets/layouts/*.html` 16개 모두 `main id="main"`가 정확히 1개다(skip link 타깃 보장).
+- [ ] `assets/layouts/*.html` 17개 모두 `main id="main"`가 정확히 1개다(skip link 타깃 보장).
 
 ## 3. 단일 h1 (각 레이아웃/예시에 h1 1개)
 
@@ -109,3 +109,4 @@ grep -rl '<script' output.html | xargs grep -L 'application/ld+json'   # 빈 출
 
 - [ ] youtube_analysis: iframe/player 없이 텍스트 근거와 타임스탬프 링크를 제공한다.
 - [ ] manual_analysis: 역할 라우터와 절차 카드가 heading/list/table 의미를 유지한다.
+- [ ] github_feature_usage: 실제 화면 스크린샷에는 `alt`와 `figcaption`이 있고, 기능 지도/도입 가이드 섹션이 heading 구조를 유지한다.

@@ -19,6 +19,9 @@
 | article_html | hero-map, decision-tree | 키비주얼, 주장 구조도, 쟁점 흐름 |
 | education_html | timeline, checklist-flow, hero-map | 학습 경로도, 실습 플로우, 퀴즈 전 체크 |
 | github_analysis | hero-map, matrix, timeline, checklist-flow | 저장소 판단 흐름, 리스크, 활동 이력, 채택 체크 |
+| github_feature_usage | hero-map, card-grid, decision-tree | 기능 지도, 실제 화면 흐름, 도입 적합성 판단 |
+| youtube_analysis | timeline, matrix, quality-gate | 타임스탬프 근거 지도, 주장 위험, 콘텐츠 갭 |
+| manual_analysis | hero-map, checklist-flow, quality-gate | 역할별 실행 경로, 안전 조건, 트러블슈팅 흐름 |
 | blog_writer | hero-map, timeline | 문제-경험-해결 흐름, 개인 시행착오 지도 |
 | seo_dashboard | card-grid, matrix | SERP 프리뷰, 키워드 클러스터, 제목 후보 비교 |
 | platform_blog | card-grid, matrix, checklist-flow | 플랫폼별 카드, 발행 체크리스트, 채널 비교 |
@@ -46,7 +49,7 @@
 ```json
 {
   "type": "card-grid",
-  "title": "16개 모드별 최적 이미지 타입",
+  "title": "17개 모드별 최적 이미지 타입",
   "subtitle": "모드마다 정보 구조를 보강하는 시각물을 붙입니다",
   "items": [
     {"label": "beginner", "title": "비유 일러스트", "description": "개념을 생활 장면으로 설명"},

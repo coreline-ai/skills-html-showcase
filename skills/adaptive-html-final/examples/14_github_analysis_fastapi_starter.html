@@ -2110,6 +2110,18 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
         <article class="repo-evidence repo-unknown"><span class="label">UNKNOWN</span><h3>실제 응답 속도</h3><p>이슈/PR 평균 응답·머지 시간은 단일 스냅샷만으로는 추정할 수 없어 UNKNOWN.</p></article>
       </div>
       <div class="table-scroll"><table><caption>최근 커밋 5개 (FACT · 가상 예시값)</caption><thead><tr><th scope="col">SHA</th><th scope="col">일시</th><th scope="col">메시지</th></tr></thead><tbody><tr><th scope="row">a1b2c3d</th><td>2026-05-28 (예시)</td><td>fix: refresh token rotation edge case</td></tr><tr><th scope="row">e4f5g6h</th><td>2026-05-24 (예시)</td><td>chore: bump pydantic to v2.x range</td></tr><tr><th scope="row">i7j8k9l</th><td>2026-05-19 (예시)</td><td>feat: add health and readiness probes</td></tr><tr><th scope="row">m0n1o2p</th><td>2026-05-11 (예시)</td><td>docs: expand deployment section</td></tr><tr><th scope="row">q3r4s5t</th><td>2026-05-03 (예시)</td><td>test: add auth router happy-path cases</td></tr></tbody></table></div>
+      <h3>한눈에 보는 저장소 신호 지도</h3>
+      <p>정체성 · 건강 신호 · 리스크 세 축으로 owner/fastapi-starter의 공개 메타데이터를 압축한 지도다. (가상 관측, 종합 점수 62/100)</p>
+      <section class="vt-shell">
+        <div class="vt-frame">
+          <div class="hm-grid">
+            <article class="hm-card"><div class="vt-kicker">정체성</div><h3>FastAPI 백엔드 스타터</h3><p class="vt-text">Python 78.4% · MIT 라이선스 · stars 1,240 / forks 210. 인증·DB 세션·Docker를 묶은 공개 보일러플레이트로 관측된다.</p></article>
+            <article class="hm-card" style="--c:var(--vt-blue)"><div class="vt-kicker">건강 신호</div><h3>최근 1주 내 push · 활성</h3><p class="vt-text">최신 커밋 2026-05-28 · open issues 18 / PR 4 · releases 3(최신 v1.3.0) · CI 워크플로 존재. 유지보수는 진행 중으로 보인다.</p></article>
+            <article class="hm-card" style="--c:var(--vt-red)"><div class="vt-kicker">리스크</div><h3>보안·테스트 신호 약함</h3><p class="vt-text">SECURITY.md 부재(FACT) · Dependabot alert·테스트 커버리지 UNKNOWN. 운영 도입의 1순위 점검 대상이다.</p></article>
+          </div>
+          <div class="hm-result"><b>종합: 학습·PoC 적합 · 운영은 보강 후</b><span>구조·문서 신호는 양호, 보안·테스트·이력 신호가 점수를 끌어내린다 (62/100).</span></div>
+        </div>
+      </section>
     </section>
   <section class="code-tour">
       <h2 id="code-tour"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M11 7h12l6 6v20H11z"/><path class="bi-line" d="M23 7v7h6M16 20h9M16 26h7"/><circle class="bi-accent" cx="15" cy="14" r="2"/></svg></span><span class="num" aria-hidden="true">5</span> 어디부터 읽으면 되는가</h2>
@@ -2155,84 +2167,77 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
       </div>
     </section>
 
-  <section class="mode-template-contract" data-ahf-contract="mode-template" data-mode="github_analysis"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num" aria-hidden="true">T</span>모드 정본 템플릿 적용 확인</h2><p class="h2-sub">최신 스킬 결정표의 1순위 vt와 추천 wg 사용 여부를 시각적으로 확인하기 위한 섹션입니다.</p><div class="mini-card"><h3>1순위 vt 템플릿</h3><p><code>hero-map</code> 구조를 본문 안에 실제 HTML 템플릿으로 삽입했습니다.</p></div>
-<section class="vt-shell">
-  <div class="vt-frame">
-    <div class="vt-demo"><div class="hm-grid"><article class="hm-card"><div class="vt-kicker">Problem</div><h3>요약이 먼저 보이지 않음</h3><p class="vt-text">독자는 본문을 읽기 전에 판단 기준을 찾습니다.</p></article><article class="hm-card" style="--c:var(--vt-blue)"><div class="vt-kicker">Map</div><h3>핵심 구조 3단</h3><p class="vt-text">상황, 근거, 다음 행동을 한 줄로 연결합니다.</p></article><article class="hm-card" style="--c:var(--vt-green)"><div class="vt-kicker">Action</div><h3>검증 기준으로 닫기</h3><p class="vt-text">마지막은 감상이 아니라 실행 조건입니다.</p></article></div><div class="hm-result"><b>결론: SVG 대신 본문형 지도</b><span>이미지처럼 분리되지 않고 문서의 일부로 읽힙니다.</span></div></div>
-  </div>
-</section>
-<div class="mini-card wg-11-contract"><h3>추천 wg 위젯</h3><p><code>wg-11</code> 위젯을 모드별 보강 템플릿으로 포함했습니다.</p></div>
-<section class="wg-11" aria-labelledby="wg-11-title">
-  <header class="wg-11-head">
-    <p class="wg-11-kicker">주간 상태 리포트</p>
-    <h2 id="wg-11-title" class="wg-11-h">거버넌스 도입 · M1 3주차</h2>
-    <p class="wg-11-lead">계측 커버리지 <strong>88%</strong> 도달 · 게이트 자동화 리스크 1건 에스컬레이션</p>
-  </header>
+  <section class="repo-activity-board">
+      <h2 id="activity-board"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M7 22h6l3-9 5 16 4-12 2 5h6"/><circle class="bi-accent" cx="33" cy="22" r="2"/></svg></span><span class="num" aria-hidden="true">★</span>운영 상태 보드 · 살아 있는 프로젝트인가</h2>
+      <p class="h2-sub">공개 메타데이터로 관측한 활동·유지보수 신호를 한 보드로 묶었다. 막대는 외부 운영 도입 관점의 상대 신뢰도이며, 모든 수치는 가상 예시다.</p>
+      <div class="wg-11">
+        <div class="wg-11-kpis">
+          <div class="wg-11-kpi wg-11-kpi-good"><span class="wg-11-kpi-v">1,240</span><span class="wg-11-kpi-l">stars · forks 210</span></div>
+          <div class="wg-11-kpi wg-11-kpi-prog"><span class="wg-11-kpi-v">7일</span><span class="wg-11-kpi-l">최근 push 경과</span></div>
+          <div class="wg-11-kpi"><span class="wg-11-kpi-v">18</span><span class="wg-11-kpi-l">open issues · PR 4</span></div>
+          <div class="wg-11-kpi wg-11-kpi-risk"><span class="wg-11-kpi-v wg-11-warn">2</span><span class="wg-11-kpi-l">UNKNOWN 운영 신호</span></div>
+        </div>
 
-  <div class="wg-11-kpis">
-    <div class="wg-11-kpi wg-11-kpi-good"><span class="wg-11-kpi-v">88%</span><span class="wg-11-kpi-l">태깅 커버리지</span></div>
-    <div class="wg-11-kpi wg-11-kpi-prog"><span class="wg-11-kpi-v">3</span><span class="wg-11-kpi-l">진행 작업</span></div>
-    <div class="wg-11-kpi wg-11-kpi-risk"><span class="wg-11-kpi-v wg-11-warn">1</span><span class="wg-11-kpi-l">리스크</span></div>
-    <div class="wg-11-kpi"><span class="wg-11-kpi-v">0</span><span class="wg-11-kpi-l">차단됨</span></div>
-  </div>
+        <h3 class="wg-11-h3">신호별 운영 신뢰도</h3>
+        <div class="wg-11-bars">
+          <div class="wg-11-bar-row">
+            <span class="wg-11-bar-label">커밋 활동성</span>
+            <div class="wg-11-track" role="img" aria-label="커밋 활동성 신뢰도 90퍼센트">
+              <div class="wg-11-fill wg-11-fill-good" style="width:90%"></div>
+            </div>
+            <span class="wg-11-bar-pct">90%</span>
+          </div>
+          <div class="wg-11-bar-row">
+            <span class="wg-11-bar-label">문서·진입성</span>
+            <div class="wg-11-track" role="img" aria-label="문서 진입성 신뢰도 82퍼센트">
+              <div class="wg-11-fill wg-11-fill-good" style="width:82%"></div>
+            </div>
+            <span class="wg-11-bar-pct">82%</span>
+          </div>
+          <div class="wg-11-bar-row">
+            <span class="wg-11-bar-label">릴리스·이력 추적</span>
+            <div class="wg-11-track" role="img" aria-label="릴리스 이력 추적 신뢰도 55퍼센트">
+              <div class="wg-11-fill wg-11-fill-prog" style="width:55%"></div>
+            </div>
+            <span class="wg-11-bar-pct">55%</span>
+          </div>
+          <div class="wg-11-bar-row">
+            <span class="wg-11-bar-label">보안 운영 신호</span>
+            <div class="wg-11-track" role="img" aria-label="보안 운영 신호 신뢰도 30퍼센트, 리스크">
+              <div class="wg-11-fill wg-11-fill-risk" style="width:30%"></div>
+            </div>
+            <span class="wg-11-bar-pct">30%</span>
+          </div>
+        </div>
 
-  <h3 class="wg-11-h3">워크스트림 진척도</h3>
-  <div class="wg-11-bars">
-    <div class="wg-11-bar-row">
-      <span class="wg-11-bar-label">텔레메트리 스키마</span>
-      <div class="wg-11-track" role="img" aria-label="텔레메트리 스키마 진척 95퍼센트">
-        <div class="wg-11-fill wg-11-fill-good" style="width:95%"></div>
+        <div class="wg-11-cols">
+          <div class="wg-11-col wg-11-col-good">
+            <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>강한 신호 (FACT)</h4>
+            <ul class="wg-11-col-list">
+              <li>최근 1주 내 push · 최신 커밋 <span class="wg-11-tk">a1b2c3d</span></li>
+              <li>quickstart · compose · .env.example 완비</li>
+              <li>MIT 라이선스 · Contributing 문서 존재</li>
+            </ul>
+          </div>
+          <div class="wg-11-col wg-11-col-prog">
+            <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>유지보수 진행 중</h4>
+            <ul class="wg-11-col-list">
+              <li>이슈 트리아지 진행 <span class="wg-11-tk">issues 18</span></li>
+              <li>리뷰 대기 PR <span class="wg-11-tk">PR 4</span></li>
+              <li>릴리스 v1.3.0 · CHANGELOG는 부재</li>
+            </ul>
+          </div>
+          <div class="wg-11-col wg-11-col-risk">
+            <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>리스크 · 확인 불가</h4>
+            <ul class="wg-11-col-list">
+              <li><strong>SECURITY.md 부재</strong> — 보안 제보 창구 없음. <span class="wg-11-flag">점검 필요</span></li>
+              <li>Dependabot alert <span class="wg-11-tk">UNKNOWN</span></li>
+              <li>테스트 커버리지 <span class="wg-11-tk">UNKNOWN</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <span class="wg-11-bar-pct">95%</span>
-    </div>
-    <div class="wg-11-bar-row">
-      <span class="wg-11-bar-label">단가 대시보드</span>
-      <div class="wg-11-track" role="img" aria-label="단가 대시보드 진척 72퍼센트">
-        <div class="wg-11-fill wg-11-fill-prog" style="width:72%"></div>
-      </div>
-      <span class="wg-11-bar-pct">72%</span>
-    </div>
-    <div class="wg-11-bar-row">
-      <span class="wg-11-bar-label">CI 비용 게이트</span>
-      <div class="wg-11-track" role="img" aria-label="CI 비용 게이트 진척 40퍼센트, 리스크">
-        <div class="wg-11-fill wg-11-fill-risk" style="width:40%"></div>
-      </div>
-      <span class="wg-11-bar-pct">40%</span>
-    </div>
-    <div class="wg-11-bar-row">
-      <span class="wg-11-bar-label">예산 베이스라인</span>
-      <div class="wg-11-track" role="img" aria-label="예산 베이스라인 진척 100퍼센트">
-        <div class="wg-11-fill wg-11-fill-good" style="width:100%"></div>
-      </div>
-      <span class="wg-11-bar-pct">100%</span>
-    </div>
-  </div>
-
-  <div class="wg-11-cols">
-    <div class="wg-11-col wg-11-col-good">
-      <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>완료</h4>
-      <ul class="wg-11-col-list">
-        <li>단가 산식 v1 고시 <span class="wg-11-tk">GOV-12</span></li>
-        <li>예산 베이스라인 확정 <span class="wg-11-tk">GOV-18</span></li>
-        <li>미태깅 배포 차단 룰 적용 <span class="wg-11-tk">GOV-21</span></li>
-      </ul>
-    </div>
-    <div class="wg-11-col wg-11-col-prog">
-      <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>진행 중</h4>
-      <ul class="wg-11-col-list">
-        <li>단가 대시보드 디바이스 분해 뷰 <span class="wg-11-tk">GOV-24</span></li>
-        <li>eval 스위트 회귀 자동화 <span class="wg-11-tk">GOV-27</span></li>
-      </ul>
-    </div>
-    <div class="wg-11-col wg-11-col-risk">
-      <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>리스크</h4>
-      <ul class="wg-11-col-list">
-        <li><strong>CI 비용 게이트</strong> — 빌드 시간 증가로 일정 지연 우려. <span class="wg-11-flag">에스컬레이션</span> <span class="wg-11-tk">GOV-30</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-  </section>
+    </section>
 <section class="try">
       <span class="label">Next Actions</span>
       <h2 id="next-actions"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>권장하는 다음 할 일</h2>

@@ -60,26 +60,27 @@
 
 ## 모드 → 권장 위젯 매핑
 
-각 모드에서 우선 고려할 위젯을 근거 매핑 기준으로 정리한다. 굵은 항목이 1순위 추천이다.
+아래 표는 `SKILL.md` §0.6 Canonical Decision Table의 **wg-위젯 열에서 파생된 참조 표**다. 굵은 항목이 1순위 추천이며, 이 표가 §0.6과 충돌하면 §0.6이 정본이다.
 
 | Mode | 권장 위젯 | 쓰임 |
 |---|---|---|
-| skill_audit | **03 Annotated PR**, 11 Weekly Status, **17 PR Writeup** | 코드/diff 진단, 감사 진행 상태, 변경 요약 |
-| expert_html | **04 Module Map**, **16 Implementation Plan**, 01, 03, 11, 12, 13, 17, 18, 19 | 아키텍처·실행계획·리포트·코드 리뷰·회고. 단, `.validation-checklist` 안에는 `wg-03`/`wg-17`을 넣지 않는다(검증 섹션은 증빙 매트릭스·quality-gate 전용). |
-| article_html | **02 Visual Design Directions**, **10 SVG Figure Sheet**, 04, 07, 09, 13, 14 | 시안 비교·일러스트·발표·흐름 |
-| education_html | **14 Feature Explainer**, **15 Concept Explainer**, 06, 07, 08, 09, 10, 13, 20 | 학습/탭 코드·개념·인터랙션 설명·UX 흐름 |
-| github_analysis | **11 Weekly Status**, **04 Module Map**, **14 Feature Explainer**, **16 Implementation Plan**, 17, 18 | 저장소 활동/건강도, 코드 구조, quickstart, 후속 실행, PR·이슈 신호 |
-| youtube_analysis | **11 Weekly Status**, **13 Annotated Flowchart**, **14 Feature Explainer**, **16 Implementation Plan**, 18 | 영상 메타/댓글 신호, 타임스탬프 흐름, 콘텐츠 기회, 제작 실행 |
-| manual_analysis | **04 Module Map**, **13 Annotated Flowchart**, **16 Implementation Plan**, **18 Ticket Triage Board**, 11, 14 | 문서 구조, 절차, 운영 계획, 문제/위험 트리아지 |
-| beginner_html | **15 Concept Explainer**, 10, 13 | 개념 교육·개념도·절차 |
+| skill_audit | **03 Annotated PR**, 11 Weekly Status, 17 PR Writeup | 코드/diff 진단, 감사 진행 상태, 변경 요약 |
+| expert_html | **03 Annotated PR**, 04 Module Map, 11 Weekly Status, 12 Incident Timeline, 16 Implementation Plan, 17 PR Writeup | 코드 리뷰·아키텍처·운영 상태·회고·실행계획·릴리즈 정리. 단, `.validation-checklist` 안에는 `wg-03`/`wg-17`을 넣지 않는다(검증 섹션은 증빙 매트릭스·quality-gate 전용). |
+| article_html | **02 Visual Design Directions**, 04 Module Map, 07 Animation Sandbox, 09 Arrow-Key Slide Deck, 10 SVG Figure Sheet, 13 Annotated Flowchart, 14 Feature Explainer | 시안 비교·구조도·애니메이션·발표·일러스트·흐름·기능 설명 |
+| education_html | **06 Component Variants**, 07 Animation Sandbox, 08 Clickable Flow, 13 Annotated Flowchart, 14 Feature Explainer, 15 Concept Explainer, 20 Prompt Tuner | 변형 비교·애니메이션·UX 흐름·절차·탭 코드·개념·프롬프트 실습 |
+| github_analysis | **11 Weekly Status**, 04 Module Map, 14 Feature Explainer, 16 Implementation Plan, 17 PR Writeup, 18 Ticket Triage Board | 저장소 활동/건강도, 코드 구조, quickstart, 후속 실행, PR·이슈 신호 |
+| github_feature_usage | **14 Feature Explainer**, 04 Module Map, 16 Implementation Plan, 11 Weekly Status, 08 Clickable Flow | 기능 설명·구조 지도·도입 계획·운영 신호·사용 흐름 |
+| youtube_analysis | **11 Weekly Status**, 13 Annotated Flowchart, 14 Feature Explainer, 16 Implementation Plan, 18 Ticket Triage Board | 영상 메타/댓글 신호, 타임스탬프 흐름, 콘텐츠 기회, 제작 실행 |
+| manual_analysis | **04 Module Map**, 13 Annotated Flowchart, 16 Implementation Plan, 18 Ticket Triage Board, 11 Weekly Status, 14 Feature Explainer | 문서 구조, 절차, 운영 계획, 문제/위험 트리아지, 상태 요약, 기능 설명 |
+| beginner_html | **10 SVG Figure Sheet**, 13 Annotated Flowchart, 15 Concept Explainer | 개념도·절차·개념 교육 |
 | blog_writer | **17 PR Writeup** | 개발 회고 |
 | seo_dashboard | **11 Weekly Status** | 지표 대시보드 |
 | platform_blog | **02 Visual Design Directions** | 플랫폼별 렌더 비교 |
-| reference_html | **05 Living Design System**, **06 Component Variants**, **14 Feature Explainer**, **20 Prompt Tuner**, 02, 03, 04, 07, 15, 19 | 디자인 토큰·컴포넌트·API·프롬프트·패턴 문서 |
-| comparison_html | **01 Three Code Approaches** | 구현/대안 코드 비교 |
+| reference_html | **04 Module Map**, 05 Living Design System, 06 Component Variants, 14 Feature Explainer, 19 Feature Flag Editor, 20 Prompt Tuner | 구조 지도·디자인 토큰·컴포넌트·API·플래그·프롬프트 문서 |
+| comparison_html | **01 Three Code Approaches**, 02 Visual Design Directions | 구현/대안 코드 비교, 선택지 시각 비교 |
 | case_study_html | **12 Incident Timeline** | 사고 회고/포스트모템 |
-| landing_brief_html | **08 Clickable Flow**, 02, 05, 09, 16 | 프로토타입·시안·발표·로드맵 |
-| checklist_playbook | **13 Annotated Flowchart**, **18 Ticket Triage Board**, **19 Feature Flag Editor**, 11, 12, 16 | 절차·트리아지·플래그·운영 체크 |
+| landing_brief_html | **02 Visual Design Directions**, 05 Living Design System, 08 Clickable Flow, 09 Arrow-Key Slide Deck, 16 Implementation Plan | 시안·디자인 시스템·프로토타입·발표·로드맵 |
+| checklist_playbook | **11 Weekly Status**, 13 Annotated Flowchart, 16 Implementation Plan, 18 Ticket Triage Board, 19 Feature Flag Editor | 운영 상태·절차·실행 계획·트리아지·플래그 |
 
 ### github_analysis 조합 가이드
 
@@ -91,26 +92,26 @@ GitHub 분석은 위젯을 과삽입하지 않는다. `wg-11`로 최근 활동·
 
 | # | 이름 | 권장 모드(1순위 먼저) |
 |---|---|---|
-| 01 | Three Code Approaches | comparison_html, expert_html |
-| 02 | Visual Design Directions | article_html / landing_brief_html, platform_blog, reference_html |
-| 03 | Annotated Pull Request | skill_audit, expert_html, reference_html |
-| 04 | Module Map | manual_analysis, github_analysis, expert_html, reference_html, article_html |
+| 01 | Three Code Approaches | comparison_html |
+| 02 | Visual Design Directions | article_html, platform_blog, comparison_html, landing_brief_html |
+| 03 | Annotated Pull Request | expert_html, skill_audit |
+| 04 | Module Map | expert_html, article_html, github_analysis, github_feature_usage, manual_analysis, reference_html |
 | 05 | Living Design System | reference_html, landing_brief_html |
 | 06 | Component Variants | reference_html, education_html |
-| 07 | Animation Sandbox | reference_html / education_html, article_html |
-| 08 | Clickable Flow | landing_brief_html, education_html |
-| 09 | Arrow-Key Slide Deck | article_html / landing_brief_html, education_html |
-| 10 | SVG Figure Sheet | article_html, beginner_html, education_html |
-| 11 | Weekly Status | youtube_analysis, github_analysis, manual_analysis, seo_dashboard, expert_html, checklist_playbook |
-| 12 | Incident Timeline | case_study_html, expert_html |
-| 13 | Annotated Flowchart | manual_analysis, youtube_analysis, education_html / beginner_html, checklist_playbook, expert_html, article_html |
-| 14 | Feature Explainer | youtube_analysis, manual_analysis, github_analysis, education_html, reference_html, article_html |
-| 15 | Concept Explainer | beginner_html, education_html, reference_html |
-| 16 | Implementation Plan | manual_analysis, youtube_analysis, github_analysis, expert_html, landing_brief_html, checklist_playbook |
-| 17 | PR Writeup | github_analysis, skill_audit, blog_writer, expert_html |
-| 18 | Ticket Triage Board | manual_analysis, youtube_analysis, github_analysis, checklist_playbook, expert_html |
-| 19 | Feature Flag Editor | checklist_playbook, reference_html, expert_html |
-| 20 | Prompt Tuner | reference_html, education_html |
+| 07 | Animation Sandbox | article_html, education_html |
+| 08 | Clickable Flow | education_html, github_feature_usage, landing_brief_html |
+| 09 | Arrow-Key Slide Deck | article_html, landing_brief_html |
+| 10 | SVG Figure Sheet | beginner_html, article_html |
+| 11 | Weekly Status | expert_html, github_analysis, github_feature_usage, youtube_analysis, manual_analysis, seo_dashboard, skill_audit, checklist_playbook |
+| 12 | Incident Timeline | expert_html, case_study_html |
+| 13 | Annotated Flowchart | beginner_html, article_html, education_html, youtube_analysis, manual_analysis, checklist_playbook |
+| 14 | Feature Explainer | article_html, education_html, github_analysis, github_feature_usage, youtube_analysis, manual_analysis, reference_html |
+| 15 | Concept Explainer | beginner_html, education_html |
+| 16 | Implementation Plan | expert_html, github_analysis, github_feature_usage, youtube_analysis, manual_analysis, landing_brief_html, checklist_playbook |
+| 17 | PR Writeup | expert_html, github_analysis, blog_writer, skill_audit |
+| 18 | Ticket Triage Board | github_analysis, youtube_analysis, manual_analysis, checklist_playbook |
+| 19 | Feature Flag Editor | reference_html, checklist_playbook |
+| 20 | Prompt Tuner | education_html, reference_html |
 
 ## 무JS 인터랙션 기법 요약
 

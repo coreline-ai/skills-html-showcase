@@ -896,21 +896,216 @@ def examples_fidelity_conflict(skill_md: str, manifest_json: str) -> bool:
     return (s_light and m_full) or (s_full and m_light)
 
 
+def _split_decision_cell(cell: str) -> tuple[str, ...]:
+    """Split a §0.6 comma-list cell while stripping markdown emphasis/code."""
+    items = []
+    for raw in cell.split(','):
+        item = re.sub(r'[`*]', '', raw).strip()
+        if item:
+            items.append(item)
+    return tuple(items)
+
+
+def canonical_decision_table_from_skill(skill_md: str) -> dict:
+    """Parse SKILL.md §0.6 Canonical Decision Table.
+
+    Returns mode -> {layout, primary_vt, recommended_wg}. This gate is deliberately
+    markdown-specific: §0.6 is the declared single source of truth.
+    """
+    m = re.search(
+        r'## 0\.6[^\n]*\n[\s\S]*?\| Mode \| Layout \| vt-템플릿[^\n]*\|\n\|[-| ]+\|\n(?P<body>[\s\S]*?)(?:\n\n|vt-템플릿 파일명)',
+        skill_md,
+        re.I,
+    )
+    if not m:
+        return {}
+    out = {}
+    for line in m.group('body').splitlines():
+        if not line.startswith('|') or line.startswith('|---'):
+            continue
+        cells = [c.strip() for c in line.strip('|').split('|')]
+        if len(cells) < 4:
+            continue
+        vt_items = _split_decision_cell(cells[2])
+        out[cells[0]] = {
+            'layout': cells[1],
+            'primary_vt': vt_items[0] if vt_items else '',
+            'recommended_wg': tuple(re.findall(r'wg-\d{2}', cells[3])),
+        }
+    return out
+
+
+def validator_contract_table(contracts: dict | None = None) -> dict:
+    """Normalize MODE_TEMPLATE_CONTRACTS for comparison with §0.6."""
+    contracts = contracts or MODE_TEMPLATE_CONTRACTS
+    out = {}
+    for layout_class, contract in contracts.items():
+        mode = contract.get('mode')
+        if not mode:
+            continue
+        out[mode] = {
+            'layout_class': layout_class,
+            'primary_vt': contract.get('primary_vt', ''),
+            'recommended_wg': tuple(contract.get('recommended_wg', ())),
+        }
+    return out
+
+
+def widget_system_mode_wg_table(widget_md: str) -> dict:
+    """Parse references/widget-system.md mode -> recommended wg table."""
+    m = re.search(
+        r'\| Mode \| 권장 위젯 \| 쓰임 \|\n\|[-| ]+\|\n(?P<body>[\s\S]*?)(?:\n\n###|\n\n##)',
+        widget_md,
+    )
+    if not m:
+        return {}
+    out = {}
+    for line in m.group('body').splitlines():
+        if not line.startswith('|') or line.startswith('|---'):
+            continue
+        cells = [c.strip() for c in line.strip('|').split('|')]
+        if len(cells) < 2:
+            continue
+        out[cells[0]] = tuple(f'wg-{n}' for n in re.findall(r'(?<!\d)(\d{2})(?!\d)', cells[1]))
+    return out
+
+
+def decision_table_consistency_gate(skill_md: str, widget_md: str = '', contracts: dict | None = None) -> list:
+    """Source-doc contract gate for §0.6.
+
+    Locks SKILL.md §0.6 against validator MODE_TEMPLATE_CONTRACTS and the derived
+    widget-system mode table so stale recommendation rows cannot pass governance.
+    """
+    issues = []
+    canonical = canonical_decision_table_from_skill(skill_md)
+    if not canonical:
+        return [{'type': 'canonical_decision_table_parse_error'}]
+
+    validator = validator_contract_table(contracts)
+    for mode in sorted(set(canonical) | set(validator)):
+        if mode not in canonical:
+            issues.append({'type': 'validator_decision_table_extra_mode', 'mode': mode})
+            continue
+        if mode not in validator:
+            issues.append({'type': 'validator_decision_table_missing_mode', 'mode': mode})
+            continue
+        expected = canonical[mode]
+        actual = validator[mode]
+        if (expected['primary_vt'] != actual['primary_vt'] or
+                expected['recommended_wg'] != actual['recommended_wg']):
+            issues.append({'type': 'validator_decision_table_mismatch',
+                           'mode': mode,
+                           'expected': {'primary_vt': expected['primary_vt'], 'recommended_wg': list(expected['recommended_wg'])},
+                           'actual': {'primary_vt': actual['primary_vt'], 'recommended_wg': list(actual['recommended_wg'])}})
+
+    if widget_md:
+        widget_map = widget_system_mode_wg_table(widget_md)
+        if not widget_map:
+            issues.append({'type': 'widget_system_mode_table_parse_error'})
+        for mode in sorted(set(canonical) | set(widget_map)):
+            if mode not in canonical:
+                issues.append({'type': 'widget_system_extra_mode', 'mode': mode})
+                continue
+            if mode not in widget_map:
+                issues.append({'type': 'widget_system_missing_mode', 'mode': mode})
+                continue
+            expected_wg = canonical[mode]['recommended_wg']
+            actual_wg = widget_map[mode]
+            if expected_wg != actual_wg:
+                issues.append({'type': 'widget_system_wg_mapping_mismatch',
+                               'mode': mode,
+                               'expected': list(expected_wg),
+                               'actual': list(actual_wg)})
+    return issues
+
+
+def visual_html_system_staleness_gate(visual_md: str) -> list:
+    """Catch stale visual-html reference wording that makes historical assets look current."""
+    issues = []
+    if re.search(r'(?m)^>\s*버전:.*4\.4\.0\s*→\s*\*\*4\.5\.0\*\*', visual_md):
+        issues.append({'type': 'visual_html_intro_version_stale',
+                       'detail': 'visual-html-system.md should distinguish v4.5.0 adoption history from current v5.10.0 baseline.'})
+    if '20종 적용' in visual_md:
+        issues.append({'type': 'visual_html_template_count_stale',
+                       'detail': 'Current vt catalog has 21 templates; do not describe current proof as 20종 적용.'})
+    if re.search(r'모드별\s*실제\s*적용\s*갤러리:.*showcase-v6', visual_md):
+        issues.append({'type': 'visual_html_gallery_baseline_stale',
+                       'detail': 'showcase-v6 is historical; current reference baseline is skills/adaptive-html-final/examples/.'})
+    return issues
+
+
+def manifest_version_consistency_gate(manifest_text: str, changelog_text: str = '') -> list:
+    """Manifest self-consistency gate.
+
+    The manifest is the version/assets SoT, so its internal versioned fields must
+    not lag behind the top-level version even when source snapshots match byte-for-byte.
+    """
+    issues = []
+    try:
+        manifest = json.loads(manifest_text)
+    except Exception as e:
+        return [{'type': 'manifest_self_parse_error', 'detail': str(e)}]
+    version = manifest.get('version')
+    if not version:
+        issues.append({'type': 'manifest_version_missing'})
+        return issues
+    examples = manifest.get('examples') or {}
+    examples_version = examples.get('version')
+    if examples_version != version:
+        issues.append({'type': 'manifest_examples_version_mismatch',
+                       'version': version, 'examples_version': examples_version})
+    for field in ('changes', 'releases'):
+        entries = manifest.get(field) or []
+        first = entries[0] if entries else ''
+        if not first:
+            issues.append({'type': f'manifest_{field}_missing'})
+        elif not str(first).startswith(f'v{version}:'):
+            issues.append({'type': f'manifest_{field}_version_stale',
+                           'version': version, 'first': str(first)[:120]})
+    if changelog_text:
+        m = re.search(r'(?m)^##\s+v(\d+\.\d+\.\d+)\s+\((\d{4}-\d{2}-\d{2})\)', changelog_text)
+        if m:
+            changelog_version, changelog_date = m.groups()
+            if changelog_version != version:
+                issues.append({'type': 'manifest_version_not_changelog_latest',
+                               'version': version, 'changelog_version': changelog_version})
+            updated = manifest.get('updated')
+            if not updated:
+                issues.append({'type': 'manifest_updated_missing'})
+            elif str(updated) < changelog_date:
+                issues.append({'type': 'manifest_updated_before_changelog',
+                               'updated': updated, 'changelog_date': changelog_date})
+    return issues
+
+
 def skill_doc_consistency_gate(skill_dir: Path) -> list:
     """Source-doc correctness gate (run when --skill-dir given). Catches the editorial
-    drift the value/hash/count gates structurally cannot: duplicate CHANGELOG versions
-    and SKILL.md↔manifest examples-fidelity contradiction. No length/trigger rules."""
+    drift the value/hash/count gates structurally cannot: duplicate CHANGELOG versions,
+    manifest internal version staleness, and SKILL.md↔manifest examples-fidelity
+    contradiction. No length/trigger rules."""
     issues = []
     changelog = skill_dir / 'CHANGELOG.md'
+    changelog_text = ''
     if changelog.exists():
-        for ver in changelog_duplicate_versions(changelog.read_text(encoding='utf-8')):
+        changelog_text = changelog.read_text(encoding='utf-8')
+        for ver in changelog_duplicate_versions(changelog_text):
             issues.append({'type': 'changelog_duplicate_version', 'version': ver})
     skill_md_p, manifest_p = skill_dir / 'SKILL.md', skill_dir / 'manifest.json'
+    skill_text = ''
     if skill_md_p.exists() and manifest_p.exists():
-        if examples_fidelity_conflict(skill_md_p.read_text(encoding='utf-8'),
-                                      manifest_p.read_text(encoding='utf-8')):
+        skill_text = skill_md_p.read_text(encoding='utf-8')
+        manifest_text = manifest_p.read_text(encoding='utf-8')
+        issues.extend(manifest_version_consistency_gate(manifest_text, changelog_text))
+        if examples_fidelity_conflict(skill_text, manifest_text):
             issues.append({'type': 'examples_fidelity_contradiction',
                            'detail': 'SKILL.md와 manifest가 examples를 경량 vs 풀 스킬급으로 상반 서술.'})
+    if skill_text:
+        widget_p = skill_dir / 'references' / 'widget-system.md'
+        widget_text = widget_p.read_text(encoding='utf-8') if widget_p.exists() else ''
+        issues.extend(decision_table_consistency_gate(skill_text, widget_text))
+    visual_p = skill_dir / 'references' / 'visual-html-system.md'
+    if visual_p.exists():
+        issues.extend(visual_html_system_staleness_gate(visual_p.read_text(encoding='utf-8')))
     return issues
 
 

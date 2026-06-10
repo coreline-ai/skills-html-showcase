@@ -2076,9 +2076,86 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 
 <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="11" cy="20" r="5"/><circle class="bi-soft" cx="29" cy="11" r="5"/><circle class="bi-accent" cx="29" cy="29" r="5"/><path class="bi-line" d="M16 18l8-5M16 22l8 5"/></svg></span>하나의 회고가 네 플랫폼으로 연결되는 관계</h2><p class="h2-sub">분해한 회고는 독립된 글 네 편이 아니라, 검색형 허브를 뿌리로 두고 서로 의존하는 발행 묶음이다. 아래는 단일 원본에서 각 플랫폼 변형으로 이어지는 연결과 의존 관계다.</p><div class="card-grid"><article class="mini-card"><h3>뿌리 · 티스토리 검색 허브</h3><p>고정한 사실 타임라인과 원인 분석을 검색 질문형 H2로 펼친다. 가장 먼저 발행하고, 다른 플랫폼 글이 되돌아오는 기준 문서가 된다.</p></article><article class="mini-card"><h3>분기 · 벨로그 재현 기록</h3><p>허브의 코드·로그 조각을 환경 버전과 실패 케이스로 확장한다. 허브가 “무엇이”를, 회고 기록이 “어떻게 재현되는지”를 맡는다.</p></article><article class="mini-card"><h3>번역 · 브런치 서사</h3><p>같은 사건을 감정 곡선이 있는 이야기로 다시 쓴다. 증거는 줄이되 결론은 허브와 같게 유지해 메시지가 어긋나지 않게 한다.</p></article><article class="mini-card"><h3>전환 · LinkedIn 시그널</h3><p>허브의 교훈을 짧은 인사이트와 커리어 시그널로 압축한다. 가장 마지막에 발행하며 허브로 가는 링크에 의존한다.</p></article></div></section>
 
-<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="22" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="8" y="22" width="10" height="9" rx="2"/><rect class="bi-fill" x="22" y="22" width="10" height="9" rx="2"/><circle class="bi-accent" cx="13" cy="14" r="2"/></svg></span><span class="num">2</span>플랫폼별 발행 전략 카드</h2><p class="h2-sub">각 플랫폼은 같은 회고를 읽는 다른 인터페이스다. 카드에는 톤, 권장 길이, 제목 기준, 증거, 태그, CTA를 함께 고정해 글쓰기 단계에서 톤이 섞이지 않게 한다.</p><div class="platform-grid"><article class="platform-card is-search"><span class="platform-kicker">TISTORY</span><h3>검색형 장문 회고</h3><p>회고의 핵심 키워드를 제목 앞쪽에 두고 목차·원인 분석표·FAQ를 배치한다. 문단은 길어도 되지만 H2마다 독립 질문을 품어야 한다.</p><ul><li>권장 길이: 2,500~4,000자</li><li>제목: 검색 키워드 + 문제(예: “OOM 장애 회고: 원인과 재발 방지”)</li><li>증거: 원인 분석표, Before/After, FAQ</li><li>태그: 장애 키워드, 도구, 원인, 해결</li><li>CTA: 후속 글, 체크리스트 다운로드</li></ul></article><article class="platform-card is-dev"><span class="platform-kicker">VELOG</span><h3>재현 가능한 기술 기록</h3><p>성공담보다 실패 조건, 환경 버전, 코드, 에러 로그를 먼저 밝힌다. 독자가 자기 환경에서 따라 검증할 수 있어야 한다.</p><ul><li>권장 길이: 1,800~3,200자</li><li>제목: 기술 문제 명확화(예: “GC 튜닝으로 p99를 잡은 기록”)</li><li>증거: 코드 블록, 설정, 실패 로그, 지표</li><li>태그: 언어, 프레임워크, 오류, 실험</li><li>CTA: GitHub 링크, 댓글 질문, 후속 실험</li></ul></article><article class="platform-card is-story"><span class="platform-kicker">BRUNCH</span><h3>감정 곡선이 있는 서사</h3><p>기술 세부보다 “그때 나는 어떤 결정을 왜 내렸는가”를 이야기한다. 전문용어는 줄이고 장면과 전환점으로 끌고 간다.</p><ul><li>권장 길이: 1,500~2,500자</li><li>제목: 정서적 질문형(예: “장애 앞에서 팀장이 한 첫 한마디”)</li><li>증거: 한두 장면, 인용구, 최소한의 수치</li><li>태그: 일·성장·팀워크 같은 정서 키워드</li><li>CTA: 구독, 다음 이야기 예고</li></ul></article><article class="platform-card is-essay"><span class="platform-kicker">LINKEDIN</span><h3>짧은 교훈과 커리어 시그널</h3><p>도입 한 줄로 멈추게 하고, 본문은 불릿 교훈으로 압축한다. 회고를 통해 “나/우리 팀이 무엇을 배웠는가”라는 직무 시그널을 보낸다.</p><ul><li>권장 길이: 600~1,300자(첫 2줄이 훅)</li><li>제목/도입: 결과·교훈 선공개(예: “3시간 장애가 우리 배포 문화를 바꿨다”)</li><li>증거: 핵심 지표 1~2개, 교훈 3불릿</li><li>태그: 직무·산업 해시태그 3~5개</li><li>CTA: 의견 질문, 프로필·채용 연결</li></ul></article></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="22" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="8" y="22" width="10" height="9" rx="2"/><rect class="bi-fill" x="22" y="22" width="10" height="9" rx="2"/><circle class="bi-accent" cx="13" cy="14" r="2"/></svg></span><span class="num">2</span>플랫폼별 발행 전략 카드</h2><p class="h2-sub">각 플랫폼은 같은 회고를 읽는 다른 인터페이스다. 카드에는 톤, 권장 길이, 제목 기준, 증거, 태그, CTA를 함께 고정해 글쓰기 단계에서 톤이 섞이지 않게 한다.</p>
+<section class="vt-shell">
+  <div class="vt-shell-head"><div><div class="vt-id">변환 포인트 맵</div><h2>한 회고 → 네 플랫폼 변환 포인트</h2><p>같은 회고에서 무엇을 가장 먼저 다시 쓰는지를 플랫폼별로 고정한다.</p></div><span class="vt-fit">conversion map</span></div>
+  <div class="vt-frame">
+    <div class="cg-grid"><article class="cg-card"><em>TISTORY</em><b>제목·목차 재설계</b><p>검색 키워드를 제목 앞에 두고 H2마다 질문을 심는다. 원인 분석표·FAQ로 체류를 만든다.</p></article><article class="cg-card"><em>VELOG</em><b>코드·환경 노출</b><p>실패 조건, 버전, 코드, 에러 로그를 먼저 공개해 독자가 자기 환경에서 재현하게 한다.</p></article><article class="cg-card"><em>BRUNCH</em><b>장면·감정 곡선</b><p>전문용어를 줄이고 “그때 왜 그 결정을 했나”를 장면과 전환점으로 풀어 쓴다.</p></article><article class="cg-card"><em>LINKEDIN</em><b>훅·교훈 압축</b><p>첫 두 줄에 결과를 선공개하고 본문은 교훈 3불릿과 직무 해시태그로 압축한다.</p></article></div>
+  </div>
+</section>
+<div class="platform-grid"><article class="platform-card is-search"><span class="platform-kicker">TISTORY</span><h3>검색형 장문 회고</h3><p>회고의 핵심 키워드를 제목 앞쪽에 두고 목차·원인 분석표·FAQ를 배치한다. 문단은 길어도 되지만 H2마다 독립 질문을 품어야 한다.</p><ul><li>권장 길이: 2,500~4,000자</li><li>제목: 검색 키워드 + 문제(예: “OOM 장애 회고: 원인과 재발 방지”)</li><li>증거: 원인 분석표, Before/After, FAQ</li><li>태그: 장애 키워드, 도구, 원인, 해결</li><li>CTA: 후속 글, 체크리스트 다운로드</li></ul></article><article class="platform-card is-dev"><span class="platform-kicker">VELOG</span><h3>재현 가능한 기술 기록</h3><p>성공담보다 실패 조건, 환경 버전, 코드, 에러 로그를 먼저 밝힌다. 독자가 자기 환경에서 따라 검증할 수 있어야 한다.</p><ul><li>권장 길이: 1,800~3,200자</li><li>제목: 기술 문제 명확화(예: “GC 튜닝으로 p99를 잡은 기록”)</li><li>증거: 코드 블록, 설정, 실패 로그, 지표</li><li>태그: 언어, 프레임워크, 오류, 실험</li><li>CTA: GitHub 링크, 댓글 질문, 후속 실험</li></ul></article><article class="platform-card is-story"><span class="platform-kicker">BRUNCH</span><h3>감정 곡선이 있는 서사</h3><p>기술 세부보다 “그때 나는 어떤 결정을 왜 내렸는가”를 이야기한다. 전문용어는 줄이고 장면과 전환점으로 끌고 간다.</p><ul><li>권장 길이: 1,500~2,500자</li><li>제목: 정서적 질문형(예: “장애 앞에서 팀장이 한 첫 한마디”)</li><li>증거: 한두 장면, 인용구, 최소한의 수치</li><li>태그: 일·성장·팀워크 같은 정서 키워드</li><li>CTA: 구독, 다음 이야기 예고</li></ul></article><article class="platform-card is-essay"><span class="platform-kicker">LINKEDIN</span><h3>짧은 교훈과 커리어 시그널</h3><p>도입 한 줄로 멈추게 하고, 본문은 불릿 교훈으로 압축한다. 회고를 통해 “나/우리 팀이 무엇을 배웠는가”라는 직무 시그널을 보낸다.</p><ul><li>권장 길이: 600~1,300자(첫 2줄이 훅)</li><li>제목/도입: 결과·교훈 선공개(예: “3시간 장애가 우리 배포 문화를 바꿨다”)</li><li>증거: 핵심 지표 1~2개, 교훈 3불릿</li><li>태그: 직무·산업 해시태그 3~5개</li><li>CTA: 의견 질문, 프로필·채용 연결</li></ul></article></div></section>
 
-<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="22" rx="3"/><rect class="bi-fill" x="16" y="9" width="8" height="22" rx="3"/><rect class="bi-soft" x="25" y="9" width="8" height="22" rx="3"/><path class="bi-accent-line" d="M27 18h4"/><circle class="bi-accent" cx="29" cy="26" r="2.5"/></svg></span><span class="num">3</span>플랫폼별 발행 톤</h2><p class="h2-sub">톤은 취향이 아니라 독자 계약이다. 같은 결론도 플랫폼마다 허용되는 문장 길이, 전문용어 밀도, 증거의 무게가 다르다. 톤을 먼저 고르면 본문을 쓰는 동안 “브런치인데 너무 건조하다”거나 “벨로그인데 코드가 없다”는 흔들림을 줄일 수 있다.</p><div class="tbl table-scroll"><table><caption>플랫폼별 발행 톤 비교: 문장 리듬·용어 밀도·증거 무게·감정 강도</caption><thead><tr><th>톤 방향</th><th>대표 플랫폼</th><th>문장 리듬</th><th>전문용어 밀도</th><th>증거 무게</th><th>감정 강도</th></tr></thead><tbody><tr><td>검색 친화 정보형</td><td>티스토리</td><td>중간 길이, H2마다 한 질문</td><td>중간(용어+설명 병기)</td><td>표·체크리스트 중심</td><td>낮음</td></tr><tr><td>재현 가능 기록형</td><td>벨로그</td><td>호흡 긴 단계 서술</td><td>높음(코드·버전 노출)</td><td>코드·로그·지표 중심</td><td>낮음</td></tr><tr><td>서사 공감형</td><td>브런치</td><td>짧은 문단, 장면 전환</td><td>낮음(비유로 대체)</td><td>장면·인용 중심</td><td>높음</td></tr><tr><td>인사이트 시그널형</td><td>LinkedIn</td><td>훅 한 줄 + 불릿</td><td>중간(직무 언어)</td><td>핵심 지표 1~2개</td><td>중간</td></tr></tbody></table></div><div class="good"><div class="label">권장</div><div class="name">첫 발행은 검색 친화 정보형으로</div><p>회고 직후 첫 글은 검색형 허브(티스토리)로 톤을 잡는 편이 안전하다. 사실관계와 원인 분석이 한 곳에 정리되어 다른 세 글이 가리키는 기준점이 되고, 정정이 생겨도 허브 한 곳만 고치면 된다.</p></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="22" rx="3"/><rect class="bi-fill" x="16" y="9" width="8" height="22" rx="3"/><rect class="bi-soft" x="25" y="9" width="8" height="22" rx="3"/><path class="bi-accent-line" d="M27 18h4"/><circle class="bi-accent" cx="29" cy="26" r="2.5"/></svg></span><span class="num">3</span>플랫폼별 발행 톤</h2><p class="h2-sub">톤은 취향이 아니라 독자 계약이다. 같은 결론도 플랫폼마다 허용되는 문장 길이, 전문용어 밀도, 증거의 무게가 다르다. 톤을 먼저 고르면 본문을 쓰는 동안 “브런치인데 너무 건조하다”거나 “벨로그인데 코드가 없다”는 흔들림을 줄일 수 있다.</p><div class="tbl table-scroll"><table><caption>플랫폼별 발행 톤 비교: 문장 리듬·용어 밀도·증거 무게·감정 강도</caption><thead><tr><th>톤 방향</th><th>대표 플랫폼</th><th>문장 리듬</th><th>전문용어 밀도</th><th>증거 무게</th><th>감정 강도</th></tr></thead><tbody><tr><td>검색 친화 정보형</td><td>티스토리</td><td>중간 길이, H2마다 한 질문</td><td>중간(용어+설명 병기)</td><td>표·체크리스트 중심</td><td>낮음</td></tr><tr><td>재현 가능 기록형</td><td>벨로그</td><td>호흡 긴 단계 서술</td><td>높음(코드·버전 노출)</td><td>코드·로그·지표 중심</td><td>낮음</td></tr><tr><td>서사 공감형</td><td>브런치</td><td>짧은 문단, 장면 전환</td><td>낮음(비유로 대체)</td><td>장면·인용 중심</td><td>높음</td></tr><tr><td>인사이트 시그널형</td><td>LinkedIn</td><td>훅 한 줄 + 불릿</td><td>중간(직무 언어)</td><td>핵심 지표 1~2개</td><td>중간</td></tr></tbody></table></div><div class="good"><div class="label">권장</div><div class="name">첫 발행은 검색 친화 정보형으로</div><p>회고 직후 첫 글은 검색형 허브(티스토리)로 톤을 잡는 편이 안전하다. 사실관계와 원인 분석이 한 곳에 정리되어 다른 세 글이 가리키는 기준점이 되고, 정정이 생겨도 허브 한 곳만 고치면 된다.</p></div>
+<section class="wg-02-dir" aria-labelledby="wg-02-title">
+  <header class="wg-02-head">
+    <p class="wg-02-kicker">PLATFORM PRESENTATION</p>
+    <h2 id="wg-02-title" class="wg-02-h">회고 콘텐츠 표현 방향 비교</h2>
+    <p class="wg-02-lead">같은 회고를 어떤 표현 골격으로 보여줄지 플랫폼별 방향을 나란히 본다. 선택하면 강조 표시된다.</p>
+  </header>
+
+  <fieldset class="wg-02-grid">
+    <legend class="wg-02-sr">표현 방향 선택</legend>
+
+    <input type="radio" name="wg-02-pick" id="wg-02-a" class="wg-02-radio" checked>
+    <div class="wg-02-card" data-dir="A">
+      <div class="wg-02-preview wg-02-preview--a">
+        <div class="wg-02-pv-bar"><span class="wg-02-pv-dot"></span><span class="wg-02-pv-line"></span></div>
+        <div class="wg-02-pv-hero">검색형 허브</div>
+        <div class="wg-02-pv-body"><span></span><span></span><span class="wg-02-pv-short"></span></div>
+        <div class="wg-02-pv-cta wg-02-pv-cta--a">목차로 이동</div>
+      </div>
+      <div class="wg-02-meta">
+        <label for="wg-02-a" class="wg-02-pick-label">방향 A · 티스토리 검색형 허브</label>
+        <p class="wg-02-desc">키워드형 제목, 목차, 원인 분석표, FAQ로 구성한 장문 본문. 검색 유입과 체류 중심.</p>
+        <ul class="wg-02-palette" aria-label="방향 A 구성 요소">
+          <li style="background:var(--bg)"><span>목차</span></li>
+          <li style="background:var(--ink)"><span>분석표</span></li>
+          <li style="background:var(--accent)"><span>FAQ</span></li>
+        </ul>
+        <span class="wg-02-badge">선택됨</span>
+      </div>
+    </div>
+
+    <input type="radio" name="wg-02-pick" id="wg-02-b" class="wg-02-radio">
+    <div class="wg-02-card" data-dir="B">
+      <div class="wg-02-preview wg-02-preview--b">
+        <div class="wg-02-pv-bar wg-02-pv-bar--b"><span class="wg-02-pv-dot"></span><span class="wg-02-pv-line"></span></div>
+        <div class="wg-02-pv-cards"><span></span><span></span><span></span></div>
+        <div class="wg-02-pv-cta wg-02-pv-cta--b">코드 보기</div>
+      </div>
+      <div class="wg-02-meta">
+        <label for="wg-02-b" class="wg-02-pick-label">방향 B · 벨로그 재현 기록</label>
+        <p class="wg-02-desc">코드 블록, 설정, 실패 로그, 지표를 전면에 둔 기술 밀도형. 재현 가능성으로 신뢰 확보.</p>
+        <ul class="wg-02-palette" aria-label="방향 B 구성 요소">
+          <li style="background:var(--dark)"><span>코드</span></li>
+          <li style="background:var(--good-accent)"><span>지표</span></li>
+          <li style="background:var(--accent)"><span>로그</span></li>
+        </ul>
+        <span class="wg-02-badge">선택됨</span>
+      </div>
+    </div>
+
+    <input type="radio" name="wg-02-pick" id="wg-02-c" class="wg-02-radio">
+    <div class="wg-02-card" data-dir="C">
+      <div class="wg-02-preview wg-02-preview--c">
+        <div class="wg-02-pv-bar wg-02-pv-bar--c"><span class="wg-02-pv-dot"></span><span class="wg-02-pv-line"></span></div>
+        <div class="wg-02-pv-split"><div class="wg-02-pv-aside"></div><div class="wg-02-pv-main"><span></span><span></span></div></div>
+        <div class="wg-02-pv-cta wg-02-pv-cta--c">구독하기</div>
+      </div>
+      <div class="wg-02-meta">
+        <label for="wg-02-c" class="wg-02-pick-label">방향 C · 브런치·LinkedIn 서사형</label>
+        <p class="wg-02-desc">짧은 문단, 장면 도입, 훅 두 줄과 교훈 불릿. 정서적 공감과 커리어 시그널 중심.</p>
+        <ul class="wg-02-palette" aria-label="방향 C 구성 요소">
+          <li style="background:var(--analogy-bg)"><span>장면</span></li>
+          <li style="background:var(--analogy-accent)"><span>훅</span></li>
+          <li style="background:var(--accent)"><span>교훈</span></li>
+        </ul>
+        <span class="wg-02-badge">선택됨</span>
+      </div>
+    </div>
+  </fieldset>
+  <p class="wg-02-foot">방향은 배타 선택이 아니라 발행 순서다. 허브(A)를 기준점으로 먼저 잡고 재현 기록(B)·서사(C)를 잇는다. 라디오 선택으로 카드가 강조된다.</p>
+</section></section>
 
 <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="9" width="18" height="22" rx="3"/><path class="bi-line" d="M13 16h8M13 22h7"/><path class="bi-accent-line" d="M24 28l8-8 3 3-8 8-5 1z"/></svg></span><span class="num">4</span>플랫폼 변환표</h2><p class="h2-sub">회고의 한 조각은 플랫폼마다 다른 문단이 된다. 변환표를 먼저 만들면 글쓰기 단계에서 플랫폼별 톤이 섞이지 않고, 같은 사실이 네 가지 형태로 정확히 매핑된다.</p><div class="tbl table-scroll"><table><caption>기술 회고 원본의 플랫폼별 변환표</caption><thead><tr><th>회고 원본</th><th>티스토리</th><th>벨로그</th><th>브런치</th><th>LinkedIn</th></tr></thead><tbody><tr><td>장애 발생 상황</td><td>검색 질문형 H2와 도입 요약</td><td>재현 가능한 오류 조건과 환경</td><td>긴박했던 장면과 첫 감정</td><td>결과를 선공개하는 훅 한 줄</td></tr><tr><td>원인 분석</td><td>원인 분석표와 체크리스트</td><td>코드 블록, 설정, 실패 로그</td><td>“왜 그렇게 판단했나”의 내면</td><td>핵심 원인 한 문장 + 지표</td></tr><tr><td>해결 과정</td><td>Before/After 비교표</td><td>해결 커밋과 검증 로그</td><td>전환점이 된 결정의 순간</td><td>배운 점 3불릿</td></tr><tr><td>회고 결론</td><td>FAQ와 재발 방지 가이드</td><td>후속 실험·댓글 질문</td><td>성장 메시지와 다음 이야기</td><td>의견 질문 + 프로필 연결</td></tr></tbody></table></div></section>
 
@@ -2093,84 +2170,6 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="9" y="7" width="18" height="25" rx="3"/><path class="bi-line" d="M14 14h8M14 20h7M14 26h6"/><circle class="bi-accent" cx="29" cy="26" r="4"/><path class="bi-accent-line" d="M32 29l4 4"/></svg></span><span class="num">9</span>발행 후 검증 루프</h2><p class="h2-sub">복붙 여부가 아니라 플랫폼별 독자 반응의 차이를 본다. 같은 회고에서 어떤 질문이 어느 플랫폼에서 살아나는지 추적해야 다음 회고의 콘텐츠 설계가 쉬워진다.</p><div class="tbl table-scroll"><table><caption>발행 후 개선 판단표</caption><thead><tr><th>신호</th><th>해석</th><th>다음 조치</th></tr></thead><tbody><tr><td>검색 유입은 높은데 체류가 짧음</td><td>티스토리 허브의 H2가 검색 질문과 어긋남</td><td>유입 키워드를 다음 H2로 재배치</td></tr><tr><td>댓글이 코드 재현 실패에 집중됨</td><td>벨로그 기록의 환경·버전 정보 부족</td><td>실행 환경과 실패 로그 추가</td></tr><tr><td>브런치 공유는 높고 구독은 낮음</td><td>서사는 닿았으나 다음 이야기 동선이 약함</td><td>마지막에 후속 이야기 예고 추가</td></tr><tr><td>LinkedIn 노출은 많고 댓글은 없음</td><td>훅은 멈췄지만 의견 질문이 약함</td><td>마지막 문장을 열린 질문으로 교체</td></tr></tbody></table></div><div class="good"><div class="label">검증 통과 기준</div><div class="name">발행 전 self-review 3문장</div><p>① 네 글이 같은 사실과 결론을 말하는가, ② 원본 정정 시 함께 고칠 글 목록이 source note에 있는가, ③ 플랫폼별 CTA가 서로 충돌하지 않는가. 세 문장에 모두 “예”라고 답할 수 있을 때 발행한다.</p></div></section>
 
 
-  <section class="mode-template-contract" data-ahf-contract="mode-template" data-mode="platform_blog"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num" aria-hidden="true">T</span>모드 정본 템플릿 적용 확인</h2><p class="h2-sub">최신 스킬 결정표의 1순위 vt와 추천 wg 사용 여부를 시각적으로 확인하기 위한 섹션입니다.</p><div class="mini-card"><h3>1순위 vt 템플릿</h3><p><code>card-grid</code> 구조를 본문 안에 실제 HTML 템플릿으로 삽입했습니다.</p></div>
-<section class="vt-shell">
-  <div class="vt-frame">
-    <div class="cg-grid"><article class="cg-card"><em>01</em><b>초보자</b><p>비유와 용어</p></article><article class="cg-card"><em>02</em><b>전문가</b><p>리스크와 RACI</p></article><article class="cg-card"><em>03</em><b>교육</b><p>실습과 퀴즈</p></article><article class="cg-card"><em>04</em><b>레퍼런스</b><p>API와 예시</p></article><article class="cg-card"><em>05</em><b>비교</b><p>선택 기준</p></article><article class="cg-card"><em>06</em><b>사례</b><p>타임라인</p></article><article class="cg-card"><em>07</em><b>랜딩</b><p>가치 제안</p></article><article class="cg-card"><em>08</em><b>체크</b><p>완료 조건</p></article></div>
-  </div>
-</section>
-<div class="mini-card wg-02-contract"><h3>추천 wg 위젯</h3><p><code>wg-02</code> 위젯을 모드별 보강 템플릿으로 포함했습니다.</p></div>
-<section class="wg-02-dir" aria-labelledby="wg-02-title">
-  <header class="wg-02-head">
-    <p class="wg-02-kicker">DESIGN DIRECTIONS</p>
-    <h2 id="wg-02-title" class="wg-02-h">비주얼 디자인 방향 비교</h2>
-    <p class="wg-02-lead">3개 레이아웃·팔레트 방향을 라이브 렌더 카드로 나란히 비교하세요. 선택하면 강조 표시됩니다.</p>
-  </header>
-
-  <fieldset class="wg-02-grid">
-    <legend class="wg-02-sr">디자인 방향 선택</legend>
-
-    <input type="radio" name="wg-02-pick" id="wg-02-a" class="wg-02-radio" checked>
-    <div class="wg-02-card" data-dir="A">
-      <div class="wg-02-preview wg-02-preview--a">
-        <div class="wg-02-pv-bar"><span class="wg-02-pv-dot"></span><span class="wg-02-pv-line"></span></div>
-        <div class="wg-02-pv-hero">Editorial</div>
-        <div class="wg-02-pv-body"><span></span><span></span><span class="wg-02-pv-short"></span></div>
-        <div class="wg-02-pv-cta wg-02-pv-cta--a">읽어보기</div>
-      </div>
-      <div class="wg-02-meta">
-        <label for="wg-02-a" class="wg-02-pick-label">방향 A · 에디토리얼</label>
-        <p class="wg-02-desc">세리프 헤드라인, 넉넉한 여백, 단일 강조색. 긴 글 읽기 중심.</p>
-        <ul class="wg-02-palette" aria-label="방향 A 팔레트">
-          <li style="background:var(--bg)"><span>bg</span></li>
-          <li style="background:var(--ink)"><span>ink</span></li>
-          <li style="background:var(--accent)"><span>accent</span></li>
-        </ul>
-        <span class="wg-02-badge">선택됨</span>
-      </div>
-    </div>
-
-    <input type="radio" name="wg-02-pick" id="wg-02-b" class="wg-02-radio">
-    <div class="wg-02-card" data-dir="B">
-      <div class="wg-02-preview wg-02-preview--b">
-        <div class="wg-02-pv-bar wg-02-pv-bar--b"><span class="wg-02-pv-dot"></span><span class="wg-02-pv-line"></span></div>
-        <div class="wg-02-pv-cards"><span></span><span></span><span></span></div>
-        <div class="wg-02-pv-cta wg-02-pv-cta--b">대시보드</div>
-      </div>
-      <div class="wg-02-meta">
-        <label for="wg-02-b" class="wg-02-pick-label">방향 B · 다크 대시보드</label>
-        <p class="wg-02-desc">다크 캔버스, 카드 그리드, 데이터 밀도 높음. 운영 도구 지향.</p>
-        <ul class="wg-02-palette" aria-label="방향 B 팔레트">
-          <li style="background:var(--dark)"><span>dark</span></li>
-          <li style="background:var(--good-accent)"><span>good</span></li>
-          <li style="background:var(--accent)"><span>accent</span></li>
-        </ul>
-        <span class="wg-02-badge">선택됨</span>
-      </div>
-    </div>
-
-    <input type="radio" name="wg-02-pick" id="wg-02-c" class="wg-02-radio">
-    <div class="wg-02-card" data-dir="C">
-      <div class="wg-02-preview wg-02-preview--c">
-        <div class="wg-02-pv-bar wg-02-pv-bar--c"><span class="wg-02-pv-dot"></span><span class="wg-02-pv-line"></span></div>
-        <div class="wg-02-pv-split"><div class="wg-02-pv-aside"></div><div class="wg-02-pv-main"><span></span><span></span></div></div>
-        <div class="wg-02-pv-cta wg-02-pv-cta--c">시작하기</div>
-      </div>
-      <div class="wg-02-meta">
-        <label for="wg-02-c" class="wg-02-pick-label">방향 C · 소프트 사이드바</label>
-        <p class="wg-02-desc">파스텔 사이드바, 둥근 카드, 친근한 톤. 온보딩·SaaS 랜딩.</p>
-        <ul class="wg-02-palette" aria-label="방향 C 팔레트">
-          <li style="background:var(--analogy-bg)"><span>soft</span></li>
-          <li style="background:var(--analogy-accent)"><span>blue</span></li>
-          <li style="background:var(--accent)"><span>accent</span></li>
-        </ul>
-        <span class="wg-02-badge">선택됨</span>
-      </div>
-    </div>
-  </fieldset>
-  <p class="wg-02-foot">라디오 선택으로 카드가 강조됩니다(reactive selection 근사). 실시간 토큰 편집·코드 export는 JS가 필요합니다.</p>
-</section>
-  </section>
 <section class="try"><div class="label">NEXT ACTION</div><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>바로 실행할 일</h2><ol><li>회고를 사실·감정·증거·교훈으로 분해하고, 변경 금지할 결론 한 문장을 고정한다.</li><li>티스토리 허브 초안에 검색 질문형 H2와 원인 분석표를 채운다.</li><li>벨로그 기록의 환경·코드·실패 로그를 자기 환경에서 다시 검증한다.</li><li>브런치 장면 도입과 LinkedIn 훅 두 줄을 쓰고, 두 글 모두 허브로 가는 링크를 단다.</li></ol></section>
 
 <aside class="source-note"><div class="label">Source Note</div><p>플랫폼별 일반 발행 전략 예시이며 각 플랫폼의 정책, 에디터 기능, 노출 알고리즘은 변경될 수 있다. 발행 직전 플랫폼별 최신 정책과 태그·길이 권장값은 별도 확인이 필요하다.</p></aside>

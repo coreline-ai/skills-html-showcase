@@ -1,6 +1,6 @@
 # Editorial Design System
 
-`adaptive-html-final`은 16개 모드 구조를 유지하되, 출력물은 고급 한국어 기술 블로그/학습지처럼 보여야 한다.
+`adaptive-html-final`은 17개 모드 구조를 유지하되, 출력물은 고급 한국어 기술 블로그/학습지처럼 보여야 한다.
 
 ## 디자인 토큰
 
@@ -95,7 +95,7 @@
 현재 프로젝트 기준 좋은 예시는 `blog-demos/` 계열이다. 특히 다음 특성을 모방한다.
 
 - 차분한 오프화이트 배경
-- serif 제목과 sans 본문 조합
+- Pretendard/system sans 단일 스택(외부 세리프 폰트 금지)
 - h2 숫자 원 + h2-sub
 - 의미 라벨이 있는 term/analogy/danger/good
 - 마지막 검정 `.try` 박스
@@ -133,7 +133,7 @@
 - **읽기 진행 바.** `.reading-progress`는 CSS `animation-timeline: scroll()`(무 JS, 점진적 향상, reduced-motion에서 숨김). 활성 목차 스크롤스파이는 JS 필요 → 무 JS 원칙상 미도입.
 - **표 editorial 스타일.** 헤더 잉크 다크+흰 텍스트, 짝수 행 zebra 자동. 비교표 "추천/승자" 셀은 `.good` 강조 수동 적용 가능.
 
-## 테마 시스템 — 3종 (v5.2.0 · `assets/theme-dark.css`, 선택 슬롯)
+## 테마 시스템 — 8종 (v5.2.0+ · `assets/theme-dark.css`, 선택 슬롯)
 
 **CSS-only 8-테마**: 라이트(크림 기본) · 그레이(light2) · 화이트(순백) · 다크 · 로즈(dark2) · 블루 · 스카이 · 세피아. 라디오 그룹 + `:has()`로 전환하며 **무 JS**. 코어 CSS는 수정하지 않는다(라이트 byte-안정, 해시-safe).
 
@@ -141,12 +141,17 @@
 - **기본=라이트(크림).** 라디오 마크업이 없으면 그대로 라이트. (OS 자동 다크가 필요하면 `#ahf-dark`에 `@media(prefers-color-scheme:dark)` 한 줄 추가 가능 — 기본은 명시 선택.)
 - **다크 표면 보정 6+개(코어가 토큰 대신 리터럴을 쓰는 곳).** `.prompt-box`·`code`·`th`·`.status-pill`·`.timeline-card`·`.layout-seo .serp-url`·`.core-insight`·`.try .tag`·`.vt-pill.*` + `.wf-board` 라이트-토큰 컨텍스트(soft-workflow 일러스트 자기완결). 화이트는 보정 불필요(라이트 표면).
 - **삽입.** `{{THEME_DARK_CSS}}` 슬롯 = **`print.css` 뒤(맨 끝)**. 조건부 인라인.
-- **스위처 마크업(선택, 무 JS).** `<body>` 첫머리에 숨긴 라디오 3개 + 세그먼트 라벨:
+- **스위처 마크업(기본 필수, 무 JS).** `<body>` 첫머리에 숨긴 라디오 8개 + 세그먼트 라벨:
   ```html
   <fieldset class="ahf-themebar" aria-label="테마 선택">
     <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+    <input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">그레이</label>
     <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
     <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+    <input type="radio" name="ahf-theme" id="ahf-dark2"><label for="ahf-dark2">로즈</label>
+    <input type="radio" name="ahf-theme" id="ahf-blue"><label for="ahf-blue">블루</label>
+    <input type="radio" name="ahf-theme" id="ahf-skyblue"><label for="ahf-skyblue">스카이</label>
+    <input type="radio" name="ahf-theme" id="ahf-sepia"><label for="ahf-sepia">세피아</label>
   </fieldset>
   ```
   라디오는 시각적으로 숨고(`opacity:0`), `input:checked + label`이 활성 세그먼트(accent), 포커스 링은 `input:focus-visible + label`. 마크업을 빼면 출력은 라이트 고정(테마 토큰만 동봉).

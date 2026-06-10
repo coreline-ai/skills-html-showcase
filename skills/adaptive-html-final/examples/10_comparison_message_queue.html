@@ -2078,6 +2078,9 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
   <section>
     <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="no is-key">1</span>결론 먼저: 상황별 추천</h2>
     <p class="h2-sub">기준을 다 읽기 전에, 가장 흔한 세 상황에 대한 결론을 먼저 못 박는다. 근거는 아래 절에서 기준별로 풀어 쓴다.</p>
+<section class="vt-shell">
+  <div class="cmp"><article class="cmp-card pick"><div class="vt-kicker">AWS SQS</div><h3>관리형 작업 큐 — 운영 인력이 적을 때의 기본값</h3><ul><li>적합: 독립적 비동기 작업(메일·썸네일·결제 후처리), 이미 AWS</li><li>강점: 운영 표면 0, 종량제, 가장 빠른 출발</li><li>약점: 임의 과거 replay 불가, 초고빈도에서 요청 비용 누적</li></ul></article><article class="cmp-card"><div class="vt-kicker">RabbitMQ</div><h3>스마트 브로커 — 복잡한 라우팅·작업 분배</h3><ul><li>적합: 토픽/헤더 라우팅, 우선순위 큐, 요청-응답</li><li>강점: 인메모리 단건 저지연, 정교한 ack/재시도</li><li>약점: 클러스터·미러링 직접 운영, 초고처리량 한계</li></ul></article><article class="cmp-card"><div class="vt-kicker">Apache Kafka</div><h3>분산 커밋 로그 — 재처리·고처리량 이벤트</h3><ul><li>적합: 1:N 발행-구독, 과거 replay, 초당 수십만 건</li><li>강점: 오프셋 되감기 재처리, 수평 확장 처리량</li><li>약점: 운영 표면 가장 넓음(파티션·컨슈머 그룹·리밸런싱)</li></ul></article></div>
+</section>
     <p>세 후보는 "더 좋은 큐"가 아니라 <strong>서로 다른 제약을 먼저 푸는 도구</strong>다. Kafka는 재처리·고처리량 제약을, RabbitMQ는 복잡한 라우팅·작업 분배 제약을, SQS는 운영 인력 제약을 가장 먼저 해결한다. 그래서 비교는 "어떤 제약이 우리 시스템을 먼저 무너뜨리는가"에서 시작한다. 아래 결정 그리드의 risk 색은 각 선택을 골랐을 때 <strong>잘못 고를 경우의 후회 비용</strong>을 나타낸다.</p>
     <div class="decision-grid">
       <article class="decision-card risk-low">
@@ -2251,80 +2254,84 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
   </section>
 
 
-  <section class="mode-template-contract" data-ahf-contract="mode-template" data-mode="comparison_html"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num" aria-hidden="true">T</span>모드 정본 템플릿 적용 확인</h2><p class="h2-sub">최신 스킬 결정표의 1순위 vt와 추천 wg 사용 여부를 시각적으로 확인하기 위한 섹션입니다.</p><div class="mini-card"><h3>1순위 vt 템플릿</h3><p><code>comparison-cards</code> 구조를 본문 안에 실제 HTML 템플릿으로 삽입했습니다.</p></div>
-<section class="vt-shell">
-  <div class="cmp"><article class="cmp-card "><div class="vt-kicker">A</div><h3>SVG 유지</h3><ul><li>원본 다운로드에 좋음</li><li>본문과 분리됨</li></ul></article><article class="cmp-card pick"><div class="vt-kicker">B</div><h3>HTML 템플릿</h3><ul><li>문서 리듬과 조화</li><li>검색/복사 가능</li></ul></article><article class="cmp-card "><div class="vt-kicker">C</div><h3>Hybrid</h3><ul><li>큰 리포트에 적합</li><li>관리 기준 필요</li></ul></article></div>
-</section>
-<div class="mini-card wg-01-contract"><h3>추천 wg 위젯</h3><p><code>wg-01</code> 위젯을 모드별 보강 템플릿으로 포함했습니다.</p></div>
+  <section>
+    <h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M16 13l-6 7 6 7M24 13l6 7-6 7"/><path class="bi-accent-line" d="M22 11l-4 18"/></svg></span><span class="no">7</span>발행 코드로 보는 차이</h2>
+    <p class="h2-sub">같은 요구 — "주문 생성 이벤트를 발행한다" — 를 세 후보에서 구현하면 무엇이 달라지는지 코드로 비교한다.</p>
+    <p>매트릭스의 추상적 차이는 발행 코드 한 토막에서 구체화된다. 아래는 <strong>주문 생성 이벤트를 발행하는 프로듀서</strong>를 SQS·RabbitMQ·Kafka로 작성한 최소 예시다. 각 코드가 강제하는 개념(파티션 키, exchange/binding, 메시지 그룹·중복 제거 ID)이 곧 그 후보를 고를 때 떠안는 운영 모델이다.</p>
 <section class="wg-01" aria-labelledby="wg-01-title">
   <header class="wg-01-head">
-    <p class="wg-01-kicker">코드 비교</p>
-    <h2 id="wg-01-title" class="wg-01-title">한 문제, 세 가지 구현 접근</h2>
-    <p class="wg-01-lead">문제: <strong>중복 없는 정수 배열에서 두 수의 합이 target이 되는 인덱스 쌍 찾기</strong>. 세 접근의 코드·장단점·트레이드오프를 나란히 비교합니다.</p>
+    <p class="wg-01-kicker">발행 코드 비교</p>
+    <h2 id="wg-01-title" class="wg-01-title">한 이벤트, 세 가지 발행 방식</h2>
+    <p class="wg-01-lead">요구: <strong>주문 생성 이벤트(<code>order.created</code>)를 비동기로 발행한다</strong>. 같은 의도를 SQS·RabbitMQ·Kafka 프로듀서로 작성해 코드가 강제하는 모델과 트레이드오프를 나란히 비교합니다.</p>
   </header>
 
   <div class="wg-01-grid" role="list">
-    <article class="wg-01-card" role="listitem" aria-labelledby="wg-01-a1">
+    <article class="wg-01-card wg-01-card-pick" role="listitem" aria-labelledby="wg-01-a1">
       <div class="wg-01-card-head">
-        <span class="wg-01-rank" aria-hidden="true">A</span>
+        <span class="wg-01-rank wg-01-rank-pick" aria-hidden="true">A</span>
         <div>
-          <h3 id="wg-01-a1" class="wg-01-card-title">완전 탐색 (Brute Force)</h3>
-          <p class="wg-01-card-sub">O(n²) · 추가 메모리 없음</p>
+          <h3 id="wg-01-a1" class="wg-01-card-title">AWS SQS — send_message <span class="wg-01-pick-badge">운영 0 기본값</span></h3>
+          <p class="wg-01-card-sub">관리형 큐 · 브로커 운영 없음</p>
         </div>
       </div>
-      <pre class="wg-01-code" tabindex="0" aria-label="완전 탐색 코드"><code><span class="wg-01-kw">def</span> <span class="wg-01-fn">two_sum</span>(nums, target):
-  <span class="wg-01-kw">for</span> i <span class="wg-01-kw">in</span> range(len(nums)):
-    <span class="wg-01-kw">for</span> j <span class="wg-01-kw">in</span> range(i+<span class="wg-01-num">1</span>, len(nums)):
-      <span class="wg-01-kw">if</span> nums[i]+nums[j] == target:
-        <span class="wg-01-kw">return</span> [i, j]
-  <span class="wg-01-kw">return</span> []</code></pre>
+      <pre class="wg-01-code" tabindex="0" aria-label="SQS 발행 코드"><code>sqs = boto3.<span class="wg-01-fn">client</span>(<span class="wg-01-num">"sqs"</span>)
+
+<span class="wg-01-kw">def</span> <span class="wg-01-fn">publish_order</span>(order):
+  sqs.<span class="wg-01-fn">send_message</span>(
+    QueueUrl=ORDER_QUEUE_URL,
+    MessageGroupId=order[<span class="wg-01-num">"id"</span>],   <span class="wg-01-kw"># FIFO 순서</span>
+    MessageDeduplicationId=order[<span class="wg-01-num">"id"</span>],
+    MessageBody=json.<span class="wg-01-fn">dumps</span>(order),
+  )</code></pre>
       <div class="wg-01-cols">
         <div class="wg-01-pros">
           <p class="wg-01-coltag wg-01-coltag-good"><span aria-hidden="true">▲</span> 장점</p>
-          <ul><li>구현이 단순, 버그 위험 낮음</li><li>메모리 O(1)</li></ul>
+          <ul><li>브로커 운영 없이 즉시 발행</li><li>FIFO+중복제거 ID로 정확히 한 번에 근접</li></ul>
         </div>
         <div class="wg-01-cons">
           <p class="wg-01-coltag wg-01-coltag-bad"><span aria-hidden="true">▼</span> 단점</p>
-          <ul><li>큰 입력에서 느림</li><li>중첩 루프 확장성 낮음</li></ul>
+          <ul><li>임의 과거 시점 replay 불가</li><li>FIFO는 그룹당 처리량 상한</li></ul>
         </div>
       </div>
       <div class="wg-01-tags" aria-label="트레이드오프 태그">
-        <span class="wg-01-tag wg-01-tag-time">시간 O(n²)</span>
-        <span class="wg-01-tag wg-01-tag-space">공간 O(1)</span>
-        <span class="wg-01-tag">읽기 쉬움</span>
+        <span class="wg-01-tag wg-01-tag-time">운영 표면 0</span>
+        <span class="wg-01-tag wg-01-tag-space">종량제 과금</span>
+        <span class="wg-01-tag">1:1 작업 큐</span>
       </div>
     </article>
 
-    <article class="wg-01-card wg-01-card-pick" role="listitem" aria-labelledby="wg-01-a2">
+    <article class="wg-01-card" role="listitem" aria-labelledby="wg-01-a2">
       <div class="wg-01-card-head">
-        <span class="wg-01-rank wg-01-rank-pick" aria-hidden="true">B</span>
+        <span class="wg-01-rank" aria-hidden="true">B</span>
         <div>
-          <h3 id="wg-01-a2" class="wg-01-card-title">해시맵 1-pass <span class="wg-01-pick-badge">권장</span></h3>
-          <p class="wg-01-card-sub">O(n) · 메모리 트레이드</p>
+          <h3 id="wg-01-a2" class="wg-01-card-title">RabbitMQ — exchange 라우팅</h3>
+          <p class="wg-01-card-sub">스마트 브로커 · binding 설계 필요</p>
         </div>
       </div>
-      <pre class="wg-01-code" tabindex="0" aria-label="해시맵 코드"><code><span class="wg-01-kw">def</span> <span class="wg-01-fn">two_sum</span>(nums, target):
-  seen = {}
-  <span class="wg-01-kw">for</span> i, n <span class="wg-01-kw">in</span> enumerate(nums):
-    need = target - n
-    <span class="wg-01-kw">if</span> need <span class="wg-01-kw">in</span> seen:
-      <span class="wg-01-kw">return</span> [seen[need], i]
-    seen[n] = i
-  <span class="wg-01-kw">return</span> []</code></pre>
+      <pre class="wg-01-code" tabindex="0" aria-label="RabbitMQ 발행 코드"><code>ch = connection.<span class="wg-01-fn">channel</span>()
+ch.<span class="wg-01-fn">exchange_declare</span>(<span class="wg-01-num">"orders"</span>, <span class="wg-01-num">"topic"</span>)
+
+<span class="wg-01-kw">def</span> <span class="wg-01-fn">publish_order</span>(order):
+  ch.<span class="wg-01-fn">basic_publish</span>(
+    exchange=<span class="wg-01-num">"orders"</span>,
+    routing_key=<span class="wg-01-num">"order.created"</span>,
+    body=json.<span class="wg-01-fn">dumps</span>(order),
+    properties=pika.<span class="wg-01-fn">BasicProperties</span>(delivery_mode=<span class="wg-01-num">2</span>),
+  )</code></pre>
       <div class="wg-01-cols">
         <div class="wg-01-pros">
           <p class="wg-01-coltag wg-01-coltag-good"><span aria-hidden="true">▲</span> 장점</p>
-          <ul><li>선형 시간, 단일 순회</li><li>대규모 입력에 안정적</li></ul>
+          <ul><li>topic/헤더 라우팅·우선순위 강력</li><li>인메모리 단건 저지연</li></ul>
         </div>
         <div class="wg-01-cons">
           <p class="wg-01-coltag wg-01-coltag-bad"><span aria-hidden="true">▼</span> 단점</p>
-          <ul><li>O(n) 추가 메모리</li><li>해시 충돌 의존</li></ul>
+          <ul><li>exchange·binding이 운영 지식이 됨</li><li>클러스터·미러링 직접 운영</li></ul>
         </div>
       </div>
       <div class="wg-01-tags" aria-label="트레이드오프 태그">
-        <span class="wg-01-tag wg-01-tag-time">시간 O(n)</span>
-        <span class="wg-01-tag wg-01-tag-space">공간 O(n)</span>
-        <span class="wg-01-tag">실무 기본</span>
+        <span class="wg-01-tag wg-01-tag-time">단건 저지연</span>
+        <span class="wg-01-tag wg-01-tag-space">라우팅 유연</span>
+        <span class="wg-01-tag">작업 분배</span>
       </div>
     </article>
 
@@ -2332,32 +2339,35 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
       <div class="wg-01-card-head">
         <span class="wg-01-rank" aria-hidden="true">C</span>
         <div>
-          <h3 id="wg-01-a3" class="wg-01-card-title">정렬 + 투 포인터</h3>
-          <p class="wg-01-card-sub">O(n log n) · 인덱스 보존 필요</p>
+          <h3 id="wg-01-a3" class="wg-01-card-title">Apache Kafka — 파티션 키 produce</h3>
+          <p class="wg-01-card-sub">분산 로그 · 오프셋 보존·replay</p>
         </div>
       </div>
-      <pre class="wg-01-code" tabindex="0" aria-label="투 포인터 코드"><code><span class="wg-01-kw">def</span> <span class="wg-01-fn">two_sum</span>(nums, target):
-  arr = sorted(enumerate(nums), key=<span class="wg-01-kw">lambda</span> x: x[<span class="wg-01-num">1</span>])
-  l, r = <span class="wg-01-num">0</span>, len(arr)-<span class="wg-01-num">1</span>
-  <span class="wg-01-kw">while</span> l &lt; r:
-    s = arr[l][<span class="wg-01-num">1</span>] + arr[r][<span class="wg-01-num">1</span>]
-    <span class="wg-01-kw">if</span> s == target: <span class="wg-01-kw">return</span> [arr[l][<span class="wg-01-num">0</span>], arr[r][<span class="wg-01-num">0</span>]]
-    l, r = (l+<span class="wg-01-num">1</span>, r) <span class="wg-01-kw">if</span> s&lt;target <span class="wg-01-kw">else</span> (l, r-<span class="wg-01-num">1</span>)
-  <span class="wg-01-kw">return</span> []</code></pre>
+      <pre class="wg-01-code" tabindex="0" aria-label="Kafka 발행 코드"><code>producer = <span class="wg-01-fn">KafkaProducer</span>(
+  bootstrap_servers=BROKERS,
+  acks=<span class="wg-01-num">"all"</span>,            <span class="wg-01-kw"># 내구성</span>
+)
+
+<span class="wg-01-kw">def</span> <span class="wg-01-fn">publish_order</span>(order):
+  producer.<span class="wg-01-fn">send</span>(
+    <span class="wg-01-num">"orders"</span>,
+    key=order[<span class="wg-01-num">"id"</span>].<span class="wg-01-fn">encode</span>(),  <span class="wg-01-kw"># 파티션 순서</span>
+    value=json.<span class="wg-01-fn">dumps</span>(order).<span class="wg-01-fn">encode</span>(),
+  )</code></pre>
       <div class="wg-01-cols">
         <div class="wg-01-pros">
           <p class="wg-01-coltag wg-01-coltag-good"><span aria-hidden="true">▲</span> 장점</p>
-          <ul><li>정렬 데이터에 재사용 용이</li><li>공간 O(1)~O(n)</li></ul>
+          <ul><li>오프셋 되감기로 과거 replay</li><li>파티션 수평 확장으로 초고처리량</li></ul>
         </div>
         <div class="wg-01-cons">
           <p class="wg-01-coltag wg-01-coltag-bad"><span aria-hidden="true">▼</span> 단점</p>
-          <ul><li>정렬 비용 발생</li><li>원본 인덱스 추적 복잡</li></ul>
+          <ul><li>파티션·컨슈머 그룹·리밸런싱 운영</li><li>단순 작업 큐엔 과한 복잡도</li></ul>
         </div>
       </div>
       <div class="wg-01-tags" aria-label="트레이드오프 태그">
-        <span class="wg-01-tag wg-01-tag-time">시간 O(n log n)</span>
-        <span class="wg-01-tag wg-01-tag-space">공간 O(n)</span>
-        <span class="wg-01-tag">정렬 의존</span>
+        <span class="wg-01-tag wg-01-tag-time">고처리량</span>
+        <span class="wg-01-tag wg-01-tag-space">replay 가능</span>
+        <span class="wg-01-tag">1:N 발행-구독</span>
       </div>
     </article>
   </div>

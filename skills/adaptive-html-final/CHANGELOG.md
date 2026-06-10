@@ -1,5 +1,16 @@
 # Changelog — adaptive-html-final
 
+## v5.10.1 (2026-06-10) — 예제 정본화(부록 안티패턴 제거) + 자기정합 게이트 3종
+
+v5.10.0 직후 후속 품질·거버넌스 하드닝. **코어 CSS·17모드·자산은 불변**(core 해시 동일)이라 patch 릴리스다. 전문가 상세 리뷰에서 드러난 "게이트는 통과하지만 스킬 자신의 규칙은 위반"하던 지점을 닫고, 구조적 리스크를 런타임 게이트 + 거버넌스 테스트로 성문화했다.
+
+- **examples 01–14 정본화**: 각 예제 말미의 `mode-template-contract` 부록(자기참조 메타 문구 + 모드 무관 off-topic 위젯 + 부록 전용 vt)을 제거하고, 15–17과 동일하게 **1순위 vt를 본문 콘텐츠 섹션에 실제 주제 데이터로 내장** + **모드 권장 wg 1종을 주제 맞춤으로** 재구성. SKILL §7/Step 4.1(예제 말투·붕어빵·"본문 삽입 증명용 섹션" 금지)을 예제 스스로 준수. (15·16·17은 이미 정본 패턴이라 무변경.)
+- **quality_contract 메타문구 게이트**: `quality_contract_check.py`에 `template_demo_meta_phrase`(모드 정본 템플릿 적용 확인/실제 HTML 템플릿으로 삽입했습니다/보강 템플릿으로 포함…)·`template_contract_scaffold`(`data-ahf-contract="mode-template"`) 추가 — 부록형 메타 잔존을 본문에서 차단.
+- **manifest 자기정합 게이트**: `manifest_version_consistency_gate` 신설·배선 — `examples.version`/`changes[0]`/`releases[0]`/`updated`가 top-level `version`·CHANGELOG 최신과 어긋나면 실패. v5.10.0 시점 manifest 스테일니스(examples.version 5.9.2·updated 구값·releases 누락) 해소.
+- **결정표 자기정합 게이트**: `decision_table_consistency_gate` 신설·배선 — **SKILL §0.6 ↔ validator `MODE_TEMPLATE_CONTRACTS` ↔ `references/widget-system.md` mode→wg 매핑** 3자 일치를 강제. 이에 맞춰 widget-system.md 모드별 권장 wg 표를 §0.6 정본으로 정렬(expert/education/reference/checklist에서 비정본 wg 제거).
+- **references 스테일 정리**: `visual-html-system.md` "스킬 4.4.0→4.5.0/20종 적용"을 현행(v5.10.x·21종·17모드 §0.6)으로 재서술, dangling `output/showcase-v6` 갤러리 링크를 현행 레퍼런스 `examples/`로 재지정. README 재현 명령을 `13-topics`(드리프트로 FAILED) → `examples/`(OK)로 교체.
+- **거버넌스 테스트**: manifest·결정표 자기정합 회귀 테스트 추가(**80→86 checks**). `validate_output.py`는 examples 18파일 **OK** 유지, `completion_check.py` 3/3.
+
 ## v5.10.0 (2026-06-09) — 17번째 모드 `github_feature_usage` 추가 (GitHub 기능·도입 가이드)
 
 GitHub 저장소를 **"무엇을 해주나·어떻게 쓰나·어디에 맞나"** 기능·사용법·도입 가이드(실제 화면 중심)로 바꾸는 독립 모드 신설. `github_analysis`(실사/리스크/투자판단)와 어조·형식이 달라 별도 레이아웃으로 분리.
@@ -7,13 +18,14 @@ GitHub 저장소를 **"무엇을 해주나·어떻게 쓰나·어디에 맞나"*
 - **레이아웃**: `layout-github-feature` + 스캐폴드 `assets/layouts/github-feature-usage.html`. 섹션 모델 = positioning → feature toc → 기능 지도 → 핵심 기능(wg-14) → 기술스택 → 아키텍처 → 디렉토리 → **실제 화면(스크린샷 갤러리)** → 사용자/관리자 기능 → 시작 방법 → 적합성 → 도입 전 확인 → 최종 판단 → next actions → source note.
 - **layouts.css**: `layout-github-feature` 섹션 카드 표면(=github 동일) + `.feature-map-grid`·`.feature-screens-grid`(figure/img/figcaption) 추가.
 - **검증기**: `MODE_TEMPLATE_CONTRACTS`에 `layout-github-feature`(primary `hero-map`, 권장 `wg-14`/`wg-04`/`wg-16`/`wg-11`/`wg-08`) 등록, toc-map 필수 목록 + `github_feature_usage_contract_gate`(섹션 카드·body-icon·기능지도/실제화면·출처한계) 신설·배선.
-- **SKILL.md**: 16→17 모드, §0.6 결정표 행, 트리거 Priority 17 + github_analysis와의 tie-breaker(실사 vs 사용설명), §4 섹션 모델·정량 하한, 템플릿 추천 목록.
+- **SKILL.md**: 16→17 모드, §0.6 결정표 행, manifest 기준 트리거 Priority 6 + github_analysis와의 tie-breaker(실사 vs 사용설명), §4 섹션 모델·정량 하한, 템플릿 추천 목록.
 - **references**: `github-feature-usage-system.md` 신설(섹션 모델·스크린샷 계약·실사와의 차이·완료 게이트).
 - **manifest**: modes 17개·layouts에 `github-feature-usage.html` 등록, version 5.10.0.
 - 코어(layouts.css) 변경으로 core 해시 갱신 → **examples 17종 v5.10.0 재인라인 + `examples/sources` 스냅샷·css-integrity 동기화**.
 - **github_feature_usage 예제 편입**: smoke output(github-feature-usage-coreline-auth)을 `examples/17_github_feature_usage_coreline_auth.html`로 복사·정합(`layout-github`→`layout-github-feature`, `github-question-toc`→`feature-toc`, `github-verdict`→`feature-verdict`). 실제 화면 스크린샷 8장을 `examples/assets/screenshots/`에 동봉, `examples/index.html` 갤러리에 17번 카드 추가. 디렉터리 검증 0 issue.
 - **외부 세리프 폰트 링크 20건 제거**: examples 전반의 `fonts.googleapis.com/css2?family=Noto+Serif+KR` 링크 삭제(v5.9.2 금지·미사용 dead link, `--serif`=Pretendard라 시각 영향 0) → `forbidden_noto_serif_kr_in_output` 해소.
 - **wg-03-grid 정합 교정**: 카탈로그-싱크에서 `align-items:start`로 바뀌어 R3 게이트(`wg03_grid_not_stretch`, diff/notes 동일높이)를 위반하던 것을 카탈로그·스킬 모두 `stretch`(정본)로 복원.
+- **문서 정합 회귀 방지**: `references/widget-system.md`의 모드별 권장 wg 표를 §0.6 정본과 동기화하고, `SKILL.md` §0.6 ↔ `MODE_TEMPLATE_CONTRACTS` ↔ `widget-system.md` 교차검증 및 `visual-html-system.md` 역사적 갤러리/20종 문구 stale 감지 게이트 추가. 거버넌스 **86/86**.
 
 ## v5.9.2 (2026-06-08) — 폰트·decision-tree·toc-map 회귀 방지
 

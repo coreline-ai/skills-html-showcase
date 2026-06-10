@@ -2118,11 +2118,66 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 <tr><td>“1. Read the PR description.”</td><td>디프 입력 미보장</td><td>diff 없으면 리뷰 중단·입력 부족 반환</td><td>차단</td></tr>
 <tr><td>“2. Write a summary review.”</td><td>차단 분류 단계 없음</td><td>요약 전에 severity 분류 단계 삽입</td><td>경고</td></tr>
 </tbody></table></div>
+<section class="wg-03" aria-labelledby="wg-03-title">
+  <header class="wg-03-head">
+    <p class="wg-03-kicker">SKILL.md 개선본</p>
+    <h2 id="wg-03-title" class="wg-03-title">코드리뷰 봇 SKILL.md · Output·Workflow 정본화 패치</h2>
+    <div class="wg-03-meta">
+      <span class="wg-03-chip">skills/code-review-bot/SKILL.md</span>
+      <span class="wg-03-chip wg-03-chip-add">+7</span>
+      <span class="wg-03-chip wg-03-chip-del">−4</span>
+      <span class="wg-03-chip">감사 finding 3건 반영</span>
+    </div>
+    <nav class="wg-03-jump" aria-label="노트 점프">
+      <span class="wg-03-jump-label">노트로 이동:</span>
+      <a href="#wg-03-n1" class="wg-03-jump-link wg-03-sev-critical">L2 critical</a>
+      <a href="#wg-03-n2" class="wg-03-jump-link wg-03-sev-warn">L3 warn</a>
+      <a href="#wg-03-n3" class="wg-03-jump-link wg-03-sev-info">L9 info</a>
+    </nav>
+  </header>
+
+  <div class="wg-03-grid">
+    <div class="wg-03-diff" role="table" aria-label="SKILL.md 개선 전/후 diff">
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln" aria-hidden="true">1</span><code class="wg-03-code">## Output</code></div>
+      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln" aria-hidden="true">2</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">−</span>- Leave comments on the PR.</code></div>
+      <div id="wg-03-l2" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">2</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">+</span>- 코멘트마다 {file, line, severity, rationale} 필수.</code><a href="#wg-03-n1" class="wg-03-dot wg-03-sev-critical" aria-label="L2 critical 노트">!</a></div>
+      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">3</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">−</span>- Approve if the code looks fine.</code></div>
+      <div id="wg-03-l3" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">3</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">+</span>- blocking finding이 0건일 때만 approve, 근거 첨부.</code><a href="#wg-03-n2" class="wg-03-dot wg-03-sev-warn" aria-label="L3 warn 노트">!</a></div>
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">4</span><code class="wg-03-code"></code></div>
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">5</span><code class="wg-03-code">## Workflow</code></div>
+      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">6</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">−</span>1. Read the PR description.</code></div>
+      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">6</span><code class="wg-03-code"><span class="wg-03-sign">+</span>1. diff를 입력으로 받는다. 비거나 잘리면 중단·입력 부족 반환.</code></div>
+      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">7</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">−</span>2. Write a summary review.</code></div>
+      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">7</span><code class="wg-03-code"><span class="wg-03-sign">+</span>2. finding마다 severity를 분류한다(block/warn/info).</code></div>
+      <div id="wg-03-l9" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">8</span><code class="wg-03-code"><span class="wg-03-sign">+</span>3. blocking이 있으면 approve 금지, 요약은 마지막에.</code><a href="#wg-03-n3" class="wg-03-dot wg-03-sev-info" aria-label="L8 info 노트">i</a></div>
+    </div>
+
+    <aside class="wg-03-notes" aria-label="리뷰 노트">
+      <article id="wg-03-n1" class="wg-03-note wg-03-sev-critical" tabindex="-1">
+        <header class="wg-03-note-head"><span class="wg-03-badge">critical</span><span class="wg-03-note-loc"><a href="#wg-03-l2">L2</a></span></header>
+        <p class="wg-03-note-body">출력 스키마를 자유 코멘트에서 <code>{file, line, severity, rationale}</code> 구조로 고정한다. 구조화 필드가 없으면 같은 PR에 매번 다른 형식이 나오고 G3 근거 게이트를 검증할 수 없다. <strong>이 한 줄이 G1·G3 미흡을 동시에 닫는다.</strong></p>
+      </article>
+      <article id="wg-03-n2" class="wg-03-note wg-03-sev-warn" tabindex="-1">
+        <header class="wg-03-note-head"><span class="wg-03-badge">warn</span><span class="wg-03-note-loc"><a href="#wg-03-l3">L3</a></span></header>
+        <p class="wg-03-note-body">‘보이면 승인(looks fine)’을 <code>blocking == 0</code> 조건으로 대체한다. G2 차단 판정의 핵심이며, 근거 없는 LGTM이 보안 결함 PR에 잘못된 안심 신호를 주는 가장 위험한 정상 동작 위반을 막는다.</p>
+      </article>
+      <article id="wg-03-n3" class="wg-03-note wg-03-sev-info" tabindex="-1">
+        <header class="wg-03-note-head"><span class="wg-03-badge">info</span><span class="wg-03-note-loc"><a href="#wg-03-l9">L8</a></span></header>
+        <p class="wg-03-note-body">요약을 마지막 단계로 옮기면 severity 분류가 먼저 끝나 차단 판정이 요약에 자연스럽게 반영된다. 이 순서 변경은 secret-leak·빈 디프 fixture 회귀 테스트의 기대값과도 맞물린다.</p>
+      </article>
+    </aside>
+  </div>
+</section>
 </section>
 
 <section><h2><span class="body-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="num">4</span>품질 게이트: 통과 / 미흡</h2>
 <p class="h2-sub">품질 게이트는 “리뷰가 작성됐다”와 “병합해도 안전하다”를 분리하는 장치다. 코멘트가 많아도 차단 조건과 근거가 없으면 게이트는 그냥 열린 문이다.</p>
 <p>이 스킬의 게이트는 코멘트 수가 아니라 <strong>네 가지 통과 조건</strong>으로 정의한다. 각 게이트는 통과/미흡을 명확히 가르며, 하나라도 미흡이면 봇은 approve를 출력하지 않는다.</p>
+<section class="vt-shell">
+  <div class="vt-frame">
+    <div><div class="qg-grid"><div class="qg-card block"><b>G1 위험 분류</b><p class="vt-text">모든 코멘트에 severity(block/warn/info) 부여 — 현재 “일반 의견”만 남겨 미흡</p></div><div class="qg-card block"><b>G2 차단 판정</b><p class="vt-text">blocking finding 0건일 때만 approve — 현재 ‘보이면 승인’이라 미흡</p></div><div class="qg-card warn"><b>G3 근거 인용</b><p class="vt-text">각 finding에 file·line·rationale 첨부 — 위치 없는 추상 코멘트가 남아 미흡</p></div><div class="qg-card block"><b>G4 입력 검증</b><p class="vt-text">디프가 비거나 잘리면 리뷰 중단 — 빈 입력에 “문제 없음” 반환해 차단</p></div></div><div class="qg-final"><span class="qg-final-label">최종 판정 · 조건부 통과(CONDITIONAL)</span>G1·G2·G4는 차단 수준 미흡, G3은 경고. 무조건 통과도 전면 반려도 아닌 ‘출력 스키마·차단 규칙·디프 검증 패치 후 재검증’이 단일 결론이다.</div></div>
+  </div>
+</section>
 <div class="core-insight"><blockquote>“코드리뷰 봇의 등급은 단 코멘트 수가 아니라 위험한 PR을 차단하는 능력으로 정해진다. 현재 상태로는 조건부 통과 — 모든 PR을 즉시 approve하는 게 가장 위험한 정상 동작 위반이다.”</blockquote><p>severity·blocking·rationale을 필수화하고 디프 부족 시 리뷰를 중단하지 않으면, 근거 없는 LGTM이 보안 결함 PR에 잘못된 안심 신호를 준다. 그래서 무조건 통과도, 전면 반려도 아닌 ‘문서·예시·테스트 패치 후 재검증’이 이 감사의 단일 핵심 결론이다.</p></div>
 <div class="table-scroll"><table class="table"><caption>표 4 — 품질 게이트별 통과 조건과 미흡 신호</caption><thead><tr><th>게이트</th><th>통과 조건</th><th>미흡 신호</th><th>현재 판정</th></tr></thead><tbody>
 <tr><td>G1 위험 분류</td><td>모든 코멘트에 severity(block/warn/info)</td><td>severity 없는 “일반 의견” 코멘트</td><td>미흡</td></tr>
@@ -2173,65 +2228,6 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 </section>
 
 
-  <section class="mode-template-contract" data-ahf-contract="mode-template" data-mode="skill_audit"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num" aria-hidden="true">T</span>모드 정본 템플릿 적용 확인</h2><p class="h2-sub">최신 스킬 결정표의 1순위 vt와 추천 wg 사용 여부를 시각적으로 확인하기 위한 섹션입니다.</p><div class="mini-card"><h3>1순위 vt 템플릿</h3><p><code>quality-gate</code> 구조를 본문 안에 실제 HTML 템플릿으로 삽입했습니다.</p></div>
-<section class="vt-shell">
-  <div class="vt-frame">
-    <div><div class="qg-grid"><div class="qg-card "><b>레이아웃</b><p class="vt-text">section wrapper에 grid 직접 적용 금지</p></div><div class="qg-card "><b>모바일</b><p class="vt-text">390px에서 카드/표 잘림 없음</p></div><div class="qg-card warn"><b>대비</b><p class="vt-text">검정 CTA 내부 밝은 카드 색상 상속 금지</p></div><div class="qg-card "><b>근거</b><p class="vt-text">source와 details는 보조로 접기</p></div></div><div class="qg-final"><span class="qg-final-label">PRE-FLIGHT</span>본문 리듬 안에 자연스럽게 들어가는지 먼저 확인</div></div>
-  </div>
-</section>
-<div class="mini-card wg-03-contract"><h3>추천 wg 위젯</h3><p><code>wg-03</code> 위젯을 모드별 보강 템플릿으로 포함했습니다.</p></div>
-<section class="wg-03" aria-labelledby="wg-03-title">
-  <header class="wg-03-head">
-    <p class="wg-03-kicker">코드 리뷰</p>
-    <h2 id="wg-03-title" class="wg-03-title">PR #482 · 결제 재시도 백오프 추가</h2>
-    <div class="wg-03-meta">
-      <span class="wg-03-chip">src/payments/retry.ts</span>
-      <span class="wg-03-chip wg-03-chip-add">+14</span>
-      <span class="wg-03-chip wg-03-chip-del">−5</span>
-      <span class="wg-03-chip">리뷰어 2명</span>
-    </div>
-    <nav class="wg-03-jump" aria-label="노트 점프">
-      <span class="wg-03-jump-label">노트로 이동:</span>
-      <a href="#wg-03-n1" class="wg-03-jump-link wg-03-sev-critical">L18 critical</a>
-      <a href="#wg-03-n2" class="wg-03-jump-link wg-03-sev-warn">L22 warn</a>
-      <a href="#wg-03-n3" class="wg-03-jump-link wg-03-sev-info">L27 info</a>
-    </nav>
-  </header>
-
-  <div class="wg-03-grid">
-    <div class="wg-03-diff" role="table" aria-label="코드 diff">
-      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln" aria-hidden="true">15</span><code class="wg-03-code">async function charge(order) {</code></div>
-      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">16</span><code class="wg-03-code">  const max = 3;</code></div>
-      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">17</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">−</span>  for (let i = 0; i &lt; max; i++) {</code></div>
-      <div id="wg-03-l18" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">18</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">+</span>  for (let i = 0; i &lt; max; i++) {</code><a href="#wg-03-n1" class="wg-03-dot wg-03-sev-critical" aria-label="L18 critical 노트">!</a></div>
-      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">19</span><code class="wg-03-code"><span class="wg-03-sign">+</span>    try {</code></div>
-      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">20</span><code class="wg-03-code"><span class="wg-03-sign">+</span>      return await gateway.charge(order);</code></div>
-      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">21</span><code class="wg-03-code"><span class="wg-03-sign">+</span>    } catch (e) {</code></div>
-      <div id="wg-03-l22" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">22</span><code class="wg-03-code"><span class="wg-03-sign">+</span>      await sleep(2 ** i * 100);</code><a href="#wg-03-n2" class="wg-03-dot wg-03-sev-warn" aria-label="L22 warn 노트">!</a></div>
-      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">23</span><code class="wg-03-code"><span class="wg-03-sign">−</span>      await sleep(100);</code></div>
-      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">24</span><code class="wg-03-code">    }</code></div>
-      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">25</span><code class="wg-03-code">  }</code></div>
-      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">26</span><code class="wg-03-code"><span class="wg-03-sign">−</span>  throw new Error('charge failed');</code></div>
-      <div id="wg-03-l27" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">27</span><code class="wg-03-code"><span class="wg-03-sign">+</span>  throw new PaymentError('retry exhausted', order.id);</code><a href="#wg-03-n3" class="wg-03-dot wg-03-sev-info" aria-label="L27 info 노트">i</a></div>
-    </div>
-
-    <aside class="wg-03-notes" aria-label="리뷰 노트">
-      <article id="wg-03-n1" class="wg-03-note wg-03-sev-critical" tabindex="-1">
-        <header class="wg-03-note-head"><span class="wg-03-badge">critical</span><span class="wg-03-note-loc"><a href="#wg-03-l18">L18</a></span></header>
-        <p class="wg-03-note-body">루프 조건은 그대로지만 인덱스 <code>i</code>가 0부터 시작해 첫 시도에 <code>sleep(0)</code>이 됩니다. 첫 요청도 지연시키려면 의도를 주석으로 명시하세요. <strong>지수 백오프 상한(cap)이 없어 폭주 위험.</strong></p>
-      </article>
-      <article id="wg-03-n2" class="wg-03-note wg-03-sev-warn" tabindex="-1">
-        <header class="wg-03-note-head"><span class="wg-03-badge">warn</span><span class="wg-03-note-loc"><a href="#wg-03-l22">L22</a></span></header>
-        <p class="wg-03-note-body">지터(jitter) 없이 순수 지수 백오프만 사용하면 동시 재시도 군집이 발생할 수 있습니다. <code>Math.random()</code> 기반 풀 지터 추가 권장.</p>
-      </article>
-      <article id="wg-03-n3" class="wg-03-note wg-03-sev-info" tabindex="-1">
-        <header class="wg-03-note-head"><span class="wg-03-badge">info</span><span class="wg-03-note-loc"><a href="#wg-03-l27">L27</a></span></header>
-        <p class="wg-03-note-body">전용 <code>PaymentError</code>로 교체한 점 좋습니다. <code>order.id</code> 컨텍스트가 로깅에 도움 됩니다.</p>
-      </article>
-    </aside>
-  </div>
-</section>
-  </section>
 <section class="try"><div class="label">NEXT ACTION</div><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>바로 실행할 일</h2><ol>
 <li>목적을 “위험 변경의 병합 차단”으로 좁히고 스타일 린트는 비목적으로 명시한다.</li>
 <li>출력 스키마를 file·line·severity·rationale·blocking으로 고정한다.</li>

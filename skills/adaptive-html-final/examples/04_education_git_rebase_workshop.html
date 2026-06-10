@@ -2075,6 +2075,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 <section class="learning-goals"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="20" r="13"/><circle class="bi-fill" cx="20" cy="20" r="7"/><circle class="bi-accent" cx="20" cy="20" r="3"/></svg></span>학습 목표</h2><div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M7 14l13-6 13 6-13 6z"/><path class="bi-line" d="M12 18v7c4 4 12 4 16 0v-7"/><path class="bi-accent-line" d="M33 15v10"/></svg></span>3일 후 할 수 있는 일</div><ul><li><strong>설명한다</strong> — merge와 rebase의 결과 히스토리가 왜 다른지, rebase가 새 커밋 해시를 만든다는 점을 그림으로 설명한다.</li><li><strong>해결한다</strong> — interactive rebase 중 충돌을 만나도 멈추지 않고 <code>add → --continue</code> 절차로 끝까지 진행한다.</li><li><strong>복구한다</strong> — 잘못 rebase해도 <code>git reflog</code>로 이전 상태를 찾아 <code>reset</code>으로 되돌린다.</li><li><strong>판단한다</strong> — “지금 이 브랜치를 rebase해도 되는가”를 공유 여부 기준으로 스스로 판단한다.</li></ul></section>
 
 <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M13 7v26"/><circle class="bi-dot" cx="13" cy="10" r="3"/><circle class="bi-accent" cx="13" cy="20" r="3"/><circle class="bi-soft" cx="13" cy="30" r="3"/><path class="bi-line" d="M21 11h10M21 20h7M21 30h9"/></svg></span>3일 학습 로드맵: 무엇이 언제 가능해지는가</h2><p class="h2-sub">각 날이 끝날 때 학습자가 실제로 할 수 있게 되는 일을 기준으로 진도를 잡는다.</p>
+<div class="vt-shell"><div class="vt-shell-head"><div><div class="vt-id">VT-01 TIMELINE</div><h2>Day 1 → Day 2 → Day 3 → 수료</h2><p>각 단계의 끝에 “할 수 있게 되는 일”과 손에 남는 산출물을 못 박아, 진도를 시간이 아니라 능력 기준으로 잡습니다.</p></div><span class="vt-fit">workshop sequence</span></div><div class="vt-frame"><ol class="tl"><li class="tl-item"><b>Day 1 · rebase의 동작 모델</b><p class="vt-text">같은 분기를 merge와 rebase로 각각 정리해 그래프를 비교한다. <strong>rebase가 커밋 해시를 새로 만든다</strong>는 것을 그림으로 설명할 수 있게 되고, merge vs rebase 그래프 노트 한 장이 남는다.</p></li><li class="tl-item"><b>Day 2 · interactive rebase와 충돌</b><p class="vt-text"><code>squash</code>·<code>reword</code>·<code>drop</code>을 적용하고 충돌 1건을 <code>add → --continue</code> 절차로 끝까지 해결한다. 리뷰어가 읽기 좋은 단위로 정리된 커밋 히스토리가 남는다.</p></li><li class="tl-item"><b>Day 3 · 안전장치와 복구</b><p class="vt-text"><code>git reflog</code>로 잘못된 rebase를 직전 상태로 되돌리고, 원격 갱신은 <code>--force-with-lease</code>로만 한다. 복구 시나리오 회고 한 편이 남는다.</p></li><li class="tl-item"><b>수료 · 동료 리뷰</b><p class="vt-text">“이 브랜치를 지금 rebase해도 되는가”를 공유 여부 기준으로 판단해 발표한다. 팀에서 바로 쓰는 rebase 안전 체크리스트 1장으로 마무리한다.</p></li></ol></div></div>
 <div class="tbl table-scroll"><table><caption>3일 워크숍 운영표</caption><thead><tr><th>일차</th><th>목표</th><th>실습</th><th>산출물</th></tr></thead><tbody><tr><td>Day 1</td><td>rebase의 동작 모델 이해</td><td>같은 분기를 merge와 rebase로 각각 정리해 그래프 비교</td><td>merge vs rebase 그래프 노트</td></tr><tr><td>Day 2</td><td>interactive rebase와 충돌 해결</td><td><code>squash</code>·<code>reword</code>·<code>drop</code> 적용, 충돌 1건 절차대로 해결</td><td>정리된 커밋 히스토리</td></tr><tr><td>Day 3</td><td>안전장치와 복구</td><td>reflog로 복구, force-with-lease로 원격 갱신</td><td>복구 시나리오 회고</td></tr><tr><td>수료</td><td>동료 리뷰</td><td>“이 브랜치를 rebase해도 되는가” 판단 발표</td><td>안전 체크리스트 1장</td></tr></tbody></table></div></section>
 
 <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M7 14l13-6 13 6-13 6z"/><path class="bi-line" d="M12 18v7c4 4 12 4 16 0v-7"/><path class="bi-accent-line" d="M33 15v10"/></svg></span><span class="no is-key" aria-hidden="true">1</span>Day 1 — rebase가 실제로 하는 일</h2><p class="h2-sub">목표는 rebase를 무서워하지 않는 것이 아니라, 그것이 무엇을 다시 만드는지 정확히 그리는 것이다.</p><p>이 워크숍의 최종 산출물은 “rebase를 했다”가 아니라 “이 브랜치를 왜 rebase했고, 어떤 커밋이 어떤 base 위에 다시 적용됐으며, 사고가 났다면 어떻게 복구할지”를 설명하는 한 장짜리 판단 메모다.</p><p><code>git rebase main</code>은 현재 브랜치의 커밋을 <code>main</code>의 최신 커밋 위로 <em class="t">옮기는</em> 것처럼 보이지만, 실제로는 각 커밋의 변경 내용을 새 base 위에 <em class="t">다시 적용(replay)</em>해 <strong>새로운 커밋</strong>을 만든다. 따라서 커밋 해시가 바뀐다. 이것이 rebase의 위력이자 위험의 출발점이다.</p>
@@ -2158,75 +2159,78 @@ git push --force-with-lease=feature:9z8y7x6</code></pre>
 <div class="tbl table-scroll"><table><caption>평가 루브릭</caption><thead><tr><th>축</th><th>기준</th><th>우수 답안의 모습</th></tr></thead><tbody><tr><td>동작 모델</td><td>rebase가 커밋을 replay해 새 해시를 만든다고 설명한다.</td><td>merge·rebase 그래프 차이를 직접 그린다.</td></tr><tr><td>충돌 절차</td><td>add → continue / abort 흐름을 따른다.</td><td>중간에 commit하지 않고 끝까지 해결한다.</td></tr><tr><td>복구 능력</td><td>reflog로 직전 상태를 찾아 되돌린다.</td><td>reset 전 잃을 변경이 없는지 확인한다.</td></tr><tr><td>안전 판단</td><td>공유 여부로 rebase 가부를 결정한다.</td><td>원격 갱신에 force-with-lease만 쓴다.</td></tr><tr><td>재현성</td><td>명령·그래프·복구 기록을 남긴다.</td><td>동료가 같은 절차로 재현할 수 있다.</td></tr></tbody></table></div></section>
 
 
-  <section class="mode-template-contract" data-ahf-contract="mode-template" data-mode="education_html"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num" aria-hidden="true">T</span>모드 정본 템플릿 적용 확인</h2><p class="h2-sub">최신 스킬 결정표의 1순위 vt와 추천 wg 사용 여부를 시각적으로 확인하기 위한 섹션입니다.</p><div class="mini-card"><h3>1순위 vt 템플릿</h3><p><code>timeline</code> 구조를 본문 안에 실제 HTML 템플릿으로 삽입했습니다.</p></div>
-<section class="vt-shell">
-  <div class="vt-frame">
-    <ol class="tl"><li class="tl-item"><b>진단</b><p class="vt-text">깨지는 SVG와 본문 리듬 분리 확인</p></li><li class="tl-item"><b>전환</b><p class="vt-text">대형 이미지를 HTML 카드 구조로 재구성</p></li><li class="tl-item"><b>검증</b><p class="vt-text">모바일과 데스크톱에서 overflow 확인</p></li><li class="tl-item"><b>도입</b><p class="vt-text">스킬에는 template 선택 규칙으로 반영</p></li></ol>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M16 13l-6 7 6 7M24 13l6 7-6 7"/><path class="bi-accent-line" d="M22 11l-4 18"/></svg></span><span class="no" aria-hidden="true">8</span>충돌이 났을 때 무엇을 누르나 — 판단 흐름도</h2><p class="h2-sub">Day 2 실습에서 rebase가 멈췄을 때 손이 가야 하는 순서를 한 장으로 본다. 각 단계를 누르면 그 자리에서 정확한 명령과 흔한 실수가 펼쳐진다.</p>
+<section class="wg-13" aria-labelledby="wg-13-title">
+  <div class="wg-13-fc">
+    <h3 id="wg-13-title" class="wg-13-h">rebase 충돌 해결 흐름 <span class="wg-13-sub">노드를 누르면 명령·주의가 펼쳐집니다</span></h3>
+    <div class="wg-13-flow">
+      <a href="#wg-13-s1" class="wg-13-node wg-13-node--start"><span class="wg-13-step">멈춤</span>rebase가 충돌에서 정지</a>
+      <span class="wg-13-arrow" aria-hidden="true">&darr;</span>
+      <a href="#wg-13-s2" class="wg-13-node"><span class="wg-13-step">읽기</span><code class="wg-13-codein">git status</code>로 멈춘 파일 확인</a>
+      <span class="wg-13-arrow" aria-hidden="true">&darr;</span>
+      <a href="#wg-13-s3" class="wg-13-node wg-13-node--decide"><span class="wg-13-step">판단</span>표식을 다 지우고 한 버전으로 합쳤나?</a>
+      <div class="wg-13-branch">
+        <div class="wg-13-paths">
+          <div class="wg-13-path wg-13-path--fail">
+            <span class="wg-13-edge" aria-hidden="true">아니오 · 막힘</span>
+            <a href="#wg-13-s4" class="wg-13-node wg-13-node--fail"><span class="wg-13-step">되돌림</span><code class="wg-13-codein">git rebase --abort</code></a>
+          </div>
+          <div class="wg-13-path wg-13-path--ok">
+            <span class="wg-13-edge" aria-hidden="true">예 · 해결</span>
+            <a href="#wg-13-s5" class="wg-13-node wg-13-node--end"><span class="wg-13-step">계속</span><code class="wg-13-codein">add</code> → <code class="wg-13-codein">--continue</code></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wg-13-detail">
+      <h4 class="wg-13-dh">단계별 명령 <span class="wg-13-dnote">위 노드와 같은 색으로 묶여 있습니다</span></h4>
+      <details id="wg-13-s1" class="wg-13-acc">
+        <summary><span class="wg-13-tag">멈춤</span>rebase가 충돌에서 정지했다</summary>
+        <div class="wg-13-body">
+          <p>커밋을 하나씩 replay하다 같은 줄을 다르게 고친 지점에서 rebase가 멈춘다. 이건 실패가 아니라 <strong>정상 동작</strong>이다. 화면에 <code class="wg-13-codein">CONFLICT (content): Merge conflict in &lt;파일&gt;</code>이 뜨고, 지금은 “그 커밋 하나”만 해결하면 된다.</p>
+        </div>
+      </details>
+      <details id="wg-13-s2" class="wg-13-acc">
+        <summary><span class="wg-13-tag">읽기</span>git status로 멈춘 파일을 확인한다</summary>
+        <div class="wg-13-body">
+          <p><code class="wg-13-codein">git status</code>는 항상 다음 한 걸음을 알려준다. <code>Unmerged paths</code>에 올라온 파일만 손대고, 표식 세 줄을 찾는다.</p>
+          <code class="wg-13-code">$ git status
+interactive rebase in progress; onto a1b2c3d
+Unmerged paths:
+  both modified:   app/config.py</code>
+        </div>
+      </details>
+      <details id="wg-13-s3" class="wg-13-acc">
+        <summary><span class="wg-13-tag">판단</span>표식을 다 지우고 한 버전으로 합쳤나?</summary>
+        <div class="wg-13-body">
+          <p>충돌 블록은 <code class="wg-13-codein">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> · <code class="wg-13-codein">=======</code> · <code class="wg-13-codein">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> 세 줄로 둘러싸인다. rebase에서는 위쪽(<code>HEAD</code>)이 <strong>이미 main 위에 다시 쌓인 부분</strong>, 아래쪽이 지금 적용 중인 커밋이라 merge와 위·아래가 반대다. 원하는 내용만 남기고 <strong>세 줄을 하나도 남기지 않고</strong> 지웠는지가 갈림길이다.</p>
+          <code class="wg-13-code">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+RETRIES = 3
+&#61;&#61;&#61;&#61;&#61;&#61;&#61;
+RETRIES = 5
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 지금 적용 중인 커밋
+→ 정리 후: RETRIES = 5</code>
+        </div>
+      </details>
+      <details id="wg-13-s4" class="wg-13-acc wg-13-acc--fail">
+        <summary><span class="wg-13-tag wg-13-tag--fail">되돌림</span>아니오 · 막히면 깨끗이 되돌린다</summary>
+        <div class="wg-13-body">
+          <p>표식이 한 줄이라도 남거나 어느 버전을 둘지 모르겠으면 멈춰 있는 상태로 새 <code>commit</code>을 만들지 않는다. <code class="wg-13-codein">git rebase --abort</code>는 rebase 시작 직전으로 완전히 되돌리므로, 차분히 다시 시도할 수 있다.</p>
+          <code class="wg-13-code">$ git rebase --abort   # 시작 전 상태로 원복</code>
+        </div>
+      </details>
+      <details id="wg-13-s5" class="wg-13-acc wg-13-acc--ok">
+        <summary><span class="wg-13-tag wg-13-tag--ok">계속</span>예 · add 한 뒤 --continue</summary>
+        <div class="wg-13-body">
+          <p>해결했으면 <strong><code>git commit</code>이 아니라</strong> <code class="wg-13-codein">git add</code>로 “해결됨”을 표시하고 <code class="wg-13-codein">git rebase --continue</code>로 다음 커밋을 이어간다. 지금은 기존 커밋을 다시 적용하는 중이라, 새로 커밋하면 히스토리가 한 개 더 생긴다.</p>
+          <code class="wg-13-code">$ git add app/config.py
+$ git rebase --continue   # 남은 커밋 계속 replay</code>
+        </div>
+      </details>
+    </div>
   </div>
 </section>
-<div class="mini-card wg-06-contract"><h3>추천 wg 위젯</h3><p><code>wg-06</code> 위젯을 모드별 보강 템플릿으로 포함했습니다.</p></div>
-<section class="wg-06-cs" aria-labelledby="wg-06-title">
-  <header class="wg-06-head">
-    <p class="wg-06-kicker">COMPONENT CONTACT SHEET</p>
-    <h2 id="wg-06-title" class="wg-06-h">버튼 컴포넌트 변형</h2>
-    <p class="wg-06-lead">한 버튼 컴포넌트의 모든 변형(Variant) × 크기 × 상태를 한 시트에 정렬했습니다.</p>
-  </header>
-
-  <fieldset class="wg-06-density">
-    <legend class="wg-06-density-leg">배경 토글</legend>
-    <input type="radio" name="wg-06-bg" id="wg-06-bg-light" class="wg-06-bg-input" checked>
-    <label for="wg-06-bg-light" class="wg-06-bg-label">라이트</label>
-    <input type="radio" name="wg-06-bg" id="wg-06-bg-dark" class="wg-06-bg-input">
-    <label for="wg-06-bg-dark" class="wg-06-bg-label">다크</label>
-  </fieldset>
-
-  <div class="wg-06-sheet table-scroll">
-    <table class="wg-06-table">
-      <caption class="wg-06-cap">행 = 변형 · 열 = 상태 · 셀 내부 = 크기(L/M/S)</caption>
-      <thead>
-        <tr>
-          <th scope="col" class="wg-06-rowhead">Variant \ State</th>
-          <th scope="col">Default</th>
-          <th scope="col">Hover</th>
-          <th scope="col">Focus</th>
-          <th scope="col">Disabled</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row" class="wg-06-rowhead">Primary</th>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-lg">저장 L</button><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-md">저장 M</button><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-sm">저장 S</button></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-md wg-06-is-hover">저장</button><span class="wg-06-statetag">hover</span></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-md wg-06-is-focus">저장</button><span class="wg-06-statetag">focus ring</span></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--primary wg-06-md" disabled>저장</button><span class="wg-06-statetag">disabled</span></span></td>
-        </tr>
-        <tr>
-          <th scope="row" class="wg-06-rowhead">Secondary</th>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-lg">취소 L</button><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-md">취소 M</button><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-sm">취소 S</button></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-md wg-06-is-hover">취소</button><span class="wg-06-statetag">hover</span></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-md wg-06-is-focus">취소</button><span class="wg-06-statetag">focus ring</span></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--secondary wg-06-md" disabled>취소</button><span class="wg-06-statetag">disabled</span></span></td>
-        </tr>
-        <tr>
-          <th scope="row" class="wg-06-rowhead">Ghost</th>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-lg">더보기 L</button><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-md">더보기 M</button><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-sm">더보기 S</button></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-md wg-06-is-hover">더보기</button><span class="wg-06-statetag">hover</span></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-md wg-06-is-focus">더보기</button><span class="wg-06-statetag">focus ring</span></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--ghost wg-06-md" disabled>더보기</button><span class="wg-06-statetag">disabled</span></span></td>
-        </tr>
-        <tr>
-          <th scope="row" class="wg-06-rowhead">Danger</th>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-lg">삭제 L</button><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-md">삭제 M</button><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-sm">삭제 S</button></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-md wg-06-is-hover">삭제</button><span class="wg-06-statetag">hover</span></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-md wg-06-is-focus">삭제</button><span class="wg-06-statetag">focus ring</span></span></td>
-          <td><span class="wg-06-stack"><button type="button" class="wg-06-btn wg-06-btn--danger wg-06-md" disabled>삭제</button><span class="wg-06-statetag">disabled</span></span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="wg-06-foot">Default 열의 버튼은 실제 :hover / :focus-visible 가 동작합니다. 나머지 열은 상태를 고정 시뮬레이션해 한눈에 비교하도록 했습니다.</p>
 </section>
-  </section>
 <section class="try"><div class="label">NEXT ACTION</div><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>바로 실행할 일</h2><ol><li>실습용 저장소에서 로컬 브랜치 하나를 골라 <code>git rebase main</code>으로 정리한다.</li><li><code>git rebase -i HEAD~3</code>으로 squash·reword를 한 번씩 적용한다.</li><li>충돌을 일부러 만들고 <code>add → --continue</code> 절차로 끝까지 해결한다.</li><li><code>git reflog</code>로 rebase 직전 상태를 찾아 한 번 복구해 본다.</li><li>원격 갱신은 <code>--force-with-lease</code>로만 하고, 결과를 안전 체크리스트 한 장으로 남긴다.</li></ol></section>
 
 <aside class="source-note"><div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="10" y="7" width="20" height="26" rx="3"/><path class="bi-line" d="M15 14h10M15 20h10M15 26h7"/><path class="bi-accent-line" d="M27 7v8h-8"/></svg></span>Source Note</div><p>adaptive-html-final education_html 모드의 course-module 레이아웃(page-wide layout-education)을 사용해 작성했다. 명령 동작·복구 절차는 Git 공식 문서(git-rebase, git-reflog, git-push)의 표준 동작을 기준으로 하며, 실제 실행 시에는 저장소 보호 규칙과 팀 합의를 우선한다.</p></aside>

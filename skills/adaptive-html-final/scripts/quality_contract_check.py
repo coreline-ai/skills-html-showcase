@@ -25,6 +25,17 @@ FORBIDDEN_TEXT_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     ("generated_example_phrase", re.compile(r"Generated example|mode example", re.I)),
     ("example_document_phrase", re.compile(r"전문\s*예제|예제\s*문서")),
     ("placeholder_phrase", re.compile(r"\bPLACEHOLDER\b|Lorem ipsum|TBD|TODO\s*:", re.I)),
+    # Self-referential "template/widget usage proof" meta prose (SKILL.md §7 / Step 4.1 #6 금지).
+    # A real document must end in actual judgment, not a description of which vt/wg it used.
+    # These exact phrases shipped in the v5.x examples' "모드 정본 템플릿 적용 확인" appendix; the
+    # vt/wg must be embedded in-body with real topic data instead (see examples 15/16/17).
+    ("template_demo_meta_phrase", re.compile(
+        r"모드\s*정본\s*템플릿\s*적용\s*확인"
+        r"|실제\s*HTML\s*템플릿으로\s*삽입했습니다"
+        r"|보강\s*템플릿으로\s*포함했습니다"
+        r"|시각적으로\s*확인하기\s*위한\s*섹션")),
+    # Contract-scaffold hook that must never ship in an output BODY (the CSS rule in <head> is fine).
+    ("template_contract_scaffold", re.compile(r"""data-ahf-contract\s*=\s*["']?mode-template""")),
 ]
 
 REPEATED_PLACEHOLDER_PATTERNS: list[tuple[str, re.Pattern[str], int]] = [

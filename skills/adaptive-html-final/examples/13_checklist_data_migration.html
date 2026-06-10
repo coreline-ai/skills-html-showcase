@@ -2071,7 +2071,8 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 <header class="header"><div class="kicker"><span class="kicker-text">CHECKLIST PLAYBOOK · DATA MIGRATION</span></div><h1>데이터 마이그레이션 안전 플레이북</h1><p class="sub">운영 데이터를 새 스키마·새 저장소로 옮길 때 사전 백업, dual-write, 검증, 컷오버, 롤백을 단계별로 점검해 무손실·무중단 이전을 보장하는 실무 플레이북이다.</p><div class="meta"><span>checklist_playbook</span><span>checklist-playbook.html</span><span>profile auto</span><span>adaptive-html-final v5.2.0</span><span>무 JS</span></div><div class="generated-row"><p class="generated-date">Generated · 2026-06-06 KST</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">사전 백업</span><span class="lens-chip">dual-write</span><span class="lens-chip">검증</span><span class="lens-chip">컷오버</span><span class="lens-chip">롤백</span></div></div></header>
 <section class="summary-card"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="9" y="8" width="22" height="24" rx="4"/><path class="bi-line" d="M14 16h12M14 22h10M14 28h7"/><circle class="bi-accent" cx="29" cy="11" r="3"/></svg></span>핵심 요약</h2><div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="bi-soft" cx="20" cy="11" rx="11" ry="5"/><path class="bi-fill" d="M9 11v18c0 2.8 5 5 11 5s11-2.2 11-5V11"/><path class="bi-line" d="M9 20c0 2.8 5 5 11 5s11-2.2 11-5"/><circle class="bi-accent" cx="26" cy="28" r="2"/></svg></span>Overview</div><p><strong>데이터 마이그레이션은 "옮기는 것"이 아니라 "언제든 되돌릴 수 있게 옮기는 것"이다.</strong> 한 번 손상되거나 유실된 운영 데이터는 복구 비용이 크고, 일부는 회복 자체가 불가능하다. 그래서 이전 작업은 항상 복귀 경로를 먼저 확보한 뒤 시작한다.</p><p>이 플레이북은 "성공적으로 옮긴 것처럼 보이는 작업"이 아니라 <span class="hl blue">검증된 백업, 양쪽 동시 기록(dual-write), 행 단위 정합성 검증, 안전한 컷오버, 즉시 롤백</span>이 모두 준비되었는지 판단하는 마이그레이션 회의용 기준 문서다.</p></section>
 <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><span class="num is-key">1</span>마이그레이션 5대 원칙</h2><p class="h2-sub">P0(데이터 손실·정합성 위반)이 남아 있으면 컷오버하지 않고, P1 위험은 owner와 완화 일정이 있을 때만 진행한다.</p><div class="card-grid"><article class="mini-card"><h3>사전 백업</h3><p>이전 시작 전 복원 가능한 백업을 확보하고, 실제로 복원해 본다. 복원해 보지 않은 백업은 백업이 아니다.</p></article><article class="mini-card"><h3>dual-write</h3><p>전환 기간 동안 구·신 저장소에 동시에 기록해, 어느 쪽으로도 읽기를 전환할 수 있는 상태를 유지한다.</p></article><article class="mini-card"><h3>검증</h3><p>행 수·체크섬·샘플 비교로 정합성을 측정한다. 불일치 0건이 아니면 컷오버하지 않는다.</p></article><article class="mini-card"><h3>컷오버</h3><p>읽기 경로를 신규로 전환하는 단일 결정 지점. 점진 비율 전환과 즉시 되돌림 경로를 함께 준비한다.</p></article><article class="mini-card"><h3>롤백</h3><p>트리거 조건을 수치로 미리 정하고, 충족되면 토론 없이 구 저장소로 읽기를 되돌린다.</p></article></div><div class="tbl table-scroll"><table><caption>마이그레이션 원칙과 진행·차단 결정 기준</caption><thead><tr><th scope="col">원칙</th><th scope="col">진행 허용</th><th scope="col">진행 차단</th><th scope="col">증거</th></tr></thead><tbody><tr><td>백업 우선</td><td>복원 리허설 1회 성공, 복원 시간(RTO) 측정 완료</td><td>백업만 있고 복원 미검증, RPO 불명</td><td>복원 리허설 로그</td></tr><tr><td>되돌림 가능</td><td>dual-write 가동, 읽기 소스 토글 가능</td><td>구 저장소를 이미 읽기 중단·삭제</td><td>읽기 소스 설정 캡처</td></tr><tr><td>정합성 0</td><td>행 수·체크섬·샘플 불일치 0건</td><td>불일치 잔존, 원인 미규명</td><td>검증 리포트, diff 샘플</td></tr><tr><td>점진 컷오버</td><td>1% 그림자 읽기부터 단계 전환</td><td>100% 일괄 전환</td><td>컷오버 비율 설정</td></tr></tbody></table></div></section>
-<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="num">2</span>단계별 점검표</h2><p class="h2-sub">사전 백업 → dual-write → 검증 → 컷오버 → 롤백 다섯 단계마다 확인 항목·담당·상태를 고정한다.</p><p>점검표는 "무엇을 했는가"가 아니라 <strong>"각 항목이 지금 어떤 상태인가"</strong>를 한눈에 보여주는 도구다. 항목마다 <span class="hl">미시작 → 진행 중 → 대기 → 완료</span> 상태를 두고, 핵심 항목이 하나라도 대기(blocked)이면 컷오버 회의에서 자동으로 No-Go가 된다.</p><p>각 항목은 반드시 <strong>증거(evidence)</strong>를 가진다. "확인했다"는 보고가 아니라 복원 리허설 로그, 검증 리포트, diff 샘플처럼 다른 사람이 다시 열어볼 수 있는 산출물을 남긴다. 상태 표식은 텍스트 ✓(완료)와 대기로만 표기하며 별도 인터랙션은 없다.</p><div class="tbl table-scroll mobile-card-table"><table><caption>마이그레이션 단계별 점검표 — 항목·담당·상태 (예시)</caption><thead><tr><th scope="col">단계</th><th scope="col">확인 항목</th><th scope="col">담당</th><th scope="col">상태</th></tr></thead><tbody><tr><td data-label="단계">1. 사전 백업</td><td data-label="항목">전체 백업 + 복원 리허설, RPO·RTO 측정</td><td data-label="담당">DBA</td><td data-label="상태">✓ 완료</td></tr><tr><td data-label="단계">2. dual-write</td><td data-label="항목">구·신 저장소 동시 기록, 쓰기 실패 알림</td><td data-label="담당">백엔드</td><td data-label="상태">✓ 완료</td></tr><tr><td data-label="단계">3. 백필</td><td data-label="항목">과거 데이터 배치 이전, 멱등 재실행 가능</td><td data-label="담당">데이터</td><td data-label="상태">진행 중</td></tr><tr><td data-label="단계">4. 검증</td><td data-label="항목">행 수·체크섬·샘플 diff 불일치 0건</td><td data-label="담당">데이터·QA</td><td data-label="상태">대기</td></tr><tr><td data-label="단계">5. 컷오버</td><td data-label="항목">읽기 소스 점진 전환, 롤백 토글 확인</td><td data-label="담당">SRE</td><td data-label="상태">대기</td></tr><tr><td data-label="단계">6. 롤백 경로</td><td data-label="항목">트리거 수치 정의, drill 1회 성공</td><td data-label="담당">SRE</td><td data-label="상태">진행 중</td></tr></tbody></table></div><div class="term"><div class="label">상태 어휘</div><p class="word">대기(blocked) vs 보류(pending)</p><p class="meaning"><strong>대기</strong>는 검증 결과 정합성 기준을 위반해 수정 없이는 완료가 불가능한 상태다. <strong>보류</strong>는 아직 확인하지 못해 판단을 내릴 수 없는 상태로, 보류 항목이 남아 있으면 "모름"이므로 역시 컷오버하지 않는다.</p></div></section>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="num">2</span>단계별 점검표</h2><p class="h2-sub">사전 백업 → dual-write → 검증 → 컷오버 → 롤백 다섯 단계마다 확인 항목·담당·상태를 고정한다.</p><p>점검표는 "무엇을 했는가"가 아니라 <strong>"각 항목이 지금 어떤 상태인가"</strong>를 한눈에 보여주는 도구다. 항목마다 <span class="hl">미시작 → 진행 중 → 대기 → 완료</span> 상태를 두고, 핵심 항목이 하나라도 대기(blocked)이면 컷오버 회의에서 자동으로 No-Go가 된다.</p><p>각 항목은 반드시 <strong>증거(evidence)</strong>를 가진다. "확인했다"는 보고가 아니라 복원 리허설 로그, 검증 리포트, diff 샘플처럼 다른 사람이 다시 열어볼 수 있는 산출물을 남긴다. 상태 표식은 텍스트 ✓(완료)와 대기로만 표기하며 별도 인터랙션은 없다.</p><div class="tbl table-scroll mobile-card-table"><table><caption>마이그레이션 단계별 점검표 — 항목·담당·상태 (예시)</caption><thead><tr><th scope="col">단계</th><th scope="col">확인 항목</th><th scope="col">담당</th><th scope="col">상태</th></tr></thead><tbody><tr><td data-label="단계">1. 사전 백업</td><td data-label="항목">전체 백업 + 복원 리허설, RPO·RTO 측정</td><td data-label="담당">DBA</td><td data-label="상태">✓ 완료</td></tr><tr><td data-label="단계">2. dual-write</td><td data-label="항목">구·신 저장소 동시 기록, 쓰기 실패 알림</td><td data-label="담당">백엔드</td><td data-label="상태">✓ 완료</td></tr><tr><td data-label="단계">3. 백필</td><td data-label="항목">과거 데이터 배치 이전, 멱등 재실행 가능</td><td data-label="담당">데이터</td><td data-label="상태">진행 중</td></tr><tr><td data-label="단계">4. 검증</td><td data-label="항목">행 수·체크섬·샘플 diff 불일치 0건</td><td data-label="담당">데이터·QA</td><td data-label="상태">대기</td></tr><tr><td data-label="단계">5. 컷오버</td><td data-label="항목">읽기 소스 점진 전환, 롤백 토글 확인</td><td data-label="담당">SRE</td><td data-label="상태">대기</td></tr><tr><td data-label="단계">6. 롤백 경로</td><td data-label="항목">트리거 수치 정의, drill 1회 성공</td><td data-label="담당">SRE</td><td data-label="상태">진행 중</td></tr></tbody></table></div><div class="term"><div class="label">상태 어휘</div><p class="word">대기(blocked) vs 보류(pending)</p><p class="meaning"><strong>대기</strong>는 검증 결과 정합성 기준을 위반해 수정 없이는 완료가 불가능한 상태다. <strong>보류</strong>는 아직 확인하지 못해 판단을 내릴 수 없는 상태로, 보류 항목이 남아 있으면 "모름"이므로 역시 컷오버하지 않는다.</p></div>
+<div class="vt-shell"><div class="vt-shell-head"><div><div class="vt-id">VT-05 CHECKLIST FLOW</div><h2>컷오버 진입 게이트</h2><p>각 단계 항목이 모두 PASS여야 다음 단계로 넘어가고, 하나라도 대기면 그 자리에서 No-Go가 된다.</p></div><span class="vt-fit">checklist flow</span></div><div class="vt-frame"><div class="cf"><div class="cf-item"><span class="cf-check">✓</span><div><b>사전 백업 · 복원 리허설</b><p class="vt-text">전체 백업 후 실제 복원을 1회 수행하고 RPO·RTO를 측정·기록했다.</p></div><span class="cf-state">PASS</span></div><div class="cf-item"><span class="cf-check">✓</span><div><b>dual-write 가동</b><p class="vt-text">구·신 저장소 동시 기록과 쓰기 실패 알림이 켜져 있고 읽기 소스를 토글할 수 있다.</p></div><span class="cf-state">PASS</span></div><div class="cf-item"><span class="cf-check">·</span><div><b>백필 멱등 재실행</b><p class="vt-text">과거 데이터 배치 이전 중 — 같은 범위를 다시 돌려도 중복·누락이 없어야 한다.</p></div><span class="cf-state">진행 중</span></div><div class="cf-item"><span class="cf-check">·</span><div><b>정합성 검증 0건</b><p class="vt-text">행 수·체크섬·샘플 diff 불일치가 0건이 될 때까지 컷오버는 대기다.</p></div><span class="cf-state">대기</span></div><div class="cf-item"><span class="cf-check">·</span><div><b>롤백 토글 drill</b><p class="vt-text">staging에서 읽기 소스를 구 저장소로 되돌리는 drill을 1회 성공시켜야 한다.</p></div><span class="cf-state">진행 중</span></div></div></div></div></section>
 <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="9" y="7" width="18" height="25" rx="3"/><path class="bi-line" d="M14 14h8M14 20h7M14 26h6"/><circle class="bi-accent" cx="29" cy="26" r="4"/><path class="bi-accent-line" d="M32 29l4 4"/></svg></span><span class="num">3</span>품질 게이트</h2><p class="h2-sub">검증 결과를 차단·경고·통과 세 등급으로 나눠 컷오버 여부를 자동 판정한다.</p><p>품질 게이트는 마이그레이션 검증 결과를 <strong>차단(block) · 경고(warn) · 통과(pass)</strong> 세 등급으로 나눈다. 핵심은 "대부분 옮겨졌다"가 아니라 <span class="hl pink">정합성 불일치가 0건인가</span>에 있다. 99.9%가 일치해도 0.1%에 결제·잔액 같은 핵심 행이 어긋나면 게이트는 차단이다.</p><p>게이트는 사람이 매번 눈으로 판단하지 않도록 <strong>수치 기준</strong>으로 고정한다. 행 수 차이, 체크섬 불일치 건수, dual-write 쓰기 실패율, 복제 지연(lag)에 임계값을 두고, 미달이면 자동으로 경고 또는 차단 등급이 매겨진다.</p><div class="card-grid"><article class="mini-card"><h3>차단</h3><p>핵심 테이블 체크섬 불일치 또는 행 수 불일치 1건 이상. 컷오버 중단, 원인 수정 후 재검증.</p></article><article class="mini-card"><h3>경고</h3><p>비핵심 컬럼 차이·복제 지연 상승. owner와 완화 일정이 있을 때만 축소 비율로 진행.</p></article><article class="mini-card"><h3>통과</h3><p>전 테이블 불일치 0건, dual-write 실패율 0, lag 임계 이내. 다음 단계 진행.</p></article></div><div class="danger"><div class="label">흔한 함정</div><p class="name">"대부분 옮겨졌다"로 핵심 행 불일치를 덮지 마라</p><p>전체 일치율 99.9%여도 결제·권한·잔액처럼 회복 불가능한 행이 단 1건 어긋나면 그 1건이 사고를 만든다. 게이트는 평균 일치율이 아니라 <strong>핵심 테이블 불일치 0건</strong>을 기준으로 판정해야 한다.</p></div></section>
 <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="num is-key">4</span>위험 신호와 안전 신호</h2><p class="h2-sub">컷오버를 멈춰야 하는 위험 신호와, 안전하게 진행해도 되는 신호를 미리 구분해 둔다.</p><p>대시보드에서 어떤 숫자를 위험으로 읽을지 사전에 합의한다. 같은 지표라도 "이 값이면 멈춘다 / 이 값이면 간다"를 미리 정해 두면, 사고 순간에 사람의 즉흥 판단에 의존하지 않는다.</p><div class="danger"><div class="label">위험 신호 · STOP</div><p class="name">하나라도 보이면 컷오버를 중단하고 롤백 검토</p><p>핵심 테이블 행 수·체크섬 불일치 1건 이상, dual-write 쓰기 실패가 누적되는 중, 복제 지연(lag)이 임계를 넘어 계속 벌어지는 중, 복원 리허설 미완료, 롤백 토글이 staging에서 미검증 — 이 중 어느 하나라도 해당하면 진행하지 않는다.</p></div><div class="good"><div class="label">안전 신호 · GO</div><p class="name">모두 충족될 때만 다음 비율로 전환</p><p>검증 불일치 0건이 두 차례 연속 측정에서 유지, dual-write 실패율 0이 관찰 기간 내내 지속, 복제 지연이 임계 이내로 안정, 복원 리허설과 롤백 drill이 각각 1회 이상 성공으로 기록됨 — 네 신호가 동시에 충족될 때만 컷오버 비율을 올린다.</p></div></section>
 <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="26" height="22" rx="4"/><path class="bi-accent-line" d="M16 16l-5 4 5 4M24 16l5 4-5 4"/><path class="bi-line" d="M21 14l-3 12"/></svg></span><span class="num">5</span>컷오버와 롤백 절차</h2><p class="h2-sub">읽기 소스를 점진 전환하고, 트리거 충족 시 즉시 구 저장소로 되돌리는 절차를 코드로 고정한다.</p><p>컷오버의 목적은 "문제가 생기면 작게 생기게" 만드는 것이다. 쓰기는 dual-write로 양쪽에 계속 들어가는 상태에서, <strong>읽기 소스만</strong> 1% → 25% → 100%로 단계적으로 옮긴다. 어느 단계든 위험 신호가 보이면 읽기 소스를 구 저장소로 되돌린다. 쓰기가 양쪽에 살아 있으므로 데이터 손실 없이 즉시 복귀할 수 있다.</p><p>아래 의사코드는 컷오버 흐름을 사람과 자동화가 동일하게 읽을 수 있도록 정리한 것이다. 기본값은 항상 <span class="hl">안전한 쪽(읽기=구 저장소, dual-write ON)</span>으로 둔다.</p><pre class="code"><code>cutover(table):
@@ -2091,56 +2092,50 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
     return DONE("컷오버 완료, 관찰 지속")</code></pre><div class="card-grid"><article class="mini-card"><h3>정상 경로</h3><p>검증 0건 통과 → 1%·25%·100% 단계 전환 → soak time 안정 → dual-write 유지 후 종료.</p></article><article class="mini-card"><h3>차단 경로</h3><p>검증 불일치 발생. 컷오버 시작 전 중단, 원인 수정 후 같은 테이블부터 재검증.</p></article><article class="mini-card"><h3>롤백 경로</h3><p>위험 신호·트리거 충족. 읽기 소스를 구 저장소로 즉시 토글, 데이터 손실 없이 복귀.</p></article></div></section>
 <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="num">6</span>실패 모드와 롤백 기준</h2><p class="h2-sub">이전 중·이전 후 악화 시나리오별로 감지 신호, 즉시 완화, 롤백 트리거, 완료 기준을 미리 고정한다.</p><div class="tbl table-scroll"><table><caption>마이그레이션 실패 모드별 감지·완화·롤백 기준 (예시)</caption><thead><tr><th scope="col">실패 모드</th><th scope="col">감지 신호</th><th scope="col">즉시 완화</th><th scope="col">롤백 트리거</th><th scope="col">완료 기준</th></tr></thead><tbody><tr><td>데이터 정합성 깨짐</td><td>체크섬·행 수 diff 발생, 검증 통과율 하락</td><td>해당 테이블 읽기를 구 저장소로 고정</td><td>핵심 테이블 불일치 1건</td><td>원인 수정, 재검증 불일치 0건</td></tr><tr><td>dual-write 누락</td><td>신규 저장소 쓰기 실패율 상승, 큐 적체</td><td>실패 쓰기 재시도·DLQ 적재, 알림 발송</td><td>쓰기 실패율 임계 초과 지속</td><td>실패율 0 복구, 누락분 백필·재검증</td></tr><tr><td>복제 지연 폭증</td><td>lag이 임계를 넘어 계속 벌어짐</td><td>컷오버 비율 동결, 부하 원인 차단</td><td>lag이 RPO 한계 초과</td><td>lag 임계 이내 안정 후 재개</td></tr><tr><td>성능 저하</td><td>신규 경로 p99 지연·에러율 상승</td><td>읽기 소스 비율 축소, 캐시·인덱스 점검</td><td>p99 지연이 기준의 1.5배 초과</td><td>쿼리·인덱스 수정, 지연 정상화</td></tr><tr><td>이전 누락 행</td><td>샘플 비교에서 신규에만 없는 행 발견</td><td>백필 배치 재실행(멱등), 범위 재검증</td><td>핵심 데이터 누락 1건</td><td>누락분 채움, 전수·샘플 검증 통과</td></tr></tbody></table></div><div class="danger"><div class="label">Rollback Rule</div><p class="name">롤백 트리거 1건이라도 충족되면 토론 없이 즉시 읽기 소스를 구 저장소로 되돌린다.</p><p>완화로 시간을 버는 것은 허용하지만, 트리거 조건은 사람의 판단이 아니라 미리 정한 수치로 자동 결정한다. dual-write가 살아 있는 한 롤백은 데이터 손실을 만들지 않는다. 완료 기준을 만족하기 전에는 컷오버를 재개하지 않는다.</p></div></section>
 
-  <section class="mode-template-contract" data-ahf-contract="mode-template" data-mode="checklist_playbook"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num" aria-hidden="true">T</span>모드 정본 템플릿 적용 확인</h2><p class="h2-sub">최신 스킬 결정표의 1순위 vt와 추천 wg 사용 여부를 시각적으로 확인하기 위한 섹션입니다.</p><div class="mini-card"><h3>1순위 vt 템플릿</h3><p><code>checklist-flow</code> 구조를 본문 안에 실제 HTML 템플릿으로 삽입했습니다.</p></div>
-<section class="vt-shell">
-  <div class="vt-frame">
-    <div class="cf"><div class="cf-item"><span class="cf-check">✓</span><div><b>alt 필요 없음</b><p class="vt-text">HTML 템플릿 자체가 읽히므로 이미지 대체 텍스트 부담 감소</p></div><span class="cf-state">PASS</span></div><div class="cf-item"><span class="cf-check">✓</span><div><b>본문과 같은 폭</b><p class="vt-text">섹션 카드와 동일한 line-height, border, radius 사용</p></div><span class="cf-state">PASS</span></div><div class="cf-item"><span class="cf-check">✓</span><div><b>복사 가능</b><p class="vt-text">텍스트 선택과 검색이 가능</p></div><span class="cf-state">PASS</span></div></div>
-  </div>
-</section>
-<div class="mini-card wg-11-contract"><h3>추천 wg 위젯</h3><p><code>wg-11</code> 위젯을 모드별 보강 템플릿으로 포함했습니다.</p></div>
+  <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-line" d="M13 27h14"/><rect class="bi-soft" x="14" y="20" width="3" height="7" rx="1"/><rect class="bi-accent-box" x="19" y="15" width="3" height="12" rx="1"/><rect class="bi-dot-box" x="24" y="18" width="3" height="9" rx="1"/></svg></span><span class="num">7</span>컷오버 준비 현황</h2><p class="h2-sub">컷오버 회의 직전, 다섯 단계의 진척과 게이트 지표를 한 장으로 모아 Go/No-Go를 판단한다.</p>
 <section class="wg-11" aria-labelledby="wg-11-title">
   <header class="wg-11-head">
-    <p class="wg-11-kicker">주간 상태 리포트</p>
-    <h2 id="wg-11-title" class="wg-11-h">거버넌스 도입 · M1 3주차</h2>
-    <p class="wg-11-lead">계측 커버리지 <strong>88%</strong> 도달 · 게이트 자동화 리스크 1건 에스컬레이션</p>
+    <p class="wg-11-kicker">컷오버 준비 현황 · 주간</p>
+    <h3 id="wg-11-title" class="wg-11-h">결제 DB 신규 스키마 이전 · 백필 4일차</h3>
+    <p class="wg-11-lead">백업·dual-write는 완료. 백필 진행 중이라 검증·컷오버는 대기이며, 복제 지연 1건이 리스크로 추적된다.</p>
   </header>
 
   <div class="wg-11-kpis">
-    <div class="wg-11-kpi wg-11-kpi-good"><span class="wg-11-kpi-v">88%</span><span class="wg-11-kpi-l">태깅 커버리지</span></div>
-    <div class="wg-11-kpi wg-11-kpi-prog"><span class="wg-11-kpi-v">3</span><span class="wg-11-kpi-l">진행 작업</span></div>
-    <div class="wg-11-kpi wg-11-kpi-risk"><span class="wg-11-kpi-v wg-11-warn">1</span><span class="wg-11-kpi-l">리스크</span></div>
-    <div class="wg-11-kpi"><span class="wg-11-kpi-v">0</span><span class="wg-11-kpi-l">차단됨</span></div>
+    <div class="wg-11-kpi wg-11-kpi-prog"><span class="wg-11-kpi-v">3 / 5</span><span class="wg-11-kpi-l">단계 완료(백필 진행)</span></div>
+    <div class="wg-11-kpi wg-11-kpi-good"><span class="wg-11-kpi-v">0</span><span class="wg-11-kpi-l">dual-write 쓰기 실패</span></div>
+    <div class="wg-11-kpi wg-11-kpi-risk"><span class="wg-11-kpi-v wg-11-warn">1</span><span class="wg-11-kpi-l">복제 지연 리스크</span></div>
+    <div class="wg-11-kpi"><span class="wg-11-kpi-v">—</span><span class="wg-11-kpi-l">검증 불일치(미측정)</span></div>
   </div>
 
-  <h3 class="wg-11-h3">워크스트림 진척도</h3>
+  <h3 class="wg-11-h3">단계별 진척도</h3>
   <div class="wg-11-bars">
     <div class="wg-11-bar-row">
-      <span class="wg-11-bar-label">텔레메트리 스키마</span>
-      <div class="wg-11-track" role="img" aria-label="텔레메트리 스키마 진척 95퍼센트">
-        <div class="wg-11-fill wg-11-fill-good" style="width:95%"></div>
-      </div>
-      <span class="wg-11-bar-pct">95%</span>
-    </div>
-    <div class="wg-11-bar-row">
-      <span class="wg-11-bar-label">단가 대시보드</span>
-      <div class="wg-11-track" role="img" aria-label="단가 대시보드 진척 72퍼센트">
-        <div class="wg-11-fill wg-11-fill-prog" style="width:72%"></div>
-      </div>
-      <span class="wg-11-bar-pct">72%</span>
-    </div>
-    <div class="wg-11-bar-row">
-      <span class="wg-11-bar-label">CI 비용 게이트</span>
-      <div class="wg-11-track" role="img" aria-label="CI 비용 게이트 진척 40퍼센트, 리스크">
-        <div class="wg-11-fill wg-11-fill-risk" style="width:40%"></div>
-      </div>
-      <span class="wg-11-bar-pct">40%</span>
-    </div>
-    <div class="wg-11-bar-row">
-      <span class="wg-11-bar-label">예산 베이스라인</span>
-      <div class="wg-11-track" role="img" aria-label="예산 베이스라인 진척 100퍼센트">
+      <span class="wg-11-bar-label">사전 백업·복원</span>
+      <div class="wg-11-track" role="img" aria-label="사전 백업과 복원 리허설 진척 100퍼센트">
         <div class="wg-11-fill wg-11-fill-good" style="width:100%"></div>
       </div>
       <span class="wg-11-bar-pct">100%</span>
+    </div>
+    <div class="wg-11-bar-row">
+      <span class="wg-11-bar-label">dual-write 가동</span>
+      <div class="wg-11-track" role="img" aria-label="dual-write 가동 진척 100퍼센트">
+        <div class="wg-11-fill wg-11-fill-good" style="width:100%"></div>
+      </div>
+      <span class="wg-11-bar-pct">100%</span>
+    </div>
+    <div class="wg-11-bar-row">
+      <span class="wg-11-bar-label">과거 데이터 백필</span>
+      <div class="wg-11-track" role="img" aria-label="과거 데이터 백필 진척 68퍼센트">
+        <div class="wg-11-fill wg-11-fill-prog" style="width:68%"></div>
+      </div>
+      <span class="wg-11-bar-pct">68%</span>
+    </div>
+    <div class="wg-11-bar-row">
+      <span class="wg-11-bar-label">복제 지연(lag)</span>
+      <div class="wg-11-track" role="img" aria-label="복제 지연이 임계에 근접해 리스크">
+        <div class="wg-11-fill wg-11-fill-risk" style="width:55%"></div>
+      </div>
+      <span class="wg-11-bar-pct">55%</span>
     </div>
   </div>
 
@@ -2148,22 +2143,22 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
     <div class="wg-11-col wg-11-col-good">
       <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>완료</h4>
       <ul class="wg-11-col-list">
-        <li>단가 산식 v1 고시 <span class="wg-11-tk">GOV-12</span></li>
-        <li>예산 베이스라인 확정 <span class="wg-11-tk">GOV-18</span></li>
-        <li>미태깅 배포 차단 룰 적용 <span class="wg-11-tk">GOV-21</span></li>
+        <li>전체 백업 + 복원 리허설 1회 성공 <span class="wg-11-tk">MIG-04</span></li>
+        <li>dual-write 동시 기록·실패 알림 가동 <span class="wg-11-tk">MIG-07</span></li>
+        <li>RPO·RTO 측정·기록 완료 <span class="wg-11-tk">MIG-09</span></li>
       </ul>
     </div>
     <div class="wg-11-col wg-11-col-prog">
       <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>진행 중</h4>
       <ul class="wg-11-col-list">
-        <li>단가 대시보드 디바이스 분해 뷰 <span class="wg-11-tk">GOV-24</span></li>
-        <li>eval 스위트 회귀 자동화 <span class="wg-11-tk">GOV-27</span></li>
+        <li>과거 데이터 백필 배치(멱등 재실행) <span class="wg-11-tk">MIG-12</span></li>
+        <li>staging 롤백 토글 drill <span class="wg-11-tk">MIG-15</span></li>
       </ul>
     </div>
     <div class="wg-11-col wg-11-col-risk">
       <h4 class="wg-11-col-h"><span class="wg-11-dot"></span>리스크</h4>
       <ul class="wg-11-col-list">
-        <li><strong>CI 비용 게이트</strong> — 빌드 시간 증가로 일정 지연 우려. <span class="wg-11-flag">에스컬레이션</span> <span class="wg-11-tk">GOV-30</span></li>
+        <li><strong>복제 지연 상승</strong> — 백필 부하로 lag이 RPO 한계에 근접. 컷오버 비율 동결로 대응. <span class="wg-11-flag">에스컬레이션</span> <span class="wg-11-tk">MIG-18</span></li>
       </ul>
     </div>
   </div>

@@ -2087,6 +2087,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 <div class="term"><div class="label">단일 통제점</div><span class="word">Single Control Point</span><p class="meaning">인증·비용·데이터 정책·관측을 분산된 여러 호출 지점이 아니라 하나의 경유 지점에 모으는 설계. 통제·감사가 쉬워지는 대신, 그 지점의 가용성과 지연이 전체 시스템 품질을 좌우하게 된다.</p></div></section>
 
 <section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="num is-key" aria-hidden="true">3</span>위험 매트릭스와 완화책</h2><p class="h2-sub">매트릭스의 목적은 위험을 나열하는 것이 아니라, 각 위험에 막는 설계와 책임자를 붙이는 것이다.</p>
+<section class="vt-shell"><div class="vt-frame"><div class="rm-grid"><div class="rm-cell rm-head">가능성</div><div class="rm-cell rm-head">낮음</div><div class="rm-cell rm-head">중간</div><div class="rm-cell rm-head">높음</div><div class="rm-cell rm-head">영향 큼</div><div class="rm-cell rm-risk low">리전 동시 장애</div><div class="rm-cell rm-risk high">단일 장애점 · 데이터 반출</div><div class="rm-cell rm-risk high">우회 직접 호출</div><div class="rm-cell rm-head">영향 중간</div><div class="rm-cell rm-risk low">감사 로그 유실</div><div class="rm-cell rm-risk med">비용 폭증 · 제공자 종속</div><div class="rm-cell rm-risk med">지연 증가(추가 1홉)</div><div class="rm-cell rm-head">영향 작음</div><div class="rm-cell rm-risk low">대시보드 집계 오차</div><div class="rm-cell rm-risk low">알림 노이즈</div><div class="rm-cell rm-risk low">모델 별칭 혼동</div></div></div></section>
 <div class="tbl table-scroll"><table><caption>주요 도입 위험 · 영향/가능성 · 완화책 · 책임자</caption><thead><tr><th>위험</th><th>영향 / 가능성</th><th>완화책</th><th>책임자</th></tr></thead><tbody><tr><td>단일 장애점 (게이트웨이 다운)</td><td>높음 / 중간</td><td>다중 인스턴스·다중 AZ 이중화, 헬스체크, 제공자 직결 비상 fallback 경로 사전 정의</td><td>Platform</td></tr><tr><td>지연 증가 (추가 1홉)</td><td>중간 / 높음</td><td>스트리밍 패스스루, 게이트웨이 지연 예산(예: p99 +50ms 이내) 설정·상시 모니터링</td><td>Platform</td></tr><tr><td>우회 직접 호출 (shadow usage)</td><td>높음 / 높음</td><td>제공자 키를 게이트웨이만 보유, 송신 방화벽으로 외부 LLM 도메인 직결 차단, 키 로테이션</td><td>Security</td></tr><tr><td>민감 데이터 반출</td><td>높음 / 중간</td><td>요청 본문 마스킹·금칙 정책, 비밀값 탐지, 외부 전송 약정·보존 정책 명시</td><td>Security / Privacy</td></tr><tr><td>비용 폭증 (제어 없는 호출)</td><td>중간 / 중간</td><td>팀별 쿼터·레이트리밋, 비용 상한 알림, 모델별 단가 가시화 대시보드</td><td>Platform / FinOps</td></tr><tr><td>제공자 종속 (lock-in)</td><td>중간 / 중간</td><td>모델 별칭 추상화, 멀티 프로바이더 라우팅, 호환 어댑터 계층</td><td>Platform</td></tr></tbody></table></div>
 <div class="danger"><div class="label">Anti-pattern</div><div class="name">우회를 막지 않은 "권고" 게이트웨이</div><p>게이트웨이를 세우되 제공자 키를 앱이 여전히 들고 있고 외부 직결도 막지 않으면, 바쁜 팀은 지연·장애를 피해 직접 호출로 돌아간다. 그 순간 비용·데이터 통제는 다시 0이 된다. 강제 경유는 정책 문구가 아니라 키 독점 + 송신 차단이라는 기술적 통제로 보장해야 한다.</p></div></section>
 
@@ -2109,65 +2110,56 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 <div class="faq"><dl><dt>한 곳이 막히면 전부 막히는 것 아닌가?</dt><dd>맞다. 그래서 이중화와 제공자 직결 비상 fallback을 P0의 진입 게이트로 둔다. 가용성이 직접 호출과 동등하다는 데이터 없이는 강제하지 않는다.</dd><dt>지연이 늘어 사용자 경험이 나빠지지 않나?</dt><dd>토큰 스트리밍을 버퍼링 없이 흘려보내면 추가 지연은 게이트웨이 처리 시간(수십 ms)에 그친다. p99 지연 예산을 정하고 상시 모니터링해 초과 시 강등한다.</dd><dt>팀들이 그냥 직접 호출로 우회하지 않을까?</dt><dd>정책 문구로는 못 막는다. 제공자 키를 게이트웨이만 보유하고 외부 LLM 도메인 직결을 송신 방화벽으로 차단해 기술적으로 봉쇄한다.</dd><dt>구축·운영 비용이 절감액보다 크지 않나?</dt><dd>LLM 호출 팀이 1개뿐이면 그럴 수 있어 "도입 안 함"을 권한다. 3개 이상·집계 불가·반출 감사 요구가 있으면 통제 이득이 운영 비용을 넘어선다.</dd></dl></div></section>
 
 
-  <section class="mode-template-contract" data-ahf-contract="mode-template" data-mode="expert_html"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num" aria-hidden="true">T</span>모드 정본 템플릿 적용 확인</h2><p class="h2-sub">최신 스킬 결정표의 1순위 vt와 추천 wg 사용 여부를 시각적으로 확인하기 위한 섹션입니다.</p><div class="mini-card"><h3>1순위 vt 템플릿</h3><p><code>risk-matrix</code> 구조를 본문 안에 실제 HTML 템플릿으로 삽입했습니다.</p></div>
-<section class="vt-shell">
-  <div class="vt-frame">
-    <div class="rm-grid"><div class="rm-cell rm-head">가능성</div><div class="rm-cell rm-head">낮음</div><div class="rm-cell rm-head">중간</div><div class="rm-cell rm-head">높음</div><div class="rm-cell rm-head">영향 큼</div><div class="rm-cell rm-risk med">PII 로그</div><div class="rm-cell rm-risk high">권한 우회</div><div class="rm-cell rm-risk high">진료 판단</div><div class="rm-cell rm-head">영향 중간</div><div class="rm-cell rm-risk low">운영 지연</div><div class="rm-cell rm-risk med">수동 복구</div><div class="rm-cell rm-risk med">오류 폭증</div><div class="rm-cell rm-head">영향 작음</div><div class="rm-cell rm-risk low">문구 모호</div><div class="rm-cell rm-risk low">태그 누락</div><div class="rm-cell rm-risk low">색 대비</div></div>
-  </div>
-</section>
-<div class="mini-card wg-03-contract"><h3>추천 wg 위젯</h3><p><code>wg-03</code> 위젯을 모드별 보강 템플릿으로 포함했습니다.</p></div>
+<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M16 13l-6 7 6 7M24 13l6 7-6 7"/><path class="bi-accent-line" d="M22 11l-4 18"/></svg></span><span class="num" aria-hidden="true">7</span>클라이언트가 실제로 바꾸는 것 — 전환 diff</h2><p class="h2-sub">게이트웨이 도입이 앱 코드에 남기는 변화는 작다: 직접 SDK 호출을 게이트웨이 경유로 바꾸고 비상 폴백·지연 예산·비용 태그를 표준화한다. 아래는 검색 서비스의 요약 호출을 전환한 실제 diff와 리뷰 노트다.</p>
 <section class="wg-03" aria-labelledby="wg-03-title">
   <header class="wg-03-head">
-    <p class="wg-03-kicker">코드 리뷰</p>
-    <h2 id="wg-03-title" class="wg-03-title">PR #482 · 결제 재시도 백오프 추가</h2>
+    <p class="wg-03-kicker">클라이언트 전환 리뷰</p>
+    <h2 id="wg-03-title" class="wg-03-title">PR · 직접 LLM 호출 → 게이트웨이 경유</h2>
     <div class="wg-03-meta">
-      <span class="wg-03-chip">src/payments/retry.ts</span>
-      <span class="wg-03-chip wg-03-chip-add">+14</span>
-      <span class="wg-03-chip wg-03-chip-del">−5</span>
+      <span class="wg-03-chip">src/llm/summarize.ts</span>
+      <span class="wg-03-chip wg-03-chip-add">+5</span>
+      <span class="wg-03-chip wg-03-chip-del">−2</span>
       <span class="wg-03-chip">리뷰어 2명</span>
     </div>
     <nav class="wg-03-jump" aria-label="노트 점프">
       <span class="wg-03-jump-label">노트로 이동:</span>
-      <a href="#wg-03-n1" class="wg-03-jump-link wg-03-sev-critical">L18 critical</a>
-      <a href="#wg-03-n2" class="wg-03-jump-link wg-03-sev-warn">L22 warn</a>
-      <a href="#wg-03-n3" class="wg-03-jump-link wg-03-sev-info">L27 info</a>
+      <a href="#wg-03-n1" class="wg-03-jump-link wg-03-sev-critical">L6 critical</a>
+      <a href="#wg-03-n2" class="wg-03-jump-link wg-03-sev-warn">L7 warn</a>
+      <a href="#wg-03-n3" class="wg-03-jump-link wg-03-sev-info">L8 info</a>
     </nav>
   </header>
-
   <div class="wg-03-grid">
     <div class="wg-03-diff" role="table" aria-label="코드 diff">
-      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln" aria-hidden="true">15</span><code class="wg-03-code">async function charge(order) {</code></div>
-      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">16</span><code class="wg-03-code">  const max = 3;</code></div>
-      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">17</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">−</span>  for (let i = 0; i &lt; max; i++) {</code></div>
-      <div id="wg-03-l18" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">18</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">+</span>  for (let i = 0; i &lt; max; i++) {</code><a href="#wg-03-n1" class="wg-03-dot wg-03-sev-critical" aria-label="L18 critical 노트">!</a></div>
-      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">19</span><code class="wg-03-code"><span class="wg-03-sign">+</span>    try {</code></div>
-      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">20</span><code class="wg-03-code"><span class="wg-03-sign">+</span>      return await gateway.charge(order);</code></div>
-      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">21</span><code class="wg-03-code"><span class="wg-03-sign">+</span>    } catch (e) {</code></div>
-      <div id="wg-03-l22" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">22</span><code class="wg-03-code"><span class="wg-03-sign">+</span>      await sleep(2 ** i * 100);</code><a href="#wg-03-n2" class="wg-03-dot wg-03-sev-warn" aria-label="L22 warn 노트">!</a></div>
-      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">23</span><code class="wg-03-code"><span class="wg-03-sign">−</span>      await sleep(100);</code></div>
-      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">24</span><code class="wg-03-code">    }</code></div>
-      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">25</span><code class="wg-03-code">  }</code></div>
-      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">26</span><code class="wg-03-code"><span class="wg-03-sign">−</span>  throw new Error('charge failed');</code></div>
-      <div id="wg-03-l27" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">27</span><code class="wg-03-code"><span class="wg-03-sign">+</span>  throw new PaymentError('retry exhausted', order.id);</code><a href="#wg-03-n3" class="wg-03-dot wg-03-sev-info" aria-label="L27 info 노트">i</a></div>
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln" aria-hidden="true">1</span><code class="wg-03-code">export async function summarize(text: string) {</code></div>
+      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">2</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">−</span>  const client = new OpenAI({ apiKey: process.env.OPENAI_KEY });</code></div>
+      <div class="wg-03-row wg-03-del" role="row"><span class="wg-03-ln">3</span><code class="wg-03-code"><span class="wg-03-sign" aria-hidden="true">−</span>  return client.chat.completions.create({</code></div>
+      <div class="wg-03-row wg-03-add" role="row"><span class="wg-03-ln">4</span><code class="wg-03-code"><span class="wg-03-sign">+</span>  return gateway.chat({</code></div>
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">5</span><code class="wg-03-code">    model: 'gpt-4o',</code></div>
+      <div id="wg-03-l6" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">6</span><code class="wg-03-code"><span class="wg-03-sign">+</span>    fallback: 'direct',</code><a href="#wg-03-n1" class="wg-03-dot wg-03-sev-critical" aria-label="L6 critical 노트">!</a></div>
+      <div id="wg-03-l7" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">7</span><code class="wg-03-code"><span class="wg-03-sign">+</span>    timeout_ms: 8000,</code><a href="#wg-03-n2" class="wg-03-dot wg-03-sev-warn" aria-label="L7 warn 노트">!</a></div>
+      <div id="wg-03-l8" class="wg-03-row wg-03-add wg-03-flag" role="row"><span class="wg-03-ln">8</span><code class="wg-03-code"><span class="wg-03-sign">+</span>    cost_tag: 'team:search',</code><a href="#wg-03-n3" class="wg-03-dot wg-03-sev-info" aria-label="L8 info 노트">i</a></div>
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">9</span><code class="wg-03-code">    messages: [{ role: 'user', content: text }],</code></div>
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">10</span><code class="wg-03-code">  });</code></div>
+      <div class="wg-03-row wg-03-ctx" role="row"><span class="wg-03-ln">11</span><code class="wg-03-code">}</code></div>
     </div>
-
     <aside class="wg-03-notes" aria-label="리뷰 노트">
       <article id="wg-03-n1" class="wg-03-note wg-03-sev-critical" tabindex="-1">
-        <header class="wg-03-note-head"><span class="wg-03-badge">critical</span><span class="wg-03-note-loc"><a href="#wg-03-l18">L18</a></span></header>
-        <p class="wg-03-note-body">루프 조건은 그대로지만 인덱스 <code>i</code>가 0부터 시작해 첫 시도에 <code>sleep(0)</code>이 됩니다. 첫 요청도 지연시키려면 의도를 주석으로 명시하세요. <strong>지수 백오프 상한(cap)이 없어 폭주 위험.</strong></p>
+        <header class="wg-03-note-head"><span class="wg-03-badge">critical</span><span class="wg-03-note-loc"><a href="#wg-03-l6">L6</a></span></header>
+        <p class="wg-03-note-body">게이트웨이는 모든 LLM 트래픽의 <strong>단일 장애점</strong>이다. <code>fallback:'direct'</code> 비상 경로를 실제로 죽여보고(chaos) 복구를 검증하기 전에는 강제 경유로 전환하지 않는다.</p>
       </article>
       <article id="wg-03-n2" class="wg-03-note wg-03-sev-warn" tabindex="-1">
-        <header class="wg-03-note-head"><span class="wg-03-badge">warn</span><span class="wg-03-note-loc"><a href="#wg-03-l22">L22</a></span></header>
-        <p class="wg-03-note-body">지터(jitter) 없이 순수 지수 백오프만 사용하면 동시 재시도 군집이 발생할 수 있습니다. <code>Math.random()</code> 기반 풀 지터 추가 권장.</p>
+        <header class="wg-03-note-head"><span class="wg-03-badge">warn</span><span class="wg-03-note-loc"><a href="#wg-03-l7">L7</a></span></header>
+        <p class="wg-03-note-body">타임아웃을 클라이언트마다 다르게 박으면 p99 회귀가 숨는다. 지연 예산은 게이트웨이 정책으로 <strong>중앙 관리</strong>하고 코드 값은 상한선으로만 둔다.</p>
       </article>
       <article id="wg-03-n3" class="wg-03-note wg-03-sev-info" tabindex="-1">
-        <header class="wg-03-note-head"><span class="wg-03-badge">info</span><span class="wg-03-note-loc"><a href="#wg-03-l27">L27</a></span></header>
-        <p class="wg-03-note-body">전용 <code>PaymentError</code>로 교체한 점 좋습니다. <code>order.id</code> 컨텍스트가 로깅에 도움 됩니다.</p>
+        <header class="wg-03-note-head"><span class="wg-03-badge">info</span><span class="wg-03-note-loc"><a href="#wg-03-l8">L8</a></span></header>
+        <p class="wg-03-note-body"><code>cost_tag</code> 누락 시 비용이 'unattributed'로 빠져 팀 귀속률이 떨어진다. CI 린트로 필수화하면 비용 가시성 목표(100% 귀속)를 지킬 수 있다.</p>
       </article>
     </aside>
   </div>
 </section>
-  </section>
+</section>
+
 <section class="try"><div class="label">NEXT ACTION</div><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>비차단 프록시 4주를 먼저 잠근다</h2><p>강제하지 말고 옵트인 프록시부터 세워 가용성·지연·비용 기준선을 모은다. 키 회수와 강제 경유는 그 데이터가 직접 호출과 동등함을 증명한 뒤에만 진행한다.</p><ol><li>이중화·헬스체크·비상 fallback 경로를 먼저 구성한다.</li><li>옵트인 팀 1~2곳을 게이트웨이로 통과시켜 p99 추가 지연과 가용성을 측정한다.</li><li>요청 단위 비용 태깅과 메타데이터 로깅(평문 본문 무보존)을 켠다.</li><li>제공자 키 회수와 외부 직결 차단 계획을 Security와 합의한다.</li><li>Go/No-Go 임계값을 조직 값으로 확정하고 롤백 트리거를 문서화한다.</li></ol></section>
 
 <aside class="source-note"><div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="10" y="7" width="20" height="26" rx="3"/><path class="bi-line" d="M15 14h10M15 20h10M15 26h7"/><path class="bi-accent-line" d="M27 7v8h-8"/></svg></span>Source Note</div><p>adaptive-html-final expert-report.html 레이아웃과 expert_html 모드 충실도 기준을 따른다. 지연·가용성·비용 임계값은 모두 조직 협의용 예시이며, 도입 전 실제 트래픽 기준선으로 대체해야 한다.</p></aside>

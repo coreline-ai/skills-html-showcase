@@ -20,20 +20,20 @@
 1. **positioning** — 한 줄 정체성 + 대상 독자 (`.feature-verdict`)
 2. **overview** — 한눈 요약 시그널 (`.feature-overview`, `hm-grid` 또는 `repo-signal-grid`). 정본 출력이 verdict 직후 상단에 두는 hero 개요.
 3. **feature toc** — `toc-map` + `toc-pills` + `a.toc-pill > b` 계약 (`.feature-toc`)
-3. **feature map** — 기능 지도. `card-grid` 또는 `.feature-map-grid`
-4. **core capability** — 핵심 기능. `wg-14` Feature Explainer 우선
-5. **tech stack** — 기술 스택 전체 지도
-6. **architecture** — 구조 심화 (`wg-04` Module Map)
-7. **directory** — 디렉토리 구조 해부 (file-tour)
-8. **actual screens** — 실제 화면 스크린샷 갤러리 (아래 계약 필수)
-9. **user features** — 사용자 기능을 흐름으로 (가입→…→종료)
-10. **admin features** — 관리자 기능 (사용자/권한/세션/감사)
-11. **getting started** — 시작 방법(단계형, `wg-16`)
-12. **where it fits** — 적합/부적합 시나리오
-13. **pre-adoption check** — 도입 전 확인 항목
-14. **final verdict** — 최종 판단(기능 이해용/도입용 권고)
-15. **next actions** — `.try`
-16. **source note** — 출처 한계
+4. **feature map** — 기능 지도. `card-grid` 또는 `.feature-map-grid`
+5. **core capability** — 핵심 기능. `wg-14` Feature Explainer 우선
+6. **tech stack** — 기술 스택 전체 지도
+7. **architecture** — 구조 심화 (`wg-04` Module Map)
+8. **directory** — 디렉토리 구조 해부 (file-tour)
+9. **actual screens** — 실제 화면 스크린샷 갤러리 (아래 계약 필수)
+10. **user features** — 사용자 기능을 흐름으로 (가입→…→종료)
+11. **admin features** — 관리자 기능 (사용자/권한/세션/감사)
+12. **getting started** — 시작 방법(단계형, `wg-16`)
+13. **where it fits** — 적합/부적합 시나리오
+14. **pre-adoption check** — 도입 전 확인 항목
+15. **final verdict** — 최종 판단(기능 이해용/도입용 권고)
+16. **next actions** — `.try`
+17. **source note** — 출처 한계
 
 > 번호는 표시 순서일 뿐 — feature toc 이후 본문 순서는 위 정본 출력 흐름을 따른다.
 

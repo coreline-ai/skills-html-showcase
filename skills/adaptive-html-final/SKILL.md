@@ -51,13 +51,13 @@ description: |
 2. **두 위젯 라이브러리는 별개다.**
    - (1) **CSS 뷰 위젯 `wg-01`~`wg-20`** = `assets/widgets.css` + `assets/widget-templates/*.html`. 섹션 보강용 인터랙션 위젯이며 `wg-<id>-` 네임스페이스로 격리된다(Step 4.6).
    - (2) **SVG→HTML 템플릿 `vt-` 21종** = `assets/visual-html.css` + `assets/visual-html-templates/01..21.html`. 본문에 그대로 삽입하는 in-flow 다이어그램(이미지가 아닌 네이티브 HTML 구조도)이다(Step 4.7). 두 라이브러리를 혼동하거나 한쪽으로 대체하지 않는다.
-3. **비주얼 프로파일 → 16모드 라우터(§3) 순서가 단일 진입점**이다. (a) 먼저 비주얼 프로파일(`widget`=v5 / `diagram`=v6 / `auto`=기본)을 결정한다 — 인자 `profile=widget|diagram|auto` 또는 별칭 `style=v5|v6`를 `trim→lowercase→정규화`(둘 다 오면 `profile=` 우선, 무효 토큰은 `invalid_profile` 실패). 인자 미지정 시 **비대화형(AGENTS.md 경유 Codex/Gemini)은 무조건 `auto`·질문 금지**, 대화형(Claude 대화)은 1회 질문 가능(결정론 보장은 인자 명시 경로 한정). (b) 이어 모드 선택 → 레이아웃 → 프로파일에 따라 vt-템플릿(diagram·auto)·wg-위젯(widget·auto)을 §0.6에서 고른다. 프로파일이 §0.6 결정표의 **어느 열을 쓸지** 게이트한다(widget=wg 열만/diagram=vt 열만/auto=둘 다).
+3. **비주얼 프로파일 → 17모드 라우터(§3) 순서가 단일 진입점**이다. (a) 먼저 비주얼 프로파일(`widget`=v5 / `diagram`=v6 / `auto`=기본)을 결정한다 — 인자 `profile=widget|diagram|auto` 또는 별칭 `style=v5|v6`를 `trim→lowercase→정규화`(둘 다 오면 `profile=` 우선, 무효 토큰은 `invalid_profile` 실패). 인자 미지정 시 **비대화형(AGENTS.md 경유 Codex/Gemini)은 무조건 `auto`·질문 금지**, 대화형(Claude 대화)은 1회 질문 가능(결정론 보장은 인자 명시 경로 한정). (b) 이어 모드 선택 → 레이아웃 → 프로파일에 따라 vt-템플릿(diagram·auto)·wg-위젯(widget·auto)을 §0.6에서 고른다. 프로파일이 §0.6 결정표의 **어느 열을 쓸지** 게이트한다(widget=wg 열만/diagram=vt 열만/auto=둘 다).
 4. **코어 CSS 인라인 + 해시 마커.** 출력은 `theme.css + components.css + visual-components.css + layouts.css + print.css`를 코어로 인라인하고, 인라인 `<style>`에 `adaptive-html-final-core-css-sha256: <64hex>` 주석 마커를 남긴다. `widgets.css`(위젯 사용 시)와 `visual-html.css`(vt-템플릿 사용 시)는 조건부 인라인이며, 인라인 순서는 §5 Step 5의 합본 순서를 따른다.
 5. **전 모드 공통 시각 정본(github 전용→전역 승격, CSS·validator에 완전 잠금).** 모드와 무관하게 다음을 지킨다 — 검증기 `section_surface_contract_gate`·`direct_section_title_icon_policy_gate`·`numbered_h2_body_icon_gate`·`body_icon_diversity_gate`가 전역 강제한다.
    - **layout-* main의 직접 자식 `section`은 `.try`를 제외하고 카드/view surface를 가진다 — class 유무와 무관.** `.page(-wide)?>section:not(.try)`(및 `>article>section:not(.try)`)에 카드 배경·보더(layouts.css 규칙)를 유지한다(무클래스 한정 아님: `.summary-card`·`.risk-matrix`·`.check-grid` 등 class 있는 직접 섹션도 카드여야 한다). 규칙이 인라인 CSS에서 빠지면 실패(`section_surface_css_missing`). 검정 `.try`(Next Actions hero)만 제외. grid형 섹션은 카드 안에 내부 카드를 두는 github 패턴을 따른다.
    - **직접 섹션은 제목 없는 카드로 시작하지 않는다. 첫 `h2`는 `body-icon → (num/no) → title` 순서를 따른다 — body-icon은 필수.** `<h2><span class="body-icon …"><svg aria-hidden></svg></span><span class="num">N</span>제목</h2>` 정본. 직접 섹션에 h2가 없으면 실패(`direct_section_h2_missing`), 직접 섹션 h2에 body-icon이 없으면 실패(`direct_section_h2_missing_body_icon`). **번호는 강제하지 않는다**(미리보기·개요처럼 아이콘만 있고 번호 없는 정당한 섹션 존재). 추가로 번호 칩(`.num`/`.no`)을 단 h2는 어느 위치(index/nav shell 포함)든 body-icon이 없으면 실패(`numbered_h2_missing_body_icon`). **섹션 아이콘은 의미별로 골라야 하며, 같은 SVG를 모든 섹션에 반복 주입하지 않는다**(`body_icon_diversity_too_low` 실패). 예: manual_analysis는 판정=shield, source=file, role=people, path=arrow, safety=shield-plus, recipe=checklist, reference=doc, decision=diamond, troubleshooting=warning, operations=clock, audit=search, next=flag처럼 섹션 기능별로 구분한다.
    - **모드별 템플릿 증명은 선택이 아니라 계약이다.** `mode_template_contract_gate`가 §0.6 행의 1순위 vt와 권장 wg 사용을 검사한다. `diagram/auto`는 해당 모드 1순위 vt marker를 최소 1회 포함해야 하고, `widget/auto`는 권장 `wg-NN-` 중 최소 1개를 포함해야 한다. 예제/쇼케이스는 특히 이 계약을 시각적으로 보여야 하며, 같은 카드/리스트 틀만 반복하면 실패다.
-6. **완료 단계 = 격리 검증 후 통합·동기화.** 모드별 isolated `validate_output.py OK` 이후에도 (a) 인라인 코어/조건부 CSS를 **현재 자산으로 재주입**하고 `sources/assets/*.css`·`css-integrity.json`·source manifest를 동기화(stale 스냅샷 금지), (b) `index`/네비 shell, (c) 전 페이지 일괄 validate + `quality_contract_check.py`(붕어빵·얇은 문서 차단)를 **별도 통합 단계**로 통과시킨다. `validate OK`는 필요조건일 뿐 완료 기준이 아니다. 16모드 일괄 생성 시 공통 생성기로 찍지 말고 모드별 layout/recipe/reference/template만 사용한다. 통합 실행: `python3 scripts/completion_check.py <output_dir>`(validate+quality_contract+governance 3종을 한 번에 강제, 추가로 1280/390 캡쳐 확인 리마인더).
+6. **완료 단계 = 격리 검증 후 통합·동기화.** 모드별 isolated `validate_output.py OK` 이후에도 (a) 인라인 코어/조건부 CSS를 **현재 자산으로 재주입**하고 `sources/assets/*.css`·`css-integrity.json`·source manifest를 동기화(stale 스냅샷 금지), (b) `index`/네비 shell, (c) 전 페이지 일괄 validate + `quality_contract_check.py`(붕어빵·얇은 문서 차단)를 **별도 통합 단계**로 통과시킨다. `validate OK`는 필요조건일 뿐 완료 기준이 아니다. 17모드 일괄 생성 시 공통 생성기로 찍지 말고 모드별 layout/recipe/reference/template만 사용한다. 통합 실행: `python3 scripts/completion_check.py <output_dir>`(validate+quality_contract+governance 3종을 한 번에 강제, 추가로 1280/390 캡쳐 확인 리마인더).
 
 **운영 원칙:**
 
@@ -110,7 +110,7 @@ vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..2
 13. GitHub 저장소 분석은 README 미화가 아니라 사용/채택/감사 의사결정을 돕는 실사 리포트로 작성하며, 관측 사실·추론·확인 불가를 명확히 분리한다.
 14. YouTube 분석은 영상 내용을 사실처럼 과잉 생성하지 않고 입력 tier(URL only/metadata/transcript+comments)를 명시해 FACT/INFERENCE/UNKNOWN을 나눈다.
 15. Manual 분석은 레퍼런스 재요약이 아니라 역할별 실행 경로, 사전조건, 검증, 문제 해결, 출처 한계를 포함하는 사용 가능한 매뉴얼로 재구성한다.
-16. **Fresh Extension Rule.** 기존 13모드 결과물 뒤에 14/15/16 같은 확장 모드를 다시 만들 때는 이전 페이지 본문·이전 대화 산출물·기존 14/15/16 예제를 소스처럼 재사용하지 않는다. 새 출력 폴더를 만들고 `sources/fresh-generation-rule.json`에 `fresh_run=true`, `reused_previous_pages=false`, `mode_scope`를 기록한 뒤, 각 모드는 전용 layout/recipe/reference와 새 주제만으로 최소 10개 직접 섹션을 구성한다.
+16. **Fresh Extension Rule.** 기존 13모드 결과물 뒤에 `github_analysis`/`youtube_analysis`/`manual_analysis`/`github_feature_usage` 같은 확장 모드를 다시 만들 때는 이전 페이지 본문·이전 대화 산출물·기존 14/15/16/17 예제를 소스처럼 재사용하지 않는다. 새 출력 폴더를 만들고 `sources/fresh-generation-rule.json`에 `fresh_run=true`, `reused_previous_pages=false`, `mode_scope`를 기록한 뒤, 각 모드는 전용 layout/recipe/reference와 새 주제만으로 최소 10개 직접 섹션을 구성한다.
 
 ## 2. Supported Input Types
 
@@ -137,18 +137,18 @@ vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..2
 | 3 | seo_dashboard | SEO, 제목, 메타, 태그, 검색 의도 | seo-dashboard.html |
 | 4 | education_html | 교육, 강의, 온보딩, 실습, 퀴즈 | course-module.html |
 | 5 | github_analysis | GitHub 저장소 URL, owner/repo, README/Issues/Releases/License 분석 | github-analysis.html |
-| 6 | youtube_analysis | YouTube URL, youtu.be, Shorts, 영상 요약, 트랜스크립트/댓글/챕터 분석, 콘텐츠 갭 | youtube-analysis.html |
-| 7 | manual_analysis | 매뉴얼 분석, 사용 설명서 제작, 운영 매뉴얼, 절차서, 트러블슈팅, 제품 가이드 | manual-analysis.html |
-| 8 | expert_html | 전문가, 리포트, 진단, 아키텍처, 리스크 | expert-report.html |
-| 9 | article_html | 공개 글, 아티클, 기사, GitHub Pages | magazine-article.html |
-| 10 | blog_writer | 블로그 글, 포스팅, 경험담, 내 생각 | personal-blog-essay.html |
-| 11 | beginner_html | 초보자, 쉽게, 비유로, 입문 | beginner-learning.html |
-| 12 | reference_html | 레퍼런스, API 문서, 치트시트, 옵션표 | reference-manual.html |
-| 13 | comparison_html | 비교, 장단점, 선택 기준 | comparison-matrix.html |
-| 14 | case_study_html | 사례 연구, 회고, 프로젝트 기록 | case-study.html |
-| 15 | landing_brief_html | 소개 페이지, 랜딩, 요약 페이지 | landing-brief.html |
-| 16 | checklist_playbook | 체크리스트, 운영 절차, 플레이북 | checklist-playbook.html |
-| 17 | github_feature_usage | GitHub 저장소를 "무엇을 해주나/어떻게 쓰나/어디에 맞나" 기능·사용법·도입 가이드 관점으로, 실제 화면(스크린샷) 중심으로 | github-feature-usage.html |
+| 6 | github_feature_usage | GitHub 저장소를 "무엇을 해주나/어떻게 쓰나/어디에 맞나" 기능·사용법·도입 가이드 관점으로, 실제 화면(스크린샷) 중심으로 | github-feature-usage.html |
+| 7 | youtube_analysis | YouTube URL, youtu.be, Shorts, 영상 요약, 트랜스크립트/댓글/챕터 분석, 콘텐츠 갭 | youtube-analysis.html |
+| 8 | manual_analysis | 매뉴얼 분석, 사용 설명서 제작, 운영 매뉴얼, 절차서, 트러블슈팅, 제품 가이드 | manual-analysis.html |
+| 9 | expert_html | 전문가, 리포트, 진단, 아키텍처, 리스크 | expert-report.html |
+| 10 | article_html | 공개 글, 아티클, 기사, GitHub Pages | magazine-article.html |
+| 11 | blog_writer | 블로그 글, 포스팅, 경험담, 내 생각 | personal-blog-essay.html |
+| 12 | beginner_html | 초보자, 쉽게, 비유로, 입문 | beginner-learning.html |
+| 13 | reference_html | 레퍼런스, API 문서, 치트시트, 옵션표 | reference-manual.html |
+| 14 | comparison_html | 비교, 장단점, 선택 기준 | comparison-matrix.html |
+| 15 | case_study_html | 사례 연구, 회고, 프로젝트 기록 | case-study.html |
+| 16 | landing_brief_html | 소개 페이지, 랜딩, 요약 페이지 | landing-brief.html |
+| 17 | checklist_playbook | 체크리스트, 운영 절차, 플레이북 | checklist-playbook.html |
 
 여러 트리거가 동시에 감지되면 Priority가 높은 모드를 우선한다. 단, 사용자가 명시적으로 특정 모드를 지정하면 그 지시가 우선한다.
 
@@ -182,7 +182,7 @@ assets/base.html       = 단일 HTML 렌더링 기본 골격
 assets/layouts/*.html  = 모드별 골격
 visual-templates/*.svg.tpl = 8000×6000 SVG 인포그래픽 템플릿
 scripts/render_visual_svg.py = visual brief → SVG 렌더러
-examples/01..16_*.html = 16모드 풀 스킬급 참조 예제(실제 코어 CSS 인라인·8테마 스위처·body-icon·editorial/vt/wg 컴포넌트, 자기완결·무 JS, 모드별 시그니처 구조 확인용) + examples/index.html 갤러리
+examples/01..17_*.html = 17모드 풀 스킬급 참조 예제(실제 코어 CSS 인라인·8테마 스위처·body-icon·editorial/vt/wg 컴포넌트, 자기완결·무 JS, 모드별 시그니처 구조 확인용) + examples/index.html 갤러리
 ```
 
 공개 블로그 품질이 필요하면 `<head>`에 Pretendard Variable 폰트 링크를 포함한다. 오프라인/내부 문서이면 fallback으로도 동작한다.

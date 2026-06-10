@@ -18,7 +18,7 @@
 7. Risk matrix: 라이선스 불명확, 릴리스 부재, 테스트/CI 부재, stale issue 등 채택 리스크.
 8. Final decision: 내가 다음에 해야 할 30분 검토/1일 POC/보류 체크리스트.
 9. Source note: 분석 기준 시각, 확인한 GitHub 표면, API/접근 한계, 확인 불가 항목.
-10. 최신 시각 계약: 상단 라이트/화이트/다크 스위처, `generated-row`/`lens-strip` 헤더, 번호형 h2 앞 body icon, 섹션 카드/뷰 표면.
+10. 최신 시각 계약: 상단 8테마 스위처, `generated-row`/`lens-strip` 헤더, 번호형 h2 앞 body icon, 섹션 카드/뷰 표면.
 
 작성 규칙:
 
@@ -27,7 +27,7 @@
 - README 문구를 그대로 홍보 문구처럼 반복하지 말고 사용자의 의사결정 질문으로 재구성한다.
 - 외부/동작 JS는 0이다. JSON-LD 외 `<script>` 금지.
 - layout은 `github-analysis.html`, class는 `.layout-github`를 사용한다.
-- `base.html`의 `ahf-theme` 라디오 3개 스위처를 유지한다.
+- `base.html`의 `ahf-theme` 8테마 라디오 스위처를 유지한다.
 - header에는 `generated-row`와 `lens-strip`를 넣는다.
 - 번호가 있는 모든 h2는 `body-icon body-icon--sm` → `num` → 제목 순서로 작성하고, `body-icons.css`를 인라인한다.
 - `.layout-github>section` 카드/뷰 표면을 유지하고 grid는 내부 `repo-*grid` wrapper에만 적용한다.
