@@ -1078,11 +1078,25 @@ def manifest_version_consistency_gate(manifest_text: str, changelog_text: str = 
     return issues
 
 
+def skill_md_version_mismatch(skill_md: str, manifest_version) -> list:
+    """SKILL.md header `> Version X.Y.Z` must match manifest.version. Prose drift guard:
+    version bumps repeatedly updated manifest/CHANGELOG but missed the SKILL.md header
+    (the in-package version declaration). AGENTS.md/README/Guide are repo wrappers outside
+    the portable skill, so they are not checked here."""
+    if not manifest_version:
+        return []
+    m = re.search(r'(?m)^>\s*Version\s+(\d+\.\d+\.\d+)\b', skill_md)
+    if m and m.group(1) != str(manifest_version):
+        return [{'type': 'skill_md_version_mismatch', 'skill_md': m.group(1), 'manifest': str(manifest_version),
+                 'detail': 'SKILL.md 헤더 "> Version" 선언이 manifest.version과 불일치 — 버전 bump 시 SKILL.md 헤더도 함께 갱신해야 한다.'}]
+    return []
+
+
 def skill_doc_consistency_gate(skill_dir: Path) -> list:
     """Source-doc correctness gate (run when --skill-dir given). Catches the editorial
     drift the value/hash/count gates structurally cannot: duplicate CHANGELOG versions,
-    manifest internal version staleness, and SKILL.md↔manifest examples-fidelity
-    contradiction. No length/trigger rules."""
+    manifest internal version staleness, SKILL.md header version drift, and SKILL.md↔manifest
+    examples-fidelity contradiction. No length/trigger rules."""
     issues = []
     changelog = skill_dir / 'CHANGELOG.md'
     changelog_text = ''
@@ -1096,6 +1110,11 @@ def skill_doc_consistency_gate(skill_dir: Path) -> list:
         skill_text = skill_md_p.read_text(encoding='utf-8')
         manifest_text = manifest_p.read_text(encoding='utf-8')
         issues.extend(manifest_version_consistency_gate(manifest_text, changelog_text))
+        try:
+            _mver = json.loads(manifest_text).get('version')
+        except Exception:
+            _mver = None
+        issues.extend(skill_md_version_mismatch(skill_text, _mver))
         if examples_fidelity_conflict(skill_text, manifest_text):
             issues.append({'type': 'examples_fidelity_contradiction',
                            'detail': 'SKILL.md와 manifest가 examples를 경량 vs 풀 스킬급으로 상반 서술.'})
@@ -1621,12 +1640,19 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
                 issues.append({'page': rel, 'type': 'table_no_mobile_safe_wrapper',
                                'detail': 'table{min-width:420px}이라 390px에서 넘침. .table-scroll로 감싸거나 반응형 표(mobile-card/final-matrix) 사용.'})
                 break
-        # R5: wide-report layouts must carry the prose width override (else body prose is capped at ~2/3).
-        wide = re.search(r'class=["\'][^"\']*\blayout-(expert|github|youtube|manual|compare|seo|platform|landing|case|checklist|reference|audit|skill-audit)\b', text)
+        # R5: wide-report layouts must carry the prose width override FOR THAT LAYOUT (else body
+        #     prose is capped at 46rem ~2/3). Checking only that "60rem" appears somewhere had a
+        #     blind spot: a new wide layout omitted from the override list (layout-github-feature in
+        #     v5.10.0) still passed because sibling layouts kept the string. Verify the layout-specific
+        #     selector token `.page-wide.<layout>>section>p`, which exists ONLY in the 60rem rule
+        #     (the 46rem default rule uses `.page-wide>section>p` without a layout class).
+        #     github-feature is listed before github so it matches before the shorter alternative.
+        wide = re.search(r'class=["\'][^"\']*\blayout-(github-feature|expert|github|youtube|manual|compare|seo|platform|landing|case|checklist|reference|audit|skill-audit)\b', text)
         if wide and '.page-wide>section>p' in style:
-            if 'max-width:60rem' not in style.replace(' ', ''):
-                issues.append({'page': rel, 'type': 'wide_layout_prose_cap_missing',
-                               'detail': '넓은 레이아웃 본문이 46rem(섹션 2/3)로 좁음. .page-wide.layout-*>section>p{max-width:60rem} 오버라이드 필요.'})
+            layout = 'layout-' + wide.group(1)
+            if ('.page-wide.' + layout + '>section>p') not in re.sub(r'\s+', '', style):
+                issues.append({'page': rel, 'type': 'wide_layout_prose_cap_missing', 'layout': layout,
+                               'detail': '넓은 레이아웃(%s) 본문 단락이 60rem 오버라이드에서 누락 → 46rem로 좁아짐. theme.css 60rem 셀렉터에 .page-wide.%s>section>p/ul/ol 추가.' % (layout, layout)})
         for tag, ref in parser.local_refs:
             p = local_path(html, ref)
             if p is not None and not p.exists():

@@ -1,5 +1,15 @@
 # Changelog — adaptive-html-final
 
+## v5.10.2 (2026-06-10) — github-feature 단락 폭 결함 수정 + R5 게이트 정밀화
+
+전문가 리뷰의 **렌더 실측**에서 발견: `layout-github-feature`(17번째 모드)가 넓은 레이아웃인데도 본문 단락이 46rem(736px)로 좁게 렌더됐다. 형제 `layout-github`은 60rem(960px)인데, v5.10.0에서 17번째 모드 추가 시 theme.css의 60rem 단락 오버라이드 목록 갱신이 누락된 것. 카드·그리드는 974px인데 단락만 736px라 "넓은 화면인데 텍스트만 좁은" 비대칭이 발생했다.
+
+- **theme.css**: 60rem 오버라이드 셀렉터에 `.page-wide.layout-github-feature>section>p/ul/ol` 추가 → github_analysis·expert 등 다른 wide 레이아웃과 동일하게 960px. (코어 CSS 변경 → 코어 해시 `189dd1c5…`→`24d2e3b4…`, theme.css 해시 갱신)
+- **R5 게이트 강화**(`validate_output.py`): 기존엔 "스타일에 `60rem` 문자열이 있으면 통과"라, 새 wide 레이아웃이 목록에서 빠져도 못 잡는 blind spot이 있었다(이번 결함이 v5.10.0에서 안 잡힌 이유). 이제 **해당 layout의 `.page-wide.<layout>>section>p` 셀렉터가 실제 존재하는지** 검사하고, wide 인식 목록에 `github-feature`를 추가(github보다 먼저 매칭).
+- **examples 18종 재인라인** + `examples/sources/assets/theme.css`·`css-integrity.json`(core+theme.css 해시) 동기화.
+- **버전 선언 동기화 + 게이트**: 과거 bump가 manifest/CHANGELOG만 갱신하고 놓쳤던 프로즈 버전 표기를 정리 — SKILL.md 헤더·AGENTS.md(현재 버전 ×3)·README(배지+현행 라벨+changelog 미러)·Guide·skills/README·examples 17 kicker를 모두 5.10.2로 통일. 재발 방지로 `skill_md_version_mismatch` 게이트 신설(SKILL.md `> Version`이 manifest.version과 불일치 시 실패) + 거버넌스 테스트 2종(86→88).
+- 측정 확인: github-feature 단락 736px→960px, 형제 레이아웃과 동일. governance·validate·completion_check 통과 유지.
+
 ## v5.10.1 (2026-06-10) — 예제 정본화(부록 안티패턴 제거) + 자기정합 게이트 3종
 
 v5.10.0 직후 후속 품질·거버넌스 하드닝. **코어 CSS·17모드·자산은 불변**(core 해시 동일)이라 patch 릴리스다. 전문가 상세 리뷰에서 드러난 "게이트는 통과하지만 스킬 자신의 규칙은 위반"하던 지점을 닫고, 구조적 리스크를 런타임 게이트 + 거버넌스 테스트로 성문화했다.

@@ -9,7 +9,7 @@
 # 🎨 Adaptive HTML Final
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
-[![version](https://img.shields.io/badge/version-5.10.0-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-5.10.2-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
 [![modes](https://img.shields.io/badge/modes-17-2a7d5a)](#-17개-모드)
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
 [![themes](https://img.shields.io/badge/themes-8--theme-111827)](#-최근-업데이트)
@@ -59,6 +59,14 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 ## 🆕 최근 업데이트
 
+### v5.10.2 (2026-06-10) — github-feature 단락 폭 수정 + R5 게이트 정밀화
+
+`layout-github-feature`가 60rem 단락 폭 오버라이드에서 누락돼 46rem(736px)로 좁던 것을 형제 `layout-github`과 동일하게 960px로 수정. R5 게이트를 layout별 60rem 셀렉터 정밀 검사로 강화(blind spot 제거). 코어 해시 갱신·examples 18종 재인라인.
+
+### v5.10.1 (2026-06-10) — 예제 정본화(부록 안티패턴 제거) + 자기정합 게이트 3종
+
+examples 01–14의 `mode-template-contract` 부록(메타 문구·off-topic 위젯) 제거 → vt 본문 내장·주제 wg로 재구성. quality_contract 메타문구 게이트 + manifest/결정표 자기정합 게이트 신설.
+
 ### v5.10.0 (2026-06-09) — 17번째 모드 `github_feature_usage` 추가 (GitHub 기능·도입 가이드)
 
 > **전략 한 줄 결론:** `github_analysis`가 "도입해도 되나?(실사·리스크·투자판단)"라면, `github_feature_usage`는 **"무엇을 해주나·어떻게 쓰나·어디에 맞나"**를 실제 화면(스크린샷) 중심으로 보여주는 도입 가이드다. 어조·형식이 달라 독립 레이아웃으로 분리했다.
@@ -81,7 +89,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 | 폰트 정합성 | 외부 세리프 폰트 링크/스택/과거 세리프 토큰 금지, pull-quote를 Pretendard 굵은 sans 톤으로 통일 |
 | 시각 템플릿 | `vt-02 decision-tree` 3카드 정합성, h3 마진 보정, 본문 title spacing 회귀 방지 |
 | 공식 목차 | `toc-map` chip-nav 목차 계약을 layout·validator에 반영해 구형 목차 회귀 차단 |
-| 운영 기준 | `manifest.json` 기준 현행 버전은 **5.10.0**이며, 생성/검증 시 manifest와 source snapshot을 우선 확인 |
+| 운영 기준 | `manifest.json` 기준 현행 버전은 **5.10.2**이며, 생성/검증 시 manifest와 source snapshot을 우선 확인 |
 
 ### v5.7.0 (2026-06-07) — YouTube Analysis + Manual Analysis 15·16번째 모드 추가
 
@@ -229,7 +237,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ## 🖼️ 쇼케이스 갤러리
 
-### 🆕 최신 실전 산출물 데모 (현행 스킬 v5.10.0 기준, 게이트 OK)
+### 🆕 최신 실전 산출물 데모 (현행 스킬 v5.10.2 기준, 게이트 OK)
 
 최근 생성한 **대표 실전 산출물 3종**입니다. 썸네일을 클릭하면 GitHub Pages에서 실제 결과물이 바로 열립니다(상단 스위처로 8테마 전환).
 
@@ -245,7 +253,7 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ### 🌐 라이브 역사적 갤러리 — 13-topics (v5.2.3, 게이트 OK)
 
-v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 13명 전문가 에이전트가 모든 얕은 섹션을 보강한 **역사적 13-topic 기준선**입니다. 메인 화면과 13개 모드 페이지를 웹에서 바로 볼 수 있습니다. 현행 v5.10.0 기준 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
+v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 13명 전문가 에이전트가 모든 얕은 섹션을 보강한 **역사적 13-topic 기준선**입니다. 메인 화면과 13개 모드 페이지를 웹에서 바로 볼 수 있습니다. 현행 v5.10.2 기준 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
 
 **▶ 메인 화면:** **[13개 모드 신규 주제 쇼케이스 (index)](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/index.html)**
 
@@ -402,7 +410,7 @@ theme-dark.css    CSS-only 8-테마 토큰 오버라이드 + 라디오 세그먼
 skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트
-│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.0 · 17모드)
+│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.2 · 17모드)
 │   ├── assets/                        # base.html · CSS 12종 · 위젯/도식/패턴/테마 자산 · 17개 레이아웃 골격
 │   ├── references/    (19)            # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/GitHub·YouTube·Manual·기능가이드 규칙
 │   ├── recipes/       (17)            # 모드별 대표 프롬프트
@@ -526,7 +534,7 @@ python3 -m http.server 8788
 # canonical v4 쇼케이스
 # → http://127.0.0.1:8788/output/adaptive-html-final-showcase-v4/index.html
 
-# 현행 v5.10.0 17모드 참조 예제
+# 현행 v5.10.2 17모드 참조 예제
 # → http://127.0.0.1:8788/skills/adaptive-html-final/examples/index.html
 
 # 역사적 v5.2.3 13-topic 산출물(전문가 보강)
@@ -568,5 +576,5 @@ npm run export:output -- output/adaptive-html-final-13-topics-20260605_083433 --
 별도 라이선스가 지정되지 않았습니다. 사용 전 저장소 소유자(`coreline-ai`)에게 확인하세요.
 
 <div align="center">
-<sub>생성 도구: <code>adaptive-html-final</code> v5.10.0 · 17-mode · 8-theme · 3-profile editorial HTML engine</sub>
+<sub>생성 도구: <code>adaptive-html-final</code> v5.10.2 · 17-mode · 8-theme · 3-profile editorial HTML engine</sub>
 </div>

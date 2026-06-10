@@ -295,5 +295,10 @@ check("closing recommendation silent when last section .try", v.closing_summary_
 _nt = '<main id="main" class="page-wide layout-expert"><section><h2>a</h2></section><section><h2>b</h2></section></main>'
 check("closing recommendation warns when last section not .try", v.closing_summary_recommendation(_nt) and v.closing_summary_recommendation(_nt)[0]["type"]=="closing_summary_recommended")
 
+# SKILL.md header version must match manifest.version (prose drift guard — bumps repeatedly missed SKILL.md header).
+_smv_bad = v.skill_md_version_mismatch('> Version 5.10.0 · note', '5.10.2')
+check("skill_md version gate catches header drift", _smv_bad and _smv_bad[0]["type"]=="skill_md_version_mismatch")
+check("skill_md version gate passes matching header", v.skill_md_version_mismatch('> Version 5.10.2 · note', '5.10.2') == [])
+
 print(f"\n{_checks - _fails}/{_checks} checks passed")
 sys.exit(1 if _fails else 0)

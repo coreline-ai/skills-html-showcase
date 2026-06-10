@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>사이드 프로젝트가 이력서보다 강한 이유</title>
-<meta name="description" content="">
-<meta property="og:title" content="사이드 프로젝트가 이력서보다 강한 이유">
-<meta property="og:description" content="">
+<title>Harness-1 사용 가이드 — 20B 검색 에이전트 학습·서빙 레시피 · GitHub</title>
+<meta name="description" content="pat-jj/harness-1 사용 가이드 — 무엇을 해주나·어떻게 쓰나·어디 맞나. 설치(uv)·체크포인트 서빙(vLLM)·BrowseComp+ 평가·학습 명령 중심. README/저장소 기준, 무 JS.">
+<meta property="og:title" content="Coreline Auth 기능·사용 가이드">
+<meta property="og:description" content="Coreline Auth의 인증, 계정 보안, 관리자, 운영 기능을 사용 관점으로 정리한 HTML 리포트.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
@@ -2053,6 +2053,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 @media(max-width:560px){.ahf-themebar{position:static;width:276px;max-width:calc(100% - 28px);margin:10px auto 16px}}
 @media print{.ahf-themebar{display:none}}
 </style>
+
 </head>
 <body>
 <fieldset class="ahf-themebar" aria-label="테마 선택">
@@ -2067,117 +2068,59 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 </fieldset>
 <a class="skip" href="#main">본문 바로가기</a>
 <div class="reading-progress" aria-hidden="true"></div>
-<main id="main" class="page-wide layout-article">
-<header class="header"><div class="kicker"><span class="kicker-text">ARTICLE HTML</span></div><h1>사이드 프로젝트가 이력서보다 강한 이유</h1><p class="sub">이력서가 "무엇을 했다고 주장하는가"를 적는 문서라면, 사이드 프로젝트는 "무엇을 만들 수 있는지"를 증명하는 물증이다. 채용 신호의 무게중심이 어떻게 주장에서 증거로 옮겨가는지를 다룬 공개 아티클이다.</p><div class="meta"><span>article_html</span><span>magazine-article.html</span><span>profile auto</span><span>adaptive-html-final</span><span>무 JS</span></div><div class="generated-row"><p class="generated-date">Generated · 2026-06-06 KST</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">주장 vs 증거</span><span class="lens-chip">검증 비용</span><span class="lens-chip">완결성</span><span class="lens-chip">신호 신뢰도</span></div></div></header>
+<!-- Layout: github-analysis / repository due-diligence report theme -->
+<main id="main" class="page-wide layout-github-feature">
+  <header class="header github-feature-header"><div class="kicker"><span class="kicker-text">GITHUB 기능·사용 가이드</span></div><h1>Harness-1 사용 가이드 — 20B 검색 에이전트 학습·서빙 레시피</h1><p class="sub"><code>pat-jj/harness-1</code>이 “무엇을 해주는지 · 어떻게 쓰는지 · 어디에 맞는지”를 README·저장소 기준으로 정리했습니다. 코드를 직접 실행하지 않은 정적 독해 기준입니다.</p><div class="meta"><span>repo: pat-jj/harness-1</span><span>commit: c8384ce</span><span>Python · Apache-2.0</span><span>★463 · forks 54</span><span>arXiv 2606.02373</span><span>observed_at: 2026-06-10</span></div></header>
 
-<section class="lead"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M16 16c.7-3 7-3.5 8 0 .8 2.6-2.4 3.8-4 5.4V24"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span>도입 문제 제기</h2><p>이력서는 거의 모든 지원자가 같은 형식으로, 같은 어휘로, 자신에게 유리하게 쓴다. 그래서 읽는 사람은 글자를 믿는 대신 글자 뒤를 의심한다. 사이드 프로젝트는 그 의심을 건너뛴다. "이걸 만들었다"는 주장 대신, 만든 것 자체를 책상 위에 올려놓기 때문이다.</p></section>
+  <section class="feature-verdict"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="20" r="13"/><circle class="bi-fill" cx="20" cy="20" r="7"/><circle class="bi-accent" cx="20" cy="20" r="3"/></svg></span><span class="num is-key">1</span>한 줄 정체성</h2><p class="h2-sub">제품·앱이 아니라 “20B 검색 에이전트를 학습·서빙·평가하는 연구 레시피(재현 코드)”입니다.</p><p><strong>Harness-1은 ‘상태를 외부화한 검색 하네스’ 안에서 강화학습으로 훈련한 20B 검색 에이전트</strong>입니다. 하네스가 검색 상태(후보 문서·선별된 근거·근거 링크·검증 기록·예산 인식 컨텍스트)를 복구 가능하게 유지하고, 정책(모델)은 의미 판단만 맡습니다 — 무엇을 검색할지, 어떤 문서를 살펴/선별할지, 무엇을 검증할지, 언제 근거가 충분한지. 목표는 “20B 모델로 프런티어급 검색 능력을 재현”하는 것입니다(arXiv 2606.02373).</p></section>
 
-<section class="article-takeaway box"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="20" r="13"/><circle class="bi-fill" cx="20" cy="20" r="7"/><circle class="bi-accent" cx="20" cy="20" r="3"/></svg></span>핵심 주장</h2><div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span>Overview</div><p><strong>이력서는 주장을 적고, 사이드 프로젝트는 증거를 제출한다.</strong> 채용에서 강한 신호란 검증 비용이 낮은 신호다. 누구나 비슷하게 쓰는 한 줄보다, 직접 열어보고 만져볼 수 있는 결과물이 더 빨리 믿음을 만든다.</p></section>
+  <section class="feature-overview"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M8 11l8-3 8 3 8-3v21l-8 3-8-3-8 3z"/><path class="bi-line" d="M16 8v21M24 11v21"/></svg></span><span class="num">2</span>한눈에 — 누구에게 무엇</h2><p class="h2-sub">서빙·평가·학습 세 갈래. 일반 사용자용 앱이 아닙니다.</p><section class="vt-shell"><div class="vt-frame"><div class="vt-demo"><div class="hm-grid"><article class="hm-card"><div class="vt-kicker">연구자</div><h3>RL 검색 에이전트 재현·확장</h3><p class="vt-text">상태 외부화 하네스 + SFT/RL 학습 스크립트 + 평가 러너를 그대로 읽고 고쳐 쓸 수 있다.</p></article><article class="hm-card" style="--c:var(--vt-blue)"><div class="vt-kicker">실무자</div><h3>20B 검색 모델 로컬 서빙</h3><p class="vt-text">공개 HF 체크포인트를 vLLM으로 로컬 서빙하고 <code>/v1/completions</code>로 호출한다.</p></article><article class="hm-card" style="--c:var(--vt-green)"><div class="vt-kicker">평가자</div><h3>BrowseComp+ 벤치마크</h3><p class="vt-text">호환 검색 백엔드가 있으면 BrowseComp+에서 검색 행동(recall/precision)을 측정한다.</p></article></div><div class="hm-result">한 줄: <strong>“검색을 잘하는 작은 모델”을 직접 서빙·평가·재학습하려는 ML 연구/엔지니어용 코드.</strong></div></div></div></section></section>
 
-<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M16 16c.7-3 7-3.5 8 0 .8 2.6-2.4 3.8-4 5.4V24"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="no" aria-hidden="true">1</span>문제 제기: 이력서는 왜 점점 덜 믿기는가</h2><p class="h2-sub">이력서의 약점은 거짓말이 아니라, 모두가 똑같이 잘 쓴다는 데 있다.</p><p>"성과를 30% 개선했다", "주도적으로 프로젝트를 이끌었다", "협업에 능하다" 같은 문장은 거의 모든 이력서에 등장한다. 문제는 이 문장들이 틀렸다는 게 아니라, <strong>맞는지 틀린지를 그 자리에서 확인할 방법이 없다</strong>는 것이다. 읽는 사람은 같은 어휘의 홍수 속에서 변별력을 잃고, 결국 글자보다 출신 회사나 학교 같은 대리 지표에 기대게 된다.</p><p>지원자 입장에서도 이력서는 불리한 게임이다. 자신을 가장 잘 표현하려 할수록 다른 모든 지원자와 비슷해진다. 채용 담당자가 하루에 수십 장의 이력서를 넘기는 환경에서, "잘 쓴 이력서"는 더 이상 차별점이 아니라 입장권일 뿐이다.</p>
-<blockquote class="pull-quote">이력서의 진짜 약점은 거짓이 아니라, 누구나 똑같이 그럴듯하게 쓸 수 있다는 평범함이다.</blockquote>
-<p>여기서 핵심 질문이 갈린다. 채용은 "이 사람이 무엇을 했다고 말하는가"를 보는 일이 아니라, "이 사람이 무엇을 할 수 있는가"를 추정하는 일이다. 이력서는 전자를 잘 담지만, 정작 채용이 알고 싶은 것은 후자다. 그 간극을 메우는 가장 직접적인 물증이 사이드 프로젝트다.</p>
-<div class="danger"><div class="label">흔한 오해</div><div class="name">"이력서를 더 화려하게 쓰면 된다"</div><p>표현을 다듬을수록 신호는 강해지는 것이 아니라 평준화된다. 모두가 같은 표현 전략을 쓰는 시장에서, 더 좋은 문장은 더 좋은 변별력을 만들지 못한다. 필요한 것은 더 나은 주장이 아니라, 주장을 검증으로 바꾸는 증거다.</p></div></section>
+  <nav class="toc-map feature-toc" aria-label="기능·사용 목차"><span class="label">기능·사용 목차</span><p>무엇을 해주나 → 핵심 개념 → 기술 → 시작 방법 → 어디 맞나 순으로 읽으면 됩니다.</p><div class="toc-pills"><a class="toc-pill" href="#fmap"><b>1</b>기능 지도</a><a class="toc-pill" href="#core"><b>2</b>핵심 개념</a><a class="toc-pill" href="#tech"><b>3</b>기술 스택</a><a class="toc-pill" href="#start"><b>4</b>시작 방법</a><a class="toc-pill" href="#fit"><b>5</b>어디 맞나</a></div></nav>
 
-<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-line" d="M13 27h14"/><rect class="bi-soft" x="14" y="20" width="3" height="7" rx="1"/><rect class="bi-accent-box" x="19" y="15" width="3" height="12" rx="1"/><rect class="bi-dot-box" x="24" y="18" width="3" height="9" rx="1"/></svg></span><span class="no is-key" aria-hidden="true">2</span>핵심 논지: 강한 신호는 검증 비용이 낮은 신호다</h2><p class="h2-sub">신호의 힘은 화려함이 아니라, 읽는 사람이 그것을 얼마나 싸게 확인할 수 있느냐에서 나온다.</p><p>채용은 결국 비대칭 정보 게임이다. 지원자는 자신을 잘 알고, 채용자는 그렇지 않다. 이 비대칭을 줄이는 것이 신호의 역할인데, 좋은 신호의 조건은 단 하나다. <strong>지원자가 위조하기는 어렵고, 채용자가 검증하기는 쉬워야 한다.</strong></p><p>이력서의 한 줄은 쓰기 쉽고 확인하기 어렵다. 그래서 약한 신호다. 반대로 직접 동작하는 프로젝트, 읽을 수 있는 코드, 사용자가 남긴 흔적은 만들기는 어렵지만 확인은 쉽다. 그래서 강한 신호다.</p>
-<div class="core-insight"><blockquote>"했다"는 말은 1초 만에 쓰지만 확인에는 면접이 필요하다. "만든 것"은 만드는 데 몇 주가 걸리지만 확인에는 클릭 한 번이면 된다.</blockquote><p>강한 신호란 결국 이 검증 비용의 비대칭을 지원자에게 불리하게, 채용자에게 유리하게 뒤집는 신호다.</p></div></section>
+  <section class="feature-map" id="fmap"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="10" height="10" rx="2"/><rect class="bi-soft" x="22" y="8" width="10" height="10" rx="2"/><rect class="bi-soft" x="8" y="22" width="10" height="10" rx="2"/><rect class="bi-fill" x="22" y="22" width="10" height="10" rx="2"/></svg></span><span class="num">3</span>기능 지도 — 무엇을 해주나</h2><p class="h2-sub">README “What You Can Do” 기준. 서빙 · 평가 · 학습 · 확장.</p><div class="repo-evidence-grid"><article class="repo-evidence"><h3>① 체크포인트 로컬 서빙</h3><p>공개 HF 가중치(<code>pat-jj/harness-1</code>)를 vLLM으로 띄워 로컬 추론. 첫 사용 시 HF 캐시로 자동 다운로드.</p></article><article class="repo-evidence"><h3>② 스모크 추론</h3><p>raw <code>/v1/completions</code>에 토큰-ID 프롬프트로 동작 확인. HF 직접 로드 테스트(<code>inference/hf_inference.py</code>)도 제공.</p></article><article class="repo-evidence"><h3>③ BrowseComp+ 평가</h3><p>호환 검색 백엔드가 있으면 <code>inference/evaluate_harness1_vllm.py</code>로 검색 행동을 end-to-end 평가.</p></article><article class="repo-evidence"><h3>④ Tinker 호스팅 추론</h3><p>공개 Tinker 체크포인트로 호스팅 추론(<code>inference/tinker_inference.md</code>).</p></article><article class="repo-evidence"><h3>⑤ 학습 재현(SFT·RL)</h3><p><code>training/</code>의 SFT 데이터 생성·SFT·RL 스크립트와 런치 셸로 학습 파이프라인 실행.</p></article><article class="repo-evidence"><h3>⑥ 하네스 확장·ablation</h3><p>검색 하네스·도구 환경·평가 러너를 읽고 확장, 지원 데이터셋에 대해 ablation/baseline 실행.</p></article></div></section>
 
-<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="22" rx="3"/><rect class="bi-fill" x="16" y="9" width="8" height="22" rx="3"/><rect class="bi-soft" x="25" y="9" width="8" height="22" rx="3"/><path class="bi-accent-line" d="M27 18h4"/><circle class="bi-accent" cx="29" cy="26" r="2.5"/></svg></span><span class="no" aria-hidden="true">3</span>대조: 같은 역량, 두 가지 제출 방식</h2><p class="h2-sub">같은 사람이 같은 능력을 보여줘도, 주장으로 내느냐 증거로 내느냐에 따라 신호의 무게가 달라진다.</p><p>이력서와 사이드 프로젝트는 적대 관계가 아니다. 같은 역량을 서로 다른 형식으로 전달할 뿐이다. 그러나 읽는 사람이 받는 인상은 형식에 따라 크게 갈린다. 아래 표는 흔한 이력서 문장과, 그 문장이 사이드 프로젝트로 제출될 때의 차이를 나란히 둔 것이다.</p>
-<div class="tbl table-scroll"><table><caption>같은 역량을 이력서 주장 vs 프로젝트 증거로 냈을 때 (예시)</caption><thead><tr><th>전달하려는 역량</th><th>이력서의 주장</th><th>사이드 프로젝트의 증거</th><th>검증 비용</th></tr></thead><tbody><tr><td>프론트엔드 구현력</td><td>"반응형 UI에 능숙함"</td><td>배포된 URL을 모바일에서 열어봄</td><td>클릭 1회</td></tr><tr><td>문제 정의력</td><td>"사용자 중심으로 사고함"</td><td>README의 "왜 만들었나" 한 문단</td><td>읽기 2분</td></tr><tr><td>완결 능력</td><td>"끝까지 책임지고 마무리함"</td><td>출시되어 실제 동작하는 결과물</td><td>접속 1회</td></tr><tr><td>코드 품질</td><td>"클린 코드를 지향함"</td><td>커밋 히스토리와 실제 소스</td><td>저장소 열람</td></tr><tr><td>꾸준함</td><td>"성실하게 임함"</td><td>수개월에 걸친 커밋 그래프</td><td>한눈에 확인</td></tr></tbody></table></div>
-<div class="good"><div class="label">Takeaway</div><div class="name">형식이 신뢰의 속도를 바꾼다</div><p>왼쪽 열은 면접에서 다시 질문해야 믿을 수 있고, 오른쪽 열은 그 자리에서 믿거나 의심할 수 있다. 채용자가 결정을 빨리 내릴수록 그 신호는 강하다. 사이드 프로젝트는 의심의 단계를 통째로 건너뛰게 만든다.</p></div></section>
+  <section class="core-capability" id="core"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="20" cy="20" r="6"/><circle class="bi-accent" cx="20" cy="9" r="2.4"/><circle class="bi-accent" cx="31" cy="26" r="2.4"/><circle class="bi-accent" cx="9" cy="26" r="2.4"/><path class="bi-line" d="M20 14v-3M24 22l5 3M16 22l-5 3"/></svg></span><span class="num">4</span>핵심 개념 — 상태 외부화 하네스</h2><p class="h2-sub">“하네스가 상태를 들고, 모델은 판단만” 하는 구조가 이 저장소의 정체성입니다.</p><p>일반적인 검색 에이전트는 긴 작업 동안 컨텍스트가 늘어지며 상태를 잃습니다. Harness-1은 상태를 <strong>하네스(코드)로 외부화</strong>해 복구 가능하게 만들고, 그 위에서 정책을 강화학습으로 훈련합니다. 하네스가 유지하는 것과 정책이 정하는 것을 분리한 게 핵심입니다.</p><div class="repo-signal-grid"><article class="repo-signal"><h3>하네스가 유지(상태)</h3><p>후보 문서 · 선별된 근거(curated evidence) · 근거 링크 · 검증 기록(verification records) · 예산 인식 컨텍스트(budget-aware context).</p></article><article class="repo-signal"><h3>정책이 결정(판단)</h3><p>무엇을 검색할지 · 어떤 문서를 살펴보거나 선별할지 · 어떤 주장을 검증할지 · 언제 근거가 충분한지.</p></article></div><h3 style="margin:20px 0 10px;font-size:16px">저장소 한눈에</h3><div class="wg-11"><div class="wg-11-kpis"><div class="wg-11-kpi wg-11-kpi-good"><span class="wg-11-kpi-v">20B</span><span class="wg-11-kpi-l">모델 규모</span></div><div class="wg-11-kpi wg-11-kpi-prog"><span class="wg-11-kpi-v">★463</span><span class="wg-11-kpi-l">stars</span></div><div class="wg-11-kpi"><span class="wg-11-kpi-v">54</span><span class="wg-11-kpi-l">forks</span></div><div class="wg-11-kpi"><span class="wg-11-kpi-v">Apache-2.0</span><span class="wg-11-kpi-l">license</span></div></div></div></section>
 
-<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="11" cy="20" r="5"/><circle class="bi-soft" cx="29" cy="11" r="5"/><circle class="bi-accent" cx="29" cy="29" r="5"/><path class="bi-line" d="M16 18l8-5M16 22l8 5"/></svg></span><span class="no" aria-hidden="true">4</span>연결 분석: 사이드 프로젝트가 한 번에 증명하는 세 가지</h2><p class="h2-sub">하나의 결과물이 동시에 여러 채용 질문에 답한다는 점이 진짜 강점이다.</p><p>이력서의 각 줄은 보통 하나의 사실만 전달한다. 반면 잘 만든 사이드 프로젝트는 채용자가 던지는 서로 다른 질문에 동시에 답한다. 능력, 동기, 완결성이라는 세 축이 하나의 결과물 안에서 한꺼번에 검증된다.</p>
-<div class="conn-grid"><article class="conn-card"><h3>능력의 증거</h3><p>동작하는 결과물은 "할 수 있다"는 주장을 가장 직접적으로 대체한다. 기술 스택, 구현 수준, 문제 해결 방식이 코드와 화면에 그대로 드러난다.</p></article><article class="conn-card"><h3>동기의 증거</h3><p>아무도 시키지 않았는데 만들었다는 사실 자체가 내적 동기를 증명한다. 회사 업무는 지시의 결과지만, 사이드 프로젝트는 선택의 결과다.</p></article><article class="conn-card"><h3>완결성의 증거</h3><p>시작한 것을 끝내 배포까지 끌고 갔다는 것은, 80% 지점에서 멈추지 않는 사람이라는 강한 신호다. 끝내는 능력은 가르치기 가장 어려운 역량이다.</p></article></div>
-<p>세 가지는 따로 떨어져 있지 않고 서로를 보강한다. 동기가 있어 시작했고, 능력이 있어 만들었으며, 완결성이 있어 끝냈다. 이 연결 고리가 한 결과물 안에 함께 들어 있을 때, 채용자는 점들을 잇느라 면접 시간을 쓰지 않아도 된다.</p>
-<div class="analogy"><div class="label">비유</div><p>이력서는 "이 식당은 맛집입니다"라고 적힌 간판이다. 사이드 프로젝트는 그 자리에서 내주는 한 접시의 시식이다. 간판은 누구나 더 크게 만들 수 있지만, 시식은 한 입이면 진위가 갈린다. 채용자는 결국 간판을 읽는 사람이 아니라, 먹어볼 한 입을 찾는 사람이다.</p></div></section>
+  <section class="tech-stack" id="tech"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l12 6-12 6-12-6z"/><path class="bi-line" d="M8 20l12 6 12-6M8 26l12 6 12-6"/></svg></span><span class="num">5</span>기술 스택 — 무엇 위에 서 있나</h2><p class="h2-sub">Python 3.11+, <code>uv</code> 의존성 관리. 추론은 vLLM, 검색은 Chroma, 학습은 trl/peft/tinker.</p><div class="tbl table-scroll mobile-card-table"><table class="table"><caption>주요 의존성 (pyproject.toml 기준)</caption><thead><tr><th>역할</th><th>구성요소</th></tr></thead><tbody><tr><td data-label="역할">런타임</td><td data-label="구성요소">Python ≥3.11 · uv · (선택) vLLM ≥0.13 <code>--extra vllm</code></td></tr><tr><td data-label="역할">서빙·추론</td><td data-label="구성요소">vLLM · openai · openai-harmony · tiktoken/tokenizers · transformers</td></tr><tr><td data-label="역할">검색·임베딩</td><td data-label="구성요소">chromadb 1.4.0 · fastembed · langchain-text-splitters · wikipedia-api</td></tr><tr><td data-label="역할">학습</td><td data-label="구성요소">trl · peft · tinker · tinker-cookbook(로컬) · datasets · wandb</td></tr><tr><td data-label="역할">외부 모델 API</td><td data-label="구성요소">openai · anthropic · baseten(선택 reranker) · modal</td></tr></tbody></table></div><p>언어 비율: Python 98.5% · Shell 0.8% · Jinja 0.7% — 거의 순수 Python 파이프라인.</p></section>
 
-<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="14" r="6"/><path class="bi-fill" d="M10 32c1.5-7 18.5-7 20 0"/><circle class="bi-accent" cx="28" cy="15" r="2"/></svg></span><span class="no" aria-hidden="true">5</span>반론: 그렇다면 이력서는 필요 없는가</h2><p class="h2-sub">사이드 프로젝트가 강하다는 말이 곧 이력서가 쓸모없다는 뜻은 아니다.</p>
-<p>그렇다면 지금 내 손에 있는 사이드 프로젝트를 채용 신호로 내야 할까, 아니면 이력서의 주장만으로 가는 편이 나을까? 이 글이 앞서 세운 세 가지 기준 — 공개 가능성, 완결성, 검증 비용 — 을 순서대로 통과시키면 답이 갈린다.</p>
-<div class="vt-shell"><div class="vt-shell-head"><div><div class="vt-id">VT-02 DECISION TREE</div><h2>이 프로젝트를 증거로 낼 것인가</h2><p>공개할 수 있는지, 끝까지 완결됐는지, 채용자가 싸게 검증할 수 있는지를 차례로 묻고, 막히는 지점에서 다른 선택지로 내려보냅니다.</p></div><span class="vt-fit">decision tree</span></div>
-  <div class="vt-frame">
-    <div class="vt-demo"><div class="dt-q"><article class="dt-card"><div class="vt-kicker">Q1</div><h3>공개할 수 있는가?</h3><p class="vt-text">보안·사내 시스템·규제 산업이라 결과물을 외부에 보여줄 수 없다면, 증거 제출은 막힙니다.</p></article><div class="dt-arrow"></div><article class="dt-card"><div class="vt-kicker">Q2</div><h3>끝까지 완결됐는가?</h3><p class="vt-text">배포까지 닿지 못한 미완성이라면, 완결성이라는 가장 중요한 증거가 오히려 깎입니다.</p></article><div class="dt-arrow"></div><article class="dt-card"><div class="vt-kicker">Q3</div><h3>검증 비용이 낮은가?</h3><p class="vt-text">접속·열람 한 번으로 능력이 드러나야 강한 신호입니다. 설명이 한참 필요하면 신호가 약해집니다.</p></article></div><div class="dt-options"><article class="dt-card"><b>증거로 제출</b><p class="vt-text">세 질문을 모두 통과 → 이력서 주장 옆에 링크를 붙여 검증을 건너뛰게 한다.</p></article><article class="dt-card" style="--c:var(--vt-gold)"><b>이력서로 보완</b><p class="vt-text">공개 불가 → 결과물 대신 맥락·규모·레퍼런스로 신뢰를 만든다.</p></article><article class="dt-card" style="--c:var(--vt-green)"><b>먼저 완성부터</b><p class="vt-text">미완결 → 새 기능을 늘리지 말고 출시까지 끌고 가 완결성을 확보한 뒤 다시 판단한다.</p></article></div></div>
-  </div>
-</div>
-<p>이력서는 여전히 필요하다. 채용자가 가장 먼저 보는 요약이고, 경력의 시간 축과 규모를 압축해서 전달하는 데 이력서만 한 형식은 없다. 또한 모든 직무가 공개 가능한 결과물을 만들 수 있는 것도 아니다. 보안, 사내 시스템, 규제 산업에서는 만든 것을 보여줄 수 없는 경우가 많다.</p><p>핵심은 둘의 역할이 다르다는 것이다. 이력서는 <strong>맥락과 범위</strong>를 전달하고, 사이드 프로젝트는 <strong>능력의 증거</strong>를 전달한다. 강한 지원서는 둘 중 하나를 버리는 것이 아니라, 이력서가 만든 주장을 사이드 프로젝트가 뒷받침하도록 짝지을 때 완성된다.</p>
-<div class="tbl table-scroll"><table><caption>이력서가 강한 경우 vs 사이드 프로젝트가 강한 경우</caption><thead><tr><th>판단 축</th><th>이력서가 낫다</th><th>사이드 프로젝트가 낫다</th></tr></thead><tbody><tr><td>전달 대상</td><td>경력 규모·소속·기간</td><td>실제 구현 능력·관심사</td></tr><tr><td>공개 가능성</td><td>보안·사내 업무가 대부분일 때</td><td>결과물을 공개할 수 있을 때</td></tr><tr><td>경력 단계</td><td>증명된 트랙 레코드가 길 때</td><td>경력이 짧거나 전환 중일 때</td></tr><tr><td>검증 방식</td><td>레퍼런스·평판으로 보강</td><td>직접 열어보고 만져서 확인</td></tr></tbody></table></div>
-<div class="danger"><div class="label">주의</div><div class="name">"양보다 질"이라는 말의 함정</div><p>저장소에 방치된 미완성 프로젝트 열 개는 강한 신호가 아니라 약한 신호다. 끝내지 못한 흔적이 쌓일수록 완결성이라는 가장 중요한 증거가 오히려 깎인다. 출시까지 끌고 간 하나가 시작만 한 열보다 강하다.</p></div></section>
+  <section class="directory"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M7 11h9l3 4h14v15a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z"/><path class="bi-accent-line" d="M13 24h14"/></svg></span><span class="num">6</span>디렉토리 구조 — 어디에 뭐가 있나</h2><p class="h2-sub">서빙/평가는 <code>inference/</code>, 학습은 <code>training/</code>, 핵심 로직은 <code>harness/</code>.</p><div class="tbl table-scroll mobile-card-table"><table class="table"><caption>저장소 레이아웃 (README 기준)</caption><thead><tr><th>경로</th><th>역할</th></tr></thead><tbody><tr><td data-label="경로"><code>harness/</code></td><td data-label="역할">공유 검색 하네스 — 도구·트래젝토리·태스크·리랭킹·설정 모듈 (agent.py, rerank.py 등)</td></tr><tr><td data-label="경로"><code>inference/</code></td><td data-label="역할">평가·컴포넌트 ablation·HF 추론·vLLM 추론 유틸. <code>baselines/</code>에 in-domain·transfer 베이스라인</td></tr><tr><td data-label="경로"><code>training/</code></td><td data-label="역할">SFT 데이터 생성·SFT·RL 학습 + 런치 셸(<code>launch_sft_generation.sh</code> 등)</td></tr><tr><td data-label="경로"><code>datagen/</code> · <code>eval_scripts/</code></td><td data-label="역할">데이터셋 구성·보조 평가 코드. BrowseComp+ 셋업은 <code>datagen/README.md</code></td></tr><tr><td data-label="경로"><code>docs/</code> · <code>tests/</code></td><td data-label="역할"><code>docs/run_vllm_browsecompplus.md</code>(핵심 런북) · smoke import/CLI 테스트</td></tr><tr><td data-label="경로"><code>model_export/</code> · <code>tinker-cookbook/</code></td><td data-label="역할">Tinker 어댑터→HF 병합 헬퍼 · 학습용 로컬 Tinker 쿡북</td></tr></tbody></table></div></section>
 
-<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="10" y="7" width="20" height="26" rx="3"/><path class="bi-line" d="M15 14h10M15 20h10M15 26h7"/><path class="bi-accent-line" d="M27 7v8h-8"/></svg></span><span class="no" aria-hidden="true">6</span>강한 사이드 프로젝트의 조건</h2><p class="h2-sub">모든 사이드 프로젝트가 강한 것은 아니다. 신호가 되는 것에는 공통점이 있다.</p><p>채용자에게 닿는 프로젝트와 그렇지 않은 프로젝트의 차이는 기술 난이도가 아니다. 읽는 사람이 짧은 시간에 능력·동기·완결성을 읽어낼 수 있도록 정리되어 있느냐다. 강한 프로젝트는 대체로 아래 요소를 갖춘다.</p>
-<ul class="col-list"><li>접속 즉시 동작하는 배포 URL</li><li>"왜 만들었나"를 설명하는 README</li><li>혼자가 아니라 사용자가 있다는 흔적</li><li>읽을 만하게 정리된 소스 코드</li><li>처음부터 끝까지 완결된 범위</li><li>스크린샷 또는 30초 데모</li><li>의사결정을 남긴 커밋 메시지</li><li>한 문장으로 요약되는 핵심 가치</li></ul>
-<p>이 요소들은 따로 갖추는 체크리스트가 아니라, 약한 결과물을 강한 신호로 바꾸는 한 줄기 흐름으로 이어진다. 아래는 그 점검 경로다. 완결 여부에서 길이 갈리며, 각 단계 상자를 펼치면 무엇을 확인해야 하는지 볼 수 있다.</p>
-<section class="wg-13-fc" aria-label="사이드 프로젝트를 강한 신호로 다듬는 점검 흐름">
-  <h3 class="wg-13-h">약한 결과물을 강한 신호로 <span class="wg-13-sub">완결 여부에서 경로가 갈림</span></h3>
-  <div class="wg-13-flow">
-    <a href="#sps-fc-start" class="wg-13-node wg-13-node--start">
-      <span class="wg-13-step">시작</span>만든 결과물 하나
-    </a>
-    <span class="wg-13-arrow" aria-hidden="true">&darr;</span>
-    <a href="#sps-fc-scope" class="wg-13-node">
-      <span class="wg-13-step">1</span>핵심 가치 한 문장으로 좁히기
-    </a>
-    <span class="wg-13-arrow" aria-hidden="true">&darr;</span>
-    <div class="wg-13-branch">
-      <a href="#sps-fc-done" class="wg-13-node wg-13-node--decide">
-        <span class="wg-13-step">2</span>출시까지 완결됐는가?
-      </a>
-      <div class="wg-13-paths">
-        <div class="wg-13-path wg-13-path--fail">
-          <span class="wg-13-edge">아니오 &rarr; 약한 신호</span>
-          <a href="#sps-fc-cut" class="wg-13-node wg-13-node--fail">
-            <span class="wg-13-step">!</span>범위를 깎아 먼저 끝내기
-          </a>
-        </div>
-        <div class="wg-13-path wg-13-path--ok">
-          <span class="wg-13-edge">예 &rarr; 강한 신호 경로</span>
-          <a href="#sps-fc-deploy" class="wg-13-node">
-            <span class="wg-13-step">3</span>접속 즉시 동작하는 URL로 배포
-          </a>
-          <span class="wg-13-arrow" aria-hidden="true">&darr;</span>
-          <a href="#sps-fc-readme" class="wg-13-node">
-            <span class="wg-13-step">4</span>README 첫 문단에 "왜 만들었나"
-          </a>
-          <span class="wg-13-arrow" aria-hidden="true">&darr;</span>
-          <a href="#sps-fc-submit" class="wg-13-node wg-13-node--end">
-            <span class="wg-13-step">완료</span>이력서 주장 옆에 링크 첨부
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="wg-13-detail">
-    <h4 class="wg-13-dh">단계 상세 <span class="wg-13-dnote">상자를 클릭하면 해당 단계로 이동 &middot; 펼쳐서 확인</span></h4>
-    <details id="sps-fc-scope" class="wg-13-acc">
-      <summary><span class="wg-13-tag">1단계</span>핵심 가치 한 문장으로 좁히기</summary>
-      <div class="wg-13-body"><p>"이건 누구의 어떤 문제를 어떻게 해결한다"를 한 문장으로 쓸 수 없으면, 채용자는 결과물을 열어도 무엇을 봐야 할지 모릅니다. 가계부 앱이라면 "입력 다섯 번을 두 번으로 줄인다"처럼 결과물의 존재 이유를 한 줄로 고정합니다.</p></div>
-    </details>
-    <details id="sps-fc-done" class="wg-13-acc">
-      <summary><span class="wg-13-tag">2단계</span>출시까지 완결됐는가?</summary>
-      <div class="wg-13-body"><p>여기서 신호의 강도가 갈립니다. 시작만 한 저장소 열 개는 강한 신호가 아니라 약한 신호입니다. 처음부터 끝까지 동작하는 범위가 닫혀 있어야 완결성이라는 가장 가르치기 어려운 역량이 증명됩니다.</p><ul><li>배포된 URL이 실제로 열린다</li><li>핵심 흐름이 끊김 없이 끝까지 동작한다</li><li>"개발 중"이라는 단서가 남아 있지 않다</li></ul></div>
-    </details>
-    <details id="sps-fc-cut" class="wg-13-acc wg-13-acc--fail">
-      <summary><span class="wg-13-tag wg-13-tag--fail">약한 신호</span>범위를 깎아 먼저 끝내기</summary>
-      <div class="wg-13-body"><p>완결되지 않았다면 기능을 더 붙이지 말고 <code class="wg-13-codein">끝낼 수 있는 범위</code>로 깎습니다. 3주 안에 출시 가능한 가장 작은 형태로 줄여 완결성부터 확보한 뒤, 같은 흐름의 2단계로 다시 들어옵니다.</p></div>
-    </details>
-    <details id="sps-fc-deploy" class="wg-13-acc">
-      <summary><span class="wg-13-tag">3단계</span>접속 즉시 동작하는 URL로 배포</summary>
-      <div class="wg-13-body"><p>검증 비용을 클릭 한 번으로 낮추는 단계입니다. 코드만 있는 저장소보다, 모바일에서 바로 열리는 배포 URL이 "할 수 있다"는 주장을 가장 빠르게 대체합니다.</p></div>
-    </details>
-    <details id="sps-fc-readme" class="wg-13-acc">
-      <summary><span class="wg-13-tag">4단계</span>README 첫 문단에 "왜 만들었나"</summary>
-      <div class="wg-13-body"><p>한 신입 지원자의 README 첫 문단이 면접의 질문을 "무엇을 할 줄 아느냐"에서 "어떻게 생각하느냐"로 바꿨습니다. 능력보다 문제 정의 방식이 먼저 읽히도록, 첫 문단에 만든 이유를 한 문장으로 적습니다.</p></div>
-    </details>
-    <details id="sps-fc-submit" class="wg-13-acc wg-13-acc--ok">
-      <summary><span class="wg-13-tag wg-13-tag--ok">완료</span>이력서 주장 옆에 링크 첨부</summary>
-      <div class="wg-13-body"><p>마지막으로 결과물을 이력서의 주장 한 줄 옆에 링크로 붙여 짝지웁니다. 이력서가 만든 주장을 사이드 프로젝트가 그 자리에서 검증해 주면, 채용자는 의심의 단계를 통째로 건너뜁니다.</p></div>
-    </details>
-  </div>
-</section>
-<div class="good"><div class="label">현장 장면</div><div class="name">README 한 문단이 면접을 바꾼 순간</div><p>한 신입 지원자는 작은 가계부 앱을 냈다. 코드는 평범했지만 README 첫 문단에 "기존 가계부 앱이 입력에 다섯 번을 탭하게 만들어, 두 번 만에 끝내는 흐름을 직접 설계했다"고 적었다. 면접관은 능력보다 문제 정의 방식에 주목했고, 대화는 "무엇을 할 줄 아느냐"가 아니라 "어떻게 생각하느냐"로 시작됐다. 결과물 자체보다, 그 한 문단이 면접의 질문을 바꿨다.</p></div></section>
+  <section class="feature-screens"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M9 31h22"/><rect class="bi-soft" x="12" y="20" width="5" height="9" rx="1"/><rect class="bi-accent-box" x="19" y="14" width="5" height="15" rx="1"/><rect class="bi-fill" x="26" y="9" width="5" height="20" rx="1"/></svg></span><span class="num">7</span>결과 미리보기</h2><p class="h2-sub">README의 평균 검색 성능 그래프 — 20B 모델이 더 큰 모델급 recall에 근접함을 보여줍니다.</p><div class="feature-screens-grid"><figure><img src="assets/teaser_recall_barchart.png" alt="Harness-1 평균 검색 성능 막대그래프 (recall 비교)"><figcaption>Harness-1 average search performance (출처: 저장소 <code>assets/teaser_recall_barchart.png</code>). 실제 수치·조건은 논문/문서 참조.</figcaption></figure></div></section>
 
-<section><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M8 30h24"/><rect class="bi-soft" x="11" y="21" width="4" height="9" rx="1"/><rect class="bi-fill" x="18" y="15" width="4" height="15" rx="1"/><rect class="bi-accent-box" x="25" y="9" width="4" height="21" rx="1"/></svg></span><span class="no" aria-hidden="true">7</span>효과 측정: 신호가 닿았는지 어떻게 아는가</h2><p class="h2-sub">프로젝트의 효과는 개수가 아니라, 채용자의 행동 변화로 읽는다.</p><p>사이드 프로젝트가 강한 신호로 작동했는지는 페이지 조회수가 아니라, 채용 과정에서 무엇이 달라졌는지로 판단한다. 면접의 질문이 "할 수 있나요"에서 "이건 왜 이렇게 했나요"로 바뀌었다면, 증거가 이미 주장을 대체한 것이다.</p>
-<div class="tbl table-scroll"><table><caption>사이드 프로젝트가 신호로 작동했다는 행동 지표</caption><thead><tr><th>신호</th><th>약할 때</th><th>강할 때</th></tr></thead><tbody><tr><td>면접 질문의 성격</td><td>능력을 다시 검증하려 함</td><td>구현 선택의 이유를 물음</td></tr><tr><td>증거 검토 시점</td><td>면접 중에야 처음 열어봄</td><td>면접 전에 이미 둘러봄</td></tr><tr><td>대화 시작점</td><td>자기소개부터 다시 시작</td><td>프로젝트 화면을 띄워놓고 시작</td></tr><tr><td>의심의 양</td><td>주장마다 근거를 요구</td><td>능력은 전제하고 fit을 논의</td></tr></tbody></table></div></section>
-<section class="try"><div class="label">NEXT ACTION</div><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>이력서에 붙일 증거 하나를 이번 달에 완성한다</h2><p>새 프로젝트를 거창하게 시작하지 말고, 작아도 끝까지 가는 결과물 하나를 골라 배포와 README까지 마무리한다. 강한 신호는 규모가 아니라 완결성에서 나온다.</p><ol><li>3주 안에 출시 가능한 가장 작은 아이디어 하나를 고른다.</li><li>기능을 늘리지 말고 <strong>끝낼 수 있는 범위</strong>로 깎는다.</li><li>접속 즉시 동작하는 URL로 배포한다.</li><li>README 첫 문단에 "왜 만들었나"를 한 문장으로 쓴다.</li><li>이력서의 주장 한 줄 옆에 이 프로젝트 링크를 붙인다.</li></ol></section>
+  <section class="getting-started" id="start"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="20" r="13"/><path class="bi-fill" d="M17 14l9 6-9 6z"/></svg></span><span class="num">8</span>시작 방법 — 어떻게 쓰나</h2><p class="h2-sub">필요 환경: <strong>Linux · Python 3.11+ · uv · CUDA NVIDIA GPU · vLLM(GPT-OSS 지원) · HF 체크포인트 접근.</strong> 목적에 따라 셋업 레벨이 다릅니다.</p>
+  <h3>레벨 1 · 체크포인트 서빙만 확인</h3>
+  <pre>uv sync --extra vllm
+export HARNESS1_HF_MODEL=pat-jj/harness-1
+# 상세 경로:
+less docs/run_vllm_browsecompplus.md</pre>
+  <p>가장 가벼운 확인. 첫 사용 시 vLLM이 HF에서 가중치를 받아 로컬 캐시에 둡니다.</p>
+  <h3>HF 로드 / 로컬 vLLM 서버 테스트</h3>
+  <pre>uv run python inference/hf_inference.py \
+  --model ${HARNESS1_HF_MODEL:-pat-jj/harness-1} \
+  --prompt "Briefly describe Harness-1."
+
+uv run python inference/vllm_local_inference.py serve \
+  --model ${HARNESS1_HF_MODEL:-pat-jj/harness-1} \
+  --served-model-name harness-1</pre>
+  <h3>레벨 2 · BrowseComp+ 전체 평가</h3>
+  <p>레벨 1 + BrowseComp+ query·qrel·answer 파일, qrel과 ID가 맞는 Chroma 컬렉션, OpenAI 크리덴셜(필요 시 Baseten reranker)이 필요합니다. end-to-end 경로는 <code>inference/evaluate_harness1_vllm.py</code> + <code>docs/run_vllm_browsecompplus.md</code>.</p>
+  <h3>레벨 3 · 개발·학습</h3>
+  <pre>uv sync
+uv run python tests/smoke_imports.py
+uv run python tests/smoke_cli.py
+# 학습 스크립트는 training/ (launch_sft_*.sh, launch_rl.sh)</pre>
+  </section>
+
+  <section class="fit" id="fit"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><span class="num">9</span>어디에 잘 맞나 / 안 맞나</h2><p class="h2-sub">GPU와 검색 백엔드를 갖춘 ML 연구·엔지니어링에 맞습니다. 가벼운 plug-and-play 도구가 아닙니다.</p><div class="repo-action-grid"><article class="repo-card"><h3>잘 맞는 경우</h3><ul><li>검색 에이전트 RL을 재현/확장하려는 연구자</li><li>작은(20B) 검색 모델을 직접 서빙·평가하려는 엔지니어</li><li>BrowseComp+ 벤치마크·ablation을 돌리려는 평가자</li><li>“상태 외부화 하네스” 설계를 코드로 배우려는 사람</li></ul></article><article class="repo-card"><h3>안 맞는 경우</h3><ul><li>CUDA GPU(문서 검증은 H100급)가 없는 환경</li><li>바로 쓰는 제품·UI·API 서비스를 기대하는 경우</li><li>Linux가 아니거나 대용량 검색 인덱스를 구성할 수 없는 경우</li></ul></article></div></section>
+
+  <section class="adoption-check"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="num">10</span>도입 전 확인 — 크리덴셜·데이터·한계</h2><p class="h2-sub">서빙만이면 가볍지만, 전체 평가/학습은 외부 서비스·데이터·GPU 메모리가 필요합니다.</p><div class="repo-signal-grid"><article class="repo-signal"><h3>필요 크리덴셜</h3><p><code>.env.local</code>로 복사해 사용: <code>HUGGINGFACE_TOKEN</code>(체크포인트 접근), <code>OPENAI_API_KEY</code>(검색/평가), <code>CHROMA_API_KEY</code>·<code>CHROMA_DATABASE</code>(Chroma 평가), <code>TINKER_API_KEY</code>(Tinker 경로), <code>BASETEN_*</code>(선택 reranker). 실제 키는 커밋 금지.</p></article><article class="repo-signal"><h3>데이터</h3><p>BrowseComp+가 공개 평가 경로 — 로컬 BrowseComp+ 파일 + 호환 Chroma 컬렉션 필요. 논문의 web·sec·patents 코퍼스는 공개 인덱스로 번들되지 않으며 직접 구성해야 함.</p></article><article class="repo-signal"><h3>알려진 한계</h3><p>대형 검색 인덱스 미번들, 외부 검색·리랭킹 서비스에 따른 결과 편차, 체크포인트용 CUDA GPU 필요(문서 경로는 H100급 검증), 일부 학습·export는 비공개 체크포인트/호스팅 의존.</p></article></div><p>평가 메트릭: <code>recall</code> · <code>final_answer_recall</code> · <code>trajectory_recall</code> · <code>precision</code>. 작은 스모크는 분산이 커 셋업 검증용, 집계 지표는 큰 쿼리셋 권장.</p></section>
+
+  <section class="try"><div class="label">추천 사용 순서</div><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M13 7v26"/><path class="bi-fill" d="M13 9h15l-3 5 3 5H13z"/></svg></span><span class="num">11</span>이렇게 시작하세요</h2><p>목적이 “이해/평가”인지 “학습”인지에 따라 진입점이 다릅니다.</p><ol><li>먼저 <code>docs/run_vllm_browsecompplus.md</code>와 <code>inference/README.md</code>로 전체 경로를 파악한다.</li><li>GPU 환경에서 <code>uv sync --extra vllm</code> → <code>export HARNESS1_HF_MODEL=pat-jj/harness-1</code> → <code>hf_inference.py</code> 스모크로 서빙을 확인한다.</li><li>평가가 목적이면 BrowseComp+ 파일 + Chroma 컬렉션 + OpenAI 키를 준비해 <code>evaluate_harness1_vllm.py</code>를 돌린다.</li><li>학습이 목적이면 <code>uv sync</code> + smoke 테스트 후 <code>training/</code> 스크립트로 SFT→RL을 재현한다(비공개 의존 항목 확인).</li><li>설계를 배우려면 <code>harness/</code>(상태·도구·트래젝토리)부터 읽는다 — 이 저장소의 핵심.</li></ol></section>
+
+  <aside class="source-note"><strong>Source Note · 출처:</strong> 이 가이드는 <code>pat-jj/harness-1</code> 저장소(commit c8384ce, main)의 <code>README.md</code>·<code>pyproject.toml</code>·<code>.env.example</code>·디렉토리 구조를 정적으로 읽어 작성했습니다(코드 미실행·모델 미서빙). 메타(★463·forks 54·Apache-2.0·언어 비율)는 2026-06-10 GitHub API 기준 변동값. 결과 그래프는 저장소 <code>assets/teaser_recall_barchart.png</code> 원본. 논문 arXiv 2606.02373, 체크포인트 huggingface.co/pat-jj/harness-1. 명령·요구 환경은 README 표기이며 실제 동작은 사용자 GPU·데이터·서비스 환경에 따라 다릅니다.</aside>
 </main>
 
+<footer><p>Generated by adaptive-html-final 5.10.0 · refreshed with current skill assets on 2026-06-09 15:12 KST · feature, usage, architecture, and directory focused GitHub analysis.</p></footer>
 </body>
 </html>

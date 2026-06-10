@@ -27,7 +27,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.10.0 · "17번째 모드 github_feature_usage 추가 — GitHub 저장소 기능·사용법·도입 가이드(실제 화면 중심), 독립 layout-github-feature" (이전 5.9.2 — 외부 세리프 폰트 금지 + vt-02 정합 + toc-map/manual 회귀 방지)
+> Version 5.10.2 · "github-feature 본문 단락 폭(46rem→60rem) 수정 + R5 게이트 정밀화" (이전 5.10.1 — 예제 정본화(부록 제거) + 자기정합 게이트 3종)
 
 ## 0. Identity
 
