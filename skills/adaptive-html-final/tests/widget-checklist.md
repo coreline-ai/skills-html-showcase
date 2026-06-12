@@ -143,4 +143,5 @@ done
 
 - youtube_analysis: wg-11/13/14/16/18 기본, wg-15/20 조건부.
 - manual_analysis: wg-04/13/16/18/11/14 기본.
-- 두 모드 모두 wg-NN 네임스페이스 밖의 임의 widget-* 클래스 금지.
+- github_feature_usage: wg-14(Feature Explainer 1순위)/04/16/11/08 기본.
+- 세 모드 모두 wg-NN 네임스페이스 밖의 임의 widget-* 클래스 금지.

@@ -1,6 +1,6 @@
 {
   "name": "adaptive-html-final",
-  "version": "5.10.2",
+  "version": "5.10.3",
   "language": "ko",
   "entry": "SKILL.md",
   "assets": [
@@ -140,7 +140,7 @@
       "17_github_feature_usage_coreline_auth.html",
       "index.html"
     ],
-    "version": "5.10.2"
+    "version": "5.10.3"
   },
   "modes": [
     {
@@ -227,6 +227,7 @@
     "adaptive-html-blog-writer-v2"
   ],
   "changes": [
+    "v5.10.3: 회귀 안전 패치 — widgets reverse-sync 층 #fff→var(--on-accent)(다크 대비 1.92→8.6+, 라이트 byte-동일)·wg-07 애니메이션 복원, 다크 트리오 인쇄 라이트 토큰 강제+--danger-accent(dark), print.css .try 잉크(실측 1.3:1 소실 수정)·details 펼침·외부링크 한정 href·themebar 숨김, 폭 정본 A(전 17모드 page-wide·60rem — 골격 5종 승격+4모드 단락 960px), 게이트 6종 신설(on-accent lint·테마 대비·print 잉크·폭 일치·테마 8/8·.skill 버전) + 미커버 게이트 7종 거버넌스 잠금, exporter --require-webp skipped 오판 수정, 렌더러 2줄 제목 겹침 수정, 체크리스트 4종 모드17 동기화, editorial 03/05 실콘텐츠.",
     "v5.10.2: layout-github-feature 본문 단락 폭 결함 수정 — theme.css 60rem 오버라이드 목록에서 누락돼 46rem(736px)로 좁던 것을 형제 layout-github와 동일하게 60rem(960px)로 추가. R5 게이트를 layout별 60rem 셀렉터 정밀 검사로 강화(60rem 문자열 존재만 보던 blind spot 제거). 코어(theme.css) 변경 → 코어 해시 갱신·examples 18종 재인라인·sources/css-integrity 동기화.",
     "v5.10.1: examples 01–14 정본화(mode-template-contract 부록 제거·1순위 vt 본문 내장·주제 wg 1종) + manifest_version_consistency_gate·decision_table_consistency_gate·quality_contract 메타문구 게이트 신설·배선, widget-system.md mode→wg 표 §0.6 정렬, references 스테일(4.5.0/20종·dangling 갤러리) 정리. 거버넌스 80→86, 코어 CSS·17모드·자산 불변.",
     "v5.10.0: github_feature_usage 17번째 모드 추가 — 기능·사용법·도입 가이드 전용 layout-github-feature, 스크린샷 갤러리, 기술 스택/아키텍처/디렉토리 구조 섹션, 계약 게이트와 examples 17종 v5.10.0 재인라인.",
@@ -286,7 +287,7 @@
     "v5.2.2: body-icons.css에 아이콘 박스 배경 테마 적응 추가 — :root:has(#ahf-white) 순백 / :root:has(#ahf-dark) 카드 표면(var(--vt-soft)→var(--card))으로, 하드코딩 흰빛 그라디언트가 다크에서 떠 보이던 보편 결함 해소(스킬·final 템플릿 공통). lede-note 컨텍스트 라벨 아이콘 정렬(.lede-note .label:has) 추가. 조건부 자산만 변경 → 코어 해시 불변, 13-topics body-icons.css 재인라인+스냅샷+css-integrity 갱신",
     "v5.2.3: editorial-patterns.css 일반 가독성 승격 — a11y-card 줄 간격 8→12px·a11y-points 5→9px(헤드/제목/PASS·FAIL 덜 붙음), impact-card 아이콘 하단 12px 여백(아이콘이 제목에 붙던 문제). 조건부 자산만 변경 → 코어 해시 불변, 13-topics editorial-patterns.css 재인라인+스냅샷+css-integrity 갱신"
   ],
-  "updated": "2026-06-10",
+  "updated": "2026-06-12",
   "visual_templates": [
     "visual-templates/hero-map.svg.tpl",
     "visual-templates/card-grid.svg.tpl",
@@ -397,6 +398,7 @@
     "schemas/visual-brief.schema.json"
   ],
   "releases": [
+    "v5.10.3: 다크 대비·인쇄 가독·폭 정본(전모드 wide) + 자기방어 게이트 6종. 코어 해시 갱신·examples 재인라인·.skill 재패키징.",
     "v5.10.2: layout-github-feature 단락 폭(46rem→60rem) 수정 + R5 게이트 정밀화. 코어 해시 갱신·examples 재인라인.",
     "v5.10.1: 예제 정본화(부록 제거·vt 본문 내장) + 자기정합 게이트 3종(manifest·결정표·메타문구) + 거버넌스 86. 코어 CSS·17모드 불변.",
     "v5.10.0: github_feature_usage 17번째 모드 추가 — GitHub 기능·사용법·도입 가이드, layout-github-feature, 스크린샷 갤러리, mode contract gate, examples 17종 v5.10.0 재인라인.",

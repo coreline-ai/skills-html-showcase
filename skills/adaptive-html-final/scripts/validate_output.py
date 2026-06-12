@@ -376,16 +376,10 @@ def theme_switcher_contract_gate(text: str, style: str) -> list:
     if not re.search(r'<fieldset\b[^>]*class=["\'][^"\']*\bahf-themebar\b', text, re.I):
         issues.append({'type': 'theme_switcher_missing_fieldset'})
     _radio_n = len(re.findall(r'<input\b[^>]*name=["\']ahf-theme["\']', text, re.I))
-    if _radio_n < 3:
+    if _radio_n < 8:
         issues.append({'type': 'theme_switcher_radio_count',
-                       'detail': 'name="ahf-theme" 라디오는 최소 3개(light/white/dark)여야 하며 확장 테마(light2/dark2/blue …)를 추가할 수 있다.'})
-    # 5-radio 확장 테마(light2/dark2)를 쓰면 둘 다 있어야 한다(반쪽 확장 금지).
-    _has_l2 = bool(re.search(r'id=["\']ahf-light2["\']', text, re.I))
-    _has_d2 = bool(re.search(r'id=["\']ahf-dark2["\']', text, re.I))
-    if _has_l2 != _has_d2:
-        issues.append({'type': 'theme_switcher_extended_pair',
-                       'detail': '확장 테마는 light2·dark2를 함께 제공해야 한다.'})
-    for _id in ('ahf-light', 'ahf-white', 'ahf-dark'):
+                       'detail': 'v5.10.3+: name="ahf-theme" 라디오는 8테마 전부(light/light2/white/dark/dark2/blue/skyblue/sepia)여야 한다 — 부분 테마 출력은 "8-테마 단일 계약" 위반.'})
+    for _id in ('ahf-light', 'ahf-light2', 'ahf-white', 'ahf-dark', 'ahf-dark2', 'ahf-blue', 'ahf-skyblue', 'ahf-sepia'):
         if not re.search(r'<input\b[^>]*id=["\']' + re.escape(_id) + r'["\'][^>]*name=["\']ahf-theme["\']', text, re.I) \
            and not re.search(r'<input\b[^>]*name=["\']ahf-theme["\'][^>]*id=["\']' + re.escape(_id) + r'["\']', text, re.I):
             issues.append({'type': 'theme_switcher_missing_radio', 'id': _id})
@@ -805,6 +799,130 @@ def role_img_buries_text_gate(text: str) -> list:
     return issues
 
 
+def on_accent_pairing_violations(css_text: str, asset_name: str = '') -> list:
+    """Gate E (v5.10.3): an accent-family fill must not pair with hardcoded #fff ink.
+    In the 8-theme system --accent/--accent-2 flip to LIGHT tints in dark themes while
+    #fff stays white (measured 1.92–2.21 contrast). The correct ink is var(--on-accent),
+    which themes tune per accent polarity. Block-scan masked CSS; declaration order-free."""
+    issues = []
+    for m in re.finditer(r'([^{}]+)\{([^{}]*)\}', _mask_css_comments(css_text)):
+        body = m.group(2)
+        if re.search(r'background\s*:\s*var\(--accent', body) and re.search(r'color\s*:\s*#fff\b', body):
+            issues.append({'type': 'on_accent_pairing_violation', 'asset': asset_name,
+                           'selector': ' '.join(m.group(1).split())[-80:],
+                           'detail': 'accent 계열 배경에 하드코딩 #fff 잉크 — 다크 테마에서 대비 붕괴. color:var(--on-accent) 사용.'})
+    return issues
+
+
+def _rel_lum(hexv: str) -> float:
+    h = hexv.lstrip('#')
+    if len(h) == 3:
+        h = ''.join(c * 2 for c in h)
+    r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+    f = lambda v: v / 12.92 if v <= .03928 else ((v + .055) / 1.055) ** 2.4
+    return .2126 * f(r) + .7152 * f(g) + .0722 * f(b)
+
+
+def _contrast(a: str, b: str) -> float:
+    la, lb = _rel_lum(a), _rel_lum(b)
+    hi, lo = max(la, lb), min(la, lb)
+    return (hi + .05) / (lo + .05)
+
+
+def theme_contrast_failures(theme_css: str, theme_dark_css: str, min_ratio: float = 4.5) -> list:
+    """Gate F (v5.10.3): per-theme (--accent-2 bg, --on-accent ink) must clear AA 4.5.
+    Static parse of token blocks — no browser. Catches the dark-tint-vs-white-ink class
+    of bug at the token level, regardless of which component pairs them."""
+    def grab(txt, name):
+        m = re.search(r'--' + name + r':\s*(#[0-9a-fA-F]{3,8})', txt)
+        return m.group(1) if m else None
+    base_a2, base_on = grab(theme_css, 'accent-2'), grab(theme_css, 'on-accent')
+    pairs = {'light(default)': (base_a2, base_on)}
+    for bm in re.finditer(r':root:has\(#(ahf-[a-z0-9]+):checked\)\{([^}]*)\}', theme_dark_css):
+        blk = bm.group(2)
+        pairs[bm.group(1)] = (grab(blk, 'accent-2') or base_a2, grab(blk, 'on-accent') or base_on)
+    issues = []
+    for theme, (a2, on) in pairs.items():
+        if not a2 or not on:
+            continue
+        r = _contrast(a2, on)
+        if r < min_ratio:
+            issues.append({'type': 'theme_token_contrast_fail', 'theme': theme,
+                           'accent_2': a2, 'on_accent': on, 'ratio': round(r, 2),
+                           'detail': f'(--accent-2, --on-accent) 대비 {r:.2f} < {min_ratio} — 테마 토큰 페어 AA 미달.'})
+    return issues
+
+
+def print_try_ink_missing(print_css: str) -> list:
+    """Gate G (v5.10.3): print.css must override .try body ink. components.css의
+    .try p/li{color:#d0d0c8}가 print 배경(#f4f4f4) 위에서 1.3:1로 소실되는 회귀 차단."""
+    masked = _mask_css_comments(print_css)
+    if re.search(r'\.try p\b[^{}]*\{[^}]*color\s*:\s*#111', masked) or \
+       re.search(r'\.try [^{}]*\.try p[^{}]*\{[^}]*#111', masked):
+        return []
+    return [{'type': 'print_try_ink_missing',
+             'detail': 'print.css에 .try p/li 잉크(#111) 오버라이드 없음 — 인쇄에서 CTA 본문 소실(실측 1.3:1).'}]
+
+
+def _main_width_token(html_text: str):
+    m = re.search(r'<main\b[^>]*class="([^"]*)"', html_text)
+    if not m:
+        return None, None
+    cls = m.group(1).split()
+    layout = next((c for c in cls if c.startswith('layout-')), None)
+    return layout, ('page-wide' if 'page-wide' in cls else ('page' if 'page' in cls else None))
+
+
+def layout_width_consistency_issues(skill_dir: Path) -> list:
+    """Gate H (v5.10.3): 폭 정본 — (a) 골격↔예제 main 폭 클래스 일치, (b) page-wide 골격의
+    layout은 theme.css 60rem 단락 오버라이드에 등재. v5.10.0의 github-feature 폭 결함과
+    골격↔예제 드리프트 5건(beginner/article/blog/education/case)의 재발을 소스 레벨에서 차단."""
+    issues = []
+    layouts_dir, examples_dir = skill_dir / 'assets' / 'layouts', skill_dir / 'examples'
+    theme_p = skill_dir / 'assets' / 'theme.css'
+    if not layouts_dir.is_dir() or not theme_p.exists():
+        return issues
+    theme_css = theme_p.read_text(encoding='utf-8')
+    skel = {}
+    for p in sorted(layouts_dir.glob('*.html')):
+        lay, w = _main_width_token(p.read_text(encoding='utf-8'))
+        if lay and w:
+            skel[lay] = (w, p.name)
+    for lay, (w, fname) in sorted(skel.items()):
+        if w == 'page-wide' and ('.page-wide.' + lay + '>section>p') not in re.sub(r'\s+', '', theme_css):
+            issues.append({'type': 'wide_layout_missing_60rem', 'layout': lay, 'skeleton': fname,
+                           'detail': 'page-wide 골격인데 theme.css 60rem 단락 오버라이드에 미등재 — 46rem(736px) 비대칭 발생.'})
+    if examples_dir.is_dir():
+        for p in sorted(examples_dir.glob('[0-9]*.html')):
+            lay, w = _main_width_token(p.read_text(encoding='utf-8'))
+            if lay and lay in skel and w and skel[lay][0] != w:
+                issues.append({'type': 'layout_width_class_mismatch', 'layout': lay,
+                               'skeleton': skel[lay][0], 'example': w, 'page': p.name,
+                               'detail': '골격과 정본 예제의 main 폭 클래스 불일치 — 에이전트별 상이 출력(결정론 위반).'})
+    return issues
+
+
+def skill_package_version_issues(pkg_path: Path, manifest_version) -> list:
+    """Gate I (v5.10.3): 형제 .skill zip의 manifest.version은 현행과 일치해야 한다.
+    v5.7.0 zip이 3개 버전 동안 stale했던 배포 드리프트 차단."""
+    if not manifest_version or not pkg_path.exists():
+        return []
+    try:
+        import zipfile
+        with zipfile.ZipFile(pkg_path) as z:
+            cands = [n for n in z.namelist() if n.endswith('manifest.json') and '/sources/' not in n]
+            if not cands:
+                return [{'type': 'skill_package_unreadable', 'detail': 'zip 내 manifest.json 없음', 'package': pkg_path.name}]
+            pv = json.loads(z.read(sorted(cands, key=len)[0])).get('version')
+    except Exception as e:
+        return [{'type': 'skill_package_unreadable', 'detail': str(e), 'package': pkg_path.name}]
+    if pv != str(manifest_version):
+        return [{'type': 'skill_package_version_stale', 'package_version': pv,
+                 'manifest_version': str(manifest_version),
+                 'detail': '.skill 배포 zip이 현행 스킬과 불일치 — 재패키징 필요(zip -r).'}]
+    return []
+
+
 def skill_asset_lint(skill_dir: Path) -> list:
     """Merge-protection lints on the skill's own CSS assets (run when --skill-dir given).
     Asset-level issues (no 'page' key). Protects the final_20260604 section merge."""
@@ -868,6 +986,17 @@ def skill_asset_lint(skill_dir: Path) -> list:
         issues.append({'type': 'forbidden_noto_serif_kr_in_assets', 'count': len(bad_font),
                        'detail': bad_font[:40],
                        'note': '외부 세리프 폰트 및 과거 세리프 토큰은 스킬 assets에서 금지. Pretendard/system sans만 사용.'})
+    # Gate E/F/G (v5.10.3): accent-잉크 페어링, 테마 토큰 대비, print .try 잉크.
+    for _name in ('widgets.css', 'visual-html.css', 'editorial-patterns.css'):
+        _p = assets / _name
+        if _p.exists():
+            issues.extend(on_accent_pairing_violations(_p.read_text(encoding='utf-8'), _name))
+    _tp, _tdp = assets / 'theme.css', assets / 'theme-dark.css'
+    if _tp.exists() and _tdp.exists():
+        issues.extend(theme_contrast_failures(_tp.read_text(encoding='utf-8'), _tdp.read_text(encoding='utf-8')))
+    _pp = assets / 'print.css'
+    if _pp.exists():
+        issues.extend(print_try_ink_missing(_pp.read_text(encoding='utf-8')))
     return issues
 
 
@@ -1115,9 +1244,11 @@ def skill_doc_consistency_gate(skill_dir: Path) -> list:
         except Exception:
             _mver = None
         issues.extend(skill_md_version_mismatch(skill_text, _mver))
+        issues.extend(skill_package_version_issues(skill_dir.parent / (skill_dir.name + '.skill'), _mver))
         if examples_fidelity_conflict(skill_text, manifest_text):
             issues.append({'type': 'examples_fidelity_contradiction',
                            'detail': 'SKILL.md와 manifest가 examples를 경량 vs 풀 스킬급으로 상반 서술.'})
+    issues.extend(layout_width_consistency_issues(skill_dir))
     if skill_text:
         widget_p = skill_dir / 'references' / 'widget-system.md'
         widget_text = widget_p.read_text(encoding='utf-8') if widget_p.exists() else ''
@@ -1647,7 +1778,7 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         #     selector token `.page-wide.<layout>>section>p`, which exists ONLY in the 60rem rule
         #     (the 46rem default rule uses `.page-wide>section>p` without a layout class).
         #     github-feature is listed before github so it matches before the shorter alternative.
-        wide = re.search(r'class=["\'][^"\']*\blayout-(github-feature|expert|github|youtube|manual|compare|seo|platform|landing|case|checklist|reference|audit|skill-audit)\b', text)
+        wide = re.search(r'class=["\'][^"\']*\blayout-(github-feature|expert|github|youtube|manual|compare|seo|platform|landing|case|checklist|reference|audit|skill-audit|beginner|article|blog|education)\b', text)
         if wide and '.page-wide>section>p' in style:
             layout = 'layout-' + wide.group(1)
             if ('.page-wide.' + layout + '>section>p') not in re.sub(r'\s+', '', style):

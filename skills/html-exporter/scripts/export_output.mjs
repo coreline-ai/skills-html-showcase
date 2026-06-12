@@ -905,7 +905,10 @@ function hasRequiredFailures(manifest, opts) {
       if (artifact.status === 'failed' && (opts.formats.includes('png') || opts.formats.includes('webp'))) failed = true;
     }
     for (const artifact of Object.values(page.artifacts.webp || {})) {
-      if (artifact.status === 'failed' || artifact.status === 'skipped') webpProblem = true;
+      if (artifact.status === 'failed') webpProblem = true;
+      // v5.10.3: 'skipped' is a failure ONLY when sharp is unavailable — theme-absent
+      // skips (no_dom_radio on 3/5-theme outputs) are normal per export-contract.md.
+      else if (artifact.status === 'skipped' && artifact.skipped_reason === 'sharp_unavailable') webpProblem = true;
     }
   }
 

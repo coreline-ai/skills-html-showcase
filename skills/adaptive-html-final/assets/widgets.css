@@ -849,12 +849,12 @@
    모바일(≤560): wg-04 SVG 폭 수용, wg-03 diff 줄바꿈, wg-16 표→카드(헤더 숨김+라벨).
    source-order로 기존 규칙을 덮으므로 !important 불필요. */
 .wg-02-palette li{min-height:30px}
-.wg-02-pv-cta,.wg-06-btn--primary,.wg-07-pill,.wg-09-next{background:var(--accent-2);color:#fff}
-.wg-20-chip:has(+ input:checked){background:var(--accent-2);color:#fff}
+.wg-02-pv-cta,.wg-06-btn--primary,.wg-07-pill,.wg-09-next{background:var(--accent-2);color:var(--on-accent)}
+.wg-20-chip:has(+ input:checked){background:var(--accent-2);color:var(--on-accent)}
 .wg-02-pv-cta--c{background:#5f88a2;color:#fff}
 .wg-02-badge{font-size:11px;background:var(--accent-2)}
 .wg-13-step{font-size:11px}.wg-13-node--decide .wg-13-step{background:#9b6a20;color:#fff;border-color:#9b6a20}
-.wg-17-h3-no,.wg-01-rank-pick,.wg-01-pick-badge{background:var(--accent-2);color:#fff}
+.wg-17-h3-no,.wg-01-rank-pick,.wg-01-pick-badge{background:var(--accent-2);color:var(--on-accent)}
 .wg-20-var{color:#6f4a08;background:#fff3c4;border:1px solid #e0bf73}
 .wg-20-pane{min-height:128px}
 .wg-08-proto{max-width:min(620px,100%)}.wg-08-device{max-width:520px;margin:0 auto}
@@ -940,8 +940,7 @@
 .wg-09-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));overflow:visible;scroll-snap-type:none;scroll-behavior:auto;gap:var(--space-4)}
 .wg-09-slide{flex:initial;width:100%;min-width:0;min-height:260px;scroll-snap-align:unset;scroll-margin:0;overflow-wrap:anywhere}
 @media(max-width:760px){.wg-09-track{grid-template-columns:1fr}.wg-09-slide{min-height:220px;padding:22px}}
-/* wg-07: 애니메이션 자체 제거(정적) — .wg-07-box가 변형 클래스와 동반되어 source-order로 덮힘 */
-.wg-07-box{animation:none;transform:none}
+/* wg-07: v5.10.3 — 정적화 제거(애니메이션 복원). 879행 카탈로그 메모(미반영)와 코드 일치화. prefers-reduced-motion 블록이 접근성 보장 */
 
 /* === 카탈로그 reverse-sync (2026-06-07) — wg-14/wg-15 카드 전체 폭 사용 ===
    1280px에서 내부 본문이 780px(max-reading)에 묶이던 것을 섹션 카드 폭(≈974px)까지 확장.

@@ -75,4 +75,5 @@ python3 scripts/quality_contract_check.py <산출물 디렉터리>
 
 - [ ] youtube_analysis: 390px에서 evidence/comment/opportunity grid가 1열로 접힌다.
 - [ ] manual_analysis: role/task/troubleshooting grid가 1열로 접히고 긴 절차 표는 table-scroll 또는 mobile-card-table을 쓴다.
-- [ ] 8테마에서 두 신규 모드의 카드 배경·텍스트 대비가 유지된다.
+- [ ] github_feature_usage: 기능 지도 그리드·`feature-screens-grid`(figure/figcaption)가 모바일 1열로 접히고 스크린샷이 카드 폭을 넘지 않는다.
+- [ ] 8테마에서 신규 모드(15·16·17)의 카드 배경·텍스트 대비가 유지된다.

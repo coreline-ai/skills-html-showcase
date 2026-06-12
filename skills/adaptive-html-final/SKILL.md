@@ -27,7 +27,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.10.2 · "github-feature 본문 단락 폭(46rem→60rem) 수정 + R5 게이트 정밀화" (이전 5.10.1 — 예제 정본화(부록 제거) + 자기정합 게이트 3종)
+> Version 5.10.3 · "다크 대비·인쇄 가독·폭 정본(전 모드 page-wide) + 자기방어 게이트 6종" (이전 5.10.2 — github-feature 단락 폭 수정 + R5 정밀화)
 
 ## 0. Identity
 

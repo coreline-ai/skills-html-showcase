@@ -95,7 +95,7 @@ ts_ok_html = '''
   <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
 </fieldset>
 '''
-check("theme switcher gate passes 3 radios", v.theme_switcher_contract_gate(ts_ok_html, theme_css) == [])
+check("theme switcher gate flags 3 radios (v5.10.3: 8 required)", any(i["type"]=="theme_switcher_radio_count" for i in v.theme_switcher_contract_gate(ts_ok_html, theme_css)))
 ts_ok5 = '''
 <fieldset class="ahf-themebar" aria-label="테마 선택">
   <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
@@ -105,9 +105,9 @@ ts_ok5 = '''
   <input type="radio" name="ahf-theme" id="ahf-dark2"><label for="ahf-dark2">다크2</label>
 </fieldset>
 '''
-check("theme switcher gate passes 5 radios (light2/dark2)", v.theme_switcher_contract_gate(ts_ok5, theme_css) == [])
+check("theme switcher gate flags 5 radios (v5.10.3: 8 required)", any(i["type"]=="theme_switcher_radio_count" for i in v.theme_switcher_contract_gate(ts_ok5, theme_css)))
 ts_ok6 = ts_ok5.replace('</fieldset>', '  <input type="radio" name="ahf-theme" id="ahf-blue"><label for="ahf-blue">블루</label>\n</fieldset>')
-check("theme switcher gate passes 6 radios (+blue)", v.theme_switcher_contract_gate(ts_ok6, theme_css) == [])
+check("theme switcher gate flags 6 radios (v5.10.3: 8 required)", any(i["type"]=="theme_switcher_radio_count" for i in v.theme_switcher_contract_gate(ts_ok6, theme_css)))
 ts_pair = '''
 <fieldset class="ahf-themebar"><input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라</label>
 <input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">라2</label>
@@ -299,6 +299,77 @@ check("closing recommendation warns when last section not .try", v.closing_summa
 _smv_bad = v.skill_md_version_mismatch('> Version 5.10.0 · note', '5.10.2')
 check("skill_md version gate catches header drift", _smv_bad and _smv_bad[0]["type"]=="skill_md_version_mismatch")
 check("skill_md version gate passes matching header", v.skill_md_version_mismatch('> Version 5.10.2 · note', '5.10.2') == [])
+
+
+# ---- v5.10.3 gates: on-accent pairing / theme contrast / print ink / width canon / theme 8/8 / package ----
+check("on-accent lint catches #fff on accent fill",
+      v.on_accent_pairing_violations('x{background:var(--accent-2);color:#fff}','fx') and
+      v.on_accent_pairing_violations('x{background:var(--accent-2);color:#fff}','fx')[0]["type"]=="on_accent_pairing_violation")
+check("on-accent lint passes var(--on-accent) pairing",
+      v.on_accent_pairing_violations('x{background:var(--accent-2);color:var(--on-accent)}','fx') == [])
+check("theme contrast gate catches white-on-light-tint pair",
+      v.theme_contrast_failures('--accent-2:#ff909a;\n--on-accent:#ffffff;','') and
+      v.theme_contrast_failures('--accent-2:#ff909a;\n--on-accent:#ffffff;','')[0]["type"]=="theme_token_contrast_fail")
+check("theme contrast gate passes REAL theme tokens (8 themes)",
+      v.theme_contrast_failures(( SKILL/'assets/theme.css').read_text(encoding='utf-8'),
+                                ( SKILL/'assets/theme-dark.css').read_text(encoding='utf-8')) == [])
+check("print ink gate catches missing .try override",
+      v.print_try_ink_missing('@media print{body{color:#111}}') and
+      v.print_try_ink_missing('@media print{body{color:#111}}')[0]["type"]=="print_try_ink_missing")
+check("print ink gate passes REAL print.css",
+      v.print_try_ink_missing(( SKILL/'assets/print.css').read_text(encoding='utf-8')) == [])
+check("width canon gate clean on REAL skeletons/examples/theme",
+      v.layout_width_consistency_issues(SKILL) == [])
+import zipfile as _zf, tempfile as _tf, json as _json, os as _os
+_tmpzip = _os.path.join(_tf.gettempdir(), 'gov_pkg_stale.skill')
+with _zf.ZipFile(_tmpzip,'w') as _z: _z.writestr('adaptive-html-final/manifest.json', _json.dumps({"version":"5.0.0"}))
+check("package gate catches stale zip version",
+      v.skill_package_version_issues(v.Path(_tmpzip),'5.10.3') and
+      v.skill_package_version_issues(v.Path(_tmpzip),'5.10.3')[0]["type"]=="skill_package_version_stale")
+with _zf.ZipFile(_tmpzip,'w') as _z: _z.writestr('adaptive-html-final/manifest.json', _json.dumps({"version":"5.10.3"}))
+check("package gate passes matching zip version", v.skill_package_version_issues(v.Path(_tmpzip),'5.10.3') == [])
+_t8 = ''.join(f'<input type="radio" name="ahf-theme" id="ahf-{x}"{" checked" if x=="light" else ""}><label for="ahf-{x}">{x}</label>' for x in ('light','light2','white','dark','dark2','blue','skyblue','sepia'))
+_fs8 = '<fieldset class="ahf-themebar">'+_t8+'</fieldset>'
+_style8 = '.ahf-themebar{display:flex}'
+check("theme switcher gate passes full 8-radio bar", v.theme_switcher_contract_gate(_fs8, _style8) == [])
+_t7 = _fs8.replace('<input type="radio" name="ahf-theme" id="ahf-sepia"><label for="ahf-sepia">sepia</label>','')
+check("theme switcher gate flags 7-of-8 radios",
+      any(i["type"] in ("theme_switcher_radio_count","theme_switcher_missing_radio") for i in v.theme_switcher_contract_gate(_t7, _style8)))
+
+# ---- previously-uncovered page gates: minimal catch+pass pairs ----
+check("widget_static_gate catches missing widgets css",
+      any(i["type"]=="widget_css_not_inlined" for i in v.widget_static_gate('<div class="wg-01-card">x</div>','')))
+check("widget_static_gate passes when wg css inlined",
+      v.widget_static_gate('<div class="wg-01-card">x</div>','.wg-01{color:red}') == [])
+check("visual_html_gate catches missing vt css",
+      any(i["type"]=="visual_html_css_not_inlined" for i in v.visual_html_gate('<section class="vt-shell">x</section>','')))
+check("visual_html_gate passes when vt css inlined",
+      v.visual_html_gate('<section class="vt-shell">x</section>','.vt-shell{background:#fff}') == [])
+check("cross_leak_gate flags wg markup under diagram profile",
+      any(i["type"]=="cross_leak" for i in v.cross_leak_gate('<div class="wg-03-grid">x</div>','diagram')))
+check("cross_leak_gate silent under auto profile", v.cross_leak_gate('<div class="wg-03-grid">x</div>','auto') == [])
+_mtc_bad = '<main class="page-wide layout-expert"><section><h2>x</h2></section></main>'
+check("mode_template_contract_gate flags missing primary vt+wg",
+      {i["type"] for i in v.mode_template_contract_gate(_mtc_bad,'auto')} >= {"mode_primary_vt_missing","mode_recommended_wg_missing"})
+_mtc_ok = '<main class="page-wide layout-expert"><section><h2>x</h2><div class="vt-shell"><div class="rm-grid">m</div></div><div class="wg-03-grid">w</div></section></main>'
+check("mode_template_contract_gate passes primary vt + recommended wg", v.mode_template_contract_gate(_mtc_ok,'auto') == [])
+_icon_bad = '<main id="main" class="page-wide layout-expert"><section class="x"><p>no h2</p></section></main>'
+check("direct_section_title_icon gate flags h2-less direct section",
+      any(i["type"]=="direct_section_h2_missing" for i in v.direct_section_title_icon_policy_gate(_icon_bad)))
+_icon_ok = '<main id="main" class="page-wide layout-expert"><section class="x"><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>t</h2></section></main>'
+check("direct_section_title_icon gate passes icon h2", v.direct_section_title_icon_policy_gate(_icon_ok) == [])
+_same_icon_h2 = '<h2><span class="body-icon"><svg aria-hidden="true"><path d="M1 1"/></svg></span>t%d</h2>'
+_div_bad = '<main class="page-wide layout-expert">' + ''.join('<section>'+(_same_icon_h2 % i)+'</section>' for i in range(7)) + '</main>'
+check("body_icon_diversity gate flags one-svg-everywhere",
+      any(i["type"]=="body_icon_diversity_too_low" for i in v.body_icon_diversity_gate(_div_bad)))
+_unique_icon_h2 = '<h2><span class="body-icon"><svg aria-hidden="true"><path d="M1 %d"/></svg></span>t%d</h2>'
+_div_ok = '<main class="page-wide layout-expert">' + ''.join('<section>'+(_unique_icon_h2 % (i,i))+'</section>' for i in range(7)) + '</main>'
+check("body_icon_diversity gate passes distinct icons", v.body_icon_diversity_gate(_div_ok) == [])
+_toc_bad = '<main class="page-wide layout-github"><section><h2>x</h2></section></main>'
+check("analysis_toc_map gate flags missing github question toc",
+      any(i["type"]=="github_analysis_toc_map_missing" for i in v.analysis_toc_map_required_gate(_toc_bad)))
+_toc_ok = '<main class="page-wide layout-github"><nav class="toc-map github-question-toc"><div class="toc-pills"><a class="toc-pill" href="#a"><b>1</b>q</a></div></nav></main>'
+check("analysis_toc_map gate passes canonical chip toc", v.analysis_toc_map_required_gate(_toc_ok) == [])
 
 print(f"\n{_checks - _fails}/{_checks} checks passed")
 sys.exit(1 if _fails else 0)

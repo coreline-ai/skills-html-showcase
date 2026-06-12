@@ -167,10 +167,14 @@ def text_lines(lines: list[str], x: int, y: int, size: int = 120, fill: str = "#
 
 
 def header(title: str, subtitle: str) -> str:
+    title_lines = wrapped(title, 28, 2)
+    # v5.10.3: 제목이 2줄로 감기면 부제 baseline을 줄 높이만큼 내린다(겹침 방지).
+    # 1줄일 때 sub_y=1280으로 기존 출력과 byte-동일 — 기존 brief 회귀 0.
+    sub_y = 980 + int(300 * 1.08) * max(0, len(title_lines) - 1) + 300
     return "\n".join([
         '<text x="560" y="620" font-size="122" fill="#e63946" font-weight="900" letter-spacing="22">ADAPTIVE HTML VISUAL</text>',
-        text_lines(wrapped(title, 28, 2), 560, 980, 300, "#1a1a1a", 900, 1.08),
-        text_lines(wrapped(subtitle, 48, 2), 570, 1280, 118, "#4a4a4a", 560, 1.28),
+        text_lines(title_lines, 560, 980, 300, "#1a1a1a", 900, 1.08),
+        text_lines(wrapped(subtitle, 48, 2), 570, sub_y, 118, "#4a4a4a", 560, 1.28),
     ])
 
 

@@ -56,9 +56,11 @@
 - [ ] 스킬 감사이면 → 개선본 SKILL.md까지 포함한다.
 
 
-## youtube_analysis / manual_analysis
+## youtube_analysis / manual_analysis / github_feature_usage
 
 - [ ] youtube_analysis는 Video Evidence Map, Source Limits, FACT/INFERENCE/UNKNOWN, observed_at를 포함한다.
 - [ ] youtube_analysis는 iframe/embed/autoplay를 포함하지 않는다.
 - [ ] manual_analysis는 Source & Version Snapshot, Reader Role Router, Prerequisites/Safety, Troubleshooting, Source Limits를 포함한다.
 - [ ] manual_analysis의 stale/누락/모순 지적은 원문 근거 또는 확인 불가 라벨을 가진다.
+- [ ] github_feature_usage는 positioning, feature toc(`toc-map feature-toc`), 기능 지도(카드 4+), 시작 방법(단계형), 적합/부적합, 도입 전 확인, Source Limits를 포함한다.
+- [ ] github_feature_usage의 버전·라이선스·성능 수치는 입력에 없으면 UNKNOWN으로 남긴다(실사 어조 아님 — 안내체).

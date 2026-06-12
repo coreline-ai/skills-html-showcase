@@ -10,7 +10,7 @@
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
-<style>/* adaptive-html-final-core-css-sha256: 24d2e3b47355c5209ac091032af30b6ae7e0643dcefb55e6ccecb6105f211403 */
+<style>/* adaptive-html-final-core-css-sha256: c3e0e4e4ae2e1ad8dcd3f20c46feb1b2f695bcbb98b6dab63eef7189648293e8 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -94,7 +94,7 @@ a:hover{color:var(--accent)}
 .page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:60px 0 100px}
 /* wide layout / narrow prose: constrain section-level running text to a readable measure; tables·grids·cards keep full width */
 .page-wide>section>p,.page-wide>section>ul,.page-wide>section>ol,.page-wide>article>p,.page-wide>article>ul,.page-wide>article>ol,.page-wide>p{max-width:46rem}
-.page-wide.layout-github>section>p,.page-wide.layout-github>section>ul,.page-wide.layout-github>section>ol,.page-wide.layout-youtube>section>p,.page-wide.layout-youtube>section>ul,.page-wide.layout-youtube>section>ol,.page-wide.layout-manual>section>p,.page-wide.layout-manual>section>ul,.page-wide.layout-manual>section>ol,.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol,.page-wide.layout-github-feature>section>p,.page-wide.layout-github-feature>section>ul,.page-wide.layout-github-feature>section>ol{max-width:60rem}
+.page-wide.layout-github>section>p,.page-wide.layout-github>section>ul,.page-wide.layout-github>section>ol,.page-wide.layout-youtube>section>p,.page-wide.layout-youtube>section>ul,.page-wide.layout-youtube>section>ol,.page-wide.layout-manual>section>p,.page-wide.layout-manual>section>ul,.page-wide.layout-manual>section>ol,.page-wide.layout-expert>section>p,.page-wide.layout-expert>section>ul,.page-wide.layout-expert>section>ol,.page-wide.layout-compare>section>p,.page-wide.layout-compare>section>ul,.page-wide.layout-compare>section>ol,.page-wide.layout-seo>section>p,.page-wide.layout-seo>section>ul,.page-wide.layout-seo>section>ol,.page-wide.layout-platform>section>p,.page-wide.layout-platform>section>ul,.page-wide.layout-platform>section>ol,.page-wide.layout-landing>section>p,.page-wide.layout-landing>section>ul,.page-wide.layout-landing>section>ol,.page-wide.layout-case>section>p,.page-wide.layout-case>section>ul,.page-wide.layout-case>section>ol,.page-wide.layout-checklist>section>p,.page-wide.layout-checklist>section>ul,.page-wide.layout-checklist>section>ol,.page-wide.layout-reference>section>p,.page-wide.layout-reference>section>ul,.page-wide.layout-reference>section>ol,.page-wide.layout-audit>section>p,.page-wide.layout-audit>section>ul,.page-wide.layout-audit>section>ol,.page-wide.layout-skill-audit>section>p,.page-wide.layout-skill-audit>section>ul,.page-wide.layout-skill-audit>section>ol,.page-wide.layout-github-feature>section>p,.page-wide.layout-github-feature>section>ul,.page-wide.layout-github-feature>section>ol,.page-wide.layout-beginner>section>p,.page-wide.layout-beginner>section>ul,.page-wide.layout-beginner>section>ol,.page-wide.layout-beginner>article>section>p,.page-wide.layout-beginner>article>section>ul,.page-wide.layout-beginner>article>section>ol,.page-wide.layout-article>section>p,.page-wide.layout-article>section>ul,.page-wide.layout-article>section>ol,.page-wide.layout-article>article>section>p,.page-wide.layout-article>article>section>ul,.page-wide.layout-article>article>section>ol,.page-wide.layout-education>section>p,.page-wide.layout-education>section>ul,.page-wide.layout-education>section>ol,.page-wide.layout-education>article>section>p,.page-wide.layout-education>article>section>ul,.page-wide.layout-education>article>section>ol,.page-wide.layout-blog>section>p,.page-wide.layout-blog>section>ul,.page-wide.layout-blog>section>ol,.page-wide.layout-blog>article>section>p,.page-wide.layout-blog>article>section>ul,.page-wide.layout-blog>article>section>ol{max-width:60rem}
 .header{padding:0 0 32px;border-bottom:1px solid var(--line);margin-bottom:42px}
 /* header content fills its container width (.page / .page-wide) so the header matches the sections below — v5.2.1 (이전: 48rem 단일 측정 캡) */
 .header .kicker,.header h1,.header .sub,.header .meta,.header .generated-row{max-width:none}
@@ -773,10 +773,12 @@ details p{margin-bottom:0}
   .page,.page-wide,.wrap{width:100%;padding:0}
   .hero-analogy,.try{background:#f4f4f4;color:#111;box-shadow:none}
   .try h2,.try h3,.try strong{color:#111}
+  .try p,.try li,.try ol,.try ul,.try a,.try .label,.try .tag{color:#111}
+  details::details-content{content-visibility:visible}
   .source-note,.toc,.box,.term,.analogy,.danger,.good,.card-block,.mini-card{break-inside:avoid}
   pre,table,.tbl,blockquote,figure,.card-block{break-inside:avoid}
-  .skip{display:none}
-  a::after{content:" (" attr(href) ")";font-size:11px;color:#555}
+  .skip,.ahf-themebar{display:none}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:11px;color:#555}
 }
 
 /* adaptive-html-final widget templates — CSS-only, namespaced wg-<id>-, uses skill tokens */
@@ -1630,12 +1632,12 @@ details p{margin-bottom:0}
    모바일(≤560): wg-04 SVG 폭 수용, wg-03 diff 줄바꿈, wg-16 표→카드(헤더 숨김+라벨).
    source-order로 기존 규칙을 덮으므로 !important 불필요. */
 .wg-02-palette li{min-height:30px}
-.wg-02-pv-cta,.wg-06-btn--primary,.wg-07-pill,.wg-09-next{background:var(--accent-2);color:#fff}
-.wg-20-chip:has(+ input:checked){background:var(--accent-2);color:#fff}
+.wg-02-pv-cta,.wg-06-btn--primary,.wg-07-pill,.wg-09-next{background:var(--accent-2);color:var(--on-accent)}
+.wg-20-chip:has(+ input:checked){background:var(--accent-2);color:var(--on-accent)}
 .wg-02-pv-cta--c{background:#5f88a2;color:#fff}
 .wg-02-badge{font-size:11px;background:var(--accent-2)}
 .wg-13-step{font-size:11px}.wg-13-node--decide .wg-13-step{background:#9b6a20;color:#fff;border-color:#9b6a20}
-.wg-17-h3-no,.wg-01-rank-pick,.wg-01-pick-badge{background:var(--accent-2);color:#fff}
+.wg-17-h3-no,.wg-01-rank-pick,.wg-01-pick-badge{background:var(--accent-2);color:var(--on-accent)}
 .wg-20-var{color:#6f4a08;background:#fff3c4;border:1px solid #e0bf73}
 .wg-20-pane{min-height:128px}
 .wg-08-proto{max-width:min(620px,100%)}.wg-08-device{max-width:520px;margin:0 auto}
@@ -1721,8 +1723,7 @@ details p{margin-bottom:0}
 .wg-09-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));overflow:visible;scroll-snap-type:none;scroll-behavior:auto;gap:var(--space-4)}
 .wg-09-slide{flex:initial;width:100%;min-width:0;min-height:260px;scroll-snap-align:unset;scroll-margin:0;overflow-wrap:anywhere}
 @media(max-width:760px){.wg-09-track{grid-template-columns:1fr}.wg-09-slide{min-height:220px;padding:22px}}
-/* wg-07: 애니메이션 자체 제거(정적) — .wg-07-box가 변형 클래스와 동반되어 source-order로 덮힘 */
-.wg-07-box{animation:none;transform:none}
+/* wg-07: v5.10.3 — 정적화 제거(애니메이션 복원). 879행 카탈로그 메모(미반영)와 코드 일치화. prefers-reduced-motion 블록이 접근성 보장 */
 
 /* === 카탈로그 reverse-sync (2026-06-07) — wg-14/wg-15 카드 전체 폭 사용 ===
    1280px에서 내부 본문이 780px(max-reading)에 묶이던 것을 섹션 카드 폭(≈974px)까지 확장.
@@ -2022,7 +2023,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 :root:has(#ahf-sepia:checked){--bg:#f4ecd8;--ink:#3a2f25;--ink-soft:#5c4d3e;--ink-mute:#857260;--line:#e2d6bb;--card:#fbf6e9;--accent:#a85c32;--accent-2:#7e4426;--accent-soft:#f0e2cf;--chip-ink:#857260;--on-accent:#fbf6e9;--dark:#2d2418;--dark-soft:#3a2f23;--code:#2d2418;--term-bg:#f7eed6;--term-border:#e3cf9f;--analogy-bg:#f1ecd9;--analogy-border:#ddcfac;--analogy-label-ink:#7a6233;--analogy-accent:#9a7b3d;--danger-bg:#f7e6df;--danger-border:#e3b9a6;--good-bg:#edf0da;--good-border:#cdd6a8;--good-label-ink:#5f7034;--hl-yellow:#f3e2a8;--hl-blue:#dfe6d2;--hl-pink:#f1ddcf;--vt-paper:#fbf6e9;--vt-wash:#f4ecd8;--vt-soft:#efe6cf;--vt-gold:#a85c32;color-scheme:light}
 
 /* ===== 다크(명시) + 표면 보정 ===== */
-:root:has(#ahf-dark:checked){--bg:#0c0d10;--ink:#ececea;--ink-soft:#c3c3bc;--ink-mute:#9a9a92;--line:#2c2d34;--card:#1a1c22;--accent:#ff6b75;--accent-2:#ff909a;--accent-soft:#3a2228;--link-on-dark:#ffb6c0;--chip-ink:#a8a8a1;--on-accent:#0c0d10;--dark:#000000;--dark-soft:#0c0d10;--code:#070809;--vt-paper:#1a1c22;--vt-wash:#0c0d10;--vt-soft:#23252c;--vt-blue:#7fb0d8;--vt-green:#60ba8b;--vt-gold:#e0b357;--term-bg:#241f13;--term-border:#48402a;--term-ink:#ead9b2;--term-label-ink:#e3bd6a;--term-accent:#d7a657;--analogy-bg:#15212e;--analogy-border:#2e4458;--analogy-ink:#bfd6e8;--analogy-label-ink:#9cc2de;--analogy-accent:#79a8c8;--danger-bg:#291513;--danger-border:#5c2f2a;--danger-ink:#f2c6c0;--danger-label-ink:#ff8c87;--good-bg:#0f2419;--good-border:#244b37;--good-ink:#bfe2cf;--good-label-ink:#80d2a7;--good-accent:#60ba8b;--hl-yellow:#6a5618;--hl-blue:#21405c;--hl-pink:#5a2530;--focus:#5a86ee;color-scheme:dark}
+:root:has(#ahf-dark:checked){--bg:#0c0d10;--ink:#ececea;--ink-soft:#c3c3bc;--ink-mute:#9a9a92;--line:#2c2d34;--card:#1a1c22;--accent:#ff6b75;--accent-2:#ff909a;--accent-soft:#3a2228;--danger-accent:#ff6b75;--link-on-dark:#ffb6c0;--chip-ink:#a8a8a1;--on-accent:#0c0d10;--dark:#000000;--dark-soft:#0c0d10;--code:#070809;--vt-paper:#1a1c22;--vt-wash:#0c0d10;--vt-soft:#23252c;--vt-blue:#7fb0d8;--vt-green:#60ba8b;--vt-gold:#e0b357;--term-bg:#241f13;--term-border:#48402a;--term-ink:#ead9b2;--term-label-ink:#e3bd6a;--term-accent:#d7a657;--analogy-bg:#15212e;--analogy-border:#2e4458;--analogy-ink:#bfd6e8;--analogy-label-ink:#9cc2de;--analogy-accent:#79a8c8;--danger-bg:#291513;--danger-border:#5c2f2a;--danger-ink:#f2c6c0;--danger-label-ink:#ff8c87;--good-bg:#0f2419;--good-border:#244b37;--good-ink:#bfe2cf;--good-label-ink:#80d2a7;--good-accent:#60ba8b;--hl-yellow:#6a5618;--hl-blue:#21405c;--hl-pink:#5a2530;--focus:#5a86ee;color-scheme:dark}
 
 /* ===== 로즈(웜 로즈/모브 — desaturated rose, label '로즈' / id ahf-dark2) ===== */
 :root:has(#ahf-dark2:checked){--bg:#0f1014;--ink:#ece8df;--ink-soft:#c8c2b7;--ink-mute:#9d968b;--line:#333640;--card:#191b21;--accent:#c8747c;--accent-2:#d9a0a5;--accent-soft:#2d2024;--link-on-dark:#e6b8bd;--chip-ink:#c8c2b7;--on-accent:#0f1014;--dark:#0b0c10;--dark-soft:#14161b;--code:#0b0c10;--term-bg:#27231c;--term-border:#4b412b;--term-ink:#d8c89e;--term-label-ink:#b8a06f;--term-accent:#b8a06f;--analogy-bg:#18232b;--analogy-border:#2d4251;--analogy-ink:#bfd0db;--analogy-label-ink:#8fa9b8;--analogy-accent:#7f9daf;--danger-bg:#2b1e21;--danger-border:#593238;--danger-ink:#dfb8bd;--danger-label-ink:#d79aa1;--danger-accent:#c8747c;--good-bg:#18251d;--good-border:#324a39;--good-ink:#c5d9cb;--good-label-ink:#8fb59d;--good-accent:#7fa98f;--hl-yellow:#3b331f;--hl-blue:#1d2d39;--hl-pink:#35232a;--focus:#829ce5;--vt-paper:#191b21;--vt-wash:#0f1014;--vt-soft:#252832;--vt-line:#373a44;--vt-ink:#ece8df;--vt-blue:#7fb0d8;--vt-green:#7fa98f;--vt-gold:#b8a06f;color-scheme:dark}
@@ -2052,6 +2053,10 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .ahf-themebar input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
 @media(max-width:560px){.ahf-themebar{position:static;width:276px;max-width:calc(100% - 28px);margin:10px auto 16px}}
 @media print{.ahf-themebar{display:none}}
+
+/* v5.10.3 — 다크 트리오 인쇄 시 라이트 토큰 강제(:has 특이도(1,1,0)가 print.css(:root 불가)를 이기므로 본 파일에서 처리).
+   surfaces/inks/lines/vt/code/콜아웃을 라이트 등가값으로 리셋 — 종이 출력에서 다크 카드/저대비 잉크 방지 */
+@media print{:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked){--bg:#ffffff;--card:#ffffff;--ink:#111111;--ink-soft:#333333;--ink-mute:#555555;--line:#dddddd;--chip-ink:#555555;--code:#1a1a1a;--accent:#b72d38;--accent-2:#b72d38;--on-accent:#ffffff;--accent-soft:#fbeef0;--link-on-dark:#b72d38;--dark:#1d1d1b;--dark-soft:#2a2a27;--focus:#2f6fdb;--vt-paper:#ffffff;--vt-wash:#f7f7f4;--vt-soft:#f0f0ec;--vt-line:#dddddd;--vt-ink:#111111;--vt-muted:#555555;--vt-blue:#2456a6;--vt-green:#1f6f4e;--vt-gold:#8a6a1f;--term-bg:#fffbeb;--term-border:#e8d48a;--term-ink:#3d3320;--term-label-ink:#8a6a1f;--term-accent:#9b6a20;--analogy-bg:#f4f7fa;--analogy-border:#d6e0ea;--analogy-ink:#2c3a46;--analogy-label-ink:#3f6bb0;--analogy-accent:#3f6bb0;--danger-bg:#fdf0f1;--danger-border:#f3c6cb;--danger-ink:#5c2228;--danger-label-ink:#c62433;--danger-accent:#c62433;--good-bg:#eef7f0;--good-border:#cfe6d5;--good-ink:#1d4030;--good-label-ink:#1f6f4e;--good-accent:#1f6f4e;--hl-yellow:#fff1b8;--hl-blue:#d8e6f7;--hl-pink:#fbdce3;color-scheme:light}}
 </style>
 </head>
 <body>

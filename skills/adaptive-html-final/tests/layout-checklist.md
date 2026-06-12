@@ -1,6 +1,7 @@
 # Layout Checklist
 
-14개 레이아웃의 mode ↔ 파일 ↔ 필수블록 ↔ 폭클래스를 한눈에 검증한다.
+17개 레이아웃의 mode ↔ 파일 ↔ 필수블록 ↔ 폭클래스를 한눈에 검증한다.
+폭 정본(v5.10.3): **모든 모드 레이아웃 = `.page-wide`(1020) + 단락 60rem(960px)** — `.page`(780)는 모드 레이아웃에 쓰지 않는다.
 폭클래스: `.page` = `--max-reading`(780px), `.page-wide` = `--max-wide`(1020px).
 
 ## 자동 검증 (먼저 실행)
@@ -20,17 +21,20 @@ python3 scripts/validate_output.py <산출물 디렉터리> --skill-dir <스킬 
 | skill-audit-report.html | skill_audit | executive-summary, summary-grid, line-audit, priority-roadmap, try(개선본) | .page-wide (1020) |
 | platform-adaptation.html | platform_blog | original-summary, platform-strategy, platform-grid, platform-comparison-table | .page-wide (1020) |
 | seo-dashboard.html | seo_dashboard | seo-overview, serp-preview, title-candidates, meta-candidates, keyword-cluster, content-outline | .page-wide (1020) |
-| course-module.html | education_html | learning-goals, before-start, lesson-step, example-block, practice-card, quiz-box, answer-box, try | .page (780) |
+| course-module.html | education_html | learning-goals, before-start, lesson-step, example-block, practice-card, quiz-box, answer-box, try | .page-wide (1020) |
 | github-analysis.html | github_analysis | github-verdict, github-question-toc, repo-identity, quickstart-readiness, repo-health, code-tour, release-roadmap, security-license, risk-matrix, decision-tree, try | .page-wide (1020) |
 | expert-report.html | expert_html | executive-summary, decision-grid, architecture-map, risk-matrix, priority-roadmap, validation-checklist, try | .page-wide (1020) |
-| magazine-article.html | article_html | header(lead), pull-quote, article(problem/context/core-argument/case/conclusion), article-takeaway, related-list, source-note | .page (780) |
-| personal-blog-essay.html | blog_writer | header(hook), personal-note, article(why-now/my-view/example/how-to-start/closing), soft-cta, source-note | .page (780) |
-| beginner-learning.html | beginner_html | beginner-zero, beginner-terms, beginner-analogy, beginner-traps, beginner-practice, try | .page (780) |
+| magazine-article.html | article_html | header(lead), pull-quote, article(problem/context/core-argument/case/conclusion), article-takeaway, related-list, source-note | .page-wide (1020) |
+| personal-blog-essay.html | blog_writer | header(hook), personal-note, article(why-now/my-view/example/how-to-start/closing), soft-cta, source-note | .page-wide (1020) |
+| beginner-learning.html | beginner_html | beginner-zero, beginner-terms, beginner-analogy, beginner-traps, beginner-practice, try | .page-wide (1020) |
 | reference-manual.html | reference_html | quick-reference, ref-grid(concepts/API), patterns, examples, try(checklist) | .page-wide (1020) |
 | comparison-matrix.html | comparison_html | decision-context, matrix, winners, tradeoffs, try(recommendation) | .page-wide (1020) |
-| case-study.html | case_study_html | summary-card, timeline, decisions, results, try(lessons) | .page (780) |
+| case-study.html | case_study_html | summary-card, timeline, decisions, results, try(lessons) | .page-wide (1020) |
 | landing-brief.html | landing_brief_html | hero-analogy, value-grid, how-it-works, faq, try(CTA) | .page-wide (1020) |
 | checklist-playbook.html | checklist_playbook | summary-card, check-grid, failure-modes, try(done criteria) | .page-wide (1020) |
+| youtube-analysis.html | youtube_analysis | source trust, evidence map, comment signals, opportunity, source limits | .page-wide (1020) |
+| manual-analysis.html | manual_analysis | source/version, role router, first success, safety, troubleshooting | .page-wide (1020) |
+| github-feature-usage.html | github_feature_usage | positioning, feature toc/map, tech stack, screens, getting started, fit, pre-adoption, source note | .page-wide (1020) |
 
 생성된 HTML을 릴리즈하기 전 확인한다.
 
@@ -88,5 +92,3 @@ python3 scripts/validate_output.py <산출물 디렉터리> --skill-dir <스킬 
 - [ ] expert executive summary 4카드가 orphan 없이 2×2로 안정적으로 배치되고, case-study timeline이 단일 대형 카드가 아니라 개별 step card로 보인다.
 - [ ] 390px 모바일에서 복잡한 표는 `.mobile-card-table`(`data-label` 기반 행 카드) 패턴으로 잘리지 않게 표시한다.
 
-| youtube-analysis.html | youtube_analysis | source trust, evidence map, comment signals, opportunity, source limits | .page-wide (1020) |
-| manual-analysis.html | manual_analysis | source/version, role router, first success, safety, troubleshooting | .page-wide (1020) |

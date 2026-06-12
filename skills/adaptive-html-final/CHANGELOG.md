@@ -1,5 +1,20 @@
 # Changelog — adaptive-html-final
 
+## v5.10.3 (2026-06-12) — 회귀 안전 패치: 다크 대비·인쇄 가독·폭 정본(전 모드 wide) + 자기방어 게이트 6종
+
+3차 전문가 리뷰(렌더 실측) 발견을 dev-plan §4의 회귀 프레임(S0 베이스라인 → 등급별 패치 → 프로브 diff)대로 반영. **라이트 테마 무영향 설계**: #fff→var(--on-accent)는 라이트 4테마에서 byte-동일(on-accent=#ffffff), print.css는 전 규칙 @media print 내부(스크린 영향 0 구조 보장).
+
+- **다크 대비 P1**: widgets.css "카탈로그 reverse-sync" 층의 하드코딩 `color:#fff` 3규칙(wg-01 pick/rank·wg-02 cta·wg-06 btn·wg-07 pill·wg-09 next·wg-17 no·wg-20 chip)을 `var(--on-accent)`로 — 다크 트리오 대비 1.92→8.6+ (실측). wg-13-decide(4.69 AA 통과)·wg-20-var(자체 7.10)는 의도적 제외.
+- **wg-07 애니메이션 복원**: 정적화(`animation:none`) 제거 — 879행 카탈로그 메모("미반영")와 코드 일치화, prefers-reduced-motion 블록이 접근성 보장.
+- **인쇄 P1**: print.css에 `.try p/li/ol/ul/a/.label/.tag{color:#111}`(실측 1.3:1 소실 수정), `::details-content{content-visibility:visible}`(아코디언 인쇄 펼침), href 출력 `a[href^="http"]` 한정(내부 앵커 잡문자 제거), `.ahf-themebar` 인쇄 숨김. theme-dark.css에 다크 트리오 인쇄 시 라이트 토큰 강제 블록 + `#ahf-dark`에 `--danger-accent:#ff6b75`.
+- **폭 정본 A 채택**: 전 17모드 = `.page-wide` + 단락 60rem(960px). 골격 5종(beginner/article/blog/education/case) page→page-wide 승격, theme.css 60rem 목록에 4모드 × (section·article>section) 24셀렉터 추가 — 예제 01/03/04/05 단락 736→960px. `references/layout-system.md`에 폭 정본 성문화.
+- **게이트 6종 신설**: `on_accent_pairing_violation`(accent 배경+#fff 잉크 lint) · `theme_token_contrast_fail`(테마별 accent-2/on-accent 대비 ≥4.5 정적 검증) · `print_try_ink_missing` · `layout_width_consistency_issues`(골격↔예제 폭 일치 + wide 골격 60rem 등재) · 테마 스위처 **8/8 강제**(3/8→) · `skill_package_version_stale`(.skill zip 버전 = manifest). R5 wide 목록 +4모드.
+- **거버넌스**: 신설 게이트 catch/pass + 미커버 게이트 7종(widget_static/visual_html/cross_leak/mode_template_contract/direct_section_title_icon/body_icon_diversity/analysis_toc_map) 잠금 — 88→117 checks.
+- **도구**: exporter `--require-webp`가 정상 skip(no_dom_radio)을 실패 처리하던 오판 수정(sharp_unavailable만 실패, 루트 사본 동기) · 렌더러 2줄 제목-부제 겹침 수정(1줄 출력 byte-동일).
+- **문서·콘텐츠**: 체크리스트 4종 모드17 동기화(layout-checklist 고아행·"14개" 부패 수리), widget-system h2 강등 규칙 성문화+갤러리 링크 examples/로, editorial 03/05 메타 placeholder→실콘텐츠, Guide --profile 선택 표기.
+- **.skill 재패키징**: v5.7.0(16모드) 동결 zip → 현행 v5.10.3 (게이트가 향후 stale 차단).
+- 검증: examples 18종 재인라인(코어 해시 갱신) + 프로브 diff = 의도 변화(D1~D6)만 — 베이스라인 `dev-plan/baseline_v5102_probes.json`.
+
 ## v5.10.2 (2026-06-10) — github-feature 단락 폭 결함 수정 + R5 게이트 정밀화
 
 전문가 리뷰의 **렌더 실측**에서 발견: `layout-github-feature`(17번째 모드)가 넓은 레이아웃인데도 본문 단락이 46rem(736px)로 좁게 렌더됐다. 형제 `layout-github`은 60rem(960px)인데, v5.10.0에서 17번째 모드 추가 시 theme.css의 60rem 단락 오버라이드 목록 갱신이 누락된 것. 카드·그리드는 974px인데 단락만 736px라 "넓은 화면인데 텍스트만 좁은" 비대칭이 발생했다.
