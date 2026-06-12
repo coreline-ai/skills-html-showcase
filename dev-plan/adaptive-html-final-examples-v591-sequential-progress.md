@@ -1,5 +1,7 @@
 # adaptive-html-final examples v5.9.1 순차 업데이트 진행 로그
 
+> **상태: 역사 로그** — 이 문서는 v5.9.1 시점의 16모드 examples 순차 점검 기록이다. 현재 정본은 `manifest.version=5.10.3`, 17모드, `skills/adaptive-html-final/examples/`이며 이 로그의 체크 결과는 최신 검증 상태를 의미하지 않는다.
+
 - 목표: manifest 기준 정본 examples 16개를 최신 `adaptive-html-final` 5.9.1 계약에 맞춰 1개 모드씩 순차 확인/업데이트한다.
 - 원칙: 한 continuation/session에서 1개 모드만 처리한다.
 - 정본 목록 기준: `skills/adaptive-html-final/manifest.json` `examples.files`
