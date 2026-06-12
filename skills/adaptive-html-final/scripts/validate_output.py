@@ -923,6 +923,150 @@ def skill_package_version_issues(pkg_path: Path, manifest_version) -> list:
     return []
 
 
+def skill_package_content_issues(pkg_path: Path, skill_dir: Path) -> list:
+    """Gate J: packaged .skill content must byte-match the checked-in skill directory.
+
+    Version-only package checks missed the case where manifest.version was correct
+    but the zip still contained stale examples/docs/scripts. Compare the included
+    package payload against the source tree, excluding cache files only.
+    """
+    if not pkg_path.exists() or not skill_dir.exists():
+        return []
+    issues = []
+    root_prefix = skill_dir.name + '/'
+    def skip_rel(rel: str) -> bool:
+        parts = Path(rel).parts
+        return '__pycache__' in parts or rel.endswith(('.pyc', '.DS_Store'))
+    try:
+        import zipfile
+        with zipfile.ZipFile(pkg_path) as z:
+            names = {n for n in z.namelist()
+                     if n.startswith(root_prefix) and not n.endswith('/') and not skip_rel(n[len(root_prefix):])}
+            source_files = {}
+            for src in skill_dir.rglob('*'):
+                if not src.is_file():
+                    continue
+                rel = str(src.relative_to(skill_dir))
+                if skip_rel(rel):
+                    continue
+                source_files[root_prefix + rel] = src
+            for name, src in sorted(source_files.items()):
+                if name not in names:
+                    issues.append({'type': 'skill_package_missing_file', 'package': pkg_path.name,
+                                   'file': name, 'detail': '.skill zip에 현행 스킬 파일이 누락됨 — 재패키징 필요.'})
+                    if len(issues) >= 10:
+                        break
+                    continue
+                if hashlib.sha256(z.read(name)).hexdigest() != hashlib.sha256(src.read_bytes()).hexdigest():
+                    issues.append({'type': 'skill_package_content_stale', 'package': pkg_path.name,
+                                   'file': name, 'detail': '.skill zip 내부 파일이 워킹트리와 byte 불일치 — 재패키징 필요.'})
+                    if len(issues) >= 10:
+                        break
+            if not issues:
+                for name in sorted(names - set(source_files)):
+                    issues.append({'type': 'skill_package_extra_file', 'package': pkg_path.name,
+                                   'file': name, 'detail': '.skill zip에 현행 스킬 디렉터리에 없는 파일이 포함됨 — 재패키징 필요.'})
+                    if len(issues) >= 10:
+                        break
+    except Exception as e:
+        return [{'type': 'skill_package_content_unreadable', 'package': pkg_path.name, 'detail': str(e)}]
+    return issues
+
+
+def _strip_nonvisible_html(text: str) -> str:
+    """Remove style/script/comment blocks before scanning user-visible version strings."""
+    text = re.sub(r'<!--[\s\S]*?-->', '', text)
+    text = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    text = re.sub(r'<script\b[^>]*>[\s\S]*?</script>', '', text, flags=re.I)
+    return text
+
+
+def output_version_surface_issues(root: Path, manifest_version) -> list:
+    """Visible output version strings must match manifest.version.
+
+    Previous releases updated manifest/SKILL/CHANGELOG but left generated headers
+    and footers showing older `adaptive-html-final vX.Y.Z` strings. Structural gates
+    still passed, so this narrow visible-surface gate blocks that recurrence without
+    treating historical CHANGELOG prose as an error.
+    """
+    if not manifest_version or not root.exists():
+        return []
+    expected = str(manifest_version)
+    issues = []
+    for html in sorted(root.rglob('*.html')):
+        if any(part in {'sources'} for part in html.parts):
+            continue
+        visible = _strip_nonvisible_html(html.read_text(encoding='utf-8', errors='ignore'))
+        for m in re.finditer(r'\badaptive-html-final\s+v?(\d+\.\d+\.\d+)\b', visible, re.I):
+            actual = m.group(1)
+            if actual != expected:
+                rel = str(html.relative_to(root))
+                issues.append({'page': rel,
+                               'type': 'output_visible_version_stale',
+                               'expected': expected,
+                               'actual': actual,
+                               'snippet': m.group(0)[:80],
+                               'detail': '출력 HTML의 visible meta/footer 버전이 manifest.version과 불일치 — 예제 재인라인/버전 bump 시 함께 갱신.'})
+    return issues
+
+
+def current_version_surface_issues(skill_dir: Path, manifest_version) -> list:
+    """Current-reference docs must not name an older version as current.
+
+    Historical CHANGELOG entries and archived baseline descriptions may keep old
+    versions. This gate only checks fields/phrases that explicitly describe the
+    current examples, current gate status, or current visual-html baseline.
+    """
+    if not manifest_version:
+        return []
+    expected = str(manifest_version)
+    issues = []
+
+    manifest_p = skill_dir / 'manifest.json'
+    if manifest_p.exists():
+        try:
+            manifest = json.loads(manifest_p.read_text(encoding='utf-8'))
+            purpose = str((manifest.get('examples') or {}).get('purpose') or '')
+            for actual in re.findall(r'v(\d+\.\d+\.\d+)', purpose):
+                if actual != expected:
+                    issues.append({'type': 'manifest_examples_purpose_version_stale',
+                                   'expected': expected,
+                                   'actual': actual,
+                                   'detail': 'manifest.examples.purpose는 현행 examples 설명이라 manifest.version과 같은 버전을 써야 한다.'})
+        except Exception as e:
+            issues.append({'type': 'manifest_examples_purpose_parse_error', 'detail': str(e)})
+
+    visual_p = skill_dir / 'references' / 'visual-html-system.md'
+    if visual_p.exists():
+        visual = visual_p.read_text(encoding='utf-8')
+        for label, pattern in (
+            ('visual_html_current_baseline_version_stale', r'현행\s+v(\d+\.\d+\.\d+)\s+기준'),
+            ('visual_html_examples_version_stale', r'v(\d+\.\d+\.\d+)\s+스킬\s+자산\s+기준의\s+17모드\s+레퍼런스'),
+        ):
+            for actual in re.findall(pattern, visual):
+                if actual != expected:
+                    issues.append({'type': label,
+                                   'expected': expected,
+                                   'actual': actual,
+                                   'detail': 'visual-html-system.md의 현행 기준 표기는 manifest.version과 일치해야 한다.'})
+
+    repo_root = skill_dir.parent.parent
+    readme_p = repo_root / 'README.md'
+    if readme_p.exists():
+        readme = readme_p.read_text(encoding='utf-8')
+        for label, pattern in (
+            ('readme_current_examples_version_stale', r'v(\d+\.\d+\.\d+)\s+현행\s+17모드\s+참조\s+예제'),
+            ('readme_gate_status_version_stale', r'게이트\s+현황\(v(\d+\.\d+\.\d+)\)'),
+        ):
+            for actual in re.findall(pattern, readme):
+                if actual != expected:
+                    issues.append({'type': label,
+                                   'expected': expected,
+                                   'actual': actual,
+                                   'detail': 'README의 현행 예제/게이트 현황 표기는 manifest.version과 일치해야 한다.'})
+    return issues
+
+
 def skill_asset_lint(skill_dir: Path) -> list:
     """Merge-protection lints on the skill's own CSS assets (run when --skill-dir given).
     Asset-level issues (no 'page' key). Protects the final_20260604 section merge."""
@@ -1153,7 +1297,7 @@ def visual_html_system_staleness_gate(visual_md: str) -> list:
     issues = []
     if re.search(r'(?m)^>\s*버전:.*4\.4\.0\s*→\s*\*\*4\.5\.0\*\*', visual_md):
         issues.append({'type': 'visual_html_intro_version_stale',
-                       'detail': 'visual-html-system.md should distinguish v4.5.0 adoption history from current v5.10.0 baseline.'})
+                       'detail': 'visual-html-system.md should distinguish v4.5.0 adoption history from current manifest.version baseline.'})
     if '20종 적용' in visual_md:
         issues.append({'type': 'visual_html_template_count_stale',
                        'detail': 'Current vt catalog has 21 templates; do not describe current proof as 20종 적용.'})
@@ -1243,8 +1387,11 @@ def skill_doc_consistency_gate(skill_dir: Path) -> list:
             _mver = json.loads(manifest_text).get('version')
         except Exception:
             _mver = None
+        issues.extend(current_version_surface_issues(skill_dir, _mver))
         issues.extend(skill_md_version_mismatch(skill_text, _mver))
-        issues.extend(skill_package_version_issues(skill_dir.parent / (skill_dir.name + '.skill'), _mver))
+        pkg_path = skill_dir.parent / (skill_dir.name + '.skill')
+        issues.extend(skill_package_version_issues(pkg_path, _mver))
+        issues.extend(skill_package_content_issues(pkg_path, skill_dir))
         if examples_fidelity_conflict(skill_text, manifest_text):
             issues.append({'type': 'examples_fidelity_contradiction',
                            'detail': 'SKILL.md와 manifest가 examples를 경량 vs 풀 스킬급으로 상반 서술.'})
@@ -1814,6 +1961,7 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
                 sm = json.loads(skill_manifest.read_text())
                 om = json.loads(output_manifest.read_text())
                 sv, ov = sm.get('version'), om.get('version')
+                issues.extend(output_version_surface_issues(root, sv))
                 if sv != ov:
                     issues.append({'type': 'source_version_mismatch', 'skill_version': sv, 'output_source_version': ov})
                 elif json.dumps(sm, sort_keys=True) != json.dumps(om, sort_keys=True):

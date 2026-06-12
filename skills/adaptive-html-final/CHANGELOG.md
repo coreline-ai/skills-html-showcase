@@ -13,6 +13,7 @@
 - **도구**: exporter `--require-webp`가 정상 skip(no_dom_radio)을 실패 처리하던 오판 수정(sharp_unavailable만 실패, 루트 사본 동기) · 렌더러 2줄 제목-부제 겹침 수정(1줄 출력 byte-동일).
 - **문서·콘텐츠**: 체크리스트 4종 모드17 동기화(layout-checklist 고아행·"14개" 부패 수리), widget-system h2 강등 규칙 성문화+갤러리 링크 examples/로, editorial 03/05 메타 placeholder→실콘텐츠, Guide --profile 선택 표기.
 - **.skill 재패키징**: v5.7.0(16모드) 동결 zip → 현행 v5.10.3 (게이트가 향후 stale 차단).
+- **후속 정밀감사 보강**: 예제 visible meta/footer·manifest `examples.purpose`·README/visual-html 현행 문구의 구버전 표기를 v5.10.3으로 정리하고, `output_visible_version_stale`·`current_version_surface_issues`·`.skill` byte-match 게이트를 추가해 manifest 버전만 맞고 표면/zip이 stale인 상태를 차단. 거버넌스 118/118.
 - 검증: examples 18종 재인라인(코어 해시 갱신) + 프로브 diff = 의도 변화(D1~D6)만 — 베이스라인 `dev-plan/baseline_v5102_probes.json`.
 
 ## v5.10.2 (2026-06-10) — github-feature 단락 폭 결함 수정 + R5 게이트 정밀화

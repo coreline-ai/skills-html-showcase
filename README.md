@@ -61,7 +61,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 ### v5.10.3 (2026-06-12) — 다크 대비·인쇄 가독·폭 정본(전 모드 wide) + 자기방어 게이트 6종
 
-widgets reverse-sync 층 #fff→var(--on-accent)(다크 대비 1.92→8.6+, 라이트 byte-동일) · print.css .try 잉크 소실(1.3:1) 수정·details 인쇄 펼침 · 전 17모드 page-wide+60rem 폭 정본(골격 5종 승격, 예제 4종 단락 960px) · 게이트 6종(on-accent lint·테마 대비·print 잉크·폭 일치·테마 8/8·.skill 버전) + 미커버 7종 거버넌스 잠금(117 checks) · exporter/렌더러 수정 · .skill v5.7.0→현행 재패키징.
+widgets reverse-sync 층 #fff→var(--on-accent)(다크 대비 1.92→8.6+, 라이트 byte-동일) · print.css .try 잉크 소실(1.3:1) 수정·details 인쇄 펼침 · 전 17모드 page-wide+60rem 폭 정본(골격 5종 승격, 예제 4종 단락 960px) · 게이트 8종(on-accent lint·테마 대비·print 잉크·폭 일치·테마 8/8·.skill 버전·visible 버전 표면·.skill byte-match) + 미커버 7종 거버넌스 잠금(118 checks) · exporter/렌더러 수정 · .skill v5.7.0→현행 재패키징.
 
 ### v5.10.2 (2026-06-10) — github-feature 단락 폭 수정 + R5 게이트 정밀화
 
@@ -148,7 +148,8 @@ examples 01–14의 `mode-template-contract` 부록(메타 문구·off-topic 위
 **3) 문서 정리 (저장소 위생)**
 
 - 루트의 v4~v5.0 시점 고정 리뷰/분석/계획 6종을 [`docs/archive/`](docs/archive/README.md)로 이관(SUPERSEDED 배지 + 색인).
-- 루트는 현행 3종만 유지: `README.md` · [`AGENTS.md`](AGENTS.md)(머신 고정 절대경로 → 저장소 루트 상대경로로 정정) · [`Guide.md`](Guide.md)(v5.2.1 전면 재작성).
+- 루트는 현행 3종만 유지: `README.md` · [`AGENTS.md`](AGENTS.md)(머신 고정 절대경로 → 저장소 루트 상대경로로 정정) · [`Guide.md`](Guide.md).
+- `Guide.md`는 2026-06-05의 v5.2.1 라인에서 전면 재작성된 이력이 있다.
 
 **4) 추가 스킬 승격 (v5.2.2·v5.2.3 — 조건부 자산만, 코어 해시 불변)**
 
@@ -161,7 +162,8 @@ examples 01–14의 `mode-template-contract` 부록(메타 문구·off-topic 위
 
 > 갤러리 취향·출력 전용 디자인(헤더 kicker 폰트·전 섹션 카드 뷰·core-insight 재배경 등)은 전역 기본값화 시 모든 출력 모양이 바뀌므로 의도적으로 13-topics page-local로만 유지했습니다.
 
-> ⚠️ 알려진 한계: 본 저장소는 정적 게이트가 매우 엄격하지만 **CI(GitHub Actions)가 아직 없어** 과거 `output/` 다수는 코어 CSS 진화로 해시가 드리프트해 현재 게이트에서 `FAILED`가 날 수 있습니다. **현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`**이며, `13-topics`는 v5.2.3 시점의 역사적 기준선입니다.
+> ⚠️ 알려진 한계: 본 저장소는 정적 게이트가 매우 엄격하지만 **CI(GitHub Actions)가 아직 없어** 과거 `output/` 다수는 코어 CSS 진화로 해시가 드리프트해 현재 게이트에서 `FAILED`가 날 수 있습니다. **현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`**입니다.
+> `13-topics`는 v5.2.3 시점의 역사적 기준선입니다.
 
 ---
 
@@ -294,7 +296,8 @@ v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 
 
 ### 🎞️ 디자인 썸네일 미리보기 (v4 데모 — 참고용)
 
-아래는 디자인 시스템을 한눈에 보는 **v4 스크린샷 데모**입니다(주제는 13-topics와 다름). 현행 검증 기준은 `skills/adaptive-html-final/examples/`이고, 위 13-topics 갤러리는 v5.2.3 시점의 역사적 라이브 기준선입니다. 프로파일별 골든은 [비주얼 프로파일](#️-비주얼-프로파일) 참조.
+아래는 디자인 시스템을 한눈에 보는 **v4 스크린샷 데모**입니다(주제는 13-topics와 다름). 현행 검증 기준은 `skills/adaptive-html-final/examples/`입니다.
+위 13-topics 갤러리는 v5.2.3 시점의 역사적 라이브 기준선입니다. 프로파일별 골든은 [비주얼 프로파일](#️-비주얼-프로파일) 참조.
 
 <table>
 <tr>
@@ -419,10 +422,10 @@ skills-html-showcase/
 │   ├── references/    (19)            # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/GitHub·YouTube·Manual·기능가이드 규칙
 │   ├── recipes/       (17)            # 모드별 대표 프롬프트
 │   ├── schemas/       (3)             # blog-meta · quality-report · visual-brief
-│   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트 (86/86)
+│   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트 (118/118)
 │   ├── visual-templates/ (7)         # 8000×6000 SVG 템플릿
 │   ├── scripts/                       # render_visual_svg.py · validate_output.py · completion_check.py 등
-│   └── examples/                     # v5.10.0 현행 17모드 참조 예제 + index
+│   └── examples/                     # v5.10.3 현행 17모드 참조 예제 + index
 ├── output/
 │   ├── adaptive-html-final-showcase-v4/   # 13모드 쇼케이스 (canonical 13-mode 데모)
 │   │   ├── pages/     (15)            # 13모드 + 비주얼 데모 + SVG 갤러리
@@ -452,7 +455,7 @@ skills-html-showcase/
 | 외부 동작 JS | **0건** |
 | 미정의 CSS 클래스 | **0개** (레이아웃↔CSS 차집합 0) |
 | manifest ↔ 디스크 레이아웃 매핑 | 차집합 0 (17 / 17) |
-| 거버넌스 게이트 | `test_governance_gates.py` **86 / 86 통과** |
+| 거버넌스 게이트 | `test_governance_gates.py` **118 / 118 통과** |
 | blog-writer 상세 규칙 흡수 | 8 / 8 (제목 4계열·도입부 3유형·본문 밀도·톤 매핑·100점·메타·플랫폼·박스) |
 
 ### 버전 진화
@@ -477,6 +480,9 @@ skills-html-showcase/
 | `v5.9.0` | **시각 정본 게이트 3종**(섹션 surface·직접섹션 h2 body-icon·아이콘 다양성) + 카탈로그 reverse-sync 반응형/폭/대비 일괄 반영 |
 | `v5.9.1~5.9.2` | wg-10 데모 섹션 한정 full-width(5.9.1) · **외부 세리프 폰트 금지**·pull-quote Pretendard·vt-02 정합·toc-map/manual 회귀 방지(5.9.2) |
 | `v5.10.0` | **GitHub Feature-Usage 17번째 모드** — `github_feature_usage`, `github-feature-usage.html`, `.layout-github-feature`(github 컴포넌트 어휘 공유 + 스크린샷 갤러리), 계약 게이트·tie-breaker·경계 버그 수정. 거버넌스 86/86 |
+| `v5.10.1` | 예제 정본화 — `mode-template-contract` 부록 안티패턴 제거, manifest/결정표 자기정합 게이트 추가 |
+| `v5.10.2` | `layout-github-feature` 단락 폭 46rem 회귀 수정 + layout별 60rem 셀렉터 정밀 게이트 |
+| `v5.10.3` | 다크 대비·인쇄 가독·전 모드 page-wide 폭 정본 + visible 버전 표면/.skill byte-match 게이트. 거버넌스 118/118 |
 
 > 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) · 프로파일 분리 계획(아카이브): [`docs/archive/implement_visual_profile_separation.md`](docs/archive/implement_visual_profile_separation.md)
 
@@ -496,7 +502,8 @@ skills-html-showcase/
 - [x] 교육용=퀴즈+정답 · 전문가용=리스크+검증 · 블로그/SEO=제목+메타+태그 · 감사=개선본
 - [x] 비주얼: 8000×6000 캔버스 · `figure`+`figcaption` · 의미 있는 `alt` · 캔버스 잘림 없음
 
-> 🟢 **게이트 현황(v5.10.0)**: 거버넌스 `test_governance_gates.py` **86/86 통과**, 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`이고, `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점의 역사적 13-topic 기준선입니다.
+> 🟢 **게이트 현황(v5.10.3)**: 거버넌스 `test_governance_gates.py` **118/118 통과**, 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
+> `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점의 역사적 13-topic 기준선입니다.
 
 ```bash
 # 현행 17모드 레퍼런스 검증 (저장소 루트에서)

@@ -118,7 +118,7 @@
     "dir": "examples/",
     "count": 17,
     "index": "examples/index.html",
-    "purpose": "17모드 풀 스킬급 참조 예제 — 실제 코어 CSS 인라인(v5.10.0)·8-테마 스위처·body-icon·editorial/vt/wg 컴포넌트로 생성된 자기완결 HTML(무 JS). 17번째 github_feature_usage는 smoke output(github-feature-usage-coreline-auth)을 layout-github-feature로 정합해 편입(스크린샷 갤러리 동봉). 구 16모드/신규 변종 본문 정형화는 후속 재생성 단계.",
+    "purpose": "17모드 풀 스킬급 참조 예제 — 실제 코어 CSS 인라인(v5.10.3)·8-테마 스위처·body-icon·editorial/vt/wg 컴포넌트로 생성된 자기완결 HTML(무 JS). 17번째 github_feature_usage는 smoke output(github-feature-usage-coreline-auth)을 layout-github-feature로 정합해 편입(스크린샷 갤러리 동봉). 구 16모드/신규 변종 본문 정형화는 후속 재생성 단계.",
     "fidelity": "skill-core-inlined + 8-theme(ahf-theme) + body-icons + editorial components + vt/wg auto profile",
     "files": [
       "01_beginner_passkey_login.html",
