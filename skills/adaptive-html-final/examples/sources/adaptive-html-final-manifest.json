@@ -414,5 +414,16 @@
       "governance"
     ],
     "note": "현행 게이트 수의 단일 출처. README/AGENTS/Guide의 현재 게이트 표기는 이 값을 기준으로 동기화한다. CHANGELOG 과거 항목의 시점별 수치는 역사 기록으로 보존한다."
+  },
+  "template_catalog": {
+    "dir": "template-catalog/",
+    "source": "templates/final_20260604/ (moved 2026-06-13)",
+    "purpose": "final_20260604 손검수 템플릿 HTML 4종을 스킬 내부 디자인 카탈로그로 보관한다. 17모드 examples 기준선은 아니며, vt/wg/테마/폭 회귀 확인과 패턴 역동기화 참고용이다.",
+    "files": [
+      "template-catalog/index.html",
+      "template-catalog/index-standard-width.html",
+      "template-catalog/index-beginner-width.html",
+      "template-catalog/index-all-templates-catalog.html"
+    ]
   }
 }

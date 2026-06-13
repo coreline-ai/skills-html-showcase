@@ -289,7 +289,7 @@ v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 
 
 ### 🧩 스킬 적용용 단일 템플릿 HTML 미리보기 (final_20260604)
 
-스킬의 모든 자산·패턴을 한 파일에 담은 **단일 템플릿 HTML** 2종입니다. 썸네일을 클릭하면 GitHub Pages에서 전체 화면으로 열립니다.
+스킬의 모든 자산·패턴을 한 파일에 담은 **단일 템플릿 HTML** 2종입니다. 썸네일을 클릭하면 GitHub Pages에서 전체 화면으로 열립니다. 원본 템플릿 HTML 정본은 `skills/adaptive-html-final/template-catalog/`에 보관합니다.
 
 <table>
 <tr>
@@ -432,7 +432,8 @@ skills-html-showcase/
 │   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트 (140/140)
 │   ├── visual-templates/ (7)         # 8000×6000 SVG 템플릿
 │   ├── scripts/                       # render_visual_svg.py · validate_output.py · completion_check.py 등
-│   └── examples/                     # v5.10.3 현행 17모드 참조 예제 + index
+│   ├── examples/                     # v5.10.3 현행 17모드 참조 예제 + index
+│   └── template-catalog/             # final_20260604 기반 템플릿 HTML 정본 4종
 ├── output/
 │   ├── adaptive-html-final-showcase-v4/   # 13모드 쇼케이스 (canonical 13-mode 데모)
 │   │   ├── pages/     (15)            # 13모드 + 비주얼 데모 + SVG 갤러리
@@ -442,7 +443,7 @@ skills-html-showcase/
 ├── docs/
 │   ├── screenshots/   (13)           # 본 README용 쇼케이스 썸네일
 │   └── archive/                      # v4~v5.0 시점 고정 리뷰/분석/계획 기록 (SUPERSEDED)
-├── demo/ · orginal_skill/            # 이전 계열 데모 · 원본 스킬
+├── orginal_skill/                   # 원본 스킬 아카이브
 ├── AGENTS.md                         # 크로스-에이전트 결정론 진입점
 └── Guide.md                          # 사용 가이드 (루트는 README·AGENTS·Guide 3종만 유지)
 ```

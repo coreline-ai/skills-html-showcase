@@ -92,7 +92,7 @@
 
 ## Golden reference
 
-현재 프로젝트 기준 좋은 예시는 `blog-demos/` 계열이다. 특히 다음 특성을 모방한다.
+현재 프로젝트 기준 좋은 예시는 `skills/adaptive-html-final/examples/`의 현행 17모드 참조 예제다. 과거 레거시 데모 계열은 정리되어 더 이상 정본 경로가 아니다. 특히 다음 특성을 모방한다.
 
 - 차분한 오프화이트 배경
 - Pretendard/system sans 단일 스택(외부 세리프 폰트 금지)

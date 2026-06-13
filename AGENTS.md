@@ -225,6 +225,7 @@ grep -rniE 'draggable=|contenteditable=' <output_dir>/*.html && echo "FORBIDDEN 
 | 뷰 위젯(wg-) 선택·삽입·접근성 | `references/widget-system.md` |
 | 본문 아이콘(bi-, 32종) 선택·삽입·모드별 추천 | `references/body-icon-system.md` |
 | 본문 구조 패턴(8종) 선택·삽입·모드별 추천 | `references/editorial-pattern-system.md` |
+| 손검수 템플릿 HTML 카탈로그(final_20260604) | `template-catalog/README.md`, `template-catalog/*.html` |
 
 ### 8.2 vt-템플릿 인덱스 (`assets/visual-html-templates/`) — 캐노니컬 이름 단일 출처
 

@@ -58,6 +58,7 @@
 - `assets/layouts/github-feature-usage.html`: GitHub 기능·사용법·도입 가이드 전용 레이아웃
 - `assets/layouts/youtube-analysis.html`: YouTube 영상 분석 전용 레이아웃
 - `assets/layouts/manual-analysis.html`: 매뉴얼 제작/분석 전용 레이아웃
+- `template-catalog/`: final_20260604 손검수 템플릿 HTML 정본 4종(예제 기준선이 아닌 디자인 카탈로그)
 - `visual-templates/*.svg.tpl`: 8000×6000 SVG 인포그래픽 템플릿 7종 (hero-map, card-grid, decision-tree, quality-gate, timeline, matrix, checklist-flow)
 - `scripts/render_visual_svg.py`: visual brief JSON을 8000×6000 SVG로 렌더링하는 stdlib-only 스크립트
 - `scripts/validate_output.py`: 생성된 output 디렉터리를 검사하는 정적 품질 게이트 (h1·`#main`·로컬 참조·caption·grid 회귀·source sync·visual figure 등)

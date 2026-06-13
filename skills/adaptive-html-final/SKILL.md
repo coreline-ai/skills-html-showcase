@@ -7,7 +7,7 @@ description: |
   랜딩 브리프, 체크리스트 플레이북, GitHub 저장소 분석 리포트, YouTube 영상 분석 리포트, 역할별 매뉴얼 분석 리포트까지 생성하는 최종형 다중 모드 스킬.
   adaptive-html-learning-ultimate의 13개 모드 라우터·레이아웃·평가 루브릭을 뼈대로 삼고 GitHub 분석·YouTube 분석·매뉴얼 분석·GitHub 기능/도입 가이드를 추가한 17개 모드 체계를,
   adaptive-html-blog-writer의 블로그 글쓰기·SEO·플랫폼·박스 선택 상세 규칙을 흡수하고,
-  blog-demos급 editorial 디자인 시스템을 유지하고, 필요 시 8000×6000 SVG 인포그래픽 Visual Template System을 섹션별로 배치한다.
+  현행 examples급 editorial 디자인 시스템을 유지하고, 필요 시 8000×6000 SVG 인포그래픽 Visual Template System을 섹션별로 배치한다.
 
   반드시 사용해야 하는 트리거:
   - "HTML로 정리", "초보자용 HTML", "전문가용 HTML", "교육용 HTML", "아티클 HTML", "레퍼런스/매뉴얼 HTML"

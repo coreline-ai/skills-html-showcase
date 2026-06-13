@@ -4,6 +4,13 @@
 
 3차 전문가 리뷰(렌더 실측) 발견을 dev-plan §4의 회귀 프레임(S0 베이스라인 → 등급별 패치 → 프로브 diff)대로 반영. **라이트 테마 무영향 설계**: #fff→var(--on-accent)는 라이트 4테마에서 byte-동일(on-accent=#ffffff), print.css는 전 규칙 @media print 내부(스크린 영향 0 구조 보장).
 
+### 2026-06-13 저장소 위생 — 레거시 데모 정리·템플릿 카탈로그 내재화
+
+- **레거시 데모 정리**: 루트 `demo/`의 과거 v2/learning-ultimate/blog demo 쇼케이스 105개 추적 파일을 제거하고, 현행 정본 경로를 `skills/adaptive-html-final/examples/`와 공개 산출물 `output/`로 단순화했다.
+- **템플릿 카탈로그 내재화**: 사용자가 직접 검수한 `templates/final_20260604/` HTML 4종을 `skills/adaptive-html-final/template-catalog/`로 이동해 스킬 내부 디자인 카탈로그로 보관한다. 이 카탈로그는 17모드 examples 기준선이 아니라 vt/wg/테마/폭 회귀 확인과 패턴 역동기화 참고용이다.
+- **참조 교정**: README 프로젝트 트리·`AGENTS.md` 단일 출처 표·`editorial-design-system.md`의 golden reference를 현행 examples/template-catalog 구조에 맞춰 정리했다.
+- **manifest 기록**: `manifest.template_catalog`에 보관 위치·출처·목적·4개 HTML 파일 목록을 추가해 카탈로그가 임의 폴더가 아니라 스킬 내부 참고 자산임을 명시했다.
+
 ### 2026-06-13 정합 보강 — 생성 회귀 방지 정책/게이트
 
 사용자가 반복 지적한 "최신 스킬 헤더가 안 나옴, 아이콘/목차/가로폭/밀착/간격이 흔들림" 문제를 정적 게이트와 완료 아티팩트 계약으로 승격했다. 과거 `output/`은 공개 데모/테스트 산출물일 뿐 스킬 정본이 아니며, 최신 기준선은 `skills/adaptive-html-final/examples/`와 신규 산출물이다.

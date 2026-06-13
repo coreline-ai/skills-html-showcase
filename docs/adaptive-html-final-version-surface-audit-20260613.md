@@ -191,7 +191,7 @@
 | `skills/adaptive-html-final/tests/layout-checklist.md` | 1 | 릴리스 필수 표면 | 스킬 본체/자산/참조/검증기/테스트 동기화 대상 |
 | `skills/adaptive-html-final/tests/test_governance_gates.py` | 24 | 릴리스 필수 표면 | 스킬 본체/자산/참조/검증기/테스트 동기화 대상 |
 | `skills/html-exporter/scripts/export_output.mjs` | 1 | 도구 주석/정책 | 현행 버전 주석이 정책 의미를 가지면 확인 |
-| `templates/final_20260604/index-all-templates-catalog.html` | 2 | 템플릿 카탈로그 | 스킬 정본으로 승격된 템플릿만 확인, 역사 카탈로그 일괄 치환 금지 |
+| `skills/adaptive-html-final/template-catalog/index-all-templates-catalog.html` | 2 | 템플릿 카탈로그 | 스킬 정본으로 승격된 템플릿만 확인, 역사 카탈로그 일괄 치환 금지 |
 | `dev-plan/implement_20260613_075749.md` | 3 | 현행 작업 계획 | v5.10.3 정합 보강 기록 |
 | `docs/adaptive-html-final-version-release-guide.md` | 4 | 릴리스 운영 문서 | 5.10.3 정합 정책/감사 증거. 다음 버전 제안 아님 |
 | `docs/adaptive-html-final-version-surface-audit-20260613.md` | 1 | 릴리스 운영 문서 | 5.10.3 정합 정책/감사 증거. 다음 버전 제안 아님 |
