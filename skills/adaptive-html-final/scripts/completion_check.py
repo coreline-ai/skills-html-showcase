@@ -8,11 +8,15 @@
   2) quality_contract_check.py — 붕어빵/얇은 문서·placeholder·반복 차단
   3) test_governance_gates.py  — 게이트 함수 회귀(스킬 전역)
 
-셋 다 통과해야 exit 0. 추가로 ⑧ 캡쳐 검증(1280px/390px)을 리마인더로 안내한다.
+셋 + render-audit 아티팩트 검증이 통과해야 exit 0. 검증기는 Playwright를 직접
+구동하지 않고 외부 캡쳐 단계가 남긴 `sources/render-audit.json`과 screenshot
+파일 존재·overflow_ok 값만 확인한다. 현행 스킬 examples 기준선은 패키지
+자기검증을 위해 아티팩트가 없어도 통과시키되, 신규 출력물은 아티팩트 필수다.
 사용: python3 scripts/completion_check.py <output_dir>
 """
 from __future__ import annotations
 
+import json
 import subprocess
 import sys
 from pathlib import Path
@@ -35,6 +39,71 @@ def run(label: str, argv: list[str]) -> bool:
     return r.returncode == 0
 
 
+def is_skill_examples(target: Path) -> bool:
+    try:
+        return target.resolve() == (SKILL / "examples").resolve()
+    except Exception:
+        return False
+
+
+def check_render_audit(target: Path) -> bool:
+    """Check externally-produced render evidence.
+
+    Expected schema (minimal):
+      {
+        "viewports": {
+          "1280": {"scrollWidth": 1280, "clientWidth": 1280,
+                   "overflow_ok": true, "screenshot": "sources/screenshots/1280.png"},
+          "390":  {"scrollWidth": 390,  "clientWidth": 390,
+                   "overflow_ok": true, "screenshot": "sources/screenshots/390.png"}
+        }
+      }
+    """
+    print("\n=== 4/4 render-audit (1280/390 overflow·screenshot artifact) ===")
+    target = target.resolve()
+    audit_path = target / "sources" / "render-audit.json"
+    if not audit_path.exists():
+        if is_skill_examples(target):
+            print("SKIP (examples baseline): render-audit artifact not required for packaged reference examples.")
+            print("-> PASS (render-audit examples exception)")
+            return True
+        print(f"missing: {audit_path}")
+        print("-> FAIL (render-audit)")
+        return False
+    try:
+        audit = json.loads(audit_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(f"parse error: {exc}")
+        print("-> FAIL (render-audit)")
+        return False
+    viewports = audit.get("viewports") or {}
+    ok = True
+    for key in ("1280", "390"):
+        row = viewports.get(key) or {}
+        if row.get("overflow_ok") is not True:
+            sw = row.get("scrollWidth")
+            cw = row.get("clientWidth")
+            print(f"viewport {key}: overflow_ok must be true (scrollWidth={sw}, clientWidth={cw})")
+            ok = False
+        shot = row.get("screenshot")
+        if not isinstance(shot, str) or not shot.strip():
+            print(f"viewport {key}: screenshot path missing")
+            ok = False
+            continue
+        shot_path = (target / shot).resolve()
+        try:
+            shot_path.relative_to(target)
+        except ValueError:
+            print(f"viewport {key}: screenshot path escapes target: {shot}")
+            ok = False
+            continue
+        if not shot_path.exists() or not shot_path.is_file():
+            print(f"viewport {key}: screenshot file not found: {shot}")
+            ok = False
+    print(f"-> {'PASS' if ok else 'FAIL'} (render-audit)")
+    return ok
+
+
 def main() -> int:
     if len(sys.argv) < 2:
         print("usage: python3 scripts/completion_check.py <output_dir>")
@@ -45,23 +114,20 @@ def main() -> int:
         return 2
 
     results = {
-        "validate_output": run("1/3 validate_output (시각계약·정합)",
+        "validate_output": run("1/4 validate_output (시각계약·정합)",
                                [str(SCRIPTS / "validate_output.py"), str(target), "--skill-dir", str(SKILL)]),
-        "quality_contract": run("2/3 quality_contract (붕어빵·얇음 차단)",
+        "quality_contract": run("2/4 quality_contract (붕어빵·얇음 차단)",
                                 [str(SCRIPTS / "quality_contract_check.py"), str(target)]),
-        "governance": run("3/3 governance (게이트 회귀)",
+        "governance": run("3/4 governance (게이트 회귀)",
                           [str(TESTS / "test_governance_gates.py")]),
+        "render_audit": check_render_audit(target),
     }
-
-    print("\n=== ⑧ 캡쳐 검증 리마인더 ===")
-    print("1280px / 390px 스크린샷으로 모바일 overflow·레이아웃 어긋남을 눈으로 확인하고 증거를 남길 것"
-          " (자동화 아님 — 별도 캡쳐 단계).")
 
     passed = sum(results.values())
     print("\n" + "=" * 48)
-    print(f"완료 통합 검증: {passed}/3 통과  ->  {'OK (캡쳐 확인 후 완료)' if passed == 3 else 'INCOMPLETE — 위 FAIL 해소 필요'}")
+    print(f"완료 통합 검증: {passed}/4 통과  ->  {'OK' if passed == 4 else 'INCOMPLETE — 위 FAIL 해소 필요'}")
     print("=" * 48)
-    return 0 if passed == 3 else 1
+    return 0 if passed == 4 else 1
 
 
 if __name__ == "__main__":

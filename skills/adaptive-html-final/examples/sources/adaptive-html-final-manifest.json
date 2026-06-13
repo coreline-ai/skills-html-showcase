@@ -386,7 +386,7 @@
       "default": true
     }
   },
-  "profile_selection": "인자 profile=widget|diagram|auto 또는 style=v5|v6 (trim→lowercase→정규화, profile= 우선, 무효=invalid_profile). 미지정 시: 비대화형(AGENTS.md 경유)=auto·질문금지, 대화형=1회 질문. 결정론은 인자 명시 경로 한정.",
+  "profile_selection": "profile=widget|diagram|auto (trim→lowercase→정규화, 무효=invalid_profile). 미지정 시: 비대화형(AGENTS.md 경유)=auto·질문금지, 대화형=1회 질문. 역사적 style 별칭은 parser-only compatibility이며 현행 문서·manifest·예제 표면에 노출하지 않는다.",
   "scripts": [
     "scripts/render_visual_svg.py",
     "scripts/validate_output.py",
@@ -403,5 +403,16 @@
     "v5.10.1: 예제 정본화(부록 제거·vt 본문 내장) + 자기정합 게이트 3종(manifest·결정표·메타문구) + 거버넌스 86. 코어 CSS·17모드 불변.",
     "v5.10.0: github_feature_usage 17번째 모드 추가 — GitHub 기능·사용법·도입 가이드, layout-github-feature, 스크린샷 갤러리, mode contract gate, examples 17종 v5.10.0 재인라인.",
     "v5.9.2: 외부 세리프 폰트 링크/스택/과거 세리프 토큰 금지, pull-quote Pretendard 굵게 통일, vt-02 decision-tree 3카드 정합성 + h3 마진 보정, 공식 toc-map 목차 계약 회귀 방지(layout+validator), manual section title spacing/danger accent/qg-final typography 보정 강화."
-  ]
+  ],
+  "quality": {
+    "governance_count": 140,
+    "governance_command": "python3 skills/adaptive-html-final/tests/test_governance_gates.py",
+    "required_gates": [
+      "validate_output",
+      "quality_contract_check",
+      "completion_check",
+      "governance"
+    ],
+    "note": "현행 게이트 수의 단일 출처. README/AGENTS/Guide의 현재 게이트 표기는 이 값을 기준으로 동기화한다. CHANGELOG 과거 항목의 시점별 수치는 역사 기록으로 보존한다."
+  }
 }

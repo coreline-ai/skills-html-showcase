@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 import re
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
@@ -194,16 +195,20 @@ def visual_html_gate(text: str, style: str) -> list[dict]:
 
 
 VALID_PROFILES = ('widget', 'diagram', 'auto')
+# Deprecated parser-only compatibility. Do not document these legacy aliases in
+# current user-facing surfaces; profile=widget|diagram|auto is the only canonical API.
 _STYLE_ALIAS = {'v5': 'widget', 'v6': 'diagram'}
 
 
 def _resolve_profile(profile_arg, root: Path, issues: list):
     """Profile resolution priority: --profile arg (1st) -> sources/profile.json (2nd).
 
-    Accepts canonical names or style aliases (v5/v6). Invalid/out-of-range tokens append an
-    'invalid_profile' issue and resolve to None (no silent auto fallback). `sources/profile.json`
-    is mandatory for deterministic outputs; when --profile and profile.json are both present,
-    they must agree after alias normalization. Returns one of VALID_PROFILES or None.
+    Accepts canonical names. Deprecated legacy aliases are accepted parser-only for
+    one-release compatibility but must not appear in current docs/manifest/examples.
+    Invalid/out-of-range tokens append an 'invalid_profile' issue and resolve to None
+    (no silent auto fallback). `sources/profile.json` is mandatory for deterministic
+    outputs; when --profile and profile.json are both present, they must agree after
+    alias normalization. Returns one of VALID_PROFILES or None.
     """
     pj = root / 'sources' / 'profile.json'
     file_profile = None
@@ -740,6 +745,52 @@ def direct_section_title_icon_policy_gate(text: str) -> list:
     return issues
 
 
+def h2_icon_order_gate(text: str) -> list:
+    """Direct section h2 order gate: body-icon → optional num/no → title.
+
+    Existing gates already catch missing body icons and low icon diversity. This
+    gate is intentionally narrower: it catches the repeated visual regression
+    where an icon exists but is placed after the title/number or glued into the
+    wrong order, producing odd title rhythm while still passing presence checks.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    main_open = re.search(r'<main\b([^>]*)>', body, re.I)
+    if not main_open or not re.search(r'class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', main_open.group(1), re.I):
+        return []
+    main_inner = _inner_html(body, main_open.end(), 'main')
+    candidates = list(_direct_child_blocks(main_inner, 'section'))
+    for _article_attrs, article_inner in _direct_child_blocks(main_inner, 'article'):
+        candidates.extend(_direct_child_blocks(article_inner, 'section'))
+
+    issues = []
+    for attrs, inner in candidates:
+        h2 = re.search(r'<h2\b[^>]*>([\s\S]*?)</h2>', inner, re.I)
+        if not h2:
+            continue
+        h2_inner = re.sub(r'<!--[\s\S]*?-->', '', h2.group(1)).strip()
+        if 'body-icon' not in h2_inner:
+            continue  # presence is covered by direct_section_title_icon_policy_gate
+        icon_m = re.match(r'<span\b[^>]*class\s*=\s*["\'][^"\']*\bbody-icon\b[^"\']*["\'][^>]*>[\s\S]*?</span>', h2_inner, re.I)
+        if not icon_m:
+            issues.append({'type': 'h2_icon_order_violation',
+                           'h2': re.sub(r'<[^>]+>', ' ', h2_inner).strip()[:80],
+                           'detail': '직접 섹션 h2는 body-icon으로 시작해야 한다(body-icon→num/no→title).'})
+            continue
+        before_icon = h2_inner[:icon_m.start()].strip()
+        if before_icon:
+            issues.append({'type': 'h2_icon_order_violation',
+                           'h2': re.sub(r'<[^>]+>', ' ', h2_inner).strip()[:80],
+                           'detail': 'body-icon 앞에 제목/번호/텍스트가 오면 아이콘-텍스트 리듬이 깨진다.'})
+            continue
+        after_icon = h2_inner[icon_m.end():].strip()
+        has_num = re.search(r'<span\b[^>]*class\s*=\s*["\'][^"\']*\b(?:num|no)\b', h2_inner, re.I)
+        if has_num and not re.match(r'<span\b[^>]*class\s*=\s*["\'][^"\']*\b(?:num|no)\b', after_icon, re.I):
+            issues.append({'type': 'h2_icon_order_violation',
+                           'h2': re.sub(r'<[^>]+>', ' ', h2_inner).strip()[:80],
+                           'detail': '번호 칩(.num/.no)은 body-icon 바로 뒤에 와야 한다.'})
+    return issues
+
+
 def body_icon_diversity_gate(text: str) -> list:
     """Guard against one SVG icon being stamped onto every section title."""
     body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
@@ -936,7 +987,8 @@ def skill_package_content_issues(pkg_path: Path, skill_dir: Path) -> list:
     root_prefix = skill_dir.name + '/'
     def skip_rel(rel: str) -> bool:
         parts = Path(rel).parts
-        return '__pycache__' in parts or rel.endswith(('.pyc', '.DS_Store'))
+        return ('.pytest_cache' in parts or '__pycache__' in parts
+                or rel.endswith(('.pyc', '.DS_Store')))
     try:
         import zipfile
         with zipfile.ZipFile(pkg_path) as z:
@@ -1351,6 +1403,96 @@ def manifest_version_consistency_gate(manifest_text: str, changelog_text: str = 
     return issues
 
 
+def manifest_governance_count_gate(manifest_text: str, repo_root: Path | None = None) -> list:
+    """Manifest-owned current governance count gate.
+
+    CHANGELOG may contain historical counts (for example "88→117" or old release
+    "86/86") and should not be rewritten as current truth. The current count needs
+    one source of truth, so manifest.quality.governance_count owns it and current
+    README surfaces must match it. The actual self-test count is locked in
+    tests/test_governance_gates.py to avoid chicken-and-egg execution from here.
+    """
+    issues = []
+    try:
+        manifest = json.loads(manifest_text)
+    except Exception as e:
+        return [{'type': 'manifest_governance_count_parse_error', 'detail': str(e)}]
+    quality = manifest.get('quality') or {}
+    count = quality.get('governance_count')
+    if not isinstance(count, int) or count <= 0:
+        return [{'type': 'manifest_governance_count_missing',
+                 'detail': 'manifest.quality.governance_count must be a positive integer and is the current governance count SoT.'}]
+    command = str(quality.get('governance_command') or '')
+    if 'test_governance_gates.py' not in command:
+        issues.append({'type': 'manifest_governance_command_missing',
+                       'detail': 'manifest.quality.governance_command must name test_governance_gates.py.'})
+
+    if repo_root:
+        readme = repo_root / 'README.md'
+        if readme.exists():
+            txt = readme.read_text(encoding='utf-8')
+            surface_patterns = (
+                ('readme_current_gate_status_count_mismatch',
+                 r'게이트\s+현황\(v\d+\.\d+\.\d+\)[^\n]*\*\*(\d+)\s*/\s*(\d+)\s*통과\*\*'),
+                ('readme_current_governance_table_count_mismatch',
+                 r'\|\s*거버넌스\s+게이트\s*\|[^\n]*\*\*(\d+)\s*/\s*(\d+)\s*통과\*\*'),
+                ('readme_current_tree_gate_count_mismatch',
+                 r'거버넌스\s+게이트\s*\((\d+)\s*/\s*(\d+)\)'),
+            )
+            for typ, pat in surface_patterns:
+                matches = re.findall(pat, txt)
+                if not matches:
+                    issues.append({'type': typ.replace('_mismatch', '_missing'),
+                                   'expected': count,
+                                   'detail': 'README current governance-count surface missing; keep current status explicit and manifest-owned.'})
+                    continue
+                for a, b in matches:
+                    if int(a) != count or int(b) != count:
+                        issues.append({'type': typ, 'expected': count, 'actual': f'{a}/{b}',
+                                       'detail': 'README current governance count must match manifest.quality.governance_count.'})
+    return issues
+
+
+def deprecated_profile_alias_surface_gate(repo_root: Path, skill_dir: Path) -> list:
+    """Current public surfaces must not advertise legacy profile aliases.
+
+    The parser keeps historical aliases for one-release compatibility, but the current
+    canonical API is profile=widget|diagram|auto. Public docs/manifest showing old
+    style aliases caused users and agents to confuse profile aliases with the v5.x skill
+    version. Historical paths (for example output showcase folder names), CHANGELOG, and
+    validator code are intentionally out of scope.
+    """
+    issues = []
+    targets = [
+        repo_root / 'README.md',
+        repo_root / 'AGENTS.md',
+        skill_dir / 'SKILL.md',
+        skill_dir / 'manifest.json',
+        skill_dir / 'examples' / 'sources' / 'adaptive-html-final-manifest.json',
+    ]
+    patterns = (
+        re.compile(r'style\s*=\s*v[56]\b', re.I),
+        re.compile(r'style\s*[:|]\s*v5\s*[/|]\s*v6\b', re.I),
+        re.compile(r'widget\s*=\s*v5\b', re.I),
+        re.compile(r'diagram\s*=\s*v6\b', re.I),
+        re.compile(r'\(=\s*<code>style=v[56]</code>\)', re.I),
+        re.compile(r'profile_selection[^"\n]*style\s*=\s*v[56]', re.I),
+    )
+    for path in targets:
+        if not path.exists():
+            continue
+        text = path.read_text(encoding='utf-8', errors='replace')
+        for pat in patterns:
+            m = pat.search(text)
+            if m:
+                issues.append({'type': 'deprecated_profile_alias_surface',
+                               'file': str(path.relative_to(repo_root)),
+                               'match': m.group(0),
+                               'detail': 'profile=widget|diagram|auto만 현행 정본. legacy style aliases는 parser-only compatibility로만 유지.'})
+                break
+    return issues
+
+
 def skill_md_version_mismatch(skill_md: str, manifest_version) -> list:
     """SKILL.md header `> Version X.Y.Z` must match manifest.version. Prose drift guard:
     version bumps repeatedly updated manifest/CHANGELOG but missed the SKILL.md header
@@ -1363,6 +1505,44 @@ def skill_md_version_mismatch(skill_md: str, manifest_version) -> list:
         return [{'type': 'skill_md_version_mismatch', 'skill_md': m.group(1), 'manifest': str(manifest_version),
                  'detail': 'SKILL.md 헤더 "> Version" 선언이 manifest.version과 불일치 — 버전 bump 시 SKILL.md 헤더도 함께 갱신해야 한다.'}]
     return []
+
+
+def version_release_approval_issues(repo_root: Path, skill_dir: Path, manifest_version) -> list:
+    """Block accidental version bumps in an uncommitted worktree.
+
+    Version changes are release operations, not ordinary patch edits. If the
+    checked-out manifest.version differs from HEAD's manifest.version, require an
+    explicit release approval note. This catches the exact failure mode where an
+    agent updates manifest/SKILL/README/examples to a new patch version while
+    doing a narrow fix, then leaves many version surfaces drifting.
+    """
+    if not manifest_version:
+        return []
+    try:
+        rel_manifest = (skill_dir / 'manifest.json').resolve().relative_to(repo_root.resolve())
+    except Exception:
+        return []
+    try:
+        raw = subprocess.check_output(
+            ['git', '-C', str(repo_root), 'show', f'HEAD:{rel_manifest.as_posix()}'],
+            stderr=subprocess.DEVNULL,
+        )
+        head_version = json.loads(raw).get('version')
+    except Exception:
+        return []
+    current = str(manifest_version)
+    if str(head_version) == current:
+        return []
+    approval = repo_root / 'dev-plan' / f'release-approval-v{current}.md'
+    if approval.exists():
+        return []
+    return [{
+        'type': 'version_bump_without_release_approval',
+        'head_version': str(head_version),
+        'manifest_version': current,
+        'required': str(approval.relative_to(repo_root)),
+        'detail': 'manifest.version 변경은 사용자 명시 승인 또는 release-approval 문서가 있을 때만 허용된다. 일반 수정은 현재 버전을 유지하고 CHANGELOG Unreleased에 기록한다.'
+    }]
 
 
 def skill_doc_consistency_gate(skill_dir: Path) -> list:
@@ -1383,10 +1563,13 @@ def skill_doc_consistency_gate(skill_dir: Path) -> list:
         skill_text = skill_md_p.read_text(encoding='utf-8')
         manifest_text = manifest_p.read_text(encoding='utf-8')
         issues.extend(manifest_version_consistency_gate(manifest_text, changelog_text))
+        issues.extend(manifest_governance_count_gate(manifest_text, skill_dir.parent.parent))
+        issues.extend(deprecated_profile_alias_surface_gate(skill_dir.parent.parent, skill_dir))
         try:
             _mver = json.loads(manifest_text).get('version')
         except Exception:
             _mver = None
+        issues.extend(version_release_approval_issues(skill_dir.parent.parent, skill_dir, _mver))
         issues.extend(current_version_surface_issues(skill_dir, _mver))
         issues.extend(skill_md_version_mismatch(skill_text, _mver))
         pkg_path = skill_dir.parent / (skill_dir.name + '.skill')
@@ -1488,45 +1671,117 @@ def toc_map_contract_gate(text: str) -> list:
 
 
 
-def analysis_toc_map_required_gate(text: str) -> list:
-    """Analysis modes must not fall back to the legacy `.toc` list.
+def _direct_content_h2_count(body: str) -> int:
+    main_open = re.search(r'<main\b([^>]*)>', body, re.I)
+    if not main_open:
+        return 0
+    main_inner = _inner_html(body, main_open.end(), 'main')
+    sections = list(_direct_child_blocks(main_inner, 'section'))
+    for _article_attrs, article_inner in _direct_child_blocks(main_inner, 'article'):
+        sections.extend(_direct_child_blocks(article_inner, 'section'))
+    return sum(1 for _attrs, inner in sections if re.search(r'<h2\b', inner, re.I))
 
-    The official catalog promotes `toc-map` as the current chip-nav TOC.
-    GitHub/YouTube/Manual analysis pages place this TOC immediately after the
-    verdict. A bare `.toc *-toc` wrapper can look acceptable in raw HTML but
-    renders as the old template, so make the current contract mandatory.
+
+def analysis_toc_map_required_gate(text: str) -> list:
+    """toc-required pages must not fall back to legacy `.toc`/plain lists.
+
+    The latest examples show that long layout pages need the official chip-nav
+    (`toc-map` + `toc-pills` + `a.toc-pill > b`) for scanability. Scope is not
+    historical `output/` directories; it is the currently validated target. A
+    page is toc-required when it has 4+ direct content h2 sections, or when it is
+    one of the analysis/usage layouts whose contract always includes a TOC.
     """
     body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
-    required = (
-        ('layout-github', 'github-question-toc', 'github_analysis_toc_map_missing'),
-        ('layout-github-feature', 'feature-toc', 'github_feature_usage_toc_map_missing'),
-        ('layout-youtube', 'youtube-question-toc', 'youtube_analysis_toc_map_missing'),
-        ('layout-manual', 'manual-reader-toc', 'manual_analysis_toc_map_missing'),
-    )
+    analysis_required = {
+        'layout-github': ('github-question-toc', 'github_analysis_toc_map_missing'),
+        'layout-github-feature': ('feature-toc', 'github_feature_usage_toc_map_missing'),
+        'layout-youtube': ('youtube-question-toc', 'youtube_analysis_toc_map_missing'),
+        'layout-manual': ('manual-reader-toc', 'manual_analysis_toc_map_missing'),
+    }
     issues = []
-    for layout_cls, toc_cls, issue_type in required:
-        if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\b' + re.escape(layout_cls) + r'(?![\w-])', body, re.I):
-            continue
-        toc_match = re.search(
-            r'<(?P<tag>section|nav|div)\b(?P<attrs>[^>]*)class\s*=\s*["\'](?P<class>[^"\']*\b'
-            + re.escape(toc_cls)
-            + r'\b[^"\']*)["\'][^>]*>',
-            body,
-            re.I,
-        )
-        if not toc_match:
+    main_match = re.search(r'<main\b([^>]*)>', body, re.I)
+    if not main_match:
+        return []
+    classes = re.search(r'class\s*=\s*["\']([^"\']*)', main_match.group(1), re.I)
+    layout = next((c for c in (classes.group(1).split() if classes else []) if c.startswith('layout-')), None)
+    if not layout:
+        return []
+
+    h2_count = _direct_content_h2_count(body)
+    is_analysis = layout in analysis_required
+    is_required = is_analysis or h2_count >= 4
+    if not is_required:
+        return []
+
+    toc_match = re.search(
+        r'<(?P<tag>section|nav|div|ol|ul)\b(?P<attrs>[^>]*)class\s*=\s*["\'](?P<class>[^"\']*\btoc-map\b[^"\']*)["\'][^>]*>',
+        body,
+        re.I,
+    )
+    if not toc_match:
+        if is_analysis:
+            toc_cls, issue_type = analysis_required[layout]
             issues.append({'type': issue_type,
                            'detail': f'{toc_cls} 목차 wrapper가 필요하다.'})
-            continue
-        classes = toc_match.group('class')
-        if not re.search(r'\btoc-map\b', classes):
+        else:
+            issues.append({'type': 'toc_map_required_missing',
+                           'layout': layout,
+                           'h2_count': h2_count,
+                           'detail': '직접 h2 섹션이 4개 이상인 콘텐츠 페이지는 공식 toc-map chip-nav 목차가 필요하다.'})
+        return issues
+
+    toc_classes = toc_match.group('class')
+    if is_analysis:
+        toc_cls, issue_type = analysis_required[layout]
+        if not re.search(r'\b' + re.escape(toc_cls) + r'\b', toc_classes):
             issues.append({'type': issue_type,
-                           'detail': f'{toc_cls}는 구형 .toc가 아니라 공식 .toc-map chip-nav wrapper여야 한다.'})
-            continue
-        inner = _inner_html(body, toc_match.end(), toc_match.group('tag').lower())
-        if 'toc-pills' not in inner or 'toc-pill' not in inner:
-            issues.append({'type': issue_type,
-                           'detail': f'{toc_cls} 내부는 .toc-pills + a.toc-pill > b 구조여야 한다.'})
+                           'detail': f'{toc_cls} 분석 목차 class가 필요하다.'})
+    inner = _inner_html(body, toc_match.end(), toc_match.group('tag').lower())
+    if 'toc-pills' not in inner or 'toc-pill' not in inner:
+        issues.append({'type': 'toc_map_required_structure_missing',
+                       'layout': layout,
+                       'detail': 'toc-required 목차 내부는 .toc-pills + a.toc-pill > b 구조여야 한다.'})
+    return issues
+
+
+def unprotected_long_token_gate(text: str, style: str) -> list:
+    """Catch long ASCII/code-like tokens outside protected wrappers.
+
+    C4a (wide prose width) is already covered by R5. C4b is different: a long
+    URL/identifier/CLI token can still force horizontal overflow if it appears
+    as plain prose rather than inside protected elements. Keep this conservative:
+    protected anchors/code/pre/tables/svg/script are stripped before scanning,
+    and the page must not advertise a global p/li overflow-wrap reset.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', body, re.I):
+        return []
+    if re.search(r'(?:p|li|body|main)\s*\{[^}]*overflow-wrap\s*:\s*(?:anywhere|break-word)', style, re.I | re.S):
+        return []
+    scrubbed = body
+    for tag in ('pre', 'code', 'a', 'table', 'svg', 'script'):
+        scrubbed = re.sub(fr'<{tag}\b[^>]*>[\s\S]*?</{tag}>', ' ', scrubbed, flags=re.I)
+    scrubbed = re.sub(r'<[^>]+>', ' ', scrubbed)
+    tokens = re.findall(r'[A-Za-z0-9_./:@?&=%+#-]{72,}', scrubbed)
+    if tokens:
+        sample = tokens[0]
+        return [{'type': 'long_token_overflow_unprotected',
+                 'token_length': len(sample),
+                 'sample': sample[:96],
+                 'detail': '긴 무공백 URL/코드 토큰이 보호 요소(a/code/pre/table) 밖 prose에 노출됨. 링크/code/pre 또는 overflow-wrap 보호 wrapper로 감싼다.'}]
+    return []
+
+
+def table_mobile_wrapper_gate(text: str) -> list:
+    """R4: tables need a mobile-safe wrapper or responsive table class."""
+    issues = []
+    for m in re.finditer(r'<table\b[^>]*>', text):
+        pre = text[max(0, m.start() - 120):m.start()]
+        cls = m.group(0)
+        if 'table-scroll' not in pre and 'tbl' not in pre and 'final-matrix' not in cls and 'mobile-card' not in cls:
+            issues.append({'type': 'table_no_mobile_safe_wrapper',
+                           'detail': 'table{min-width:420px}이라 390px에서 넘침. .table-scroll/.tbl로 감싸거나 반응형 표(mobile-card/final-matrix) 사용.'})
+            break
     return issues
 
 
@@ -1581,8 +1836,8 @@ def expert_validation_checklist_widget_gate(text: str) -> list:
 
 def header_contract_gate(text: str) -> list:
     """고정 계약(필수): layout-* 콘텐츠 페이지는 상단에 정본 <header class="header">를 갖는다 —
-    kicker + h1(1) + sub + meta. generated-row는 권고. 헤더 형태를 고정해 모드·내용 무관하게
-    시작부가 일관되게 보이도록(자유 본문 앞 불변부)."""
+    kicker + h1(1) + sub + meta + generated-row + lens-strip. 헤더 형태를 고정해
+    모드·내용 무관하게 시작부가 일관되게 보이도록(자유 본문 앞 불변부)."""
     if not re.search(r'<main\b[^>]*class\s*=\s*["\'][^"\']*\blayout-[a-z-]+', text, re.I):
         return []
     body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
@@ -1594,10 +1849,12 @@ def header_contract_gate(text: str) -> list:
     issues = []
     for name, pat in (('kicker', r'class\s*=\s*["\'][^"\']*\bkicker\b'),
                       ('sub', r'class\s*=\s*["\'][^"\']*\bsub\b'),
-                      ('meta', r'class\s*=\s*["\'][^"\']*\bmeta\b')):
+                      ('meta', r'class\s*=\s*["\'][^"\']*\bmeta\b'),
+                      ('generated-row', r'class\s*=\s*["\'][^"\']*\bgenerated-row\b'),
+                      ('lens-strip', r'class\s*=\s*["\'][^"\']*\blens-strip\b')):
         if not re.search(pat, header_inner, re.I):
             issues.append({'type': 'header_contract_missing_part', 'part': name,
-                           'detail': '정본 헤더 고정: kicker·h1·sub·meta 필요 — .%s 누락.' % name})
+                           'detail': '정본 헤더 고정: kicker·h1·sub·meta·generated-row·lens-strip 필요 — .%s 누락.' % name})
     if not re.search(r'<h1\b', header_inner, re.I):
         issues.append({'type': 'header_contract_missing_part', 'part': 'h1', 'detail': '정본 헤더에 h1 누락.'})
     return issues
@@ -1768,6 +2025,9 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for icon_issue in numbered_h2_body_icon_gate(text):
             icon_issue['page'] = rel
             issues.append(icon_issue)
+        for icon_order_issue in h2_icon_order_gate(text):
+            icon_order_issue['page'] = rel
+            issues.append(icon_order_issue)
         for surf_issue in section_surface_contract_gate(text, style):
             surf_issue['page'] = rel
             issues.append(surf_issue)
@@ -1789,6 +2049,9 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for toc_req_issue in analysis_toc_map_required_gate(text):
             toc_req_issue['page'] = rel
             issues.append(toc_req_issue)
+        for token_issue in unprotected_long_token_gate(text, style):
+            token_issue['page'] = rel
+            issues.append(token_issue)
         for expert_grid_issue in expert_decision_grid_section_gate(text):
             expert_grid_issue['page'] = rel
             issues.append(expert_grid_issue)
@@ -1910,14 +2173,10 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
             if gm and 'align-items:stretch' not in gm.group(0).replace(' ', ''):
                 issues.append({'page': rel, 'type': 'wg03_grid_not_stretch',
                                'detail': 'diff(좌)/notes(우) 높이 불일치(틈). .wg-03-grid{align-items:stretch} 필요.'})
-        # R4: tables (min-width:420px) must be mobile-safe (wrapped in .table-scroll or a responsive table).
-        for m in re.finditer(r'<table\b[^>]*>', text):
-            pre = text[max(0, m.start() - 120):m.start()]
-            cls = m.group(0)
-            if 'table-scroll' not in pre and 'final-matrix' not in cls and 'mobile-card' not in cls:
-                issues.append({'page': rel, 'type': 'table_no_mobile_safe_wrapper',
-                               'detail': 'table{min-width:420px}이라 390px에서 넘침. .table-scroll로 감싸거나 반응형 표(mobile-card/final-matrix) 사용.'})
-                break
+        # R4: tables (min-width:420px) must be mobile-safe (wrapped in .table-scroll/.tbl or a responsive table).
+        for tbl_issue in table_mobile_wrapper_gate(text):
+            tbl_issue['page'] = rel
+            issues.append(tbl_issue)
         # R5: wide-report layouts must carry the prose width override FOR THAT LAYOUT (else body
         #     prose is capped at 46rem ~2/3). Checking only that "60rem" appears somewhere had a
         #     blind spot: a new wide layout omitted from the override list (layout-github-feature in
@@ -2028,7 +2287,7 @@ def main():
     ap.add_argument('output_dir', type=Path)
     ap.add_argument('--skill-dir', type=Path)
     ap.add_argument('--json', action='store_true')
-    ap.add_argument('--profile', default=None, help='widget|diagram|auto (or style alias v5|v6). sources/profile.json 필수, 둘 다 지정 시 일치해야 함')
+    ap.add_argument('--profile', default=None, help='widget|diagram|auto. sources/profile.json 필수, 둘 다 지정 시 일치해야 함')
     ns = ap.parse_args()
     result = validate(ns.output_dir.resolve(), ns.skill_dir.resolve() if ns.skill_dir else None, ns.profile)
     if ns.json:

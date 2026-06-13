@@ -58,6 +58,15 @@ TRY_CARD_CONTRAST_CLASSES = (
     "manual-trouble",
 )
 
+CANONICAL_CONTENT_PATTERN = re.compile(
+    r"\b(?:box|card|grid|summary-card|toc-map|source-note|source-box|source-list|term|analogy|danger|good|"
+    r"tbl|table-scroll|matrix|vt-|wg-|flow|timeline|checklist|quality|risk|decision|repo-|youtube-|manual-|"
+    r"serp-|platform-|landing-|case-|feature-|text-bullet-view|core-insight|conn-grid|impact-grid|ba\b|"
+    r"a11y-check|chron-list|source-preserve|md-excerpt)\b",
+    re.I,
+)
+PROSE_RELAXED_LAYOUTS = {"layout-blog", "layout-article"}
+
 
 @dataclass
 class Issue:
@@ -96,6 +105,95 @@ def heading_texts(markup: str, tag: str) -> list[str]:
         if text:
             texts.append(text)
     return texts
+
+
+def inner_html(text: str, open_end: int, tag: str) -> str:
+    depth = 1
+    window = text[open_end:]
+    for mm in re.finditer(r"<(/?)" + re.escape(tag) + r"\b", window, re.I):
+        depth += -1 if mm.group(1) else 1
+        if depth == 0:
+            return window[: mm.start()]
+    return window[:200000]
+
+
+def direct_child_blocks(html: str, tag: str):
+    depth = 0
+    tag_l = tag.lower()
+    void_tags = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+    token_re = re.compile(r"<(/?)([a-zA-Z][\w:-]*)([^>]*)>", re.I)
+    for m in token_re.finditer(html):
+        closing = bool(m.group(1))
+        name = m.group(2).lower()
+        attrs = m.group(3) or ""
+        self_closing = attrs.rstrip().endswith("/") or name in void_tags
+        if not closing and name == tag_l and depth == 0:
+            yield attrs, inner_html(html, m.end(), tag_l)
+        if closing:
+            depth = max(depth - 1, 0)
+        elif not self_closing:
+            depth += 1
+
+
+def layout_class(markup: str) -> str | None:
+    mo = re.search(r"<main\b([^>]*)>", markup, re.I)
+    if not mo:
+        return None
+    cm = re.search(r'class\s*=\s*["\']([^"\']*)', mo.group(1), re.I)
+    return next((c for c in (cm.group(1).split() if cm else []) if c.startswith("layout-")), None)
+
+
+def raw_section_synthesis_issues(path: Path, body: str) -> list[Issue]:
+    """Block stamp-template sections built only from raw p/div/li blocks.
+
+    This is intentionally a quality-contract check, not a structural validator:
+    prose-heavy article/blog pages get a relaxed threshold, while report/manual/
+    checklist pages must mix canonical boxes, cards, tables, vt/wg, or editorial
+    patterns instead of raw paragraph stacks that cause left-stuck/overlap output.
+    """
+    layout = layout_class(body)
+    if not layout:
+        return []
+    main = re.search(r"<main\b[^>]*>", body, re.I)
+    if not main:
+        return []
+    main_inner = inner_html(body, main.end(), "main")
+    sections = list(direct_child_blocks(main_inner, "section"))
+    for _attrs, article_inner in direct_child_blocks(main_inner, "article"):
+        sections.extend(direct_child_blocks(article_inner, "section"))
+    if len(sections) < 5:
+        return []
+
+    raw_sections: list[str] = []
+    for attrs, section in sections:
+        cm = re.search(r'class\s*=\s*["\']([^"\']*)', attrs, re.I)
+        classes = set((cm.group(1) if cm else "").split())
+        if "try" in classes:
+            continue
+        text_blocks = len(re.findall(r"<(?:p|li|div)\b", section, re.I))
+        if text_blocks < 4:
+            continue
+        if CANONICAL_CONTENT_PATTERN.search(attrs + " " + section):
+            continue
+        h2 = re.search(r"<h2\b[^>]*>([\s\S]*?)</h2>", section, re.I)
+        title = re.sub(r"<[^>]+>", " ", h2.group(1) if h2 else "").strip()[:60] or "(untitled)"
+        raw_sections.append(title)
+
+    if not raw_sections:
+        return []
+    if layout in PROSE_RELAXED_LAYOUTS:
+        limit = max(4, int(len(sections) * 0.5))
+    else:
+        limit = max(2, int(len(sections) * 0.25))
+    if len(raw_sections) > limit:
+        return [
+            Issue(
+                path,
+                "raw_section_synthesis_overuse",
+                f"정본 컴포넌트 없이 raw p/div/li 중심 섹션이 {len(raw_sections)}개 > 허용 {limit}개입니다. 예: {', '.join(raw_sections[:3])}",
+            )
+        ]
+    return []
 
 
 def check_html(path: Path) -> list[Issue]:
@@ -167,6 +265,8 @@ def check_html(path: Path) -> list[Issue]:
                     )
                 )
                 break
+
+    issues.extend(raw_section_synthesis_issues(path, body))
 
     return issues
 

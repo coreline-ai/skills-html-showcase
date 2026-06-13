@@ -73,11 +73,11 @@
 - **Layout-first**: `assets/layouts/<layout>.html`의 placeholder를 먼저 채우고, 그 다음 필요한 추가 섹션을 붙인다. 처음부터 자유형 `<main>`을 합성하지 않는다.
 - **Mode signature**: 각 모드의 핵심 질문이 첫 2~3섹션 안에 보인다. 예: GitHub 분석은 “살아 있는 프로젝트인가/채택해도 되는가”, SEO는 “검색 의도와 SERP 약속”, 교육은 “학습목표→실습→퀴즈→정답”.
 - **Reference baseline**: 같은 모드의 `examples/*.html` 또는 사용자가 지정한 정답지보다 헤더·목차·테마바·섹션 카드 밀도·결론 품질이 후퇴하면 실패다.
-- **TOC baseline**: `github_analysis`/`youtube_analysis`/`manual_analysis` 상단 목차는 공식 `toc-map` chip-nav(`toc-map` + `toc-pills` + `a.toc-pill > b`)를 써야 한다. `.toc`/`ol` 구형 목차, bare link 목차는 실패다.
+- **TOC baseline**: 직접 h2 섹션이 4개 이상인 toc-required 페이지와 `github_analysis`/`github_feature_usage`/`youtube_analysis`/`manual_analysis` 상단 목차는 공식 `toc-map` chip-nav(`toc-map` + `toc-pills` + `a.toc-pill > b`)를 써야 한다. `.toc`/`ol` 구형 목차, bare link 목차는 실패다.
 - **Template diversity**: vt/wg 템플릿은 장식 삽입이 아니라 정보 구조에 맞아야 한다. 같은 카드 그리드를 5회 이상 반복해 정보 구조를 대체하지 않는다.
 - **No example voice**: 산출물 내부에서 “예제”, “샘플”, “모드 시연”을 자기 설명으로 쓰지 않는다. 필요한 경우 footer/metadata에만 생성 정보를 둔다.
-- **Browser spot check**: 제출 전 가능하면 1280px와 390px 캡처를 확인한다. validator 통과 후에도 시각적으로 기존 검수본보다 낮으면 재작성한다.
-- **보조 자동 검사**: 전문/데모/벤치마크 산출물은 `scripts/quality_contract_check.py <output_dir>`를 실행해 placeholder 문구와 반복 구조를 먼저 걸러낸다.
+- **Render artifact check**: 신규 산출물은 외부 캡쳐 단계에서 1280px/390px screenshot과 `sources/render-audit.json`을 남긴다. `completion_check.py`는 Playwright를 직접 구동하지 않고 `overflow_ok=true`와 screenshot 파일 존재를 검사한다. 과거 `output/` 전체는 소급 기준선이 아니다.
+- **보조 자동 검사**: 전문/데모/벤치마크 산출물은 `scripts/quality_contract_check.py <output_dir>`를 실행해 placeholder 문구, 반복 구조, raw p/div 합성 구조를 먼저 걸러낸다.
 
 ## HTML Gate
 

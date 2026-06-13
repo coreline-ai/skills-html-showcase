@@ -9,12 +9,21 @@ from __future__ import annotations
 
 import importlib.util
 import sys
+import tempfile as _tmp
 from pathlib import Path
 
 SKILL = Path(__file__).resolve().parent.parent
 _spec = importlib.util.spec_from_file_location("validate_output", SKILL / "scripts" / "validate_output.py")
 v = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(v)
+_qspec = importlib.util.spec_from_file_location("quality_contract_check", SKILL / "scripts" / "quality_contract_check.py")
+q = importlib.util.module_from_spec(_qspec)
+sys.modules["quality_contract_check"] = q
+_qspec.loader.exec_module(q)
+_cspec = importlib.util.spec_from_file_location("completion_check", SKILL / "scripts" / "completion_check.py")
+c = importlib.util.module_from_spec(_cspec)
+sys.modules["completion_check"] = c
+_cspec.loader.exec_module(c)
 
 _checks = 0
 _fails = 0
@@ -95,7 +104,7 @@ ts_ok_html = '''
   <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
 </fieldset>
 '''
-check("theme switcher gate flags 3 radios (v5.10.3: 8 required)", any(i["type"]=="theme_switcher_radio_count" for i in v.theme_switcher_contract_gate(ts_ok_html, theme_css)))
+check("theme switcher gate flags 3 radios (8 required)", any(i["type"]=="theme_switcher_radio_count" for i in v.theme_switcher_contract_gate(ts_ok_html, theme_css)))
 ts_ok5 = '''
 <fieldset class="ahf-themebar" aria-label="테마 선택">
   <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
@@ -105,9 +114,9 @@ ts_ok5 = '''
   <input type="radio" name="ahf-theme" id="ahf-dark2"><label for="ahf-dark2">다크2</label>
 </fieldset>
 '''
-check("theme switcher gate flags 5 radios (v5.10.3: 8 required)", any(i["type"]=="theme_switcher_radio_count" for i in v.theme_switcher_contract_gate(ts_ok5, theme_css)))
+check("theme switcher gate flags 5 radios (8 required)", any(i["type"]=="theme_switcher_radio_count" for i in v.theme_switcher_contract_gate(ts_ok5, theme_css)))
 ts_ok6 = ts_ok5.replace('</fieldset>', '  <input type="radio" name="ahf-theme" id="ahf-blue"><label for="ahf-blue">블루</label>\n</fieldset>')
-check("theme switcher gate flags 6 radios (v5.10.3: 8 required)", any(i["type"]=="theme_switcher_radio_count" for i in v.theme_switcher_contract_gate(ts_ok6, theme_css)))
+check("theme switcher gate flags 6 radios (8 required)", any(i["type"]=="theme_switcher_radio_count" for i in v.theme_switcher_contract_gate(ts_ok6, theme_css)))
 ts_pair = '''
 <fieldset class="ahf-themebar"><input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라</label>
 <input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">라2</label>
@@ -190,6 +199,43 @@ check("manifest consistency gate catches stale examples/changes/releases/updated
 clean_manifest = '{"version":"5.10.0","examples":{"version":"5.10.0"},"changes":["v5.10.0: ok"],"releases":["v5.10.0: ok"],"updated":"2026-06-09"}'
 check("manifest consistency gate passes current-version fields",
       v.manifest_version_consistency_gate(clean_manifest, "## v5.10.0 (2026-06-09)\\n") == [])
+gov_bad_manifest = '{"version":"9.9.9","quality":{"governance_count":137,"governance_command":"python3 skills/adaptive-html-final/tests/test_governance_gates.py"}}'
+with _tmp.TemporaryDirectory() as _td:
+    _rr = v.Path(_td)
+    (_rr / "README.md").write_text("│ tests # 거버넌스 게이트 (138/138)\n| 거버넌스 게이트 | `test_governance_gates.py` **138 / 138 통과** |\n> 🟢 **게이트 현황(v9.9.9)**: 거버넌스 `test_governance_gates.py` **138/138 통과**", encoding="utf-8")
+    _gb = {i["type"] for i in v.manifest_governance_count_gate(gov_bad_manifest, _rr)}
+    check("manifest governance-count gate catches README current-count drift",
+          {"readme_current_gate_status_count_mismatch","readme_current_governance_table_count_mismatch","readme_current_tree_gate_count_mismatch"}.issubset(_gb))
+gov_good_manifest = '{"version":"9.9.9","quality":{"governance_count":138,"governance_command":"python3 skills/adaptive-html-final/tests/test_governance_gates.py"}}'
+with _tmp.TemporaryDirectory() as _td:
+    _rr = v.Path(_td)
+    (_rr / "README.md").write_text("│ tests # 거버넌스 게이트 (138/138)\n| 거버넌스 게이트 | `test_governance_gates.py` **138 / 138 통과** |\n> 🟢 **게이트 현황(v9.9.9)**: 거버넌스 `test_governance_gates.py` **138/138 통과**", encoding="utf-8")
+    check("manifest governance-count gate passes matching current README surfaces",
+          v.manifest_governance_count_gate(gov_good_manifest, _rr) == [])
+with _tmp.TemporaryDirectory() as _td:
+    _rr = v.Path(_td)
+    _sd = _rr / "skills" / "adaptive-html-final"
+    (_sd / "examples" / "sources").mkdir(parents=True)
+    (_rr / "README.md").write_text("비주얼: profile=widget 또는 style=v5", encoding="utf-8")
+    (_rr / "AGENTS.md").write_text("style=v6 is stale public prose", encoding="utf-8")
+    (_sd / "SKILL.md").write_text("widget=v5 / diagram=v6", encoding="utf-8")
+    (_sd / "manifest.json").write_text('{"profile_selection":"profile=widget|diagram|auto 또는 style=v5|v6"}', encoding="utf-8")
+    (_sd / "examples" / "sources" / "adaptive-html-final-manifest.json").write_text('{"profile_selection":"style=v5|v6"}', encoding="utf-8")
+    _alias_issues = v.deprecated_profile_alias_surface_gate(_rr, _sd)
+    check("deprecated profile alias surface gate catches current-doc exposure",
+          len([i for i in _alias_issues if i["type"] == "deprecated_profile_alias_surface"]) >= 5)
+with _tmp.TemporaryDirectory() as _td:
+    _rr = v.Path(_td)
+    _sd = _rr / "skills" / "adaptive-html-final"
+    (_sd / "examples" / "sources").mkdir(parents=True)
+    clean = "프로파일은 profile=widget|diagram|auto만 현행 정본이다."
+    (_rr / "README.md").write_text(clean, encoding="utf-8")
+    (_rr / "AGENTS.md").write_text(clean, encoding="utf-8")
+    (_sd / "SKILL.md").write_text(clean, encoding="utf-8")
+    (_sd / "manifest.json").write_text('{"profile_selection":"profile=widget|diagram|auto"}', encoding="utf-8")
+    (_sd / "examples" / "sources" / "adaptive-html-final-manifest.json").write_text('{"profile_selection":"profile=widget|diagram|auto"}', encoding="utf-8")
+    check("deprecated profile alias surface gate passes canonical profile docs",
+          v.deprecated_profile_alias_surface_gate(_rr, _sd) == [])
 # 4) §0.6 canonical decision table must match validator contracts and widget-system.md.
 decision_fixture = '''
 ## 0.6 Canonical Decision Table (모드 → layout → vt-템플릿 → wg-위젯)
@@ -270,6 +316,14 @@ dsi_nested_widget = v.direct_section_h2_icon_gate('<main id="main" class="page-w
 check("direct-section h2 gate ignores nested widget sections", dsi_nested_widget == [])
 dsi_article_bad = v.direct_section_h2_icon_gate('<main id="main" class="page-wide layout-blog"><article><section><h2>본문 섹션</h2></section></article></main>')
 check("direct-section h2 gate catches article direct sections", dsi_article_bad and dsi_article_bad[0]["type"]=="direct_section_h2_missing_body_icon")
+h2_order_bad = v.h2_icon_order_gate('<main id="main" class="page-wide layout-seo"><section><h2>검색 미리보기 <span class="body-icon"><svg aria-hidden="true"></svg></span></h2></section></main>')
+check("h2 icon order gate catches title before icon",
+      h2_order_bad and h2_order_bad[0]["type"]=="h2_icon_order_violation")
+h2_order_bad_num = v.h2_icon_order_gate('<main id="main" class="page-wide layout-seo"><section><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>검색 <span class="num">1</span></h2></section></main>')
+check("h2 icon order gate catches num after title",
+      h2_order_bad_num and h2_order_bad_num[0]["type"]=="h2_icon_order_violation")
+h2_order_ok = v.h2_icon_order_gate('<main id="main" class="page-wide layout-seo"><section><h2><span class="body-icon"><svg aria-hidden="true"></svg></span><span class="num">1</span>검색 미리보기</h2></section></main>')
+check("h2 icon order gate passes body-icon-num-title", h2_order_ok == [])
 
 toc_bad = v.toc_map_contract_gate('<main id="main" class="page layout-blog"><nav class="toc-map"><a href="#a"><span>1</span>붙은 목차</a></nav></main>')
 check("toc-map gate catches bare collapsed links", toc_bad and toc_bad[0]["type"]=="toc_map_contract_missing_pills")
@@ -285,10 +339,10 @@ expert_val_ok = v.expert_validation_checklist_widget_gate('<main id="main" class
 check("expert validation checklist gate accepts evidence/quality gate only", expert_val_ok == [])
 
 # 고정 계약: 헤더 형태(필수) + 마무리 정리 섹션(권고).
-_hdr_ok = '<main id="main" class="page-wide layout-expert"><header class="header"><p class="kicker">K</p><h1>T</h1><p class="sub">s</p><div class="meta"><span>m</span></div></header><section class="try"><h2>x</h2></section></main>'
+_hdr_ok = '<main id="main" class="page-wide layout-expert"><header class="header"><p class="kicker">K</p><h1>T</h1><p class="sub">s</p><div class="meta"><span>m</span></div><div class="generated-row"><p class="generated-date">Generated</p><div class="lens-strip"><span>Lens</span></div></div></header><section class="try"><h2>x</h2></section></main>'
 check("header gate passes canonical header(kicker.h1.sub.meta)", v.header_contract_gate(_hdr_ok) == [])
 _hb = v.header_contract_gate('<main id="main" class="page-wide layout-expert"><header class="header"><h1>T</h1></header><section><h2>x</h2></section></main>')
-check("header gate flags missing kicker/sub/meta", {i.get("part") for i in _hb} >= {"kicker","sub","meta"})
+check("header gate flags missing kicker/sub/meta/generated-row/lens-strip", {i.get("part") for i in _hb} >= {"kicker","sub","meta","generated-row","lens-strip"})
 check("header gate flags missing header.header", v.header_contract_gate('<main id="main" class="page-wide layout-seo"><section><h2>x</h2></section></main>')[0]["type"]=="header_contract_missing_header")
 check("header gate ignores non-layout pages", v.header_contract_gate('<main id="main" class="page-wide"><h1>x</h1></main>') == [])
 check("closing recommendation silent when last section .try", v.closing_summary_recommendation(_hdr_ok) == [])
@@ -299,29 +353,28 @@ check("closing recommendation warns when last section not .try", v.closing_summa
 _smv_bad = v.skill_md_version_mismatch('> Version 5.10.0 · note', '5.10.2')
 check("skill_md version gate catches header drift", _smv_bad and _smv_bad[0]["type"]=="skill_md_version_mismatch")
 check("skill_md version gate passes matching header", v.skill_md_version_mismatch('> Version 5.10.2 · note', '5.10.2') == [])
-import tempfile as _tmp
 with _tmp.TemporaryDirectory() as _td:
     _root = v.Path(_td)
     (_root / 'bad.html').write_text('<main>Generated by adaptive-html-final 5.10.0</main>', encoding='utf-8')
-    (_root / 'ok.html').write_text('<main>Generated by adaptive-html-final 5.10.3</main>', encoding='utf-8')
-    _ovis = v.output_version_surface_issues(_root, '5.10.3')
+    (_root / 'ok.html').write_text('<main>Generated by adaptive-html-final 9.9.9</main>', encoding='utf-8')
+    _ovis = v.output_version_surface_issues(_root, '9.9.9')
     check("output visible-version gate catches stale meta/footer",
           any(i["type"]=="output_visible_version_stale" and i["actual"]=="5.10.0" for i in _ovis))
-    (_root / 'bad.html').write_text('<style>/* adaptive-html-final 5.10.0 historical css comment */</style><main>Generated by adaptive-html-final 5.10.3</main>', encoding='utf-8')
+    (_root / 'bad.html').write_text('<style>/* adaptive-html-final 5.10.0 historical css comment */</style><main>Generated by adaptive-html-final 9.9.9</main>', encoding='utf-8')
     check("output visible-version gate ignores CSS comments and passes matching visible text",
-          v.output_version_surface_issues(_root, '5.10.3') == [])
+          v.output_version_surface_issues(_root, '9.9.9') == [])
 with _tmp.TemporaryDirectory() as _td:
     _sd = v.Path(_td) / 'skills' / 'adaptive-html-final'
     (_sd / 'references').mkdir(parents=True)
     (_td_root := v.Path(_td)).joinpath('README.md').write_text('examples/ # v5.10.0 현행 17모드 참조 예제 + index\n> 🟢 **게이트 현황(v5.10.0)**', encoding='utf-8')
-    (_sd / 'manifest.json').write_text('{"version":"5.10.3","examples":{"purpose":"17모드 참조 예제 — 실제 코어 CSS 인라인(v5.10.0)"}}', encoding='utf-8')
+    (_sd / 'manifest.json').write_text('{"version":"9.9.9","examples":{"purpose":"17모드 참조 예제 — 실제 코어 CSS 인라인(v5.10.0)"}}', encoding='utf-8')
     (_sd / 'references' / 'visual-html-system.md').write_text('현행 v5.10.0 기준\nv5.10.0 스킬 자산 기준의 17모드 레퍼런스', encoding='utf-8')
-    _cvis = {i["type"] for i in v.current_version_surface_issues(_sd, '5.10.3')}
+    _cvis = {i["type"] for i in v.current_version_surface_issues(_sd, '9.9.9')}
     check("current-version surface gate catches manifest/README/reference drift",
           {"manifest_examples_purpose_version_stale","readme_current_examples_version_stale","readme_gate_status_version_stale","visual_html_current_baseline_version_stale","visual_html_examples_version_stale"}.issubset(_cvis))
 
 
-# ---- v5.10.3 gates: on-accent pairing / theme contrast / print ink / width canon / theme 8/8 / package ----
+# ---- release-safety gates: on-accent pairing / theme contrast / print ink / width canon / theme 8/8 / package ----
 check("on-accent lint catches #fff on accent fill",
       v.on_accent_pairing_violations('x{background:var(--accent-2);color:#fff}','fx') and
       v.on_accent_pairing_violations('x{background:var(--accent-2);color:#fff}','fx')[0]["type"]=="on_accent_pairing_violation")
@@ -344,20 +397,37 @@ import zipfile as _zf, tempfile as _tf, json as _json, os as _os
 _tmpzip = _os.path.join(_tf.gettempdir(), 'gov_pkg_stale.skill')
 with _zf.ZipFile(_tmpzip,'w') as _z: _z.writestr('adaptive-html-final/manifest.json', _json.dumps({"version":"5.0.0"}))
 check("package gate catches stale zip version",
-      v.skill_package_version_issues(v.Path(_tmpzip),'5.10.3') and
-      v.skill_package_version_issues(v.Path(_tmpzip),'5.10.3')[0]["type"]=="skill_package_version_stale")
-with _zf.ZipFile(_tmpzip,'w') as _z: _z.writestr('adaptive-html-final/manifest.json', _json.dumps({"version":"5.10.3"}))
-check("package gate passes matching zip version", v.skill_package_version_issues(v.Path(_tmpzip),'5.10.3') == [])
+      v.skill_package_version_issues(v.Path(_tmpzip),'9.9.9') and
+      v.skill_package_version_issues(v.Path(_tmpzip),'9.9.9')[0]["type"]=="skill_package_version_stale")
+with _zf.ZipFile(_tmpzip,'w') as _z: _z.writestr('adaptive-html-final/manifest.json', _json.dumps({"version":"9.9.9"}))
+check("package gate passes matching zip version", v.skill_package_version_issues(v.Path(_tmpzip),'9.9.9') == [])
 with _tmp.TemporaryDirectory() as _td:
     _sd = v.Path(_td) / 'adaptive-html-final'
     _sd.mkdir()
-    (_sd / 'manifest.json').write_text('{"version":"5.10.3"}', encoding='utf-8')
+    (_sd / 'manifest.json').write_text('{"version":"9.9.9"}', encoding='utf-8')
     _pkg = v.Path(_td) / 'adaptive-html-final.skill'
     with _zf.ZipFile(_pkg,'w') as _z: _z.writestr('adaptive-html-final/manifest.json', '{"version":"5.10.0"}')
     check("package content gate catches stale same-path payload",
           v.skill_package_content_issues(_pkg, _sd) and v.skill_package_content_issues(_pkg, _sd)[0]["type"]=="skill_package_content_stale")
-    with _zf.ZipFile(_pkg,'w') as _z: _z.writestr('adaptive-html-final/manifest.json', '{"version":"5.10.3"}')
+    with _zf.ZipFile(_pkg,'w') as _z: _z.writestr('adaptive-html-final/manifest.json', '{"version":"9.9.9"}')
     check("package content gate passes byte-matching payload", v.skill_package_content_issues(_pkg, _sd) == [])
+with _tmp.TemporaryDirectory() as _td:
+    _sd = v.Path(_td) / 'adaptive-html-final'
+    _sd.mkdir()
+    (_sd / 'manifest.json').write_text('{"version":"9.9.9"}', encoding='utf-8')
+    (_sd / '.pytest_cache').mkdir()
+    (_sd / '.pytest_cache' / 'CACHEDIR.TAG').write_text('cache noise', encoding='utf-8')
+    (_sd / '__pycache__').mkdir()
+    (_sd / '__pycache__' / 'x.cpython-314.pyc').write_bytes(b'cache noise')
+    (_sd / '.DS_Store').write_bytes(b'cache noise')
+    _pkg = v.Path(_td) / 'adaptive-html-final.skill'
+    import zipfile as _zf
+    with _zf.ZipFile(_pkg, 'w') as z:
+        z.writestr('adaptive-html-final/manifest.json', '{"version":"9.9.9"}')
+        z.writestr('adaptive-html-final/.pytest_cache/CACHEDIR.TAG', 'cache noise')
+        z.writestr('adaptive-html-final/__pycache__/x.cpython-314.pyc', 'cache noise')
+        z.writestr('adaptive-html-final/.DS_Store', 'cache noise')
+    check("package content gate ignores cache and OS noise", v.skill_package_content_issues(_pkg, _sd) == [])
 _t8 = ''.join(f'<input type="radio" name="ahf-theme" id="ahf-{x}"{" checked" if x=="light" else ""}><label for="ahf-{x}">{x}</label>' for x in ('light','light2','white','dark','dark2','blue','skyblue','sepia'))
 _fs8 = '<fieldset class="ahf-themebar">'+_t8+'</fieldset>'
 _style8 = '.ahf-themebar{display:flex}'
@@ -400,6 +470,75 @@ check("analysis_toc_map gate flags missing github question toc",
       any(i["type"]=="github_analysis_toc_map_missing" for i in v.analysis_toc_map_required_gate(_toc_bad)))
 _toc_ok = '<main class="page-wide layout-github"><nav class="toc-map github-question-toc"><div class="toc-pills"><a class="toc-pill" href="#a"><b>1</b>q</a></div></nav></main>'
 check("analysis_toc_map gate passes canonical chip toc", v.analysis_toc_map_required_gate(_toc_ok) == [])
+_toc_long_bad = '<main class="page-wide layout-expert">' + ''.join(f'<section><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>s{i}</h2></section>' for i in range(4)) + '</main>'
+check("toc-required gate flags non-analysis h2>=4 without toc-map",
+      any(i["type"]=="toc_map_required_missing" for i in v.analysis_toc_map_required_gate(_toc_long_bad)))
+_toc_short_ok = '<main class="page-wide layout-landing"><section><h2>a</h2></section><section><h2>b</h2></section><section><h2>c</h2></section></main>'
+check("toc-required gate ignores short non-analysis page", v.analysis_toc_map_required_gate(_toc_short_ok) == [])
+_long_token = 'A'*76 + '_token'
+check("long-token gate flags unprotected prose token",
+      any(i["type"]=="long_token_overflow_unprotected" for i in v.unprotected_long_token_gate(f'<main class="page-wide layout-expert"><section><h2>x</h2><p>{_long_token}</p></section></main>', '')))
+check("long-token gate ignores protected code/pre/a/table tokens",
+      v.unprotected_long_token_gate(f'<main class="page-wide layout-expert"><section><h2>x</h2><pre>{_long_token}</pre><a href="#">{_long_token}</a><code>{_long_token}</code></section></main>', '') == [])
+check("R4 table gate catches unwrapped table",
+      any(i["type"]=="table_no_mobile_safe_wrapper" for i in v.table_mobile_wrapper_gate('<table><caption>c</caption><tr><td>x</td></tr></table>')))
+check("R4 table gate accepts .tbl wrapper",
+      v.table_mobile_wrapper_gate('<div class="tbl"><table><caption>c</caption><tr><td>x</td></tr></table></div>') == [])
+
+with _tmp.TemporaryDirectory() as _td:
+    _root = v.Path(_td)
+    _raw = _root / 'raw.html'
+    _raw_sections = ''.join(
+        '<section><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>Raw</h2>'
+        '<p>a</p><p>b</p><div>c</div><li>d</li></section>'
+        for _ in range(5)
+    )
+    _raw.write_text(f'<body><main class="page-wide layout-expert">{_raw_sections}</main></body>', encoding='utf-8')
+    check("quality raw-section gate catches raw p/div/li synthesis",
+          any(i.code=="raw_section_synthesis_overuse" for i in q.check_html(_raw)))
+    _ok = _root / 'ok.html'
+    _ok_sections = ''.join(
+        '<section><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>Card</h2>'
+        '<div class="card-grid"><article class="card-block"><p>a</p></article></div></section>'
+        for _ in range(5)
+    )
+    _ok.write_text(f'<body><main class="page-wide layout-expert">{_ok_sections}</main></body>', encoding='utf-8')
+    check("quality raw-section gate accepts canonical components", q.check_html(_ok) == [])
+
+with _tmp.TemporaryDirectory() as _td:
+    _root = v.Path(_td)
+    (_root / 'sources').mkdir()
+    check("completion render-audit fails missing artifact on normal output", c.check_render_audit(_root) is False)
+    (_root / 'sources' / 'screenshots').mkdir()
+    (_root / 'sources' / 'screenshots' / '1280.png').write_bytes(b'png')
+    (_root / 'sources' / 'screenshots' / '390.png').write_bytes(b'png')
+    (_root / 'sources' / 'render-audit.json').write_text('{"viewports":{"1280":{"scrollWidth":1280,"clientWidth":1280,"overflow_ok":true,"screenshot":"sources/screenshots/1280.png"},"390":{"scrollWidth":390,"clientWidth":390,"overflow_ok":true,"screenshot":"sources/screenshots/390.png"}}}', encoding='utf-8')
+    check("completion render-audit passes overflow_ok screenshots", c.check_render_audit(_root) is True)
+    (_root / 'sources' / 'render-audit.json').write_text('{"viewports":{"1280":{"scrollWidth":1290,"clientWidth":1280,"overflow_ok":false,"screenshot":"sources/screenshots/1280.png"},"390":{"scrollWidth":390,"clientWidth":390,"overflow_ok":true,"screenshot":"sources/screenshots/390.png"}}}', encoding='utf-8')
+    check("completion render-audit fails overflow false", c.check_render_audit(_root) is False)
+
+with _tmp.TemporaryDirectory() as _td:
+    import subprocess as _sp
+    _repo = v.Path(_td)
+    _sd = _repo / 'skills' / 'adaptive-html-final'
+    _sd.mkdir(parents=True)
+    (_sd / 'manifest.json').write_text('{"version":"9.9.8"}', encoding='utf-8')
+    _sp.run(['git', 'init', '-q'], cwd=_repo, check=True)
+    _sp.run(['git', 'add', 'skills/adaptive-html-final/manifest.json'], cwd=_repo, check=True)
+    _sp.run(['git', '-c', 'user.name=test', '-c', 'user.email=test@example.com',
+             'commit', '-q', '-m', 'baseline'], cwd=_repo, check=True)
+    (_sd / 'manifest.json').write_text('{"version":"9.9.9"}', encoding='utf-8')
+    _unauth = v.version_release_approval_issues(_repo, _sd, '9.9.9')
+    check("version release gate blocks manifest bump without approval",
+          _unauth and _unauth[0]["type"] == "version_bump_without_release_approval")
+    (_repo / 'dev-plan').mkdir()
+    (_repo / 'dev-plan' / 'release-approval-v9.9.9.md').write_text('# approved\n', encoding='utf-8')
+    check("version release gate allows approved manifest bump",
+          v.version_release_approval_issues(_repo, _sd, '9.9.9') == [])
+
+_manifest_quality = __import__("json").loads((SKILL / "manifest.json").read_text(encoding="utf-8")).get("quality") or {}
+check("manifest quality.governance_count matches this self-test count",
+      _manifest_quality.get("governance_count") == _checks + 1)
 
 print(f"\n{_checks - _fails}/{_checks} checks passed")
 sys.exit(1 if _fails else 0)

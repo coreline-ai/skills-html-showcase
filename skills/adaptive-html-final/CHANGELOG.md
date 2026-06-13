@@ -4,6 +4,19 @@
 
 3차 전문가 리뷰(렌더 실측) 발견을 dev-plan §4의 회귀 프레임(S0 베이스라인 → 등급별 패치 → 프로브 diff)대로 반영. **라이트 테마 무영향 설계**: #fff→var(--on-accent)는 라이트 4테마에서 byte-동일(on-accent=#ffffff), print.css는 전 규칙 @media print 내부(스크린 영향 0 구조 보장).
 
+### 2026-06-13 정합 보강 — 생성 회귀 방지 정책/게이트
+
+사용자가 반복 지적한 "최신 스킬 헤더가 안 나옴, 아이콘/목차/가로폭/밀착/간격이 흔들림" 문제를 정적 게이트와 완료 아티팩트 계약으로 승격했다. 과거 `output/`은 공개 데모/테스트 산출물일 뿐 스킬 정본이 아니며, 최신 기준선은 `skills/adaptive-html-final/examples/`와 신규 산출물이다.
+
+- **헤더 정본 전역화**: `header_contract_gate`가 전 `layout-*` 콘텐츠 페이지에서 `kicker`·`h1`·`sub`·`meta`뿐 아니라 `generated-row`·`lens-strip`까지 필수 검사. SEO/Reference 예제 헤더 보정.
+- **목차 정본 강화**: 직접 h2 섹션이 4개 이상인 toc-required 페이지와 분석/사용 가이드 모드는 공식 `toc-map` chip-nav를 필수화. examples 17종 중 누락 페이지에 정본 목차와 섹션 anchor 보강.
+- **아이콘 순서 게이트**: `h2_icon_order_violation`으로 직접 섹션 h2의 `body-icon → (.num/.no) → title` 순서를 강제해 아이콘 생략뿐 아니라 뒤섞임/밀착 회귀를 차단.
+- **가로 overflow 방어**: 긴 무공백 URL/코드 토큰이 보호 요소 밖 prose에 노출되면 실패(`long_token_overflow_unprotected`). R4 표 보호 wrapper에 `.tbl`을 인정해 기존 정본 CSS와 게이트를 일치.
+- **품질 보조 게이트**: `quality_contract_check.py`가 정본 컴포넌트 없이 raw `<p>`/`<div>`/`<li>`로 섹션을 대량 합성하는 붕어빵/좌측 밀착 패턴을 차단.
+- **완료 아티팩트**: `completion_check.py`가 신규 산출물의 `sources/render-audit.json` + 1280/390 screenshot 증빙을 검사한다. 검증기는 Playwright를 직접 구동하지 않고 외부 캡쳐 산출물만 확인하며, 현행 packaged examples는 기준선 예외로 통과.
+- **거버넌스**: 신규 catch/pass 테스트를 추가하고 manifest `quality.governance_count` 단일 출처를 **140/140**로 동기화. `.skill` 재패키징으로 byte-match 유지.
+- **버전업 방지**: `version_release_approval_issues`가 HEAD와 다른 `manifest.version`을 감지하면 `dev-plan/release-approval-vX.Y.Z.md` 없이는 실패해 승인 없는 patch bump를 차단.
+
 - **다크 대비 P1**: widgets.css "카탈로그 reverse-sync" 층의 하드코딩 `color:#fff` 3규칙(wg-01 pick/rank·wg-02 cta·wg-06 btn·wg-07 pill·wg-09 next·wg-17 no·wg-20 chip)을 `var(--on-accent)`로 — 다크 트리오 대비 1.92→8.6+ (실측). wg-13-decide(4.69 AA 통과)·wg-20-var(자체 7.10)는 의도적 제외.
 - **wg-07 애니메이션 복원**: 정적화(`animation:none`) 제거 — 879행 카탈로그 메모("미반영")와 코드 일치화, prefers-reduced-motion 블록이 접근성 보장.
 - **인쇄 P1**: print.css에 `.try p/li/ol/ul/a/.label/.tag{color:#111}`(실측 1.3:1 소실 수정), `::details-content{content-visibility:visible}`(아코디언 인쇄 펼침), href 출력 `a[href^="http"]` 한정(내부 앵커 잡문자 제거), `.ahf-themebar` 인쇄 숨김. theme-dark.css에 다크 트리오 인쇄 시 라이트 토큰 강제 블록 + `#ahf-dark`에 `--danger-accent:#ff6b75`.
@@ -13,7 +26,7 @@
 - **도구**: exporter `--require-webp`가 정상 skip(no_dom_radio)을 실패 처리하던 오판 수정(sharp_unavailable만 실패, 루트 사본 동기) · 렌더러 2줄 제목-부제 겹침 수정(1줄 출력 byte-동일).
 - **문서·콘텐츠**: 체크리스트 4종 모드17 동기화(layout-checklist 고아행·"14개" 부패 수리), widget-system h2 강등 규칙 성문화+갤러리 링크 examples/로, editorial 03/05 메타 placeholder→실콘텐츠, Guide --profile 선택 표기.
 - **.skill 재패키징**: v5.7.0(16모드) 동결 zip → 현행 v5.10.3 (게이트가 향후 stale 차단).
-- **후속 정밀감사 보강**: 예제 visible meta/footer·manifest `examples.purpose`·README/visual-html 현행 문구의 구버전 표기를 v5.10.3으로 정리하고, `output_visible_version_stale`·`current_version_surface_issues`·`.skill` byte-match 게이트를 추가해 manifest 버전만 맞고 표면/zip이 stale인 상태를 차단. 거버넌스 118/118.
+- **후속 정밀감사 보강**: 예제 visible meta/footer·manifest `examples.purpose`·README/visual-html 현행 문구의 구버전 표기를 v5.10.3으로 정리하고, `output_visible_version_stale`·`current_version_surface_issues`·`.skill` byte-match 게이트를 추가해 manifest 버전만 맞고 표면/zip이 stale인 상태를 차단. 이어 `manifest.quality.governance_count`를 현행 게이트 수 단일 출처로 추가하고 README 현행 표기·실제 self-test count 동기화 게이트를 잠금. `.skill` byte-match 비교에서 `.pytest_cache/`, `__pycache__/`, `*.pyc`, `.DS_Store` 환경 노이즈를 명시 제외. legacy profile alias 표면을 정본 문서·manifest에서 제거하고 parser-only compatibility로 격하하는 게이트를 추가. 거버넌스 124/124.
 - 검증: examples 18종 재인라인(코어 해시 갱신) + 프로브 diff = 의도 변화(D1~D6)만 — 베이스라인 `dev-plan/baseline_v5102_probes.json`.
 
 ## v5.10.2 (2026-06-10) — github-feature 단락 폭 결함 수정 + R5 게이트 정밀화

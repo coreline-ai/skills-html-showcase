@@ -19,3 +19,4 @@ node_modules/
 
 # Build-time export artifacts (regenerable)
 output/**/exports/
+.pytest_cache/

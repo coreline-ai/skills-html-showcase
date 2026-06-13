@@ -59,9 +59,13 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 ## 🆕 최근 업데이트
 
+### v5.10.3 정합 보강 (2026-06-13) — 생성 회귀 방지 게이트 + 버전업 승인 정책
+
+헤더 `generated-row/lens-strip`, toc-required `toc-map`, h2 `body-icon→num/no→title` 순서, 긴 토큰 overflow, raw p/div 합성, render-audit 완료 증빙을 검증기로 승격했습니다. 과거 `output/`은 공개 데모/테스트 산출물일 뿐 스킬 정본이 아니며, 현행 기준선은 `skills/adaptive-html-final/examples/`와 신규 산출물입니다. 이 보강은 **v5.10.3 유지** 원칙으로 정합했으며 거버넌스 **140/140**입니다.
+
 ### v5.10.3 (2026-06-12) — 다크 대비·인쇄 가독·폭 정본(전 모드 wide) + 자기방어 게이트 6종
 
-widgets reverse-sync 층 #fff→var(--on-accent)(다크 대비 1.92→8.6+, 라이트 byte-동일) · print.css .try 잉크 소실(1.3:1) 수정·details 인쇄 펼침 · 전 17모드 page-wide+60rem 폭 정본(골격 5종 승격, 예제 4종 단락 960px) · 게이트 8종(on-accent lint·테마 대비·print 잉크·폭 일치·테마 8/8·.skill 버전·visible 버전 표면·.skill byte-match) + 미커버 7종 거버넌스 잠금(118 checks) · exporter/렌더러 수정 · .skill v5.7.0→현행 재패키징.
+widgets reverse-sync 층 #fff→var(--on-accent)(다크 대비 1.92→8.6+, 라이트 byte-동일) · print.css .try 잉크 소실(1.3:1) 수정·details 인쇄 펼침 · 전 17모드 page-wide+60rem 폭 정본(골격 5종 승격, 예제 4종 단락 960px) · 게이트 8종(on-accent lint·테마 대비·print 잉크·폭 일치·테마 8/8·.skill 버전·visible 버전 표면·.skill byte-match·cache-noise 제외) + 미커버 7종 거버넌스 잠금(124 checks) · exporter/렌더러 수정 · .skill v5.7.0→현행 재패키징.
 
 ### v5.10.2 (2026-06-10) — github-feature 단락 폭 수정 + R5 게이트 정밀화
 
@@ -241,6 +245,8 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 ---
 
+> 🔒 버전업은 사용자 명시 승인 후에만 진행합니다. 버전 변경 시 수정해야 할 전체 표면은 [버전 릴리스 정합 가이드](docs/adaptive-html-final-version-release-guide.md)와 [버전 표면 전체 파일 감사 기록](docs/adaptive-html-final-version-surface-audit-20260613.md)을 따릅니다.
+
 ## 🖼️ 쇼케이스 갤러리
 
 ### 🆕 최신 실전 산출물 데모 (현행 스킬 v5.10.3 기준, 게이트 OK)
@@ -340,8 +346,8 @@ v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 
 
 <table>
 <tr>
-<td width="33%" align="center"><b>🧩 <code>widget</code> (= <code>style=v5</code>)</b></td>
-<td width="33%" align="center"><b>📊 <code>diagram</code> (= <code>style=v6</code>)</b></td>
+<td width="33%" align="center"><b>🧩 <code>widget</code></b></td>
+<td width="33%" align="center"><b>📊 <code>diagram</code></b></td>
 <td width="33%" align="center"><b>🔀 <code>auto</code> (기본)</b></td>
 </tr>
 <tr>
@@ -356,16 +362,17 @@ v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 
 </tr>
 </table>
 
-| 프로파일 | 별칭 | 라이브러리 (markup) | CSS 번들 | 골든 쇼케이스 |
-|---|---|---|---|---|
-| `widget` | `style=v5` | CSS 뷰 위젯 `wg-` | 코어5 + `widgets.css` | [`showcase-v5`](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v5) (정합화) |
-| `diagram` | `style=v6` | SVG→HTML `vt-` | 코어5 + `visual-html.css` | [`showcase-diagram`](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-diagram) (슬림) |
-| `auto` (기본) | — | 둘 다 | 코어5 + `widgets.css` + `visual-html.css` | [`showcase-v6`](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v6) |
+| 프로파일 | 라이브러리 (markup) | CSS 번들 | 참고 쇼케이스 |
+|---|---|---|---|
+| `widget` | CSS 뷰 위젯 `wg-` | 코어5 + `widgets.css` | [historical widget showcase](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v5) |
+| `diagram` | SVG→HTML `vt-` | 코어5 + `visual-html.css` | [diagram showcase](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-diagram) |
+| `auto` (기본) | 둘 다 | 코어5 + `widgets.css` + `visual-html.css` | [historical auto showcase](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v6) |
 
 ```bash
-# 기동 인자로 선택 (별칭 v5/v6도 수용 · 미지정 시 auto)
-adaptive-html-final  profile=widget      # 또는 style=v5
-adaptive-html-final  profile=diagram     # 또는 style=v6
+# 기동 인자로 선택 (미지정 시 auto)
+adaptive-html-final  profile=widget
+adaptive-html-final  profile=diagram
+adaptive-html-final  profile=auto
 adaptive-html-final                      # 기본 auto
 
 # 검증기는 출력의 sources/profile.json 을 자동 인지(또는 --profile)해
@@ -422,7 +429,7 @@ skills-html-showcase/
 │   ├── references/    (19)            # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/GitHub·YouTube·Manual·기능가이드 규칙
 │   ├── recipes/       (17)            # 모드별 대표 프롬프트
 │   ├── schemas/       (3)             # blog-meta · quality-report · visual-brief
-│   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트 (118/118)
+│   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트 (140/140)
 │   ├── visual-templates/ (7)         # 8000×6000 SVG 템플릿
 │   ├── scripts/                       # render_visual_svg.py · validate_output.py · completion_check.py 등
 │   └── examples/                     # v5.10.3 현행 17모드 참조 예제 + index
@@ -455,7 +462,7 @@ skills-html-showcase/
 | 외부 동작 JS | **0건** |
 | 미정의 CSS 클래스 | **0개** (레이아웃↔CSS 차집합 0) |
 | manifest ↔ 디스크 레이아웃 매핑 | 차집합 0 (17 / 17) |
-| 거버넌스 게이트 | `test_governance_gates.py` **118 / 118 통과** |
+| 거버넌스 게이트 | `test_governance_gates.py` **140 / 140 통과** |
 | blog-writer 상세 규칙 흡수 | 8 / 8 (제목 4계열·도입부 3유형·본문 밀도·톤 매핑·100점·메타·플랫폼·박스) |
 
 ### 버전 진화
@@ -482,7 +489,7 @@ skills-html-showcase/
 | `v5.10.0` | **GitHub Feature-Usage 17번째 모드** — `github_feature_usage`, `github-feature-usage.html`, `.layout-github-feature`(github 컴포넌트 어휘 공유 + 스크린샷 갤러리), 계약 게이트·tie-breaker·경계 버그 수정. 거버넌스 86/86 |
 | `v5.10.1` | 예제 정본화 — `mode-template-contract` 부록 안티패턴 제거, manifest/결정표 자기정합 게이트 추가 |
 | `v5.10.2` | `layout-github-feature` 단락 폭 46rem 회귀 수정 + layout별 60rem 셀렉터 정밀 게이트 |
-| `v5.10.3` | 다크 대비·인쇄 가독·전 모드 page-wide 폭 정본 + visible 버전 표면/.skill byte-match 게이트. 거버넌스 118/118 |
+| `v5.10.3` | 다크 대비·인쇄 가독·전 모드 page-wide 폭 정본 + visible 버전 표면/.skill byte-match 게이트 + 헤더·목차·아이콘 순서·overflow·raw 합성·render-audit 완료 증빙 + 승인 없는 버전 bump 차단. 거버넌스 140/140 |
 
 > 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) · 프로파일 분리 계획(아카이브): [`docs/archive/implement_visual_profile_separation.md`](docs/archive/implement_visual_profile_separation.md)
 
@@ -502,7 +509,7 @@ skills-html-showcase/
 - [x] 교육용=퀴즈+정답 · 전문가용=리스크+검증 · 블로그/SEO=제목+메타+태그 · 감사=개선본
 - [x] 비주얼: 8000×6000 캔버스 · `figure`+`figcaption` · 의미 있는 `alt` · 캔버스 잘림 없음
 
-> 🟢 **게이트 현황(v5.10.3)**: 거버넌스 `test_governance_gates.py` **118/118 통과**, 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
+> 🟢 **게이트 현황(v5.10.3)**: 거버넌스 `test_governance_gates.py` **140/140 통과** (v5.10.3 정합 보강 포함), 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
 > `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점의 역사적 13-topic 기준선입니다.
 
 ```bash
@@ -523,7 +530,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py \
 ```text
 [입력 자료/URL/파일/주제]를 [목적/독자]용 [모드]로 만들어줘.
 출력은 [단일 HTML / Markdown+HTML / 플랫폼별 원고]로 해줘.
-비주얼: profile=widget | diagram | auto  (또는 style=v5 | v6, 미지정 시 auto)
+비주얼: profile=widget | diagram | auto  (미지정 시 auto)
 반드시 포함: [목차, 용어 풀이, 예시, 리스크, FAQ, CTA 등]
 주의: [최신 정보는 확인 필요 표시, 외부 JS 금지, 모바일 안전 표]
 ```
