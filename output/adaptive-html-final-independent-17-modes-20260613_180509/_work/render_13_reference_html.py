@@ -89,7 +89,7 @@ s4 = f'''
   <section class="vt-shell" aria-label="플랫폼별 스케줄 설정 투어">
     <div class="vt-frame"><div class="ft">
       <article class="ft-card"><div class="ft-head"><span>crontab -e</span><span>classic</span></div><div class="ft-body"><p class="vt-text">사용자별 crontab. <code>0 2 * * * /path/job.sh</code> 한 줄.</p><div class="ft-note"><b>주의</b><br>실행 환경의 PATH가 로그인 셸과 다르다.</div></div></article>
-      <article class="ft-card"><div class="ft-head"><span>*.timer</span><span>systemd</span></div><div class="ft-body"><p class="vt-text"><code>OnCalendar=*-*-* 02:00:00</code> + 짝이 되는 .service.</p><div class="ft-note"><b>주의</b><br>cron보다 로깅·의존성·재시도가 강력.</div></div></article>
+      <article class="ft-card"><div class="ft-head"><span>*.timer</span><span>systemd</span></div><div class="ft-body"><p class="vt-text"><code>OnCalendar&#61;*-*-* 02:00:00</code> + 짝이 되는 .service.</p><div class="ft-note"><b>주의</b><br>cron보다 로깅·의존성·재시도가 강력.</div></div></article>
       <article class="ft-card"><div class="ft-head"><span>CronJob</span><span>k8s</span></div><div class="ft-body"><p class="vt-text"><code>schedule: "0 2 * * *"</code>로 파드를 주기 실행.</p><div class="ft-note"><b>주의</b><br>concurrencyPolicy·실패 보존 개수 설정 필수.</div></div></article>
     </div></div>
   </section>
@@ -136,7 +136,7 @@ s6 = ('<section id="s6" class="examples summary-card">' + h2("06","표현식 해
 0 2 * * 1-5 /opt/jobs/nightly.sh</code></pre>
       <pre class="wg-14-code wg-14-code-cli"><code># /etc/systemd/system/nightly.timer
 [Timer]
-OnCalendar=Mon..Fri 02:00:00
+OnCalendar&#61;Mon..Fri 02:00:00
 Persistent=true</code></pre>
       <pre class="wg-14-code wg-14-code-api"><code>schedule: "0 2 * * 1-5"
 concurrencyPolicy: Forbid
