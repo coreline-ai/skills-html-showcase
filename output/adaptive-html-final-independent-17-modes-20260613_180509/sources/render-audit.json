@@ -1,0 +1,294 @@
+{
+  "generated_for": "adaptive-html-final 17-mode independent build",
+  "representative": "index.html",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/index-390.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/index-1280.png"
+    }
+  },
+  "all_pages_overflow_ok": {
+    "390": true,
+    "1280": true
+  },
+  "per_page": [
+    {
+      "page": "index.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/01_skill_audit_meeting_to_release_notes.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/02_platform_blog_oncall_alert_policy.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/03_seo_dashboard_internal_doc_search.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/04_education_html_rust_ownership.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/05_github_analysis_taskq_due_diligence.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/06_github_feature_usage_upkeep_monitor.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/07_youtube_analysis_llm_cost_talk.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/08_manual_analysis_k8s_runbook.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/09_expert_html_multiregion_payments.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/10_article_html_observability.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/11_blog_writer_side_project_retro.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/12_beginner_html_https_tls_handshake.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/13_reference_html_cron_scheduling.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/14_comparison_html_react_state.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/15_case_study_html_settlement_batch_delay.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/16_landing_brief_html_cortex.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    },
+    {
+      "page": "pages/17_checklist_playbook_db_schema_migration.html",
+      "viewports": {
+        "390": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow_ok": true
+        },
+        "1280": {
+          "scrollWidth": 1280,
+          "clientWidth": 1280,
+          "overflow_ok": true
+        }
+      }
+    }
+  ]
+}
