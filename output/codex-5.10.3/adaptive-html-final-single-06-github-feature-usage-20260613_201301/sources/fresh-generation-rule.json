@@ -1,0 +1,7 @@
+{
+  "fresh_run": true,
+  "reused_previous_pages": false,
+  "mode_scope": "github_feature_usage",
+  "profile": "auto",
+  "screenshot_policy": "local-rendered-screenshots-from-current-repo-pages"
+}

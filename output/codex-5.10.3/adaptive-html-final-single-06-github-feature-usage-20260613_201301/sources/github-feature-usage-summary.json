@@ -1,0 +1,11 @@
+{
+  "target": "coreline-ai/skills-html-showcase",
+  "mode": "github_feature_usage",
+  "remote": "https://github.com/coreline-ai/skills-html-showcase.git",
+  "branch": "ahf-17-modes-independent-build",
+  "head": "1a09c86",
+  "manifest_version": "5.10.3",
+  "modes": 17,
+  "feature_lens": "what it does / how to use / where it fits",
+  "source_note": "public GitHub facts + current local repo files; no full repository snapshot stored"
+}

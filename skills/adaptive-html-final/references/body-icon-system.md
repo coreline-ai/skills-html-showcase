@@ -8,7 +8,16 @@
 
 ## 삽입법
 
-`assets/body-icons.json`에서 `id`로 SVG를 찾아 `.body-icon` 래퍼와 함께 삽입한다(장식이므로 항상 `aria-hidden="true"` 유지, 의미는 옆 텍스트가 전달).
+`assets/body-icons.json`에서 `id`로 SVG를 찾아 `.body-icon` 래퍼와 함께 삽입한다(장식이므로 항상 `aria-hidden="true"` 유지, 의미는 옆 텍스트가 전달). **SVG를 직접 새로 쓰지 않는다.** `viewBox="0 0 24 24"` Lucide/Feather식 아이콘, 직접 작성한 path, 외부 아이콘 복사는 금지이며 검증기에서 실패한다.
+
+가장 안전한 생성 방법은 헬퍼를 쓰는 것이다.
+
+```bash
+python3 skills/adaptive-html-final/scripts/body_icon_markup.py idea
+python3 skills/adaptive-html-final/scripts/body_icon_markup.py warning --class body-icon--sm
+```
+
+위 명령 출력만 복사하면 `assets/body-icons.json`의 정본 SVG(`viewBox="0 0 40 40"`, `bi-*` 클래스)를 그대로 사용하게 된다.
 
 ```html
 <!-- 박스형(기본 42px) -->
@@ -22,6 +31,7 @@
 - **위치**: 섹션 제목(h2/h3) 앞, 콜아웃(term/danger/good) 라벨 옆, 카드 헤더, source-note 라벨 등 **의미가 분명한 곳에만**. 한 화면에 과용 금지(섹션당 1~3개 권장).
 - **접근성**: 아이콘은 `aria-hidden="true"`(장식). 의미는 반드시 인접 텍스트로 전달(아이콘만으로 정보 전달 금지). 색 외 단서 유지.
 - **반복 금지**: 한 문서의 직접 섹션 h2에 동일 SVG를 전부 반복하지 않는다. 섹션의 정보 역할에 맞춰 최소 4종 이상을 섞고, manual/reference/github/youtube처럼 섹션 기능이 뚜렷한 모드는 각 주요 섹션마다 의미 아이콘을 다르게 고른다.
+- **카탈로그 고정**: `.body-icon > svg`는 32종 카탈로그 중 하나와 XML 구조가 일치해야 한다. 래퍼 class만 맞고 내부 SVG가 다르면 실패한다.
 - **무 JS**: 정적 인라인 SVG만. 애니메이션/호버 동작 JS 금지.
 
 ## 32종 카탈로그

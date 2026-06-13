@@ -1,0 +1,22 @@
+{
+  "mode": "reference_html",
+  "topic": "HTTP Cache-Control 헤더 레퍼런스",
+  "layout": "reference-manual.html",
+  "primary_vt": "file-tour",
+  "wg": "wg-14",
+  "sections": [
+    "빠른 참조",
+    "기본 모델",
+    "directive anatomy",
+    "응답 캐시",
+    "요청 캐시",
+    "결정 흐름",
+    "시나리오",
+    "예제",
+    "주의점",
+    "검증",
+    "FAQ",
+    "체크리스트",
+    "출처 메모"
+  ]
+}

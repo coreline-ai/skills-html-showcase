@@ -1,0 +1,22 @@
+{
+  "mode": "case_study_html",
+  "topic": "결제 웹훅 중복 처리 장애 회고",
+  "layout": "case-study.html",
+  "primary_vt": "incident-summary",
+  "wg": "wg-12",
+  "sections": [
+    "상황",
+    "영향",
+    "incident summary",
+    "타임라인",
+    "원인",
+    "결정",
+    "swimlane",
+    "결과",
+    "운영 지표",
+    "리스크",
+    "후속 조치",
+    "교훈",
+    "출처 메모"
+  ]
+}

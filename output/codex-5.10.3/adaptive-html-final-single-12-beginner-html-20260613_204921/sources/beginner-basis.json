@@ -1,0 +1,25 @@
+{
+  "mode": "beginner_html",
+  "topic": "API를 식당 주문으로 이해하기",
+  "layout": "beginner-learning.html",
+  "primary_vt": "concept-explainer",
+  "wg": [
+    "wg-15",
+    "wg-13"
+  ],
+  "sections": [
+    "오늘의 목표",
+    "API 첫 개념",
+    "식당 비유",
+    "용어 5개",
+    "흐름 지도",
+    "요청과 응답",
+    "실수와 함정",
+    "실습",
+    "체크리스트",
+    "작은 테스트",
+    "마무리",
+    "다음 행동",
+    "출처 메모"
+  ]
+}

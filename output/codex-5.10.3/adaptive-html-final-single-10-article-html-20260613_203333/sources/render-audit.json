@@ -1,0 +1,89 @@
+{
+  "url": "http://localhost:8080/output/codex-5.10.3/adaptive-html-final-single-10-article-html-20260613_203333/index.html",
+  "checked_at": "2026-06-13T11:37:34.779Z",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow_ok": true,
+      "h1Count": 1,
+      "sectionCount": 17,
+      "screenshot": "sources/screenshots/390.png",
+      "overflowNodes": [
+        {
+          "tag": "DIV",
+          "cls": "dt-arrow",
+          "scrollWidth": 7,
+          "clientWidth": 2,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "cls": "dt-arrow",
+          "scrollWidth": 7,
+          "clientWidth": 2,
+          "text": ""
+        },
+        {
+          "tag": "PRE",
+          "cls": "wg-14-code wg-14-code-yml",
+          "scrollWidth": 340,
+          "clientWidth": 310,
+          "text": "source: meeting-2026-06-13\nclaim: 회의 요약은 action ow"
+        }
+      ]
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow_ok": true,
+      "h1Count": 1,
+      "sectionCount": 17,
+      "screenshot": "sources/screenshots/1280.png",
+      "overflowNodes": []
+    }
+  },
+  "toc": {
+    "count": 10,
+    "missing": []
+  },
+  "finalContrast": {
+    "390": {
+      "text": "13\nSource Note · 작성 기준\n\n이 글은 특정 제품 홍보가 아니라, 개인 메모·팀 문서·AI 요약이 만나는 지점에서 반복되는 운영 문제를 공개 아티클 형식으로 재구성한 분석입니다. 사실과 추론을 분리하고, 도입 판단은 조직의 반복 결정 비용을 기준으로 삼았습니다.",
+      "color": "rgb(102, 102, 102)",
+      "background": "rgb(250, 249, 245)",
+      "ratio": 5.45,
+      "box": {
+        "x": 39,
+        "y": 12036.015625,
+        "width": 312,
+        "height": 162.21875,
+        "top": 12036.015625,
+        "right": 351,
+        "bottom": 12198.234375,
+        "left": 39
+      },
+      "visible_ok": true
+    },
+    "1280": {
+      "text": "13\nSource Note · 작성 기준\n\n이 글은 특정 제품 홍보가 아니라, 개인 메모·팀 문서·AI 요약이 만나는 지점에서 반복되는 운영 문제를 공개 아티클 형식으로 재구성한 분석입니다. 사실과 추론을 분리하고, 도입 판단은 조직의 반복 결정 비용을 기준으로 삼았습니다.",
+      "color": "rgb(102, 102, 102)",
+      "background": "rgb(250, 249, 245)",
+      "ratio": 5.45,
+      "box": {
+        "x": 153,
+        "y": 7844.03125,
+        "width": 974,
+        "height": 100.78125,
+        "top": 7844.03125,
+        "right": 1127,
+        "bottom": 7944.8125,
+        "left": 153
+      },
+      "visible_ok": true
+    }
+  },
+  "verdict": "OK"
+}

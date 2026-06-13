@@ -500,6 +500,120 @@ def numbered_h2_body_icon_gate(text: str) -> list:
     return issues
 
 
+BODY_ICON_ALLOWED_CLASSES = {
+    'bi-line', 'bi-accent-line', 'bi-fill', 'bi-soft',
+    'bi-accent', 'bi-accent-box', 'bi-dot', 'bi-dot-box',
+}
+
+
+def _svg_canonical_tuple(svg: str):
+    """Return a strict-but-whitespace-stable canonical tuple for inline SVG.
+
+    body-icons.json is the source of truth for `.body-icon` artwork. Comparing
+    parsed XML rather than raw strings allows harmless whitespace/self-closing
+    differences while still rejecting hand-written 24x24/Lucide-style SVGs or
+    altered paths.
+    """
+    try:
+        root = ET.fromstring(svg.strip())
+    except Exception:
+        return None
+
+    def clean_tag(tag: str) -> str:
+        return tag.split('}', 1)[-1] if '}' in tag else tag
+
+    def clean_val(value: str) -> str:
+        return re.sub(r'\s+', ' ', (value or '').strip())
+
+    def walk(el):
+        attrs = tuple(sorted((clean_tag(k), clean_val(v)) for k, v in el.attrib.items()))
+        children = tuple(walk(child) for child in list(el))
+        text = clean_val(el.text or '')
+        tail = clean_val(el.tail or '')
+        return (clean_tag(el.tag), attrs, text, children, tail)
+
+    return walk(root)
+
+
+def _svg_viewbox(svg: str) -> str | None:
+    m = re.search(r'\bviewBox\s*=\s*(["\'])(.*?)\1', svg, re.I | re.S)
+    return re.sub(r'\s+', ' ', m.group(2).strip()) if m else None
+
+
+def _svg_class_tokens(svg: str) -> set[str]:
+    tokens: set[str] = set()
+    for m in re.finditer(r'\bclass\s*=\s*(["\'])(.*?)\1', svg, re.I | re.S):
+        tokens.update(t for t in re.split(r'\s+', m.group(2).strip()) if t)
+    return tokens
+
+
+def load_body_icon_catalog(skill_dir: Path | None):
+    """Load canonical SVG tuples from assets/body-icons.json."""
+    if not skill_dir:
+        return None
+    p = skill_dir / 'assets' / 'body-icons.json'
+    if not p.exists():
+        return None
+    try:
+        icons = json.loads(p.read_text(encoding='utf-8'))
+    except Exception:
+        return None
+    catalog = set()
+    for icon in icons if isinstance(icons, list) else icons.get('icons', []):
+        svg = icon.get('svg') if isinstance(icon, dict) else None
+        if not svg:
+            continue
+        canon = _svg_canonical_tuple(svg)
+        if canon:
+            catalog.add(canon)
+    return catalog
+
+
+def body_icon_catalog_gate(text: str, catalog=None) -> list:
+    """Ensure `.body-icon` uses only assets/body-icons.json SVGs.
+
+    Presence/order/diversity gates were not enough: a generated page could wrap a
+    hand-written 24x24 SVG in `.body-icon` and still pass. This gate locks body
+    icons to the official 32-icon catalog and its 40x40 token-class contract.
+    """
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if 'body-icon' not in body:
+        return []
+    issues = []
+    for idx, m in enumerate(re.finditer(r'<span\b[^>]*class\s*=\s*["\'][^"\']*\bbody-icon\b[^"\']*["\'][^>]*>[\s\S]*?</span>', body, re.I), 1):
+        span = m.group(0)
+        sm = re.search(r'<svg\b[\s\S]*?</svg>', span, re.I)
+        if not sm:
+            issues.append({'type': 'body_icon_missing_svg', 'index': idx,
+                           'detail': 'body-icon 래퍼 안에는 assets/body-icons.json의 SVG가 있어야 한다.'})
+            continue
+        svg = sm.group(0)
+        viewbox = _svg_viewbox(svg)
+        if viewbox != '0 0 40 40':
+            issues.append({'type': 'body_icon_viewbox_invalid', 'index': idx, 'viewBox': viewbox,
+                           'detail': 'body-icon SVG는 assets/body-icons.json 정본(viewBox="0 0 40 40")만 허용한다.'})
+        classes = _svg_class_tokens(svg)
+        bad_classes = sorted(c for c in classes if c not in BODY_ICON_ALLOWED_CLASSES)
+        if bad_classes:
+            issues.append({'type': 'body_icon_class_invalid', 'index': idx, 'classes': bad_classes,
+                           'detail': 'body-icon SVG 클래스는 bi-line/bi-fill 등 body-icons.css 허용 토큰만 사용한다.'})
+        if not (classes & BODY_ICON_ALLOWED_CLASSES):
+            issues.append({'type': 'body_icon_class_missing', 'index': idx,
+                           'detail': 'body-icon SVG는 body-icons.json의 bi-* 토큰 클래스를 포함해야 한다.'})
+        if catalog is None:
+            issues.append({'type': 'body_icon_catalog_unavailable', 'index': idx,
+                           'detail': 'skill_dir/assets/body-icons.json을 읽지 못해 catalog 정합을 확인할 수 없다.'})
+            continue
+        canon = _svg_canonical_tuple(svg)
+        if canon is None:
+            issues.append({'type': 'body_icon_svg_parse_error', 'index': idx,
+                           'detail': 'body-icon SVG를 XML로 파싱할 수 없다. body-icons.json 원문을 그대로 삽입한다.'})
+        elif canon not in catalog:
+            issues.append({'type': 'body_icon_not_in_catalog', 'index': idx,
+                           'detail': 'body-icon 내부 SVG는 직접 작성 금지. assets/body-icons.json의 32종 중 하나를 그대로 삽입해야 한다.'})
+    return issues
+
+
 def section_surface_contract_gate(text: str, style: str) -> list:
     """전 모드 공통: layout-* 콘텐츠 페이지의 주요 섹션은 통일된 card/view surface 위에 둔다.
     정적 검사 — 통일 섹션 surface 규칙(>section:not(.try) 또는 >article>section의 card 배경)이
@@ -1887,10 +2001,12 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
     expected_css_hash = None
     expected_asset_hashes = None
     all_skill_css_hashes = None
+    body_icon_catalog = None
     asset_texts = {}
     asset_order = ['theme.css', 'components.css', 'visual-components.css', 'layouts.css', 'print.css']
     conditional_order = ['widgets.css', 'visual-html.css', 'body-icons.css', 'editorial-patterns.css', 'shape-visuals.css', 'workflow-visuals.css', 'theme-dark.css']
     if skill_dir:
+        body_icon_catalog = load_body_icon_catalog(skill_dir)
         asset_paths = [skill_dir/'assets'/name for name in asset_order]
         if all(p.exists() for p in asset_paths):
             asset_texts = {name: (skill_dir/'assets'/name).read_text(encoding='utf-8') for name in asset_order}
@@ -2037,6 +2153,9 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for div_issue in body_icon_diversity_gate(text):
             div_issue['page'] = rel
             issues.append(div_issue)
+        for bic_issue in body_icon_catalog_gate(text, body_icon_catalog):
+            bic_issue['page'] = rel
+            issues.append(bic_issue)
         for hdr_issue in header_contract_gate(text):
             hdr_issue['page'] = rel
             issues.append(hdr_issue)

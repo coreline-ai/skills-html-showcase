@@ -1,0 +1,22 @@
+{
+  "mode": "blog_writer",
+  "topic": "7일 오프라인 아침 루틴 실험기",
+  "layout": "personal-blog-essay.html",
+  "primary_vt": "timeline",
+  "wg": "wg-17 pr writeup adapted as personal routine change log",
+  "sections": [
+    "왜 지금",
+    "실험 전 상태",
+    "7일 타임라인",
+    "첫 실패",
+    "중간 점검",
+    "내 관점",
+    "Before/After",
+    "시작 방법",
+    "변경 로그",
+    "남은 질문",
+    "마무리",
+    "soft CTA",
+    "source note"
+  ]
+}

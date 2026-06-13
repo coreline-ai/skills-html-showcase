@@ -18,10 +18,11 @@
 - **헤더 정본 전역화**: `header_contract_gate`가 전 `layout-*` 콘텐츠 페이지에서 `kicker`·`h1`·`sub`·`meta`뿐 아니라 `generated-row`·`lens-strip`까지 필수 검사. SEO/Reference 예제 헤더 보정.
 - **목차 정본 강화**: 직접 h2 섹션이 4개 이상인 toc-required 페이지와 분석/사용 가이드 모드는 공식 `toc-map` chip-nav를 필수화. examples 17종 중 누락 페이지에 정본 목차와 섹션 anchor 보강.
 - **아이콘 순서 게이트**: `h2_icon_order_violation`으로 직접 섹션 h2의 `body-icon → (.num/.no) → title` 순서를 강제해 아이콘 생략뿐 아니라 뒤섞임/밀착 회귀를 차단.
+- **body-icon 카탈로그 게이트**: `.body-icon` 래퍼만 맞추고 내부에 Lucide/Feather식 `viewBox="0 0 24 24"` 임의 SVG를 넣는 회귀를 차단. `body_icon_catalog_gate`가 `assets/body-icons.json` 32종, `viewBox="0 0 40 40"`, `bi-*` 토큰 클래스를 강제하고 `body_icon_markup.py` 헬퍼로 생성 단계의 SVG 상상을 줄인다.
 - **가로 overflow 방어**: 긴 무공백 URL/코드 토큰이 보호 요소 밖 prose에 노출되면 실패(`long_token_overflow_unprotected`). R4 표 보호 wrapper에 `.tbl`을 인정해 기존 정본 CSS와 게이트를 일치.
 - **품질 보조 게이트**: `quality_contract_check.py`가 정본 컴포넌트 없이 raw `<p>`/`<div>`/`<li>`로 섹션을 대량 합성하는 붕어빵/좌측 밀착 패턴을 차단.
 - **완료 아티팩트**: `completion_check.py`가 신규 산출물의 `sources/render-audit.json` + 1280/390 screenshot 증빙을 검사한다. 검증기는 Playwright를 직접 구동하지 않고 외부 캡쳐 산출물만 확인하며, 현행 packaged examples는 기준선 예외로 통과.
-- **거버넌스**: 신규 catch/pass 테스트를 추가하고 manifest `quality.governance_count` 단일 출처를 **140/140**로 동기화. `.skill` 재패키징으로 byte-match 유지.
+- **거버넌스**: 신규 catch/pass 테스트를 추가하고 manifest `quality.governance_count` 단일 출처를 **144/144**로 동기화. `.skill` 재패키징으로 byte-match 유지.
 - **버전업 방지**: `version_release_approval_issues`가 HEAD와 다른 `manifest.version`을 감지하면 `dev-plan/release-approval-vX.Y.Z.md` 없이는 실패해 승인 없는 patch bump를 차단.
 
 - **다크 대비 P1**: widgets.css "카탈로그 reverse-sync" 층의 하드코딩 `color:#fff` 3규칙(wg-01 pick/rank·wg-02 cta·wg-06 btn·wg-07 pill·wg-09 next·wg-17 no·wg-20 chip)을 `var(--on-accent)`로 — 다크 트리오 대비 1.92→8.6+ (실측). wg-13-decide(4.69 AA 통과)·wg-20-var(자체 7.10)는 의도적 제외.

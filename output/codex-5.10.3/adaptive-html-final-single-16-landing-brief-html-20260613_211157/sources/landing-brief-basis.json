@@ -1,0 +1,16 @@
+{
+  "mode": "landing_brief_html",
+  "topic": "AI 회의 액션 자동화 랜딩 브리프",
+  "layout": "layout-landing / landing-brief.html",
+  "primary_vt": [
+    "hero-map",
+    "card-grid",
+    "feature-flag",
+    "soft-workflow-map"
+  ],
+  "wg_candidates_used": [
+    "wg-16 implementation-plan",
+    "wg-08 clickable-flow"
+  ],
+  "contract": "10+ sections, latest header/toc, all section h2 body-icon, varied landing structures, no previous-output reuse"
+}

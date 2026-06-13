@@ -61,7 +61,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 ### v5.10.3 정합 보강 (2026-06-13) — 생성 회귀 방지 게이트 + 버전업 승인 정책
 
-헤더 `generated-row/lens-strip`, toc-required `toc-map`, h2 `body-icon→num/no→title` 순서, 긴 토큰 overflow, raw p/div 합성, render-audit 완료 증빙을 검증기로 승격했습니다. 과거 `output/`은 공개 데모/테스트 산출물일 뿐 스킬 정본이 아니며, 현행 기준선은 `skills/adaptive-html-final/examples/`와 신규 산출물입니다. 이 보강은 **v5.10.3 유지** 원칙으로 정합했으며 거버넌스 **140/140**입니다.
+헤더 `generated-row/lens-strip`, toc-required `toc-map`, h2 `body-icon→num/no→title` 순서, 긴 토큰 overflow, raw p/div 합성, render-audit 완료 증빙을 검증기로 승격했습니다. 과거 `output/`은 공개 데모/테스트 산출물일 뿐 스킬 정본이 아니며, 현행 기준선은 `skills/adaptive-html-final/examples/`와 신규 산출물입니다. 이 보강은 **v5.10.3 유지** 원칙으로 정합했으며 거버넌스 **144/144**입니다.
 
 ### v5.10.3 (2026-06-12) — 다크 대비·인쇄 가독·폭 정본(전 모드 wide) + 자기방어 게이트 6종
 
@@ -429,7 +429,7 @@ skills-html-showcase/
 │   ├── references/    (19)            # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/GitHub·YouTube·Manual·기능가이드 규칙
 │   ├── recipes/       (17)            # 모드별 대표 프롬프트
 │   ├── schemas/       (3)             # blog-meta · quality-report · visual-brief
-│   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트 (140/140)
+│   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트 (144/144)
 │   ├── visual-templates/ (7)         # 8000×6000 SVG 템플릿
 │   ├── scripts/                       # render_visual_svg.py · validate_output.py · completion_check.py 등
 │   ├── examples/                     # v5.10.3 현행 17모드 참조 예제 + index
@@ -463,7 +463,7 @@ skills-html-showcase/
 | 외부 동작 JS | **0건** |
 | 미정의 CSS 클래스 | **0개** (레이아웃↔CSS 차집합 0) |
 | manifest ↔ 디스크 레이아웃 매핑 | 차집합 0 (17 / 17) |
-| 거버넌스 게이트 | `test_governance_gates.py` **140 / 140 통과** |
+| 거버넌스 게이트 | `test_governance_gates.py` **144 / 144 통과** |
 | blog-writer 상세 규칙 흡수 | 8 / 8 (제목 4계열·도입부 3유형·본문 밀도·톤 매핑·100점·메타·플랫폼·박스) |
 
 ### 버전 진화
@@ -490,7 +490,7 @@ skills-html-showcase/
 | `v5.10.0` | **GitHub Feature-Usage 17번째 모드** — `github_feature_usage`, `github-feature-usage.html`, `.layout-github-feature`(github 컴포넌트 어휘 공유 + 스크린샷 갤러리), 계약 게이트·tie-breaker·경계 버그 수정. 거버넌스 86/86 |
 | `v5.10.1` | 예제 정본화 — `mode-template-contract` 부록 안티패턴 제거, manifest/결정표 자기정합 게이트 추가 |
 | `v5.10.2` | `layout-github-feature` 단락 폭 46rem 회귀 수정 + layout별 60rem 셀렉터 정밀 게이트 |
-| `v5.10.3` | 다크 대비·인쇄 가독·전 모드 page-wide 폭 정본 + visible 버전 표면/.skill byte-match 게이트 + 헤더·목차·아이콘 순서·overflow·raw 합성·render-audit 완료 증빙 + 승인 없는 버전 bump 차단. 거버넌스 140/140 |
+| `v5.10.3` | 다크 대비·인쇄 가독·전 모드 page-wide 폭 정본 + visible 버전 표면/.skill byte-match 게이트 + 헤더·목차·아이콘 순서·overflow·raw 합성·render-audit 완료 증빙 + 승인 없는 버전 bump 차단. 거버넌스 144/144 |
 
 > 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) · 프로파일 분리 계획(아카이브): [`docs/archive/implement_visual_profile_separation.md`](docs/archive/implement_visual_profile_separation.md)
 
@@ -510,7 +510,7 @@ skills-html-showcase/
 - [x] 교육용=퀴즈+정답 · 전문가용=리스크+검증 · 블로그/SEO=제목+메타+태그 · 감사=개선본
 - [x] 비주얼: 8000×6000 캔버스 · `figure`+`figcaption` · 의미 있는 `alt` · 캔버스 잘림 없음
 
-> 🟢 **게이트 현황(v5.10.3)**: 거버넌스 `test_governance_gates.py` **140/140 통과** (v5.10.3 정합 보강 포함), 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
+> 🟢 **게이트 현황(v5.10.3)**: 거버넌스 `test_governance_gates.py` **144/144 통과** (v5.10.3 정합 보강 포함), 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
 > `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점의 역사적 13-topic 기준선입니다.
 
 ```bash

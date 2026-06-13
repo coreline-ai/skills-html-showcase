@@ -1,0 +1,14 @@
+{
+  "mode": "expert_html",
+  "profile": "auto",
+  "topic": "사내 AI 에이전트 릴리즈 게이트 아키텍처 진단",
+  "basis": "internal architecture memo, incident review notes, governance goals synthesized for report; no external market facts asserted",
+  "observed_at": "2026-06-13 20:28 KST",
+  "decision": "conditional go: 2-stage release gate and red-team eval before team-wide rollout",
+  "unknowns": [
+    "real production traffic mix",
+    "legal retention policy",
+    "model vendor contract limits",
+    "current incident cost baseline"
+  ]
+}

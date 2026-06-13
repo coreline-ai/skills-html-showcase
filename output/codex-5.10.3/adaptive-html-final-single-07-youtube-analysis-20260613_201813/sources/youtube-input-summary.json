@@ -1,0 +1,21 @@
+{
+  "mode": "youtube_analysis",
+  "profile": "auto",
+  "input_tier": "A-lite: transcript excerpt + comment memo + chapter notes; public URL not provided",
+  "video_title": "AI 회의록을 실행 티켓으로 바꾸는 자동화 워크플로우",
+  "observed_at": "2026-06-13 20:18 KST",
+  "transcript_markers": [
+    "00:18 문제: 회의는 많은데 후속 실행이 흩어진다",
+    "02:40 녹취→요약→담당자 추출 파이프라인",
+    "05:20 Jira/Linear 티켓 생성 전 검수 게이트",
+    "08:10 자동화보다 책임 경계가 중요하다는 경고",
+    "10:55 다음 영상 예고: 평가 지표와 운영 대시보드"
+  ],
+  "comment_memo": [
+    "실제 회의에서 액션 아이템이 누락되는 문제가 공감된다는 의견",
+    "Jira 연동 설정 파일을 더 자세히 원한다는 요청",
+    "보안/녹취 저장 위치를 묻는 댓글",
+    "요약 정확도보다 담당자 승인 플로우가 중요하다는 반응"
+  ],
+  "source_limits": "No iframe, no thumbnail redistribution, no full transcript reproduction, no private analytics."
+}

@@ -1,0 +1,27 @@
+{
+  "mode": "manual_analysis",
+  "profile": "auto",
+  "manual_title": "결제 실패 급증 온콜 인시던트 대응 런북",
+  "manual_status": "owner review draft",
+  "source_snapshot_at": "2026-06-13 20:23 KST",
+  "source_files": [
+    "ops/payment-alerts.md §1-4",
+    "ops/rollback.md §2-3",
+    "support/refund-macro.md §1",
+    "infra/secrets-rotation.md §5",
+    "SRE handoff memo 2026-06-11"
+  ],
+  "roles_in_source": [
+    "Incident Commander",
+    "On-call Engineer",
+    "DB Owner",
+    "Support Lead"
+  ],
+  "unknowns": [
+    "current product version",
+    "SLA minutes",
+    "legal refund language approval",
+    "payment provider current status API limits"
+  ],
+  "source_preservation_policy": "summary-only; no private runbook copied verbatim"
+}

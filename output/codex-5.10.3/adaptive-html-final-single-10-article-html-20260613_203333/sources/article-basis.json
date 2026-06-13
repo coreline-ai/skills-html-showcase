@@ -1,0 +1,22 @@
+{
+  "mode": "article_html",
+  "topic": "AI 시대의 개인 지식 금고가 팀의 의사결정 품질을 바꾸는 방식",
+  "layout": "magazine-article.html",
+  "primary_vt": "decision-tree",
+  "wg": "wg-14 feature explainer",
+  "sections": [
+    "문제 제기",
+    "맥락",
+    "핵심 주장",
+    "의사결정 트리",
+    "근거의 계층",
+    "반론과 한계",
+    "사례 장면",
+    "실행 원칙",
+    "게시/공유 전략",
+    "결론",
+    "테이크어웨이",
+    "관련 읽을거리",
+    "출처 메모"
+  ]
+}

@@ -285,6 +285,22 @@ icon_ok = v.numbered_h2_body_icon_gate('<main id="main"><section><h2><span class
 check("body-icon gate passes example-style h2 (icon+num)", icon_ok == [])
 icon_plain = v.numbered_h2_body_icon_gate('<main id="main"><section><h2>번호 없는 제목</h2></section></main>')
 check("body-icon gate ignores un-numbered h2", icon_plain == [])
+_body_icon_catalog = v.load_body_icon_catalog(SKILL)
+_body_icon_svg = __import__("json").loads((SKILL / "assets" / "body-icons.json").read_text(encoding="utf-8"))[0]["svg"]
+_body_icon_good = '<main id="main" class="page-wide layout-checklist"><section><h2><span class="body-icon">' + _body_icon_svg + '</span><span class="num">1</span>정본 아이콘</h2></section></main>'
+check("body-icon catalog gate passes body-icons.json SVG",
+      v.body_icon_catalog_gate(_body_icon_good, _body_icon_catalog) == [])
+_body_icon_24 = '<main id="main" class="page-wide layout-checklist"><section><h2><span class="body-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 16H3z"></path></svg></span><span class="num">1</span>임의 아이콘</h2></section></main>'
+_body_icon_24_issues = {i["type"] for i in v.body_icon_catalog_gate(_body_icon_24, _body_icon_catalog)}
+check("body-icon catalog gate rejects 24x24 arbitrary SVG",
+      {"body_icon_viewbox_invalid", "body_icon_not_in_catalog"}.issubset(_body_icon_24_issues))
+_body_icon_fake40 = '<main id="main" class="page-wide layout-checklist"><section><h2><span class="body-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M1 1h38v38H1z"></path></svg></span><span class="num">1</span>가짜 40 아이콘</h2></section></main>'
+check("body-icon catalog gate rejects non-catalog 40x40 SVG",
+      any(i["type"] == "body_icon_not_in_catalog" for i in v.body_icon_catalog_gate(_body_icon_fake40, _body_icon_catalog)))
+_body_icon_bad_class = '<main id="main" class="page-wide layout-checklist"><section><h2><span class="body-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="lucide-line" d="M1 1h38"></path></svg></span><span class="num">1</span>외부 클래스</h2></section></main>'
+_body_icon_bad_class_issues = {i["type"] for i in v.body_icon_catalog_gate(_body_icon_bad_class, _body_icon_catalog)}
+check("body-icon catalog gate rejects non-bi icon classes",
+      {"body_icon_class_invalid", "body_icon_class_missing", "body_icon_not_in_catalog"}.issubset(_body_icon_bad_class_issues))
 
 # Global section-surface contract (>section:not(.try) card; .try hero 제외).
 surf_css_ok = '.page-wide>section:not(.try):not(.no-surface),.page>article>section{background:var(--card);border:1px solid var(--line)}'

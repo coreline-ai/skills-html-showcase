@@ -105,7 +105,7 @@ v5.10.3 감사에서 확인된 반복 원인은 **manifest/SKILL/CHANGELOG 같�
    | 3 | `visual-components.css` | `{{VISUAL_COMPONENTS_CSS}}` | **코어 해시 대상** |
    | 4 | `widgets.css` | `{{WIDGETS_CSS}}` | **widget·auto** 프로파일만(diagram에선 슬롯 빈 값). 해시 대상 아님 |
    | 5 | `visual-html.css` | `{{VISUAL_HTML_CSS}}` | **diagram·auto** 프로파일만(widget에선 슬롯 빈 값). 해시 대상 아님 |
-   | 5.5 | `body-icons.css` | `{{BODY_ICONS_CSS}}` | 본문 아이콘(`bi-`) 사용 시. **프로파일 무관**(장식). 해시 대상 아님 |
+   | 5.5 | `body-icons.css` | `{{BODY_ICONS_CSS}}` | 본문 아이콘(`bi-`) 사용 시. **프로파일 무관**(장식). 해시 대상 아님. 내부 SVG는 `assets/body-icons.json` 32종만 사용(임의 24x24/외부 SVG 금지). |
    | 5.6 | `editorial-patterns.css` | `{{EDITORIAL_PATTERNS_CSS}}` | 본문 패턴 8종(chronology·source-preserve·core-insight·connection·before-after·impact-grid·md-excerpt·accessibility-checklist) 사용 시. **프로파일 무관**. 해시 대상 아님 |
    | 5.7 | `shape-visuals.css` | `{{SHAPE_VISUALS_CSS}}` | soft-shape 도형(`.shape-figure`/`.shape-img`, `assets/shape-svgs/`) 사용 시. **프로파일 무관**(장식 앵커). 해시 대상 아님 |
    | 5.8 | `workflow-visuals.css` | `{{WORKFLOW_VISUALS_CSS}}` | soft 워크플로우 도판(`.workflow-figure`/`.workflow-img`, `assets/workflow-svgs/` 10종) 사용 시. **프로파일 무관**(대표 도판). 해시 대상 아님 |
@@ -153,6 +153,7 @@ v5.10.3 감사에서 확인된 반복 원인은 **manifest/SKILL/CHANGELOG 같�
 7. **구조 보장.** `<html lang="ko">`, viewport, title, meta description, `h1` 정확히 1개, `<main id="main">`.
 8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(현재 버전 **5.10.3** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
 9. **8-테마 단일 계약.** 테마는 `theme-dark.css`의 라디오 `name="ahf-theme"`(light/light2/white/dark/dark2/blue/skyblue/sepia) 1종만 사용한다. legacy `#theme-toggle` 마크업·스크립트형 테마 토글은 금지.
+10. **body-icon 카탈로그 고정.** `.body-icon` 래퍼 안의 SVG는 반드시 `assets/body-icons.json`의 정본 32종 중 하나여야 한다. `viewBox="0 0 40 40"`와 `bi-*` 토큰 클래스가 아닌 Lucide/Feather식 24px SVG, 직접 작성 path, 외부 아이콘 복사는 금지한다. 필요 시 `python3 skills/adaptive-html-final/scripts/body_icon_markup.py <icon-id>` 출력만 복사한다.
 
 ---
 

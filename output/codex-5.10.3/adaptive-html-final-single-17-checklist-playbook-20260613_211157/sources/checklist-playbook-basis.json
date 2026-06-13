@@ -1,0 +1,17 @@
+{
+  "mode": "checklist_playbook",
+  "topic": "온콜 장애 초동 대응 체크리스트 플레이북",
+  "layout": "layout-checklist / checklist-playbook.html",
+  "primary_vt": [
+    "checklist-flow",
+    "quality-gate",
+    "process-swimlane",
+    "implementation-plan",
+    "triage-board"
+  ],
+  "wg_candidates_used": [
+    "wg-18 ticket-triage-board",
+    "wg-19 feature-flag-editor"
+  ],
+  "contract": "10+ sections, all sections surfaced, latest header/toc, 1280/390 render audit"
+}

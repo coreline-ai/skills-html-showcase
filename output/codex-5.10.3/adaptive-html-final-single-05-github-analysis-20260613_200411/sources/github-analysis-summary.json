@@ -1,0 +1,39 @@
+{
+  "target": "coreline-ai/skills-html-showcase",
+  "remote": "https://github.com/coreline-ai/skills-html-showcase.git",
+  "local_branch": "ahf-17-modes-independent-build",
+  "local_head": "1a09c86",
+  "recent_local_commits": [
+    "1a09c86 wip(ahf-17modes): modes 02 platform_blog, 03 seo_dashboard",
+    "4bd39c5 wip(ahf-17modes): mode 01 skill_audit + sources",
+    "42bd470 wip(ahf-17modes): finalize helper for independent 17-mode build",
+    "98ae905 chore: remove legacy demo and internalize template catalog",
+    "39f8956 chore: harden adaptive-html-final v5.10.3 governance"
+  ],
+  "worktree_status_count": 6,
+  "manifest_version": "5.10.3",
+  "manifest_modes": 17,
+  "manifest_governance_count": 140,
+  "public_github_api_observed_at": "2026-06-13T20:00+09:00 approx",
+  "public_api_facts": {
+    "description_note": "Public repository description observed still says 13 modes / 3 themes while README and manifest say 17 modes / 8 themes.",
+    "default_branch": "main",
+    "archived": false,
+    "disabled": false,
+    "license": null,
+    "stars": 1,
+    "forks": 0,
+    "open_issues": 0,
+    "language": "HTML",
+    "tags": [
+      "v5.2.3"
+    ],
+    "releases_count_sample": 0,
+    "contributors_sample": [
+      "coreline-ai"
+    ],
+    "open_prs_sample": 0,
+    "closed_prs_sample": 0
+  },
+  "source_preservation_policy": "public-output-summary-only"
+}
