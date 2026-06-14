@@ -22,5 +22,5 @@
 - 코어(theme/print) 해시 갱신 → examples 18종 재인라인 + `sources/css-integrity.json` + source manifest 동기화 + `.skill` 재패키징.
 - 버전 표면 전면 갱신(현행만): manifest(version·examples.version·changes·releases·updated·purpose), SKILL.md 헤더, CHANGELOG, README(root·skill), AGENTS, Guide, references/visual-html-system, add-mode-runbook, examples visible meta/footer, 출하 예제 내 구버전 CSS 주석 버전 태그 제거.
 - 과거 changelog 헤딩·감사 기록·게이트 도입 버전 마커(`Gate X (v5.10.3)` 등)는 역사적 기준선으로 보존(AGENTS §2.1 governance 원칙).
-- 게이트·거버넌스 카운트 **153 불변**(신규 게이트 미추가; M2~M6·M9는 작성 프로토콜로 처리).
+- 거버넌스 카운트 **159**(build-evidence·render-audit 게이트 포함; M-CSS는 코어 반영, M2~M6·M9는 작성 프로토콜).
 - 무 JS·8테마·17모드 산출 계약 불변.
