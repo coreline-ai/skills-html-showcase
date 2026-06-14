@@ -43,6 +43,13 @@ REPEATED_PLACEHOLDER_PATTERNS: list[tuple[str, re.Pattern[str], int]] = [
     ("numbered_generic_section", re.compile(r"섹션\s*[0-9]+"), 3),
 ]
 
+NONCANONICAL_CLASS_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
+    # v5.10.4 M2/M3: generated outputs invented these classes instead of using
+    # official tag-list / lede-note / source-note / source-preserve templates.
+    ("noncanonical_template_card_head", re.compile(r'class=["\'][^"\']*\btemplate-card-head\b', re.I)),
+    ("noncanonical_source_preserve_static", re.compile(r'class=["\'][^"\']*\bsource-preserve-static\b', re.I)),
+]
+
 TRY_CARD_CONTRAST_CLASSES = (
     "repo-card",
     "repo-signal",
@@ -61,7 +68,7 @@ TRY_CARD_CONTRAST_CLASSES = (
 CANONICAL_CONTENT_PATTERN = re.compile(
     r"\b(?:box|card|grid|summary-card|toc-map|source-note|source-box|source-list|term|analogy|danger|good|"
     r"tbl|table-scroll|matrix|vt-|wg-|flow|timeline|checklist|quality|risk|decision|repo-|youtube-|manual-|"
-    r"serp-|platform-|landing-|case-|feature-|text-bullet-view|core-insight|conn-grid|impact-grid|ba\b|"
+    r"serp-|platform-|landing-|case-|feature-|lede-note|text-bullet-view|core-insight|conn-grid|impact-grid|ba\b|"
     r"a11y-check|chron-list|source-preserve|md-excerpt)\b",
     re.I,
 )
@@ -196,6 +203,53 @@ def raw_section_synthesis_issues(path: Path, body: str) -> list[Issue]:
     return []
 
 
+
+
+def flat_text_section_without_view_issues(path: Path, body: str) -> list[Issue]:
+    """M5/M6 guard: catch repeated flat text-only section synthesis.
+
+    The current reference examples legitimately include an occasional prose-led
+    summary section. The regression pattern is different: several consecutive or
+    repeated direct sections contain only raw paragraph/list content while no
+    official view/template surface is used. Therefore this gate is document-level
+    and thresholded, not a single-section linter.
+    """
+    layout = layout_class(body)
+    if not layout or layout in PROSE_RELAXED_LAYOUTS:
+        return []
+    main = re.search(r"<main\b[^>]*>", body, re.I)
+    if not main:
+        return []
+    main_inner = inner_html(body, main.end(), "main")
+    sections = list(direct_child_blocks(main_inner, "section"))
+    for _attrs, article_inner in direct_child_blocks(main_inner, "article"):
+        sections.extend(direct_child_blocks(article_inner, "section"))
+    flat_titles: list[str] = []
+    for attrs, section in sections:
+        cm = re.search(r'class\s*=\s*["\']([^"\']*)', attrs, re.I)
+        classes = set((cm.group(1) if cm else "").split())
+        if "try" in classes:
+            continue
+        payload = re.sub(r"<h2\b[\s\S]*?</h2>", "", section, count=1, flags=re.I)
+        payload = re.sub(r"<p\b[^>]*class=[\"'][^\"']*\bh2-sub\b[^\"']*[\"'][^>]*>[\s\S]*?</p>", "", payload, flags=re.I)
+        text_tags = len(re.findall(r"<(?:p|ul|ol|li)\b", payload, re.I))
+        if text_tags == 0 or CANONICAL_CONTENT_PATTERN.search(payload):
+            continue
+        text = re.sub(r"<[^>]+>", " ", payload)
+        text = re.sub(r"\s+", " ", text).strip()
+        if len(text) < 80:
+            continue
+        h2 = re.search(r"<h2\b[^>]*>([\s\S]*?)</h2>", section, re.I)
+        title = re.sub(r"<[^>]+>", " ", h2.group(1) if h2 else "").strip()[:60] or "(untitled)"
+        flat_titles.append(title)
+    # Thresholded: catches generator-style flat output while preserving reference
+    # examples that intentionally open with one or two prose summary sections.
+    limit = 3 if layout in {"layout-manual", "layout-youtube", "layout-expert", "layout-checklist"} else 5
+    if len(flat_titles) >= limit:
+        return [Issue(path, "flat_text_section_without_view", f"정본 view/card/template 없이 raw prose 중심 섹션이 {len(flat_titles)}개입니다. 예: {', '.join(flat_titles[:3])}")]
+    return []
+
+
 def check_html(path: Path) -> list[Issue]:
     html = path.read_text(encoding="utf-8")
     body = body_fragment(html)
@@ -215,6 +269,10 @@ def check_html(path: Path) -> list[Issue]:
                     f"'{hits[0]}'류 placeholder가 {len(hits)}회 반복됩니다.",
                 )
             )
+
+    for code, pattern in NONCANONICAL_CLASS_PATTERNS:
+        if pattern.search(body):
+            issues.append(Issue(path, code, "정본 템플릿 대신 즉석 비정본 클래스를 사용했습니다."))
 
     tokens = class_tokens(body)
     section_count = len(re.findall(r"<section\b", body, re.I))
@@ -267,6 +325,7 @@ def check_html(path: Path) -> list[Issue]:
                 break
 
     issues.extend(raw_section_synthesis_issues(path, body))
+    issues.extend(flat_text_section_without_view_issues(path, body))
 
     return issues
 

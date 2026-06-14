@@ -16,6 +16,7 @@
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -46,6 +47,62 @@ def is_skill_examples(target: Path) -> bool:
         return False
 
 
+def check_build_evidence(target: Path) -> bool:
+    """Check official-template read evidence for new outputs.
+
+    This is not a claim that an LLM "behaved well". It is a durable artifact
+    contract: the output must name the official files it used and record each
+    file's current sha256. Missing/stale evidence means the output cannot be
+    treated as an official adaptive-html-final build, even if HTML validation is
+    green.
+    """
+    if is_skill_examples(target):
+        return True
+    repo_root = SKILL.parent.parent
+    evidence_path = target / "sources" / "build-evidence.json"
+    if not evidence_path.exists():
+        print(f"missing: {evidence_path}")
+        return False
+    try:
+        evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(f"build-evidence parse error: {exc}")
+        return False
+    ok = True
+    files = evidence.get("files")
+    if not isinstance(files, list) or len(files) < 5:
+        print("build-evidence: files must list at least 5 official inputs")
+        ok = False
+    required_keys = {"mode", "profile", "layout", "primary_vt", "section_mapping"}
+    missing = sorted(k for k in required_keys if not evidence.get(k))
+    if missing:
+        print(f"build-evidence: missing top-level keys: {', '.join(missing)}")
+        ok = False
+    for idx, row in enumerate(files or [], 1):
+        rel = row.get("path") if isinstance(row, dict) else None
+        digest = row.get("sha256") if isinstance(row, dict) else None
+        if not isinstance(rel, str) or not rel.strip() or not isinstance(digest, str):
+            print(f"build-evidence: invalid file row #{idx}")
+            ok = False
+            continue
+        p = (repo_root / rel).resolve()
+        try:
+            p.relative_to(repo_root.resolve())
+        except ValueError:
+            print(f"build-evidence: path escapes repo: {rel}")
+            ok = False
+            continue
+        if not p.exists() or not p.is_file():
+            print(f"build-evidence: referenced file missing: {rel}")
+            ok = False
+            continue
+        actual = hashlib.sha256(p.read_bytes()).hexdigest()
+        if actual != digest:
+            print(f"build-evidence: sha256 mismatch: {rel}")
+            ok = False
+    return ok
+
+
 def check_render_audit(target: Path) -> bool:
     """Check externally-produced render evidence.
 
@@ -59,8 +116,9 @@ def check_render_audit(target: Path) -> bool:
         }
       }
     """
-    print("\n=== 4/4 render-audit (1280/390 overflow·screenshot artifact) ===")
+    print("\n=== 4/4 build-evidence + render-audit (official files·1280/390 overflow·screenshot artifact) ===")
     target = target.resolve()
+    evidence_ok = check_build_evidence(target)
     audit_path = target / "sources" / "render-audit.json"
     if not audit_path.exists():
         if is_skill_examples(target):
@@ -100,7 +158,8 @@ def check_render_audit(target: Path) -> bool:
         if not shot_path.exists() or not shot_path.is_file():
             print(f"viewport {key}: screenshot file not found: {shot}")
             ok = False
-    print(f"-> {'PASS' if ok else 'FAIL'} (render-audit)")
+    ok = ok and evidence_ok
+    print(f"-> {'PASS' if ok else 'FAIL'} (build-evidence + render-audit)")
     return ok
 
 

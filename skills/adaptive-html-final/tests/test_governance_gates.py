@@ -529,6 +529,12 @@ with _tmp.TemporaryDirectory() as _td:
     (_root / 'sources' / 'screenshots' / '1280.png').write_bytes(b'png')
     (_root / 'sources' / 'screenshots' / '390.png').write_bytes(b'png')
     (_root / 'sources' / 'render-audit.json').write_text('{"viewports":{"1280":{"scrollWidth":1280,"clientWidth":1280,"overflow_ok":true,"screenshot":"sources/screenshots/1280.png"},"390":{"scrollWidth":390,"clientWidth":390,"overflow_ok":true,"screenshot":"sources/screenshots/390.png"}}}', encoding='utf-8')
+    import hashlib as _hashlib_ra, json as _json_ra
+    _ev_files = []
+    for _rel in ['AGENTS.md','skills/adaptive-html-final/SKILL.md','skills/adaptive-html-final/assets/base.html','skills/adaptive-html-final/assets/layouts/manual-analysis.html','skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html']:
+        _p = SKILL.parent.parent / _rel
+        _ev_files.append({'path': _rel, 'sha256': _hashlib_ra.sha256(_p.read_bytes()).hexdigest()})
+    (_root / 'sources' / 'build-evidence.json').write_text(_json_ra.dumps({'mode':'manual_analysis','profile':'auto','layout':'manual-analysis.html','primary_vt':'hero-map','section_mapping':{'x':'y'},'files':_ev_files}, ensure_ascii=False), encoding='utf-8')
     check("completion render-audit passes overflow_ok screenshots", c.check_render_audit(_root) is True)
     (_root / 'sources' / 'render-audit.json').write_text('{"viewports":{"1280":{"scrollWidth":1290,"clientWidth":1280,"overflow_ok":false,"screenshot":"sources/screenshots/1280.png"},"390":{"scrollWidth":390,"clientWidth":390,"overflow_ok":true,"screenshot":"sources/screenshots/390.png"}}}', encoding='utf-8')
     check("completion render-audit fails overflow false", c.check_render_audit(_root) is False)
@@ -617,6 +623,44 @@ _dryrun_caught(lambda sd: _edit_mode(sd, "16-landing-brief.json", lambda o: o.__
                "dry-run: missing layout file is caught")
 _dryrun_caught(lambda sd: _edit_mode(sd, "16-landing-brief.json", lambda o: o.pop("recipe", None)),
                "dry-run: missing required field is caught")
+
+
+# Phase 3 M-series/build-evidence gates: concrete malicious fixtures.
+with _tmp.TemporaryDirectory() as _td:
+    _root = v.Path(_td)
+    _bad = _root / 'bad-noncanonical.html'
+    _bad.write_text('<body><main class="page-wide layout-manual"><section><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>Bad</h2><div class="template-card-head"><span>근거 ★★★</span></div><div class="source-preserve-static">x</div></section></main></body>', encoding='utf-8')
+    _codes = {i.code for i in q.check_html(_bad)}
+    check("M2/M3 quality gate catches invented noncanonical classes",
+          {"noncanonical_template_card_head", "noncanonical_source_preserve_static"}.issubset(_codes))
+    _flat = _root / 'flat-text.html'
+    _flat.write_text('<body><main class="page-wide layout-manual">' + ''.join(
+        '<section><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>Flat</h2><p class="h2-sub">sub</p><p>' + ('본문만 있는 밋밋한 텍스트입니다. ' * 10) + '</p></section>' for _ in range(4)
+    ) + '</main></body>', encoding='utf-8')
+    check("M5/M6 quality gate catches flat text-only sections without view",
+          any(i.code == "flat_text_section_without_view" for i in q.check_html(_flat)))
+    _view = _root / 'view-ok.html'
+    _view.write_text('<body><main class="page-wide layout-manual">' + ''.join(
+        '<section><h2><span class="body-icon"><svg aria-hidden="true"></svg></span>View</h2><p class="h2-sub">sub</p><div class="lede-note"><p>' + ('정본 뷰로 감싼 텍스트입니다. ' * 10) + '</p></div></section>' for _ in range(4)
+    ) + '</main></body>', encoding='utf-8')
+    check("M5/M6 quality gate passes text wrapped in official view", q.check_html(_view) == [])
+
+with _tmp.TemporaryDirectory() as _td:
+    _root = v.Path(_td)
+    (_root / 'sources' / 'screenshots').mkdir(parents=True)
+    (_root / 'sources' / 'screenshots' / '1280.png').write_bytes(b'png')
+    (_root / 'sources' / 'screenshots' / '390.png').write_bytes(b'png')
+    (_root / 'sources' / 'render-audit.json').write_text('{"viewports":{"1280":{"scrollWidth":1280,"clientWidth":1280,"overflow_ok":true,"screenshot":"sources/screenshots/1280.png"},"390":{"scrollWidth":390,"clientWidth":390,"overflow_ok":true,"screenshot":"sources/screenshots/390.png"}}}', encoding='utf-8')
+    check("completion build-evidence gate fails missing evidence", c.check_render_audit(_root) is False)
+    (_root / 'sources' / 'build-evidence.json').write_text('{"mode":"manual_analysis","profile":"auto","layout":"manual-analysis.html","primary_vt":"hero-map","section_mapping":{"x":"y"},"files":[{"path":"AGENTS.md","sha256":"bad"},{"path":"skills/adaptive-html-final/SKILL.md","sha256":"bad"},{"path":"skills/adaptive-html-final/assets/base.html","sha256":"bad"},{"path":"skills/adaptive-html-final/assets/layouts/manual-analysis.html","sha256":"bad"},{"path":"skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html","sha256":"bad"}]}', encoding='utf-8')
+    check("completion build-evidence gate fails stale sha256", c.check_render_audit(_root) is False)
+    import hashlib as _hashlib, json as _json
+    _files = []
+    for _rel in ['AGENTS.md','skills/adaptive-html-final/SKILL.md','skills/adaptive-html-final/assets/base.html','skills/adaptive-html-final/assets/layouts/manual-analysis.html','skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html']:
+        _p = SKILL.parent.parent / _rel
+        _files.append({'path': _rel, 'sha256': _hashlib.sha256(_p.read_bytes()).hexdigest()})
+    (_root / 'sources' / 'build-evidence.json').write_text(_json.dumps({'mode':'manual_analysis','profile':'auto','layout':'manual-analysis.html','primary_vt':'hero-map','section_mapping':{'x':'y'},'files':_files}, ensure_ascii=False), encoding='utf-8')
+    check("completion build-evidence gate passes current official file hashes", c.check_render_audit(_root) is True)
 
 _manifest_quality = __import__("json").loads((SKILL / "manifest.json").read_text(encoding="utf-8")).get("quality") or {}
 check("manifest quality.governance_count matches this self-test count",

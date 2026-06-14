@@ -227,7 +227,7 @@
     "adaptive-html-blog-writer-v2"
   ],
   "changes": [
-    "v5.10.4: 마이크로 레이아웃 계약 — 실산출물 눈검수 결함 M1·M4·M7·M10 정본 CSS 반영(h2 번호 pill 390px white-space:nowrap·cmp-card kicker→title gap 8px·인쇄 reading-progress 숨김·body-level footer 본문폭 중앙정렬). 코어(theme/print) 해시 갱신·examples 18종 재인라인·sources/css-integrity 동기화. M2·M3·M6·M9는 정본 컴포넌트(lede-note·vt chip·tl-color-cycle) 사용 작성 프로토콜(docs/adaptive-html-final-template-authoring-protocol.md)로 문서화. 게이트·거버넌스 153 불변.",
+    "v5.10.4: 마이크로 레이아웃 계약 — 실산출물 눈검수 결함 M1·M4·M7·M10 정본 CSS 반영(h2 번호 pill 390px white-space:nowrap·cmp-card kicker→title gap 8px·인쇄 reading-progress 숨김·body-level footer 본문폭 중앙정렬). 코어(theme/print) 해시 갱신·examples 18종 재인라인·sources/css-integrity 동기화. M2·M3·M6·M9는 정본 컴포넌트(lede-note·vt chip·tl-color-cycle) 사용 작성 프로토콜(docs/adaptive-html-final-template-authoring-protocol.md)로 문서화. Phase 3에서 M2/M3 비정본 클래스·M5/M6 flat text-only section·build-evidence 누락/stale 검출 게이트를 추가해 거버넌스 159로 승격.",
     "v5.10.3: 회귀 안전 패치 — widgets reverse-sync 층 #fff→var(--on-accent)(다크 대비 1.92→8.6+, 라이트 byte-동일)·wg-07 애니메이션 복원, 다크 트리오 인쇄 라이트 토큰 강제+--danger-accent(dark), print.css .try 잉크(실측 1.3:1 소실 수정)·details 펼침·외부링크 한정 href·themebar 숨김, 폭 정본 A(전 17모드 page-wide·60rem — 골격 5종 승격+4모드 단락 960px), 게이트 6종 신설(on-accent lint·테마 대비·print 잉크·폭 일치·테마 8/8·.skill 버전) + 미커버 게이트 7종 거버넌스 잠금, exporter --require-webp skipped 오판 수정, 렌더러 2줄 제목 겹침 수정, 체크리스트 4종 모드17 동기화, editorial 03/05 실콘텐츠.",
     "v5.10.2: layout-github-feature 본문 단락 폭 결함 수정 — theme.css 60rem 오버라이드 목록에서 누락돼 46rem(736px)로 좁던 것을 형제 layout-github와 동일하게 60rem(960px)로 추가. R5 게이트를 layout별 60rem 셀렉터 정밀 검사로 강화(60rem 문자열 존재만 보던 blind spot 제거). 코어(theme.css) 변경 → 코어 해시 갱신·examples 18종 재인라인·sources/css-integrity 동기화.",
     "v5.10.1: examples 01–14 정본화(mode-template-contract 부록 제거·1순위 vt 본문 내장·주제 wg 1종) + manifest_version_consistency_gate·decision_table_consistency_gate·quality_contract 메타문구 게이트 신설·배선, widget-system.md mode→wg 표 §0.6 정렬, references 스테일(4.5.0/20종·dangling 갤러리) 정리. 거버넌스 80→86, 코어 CSS·17모드·자산 불변.",
@@ -399,7 +399,7 @@
     "schemas/visual-brief.schema.json"
   ],
   "releases": [
-    "v5.10.4: 마이크로 레이아웃 정본 CSS(M1·M4·M7·M10) + 작성 프로토콜 신설. 코어 해시 갱신·examples 18종 재인라인·.skill 재패키징. 거버넌스 153 불변.",
+    "v5.10.4: 마이크로 레이아웃 정본 CSS(M1·M4·M7·M10) + 작성 프로토콜 신설. 코어 해시 갱신·examples 18종 재인라인·.skill 재패키징. Phase 3 M계열/build-evidence 게이트 포함. 거버넌스 159.",
     "v5.10.3: 다크 대비·인쇄 가독·폭 정본(전모드 wide) + 자기방어 게이트 6종. 코어 해시 갱신·examples 재인라인·.skill 재패키징.",
     "v5.10.2: layout-github-feature 단락 폭(46rem→60rem) 수정 + R5 게이트 정밀화. 코어 해시 갱신·examples 재인라인.",
     "v5.10.1: 예제 정본화(부록 제거·vt 본문 내장) + 자기정합 게이트 3종(manifest·결정표·메타문구) + 거버넌스 86. 코어 CSS·17모드 불변.",
@@ -407,7 +407,7 @@
     "v5.9.2: 외부 세리프 폰트 링크/스택/과거 세리프 토큰 금지, pull-quote Pretendard 굵게 통일, vt-02 decision-tree 3카드 정합성 + h3 마진 보정, 공식 toc-map 목차 계약 회귀 방지(layout+validator), manual section title spacing/danger accent/qg-final typography 보정 강화."
   ],
   "quality": {
-    "governance_count": 153,
+    "governance_count": 159,
     "governance_command": "python3 skills/adaptive-html-final/tests/test_governance_gates.py",
     "required_gates": [
       "validate_output",

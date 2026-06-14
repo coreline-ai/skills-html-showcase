@@ -61,7 +61,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 ### v5.10.4 (2026-06-14) — 마이크로 레이아웃 정본 계약(M1·M4·M7·M10) + 작성 프로토콜
 
-실산출물이 `validate/quality/completion`을 통과하고도 눈검수에서 남은 마이크로 레이아웃 결함을 정본으로 승격했습니다(output 독립 결과물 → 의도적 승격). **M1** h2 번호 pill 390px `white-space:nowrap`, **M4** `.cmp-card` kicker→title 간격 8px, **M7** 인쇄/export `.reading-progress` 숨김, **M10** body-level footer 본문폭 중앙정렬. **M2·M3·M6·M9**(접착·단조 rail)는 정본 컴포넌트(`lede-note`·vt chip·`.tl-color-cycle`) 사용 [작성 프로토콜](docs/adaptive-html-final-template-authoring-protocol.md)로 고정. 코어(theme/print) 해시 갱신·examples 18종 재인라인·`.skill` 재패키징. 게이트·거버넌스 **153/153** 불변.
+실산출물이 `validate/quality/completion`을 통과하고도 눈검수에서 남은 마이크로 레이아웃 결함을 정본으로 승격했습니다(output 독립 결과물 → 의도적 승격). **M1** h2 번호 pill 390px `white-space:nowrap`, **M4** `.cmp-card` kicker→title 간격 8px, **M7** 인쇄/export `.reading-progress` 숨김, **M10** body-level footer 본문폭 중앙정렬. **M2·M3·M6·M9**(접착·단조 rail)는 정본 컴포넌트(`lede-note`·vt chip·`.tl-color-cycle`) 사용 [작성 프로토콜](docs/adaptive-html-final-template-authoring-protocol.md)로 고정. 코어(theme/print) 해시 갱신·examples 18종 재인라인·`.skill` 재패키징. Phase 3에서 비정본 클래스·flat text-only section·build-evidence 누락/stale 검출 게이트를 추가해 거버넌스 **159/159**로 승격했습니다.
 
 ### v5.10.3 정합 보강 (2026-06-13) — 생성 회귀 방지 게이트 + 버전업 승인 정책
 
@@ -433,7 +433,7 @@ skills-html-showcase/
 │   ├── references/    (19)            # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/GitHub·YouTube·Manual·기능가이드 규칙
 │   ├── recipes/       (17)            # 모드별 대표 프롬프트
 │   ├── schemas/       (3)             # blog-meta · quality-report · visual-brief
-│   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트 (153/153)
+│   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트 (159/159)
 │   ├── visual-templates/ (7)         # 8000×6000 SVG 템플릿
 │   ├── scripts/                       # render_visual_svg.py · validate_output.py · completion_check.py 등
 │   ├── examples/                     # v5.10.4 현행 17모드 참조 예제 + index
@@ -467,7 +467,7 @@ skills-html-showcase/
 | 외부 동작 JS | **0건** |
 | 미정의 CSS 클래스 | **0개** (레이아웃↔CSS 차집합 0) |
 | manifest ↔ 디스크 레이아웃 매핑 | 차집합 0 (17 / 17) |
-| 거버넌스 게이트 | `test_governance_gates.py` **153 / 153 통과** |
+| 거버넌스 게이트 | `test_governance_gates.py` **159 / 159 통과** |
 | blog-writer 상세 규칙 흡수 | 8 / 8 (제목 4계열·도입부 3유형·본문 밀도·톤 매핑·100점·메타·플랫폼·박스) |
 
 ### 버전 진화
@@ -494,8 +494,8 @@ skills-html-showcase/
 | `v5.10.0` | **GitHub Feature-Usage 17번째 모드** — `github_feature_usage`, `github-feature-usage.html`, `.layout-github-feature`(github 컴포넌트 어휘 공유 + 스크린샷 갤러리), 계약 게이트·tie-breaker·경계 버그 수정. 거버넌스 86/86 |
 | `v5.10.1` | 예제 정본화 — `mode-template-contract` 부록 안티패턴 제거, manifest/결정표 자기정합 게이트 추가 |
 | `v5.10.2` | `layout-github-feature` 단락 폭 46rem 회귀 수정 + layout별 60rem 셀렉터 정밀 게이트 |
-| `v5.10.3` | 다크 대비·인쇄 가독·전 모드 page-wide 폭 정본 + visible 버전 표면/.skill byte-match 게이트 + 헤더·목차·아이콘 순서·overflow·raw 합성·render-audit 완료 증빙 + 승인 없는 버전 bump 차단. 거버넌스 153/153 |
-| `v5.10.4` | **마이크로 레이아웃 정본 계약** — M1 번호 pill nowrap·M4 카드 kicker 간격·M7 인쇄 progress 숨김·M10 body footer 중앙정렬 + 작성 프로토콜(M2·M3·M6·M9 정본 컴포넌트 규칙). 코어 해시 갱신·examples 재인라인·.skill 재패키징. 거버넌스 153/153 |
+| `v5.10.3` | 다크 대비·인쇄 가독·전 모드 page-wide 폭 정본 + visible 버전 표면/.skill byte-match 게이트 + 헤더·목차·아이콘 순서·overflow·raw 합성·render-audit 완료 증빙 + 승인 없는 버전 bump 차단. 거버넌스 159/159 |
+| `v5.10.4` | **마이크로 레이아웃 정본 계약** — M1 번호 pill nowrap·M4 카드 kicker 간격·M7 인쇄 progress 숨김·M10 body footer 중앙정렬 + 작성 프로토콜(M2·M3·M6·M9 정본 컴포넌트 규칙). 코어 해시 갱신·examples 재인라인·.skill 재패키징. 거버넌스 159/159 |
 
 > 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) · 프로파일 분리 계획(아카이브): [`docs/archive/implement_visual_profile_separation.md`](docs/archive/implement_visual_profile_separation.md)
 
@@ -515,7 +515,7 @@ skills-html-showcase/
 - [x] 교육용=퀴즈+정답 · 전문가용=리스크+검증 · 블로그/SEO=제목+메타+태그 · 감사=개선본
 - [x] 비주얼: 8000×6000 캔버스 · `figure`+`figcaption` · 의미 있는 `alt` · 캔버스 잘림 없음
 
-> 🟢 **게이트 현황(v5.10.4)**: 거버넌스 `test_governance_gates.py` **153/153 통과** (v5.10.3 정합 보강 포함), 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
+> 🟢 **게이트 현황(v5.10.4)**: 거버넌스 `test_governance_gates.py` **159/159 통과** (v5.10.3 정합 보강 포함), 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
 > `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점의 역사적 13-topic 기준선입니다.
 
 ```bash

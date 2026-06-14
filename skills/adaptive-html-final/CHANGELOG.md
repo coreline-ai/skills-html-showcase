@@ -9,7 +9,7 @@
 - **M7 (print.css, 코어)**: 인쇄/export 산출물에서 `.reading-progress`를 숨김(`@media print`) — 섹션 라인 오인·검수 방해 제거.
 - **M10 (theme.css, 코어)**: `{{FOOTER}}` 슬롯이 `<main>` 밖(body 직속)에 렌더될 때 `.source-note` footer가 viewport 좌측에 붙던 것을 `body>footer` 본문 폭 중앙 정렬로 고정.
 - **M2·M3·M6·M9 (작성 프로토콜)**: 별표/tag 접착·rail 텍스트 접착·밋밋한 목록 카드·단색 rail 반복은 스킬 정본 컴포넌트(`lede-note`는 이미 24px rail padding, vt chip은 gap 보유, `tl-color-cycle`은 4색 순환)가 이미 해결한다. 실패는 output이 비정본 클래스(`template-card-head`·`source-preserve-static`)를 발명했기 때문 → `docs/adaptive-html-final-template-authoring-protocol.md`에 "정본 컴포넌트 사용" 규칙으로 고정.
-- **파급**: 코어(theme/print) 해시 갱신 → examples 18종 재인라인·`sources/css-integrity.json`·source manifest·`.skill` 재패키징. 17모드 산출 계약·게이트·거버넌스(153) 불변, 무 JS 유지.
+- **파급**: 코어(theme/print) 해시 갱신 → examples 18종 재인라인·`sources/css-integrity.json`·source manifest·`.skill` 재패키징. Phase 3에서 M2/M3 비정본 클래스, M5/M6 flat text-only section, build-evidence 누락/stale 검출 fixture를 추가해 거버넌스 **153→159 checks**로 승격. 무 JS 유지.
 
 ## v5.10.3 (2026-06-12) — 회귀 안전 패치: 다크 대비·인쇄 가독·폭 정본(전 모드 wide) + 자기방어 게이트 6종
 
