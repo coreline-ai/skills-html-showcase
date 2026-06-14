@@ -1,0 +1,186 @@
+{
+  "mode": "14_case_study_html",
+  "generated_at": "2026-06-07T08:38:12.699046+00:00",
+  "page": "output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/pages/14_case_study_search_index_lag_postmortem.html",
+  "local_link": "http://localhost:8080/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/pages/14_case_study_search_index_lag_postmortem.html",
+  "constraints": {
+    "previous_html_reused": false,
+    "common_generator_used": false,
+    "mode_specific_assets_only": true,
+    "skill_version": "5.8.1"
+  },
+  "before_metrics": [
+    {
+      "width": 1280,
+      "title": "검색 인덱스 지연 회고: freshness를 전체 평균으로만 본 대가",
+      "h1": 1,
+      "mainClass": "page layout-case",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "h2": 6,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-12"
+      ],
+      "tables": 2,
+      "timelineCards": 12,
+      "situation": true,
+      "timeline": true,
+      "decisions": true,
+      "results": true,
+      "lessons": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "textChars": 3709
+    },
+    {
+      "width": 390,
+      "title": "검색 인덱스 지연 회고: freshness를 전체 평균으로만 본 대가",
+      "h1": 1,
+      "mainClass": "page layout-case",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "h2": 6,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-12"
+      ],
+      "tables": 2,
+      "timelineCards": 12,
+      "situation": true,
+      "timeline": true,
+      "decisions": true,
+      "results": true,
+      "lessons": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "textChars": 3709
+    }
+  ],
+  "after_metrics": [
+    {
+      "width": 1280,
+      "title": "검색 인덱스 지연 회고: 평균 freshness가 숨긴 문제",
+      "h1": 1,
+      "mainClass": "page layout-case",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "directSectionSurfaceCandidate": 4,
+      "h2": 5,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-12"
+      ],
+      "tables": 2,
+      "tablesWithCaption": 2,
+      "codeBlocks": 0,
+      "timelineCards": 12,
+      "situation": true,
+      "timeline": true,
+      "decisions": true,
+      "results": true,
+      "lessons": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "textChars": 3365,
+      "bodyIconSvgAriaHidden": true,
+      "forbiddenScript": false
+    },
+    {
+      "width": 390,
+      "title": "검색 인덱스 지연 회고: 평균 freshness가 숨긴 문제",
+      "h1": 1,
+      "mainClass": "page layout-case",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "directSectionSurfaceCandidate": 4,
+      "h2": 5,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 3,
+      "widgets": [
+        "wg-12"
+      ],
+      "tables": 2,
+      "tablesWithCaption": 2,
+      "codeBlocks": 0,
+      "timelineCards": 12,
+      "situation": true,
+      "timeline": true,
+      "decisions": true,
+      "results": true,
+      "lessons": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "textChars": 3365,
+      "bodyIconSvgAriaHidden": true,
+      "forbiddenScript": false
+    }
+  ],
+  "screenshots": {
+    "before_1280": "sources/screenshots/mode14-case-before-1280.png",
+    "before_390": "sources/screenshots/mode14-case-before-390.png",
+    "after_1280": "sources/screenshots/mode14-case-after-1280.png",
+    "after_390": "sources/screenshots/mode14-case-after-390.png"
+  },
+  "isolated_validation": {
+    "validate_output": "HTML files: 1\nOK",
+    "quality": "OK — quality contract guard passed (1 HTML content file(s))",
+    "ok": true
+  },
+  "full_output_validation_after_mode": {
+    "ok": false,
+    "issue_count": 44,
+    "top_issue_types": [
+      [
+        "direct_section_h2_missing_body_icon",
+        14
+      ],
+      [
+        "inline_css_hash_mismatch",
+        10
+      ],
+      [
+        "inline_core_css_not_verbatim",
+        10
+      ],
+      [
+        "section_surface_css_missing",
+        10
+      ]
+    ],
+    "note": "예상 잔여: 아직 최신 core hash/body-icon/surface 규칙으로 재생성되지 않은 이전 모드와 index가 남아 있음. 14번은 isolated OK."
+  },
+  "manual_visual_review": {
+    "desktop": "1280 캡처에서 Situation, Timeline, Decisions, Results, Lessons가 case-study 흐름으로 보이며 incident-summary/timeline/swimlane 및 wg-12가 사건 회고 정보 구조에 맞게 배치됨.",
+    "mobile": "390 캡처에서 타임라인, swimlane, 표가 단일 컬럼/스크롤 컨테이너로 안정적으로 접히며 전체 가로 overflow 없음.",
+    "text": "성과 수치를 단정하지 않고 확인 필요 항목을 source note와 results에 남겼으며, lessons는 실행 가능한 후속 기준으로 닫음."
+  },
+  "next_mode": "15_landing_brief_html"
+}

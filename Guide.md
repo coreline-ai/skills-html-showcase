@@ -293,10 +293,10 @@ python3 skills/adaptive-html-final/scripts/validate_output.py \
 npm install
 
 # 기본: pdf,png,webp + light,light2,white,dark,dark2,blue,skyblue,sepia 요청
-node scripts/export_output.mjs output/final_20260604 --clean
+node scripts/export_output.mjs output/2026-06-04/final_20260604 --clean
 
 # 특정 포맷/테마만
-node scripts/export_output.mjs output/final_20260604 \
+node scripts/export_output.mjs output/2026-06-04/final_20260604 \
   --formats pdf,png \
   --themes light,dark \
   --scale 1 \
@@ -336,9 +336,9 @@ v1 허용 옵션은 `--formats`, `--themes`, `--scale`, `--viewport`, `--require
 현재 운영본은 v5.10.3이며, `skills/adaptive-html-final/examples/`가 17모드 참조 예제 세트입니다. 아래 과거 smoke 산출물은 각 생성 시점의 정적 품질 게이트를 통과한 기준선이고, 기존 13-topic 캐노니컬 산출물은 v5.2.3 기준선으로 보존합니다:
 
 ```text
-output/adaptive-html-final-13-topics-20260605_083433/   (v5.2.3 기준선, HTML 14개, 게이트 OK)
-output/youtube-analysis-vibecoding-gap-20260607_001503/      (v5.7.0 youtube_analysis, 게이트 OK)
-output/manual-analysis-product-runbook-20260607_001503/      (v5.7.0 manual_analysis, 게이트 OK)
+output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/   (v5.2.3 기준선, HTML 14개, 게이트 OK)
+output/2026-06-07/youtube-analysis-vibecoding-gap-20260607_001503/      (v5.7.0 youtube_analysis, 게이트 OK)
+output/2026-06-07/manual-analysis-product-runbook-20260607_001503/      (v5.7.0 manual_analysis, 게이트 OK)
 skills/adaptive-html-final/examples/                         (v5.10.3 17모드 참조 예제, 게이트 OK)
 ```
 

@@ -1,0 +1,45 @@
+{
+  "url": "http://localhost:8080/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-07-youtube-analysis-20260613_201813/index.html",
+  "checked_at": "2026-06-13T11:19:04.612Z",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow_ok": true,
+      "h1": 1,
+      "h2": 13,
+      "directSections": 11,
+      "themeInputs": 8,
+      "bodyIconDirectH2": 11,
+      "timelineItems": 5,
+      "iframe": 0,
+      "screenshot": "sources/screenshots/390.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow_ok": true,
+      "h1": 1,
+      "h2": 13,
+      "directSections": 11,
+      "themeInputs": 8,
+      "bodyIconDirectH2": 11,
+      "timelineItems": 5,
+      "iframe": 0,
+      "screenshot": "sources/screenshots/1280.png"
+    }
+  },
+  "toc": {
+    "count": 12,
+    "missing": []
+  },
+  "finalContrast": {
+    "sectionBg": "rgb(26, 26, 26)",
+    "h2Color": "rgb(255, 255, 255)",
+    "textColor": "rgb(208, 208, 200)",
+    "text": "분석의 끝은 새 영상 아이디어가 아니라 확인 불가 항목을 FACT로 승격하는 실행 순서다."
+  },
+  "verdict": "OK"
+}

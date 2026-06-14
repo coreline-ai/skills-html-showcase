@@ -155,7 +155,7 @@ Manual 분석은 `hero-map`을 1순위로 사용해 독자 역할·목표·첫 �
 
 - 카탈로그·전략 원본: `output/adaptive-html-final-html-view-templates-20-v1/`(초기 20종 라이브 데모 + `SVG_TO_HTML_TEMPLATE_STRATEGY.md`; 이후 21번째 `soft-workflow-map`이 후순위 템플릿으로 편입됨).
 - 현행 17모드 참조 예제: **`skills/adaptive-html-final/examples/`** — v5.10.3 스킬 자산 기준의 17모드 레퍼런스이며, §0.6의 1순위 vt 계약과 8테마/무JS 검증을 통과해야 한다.
-- 역사적 적용 갤러리: **`output/adaptive-html-final-showcase-v6`** — v4.5 동결 시점의 모드별 페이지와 QA 스크린샷 확인용이다. 현재 17모드 기준선이나 21종 완전 적용 증거로 사용하지 않는다.
+- 역사적 적용 갤러리: **`output/2026-06-01/adaptive-html-final-showcase-v6`** — v4.5 동결 시점의 모드별 페이지와 QA 스크린샷 확인용이다. 현재 17모드 기준선이나 21종 완전 적용 증거로 사용하지 않는다.
 
 ## 관련 문서
 

@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-06-14T10:56:37.338Z",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "scrollHeight": 38054,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/mobile_top.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "scrollHeight": 21751,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/desktop_top.png"
+    }
+  },
+  "additional_screenshots": [
+    "desktop_top.png",
+    "desktop_middle.png",
+    "desktop_bottom.png",
+    "desktop_section-17.png",
+    "desktop_section-25.png",
+    "mobile_top.png",
+    "mobile_middle.png",
+    "mobile_bottom.png",
+    "mobile_section-17.png",
+    "mobile_section-25.png"
+  ]
+}

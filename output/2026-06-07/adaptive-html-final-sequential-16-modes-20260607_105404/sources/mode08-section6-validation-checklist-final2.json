@@ -1,0 +1,44 @@
+[
+  {
+    "shot": "output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode08-section6-validation-checklist-final2-1280.png",
+    "metrics": {
+      "viewport": {
+        "w": 1280,
+        "h": 900
+      },
+      "doc": {
+        "clientWidth": 1280,
+        "scrollWidth": 1280,
+        "overflowX": false
+      },
+      "h2": "6Validation Checklist · 완료 기준과 증빙",
+      "className": "validation-checklist",
+      "hasWg03": false,
+      "hasWg17": false,
+      "topGrid": "478px 478px",
+      "evidenceGrid": "479px 479px",
+      "qgFinal": "완료 판정: current_mode_issue_count=0과 full_output_residual=0을 각각 증빙한다."
+    }
+  },
+  {
+    "shot": "output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode08-section6-validation-checklist-final2-390.png",
+    "metrics": {
+      "viewport": {
+        "w": 390,
+        "h": 900
+      },
+      "doc": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "overflowX": false
+      },
+      "h2": "6Validation Checklist · 완료 기준과 증빙",
+      "className": "validation-checklist",
+      "hasWg03": false,
+      "hasWg17": false,
+      "topGrid": "324px",
+      "evidenceGrid": "324px",
+      "qgFinal": "완료 판정: current_mode_issue_count=0과 full_output_residual=0을 각각 증빙한다."
+    }
+  }
+]

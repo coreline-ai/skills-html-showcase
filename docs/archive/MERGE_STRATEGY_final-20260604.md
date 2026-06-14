@@ -1,10 +1,10 @@
-> ⚠️ **ARCHIVED — SUPERSEDED by v5.2.0.** 이 문서는 작성 당시 버전의 시점 고정(point-in-time) 리뷰/분석/계획 기록입니다. 현재 스킬은 **v5.2.0**이며, 여기서 지적된 항목 다수는 이미 해소·초과 달성되었습니다. 최신 사실 기준선은 게이트를 완전 통과한 `output/adaptive-html-final-13-topics-20260605_083433/`이고, 현행 문서는 루트 `README.md`·`AGENTS.md`·`Guide.md`입니다. 아카이브 색인: [`docs/archive/README.md`](README.md).
+> ⚠️ **ARCHIVED — SUPERSEDED by v5.2.0.** 이 문서는 작성 당시 버전의 시점 고정(point-in-time) 리뷰/분석/계획 기록입니다. 현재 스킬은 **v5.2.0**이며, 여기서 지적된 항목 다수는 이미 해소·초과 달성되었습니다. 최신 사실 기준선은 게이트를 완전 통과한 `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`이고, 현행 문서는 루트 `README.md`·`AGENTS.md`·`Guide.md`입니다. 아카이브 색인: [`docs/archive/README.md`](README.md).
 
 ---
 
 # final_20260604 → adaptive-html-final 섹션 병합 전략
 
-> 작성 방식: `output/final_20260604/index.html`(4,135줄) 전 섹션 패턴을 5개 도메인 병렬 분해(52개 패턴 인벤토리) → 4인 전문가 패널 적대적 검토(에디토리얼/비주얼, CSS 아키텍처, 접근성, 스킬-거버넌스) → 종합. 모든 load-bearing 주장은 **출고된 `skills/adaptive-html-final/assets/*.css`에 직접 대조 검증**함.
+> 작성 방식: `output/2026-06-04/final_20260604/index.html`(4,135줄) 전 섹션 패턴을 5개 도메인 병렬 분해(52개 패턴 인벤토리) → 4인 전문가 패널 적대적 검토(에디토리얼/비주얼, CSS 아키텍처, 접근성, 스킬-거버넌스) → 종합. 모든 load-bearing 주장은 **출고된 `skills/adaptive-html-final/assets/*.css`에 직접 대조 검증**함.
 > 대상 스킬: adaptive-html-final v4.5.0 · 작성일: 2026-06-05 · 전문가 패널 평결: 4/4 "endorse-with-revisions"
 > 사용자 규칙: "신규면 추가, 중복이면 교체" — 본 전략은 이 규칙을 **정신은 유지하되 다음과 같이 정련**한다(§3).
 
@@ -112,7 +112,7 @@
 1. **다크 테마** — 출시 여부와 기본값? (권장: 토큰 전용 `theme-dark.css`, `prefers-color-scheme` 1순위 + 라이트 기본 + 선택적 토글 오버라이드. 페이지의 116클래스 `!important` 열거 폐기. v5.0.0 플래그십 + 코어 재베이스라인.)
 2. **코어-해시 프리미티브의 'replace' 범위**(#49/#50/#51 CTA/SERP/platform) — Tranche B로 지금 진행(코어 재베이스라인) vs 보류(그러면 Tranche A가 해시 무변경 클린 v4.6.0로 선출시).
 3. **정련된 사용자 규칙 사인오프** — "정본이 더 풍부하면 KEEP-SKILL(skip)" 트리아지(실 병합 ~9 + 재배치 ~3 + skip ~30) 수용 여부.
-4. **골든/쇼케이스 재생성** — 병합 후 스킬에서 쇼케이스를 재생성해 재리뷰(권장). 기존 `output/final_20260604`는 교체 vs 히스토리 아티팩트로 보존?
+4. **골든/쇼케이스 재생성** — 병합 후 스킬에서 쇼케이스를 재생성해 재리뷰(권장). 기존 `output/2026-06-04/final_20260604`는 교체 vs 히스토리 아티팩트로 보존?
 5. **vt-01..21 병렬 어휘** — 리네임 수입 거부 + 필요 시 opt-in `.vt-demo.is-editorial` 스킨, 그리고 이 포크를 #1 시스템 발견으로 오너에게 보고하는 방향 수용 여부.
 
 ## 부록 — 전문가 패널 평결

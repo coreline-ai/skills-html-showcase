@@ -1,0 +1,254 @@
+[
+  {
+    "index": 0,
+    "type": "header",
+    "heading": "전 템플릿 카탈로그 — vt 21 + wg 20",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/00_header.png"
+  },
+  {
+    "index": 1,
+    "type": "section",
+    "heading": "vt 01 · hero map",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/01_vt-01-hero-map.png"
+  },
+  {
+    "index": 2,
+    "type": "section",
+    "heading": "vt 02 · decision tree",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/02_vt-02-decision-tree.png"
+  },
+  {
+    "index": 3,
+    "type": "section",
+    "heading": "vt 03 · risk matrix",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/03_vt-03-risk-matrix.png"
+  },
+  {
+    "index": 4,
+    "type": "section",
+    "heading": "vt 04 · timeline",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/04_vt-04-timeline.png"
+  },
+  {
+    "index": 5,
+    "type": "section",
+    "heading": "vt 05 · checklist flow",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/05_vt-05-checklist-flow.png"
+  },
+  {
+    "index": 6,
+    "type": "section",
+    "heading": "vt 06 · quality gate",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/06_vt-06-quality-gate.png"
+  },
+  {
+    "index": 7,
+    "type": "section",
+    "heading": "vt 07 · card grid",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/07_vt-07-card-grid.png"
+  },
+  {
+    "index": 8,
+    "type": "section",
+    "heading": "vt 08 · raci",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/08_vt-08-raci.png"
+  },
+  {
+    "index": 9,
+    "type": "section",
+    "heading": "vt 09 · file tour",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/09_vt-09-file-tour.png"
+  },
+  {
+    "index": 10,
+    "type": "section",
+    "heading": "vt 10 · flowchart",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/10_vt-10-flowchart.png"
+  },
+  {
+    "index": 11,
+    "type": "section",
+    "heading": "vt 11 · weekly status",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/11_vt-11-weekly-status.png"
+  },
+  {
+    "index": 12,
+    "type": "section",
+    "heading": "vt 12 · incident summary",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/12_vt-12-incident-summary.png"
+  },
+  {
+    "index": 13,
+    "type": "section",
+    "heading": "vt 13 · comparison cards",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/13_vt-13-comparison-cards.png"
+  },
+  {
+    "index": 14,
+    "type": "section",
+    "heading": "vt 14 · process swimlane",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/14_vt-14-process-swimlane.png"
+  },
+  {
+    "index": 15,
+    "type": "section",
+    "heading": "vt 15 · concept explainer",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/15_vt-15-concept-explainer.png"
+  },
+  {
+    "index": 16,
+    "type": "section",
+    "heading": "vt 16 · implementation plan",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/16_vt-16-implementation-plan.png"
+  },
+  {
+    "index": 17,
+    "type": "section",
+    "heading": "vt 17 · pr writeup",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/17_vt-17-pr-writeup.png"
+  },
+  {
+    "index": 18,
+    "type": "section",
+    "heading": "vt 18 · triage board",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/18_vt-18-triage-board.png"
+  },
+  {
+    "index": 19,
+    "type": "section",
+    "heading": "vt 19 · feature flag",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/19_vt-19-feature-flag.png"
+  },
+  {
+    "index": 20,
+    "type": "section",
+    "heading": "vt 20 · prompt tuner",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/20_vt-20-prompt-tuner.png"
+  },
+  {
+    "index": 21,
+    "type": "section",
+    "heading": "vt 21 · soft workflow map",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/21_vt-21-soft-workflow-map.png"
+  },
+  {
+    "index": 22,
+    "type": "section",
+    "heading": "wg 01 · three code approaches",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/22_wg-01-three-code-approaches.png"
+  },
+  {
+    "index": 23,
+    "type": "section",
+    "heading": "wg 02 · visual design directions",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/23_wg-02-visual-design-directions.png"
+  },
+  {
+    "index": 24,
+    "type": "section",
+    "heading": "wg 03 · annotated pull request",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/24_wg-03-annotated-pull-request.png"
+  },
+  {
+    "index": 25,
+    "type": "section",
+    "heading": "wg 04 · module map",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/25_wg-04-module-map.png"
+  },
+  {
+    "index": 26,
+    "type": "section",
+    "heading": "wg 05 · living design system",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/26_wg-05-living-design-system.png"
+  },
+  {
+    "index": 27,
+    "type": "section",
+    "heading": "wg 06 · component variants",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/27_wg-06-component-variants.png"
+  },
+  {
+    "index": 28,
+    "type": "section",
+    "heading": "wg 07 · animation sandbox",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/28_wg-07-animation-sandbox.png"
+  },
+  {
+    "index": 29,
+    "type": "section",
+    "heading": "wg 08 · clickable flow",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/29_wg-08-clickable-flow.png"
+  },
+  {
+    "index": 30,
+    "type": "section",
+    "heading": "wg 09 · arrow key slide deck",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/30_wg-09-arrow-key-slide-deck.png"
+  },
+  {
+    "index": 31,
+    "type": "section",
+    "heading": "wg 10 · svg figure sheet",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/31_wg-10-svg-figure-sheet.png"
+  },
+  {
+    "index": 32,
+    "type": "section",
+    "heading": "wg 11 · weekly status",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/32_wg-11-weekly-status.png"
+  },
+  {
+    "index": 33,
+    "type": "section",
+    "heading": "wg 12 · incident timeline",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/33_wg-12-incident-timeline.png"
+  },
+  {
+    "index": 34,
+    "type": "section",
+    "heading": "wg 13 · annotated flowchart",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/34_wg-13-annotated-flowchart.png"
+  },
+  {
+    "index": 35,
+    "type": "section",
+    "heading": "wg 14 · feature explainer",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/35_wg-14-feature-explainer.png"
+  },
+  {
+    "index": 36,
+    "type": "section",
+    "heading": "wg 15 · concept explainer",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/36_wg-15-concept-explainer.png"
+  },
+  {
+    "index": 37,
+    "type": "section",
+    "heading": "wg 16 · implementation plan",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/37_wg-16-implementation-plan.png"
+  },
+  {
+    "index": 38,
+    "type": "section",
+    "heading": "wg 17 · pr writeup",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/38_wg-17-pr-writeup.png"
+  },
+  {
+    "index": 39,
+    "type": "section",
+    "heading": "wg 18 · ticket triage board",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/39_wg-18-ticket-triage-board.png"
+  },
+  {
+    "index": 40,
+    "type": "section",
+    "heading": "wg 19 · feature flag editor",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/40_wg-19-feature-flag-editor.png"
+  },
+  {
+    "index": 41,
+    "type": "section",
+    "heading": "wg 20 · prompt tuner",
+    "path": "output/2026-06-08/audits/final_20260604_catalog_layout_audit_20260607/sections-390/41_wg-20-prompt-tuner.png"
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "shot": "output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode08-section6-validation-checklist-fixed-1280.png",
+    "metrics": {
+      "viewport": {
+        "w": 1280,
+        "h": 900
+      },
+      "doc": {
+        "clientWidth": 1280,
+        "scrollWidth": 1280,
+        "overflowX": false
+      },
+      "section": {
+        "className": "validation-checklist",
+        "display": "block",
+        "grid": "none",
+        "hasWg03": false,
+        "hasWg17": false
+      },
+      "topGrid": {
+        "columns": "478px 478px",
+        "childCount": 4
+      },
+      "qg": {
+        "columns": "437px 437px",
+        "childCount": 4
+      },
+      "evidence": {
+        "columns": "479px 479px",
+        "childCount": 4
+      }
+    }
+  },
+  {
+    "shot": "output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode08-section6-validation-checklist-fixed-390.png",
+    "metrics": {
+      "viewport": {
+        "w": 390,
+        "h": 900
+      },
+      "doc": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "overflowX": false
+      },
+      "section": {
+        "className": "validation-checklist",
+        "display": "block",
+        "grid": "none",
+        "hasWg03": false,
+        "hasWg17": false
+      },
+      "topGrid": {
+        "columns": "324px",
+        "childCount": 4
+      },
+      "qg": {
+        "columns": "266px",
+        "childCount": 4
+      },
+      "evidence": {
+        "columns": "324px",
+        "childCount": 4
+      }
+    }
+  }
+]

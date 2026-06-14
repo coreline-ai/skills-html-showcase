@@ -1,4 +1,4 @@
-> ⚠️ **ARCHIVED — SUPERSEDED by v5.2.0.** 이 문서는 작성 당시 버전의 시점 고정(point-in-time) 리뷰/분석/계획 기록입니다. 현재 스킬은 **v5.2.0**이며, 여기서 지적된 항목 다수는 이미 해소·초과 달성되었습니다. 최신 사실 기준선은 게이트를 완전 통과한 `output/adaptive-html-final-13-topics-20260605_083433/`이고, 현행 문서는 루트 `README.md`·`AGENTS.md`·`Guide.md`입니다. 아카이브 색인: [`docs/archive/README.md`](README.md).
+> ⚠️ **ARCHIVED — SUPERSEDED by v5.2.0.** 이 문서는 작성 당시 버전의 시점 고정(point-in-time) 리뷰/분석/계획 기록입니다. 현재 스킬은 **v5.2.0**이며, 여기서 지적된 항목 다수는 이미 해소·초과 달성되었습니다. 최신 사실 기준선은 게이트를 완전 통과한 `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`이고, 현행 문서는 루트 `README.md`·`AGENTS.md`·`Guide.md`입니다. 아카이브 색인: [`docs/archive/README.md`](README.md).
 
 ---
 
@@ -75,7 +75,7 @@
 - `skills/adaptive-html-final/scripts/validate_output.py` — `widget_static_gate()`/`visual_html_gate()`, 코어 해시, `css-integrity.json` 대조.
 - `skills/adaptive-html-final/assets/base.html` — CSS 슬롯 7종 + 본문 슬롯.
 - `skills/adaptive-html-final/manifest.json` — `assets` 배열(현재 `profiles` 선언 없음).
-- 골든 출력: `output/adaptive-html-final-showcase-v5`(wg- 적용), `output/adaptive-html-final-showcase-v6`(vt- 적용).
+- 골든 출력: `output/2026-06-01/adaptive-html-final-showcase-v5`(wg- 적용), `output/2026-06-01/adaptive-html-final-showcase-v6`(vt- 적용).
 
 ---
 
@@ -133,8 +133,8 @@
 - **`manifest.json`**: `version` = `"4.5.0"`(line 3). `assets` 배열에 코어 + `widgets.css` + `visual-html.css` + 템플릿 20+20 등록. **`profiles` 키 없음.**
 - **`AGENTS.md`**: "profile"/"프로파일" 단어 0회(`grep -ic profile AGENTS.md` = 0). 프로파일 개념 미도입.
 - **쇼케이스 골든 실측(핵심 — 기존 라벨 전제 폐기):**
-  - `output/adaptive-html-final-showcase-v6`: HTML 14개. markup `class="...wg-NN..."` = **0개 파일**, markup `class="...vt-..."` = **13개 파일**, 그러나 인라인 `<style>` 의 `.wg-01` 정의 = **14개 파일 전부**. ⇒ **CSS 번들 = 코어5+widgets+visual-html 합본(auto 번들)**, markup = vt- 위주. 즉 **diagram 골든이 아니라 auto 골든**이다.
-  - `output/adaptive-html-final-showcase-v5`: markup `vt-` 누수 = **0개 파일**(교차 1층 게이트는 통과). 그러나 `validate_output.py` 실행 시 **FAILED** — `source_version_mismatch`(skill 4.5.0 vs v5 4.3.3), `inline_css_hash_mismatch ×16`, `css_integrity_core_hash_mismatch`(expected `bd5665…` actual `541d5e…`), asset/snapshot mismatch. ⇒ widget 골든으로 쓰려면 **4.5.0 코어로 정합화 필요**.
+  - `output/2026-06-01/adaptive-html-final-showcase-v6`: HTML 14개. markup `class="...wg-NN..."` = **0개 파일**, markup `class="...vt-..."` = **13개 파일**, 그러나 인라인 `<style>` 의 `.wg-01` 정의 = **14개 파일 전부**. ⇒ **CSS 번들 = 코어5+widgets+visual-html 합본(auto 번들)**, markup = vt- 위주. 즉 **diagram 골든이 아니라 auto 골든**이다.
+  - `output/2026-06-01/adaptive-html-final-showcase-v5`: markup `vt-` 누수 = **0개 파일**(교차 1층 게이트는 통과). 그러나 `validate_output.py` 실행 시 **FAILED** — `source_version_mismatch`(skill 4.5.0 vs v5 4.3.3), `inline_css_hash_mismatch ×16`, `css_integrity_core_hash_mismatch`(expected `bd5665…` actual `541d5e…`), asset/snapshot mismatch. ⇒ widget 골든으로 쓰려면 **4.5.0 코어로 정합화 필요**.
 
 ---
 
@@ -168,9 +168,9 @@
 - 이 Phase 가 끝나기 전에는 다른 어떤 Phase 도 실행(구현)하지 않는다.
 
 ### 구현 태스크
-- [ ] v6 전체 파일 목록 캡처(읽기전용): `find output/adaptive-html-final-showcase-v6 -type f | sort > dev-plan/baseline_v6_files.txt`.
-- [ ] 파일별 SHA256 캡처: `find output/adaptive-html-final-showcase-v6 -type f -print0 | sort -z | xargs -0 shasum -a 256 > dev-plan/baseline_v6_sha256.txt`.
-- [ ] 검증기 baseline JSON 캡처: `python3 skills/adaptive-html-final/scripts/validate_output.py output/adaptive-html-final-showcase-v6 --skill-dir skills/adaptive-html-final --json > dev-plan/baseline_v6_validate.json`.
+- [ ] v6 전체 파일 목록 캡처(읽기전용): `find output/2026-06-01/adaptive-html-final-showcase-v6 -type f | sort > dev-plan/baseline_v6_files.txt`.
+- [ ] 파일별 SHA256 캡처: `find output/2026-06-01/adaptive-html-final-showcase-v6 -type f -print0 | sort -z | xargs -0 shasum -a 256 > dev-plan/baseline_v6_sha256.txt`.
+- [ ] 검증기 baseline JSON 캡처: `python3 skills/adaptive-html-final/scripts/validate_output.py output/2026-06-01/adaptive-html-final-showcase-v6 --skill-dir skills/adaptive-html-final --json > dev-plan/baseline_v6_validate.json`.
 - [ ] auto 번들 실측 마커 캡처(회귀 비교용): v6 14개 파일의 markup `wg-` 0 / markup `vt-` 13 / 인라인 `.wg-01` 14 를 baseline 메모로 고정.
 - [ ] **비교 명령 동결(이후 Phase 6·회귀 테스트가 그대로 재사용):**
   - 파일 집합 diff: `diff <(현재 파일목록) dev-plan/baseline_v6_files.txt`
@@ -212,9 +212,9 @@
 
   | 프로파일 | 기준선 정의 | 파일 경로 | byte 기준 |
   | --- | --- | --- | --- |
-  | `auto` | 현행 v6 산출(코어5+widgets+visual-html, markup=vt-) **그대로** | `output/adaptive-html-final-showcase-v6` | **회귀-0 기준선** (Phase -1 baseline 과 SHA256 diff 0) |
+  | `auto` | 현행 v6 산출(코어5+widgets+visual-html, markup=vt-) **그대로** | `output/2026-06-01/adaptive-html-final-showcase-v6` | **회귀-0 기준선** (Phase -1 baseline 과 SHA256 diff 0) |
   | `diagram` | v6 에서 **widgets.css 만 제거**한 슬림 재생성(콘텐츠 무변경, CSS 번들만 변경) | (Phase 5 에서 신규 생성) | v6 와 byte 다름이 **정상** |
-  | `widget` | v5 **정합화** 산출(4.5.0 코어로 sources/스냅샷/manifest 리프레시 + widgets.css 인라인, 콘텐츠 무변경) | `output/adaptive-html-final-showcase-v5`(정합화 후) | v6 와 byte 다름이 **정상** |
+  | `widget` | v5 **정합화** 산출(4.5.0 코어로 sources/스냅샷/manifest 리프레시 + widgets.css 인라인, 콘텐츠 무변경) | `output/2026-06-01/adaptive-html-final-showcase-v5`(정합화 후) | v6 와 byte 다름이 **정상** |
 
 - [ ] **2축 계약표 작성(핵심 — CSS 번들 ⊥ markup 라이브러리)**:
 
@@ -517,8 +517,8 @@
 - [ ] (선택) 쇼케이스 홈에 프로파일 안내 텍스트(무 JS, 정적).
 
 ### 영향 파일
-- `output/adaptive-html-final-showcase-v6/` (auto 라벨 — 무변경, profile.json 추가만)
-- `output/adaptive-html-final-showcase-v5/` (widget — 정합화: sources/메타 리프레시, 콘텐츠 무변경)
+- `output/2026-06-01/adaptive-html-final-showcase-v6/` (auto 라벨 — 무변경, profile.json 추가만)
+- `output/2026-06-01/adaptive-html-final-showcase-v5/` (widget — 정합화: sources/메타 리프레시, 콘텐츠 무변경)
 - diagram 슬림 골든 (신규 디렉터리)
 - (선택) 쇼케이스 인덱스/홈 문서
 
@@ -582,7 +582,7 @@
 
 - **본 차수(콘텐츠 무변경):** v5 정합화(코어 4.6.0 sources/스냅샷/manifest 리프레시), diagram 슬림 번들 재생성, profile.json 동봉.
   ⇒ 모두 `<body>` 텍스트 diff 0 으로 증명되어야 하며, 게이트 통과를 위한 메타/번들 변경만 허용.
-- **Deferred(콘텐츠 변경 — 보류):** `output/adaptive-html-final-showcase-v6` 등의 **본문 콘텐츠 자체 개선/수정**.
+- **Deferred(콘텐츠 변경 — 보류):** `output/2026-06-01/adaptive-html-final-showcase-v6` 등의 **본문 콘텐츠 자체 개선/수정**.
   이번 작업에서는 v6 를 `auto` 골든으로 "라벨링/대조"만 하고, 콘텐츠는 손대지 않는다(`<body>` 텍스트 diff 0 의무).
 
 ---

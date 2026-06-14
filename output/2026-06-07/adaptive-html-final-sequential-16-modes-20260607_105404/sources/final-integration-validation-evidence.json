@@ -1,0 +1,156 @@
+{
+  "status": "complete_audit_passed",
+  "output_root": "output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404",
+  "index_link": "http://localhost:8080/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/index.html",
+  "validate_output": {
+    "ok": true,
+    "issues": 0,
+    "warnings": [],
+    "profile": "auto"
+  },
+  "quality_contract": "OK — quality contract guard passed (16 HTML content files)",
+  "governance": "57/57 checks passed",
+  "browser_audit": {
+    "pages": 17,
+    "problem_pages": []
+  },
+  "mode_pages": 16,
+  "mode_evidence_files": 16,
+  "bad_evidence": [],
+  "page_metrics": [
+    {
+      "file": "pages/01_skill_audit_meeting_action_plan.html",
+      "h2": 5,
+      "numbered_h2": 5,
+      "missing_icon": [],
+      "vt_shells": 3,
+      "themebar": true
+    },
+    {
+      "file": "pages/02_platform_blog_ai_code_review_gateway.html",
+      "h2": 5,
+      "numbered_h2": 4,
+      "missing_icon": [],
+      "vt_shells": 3,
+      "themebar": true
+    },
+    {
+      "file": "pages/03_seo_dashboard_internal_rag_guide.html",
+      "h2": 8,
+      "numbered_h2": 7,
+      "missing_icon": [],
+      "vt_shells": 3,
+      "themebar": true
+    },
+    {
+      "file": "pages/04_education_postgres_query_plan_workshop.html",
+      "h2": 10,
+      "numbered_h2": 8,
+      "missing_icon": [],
+      "vt_shells": 3,
+      "themebar": true
+    },
+    {
+      "file": "pages/05_github_analysis_skills_html_showcase_due_diligence.html",
+      "h2": 14,
+      "numbered_h2": 10,
+      "missing_icon": [],
+      "vt_shells": 7,
+      "themebar": true
+    },
+    {
+      "file": "pages/06_youtube_analysis_local_rag_knowledge_vault.html",
+      "h2": 15,
+      "numbered_h2": 11,
+      "missing_icon": [],
+      "vt_shells": 6,
+      "themebar": true
+    },
+    {
+      "file": "pages/07_manual_analysis_oncall_incident_runbook.html",
+      "h2": 23,
+      "numbered_h2": 11,
+      "missing_icon": [],
+      "vt_shells": 14,
+      "themebar": true
+    },
+    {
+      "file": "pages/08_expert_multi_agent_html_quality_gate_architecture.html",
+      "h2": 15,
+      "numbered_h2": 6,
+      "missing_icon": [],
+      "vt_shells": 10,
+      "themebar": true
+    },
+    {
+      "file": "pages/09_article_judgment_log_over_prompt.html",
+      "h2": 11,
+      "numbered_h2": 7,
+      "missing_icon": [],
+      "vt_shells": 6,
+      "themebar": true
+    },
+    {
+      "file": "pages/10_blog_four_days_with_ai_review_notes.html",
+      "h2": 10,
+      "numbered_h2": 5,
+      "missing_icon": [],
+      "vt_shells": 6,
+      "themebar": true
+    },
+    {
+      "file": "pages/11_beginner_browser_cache_everyday_library.html",
+      "h2": 7,
+      "numbered_h2": 6,
+      "missing_icon": [],
+      "vt_shells": 3,
+      "themebar": true
+    },
+    {
+      "file": "pages/12_reference_feature_flag_lifecycle_manual.html",
+      "h2": 7,
+      "numbered_h2": 5,
+      "missing_icon": [],
+      "vt_shells": 3,
+      "themebar": true
+    },
+    {
+      "file": "pages/13_comparison_internal_search_architecture_matrix.html",
+      "h2": 6,
+      "numbered_h2": 5,
+      "missing_icon": [],
+      "vt_shells": 3,
+      "themebar": true
+    },
+    {
+      "file": "pages/14_case_study_search_index_lag_postmortem.html",
+      "h2": 6,
+      "numbered_h2": 5,
+      "missing_icon": [],
+      "vt_shells": 3,
+      "themebar": true
+    },
+    {
+      "file": "pages/15_landing_brief_launchbrief_studio.html",
+      "h2": 5,
+      "numbered_h2": 5,
+      "missing_icon": [],
+      "vt_shells": 4,
+      "themebar": true
+    },
+    {
+      "file": "pages/16_checklist_feature_flag_release_safety_playbook.html",
+      "h2": 5,
+      "numbered_h2": 4,
+      "missing_icon": [],
+      "vt_shells": 5,
+      "themebar": true
+    }
+  ],
+  "final_integration_changes": [
+    "re-inlined current skills/adaptive-html-final/assets/widgets.css into stale index/pages 01-12 style blocks",
+    "added body-icon before index numbered h2",
+    "updated sources/assets/widgets.css snapshot to current asset bytes"
+  ],
+  "policy_note": "Final integration changed CSS/index shell only. Mode page bodies remain the sequential, mode-specific revisions recorded in per-mode evidence files."
+}

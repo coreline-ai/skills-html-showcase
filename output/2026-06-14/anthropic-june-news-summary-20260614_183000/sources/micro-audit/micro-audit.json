@@ -1,0 +1,624 @@
+{
+  "shots": [
+    "output/2026-06-14/anthropic-june-news-summary-20260614_183000/sources/micro-audit/mobile_section-16_num-wrap.png",
+    "output/2026-06-14/anthropic-june-news-summary-20260614_183000/sources/micro-audit/mobile_section-17_cards.png",
+    "output/2026-06-14/anthropic-june-news-summary-20260614_183000/sources/micro-audit/mobile_section-25_risk.png",
+    "output/2026-06-14/anthropic-june-news-summary-20260614_183000/sources/micro-audit/desktop_section-17_cards.png",
+    "output/2026-06-14/anthropic-june-news-summary-20260614_183000/sources/micro-audit/desktop_section-25_risk.png"
+  ],
+  "data": {
+    "nums": [
+      {
+        "text": "01",
+        "w": 32,
+        "h": 30,
+        "x": 91,
+        "y": 1983,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "01 6월 뉴스 전체 요약"
+      },
+      {
+        "text": "02",
+        "w": 34,
+        "h": 30,
+        "x": 91,
+        "y": 2913,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "02 수집 범위와 원문 목록"
+      },
+      {
+        "text": "03",
+        "w": 34,
+        "h": 30,
+        "x": 91,
+        "y": 4550,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "03 날짜별 타임라인"
+      },
+      {
+        "text": "04",
+        "w": 35,
+        "h": 30,
+        "x": 91,
+        "y": 6049,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "04 읽기 의사결정 트리"
+      },
+      {
+        "text": "05",
+        "w": 34,
+        "h": 30,
+        "x": 91,
+        "y": 7372,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "05 뉴스 클러스터 4가지"
+      },
+      {
+        "text": "06",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 8797,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "06 Jun 12, 2026 · Statement on the US government directive to suspend access to Fable 5 and Mythos 5"
+      },
+      {
+        "text": "07",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 9823,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "07 Jun 12, 2026 · Results from the first Anthropic Public Record"
+      },
+      {
+        "text": "08",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 10992,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "08 Jun 12, 2026 · TCS and Anthropic partner to bring Claude to regulated industries"
+      },
+      {
+        "text": "09",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 12278,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "09 Jun 11, 2026 · DXC will integrate Claude into the systems banks, airlines, and other regulated industries rely on"
+      },
+      {
+        "text": "10",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 13470,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "10 Jun 11, 2026 · Introducing Claude Corps"
+      },
+      {
+        "text": "11",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 14571,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "11 Jun 10, 2026 · Policy on the AI Exponential"
+      },
+      {
+        "text": "12",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 15731,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "12 Jun 9, 2026 · Claude Fable 5 and Claude Mythos 5"
+      },
+      {
+        "text": "13",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 16846,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "13 Jun 3, 2026 · Introducing the Services Track and Partner Hub of the Claude Partner Network"
+      },
+      {
+        "text": "14",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 18109,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "14 Jun 3, 2026 · What we learned mapping a year’s worth of AI-enabled cyber threats"
+      },
+      {
+        "text": "15",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 19278,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "15 Jun 2, 2026 · Expanding Project Glasswing"
+      },
+      {
+        "text": "16",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 20401,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "16 Jun 1, 2026 · Anthropic confidentially submits draft S-1 to the SEC"
+      },
+      {
+        "text": "17",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 21483,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "17 모델 발표와 접근 중단을 함께 읽기"
+      },
+      {
+        "text": "18",
+        "w": 31,
+        "h": 30,
+        "x": 91,
+        "y": 23116,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "18 규제 산업 파트너십의 의미"
+      },
+      {
+        "text": "19",
+        "w": 32,
+        "h": 30,
+        "x": 91,
+        "y": 23964,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "19 공공 신뢰 전략"
+      },
+      {
+        "text": "20",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 25225,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "20 보안과 안전을 운영 지표로 바꾸기"
+      },
+      {
+        "text": "21",
+        "w": 31,
+        "h": 30,
+        "x": 91,
+        "y": 26022,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "21 정책 프레임의 방향"
+      },
+      {
+        "text": "22",
+        "w": 31,
+        "h": 30,
+        "x": 91,
+        "y": 26980,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "22 기업 이벤트로서의 draft S-1"
+      },
+      {
+        "text": "23",
+        "w": 30,
+        "h": 30,
+        "x": 91,
+        "y": 27816,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "23 고객이 바로 확인해야 할 5가지"
+      },
+      {
+        "text": "24",
+        "w": 34,
+        "h": 30,
+        "x": 91,
+        "y": 28715,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "24 도입 조직별 읽기 순서"
+      },
+      {
+        "text": "25",
+        "w": 33,
+        "h": 30,
+        "x": 91,
+        "y": 29690,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "25 리스크 매트릭스 요약"
+      },
+      {
+        "text": "26",
+        "w": 32,
+        "h": 30,
+        "x": 91,
+        "y": 31876,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "26 7월에 이어서 봐야 할 신호"
+      },
+      {
+        "text": "27",
+        "w": 33,
+        "h": 30,
+        "x": 91,
+        "y": 32492,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "27 뉴스룸 요약의 한계"
+      },
+      {
+        "text": "28",
+        "w": 34,
+        "h": 30,
+        "x": 91,
+        "y": 33147,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "28 최종 요약"
+      },
+      {
+        "text": "29",
+        "w": 34,
+        "h": 30,
+        "x": 91,
+        "y": 33958,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "29 읽기 순서 추천"
+      },
+      {
+        "text": "30",
+        "w": 35,
+        "h": 30,
+        "x": 91,
+        "y": 35678,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "30 내부 공유용 한 문장"
+      },
+      {
+        "text": "31",
+        "w": 31,
+        "h": 30,
+        "x": 96,
+        "y": 36309,
+        "lineHeight": "13px",
+        "fontSize": "13px",
+        "h2": "31 다음 액션 체크리스트"
+      }
+    ],
+    "tags": [
+      {
+        "text": "★★★",
+        "x": 84,
+        "y": 22259,
+        "w": 53,
+        "h": 33,
+        "prev": "근거",
+        "gap": 0,
+        "parent": "template-card-head"
+      },
+      {
+        "text": "★★★",
+        "x": 95,
+        "y": 22522,
+        "w": 53,
+        "h": 33,
+        "prev": "리스크",
+        "gap": 0,
+        "parent": "template-card-head"
+      },
+      {
+        "text": "★★☆",
+        "x": 84,
+        "y": 22784,
+        "w": 53,
+        "h": 33,
+        "prev": "실행",
+        "gap": 0,
+        "parent": "template-card-head"
+      },
+      {
+        "text": "★★★",
+        "x": 84,
+        "y": 24368,
+        "w": 53,
+        "h": 33,
+        "prev": "측정",
+        "gap": 0,
+        "parent": "template-card-head"
+      },
+      {
+        "text": "★★☆",
+        "x": 84,
+        "y": 24630,
+        "w": 53,
+        "h": 33,
+        "prev": "교육",
+        "gap": 0,
+        "parent": "template-card-head"
+      },
+      {
+        "text": "★★☆",
+        "x": 84,
+        "y": 24892,
+        "w": 53,
+        "h": 33,
+        "prev": "정책",
+        "gap": 0,
+        "parent": "template-card-head"
+      },
+      {
+        "text": "★★★",
+        "x": 84,
+        "y": 30655,
+        "w": 53,
+        "h": 33,
+        "prev": "높음",
+        "gap": 0,
+        "parent": "template-card-head"
+      },
+      {
+        "text": "★★☆",
+        "x": 84,
+        "y": 30917,
+        "w": 53,
+        "h": 33,
+        "prev": "중간",
+        "gap": 0,
+        "parent": "template-card-head"
+      },
+      {
+        "text": "★☆☆",
+        "x": 84,
+        "y": 31179,
+        "w": 53,
+        "h": 33,
+        "prev": "낮음",
+        "gap": 0,
+        "parent": "template-card-head"
+      },
+      {
+        "text": "★★★",
+        "x": 111,
+        "y": 34830,
+        "w": 53,
+        "h": 33,
+        "prev": "빠른 판단",
+        "gap": 0,
+        "parent": "template-card-head"
+      },
+      {
+        "text": "★★☆",
+        "x": 111,
+        "y": 35092,
+        "w": 53,
+        "h": 33,
+        "prev": "심화 판단",
+        "gap": 0,
+        "parent": "template-card-head"
+      },
+      {
+        "text": "★★☆",
+        "x": 111,
+        "y": 35354,
+        "w": 53,
+        "h": 33,
+        "prev": "실행 판단",
+        "gap": 0,
+        "parent": "template-card-head"
+      }
+    ],
+    "left": [
+      {
+        "cls": "ba-col before",
+        "sec": "section-17",
+        "boxX": 39,
+        "textX": 58,
+        "padLeft": 19,
+        "text": "새 모델 발표를 벤치마크와 기능 개선 중심으로만 읽는다."
+      },
+      {
+        "cls": "ba-col after",
+        "sec": "section-17",
+        "boxX": 39,
+        "textX": 58,
+        "padLeft": 19,
+        "text": "릴리스 노트, 안전장치, 접근 제한, 대체 모델, 고객 안내를 하나의 운영 체계로 읽는다."
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-18",
+        "boxX": 39,
+        "textX": 57,
+        "padLeft": 18,
+        "text": "TCS"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-18",
+        "boxX": 202,
+        "textX": 220,
+        "padLeft": 18,
+        "text": "DXC"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-18",
+        "boxX": 39,
+        "textX": 57,
+        "padLeft": 18,
+        "text": "감사 가능성"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-18",
+        "boxX": 202,
+        "textX": 220,
+        "padLeft": 18,
+        "text": "구매 기준"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-20",
+        "boxX": 39,
+        "textX": 57,
+        "padLeft": 18,
+        "text": "위협 매핑"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-20",
+        "boxX": 202,
+        "textX": 220,
+        "padLeft": 18,
+        "text": "탐지 전환"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-20",
+        "boxX": 39,
+        "textX": 57,
+        "padLeft": 18,
+        "text": "취약점 협력"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-20",
+        "boxX": 202,
+        "textX": 220,
+        "padLeft": 18,
+        "text": "한계 기록"
+      },
+      {
+        "cls": "ba-col before",
+        "sec": "section-22",
+        "boxX": 39,
+        "textX": 58,
+        "padLeft": 19,
+        "text": "draft S-1 제출을 곧바로 IPO 확정으로 읽는다."
+      },
+      {
+        "cls": "ba-col after",
+        "sec": "section-22",
+        "boxX": 39,
+        "textX": 58,
+        "padLeft": 19,
+        "text": "비공개 제출은 선택지를 확보하는 절차이며, SEC 검토·시장 상황·공모 조건은 아직 미정으로 둔다."
+      },
+      {
+        "cls": "source-preserve source-preserve-static",
+        "sec": "section-22",
+        "boxX": 39,
+        "textX": 43,
+        "padLeft": 4,
+        "text": "확정 가능 / 확인 불가 분리"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-23",
+        "boxX": 39,
+        "textX": 57,
+        "padLeft": 18,
+        "text": "접근 조건"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-23",
+        "boxX": 202,
+        "textX": 220,
+        "padLeft": 18,
+        "text": "대체 경로"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-23",
+        "boxX": 39,
+        "textX": 57,
+        "padLeft": 18,
+        "text": "파트너 책임"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-23",
+        "boxX": 202,
+        "textX": 220,
+        "padLeft": 18,
+        "text": "보안 기준"
+      },
+      {
+        "cls": "source-preserve source-preserve-static",
+        "sec": "section-27",
+        "boxX": 39,
+        "textX": 43,
+        "padLeft": 4,
+        "text": "요약의 한계와 확인 필요 항목"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-28",
+        "boxX": 39,
+        "textX": 57,
+        "padLeft": 18,
+        "text": "모델"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-28",
+        "boxX": 202,
+        "textX": 220,
+        "padLeft": 18,
+        "text": "정책"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-28",
+        "boxX": 39,
+        "textX": 57,
+        "padLeft": 18,
+        "text": "파트너"
+      },
+      {
+        "cls": "impact-card",
+        "sec": "section-28",
+        "boxX": 202,
+        "textX": 220,
+        "padLeft": 18,
+        "text": "안전"
+      }
+    ],
+    "smallCards": []
+  }
+}

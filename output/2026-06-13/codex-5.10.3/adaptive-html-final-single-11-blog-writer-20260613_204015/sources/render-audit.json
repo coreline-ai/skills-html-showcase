@@ -1,0 +1,67 @@
+{
+  "url": "http://localhost:8080/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-11-blog-writer-20260613_204015/index.html",
+  "checked_at": "2026-06-13T11:42:23.545Z",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow_ok": true,
+      "h1Count": 1,
+      "sectionCount": 17,
+      "screenshot": "sources/screenshots/390.png",
+      "overflowNodes": []
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow_ok": true,
+      "h1Count": 1,
+      "sectionCount": 17,
+      "screenshot": "sources/screenshots/1280.png",
+      "overflowNodes": []
+    }
+  },
+  "toc": {
+    "count": 8,
+    "missing": []
+  },
+  "finalContrast": {
+    "390": {
+      "text": "13\nSource Note · 이 글의 작성 방식\n\n이 글은 실제 실험 기록을 바탕으로 한 개인 블로그 형식의 에세이다. 생산성 도구 추천보다, 습관을 바꾸는 과정에서 발견한 감각과 운영 규칙을 분리해 기록하는 데 초점을 맞췄다.",
+      "color": "rgb(102, 102, 102)",
+      "background": "rgb(250, 249, 245)",
+      "ratio": 5.45,
+      "box": {
+        "x": 39,
+        "y": 11645.734375,
+        "width": 312,
+        "height": 139.609375,
+        "top": 11645.734375,
+        "right": 351,
+        "bottom": 11785.34375,
+        "left": 39
+      },
+      "visible_ok": true
+    },
+    "1280": {
+      "text": "13\nSource Note · 이 글의 작성 방식\n\n이 글은 실제 실험 기록을 바탕으로 한 개인 블로그 형식의 에세이다. 생산성 도구 추천보다, 습관을 바꾸는 과정에서 발견한 감각과 운영 규칙을 분리해 기록하는 데 초점을 맞췄다.",
+      "color": "rgb(102, 102, 102)",
+      "background": "rgb(250, 249, 245)",
+      "ratio": 5.45,
+      "box": {
+        "x": 153,
+        "y": 7689.09375,
+        "width": 974,
+        "height": 77.390625,
+        "top": 7689.09375,
+        "right": 1127,
+        "bottom": 7766.484375,
+        "left": 153
+      },
+      "visible_ok": true
+    }
+  },
+  "verdict": "OK"
+}

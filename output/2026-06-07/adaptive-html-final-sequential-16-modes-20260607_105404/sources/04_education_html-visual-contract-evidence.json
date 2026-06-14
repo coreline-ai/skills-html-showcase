@@ -1,0 +1,90 @@
+{
+  "mode": "04_education_html",
+  "file": "pages/04_education_postgres_query_plan_workshop.html",
+  "link": "http://localhost:8080/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/pages/04_education_postgres_query_plan_workshop.html",
+  "policy": "previous HTML body not reused by render script; common generator not used; education_html layout/recipe/references/templates consulted for this page only",
+  "materials_sha256": {
+    "skills/adaptive-html-final/SKILL.md": "08d27b0eab2a5afbc73f37a74d596fcdce53101789381c23c7d26cd212871626",
+    "skills/adaptive-html-final/recipes/education.prompt.md": "727066642c31c207730ef3248ad8f7ebddcb4c09b8fca03e31cbcfad31279c64",
+    "skills/adaptive-html-final/assets/layouts/course-module.html": "82f9dd7d8853177c99ee8e38b8ac07eaa0bf9f841d284b6210ac47c0364a845d",
+    "skills/adaptive-html-final/references/layout-system.md": "e0274c4634e2d4354c0d49167d90f016dee62ccca7e28599aba32ce729208c6d",
+    "skills/adaptive-html-final/references/writing-system.md": "eaeafad51b4704f4cf417474031c31f51c676971c148728182fc19468c757e09",
+    "skills/adaptive-html-final/references/body-icon-system.md": "3b2729a18456e3d049a7f35890ec612f66528552c969db445914bc8847151bfa",
+    "skills/adaptive-html-final/references/visual-html-system.md": "757dbca98bc7952b1db492022da014749f9141e6716fc4cc20a72af6e29e80c5",
+    "skills/adaptive-html-final/references/widget-system.md": "cc2e4bbb245ddd46106c2f5e0b22ce3920e6ff172c0f0fe4f3a4505cd61755e1",
+    "skills/adaptive-html-final/assets/visual-html-templates/04-timeline.html": "0b0c9babbef8e17823170698a61270cfca459252c0304a1377a8cf2b636e37b1",
+    "skills/adaptive-html-final/assets/visual-html-templates/05-checklist-flow.html": "c91b5ead42adcd356c92b0df81915864857dcb431cdfb8b5ff3275ab5e6a4d70",
+    "skills/adaptive-html-final/assets/visual-html-templates/15-concept-explainer.html": "72a3f0d2dc904e89cf4d719d6406dacb225bf8f1e4fa9c9bee9666ce6e416b3a",
+    "skills/adaptive-html-final/assets/visual-html-templates/21-soft-workflow-map.html": "315c76053374dedc0472c73470cd7ee86d67c4934609ae42f1f888ec4c718b53",
+    "skills/adaptive-html-final/assets/widget-templates/13-annotated-flowchart.html": "406be36f9f41e45b62e0518dc17362b768e4137b9e47702b59b68fdf8653d0c5",
+    "skills/adaptive-html-final/assets/widget-templates/14-feature-explainer.html": "dd2cdb841ccfc11f4742d83b91d84ab2da09fd5c911b2810996aac504fccc927",
+    "skills/adaptive-html-final/assets/widget-templates/15-concept-explainer.html": "42caec19599ddf789438530d853e0c703e574c3c7731e9f88090b0dd01a8c1f8"
+  },
+  "used_materials": [
+    "skills/adaptive-html-final/SKILL.md",
+    "skills/adaptive-html-final/recipes/education.prompt.md",
+    "skills/adaptive-html-final/assets/layouts/course-module.html",
+    "skills/adaptive-html-final/references/layout-system.md",
+    "skills/adaptive-html-final/references/writing-system.md",
+    "skills/adaptive-html-final/references/body-icon-system.md",
+    "skills/adaptive-html-final/references/visual-html-system.md",
+    "skills/adaptive-html-final/references/widget-system.md",
+    "skills/adaptive-html-final/assets/visual-html-templates/04-timeline.html",
+    "skills/adaptive-html-final/assets/visual-html-templates/05-checklist-flow.html",
+    "skills/adaptive-html-final/assets/visual-html-templates/15-concept-explainer.html",
+    "skills/adaptive-html-final/assets/visual-html-templates/21-soft-workflow-map.html",
+    "skills/adaptive-html-final/assets/widget-templates/13-annotated-flowchart.html",
+    "skills/adaptive-html-final/assets/widget-templates/14-feature-explainer.html",
+    "skills/adaptive-html-final/assets/widget-templates/15-concept-explainer.html"
+  ],
+  "placeholder_mapping": {
+    "LEARNING_GOALS": "learning goals + vt timeline",
+    "BEFORE_START": "prerequisites + vt checklist-flow",
+    "CONCEPT_LESSON": "concept lecture + vt concept-explainer + wg-15 concept explainer",
+    "EXAMPLE": "query example + wg-14 feature explainer",
+    "PRACTICE": "hands-on tasks + vt checklist-flow",
+    "QUIZ": "four quiz cards",
+    "ANSWER_KEY": "visible answer table with mobile-safe wrapper",
+    "REVIEW_CHECKLIST": "final review checklist in try section",
+    "SOURCE_NOTE": "source/mode limits and no-reuse note"
+  },
+  "visual_contract": {
+    "layout": "course-module.html",
+    "direct_sections_expected": 8,
+    "numbered_h2_order": "body-icon body-icon--sm -> num -> title",
+    "vt_required": [
+      "timeline"
+    ],
+    "vt_used": [
+      "timeline",
+      "checklist-flow",
+      "concept-explainer"
+    ],
+    "wg_used": [
+      "14-feature-explainer",
+      "15-concept-explainer"
+    ],
+    "table_mobile_safe": "table-scroll + mobile-card-table where table is used",
+    "education_signature_blocks": [
+      "learning goals",
+      "before start",
+      "concept lesson",
+      "example",
+      "practice",
+      "quiz",
+      "answer key",
+      "review checklist"
+    ]
+  },
+  "review_findings_and_fixes": [
+    "기존 화면은 큰 overflow나 h2 아이콘 누락은 없었지만, 목표 조건상 기존 HTML 본문을 신뢰하지 않고 education 전용 자료만 읽는 전용 렌더러로 재생성했다.",
+    "교육 모드 특성이 흐려지지 않도록 학습목표→준비→개념→예제→실습→퀴즈→정답→복습 순서를 layout placeholder에 1:1 매핑했다.",
+    "테이블은 모두 table-scroll 또는 mobile-card-table로 감싸 390px overflow 회귀를 막았다."
+  ],
+  "skill_patch_candidates_from_mode_review": [
+    "education_html은 course-module placeholder 8개가 모두 채워져야 완료로 본다.",
+    "교육 모드에는 quiz와 answer key가 동시에 있어야 하며, 정답 표는 모바일 safe wrapper를 강제한다.",
+    "EXPLAIN/실습형 교육처럼 코드와 표가 함께 있는 섹션은 390px 캡쳐를 완료 조건으로 둔다."
+  ],
+  "next_mode": "05_github_analysis"
+}

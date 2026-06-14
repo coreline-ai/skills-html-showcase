@@ -1,0 +1,27 @@
+{
+  "skill_version": "5.10.3",
+  "mode": "article_html",
+  "layout": "magazine-article.html",
+  "profile": "auto",
+  "read_assets": [
+    "base.html",
+    "layouts/magazine-article.html",
+    "visual-html-templates/02-decision-tree.html",
+    "widget-templates/14-feature-explainer.html",
+    "body-icons.json",
+    "theme.css",
+    "components.css",
+    "visual-components.css",
+    "widgets.css",
+    "visual-html.css",
+    "body-icons.css",
+    "editorial-patterns.css",
+    "shape-visuals.css",
+    "workflow-visuals.css",
+    "layouts.css",
+    "print.css",
+    "theme-dark.css"
+  ],
+  "sections": 31,
+  "source_items": 11
+}

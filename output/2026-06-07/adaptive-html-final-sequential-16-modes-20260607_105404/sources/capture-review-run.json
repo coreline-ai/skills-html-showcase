@@ -1,0 +1,41 @@
+{
+  "run": "capture-layout-text-review",
+  "policy": "one mode per turn; no previous HTML body reuse by render script; no common generator; mode-specific layout/recipe/references/templates only",
+  "completed": [
+    "01_skill_audit",
+    "02_platform_blog",
+    "03_seo_dashboard",
+    "04_education_html",
+    "05_github_analysis",
+    "06_youtube_analysis",
+    "07_manual_analysis",
+    "08_expert_html",
+    "09_article_html",
+    "10_blog_writer",
+    "11_beginner_html",
+    "12_reference_html",
+    "13_comparison_html",
+    "14_case_study_html",
+    "15_landing_brief_html",
+    "16_checklist_playbook"
+  ],
+  "last_completed": "final_integration_audit_and_skill_patch_summary",
+  "next_mode": null,
+  "full_validation_after_last_mode": "OK",
+  "last_mode_evidence": "sources/16_checklist_playbook-visual-contract-evidence.json",
+  "last_mode_link": "http://localhost:8080/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/pages/16_checklist_feature_flag_release_safety_playbook.html",
+  "updated_at": "2026-06-07T08:53:43.404422+00:00",
+  "full_validation_issue_count_after_last_mode": 0,
+  "full_validation_issue_top_types_after_last_mode": [],
+  "final_index_link": "http://localhost:8080/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/index.html",
+  "final_index_evidence": "sources/final-index-visual-contract-evidence.json",
+  "final_index_screenshots": [
+    "sources/screenshots/final-index-after-1280.png",
+    "sources/screenshots/final-index-after-390.png"
+  ],
+  "final_validation_commands": [
+    "python3 skills/adaptive-html-final/scripts/validate_output.py output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404 --skill-dir skills/adaptive-html-final",
+    "python3 skills/adaptive-html-final/scripts/quality_contract_check.py output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404",
+    "python3 skills/adaptive-html-final/tests/test_governance_gates.py"
+  ]
+}

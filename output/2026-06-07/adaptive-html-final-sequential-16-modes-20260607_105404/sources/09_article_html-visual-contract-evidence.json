@@ -1,0 +1,257 @@
+{
+  "mode": "09_article_html",
+  "file": "pages/09_article_judgment_log_over_prompt.html",
+  "link": "http://localhost:8080/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/pages/09_article_judgment_log_over_prompt.html",
+  "updated_at": "2026-06-07T08:14:42.518539+00:00",
+  "policy": "rendered by mode-only script; previous HTML body not read; no common generator imported; article_html layout/recipe/reference/vt/wg assets used",
+  "render_script": "_work/render_09_article_mode_only.py",
+  "page_sha256": "247e8e032b0af7f9dce2e21b733b247a18509cdecabc841334cebc8bbbf3f83a",
+  "used_materials": [
+    "SKILL.md",
+    "recipes/article.prompt.md",
+    "assets/layouts/magazine-article.html",
+    "references/layout-system.md",
+    "references/writing-system.md",
+    "references/quality-gates.md",
+    "references/body-icon-system.md",
+    "references/visual-html-system.md",
+    "references/widget-system.md",
+    "assets/visual-html-templates/02-decision-tree.html",
+    "assets/visual-html-templates/13-comparison-cards.html",
+    "assets/visual-html-templates/15-concept-explainer.html",
+    "assets/widget-templates/13-annotated-flowchart.html",
+    "assets/widget-templates/14-feature-explainer.html"
+  ],
+  "placeholder_mapping": {
+    "pull-quote": "core article claim sentence",
+    "problem": "problem statement + vt concept-explainer",
+    "context": "context + vt comparison-cards + wg-14 feature explainer",
+    "core_argument": "core claim + vt decision-tree",
+    "case_study": "HTML skill regression case with observation/judgment/validation pattern",
+    "conclusion": "argument close + wg-13 flow",
+    "takeaway": "5 actionable judgment-log sentences",
+    "related_topics": "3 related topic cards"
+  },
+  "before_metrics": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "screenshot": "/Users/hwanchoi/project_202606/skills-html-showcase/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode09-article-before-1280.png",
+      "metrics": {
+        "h1": 1,
+        "mainClass": "page layout-article",
+        "themebar": true,
+        "themeRadioCount": 8,
+        "sections": 12,
+        "h2": 11,
+        "numberedH2": 7,
+        "numberedIcon": 7,
+        "h2IconComplete": true,
+        "articleSections": 5,
+        "vtShells": 3,
+        "widgets": [
+          "wg-13",
+          "wg-14"
+        ],
+        "pullQuote": true,
+        "takeaway": true,
+        "related": true,
+        "overflowX": false,
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "textChars": 4495
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "screenshot": "/Users/hwanchoi/project_202606/skills-html-showcase/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode09-article-before-390.png",
+      "metrics": {
+        "h1": 1,
+        "mainClass": "page layout-article",
+        "themebar": true,
+        "themeRadioCount": 8,
+        "sections": 12,
+        "h2": 11,
+        "numberedH2": 7,
+        "numberedIcon": 7,
+        "h2IconComplete": true,
+        "articleSections": 5,
+        "vtShells": 3,
+        "widgets": [
+          "wg-13",
+          "wg-14"
+        ],
+        "pullQuote": true,
+        "takeaway": true,
+        "related": true,
+        "overflowX": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "textChars": 4495
+      }
+    }
+  ],
+  "after_metrics": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "screenshot": "/Users/hwanchoi/project_202606/skills-html-showcase/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode09-article-after-1280.png",
+      "metrics": {
+        "h1": 1,
+        "mainClass": "page layout-article",
+        "themebar": true,
+        "themeRadioCount": 8,
+        "generatedRow": true,
+        "lensStrip": true,
+        "articleSections": 5,
+        "directMainSections": 2,
+        "contentSections": 7,
+        "contentSectionsWithBg": 7,
+        "h2": 7,
+        "numberedH2": 7,
+        "numberedIcon": 7,
+        "h2IconComplete": true,
+        "vtShells": 3,
+        "widgets": [
+          "wg-13",
+          "wg-14"
+        ],
+        "pullQuote": true,
+        "takeaway": true,
+        "related": true,
+        "sourceNote": true,
+        "hasLead": true,
+        "hasProblem": true,
+        "hasCase": true,
+        "hasTakeaway": true,
+        "overflowX": false,
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "textChars": 4100
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "screenshot": "/Users/hwanchoi/project_202606/skills-html-showcase/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode09-article-after-390.png",
+      "metrics": {
+        "h1": 1,
+        "mainClass": "page layout-article",
+        "themebar": true,
+        "themeRadioCount": 8,
+        "generatedRow": true,
+        "lensStrip": true,
+        "articleSections": 5,
+        "directMainSections": 2,
+        "contentSections": 7,
+        "contentSectionsWithBg": 7,
+        "h2": 7,
+        "numberedH2": 7,
+        "numberedIcon": 7,
+        "h2IconComplete": true,
+        "vtShells": 3,
+        "widgets": [
+          "wg-13",
+          "wg-14"
+        ],
+        "pullQuote": true,
+        "takeaway": true,
+        "related": true,
+        "sourceNote": true,
+        "hasLead": true,
+        "hasProblem": true,
+        "hasCase": true,
+        "hasTakeaway": true,
+        "overflowX": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "textChars": 4100
+      }
+    }
+  ],
+  "visual_contract": {
+    "themebar_8_themes": true,
+    "main_layout_article": true,
+    "content_sections": 7,
+    "content_sections_with_bg": 7,
+    "numbered_h2_icons_complete": true,
+    "article_sections": 5,
+    "vt_shells": 3,
+    "widgets": [
+      "wg-13",
+      "wg-14"
+    ],
+    "pull_quote": true,
+    "takeaway": true,
+    "related": true,
+    "source_note": true,
+    "overflow_x": [
+      false,
+      false
+    ],
+    "article_required_blocks_present": {
+      "lead": true,
+      "problem": true,
+      "case": true,
+      "takeaway": true
+    }
+  },
+  "static_validation": {
+    "isolated_validate_output": "OK",
+    "isolated_quality_contract_check": "OK",
+    "full_validate_output_ok": false,
+    "full_html_count": 17,
+    "full_issue_count": 67,
+    "full_issue_top_types": [
+      [
+        "direct_section_h2_missing_body_icon",
+        23
+      ],
+      [
+        "inline_css_hash_mismatch",
+        15
+      ],
+      [
+        "inline_core_css_not_verbatim",
+        15
+      ],
+      [
+        "section_surface_css_missing",
+        14
+      ]
+    ],
+    "full_quality_contract_check": "OK",
+    "governance_gates": "63/63 checks passed",
+    "full_validation_note": "Mode09 is regenerated with the latest skill CSS and passes isolated validation. Full output remains incomplete because remaining older/future pages still carry old core CSS hash and direct-section h2 icon/surface regressions."
+  },
+  "screenshots": {
+    "before_1280": "/Users/hwanchoi/project_202606/skills-html-showcase/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode09-article-before-1280.png",
+    "before_390": "/Users/hwanchoi/project_202606/skills-html-showcase/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode09-article-before-390.png",
+    "after_1280": "/Users/hwanchoi/project_202606/skills-html-showcase/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode09-article-after-1280.png",
+    "after_390": "/Users/hwanchoi/project_202606/skills-html-showcase/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/sources/screenshots/mode09-article-after-390.png"
+  },
+  "fixes_applied": [
+    "replaced mode09 content via article-only render script",
+    "filled magazine-article layout slots: lead, pull quote, problem, context, core argument, case study, conclusion, takeaway, related topics, source note",
+    "added 7 numbered body-icon headings across article sections/takeaway/related",
+    "used article canonical vt set: decision-tree, comparison-cards, concept-explainer",
+    "used article-support widgets wg-13 and wg-14 without direct-section h2 conflicts",
+    "stored 1280px and 390px before/after screenshots and browser metrics"
+  ],
+  "skill_patch_candidates": [
+    "article_html depth gate should verify lead, pull quote, problem/context/argument/case/conclusion, takeaway, related topics are present",
+    "article widgets nested inside article sections should use h3 or body-icon h2 to avoid direct-section h2 conflicts",
+    "judgment-log style articles benefit from an explicit observation/judgment/validation pattern in writing-system.md",
+    "sequential tracker should keep residual full-output issue counts after every mode so stale pages are visible"
+  ],
+  "next_mode": "10_blog_writer"
+}

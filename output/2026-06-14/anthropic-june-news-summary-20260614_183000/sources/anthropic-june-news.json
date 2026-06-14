@@ -1,0 +1,193 @@
+{
+  "source": "https://www.anthropic.com/news",
+  "collected_at": "2026-06-14 KST",
+  "items": [
+    {
+      "date": "Jun 12, 2026",
+      "category": "Announcements",
+      "title": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5",
+      "url": "https://www.anthropic.com/news/fable-mythos-access",
+      "description": "The US government has issued an export control directive to suspend all access to Fable 5 and Mythos 5 by any foreign national, whether inside or outside the United States.",
+      "evidence_paragraphs": [
+        "Research Policy Commitments Learn News Try Claude Announcements Statement on the US government directive to suspend access to Fable 5 and Mythos 5 Jun 12, 2026 The US government, citing national security authorities, has issued an export control directive to suspend all access to Fable 5 and Mythos 5 by any foreign national, whether inside or outside the United States, including foreign national Anthropic employees. The net effect of this order is that we must abruptly disable Fable 5 and Mythos 5 for all our customers to ensure compliance. Access to all other Anthropic models will not be affected.",
+        "We received the directive from the government today at 5:21pm (ET). The letter did not provide specific details of its national security concern. Our understanding is that the government believes it has become aware of a method of bypassing, or “jailbreaking” Fable 5. We reviewed a demonstration of this specific technique being used to identify a small number of previously known, minor vulnerabilities. These vulnerabilities all appear relatively simple, and we have found that other publicly-available models are able to discover them as well without requiring a bypass.",
+        "Anthropic’s posture with respect to Fable’s safeguards, as laid out in our launch blog post , is the following:"
+      ],
+      "ko": {
+        "summary": "공식 뉴스룸에 노출된 6월 항목이다.",
+        "why": "같은 달의 정책·제품·파트너십 흐름 안에서 읽어야 한다.",
+        "action": "원문 링크와 날짜를 확인하고 내부 영향 범위를 분리한다."
+      }
+    },
+    {
+      "date": "Jun 12, 2026",
+      "category": "Announcements",
+      "title": "Results from the first Anthropic Public Record",
+      "url": "https://www.anthropic.com/news/anthropic-public-record",
+      "description": "Anthropic Public Record is a national survey of attitudes and opinions towards AI.",
+      "evidence_paragraphs": [
+        "Research Policy Commitments Learn News Try Claude Announcements Results from the first Anthropic Public Record Jun 12, 2026 We’re conducting a new survey series, Anthropic Public Record, to understand how the public thinks and feels about AI, and presenting a snapshot of the results from the first wave, fielded in November and December of 2025 with nearly 52,000 Americans.",
+        "Strikingly, on most questions, AI did not heavily divide Americans along typical partisan, geographic, or educational lines. In general, there was broad consensus across topics: Americans are eager to realize AI’s promised benefits but fear the disruption it may bring, and they want accountability from the companies building it. To the extent we saw disagreement, it was largely only in the intensity of people's views.",
+        "This research builds on other work underway at Anthropic to understand how people use Claude and think about AI development. We recently conducted a global qualitative study of 81,000 Claude users through Anthropic Interviewer , our tool for conducting in-depth interviews at scale. We also regularly release data from the Anthropic Economic Index , which draws on anonymized Claude usage data to show how people around the world are employing AI. The Anthropic Public Record survey marks the first time we’ve spoken to the general public, allowing us to reach non-users of AI and better understand how attitudes differ across demographic lines."
+      ],
+      "ko": {
+        "summary": "Anthropic Public Record는 미국인 약 5만2천 명을 대상으로 AI에 대한 기대·우려·책임 요구를 측정한 대규모 여론 조사다. 기술 기업이 비사용자 여론까지 정기 추적하려는 시도라는 점이 핵심이다.",
+        "why": "AI 커뮤니케이션은 제품 효용만 말하면 부족하다. 대중은 질병 치료·접근성 같은 이익을 기대하면서도 일자리 변화와 책임성을 동시에 요구한다.",
+        "action": "제품 메시지, 정책 문서, 고객 리서치를 같은 질문 체계로 연결하고, 향후 조사 반복 시 변화율을 추적한다."
+      }
+    },
+    {
+      "date": "Jun 12, 2026",
+      "category": "Announcements",
+      "title": "TCS and Anthropic partner to bring Claude to regulated industries",
+      "url": "https://www.anthropic.com/news/tcs-anthropic-partnership",
+      "description": "We’re announcing a partnership with Tata Consultancy Services (TCS). TCS will provide Claude to 50,000 of its own employees across 56 countries; build Claude-powered products for clients in financial services, healthcare, the public sector, and other regulated industries; and join the Claude Partner Network.",
+      "evidence_paragraphs": [
+        "Research Policy Commitments Learn News Try Claude Announcements TCS and Anthropic partner to bring Claude to regulated industries Jun 12, 2026 We’re announcing a partnership with Tata Consultancy Services (TCS), one of the world’s largest technology services companies. TCS will provide Claude to 50,000 of its own employees across 56 countries; build Claude-powered products for clients in financial services, healthcare, the public sector, and other regulated industries; and join the Claude Partner Network, our network of consulting and services firms that help bring Claude to their enterprise clients.",
+        "Regulated industries need their work to be highly accurate and auditable, and enterprises in these fields already use Claude for that reason. TCS brings decades of experience delivering technology that is compliant with companies’ regulatory requirements—and the reach to bring Claude to thousands of enterprises worldwide.",
+        "As “customer zero,” TCS will put Claude to work across its own engineering, finance, legal, marketing, and sales teams, using what it learns to shape how it brings Claude to clients. It’s also building a dedicated practice for this partnership, bringing together consultants, engineers, and industry specialists who will design and run Claude-based systems for clients. TCS will package Claude into industry-specific offerings, such as claims processing for insurers and lending advisory for banks, and its teams will implement and run them for clients in financial services, public services, life sciences, healthcare, aviation, telecom, and medical technology."
+      ],
+      "ko": {
+        "summary": "TCS가 자체 직원 5만 명에게 Claude를 제공하고, 규제 산업 고객용 Claude 기반 제품을 구축하며, Claude Partner Network에 참여한다는 파트너십 공지다.",
+        "why": "규제 산업에서 AI 도입은 모델 API만으로 결정되지 않는다. 통합 경험, 감사 가능성, 산업별 프로세스 이해, 운영 책임 소재가 구매 판단을 좌우한다.",
+        "action": "도입 검토자는 TCS의 내부 활용, 고객 제품화, 산업별 제공 범위, 규제 대응 경험을 별도 평가 축으로 나눠야 한다."
+      }
+    },
+    {
+      "date": "Jun 11, 2026",
+      "category": "Announcements",
+      "title": "DXC will integrate Claude into the systems banks, airlines, and other regulated industries rely on",
+      "url": "https://www.anthropic.com/news/dxc-anthropic-alliance",
+      "description": "We’re announcing a multi-year global alliance with DXC Technology, one of the world’s largest IT services companies.",
+      "evidence_paragraphs": [
+        "Research Policy Commitments Learn News Try Claude Announcements DXC will integrate Claude into the systems banks, airlines, and other regulated industries rely on Jun 11, 2026 We’re announcing a multi-year global alliance with DXC Technology, one of the world’s largest IT services companies. DXC will train tens of thousands of Claude-certified forward-deployed engineers (FDEs)—engineers embedded directly inside customer organizations—to bring Claude into the systems DXC operates for the world’s largest banks, airlines, insurers, manufacturers, and government agencies.",
+        "These systems, which DXC has run for decades, handle the transactions, claims, and operations businesses depend on, under strict security and compliance requirements. Before bringing Claude to these businesses, DXC worked with Claude inside its own operations, comprising some 115,000 employees across 70 countries, with similarly stringent requirements—including collaborating with Claude to write more than 95% of the code for DXC OASIS, its new AI-native orchestration platform for managed services.",
+        "DXC is also now part of the Claude Partner Network , our network of consulting and services firms that bring Claude to enterprise clients."
+      ],
+      "ko": {
+        "summary": "DXC가 은행·항공·보험·정부기관 등 핵심 운영 시스템에 Claude를 통합하기 위한 다년 글로벌 얼라이언스를 발표했다. 수만 명의 Claude 인증 forward-deployed engineer가 핵심 장치다.",
+        "why": "엔터프라이즈 AI는 데모보다 현장 배치와 기존 시스템 운영 경험이 중요하다. DXC 사례는 Claude가 고객 시스템 안쪽으로 들어가는 배포 모델을 보여준다.",
+        "action": "계약 단계에서 인증 엔지니어 수, 현장 배치 방식, 장애 대응, 감사 로그, 기존 시스템 변경 책임을 확인한다."
+      }
+    },
+    {
+      "date": "Jun 11, 2026",
+      "category": "Announcements",
+      "title": "Introducing Claude Corps",
+      "url": "https://www.anthropic.com/news/claude-corps",
+      "description": "We’re launching Claude Corps, a national fellowship program for people early in their careers who are passionate about extending the benefits of AI to communities across America.",
+      "evidence_paragraphs": [
+        "Research Policy Commitments Learn News Try Claude Announcements Policy Introducing Claude Corps Jun 11, 2026 We’re launching Claude Corps , a national fellowship program for people early in their careers who are passionate about extending the benefits of AI to communities across America.",
+        "We’ll teach 1,000 fellows how to use Claude well, match them with nonprofits across America, and pay them to spend a year—full-time, in-person—helping host organizations to advance their missions. Our goals are twofold: that host organizations are equipped with valuable tools and systems, and fellows build AI skills that will serve them in their careers.",
+        "The benefits of transformative AI systems could come at the cost of significant disruption. The companies building this technology have a responsibility to make sure the benefits are fully realized and widely shared, and to invest directly in the workers absorbing the change. As such, we’re committing an initial $150m to this program."
+      ],
+      "ko": {
+        "summary": "Claude Corps는 초기 커리어 인재 1,000명을 교육해 비영리 조직에 1년간 배치하는 펠로우십이다. Anthropic은 초기 1억5천만 달러를 투입한다고 밝혔다.",
+        "why": "이 공지는 단순 사회공헌보다 넓다. AI 혜택을 현장 조직과 노동 전환 영역에 배분하려는 인력·교육 인프라 실험으로 읽어야 한다.",
+        "action": "성과는 참여자 수보다 비영리 조직의 실제 업무 변화, 지속 가능한 시스템 운영, 펠로우의 장기 역량 축적으로 판단한다."
+      }
+    },
+    {
+      "date": "Jun 10, 2026",
+      "category": "Policy",
+      "title": "Policy on the AI Exponential",
+      "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+      "description": "We are sharing two policy proposals to prepare for AI progress: Our Advanced AI Framework and our Economic Policy Framework.",
+      "evidence_paragraphs": [
+        "Research Policy Commitments Learn News Try Claude Policy on the AI Exponential AI is advancing at exponential speed, and the policymaking process was built for a slower world.",
+        "We are sharing two policy proposals to prepare for AI progress. The first, our Advanced AI Framework, offers a roadmap for governing increasingly capable systems, from transparency and independent evaluation to government authority to block or deter dangerous deployments. The second, our Economic Policy Framework, turns to the question of how to prepare workers and the economy for AI’s impact and ensure the financial benefits of AI are broadly shared. Together they cover two sides of the same challenge: steering the technology responsibly as it advances, and preparing society for what it brings.",
+        "We are publishing our proposal for how governments should address catastrophic risks from the most powerful AI models, including granting them the legal authority to block or deter dangerous deployments."
+      ],
+      "ko": {
+        "summary": "AI 발전 속도에 맞춰 Advanced AI Framework와 Economic Policy Framework를 제안한 정책 글이다. 강력한 시스템의 배포 통제와 경제 전환 대응을 한 묶음으로 다룬다.",
+        "why": "기술 위험과 노동시장 충격을 별도 의제가 아니라 같은 속도 문제로 본다는 점이 중요하다. 투명성, 독립 평가, 정부의 위험 배포 차단 권한까지 논의한다.",
+        "action": "정책·리스크 담당자는 모델 평가, 배포 차단 기준, 경제 영향 완화, 수익 공유 논의를 분리하지 말고 하나의 준비 프레임으로 관리한다."
+      }
+    },
+    {
+      "date": "Jun 9, 2026",
+      "category": "Announcements",
+      "title": "Claude Fable 5 and Claude Mythos 5",
+      "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      "description": "Today we’re launching Claude Fable 5: a Mythos-class model that we’ve made safe for general use.",
+      "evidence_paragraphs": [
+        "Research Policy Commitments Learn News Try Claude Announcements Claude Fable 5 and Claude Mythos 5 Jun 9, 2026 Update Claude Mythos 5 and Fable 5 access unavailable",
+        "We are suspending access to Claude Fable 5 and Claude Mythos 5. We apologize for this disruption to our customers and are working to restore access as soon as possible.",
+        "Today we’re launching Claude Fable 5 : a Mythos-class 1 model that we’ve made safe for general use."
+      ],
+      "ko": {
+        "summary": "Fable 5와 Mythos 5 발표는 고성능 모델 출시와 안전장치 설명을 함께 담는다. 이후 접근 중단 공지와 연결해 보면, 성능 발표와 운영 리스크가 같은 타임라인에 놓인다.",
+        "why": "모델 성능 지표만 보면 고객이 실제로 쓸 수 있는지, 제한이 언제 어떻게 걸리는지라는 핵심 질문을 놓친다.",
+        "action": "제품 문서에는 벤치마크, 제한 조건, 안전장치 오탐 가능성, 현재 접근 가능 상태를 함께 표시한다."
+      }
+    },
+    {
+      "date": "Jun 3, 2026",
+      "category": "Announcements",
+      "title": "Introducing the Services Track and Partner Hub of the Claude Partner Network",
+      "url": "https://www.anthropic.com/news/services-track-partner-hub",
+      "description": "In March, we launched the Claude Partner Network, a program for the firms that help enterprises put Claude into production.. Today, we’re announcing two new components that make this ecosystem easier for customers to navigate.",
+      "evidence_paragraphs": [
+        "Research Policy Commitments Learn News Try Claude Announcements Introducing the Services Track and Partner Hub of the Claude Partner Network Jun 3, 2026 Almost every large enterprise is moving AI into production, and many have discovered something important: a successful pilot is not the same as a system a business can run on. The real work—and the real opportunity—is in the integration, the evaluation, and the way people's work evolves. That's why the companies getting AI integration right are doing it with partners who have done it before.",
+        "In March, we launched the Claude Partner Network—a program, backed by a $100 million investment in partner training, technical support, and shared marketing, for the firms that help enterprises put Claude into production. Since then, more than 40,000 firms have applied to join and more than 10,000 consultants have earned a Claude certification—a credential, held by an individual, that signals they've been trained to build and deploy Claude in production.",
+        "The largest professional-services firms in the world are building their own practices around Claude — putting it into production for clients while getting it into the hands of their own people. Accenture is training 30,000 professionals on the model. Cognizant has rolled Claude out to roughly 350,000 associates. Deloitte is making it available to 470,000 people across its global network. KPMG is integrating Claude across a workforce of more than 276,000. Infosys is building Claude-powered agents for specific industries, and PwC is rolling out Claude Code and Cowork starting with its US teams and expanding towards a global workforce in the hundreds of thousands."
+      ],
+      "ko": {
+        "summary": "Claude Partner Network에 Services Track과 Partner Hub를 추가한다는 공지다. 기업 고객이 인증 파트너와 구현 경험을 더 쉽게 찾도록 돕는 생태계 장치다.",
+        "why": "AI 파일럿은 많지만 운영 가능한 시스템으로 전환하는 과정은 통합·평가·업무 변화 관리가 필요하다. 파트너 탐색 UX가 실제 도입 속도를 좌우한다.",
+        "action": "구매팀은 파트너 인증, 업종별 사례, 보안 요구 대응, 운영 후 평가 방법을 같은 기준표로 비교한다."
+      }
+    },
+    {
+      "date": "Jun 3, 2026",
+      "category": "Policy",
+      "title": "What we learned mapping a year’s worth of AI-enabled cyber threats",
+      "url": "https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack",
+      "description": "As AI transforms the nature of and methods behind cyberattacks, how well do the techniques and frameworks used by the security community hold up? In a new report, we seek to answer that question.",
+      "evidence_paragraphs": [
+        "Research Policy Commitments Learn News Try Claude Policy Frontier Red Team What we learned mapping a year’s worth of AI-enabled cyber threats Jun 3, 2026 As AI transforms the nature of and methods behind cyberattacks, how well do the techniques and frameworks used by the security community hold up?",
+        "In a new report, we seek to answer that question. We examine 832 accounts that were banned for malicious cyber activity between March 2025 and March 2026 and map them onto MITRE ATT&CK , a longstanding database of the tactics and techniques used by cyberattackers. We published some of these results in Verizon’s 2026 Data Breach Investigations Report (DBIR), and are sharing a more detailed analysis here. These 832 cases are just a subset of the total number of accounts banned during this period, but they represent those where we had enough detail to conduct a thorough assessment of the attackers’ techniques.",
+        "Below we provide a summary of each of these conclusions. You can read a longer analysis on our Frontier Red Team blog ."
+      ],
+      "ko": {
+        "summary": "AI 악용 계정을 MITRE ATT&CK에 매핑해 1년치 AI-enabled cyber threats를 정리한 정책/보안 글이다. 추상적 공포가 아니라 전술·기술 단위로 위협을 설명한다.",
+        "why": "보안팀이 AI 위협을 기존 탐지 언어와 연결할 수 있어야 교육·탐지·보고 체계에 반영된다. 계정 차단 사례도 운영 신뢰의 일부다.",
+        "action": "보고서의 공격 단계, 계정 규모, 관찰 기간, 매핑 한계를 내부 탐지 룰과 보안 교육 자료에 반영한다."
+      }
+    },
+    {
+      "date": "Jun 2, 2026",
+      "category": "Announcements",
+      "title": "Expanding Project Glasswing",
+      "url": "https://www.anthropic.com/news/expanding-project-glasswing",
+      "description": "We’re extending Project Glasswing to approximately 150 new organizations in more than fifteen countries",
+      "evidence_paragraphs": [
+        "Research Policy Commitments Learn News Try Claude Announcements Expanding Project Glasswing Jun 2, 2026 Project Glasswing is our collaborative effort to secure the world’s most important software. In early April, we announced that roughly 50 initial partners had access to Claude Mythos Preview, and since then, they’ve been deploying the model to scan their codebases for vulnerabilities. We recently described how these partners have so far found more than 10,000 high- or critical-severity security flaws.",
+        "We’re now expanding Project Glasswing. Following several weeks of close collaboration with our Project Glasswing partners, the security industry, open-source software maintainers, and the US government, we’re extending the partnership to approximately 150 new organizations. Each one will need to meet our security requirements before they gain access.",
+        "The organizations in this new group are based in more than 15 countries, and most provide critical infrastructure to many more. (In the future, we intend to expand our geographical reach much further.) The group covers several industries that weren’t well represented in our initial cohort, such as power, water, healthcare, communications, and hardware. And many of the new partners are vendors—companies or nonprofits that maintain codebases that are relied upon by lots of other organizations around the world, including governments."
+      ],
+      "ko": {
+        "summary": "Project Glasswing을 15개국 이상 약 150개 조직으로 확장한다는 공지다. AI 모델을 소프트웨어 보안 협력에 투입하는 프로그램이 넓어진다는 뜻이다.",
+        "why": "취약점 발견 성과와 참여 조직 수는 안전성 주장을 검증 가능한 운영 지표로 바꾸는 역할을 한다.",
+        "action": "참여 조직은 발견 취약점의 심각도, 수정 소요 시간, 공개/비공개 처리 기준, 책임 분담을 사전에 합의한다."
+      }
+    },
+    {
+      "date": "Jun 1, 2026",
+      "category": "Announcements",
+      "title": "Anthropic confidentially submits draft S-1 to the SEC",
+      "url": "https://www.anthropic.com/news/confidential-draft-s1-sec",
+      "description": "Anthropic has confidentially submitted a draft S-1 registration statement to the Securities and Exchange Commission",
+      "evidence_paragraphs": [
+        "Research Policy Commitments Learn News Try Claude Announcements Anthropic confidentially submits draft S-1 to the SEC Jun 1, 2026 Today, Anthropic, PBC confidentially submitted a draft registration statement on Form S-1 to the U.S. Securities and Exchange Commission for a proposed initial public offering of our common stock. This gives us the option to go public after the SEC completes its review. The proposed initial public offering will depend on market conditions and other factors.",
+        "The number of shares to be offered and the price have not yet been set. This announcement is being published under Rule 135 of the Securities Act of 1933, as amended. It is not an offer to sell securities; nor is it a solicitation of an offer to buy them. Any offers, solicitations of offers to buy, or any sales of securities will be made only in accordance with the registration requirements of the Securities Act.",
+        "Related content Statement on the US government directive to suspend access to Fable 5 and Mythos 5 The US government has issued an export control directive to suspend all access to Fable 5 and Mythos 5."
+      ],
+      "ko": {
+        "summary": "SEC에 draft S-1 등록신고서를 비공개 제출했다는 기업 공지다. 즉시 상장을 뜻하지 않고, 선택지를 확보하는 절차로 읽어야 한다.",
+        "why": "뉴스의 의미는 상장 확정이 아니라 향후 자본시장 옵션을 여는 행위다. 시장 상황, SEC 검토, 공모 조건은 아직 미정이다.",
+        "action": "재무·전략 커뮤니케이션은 일정 단정 대신 가능성, 조건, 미확정 변수, 공개 정보의 한계를 구분해야 한다."
+      }
+    }
+  ]
+}

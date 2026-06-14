@@ -1,0 +1,83 @@
+{
+  "url": "http://localhost:8080/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-16-landing-brief-html-20260613_211157/index.html",
+  "checked_at": "2026-06-13T12:09:34.672Z",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow_ok": true,
+      "h1Count": 1,
+      "sectionCount": 18,
+      "screenshot": "sources/screenshots/390.png",
+      "overflowNodes": [
+        {
+          "tag": "DIV",
+          "cls": "wg-08-viewport",
+          "scrollWidth": 300,
+          "clientWidth": 284,
+          "text": "화면 A\n회의 종료 직후\n결정 3건\n확정\n액션 후보 9건\n검토\n확인 필요\n4건\n오너 확인하기 →"
+        }
+      ]
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow_ok": true,
+      "h1Count": 1,
+      "sectionCount": 18,
+      "screenshot": "sources/screenshots/1280.png",
+      "overflowNodes": [
+        {
+          "tag": "DIV",
+          "cls": "wg-08-viewport",
+          "scrollWidth": 508,
+          "clientWidth": 492,
+          "text": "화면 A\n회의 종료 직후\n결정 3건\n확정\n액션 후보 9건\n검토\n확인 필요\n4건\n오너 확인하기 →"
+        }
+      ]
+    }
+  },
+  "toc": {
+    "count": 12,
+    "missing": []
+  },
+  "finalContrast": {
+    "390": {
+      "text": "12\nSource Note · 이 브리프의 가정과 범위\n\n이 랜딩 브리프는 사내 업무 회의 자동화 제품을 가정한 전략 문서입니다. 실제 도입 전에는 회의 녹취 정책, 개인정보 처리, 보존 기간, 외부 SaaS 연결 범위, 조직의 액션 소유권 문화를 별도로 검토해야 합니다.\n\n스킬 생성 품질 확인을 위해 최신 헤더, 8테마",
+      "color": "rgb(26, 26, 26)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 17.4,
+      "box": {
+        "x": 16,
+        "y": 13524.765625,
+        "width": 358,
+        "height": 388.5,
+        "top": 13524.765625,
+        "right": 374,
+        "bottom": 13913.265625,
+        "left": 16
+      },
+      "visible_ok": true
+    },
+    "1280": {
+      "text": "12\nSource Note · 이 브리프의 가정과 범위\n\n이 랜딩 브리프는 사내 업무 회의 자동화 제품을 가정한 전략 문서입니다. 실제 도입 전에는 회의 녹취 정책, 개인정보 처리, 보존 기간, 외부 SaaS 연결 범위, 조직의 액션 소유권 문화를 별도로 검토해야 합니다.\n\n스킬 생성 품질 확인을 위해 최신 헤더, 8테마",
+      "color": "rgb(26, 26, 26)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 17.4,
+      "box": {
+        "x": 130,
+        "y": 7990.625,
+        "width": 1020,
+        "height": 239.5625,
+        "top": 7990.625,
+        "right": 1150,
+        "bottom": 8230.1875,
+        "left": 130
+      },
+      "visible_ok": true
+    }
+  },
+  "verdict": "OK"
+}

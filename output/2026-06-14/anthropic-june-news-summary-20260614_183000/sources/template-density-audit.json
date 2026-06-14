@@ -1,0 +1,508 @@
+{
+  "summary": {
+    "total": 31,
+    "withEditorial": 13,
+    "withVt": 5,
+    "withWg": 1,
+    "pOnly": 0,
+    "lowVisual": 0
+  },
+  "sections": [
+    {
+      "i": 1,
+      "id": "section-01",
+      "h2": "01 6월 뉴스 전체 요약",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 2
+    },
+    {
+      "i": 2,
+      "id": "section-02",
+      "h2": "02 수집 범위와 원문 목록",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": true,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 3,
+      "id": "section-03",
+      "h2": "03 날짜별 타임라인",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 4,
+      "id": "section-04",
+      "h2": "04 읽기 의사결정 트리",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": true,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 5,
+      "id": "section-05",
+      "h2": "05 뉴스 클러스터 4가지",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": true,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 6,
+      "id": "section-06",
+      "h2": "06 Jun 12, 2026 · Statement on the US government directive to suspend access to Fable 5 and Mythos 5",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": true,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 7,
+      "id": "section-07",
+      "h2": "07 Jun 12, 2026 · Results from the first Anthropic Public Record",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": true,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 8,
+      "id": "section-08",
+      "h2": "08 Jun 12, 2026 · TCS and Anthropic partner to bring Claude to regulated industries",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": true,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 9,
+      "id": "section-09",
+      "h2": "09 Jun 11, 2026 · DXC will integrate Claude into the systems banks, airlines, and other regulated industries rely on",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": true,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 10,
+      "id": "section-10",
+      "h2": "10 Jun 11, 2026 · Introducing Claude Corps",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": true,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 11,
+      "id": "section-11",
+      "h2": "11 Jun 10, 2026 · Policy on the AI Exponential",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": true,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 12,
+      "id": "section-12",
+      "h2": "12 Jun 9, 2026 · Claude Fable 5 and Claude Mythos 5",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": true,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 13,
+      "id": "section-13",
+      "h2": "13 Jun 3, 2026 · Introducing the Services Track and Partner Hub of the Claude Partner Network",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": true,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 14,
+      "id": "section-14",
+      "h2": "14 Jun 3, 2026 · What we learned mapping a year’s worth of AI-enabled cyber threats",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": true,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 15,
+      "id": "section-15",
+      "h2": "15 Jun 2, 2026 · Expanding Project Glasswing",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": true,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 16,
+      "id": "section-16",
+      "h2": "16 Jun 1, 2026 · Anthropic confidentially submits draft S-1 to the SEC",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": true,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 17,
+      "id": "section-17",
+      "h2": "17 모델 발표와 접근 중단을 함께 읽기",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 18,
+      "id": "section-18",
+      "h2": "18 규제 산업 파트너십의 의미",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 19,
+      "id": "section-19",
+      "h2": "19 공공 신뢰 전략",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 20,
+      "id": "section-20",
+      "h2": "20 보안과 안전을 운영 지표로 바꾸기",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 21,
+      "id": "section-21",
+      "h2": "21 정책 프레임의 방향",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": true,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 2
+    },
+    {
+      "i": 22,
+      "id": "section-22",
+      "h2": "22 기업 이벤트로서의 draft S-1",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 23,
+      "id": "section-23",
+      "h2": "23 고객이 바로 확인해야 할 5가지",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 3
+    },
+    {
+      "i": 24,
+      "id": "section-24",
+      "h2": "24 도입 조직별 읽기 순서",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": true,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 25,
+      "id": "section-25",
+      "h2": "25 리스크 매트릭스 요약",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": true,
+        "sourceNote": false,
+        "vt": true,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 5
+    },
+    {
+      "i": 26,
+      "id": "section-26",
+      "h2": "26 7월에 이어서 봐야 할 신호",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 27,
+      "id": "section-27",
+      "h2": "27 뉴스룸 요약의 한계",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 28,
+      "id": "section-28",
+      "h2": "28 최종 요약",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 29,
+      "id": "section-29",
+      "h2": "29 읽기 순서 추천",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": false,
+        "vt": true,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 4
+    },
+    {
+      "i": 30,
+      "id": "section-30",
+      "h2": "30 내부 공유용 한 문장",
+      "markers": {
+        "cardGrid": false,
+        "summaryCard": false,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": true,
+        "pOnly": false
+      },
+      "visualScore": 1
+    },
+    {
+      "i": 31,
+      "id": "section-31",
+      "h2": "31 다음 액션 체크리스트",
+      "markers": {
+        "cardGrid": true,
+        "summaryCard": true,
+        "table": false,
+        "sourceNote": false,
+        "vt": false,
+        "wg": false,
+        "editorial": false,
+        "pOnly": false
+      },
+      "visualScore": 2
+    }
+  ]
+}

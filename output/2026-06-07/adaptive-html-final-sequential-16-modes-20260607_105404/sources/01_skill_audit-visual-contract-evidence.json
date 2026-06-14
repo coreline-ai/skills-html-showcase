@@ -1,0 +1,60 @@
+{
+  "mode": "01_skill_audit",
+  "file": "pages/01_skill_audit_meeting_action_plan.html",
+  "link": "http://localhost:8080/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/pages/01_skill_audit_meeting_action_plan.html",
+  "policy": "previous HTML body not reused by render script; common generator not used; skill_audit layout/recipe/references/templates consulted for this page only",
+  "materials_sha256": {
+    "skills/adaptive-html-final/SKILL.md": "08d27b0eab2a5afbc73f37a74d596fcdce53101789381c23c7d26cd212871626",
+    "skills/adaptive-html-final/recipes/audit.prompt.md": "a7904ec735951828c54648c09d3d3456d428872420c3235e9831cc82cc477e69",
+    "skills/adaptive-html-final/assets/layouts/skill-audit-report.html": "1f1d808049083bdba8658f9d1e008e29f80d5d9a63249a2e5a71bbd567cb8e58",
+    "skills/adaptive-html-final/references/layout-system.md": "e0274c4634e2d4354c0d49167d90f016dee62ccca7e28599aba32ce729208c6d",
+    "skills/adaptive-html-final/references/skill-audit-system.md": "340ef2315b944f9e7f5d415d5b6c6d2ed597715357078f8d5764d5e30cc76c7d",
+    "skills/adaptive-html-final/references/body-icon-system.md": "3b2729a18456e3d049a7f35890ec612f66528552c969db445914bc8847151bfa",
+    "skills/adaptive-html-final/references/visual-html-system.md": "757dbca98bc7952b1db492022da014749f9141e6716fc4cc20a72af6e29e80c5",
+    "skills/adaptive-html-final/references/widget-system.md": "cc2e4bbb245ddd46106c2f5e0b22ce3920e6ff172c0f0fe4f3a4505cd61755e1",
+    "skills/adaptive-html-final/assets/visual-html-templates/06-quality-gate.html": "1295c66c649b1203c61c32d651bcacf7515a6bbb48e60e96f36a16fedef1977e",
+    "skills/adaptive-html-final/assets/visual-html-templates/09-file-tour.html": "88c2ae6c04105fc841692a96d8607ac6b3e81b5ead72876299553e710121186e",
+    "skills/adaptive-html-final/assets/visual-html-templates/20-prompt-tuner.html": "34f4a5b6c9842eb07d2ec89d3ca8b3f05341f59c5404ba46739941ca1deb0d2b",
+    "skills/adaptive-html-final/assets/visual-html-templates/16-implementation-plan.html": "34b0ba62601f403bd7f69f78bc0175f7a86b05645398b692b43e61015c604887",
+    "skills/adaptive-html-final/assets/visual-html-templates/21-soft-workflow-map.html": "315c76053374dedc0472c73470cd7ee86d67c4934609ae42f1f888ec4c718b53",
+    "skills/adaptive-html-final/assets/widget-templates/03-annotated-pull-request.html": "98049a96f4c4159e401bd0ce6e87dddb46f5cf84b067504b35744e8c23a331b3",
+    "skills/adaptive-html-final/assets/widget-templates/17-pr-writeup.html": "031450dd1d6ddbf92b9de3d9a0c8e648e390807cf971e4fd4ddced665ca4f7a5"
+  },
+  "used_materials": [
+    "skills/adaptive-html-final/SKILL.md",
+    "skills/adaptive-html-final/recipes/audit.prompt.md",
+    "skills/adaptive-html-final/assets/layouts/skill-audit-report.html",
+    "skills/adaptive-html-final/references/layout-system.md",
+    "skills/adaptive-html-final/references/skill-audit-system.md",
+    "skills/adaptive-html-final/references/body-icon-system.md",
+    "skills/adaptive-html-final/references/visual-html-system.md",
+    "skills/adaptive-html-final/references/widget-system.md",
+    "skills/adaptive-html-final/assets/visual-html-templates/06-quality-gate.html",
+    "skills/adaptive-html-final/assets/visual-html-templates/09-file-tour.html",
+    "skills/adaptive-html-final/assets/visual-html-templates/20-prompt-tuner.html",
+    "skills/adaptive-html-final/assets/visual-html-templates/16-implementation-plan.html",
+    "skills/adaptive-html-final/assets/visual-html-templates/21-soft-workflow-map.html",
+    "skills/adaptive-html-final/assets/widget-templates/03-annotated-pull-request.html",
+    "skills/adaptive-html-final/assets/widget-templates/17-pr-writeup.html"
+  ],
+  "visual_contract": {
+    "direct_sections_use_view_surface": true,
+    "numbered_h2_order": "body-icon body-icon--sm -> num -> title",
+    "h2_sub_for_major_sections": true,
+    "vt_required": [
+      "quality-gate"
+    ],
+    "vt_used": [
+      "quality-gate",
+      "file-tour",
+      "prompt-tuner",
+      "implementation-plan",
+      "soft-workflow-map"
+    ],
+    "wg_used": [
+      "03-annotated-pull-request",
+      "17-pr-writeup"
+    ]
+  },
+  "next_mode": "02_platform_blog"
+}

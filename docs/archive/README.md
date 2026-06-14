@@ -8,7 +8,7 @@
 > - 결정론 진입점: [`AGENTS.md`](../../AGENTS.md)
 > - 사용 가이드: [`Guide.md`](../../Guide.md)
 > - 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](../../skills/adaptive-html-final/CHANGELOG.md)
-> - **게이트 완전 통과 캐노니컬 산출물**: `output/adaptive-html-final-13-topics-20260605_083433/`
+> - **게이트 완전 통과 캐노니컬 산출물**: `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`
 >   (현재 스킬 v5.2.0의 정적 품질 게이트 `validate_output.py`를 0 issue로 통과 — 빌드 완성도 검증 기준선)
 
 ## 보관 문서

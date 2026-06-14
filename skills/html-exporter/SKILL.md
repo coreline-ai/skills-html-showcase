@@ -53,13 +53,13 @@ npm run export:output -- output/<dir> --clean
 
 ```bash
 # Default: pdf,png,webp + light,light2,white,dark,dark2,blue,skyblue,sepia
-npm run export:output -- output/final_20260604 --clean
+npm run export:output -- output/2026-06-04/final_20260604 --clean
 
 # PDF only
-npm run export:output -- output/final_20260604 --formats pdf --clean
+npm run export:output -- output/2026-06-04/final_20260604 --formats pdf --clean
 
 # Dark PNG only, lower scale
-npm run export:output -- output/final_20260604 --formats png --themes dark --scale 1 --clean
+npm run export:output -- output/2026-06-04/final_20260604 --formats png --themes dark --scale 1 --clean
 ```
 
 ## Allowed v1 options

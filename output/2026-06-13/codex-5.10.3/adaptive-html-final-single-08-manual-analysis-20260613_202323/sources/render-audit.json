@@ -1,0 +1,47 @@
+{
+  "url": "http://localhost:8080/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-08-manual-analysis-20260613_202323/index.html",
+  "checked_at": "2026-06-13T11:24:07.498Z",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow_ok": true,
+      "h1": 1,
+      "h2": 15,
+      "directSections": 12,
+      "themeInputs": 8,
+      "bodyIconDirectH2": 12,
+      "hmGrid": 1,
+      "cfItem": 3,
+      "recipes": 4,
+      "screenshot": "sources/screenshots/390.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow_ok": true,
+      "h1": 1,
+      "h2": 15,
+      "directSections": 12,
+      "themeInputs": 8,
+      "bodyIconDirectH2": 12,
+      "hmGrid": 1,
+      "cfItem": 3,
+      "recipes": 4,
+      "screenshot": "sources/screenshots/1280.png"
+    }
+  },
+  "toc": {
+    "count": 12,
+    "missing": []
+  },
+  "finalContrast": {
+    "sectionBg": "rgb(26, 26, 26)",
+    "h2Color": "rgb(255, 255, 255)",
+    "textColor": "rgb(208, 208, 200)",
+    "text": "초안 매뉴얼을 확정하려면 UNKNOWN을 소유자 검토로 닫아야 한다."
+  },
+  "verdict": "OK"
+}

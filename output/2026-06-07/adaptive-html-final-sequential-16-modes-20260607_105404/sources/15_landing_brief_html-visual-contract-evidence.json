@@ -1,0 +1,178 @@
+{
+  "mode": "15_landing_brief_html",
+  "generated_at": "2026-06-07T08:44:43.841214+00:00",
+  "page": "output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/pages/15_landing_brief_launchbrief_studio.html",
+  "local_link": "http://localhost:8080/output/2026-06-07/adaptive-html-final-sequential-16-modes-20260607_105404/pages/15_landing_brief_launchbrief_studio.html",
+  "constraints": {
+    "previous_html_reused": false,
+    "common_generator_used": false,
+    "mode_specific_assets_only": true,
+    "skill_version": "5.8.1"
+  },
+  "before_metrics": [
+    {
+      "width": 1280,
+      "title": "LaunchBrief Studio: 출시 메시지를 한 장의 판단 문서로",
+      "h1": 1,
+      "mainClass": "page-wide layout-landing",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "h2": 5,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 4,
+      "widgets": [
+        "wg-08"
+      ],
+      "tables": 0,
+      "hero": true,
+      "valueGrid": true,
+      "howItWorks": true,
+      "faq": true,
+      "cta": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "textChars": 3329
+    },
+    {
+      "width": 390,
+      "title": "LaunchBrief Studio: 출시 메시지를 한 장의 판단 문서로",
+      "h1": 1,
+      "mainClass": "page-wide layout-landing",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "h2": 5,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 4,
+      "widgets": [
+        "wg-08"
+      ],
+      "tables": 0,
+      "hero": true,
+      "valueGrid": true,
+      "howItWorks": true,
+      "faq": true,
+      "cta": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "textChars": 3329
+    }
+  ],
+  "after_metrics": [
+    {
+      "width": 1280,
+      "title": "LaunchBrief Studio: 출시 메시지를 한 장의 판단 문서로",
+      "h1": 1,
+      "mainClass": "page-wide layout-landing",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "directSectionSurfaceCandidate": 4,
+      "h2": 5,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 4,
+      "widgets": [
+        "wg-08"
+      ],
+      "tables": 0,
+      "hero": true,
+      "valueGrid": true,
+      "howItWorks": true,
+      "faq": true,
+      "cta": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "textChars": 3101,
+      "bodyIconSvgAriaHidden": true,
+      "forbiddenScript": false
+    },
+    {
+      "width": 390,
+      "title": "LaunchBrief Studio: 출시 메시지를 한 장의 판단 문서로",
+      "h1": 1,
+      "mainClass": "page-wide layout-landing",
+      "themebar": true,
+      "themeRadioCount": 8,
+      "contentSections": 5,
+      "directSectionSurfaceCandidate": 4,
+      "h2": 5,
+      "directH2": 5,
+      "numberedH2": 5,
+      "numberedIcon": 5,
+      "directH2Icon": 5,
+      "vtShells": 4,
+      "widgets": [
+        "wg-08"
+      ],
+      "tables": 0,
+      "hero": true,
+      "valueGrid": true,
+      "howItWorks": true,
+      "faq": true,
+      "cta": true,
+      "sourceNote": true,
+      "overflowX": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "textChars": 3101,
+      "bodyIconSvgAriaHidden": true,
+      "forbiddenScript": false
+    }
+  ],
+  "screenshots": {
+    "before_1280": "sources/screenshots/mode15-landing-before-1280.png",
+    "before_390": "sources/screenshots/mode15-landing-before-390.png",
+    "after_1280": "sources/screenshots/mode15-landing-after-1280.png",
+    "after_390": "sources/screenshots/mode15-landing-after-390.png"
+  },
+  "isolated_validation": {
+    "validate_output": "HTML files: 1\nOK",
+    "quality": "OK — quality contract guard passed (1 HTML content file(s))",
+    "ok": true
+  },
+  "full_output_validation_after_mode": {
+    "ok": false,
+    "issue_count": 41,
+    "top_issue_types": [
+      [
+        "direct_section_h2_missing_body_icon",
+        14
+      ],
+      [
+        "inline_css_hash_mismatch",
+        9
+      ],
+      [
+        "inline_core_css_not_verbatim",
+        9
+      ],
+      [
+        "section_surface_css_missing",
+        9
+      ]
+    ],
+    "note": "예상 잔여: 아직 최신 core hash/body-icon/surface 규칙으로 재생성되지 않은 이전 모드와 index가 남아 있음. 15번은 isolated OK."
+  },
+  "manual_visual_review": {
+    "desktop": "1280 캡처에서 Hero, Value Props, How it works, FAQ, CTA가 절제된 랜딩 구조로 보이며 hero-map/card-grid/soft-workflow/feature-flag와 wg-08 프로토타입이 메시지 흐름을 설명함.",
+    "mobile": "390 캡처에서 카드와 프로토타입, soft workflow가 단일 컬럼으로 접히며 전체 가로 overflow 없음.",
+    "text": "확인되지 않은 효과 수치와 경쟁 비교를 단정하지 않고 source note에 검증 필요를 명시함."
+  },
+  "next_mode": "16_checklist_playbook"
+}

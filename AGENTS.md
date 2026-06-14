@@ -181,8 +181,8 @@ python3 skills/adaptive-html-final/scripts/quality_contract_check.py <output_dir
 ```
 
 - **현행 레퍼런스 출력:** `skills/adaptive-html-final/examples/`는 v5.10.3 스킬 자산 기준의 17모드 참조 예제 세트다.
-- **역사적 13-topic 기준선:** `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점 캐노니컬 예시로 보존하되, 최신 17모드 기준선으로 오해하지 않는다.
-- **역사적 골든:** `output/adaptive-html-final-showcase-v6/`는 v4.5 동결 시점의 역사적 auto 예시이므로 현재 검증 기준선으로 사용하지 않는다.
+- **역사적 13-topic 기준선:** `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점 캐노니컬 예시로 보존하되, 최신 17모드 기준선으로 오해하지 않는다.
+- **역사적 골든:** `output/2026-06-01/adaptive-html-final-showcase-v6/`는 v4.5 동결 시점의 역사적 auto 예시이므로 현재 검증 기준선으로 사용하지 않는다.
 
 **무 JS grep (불변식 1 보조 확인)** — JSON-LD 외 `<script>`가 0이어야 한다.
 

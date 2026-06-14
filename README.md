@@ -113,8 +113,8 @@ examples 01–14의 `mode-template-contract` 부록(메타 문구·off-topic 위
 
 최신 스모크 산출물:
 
-- [`output/youtube-analysis-vibecoding-gap-20260607_001503/`](output/youtube-analysis-vibecoding-gap-20260607_001503/) — `validate_output.py` OK
-- [`output/manual-analysis-product-runbook-20260607_001503/`](output/manual-analysis-product-runbook-20260607_001503/) — `validate_output.py` OK
+- [`output/2026-06-07/youtube-analysis-vibecoding-gap-20260607_001503/`](output/2026-06-07/youtube-analysis-vibecoding-gap-20260607_001503/) — `validate_output.py` OK
+- [`output/2026-06-07/manual-analysis-product-runbook-20260607_001503/`](output/2026-06-07/manual-analysis-product-runbook-20260607_001503/) — `validate_output.py` OK
 
 ### v5.3.0 (2026-06-06) — GitHub Analysis 14번째 모드 추가
 
@@ -128,7 +128,7 @@ examples 01–14의 `mode-template-contract` 부록(메타 문구·off-topic 위
 | 시각 매핑 | vt 1순위 `hero-map`, 보강 `quality-gate`·`file-tour`·`risk-matrix`·`timeline`·`decision-tree`; wg 보강 `wg-11`·`wg-04`·`wg-14`·`wg-16` |
 | 전략 문서 | `references/github-analysis-system.md`, `recipes/github-analysis.prompt.md`, 개발 계획 `dev-plan/implement_20260606_003800.md` 추가 |
 
-> 기존 `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 기준 13-topic 당시 캐노니컬 산출물로 보존합니다. v5.3.0 시점의 14-mode 신규 쇼케이스 재생성은 당시 후속 작업으로 남겼습니다.
+> 기존 `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 기준 13-topic 당시 캐노니컬 산출물로 보존합니다. v5.3.0 시점의 14-mode 신규 쇼케이스 재생성은 당시 후속 작업으로 남겼습니다.
 
 ### v5.2.1 → v5.2.3 (2026-06-05) — 캐노니컬 산출물 정련 + 전문가 팀 콘텐츠 보강 + 가독성 승격
 
@@ -195,7 +195,7 @@ examples 01–14의 `mode-template-contract` 부록(메타 문구·off-topic 위
 
 ### v5.2.3 역사적 로컬 산출물
 
-이 시점의 13개 주제 산출물은 [`output/adaptive-html-final-13-topics-20260605_083433/`](output/adaptive-html-final-13-topics-20260605_083433/)에 있으며, **웹 라이브 갤러리**는 [쇼케이스 갤러리](#️-쇼케이스-갤러리)에서 index + 13개 모드를 바로 열 수 있습니다. 현행 17모드 기준선은 `skills/adaptive-html-final/examples/`입니다.
+이 시점의 13개 주제 산출물은 [`output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`](output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/)에 있으며, **웹 라이브 갤러리**는 [쇼케이스 갤러리](#️-쇼케이스-갤러리)에서 index + 13개 모드를 바로 열 수 있습니다. 현행 17모드 기준선은 `skills/adaptive-html-final/examples/`입니다.
 
 | 항목 | 값 |
 |---|---|
@@ -209,11 +209,11 @@ examples 01–14의 `mode-template-contract` 부록(메타 문구·off-topic 위
 ```bash
 # 최신 산출물 검증
 python3 skills/adaptive-html-final/scripts/validate_output.py \
-  output/adaptive-html-final-13-topics-20260605_083433 \
+  output/2026-06-05/adaptive-html-final-13-topics-20260605_083433 \
   --skill-dir skills/adaptive-html-final
 
 # 로컬 브라우저 확인
-python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083433
+python3 -m http.server 8770 -d output/2026-06-05/adaptive-html-final-13-topics-20260605_083433
 # → http://127.0.0.1:8770/index.html
 ```
 
@@ -255,37 +255,37 @@ python3 -m http.server 8770 -d output/adaptive-html-final-13-topics-20260605_083
 
 <table>
 <tr>
-<td width="33%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/github-analysis-skills-html-showcase-20260606_005440/index.html"><img src="docs/screenshots/demo-github-analysis.png" width="100%" alt="github_analysis 데모 — skills-html-showcase 저장소 분석 리포트"></a><br><b>🔎 <code>github_analysis</code></b><br>저장소 분석 리포트. 사용/채택/감사 의사결정용 GitHub 분석 모드. 결론 직후 <b>chip-nav 목차(toc-map)</b> + references 투어 <b>다단(col-list)</b>.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/github-analysis-skills-html-showcase-20260606_005440/index.html">▶ 라이브</a> · <a href="output/github-analysis-skills-html-showcase-20260606_005440/index.html"><code>로컬</code></a></td>
-<td width="33%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/grok-india-appstore-guide-20260606_074130/index.html"><img src="docs/screenshots/demo-grok-india-appstore.png" width="100%" alt="grok 데모 — 인도 App Store로 Grok·SuperGrok 구독 가이드"></a><br><b>🧾 <code>checklist_playbook</code></b><br>인도 App Store(별도 Apple 계정 + Gift Card)로 Grok·SuperGrok 구독하는 실전 순서·체크리스트. 단계별 카드·표·주의 패턴.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/grok-india-appstore-guide-20260606_074130/index.html">▶ 라이브</a> · <a href="output/grok-india-appstore-guide-20260606_074130/index.html"><code>로컬</code></a></td>
-<td width="33%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-windows-audio-pcm-reference-20260605/index.html"><img src="docs/screenshots/demo-windows-audio-pcm.png" width="100%" alt="reference_html 데모 — Windows 오디오 PCM·DAC 제어 레퍼런스"></a><br><b>📘 <code>reference_html</code></b><br>Windows 오디오 PCM·DAC 제어 레퍼런스. WASAPI·ASIO·WDK/WaveRT·APO 스택을 정리한 기술 매뉴얼. 표·코드·핵심 callout.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-windows-audio-pcm-reference-20260605/index.html">▶ 라이브</a> · <a href="output/adaptive-html-final-windows-audio-pcm-reference-20260605/index.html"><code>로컬</code></a></td>
+<td width="33%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-06/github-analysis-skills-html-showcase-20260606_005440/index.html"><img src="docs/screenshots/demo-github-analysis.png" width="100%" alt="github_analysis 데모 — skills-html-showcase 저장소 분석 리포트"></a><br><b>🔎 <code>github_analysis</code></b><br>저장소 분석 리포트. 사용/채택/감사 의사결정용 GitHub 분석 모드. 결론 직후 <b>chip-nav 목차(toc-map)</b> + references 투어 <b>다단(col-list)</b>.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-06/github-analysis-skills-html-showcase-20260606_005440/index.html">▶ 라이브</a> · <a href="output/2026-06-06/github-analysis-skills-html-showcase-20260606_005440/index.html"><code>로컬</code></a></td>
+<td width="33%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-06/grok-india-appstore-guide-20260606_074130/index.html"><img src="docs/screenshots/demo-grok-india-appstore.png" width="100%" alt="grok 데모 — 인도 App Store로 Grok·SuperGrok 구독 가이드"></a><br><b>🧾 <code>checklist_playbook</code></b><br>인도 App Store(별도 Apple 계정 + Gift Card)로 Grok·SuperGrok 구독하는 실전 순서·체크리스트. 단계별 카드·표·주의 패턴.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-06/grok-india-appstore-guide-20260606_074130/index.html">▶ 라이브</a> · <a href="output/2026-06-06/grok-india-appstore-guide-20260606_074130/index.html"><code>로컬</code></a></td>
+<td width="33%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-windows-audio-pcm-reference-20260605/index.html"><img src="docs/screenshots/demo-windows-audio-pcm.png" width="100%" alt="reference_html 데모 — Windows 오디오 PCM·DAC 제어 레퍼런스"></a><br><b>📘 <code>reference_html</code></b><br>Windows 오디오 PCM·DAC 제어 레퍼런스. WASAPI·ASIO·WDK/WaveRT·APO 스택을 정리한 기술 매뉴얼. 표·코드·핵심 callout.<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-windows-audio-pcm-reference-20260605/index.html">▶ 라이브</a> · <a href="output/2026-06-05/adaptive-html-final-windows-audio-pcm-reference-20260605/index.html"><code>로컬</code></a></td>
 </tr>
 </table>
 
-> 🌐 라이브(GitHub Pages): **[github_analysis](https://coreline-ai.github.io/skills-html-showcase/output/github-analysis-skills-html-showcase-20260606_005440/index.html)** · **[grok 가이드](https://coreline-ai.github.io/skills-html-showcase/output/grok-india-appstore-guide-20260606_074130/index.html)** · **[windows-audio 레퍼런스](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-windows-audio-pcm-reference-20260605/index.html)** · 로컬 확인은 `python3 -m http.server 8080` 후 `http://localhost:8080/output/<dir>/index.html`
+> 🌐 라이브(GitHub Pages): **[github_analysis](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-06/github-analysis-skills-html-showcase-20260606_005440/index.html)** · **[grok 가이드](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-06/grok-india-appstore-guide-20260606_074130/index.html)** · **[windows-audio 레퍼런스](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-windows-audio-pcm-reference-20260605/index.html)** · 로컬 확인은 `python3 -m http.server 8080` 후 `http://localhost:8080/output/<dir>/index.html`
 
 ### 🌐 라이브 역사적 갤러리 — 13-topics (v5.2.3, 게이트 OK)
 
 v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 13명 전문가 에이전트가 모든 얕은 섹션을 보강한 **역사적 13-topic 기준선**입니다. 메인 화면과 13개 모드 페이지를 웹에서 바로 볼 수 있습니다. 현행 v5.10.3 기준 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
 
-**▶ 메인 화면:** **[13개 모드 신규 주제 쇼케이스 (index)](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/index.html)**
+**▶ 메인 화면:** **[13개 모드 신규 주제 쇼케이스 (index)](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/index.html)**
 
 | # | Mode | 주제 | 열기 |
 |--:|---|---|---|
-| 01 | `beginner_html` | 로컬 RAG 개인 지식 금고 입문 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/01-local-rag-personal-knowledge-vault.html) |
-| 02 | `expert_html` | AI 코드 리뷰 게이트웨이 운영 모델 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/02-ai-code-review-gateway-operating-model.html) |
-| 03 | `article_html` | 작은 팀의 운영 문서와 제품 속도 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/03-small-team-operating-docs-product-speed.html) |
-| 04 | `education_html` | PostgreSQL 쿼리 플랜 읽기 3주 교육 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/04-postgres-query-plan-3week-course.html) |
-| 05 | `blog_writer` | 두 번째 뇌를 다시 작게 만든 30일 회고 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/05-small-second-brain-30days-retro.html) |
-| 06 | `seo_dashboard` | AI 회의록 자동화 검색 허브 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/06-ai-meeting-notes-automation-seo.html) |
-| 07 | `platform_blog` | 컨퍼런스 발표를 플랫폼별 글로 변환 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/07-conference-talk-platform-adaptation.html) |
-| 08 | `skill_audit` | 배포 체크리스트 생성 스킬 감사 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/08-release-checklist-skill-audit.html) |
-| 09 | `reference_html` | Webhook 서명 검증 레퍼런스 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/09-webhook-signature-verification-reference.html) |
-| 10 | `comparison_html` | 벡터 검색 선택 기준 비교 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/10-vector-db-pgvector-search-engine-comparison.html) |
-| 11 | `case_study_html` | 예약 알림 지연 사고 케이스 스터디 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/11-reservation-reminder-delay-case-study.html) |
-| 12 | `landing_brief_html` | LocalNote 팀 지식관리 랜딩 브리프 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/12-localnote-team-knowledge-landing.html) |
-| 13 | `checklist_playbook` | AI 기능 출시 전 안전성 플레이북 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/pages/13-ai-feature-release-safety-playbook.html) |
+| 01 | `beginner_html` | 로컬 RAG 개인 지식 금고 입문 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/01-local-rag-personal-knowledge-vault.html) |
+| 02 | `expert_html` | AI 코드 리뷰 게이트웨이 운영 모델 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/02-ai-code-review-gateway-operating-model.html) |
+| 03 | `article_html` | 작은 팀의 운영 문서와 제품 속도 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/03-small-team-operating-docs-product-speed.html) |
+| 04 | `education_html` | PostgreSQL 쿼리 플랜 읽기 3주 교육 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/04-postgres-query-plan-3week-course.html) |
+| 05 | `blog_writer` | 두 번째 뇌를 다시 작게 만든 30일 회고 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/05-small-second-brain-30days-retro.html) |
+| 06 | `seo_dashboard` | AI 회의록 자동화 검색 허브 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/06-ai-meeting-notes-automation-seo.html) |
+| 07 | `platform_blog` | 컨퍼런스 발표를 플랫폼별 글로 변환 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/07-conference-talk-platform-adaptation.html) |
+| 08 | `skill_audit` | 배포 체크리스트 생성 스킬 감사 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/08-release-checklist-skill-audit.html) |
+| 09 | `reference_html` | Webhook 서명 검증 레퍼런스 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/09-webhook-signature-verification-reference.html) |
+| 10 | `comparison_html` | 벡터 검색 선택 기준 비교 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/10-vector-db-pgvector-search-engine-comparison.html) |
+| 11 | `case_study_html` | 예약 알림 지연 사고 케이스 스터디 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/11-reservation-reminder-delay-case-study.html) |
+| 12 | `landing_brief_html` | LocalNote 팀 지식관리 랜딩 브리프 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/12-localnote-team-knowledge-landing.html) |
+| 13 | `checklist_playbook` | AI 기능 출시 전 안전성 플레이북 | [▶ 보기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/pages/13-ai-feature-release-safety-playbook.html) |
 
-> 🌐 라이브(GitHub Pages): **[index 열기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-13-topics-20260605_083433/index.html)** · 상단 테마 스위처로 라이트·화이트·다크 전환 · 로컬 확인은 `python3 -m http.server 8788` 후 `127.0.0.1:8788/...`
+> 🌐 라이브(GitHub Pages): **[index 열기](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/index.html)** · 상단 테마 스위처로 라이트·화이트·다크 전환 · 로컬 확인은 `python3 -m http.server 8788` 후 `127.0.0.1:8788/...`
 
 ### 🧩 스킬 적용용 단일 템플릿 HTML 미리보기 (final_20260604)
 
@@ -293,12 +293,12 @@ v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 
 
 <table>
 <tr>
-<td width="50%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html"><img src="docs/screenshots/template-final-index-dark2.png" width="100%" alt="final_20260604 index.html — 와이드 마스터 템플릿 (Dark2 테마)"></a><br><b>▶ Skill Template HTML (와이드 · 8-테마)</b><br><code>final_20260604/index.html</code><br>프로파일·vt/wg·soft-shape·workflow 도판·body-icon을 한 페이지에 집약한 적용용 마스터 템플릿. 상단 스위처로 <b>light/light2/white/dark/dark2/blue/skyblue/sepia</b> 8테마 전환(스크린샷은 <b>Dark2</b> 테마).<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html">▶ 라이브</a> · <a href="output/final_20260604/index.html"><code>로컬</code></a></td>
-<td width="50%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html"><img src="docs/screenshots/template-final-beginner-width.png" width="100%" alt="final_20260604 index-beginner-width.html — beginner-width 변형 (라이트 테마)"></a><br><b>▶ Skill Template HTML (beginner-width 변형)</b><br><code>final_20260604/index-beginner-width.html</code><br>본문 가독 폭(beginner-width)으로 조판한 변형본. 아이콘+텍스트 배치를 컴팩트 아이콘 세트 기준으로 통일(8-테마, 스크린샷은 라이트).<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html">▶ 라이브</a> · <a href="output/final_20260604/index-beginner-width.html"><code>로컬</code></a></td>
+<td width="50%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-04/final_20260604/index.html"><img src="docs/screenshots/template-final-index-dark2.png" width="100%" alt="final_20260604 index.html — 와이드 마스터 템플릿 (Dark2 테마)"></a><br><b>▶ Skill Template HTML (와이드 · 8-테마)</b><br><code>final_20260604/index.html</code><br>프로파일·vt/wg·soft-shape·workflow 도판·body-icon을 한 페이지에 집약한 적용용 마스터 템플릿. 상단 스위처로 <b>light/light2/white/dark/dark2/blue/skyblue/sepia</b> 8테마 전환(스크린샷은 <b>Dark2</b> 테마).<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-04/final_20260604/index.html">▶ 라이브</a> · <a href="output/2026-06-04/final_20260604/index.html"><code>로컬</code></a></td>
+<td width="50%" valign="top"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-04/final_20260604/index-beginner-width.html"><img src="docs/screenshots/template-final-beginner-width.png" width="100%" alt="final_20260604 index-beginner-width.html — beginner-width 변형 (라이트 테마)"></a><br><b>▶ Skill Template HTML (beginner-width 변형)</b><br><code>final_20260604/index-beginner-width.html</code><br>본문 가독 폭(beginner-width)으로 조판한 변형본. 아이콘+텍스트 배치를 컴팩트 아이콘 세트 기준으로 통일(8-테마, 스크린샷은 라이트).<br><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-04/final_20260604/index-beginner-width.html">▶ 라이브</a> · <a href="output/2026-06-04/final_20260604/index-beginner-width.html"><code>로컬</code></a></td>
 </tr>
 </table>
 
-> 🌐 라이브(GitHub Pages): **[index.html](https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html)** · **[index-beginner-width.html](https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index-beginner-width.html)** · 로컬 확인은 `python3 -m http.server 8788`(캐시 우회 `?v=`)
+> 🌐 라이브(GitHub Pages): **[index.html](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-04/final_20260604/index.html)** · **[index-beginner-width.html](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-04/final_20260604/index-beginner-width.html)** · 로컬 확인은 `python3 -m http.server 8788`(캐시 우회 `?v=`)
 
 ### 🎞️ 디자인 썸네일 미리보기 (v4 데모 — 참고용)
 
@@ -307,36 +307,36 @@ v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 
 
 <table>
 <tr>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/01-beginner-passkeys-webauthn.html"><img src="docs/screenshots/01-beginner.png" width="100%" alt="beginner_html"></a><br><b>01 · <code>beginner_html</code></b><br>패스키와 WebAuthn, 비밀번호 없는 로그인 입문</td>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/02-expert-eu-ai-act-governance.html"><img src="docs/screenshots/02-expert.png" width="100%" alt="expert_html"></a><br><b>02 · <code>expert_html</code></b><br>EU AI Act 기반 생성형 AI 거버넌스 리포트</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/01-beginner-passkeys-webauthn.html"><img src="docs/screenshots/01-beginner.png" width="100%" alt="beginner_html"></a><br><b>01 · <code>beginner_html</code></b><br>패스키와 WebAuthn, 비밀번호 없는 로그인 입문</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/02-expert-eu-ai-act-governance.html"><img src="docs/screenshots/02-expert.png" width="100%" alt="expert_html"></a><br><b>02 · <code>expert_html</code></b><br>EU AI Act 기반 생성형 AI 거버넌스 리포트</td>
 </tr>
 <tr>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/03-article-ai-agent-ux-trust.html"><img src="docs/screenshots/03-article.png" width="100%" alt="article_html"></a><br><b>03 · <code>article_html</code></b><br>AI 에이전트 UX의 신뢰 설계 (매거진 아티클)</td>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/04-education-github-actions-security-ci.html"><img src="docs/screenshots/04-education.png" width="100%" alt="education_html"></a><br><b>04 · <code>education_html</code></b><br>GitHub Actions 보안 CI 교육 모듈 (퀴즈 포함)</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/03-article-ai-agent-ux-trust.html"><img src="docs/screenshots/03-article.png" width="100%" alt="article_html"></a><br><b>03 · <code>article_html</code></b><br>AI 에이전트 UX의 신뢰 설계 (매거진 아티클)</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/04-education-github-actions-security-ci.html"><img src="docs/screenshots/04-education.png" width="100%" alt="education_html"></a><br><b>04 · <code>education_html</code></b><br>GitHub Actions 보안 CI 교육 모듈 (퀴즈 포함)</td>
 </tr>
 <tr>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/05-blog-local-ai-workstation.html"><img src="docs/screenshots/05-blog.png" width="100%" alt="blog_writer"></a><br><b>05 · <code>blog_writer</code></b><br>로컬 AI 워크스테이션 구축기 (경험담)</td>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/06-seo-rag-vs-finetuning.html"><img src="docs/screenshots/06-seo.png" width="100%" alt="seo_dashboard"></a><br><b>06 · <code>seo_dashboard</code></b><br>RAG vs Fine-tuning SEO 대시보드</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/05-blog-local-ai-workstation.html"><img src="docs/screenshots/05-blog.png" width="100%" alt="blog_writer"></a><br><b>05 · <code>blog_writer</code></b><br>로컬 AI 워크스테이션 구축기 (경험담)</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/06-seo-rag-vs-finetuning.html"><img src="docs/screenshots/06-seo.png" width="100%" alt="seo_dashboard"></a><br><b>06 · <code>seo_dashboard</code></b><br>RAG vs Fine-tuning SEO 대시보드</td>
 </tr>
 <tr>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/07-platform-rag-post-platforms.html"><img src="docs/screenshots/07-platform.png" width="100%" alt="platform_blog"></a><br><b>07 · <code>platform_blog</code></b><br>RAG 글을 4개 플랫폼용으로 변환</td>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/08-skill-audit-adaptive-html-final.html"><img src="docs/screenshots/08-skill-audit.png" width="100%" alt="skill_audit"></a><br><b>08 · <code>skill_audit</code></b><br>adaptive-html-final 스킬 자체 감사 리포트</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/07-platform-rag-post-platforms.html"><img src="docs/screenshots/07-platform.png" width="100%" alt="platform_blog"></a><br><b>07 · <code>platform_blog</code></b><br>RAG 글을 4개 플랫폼용으로 변환</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/08-skill-audit-adaptive-html-final.html"><img src="docs/screenshots/08-skill-audit.png" width="100%" alt="skill_audit"></a><br><b>08 · <code>skill_audit</code></b><br>adaptive-html-final 스킬 자체 감사 리포트</td>
 </tr>
 <tr>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/09-reference-openai-responses-api.html"><img src="docs/screenshots/09-reference.png" width="100%" alt="reference_html"></a><br><b>09 · <code>reference_html</code></b><br>OpenAI Responses API 실무 레퍼런스</td>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/10-comparison-postgresql-mysql-sqlite.html"><img src="docs/screenshots/10-comparison.png" width="100%" alt="comparison_html"></a><br><b>10 · <code>comparison_html</code></b><br>PostgreSQL vs MySQL vs SQLite 선택 기준</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/09-reference-openai-responses-api.html"><img src="docs/screenshots/09-reference.png" width="100%" alt="reference_html"></a><br><b>09 · <code>reference_html</code></b><br>OpenAI Responses API 실무 레퍼런스</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/10-comparison-postgresql-mysql-sqlite.html"><img src="docs/screenshots/10-comparison.png" width="100%" alt="comparison_html"></a><br><b>10 · <code>comparison_html</code></b><br>PostgreSQL vs MySQL vs SQLite 선택 기준</td>
 </tr>
 <tr>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/11-case-cloudflare-thanksgiving-incident.html"><img src="docs/screenshots/11-case-study.png" width="100%" alt="case_study_html"></a><br><b>11 · <code>case_study_html</code></b><br>Cloudflare 2023 보안 사고 회고</td>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/12-landing-ai-knowledge-hub.html"><img src="docs/screenshots/12-landing.png" width="100%" alt="landing_brief_html"></a><br><b>12 · <code>landing_brief_html</code></b><br>사내 AI 지식 허브 랜딩 브리프</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/11-case-cloudflare-thanksgiving-incident.html"><img src="docs/screenshots/11-case-study.png" width="100%" alt="case_study_html"></a><br><b>11 · <code>case_study_html</code></b><br>Cloudflare 2023 보안 사고 회고</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/12-landing-ai-knowledge-hub.html"><img src="docs/screenshots/12-landing.png" width="100%" alt="landing_brief_html"></a><br><b>12 · <code>landing_brief_html</code></b><br>사내 AI 지식 허브 랜딩 브리프</td>
 </tr>
 <tr>
-<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/13-checklist-web-accessibility-release.html"><img src="docs/screenshots/13-checklist.png" width="100%" alt="checklist_playbook"></a><br><b>13 · <code>checklist_playbook</code></b><br>웹 접근성 배포 전 30분 체크리스트</td>
-<td width="50%" valign="top"><br><b>＋ 추가 데모</b><br>· <a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/14-visual-template-system.html">14 · Visual Template System</a> (8000×6000 SVG 인포그래픽)<br>· <a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/15-svg-template-gallery.html">15 · SVG 템플릿 20종 갤러리</a><br>· <a href="https://coreline-ai.github.io/skills-html-showcase/output/final_20260604/index.html">final_20260604 · Skill Template HTML</a> (스킬 적용용 단일 템플릿 HTML)</td>
+<td width="50%"><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/13-checklist-web-accessibility-release.html"><img src="docs/screenshots/13-checklist.png" width="100%" alt="checklist_playbook"></a><br><b>13 · <code>checklist_playbook</code></b><br>웹 접근성 배포 전 30분 체크리스트</td>
+<td width="50%" valign="top"><br><b>＋ 추가 데모</b><br>· <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/14-visual-template-system.html">14 · Visual Template System</a> (8000×6000 SVG 인포그래픽)<br>· <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/15-svg-template-gallery.html">15 · SVG 템플릿 20종 갤러리</a><br>· <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-04/final_20260604/index.html">final_20260604 · Skill Template HTML</a> (스킬 적용용 단일 템플릿 HTML)</td>
 </tr>
 </table>
 
-> 🌐 라이브(GitHub Pages): **[v4 데모 index 열기](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/index.html)** · 로컬은 `python3 -m http.server 8788` 후 `127.0.0.1:8788/...`
+> 🌐 라이브(GitHub Pages): **[v4 데모 index 열기](https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/index.html)** · 로컬은 `python3 -m http.server 8788` 후 `127.0.0.1:8788/...`
 
 ---
 
@@ -351,9 +351,9 @@ v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 
 <td width="33%" align="center"><b>🔀 <code>auto</code> (기본)</b></td>
 </tr>
 <tr>
-<td><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v5/pages/04-education-postgres-indexing.html"><img src="docs/screenshots/profile-widget.png" width="100%" alt="widget profile"></a></td>
-<td><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-diagram/pages/10-message-queue-kafka-rabbitmq-sqs.html"><img src="docs/screenshots/profile-diagram.png" width="100%" alt="diagram profile"></a></td>
-<td><a href="https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v6/pages/02-realtime-inventory-sync-operating-model.html"><img src="docs/screenshots/profile-auto.png" width="100%" alt="auto profile"></a></td>
+<td><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-01/adaptive-html-final-showcase-v5/pages/04-education-postgres-indexing.html"><img src="docs/screenshots/profile-widget.png" width="100%" alt="widget profile"></a></td>
+<td><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-01/adaptive-html-final-showcase-diagram/pages/10-message-queue-kafka-rabbitmq-sqs.html"><img src="docs/screenshots/profile-diagram.png" width="100%" alt="diagram profile"></a></td>
+<td><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-01/adaptive-html-final-showcase-v6/pages/02-realtime-inventory-sync-operating-model.html"><img src="docs/screenshots/profile-auto.png" width="100%" alt="auto profile"></a></td>
 </tr>
 <tr>
 <td valign="top">CSS 뷰 위젯 <code>wg-01~20</code> — 탭·플로우·아코디언 등 <b>인터랙티브</b> 컴포넌트(CSS-only). 코어5 + <code>widgets.css</code>.</td>
@@ -364,9 +364,9 @@ v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 
 
 | 프로파일 | 라이브러리 (markup) | CSS 번들 | 참고 쇼케이스 |
 |---|---|---|---|
-| `widget` | CSS 뷰 위젯 `wg-` | 코어5 + `widgets.css` | [historical widget showcase](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v5) |
-| `diagram` | SVG→HTML `vt-` | 코어5 + `visual-html.css` | [diagram showcase](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-diagram) |
-| `auto` (기본) | 둘 다 | 코어5 + `widgets.css` + `visual-html.css` | [historical auto showcase](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v6) |
+| `widget` | CSS 뷰 위젯 `wg-` | 코어5 + `widgets.css` | [historical widget showcase](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-01/adaptive-html-final-showcase-v5) |
+| `diagram` | SVG→HTML `vt-` | 코어5 + `visual-html.css` | [diagram showcase](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-01/adaptive-html-final-showcase-diagram) |
+| `auto` (기본) | 둘 다 | 코어5 + `widgets.css` + `visual-html.css` | [historical auto showcase](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-01/adaptive-html-final-showcase-v6) |
 
 ```bash
 # 기동 인자로 선택 (미지정 시 auto)
@@ -414,7 +414,7 @@ theme-dark.css    CSS-only 8-테마 토큰 오버라이드 + 라디오 세그먼
 | `visual-templates/*.svg.tpl` | hero-map · card-grid · decision-tree · quality-gate · timeline · matrix · checklist-flow (7종) |
 | `scripts/render_visual_svg.py` | visual brief(JSON) → 8000×6000 SVG 렌더러 (**stdlib only**, 오프라인 동작) |
 | `schemas/visual-brief.schema.json` | 시각 템플릿 입력 스키마 |
-| 데모 | SVG 템플릿 [20종 갤러리](https://coreline-ai.github.io/skills-html-showcase/output/adaptive-html-final-showcase-v4/pages/15-svg-template-gallery.html) (risk-heatmap, sankey, treemap, user-journey 등) |
+| 데모 | SVG 템플릿 [20종 갤러리](https://coreline-ai.github.io/skills-html-showcase/output/2026-05-31/adaptive-html-final-showcase-v4/pages/15-svg-template-gallery.html) (risk-heatmap, sankey, treemap, user-journey 등) |
 
 ---
 
@@ -511,7 +511,7 @@ skills-html-showcase/
 - [x] 비주얼: 8000×6000 캔버스 · `figure`+`figcaption` · 의미 있는 `alt` · 캔버스 잘림 없음
 
 > 🟢 **게이트 현황(v5.10.3)**: 거버넌스 `test_governance_gates.py` **153/153 통과** (v5.10.3 정합 보강 포함), 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
-> `output/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점의 역사적 13-topic 기준선입니다.
+> `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점의 역사적 13-topic 기준선입니다.
 
 ```bash
 # 현행 17모드 레퍼런스 검증 (저장소 루트에서)
@@ -551,13 +551,13 @@ python3 skills/adaptive-html-final/scripts/render_visual_svg.py brief.json outpu
 # 저장소 루트에서
 python3 -m http.server 8788
 # canonical v4 쇼케이스
-# → http://127.0.0.1:8788/output/adaptive-html-final-showcase-v4/index.html
+# → http://127.0.0.1:8788/output/2026-05-31/adaptive-html-final-showcase-v4/index.html
 
 # 현행 v5.10.3 17모드 참조 예제
 # → http://127.0.0.1:8788/skills/adaptive-html-final/examples/index.html
 
 # 역사적 v5.2.3 13-topic 산출물(전문가 보강)
-# → http://127.0.0.1:8788/output/adaptive-html-final-13-topics-20260605_083433/index.html
+# → http://127.0.0.1:8788/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/index.html
 ```
 
 ### HTML → PDF/PNG/WebP export
@@ -571,10 +571,10 @@ python3 -m http.server 8788
 npm install
 
 # 기본: pdf,png,webp + light,light2,white,dark,dark2,blue,skyblue,sepia 요청
-npm run export:output -- output/final_20260604 --clean
+npm run export:output -- output/2026-06-04/final_20260604 --clean
 
 # 역사적 13-topic 기준선 export
-npm run export:output -- output/adaptive-html-final-13-topics-20260605_083433 --clean
+npm run export:output -- output/2026-06-05/adaptive-html-final-13-topics-20260605_083433 --clean
 ```
 
 | 항목 | v1 계약 |

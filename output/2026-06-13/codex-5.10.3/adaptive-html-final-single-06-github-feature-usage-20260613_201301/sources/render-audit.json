@@ -1,0 +1,43 @@
+{
+  "url": "http://localhost:8080/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-06-github-feature-usage-20260613_201301/index.html",
+  "checked_at": "2026-06-13T11:13:49.598Z",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow_ok": true,
+      "h1": 1,
+      "h2": 19,
+      "directSections": 15,
+      "themeInputs": 8,
+      "bodyIconDirectH2": 15,
+      "featureScreens": 3,
+      "screenshot": "sources/screenshots/390.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow_ok": true,
+      "h1": 1,
+      "h2": 19,
+      "directSections": 15,
+      "themeInputs": 8,
+      "bodyIconDirectH2": 15,
+      "featureScreens": 3,
+      "screenshot": "sources/screenshots/1280.png"
+    }
+  },
+  "toc": {
+    "count": 12,
+    "missing": []
+  },
+  "finalContrast": {
+    "sectionBg": "rgb(26, 26, 26)",
+    "h2Color": "rgb(255, 255, 255)",
+    "textColor": "rgb(208, 208, 200)",
+    "text": "기능 가이드의 마지막은 사용자가 바로 할 수 있는 행동으로 끝나야 한다."
+  },
+  "verdict": "OK"
+}

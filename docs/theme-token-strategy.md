@@ -4,8 +4,8 @@
 - 대상 저장소: `skills-html-showcase`
 - 대상 스킬: `skills/adaptive-html-final`
 - 관련 출력 샘플:
-  - `output/final_20260604/index.html`
-  - `output/final_20260604/index-beginner-width.html`
+  - `output/2026-06-04/final_20260604/index.html`
+  - `output/2026-06-04/final_20260604/index-beginner-width.html`
 - 목적: 현재 HTML 쇼케이스의 배경/표면 색상 혼재를 정리하고, 동일 HTML 구조를 여러 테마로 안정적으로 확장할 수 있는 토큰 기반 디자인 시스템 전략을 정의한다.
 
 ---
@@ -357,7 +357,7 @@ assets/
 
 우선순위:
 
-1. `output/final_20260604/*.html`에서 발견한 문제를 증거로 기록한다.
+1. `output/2026-06-04/final_20260604/*.html`에서 발견한 문제를 증거로 기록한다.
 2. 해당 문제의 원인이 되는 자산 CSS/템플릿을 찾는다.
 3. `assets/theme.css`, `assets/visual-html.css`, `assets/widgets.css`, `assets/editorial-patterns.css`에 role token 기반으로 반영한다.
 4. output-level override는 임시 패치로만 두고, 최종적으로 자산 레벨로 흡수한다.
@@ -370,7 +370,7 @@ assets/
 
 - `assets/*.css`에서 `background`, `background-color`, `box-shadow`, `rgba`, `#fff`, `#f...` 검색
 - `visual-html-templates/*.html`, `widget-templates/*.html`에서 inline style 확인
-- `output/final_20260604/index*.html`의 임시 보정 블록 목록화
+- `output/2026-06-04/final_20260604/index*.html`의 임시 보정 블록 목록화
 - 컬러 토큰 표를 기준으로 실제 렌더링 색상 수집
 
 산출물:
@@ -529,8 +529,8 @@ body:has(#ahf-dark:checked) { ... }
 
 | 페이지 | 목적 |
 |---|---|
-| `output/final_20260604/index.html` | wide showcase, 원래 가로폭 보존 검증 |
-| `output/final_20260604/index-beginner-width.html` | 780px beginner reading width 검증 |
+| `output/2026-06-04/final_20260604/index.html` | wide showcase, 원래 가로폭 보존 검증 |
+| `output/2026-06-04/final_20260604/index-beginner-width.html` | 780px beginner reading width 검증 |
 | `output/adaptive-html-final-13-topics-*/pages/01-local-rag-personal-knowledge-vault.html` | white/light reference 비교 |
 
 ### 9.2 핵심 섹션 체크리스트
@@ -558,14 +558,14 @@ body:has(#ahf-dark:checked) { ... }
 
 ```bash
 # no behavioral JS
-grep -rniE '<script(?![^>]*type=["'"']application/ld\+json)' output/final_20260604/*.html || echo "NO behavioral script (OK)"
+grep -rniE '<script(?![^>]*type=["'"']application/ld\+json)' output/2026-06-04/final_20260604/*.html || echo "NO behavioral script (OK)"
 
 # forbidden primitives
-grep -rniE 'draggable=|contenteditable=' output/final_20260604/*.html && echo "FORBIDDEN primitive found" || echo "NO forbidden primitive (OK)"
+grep -rniE 'draggable=|contenteditable=' output/2026-06-04/final_20260604/*.html && echo "FORBIDDEN primitive found" || echo "NO forbidden primitive (OK)"
 
 # full validator, asset-level 생성물에 적용
 python3 <repo-root>/skills/adaptive-html-final/scripts/validate_output.py \
-  output/final_20260604 \
+  output/2026-06-04/final_20260604 \
   --skill-dir <repo-root>/skills/adaptive-html-final
 ```
 
@@ -666,7 +666,7 @@ CSS cascade layer를 쓸 수 있다면 다음 구조가 이상적이다.
 - [ ] `assets/theme-dark.css`에서 radio theme contract와 preset token 정리
 - [ ] `visual-html.css`의 `vt-*` surface를 role token으로 1차 치환
 - [ ] `widgets.css`의 widget card/background를 role token으로 1차 치환
-- [ ] `output/final_20260604/index*.html`에서 찾은 임시 보정 목록을 asset-level task로 분해
+- [ ] `output/2026-06-04/final_20260604/index*.html`에서 찾은 임시 보정 목록을 asset-level task로 분해
 
 ### 그 다음 작업
 
