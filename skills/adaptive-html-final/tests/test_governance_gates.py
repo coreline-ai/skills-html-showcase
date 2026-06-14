@@ -265,7 +265,7 @@ current_decision_issues = v.decision_table_consistency_gate(
 )
 check("decision-table gate passes current §0.6/widget/validator mapping", current_decision_issues == [])
 # 5) visual-html-system.md must not present historical v6/20-template wording as current.
-stale_visual = '> 버전: 이 라이브러리 편입으로 스킬은 4.4.0 → **4.5.0**.\n- 모드별 실제 적용 갤러리: **`output/2026-06-01/adaptive-html-final-showcase-v6`** — 20종 적용'
+stale_visual = '> 버전: 이 라이브러리 편입으로 스킬은 4.4.0 → **4.5.0**.\n- 모드별 실제 적용 갤러리: **`adaptive-html-final-showcase-v6`** — 20종 적용'
 stale_visual_types = {i["type"] for i in v.visual_html_system_staleness_gate(stale_visual)}
 check("visual-html staleness gate catches old version/gallery/count wording",
       {"visual_html_intro_version_stale", "visual_html_gallery_baseline_stale", "visual_html_template_count_stale"}.issubset(stale_visual_types))

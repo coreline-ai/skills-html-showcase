@@ -1,5 +1,16 @@
 # Changelog — adaptive-html-final
 
+## v5.10.4 (2026-06-14) — 마이크로 레이아웃 정본 계약(M1·M4·M7·M10) + 작성 프로토콜
+
+실산출물(2026-06-14 Anthropic 6월 뉴스)이 `validate/quality/completion`을 전부 통과했는데도 사용자 눈검수에서 남은 마이크로 레이아웃 결함을, "검증 OK ≠ 품질 OK" 사례로 취급해 정본에 반영했다. 핵심 원칙: output 산출물은 독립 결과물이며, 여기서 발견한 결함은 **명시적 승격**으로만 스킬에 들어온다.
+
+- **M1 (theme.css, 코어)**: `h2 .no/.num` 번호 pill이 390px에서 2줄로 깨지던 것을 `white-space:nowrap`으로 한 줄·원형 고정(base + 모바일 규칙 양쪽).
+- **M4 (visual-html.css, 조건부)**: `.cmp-card .vt-kicker` kicker→title 간격 4px→8px(인접 텍스트 rhythm 하한 충족).
+- **M7 (print.css, 코어)**: 인쇄/export 산출물에서 `.reading-progress`를 숨김(`@media print`) — 섹션 라인 오인·검수 방해 제거.
+- **M10 (theme.css, 코어)**: `{{FOOTER}}` 슬롯이 `<main>` 밖(body 직속)에 렌더될 때 `.source-note` footer가 viewport 좌측에 붙던 것을 `body>footer` 본문 폭 중앙 정렬로 고정.
+- **M2·M3·M6·M9 (작성 프로토콜)**: 별표/tag 접착·rail 텍스트 접착·밋밋한 목록 카드·단색 rail 반복은 스킬 정본 컴포넌트(`lede-note`는 이미 24px rail padding, vt chip은 gap 보유, `tl-color-cycle`은 4색 순환)가 이미 해결한다. 실패는 output이 비정본 클래스(`template-card-head`·`source-preserve-static`)를 발명했기 때문 → `docs/adaptive-html-final-template-authoring-protocol.md`에 "정본 컴포넌트 사용" 규칙으로 고정.
+- **파급**: 코어(theme/print) 해시 갱신 → examples 18종 재인라인·`sources/css-integrity.json`·source manifest·`.skill` 재패키징. 17모드 산출 계약·게이트·거버넌스(153) 불변, 무 JS 유지.
+
 ## v5.10.3 (2026-06-12) — 회귀 안전 패치: 다크 대비·인쇄 가독·폭 정본(전 모드 wide) + 자기방어 게이트 6종
 
 3차 전문가 리뷰(렌더 실측) 발견을 dev-plan §4의 회귀 프레임(S0 베이스라인 → 등급별 패치 → 프로브 diff)대로 반영. **라이트 테마 무영향 설계**: #fff→var(--on-accent)는 라이트 4테마에서 byte-동일(on-accent=#ffffff), print.css는 전 규칙 @media print 내부(스크린 영향 0 구조 보장).
@@ -16,14 +27,14 @@
 
 ### 2026-06-13 저장소 위생 — 레거시 데모 정리·템플릿 카탈로그 내재화
 
-- **레거시 데모 정리**: 루트 `demo/`의 과거 v2/learning-ultimate/blog demo 쇼케이스 105개 추적 파일을 제거하고, 현행 정본 경로를 `skills/adaptive-html-final/examples/`와 공개 산출물 `output/`로 단순화했다.
+- **레거시 데모 정리**: 루트 `demo/`의 과거 v2/learning-ultimate/blog demo 쇼케이스 105개 추적 파일을 제거하고, 현행 정본 경로를 `skills/adaptive-html-final/examples/`와 공개 데모 산출물로 단순화했다.
 - **템플릿 카탈로그 내재화**: 사용자가 직접 검수한 `templates/final_20260604/` HTML 4종을 `skills/adaptive-html-final/template-catalog/`로 이동해 스킬 내부 디자인 카탈로그로 보관한다. 이 카탈로그는 17모드 examples 기준선이 아니라 vt/wg/테마/폭 회귀 확인과 패턴 역동기화 참고용이다.
 - **참조 교정**: README 프로젝트 트리·`AGENTS.md` 단일 출처 표·`editorial-design-system.md`의 golden reference를 현행 examples/template-catalog 구조에 맞춰 정리했다.
 - **manifest 기록**: `manifest.template_catalog`에 보관 위치·출처·목적·4개 HTML 파일 목록을 추가해 카탈로그가 임의 폴더가 아니라 스킬 내부 참고 자산임을 명시했다.
 
 ### 2026-06-13 정합 보강 — 생성 회귀 방지 정책/게이트
 
-사용자가 반복 지적한 "최신 스킬 헤더가 안 나옴, 아이콘/목차/가로폭/밀착/간격이 흔들림" 문제를 정적 게이트와 완료 아티팩트 계약으로 승격했다. 과거 `output/`은 공개 데모/테스트 산출물일 뿐 스킬 정본이 아니며, 최신 기준선은 `skills/adaptive-html-final/examples/`와 신규 산출물이다.
+사용자가 반복 지적한 "최신 스킬 헤더가 안 나옴, 아이콘/목차/가로폭/밀착/간격이 흔들림" 문제를 정적 게이트와 완료 아티팩트 계약으로 승격했다. 과거 공개 데모/테스트 산출물은 스킬 정본이 아니며, 최신 기준선은 `skills/adaptive-html-final/examples/`와 신규 산출물이다.
 
 - **헤더 정본 전역화**: `header_contract_gate`가 전 `layout-*` 콘텐츠 페이지에서 `kicker`·`h1`·`sub`·`meta`뿐 아니라 `generated-row`·`lens-strip`까지 필수 검사. SEO/Reference 예제 헤더 보정.
 - **목차 정본 강화**: 직접 h2 섹션이 4개 이상인 toc-required 페이지와 분석/사용 가이드 모드는 공식 `toc-map` chip-nav를 필수화. examples 17종 중 누락 페이지에 정본 목차와 섹션 anchor 보강.
@@ -65,7 +76,7 @@ v5.10.0 직후 후속 품질·거버넌스 하드닝. **코어 CSS·17모드·�
 - **quality_contract 메타문구 게이트**: `quality_contract_check.py`에 `template_demo_meta_phrase`(모드 정본 템플릿 적용 확인/실제 HTML 템플릿으로 삽입했습니다/보강 템플릿으로 포함…)·`template_contract_scaffold`(`data-ahf-contract="mode-template"`) 추가 — 부록형 메타 잔존을 본문에서 차단.
 - **manifest 자기정합 게이트**: `manifest_version_consistency_gate` 신설·배선 — `examples.version`/`changes[0]`/`releases[0]`/`updated`가 top-level `version`·CHANGELOG 최신과 어긋나면 실패. v5.10.0 시점 manifest 스테일니스(examples.version 5.9.2·updated 구값·releases 누락) 해소.
 - **결정표 자기정합 게이트**: `decision_table_consistency_gate` 신설·배선 — **SKILL §0.6 ↔ validator `MODE_TEMPLATE_CONTRACTS` ↔ `references/widget-system.md` mode→wg 매핑** 3자 일치를 강제. 이에 맞춰 widget-system.md 모드별 권장 wg 표를 §0.6 정본으로 정렬(expert/education/reference/checklist에서 비정본 wg 제거).
-- **references 스테일 정리**: `visual-html-system.md` "스킬 4.4.0→4.5.0/20종 적용"을 현행(v5.10.x·21종·17모드 §0.6)으로 재서술, dangling `output/showcase-v6` 갤러리 링크를 현행 레퍼런스 `examples/`로 재지정. README 재현 명령을 `13-topics`(드리프트로 FAILED) → `examples/`(OK)로 교체.
+- **references 스테일 정리**: `visual-html-system.md` "스킬 4.4.0→4.5.0/20종 적용"을 현행(v5.10.x·21종·17모드 §0.6)으로 재서술, dangling 외부 갤러리 링크(showcase-v6)를 현행 레퍼런스 `examples/`로 재지정. README 재현 명령을 `13-topics`(드리프트로 FAILED) → `examples/`(OK)로 교체.
 - **거버넌스 테스트**: manifest·결정표 자기정합 회귀 테스트 추가(**80→86 checks**). `validate_output.py`는 examples 18파일 **OK** 유지, `completion_check.py` 3/3.
 
 ## v5.10.0 (2026-06-09) — 17번째 모드 `github_feature_usage` 추가 (GitHub 기능·도입 가이드)
@@ -384,7 +395,7 @@ GitHub 저장소 URL 또는 `owner/repo` 입력을 사용자 질문 중심의 HT
 - **`.impact-card .body-icon`** `display:grid;margin-bottom:12px` 추가 — impact 카드에서 아이콘이 제목/수치에 바로 붙던 문제 해소(아이콘 ↔ 텍스트 12px 간격).
 
 ### 영향·검증
-- `editorial-patterns.css`는 조건부 자산이라 **core-css-sha256 불변**. `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`의 인라인 `editorial-patterns.css`·스냅샷·`css-integrity.json`·source manifest를 v5.2.3로 재생성, `validate_output.py` **OK** 유지.
+- `editorial-patterns.css`는 조건부 자산이라 **core-css-sha256 불변**. `13-topics` 공개 데모 산출물의 인라인 `editorial-patterns.css`·스냅샷·`css-integrity.json`·source manifest를 v5.2.3로 재생성, `validate_output.py` **OK** 유지.
 
 ## v5.2.2 (2026-06-05) — 아이콘 박스 테마 적응 + lede-note 라벨 정렬
 
@@ -395,8 +406,8 @@ GitHub 저장소 URL 또는 `owner/repo` 입력을 사용자 질문 중심의 HT
 - **lede-note 라벨 정렬**: `.lede-note .label{display:block}`(고특이도)이 v5.2.1의 `.label:has(>.body-icon){display:flex}`를 무력화하던 문제를 `.lede-note .label:has(>.body-icon)`(0,3,0)로 보강.
 
 ### 영향·검증
-- `body-icons.css`는 조건부 자산이라 **core-css-sha256 불변**. `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`의 인라인 `body-icons.css`·스냅샷·`css-integrity.json`(conditional hash)·source manifest를 v5.2.2로 재생성, `validate_output.py` **OK** 유지.
-- 같은 결함을 가진 `output/2026-06-04/final_20260604/index*.html`(반례 데모)도 향후 재인라인 시 자동 적용.
+- `body-icons.css`는 조건부 자산이라 **core-css-sha256 불변**. `13-topics` 공개 데모 산출물의 인라인 `body-icons.css`·스냅샷·`css-integrity.json`(conditional hash)·source manifest를 v5.2.2로 재생성, `validate_output.py` **OK** 유지.
+- 같은 결함을 가진 `final_20260604` 반례 데모도 향후 재인라인 시 자동 적용.
 
 ## v5.2.1 (2026-06-05) — body-icon 정렬 규칙 + 헤더 폭 정련
 
@@ -407,7 +418,7 @@ GitHub 저장소 URL 또는 `owner/repo` 입력을 사용자 질문 중심의 HT
 - **`assets/theme.css`**: `.header` 콘텐츠의 **48rem 단일 측정 캡 해제**(`max-width:none`). 헤더가 `.page`/`.page-wide` 컨테이너 폭에 맞춰 **아래 섹션과 동일 폭**으로 정렬(특히 wide 레이아웃에서 헤더가 768px로 좁던 문제 해소).
 
 ### 영향·검증
-- `theme.css`가 코어 해시 자산이라 **core-css-sha256 변경** → `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/` 기준선의 인라인 CSS·코어 마커·CSS 스냅샷·`css-integrity.json`을 v5.2.1로 재생성, `validate_output.py` **OK** 유지.
+- `theme.css`가 코어 해시 자산이라 **core-css-sha256 변경** → `13-topics` 공개 데모 기준선의 인라인 CSS·코어 마커·CSS 스냅샷·`css-integrity.json`을 v5.2.1로 재생성, `validate_output.py` **OK** 유지.
 - 인덱스 전용 미세 튜닝(상단 kicker 폰트 11px, 인트로 `text-align:justify`)은 갤러리 취향이라 스킬에 승격하지 않고 해당 `index.html` 페이지-로컬 오버라이드로만 유지.
 
 ## v5.2.0 (2026-06-05) — CSS-only 3-테마 시스템 (라이트·완전 화이트·다크)
@@ -431,7 +442,7 @@ GitHub 저장소 URL 또는 `owner/repo` 입력을 사용자 질문 중심의 HT
 
 ## v5.1.0 (2026-06-05) — 글꼴(Pretendard sans 제목)·헤더 반영 + proper-black 다크 (디자이너 검토)
 
-`output/2026-06-04/final_20260604/index.html`의 **글꼴**과 **헤더 섹션(SVG 제외)**을 스킬에 반영하고, 다크 테마를 **"proper black"**으로 교정했다. 전문 시각 디자이너 + 레이아웃 스타일 디자이너 에이전트 2인 검토 결과를 반영. 코어 해시 재베이스라인(`b04221bd…`→`fea7b026…`). 무 JS·코어 `!important` 0 유지.
+`final_20260604` 디자인 소스의 **글꼴**과 **헤더 섹션(SVG 제외)**을 스킬에 반영하고, 다크 테마를 **"proper black"**으로 교정했다. 전문 시각 디자이너 + 레이아웃 스타일 디자이너 에이전트 2인 검토 결과를 반영. 코어 해시 재베이스라인(`b04221bd…`→`fea7b026…`). 무 JS·코어 `!important` 0 유지.
 
 ### 글꼴 — report 룩(sans 제목)
 - `--serif` 토큰을 Pretendard sans 스택으로 전환(제목·디스플레이가 Pretendard → Pretendard sans). 진짜 세리프는 `--sans`로 보존하고 `blockquote`/`.pull-quote`/`.core-insight blockquote`에만 적용(에디토리얼 대비).
@@ -448,7 +459,7 @@ GitHub 저장소 URL 또는 `owner/repo` 입력을 사용자 질문 중심의 HT
 - **다크 커버리지 갭 차단**: `widgets.css`·`visual-html.css`의 흰 카드 `background:#fff` 38곳을 `var(--card)`로 토큰화(라이트 동일, 다크 자동 반전) — 위젯/vt 템플릿이 다크에서 흰 섬으로 남던 문제 해결.
 - **"전혀 블랙이 아니다" 근본 원인 수정(실제 렌더 캡쳐로 진단)**: `visual-html.css`가 `body{background:var(--vt-wash)}`로 페이지 배경을 자체 `--vt-*` 토큰(다크 미적용)으로 덮어 다크에서도 `#faf9f5`(밝은 wash)로 남던 버그. theme-dark가 `--vt-paper/--vt-wash/--vt-soft`(+ vt-blue/green/gold 명도 상향)를 다크로 덮도록 추가 → body 배경 `#0c0d10`(near-black) 확정(Playwright 캡쳐 검증). `widgets.css` 흰 글레이즈 `rgba(255,255,255,…)` 7곳→`var(--card)`(wg-11 빗금 보존), `.core-insight` 흰 글레이즈 그라데이션→다크 그라데이션, vt-pill.hot/good/watch 다크 틴트. theme-dark 토글 `th,.table th` 콤마 스코프 누수 수정.
 - **양방향 토글 수정(OS 다크에서 화이트 전환 불가 버그)**: 기존 토글은 dark를 "추가"만 해서 OS가 다크면 토글로 라이트 복귀가 불가능했음. **invert 패턴**으로 재작성 — `@media(prefers-color-scheme:dark) :root:not(:has(#theme-toggle:checked))`(OS다크 기본 다크, 토글 시 라이트) + `@media(light/no-preference) :root:has(#theme-toggle:checked)`(OS라이트 토글 시 다크). 4조합(OS×토글) 전부 검증: light/dark/dark/light. 아이콘은 현재 테마 표시(다크=달/라이트=해). 토글 마크업 없으면 OS 자동만 동작.
-- **다크 텍스트 대비 감사(Playwright로 전 텍스트 노드 대비 계산 + 풀페이지 캡쳐)**: 안 보이는 텍스트 패치 — `.try .tag`(밝은 pill+`var(--ink)` 텍스트가 다크에서 light-on-light 1.18:1 → 다크 pill `var(--card)`/`var(--line)`로 보정), `visual-html.css`의 `.vt-pill`·`.vt-fit`(`color:#555`)·`.vt-tags span`·`.cf-state`(`#666`)·`#6e6258` + `widgets.css` `#7c7c78` 리터럴 회색 텍스트를 `var(--ink-mute)`로 토큰화(다크 자동 반전). 종합 kitchen-sink(`output/2026-06-05/adaptive-html-final-dark-coverage-test`)에서 저대비 텍스트 **0건** 확인.
+- **다크 텍스트 대비 감사(Playwright로 전 텍스트 노드 대비 계산 + 풀페이지 캡쳐)**: 안 보이는 텍스트 패치 — `.try .tag`(밝은 pill+`var(--ink)` 텍스트가 다크에서 light-on-light 1.18:1 → 다크 pill `var(--card)`/`var(--line)`로 보정), `visual-html.css`의 `.vt-pill`·`.vt-fit`(`color:#555`)·`.vt-tags span`·`.cf-state`(`#666`)·`#6e6258` + `widgets.css` `#7c7c78` 리터럴 회색 텍스트를 `var(--ink-mute)`로 토큰화(다크 자동 반전). 종합 kitchen-sink 데모에서 저대비 텍스트 **0건** 확인.
 - theme-dark 토글 블록의 `th,.table th` 셀렉터 스코프 버그 수정(콤마로 인한 라이트 누수 차단).
 
 ## v5.0.0 (2026-06-05) — Tranche B: 다크 테마 + 코어 프리미티브 업그레이드 (코어 해시 재베이스라인)
@@ -472,7 +483,7 @@ GitHub 저장소 URL 또는 `owner/repo` 입력을 사용자 질문 중심의 HT
 
 ## v4.6.0 (2026-06-05) — final_20260604 섹션 Tranche A 흡수 & 병합 보호 게이트
 
-`output/2026-06-04/final_20260604/index.html`(무신뢰 디자인 소스)의 섹션 패턴 중 **재사용 가치가 검증된 9종을 흡수**했다. 페이지 발명 어휘(`access-*`/`edge-*`/`pattern-hero-note`/`static-flow-*`/`vt-flag`/`fi-*`)는 모두 **정본 네임스페이스로 개명**하고, `!important`·`--report-sans`·warm 리터럴·베어 콜아웃 충돌을 제거한 뒤 토큰화했다. 코어-해시 5개 자산(theme/components/visual-components/layouts/print)은 **무변경**(전부 hash-safe 경로). 무 JS 원칙 유지.
+`final_20260604`(무신뢰 디자인 소스)의 섹션 패턴 중 **재사용 가치가 검증된 9종을 흡수**했다. 페이지 발명 어휘(`access-*`/`edge-*`/`pattern-hero-note`/`static-flow-*`/`vt-flag`/`fi-*`)는 모두 **정본 네임스페이스로 개명**하고, `!important`·`--report-sans`·warm 리터럴·베어 콜아웃 충돌을 제거한 뒤 토큰화했다. 코어-해시 5개 자산(theme/components/visual-components/layouts/print)은 **무변경**(전부 hash-safe 경로). 무 JS 원칙 유지.
 
 ### 추가 (Phase 0 — 병합 보호 거버넌스 게이트)
 - `scripts/validate_output.py` — 자산 린터 3종(`important_in_core_css`, `forbidden_report_font_token`, `bare_callout_modifier`) + 출력 게이트 2종(`bespoke_namespace_class` denylist, `role_img_buries_text` 일반화). `--skill-dir` 제공 시 스킬 자산을 린트.
@@ -487,7 +498,7 @@ GitHub 저장소 URL 또는 `owner/repo` 입력을 사용자 질문 중심의 HT
 - `wg-08-static-*` — `:target/:has` 없는 읽기전용 스테퍼(←static-flow-*).
 
 ### 추가 (Phase 3 — 인-스킬 갤러리)
-- `galleries/body-icons-catalog.html`(32종)·`galleries/soft-shapes-catalog.html`(36종) — 외부 `output/` 경로 링크를 인-스킬 데모로 재배치. `body-icons.css`/`shape-visuals.css`는 프리미티브 전용 유지. manifest에 catalog/gallery 필드 등록.
+- `galleries/body-icons-catalog.html`(32종)·`galleries/soft-shapes-catalog.html`(36종) — 외부 산출물 경로 링크를 인-스킬 데모로 재배치. `body-icons.css`/`shape-visuals.css`는 프리미티브 전용 유지. manifest에 catalog/gallery 필드 등록.
 - `pattern-shell`을 **데모 하네스**(콘텐츠 패턴 아님, 정식 출력에선 denylist)로 문서화.
 
 ### 비고
@@ -652,7 +663,7 @@ skill_audit "좋은 출력은 어떻게 생겼나"(주석 달린 PR) 섹션의 �
 - `assets/layouts.css`: `.layout-platform .platform-grid:not(section)`로 제한해 semantic section wrapper에 grid가 직접 걸리는 회귀를 방지.
 - `assets/layouts.css`: expert executive summary 4카드 orphan 배치를 2×2로 안정화. case-study timeline은 단일 대형 카드 대신 개별 step card로 보이도록 조정.
 - `scripts/validate_output.py`: `section.platform-grid`, caption 없는 table, dark CTA link reset 누락, platform-grid direct selector를 정적 실패로 추가.
-- `output/adaptive-html-final-showcase/_work/create_v3_from_v2.py`: v3 데모에 platform wrapper 분리, audit roadmap section 분리, landing table caption, mobile card table labels를 자동 적용.
+- `adaptive-html-final-showcase` 데모의 `_work/create_v3_from_v2.py`: v3 데모에 platform wrapper 분리, audit roadmap section 분리, landing table caption, mobile card table labels를 자동 적용.
 
 ### 검증
 - 대상 페이지: 02 executive summary, 05 dark CTA, 07 platform cards, 08 audit roadmap/table, 10 comparison table, 11 case timeline, 12 landing table, 13 checklist table.
@@ -668,7 +679,7 @@ skill_audit "좋은 출력은 어떻게 생겼나"(주석 달린 PR) 섹션의 �
 - `assets/layouts.css`: `layout-seo .serp-title`을 Google 원문 모사형 파란색/Arial/20px에서 editorial UI에 맞는 `var(--ink)`, sans, 17~18px, 800 weight로 조정.
 - `assets/layouts.css`: `.try.soft-cta .label`이 일반 문단 색을 상속하지 않도록 accent 색상 복구.
 - `scripts/validate_output.py`: `.h2-sub`가 `</h2>`로 닫히는 HTML 오류, dark `.try` 태그 대비 reset 누락, blog counter 누락, SEO SERP title의 literal Google style 회귀를 실패 처리.
-- `output/adaptive-html-final-showcase/_work/create_v3_from_v2.py`: legacy HTML의 `<p class="h2-sub">...</h2>` 패턴을 재생성 중 자동 교정.
+- `adaptive-html-final-showcase` 데모의 `_work/create_v3_from_v2.py`: legacy HTML의 `<p class="h2-sub">...</h2>` 패턴을 재생성 중 자동 교정.
 
 ### 검증
 - 대상 페이지: 05 블로그 `가볍게 시작해보기`, 05 `왜 지금 로컬 AI인가`, 06 `SERP Preview`.

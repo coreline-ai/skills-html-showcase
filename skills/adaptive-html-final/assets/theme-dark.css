@@ -46,6 +46,6 @@
 @media(max-width:560px){.ahf-themebar{position:static;width:276px;max-width:calc(100% - 28px);margin:10px auto 16px}}
 @media print{.ahf-themebar{display:none}}
 
-/* v5.10.3 — 다크 트리오 인쇄 시 라이트 토큰 강제(:has 특이도(1,1,0)가 print.css(:root 불가)를 이기므로 본 파일에서 처리).
+/* 다크 트리오 인쇄 시 라이트 토큰 강제(:has 특이도(1,1,0)가 print.css(:root 불가)를 이기므로 본 파일에서 처리).
    surfaces/inks/lines/vt/code/콜아웃을 라이트 등가값으로 리셋 — 종이 출력에서 다크 카드/저대비 잉크 방지 */
 @media print{:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked){--bg:#ffffff;--card:#ffffff;--ink:#111111;--ink-soft:#333333;--ink-mute:#555555;--line:#dddddd;--chip-ink:#555555;--code:#1a1a1a;--accent:#b72d38;--accent-2:#b72d38;--on-accent:#ffffff;--accent-soft:#fbeef0;--link-on-dark:#b72d38;--dark:#1d1d1b;--dark-soft:#2a2a27;--focus:#2f6fdb;--vt-paper:#ffffff;--vt-wash:#f7f7f4;--vt-soft:#f0f0ec;--vt-line:#dddddd;--vt-ink:#111111;--vt-muted:#555555;--vt-blue:#2456a6;--vt-green:#1f6f4e;--vt-gold:#8a6a1f;--term-bg:#fffbeb;--term-border:#e8d48a;--term-ink:#3d3320;--term-label-ink:#8a6a1f;--term-accent:#9b6a20;--analogy-bg:#f4f7fa;--analogy-border:#d6e0ea;--analogy-ink:#2c3a46;--analogy-label-ink:#3f6bb0;--analogy-accent:#3f6bb0;--danger-bg:#fdf0f1;--danger-border:#f3c6cb;--danger-ink:#5c2228;--danger-label-ink:#c62433;--danger-accent:#c62433;--good-bg:#eef7f0;--good-border:#cfe6d5;--good-ink:#1d4030;--good-label-ink:#1f6f4e;--good-accent:#1f6f4e;--hl-yellow:#fff1b8;--hl-blue:#d8e6f7;--hl-pink:#fbdce3;color-scheme:light}}

@@ -27,7 +27,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.10.3 · "다크 대비·인쇄 가독·폭 정본(전 모드 page-wide) + 자기방어 게이트 6종" (이전 5.10.2 — github-feature 단락 폭 수정 + R5 정밀화)
+> Version 5.10.4 · "마이크로 레이아웃 정본(M1·M4·M7·M10: 번호 pill nowrap·카드 rhythm·인쇄 progress 숨김·footer 중앙정렬) + 작성 프로토콜" (이전 5.10.3 — 다크 대비·인쇄 가독·폭 정본 + 자기방어 게이트 6종)
 
 ## 0. Identity
 
@@ -57,7 +57,8 @@ description: |
    - **layout-* main의 직접 자식 `section`은 `.try`를 제외하고 카드/view surface를 가진다 — class 유무와 무관.** `.page(-wide)?>section:not(.try)`(및 `>article>section:not(.try)`)에 카드 배경·보더(layouts.css 규칙)를 유지한다(무클래스 한정 아님: `.summary-card`·`.risk-matrix`·`.check-grid` 등 class 있는 직접 섹션도 카드여야 한다). 규칙이 인라인 CSS에서 빠지면 실패(`section_surface_css_missing`). 검정 `.try`(Next Actions hero)만 제외. grid형 섹션은 카드 안에 내부 카드를 두는 github 패턴을 따른다.
    - **직접 섹션은 제목 없는 카드로 시작하지 않는다. 첫 `h2`는 `body-icon → (num/no) → title` 순서를 따른다 — body-icon은 필수.** `<h2><span class="body-icon …"><svg aria-hidden></svg></span><span class="num">N</span>제목</h2>` 정본. 직접 섹션에 h2가 없으면 실패(`direct_section_h2_missing`), 직접 섹션 h2에 body-icon이 없으면 실패(`direct_section_h2_missing_body_icon`). **번호는 강제하지 않는다**(미리보기·개요처럼 아이콘만 있고 번호 없는 정당한 섹션 존재). 추가로 번호 칩(`.num`/`.no`)을 단 h2는 어느 위치(index/nav shell 포함)든 body-icon이 없으면 실패(`numbered_h2_missing_body_icon`). **body-icon 내부 SVG는 직접 작성하지 않는다. 반드시 `assets/body-icons.json`의 32종 SVG를 그대로 삽입한다**(전부 `viewBox="0 0 40 40"` + `bi-*` 토큰 클래스). `viewBox="0 0 24 24"` Lucide/Feather식 임의 SVG, 새 path 직접 작성, 외부 아이콘 복사는 실패(`body_icon_not_in_catalog`, `body_icon_viewbox_invalid`). 필요하면 `python3 skills/adaptive-html-final/scripts/body_icon_markup.py <icon-id>`로 정본 마크업을 출력해 복사한다. **섹션 아이콘은 의미별로 골라야 하며, 같은 SVG를 모든 섹션에 반복 주입하지 않는다**(`body_icon_diversity_too_low` 실패). 예: manual_analysis는 판정=shield, source=file, role=people, path=arrow, safety=shield-plus, recipe=checklist, reference=doc, decision=diamond, troubleshooting=warning, operations=clock, audit=search, next=flag처럼 섹션 기능별로 구분한다.
    - **모드별 템플릿 증명은 선택이 아니라 계약이다.** `mode_template_contract_gate`가 §0.6 행의 1순위 vt와 권장 wg 사용을 검사한다. `diagram/auto`는 해당 모드 1순위 vt marker를 최소 1회 포함해야 하고, `widget/auto`는 권장 `wg-NN-` 중 최소 1개를 포함해야 한다. 예제/쇼케이스는 특히 이 계약을 시각적으로 보여야 하며, 같은 카드/리스트 틀만 반복하면 실패다.
-6. **완료 단계 = 격리 검증 후 통합·동기화.** 모드별 isolated `validate_output.py OK` 이후에도 (a) 인라인 코어/조건부 CSS를 **현재 자산으로 재주입**하고 `sources/assets/*.css`·`css-integrity.json`·source manifest를 동기화(stale 스냅샷 금지), (b) `index`/네비 shell, (c) 전 페이지 일괄 validate + `quality_contract_check.py`(붕어빵·얇은 문서 차단)를 **별도 통합 단계**로 통과시킨다. `validate OK`는 필요조건일 뿐 완료 기준이 아니다. 17모드 일괄 생성 시 공통 생성기로 찍지 말고 모드별 layout/recipe/reference/template만 사용한다. 통합 실행: `python3 scripts/completion_check.py <output_dir>`(validate+quality_contract+governance+render-audit 4종을 한 번에 강제. 신규 산출물은 `sources/render-audit.json`과 1280/390 screenshot artifact가 필요하며, 과거 `output/` 전체는 스킬 정본 입력이 아니다).
+6. **완료 단계 = 격리 검증 후 통합·동기화.** 모드별 isolated `validate_output.py OK` 이후에도 (a) 인라인 코어/조건부 CSS를 **현재 자산으로 재주입**하고 `sources/assets/*.css`·`css-integrity.json`·source manifest를 동기화(stale 스냅샷 금지), (b) `index`/네비 shell, (c) 전 페이지 일괄 validate + `quality_contract_check.py`(붕어빵·얇은 문서 차단)를 **별도 통합 단계**로 통과시킨다. `validate OK`는 필요조건일 뿐 완료 기준이 아니다. 17모드 일괄 생성 시 공통 생성기로 찍지 말고 모드별 layout/recipe/reference/template만 사용한다. 통합 실행: `python3 scripts/completion_check.py <output_dir>`(validate+quality_contract+governance+render-audit 4종을 한 번에 강제. 신규 산출물은 `sources/render-audit.json`과 1280/390 screenshot artifact가 필요하며, 과거 생성 산출물(공개 데모/테스트) 전체는 스킬 정본 입력이 아니다).
+7. **마이크로 레이아웃 정본 계약 + 작성 프로토콜(v5.10.4).** 검증 OK 이후에도 눈검수에서 어긋나는 마이크로 결함(번호 pill 줄바꿈·tag 접착·rail 접착·카드 내부 간격·밋밋한 직접 문단·단색 rail·footer 좌측 붙음)은 **정본 컴포넌트로만 닫는다**: 텍스트-only 정보도 `lede-note`/`source-note`/`core-insight`/`summary-card`/`impact-card`/`chron-card` 중 하나로 감싸고(`main article>section>p:not(.h2-sub)` 직접 노출 금지), 반복 카드 rail은 `.tl-color-cycle`(`--vt-red/--vt-blue/--vt-green/--vt-gold` 3종+ 순환)을 쓰며, 번호 pill·카드 간격·footer 정렬은 정본 `.no/.num`·`.cmp-card`·`body>footer`를 그대로 쓴다. 비정본 `template-card-head`·`source-preserve-static` 류 클래스 발명 금지. 전체 절차: [docs/adaptive-html-final-template-authoring-protocol.md](../../docs/adaptive-html-final-template-authoring-protocol.md).
 
 **운영 원칙:**
 
@@ -441,7 +442,10 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 - 본문은 prose 65~75%, box 25~35% 정도가 좋다.
 - `.hl`은 글당 2~4개만 사용하고, 색상 박스 안에서는 사용하지 않는다.
 - `.hero-analogy`는 흰 카드 + accent border 형태가 기본이다.
-- 출처가 많으면 `.source-note`에 요약 + `sources/index.html` 링크를 둔다.
+- 출처가 많으면 `.source-note`에 요약 + `sources/index.html` 링크를 둔다. `{{FOOTER}}` 슬롯에 들어가는 `body>footer.source-note`는 본문 폭과 같은 중앙 정렬을 유지해야 하며, 화면 왼쪽에 붙은 full-viewport footer처럼 보이면 실패다.
+- 반복 카드/텍스트 뷰가 4개 이상이고 왼쪽 rail을 쓰는 경우 `rail-cycle`로 `--vt-red/--vt-blue/--vt-green/--vt-gold`를 순환한다. `var(--accent)` 한 색만 반복해 밋밋한 카드 더미를 만들지 않는다.
+- 요약/판정/takeaway처럼 텍스트만 있는 하단 카드에는 필요 시 `multi-rail`을 붙여 4색 rail로 닫는다. 단, 이미 `risk-matrix`/`quality-gate`/`incident-summary`처럼 의미별 색이 있는 vt 템플릿에는 중복 적용하지 않는다.
+- 날짜·사건·영상 흐름에는 가능하면 공식 `vt timeline`을 쓰고, 여러 단계가 동등하게 중요하면 `.tl.tl-color-cycle` 조합으로 4색 단계 rail을 적용한다. generic `.mini-card` 타임라인으로 대체할 때도 `card-grid rail-cycle`을 붙인다.
 - 주요 섹션의 이미지가 필요하면 장식용 배경보다 `hero-map`, `card-grid`, `matrix`, `timeline`, `quality-gate`, `checklist-flow` 같은 목적형 인포그래픽을 우선한다.
 
 ## 7. Quality Gates
@@ -456,6 +460,9 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 [ ] `.mini-card`/`.col-list` 반복이 문서의 주 구조가 아니며, 섹션 목적별로 표·vt·wg·원문 발췌·체크리스트·의사결정 구조를 섞었다.
 [ ] “Generated example”, “전문 예제”, “예제 문서”, “기준 1/2/3”, “placeholder/TBD” 같은 임시 생성 문구가 없다.
 [ ] 마지막 결론은 예제 설명이 아니라 해당 주제의 실제 판정·권고·다음 행동이다.
+[ ] body-level footer/source-note는 본문 폭과 같은 중앙 정렬이다. 왼쪽 화면 끝에 붙은 footer 카드가 없다.
+[ ] 반복 카드/텍스트 뷰의 좌측 rail은 `rail-cycle` 또는 의미별 클래스(`rail-red/blue/green/gold`)로 3색 이상 순환한다. 단색 accent rail만 반복하지 않는다.
+[ ] 타임라인형 섹션은 공식 `vt timeline` + 필요 시 `.tl-color-cycle`을 우선 사용하고, generic mini-card 대체 시 `card-grid rail-cycle`을 적용했다.
 [ ] 공통 디자인 토큰을 임의 변경하지 않았다.
 [ ] output HTML이 최신 CSS asset 합본을 사용한다. `sources/css-integrity.json`와 인라인 CSS hash가 현재 skill asset hash와 일치한다.
 [ ] h1은 하나다.

@@ -27,7 +27,7 @@
 
 ## 적용 갤러리
 
-`output/adaptive-html-final-editorial-pattern-demo-v1/index.html` (초기 6 패턴 도입 데모; 현재는 `md-excerpt`·`accessibility-checklist`를 포함해 8종).
+`adaptive-html-final-editorial-pattern-demo-v1` 공개 데모 (초기 6 패턴 도입 데모; 현재는 `md-excerpt`·`accessibility-checklist`를 포함해 8종).
 
 ## md-excerpt (SKILL.md/코드 발췌)
 
@@ -77,6 +77,8 @@ SKILL.md·마크다운·코드 원문 발췌는 `.prompt-box`(텍스트 인용)�
   - **자동 판단 규칙(작성자가 매번 손보지 않아도 되게):** 항목이 모두 한 줄(짧은 토큰)이고 개수가 6개 이상이면 `col-list`를 **기본 적용**한다. 항목에 설명 문장이 붙는 리스트(긴 본문)는 일반 리스트를 유지한다. github_analysis의 `references 투어`, 태그 목록, 파일/모듈 인덱스가 대표 사례다.
 - **`.text-bullet-view`(텍스트 전용 뷰 bullet)** — 체크리스트/요약 카드처럼 **텍스트만 있는 뷰가 카드 안에서 밋밋하게 보일 때** `final_20260604` section 7의 작은 써클 bullet 리듬을 정본으로 적용한다. `text-bullet-view`는 레이아웃만 담당하고, 마커는 기존 `.ba-bullet`을 재사용한다. 마크업: `<div class="check-item text-bullet-view"><span class="ba-bullet" aria-hidden="true"></span><span>확인할 문장</span></div>`.
   - **자동 판단 규칙:** 아이콘/번호/상태칩 없이 문장만 들어 있는 카드형 항목이 3개 이상 반복되면 `text-bullet-view`를 기본 적용한다. 이미 `cf-check`, `body-icon`, 번호 pill, 상태 badge가 있는 뷰에는 중복 장식이므로 적용하지 않는다.
+- **rail utilities (`rail-cycle`, `rail-red/blue/green/gold`, `multi-rail`)** — 텍스트만 있는 mini-card/summary-card/card-block/box가 4개 이상 반복될 때 좌측 rail을 단색 `accent`로만 반복하지 않는다. 부모에 `rail-cycle`을 붙이면 자식 카드 rail이 `--vt-red → --vt-blue → --vt-green → --vt-gold`로 순환한다. 개별 의미가 분명하면 `rail-red`, `rail-blue`, `rail-green`, `rail-gold`를 직접 붙인다. 하단 takeaway/판정 카드처럼 한 개의 넓은 텍스트 뷰는 `multi-rail`로 4색 세로 rail을 적용한다. 마크업: `<div class="card-grid rail-cycle"><article class="mini-card">…</article></div>` / `<aside class="source-note multi-rail">…</aside>`.
+  - **자동 판단 규칙:** 타임라인/날짜/단계/정책 프레임처럼 동일 위계 카드가 4개 이상이고 왼쪽 rail이 있으면 `rail-cycle`이 기본값이다. 이미 `risk-matrix`, `quality-gate`, `incident-summary`처럼 의미별 색이 내장된 vt 템플릿에는 중복 적용하지 않는다.
 
 ## 데모 하네스 (pattern-shell) — 생성 출력 아님
 

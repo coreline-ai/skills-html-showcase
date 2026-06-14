@@ -1,0 +1,35 @@
+{
+  "takeaway": {
+    "x": 39,
+    "y": 1141,
+    "w": 312,
+    "h": 195,
+    "borderLeft": "4px",
+    "borderLeftColor": "rgb(230, 57, 70)",
+    "padding": "16px 24px 17px"
+  },
+  "directPlain": [
+    {
+      "sec": "section-01",
+      "text": "이번 6월 뉴스는 단순한 제품 발표 모음이 아닙니다. Anthropic이 모델을 더 강하게 만들면서도, 정부 지시·안전장치·여론 조사·파트너 생",
+      "borderLeft": "4px",
+      "display": "block"
+    },
+    {
+      "sec": "section-02",
+      "text": "목록형 뉴스에 없지만 뉴스 첫 화면의 featured 영역에 보이는 “Policy on the AI Exponential”은 6월 정책 항목이므",
+      "borderLeft": "4px",
+      "display": "block"
+    },
+    {
+      "sec": "section-04",
+      "text": "이 결정 트리는 11개 뉴스를 한 줄 목록으로 소비하지 않고, 독자의 역할에 맞게 먼저 읽을 묶음을 고르도록 돕습니다.",
+      "borderLeft": "4px",
+      "display": "block"
+    }
+  ],
+  "body": {
+    "scrollWidth": 390,
+    "clientWidth": 390
+  }
+}

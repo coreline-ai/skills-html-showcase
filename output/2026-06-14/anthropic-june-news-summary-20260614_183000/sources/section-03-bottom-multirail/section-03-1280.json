@@ -1,0 +1,23 @@
+{
+  "takeaway": {
+    "x": 153,
+    "y": 812,
+    "w": 974,
+    "h": 121,
+    "paddingLeft": "32px",
+    "borderLeft": "0px",
+    "overflow": "hidden"
+  },
+  "before": {
+    "content": "\"\"",
+    "width": "10px",
+    "left": "0px",
+    "top": "0px",
+    "bottom": "0px",
+    "background": "linear-gradient(rgb(230, 57, 70) 0px, rgb(230, 57, 70) 24%, rgb(58, 98, 128) 24%, rgb(58, 98, 128) 49%, rgb(42, 125, 90) 49%, rgb(42, 125, 90) 74%, rgb(217, 154, 56) 74%, rgb(217, 154, 56) 100%)"
+  },
+  "body": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280
+  }
+}

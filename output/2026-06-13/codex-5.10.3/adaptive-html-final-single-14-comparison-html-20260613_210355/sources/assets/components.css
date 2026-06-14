@@ -225,3 +225,25 @@ details p{margin-bottom:0}
 }
 /* === 완성본 표준 승격 v5.3.1 — source-note 투명 === */
 .source-note{background:transparent}
+
+/* Footer/source-note outside <main> must keep the same reading width as content.
+   base.html renders the optional footer slot after body content, so a body-level source-note needs
+   its own max-width/margin guard to avoid left-stuck full-viewport footer blocks. */
+body>footer.source-note{width:min(var(--page-max),calc(100% - 32px));margin:24px auto 48px;box-sizing:border-box}
+body>footer.source-note p{margin:0}
+@media(max-width:520px){body>footer.source-note{width:calc(100% - 32px);margin:20px auto 40px}}
+
+/* Accent rail utilities — opt-in surface rhythm for text-only/mini-card views.
+   Use rail-cycle on repeated cards and multi-rail on summary/takeaway cards. */
+.rail-red{border-left-color:var(--vt-red,var(--accent))}
+.rail-blue{border-left-color:var(--vt-blue,#3a6280)}
+.rail-green{border-left-color:var(--vt-green,#2a7d5a)}
+.rail-gold{border-left-color:var(--vt-gold,#d99a38)}
+.rail-cycle>.mini-card,.rail-cycle>.summary-card,.rail-cycle>.card-block,.rail-cycle>.box{border-left-width:4px;border-left-style:solid}
+.rail-cycle>*:nth-child(4n+1){border-left-color:var(--vt-red,var(--accent))}
+.rail-cycle>*:nth-child(4n+2){border-left-color:var(--vt-blue,#3a6280)}
+.rail-cycle>*:nth-child(4n+3){border-left-color:var(--vt-green,#2a7d5a)}
+.rail-cycle>*:nth-child(4n+4){border-left-color:var(--vt-gold,#d99a38)}
+.multi-rail{position:relative;border-left:0;padding-left:30px;overflow:hidden}
+.multi-rail::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;border-radius:inherit;background:linear-gradient(180deg,var(--vt-red,var(--accent)) 0 24%,var(--vt-blue,#3a6280) 24% 49%,var(--vt-green,#2a7d5a) 49% 74%,var(--vt-gold,#d99a38) 74% 100%)}
+@media(max-width:620px){.multi-rail{padding-left:24px}.multi-rail::before{width:8px}}

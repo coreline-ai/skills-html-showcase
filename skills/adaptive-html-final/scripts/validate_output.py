@@ -1719,7 +1719,7 @@ def analysis_toc_map_required_gate(text: str) -> list:
 
     The latest examples show that long layout pages need the official chip-nav
     (`toc-map` + `toc-pills` + `a.toc-pill > b`) for scanability. Scope is not
-    historical `output/` directories; it is the currently validated target. A
+    historical generated-output directories; it is the currently validated target. A
     page is toc-required when it has 4+ direct content h2 sections, or when it is
     one of the analysis/usage layouts whose contract always includes a TOC.
     """

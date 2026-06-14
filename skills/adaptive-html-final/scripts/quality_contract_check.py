@@ -294,7 +294,7 @@ def iter_html_files(root: Path) -> list[Path]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Check adaptive-html-final qualitative anti-regression contract.")
-    parser.add_argument("target", help="HTML file or output/example directory")
+    parser.add_argument("target", help="HTML file or directory to validate")
     args = parser.parse_args(argv)
 
     root = Path(args.target).resolve()

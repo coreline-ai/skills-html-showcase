@@ -1,0 +1,55 @@
+{
+  "mini": [
+    {
+      "i": 1,
+      "borderLeft": "4px",
+      "borderLeftColor": "rgb(230, 57, 70)",
+      "paddingLeft": "22px"
+    },
+    {
+      "i": 2,
+      "borderLeft": "4px",
+      "borderLeftColor": "rgb(230, 57, 70)",
+      "paddingLeft": "22px"
+    },
+    {
+      "i": 3,
+      "borderLeft": "4px",
+      "borderLeftColor": "rgb(230, 57, 70)",
+      "paddingLeft": "22px"
+    },
+    {
+      "i": 4,
+      "borderLeft": "4px",
+      "borderLeftColor": "rgb(230, 57, 70)",
+      "paddingLeft": "22px"
+    },
+    {
+      "i": 5,
+      "borderLeft": "4px",
+      "borderLeftColor": "rgb(230, 57, 70)",
+      "paddingLeft": "22px"
+    },
+    {
+      "i": 6,
+      "borderLeft": "4px",
+      "borderLeftColor": "rgb(230, 57, 70)",
+      "paddingLeft": "22px"
+    },
+    {
+      "i": 7,
+      "borderLeft": "4px",
+      "borderLeftColor": "rgb(230, 57, 70)",
+      "paddingLeft": "22px"
+    }
+  ],
+  "takeaway": {
+    "borderLeft": "4px",
+    "borderLeftColor": "rgb(230, 57, 70)"
+  },
+  "progress": "none",
+  "body": {
+    "scrollWidth": 390,
+    "clientWidth": 390
+  }
+}

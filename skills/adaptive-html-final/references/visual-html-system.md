@@ -4,7 +4,7 @@
 
 핵심 철학은 스킬 전체와 동일하게 **외부/동작 JS 0**이다. 본문 삽입형 다이어그램에는 `<script>`가 한 줄도 들어가지 않는다. 검색·복사·번역·스크린리더가 그대로 통하고, 모바일에서 자연스럽게 줄바꿈되며, 문서의 한 부분으로 읽힌다(허용되는 유일한 스크립트는 Article/Blog/SEO 모드의 `application/ld+json` JSON-LD 메타데이터뿐이며, 이는 동작 코드가 아니다).
 
-> 도입 이력: 이 라이브러리는 v4.5.0에서 본문 삽입형 HTML 다이어그램으로 편입되었고, 현행 v5.10.3 기준은 `vt-` 21종 + 17모드 §0.6 매핑이다.
+> 도입 이력: 이 라이브러리는 v4.5.0에서 본문 삽입형 HTML 다이어그램으로 편입되었고, 현행 v5.10.4 기준은 `vt-` 21종 + 17모드 §0.6 매핑이다.
 
 ## 1. 목적 — 왜 대형 SVG 대신 본문형 HTML인가
 
@@ -23,7 +23,7 @@
 | 01 | hero-map | Hero Map | 상단 대표 구조도: 문제→지도→행동 3단 + 큰 결론 | `.hm-grid` `.hm-card` `.hm-result` |
 | 02 | decision-tree | Decision Tree | 선택 기준·분기형 판단 흐름 | `.dt-q` `.dt-card` `.dt-arrow` `.dt-options` |
 | 03 | risk-matrix | Risk Matrix | 확률×영향 리스크 매트릭스, 우선순위 | `.rm-grid` `.rm-cell` `.rm-head` `.rm-risk`(`.high/.med/.low`) |
-| 04 | timeline | Timeline | 로드맵·사건 흐름·학습 진행 | `.tl` `.tl-item` |
+| 04 | timeline | Timeline | 로드맵·사건 흐름·학습 진행 | `.tl` `.tl-item` `.tl-color-cycle` |
 | 05 | checklist-flow | Checklist Flow | 운영 절차·체크리스트·완료 조건 | `.cf` `.cf-item` `.cf-check` `.cf-state` |
 | 06 | quality-gate | Quality Gate | 검수 기준·릴리즈 게이트·감사 항목 | `.qg-grid` `.qg-card`(`.warn/.block`) `.qg-final` |
 | 07 | card-grid | Card Grid | 모드/카테고리/키워드/플랫폼 카드 분류 | `.cg-grid` `.cg-card` |
@@ -42,7 +42,7 @@
 | 20 | prompt-tuner | Prompt Tuner | 프롬프트 템플릿·점수 튜닝 뷰 | `.tuner` `.tune-box` `.score`(`span.on`) |
 | 21 | soft-workflow-map | Soft Workflow Map | 입력 ∥ 중앙 대시보드 ∥ 결과로 수렴하는 AI/에이전트 프로세스 맵(소프트 카드뷰). `hero-map`이 단일 축이라면 이건 좌우 카드가 중앙 집계 패널로 수렴하는 3컬럼형 | `.wf-board` `.wf-map` `.wf-col` `.wf-card` `.wf-center` `.wf-metrics` `.wf-pipes` |
 
-> 공통 셸·요소 네임스페이스는 모든 템플릿이 공유한다: `.vt-shell` `.vt-frame` `.vt-demo` `.vt-kicker` `.vt-title` `.vt-text` `.vt-section-title` `.vt-num` `.vt-pill`(`.hot/.good/.watch`) `.vt-list` `.vt-two` `.vt-four` `.vt-stat` 등. 색 토큰은 `--vt-red/--vt-blue/--vt-green/--vt-gold`이며 모두 스킬 테마 토큰(`var(--accent)`, `var(--line)`, `var(--ink)` …) 위에서 파생된다. 카드별 강조색은 인라인 `style="--c:var(--vt-blue)"`로 바꾼다.
+> 공통 셸·요소 네임스페이스는 모든 템플릿이 공유한다: `.vt-shell` `.vt-frame` `.vt-demo` `.vt-kicker` `.vt-title` `.vt-text` `.vt-section-title` `.vt-num` `.vt-pill`(`.hot/.good/.watch`) `.vt-list` `.vt-two` `.vt-four` `.vt-stat` 등. 색 토큰은 `--vt-red/--vt-blue/--vt-green/--vt-gold`이며 모두 스킬 테마 토큰(`var(--accent)`, `var(--line)`, `var(--ink)` …) 위에서 파생된다. 카드별 강조색은 인라인 `style="--c:var(--vt-blue)"`로 바꾼다. 타임라인 단계 색이 모두 같아 밋밋하면 `.tl`에 `.tl-color-cycle`을 추가해 4색 축/점 순환을 적용한다.
 
 ## 3. 모드 → 템플릿 매핑 (캐노니컬, 단일 출처)
 
@@ -89,7 +89,7 @@ GitHub 기능·사용 가이드는 첫 화면에서 "무엇을 해주는가"가 
 
 ### youtube_analysis 권장 삽입 순서
 
-YouTube 분석은 `timeline`을 1순위로 사용해 영상 흐름·타임스탬프 근거를 먼저 보여준다. 주장 위험은 `risk-matrix`, 검증 기준은 `quality-gate`, 볼지/제작할지 선택은 `decision-tree`, 대안 콘텐츠 비교는 `comparison-cards`, 다음 행동은 `checklist-flow`로 보강한다.
+YouTube 분석은 `timeline`을 1순위로 사용해 영상 흐름·타임스탬프 근거를 먼저 보여준다. 동등한 시간 구간이 4개 이상이면 `.tl-color-cycle`을 붙여 단색 축 회귀를 막는다. 주장 위험은 `risk-matrix`, 검증 기준은 `quality-gate`, 볼지/제작할지 선택은 `decision-tree`, 대안 콘텐츠 비교는 `comparison-cards`, 다음 행동은 `checklist-flow`로 보강한다.
 
 ### manual_analysis 권장 삽입 순서
 
@@ -153,9 +153,9 @@ Manual 분석은 `hero-map`을 1순위로 사용해 독자 역할·목표·첫 �
 
 ## 7. 적용 갤러리
 
-- 카탈로그·전략 원본: `output/adaptive-html-final-html-view-templates-20-v1/`(초기 20종 라이브 데모 + `SVG_TO_HTML_TEMPLATE_STRATEGY.md`; 이후 21번째 `soft-workflow-map`이 후순위 템플릿으로 편입됨).
-- 현행 17모드 참조 예제: **`skills/adaptive-html-final/examples/`** — v5.10.3 스킬 자산 기준의 17모드 레퍼런스이며, §0.6의 1순위 vt 계약과 8테마/무JS 검증을 통과해야 한다.
-- 역사적 적용 갤러리: **`output/2026-06-01/adaptive-html-final-showcase-v6`** — v4.5 동결 시점의 모드별 페이지와 QA 스크린샷 확인용이다. 현재 17모드 기준선이나 21종 완전 적용 증거로 사용하지 않는다.
+- 카탈로그·전략 원본: `adaptive-html-final-html-view-templates-20-v1` 공개 데모(초기 20종 라이브 데모 + `SVG_TO_HTML_TEMPLATE_STRATEGY.md`; 이후 21번째 `soft-workflow-map`이 후순위 템플릿으로 편입됨).
+- 현행 17모드 참조 예제: **`skills/adaptive-html-final/examples/`** — v5.10.4 스킬 자산 기준의 17모드 레퍼런스이며, §0.6의 1순위 vt 계약과 8테마/무JS 검증을 통과해야 한다.
+- 역사적 적용 갤러리: **`adaptive-html-final-showcase-v6`** — v4.5 동결 시점의 모드별 페이지와 QA 스크린샷 확인용이다. 현재 17모드 기준선이나 21종 완전 적용 증거로 사용하지 않는다.
 
 ## 관련 문서
 

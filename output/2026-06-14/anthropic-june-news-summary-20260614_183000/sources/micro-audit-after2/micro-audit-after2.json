@@ -1,0 +1,748 @@
+{
+  "nums": [
+    {
+      "text": "01",
+      "x": 91,
+      "y": -30991,
+      "w": 34,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "01 6월 뉴스 전체 요약"
+    },
+    {
+      "text": "02",
+      "x": 91,
+      "y": -30062,
+      "w": 36,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "02 수집 범위와 원문 목록"
+    },
+    {
+      "text": "03",
+      "x": 91,
+      "y": -28338,
+      "w": 36,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "03 날짜별 타임라인"
+    },
+    {
+      "text": "04",
+      "x": 91,
+      "y": -26811,
+      "w": 37,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "04 읽기 의사결정 트리"
+    },
+    {
+      "text": "05",
+      "x": 91,
+      "y": -25489,
+      "w": 36,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "05 뉴스 클러스터 4가지"
+    },
+    {
+      "text": "06",
+      "x": 91,
+      "y": -24109,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "06 Fable/Mythos 접근 중단 · 정부 지시 공지"
+    },
+    {
+      "text": "07",
+      "x": 91,
+      "y": -23158,
+      "w": 32,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "07 Public Record · 첫 결과 공개"
+    },
+    {
+      "text": "08",
+      "x": 91,
+      "y": -22063,
+      "w": 33,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "08 TCS 파트너십 · 규제 산업 도입"
+    },
+    {
+      "text": "09",
+      "x": 91,
+      "y": -20882,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "09 DXC 통합 · 핵심 시스템 안의 Claude"
+    },
+    {
+      "text": "10",
+      "x": 91,
+      "y": -19749,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "10 Jun 11, 2026 · Introducing Claude Corps"
+    },
+    {
+      "text": "11",
+      "x": 91,
+      "y": -18611,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "11 Jun 10, 2026 · Policy on the AI Exponential"
+    },
+    {
+      "text": "12",
+      "x": 91,
+      "y": -17436,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "12 Jun 9, 2026 · Claude Fable 5 and Claude Mythos 5"
+    },
+    {
+      "text": "13",
+      "x": 91,
+      "y": -16358,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "13 Services Track · Partner Hub 공개"
+    },
+    {
+      "text": "14",
+      "x": 91,
+      "y": -15199,
+      "w": 31,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "14 AI 사이버 위협 · 1년 매핑 결과"
+    },
+    {
+      "text": "15",
+      "x": 91,
+      "y": -14076,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "15 Jun 2, 2026 · Expanding Project Glasswing"
+    },
+    {
+      "text": "16",
+      "x": 91,
+      "y": -12997,
+      "w": 32,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "16 draft S-1 · 비공개 제출 공지"
+    },
+    {
+      "text": "17",
+      "x": 91,
+      "y": -11960,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "17 모델 발표와 접근 중단을 함께 읽기"
+    },
+    {
+      "text": "18",
+      "x": 91,
+      "y": -10218,
+      "w": 33,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "18 규제 산업 파트너십의 의미"
+    },
+    {
+      "text": "19",
+      "x": 91,
+      "y": -9111,
+      "w": 34,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "19 공공 신뢰 전략"
+    },
+    {
+      "text": "20",
+      "x": 91,
+      "y": -7743,
+      "w": 32,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "20 보안과 안전을 운영 지표로 바꾸기"
+    },
+    {
+      "text": "21",
+      "x": 91,
+      "y": -6686,
+      "w": 33,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "21 정책 프레임의 방향"
+    },
+    {
+      "text": "22",
+      "x": 91,
+      "y": -5728,
+      "w": 32,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "22 기업 이벤트로서의 draft S-1"
+    },
+    {
+      "text": "23",
+      "x": 91,
+      "y": -4870,
+      "w": 32,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "23 고객이 바로 확인해야 할 5가지"
+    },
+    {
+      "text": "24",
+      "x": 91,
+      "y": -3736,
+      "w": 36,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "24 도입 조직별 읽기 순서"
+    },
+    {
+      "text": "25",
+      "x": 91,
+      "y": -2761,
+      "w": 35,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "25 리스크 매트릭스 요약"
+    },
+    {
+      "text": "26",
+      "x": 91,
+      "y": -445,
+      "w": 34,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "26 7월에 이어서 봐야 할 신호"
+    },
+    {
+      "text": "27",
+      "x": 91,
+      "y": 171,
+      "w": 35,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "27 뉴스룸 요약의 한계"
+    },
+    {
+      "text": "28",
+      "x": 91,
+      "y": 836,
+      "w": 36,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "28 최종 요약"
+    },
+    {
+      "text": "29",
+      "x": 91,
+      "y": 1860,
+      "w": 36,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "29 읽기 순서 추천"
+    },
+    {
+      "text": "30",
+      "x": 91,
+      "y": 3687,
+      "w": 36,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "30 내부 공유용 한 문장"
+    },
+    {
+      "text": "31",
+      "x": 96,
+      "y": 4318,
+      "w": 34,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "31 다음 액션 체크리스트"
+    }
+  ],
+  "badNums": [
+    {
+      "text": "06",
+      "x": 91,
+      "y": -24109,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "06 Fable/Mythos 접근 중단 · 정부 지시 공지"
+    },
+    {
+      "text": "07",
+      "x": 91,
+      "y": -23158,
+      "w": 32,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "07 Public Record · 첫 결과 공개"
+    },
+    {
+      "text": "08",
+      "x": 91,
+      "y": -22063,
+      "w": 33,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "08 TCS 파트너십 · 규제 산업 도입"
+    },
+    {
+      "text": "09",
+      "x": 91,
+      "y": -20882,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "09 DXC 통합 · 핵심 시스템 안의 Claude"
+    },
+    {
+      "text": "10",
+      "x": 91,
+      "y": -19749,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "10 Jun 11, 2026 · Introducing Claude Corps"
+    },
+    {
+      "text": "11",
+      "x": 91,
+      "y": -18611,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "11 Jun 10, 2026 · Policy on the AI Exponential"
+    },
+    {
+      "text": "12",
+      "x": 91,
+      "y": -17436,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "12 Jun 9, 2026 · Claude Fable 5 and Claude Mythos 5"
+    },
+    {
+      "text": "13",
+      "x": 91,
+      "y": -16358,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "13 Services Track · Partner Hub 공개"
+    },
+    {
+      "text": "14",
+      "x": 91,
+      "y": -15199,
+      "w": 31,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "14 AI 사이버 위협 · 1년 매핑 결과"
+    },
+    {
+      "text": "15",
+      "x": 91,
+      "y": -14076,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "15 Jun 2, 2026 · Expanding Project Glasswing"
+    },
+    {
+      "text": "16",
+      "x": 91,
+      "y": -12997,
+      "w": 32,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "16 draft S-1 · 비공개 제출 공지"
+    },
+    {
+      "text": "17",
+      "x": 91,
+      "y": -11960,
+      "w": 30,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "17 모델 발표와 접근 중단을 함께 읽기"
+    },
+    {
+      "text": "18",
+      "x": 91,
+      "y": -10218,
+      "w": 33,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "18 규제 산업 파트너십의 의미"
+    },
+    {
+      "text": "20",
+      "x": 91,
+      "y": -7743,
+      "w": 32,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "20 보안과 안전을 운영 지표로 바꾸기"
+    },
+    {
+      "text": "21",
+      "x": 91,
+      "y": -6686,
+      "w": 33,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "21 정책 프레임의 방향"
+    },
+    {
+      "text": "22",
+      "x": 91,
+      "y": -5728,
+      "w": 32,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "22 기업 이벤트로서의 draft S-1"
+    },
+    {
+      "text": "23",
+      "x": 91,
+      "y": -4870,
+      "w": 32,
+      "h": 30,
+      "lineHeight": "13px",
+      "whiteSpace": "normal",
+      "h2": "23 고객이 바로 확인해야 할 5가지"
+    }
+  ],
+  "tags": [
+    {
+      "text": "★★★",
+      "x": 62,
+      "y": -11146,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    },
+    {
+      "text": "★★★",
+      "x": 62,
+      "y": -10848,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    },
+    {
+      "text": "★★☆",
+      "x": 62,
+      "y": -10550,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    },
+    {
+      "text": "★★★",
+      "x": 62,
+      "y": -8671,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    },
+    {
+      "text": "★★☆",
+      "x": 62,
+      "y": -8373,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    },
+    {
+      "text": "★★☆",
+      "x": 62,
+      "y": -8075,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    },
+    {
+      "text": "★★★",
+      "x": 62,
+      "y": -1760,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    },
+    {
+      "text": "★★☆",
+      "x": 62,
+      "y": -1462,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    },
+    {
+      "text": "★☆☆",
+      "x": 62,
+      "y": -1164,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    },
+    {
+      "text": "★★★",
+      "x": 62,
+      "y": 2767,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    },
+    {
+      "text": "★★☆",
+      "x": 62,
+      "y": 3065,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    },
+    {
+      "text": "★★☆",
+      "x": 62,
+      "y": 3363,
+      "w": 60,
+      "h": 33,
+      "parent": "tag-list",
+      "gap": null
+    }
+  ],
+  "zeroGapTags": [],
+  "left": [
+    {
+      "cls": "ba-col before",
+      "sec": "section-17",
+      "padLeft": 19,
+      "text": "새 모델 발표를 벤치마크와 기능 개선 중심으로만 읽는다."
+    },
+    {
+      "cls": "ba-col after",
+      "sec": "section-17",
+      "padLeft": 19,
+      "text": "릴리스 노트, 안전장치, 접근 제한, 대체 모델, 고객 안내를 하나의 운영 체계로 읽는다."
+    },
+    {
+      "cls": "lede-note",
+      "sec": "section-18",
+      "padLeft": 28,
+      "text": "PARTNER VIEW"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-18",
+      "padLeft": 18,
+      "text": "TCS"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-18",
+      "padLeft": 18,
+      "text": "DXC"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-18",
+      "padLeft": 18,
+      "text": "감사 가능성"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-18",
+      "padLeft": 18,
+      "text": "구매 기준"
+    },
+    {
+      "cls": "lede-note",
+      "sec": "section-20",
+      "padLeft": 28,
+      "text": "SECURITY VIEW"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-20",
+      "padLeft": 18,
+      "text": "위협 매핑"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-20",
+      "padLeft": 18,
+      "text": "탐지 전환"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-20",
+      "padLeft": 18,
+      "text": "취약점 협력"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-20",
+      "padLeft": 18,
+      "text": "한계 기록"
+    },
+    {
+      "cls": "ba-col before",
+      "sec": "section-22",
+      "padLeft": 19,
+      "text": "draft S-1 제출을 곧바로 IPO 확정으로 읽는다."
+    },
+    {
+      "cls": "ba-col after",
+      "sec": "section-22",
+      "padLeft": 19,
+      "text": "비공개 제출은 선택지를 확보하는 절차이며, SEC 검토·시장 상황·공모 조건은 아직 미정으로 둔다."
+    },
+    {
+      "cls": "lede-note",
+      "sec": "section-22",
+      "padLeft": 28,
+      "text": "확정 가능 / 확인 불가 분리"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-23",
+      "padLeft": 18,
+      "text": "접근 조건"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-23",
+      "padLeft": 18,
+      "text": "대체 경로"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-23",
+      "padLeft": 18,
+      "text": "파트너 책임"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-23",
+      "padLeft": 18,
+      "text": "보안 기준"
+    },
+    {
+      "cls": "lede-note",
+      "sec": "section-27",
+      "padLeft": 28,
+      "text": "요약의 한계와 확인 필요 항목"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-28",
+      "padLeft": 18,
+      "text": "모델"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-28",
+      "padLeft": 18,
+      "text": "정책"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-28",
+      "padLeft": 18,
+      "text": "파트너"
+    },
+    {
+      "cls": "impact-card",
+      "sec": "section-28",
+      "padLeft": 18,
+      "text": "안전"
+    }
+  ],
+  "minLeft": 18,
+  "body": {
+    "scrollWidth": 390,
+    "clientWidth": 390
+  }
+}

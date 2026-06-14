@@ -84,8 +84,8 @@ function printHelp() {
 
 V2 deferred flags intentionally rejected in v1: ${V2_FLAGS.join(', ')}
 Examples:
-  node scripts/export_output.mjs output/2026-06-04/final_20260604
-  node scripts/export_output.mjs output/2026-06-04/final_20260604 --formats pdf,png --themes light,dark --scale 1`);
+  node scripts/export_output.mjs output/<dir>
+  node scripts/export_output.mjs output/<dir> --formats pdf,png --themes light,dark --scale 1`);
 }
 
 function parseList(raw, valid, label) {

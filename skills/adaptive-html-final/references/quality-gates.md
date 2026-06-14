@@ -76,7 +76,7 @@
 - **TOC baseline**: 직접 h2 섹션이 4개 이상인 toc-required 페이지와 `github_analysis`/`github_feature_usage`/`youtube_analysis`/`manual_analysis` 상단 목차는 공식 `toc-map` chip-nav(`toc-map` + `toc-pills` + `a.toc-pill > b`)를 써야 한다. `.toc`/`ol` 구형 목차, bare link 목차는 실패다.
 - **Template diversity**: vt/wg 템플릿은 장식 삽입이 아니라 정보 구조에 맞아야 한다. 같은 카드 그리드를 5회 이상 반복해 정보 구조를 대체하지 않는다.
 - **No example voice**: 산출물 내부에서 “예제”, “샘플”, “모드 시연”을 자기 설명으로 쓰지 않는다. 필요한 경우 footer/metadata에만 생성 정보를 둔다.
-- **Render artifact check**: 신규 산출물은 외부 캡쳐 단계에서 1280px/390px screenshot과 `sources/render-audit.json`을 남긴다. `completion_check.py`는 Playwright를 직접 구동하지 않고 `overflow_ok=true`와 screenshot 파일 존재를 검사한다. 과거 `output/` 전체는 소급 기준선이 아니다.
+- **Render artifact check**: 신규 산출물은 외부 캡쳐 단계에서 1280px/390px screenshot과 `sources/render-audit.json`을 남긴다. `completion_check.py`는 Playwright를 직접 구동하지 않고 `overflow_ok=true`와 screenshot 파일 존재를 검사한다. 과거 생성 산출물 전체는 소급 기준선이 아니다.
 - **보조 자동 검사**: 전문/데모/벤치마크 산출물은 `scripts/quality_contract_check.py <output_dir>`를 실행해 placeholder 문구, 반복 구조, raw p/div 합성 구조를 먼저 걸러낸다.
 
 ## HTML Gate

@@ -9,7 +9,7 @@
 # 🎨 Adaptive HTML Final
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
-[![version](https://img.shields.io/badge/version-5.10.3-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-5.10.4-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
 [![modes](https://img.shields.io/badge/modes-17-2a7d5a)](#-17개-모드)
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
 [![themes](https://img.shields.io/badge/themes-8--theme-111827)](#-최근-업데이트)
@@ -59,6 +59,10 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 ## 🆕 최근 업데이트
 
+### v5.10.4 (2026-06-14) — 마이크로 레이아웃 정본 계약(M1·M4·M7·M10) + 작성 프로토콜
+
+실산출물이 `validate/quality/completion`을 통과하고도 눈검수에서 남은 마이크로 레이아웃 결함을 정본으로 승격했습니다(output 독립 결과물 → 의도적 승격). **M1** h2 번호 pill 390px `white-space:nowrap`, **M4** `.cmp-card` kicker→title 간격 8px, **M7** 인쇄/export `.reading-progress` 숨김, **M10** body-level footer 본문폭 중앙정렬. **M2·M3·M6·M9**(접착·단조 rail)는 정본 컴포넌트(`lede-note`·vt chip·`.tl-color-cycle`) 사용 [작성 프로토콜](docs/adaptive-html-final-template-authoring-protocol.md)로 고정. 코어(theme/print) 해시 갱신·examples 18종 재인라인·`.skill` 재패키징. 게이트·거버넌스 **153/153** 불변.
+
 ### v5.10.3 정합 보강 (2026-06-13) — 생성 회귀 방지 게이트 + 버전업 승인 정책
 
 헤더 `generated-row/lens-strip`, toc-required `toc-map`, h2 `body-icon→num/no→title` 순서, 긴 토큰 overflow, raw p/div 합성, render-audit 완료 증빙을 검증기로 승격했습니다. 과거 `output/`은 공개 데모/테스트 산출물일 뿐 스킬 정본이 아니며, 현행 기준선은 `skills/adaptive-html-final/examples/`와 신규 산출물입니다. 이 보강은 **v5.10.3 유지** 원칙으로 정합했으며 거버넌스 **153/153**입니다.
@@ -97,7 +101,7 @@ examples 01–14의 `mode-template-contract` 부록(메타 문구·off-topic 위
 | 폰트 정합성 | 외부 세리프 폰트 링크/스택/과거 세리프 토큰 금지, pull-quote를 Pretendard 굵은 sans 톤으로 통일 |
 | 시각 템플릿 | `vt-02 decision-tree` 3카드 정합성, h3 마진 보정, 본문 title spacing 회귀 방지 |
 | 공식 목차 | `toc-map` chip-nav 목차 계약을 layout·validator에 반영해 구형 목차 회귀 차단 |
-| 운영 기준 | `manifest.json` 기준 현행 버전은 **5.10.3**이며, 생성/검증 시 manifest와 source snapshot을 우선 확인 |
+| 운영 기준 | `manifest.json` 기준 현행 버전은 **5.10.4**이며, 생성/검증 시 manifest와 source snapshot을 우선 확인 |
 
 ### v5.7.0 (2026-06-07) — YouTube Analysis + Manual Analysis 15·16번째 모드 추가
 
@@ -249,7 +253,7 @@ python3 -m http.server 8770 -d output/2026-06-05/adaptive-html-final-13-topics-2
 
 ## 🖼️ 쇼케이스 갤러리
 
-### 🆕 최신 실전 산출물 데모 (현행 스킬 v5.10.3 기준, 게이트 OK)
+### 🆕 최신 실전 산출물 데모 (현행 스킬 v5.10.4 기준, 게이트 OK)
 
 최근 생성한 **대표 실전 산출물 3종**입니다. 썸네일을 클릭하면 GitHub Pages에서 실제 결과물이 바로 열립니다(상단 스위처로 8테마 전환).
 
@@ -265,7 +269,7 @@ python3 -m http.server 8770 -d output/2026-06-05/adaptive-html-final-13-topics-2
 
 ### 🌐 라이브 역사적 갤러리 — 13-topics (v5.2.3, 게이트 OK)
 
-v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 13명 전문가 에이전트가 모든 얕은 섹션을 보강한 **역사적 13-topic 기준선**입니다. 메인 화면과 13개 모드 페이지를 웹에서 바로 볼 수 있습니다. 현행 v5.10.3 기준 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
+v5.2.3 시점의 정적 품질 게이트를 **0 issue로 완전 통과**하고, 13명 전문가 에이전트가 모든 얕은 섹션을 보강한 **역사적 13-topic 기준선**입니다. 메인 화면과 13개 모드 페이지를 웹에서 바로 볼 수 있습니다. 현행 v5.10.4 기준 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
 
 **▶ 메인 화면:** **[13개 모드 신규 주제 쇼케이스 (index)](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/index.html)**
 
@@ -424,7 +428,7 @@ theme-dark.css    CSS-only 8-테마 토큰 오버라이드 + 라디오 세그먼
 skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트
-│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.3 · 17모드)
+│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.4 · 17모드)
 │   ├── assets/                        # base.html · CSS 12종 · 위젯/도식/패턴/테마 자산 · 17개 레이아웃 골격
 │   ├── references/    (19)            # 모드/레이아웃/글쓰기/SEO/플랫폼/감사/GitHub·YouTube·Manual·기능가이드 규칙
 │   ├── recipes/       (17)            # 모드별 대표 프롬프트
@@ -432,7 +436,7 @@ skills-html-showcase/
 │   ├── tests/                         # 품질/레이아웃/시각회귀/접근성/거버넌스 게이트 (153/153)
 │   ├── visual-templates/ (7)         # 8000×6000 SVG 템플릿
 │   ├── scripts/                       # render_visual_svg.py · validate_output.py · completion_check.py 등
-│   ├── examples/                     # v5.10.3 현행 17모드 참조 예제 + index
+│   ├── examples/                     # v5.10.4 현행 17모드 참조 예제 + index
 │   └── template-catalog/             # final_20260604 기반 템플릿 HTML 정본 4종
 ├── output/
 │   ├── adaptive-html-final-showcase-v4/   # 13모드 쇼케이스 (canonical 13-mode 데모)
@@ -491,6 +495,7 @@ skills-html-showcase/
 | `v5.10.1` | 예제 정본화 — `mode-template-contract` 부록 안티패턴 제거, manifest/결정표 자기정합 게이트 추가 |
 | `v5.10.2` | `layout-github-feature` 단락 폭 46rem 회귀 수정 + layout별 60rem 셀렉터 정밀 게이트 |
 | `v5.10.3` | 다크 대비·인쇄 가독·전 모드 page-wide 폭 정본 + visible 버전 표면/.skill byte-match 게이트 + 헤더·목차·아이콘 순서·overflow·raw 합성·render-audit 완료 증빙 + 승인 없는 버전 bump 차단. 거버넌스 153/153 |
+| `v5.10.4` | **마이크로 레이아웃 정본 계약** — M1 번호 pill nowrap·M4 카드 kicker 간격·M7 인쇄 progress 숨김·M10 body footer 중앙정렬 + 작성 프로토콜(M2·M3·M6·M9 정본 컴포넌트 규칙). 코어 해시 갱신·examples 재인라인·.skill 재패키징. 거버넌스 153/153 |
 
 > 전체 변경 이력: [`skills/adaptive-html-final/CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) · 프로파일 분리 계획(아카이브): [`docs/archive/implement_visual_profile_separation.md`](docs/archive/implement_visual_profile_separation.md)
 
@@ -510,7 +515,7 @@ skills-html-showcase/
 - [x] 교육용=퀴즈+정답 · 전문가용=리스크+검증 · 블로그/SEO=제목+메타+태그 · 감사=개선본
 - [x] 비주얼: 8000×6000 캔버스 · `figure`+`figcaption` · 의미 있는 `alt` · 캔버스 잘림 없음
 
-> 🟢 **게이트 현황(v5.10.3)**: 거버넌스 `test_governance_gates.py` **153/153 통과** (v5.10.3 정합 보강 포함), 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
+> 🟢 **게이트 현황(v5.10.4)**: 거버넌스 `test_governance_gates.py` **153/153 통과** (v5.10.3 정합 보강 포함), 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
 > `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점의 역사적 13-topic 기준선입니다.
 
 ```bash
@@ -553,7 +558,7 @@ python3 -m http.server 8788
 # canonical v4 쇼케이스
 # → http://127.0.0.1:8788/output/2026-05-31/adaptive-html-final-showcase-v4/index.html
 
-# 현행 v5.10.3 17모드 참조 예제
+# 현행 v5.10.4 17모드 참조 예제
 # → http://127.0.0.1:8788/skills/adaptive-html-final/examples/index.html
 
 # 역사적 v5.2.3 13-topic 산출물(전문가 보강)
@@ -595,5 +600,5 @@ npm run export:output -- output/2026-06-05/adaptive-html-final-13-topics-2026060
 별도 라이선스가 지정되지 않았습니다. 사용 전 저장소 소유자(`coreline-ai`)에게 확인하세요.
 
 <div align="center">
-<sub>생성 도구: <code>adaptive-html-final</code> v5.10.3 · 17-mode · 8-theme · 3-profile editorial HTML engine</sub>
+<sub>생성 도구: <code>adaptive-html-final</code> v5.10.4 · 17-mode · 8-theme · 3-profile editorial HTML engine</sub>
 </div>

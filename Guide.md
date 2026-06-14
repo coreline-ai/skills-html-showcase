@@ -1,7 +1,7 @@
 # adaptive-html-final 사용 가이드
 
 갱신일: 2026-06-09
-대상 스킬: `skills/adaptive-html-final` (**v5.10.3**)
+대상 스킬: `skills/adaptive-html-final` (**v5.10.4**)
 
 > 이 문서는 현행 운영본 기준 사용 가이드입니다. 결정론 실행 규칙의 단일 출처는 루트 [`AGENTS.md`](AGENTS.md) → [`skills/adaptive-html-final/SKILL.md`](skills/adaptive-html-final/SKILL.md) → `references/*`이며, 충돌 시 그 순서를 따릅니다. v4.x 시점의 리뷰·분석·계획 기록은 [`docs/archive/`](docs/archive/README.md)에 보관되어 있습니다.
 
@@ -32,7 +32,7 @@ html-for-beginners
 | 항목 | 값 |
 |---|---|
 | 스킬명 | `adaptive-html-final` |
-| version | **`5.10.3`** |
+| version | **`5.10.4`** |
 | 디렉토리 | `skills/adaptive-html-final/` |
 | 설치용 패키지 | `skills/adaptive-html-final.skill` |
 | 파일 수 | 100개+ |
@@ -333,13 +333,13 @@ v1 허용 옵션은 `--formats`, `--themes`, `--scale`, `--viewport`, `--require
 
 ## 11. 빌드 완성도 기준선 (Canonical Baseline)
 
-현재 운영본은 v5.10.3이며, `skills/adaptive-html-final/examples/`가 17모드 참조 예제 세트입니다. 아래 과거 smoke 산출물은 각 생성 시점의 정적 품질 게이트를 통과한 기준선이고, 기존 13-topic 캐노니컬 산출물은 v5.2.3 기준선으로 보존합니다:
+현재 운영본은 v5.10.4이며, `skills/adaptive-html-final/examples/`가 17모드 참조 예제 세트입니다. 아래 과거 smoke 산출물은 각 생성 시점의 정적 품질 게이트를 통과한 기준선이고, 기존 13-topic 캐노니컬 산출물은 v5.2.3 기준선으로 보존합니다:
 
 ```text
 output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/   (v5.2.3 기준선, HTML 14개, 게이트 OK)
 output/2026-06-07/youtube-analysis-vibecoding-gap-20260607_001503/      (v5.7.0 youtube_analysis, 게이트 OK)
 output/2026-06-07/manual-analysis-product-runbook-20260607_001503/      (v5.7.0 manual_analysis, 게이트 OK)
-skills/adaptive-html-final/examples/                         (v5.10.3 17모드 참조 예제, 게이트 OK)
+skills/adaptive-html-final/examples/                         (v5.10.4 17모드 참조 예제, 게이트 OK)
 ```
 
 13-topic 디렉토리는 13개 토픽을 v5.2.3의 강력한 정적 게이트(코어 해시·교차 누수·무 JS·접근성·모바일 안전 표·시각 자산 계약)에 맞춰 빌드한 **빌드 완성도 검증 기준선**입니다. 신규 산출물을 만들 때는 이 구조(`sources/` 스냅샷 + `css-integrity.json` + 코어 해시 마커)를 따르고, 게이트 `OK`를 완료 기준으로 삼습니다.
@@ -358,4 +358,4 @@ skills/adaptive-html-final/examples/                         (v5.10.3 17모드 �
 
 ## 13. 한 줄 요약
 
-`adaptive-html-final`(**v5.10.3**)은 17개 모드 라우터 + editorial 디자인 시스템에 **비주얼 프로파일(widget·diagram·auto)·8-테마·vt-/wg- 시각 라이브러리·정적 품질 게이트**까지 갖춘, 외부 JS 0의 결정론적 단일 통합 운영본입니다.
+`adaptive-html-final`(**v5.10.4**)은 17개 모드 라우터 + editorial 디자인 시스템에 **비주얼 프로파일(widget·diagram·auto)·8-테마·vt-/wg- 시각 라이브러리·정적 품질 게이트**까지 갖춘, 외부 JS 0의 결정론적 단일 통합 운영본입니다.

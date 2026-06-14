@@ -1,0 +1,56 @@
+{
+  "colors": [
+    {
+      "i": 1,
+      "bg": "linear-gradient(rgb(230, 57, 70), rgb(255, 159, 28))",
+      "width": "4px",
+      "height": "72px"
+    },
+    {
+      "i": 2,
+      "bg": "linear-gradient(rgb(58, 98, 128), rgb(127, 176, 216))",
+      "width": "4px",
+      "height": "72px"
+    },
+    {
+      "i": 3,
+      "bg": "linear-gradient(rgb(42, 125, 90), rgb(121, 179, 148))",
+      "width": "4px",
+      "height": "72px"
+    },
+    {
+      "i": 4,
+      "bg": "linear-gradient(rgb(217, 154, 56), rgb(255, 189, 114))",
+      "width": "4px",
+      "height": "72px"
+    },
+    {
+      "i": 5,
+      "bg": "linear-gradient(rgb(230, 57, 70), rgb(255, 159, 28))",
+      "width": "4px",
+      "height": "72px"
+    },
+    {
+      "i": 6,
+      "bg": "linear-gradient(rgb(58, 98, 128), rgb(127, 176, 216))",
+      "width": "4px",
+      "height": "72px"
+    },
+    {
+      "i": 7,
+      "bg": "linear-gradient(rgb(42, 125, 90), rgb(121, 179, 148))",
+      "width": "4px",
+      "height": "72px"
+    },
+    {
+      "i": 8,
+      "bg": "linear-gradient(rgb(217, 154, 56), rgb(255, 189, 114))",
+      "width": "4px",
+      "height": "72px"
+    }
+  ],
+  "body": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280
+  }
+}

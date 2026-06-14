@@ -940,7 +940,7 @@
 .wg-09-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));overflow:visible;scroll-snap-type:none;scroll-behavior:auto;gap:var(--space-4)}
 .wg-09-slide{flex:initial;width:100%;min-width:0;min-height:260px;scroll-snap-align:unset;scroll-margin:0;overflow-wrap:anywhere}
 @media(max-width:760px){.wg-09-track{grid-template-columns:1fr}.wg-09-slide{min-height:220px;padding:22px}}
-/* wg-07: v5.10.3 — 정적화 제거(애니메이션 복원). 879행 카탈로그 메모(미반영)와 코드 일치화. prefers-reduced-motion 블록이 접근성 보장 */
+/* wg-07: 정적화 제거(애니메이션 복원). 879행 카탈로그 메모(미반영)와 코드 일치화. prefers-reduced-motion 블록이 접근성 보장 */
 
 /* === 카탈로그 reverse-sync (2026-06-07) — wg-14/wg-15 카드 전체 폭 사용 ===
    1280px에서 내부 본문이 780px(max-reading)에 묶이던 것을 섹션 카드 폭(≈974px)까지 확장.

@@ -62,7 +62,7 @@
 렌더링:
 
 ```bash
-python scripts/render_visual_svg.py visual-brief.json output/media/visual.svg
+python scripts/render_visual_svg.py visual-brief.json media/visual.svg
 ```
 
 ## HTML 삽입 패턴

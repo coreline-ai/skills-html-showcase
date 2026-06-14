@@ -114,7 +114,7 @@ article>h2:first-child,
 .source-note>h2:first-child,
 .card-block>h2:first-child,
 .mini-card>h2:first-child{margin-top:0}
-h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;height:34px;padding:0 9px;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;font-family:var(--sans);font-size:15px;font-weight:800;margin-right:12px;vertical-align:3px;line-height:1}
+h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;height:34px;padding:0 9px;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;font-family:var(--sans);font-size:15px;font-weight:800;margin-right:12px;vertical-align:3px;line-height:1;white-space:nowrap}
 /* opt-in: only the 1-2 most important section numbers use solid brand red */
 h2 .no.is-key,h2 .num.is-key{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;line-height:1.7}
@@ -137,6 +137,8 @@ strong{color:var(--ink);font-weight:700}
 ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
 li{margin:6px 0}
 footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+/* M10: body-level footer(슬롯이 main 밖에 렌더될 때) 본문 폭 중앙 정렬 — viewport 좌측 붙음 방지 */
+body>footer{width:min(var(--max-wide),calc(100% - 44px));margin-left:auto;margin-right:auto}
 footer p{font-size:13px;color:var(--ink-mute)}
 @media(max-width:760px){
   body{line-height:1.74}
@@ -145,7 +147,7 @@ footer p{font-size:13px;color:var(--ink-mute)}
   .lead{font-size:16px}
   h1{font-size:30px;line-height:1.34}
   h2{font-size:23px;margin-top:52px}
-  h2 .no,h2 .num{min-width:30px;width:auto;height:30px;font-size:13px;margin-right:9px;padding:0 8px}
+  h2 .no,h2 .num{min-width:30px;width:auto;height:30px;font-size:13px;margin-right:9px;padding:0 8px;white-space:nowrap}
   .h2-sub{margin-left:39px}
 }
 @media(max-width:430px){

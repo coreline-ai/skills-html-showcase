@@ -14,7 +14,7 @@
 
 - **저장소**: `skills-html-showcase` — 다중 모드 한국어 HTML 생성 스킬 `adaptive-html-final`과 그 자산·검증·예제를 담은 쇼케이스 저장소.
 - **스킬**: `adaptive-html-final` — 입력(URL/PDF/텍스트/이미지/메모/기술자료/블로그 초안/SKILL.md/GitHub 저장소 URL/YouTube URL/매뉴얼 텍스트)을 받아 **외부 동작 JS 없는** editorial HTML(학습자료·전문가 리포트·GitHub 저장소 분석·GitHub 기능·사용법·도입 가이드·YouTube 분석·매뉴얼 분석·아티클·교육 모듈·블로그·SEO 대시보드·플랫폼 블로그·스킬 감사·레퍼런스·비교·케이스 스터디·랜딩·체크리스트)을 생성한다.
-- **현재 버전**: **5.10.3** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
+- **현재 버전**: **5.10.4** — 단일 출처는 `skills/adaptive-html-final/manifest.json`이며, 절차 규칙에 버전을 하드코딩하지 말고 항상 manifest와 일치시킨다.
 - **스킬 위치(저장소 루트 기준 상대 경로 — 체크아웃 위치 무관 이식성)**: `skills/adaptive-html-final/`
   - 본체: `skills/adaptive-html-final/SKILL.md`
   - 매니페스트: `skills/adaptive-html-final/manifest.json`
@@ -153,7 +153,7 @@ v5.10.3 감사에서 확인된 반복 원인은 **manifest/SKILL/CHANGELOG 같�
 5. **17모드 라우터 고정.** §3 결정표 외 모드를 만들지 않는다.
 6. **코어 CSS 5종 해시 + 조건부 인라인.** 코어 해시 대상은 **5종**(`theme→components→visual-components→layouts→print`)이며 이 합본의 SHA-256 마커를 반드시 포함한다. `widgets.css`·`visual-html.css`는 **해시 대상이 아닌 조건부 인라인**으로, 프로파일에 따라 포함 여부가 갈린다(widget=widgets만/diagram=visual-html만/auto=둘 다). 인라인 동작 순서는 `theme→components→visual-components→(widgets)→(visual-html)→layouts→print`(미사용 라이브러리는 생략, 코어 5종 해시 산식·순서는 불변).
 7. **구조 보장.** `<html lang="ko">`, viewport, title, meta description, `h1` 정확히 1개, `<main id="main">`.
-8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(현재 버전 **5.10.3** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
+8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(현재 버전 **5.10.4** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
 9. **8-테마 단일 계약.** 테마는 `theme-dark.css`의 라디오 `name="ahf-theme"`(light/light2/white/dark/dark2/blue/skyblue/sepia) 1종만 사용한다. legacy `#theme-toggle` 마크업·스크립트형 테마 토글은 금지.
 10. **body-icon 카탈로그 고정.** `.body-icon` 래퍼 안의 SVG는 반드시 `assets/body-icons.json`의 정본 32종 중 하나여야 한다. `viewBox="0 0 40 40"`와 `bi-*` 토큰 클래스가 아닌 Lucide/Feather식 24px SVG, 직접 작성 path, 외부 아이콘 복사는 금지한다. 필요 시 `python3 skills/adaptive-html-final/scripts/body_icon_markup.py <icon-id>` 출력만 복사한다.
 
@@ -180,7 +180,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py \
 python3 skills/adaptive-html-final/scripts/quality_contract_check.py <output_dir>
 ```
 
-- **현행 레퍼런스 출력:** `skills/adaptive-html-final/examples/`는 v5.10.3 스킬 자산 기준의 17모드 참조 예제 세트다.
+- **현행 레퍼런스 출력:** `skills/adaptive-html-final/examples/`는 v5.10.4 스킬 자산 기준의 17모드 참조 예제 세트다.
 - **역사적 13-topic 기준선:** `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점 캐노니컬 예시로 보존하되, 최신 17모드 기준선으로 오해하지 않는다.
 - **역사적 골든:** `output/2026-06-01/adaptive-html-final-showcase-v6/`는 v4.5 동결 시점의 역사적 auto 예시이므로 현재 검증 기준선으로 사용하지 않는다.
 

@@ -1,0 +1,116 @@
+{
+  "cards": [
+    {
+      "i": 1,
+      "x": 50,
+      "y": 347,
+      "w": 383,
+      "h": 276,
+      "beforeWidth": "5px",
+      "beforeInsetTop": "0px",
+      "beforeInsetBottom": "0px",
+      "borderRadius": "20px",
+      "minHeight": "260px"
+    },
+    {
+      "i": 2,
+      "x": 449,
+      "y": 347,
+      "w": 383,
+      "h": 276,
+      "beforeWidth": "5px",
+      "beforeInsetTop": "0px",
+      "beforeInsetBottom": "0px",
+      "borderRadius": "20px",
+      "minHeight": "260px"
+    },
+    {
+      "i": 3,
+      "x": 847,
+      "y": 347,
+      "w": 383,
+      "h": 276,
+      "beforeWidth": "5px",
+      "beforeInsetTop": "0px",
+      "beforeInsetBottom": "0px",
+      "borderRadius": "20px",
+      "minHeight": "260px"
+    },
+    {
+      "i": 4,
+      "x": 50,
+      "y": 639,
+      "w": 383,
+      "h": 325,
+      "beforeWidth": "5px",
+      "beforeInsetTop": "0px",
+      "beforeInsetBottom": "0px",
+      "borderRadius": "20px",
+      "minHeight": "260px"
+    },
+    {
+      "i": 5,
+      "x": 449,
+      "y": 639,
+      "w": 383,
+      "h": 325,
+      "beforeWidth": "5px",
+      "beforeInsetTop": "0px",
+      "beforeInsetBottom": "0px",
+      "borderRadius": "20px",
+      "minHeight": "260px"
+    },
+    {
+      "i": 6,
+      "x": 847,
+      "y": 639,
+      "w": 383,
+      "h": 325,
+      "beforeWidth": "5px",
+      "beforeInsetTop": "0px",
+      "beforeInsetBottom": "0px",
+      "borderRadius": "20px",
+      "minHeight": "260px"
+    },
+    {
+      "i": 7,
+      "x": 50,
+      "y": 981,
+      "w": 383,
+      "h": 299,
+      "beforeWidth": "5px",
+      "beforeInsetTop": "0px",
+      "beforeInsetBottom": "0px",
+      "borderRadius": "20px",
+      "minHeight": "260px"
+    },
+    {
+      "i": 8,
+      "x": 449,
+      "y": 981,
+      "w": 383,
+      "h": 299,
+      "beforeWidth": "5px",
+      "beforeInsetTop": "0px",
+      "beforeInsetBottom": "0px",
+      "borderRadius": "20px",
+      "minHeight": "260px"
+    },
+    {
+      "i": 9,
+      "x": 847,
+      "y": 981,
+      "w": 383,
+      "h": 299,
+      "beforeWidth": "5px",
+      "beforeInsetTop": "0px",
+      "beforeInsetBottom": "0px",
+      "borderRadius": "20px",
+      "minHeight": "260px"
+    }
+  ],
+  "body": {
+    "scrollWidth": 1280,
+    "clientWidth": 1280
+  }
+}
