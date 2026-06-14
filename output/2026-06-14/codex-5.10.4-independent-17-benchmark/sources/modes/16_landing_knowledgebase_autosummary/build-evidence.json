@@ -1,0 +1,86 @@
+{
+  "mode": "landing_brief_html",
+  "topic": "팀 지식베이스 자동 정리 도구 랜딩 브리프",
+  "profile": "auto",
+  "layout": "landing-brief.html",
+  "primary_vt": "hero-map",
+  "page": "pages/16_landing_knowledgebase_autosummary.html",
+  "sections": [
+    "제품 한 줄",
+    "대상 사용자",
+    "핵심 약속",
+    "기능 카드",
+    "AI 파이프라인",
+    "사용 전후",
+    "가격 신호",
+    "신뢰 장치",
+    "도입 CTA",
+    "다음 액션"
+  ],
+  "section_mapping": {
+    "01": "제품 한 줄 — layout=landing-brief.html, primary_vt=hero-map, wg=wg-02, wg-05",
+    "02": "대상 사용자 — layout=landing-brief.html, primary_vt=hero-map, wg=wg-02, wg-05",
+    "03": "핵심 약속 — layout=landing-brief.html, primary_vt=hero-map, wg=wg-02, wg-05",
+    "04": "기능 카드 — layout=landing-brief.html, primary_vt=hero-map, wg=wg-02, wg-05",
+    "05": "AI 파이프라인 — layout=landing-brief.html, primary_vt=hero-map, wg=wg-02, wg-05",
+    "06": "사용 전후 — layout=landing-brief.html, primary_vt=hero-map, wg=wg-02, wg-05",
+    "07": "가격 신호 — layout=landing-brief.html, primary_vt=hero-map, wg=wg-02, wg-05",
+    "08": "신뢰 장치 — layout=landing-brief.html, primary_vt=hero-map, wg=wg-02, wg-05",
+    "09": "도입 CTA — layout=landing-brief.html, primary_vt=hero-map, wg=wg-02, wg-05",
+    "10": "다음 액션 — layout=landing-brief.html, primary_vt=hero-map, wg=wg-02, wg-05"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/16-landing-brief.json",
+      "sha256": "b419bff033a06e86c0a8cf256b493852cbbbdabaae1ad54131cccd490eea2a8f"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/landing-brief.html",
+      "sha256": "a6426ca97eaeb68045817af226b7a0997c136ddffde899991a982087f4c61a0c"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/02-visual-design-directions.html",
+      "sha256": "85577e45759246d96f2b71897ad900cbb64ffd9c6f6c14629296b5c045a654d5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/05-living-design-system.html",
+      "sha256": "090c2cefc1f190a0ddee8a1e15429b872dcc64d6d70efff93c300a99ba51d30a"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

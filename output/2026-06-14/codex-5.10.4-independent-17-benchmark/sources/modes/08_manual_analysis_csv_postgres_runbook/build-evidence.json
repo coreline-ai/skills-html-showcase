@@ -1,0 +1,86 @@
+{
+  "mode": "manual_analysis",
+  "topic": "CSV→Postgres 마이그레이션 운영 런북",
+  "profile": "auto",
+  "layout": "manual-analysis.html",
+  "primary_vt": "hero-map",
+  "page": "pages/08_manual_analysis_csv_postgres_runbook.html",
+  "sections": [
+    "런북 결론",
+    "역할별 사용법",
+    "사전조건과 안전장치",
+    "첫 성공 경로",
+    "작업 레시피",
+    "검증 쿼리",
+    "STOP 기준",
+    "트러블슈팅",
+    "운영 교대 기록",
+    "다음 개선"
+  ],
+  "section_mapping": {
+    "01": "런북 결론 — layout=manual-analysis.html, primary_vt=hero-map, wg=wg-04, wg-13",
+    "02": "역할별 사용법 — layout=manual-analysis.html, primary_vt=hero-map, wg=wg-04, wg-13",
+    "03": "사전조건과 안전장치 — layout=manual-analysis.html, primary_vt=hero-map, wg=wg-04, wg-13",
+    "04": "첫 성공 경로 — layout=manual-analysis.html, primary_vt=hero-map, wg=wg-04, wg-13",
+    "05": "작업 레시피 — layout=manual-analysis.html, primary_vt=hero-map, wg=wg-04, wg-13",
+    "06": "검증 쿼리 — layout=manual-analysis.html, primary_vt=hero-map, wg=wg-04, wg-13",
+    "07": "STOP 기준 — layout=manual-analysis.html, primary_vt=hero-map, wg=wg-04, wg-13",
+    "08": "트러블슈팅 — layout=manual-analysis.html, primary_vt=hero-map, wg=wg-04, wg-13",
+    "09": "운영 교대 기록 — layout=manual-analysis.html, primary_vt=hero-map, wg=wg-04, wg-13",
+    "10": "다음 개선 — layout=manual-analysis.html, primary_vt=hero-map, wg=wg-04, wg-13"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/08-manual-analysis.json",
+      "sha256": "15fe21488e4673a9a9cc8cc6afb2f6830097775d527a2aeac63efcf8f62f1943"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/manual-analysis.html",
+      "sha256": "82e1d983b39bb7560f6fc36ce55cef4ed9fb1324d9ea9aef5d0a272d7e85c719"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/04-module-map.html",
+      "sha256": "c343793fd626569b98e906b5be4d27dfe0ae7cad5c179b07c7bba83a144cbc47"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/13-annotated-flowchart.html",
+      "sha256": "406be36f9f41e45b62e0518dc17362b768e4137b9e47702b59b68fdf8653d0c5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

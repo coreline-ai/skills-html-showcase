@@ -1,0 +1,86 @@
+{
+  "mode": "checklist_playbook",
+  "topic": "월말 데이터 품질 점검 플레이북",
+  "profile": "auto",
+  "layout": "checklist-playbook.html",
+  "primary_vt": "checklist-flow",
+  "page": "pages/17_checklist_monthly_data_quality.html",
+  "sections": [
+    "플레이북 결론",
+    "시작 전 준비",
+    "소유자 확인",
+    "스키마 점검",
+    "누락값 점검",
+    "중복 레코드",
+    "품질 게이트",
+    "장애 시 분기",
+    "승인 기록",
+    "완료 보고"
+  ],
+  "section_mapping": {
+    "01": "플레이북 결론 — layout=checklist-playbook.html, primary_vt=checklist-flow, wg=wg-11, wg-13",
+    "02": "시작 전 준비 — layout=checklist-playbook.html, primary_vt=checklist-flow, wg=wg-11, wg-13",
+    "03": "소유자 확인 — layout=checklist-playbook.html, primary_vt=checklist-flow, wg=wg-11, wg-13",
+    "04": "스키마 점검 — layout=checklist-playbook.html, primary_vt=checklist-flow, wg=wg-11, wg-13",
+    "05": "누락값 점검 — layout=checklist-playbook.html, primary_vt=checklist-flow, wg=wg-11, wg-13",
+    "06": "중복 레코드 — layout=checklist-playbook.html, primary_vt=checklist-flow, wg=wg-11, wg-13",
+    "07": "품질 게이트 — layout=checklist-playbook.html, primary_vt=checklist-flow, wg=wg-11, wg-13",
+    "08": "장애 시 분기 — layout=checklist-playbook.html, primary_vt=checklist-flow, wg=wg-11, wg-13",
+    "09": "승인 기록 — layout=checklist-playbook.html, primary_vt=checklist-flow, wg=wg-11, wg-13",
+    "10": "완료 보고 — layout=checklist-playbook.html, primary_vt=checklist-flow, wg=wg-11, wg-13"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/17-checklist-playbook.json",
+      "sha256": "e2cdc20c3b4028ed24efa550f1d7e6d7a7f0d9eb35eecbd984afba0770e3514f"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/checklist-playbook.html",
+      "sha256": "c2cdbfea91ce69d14d6680e8fcb95026981db0bd102b04d94f01f4d6ea197212"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/05-checklist-flow.html",
+      "sha256": "c91b5ead42adcd356c92b0df81915864857dcb431cdfb8b5ff3275ab5e6a4d70"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/11-weekly-status.html",
+      "sha256": "51014e3e7dc29fd5020f813b6b7a4e279de1014946514a2b9b4c82b3bb6a5278"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/13-annotated-flowchart.html",
+      "sha256": "406be36f9f41e45b62e0518dc17362b768e4137b9e47702b59b68fdf8653d0c5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "mode": "expert_html",
+  "topic": "멀티 에이전트 HTML 품질 게이트 아키텍처",
+  "profile": "auto",
+  "layout": "expert-report.html",
+  "primary_vt": "risk-matrix",
+  "page": "pages/09_expert_multi_agent_quality_architecture.html",
+  "sections": [
+    "전문가 결론",
+    "문제 구조",
+    "아키텍처 원칙",
+    "품질 게이트 계층",
+    "렌더 감사 모델",
+    "증거 파일 계약",
+    "운영 리스크",
+    "조직 역할",
+    "도입 로드맵",
+    "최종 권고"
+  ],
+  "section_mapping": {
+    "01": "전문가 결론 — layout=expert-report.html, primary_vt=risk-matrix, wg=wg-03, wg-04",
+    "02": "문제 구조 — layout=expert-report.html, primary_vt=risk-matrix, wg=wg-03, wg-04",
+    "03": "아키텍처 원칙 — layout=expert-report.html, primary_vt=risk-matrix, wg=wg-03, wg-04",
+    "04": "품질 게이트 계층 — layout=expert-report.html, primary_vt=risk-matrix, wg=wg-03, wg-04",
+    "05": "렌더 감사 모델 — layout=expert-report.html, primary_vt=risk-matrix, wg=wg-03, wg-04",
+    "06": "증거 파일 계약 — layout=expert-report.html, primary_vt=risk-matrix, wg=wg-03, wg-04",
+    "07": "운영 리스크 — layout=expert-report.html, primary_vt=risk-matrix, wg=wg-03, wg-04",
+    "08": "조직 역할 — layout=expert-report.html, primary_vt=risk-matrix, wg=wg-03, wg-04",
+    "09": "도입 로드맵 — layout=expert-report.html, primary_vt=risk-matrix, wg=wg-03, wg-04",
+    "10": "최종 권고 — layout=expert-report.html, primary_vt=risk-matrix, wg=wg-03, wg-04"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/09-expert.json",
+      "sha256": "d42849c3b2bea50418a598943d97f03ab0030a368f461e47b243e8c060984de9"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/expert-report.html",
+      "sha256": "6d6bbf941d66842ea29976ecdd0976f6a41786d07b33d16789b89fcf6c3471c3"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/03-risk-matrix.html",
+      "sha256": "819a2e7a46f0caf85726705c79a95720c9296ab418b1f16f2f2b1f3f72aa522f"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/03-annotated-pull-request.html",
+      "sha256": "98049a96f4c4159e401bd0ce6e87dddb46f5cf84b067504b35744e8c23a331b3"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/04-module-map.html",
+      "sha256": "c343793fd626569b98e906b5be4d27dfe0ae7cad5c179b07c7bba83a144cbc47"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

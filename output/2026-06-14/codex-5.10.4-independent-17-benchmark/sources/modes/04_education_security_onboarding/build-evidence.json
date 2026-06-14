@@ -1,0 +1,86 @@
+{
+  "mode": "education_html",
+  "topic": "사내 보안 온보딩 90분 실습 과정",
+  "profile": "auto",
+  "layout": "course-module.html",
+  "primary_vt": "timeline",
+  "page": "pages/04_education_security_onboarding.html",
+  "sections": [
+    "학습 목표",
+    "선수 지식",
+    "위협 모델 빠른 지도",
+    "실습 환경 준비",
+    "피싱 판별 훈련",
+    "권한 최소화 실습",
+    "로그 해석 과제",
+    "퀴즈와 해설",
+    "현업 적용 체크",
+    "다음 학습 경로"
+  ],
+  "section_mapping": {
+    "01": "학습 목표 — layout=course-module.html, primary_vt=timeline, wg=wg-06, wg-07",
+    "02": "선수 지식 — layout=course-module.html, primary_vt=timeline, wg=wg-06, wg-07",
+    "03": "위협 모델 빠른 지도 — layout=course-module.html, primary_vt=timeline, wg=wg-06, wg-07",
+    "04": "실습 환경 준비 — layout=course-module.html, primary_vt=timeline, wg=wg-06, wg-07",
+    "05": "피싱 판별 훈련 — layout=course-module.html, primary_vt=timeline, wg=wg-06, wg-07",
+    "06": "권한 최소화 실습 — layout=course-module.html, primary_vt=timeline, wg=wg-06, wg-07",
+    "07": "로그 해석 과제 — layout=course-module.html, primary_vt=timeline, wg=wg-06, wg-07",
+    "08": "퀴즈와 해설 — layout=course-module.html, primary_vt=timeline, wg=wg-06, wg-07",
+    "09": "현업 적용 체크 — layout=course-module.html, primary_vt=timeline, wg=wg-06, wg-07",
+    "10": "다음 학습 경로 — layout=course-module.html, primary_vt=timeline, wg=wg-06, wg-07"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/04-education.json",
+      "sha256": "548049a9d5cbcd5b71020b0a7e8f31fe2198da8c4e1193268f5689e94b068728"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/course-module.html",
+      "sha256": "18662fd21a7e1dc6e9544ccd1b1b60c8d6dafb0f322e0f04ff95f2fb3e131f04"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/04-timeline.html",
+      "sha256": "0b0c9babbef8e17823170698a61270cfca459252c0304a1377a8cf2b636e37b1"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/06-component-variants.html",
+      "sha256": "f6a5c8213174678a1bbe670818d117d801dfc02454dae03cb96708d8228b1b81"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/07-animation-sandbox.html",
+      "sha256": "e3cf2ed6f6b39db808fbafe0ba4185aabf4a1d0a8177ba18246d6bc40baf1141"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

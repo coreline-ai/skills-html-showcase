@@ -1,0 +1,82 @@
+{
+  "mode": "case_study_html",
+  "topic": "검색 인덱스 장애 37분 복구 사례",
+  "profile": "auto",
+  "layout": "case-study.html",
+  "primary_vt": "incident-summary",
+  "page": "pages/15_case_study_search_index_incident.html",
+  "sections": [
+    "사건 개요",
+    "영향 범위",
+    "타임라인",
+    "탐지 신호",
+    "초기 오판",
+    "복구 조치",
+    "고객 커뮤니케이션",
+    "재발 방지",
+    "남은 리스크",
+    "회고 결론"
+  ],
+  "section_mapping": {
+    "01": "사건 개요 — layout=case-study.html, primary_vt=incident-summary, wg=wg-12",
+    "02": "영향 범위 — layout=case-study.html, primary_vt=incident-summary, wg=wg-12",
+    "03": "타임라인 — layout=case-study.html, primary_vt=incident-summary, wg=wg-12",
+    "04": "탐지 신호 — layout=case-study.html, primary_vt=incident-summary, wg=wg-12",
+    "05": "초기 오판 — layout=case-study.html, primary_vt=incident-summary, wg=wg-12",
+    "06": "복구 조치 — layout=case-study.html, primary_vt=incident-summary, wg=wg-12",
+    "07": "고객 커뮤니케이션 — layout=case-study.html, primary_vt=incident-summary, wg=wg-12",
+    "08": "재발 방지 — layout=case-study.html, primary_vt=incident-summary, wg=wg-12",
+    "09": "남은 리스크 — layout=case-study.html, primary_vt=incident-summary, wg=wg-12",
+    "10": "회고 결론 — layout=case-study.html, primary_vt=incident-summary, wg=wg-12"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/15-case-study.json",
+      "sha256": "5244d0ba1a1d785eaeaeb0d414680b48762ed7112a129670710c1921013582a3"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/case-study.html",
+      "sha256": "fa01cb18c689748485ec9e109283ec71babd757e931f5da5074a25b730a20210"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/12-incident-summary.html",
+      "sha256": "d1968a9060f538dae27f18229eebfcbba47bb5b111bba756790758f10eb9fbf9"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/12-incident-timeline.html",
+      "sha256": "e317618504af45b70f792639e96cf3ad44f0ea111fb0142656f50677b5ca401a"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

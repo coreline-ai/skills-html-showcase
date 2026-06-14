@@ -1,0 +1,86 @@
+{
+  "mode": "github_analysis",
+  "topic": "Postgres 백업 자동화 저장소 도입 실사",
+  "profile": "auto",
+  "layout": "github-analysis.html",
+  "primary_vt": "hero-map",
+  "page": "pages/05_github_analysis_pg_backup_due_diligence.html",
+  "sections": [
+    "도입 결론",
+    "저장소 신호",
+    "기능 범위",
+    "아키텍처 흔적",
+    "릴리스와 유지보수",
+    "보안·라이선스",
+    "운영 리스크",
+    "대체안 비교",
+    "파일 투어",
+    "채택 조건"
+  ],
+  "section_mapping": {
+    "01": "도입 결론 — layout=github-analysis.html, primary_vt=hero-map, wg=wg-11, wg-04",
+    "02": "저장소 신호 — layout=github-analysis.html, primary_vt=hero-map, wg=wg-11, wg-04",
+    "03": "기능 범위 — layout=github-analysis.html, primary_vt=hero-map, wg=wg-11, wg-04",
+    "04": "아키텍처 흔적 — layout=github-analysis.html, primary_vt=hero-map, wg=wg-11, wg-04",
+    "05": "릴리스와 유지보수 — layout=github-analysis.html, primary_vt=hero-map, wg=wg-11, wg-04",
+    "06": "보안·라이선스 — layout=github-analysis.html, primary_vt=hero-map, wg=wg-11, wg-04",
+    "07": "운영 리스크 — layout=github-analysis.html, primary_vt=hero-map, wg=wg-11, wg-04",
+    "08": "대체안 비교 — layout=github-analysis.html, primary_vt=hero-map, wg=wg-11, wg-04",
+    "09": "파일 투어 — layout=github-analysis.html, primary_vt=hero-map, wg=wg-11, wg-04",
+    "10": "채택 조건 — layout=github-analysis.html, primary_vt=hero-map, wg=wg-11, wg-04"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/05-github-analysis.json",
+      "sha256": "cfee12d418946e2f8a304637abbe4ec9cf3dd950df63297dd651b99c4b38968a"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/github-analysis.html",
+      "sha256": "0749189eeac876e93daef70a863f140de6df990b6aecd9dee9f31c795301a3f3"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/11-weekly-status.html",
+      "sha256": "51014e3e7dc29fd5020f813b6b7a4e279de1014946514a2b9b4c82b3bb6a5278"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/04-module-map.html",
+      "sha256": "c343793fd626569b98e906b5be4d27dfe0ae7cad5c179b07c7bba83a144cbc47"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

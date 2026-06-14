@@ -1,0 +1,82 @@
+{
+  "mode": "platform_blog",
+  "topic": "B2B SaaS 릴리스 노트의 플랫폼별 재편집",
+  "profile": "auto",
+  "layout": "platform-adaptation.html",
+  "primary_vt": "card-grid",
+  "page": "pages/02_platform_blog_saas_release_notes.html",
+  "sections": [
+    "플랫폼별 독자 차이",
+    "티스토리 long-form 전략",
+    "브런치식 문제 제기",
+    "네이버 검색 유입 구조",
+    "Velog 개발자 맥락",
+    "LinkedIn 요약 카드",
+    "CTA와 출처 배치",
+    "반복 발행 캘린더",
+    "성과 측정 지표",
+    "최종 운영안"
+  ],
+  "section_mapping": {
+    "01": "플랫폼별 독자 차이 — layout=platform-adaptation.html, primary_vt=card-grid, wg=wg-02",
+    "02": "티스토리 long-form 전략 — layout=platform-adaptation.html, primary_vt=card-grid, wg=wg-02",
+    "03": "브런치식 문제 제기 — layout=platform-adaptation.html, primary_vt=card-grid, wg=wg-02",
+    "04": "네이버 검색 유입 구조 — layout=platform-adaptation.html, primary_vt=card-grid, wg=wg-02",
+    "05": "Velog 개발자 맥락 — layout=platform-adaptation.html, primary_vt=card-grid, wg=wg-02",
+    "06": "LinkedIn 요약 카드 — layout=platform-adaptation.html, primary_vt=card-grid, wg=wg-02",
+    "07": "CTA와 출처 배치 — layout=platform-adaptation.html, primary_vt=card-grid, wg=wg-02",
+    "08": "반복 발행 캘린더 — layout=platform-adaptation.html, primary_vt=card-grid, wg=wg-02",
+    "09": "성과 측정 지표 — layout=platform-adaptation.html, primary_vt=card-grid, wg=wg-02",
+    "10": "최종 운영안 — layout=platform-adaptation.html, primary_vt=card-grid, wg=wg-02"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/02-platform-blog.json",
+      "sha256": "9a83fe9912e03d121019d786e4abadcfacea974d203e51f357a4efbd13ee6383"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/platform-adaptation.html",
+      "sha256": "4a12161852520a3f27d8de251737940e4dd2c9f7e283444141cbf5633bc8cf4e"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/07-card-grid.html",
+      "sha256": "99c40c0b313b71198c03b4dbaa80ef1ab3fb27940e8530d08afdf6f1d688bdb9"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/02-visual-design-directions.html",
+      "sha256": "85577e45759246d96f2b71897ad900cbb64ffd9c6f6c14629296b5c045a654d5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

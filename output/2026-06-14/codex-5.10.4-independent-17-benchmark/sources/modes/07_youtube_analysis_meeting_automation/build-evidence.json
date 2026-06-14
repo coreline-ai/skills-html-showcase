@@ -1,0 +1,86 @@
+{
+  "mode": "youtube_analysis",
+  "topic": "AI 회의록 자동화 영상의 실행 가능성 분석",
+  "profile": "auto",
+  "layout": "youtube-analysis.html",
+  "primary_vt": "timeline",
+  "page": "pages/07_youtube_analysis_meeting_automation.html",
+  "sections": [
+    "영상 결론",
+    "챕터별 흐름",
+    "핵심 주장",
+    "데모와 실제 차이",
+    "도구 스택",
+    "자동화 파이프라인",
+    "댓글의 반론",
+    "콘텐츠 갭",
+    "실행 체크리스트",
+    "다음 실험"
+  ],
+  "section_mapping": {
+    "01": "영상 결론 — layout=youtube-analysis.html, primary_vt=timeline, wg=wg-11, wg-13",
+    "02": "챕터별 흐름 — layout=youtube-analysis.html, primary_vt=timeline, wg=wg-11, wg-13",
+    "03": "핵심 주장 — layout=youtube-analysis.html, primary_vt=timeline, wg=wg-11, wg-13",
+    "04": "데모와 실제 차이 — layout=youtube-analysis.html, primary_vt=timeline, wg=wg-11, wg-13",
+    "05": "도구 스택 — layout=youtube-analysis.html, primary_vt=timeline, wg=wg-11, wg-13",
+    "06": "자동화 파이프라인 — layout=youtube-analysis.html, primary_vt=timeline, wg=wg-11, wg-13",
+    "07": "댓글의 반론 — layout=youtube-analysis.html, primary_vt=timeline, wg=wg-11, wg-13",
+    "08": "콘텐츠 갭 — layout=youtube-analysis.html, primary_vt=timeline, wg=wg-11, wg-13",
+    "09": "실행 체크리스트 — layout=youtube-analysis.html, primary_vt=timeline, wg=wg-11, wg-13",
+    "10": "다음 실험 — layout=youtube-analysis.html, primary_vt=timeline, wg=wg-11, wg-13"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/07-youtube-analysis.json",
+      "sha256": "d01c86d361e02cd334df1f2577b1849bd67e57ccf2b5f4c04764bc810a2b46dd"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/youtube-analysis.html",
+      "sha256": "6475dd2fa6eace0ef33d0de5709b79feff4c1dfdb11b4234f1337b47fb2da230"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/04-timeline.html",
+      "sha256": "0b0c9babbef8e17823170698a61270cfca459252c0304a1377a8cf2b636e37b1"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/11-weekly-status.html",
+      "sha256": "51014e3e7dc29fd5020f813b6b7a4e279de1014946514a2b9b4c82b3bb6a5278"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/13-annotated-flowchart.html",
+      "sha256": "406be36f9f41e45b62e0518dc17362b768e4137b9e47702b59b68fdf8653d0c5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

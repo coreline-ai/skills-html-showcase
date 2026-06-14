@@ -1,0 +1,86 @@
+{
+  "mode": "beginner_html",
+  "topic": "패스키 로그인을 처음 이해하는 사람을 위한 안내",
+  "profile": "auto",
+  "layout": "beginner-learning.html",
+  "primary_vt": "concept-explainer",
+  "page": "pages/12_beginner_passkey_login_guide.html",
+  "sections": [
+    "한 문장 이해",
+    "비밀번호와 차이",
+    "기기 안의 열쇠",
+    "로그인 흐름",
+    "분실하면 어떻게 되나",
+    "피싱에 강한 이유",
+    "서비스 도입 전 확인",
+    "사용자 안내 문구",
+    "자주 묻는 질문",
+    "오늘 해볼 일"
+  ],
+  "section_mapping": {
+    "01": "한 문장 이해 — layout=beginner-learning.html, primary_vt=concept-explainer, wg=wg-10, wg-13",
+    "02": "비밀번호와 차이 — layout=beginner-learning.html, primary_vt=concept-explainer, wg=wg-10, wg-13",
+    "03": "기기 안의 열쇠 — layout=beginner-learning.html, primary_vt=concept-explainer, wg=wg-10, wg-13",
+    "04": "로그인 흐름 — layout=beginner-learning.html, primary_vt=concept-explainer, wg=wg-10, wg-13",
+    "05": "분실하면 어떻게 되나 — layout=beginner-learning.html, primary_vt=concept-explainer, wg=wg-10, wg-13",
+    "06": "피싱에 강한 이유 — layout=beginner-learning.html, primary_vt=concept-explainer, wg=wg-10, wg-13",
+    "07": "서비스 도입 전 확인 — layout=beginner-learning.html, primary_vt=concept-explainer, wg=wg-10, wg-13",
+    "08": "사용자 안내 문구 — layout=beginner-learning.html, primary_vt=concept-explainer, wg=wg-10, wg-13",
+    "09": "자주 묻는 질문 — layout=beginner-learning.html, primary_vt=concept-explainer, wg=wg-10, wg-13",
+    "10": "오늘 해볼 일 — layout=beginner-learning.html, primary_vt=concept-explainer, wg=wg-10, wg-13"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/12-beginner.json",
+      "sha256": "dd4908aeebc658d735f8e72d45802d6a0d3e8e155564f5a040087a470eb968e5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/beginner-learning.html",
+      "sha256": "d33a711621d0008de7e6fc972a225516269bc38ac02eca86688efcb87e0ce29e"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/15-concept-explainer.html",
+      "sha256": "72a3f0d2dc904e89cf4d719d6406dacb225bf8f1e4fa9c9bee9666ce6e416b3a"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/10-svg-figure-sheet.html",
+      "sha256": "94e8a5f4cfb9345308576117835e8323a83d9b25d339497bb012336b4f663441"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/13-annotated-flowchart.html",
+      "sha256": "406be36f9f41e45b62e0518dc17362b768e4137b9e47702b59b68fdf8653d0c5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

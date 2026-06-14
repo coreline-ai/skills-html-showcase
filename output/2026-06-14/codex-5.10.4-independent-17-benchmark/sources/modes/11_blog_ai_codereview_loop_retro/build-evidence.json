@@ -1,0 +1,82 @@
+{
+  "mode": "blog_writer",
+  "topic": "4일간 AI 코드리뷰 루프를 돌린 회고",
+  "profile": "auto",
+  "layout": "personal-blog-essay.html",
+  "primary_vt": "timeline",
+  "page": "pages/11_blog_ai_codereview_loop_retro.html",
+  "sections": [
+    "첫날의 착각",
+    "둘째 날의 반복",
+    "셋째 날의 증거",
+    "넷째 날의 전환",
+    "도구가 잘한 일",
+    "사람이 봐야 한 일",
+    "레이아웃 회귀",
+    "검증의 한계",
+    "다음 루틴",
+    "개인 결론"
+  ],
+  "section_mapping": {
+    "01": "첫날의 착각 — layout=personal-blog-essay.html, primary_vt=timeline, wg=wg-17",
+    "02": "둘째 날의 반복 — layout=personal-blog-essay.html, primary_vt=timeline, wg=wg-17",
+    "03": "셋째 날의 증거 — layout=personal-blog-essay.html, primary_vt=timeline, wg=wg-17",
+    "04": "넷째 날의 전환 — layout=personal-blog-essay.html, primary_vt=timeline, wg=wg-17",
+    "05": "도구가 잘한 일 — layout=personal-blog-essay.html, primary_vt=timeline, wg=wg-17",
+    "06": "사람이 봐야 한 일 — layout=personal-blog-essay.html, primary_vt=timeline, wg=wg-17",
+    "07": "레이아웃 회귀 — layout=personal-blog-essay.html, primary_vt=timeline, wg=wg-17",
+    "08": "검증의 한계 — layout=personal-blog-essay.html, primary_vt=timeline, wg=wg-17",
+    "09": "다음 루틴 — layout=personal-blog-essay.html, primary_vt=timeline, wg=wg-17",
+    "10": "개인 결론 — layout=personal-blog-essay.html, primary_vt=timeline, wg=wg-17"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/11-blog-writer.json",
+      "sha256": "a562c4525b1a01c6854e82690c30d4af01148d951797fa0fa62517b5afb50dc4"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/personal-blog-essay.html",
+      "sha256": "7d78bd3437162df4164dfaa30b215ad131b210d43396615ca3ebb08fa0e96028"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/04-timeline.html",
+      "sha256": "0b0c9babbef8e17823170698a61270cfca459252c0304a1377a8cf2b636e37b1"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/17-pr-writeup.html",
+      "sha256": "031450dd1d6ddbf92b9de3d9a0c8e648e390807cf971e4fd4ddced665ca4f7a5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "mode": "seo_dashboard",
+  "topic": "AI 검색 시대의 기술 문서 SEO 대시보드",
+  "profile": "auto",
+  "layout": "seo-dashboard.html",
+  "primary_vt": "card-grid",
+  "page": "pages/03_seo_dashboard_ai_search_docs.html",
+  "sections": [
+    "검색 의도 요약",
+    "핵심 키워드 군",
+    "제목·메타 개선",
+    "SERP 약속 카드",
+    "본문 구조 점검",
+    "내부 링크 설계",
+    "스키마와 FAQ",
+    "콘텐츠 갭",
+    "발행 후 측정",
+    "우선순위 로드맵"
+  ],
+  "section_mapping": {
+    "01": "검색 의도 요약 — layout=seo-dashboard.html, primary_vt=card-grid, wg=wg-11",
+    "02": "핵심 키워드 군 — layout=seo-dashboard.html, primary_vt=card-grid, wg=wg-11",
+    "03": "제목·메타 개선 — layout=seo-dashboard.html, primary_vt=card-grid, wg=wg-11",
+    "04": "SERP 약속 카드 — layout=seo-dashboard.html, primary_vt=card-grid, wg=wg-11",
+    "05": "본문 구조 점검 — layout=seo-dashboard.html, primary_vt=card-grid, wg=wg-11",
+    "06": "내부 링크 설계 — layout=seo-dashboard.html, primary_vt=card-grid, wg=wg-11",
+    "07": "스키마와 FAQ — layout=seo-dashboard.html, primary_vt=card-grid, wg=wg-11",
+    "08": "콘텐츠 갭 — layout=seo-dashboard.html, primary_vt=card-grid, wg=wg-11",
+    "09": "발행 후 측정 — layout=seo-dashboard.html, primary_vt=card-grid, wg=wg-11",
+    "10": "우선순위 로드맵 — layout=seo-dashboard.html, primary_vt=card-grid, wg=wg-11"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/03-seo-dashboard.json",
+      "sha256": "e36b824ad4b75932a855b31b6782435e306cfb37d465f141d216b03273d88aa1"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/seo-dashboard.html",
+      "sha256": "647a613ff1e11d1307d3932823e91b7243989322916a561f9872aeff15eaef4d"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/07-card-grid.html",
+      "sha256": "99c40c0b313b71198c03b4dbaa80ef1ab3fb27940e8530d08afdf6f1d688bdb9"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/11-weekly-status.html",
+      "sha256": "51014e3e7dc29fd5020f813b6b7a4e279de1014946514a2b9b4c82b3bb6a5278"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

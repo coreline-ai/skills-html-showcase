@@ -47,6 +47,42 @@ def is_skill_examples(target: Path) -> bool:
         return False
 
 
+def _check_evidence_payload(evidence: dict, repo_root: Path, label: str = "build-evidence") -> bool:
+    ok = True
+    files = evidence.get("files")
+    if not isinstance(files, list) or len(files) < 5:
+        print(f"{label}: files must list at least 5 official inputs")
+        ok = False
+    required_keys = {"mode", "profile", "layout", "primary_vt", "section_mapping"}
+    missing = sorted(k for k in required_keys if not evidence.get(k))
+    if missing:
+        print(f"{label}: missing top-level keys: {', '.join(missing)}")
+        ok = False
+    for idx, row in enumerate(files or [], 1):
+        rel = row.get("path") if isinstance(row, dict) else None
+        digest = row.get("sha256") if isinstance(row, dict) else None
+        if not isinstance(rel, str) or not rel.strip() or not isinstance(digest, str):
+            print(f"{label}: invalid file row #{idx}")
+            ok = False
+            continue
+        p = (repo_root / rel).resolve()
+        try:
+            p.relative_to(repo_root.resolve())
+        except ValueError:
+            print(f"{label}: path escapes repo: {rel}")
+            ok = False
+            continue
+        if not p.exists() or not p.is_file():
+            print(f"{label}: referenced file missing: {rel}")
+            ok = False
+            continue
+        actual = hashlib.sha256(p.read_bytes()).hexdigest()
+        if actual != digest:
+            print(f"{label}: sha256 mismatch: {rel}")
+            ok = False
+    return ok
+
+
 def check_build_evidence(target: Path) -> bool:
     """Check official-template read evidence for new outputs.
 
@@ -68,38 +104,74 @@ def check_build_evidence(target: Path) -> bool:
     except Exception as exc:
         print(f"build-evidence parse error: {exc}")
         return False
+    return _check_evidence_payload(evidence, repo_root)
+
+
+def check_benchmark_artifacts(target: Path) -> bool:
+    """Check per-mode artifacts for 17-mode independent benchmark outputs.
+
+    This gate is opt-in by `sources/benchmark-manifest.json` so legacy/public
+    outputs keep their original contract, while fresh benchmark outputs must
+    prove page-level build sheets and official-file evidence.
+    """
+    manifest_path = target / "sources" / "benchmark-manifest.json"
+    if not manifest_path.exists():
+        return True
+    repo_root = SKILL.parent.parent
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(f"benchmark-manifest parse error: {exc}")
+        return False
     ok = True
-    files = evidence.get("files")
-    if not isinstance(files, list) or len(files) < 5:
-        print("build-evidence: files must list at least 5 official inputs")
+    pages = manifest.get("pages")
+    if not isinstance(pages, list) or len(pages) != 17:
+        print("benchmark-manifest: pages must list exactly 17 mode pages")
         ok = False
-    required_keys = {"mode", "profile", "layout", "primary_vt", "section_mapping"}
-    missing = sorted(k for k in required_keys if not evidence.get(k))
-    if missing:
-        print(f"build-evidence: missing top-level keys: {', '.join(missing)}")
-        ok = False
-    for idx, row in enumerate(files or [], 1):
-        rel = row.get("path") if isinstance(row, dict) else None
-        digest = row.get("sha256") if isinstance(row, dict) else None
-        if not isinstance(rel, str) or not rel.strip() or not isinstance(digest, str):
-            print(f"build-evidence: invalid file row #{idx}")
+        pages = pages if isinstance(pages, list) else []
+    seen_modes = set()
+    seen_topics = set()
+    for idx, row in enumerate(pages, 1):
+        if not isinstance(row, dict):
+            print(f"benchmark-manifest: invalid page row #{idx}")
             ok = False
             continue
-        p = (repo_root / rel).resolve()
-        try:
-            p.relative_to(repo_root.resolve())
-        except ValueError:
-            print(f"build-evidence: path escapes repo: {rel}")
+        mode = row.get("mode")
+        topic = row.get("topic")
+        if not isinstance(mode, str) or not mode.strip() or mode in seen_modes:
+            print(f"benchmark-manifest: duplicate/missing mode in row #{idx}: {mode!r}")
             ok = False
-            continue
-        if not p.exists() or not p.is_file():
-            print(f"build-evidence: referenced file missing: {rel}")
+        seen_modes.add(mode)
+        if not isinstance(topic, str) or not topic.strip() or topic in seen_topics:
+            print(f"benchmark-manifest: duplicate/missing topic in row #{idx}: {topic!r}")
             ok = False
-            continue
-        actual = hashlib.sha256(p.read_bytes()).hexdigest()
-        if actual != digest:
-            print(f"build-evidence: sha256 mismatch: {rel}")
-            ok = False
+        seen_topics.add(topic)
+        for key in ("file", "evidence", "build_sheet"):
+            rel = row.get(key)
+            if not isinstance(rel, str) or not rel.strip():
+                print(f"benchmark-manifest: row #{idx} missing {key}")
+                ok = False
+                continue
+            p = (target / rel).resolve()
+            try:
+                p.relative_to(target.resolve())
+            except ValueError:
+                print(f"benchmark-manifest: {key} escapes target: {rel}")
+                ok = False
+                continue
+            if not p.exists() or not p.is_file():
+                print(f"benchmark-manifest: {key} not found: {rel}")
+                ok = False
+                continue
+            if key == "evidence":
+                try:
+                    evidence = json.loads(p.read_text(encoding="utf-8"))
+                except Exception as exc:
+                    print(f"benchmark evidence parse error ({rel}): {exc}")
+                    ok = False
+                    continue
+                if not _check_evidence_payload(evidence, repo_root, f"benchmark evidence {rel}"):
+                    ok = False
     return ok
 
 
@@ -157,6 +229,26 @@ def check_render_audit(target: Path) -> bool:
             continue
         if not shot_path.exists() or not shot_path.is_file():
             print(f"viewport {key}: screenshot file not found: {shot}")
+            ok = False
+    if (target / "sources" / "benchmark-manifest.json").exists():
+        micro = audit.get("micro_layout") or {}
+        if micro.get("all_ok") is not True:
+            print("micro_layout.all_ok must be true for benchmark outputs")
+            ok = False
+        checks = micro.get("checks") or {}
+        required_micro = (
+            "heading_badge_nowrap",
+            "rail_color_variety",
+            "rail_text_padding",
+            "card_vertical_rhythm",
+            "footer_centered",
+            "no_noncanonical_classes",
+        )
+        for key in required_micro:
+            if checks.get(key) is not True:
+                print(f"micro_layout.checks.{key} must be true for benchmark outputs")
+                ok = False
+        if not check_benchmark_artifacts(target):
             ok = False
     ok = ok and evidence_ok
     print(f"-> {'PASS' if ok else 'FAIL'} (build-evidence + render-audit)")

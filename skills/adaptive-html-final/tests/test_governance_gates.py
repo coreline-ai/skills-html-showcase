@@ -662,6 +662,35 @@ with _tmp.TemporaryDirectory() as _td:
     (_root / 'sources' / 'build-evidence.json').write_text(_json.dumps({'mode':'manual_analysis','profile':'auto','layout':'manual-analysis.html','primary_vt':'hero-map','section_mapping':{'x':'y'},'files':_files}, ensure_ascii=False), encoding='utf-8')
     check("completion build-evidence gate passes current official file hashes", c.check_render_audit(_root) is True)
 
+with _tmp.TemporaryDirectory() as _td:
+    _root = v.Path(_td)
+    (_root / 'sources' / 'screenshots').mkdir(parents=True)
+    (_root / 'pages').mkdir()
+    (_root / 'sources' / 'modes' / 'p01').mkdir(parents=True)
+    (_root / 'sources' / 'screenshots' / '1280.png').write_bytes(b'png')
+    (_root / 'sources' / 'screenshots' / '390.png').write_bytes(b'png')
+    (_root / 'pages' / 'p01.html').write_text('<html><body>ok</body></html>', encoding='utf-8')
+    (_root / 'sources' / 'modes' / 'p01' / 'mode-build-sheet.md').write_text('# sheet', encoding='utf-8')
+    import hashlib as _hashlib_b, json as _json_b
+    _files_b = []
+    for _rel in ['AGENTS.md','skills/adaptive-html-final/SKILL.md','skills/adaptive-html-final/assets/base.html','skills/adaptive-html-final/assets/layouts/manual-analysis.html','skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html']:
+        _p = SKILL.parent.parent / _rel
+        _files_b.append({'path': _rel, 'sha256': _hashlib_b.sha256(_p.read_bytes()).hexdigest()})
+    _evidence_b = {'mode':'manual_analysis','profile':'auto','layout':'manual-analysis.html','primary_vt':'hero-map','section_mapping':{'x':'y'},'files':_files_b}
+    (_root / 'sources' / 'build-evidence.json').write_text(_json_b.dumps(_evidence_b, ensure_ascii=False), encoding='utf-8')
+    (_root / 'sources' / 'modes' / 'p01' / 'build-evidence.json').write_text(_json_b.dumps(_evidence_b, ensure_ascii=False), encoding='utf-8')
+    _pages_b = [{'mode': f'mode_{i:02d}', 'topic': f'topic_{i:02d}', 'file': 'pages/p01.html', 'evidence': 'sources/modes/p01/build-evidence.json', 'build_sheet': 'sources/modes/p01/mode-build-sheet.md'} for i in range(17)]
+    (_root / 'sources' / 'benchmark-manifest.json').write_text(_json_b.dumps({'kind':'adaptive-html-final-17-mode-independent-benchmark','mode_count':17,'pages':_pages_b}, ensure_ascii=False), encoding='utf-8')
+    (_root / 'sources' / 'render-audit.json').write_text('{"viewports":{"1280":{"scrollWidth":1280,"clientWidth":1280,"overflow_ok":true,"screenshot":"sources/screenshots/1280.png"},"390":{"scrollWidth":390,"clientWidth":390,"overflow_ok":true,"screenshot":"sources/screenshots/390.png"}},"micro_layout":{"all_ok":false,"checks":{}}}', encoding='utf-8')
+    check("benchmark completion gate fails missing micro-layout pass evidence", c.check_render_audit(_root) is False)
+    _pages_b[0]['evidence'] = 'sources/modes/p01/missing.json'
+    (_root / 'sources' / 'benchmark-manifest.json').write_text(_json_b.dumps({'kind':'adaptive-html-final-17-mode-independent-benchmark','mode_count':17,'pages':_pages_b}, ensure_ascii=False), encoding='utf-8')
+    (_root / 'sources' / 'render-audit.json').write_text('{"viewports":{"1280":{"scrollWidth":1280,"clientWidth":1280,"overflow_ok":true,"screenshot":"sources/screenshots/1280.png"},"390":{"scrollWidth":390,"clientWidth":390,"overflow_ok":true,"screenshot":"sources/screenshots/390.png"}},"micro_layout":{"all_ok":true,"checks":{"heading_badge_nowrap":true,"rail_color_variety":true,"rail_text_padding":true,"card_vertical_rhythm":true,"footer_centered":true,"no_noncanonical_classes":true}}}', encoding='utf-8')
+    check("benchmark completion gate fails missing per-mode evidence", c.check_render_audit(_root) is False)
+    _pages_b[0]['evidence'] = 'sources/modes/p01/build-evidence.json'
+    (_root / 'sources' / 'benchmark-manifest.json').write_text(_json_b.dumps({'kind':'adaptive-html-final-17-mode-independent-benchmark','mode_count':17,'pages':_pages_b}, ensure_ascii=False), encoding='utf-8')
+    check("benchmark completion gate passes micro-layout and per-mode evidence", c.check_render_audit(_root) is True)
+
 _manifest_quality = __import__("json").loads((SKILL / "manifest.json").read_text(encoding="utf-8")).get("quality") or {}
 check("manifest quality.governance_count matches this self-test count",
       _manifest_quality.get("governance_count") == _checks + 1)

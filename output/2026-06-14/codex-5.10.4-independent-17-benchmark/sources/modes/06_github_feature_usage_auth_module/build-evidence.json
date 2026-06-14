@@ -1,0 +1,86 @@
+{
+  "mode": "github_feature_usage",
+  "topic": "오픈소스 인증 모듈 기능·사용법 가이드",
+  "profile": "auto",
+  "layout": "github-feature-usage.html",
+  "primary_vt": "hero-map",
+  "page": "pages/06_github_feature_usage_auth_module.html",
+  "sections": [
+    "무엇을 해결하나",
+    "핵심 기능 지도",
+    "설치 전 조건",
+    "첫 실행 흐름",
+    "설정 파일 해석",
+    "관리자 기능",
+    "사용자 기능",
+    "확장 포인트",
+    "실제 화면 읽기",
+    "도입 전 체크"
+  ],
+  "section_mapping": {
+    "01": "무엇을 해결하나 — layout=github-feature-usage.html, primary_vt=hero-map, wg=wg-14, wg-04",
+    "02": "핵심 기능 지도 — layout=github-feature-usage.html, primary_vt=hero-map, wg=wg-14, wg-04",
+    "03": "설치 전 조건 — layout=github-feature-usage.html, primary_vt=hero-map, wg=wg-14, wg-04",
+    "04": "첫 실행 흐름 — layout=github-feature-usage.html, primary_vt=hero-map, wg=wg-14, wg-04",
+    "05": "설정 파일 해석 — layout=github-feature-usage.html, primary_vt=hero-map, wg=wg-14, wg-04",
+    "06": "관리자 기능 — layout=github-feature-usage.html, primary_vt=hero-map, wg=wg-14, wg-04",
+    "07": "사용자 기능 — layout=github-feature-usage.html, primary_vt=hero-map, wg=wg-14, wg-04",
+    "08": "확장 포인트 — layout=github-feature-usage.html, primary_vt=hero-map, wg=wg-14, wg-04",
+    "09": "실제 화면 읽기 — layout=github-feature-usage.html, primary_vt=hero-map, wg=wg-14, wg-04",
+    "10": "도입 전 체크 — layout=github-feature-usage.html, primary_vt=hero-map, wg=wg-14, wg-04"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/06-github-feature-usage.json",
+      "sha256": "4c874be601e02b15b92cb85e991ed31c7e00317e30e53e81ed9d989c974a630b"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/github-feature-usage.html",
+      "sha256": "c358a4038992587ec875ac5b1fd6db68a49245ae1a804cbc0028af096a132d3e"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/14-feature-explainer.html",
+      "sha256": "dd2cdb841ccfc11f4742d83b91d84ab2da09fd5c911b2810996aac504fccc927"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/04-module-map.html",
+      "sha256": "c343793fd626569b98e906b5be4d27dfe0ae7cad5c179b07c7bba83a144cbc47"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

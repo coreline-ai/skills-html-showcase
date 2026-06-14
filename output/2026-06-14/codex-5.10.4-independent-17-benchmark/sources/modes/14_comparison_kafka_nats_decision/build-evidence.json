@@ -1,0 +1,86 @@
+{
+  "mode": "comparison_html",
+  "topic": "Kafka와 NATS 도입 기준 비교",
+  "profile": "auto",
+  "layout": "comparison-matrix.html",
+  "primary_vt": "comparison-cards",
+  "page": "pages/14_comparison_kafka_nats_decision.html",
+  "sections": [
+    "선택 결론",
+    "메시지 모델",
+    "운영 복잡도",
+    "지연시간",
+    "내구성",
+    "스케일링",
+    "개발자 경험",
+    "비용 구조",
+    "리스크 매트릭스",
+    "결정 가이드"
+  ],
+  "section_mapping": {
+    "01": "선택 결론 — layout=comparison-matrix.html, primary_vt=comparison-cards, wg=wg-01, wg-02",
+    "02": "메시지 모델 — layout=comparison-matrix.html, primary_vt=comparison-cards, wg=wg-01, wg-02",
+    "03": "운영 복잡도 — layout=comparison-matrix.html, primary_vt=comparison-cards, wg=wg-01, wg-02",
+    "04": "지연시간 — layout=comparison-matrix.html, primary_vt=comparison-cards, wg=wg-01, wg-02",
+    "05": "내구성 — layout=comparison-matrix.html, primary_vt=comparison-cards, wg=wg-01, wg-02",
+    "06": "스케일링 — layout=comparison-matrix.html, primary_vt=comparison-cards, wg=wg-01, wg-02",
+    "07": "개발자 경험 — layout=comparison-matrix.html, primary_vt=comparison-cards, wg=wg-01, wg-02",
+    "08": "비용 구조 — layout=comparison-matrix.html, primary_vt=comparison-cards, wg=wg-01, wg-02",
+    "09": "리스크 매트릭스 — layout=comparison-matrix.html, primary_vt=comparison-cards, wg=wg-01, wg-02",
+    "10": "결정 가이드 — layout=comparison-matrix.html, primary_vt=comparison-cards, wg=wg-01, wg-02"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/14-comparison.json",
+      "sha256": "884ed5156ff5fb69f54516d25d79835ae87cf05ced44d16c9ed4b5c86562580d"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/comparison-matrix.html",
+      "sha256": "c2432d9487760c819ae337e14c7f70f69eab95d8bdf0e35100b87f1668bf5abd"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/13-comparison-cards.html",
+      "sha256": "6b71d73236d1b880928be7533b8f25982d61b7ab0e1d6997865dc6071a7a1d4c"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/01-three-code-approaches.html",
+      "sha256": "d987c75be2314a3171671dd6963bcaf9bdd9b608863741c1582cbc8203f90ffa"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/02-visual-design-directions.html",
+      "sha256": "85577e45759246d96f2b71897ad900cbb64ffd9c6f6c14629296b5c045a654d5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

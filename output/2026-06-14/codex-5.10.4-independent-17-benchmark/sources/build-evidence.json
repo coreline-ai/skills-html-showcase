@@ -1,0 +1,48 @@
+{
+  "mode": "independent_17_mode_benchmark",
+  "topic": "17 official modes with separate new topics",
+  "profile": "auto",
+  "layout": "multi-page-index",
+  "primary_vt": "mixed",
+  "section_mapping": {
+    "1": "skill_audit -> AI 문서 생성 스킬의 레이아웃 회귀 감사",
+    "2": "platform_blog -> B2B SaaS 릴리스 노트의 플랫폼별 재편집",
+    "3": "seo_dashboard -> AI 검색 시대의 기술 문서 SEO 대시보드",
+    "4": "education_html -> 사내 보안 온보딩 90분 실습 과정",
+    "5": "github_analysis -> Postgres 백업 자동화 저장소 도입 실사",
+    "6": "github_feature_usage -> 오픈소스 인증 모듈 기능·사용법 가이드",
+    "7": "youtube_analysis -> AI 회의록 자동화 영상의 실행 가능성 분석",
+    "8": "manual_analysis -> CSV→Postgres 마이그레이션 운영 런북",
+    "9": "expert_html -> 멀티 에이전트 HTML 품질 게이트 아키텍처",
+    "10": "article_html -> AI 시대 개인 지식관리의 현실적 재설계",
+    "11": "blog_writer -> 4일간 AI 코드리뷰 루프를 돌린 회고",
+    "12": "beginner_html -> 패스키 로그인을 처음 이해하는 사람을 위한 안내",
+    "13": "reference_html -> HTTP 캐시 헤더 실무 레퍼런스",
+    "14": "comparison_html -> Kafka와 NATS 도입 기준 비교",
+    "15": "case_study_html -> 검색 인덱스 장애 37분 복구 사례",
+    "16": "landing_brief_html -> 팀 지식베이스 자동 정리 도구 랜딩 브리프",
+    "17": "checklist_playbook -> 월말 데이터 품질 점검 플레이북"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    },
+    {
+      "path": "scripts/generate_independent_17_benchmark.py",
+      "sha256": "f24ba42820e49d4d1e0679197a14f14a170f5cc9f117652a3606b25410db78c1"
+    }
+  ]
+}

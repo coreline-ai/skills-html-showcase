@@ -1,0 +1,196 @@
+{
+  "kind": "adaptive-html-final-17-mode-independent-benchmark",
+  "generated_at": "2026-06-14T14:10:41.921190+00:00",
+  "skill_version": "5.10.4",
+  "profile": "auto",
+  "mode_count": 17,
+  "pages": [
+    {
+      "no": 1,
+      "mode": "skill_audit",
+      "topic": "AI 문서 생성 스킬의 레이아웃 회귀 감사",
+      "file": "pages/01_skill_audit_layout_regression_audit.html",
+      "evidence": "sources/modes/01_skill_audit_layout_regression_audit/build-evidence.json",
+      "build_sheet": "sources/modes/01_skill_audit_layout_regression_audit/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "08_skill_audit_codereview_bot.html",
+      "source_title": "사내 코드리뷰 봇 스킬 감사 리포트"
+    },
+    {
+      "no": 2,
+      "mode": "platform_blog",
+      "topic": "B2B SaaS 릴리스 노트의 플랫폼별 재편집",
+      "file": "pages/02_platform_blog_saas_release_notes.html",
+      "evidence": "sources/modes/02_platform_blog_saas_release_notes/build-evidence.json",
+      "build_sheet": "sources/modes/02_platform_blog_saas_release_notes/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "07_platform_tech_retro_adaptation.html",
+      "source_title": "기술 회고 글을 4개 플랫폼으로 변환하기"
+    },
+    {
+      "no": 3,
+      "mode": "seo_dashboard",
+      "topic": "AI 검색 시대의 기술 문서 SEO 대시보드",
+      "file": "pages/03_seo_dashboard_ai_search_docs.html",
+      "evidence": "sources/modes/03_seo_dashboard_ai_search_docs/build-evidence.json",
+      "build_sheet": "sources/modes/03_seo_dashboard_ai_search_docs/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "06_seo_prompt_engineering_dashboard.html",
+      "source_title": "‘프롬프트 엔지니어링 입문’ 글 SEO 설계 대시보드"
+    },
+    {
+      "no": 4,
+      "mode": "education_html",
+      "topic": "사내 보안 온보딩 90분 실습 과정",
+      "file": "pages/04_education_security_onboarding.html",
+      "evidence": "sources/modes/04_education_security_onboarding/build-evidence.json",
+      "build_sheet": "sources/modes/04_education_security_onboarding/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "04_education_git_rebase_workshop.html",
+      "source_title": "Git rebase 안전하게 쓰기 3일 워크숍"
+    },
+    {
+      "no": 5,
+      "mode": "github_analysis",
+      "topic": "Postgres 백업 자동화 저장소 도입 실사",
+      "file": "pages/05_github_analysis_pg_backup_due_diligence.html",
+      "evidence": "sources/modes/05_github_analysis_pg_backup_due_diligence/build-evidence.json",
+      "build_sheet": "sources/modes/05_github_analysis_pg_backup_due_diligence/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "14_github_analysis_fastapi_starter.html",
+      "source_title": "owner/fastapi-starter 저장소 분석 리포트"
+    },
+    {
+      "no": 6,
+      "mode": "github_feature_usage",
+      "topic": "오픈소스 인증 모듈 기능·사용법 가이드",
+      "file": "pages/06_github_feature_usage_auth_module.html",
+      "evidence": "sources/modes/06_github_feature_usage_auth_module/build-evidence.json",
+      "build_sheet": "sources/modes/06_github_feature_usage_auth_module/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "17_github_feature_usage_coreline_auth.html",
+      "source_title": "Coreline Auth 기능·사용 가이드"
+    },
+    {
+      "no": 7,
+      "mode": "youtube_analysis",
+      "topic": "AI 회의록 자동화 영상의 실행 가능성 분석",
+      "file": "pages/07_youtube_analysis_meeting_automation.html",
+      "evidence": "sources/modes/07_youtube_analysis_meeting_automation/build-evidence.json",
+      "build_sheet": "sources/modes/07_youtube_analysis_meeting_automation/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "15_youtube_vibecoding_gap.html",
+      "source_title": "바이브코딩 영상은 실제로 팀 생산성을 올리는가"
+    },
+    {
+      "no": 8,
+      "mode": "manual_analysis",
+      "topic": "CSV→Postgres 마이그레이션 운영 런북",
+      "file": "pages/08_manual_analysis_csv_postgres_runbook.html",
+      "evidence": "sources/modes/08_manual_analysis_csv_postgres_runbook/build-evidence.json",
+      "build_sheet": "sources/modes/08_manual_analysis_csv_postgres_runbook/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "16_manual_product_runbook.html",
+      "source_title": "제품 운영 매뉴얼을 역할별 실행 문서로 바꾸기"
+    },
+    {
+      "no": 9,
+      "mode": "expert_html",
+      "topic": "멀티 에이전트 HTML 품질 게이트 아키텍처",
+      "file": "pages/09_expert_multi_agent_quality_architecture.html",
+      "evidence": "sources/modes/09_expert_multi_agent_quality_architecture/build-evidence.json",
+      "build_sheet": "sources/modes/09_expert_multi_agent_quality_architecture/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "02_expert_llm_gateway_report.html",
+      "source_title": "사내 LLM 게이트웨이 도입 타당성 진단 리포트"
+    },
+    {
+      "no": 10,
+      "mode": "article_html",
+      "topic": "AI 시대 개인 지식관리의 현실적 재설계",
+      "file": "pages/10_article_personal_knowledge_reboot.html",
+      "evidence": "sources/modes/10_article_personal_knowledge_reboot/build-evidence.json",
+      "build_sheet": "sources/modes/10_article_personal_knowledge_reboot/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "03_article_side_project_signal.html",
+      "source_title": "사이드 프로젝트가 이력서보다 강한 이유"
+    },
+    {
+      "no": 11,
+      "mode": "blog_writer",
+      "topic": "4일간 AI 코드리뷰 루프를 돌린 회고",
+      "file": "pages/11_blog_ai_codereview_loop_retro.html",
+      "evidence": "sources/modes/11_blog_ai_codereview_loop_retro/build-evidence.json",
+      "build_sheet": "sources/modes/11_blog_ai_codereview_loop_retro/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "05_blog_deepwork_4day_retro.html",
+      "source_title": "주 4일 딥워크 루틴 90일 실험기"
+    },
+    {
+      "no": 12,
+      "mode": "beginner_html",
+      "topic": "패스키 로그인을 처음 이해하는 사람을 위한 안내",
+      "file": "pages/12_beginner_passkey_login_guide.html",
+      "evidence": "sources/modes/12_beginner_passkey_login_guide/build-evidence.json",
+      "build_sheet": "sources/modes/12_beginner_passkey_login_guide/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "01_beginner_passkey_login.html",
+      "source_title": "패스키(Passkey)로 비밀번호 없이 로그인 이해하기"
+    },
+    {
+      "no": 13,
+      "mode": "reference_html",
+      "topic": "HTTP 캐시 헤더 실무 레퍼런스",
+      "file": "pages/13_reference_http_cache_headers.html",
+      "evidence": "sources/modes/13_reference_http_cache_headers/build-evidence.json",
+      "build_sheet": "sources/modes/13_reference_http_cache_headers/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "09_reference_regex.html",
+      "source_title": "정규식(Regex) 실무 레퍼런스"
+    },
+    {
+      "no": 14,
+      "mode": "comparison_html",
+      "topic": "Kafka와 NATS 도입 기준 비교",
+      "file": "pages/14_comparison_kafka_nats_decision.html",
+      "evidence": "sources/modes/14_comparison_kafka_nats_decision/build-evidence.json",
+      "build_sheet": "sources/modes/14_comparison_kafka_nats_decision/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "10_comparison_message_queue.html",
+      "source_title": "메시지 큐 3종 비교 — Kafka · RabbitMQ · AWS SQS"
+    },
+    {
+      "no": 15,
+      "mode": "case_study_html",
+      "topic": "검색 인덱스 장애 37분 복구 사례",
+      "file": "pages/15_case_study_search_index_incident.html",
+      "evidence": "sources/modes/15_case_study_search_index_incident/build-evidence.json",
+      "build_sheet": "sources/modes/15_case_study_search_index_incident/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "11_case_study_search_index_outage.html",
+      "source_title": "검색 인덱스 장애 6시간 회고"
+    },
+    {
+      "no": 16,
+      "mode": "landing_brief_html",
+      "topic": "팀 지식베이스 자동 정리 도구 랜딩 브리프",
+      "file": "pages/16_landing_knowledgebase_autosummary.html",
+      "evidence": "sources/modes/16_landing_knowledgebase_autosummary/build-evidence.json",
+      "build_sheet": "sources/modes/16_landing_knowledgebase_autosummary/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "12_landing_pagercalm_brief.html",
+      "source_title": "온콜 당번이 잠을 되찾는 온콜 피로도 관리 도구"
+    },
+    {
+      "no": 17,
+      "mode": "checklist_playbook",
+      "topic": "월말 데이터 품질 점검 플레이북",
+      "file": "pages/17_checklist_monthly_data_quality.html",
+      "evidence": "sources/modes/17_checklist_monthly_data_quality/build-evidence.json",
+      "build_sheet": "sources/modes/17_checklist_monthly_data_quality/mode-build-sheet.md",
+      "sections": 10,
+      "source_file": "13_checklist_data_migration.html",
+      "source_title": "데이터 마이그레이션 안전 플레이북"
+    }
+  ]
+}

@@ -1,0 +1,355 @@
+{
+  "generated_at": "2026-06-14T14:10:42.275Z",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/390.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/1280.png"
+    }
+  },
+  "pages": {
+    "index.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 3206,
+        "title": "Adaptive HTML Final · 17모드 독립 벤치마크",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 1633,
+        "title": "Adaptive HTML Final · 17모드 독립 벤치마크",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/1280.png"
+      }
+    },
+    "pages/01_skill_audit_layout_regression_audit.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 13106,
+        "title": "AI 문서 생성 스킬의 레이아웃 회귀 감사",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_01_skill_audit_layout_regression_audit_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 8027,
+        "title": "AI 문서 생성 스킬의 레이아웃 회귀 감사",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_01_skill_audit_layout_regression_audit_html_1280.png"
+      }
+    },
+    "pages/02_platform_blog_saas_release_notes.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 16550,
+        "title": "B2B SaaS 릴리스 노트의 플랫폼별 재편집",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_02_platform_blog_saas_release_notes_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 9904,
+        "title": "B2B SaaS 릴리스 노트의 플랫폼별 재편집",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_02_platform_blog_saas_release_notes_html_1280.png"
+      }
+    },
+    "pages/03_seo_dashboard_ai_search_docs.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 14347,
+        "title": "AI 검색 시대의 기술 문서 SEO 대시보드",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_03_seo_dashboard_ai_search_docs_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 8147,
+        "title": "AI 검색 시대의 기술 문서 SEO 대시보드",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_03_seo_dashboard_ai_search_docs_html_1280.png"
+      }
+    },
+    "pages/04_education_security_onboarding.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 16085,
+        "title": "사내 보안 온보딩 90분 실습 과정",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_04_education_security_onboarding_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 11806,
+        "title": "사내 보안 온보딩 90분 실습 과정",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_04_education_security_onboarding_html_1280.png"
+      }
+    },
+    "pages/05_github_analysis_pg_backup_due_diligence.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 16218,
+        "title": "Postgres 백업 자동화 저장소 도입 실사",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_05_github_analysis_pg_backup_due_diligence_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 9102,
+        "title": "Postgres 백업 자동화 저장소 도입 실사",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_05_github_analysis_pg_backup_due_diligence_html_1280.png"
+      }
+    },
+    "pages/06_github_feature_usage_auth_module.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 23626,
+        "title": "오픈소스 인증 모듈 기능·사용법 가이드",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_06_github_feature_usage_auth_module_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 13604,
+        "title": "오픈소스 인증 모듈 기능·사용법 가이드",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_06_github_feature_usage_auth_module_html_1280.png"
+      }
+    },
+    "pages/07_youtube_analysis_meeting_automation.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 14028,
+        "title": "AI 회의록 자동화 영상의 실행 가능성 분석",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_07_youtube_analysis_meeting_automation_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 7351,
+        "title": "AI 회의록 자동화 영상의 실행 가능성 분석",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_07_youtube_analysis_meeting_automation_html_1280.png"
+      }
+    },
+    "pages/08_manual_analysis_csv_postgres_runbook.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 14101,
+        "title": "CSV→Postgres 마이그레이션 운영 런북",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_08_manual_analysis_csv_postgres_runbook_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 7919,
+        "title": "CSV→Postgres 마이그레이션 운영 런북",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_08_manual_analysis_csv_postgres_runbook_html_1280.png"
+      }
+    },
+    "pages/09_expert_multi_agent_quality_architecture.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 13428,
+        "title": "멀티 에이전트 HTML 품질 게이트 아키텍처",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_09_expert_multi_agent_quality_architecture_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 7973,
+        "title": "멀티 에이전트 HTML 품질 게이트 아키텍처",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_09_expert_multi_agent_quality_architecture_html_1280.png"
+      }
+    },
+    "pages/10_article_personal_knowledge_reboot.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 12821,
+        "title": "AI 시대 개인 지식관리의 현실적 재설계",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_10_article_personal_knowledge_reboot_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 8397,
+        "title": "AI 시대 개인 지식관리의 현실적 재설계",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_10_article_personal_knowledge_reboot_html_1280.png"
+      }
+    },
+    "pages/11_blog_ai_codereview_loop_retro.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 12749,
+        "title": "4일간 AI 코드리뷰 루프를 돌린 회고",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_11_blog_ai_codereview_loop_retro_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 8093,
+        "title": "4일간 AI 코드리뷰 루프를 돌린 회고",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_11_blog_ai_codereview_loop_retro_html_1280.png"
+      }
+    },
+    "pages/12_beginner_passkey_login_guide.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 14910,
+        "title": "패스키 로그인을 처음 이해하는 사람을 위한 안내",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_12_beginner_passkey_login_guide_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 10082,
+        "title": "패스키 로그인을 처음 이해하는 사람을 위한 안내",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_12_beginner_passkey_login_guide_html_1280.png"
+      }
+    },
+    "pages/13_reference_http_cache_headers.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 16402,
+        "title": "HTTP 캐시 헤더 실무 레퍼런스",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_13_reference_http_cache_headers_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 11423,
+        "title": "HTTP 캐시 헤더 실무 레퍼런스",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_13_reference_http_cache_headers_html_1280.png"
+      }
+    },
+    "pages/14_comparison_kafka_nats_decision.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 14984,
+        "title": "Kafka와 NATS 도입 기준 비교",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_14_comparison_kafka_nats_decision_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 8266,
+        "title": "Kafka와 NATS 도입 기준 비교",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_14_comparison_kafka_nats_decision_html_1280.png"
+      }
+    },
+    "pages/15_case_study_search_index_incident.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 17670,
+        "title": "검색 인덱스 장애 37분 복구 사례",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_15_case_study_search_index_incident_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 11230,
+        "title": "검색 인덱스 장애 37분 복구 사례",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_15_case_study_search_index_incident_html_1280.png"
+      }
+    },
+    "pages/16_landing_knowledgebase_autosummary.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 13184,
+        "title": "팀 지식베이스 자동 정리 도구 랜딩 브리프",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_16_landing_knowledgebase_autosummary_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 8223,
+        "title": "팀 지식베이스 자동 정리 도구 랜딩 브리프",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_16_landing_knowledgebase_autosummary_html_1280.png"
+      }
+    },
+    "pages/17_checklist_monthly_data_quality.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 13490,
+        "title": "월말 데이터 품질 점검 플레이북",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_17_checklist_monthly_data_quality_html_390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 8047,
+        "title": "월말 데이터 품질 점검 플레이북",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/pages_17_checklist_monthly_data_quality_html_1280.png"
+      }
+    }
+  },
+  "micro_layout": {
+    "all_ok": true,
+    "checks": {
+      "heading_badge_nowrap": true,
+      "rail_color_variety": true,
+      "rail_text_padding": true,
+      "card_vertical_rhythm": true,
+      "footer_centered": true,
+      "no_noncanonical_classes": true
+    },
+    "failures": []
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "mode": "article_html",
+  "topic": "AI 시대 개인 지식관리의 현실적 재설계",
+  "profile": "auto",
+  "layout": "magazine-article.html",
+  "primary_vt": "decision-tree",
+  "page": "pages/10_article_personal_knowledge_reboot.html",
+  "sections": [
+    "문제 제기",
+    "낡은 분류 체계",
+    "새로운 읽기 단위",
+    "링크보다 질문",
+    "요약의 위험",
+    "검색과 회상",
+    "작은 자동화",
+    "개인 워크플로",
+    "실패 패턴",
+    "결론"
+  ],
+  "section_mapping": {
+    "01": "문제 제기 — layout=magazine-article.html, primary_vt=decision-tree, wg=wg-02, wg-04",
+    "02": "낡은 분류 체계 — layout=magazine-article.html, primary_vt=decision-tree, wg=wg-02, wg-04",
+    "03": "새로운 읽기 단위 — layout=magazine-article.html, primary_vt=decision-tree, wg=wg-02, wg-04",
+    "04": "링크보다 질문 — layout=magazine-article.html, primary_vt=decision-tree, wg=wg-02, wg-04",
+    "05": "요약의 위험 — layout=magazine-article.html, primary_vt=decision-tree, wg=wg-02, wg-04",
+    "06": "검색과 회상 — layout=magazine-article.html, primary_vt=decision-tree, wg=wg-02, wg-04",
+    "07": "작은 자동화 — layout=magazine-article.html, primary_vt=decision-tree, wg=wg-02, wg-04",
+    "08": "개인 워크플로 — layout=magazine-article.html, primary_vt=decision-tree, wg=wg-02, wg-04",
+    "09": "실패 패턴 — layout=magazine-article.html, primary_vt=decision-tree, wg=wg-02, wg-04",
+    "10": "결론 — layout=magazine-article.html, primary_vt=decision-tree, wg=wg-02, wg-04"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/10-article.json",
+      "sha256": "656b854396c98759b7220635cdee41c88a3014e39a44835e24e86b7270ce2054"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/magazine-article.html",
+      "sha256": "75936df44f6c7deb101effbed9557f8d699e6df48b22d28f03251acaaffc9752"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/02-decision-tree.html",
+      "sha256": "84bc44d360fa13a33e9eed65e729fa30a18117fafe3df7f16beb761f91f770bb"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/02-visual-design-directions.html",
+      "sha256": "85577e45759246d96f2b71897ad900cbb64ffd9c6f6c14629296b5c045a654d5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/04-module-map.html",
+      "sha256": "c343793fd626569b98e906b5be4d27dfe0ae7cad5c179b07c7bba83a144cbc47"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}

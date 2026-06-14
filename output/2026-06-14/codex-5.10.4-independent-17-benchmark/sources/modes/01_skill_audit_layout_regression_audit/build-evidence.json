@@ -1,0 +1,86 @@
+{
+  "mode": "skill_audit",
+  "topic": "AI 문서 생성 스킬의 레이아웃 회귀 감사",
+  "profile": "auto",
+  "layout": "skill-audit-report.html",
+  "primary_vt": "quality-gate",
+  "page": "pages/01_skill_audit_layout_regression_audit.html",
+  "sections": [
+    "감사 결론",
+    "정본 자산 사용 여부",
+    "헤더·목차 계약",
+    "섹션 표면 밀도",
+    "아이콘 카탈로그 일치",
+    "마이크로 레이아웃 리스크",
+    "검증기와 눈검수의 차이",
+    "재발 방지 게이트",
+    "운영 적용 순서",
+    "최종 판정"
+  ],
+  "section_mapping": {
+    "01": "감사 결론 — layout=skill-audit-report.html, primary_vt=quality-gate, wg=wg-03, wg-11",
+    "02": "정본 자산 사용 여부 — layout=skill-audit-report.html, primary_vt=quality-gate, wg=wg-03, wg-11",
+    "03": "헤더·목차 계약 — layout=skill-audit-report.html, primary_vt=quality-gate, wg=wg-03, wg-11",
+    "04": "섹션 표면 밀도 — layout=skill-audit-report.html, primary_vt=quality-gate, wg=wg-03, wg-11",
+    "05": "아이콘 카탈로그 일치 — layout=skill-audit-report.html, primary_vt=quality-gate, wg=wg-03, wg-11",
+    "06": "마이크로 레이아웃 리스크 — layout=skill-audit-report.html, primary_vt=quality-gate, wg=wg-03, wg-11",
+    "07": "검증기와 눈검수의 차이 — layout=skill-audit-report.html, primary_vt=quality-gate, wg=wg-03, wg-11",
+    "08": "재발 방지 게이트 — layout=skill-audit-report.html, primary_vt=quality-gate, wg=wg-03, wg-11",
+    "09": "운영 적용 순서 — layout=skill-audit-report.html, primary_vt=quality-gate, wg=wg-03, wg-11",
+    "10": "최종 판정 — layout=skill-audit-report.html, primary_vt=quality-gate, wg=wg-03, wg-11"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "b7435754c40bb6ffc11797a95334582f374b1ddd1aa80a01257397279e6269a8"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/01-skill-audit.json",
+      "sha256": "30991aa1e60ad1ceba17bcc554f201284788646423941d9bd4b30c8c5249a9f2"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/skill-audit-report.html",
+      "sha256": "1f1d808049083bdba8658f9d1e008e29f80d5d9a63249a2e5a71bbd567cb8e58"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/06-quality-gate.html",
+      "sha256": "73cdd26e3b3518d13da6716ccb033e980e7d8f7b7b995bb0292c688debe845cf"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/03-annotated-pull-request.html",
+      "sha256": "98049a96f4c4159e401bd0ce6e87dddb46f5cf84b067504b35744e8c23a331b3"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/11-weekly-status.html",
+      "sha256": "51014e3e7dc29fd5020f813b6b7a4e279de1014946514a2b9b4c82b3bb6a5278"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/body-icon-system.md",
+      "sha256": "f16bbba0a86857af2013dd04637b1c371c20d526a47dea79cdb66a83421cdcfc"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c"
+    },
+    {
+      "path": "docs/adaptive-html-final-17-mode-sequential-runbook.md",
+      "sha256": "8883a428cff9920e20f1b7b9d4ccb1681869480f5da5cd17928d94fb08251cfd"
+    }
+  ]
+}
