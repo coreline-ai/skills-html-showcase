@@ -2089,60 +2089,59 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 <!-- Layout: comparison-matrix / editorial decision matrix theme -->
 <main id="main" class="page-wide layout-compare">
   <header class="header compare-header"><div class="kicker">comparison_html · fulltest independent</div><h1>메시지 큐 선택 기준 비교</h1><p class="sub">RabbitMQ, Kafka, Redis Streams, SQS를 팀 규모와 장애 복구 요구로 비교한다.</p><div class="meta"><span>comparison_html</span><span>comparison-matrix.html</span><span>profile auto</span><span>adaptive-html-final v5.10.3</span><span>무 JS</span></div><div class="generated-row"><p class="generated-date">Generated · 2026-06-14 KST</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">Comparison</span><span class="lens-chip">profile auto</span><span class="lens-chip">10 sections</span><span class="lens-chip">vt comparison-cards</span><span class="lens-chip">wg wg-01</span></div></div></header>
-<nav class="toc-map" aria-label="문서 목차"><div class="toc-pills"><a class="toc-pill" href="#s01"><b>01</b><span>결정 맥락</span></a><a class="toc-pill" href="#s02"><b>02</b><span>후보 4종</span></a><a class="toc-pill" href="#s03"><b>03</b><span>처리량 비교</span></a><a class="toc-pill" href="#s04"><b>04</b><span>순서 보장 비교</span></a><a class="toc-pill" href="#s05"><b>05</b><span>운영 난이도</span></a><a class="toc-pill" href="#s06"><b>06</b><span>장애 복구</span></a><a class="toc-pill" href="#s07"><b>07</b><span>비용 모델</span></a><a class="toc-pill" href="#s08"><b>08</b><span>팀 역량 매칭</span></a><a class="toc-pill" href="#s09"><b>09</b><span>승자와 보류</span></a><a class="toc-pill" href="#s10"><b>10</b><span>최종 추천</span></a></div></nav>
-  <section class="decision-context"><h2 id="s01"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span><span class="num">01</span>결정 맥락</h2>
-<p class="h2-sub">메시지 큐 선택 기준 비교에서 결정 맥락 항목은 사실, 해석, 실행 조건을 분리해 다음 결정을 빠르게 만든다.</p>
-<p>결정 맥락은 메시지 큐 선택 기준 비교의 전체 판단에서 기준선 역할을 한다. 먼저 관측 가능한 입력을 고정하고, 그 다음 팀이 합의해야 할 해석과 실행 명령을 분리해야 한다.</p>
-<p>실무에서는 이 항목이 빠지면 검토자가 서로 다른 화면을 보고 같은 결론을 냈다고 착각한다. 따라서 담당자, 증거 위치, 실패 시 되돌릴 절차를 함께 남기는 방식으로 문서를 닫는다.</p>
-<section class="vt-shell"><div class="cmp"><article class="cmp-card "><div class="vt-kicker">A</div><h3>보수적 유지</h3><ul><li>메시지 큐 선택 기준 비교 적용 장점</li><li>운영 리스크와 검증 기준 포함</li></ul></article><article class="cmp-card pick"><div class="vt-kicker">B</div><h3>점진 도입</h3><ul><li>메시지 큐 선택 기준 비교 적용 장점</li><li>운영 리스크와 검증 기준 포함</li></ul></article><article class="cmp-card "><div class="vt-kicker">C</div><h3>전면 전환</h3><ul><li>메시지 큐 선택 기준 비교 적용 장점</li><li>운영 리스크와 검증 기준 포함</li></ul></article></div></section>
-<div class="card-grid"><article class="summary-card"><b>판단</b><p>메시지 큐 선택 기준 비교의 판단 기준을 독립적으로 검토한다.</p></article><article class="summary-card"><b>근거</b><p>메시지 큐 선택 기준 비교의 근거 기준을 독립적으로 검토한다.</p></article><article class="summary-card"><b>한계</b><p>메시지 큐 선택 기준 비교의 한계 기준을 독립적으로 검토한다.</p></article></div></section>
-  <section class="matrix"><h2 id="s02"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="18" cy="18" r="9"/><path class="bi-accent-line" d="M25 25l7 7"/><path class="bi-line" d="M14 18h8"/></svg></span><span class="num">02</span>후보 4종</h2>
-<p class="h2-sub">메시지 큐 선택 기준 비교에서 후보 4종 항목은 사실, 해석, 실행 조건을 분리해 다음 결정을 빠르게 만든다.</p>
-<p>후보 4종은 메시지 큐 선택 기준 비교의 전체 판단에서 기준선 역할을 한다. 먼저 관측 가능한 입력을 고정하고, 그 다음 팀이 합의해야 할 해석과 실행 명령을 분리해야 한다.</p>
-<p>실무에서는 이 항목이 빠지면 검토자가 서로 다른 화면을 보고 같은 결론을 냈다고 착각한다. 따라서 담당자, 증거 위치, 실패 시 되돌릴 절차를 함께 남기는 방식으로 문서를 닫는다.</p>
-<section class="wg-01 wg-01-card" aria-label="메시지 큐 선택 기준 비교 위젯"><h3>메시지 큐 선택 기준 비교 보강 뷰</h3><p>권장 위젯 wg-01 네임스페이스로 핵심 판단을 보강한다.</p></section>
-<div class="table-scroll"><table><caption>후보 4종 검토 표</caption><thead><tr><th>항목</th><th>검토 내용</th><th>상태</th></tr></thead><tbody><tr><td>범위</td><td>메시지 큐 선택 기준 비교에서 책임 경계를 확인</td><td>필수</td></tr><tr><td>증거</td><td>메시지 큐 선택 기준 비교에서 검증 로그를 확인</td><td>필수</td></tr><tr><td>복구</td><td>메시지 큐 선택 기준 비교에서 되돌리기를 확인</td><td>조건부</td></tr></tbody></table></div></section>
-  <section class="winners"><h2 id="s03"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="num">03</span>처리량 비교</h2>
-<p class="h2-sub">메시지 큐 선택 기준 비교에서 처리량 비교 항목은 사실, 해석, 실행 조건을 분리해 다음 결정을 빠르게 만든다.</p>
-<p>처리량 비교은 메시지 큐 선택 기준 비교의 전체 판단에서 기준선 역할을 한다. 먼저 관측 가능한 입력을 고정하고, 그 다음 팀이 합의해야 할 해석과 실행 명령을 분리해야 한다.</p>
-<p>실무에서는 이 항목이 빠지면 검토자가 서로 다른 화면을 보고 같은 결론을 냈다고 착각한다. 따라서 담당자, 증거 위치, 실패 시 되돌릴 절차를 함께 남기는 방식으로 문서를 닫는다.</p>
-<div class="text-bullet-view"><ul><li><b>입력</b> — 메시지 큐 선택 기준 비교에서 관측 가능한 사실를 문서화한다.</li><li><b>해석</b> — 메시지 큐 선택 기준 비교에서 팀이 합의한 판단를 문서화한다.</li><li><b>출력</b> — 메시지 큐 선택 기준 비교에서 다음 행동를 문서화한다.</li></ul></div></section>
-  <section class="tradeoffs" data-ahf-pattern="criteria-table-preferred"><h2 id="s04"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span><span class="num">04</span>순서 보장 비교</h2>
-<p class="h2-sub">메시지 큐 선택 기준 비교에서 순서 보장 비교 항목은 사실, 해석, 실행 조건을 분리해 다음 결정을 빠르게 만든다.</p>
-<p>순서 보장 비교은 메시지 큐 선택 기준 비교의 전체 판단에서 기준선 역할을 한다. 먼저 관측 가능한 입력을 고정하고, 그 다음 팀이 합의해야 할 해석과 실행 명령을 분리해야 한다.</p>
-<p>실무에서는 이 항목이 빠지면 검토자가 서로 다른 화면을 보고 같은 결론을 냈다고 착각한다. 따라서 담당자, 증거 위치, 실패 시 되돌릴 절차를 함께 남기는 방식으로 문서를 닫는다.</p>
-<blockquote class="core-insight"><p>메시지 큐 선택 기준 비교의 핵심은 더 많은 설명이 아니라, 실행자가 중단·진행·보류를 같은 기준으로 판단하게 만드는 것이다.</p></blockquote></section>
-  <section class="summary-card extra-section"><h2 id="s06"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M8 11l8-3 8 3 8-3v21l-8 3-8-3-8 3z"/><path class="bi-line" d="M16 8v21M24 11v21"/><path class="bi-accent-line" d="M12 22c4-6 10 3 16-4"/></svg></span><span class="num">06</span>장애 복구</h2>
-<p class="h2-sub">메시지 큐 선택 기준 비교에서 장애 복구 항목은 사실, 해석, 실행 조건을 분리해 다음 결정을 빠르게 만든다.</p>
-<p>장애 복구은 메시지 큐 선택 기준 비교의 전체 판단에서 기준선 역할을 한다. 먼저 관측 가능한 입력을 고정하고, 그 다음 팀이 합의해야 할 해석과 실행 명령을 분리해야 한다.</p>
-<p>실무에서는 이 항목이 빠지면 검토자가 서로 다른 화면을 보고 같은 결론을 냈다고 착각한다. 따라서 담당자, 증거 위치, 실패 시 되돌릴 절차를 함께 남기는 방식으로 문서를 닫는다.</p>
-<div class="card-grid"><article class="summary-card"><b>판단</b><p>메시지 큐 선택 기준 비교의 판단 기준을 독립적으로 검토한다.</p></article><article class="summary-card"><b>근거</b><p>메시지 큐 선택 기준 비교의 근거 기준을 독립적으로 검토한다.</p></article><article class="summary-card"><b>한계</b><p>메시지 큐 선택 기준 비교의 한계 기준을 독립적으로 검토한다.</p></article></div></section>
-<section class="summary-card extra-section"><h2 id="s07"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num">07</span>비용 모델</h2>
-<p class="h2-sub">메시지 큐 선택 기준 비교에서 비용 모델 항목은 사실, 해석, 실행 조건을 분리해 다음 결정을 빠르게 만든다.</p>
-<p>비용 모델은 메시지 큐 선택 기준 비교의 전체 판단에서 기준선 역할을 한다. 먼저 관측 가능한 입력을 고정하고, 그 다음 팀이 합의해야 할 해석과 실행 명령을 분리해야 한다.</p>
-<p>실무에서는 이 항목이 빠지면 검토자가 서로 다른 화면을 보고 같은 결론을 냈다고 착각한다. 따라서 담당자, 증거 위치, 실패 시 되돌릴 절차를 함께 남기는 방식으로 문서를 닫는다.</p>
-<div class="table-scroll"><table><caption>비용 모델 검토 표</caption><thead><tr><th>항목</th><th>검토 내용</th><th>상태</th></tr></thead><tbody><tr><td>범위</td><td>메시지 큐 선택 기준 비교에서 책임 경계를 확인</td><td>필수</td></tr><tr><td>증거</td><td>메시지 큐 선택 기준 비교에서 검증 로그를 확인</td><td>필수</td></tr><tr><td>복구</td><td>메시지 큐 선택 기준 비교에서 되돌리기를 확인</td><td>조건부</td></tr></tbody></table></div></section>
-<section class="summary-card extra-section"><h2 id="s08"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span><span class="num">08</span>팀 역량 매칭</h2>
-<p class="h2-sub">메시지 큐 선택 기준 비교에서 팀 역량 매칭 항목은 사실, 해석, 실행 조건을 분리해 다음 결정을 빠르게 만든다.</p>
-<p>팀 역량 매칭은 메시지 큐 선택 기준 비교의 전체 판단에서 기준선 역할을 한다. 먼저 관측 가능한 입력을 고정하고, 그 다음 팀이 합의해야 할 해석과 실행 명령을 분리해야 한다.</p>
-<p>실무에서는 이 항목이 빠지면 검토자가 서로 다른 화면을 보고 같은 결론을 냈다고 착각한다. 따라서 담당자, 증거 위치, 실패 시 되돌릴 절차를 함께 남기는 방식으로 문서를 닫는다.</p>
-<div class="text-bullet-view"><ul><li><b>입력</b> — 메시지 큐 선택 기준 비교에서 관측 가능한 사실를 문서화한다.</li><li><b>해석</b> — 메시지 큐 선택 기준 비교에서 팀이 합의한 판단를 문서화한다.</li><li><b>출력</b> — 메시지 큐 선택 기준 비교에서 다음 행동를 문서화한다.</li></ul></div></section>
-<section class="summary-card extra-section"><h2 id="s09"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span><span class="num">09</span>승자와 보류</h2>
-<p class="h2-sub">메시지 큐 선택 기준 비교에서 승자와 보류 항목은 사실, 해석, 실행 조건을 분리해 다음 결정을 빠르게 만든다.</p>
-<p>승자와 보류은 메시지 큐 선택 기준 비교의 전체 판단에서 기준선 역할을 한다. 먼저 관측 가능한 입력을 고정하고, 그 다음 팀이 합의해야 할 해석과 실행 명령을 분리해야 한다.</p>
-<p>실무에서는 이 항목이 빠지면 검토자가 서로 다른 화면을 보고 같은 결론을 냈다고 착각한다. 따라서 담당자, 증거 위치, 실패 시 되돌릴 절차를 함께 남기는 방식으로 문서를 닫는다.</p>
-<blockquote class="core-insight"><p>메시지 큐 선택 기준 비교의 핵심은 더 많은 설명이 아니라, 실행자가 중단·진행·보류를 같은 기준으로 판단하게 만드는 것이다.</p></blockquote></section>
-<section class="summary-card extra-section"><h2 id="s10"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span><span class="num">10</span>최종 추천</h2>
-<p class="h2-sub">메시지 큐 선택 기준 비교에서 최종 추천 항목은 사실, 해석, 실행 조건을 분리해 다음 결정을 빠르게 만든다.</p>
-<p>최종 추천은 메시지 큐 선택 기준 비교의 전체 판단에서 기준선 역할을 한다. 먼저 관측 가능한 입력을 고정하고, 그 다음 팀이 합의해야 할 해석과 실행 명령을 분리해야 한다.</p>
-<p>실무에서는 이 항목이 빠지면 검토자가 서로 다른 화면을 보고 같은 결론을 냈다고 착각한다. 따라서 담당자, 증거 위치, 실패 시 되돌릴 절차를 함께 남기는 방식으로 문서를 닫는다.</p>
-<div class="checklist-flow"><div class="check-item"><span>✓</span><p><b>사전조건</b><br>메시지 큐 선택 기준 비교에 맞춰 증거를 남긴다.</p></div><div class="check-item"><span>✓</span><p><b>실행명령</b><br>메시지 큐 선택 기준 비교에 맞춰 증거를 남긴다.</p></div><div class="check-item"><span>✓</span><p><b>복구조건</b><br>메시지 큐 선택 기준 비교에 맞춰 증거를 남긴다.</p></div></div></section>
-<section class="try"><h2 id="s05"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="num">05</span>운영 난이도</h2>
-<p class="h2-sub">메시지 큐 선택 기준 비교에서 운영 난이도 항목은 사실, 해석, 실행 조건을 분리해 다음 결정을 빠르게 만든다.</p>
-<p>운영 난이도은 메시지 큐 선택 기준 비교의 전체 판단에서 기준선 역할을 한다. 먼저 관측 가능한 입력을 고정하고, 그 다음 팀이 합의해야 할 해석과 실행 명령을 분리해야 한다.</p>
-<p>실무에서는 이 항목이 빠지면 검토자가 서로 다른 화면을 보고 같은 결론을 냈다고 착각한다. 따라서 담당자, 증거 위치, 실패 시 되돌릴 절차를 함께 남기는 방식으로 문서를 닫는다.</p>
-<div class="checklist-flow"><div class="check-item"><span>✓</span><p><b>사전조건</b><br>메시지 큐 선택 기준 비교에 맞춰 증거를 남긴다.</p></div><div class="check-item"><span>✓</span><p><b>실행명령</b><br>메시지 큐 선택 기준 비교에 맞춰 증거를 남긴다.</p></div><div class="check-item"><span>✓</span><p><b>복구조건</b><br>메시지 큐 선택 기준 비교에 맞춰 증거를 남긴다.</p></div></div></section>
-  <aside class="source-note"><p><b>Source Limits</b> 이 풀테스트 문서는 외부 사실을 새로 단정하지 않는 합성 시나리오다. observed_at: 생성 시점 KST. source snapshot 및 출처 버전은 산출물 내부 sources 디렉터리와 manifest 기준으로 고정한다. FACT는 입력에 보이는 항목, INFERENCE는 구조적 해석, UNKNOWN은 확인 불가 항목으로 분리한다. 스킬 버전은 manifest에서 읽은 adaptive-html-final v5.10.3이며, profile=auto 기준으로 layout·vt·wg 계약을 검증한다.</p></aside>
+  <nav class="toc-map" aria-label="문서 목차"><div class="toc-pills"><a class="toc-pill" href="#s01"><b>01</b><span>결정 맥락</span></a><a class="toc-pill" href="#s02"><b>02</b><span>후보 4종</span></a><a class="toc-pill" href="#s03"><b>03</b><span>처리량 비교</span></a><a class="toc-pill" href="#s04"><b>04</b><span>순서 보장 비교</span></a><a class="toc-pill" href="#s05"><b>05</b><span>운영 난이도</span></a><a class="toc-pill" href="#s06"><b>06</b><span>장애 복구</span></a><a class="toc-pill" href="#s07"><b>07</b><span>비용 모델</span></a><a class="toc-pill" href="#s08"><b>08</b><span>팀 역량 매칭</span></a><a class="toc-pill" href="#s09"><b>09</b><span>승자와 보류</span></a><a class="toc-pill" href="#s10"><b>10</b><span>최종 추천</span></a></div></nav>
+  <section class="lead"><h2 id="s01"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="num">01</span>결정 맥락</h2>
+<p class="h2-sub">"무엇이 최고냐"가 아니라 "우리 팀·부하·장애 요구에 무엇이 맞냐"를 가린다.</p>
+<p>메시지 큐 선택은 절대 강자를 뽑는 문제가 아니다. 같은 RabbitMQ가 한 팀에는 정답이고 다른 팀에는 과한 운영 부담이다. 그래서 이 비교는 처리량·순서 보장·운영 난이도·장애 복구·비용·팀 역량이라는 6개 축으로 후보를 줄 세우고, 우리 상황에 가중치를 둬 고른다.</p>
+<blockquote class="pull-quote">큐 선택의 후회는 대부분 "기능이 부족해서"가 아니라 "운영을 감당 못 해서" 온다. 화려함보다 감당 가능성을 본다.</blockquote></section>
+  <section><h2 id="s02"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="22" rx="3"/><rect class="bi-fill" x="16" y="9" width="8" height="22" rx="3"/><rect class="bi-soft" x="25" y="9" width="8" height="22" rx="3"/><path class="bi-accent-line" d="M27 18h4"/><circle class="bi-accent" cx="29" cy="26" r="2.5"/></svg></span><span class="num">02</span>후보 4종</h2>
+<p class="h2-sub">RabbitMQ · Kafka · Redis Streams · SQS — 성격이 뚜렷이 다르다.</p>
+<p>네 후보는 같은 "메시지 전달"을 하지만 설계 철학이 다르다. RabbitMQ는 유연한 라우팅의 전통 강자, Kafka는 대용량 로그·재처리, Redis Streams는 가볍고 빠른 인메모리, SQS는 운영을 클라우드에 맡기는 관리형이다.</p>
+<section class="vt-shell"><div class="vt-frame"><div class="cmp-grid">
+<article class="cmp-card pick"><b>RabbitMQ</b><p>유연한 라우팅·ack. 중간 규모·복잡 라우팅에 강함.</p></article>
+<article class="cmp-card"><b>Kafka</b><p>고처리량·로그 재처리. 운영·학습 비용 큼.</p></article>
+<article class="cmp-card"><b>Redis Streams</b><p>가볍고 빠름. 영속·대용량엔 한계.</p></article>
+<article class="cmp-card"><b>SQS</b><p>관리형·운영 0. 락인·세밀 제어 제한.</p></article>
+</div></div></section></section>
+  <section><h2 id="s03"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-line" d="M13 27h14"/><rect class="bi-soft" x="14" y="20" width="3" height="7" rx="1"/><rect class="bi-accent-box" x="19" y="15" width="3" height="12" rx="1"/><rect class="bi-dot-box" x="24" y="18" width="3" height="9" rx="1"/></svg></span><span class="num">03</span>처리량 비교</h2>
+<p class="h2-sub">초당 수십만 건이 필요한가, 수천 건이면 충분한가.</p>
+<p>처리량 요구가 후보를 크게 가른다. 초당 수십만 이벤트·로그 재처리가 필요하면 Kafka가 설계상 유리하다. 반면 일반적인 작업 큐(수천 건/초)라면 RabbitMQ·SQS로 충분하고, Kafka의 처리량을 위해 운영 복잡도를 떠안을 이유가 없다. "필요한 처리량"을 먼저 못 박아야 과설계를 피한다.</p>
+<div class="text-bullet-view"><ul><li><b>초고처리량·재처리</b> — Kafka.</li><li><b>중간 처리량·라우팅</b> — RabbitMQ.</li><li><b>가벼움·저지연</b> — Redis Streams.</li></ul></div><p>주의할 점은 최대 처리량이 아니라 지속 가능한 처리량을 봐야 한다는 것이다. 벤치마크의 피크 수치는 운영에서 거의 재현되지 않으므로, 우리 평균 부하의 3~5배를 여유로 잡는 선에서 충분한 후보를 고른다.</p></section>
+  <section><h2 id="s04"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="11" cy="20" r="5"/><circle class="bi-soft" cx="29" cy="11" r="5"/><circle class="bi-accent" cx="29" cy="29" r="5"/><path class="bi-line" d="M16 18l8-5M16 22l8 5"/></svg></span><span class="num">04</span>순서 보장 비교</h2>
+<p class="h2-sub">전역 순서가 필요한가, 키 단위 순서면 되는가.</p>
+<p>"순서"는 미묘하다. 대부분의 시스템은 전역 순서가 아니라 "같은 키(주문ID)의 순서"만 필요하다. Kafka는 파티션 단위 순서를 보장하고, SQS는 FIFO 큐로 그룹 순서를 준다. RabbitMQ는 단일 큐·단일 소비자일 때 순서가 자연스럽지만 확장하면 깨질 수 있다. 요구를 "전역"이 아니라 "키 단위"로 좁히면 선택지가 넓어진다.</p>
+<div class="good"><span class="label">팁</span><p><b class="name">키 단위 순서</b> — 전역 순서를 요구하면 처리량이 급감한다. 파티션 키/메시지 그룹으로 필요한 만큼만 순서를 보장한다.</p></div><p>순서 요구를 전역에서 키 단위로 좁히면 후보가 크게 늘고 처리량도 산다. 대부분의 로직은 같은 주문·같은 사용자 안의 순서만 필요하지 시스템 전체의 절대 순서를 요구하지 않는다.</p></section>
+  <section><h2 id="s05"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="num">05</span>운영 난이도</h2>
+<p class="h2-sub">"누가 새벽에 이걸 고치나"가 현실적 선택 기준이다.</p>
+<p>가장 과소평가되는 축이다. Kafka는 강력하지만 브로커·주키퍼/KRaft·파티션·컨슈머 그룹을 이해하고 운영할 사람이 필요하다. RabbitMQ는 그보다 가볍지만 클러스터·미러링은 여전히 학습이 든다. SQS는 운영을 사실상 0으로 만든다. 팀에 전담 인프라 인력이 없다면 이 축의 가중치를 가장 높게 둔다.</p>
+<div class="danger"><span class="label">함정</span><p><b class="name">운영 인력 가정</b> — "Kafka가 업계 표준"이라며 골랐다가 운영할 사람이 없어 방치되는 사례가 흔하다.</p></div><p>그래서 운영 난이도는 "할 수 있나"가 아니라 "지속할 수 있나"로 묻는다. 처음 한 번 띄우는 건 누구나 하지만, 1년간 패치·장애·확장을 감당하는 건 다른 문제다.</p></section>
+  <section><h2 id="s06"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M16 8v9l-7 13c-1 2 0 3 2 3h18c2 0 3-1 2-3l-7-13V8"/><path class="bi-soft" d="M13 27h14l2 4H11z"/><path class="bi-accent-line" d="M16 8h8"/></svg></span><span class="num">06</span>장애 복구</h2>
+<p class="h2-sub">메시지 유실·중복·재처리를 어떻게 다루나.</p>
+<p>장애 시 동작이 신뢰를 가른다. 영속성(디스크 보존)과 재처리(offset 되감기)는 Kafka가 강하고, SQS는 가시성 타임아웃·DLQ로 재시도를 관리형으로 제공한다. 모든 큐는 결국 "최소 한 번 전달 + 멱등 소비자"를 가정해야 안전하다 — 중복은 큐가 아니라 소비자가 막는다.</p>
+<div class="text-bullet-view"><ul><li><b>재처리</b> — Kafka offset 되감기.</li><li><b>재시도·DLQ</b> — SQS 가시성·데드레터.</li><li><b>공통 원칙</b> — 멱등 소비자로 중복 흡수.</li></ul></div><p>어떤 큐를 고르든 정확히 한 번은 환상에 가깝다. 현실적 목표는 최소 한 번 전달 + 멱등 처리이며, 이걸 받아들이면 큐 선택의 상당수 고민이 단순해진다.</p></section>
+  <section><h2 id="s07"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-line" d="M13 27h14"/><rect class="bi-soft" x="14" y="20" width="3" height="7" rx="1"/><rect class="bi-accent-box" x="19" y="15" width="3" height="12" rx="1"/><rect class="bi-dot-box" x="24" y="18" width="3" height="9" rx="1"/></svg></span><span class="num">07</span>비용 모델</h2>
+<p class="h2-sub">서버 비용이 아니라 "운영 시간"이 진짜 비용이다.</p>
+<p>비용은 인프라 요금만이 아니다. SQS는 사용량 과금이라 시작은 싸고 운영 시간이 거의 안 든다. 자체 호스팅(Kafka·RabbitMQ·Redis)은 서버 비용은 통제되지만 운영·장애 대응 인건비가 숨은 비용이다. 소규모 팀에서는 관리형의 "운영 0"이 자체 호스팅의 요금 절감을 대개 넘어선다.</p>
+<div class="text-bullet-view"><ul><li><b>관리형(SQS)</b> — 사용량 과금 + 운영 시간 0.</li><li><b>자체 호스팅</b> — 서버 통제 + 숨은 운영 인건비.</li></ul></div></section>
+  <section><h2 id="s08"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="14" r="6"/><path class="bi-fill" d="M10 32c1.5-7 18.5-7 20 0"/><circle class="bi-accent" cx="28" cy="15" r="2"/></svg></span><span class="num">08</span>팀 역량 매칭</h2>
+<p class="h2-sub">보조 기준이 많을 땐 표로 가로 비교한다.</p>
+<p>핵심 분기(처리량·운영) 외에 따져야 할 보조 기준이 여럿이면, 카드 나열보다 표로 후보별 차이를 가로로 본다. 아래는 보조 기준 비교다.</p>
+<div class="table-scroll"><table class="table criteria-table"><caption>보조 기준 비교</caption><thead><tr><th>기준</th><th>판단 포인트</th><th>유리한 후보</th><th>주의</th></tr></thead><tbody>
+<tr><td>학습 곡선</td><td>팀이 빨리 쓰나</td><td>SQS·RabbitMQ</td><td>Kafka는 가파름</td></tr>
+<tr><td>생태계·도구</td><td>커넥터·모니터링</td><td>Kafka</td><td>Redis는 제한적</td></tr>
+<tr><td>지연(latency)</td><td>저지연 필요</td><td>Redis Streams</td><td>영속성과 상충</td></tr>
+<tr><td>클라우드 락인</td><td>이식성</td><td>자체 호스팅</td><td>SQS는 AWS 종속</td></tr>
+</tbody></table></div><p>보조 기준은 결정의 동점을 깨는 용도다. 처리량·운영 같은 1차 축에서 비슷하면, 학습 곡선·생태계·락인 같은 2차 축이 실제 선택을 가른다. 우리 팀이 가장 자주 부딪힐 항목에 가중치를 둔다.</p></section>
+  <section><h2 id="s09"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><span class="num">09</span>승자와 보류</h2>
+<p class="h2-sub">상황별 승자 — 단일 정답은 없다.</p>
+<p>축별로 승자가 다르므로, 우리 가중치에 따라 다음처럼 권한다. 운영 인력이 적으면 SQS, 복잡 라우팅·중간 규모면 RabbitMQ, 초고처리량·재처리면 Kafka, 이미 Redis를 쓰고 가벼운 큐면 Redis Streams다.</p>
+<div class="card-grid"><article class="summary-card"><b>운영 최소화</b><p>→ SQS(관리형).</p></article><article class="summary-card"><b>라우팅·중간 규모</b><p>→ RabbitMQ.</p></article><article class="summary-card"><b>초고처리량·재처리</b><p>→ Kafka.</p></article></div>
+<section class="wg-02"><div class="wg-02-grid"><article class="wg-02-card"><div class="wg-02-head"><span class="wg-02-kicker">의사결정 시각화</span></div><p class="wg-02-desc">6축 가중치를 팀에서 합의해 레이더로 그리면, "느낌"이 아니라 "기준"으로 고르게 된다.</p></article></div></section></section>
+  <section class="try"><h2 id="s10"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="20" r="13"/><path class="bi-accent-line" d="M13 20l5 5 10-11"/></svg></span><span class="num">10</span>최종 추천</h2>
+<p class="h2-sub">대부분의 중소 규모 팀에는 "관리형부터"가 안전한 출발이다. 최선의 큐는 가장 강력한 큐가 아니라 1년 뒤에도 감당할 수 있는 큐다.</p>
+<p>특별한 처리량·재처리 요구가 없다면 SQS 같은 관리형으로 시작해 운영 부담 없이 검증하고, 한계가 보일 때 자체 호스팅으로 옮기길 권한다. 처음부터 Kafka를 까는 것은 대개 과설계다.</p>
+<div class="checklist-flow"><div class="check-item"><span>✓</span><p><b>요구 못 박기</b><br>처리량·순서 단위·운영 인력을 먼저 수치/사실로.</p></div><div class="check-item"><span>✓</span><p><b>관리형 우선</b><br>특수 요구 없으면 SQS로 시작.</p></div><div class="check-item"><span>✓</span><p><b>멱등 소비자</b><br>어떤 큐든 중복은 소비자에서 막는다.</p></div></div></section>
+  <aside class="source-note"><p><b>Source Limits</b> 외부 사실을 새로 단정하지 않는 합성 시나리오다. FACT=각 큐의 설계 특성, OPINION=상황별 권고, UNKNOWN=특정 워크로드 실측 수치. observed_at: 생성 시점 KST. 스킬 버전 adaptive-html-final v5.10.3, profile=auto.</p></aside>
 </main>
 
 <footer class="source-note"><p>Generated by adaptive-html-final v5.10.3 · profile auto · no behavioral JS</p></footer>
