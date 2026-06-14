@@ -1,0 +1,1304 @@
+{
+  "generated_at": "2026-06-14T13:12:41.322Z",
+  "engine": "playwright chromium",
+  "target": "output/2026-06-14/adaptive-html-final-phase45-17modes-v5104-20260614_220654",
+  "qa_policy": "overflow_ok means document-level horizontal overflow is absent and no non-scrollable visible element escapes the viewport. Table/pre/code content inside intentional scroll/wrap containers is recorded as warning or ignored when document scrollWidth stays within viewport.",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "document_overflow_ok": true,
+      "overflow_ok": true,
+      "clipped": [],
+      "scrollable_warnings": [],
+      "screenshot": "sources/screenshots/index-390.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "document_overflow_ok": true,
+      "overflow_ok": true,
+      "clipped": [],
+      "scrollable_warnings": [],
+      "screenshot": "sources/screenshots/index-1280.png"
+    }
+  },
+  "pages": {
+    "index.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/index-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/index-1280.png"
+      }
+    },
+    "pages/01_beginner_passkey_login.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-01_beginner_passkey_login-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-01_beginner_passkey_login-1280.png"
+      }
+    },
+    "pages/02_expert_llm_gateway_report.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-02_expert_llm_gateway_report-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-02_expert_llm_gateway_report-1280.png"
+      }
+    },
+    "pages/03_article_side_project_signal.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-03_article_side_project_signal-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-03_article_side_project_signal-1280.png"
+      }
+    },
+    "pages/04_education_git_rebase_workshop.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-04_education_git_rebase_workshop-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-04_education_git_rebase_workshop-1280.png"
+      }
+    },
+    "pages/05_blog_deepwork_4day_retro.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-05_blog_deepwork_4day_retro-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-05_blog_deepwork_4day_retro-1280.png"
+      }
+    },
+    "pages/06_seo_prompt_engineering_dashboard.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-06_seo_prompt_engineering_dashboard-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-06_seo_prompt_engineering_dashboard-1280.png"
+      }
+    },
+    "pages/07_platform_tech_retro_adaptation.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [
+          {
+            "tag": "th",
+            "class": "",
+            "text": "감정 강도",
+            "left": 354.8,
+            "right": 395,
+            "width": 40.2,
+            "overRight": 5,
+            "overLeft": -354.8
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "낮음",
+            "left": 354.8,
+            "right": 395,
+            "width": 40.2,
+            "overRight": 5,
+            "overLeft": -354.8
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "낮음",
+            "left": 354.8,
+            "right": 395,
+            "width": 40.2,
+            "overRight": 5,
+            "overLeft": -354.8
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "높음",
+            "left": 354.8,
+            "right": 395,
+            "width": 40.2,
+            "overRight": 5,
+            "overLeft": -354.8
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "중간",
+            "left": 354.8,
+            "right": 395,
+            "width": 40.2,
+            "overRight": 5,
+            "overLeft": -354.8
+          },
+          {
+            "tag": "th",
+            "class": "",
+            "text": "CTA",
+            "left": 317.3,
+            "right": 392.4,
+            "width": 75.1,
+            "overRight": 2.4,
+            "overLeft": -317.3
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "체크리스트, 후속 글",
+            "left": 317.3,
+            "right": 392.4,
+            "width": 75.1,
+            "overRight": 2.4,
+            "overLeft": -317.3
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "GitHub, 댓글 질문",
+            "left": 317.3,
+            "right": 392.4,
+            "width": 75.1,
+            "overRight": 2.4,
+            "overLeft": -317.3
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "구독, 다음 이야기 예고",
+            "left": 317.3,
+            "right": 392.4,
+            "width": 75.1,
+            "overRight": 2.4,
+            "overLeft": -317.3
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "의견 질문, 프로필·채용 연결",
+            "left": 317.3,
+            "right": 392.4,
+            "width": 75.1,
+            "overRight": 2.4,
+            "overLeft": -317.3
+          }
+        ],
+        "screenshot": "sources/screenshots/pages-07_platform_tech_retro_adaptation-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-07_platform_tech_retro_adaptation-1280.png"
+      }
+    },
+    "pages/08_skill_audit_codereview_bot.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [
+          {
+            "tag": "th",
+            "class": "",
+            "text": "누락 시 동작",
+            "left": 381.7,
+            "right": 446.3,
+            "width": 64.7,
+            "overRight": 56.3,
+            "overLeft": -381.7
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "리뷰 중단, 입력 부족 반환",
+            "left": 381.7,
+            "right": 446.3,
+            "width": 64.7,
+            "overRight": 56.3,
+            "overLeft": -381.7
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "맥락 없음 표기 후 보수적 판정",
+            "left": 381.7,
+            "right": 446.3,
+            "width": 64.7,
+            "overRight": 56.3,
+            "overLeft": -381.7
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "스키마 위반으로 실패",
+            "left": 381.7,
+            "right": 446.3,
+            "width": 64.7,
+            "overRight": 56.3,
+            "overLeft": -381.7
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "기본값 blocking 금지(보수적 차단)",
+            "left": 381.7,
+            "right": 446.3,
+            "width": 64.7,
+            "overRight": 56.3,
+            "overLeft": -381.7
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "요약 누락 시 게이트 미통과",
+            "left": 381.7,
+            "right": 446.3,
+            "width": 64.7,
+            "overRight": 56.3,
+            "overLeft": -381.7
+          },
+          {
+            "tag": "th",
+            "class": "",
+            "text": "검증방법",
+            "left": 333.6,
+            "right": 396.7,
+            "width": 63.1,
+            "overRight": 6.7,
+            "overLeft": -333.6
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "스키마 위반 출력이 실패하는 fixture",
+            "left": 333.6,
+            "right": 396.7,
+            "width": 63.1,
+            "overRight": 6.7,
+            "overLeft": -333.6
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "빈 디프 입력에서 입력 부족 반환 확인",
+            "left": 333.6,
+            "right": 396.7,
+            "width": 63.1,
+            "overRight": 6.7,
+            "overLeft": -333.6
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "secret-leak PR에서 approve 미발생",
+            "left": 333.6,
+            "right": 396.7,
+            "width": 63.1,
+            "overRight": 6.7,
+            "overLeft": -333.6
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "트리거 키워드별 활성화 회귀",
+            "left": 333.6,
+            "right": 396.7,
+            "width": 63.1,
+            "overRight": 6.7,
+            "overLeft": -333.6
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "CI fixture 통과율 게이트",
+            "left": 333.6,
+            "right": 396.7,
+            "width": 63.1,
+            "overRight": 6.7,
+            "overLeft": -333.6
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "샘플 PR로 가시성·비파괴 확인",
+            "left": 333.6,
+            "right": 396.7,
+            "width": 63.1,
+            "overRight": 6.7,
+            "overLeft": -333.6
+          }
+        ],
+        "screenshot": "sources/screenshots/pages-08_skill_audit_codereview_bot-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-08_skill_audit_codereview_bot-1280.png"
+      }
+    },
+    "pages/09_reference_regex.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-09_reference_regex-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-09_reference_regex-1280.png"
+      }
+    },
+    "pages/10_comparison_message_queue.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [
+          {
+            "tag": "th",
+            "class": "",
+            "text": "검증 자료",
+            "left": 313.1,
+            "right": 428.9,
+            "width": 115.8,
+            "overRight": 38.9,
+            "overLeft": -313.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "소비자 수, replay 시나리오, 보존 기간 요구",
+            "left": 313.1,
+            "right": 428.9,
+            "width": 115.8,
+            "overRight": 38.9,
+            "overLeft": -313.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "exchange/binding 설계, 우선순위 요건",
+            "left": 313.1,
+            "right": 428.9,
+            "width": 115.8,
+            "overRight": 38.9,
+            "overLeft": -313.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "클라우드 종속, on-call 여력",
+            "left": 313.1,
+            "right": 428.9,
+            "width": 115.8,
+            "overRight": 38.9,
+            "overLeft": -313.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "peak TPS, p99 latency, 메시지 크기",
+            "left": 313.1,
+            "right": 428.9,
+            "width": 115.8,
+            "overRight": 38.9,
+            "overLeft": -313.1
+          },
+          {
+            "tag": "th",
+            "class": "",
+            "text": "RabbitMQ",
+            "left": 244.3,
+            "right": 423.1,
+            "width": 178.8,
+            "overRight": 33.1,
+            "overLeft": -244.3
+          },
+          {
+            "tag": "th",
+            "class": "",
+            "text": "AWS SQS",
+            "left": 423.1,
+            "right": 520.9,
+            "width": 97.8,
+            "overRight": 130.9,
+            "overLeft": -423.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "스마트 브로커. exchange→binding→queue로 라우팅하고, 컨슈머가 ack하면 큐에서 제거되는 작업 큐 모델.",
+            "left": 244.3,
+            "right": 423.1,
+            "width": 178.8,
+            "overRight": 33.1,
+            "overLeft": -244.3
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "관리형 풀(pull) 큐. 컨슈머가 polling으로 받고, 처리 후 명시적으로 삭제. Standard/FIFO 두 종류.",
+            "left": 423.1,
+            "right": 520.9,
+            "width": 97.8,
+            "overRight": 130.9,
+            "overLeft": -423.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "단일 큐·단일 컨슈머면 순서 보장. 경쟁 컨슈머·재시도가 끼면 순서가 흔들린다.",
+            "left": 244.3,
+            "right": 423.1,
+            "width": 178.8,
+            "overRight": 33.1,
+            "overLeft": -244.3
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "Standard는 best-effort(순서·중복 비보장), FIFO 큐는 메시지 그룹 단위 순서 + 정확히 한 번 처리.",
+            "left": 423.1,
+            "right": 520.9,
+            "width": 97.8,
+            "overRight": 130.9,
+            "overLeft": -423.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "인메모리 라우팅으로 단건 지연이 매우 낮음. 라우팅이 단순할수록 빠르다.",
+            "left": 244.3,
+            "right": 423.1,
+            "width": 178.8,
+            "overRight": 33.1,
+            "overLeft": -244.3
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "네트워크 호출 기반이라 수~수십 ms. long polling으로 빈 응답을 줄이지만 본질적으로 큐 중 가장 높은 편.",
+            "left": 423.1,
+            "right": 520.9,
+            "width": 97.8,
+            "overRight": 130.9,
+            "overLeft": -423.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "중~높음. 단일 노드 수만 건/초 수준, 라우팅 복잡도·미러링이 늘면 떨어진다.",
+            "left": 244.3,
+            "right": 423.1,
+            "width": 178.8,
+            "overRight": 33.1,
+            "overLeft": -244.3
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "실질적으로 무제한에 가깝게 자동 확장(Standard). FIFO는 그룹당 처리량 상한이 있어 설계 주의.",
+            "left": 423.1,
+            "right": 520.9,
+            "width": 97.8,
+            "overRight": 130.9,
+            "overLeft": -423.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "중간. 단일 노드는 쉽지만 클러스터링·큐 미러링·HA·업그레이드는 노하우 필요.",
+            "left": 244.3,
+            "right": 423.1,
+            "width": 178.8,
+            "overRight": 33.1,
+            "overLeft": -244.3
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "가장 낮음. 서버·패치·스케일을 AWS가 담당. 큐 생성과 IAM 설정만으로 시작.",
+            "left": 423.1,
+            "right": 520.9,
+            "width": 97.8,
+            "overRight": 130.9,
+            "overLeft": -423.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "기본적으로 ack하면 사라져 재처리 불가. 별도 저장·shovel·재발행 파이프라인을 직접 만들어야 한다.",
+            "left": 244.3,
+            "right": 423.1,
+            "width": 178.8,
+            "overRight": 33.1,
+            "overLeft": -244.3
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "받아서 삭제하면 사라짐. 실패분은 DLQ로 격리해 재처리하지만 \"임의 과거 시점 replay\"는 불가.",
+            "left": 423.1,
+            "right": 520.9,
+            "width": 97.8,
+            "overRight": 130.9,
+            "overLeft": -423.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "노드 인프라 + 운영 인건비. 관리형(CloudAMQP 등)은 편의 대가로 사용료. 중소 규모에 합리적.",
+            "left": 244.3,
+            "right": 423.1,
+            "width": 178.8,
+            "overRight": 33.1,
+            "overLeft": -244.3
+          }
+        ],
+        "screenshot": "sources/screenshots/pages-10_comparison_message_queue-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-10_comparison_message_queue-1280.png"
+      }
+    },
+    "pages/11_case_study_search_index_outage.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-11_case_study_search_index_outage-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-11_case_study_search_index_outage-1280.png"
+      }
+    },
+    "pages/12_landing_pagercalm_brief.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-12_landing_pagercalm_brief-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-12_landing_pagercalm_brief-1280.png"
+      }
+    },
+    "pages/13_checklist_data_migration.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [
+          {
+            "tag": "code",
+            "class": "",
+            "text": "cutover(table): assert backup.restore_verified # 복원 리허설 통과 전제 assert dual_write.enabled # 양쪽 쓰기 유지 if verify(table).mism",
+            "left": 57,
+            "right": 423.5,
+            "width": 366.5,
+            "overRight": 33.5,
+            "overLeft": -57
+          }
+        ],
+        "screenshot": "sources/screenshots/pages-13_checklist_data_migration-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-13_checklist_data_migration-1280.png"
+      }
+    },
+    "pages/14_github_analysis_fastapi_starter.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [
+          {
+            "tag": "th",
+            "class": "",
+            "text": "권장 조치",
+            "left": 314.1,
+            "right": 435.8,
+            "width": 121.7,
+            "overRight": 45.8,
+            "overLeft": -314.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "의존성 스캔 + 자체 보안 검토 후 도입",
+            "left": 314.1,
+            "right": 435.8,
+            "width": 121.7,
+            "overRight": 45.8,
+            "overLeft": -314.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "로컬 pytest+coverage로 직접 측정",
+            "left": 314.1,
+            "right": 435.8,
+            "width": 121.7,
+            "overRight": 45.8,
+            "overLeft": -314.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "버전 태그에 핀하고 노트 직접 검토",
+            "left": 314.1,
+            "right": 435.8,
+            "width": 121.7,
+            "overRight": 45.8,
+            "overLeft": -314.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "도입 시 lock 갱신·취약점 재확인",
+            "left": 314.1,
+            "right": 435.8,
+            "width": 121.7,
+            "overRight": 45.8,
+            "overLeft": -314.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "버스팩터 가정하에 fork 전략 준비",
+            "left": 314.1,
+            "right": 435.8,
+            "width": 121.7,
+            "overRight": 45.8,
+            "overLeft": -314.1
+          }
+        ],
+        "screenshot": "sources/screenshots/pages-14_github_analysis_fastapi_starter-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-14_github_analysis_fastapi_starter-1280.png"
+      }
+    },
+    "pages/15_youtube_vibecoding_gap.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-15_youtube_vibecoding_gap-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-15_youtube_vibecoding_gap-1280.png"
+      }
+    },
+    "pages/16_manual_product_runbook.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-16_manual_product_runbook-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-16_manual_product_runbook-1280.png"
+      }
+    },
+    "pages/17_github_feature_usage_coreline_auth.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [
+          {
+            "tag": "code",
+            "class": "",
+            "text": "uv add coreline-auth uv sync --extra postgres # Postgres 어댑터가 필요할 때",
+            "left": 56,
+            "right": 442.2,
+            "width": 386.2,
+            "overRight": 52.2,
+            "overLeft": -56
+          },
+          {
+            "tag": "th",
+            "class": "",
+            "text": "근거",
+            "left": 382.2,
+            "right": 444.4,
+            "width": 62.2,
+            "overRight": 54.4,
+            "overLeft": -382.2
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "pyproject.toml, fastapi_adapter.py, models.py",
+            "left": 382.2,
+            "right": 444.4,
+            "width": 62.2,
+            "overRight": 54.4,
+            "overLeft": -382.2
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "pyproject.toml",
+            "left": 391.7,
+            "right": 431.4,
+            "width": 39.7,
+            "overRight": 41.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "fastapi_adapter.py",
+            "left": 391.7,
+            "right": 431.4,
+            "width": 39.7,
+            "overRight": 41.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "models.py",
+            "left": 391.7,
+            "right": 429.4,
+            "width": 37.8,
+            "overRight": 39.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "security.py, csrf.py, encryption.py, mfa.py, webauthn.py, social/",
+            "left": 382.2,
+            "right": 444.4,
+            "width": 62.2,
+            "overRight": 54.4,
+            "overLeft": -382.2
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "security.py",
+            "left": 391.7,
+            "right": 431.4,
+            "width": 39.7,
+            "overRight": 41.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "csrf.py",
+            "left": 391.7,
+            "right": 429.4,
+            "width": 37.8,
+            "overRight": 39.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "encryption.py",
+            "left": 391.7,
+            "right": 431.4,
+            "width": 39.7,
+            "overRight": 41.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "mfa.py",
+            "left": 391.7,
+            "right": 429.4,
+            "width": 37.8,
+            "overRight": 39.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "webauthn.py",
+            "left": 391.7,
+            "right": 431.4,
+            "width": 39.7,
+            "overRight": 41.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "social/",
+            "left": 391.7,
+            "right": 429.4,
+            "width": 37.8,
+            "overRight": 39.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "storage/, migrations/, alembic.ini, optional postgres extra",
+            "left": 382.2,
+            "right": 444.4,
+            "width": 62.2,
+            "overRight": 54.4,
+            "overLeft": -382.2
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "storage/",
+            "left": 391.7,
+            "right": 429.4,
+            "width": 37.8,
+            "overRight": 39.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "migrations/",
+            "left": 391.7,
+            "right": 431.4,
+            "width": 39.7,
+            "overRight": 41.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "alembic.ini",
+            "left": 391.7,
+            "right": 431.4,
+            "width": 39.7,
+            "overRight": 41.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "postgres",
+            "left": 391.7,
+            "right": 429.4,
+            "width": 37.8,
+            "overRight": 39.4,
+            "overLeft": -391.7
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "ops_readiness.py, redis_rate_limit.py, observability.py, email.py",
+            "left": 382.2,
+            "right": 444.4,
+            "width": 62.2,
+            "overRight": 54.4,
+            "overLeft": -382.2
+          },
+          {
+            "tag": "code",
+            "class": "",
+            "text": "ops_readiness.py",
+            "left": 391.7,
+            "right": 431.4,
+            "width": 39.7,
+            "overRight": 41.4,
+            "overLeft": -391.7
+          }
+        ],
+        "screenshot": "sources/screenshots/pages-17_github_feature_usage_coreline_auth-390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "document_overflow_ok": true,
+        "overflow_ok": true,
+        "clipped": [],
+        "scrollable_warnings": [],
+        "screenshot": "sources/screenshots/pages-17_github_feature_usage_coreline_auth-1280.png"
+      }
+    }
+  },
+  "summary": {
+    "page_count": 18,
+    "viewport_count": 36,
+    "overflow_failures": [],
+    "scrollable_warnings": [
+      {
+        "page": "pages/07_platform_tech_retro_adaptation.html",
+        "width": 390,
+        "count": 10,
+        "examples": [
+          {
+            "tag": "th",
+            "class": "",
+            "text": "감정 강도",
+            "left": 354.8,
+            "right": 395,
+            "width": 40.2,
+            "overRight": 5,
+            "overLeft": -354.8
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "낮음",
+            "left": 354.8,
+            "right": 395,
+            "width": 40.2,
+            "overRight": 5,
+            "overLeft": -354.8
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "낮음",
+            "left": 354.8,
+            "right": 395,
+            "width": 40.2,
+            "overRight": 5,
+            "overLeft": -354.8
+          }
+        ]
+      },
+      {
+        "page": "pages/08_skill_audit_codereview_bot.html",
+        "width": 390,
+        "count": 13,
+        "examples": [
+          {
+            "tag": "th",
+            "class": "",
+            "text": "누락 시 동작",
+            "left": 381.7,
+            "right": 446.3,
+            "width": 64.7,
+            "overRight": 56.3,
+            "overLeft": -381.7
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "리뷰 중단, 입력 부족 반환",
+            "left": 381.7,
+            "right": 446.3,
+            "width": 64.7,
+            "overRight": 56.3,
+            "overLeft": -381.7
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "맥락 없음 표기 후 보수적 판정",
+            "left": 381.7,
+            "right": 446.3,
+            "width": 64.7,
+            "overRight": 56.3,
+            "overLeft": -381.7
+          }
+        ]
+      },
+      {
+        "page": "pages/10_comparison_message_queue.html",
+        "width": 390,
+        "count": 20,
+        "examples": [
+          {
+            "tag": "th",
+            "class": "",
+            "text": "검증 자료",
+            "left": 313.1,
+            "right": 428.9,
+            "width": 115.8,
+            "overRight": 38.9,
+            "overLeft": -313.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "소비자 수, replay 시나리오, 보존 기간 요구",
+            "left": 313.1,
+            "right": 428.9,
+            "width": 115.8,
+            "overRight": 38.9,
+            "overLeft": -313.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "exchange/binding 설계, 우선순위 요건",
+            "left": 313.1,
+            "right": 428.9,
+            "width": 115.8,
+            "overRight": 38.9,
+            "overLeft": -313.1
+          }
+        ]
+      },
+      {
+        "page": "pages/13_checklist_data_migration.html",
+        "width": 390,
+        "count": 1,
+        "examples": [
+          {
+            "tag": "code",
+            "class": "",
+            "text": "cutover(table): assert backup.restore_verified # 복원 리허설 통과 전제 assert dual_write.enabled # 양쪽 쓰기 유지 if verify(table).mism",
+            "left": 57,
+            "right": 423.5,
+            "width": 366.5,
+            "overRight": 33.5,
+            "overLeft": -57
+          }
+        ]
+      },
+      {
+        "page": "pages/14_github_analysis_fastapi_starter.html",
+        "width": 390,
+        "count": 6,
+        "examples": [
+          {
+            "tag": "th",
+            "class": "",
+            "text": "권장 조치",
+            "left": 314.1,
+            "right": 435.8,
+            "width": 121.7,
+            "overRight": 45.8,
+            "overLeft": -314.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "의존성 스캔 + 자체 보안 검토 후 도입",
+            "left": 314.1,
+            "right": 435.8,
+            "width": 121.7,
+            "overRight": 45.8,
+            "overLeft": -314.1
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "로컬 pytest+coverage로 직접 측정",
+            "left": 314.1,
+            "right": 435.8,
+            "width": 121.7,
+            "overRight": 45.8,
+            "overLeft": -314.1
+          }
+        ]
+      },
+      {
+        "page": "pages/17_github_feature_usage_coreline_auth.html",
+        "width": 390,
+        "count": 20,
+        "examples": [
+          {
+            "tag": "code",
+            "class": "",
+            "text": "uv add coreline-auth uv sync --extra postgres # Postgres 어댑터가 필요할 때",
+            "left": 56,
+            "right": 442.2,
+            "width": 386.2,
+            "overRight": 52.2,
+            "overLeft": -56
+          },
+          {
+            "tag": "th",
+            "class": "",
+            "text": "근거",
+            "left": 382.2,
+            "right": 444.4,
+            "width": 62.2,
+            "overRight": 54.4,
+            "overLeft": -382.2
+          },
+          {
+            "tag": "td",
+            "class": "",
+            "text": "pyproject.toml, fastapi_adapter.py, models.py",
+            "left": 382.2,
+            "right": 444.4,
+            "width": 62.2,
+            "overRight": 54.4,
+            "overLeft": -382.2
+          }
+        ]
+      }
+    ],
+    "all_overflow_ok": true
+  }
+}

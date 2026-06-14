@@ -1,0 +1,25 @@
+{
+  "url": "file:///Users/hwanchoi/project_202606/skills-html-showcase/output/2026-06-14/phase2-pilot-manual-data-deletion-runbook-20260614_215343/index.html",
+  "checked_at": "2026-06-14T13:02:36.017Z",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow_ok": true,
+      "clipped": [],
+      "screenshot": "sources/screenshots/390.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow_ok": true,
+      "clipped": [],
+      "screenshot": "sources/screenshots/1280.png"
+    }
+  },
+  "notes": [
+    "Phase 3 re-audit after build-evidence gate"
+  ]
+}

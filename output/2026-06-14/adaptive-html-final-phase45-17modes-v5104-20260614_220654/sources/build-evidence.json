@@ -1,0 +1,318 @@
+{
+  "mode": "all_17_modes",
+  "profile": "auto",
+  "layout": "multi-page index + official per-mode layouts",
+  "primary_vt": "per-mode registry primary_vt",
+  "section_mapping": {
+    "index": "17-mode navigation",
+    "pages": "one official mode page per HTML"
+  },
+  "version": "5.10.4",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "ab6fc176098737159af134800011ef5a5e349e155e8e679dd3843f0ecea08bf3",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/01-skill-audit.json",
+      "sha256": "30991aa1e60ad1ceba17bcc554f201284788646423941d9bd4b30c8c5249a9f2",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/02-platform-blog.json",
+      "sha256": "9a83fe9912e03d121019d786e4abadcfacea974d203e51f357a4efbd13ee6383",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/03-seo-dashboard.json",
+      "sha256": "e36b824ad4b75932a855b31b6782435e306cfb37d465f141d216b03273d88aa1",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/04-education.json",
+      "sha256": "548049a9d5cbcd5b71020b0a7e8f31fe2198da8c4e1193268f5689e94b068728",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/05-github-analysis.json",
+      "sha256": "cfee12d418946e2f8a304637abbe4ec9cf3dd950df63297dd651b99c4b38968a",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/06-github-feature-usage.json",
+      "sha256": "4c874be601e02b15b92cb85e991ed31c7e00317e30e53e81ed9d989c974a630b",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/07-youtube-analysis.json",
+      "sha256": "d01c86d361e02cd334df1f2577b1849bd67e57ccf2b5f4c04764bc810a2b46dd",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/08-manual-analysis.json",
+      "sha256": "15fe21488e4673a9a9cc8cc6afb2f6830097775d527a2aeac63efcf8f62f1943",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/09-expert.json",
+      "sha256": "d42849c3b2bea50418a598943d97f03ab0030a368f461e47b243e8c060984de9",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/10-article.json",
+      "sha256": "656b854396c98759b7220635cdee41c88a3014e39a44835e24e86b7270ce2054",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/11-blog-writer.json",
+      "sha256": "a562c4525b1a01c6854e82690c30d4af01148d951797fa0fa62517b5afb50dc4",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/12-beginner.json",
+      "sha256": "dd4908aeebc658d735f8e72d45802d6a0d3e8e155564f5a040087a470eb968e5",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/13-reference.json",
+      "sha256": "534d63ca0e3ba5c8761869d09869fa8b8272771b4a04e303a9d9f90669f93abe",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/14-comparison.json",
+      "sha256": "884ed5156ff5fb69f54516d25d79835ae87cf05ced44d16c9ed4b5c86562580d",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/15-case-study.json",
+      "sha256": "5244d0ba1a1d785eaeaeb0d414680b48762ed7112a129670710c1921013582a3",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/16-landing-brief.json",
+      "sha256": "b419bff033a06e86c0a8cf256b493852cbbbdabaae1ad54131cccd490eea2a8f",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/17-checklist-playbook.json",
+      "sha256": "e2cdc20c3b4028ed24efa550f1d7e6d7a7f0d9eb35eecbd984afba0770e3514f",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/beginner-learning.html",
+      "sha256": "d33a711621d0008de7e6fc972a225516269bc38ac02eca86688efcb87e0ce29e",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/case-study.html",
+      "sha256": "fa01cb18c689748485ec9e109283ec71babd757e931f5da5074a25b730a20210",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/checklist-playbook.html",
+      "sha256": "c2cdbfea91ce69d14d6680e8fcb95026981db0bd102b04d94f01f4d6ea197212",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/comparison-matrix.html",
+      "sha256": "c2432d9487760c819ae337e14c7f70f69eab95d8bdf0e35100b87f1668bf5abd",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/course-module.html",
+      "sha256": "18662fd21a7e1dc6e9544ccd1b1b60c8d6dafb0f322e0f04ff95f2fb3e131f04",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/expert-report.html",
+      "sha256": "6d6bbf941d66842ea29976ecdd0976f6a41786d07b33d16789b89fcf6c3471c3",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/github-analysis.html",
+      "sha256": "0749189eeac876e93daef70a863f140de6df990b6aecd9dee9f31c795301a3f3",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/github-feature-usage.html",
+      "sha256": "c358a4038992587ec875ac5b1fd6db68a49245ae1a804cbc0028af096a132d3e",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/landing-brief.html",
+      "sha256": "a6426ca97eaeb68045817af226b7a0997c136ddffde899991a982087f4c61a0c",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/magazine-article.html",
+      "sha256": "75936df44f6c7deb101effbed9557f8d699e6df48b22d28f03251acaaffc9752",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/manual-analysis.html",
+      "sha256": "82e1d983b39bb7560f6fc36ce55cef4ed9fb1324d9ea9aef5d0a272d7e85c719",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/personal-blog-essay.html",
+      "sha256": "7d78bd3437162df4164dfaa30b215ad131b210d43396615ca3ebb08fa0e96028",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/platform-adaptation.html",
+      "sha256": "4a12161852520a3f27d8de251737940e4dd2c9f7e283444141cbf5633bc8cf4e",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/reference-manual.html",
+      "sha256": "ee2510bc845c8e9ab0060f852d353e1a711375a122757a90e9c9d10412160eb7",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/seo-dashboard.html",
+      "sha256": "647a613ff1e11d1307d3932823e91b7243989322916a561f9872aeff15eaef4d",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/skill-audit-report.html",
+      "sha256": "1f1d808049083bdba8658f9d1e008e29f80d5d9a63249a2e5a71bbd567cb8e58",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/youtube-analysis.html",
+      "sha256": "6475dd2fa6eace0ef33d0de5709b79feff4c1dfdb11b4234f1337b47fb2da230",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/02-decision-tree.html",
+      "sha256": "84bc44d360fa13a33e9eed65e729fa30a18117fafe3df7f16beb761f91f770bb",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/03-risk-matrix.html",
+      "sha256": "819a2e7a46f0caf85726705c79a95720c9296ab418b1f16f2f2b1f3f72aa522f",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/04-timeline.html",
+      "sha256": "0b0c9babbef8e17823170698a61270cfca459252c0304a1377a8cf2b636e37b1",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/05-checklist-flow.html",
+      "sha256": "c91b5ead42adcd356c92b0df81915864857dcb431cdfb8b5ff3275ab5e6a4d70",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/06-quality-gate.html",
+      "sha256": "73cdd26e3b3518d13da6716ccb033e980e7d8f7b7b995bb0292c688debe845cf",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/07-card-grid.html",
+      "sha256": "99c40c0b313b71198c03b4dbaa80ef1ab3fb27940e8530d08afdf6f1d688bdb9",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/08-raci.html",
+      "sha256": "3634c85568a616881e103b797e87a4deec4b35affd274e409f07dc418ce4f369",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/09-file-tour.html",
+      "sha256": "88c2ae6c04105fc841692a96d8607ac6b3e81b5ead72876299553e710121186e",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/10-flowchart.html",
+      "sha256": "ea73b9f30271cfef1a5339a049c65437ae9c546647449686315198bce02e4bf7",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/11-weekly-status.html",
+      "sha256": "ddd1ed1ea0e8d79cc421990193cc2442749f4e7848a52af548ca1635ea53ddc3",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/12-incident-summary.html",
+      "sha256": "d1968a9060f538dae27f18229eebfcbba47bb5b111bba756790758f10eb9fbf9",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/13-comparison-cards.html",
+      "sha256": "6b71d73236d1b880928be7533b8f25982d61b7ab0e1d6997865dc6071a7a1d4c",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/14-process-swimlane.html",
+      "sha256": "f4ee854da54c39e3ee3f09d58ae87445e8a33b5d9f38ebef7fd56dce035efb7c",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/15-concept-explainer.html",
+      "sha256": "72a3f0d2dc904e89cf4d719d6406dacb225bf8f1e4fa9c9bee9666ce6e416b3a",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/16-implementation-plan.html",
+      "sha256": "34b0ba62601f403bd7f69f78bc0175f7a86b05645398b692b43e61015c604887",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/17-pr-writeup.html",
+      "sha256": "d400d3daa224703b098bb9d5d00310e20f351ec0c05b3cbed3655f47131cefc1",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/18-triage-board.html",
+      "sha256": "b99e56f2da2fa5fc0407aa17e2fa09e2bb17c18aacdfcba21a5e0d10593c9ebe",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/19-feature-flag.html",
+      "sha256": "aebec977e06fa227874184daf8e1e2cdd4ca35f461e038fccf087a3b9d08c514",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/20-prompt-tuner.html",
+      "sha256": "34f4a5b6c9842eb07d2ec89d3ca8b3f05341f59c5404ba46739941ca1deb0d2b",
+      "reason": "Phase 4/5 17-mode official build input"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/21-soft-workflow-map.html",
+      "sha256": "315c76053374dedc0472c73470cd7ee86d67c4934609ae42f1f888ec4c718b53",
+      "reason": "Phase 4/5 17-mode official build input"
+    }
+  ]
+}

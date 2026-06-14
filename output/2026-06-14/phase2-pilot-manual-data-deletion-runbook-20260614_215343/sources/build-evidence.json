@@ -1,0 +1,72 @@
+{
+  "profile": "auto",
+  "mode": "manual_analysis",
+  "topic": "고객 데이터 삭제 요청 운영 매뉴얼",
+  "layout": "manual-analysis.html",
+  "primary_vt": "hero-map",
+  "wg": [
+    "wg-04",
+    "wg-13"
+  ],
+  "section_mapping": {
+    "manual-verdict": "vt hero-map + source status verdict",
+    "role-router": "manual role grid",
+    "first-success": "official wg-13 flow vocabulary adapted to first success",
+    "reference-extract": "official wg-04 module map vocabulary adapted to source bundle map",
+    "task-recipes": "6-field mobile-card-table recipe matrix",
+    "troubleshooting": "3 scenario 4-step manual trouble grid"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "22d8863c12970a4a2517c98e36fa2505afb927ae3c70d1dcfa8ab3d9eee415b4",
+      "reason": "Phase 2 pilot 공식 템플릿/계약 확인"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "9aa4d9976693baf9fcc9efa249395ca1a120c01ccfddde451032a2d94e72813e",
+      "reason": "Phase 2 pilot 공식 템플릿/계약 확인"
+    },
+    {
+      "path": "skills/adaptive-html-final/modes/08-manual-analysis.json",
+      "sha256": "15fe21488e4673a9a9cc8cc6afb2f6830097775d527a2aeac63efcf8f62f1943",
+      "reason": "Phase 2 pilot 공식 템플릿/계약 확인"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259",
+      "reason": "Phase 2 pilot 공식 템플릿/계약 확인"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/manual-analysis.html",
+      "sha256": "82e1d983b39bb7560f6fc36ce55cef4ed9fb1324d9ea9aef5d0a272d7e85c719",
+      "reason": "Phase 2 pilot 공식 템플릿/계약 확인"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc",
+      "reason": "Phase 2 pilot 공식 템플릿/계약 확인"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/04-module-map.html",
+      "sha256": "c343793fd626569b98e906b5be4d27dfe0ae7cad5c179b07c7bba83a144cbc47",
+      "reason": "Phase 2 pilot 공식 템플릿/계약 확인"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/13-annotated-flowchart.html",
+      "sha256": "406be36f9f41e45b62e0518dc17362b768e4137b9e47702b59b68fdf8653d0c5",
+      "reason": "Phase 2 pilot 공식 템플릿/계약 확인"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318",
+      "reason": "Phase 2 pilot 공식 템플릿/계약 확인"
+    },
+    {
+      "path": "docs/adaptive-html-final-template-authoring-protocol.md",
+      "sha256": "6821a60f5d60abc202e0bf6d9a47af0016e49fc1c62ae6fb1098d0aa1716109c",
+      "reason": "Phase 2 pilot 공식 템플릿/계약 확인"
+    }
+  ],
+  "html_sha256": "7c6b22f9537565529dd1c52c9644a5b0e760a38b2b983a2e1e4b85c29746512d"
+}
