@@ -1,0 +1,76 @@
+{
+  "id": "reference_html",
+  "priority": 13,
+  "label": "Reference",
+  "layout_class": "layout-reference",
+  "layout_file": "assets/layouts/reference-manual.html",
+  "recipe": "recipes/reference.prompt.md",
+  "triggers": [
+    "레퍼런스",
+    "API 문서",
+    "치트시트",
+    "옵션표"
+  ],
+  "required_blocks": [
+    "quick_reference",
+    "api_or_concepts",
+    "patterns",
+    "examples",
+    "checklist"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{QUICK_REFERENCE}}",
+    "{{API_OR_CONCEPTS}}",
+    "{{PATTERNS}}",
+    "{{EXAMPLES}}",
+    "{{CHECKLIST}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "file-tour",
+  "vt_candidates": [
+    "file-tour",
+    "flowchart",
+    "card-grid"
+  ],
+  "vt_markers": [
+    "\\bft-card\\b"
+  ],
+  "wg_candidates": [
+    "wg-04",
+    "wg-05",
+    "wg-06",
+    "wg-14",
+    "wg-19",
+    "wg-20"
+  ],
+  "wg_markers": [
+    "wg-04-",
+    "wg-05-",
+    "wg-06-",
+    "wg-14-",
+    "wg-19-",
+    "wg-20-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/09_reference_regex.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

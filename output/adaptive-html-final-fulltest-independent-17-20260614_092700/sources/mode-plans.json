@@ -1,0 +1,350 @@
+[
+  {
+    "mode": "skill_audit",
+    "topic": "브라우저 QA 에이전트 스킬 감사",
+    "layout": "assets/layouts/skill-audit-report.html",
+    "primary_vt": "quality-gate",
+    "wg": "wg-03",
+    "sections": [
+      "감사 결론",
+      "트리거와 출력 계약",
+      "브라우저 세션 경계",
+      "증거 수집 경로",
+      "실패 분류 체계",
+      "레이아웃 회귀 방지",
+      "권한·쿠키 취급",
+      "검증 명령 세트",
+      "개선 우선순위",
+      "최종 패치 기준"
+    ],
+    "file": "pages/01_skill_audit_브라우저-qa-에이전트-스킬-감사.html"
+  },
+  {
+    "mode": "platform_blog",
+    "topic": "AI 기능 릴리즈 노트의 4대 플랫폼 전환",
+    "layout": "assets/layouts/platform-adaptation.html",
+    "primary_vt": "card-grid",
+    "wg": "wg-02",
+    "sections": [
+      "원문 메시지 압축",
+      "플랫폼별 독자 기대",
+      "티스토리 전환안",
+      "벨로그 전환안",
+      "네이버 전환안",
+      "워드프레스 전환안",
+      "제목·도입부 변환",
+      "발행 전 체크",
+      "성과 측정",
+      "최종 배포 패키지"
+    ],
+    "file": "pages/02_platform_blog_ai-기능-릴리즈-노트의-4대-플랫폼-전환.html"
+  },
+  {
+    "mode": "seo_dashboard",
+    "topic": "제로트러스트 접속 가이드 SEO 대시보드",
+    "layout": "assets/layouts/seo-dashboard.html",
+    "primary_vt": "card-grid",
+    "wg": "wg-11",
+    "sections": [
+      "검색 의도 판정",
+      "핵심 키워드 세트",
+      "SERP 약속문",
+      "제목 후보",
+      "메타 설명 후보",
+      "콘텐츠 클러스터",
+      "FAQ 기회",
+      "내부 링크 설계",
+      "측정 대시보드",
+      "최종 SEO 세트"
+    ],
+    "file": "pages/03_seo_dashboard_제로트러스트-접속-가이드-seo-대시보드.html"
+  },
+  {
+    "mode": "education_html",
+    "topic": "Kubernetes 리소스 한도 워크숍",
+    "layout": "assets/layouts/course-module.html",
+    "primary_vt": "timeline",
+    "wg": "wg-06",
+    "sections": [
+      "학습 목표",
+      "사전 지식 점검",
+      "request와 limit 비유",
+      "메모리 초과 실습",
+      "CPU 스로틀 실습",
+      "네임스페이스 정책",
+      "헬름 값 리뷰",
+      "퀴즈",
+      "정답 해설",
+      "현업 적용 체크"
+    ],
+    "file": "pages/04_education_html_kubernetes-리소스-한도-워크숍.html"
+  },
+  {
+    "mode": "github_analysis",
+    "topic": "coreline-ai/mcp-audit-proxy 도입 실사",
+    "layout": "assets/layouts/github-analysis.html",
+    "primary_vt": "hero-map",
+    "wg": "wg-11",
+    "sections": [
+      "채택 판정",
+      "질문 지도",
+      "저장소 정체성",
+      "빠른 시작 준비도",
+      "유지보수 신호",
+      "코드 투어",
+      "릴리즈와 로드맵",
+      "보안·라이선스",
+      "리스크 매트릭스",
+      "최종 결정"
+    ],
+    "file": "pages/05_github_analysis_coreline-ai-mcp-audit-proxy-도입-실사.html"
+  },
+  {
+    "mode": "github_feature_usage",
+    "topic": "coreline-ai/policy-snapshot 기능 사용 가이드",
+    "layout": "assets/layouts/github-feature-usage.html",
+    "primary_vt": "hero-map",
+    "wg": "wg-14",
+    "sections": [
+      "포지셔닝",
+      "기능 개요",
+      "기능 목차",
+      "기능 지도",
+      "핵심 기능",
+      "기술 스택",
+      "구조 이해",
+      "실제 화면 흐름",
+      "도입 적합성",
+      "다음 액션",
+      "운영 세부 검토 A",
+      "운영 세부 검토 B",
+      "운영 세부 검토 C",
+      "운영 세부 검토 D",
+      "운영 세부 검토 E"
+    ],
+    "file": "pages/06_github_feature_usage_coreline-ai-policy-snapshot-기능-사용-가이드.html"
+  },
+  {
+    "mode": "youtube_analysis",
+    "topic": "AI 회의 액션 자동화 영상 분석",
+    "layout": "assets/layouts/youtube-analysis.html",
+    "primary_vt": "timeline",
+    "wg": "wg-11",
+    "sections": [
+      "시청 판단",
+      "Source Limits",
+      "영상 근거 지도",
+      "챕터·유지율 가설",
+      "댓글 신호",
+      "콘텐츠 갭",
+      "주장 리스크",
+      "재사용 패키지",
+      "제작 블루프린트",
+      "다음 액션",
+      "운영 세부 검토 A"
+    ],
+    "file": "pages/07_youtube_analysis_ai-회의-액션-자동화-영상-분석.html"
+  },
+  {
+    "mode": "manual_analysis",
+    "topic": "CSV→PostgreSQL 이관 운영 매뉴얼 분석",
+    "layout": "assets/layouts/manual-analysis.html",
+    "primary_vt": "hero-map",
+    "wg": "wg-04",
+    "sections": [
+      "실행 판정",
+      "Source & Version",
+      "Reader Role Router",
+      "첫 성공 경로",
+      "Prerequisites & Safety",
+      "작업 레시피",
+      "원문 발췌 기준",
+      "Decision Guide",
+      "Troubleshooting",
+      "운영 감사",
+      "운영 세부 검토 A",
+      "운영 세부 검토 B"
+    ],
+    "file": "pages/08_manual_analysis_csv-postgresql-이관-운영-매뉴얼-분석.html"
+  },
+  {
+    "mode": "expert_html",
+    "topic": "멀티에이전트 HTML 품질 게이트 아키텍처",
+    "layout": "assets/layouts/expert-report.html",
+    "primary_vt": "risk-matrix",
+    "wg": "wg-03",
+    "sections": [
+      "Executive Summary",
+      "도입 판단 카드",
+      "아키텍처 지도",
+      "리스크 매트릭스",
+      "RACI 운영모델",
+      "우선순위 로드맵",
+      "검증 체크리스트",
+      "관측 지표",
+      "실패 모드",
+      "최종 권고"
+    ],
+    "file": "pages/09_expert_html_멀티에이전트-html-품질-게이트-아키텍처.html"
+  },
+  {
+    "mode": "article_html",
+    "topic": "개인 자동화가 팀 운영이 되는 순간",
+    "layout": "assets/layouts/magazine-article.html",
+    "primary_vt": "decision-tree",
+    "wg": "wg-02",
+    "sections": [
+      "문제의 시작",
+      "개인 도구의 유혹",
+      "팀이 보는 비용",
+      "운영 책임의 등장",
+      "사례 장면",
+      "설계 원칙",
+      "도입 반론",
+      "작은 승격 절차",
+      "독자 체크포인트",
+      "마무리 주장"
+    ],
+    "file": "pages/10_article_html_개인-자동화가-팀-운영이-되는-순간.html"
+  },
+  {
+    "mode": "blog_writer",
+    "topic": "알림을 4일 동안 절반으로 줄인 회고",
+    "layout": "assets/layouts/personal-blog-essay.html",
+    "primary_vt": "timeline",
+    "wg": "wg-17",
+    "sections": [
+      "첫날의 소음",
+      "알림을 줄인 기준",
+      "두 번째 날의 실패",
+      "세 번째 날의 조정",
+      "동료에게 공유한 규칙",
+      "놓친 신호",
+      "남긴 자동화",
+      "다시 켠 알림",
+      "내가 바꾼 습관",
+      "부드러운 권유"
+    ],
+    "file": "pages/11_blog_writer_알림을-4일-동안-절반으로-줄인-회고.html"
+  },
+  {
+    "mode": "beginner_html",
+    "topic": "OAuth 동의 화면 처음 이해하기",
+    "layout": "assets/layouts/beginner-learning.html",
+    "primary_vt": "concept-explainer",
+    "wg": "wg-10",
+    "sections": [
+      "한 문장 이해",
+      "동의 화면이 묻는 것",
+      "계정과 앱의 관계",
+      "권한 범위 읽기",
+      "위험한 문구 찾기",
+      "안전한 승인 흐름",
+      "취소와 철회",
+      "일상 비유",
+      "작은 연습",
+      "최종 체크리스트"
+    ],
+    "file": "pages/12_beginner_html_oauth-동의-화면-처음-이해하기.html"
+  },
+  {
+    "mode": "reference_html",
+    "topic": "정규식 이름 그룹 실무 레퍼런스",
+    "layout": "assets/layouts/reference-manual.html",
+    "primary_vt": "file-tour",
+    "wg": "wg-04",
+    "sections": [
+      "빠른 참조",
+      "기본 문법",
+      "이름 붙이기",
+      "재사용과 치환",
+      "로그 파싱 패턴",
+      "날짜·ID 패턴",
+      "실패하기 쉬운 사례",
+      "언어별 차이",
+      "테스트 체크리스트",
+      "운영 레퍼런스"
+    ],
+    "file": "pages/13_reference_html_정규식-이름-그룹-실무-레퍼런스.html"
+  },
+  {
+    "mode": "comparison_html",
+    "topic": "메시지 큐 선택 기준 비교",
+    "layout": "assets/layouts/comparison-matrix.html",
+    "primary_vt": "comparison-cards",
+    "wg": "wg-01",
+    "sections": [
+      "결정 맥락",
+      "후보 4종",
+      "처리량 비교",
+      "순서 보장 비교",
+      "운영 난이도",
+      "장애 복구",
+      "비용 모델",
+      "팀 역량 매칭",
+      "승자와 보류",
+      "최종 추천"
+    ],
+    "file": "pages/14_comparison_html_메시지-큐-선택-기준-비교.html"
+  },
+  {
+    "mode": "case_study_html",
+    "topic": "검색 인덱스 지연 장애 회고",
+    "layout": "assets/layouts/case-study.html",
+    "primary_vt": "incident-summary",
+    "wg": "wg-12",
+    "sections": [
+      "상황 요약",
+      "타임라인",
+      "감지 경로",
+      "고객 영향",
+      "원인 후보",
+      "실제 원인",
+      "완화 조치",
+      "재발 방지",
+      "남은 리스크",
+      "교훈"
+    ],
+    "file": "pages/15_case_study_html_검색-인덱스-지연-장애-회고.html"
+  },
+  {
+    "mode": "landing_brief_html",
+    "topic": "RunbookOS 랜딩 브리프",
+    "layout": "assets/layouts/landing-brief.html",
+    "primary_vt": "hero-map",
+    "wg": "wg-02",
+    "sections": [
+      "Hero Promise",
+      "핵심 가치",
+      "작동 방식",
+      "팀별 사용 장면",
+      "신뢰 증빙",
+      "통합 흐름",
+      "가격 이전 질문",
+      "FAQ",
+      "도입 체크",
+      "CTA"
+    ],
+    "file": "pages/16_landing_brief_html_runbookos-랜딩-브리프.html"
+  },
+  {
+    "mode": "checklist_playbook",
+    "topic": "PII 로그 차단 릴리즈 플레이북",
+    "layout": "assets/layouts/checklist-playbook.html",
+    "primary_vt": "checklist-flow",
+    "wg": "wg-11",
+    "sections": [
+      "사용 상황",
+      "사전 차단",
+      "코드 리뷰 체크",
+      "로그 샘플링",
+      "마스킹 검증",
+      "배포 전 중단 조건",
+      "모니터링",
+      "사고 대응",
+      "완료 기준",
+      "최종 승인"
+    ],
+    "file": "pages/17_checklist_playbook_pii-로그-차단-릴리즈-플레이북.html"
+  }
+]

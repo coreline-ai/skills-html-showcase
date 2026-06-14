@@ -1,0 +1,67 @@
+{
+  "id": "platform_blog",
+  "priority": 2,
+  "label": "Platform Blog",
+  "layout_class": "layout-platform",
+  "layout_file": "assets/layouts/platform-adaptation.html",
+  "recipe": "recipes/platform.prompt.md",
+  "triggers": [
+    "티스토리",
+    "벨로그",
+    "네이버",
+    "워드프레스",
+    "플랫폼별"
+  ],
+  "required_blocks": [
+    "original_summary",
+    "platform_strategy",
+    "platform_cards",
+    "comparison_table",
+    "publish_checklist"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{ORIGINAL_SUMMARY}}",
+    "{{PLATFORM_STRATEGY}}",
+    "{{PLATFORM_CARDS}}",
+    "{{COMPARISON_TABLE}}",
+    "{{PUBLISH_CHECKLIST}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "card-grid",
+  "vt_candidates": [
+    "card-grid",
+    "comparison-cards",
+    "pr-writeup"
+  ],
+  "vt_markers": [
+    "\\bcg-grid\\b"
+  ],
+  "wg_candidates": [
+    "wg-02"
+  ],
+  "wg_markers": [
+    "wg-02-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/07_platform_tech_retro_adaptation.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

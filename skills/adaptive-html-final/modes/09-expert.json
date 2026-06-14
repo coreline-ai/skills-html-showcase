@@ -1,0 +1,83 @@
+{
+  "id": "expert_html",
+  "priority": 9,
+  "label": "Expert",
+  "layout_class": "layout-expert",
+  "layout_file": "assets/layouts/expert-report.html",
+  "recipe": "recipes/expert.prompt.md",
+  "triggers": [
+    "전문가",
+    "리포트",
+    "진단",
+    "아키텍처",
+    "리스크"
+  ],
+  "required_blocks": [
+    "executive_summary",
+    "decision_cards",
+    "architecture",
+    "risk_matrix",
+    "priority_roadmap",
+    "validation_checklist",
+    "final_recommendation"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{EXECUTIVE_SUMMARY}}",
+    "{{DECISION_CARDS}}",
+    "{{ARCHITECTURE}}",
+    "{{RISK_MATRIX}}",
+    "{{PRIORITY_ROADMAP}}",
+    "{{VALIDATION_CHECKLIST}}",
+    "{{FINAL_RECOMMENDATION}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "risk-matrix",
+  "vt_candidates": [
+    "risk-matrix",
+    "raci",
+    "quality-gate",
+    "implementation-plan",
+    "soft-workflow-map"
+  ],
+  "vt_markers": [
+    "\\brm-grid\\b"
+  ],
+  "wg_candidates": [
+    "wg-03",
+    "wg-04",
+    "wg-11",
+    "wg-12",
+    "wg-16",
+    "wg-17"
+  ],
+  "wg_markers": [
+    "wg-03-",
+    "wg-04-",
+    "wg-11-",
+    "wg-12-",
+    "wg-16-",
+    "wg-17-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/02_expert_llm_gateway_report.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

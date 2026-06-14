@@ -4,6 +4,16 @@
 
 3차 전문가 리뷰(렌더 실측) 발견을 dev-plan §4의 회귀 프레임(S0 베이스라인 → 등급별 패치 → 프로브 diff)대로 반영. **라이트 테마 무영향 설계**: #fff→var(--on-accent)는 라이트 4테마에서 byte-동일(on-accent=#ffffff), print.css는 전 규칙 @media print 내부(스크린 영향 0 구조 보장).
 
+### 2026-06-14 모드 정의 Registry 모듈화 (단일 출처화, 5.10.3 유지)
+
+17개 모드의 결정표 데이터가 `AGENTS.md`·`SKILL.md §0.6`·`MODE_TEMPLATE_CONTRACTS`·`widget-system.md`·`manifest`에 중복 분산돼 신규 모드 추가 시 드리프트 위험이 컸다. 이를 `modes/NN-<mode>.json` **단일 출처**로 모듈화했다. 코어 CSS·17모드 산출·버전 불변(5.10.3), validator 동작 byte-동일.
+
+- **Registry 신설**: `modes/01..17-*.json` 17종(id·priority·label·layout·recipe·triggers·required_blocks·layout_placeholders·primary_vt·vt_candidates·vt_markers·wg_candidates·wg_markers·toc_contract·quality_contract·examples·custom_contracts). 권위 출처(`MODE_TEMPLATE_CONTRACTS`·§0.6·layout·recipe)에서 결정론적 추출.
+- **validator가 Registry를 읽음(B-full)**: `MODE_TEMPLATE_CONTRACTS`를 `_build_mode_template_contracts_from_registry()`로 전환. **registry-built == 전환 전 literal**(sha 동일)·**examples validate before==after**로 회귀 0 증명. vt 마커 regex 토큰·`wg_candidates`→`recommended_wg` 매핑으로 deep-equal 성립.
+- **sync checker**: `scripts/mode_registry.py`(loader)·`scripts/check_mode_registry_sync.py`. Registry ↔ `MODE_TEMPLATE_CONTRACTS`(build==live) ↔ SKILL §0.6 ↔ widget-system ↔ **AGENTS §3 직접 파싱** ↔ manifest ↔ 파일 존재 ↔ toc required_class 일치를 강제(marker 삽입 없이 직접 파싱, AGENTS 드리프트 갭 해소).
+- **governance**: registry sync + 신규 모드 dry-run(중복 priority·primary_vt 드리프트·layout 누락·필수필드 누락 검출) 테스트 추가. **144→153 checks**, `manifest.quality.governance_count`·README 표면 동기화.
+- **runbook**: `docs/adaptive-html-final-add-mode-runbook.md`(신규 모드 추가 절차 + 안전 매트릭스: 어떤 게이트가 어떤 불완전 추가를 잡는가).
+
 ### 2026-06-13 저장소 위생 — 레거시 데모 정리·템플릿 카탈로그 내재화
 
 - **레거시 데모 정리**: 루트 `demo/`의 과거 v2/learning-ultimate/blog demo 쇼케이스 105개 추적 파일을 제거하고, 현행 정본 경로를 `skills/adaptive-html-final/examples/`와 공개 산출물 `output/`로 단순화했다.

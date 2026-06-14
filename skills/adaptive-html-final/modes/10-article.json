@@ -1,0 +1,86 @@
+{
+  "id": "article_html",
+  "priority": 10,
+  "label": "Article",
+  "layout_class": "layout-article",
+  "layout_file": "assets/layouts/magazine-article.html",
+  "recipe": "recipes/article.prompt.md",
+  "triggers": [
+    "공개 글",
+    "아티클",
+    "기사",
+    "GitHub Pages"
+  ],
+  "required_blocks": [
+    "lead",
+    "pull_quote",
+    "problem",
+    "context",
+    "core_argument",
+    "case_study",
+    "conclusion",
+    "takeaway",
+    "related_topics"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{LEAD}}",
+    "{{META}}",
+    "{{PULL_QUOTE}}",
+    "{{PROBLEM}}",
+    "{{CONTEXT}}",
+    "{{CORE_ARGUMENT}}",
+    "{{CASE_STUDY}}",
+    "{{CONCLUSION}}",
+    "{{TAKEAWAY}}",
+    "{{RELATED_TOPICS}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "decision-tree",
+  "vt_candidates": [
+    "decision-tree",
+    "comparison-cards",
+    "concept-explainer"
+  ],
+  "vt_markers": [
+    "\\bdt-q\\b",
+    "\\bdt-options\\b"
+  ],
+  "wg_candidates": [
+    "wg-02",
+    "wg-04",
+    "wg-07",
+    "wg-09",
+    "wg-10",
+    "wg-13",
+    "wg-14"
+  ],
+  "wg_markers": [
+    "wg-02-",
+    "wg-04-",
+    "wg-07-",
+    "wg-09-",
+    "wg-10-",
+    "wg-13-",
+    "wg-14-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/03_article_side_project_signal.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

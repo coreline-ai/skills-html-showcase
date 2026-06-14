@@ -1,0 +1,66 @@
+{
+  "id": "case_study_html",
+  "priority": 15,
+  "label": "Case Study",
+  "layout_class": "layout-case",
+  "layout_file": "assets/layouts/case-study.html",
+  "recipe": "recipes/case-study.prompt.md",
+  "triggers": [
+    "사례 연구",
+    "회고",
+    "프로젝트 기록"
+  ],
+  "required_blocks": [
+    "situation",
+    "timeline",
+    "decisions",
+    "results",
+    "lessons"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{SITUATION}}",
+    "{{TIMELINE}}",
+    "{{DECISIONS}}",
+    "{{RESULTS}}",
+    "{{LESSONS}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "incident-summary",
+  "vt_candidates": [
+    "incident-summary",
+    "timeline",
+    "process-swimlane"
+  ],
+  "vt_markers": [
+    "\\binc-head\\b",
+    "\\binc-card\\b"
+  ],
+  "wg_candidates": [
+    "wg-12"
+  ],
+  "wg_markers": [
+    "wg-12-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/11_case_study_search_index_outage.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

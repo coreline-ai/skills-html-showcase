@@ -1,0 +1,71 @@
+{
+  "id": "seo_dashboard",
+  "priority": 3,
+  "label": "Seo Dashboard",
+  "layout_class": "layout-seo",
+  "layout_file": "assets/layouts/seo-dashboard.html",
+  "recipe": "recipes/seo.prompt.md",
+  "triggers": [
+    "SEO",
+    "제목",
+    "메타",
+    "태그",
+    "검색 의도"
+  ],
+  "required_blocks": [
+    "primary_keyword",
+    "serp_preview",
+    "title_candidates",
+    "meta_candidates",
+    "tag_cluster",
+    "content_outline",
+    "final_seo_set"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{PRIMARY_KEYWORD}}",
+    "{{SERP_PREVIEW}}",
+    "{{TITLE_CANDIDATES}}",
+    "{{META_CANDIDATES}}",
+    "{{TAG_CLUSTER}}",
+    "{{CONTENT_OUTLINE}}",
+    "{{FINAL_SEO_SET}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "card-grid",
+  "vt_candidates": [
+    "card-grid",
+    "comparison-cards",
+    "prompt-tuner"
+  ],
+  "vt_markers": [
+    "\\bcg-grid\\b"
+  ],
+  "wg_candidates": [
+    "wg-11"
+  ],
+  "wg_markers": [
+    "wg-11-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/06_seo_prompt_engineering_dashboard.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

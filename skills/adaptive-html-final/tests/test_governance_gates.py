@@ -552,6 +552,72 @@ with _tmp.TemporaryDirectory() as _td:
     check("version release gate allows approved manifest bump",
           v.version_release_approval_issues(_repo, _sd, '9.9.9') == [])
 
+# Gate: mode registry (B-lite authoritative mirror) stays in sync with canonical sources.
+sys.modules.setdefault("validate_output", v)
+sys.path.insert(0, str(SKILL / "scripts"))
+import mode_registry as _mreg          # noqa: E402
+import check_mode_registry_sync as _mrs  # noqa: E402
+_reg = _mreg.load_mode_registry(SKILL)
+check("mode registry has 17 modes", len(_reg) == 17)
+check("mode registry priority 1..17 contiguous & unique",
+      sorted(m["priority"] for m in _reg) == list(range(1, 18)))
+_built = _mreg.build_mode_template_contracts(SKILL)
+# B-full: validator now SOURCES MODE_TEMPLATE_CONTRACTS from the registry.
+# This asserts the wiring is in place (validator dict == registry build); if anyone
+# reverts to a hardcoded literal that drifts, build != live and this fails.
+check("validator MODE_TEMPLATE_CONTRACTS is sourced from the registry (build == live)",
+      _built == v.MODE_TEMPLATE_CONTRACTS)
+# Discriminating test (post-B-full): a corrupted registry must be caught by the
+# §0.6/widget cross-check, since self-comparison is now tautological.
+_sm = (SKILL / "SKILL.md").read_text(encoding="utf-8")
+_wm = (SKILL / "references" / "widget-system.md").read_text(encoding="utf-8")
+_corrupt = {k: dict(val) for k, val in _built.items()}
+_corrupt["layout-landing"] = {**_corrupt["layout-landing"], "primary_vt": "WRONG-VT"}
+check("registry drift is caught by §0.6/widget cross-check (decision_table gate)",
+      v.decision_table_consistency_gate(_sm, _wm, _corrupt) != [])
+check("mode registry sync clean (build==live + §0.6/widget + AGENTS §3 + manifest + files + toc)",
+      _mrs.check(SKILL) == [])
+
+# Dry-run: prove an INCOMPLETE new-mode addition is caught (add-mode runbook §3).
+# Stage a throwaway skill dir (copy light files, symlink heavy assets), mutate the
+# temp registry, and assert the sync checker flags it. Real tree is never touched.
+import tempfile as _tf2, shutil as _sh2, os as _os2, json as _json2  # noqa: E402
+
+
+def _dryrun_caught(mutate, label):
+    d = Path(_tf2.mkdtemp())
+    try:
+        sd = d / "repo" / "skills" / "adaptive-html-final"
+        sd.mkdir(parents=True)
+        for _fn in ("manifest.json", "SKILL.md"):
+            _sh2.copy(SKILL / _fn, sd / _fn)
+        for _sub in ("modes", "references", "scripts"):
+            _sh2.copytree(SKILL / _sub, sd / _sub)
+        for _heavy in ("assets", "recipes", "examples"):
+            _os2.symlink(SKILL / _heavy, sd / _heavy)
+        _sh2.copy(SKILL.parent.parent / "AGENTS.md", d / "repo" / "AGENTS.md")
+        mutate(sd)
+        check(label, len(_mrs.check(sd)) > 0)
+    finally:
+        _sh2.rmtree(d, ignore_errors=True)
+
+
+def _edit_mode(sd, fname, fn):
+    p = sd / "modes" / fname
+    o = _json2.loads(p.read_text(encoding="utf-8"))
+    fn(o)
+    p.write_text(_json2.dumps(o, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+_dryrun_caught(lambda sd: _edit_mode(sd, "16-landing-brief.json", lambda o: o.__setitem__("priority", 1)),
+               "dry-run: duplicate priority is caught")
+_dryrun_caught(lambda sd: _edit_mode(sd, "16-landing-brief.json", lambda o: o.__setitem__("primary_vt", "WRONG-VT")),
+               "dry-run: primary_vt drift vs §0.6/AGENTS is caught")
+_dryrun_caught(lambda sd: _edit_mode(sd, "16-landing-brief.json", lambda o: o.__setitem__("layout_file", "assets/layouts/__nope__.html")),
+               "dry-run: missing layout file is caught")
+_dryrun_caught(lambda sd: _edit_mode(sd, "16-landing-brief.json", lambda o: o.pop("recipe", None)),
+               "dry-run: missing required field is caught")
+
 _manifest_quality = __import__("json").loads((SKILL / "manifest.json").read_text(encoding="utf-8")).get("quality") or {}
 check("manifest quality.governance_count matches this self-test count",
       _manifest_quality.get("governance_count") == _checks + 1)

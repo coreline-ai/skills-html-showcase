@@ -1,0 +1,86 @@
+{
+  "id": "education_html",
+  "priority": 4,
+  "label": "Education",
+  "layout_class": "layout-education",
+  "layout_file": "assets/layouts/course-module.html",
+  "recipe": "recipes/education.prompt.md",
+  "triggers": [
+    "교육",
+    "강의",
+    "온보딩",
+    "실습",
+    "퀴즈"
+  ],
+  "required_blocks": [
+    "learning_goals",
+    "before_start",
+    "concept_lesson",
+    "example",
+    "practice",
+    "quiz",
+    "answer_key",
+    "review_checklist"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{LEARNING_GOALS}}",
+    "{{BEFORE_START}}",
+    "{{CONCEPT_LESSON}}",
+    "{{EXAMPLE}}",
+    "{{PRACTICE}}",
+    "{{QUIZ}}",
+    "{{ANSWER_KEY}}",
+    "{{REVIEW_CHECKLIST}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "timeline",
+  "vt_candidates": [
+    "timeline",
+    "checklist-flow",
+    "concept-explainer",
+    "soft-workflow-map"
+  ],
+  "vt_markers": [
+    "\\btl-item\\b"
+  ],
+  "wg_candidates": [
+    "wg-06",
+    "wg-07",
+    "wg-08",
+    "wg-13",
+    "wg-14",
+    "wg-15",
+    "wg-20"
+  ],
+  "wg_markers": [
+    "wg-06-",
+    "wg-07-",
+    "wg-08-",
+    "wg-13-",
+    "wg-14-",
+    "wg-15-",
+    "wg-20-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/04_education_git_rebase_workshop.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

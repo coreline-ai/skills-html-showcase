@@ -1,0 +1,74 @@
+{
+  "id": "landing_brief_html",
+  "priority": 16,
+  "label": "Landing Brief",
+  "layout_class": "layout-landing",
+  "layout_file": "assets/layouts/landing-brief.html",
+  "recipe": "recipes/landing-brief.prompt.md",
+  "triggers": [
+    "소개 페이지",
+    "랜딩",
+    "요약 페이지"
+  ],
+  "required_blocks": [
+    "hero",
+    "value_props",
+    "how_it_works",
+    "faq",
+    "cta"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{HERO}}",
+    "{{VALUE_PROPS}}",
+    "{{HOW_IT_WORKS}}",
+    "{{FAQ}}",
+    "{{CTA}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "hero-map",
+  "vt_candidates": [
+    "hero-map",
+    "card-grid",
+    "feature-flag",
+    "soft-workflow-map"
+  ],
+  "vt_markers": [
+    "\\bhm-grid\\b"
+  ],
+  "wg_candidates": [
+    "wg-02",
+    "wg-05",
+    "wg-08",
+    "wg-09",
+    "wg-16"
+  ],
+  "wg_markers": [
+    "wg-02-",
+    "wg-05-",
+    "wg-08-",
+    "wg-09-",
+    "wg-16-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/12_landing_pagercalm_brief.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

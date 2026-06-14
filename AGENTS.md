@@ -59,6 +59,8 @@ v5.10.3 감사에서 확인된 반복 원인은 **manifest/SKILL/CHANGELOG 같�
 여러 트리거가 겹치면 `skills/adaptive-html-final/SKILL.md` §3의 Priority(1=skill_audit … 17=checklist_playbook)를 따른다.
 사용자가 모드를 명시하면 그 지시가 최우선. **vt-템플릿의 첫 항목이 1순위이며 단일 출처다** (캐노니컬 매핑).
 
+> **Mode Registry 정합(필수):** 아래 결정표는 `skills/adaptive-html-final/modes/NN-<mode>.json`(실행 정본, validator가 읽음)과 **반드시 일치**한다. `check_mode_registry_sync.py`가 이 §3 표를 직접 파싱해 Registry와 대조하므로(layout_class·layout_file·primary_vt·wg), 모드 추가/변경 시 이 표와 Registry JSON을 함께 갱신한다. 절차: `docs/adaptive-html-final-add-mode-runbook.md`.
+
 > **프로파일별 컬럼 사용(§4 Step 0에서 결정된 프로파일 적용):** `diagram`=**"1순위 vt-템플릿" 컬럼만** 사용(markup `vt-`), `widget`=**"권장 wg-위젯" 컬럼만** 사용(markup `wg-`), `auto`=**두 컬럼 모두**(vt- 1순위 + wg- 보강, 현행). layout·트리거(코어)는 프로파일과 무관하게 동일하다.
 
 | Mode | 트리거(요약) | layout 클래스 | layout 파일 | 1순위 vt-템플릿 (이하 후순위) | 권장 wg-위젯 |

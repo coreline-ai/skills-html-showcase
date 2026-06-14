@@ -1,0 +1,76 @@
+{
+  "id": "beginner_html",
+  "priority": 12,
+  "label": "Beginner",
+  "layout_class": "layout-beginner",
+  "layout_file": "assets/layouts/beginner-learning.html",
+  "recipe": "recipes/beginner.prompt.md",
+  "triggers": [
+    "초보자",
+    "쉽게",
+    "비유로",
+    "입문"
+  ],
+  "required_blocks": [
+    "toc",
+    "hero_analogy",
+    "first_concept",
+    "terms",
+    "analogy",
+    "traps",
+    "practice",
+    "final_checklist"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{TOC}}",
+    "{{HERO_ANALOGY}}",
+    "{{FIRST_CONCEPT}}",
+    "{{TERMS}}",
+    "{{ANALOGY}}",
+    "{{TRAPS}}",
+    "{{PRACTICE}}",
+    "{{FINAL_CHECKLIST}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "concept-explainer",
+  "vt_candidates": [
+    "concept-explainer",
+    "hero-map",
+    "checklist-flow"
+  ],
+  "vt_markers": [
+    "\\bconcept-ring\\b"
+  ],
+  "wg_candidates": [
+    "wg-10",
+    "wg-13",
+    "wg-15"
+  ],
+  "wg_markers": [
+    "wg-10-",
+    "wg-13-",
+    "wg-15-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/01_beginner_passkey_login.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

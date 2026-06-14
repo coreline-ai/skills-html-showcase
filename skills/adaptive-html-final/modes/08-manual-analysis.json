@@ -1,0 +1,100 @@
+{
+  "id": "manual_analysis",
+  "priority": 8,
+  "label": "Manual Analysis",
+  "layout_class": "layout-manual",
+  "layout_file": "assets/layouts/manual-analysis.html",
+  "recipe": "recipes/manual-analysis.prompt.md",
+  "triggers": [
+    "매뉴얼 분석",
+    "사용 설명서 제작",
+    "운영 매뉴얼",
+    "절차서",
+    "트러블슈팅",
+    "제품 가이드"
+  ],
+  "required_blocks": [
+    "verdict",
+    "reader_toc",
+    "source_version",
+    "role_router",
+    "first_success",
+    "prerequisites_safety",
+    "task_recipes",
+    "reference_extract",
+    "decision_guide",
+    "troubleshooting",
+    "operations_runbook",
+    "manual_audit",
+    "next_actions"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{VERDICT}}",
+    "{{READER_TOC}}",
+    "{{SOURCE_VERSION}}",
+    "{{ROLE_ROUTER}}",
+    "{{FIRST_SUCCESS}}",
+    "{{PREREQUISITES_SAFETY}}",
+    "{{TASK_RECIPES}}",
+    "{{REFERENCE_EXTRACT}}",
+    "{{DECISION_GUIDE}}",
+    "{{TROUBLESHOOTING}}",
+    "{{OPERATIONS_RUNBOOK}}",
+    "{{MANUAL_AUDIT}}",
+    "{{NEXT_ACTIONS}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "hero-map",
+  "vt_candidates": [
+    "hero-map",
+    "checklist-flow",
+    "quality-gate",
+    "file-tour",
+    "process-swimlane",
+    "decision-tree",
+    "risk-matrix"
+  ],
+  "vt_markers": [
+    "\\bhm-grid\\b"
+  ],
+  "wg_candidates": [
+    "wg-04",
+    "wg-13",
+    "wg-16",
+    "wg-18",
+    "wg-11",
+    "wg-14"
+  ],
+  "wg_markers": [
+    "wg-04-",
+    "wg-13-",
+    "wg-16-",
+    "wg-18-",
+    "wg-11-",
+    "wg-14-"
+  ],
+  "toc_contract": {
+    "rule": "always",
+    "required_class": "manual-reader-toc",
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/16_manual_product_runbook.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": [
+    "manual_analysis_contract_gate"
+  ]
+}

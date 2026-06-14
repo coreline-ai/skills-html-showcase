@@ -1,0 +1,95 @@
+{
+  "id": "youtube_analysis",
+  "priority": 7,
+  "label": "Youtube Analysis",
+  "layout_class": "layout-youtube",
+  "layout_file": "assets/layouts/youtube-analysis.html",
+  "recipe": "recipes/youtube-analysis.prompt.md",
+  "triggers": [
+    "YouTube URL",
+    "youtu.be",
+    "Shorts",
+    "영상 요약",
+    "트랜스크립트/댓글/챕터 분석",
+    "콘텐츠 갭"
+  ],
+  "required_blocks": [
+    "verdict",
+    "question_toc",
+    "source_trust",
+    "watching_decision",
+    "video_evidence_map",
+    "chapter_retention",
+    "comment_signals",
+    "opportunity_matrix",
+    "claim_risk",
+    "video_blueprint",
+    "reuse_pack",
+    "next_actions"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{VERDICT}}",
+    "{{QUESTION_TOC}}",
+    "{{SOURCE_TRUST}}",
+    "{{WATCHING_DECISION}}",
+    "{{VIDEO_EVIDENCE_MAP}}",
+    "{{CHAPTER_RETENTION}}",
+    "{{COMMENT_SIGNALS}}",
+    "{{OPPORTUNITY_MATRIX}}",
+    "{{CLAIM_RISK}}",
+    "{{VIDEO_BLUEPRINT}}",
+    "{{REUSE_PACK}}",
+    "{{NEXT_ACTIONS}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "timeline",
+  "vt_candidates": [
+    "timeline",
+    "risk-matrix",
+    "quality-gate",
+    "decision-tree",
+    "comparison-cards",
+    "checklist-flow"
+  ],
+  "vt_markers": [
+    "\\btl-item\\b"
+  ],
+  "wg_candidates": [
+    "wg-11",
+    "wg-13",
+    "wg-14",
+    "wg-16",
+    "wg-18"
+  ],
+  "wg_markers": [
+    "wg-11-",
+    "wg-13-",
+    "wg-14-",
+    "wg-16-",
+    "wg-18-"
+  ],
+  "toc_contract": {
+    "rule": "always",
+    "required_class": "youtube-question-toc",
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/15_youtube_vibecoding_gap.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": [
+    "youtube_analysis_contract_gate"
+  ]
+}

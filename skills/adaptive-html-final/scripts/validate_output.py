@@ -676,110 +676,28 @@ def profile_vt_required_gate(text: str, profile: str | None) -> list:
              'detail': 'diagram/auto 프로파일 모드 페이지에 vt- 템플릿이 없다. §0.6 해당 모드 행의 1순위 vt-템플릿을 최소 1회 삽입한다.'}]
 
 
-MODE_TEMPLATE_CONTRACTS = {
-    'layout-beginner': {
-        'mode': 'beginner_html',
-        'primary_vt': 'concept-explainer',
-        'vt_markers': (r'\bconcept-ring\b',),
-        'recommended_wg': ('wg-10', 'wg-13', 'wg-15'),
-    },
-    'layout-expert': {
-        'mode': 'expert_html',
-        'primary_vt': 'risk-matrix',
-        'vt_markers': (r'\brm-grid\b',),
-        'recommended_wg': ('wg-03', 'wg-04', 'wg-11', 'wg-12', 'wg-16', 'wg-17'),
-    },
-    'layout-article': {
-        'mode': 'article_html',
-        'primary_vt': 'decision-tree',
-        'vt_markers': (r'\bdt-q\b', r'\bdt-options\b'),
-        'recommended_wg': ('wg-02', 'wg-04', 'wg-07', 'wg-09', 'wg-10', 'wg-13', 'wg-14'),
-    },
-    'layout-education': {
-        'mode': 'education_html',
-        'primary_vt': 'timeline',
-        'vt_markers': (r'\btl-item\b',),
-        'recommended_wg': ('wg-06', 'wg-07', 'wg-08', 'wg-13', 'wg-14', 'wg-15', 'wg-20'),
-    },
-    'layout-blog': {
-        'mode': 'blog_writer',
-        'primary_vt': 'timeline',
-        'vt_markers': (r'\btl-item\b',),
-        'recommended_wg': ('wg-17',),
-    },
-    'layout-seo': {
-        'mode': 'seo_dashboard',
-        'primary_vt': 'card-grid',
-        'vt_markers': (r'\bcg-grid\b',),
-        'recommended_wg': ('wg-11',),
-    },
-    'layout-platform': {
-        'mode': 'platform_blog',
-        'primary_vt': 'card-grid',
-        'vt_markers': (r'\bcg-grid\b',),
-        'recommended_wg': ('wg-02',),
-    },
-    'layout-audit': {
-        'mode': 'skill_audit',
-        'primary_vt': 'quality-gate',
-        'vt_markers': (r'\bqg-grid\b',),
-        'recommended_wg': ('wg-03', 'wg-11', 'wg-17'),
-    },
-    'layout-reference': {
-        'mode': 'reference_html',
-        'primary_vt': 'file-tour',
-        'vt_markers': (r'\bft-card\b',),
-        'recommended_wg': ('wg-04', 'wg-05', 'wg-06', 'wg-14', 'wg-19', 'wg-20'),
-    },
-    'layout-compare': {
-        'mode': 'comparison_html',
-        'primary_vt': 'comparison-cards',
-        'vt_markers': (r'\bcmp-card\b',),
-        'recommended_wg': ('wg-01', 'wg-02'),
-    },
-    'layout-case': {
-        'mode': 'case_study_html',
-        'primary_vt': 'incident-summary',
-        'vt_markers': (r'\binc-head\b', r'\binc-card\b'),
-        'recommended_wg': ('wg-12',),
-    },
-    'layout-landing': {
-        'mode': 'landing_brief_html',
-        'primary_vt': 'hero-map',
-        'vt_markers': (r'\bhm-grid\b',),
-        'recommended_wg': ('wg-02', 'wg-05', 'wg-08', 'wg-09', 'wg-16'),
-    },
-    'layout-checklist': {
-        'mode': 'checklist_playbook',
-        'primary_vt': 'checklist-flow',
-        'vt_markers': (r'\bcf-item\b',),
-        'recommended_wg': ('wg-11', 'wg-13', 'wg-16', 'wg-18', 'wg-19'),
-    },
-    'layout-github': {
-        'mode': 'github_analysis',
-        'primary_vt': 'hero-map',
-        'vt_markers': (r'\bhm-grid\b',),
-        'recommended_wg': ('wg-11', 'wg-04', 'wg-14', 'wg-16', 'wg-17', 'wg-18'),
-    },
-    'layout-youtube': {
-        'mode': 'youtube_analysis',
-        'primary_vt': 'timeline',
-        'vt_markers': (r'\btl-item\b',),
-        'recommended_wg': ('wg-11', 'wg-13', 'wg-14', 'wg-16', 'wg-18'),
-    },
-    'layout-manual': {
-        'mode': 'manual_analysis',
-        'primary_vt': 'hero-map',
-        'vt_markers': (r'\bhm-grid\b',),
-        'recommended_wg': ('wg-04', 'wg-13', 'wg-16', 'wg-18', 'wg-11', 'wg-14'),
-    },
-    'layout-github-feature': {
-        'mode': 'github_feature_usage',
-        'primary_vt': 'hero-map',
-        'vt_markers': (r'\bhm-grid\b',),
-        'recommended_wg': ('wg-14', 'wg-04', 'wg-16', 'wg-11', 'wg-08'),
-    },
-}
+def _build_mode_template_contracts_from_registry():
+    """B-full: MODE_TEMPLATE_CONTRACTS is sourced from the mode registry
+    (modes/NN-<mode>.json) — the registry is now the executable single source of
+    truth for mode decision-table data. Shape is identical to the former hardcoded
+    literal (vt_markers = regex tokens; registry wg_candidates -> recommended_wg).
+    The governance suite proves registry-built == the pre-migration literal and
+    that examples validate byte-identically, so this swap is regression-free.
+    """
+    skill_dir = Path(__file__).resolve().parent.parent
+    contracts = {}
+    for mp in sorted((skill_dir / 'modes').glob('*.json')):
+        m = json.loads(mp.read_text(encoding='utf-8'))
+        contracts[m['layout_class']] = {
+            'mode': m['id'],
+            'primary_vt': m['primary_vt'],
+            'vt_markers': tuple(m['vt_markers']),
+            'recommended_wg': tuple(m['wg_candidates']),
+        }
+    return contracts
+
+
+MODE_TEMPLATE_CONTRACTS = _build_mode_template_contracts_from_registry()
 
 
 def _mode_contract_for_main(text: str) -> tuple[str | None, dict | None]:

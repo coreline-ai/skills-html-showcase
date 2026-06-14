@@ -1,0 +1,67 @@
+{
+  "id": "comparison_html",
+  "priority": 14,
+  "label": "Comparison",
+  "layout_class": "layout-compare",
+  "layout_file": "assets/layouts/comparison-matrix.html",
+  "recipe": "recipes/comparison.prompt.md",
+  "triggers": [
+    "비교",
+    "장단점",
+    "선택 기준"
+  ],
+  "required_blocks": [
+    "decision_context",
+    "matrix",
+    "winners",
+    "tradeoffs",
+    "recommendation"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{DECISION_CONTEXT}}",
+    "{{MATRIX}}",
+    "{{WINNERS}}",
+    "{{TRADEOFFS}}",
+    "{{RECOMMENDATION}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "comparison-cards",
+  "vt_candidates": [
+    "comparison-cards",
+    "decision-tree",
+    "risk-matrix"
+  ],
+  "vt_markers": [
+    "\\bcmp-card\\b"
+  ],
+  "wg_candidates": [
+    "wg-01",
+    "wg-02"
+  ],
+  "wg_markers": [
+    "wg-01-",
+    "wg-02-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/10_comparison_message_queue.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

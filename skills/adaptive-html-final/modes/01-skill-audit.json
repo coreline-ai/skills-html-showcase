@@ -1,0 +1,72 @@
+{
+  "id": "skill_audit",
+  "priority": 1,
+  "label": "Skill Audit",
+  "layout_class": "layout-audit",
+  "layout_file": "assets/layouts/skill-audit-report.html",
+  "recipe": "recipes/audit.prompt.md",
+  "triggers": [
+    "스킬 분석",
+    "SKILL.md 개선",
+    ".skill 통합",
+    "한 줄 분석"
+  ],
+  "required_blocks": [
+    "purpose",
+    "structure_score",
+    "line_audit",
+    "improvements",
+    "final_skill"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{PURPOSE}}",
+    "{{STRUCTURE_SCORE}}",
+    "{{LINE_AUDIT}}",
+    "{{IMPROVEMENTS}}",
+    "{{FINAL_SKILL}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "quality-gate",
+  "vt_candidates": [
+    "quality-gate",
+    "file-tour",
+    "prompt-tuner",
+    "implementation-plan",
+    "soft-workflow-map"
+  ],
+  "vt_markers": [
+    "\\bqg-grid\\b"
+  ],
+  "wg_candidates": [
+    "wg-03",
+    "wg-11",
+    "wg-17"
+  ],
+  "wg_markers": [
+    "wg-03-",
+    "wg-11-",
+    "wg-17-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/08_skill_audit_codereview_bot.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

@@ -1,0 +1,71 @@
+{
+  "id": "blog_writer",
+  "priority": 11,
+  "label": "Blog Writer",
+  "layout_class": "layout-blog",
+  "layout_file": "assets/layouts/personal-blog-essay.html",
+  "recipe": "recipes/blog.prompt.md",
+  "triggers": [
+    "블로그 글",
+    "포스팅",
+    "경험담",
+    "내 생각"
+  ],
+  "required_blocks": [
+    "hook",
+    "personal_note",
+    "why_now",
+    "my_view",
+    "example",
+    "how_to_start",
+    "closing_thought",
+    "soft_cta"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{HOOK}}",
+    "{{META}}",
+    "{{PERSONAL_NOTE}}",
+    "{{WHY_NOW}}",
+    "{{MY_VIEW}}",
+    "{{EXAMPLE}}",
+    "{{HOW_TO_START}}",
+    "{{CLOSING_THOUGHT}}",
+    "{{SOFT_CTA}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "timeline",
+  "vt_candidates": [
+    "timeline",
+    "weekly-status",
+    "comparison-cards"
+  ],
+  "vt_markers": [
+    "\\btl-item\\b"
+  ],
+  "wg_candidates": [
+    "wg-17"
+  ],
+  "wg_markers": [
+    "wg-17-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/05_blog_deepwork_4day_retro.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}

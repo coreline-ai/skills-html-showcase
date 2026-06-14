@@ -1,0 +1,95 @@
+{
+  "id": "github_analysis",
+  "priority": 5,
+  "label": "Github Analysis",
+  "layout_class": "layout-github",
+  "layout_file": "assets/layouts/github-analysis.html",
+  "recipe": "recipes/github-analysis.prompt.md",
+  "triggers": [
+    "GitHub 저장소 URL",
+    "owner/repo",
+    "README/Issues/Releases/License 분석"
+  ],
+  "required_blocks": [
+    "generated_row",
+    "verdict",
+    "question_toc",
+    "repo_identity",
+    "quickstart_readiness",
+    "repo_health",
+    "code_tour",
+    "releases_and_roadmap",
+    "security_and_license",
+    "risk_matrix",
+    "final_decision",
+    "next_actions"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{GENERATED_ROW}}",
+    "{{VERDICT}}",
+    "{{QUESTION_TOC}}",
+    "{{REPO_IDENTITY}}",
+    "{{QUICKSTART_READINESS}}",
+    "{{REPO_HEALTH}}",
+    "{{CODE_TOUR}}",
+    "{{RELEASES_AND_ROADMAP}}",
+    "{{SECURITY_AND_LICENSE}}",
+    "{{RISK_MATRIX}}",
+    "{{FINAL_DECISION}}",
+    "{{NEXT_ACTIONS}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "hero-map",
+  "vt_candidates": [
+    "hero-map",
+    "quality-gate",
+    "file-tour",
+    "risk-matrix",
+    "timeline",
+    "decision-tree",
+    "checklist-flow"
+  ],
+  "vt_markers": [
+    "\\bhm-grid\\b"
+  ],
+  "wg_candidates": [
+    "wg-11",
+    "wg-04",
+    "wg-14",
+    "wg-16",
+    "wg-17",
+    "wg-18"
+  ],
+  "wg_markers": [
+    "wg-11-",
+    "wg-04-",
+    "wg-14-",
+    "wg-16-",
+    "wg-17-",
+    "wg-18-"
+  ],
+  "toc_contract": {
+    "rule": "always",
+    "required_class": "github-question-toc",
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/14_github_analysis_fastapi_starter.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": [
+    "github_analysis_visual_contract_gate"
+  ]
+}

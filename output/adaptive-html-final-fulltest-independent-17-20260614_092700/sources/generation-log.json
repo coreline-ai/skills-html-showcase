@@ -1,0 +1,231 @@
+[
+  {
+    "mode": "skill_audit",
+    "file": "01_skill_audit_브라우저-qa-에이전트-스킬-감사.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 1",
+      "OK"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (1 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "platform_blog",
+    "file": "02_platform_blog_ai-기능-릴리즈-노트의-4대-플랫폼-전환.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 2",
+      "OK"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (2 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "seo_dashboard",
+    "file": "03_seo_dashboard_제로트러스트-접속-가이드-seo-대시보드.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 3",
+      "OK"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (3 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "education_html",
+    "file": "04_education_html_kubernetes-리소스-한도-워크숍.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 4",
+      "OK"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (4 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "github_analysis",
+    "file": "05_github_analysis_coreline-ai-mcp-audit-proxy-도입-실사.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 5",
+      "OK"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (5 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "github_feature_usage",
+    "file": "06_github_feature_usage_coreline-ai-policy-snapshot-기능-사용-가이드.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 6",
+      "OK"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (6 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "youtube_analysis",
+    "file": "07_youtube_analysis_ai-회의-액션-자동화-영상-분석.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 7",
+      "OK"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (7 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "manual_analysis",
+    "file": "08_manual_analysis_csv-postgresql-이관-운영-매뉴얼-분석.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 8",
+      "OK"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (8 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "expert_html",
+    "file": "09_expert_html_멀티에이전트-html-품질-게이트-아키텍처.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 9",
+      "OK"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (9 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "article_html",
+    "file": "10_article_html_개인-자동화가-팀-운영이-되는-순간.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 10",
+      "OK",
+      "WARN {'type': 'closing_summary_recommended', 'detail': '마지막 정리 섹션(.try Next Actions) 권고 — 마무리 일관성(권고, 강제 아님).', 'page': 'pages/10_article_html_개인-자동화가-팀-운영이-되는-순간.html'}"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (10 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "blog_writer",
+    "file": "11_blog_writer_알림을-4일-동안-절반으로-줄인-회고.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 11",
+      "OK",
+      "WARN {'type': 'closing_summary_recommended', 'detail': '마지막 정리 섹션(.try Next Actions) 권고 — 마무리 일관성(권고, 강제 아님).', 'page': 'pages/10_article_html_개인-자동화가-팀-운영이-되는-순간.html'}"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (11 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "beginner_html",
+    "file": "12_beginner_html_oauth-동의-화면-처음-이해하기.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 12",
+      "OK",
+      "WARN {'type': 'closing_summary_recommended', 'detail': '마지막 정리 섹션(.try Next Actions) 권고 — 마무리 일관성(권고, 강제 아님).', 'page': 'pages/10_article_html_개인-자동화가-팀-운영이-되는-순간.html'}"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (12 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "reference_html",
+    "file": "13_reference_html_정규식-이름-그룹-실무-레퍼런스.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 13",
+      "OK",
+      "WARN {'type': 'closing_summary_recommended', 'detail': '마지막 정리 섹션(.try Next Actions) 권고 — 마무리 일관성(권고, 강제 아님).', 'page': 'pages/10_article_html_개인-자동화가-팀-운영이-되는-순간.html'}"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (13 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "comparison_html",
+    "file": "14_comparison_html_메시지-큐-선택-기준-비교.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 14",
+      "OK",
+      "WARN {'type': 'closing_summary_recommended', 'detail': '마지막 정리 섹션(.try Next Actions) 권고 — 마무리 일관성(권고, 강제 아님).', 'page': 'pages/10_article_html_개인-자동화가-팀-운영이-되는-순간.html'}"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (14 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "case_study_html",
+    "file": "15_case_study_html_검색-인덱스-지연-장애-회고.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 15",
+      "OK",
+      "WARN {'type': 'closing_summary_recommended', 'detail': '마지막 정리 섹션(.try Next Actions) 권고 — 마무리 일관성(권고, 강제 아님).', 'page': 'pages/10_article_html_개인-자동화가-팀-운영이-되는-순간.html'}"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (15 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "landing_brief_html",
+    "file": "16_landing_brief_html_runbookos-랜딩-브리프.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 16",
+      "OK",
+      "WARN {'type': 'closing_summary_recommended', 'detail': '마지막 정리 섹션(.try Next Actions) 권고 — 마무리 일관성(권고, 강제 아님).', 'page': 'pages/10_article_html_개인-자동화가-팀-운영이-되는-순간.html'}"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (16 HTML content file(s))"
+    ]
+  },
+  {
+    "mode": "checklist_playbook",
+    "file": "17_checklist_playbook_pii-로그-차단-릴리즈-플레이북.html",
+    "validate_rc": 0,
+    "quality_rc": 0,
+    "validate_tail": [
+      "HTML files: 17",
+      "OK",
+      "WARN {'type': 'closing_summary_recommended', 'detail': '마지막 정리 섹션(.try Next Actions) 권고 — 마무리 일관성(권고, 강제 아님).', 'page': 'pages/10_article_html_개인-자동화가-팀-운영이-되는-순간.html'}"
+    ],
+    "quality_tail": [
+      "OK — quality contract guard passed (17 HTML content file(s))"
+    ]
+  }
+]

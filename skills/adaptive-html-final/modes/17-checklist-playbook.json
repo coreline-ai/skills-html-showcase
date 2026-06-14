@@ -1,0 +1,73 @@
+{
+  "id": "checklist_playbook",
+  "priority": 17,
+  "label": "Checklist Playbook",
+  "layout_class": "layout-checklist",
+  "layout_file": "assets/layouts/checklist-playbook.html",
+  "recipe": "recipes/checklist.prompt.md",
+  "triggers": [
+    "체크리스트",
+    "운영 절차",
+    "플레이북"
+  ],
+  "required_blocks": [
+    "use_case",
+    "check_grid",
+    "failure_modes",
+    "done_criteria"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{USE_CASE}}",
+    "{{CHECK_GRID}}",
+    "{{FAILURE_MODES}}",
+    "{{DONE_CRITERIA}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "checklist-flow",
+  "vt_candidates": [
+    "checklist-flow",
+    "quality-gate",
+    "process-swimlane",
+    "implementation-plan",
+    "triage-board"
+  ],
+  "vt_markers": [
+    "\\bcf-item\\b"
+  ],
+  "wg_candidates": [
+    "wg-11",
+    "wg-13",
+    "wg-16",
+    "wg-18",
+    "wg-19"
+  ],
+  "wg_markers": [
+    "wg-11-",
+    "wg-13-",
+    "wg-16-",
+    "wg-18-",
+    "wg-19-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/13_checklist_data_migration.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": []
+}
