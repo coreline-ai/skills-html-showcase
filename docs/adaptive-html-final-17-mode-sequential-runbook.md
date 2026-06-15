@@ -1,7 +1,7 @@
 # adaptive-html-final 17-mode sequential benchmark runbook
 
 작성 일시: `2026-06-14 KST`
-대상 스킬: `skills/adaptive-html-final` v5.10.4+
+대상 스킬: `skills/adaptive-html-final` v5.10.5+
 
 이 문서는 17개 공식 모드를 **서로 독립된 신규 주제**로 생성할 때 따라야 하는 순차 실행 절차다. 목표는 빠른 대량 생성이 아니라, 각 모드가 공식 layout/vt/wg/body-icon 자산을 실제로 읽고 적용했다는 증거를 남기는 것이다.
 

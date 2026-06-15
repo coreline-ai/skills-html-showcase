@@ -1,5 +1,15 @@
 # Changelog — adaptive-html-final
 
+## v5.10.5 (2026-06-15) — 접근성·스코프 하드닝: forced-colors 상태 단서 + .score 스코프 + vt 장식 글리프 aria + 루브릭↔스키마 연결
+
+코어 CSS 5종 무수정(해시 `7e151665` 불변)으로 접근성·스코프 결함만 좁게 닫은 패치. 변경은 조건부 자산 3종 + vt-10 템플릿 + 문서로 한정한다.
+
+- **A1 (theme-dark.css·widgets.css, 조건부)**: forced-colors(Windows 고대비)에서 배경색만으로 선택/체크 상태를 전하던 컨트롤이 상태를 잃던 문제를 `@media(forced-colors:active)`에서 시스템색 `Highlight` outline 단서로 복원. 대상은 테마바 선택 라벨과 wg-02/06/07/12/19/20 선택·체크 상태 및 wg-06 primary. 미디어 가드라 일반 렌더(코어/평상시) 시각 영향 0.
+- **A2 (visual-html.css, 조건부)**: 전역 누수 위험이 있던 비스코프 `.score`를 `.tuner .score`로 좁힘(vt-20 prompt-tuner 전용 — 실렌더 시각 무변).
+- **A3 (장식 글리프 aria-hidden — vt-10 화살표 + vt-05 체크표)**: flowchart 장식 화살표 `→` 4종(10-flowchart 템플릿+카탈로그)과 checklist-flow 장식 체크표 `✓`/`·`(05 템플릿+예제 13·16+카탈로그)에 `aria-hidden="true"` 부여 — 상태는 동반 `cf-state`(PASS/진행 중/대기) 텍스트가 전달하므로 글리프는 순수 장식. 21-soft-workflow-map 화살표는 이미 부모 `aria-hidden` 상속이라 불변.
+- **A4 (references/eval-rubric.md)**: `schemas/quality-report.schema.json` 고아 해소 — 루브릭 점수를 기계 판독 결과로 남기는 스키마 연결(필드 매핑) 1절 추가.
+- **파급**: 조건부 자산만 변경 → **코어 해시 `7e151665` 불변**. examples 18종 재인라인·`sources/css-integrity.json`·source manifest·`.skill` 재패키징. 거버넌스 **162** 유지.
+
 ## v5.10.4 (2026-06-14) — 마이크로 레이아웃 정본 계약(M1·M4·M7·M10) + 작성 프로토콜
 
 실산출물(2026-06-14 Anthropic 6월 뉴스)이 `validate/quality/completion`을 전부 통과했는데도 사용자 눈검수에서 남은 마이크로 레이아웃 결함을, "검증 OK ≠ 품질 OK" 사례로 취급해 정본에 반영했다. 핵심 원칙: output 산출물은 독립 결과물이며, 여기서 발견한 결함은 **명시적 승격**으로만 스킬에 들어온다.

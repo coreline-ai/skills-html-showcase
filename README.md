@@ -9,7 +9,7 @@
 # 🎨 Adaptive HTML Final
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
-[![version](https://img.shields.io/badge/version-5.10.4-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-5.10.5-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
 [![modes](https://img.shields.io/badge/modes-17-2a7d5a)](#-17개-모드)
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
 [![themes](https://img.shields.io/badge/themes-8--theme-111827)](#-8-테마-시스템)
@@ -179,7 +179,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 
 ## 🖼️ 예제 (스킬 번들)
 
-이 저장소가 소개하는 예제는 **스킬에 실제 포함된 현행 17모드 참조 예제**, 단 하나입니다 — [`skills/adaptive-html-final/examples/`](skills/adaptive-html-final/examples). v5.10.4 코어 자산으로 인라인되어 **8-테마·무 JS·검증 게이트(162/162)** 를 모두 통과한 자기완결 HTML이며, 각 모드의 정본 구조를 그대로 보여줍니다.
+이 저장소가 소개하는 예제는 **스킬에 실제 포함된 현행 17모드 참조 예제**, 단 하나입니다 — [`skills/adaptive-html-final/examples/`](skills/adaptive-html-final/examples). v5.10.5 코어 자산으로 인라인되어 **8-테마·무 JS·검증 게이트(162/162)** 를 모두 통과한 자기완결 HTML이며, 각 모드의 정본 구조를 그대로 보여줍니다.
 
 **▶ 예제 인덱스:** [`examples/index.html`](skills/adaptive-html-final/examples/index.html) · [라이브 열기](https://coreline-ai.github.io/skills-html-showcase/skills/adaptive-html-final/examples/index.html)
 
@@ -250,7 +250,7 @@ theme-dark.css         CSS-only 8-테마 토큰 오버라이드 + 라디오 스�
 skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트 (단일 출처)
-│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.4 · 17모드)
+│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.5 · 17모드)
 │   ├── assets/                        # base.html · CSS 12종 · 위젯/도식/패턴/테마 자산 · 17개 레이아웃 골격
 │   ├── modes/         (17)            # 모드 결정표 Registry (validator가 직접 읽는 실행 정본)
 │   ├── references/    (19)            # 모드/레이아웃/글쓰기/SEO/감사/GitHub·YouTube·Manual·기능가이드 규칙
@@ -261,14 +261,14 @@ skills-html-showcase/
 │   ├── tests/                         # 거버넌스 게이트 (162/162) + 레이아웃/접근성 체크리스트
 │   ├── visual-templates/ (7)          # 8000×6000 SVG 템플릿
 │   ├── galleries/                     # body-icon / soft-shape 카탈로그
-│   ├── examples/                      # v5.10.4 현행 17모드 참조 예제 + index + sources 스냅샷
+│   ├── examples/                      # v5.10.5 현행 17모드 참조 예제 + index + sources 스냅샷
 │   └── template-catalog/             # final_20260604 기반 템플릿 HTML 정본 4종
 ├── skills/html-exporter/             # 재사용 export 스킬 (Playwright → PDF/PNG/WebP)
 ├── output/                            # 날짜별 산출물 아카이브 (독립 결과물 — 스킬 입력 아님)
 │   └── YYYY-MM-DD/<산출물>/            # output/README.md 의 날짜 인덱스 참조
 ├── docs/
 │   ├── screenshots/                   # 본 README용 쇼케이스 썸네일
-│   ├── adaptive-html-final-template-authoring-protocol.md  # v5.10.4 작성 프로토콜
+│   ├── adaptive-html-final-template-authoring-protocol.md  # v5.10.5 작성 프로토콜
 │   └── archive/                       # v4~v5.0 시점 고정 리뷰/분석/계획 기록 (SUPERSEDED)
 ├── dev-plan/                          # 단계별 구현 계획 + release-approval 기록
 ├── AGENTS.md                          # 크로스-에이전트 결정론 진입점
@@ -303,7 +303,7 @@ skills-html-showcase/
 | manifest ↔ 결정표 ↔ Registry | 6자 정합(`check_mode_registry_sync.py`) |
 
 > [!NOTE]
-> 🟢 **게이트 현황(v5.10.4)**: 거버넌스 `test_governance_gates.py` **162 / 162 통과**. 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합·버전 표면·`.skill` byte-match)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
+> 🟢 **게이트 현황(v5.10.5)**: 거버넌스 `test_governance_gates.py` **162 / 162 통과**. 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합·버전 표면·`.skill` byte-match)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
 
 ```bash
 # 현행 17모드 레퍼런스 검증 (저장소 루트에서)
@@ -345,7 +345,7 @@ python3 skills/adaptive-html-final/scripts/render_visual_svg.py brief.json outpu
 
 ```bash
 python3 -m http.server 8080
-# 스킬 번들 17모드 참조 예제 (현행 v5.10.4)
+# 스킬 번들 17모드 참조 예제 (현행 v5.10.5)
 # → http://localhost:8080/skills/adaptive-html-final/examples/index.html
 ```
 
@@ -371,10 +371,10 @@ npm run export:output -- output/<생성한_산출물_디렉터리> --clean
 
 ## 🗂️ 버전 히스토리
 
-**현행 `v5.10.4`** — 마이크로 레이아웃 정본 계약(M1·M4·M7·M10) + 작성 프로토콜. 실산출물이 검증을 통과하고도 눈검수에서 남은 결함(번호 pill 줄바꿈·카드 간격·인쇄 progress·footer 정렬)을 정본 CSS로, 접착·단조 rail(M2·M3·M6·M9)은 [작성 프로토콜](docs/adaptive-html-final-template-authoring-protocol.md)로 닫음. 17모드 benchmark/micro-layout completion 게이트까지 포함해 거버넌스 **162/162**.
+**현행 `v5.10.5`** — 접근성·스코프 하드닝. forced-colors(고대비)에서 배경색만으로 상태를 전하던 테마바·wg 선택/체크 컨트롤에 시스템색 `Highlight` outline 단서를 더하고, `visual-html.css`의 비스코프 `.score`를 `.tuner .score`로 좁히고, vt 장식 글리프(vt-10 화살표·체크리스트 체크표)에 `aria-hidden`을, eval-rubric↔quality-report 스키마 연결을 추가. 조건부 자산만 손대 **코어 해시 `7e151665` 불변**·examples 18종 재인라인. 거버넌스 **162/162**.
 
 <details>
-<summary><b>전체 버전 진화 펼치기 (v4.0 → v5.10.4)</b></summary>
+<summary><b>전체 버전 진화 펼치기 (v4.0 → v5.10.5)</b></summary>
 
 <br>
 
@@ -397,6 +397,7 @@ npm run export:output -- output/<생성한_산출물_디렉터리> --clean
 | `v5.10.2` | `layout-github-feature` 단락 폭 회귀 수정 + R5 게이트 정밀화 |
 | `v5.10.3` | 다크 대비·인쇄 가독·전 모드 page-wide 폭 정본 + 자기방어 게이트 6종 + 버전 표면/.skill byte-match + render-audit 완료 증빙 + 승인 없는 버전 bump 차단 |
 | `v5.10.4` | **마이크로 레이아웃 정본 계약(M1·M4·M7·M10)** + 작성 프로토콜(M2·M3·M6·M9 정본 컴포넌트 규칙). 코어 해시 갱신·examples 재인라인·.skill 재패키징·17모드 benchmark/micro-layout completion 게이트. 거버넌스 162/162 |
+| `v5.10.5` | **접근성·스코프 하드닝** — forced-colors 상태 단서(테마바·wg 선택/체크) + `.score`→`.tuner .score` 스코프 + vt 장식 글리프 `aria-hidden` + eval-rubric↔quality-report 스키마 연결. 조건부 자산만 변경·코어 해시 불변·examples 18종 재인라인. 거버넌스 162/162 |
 
 </details>
 
@@ -422,5 +423,5 @@ npm run export:output -- output/<생성한_산출물_디렉터리> --clean
 별도 라이선스가 지정되지 않았습니다. 사용 전 저장소 소유자(`coreline-ai`)에게 확인하세요.
 
 <div align="center">
-<sub>생성 도구: <code>adaptive-html-final</code> v5.10.4 · 17-mode · 8-theme · 3-profile editorial HTML engine · 무 JS · governance 162/162</sub>
+<sub>생성 도구: <code>adaptive-html-final</code> v5.10.5 · 17-mode · 8-theme · 3-profile editorial HTML engine · 무 JS · governance 162/162</sub>
 </div>

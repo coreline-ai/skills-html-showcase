@@ -27,7 +27,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.10.4 · "마이크로 레이아웃 정본(M1·M4·M7·M10: 번호 pill nowrap·카드 rhythm·인쇄 progress 숨김·footer 중앙정렬) + 작성 프로토콜" (이전 5.10.3 — 다크 대비·인쇄 가독·폭 정본 + 자기방어 게이트 6종)
+> Version 5.10.5 · "접근성·스코프 하드닝 — forced-colors 상태 단서(테마바·wg 선택/체크)·`.score`→`.tuner .score` 스코프·vt 장식 글리프 aria·루브릭↔품질리포트 스키마 연결" (이전 5.10.4 — 마이크로 레이아웃 정본 + 작성 프로토콜)
 
 ## 0. Identity
 

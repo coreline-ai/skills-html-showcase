@@ -135,6 +135,6 @@ PY
 
 ## 9. 승인 릴리스 결과 기록 (2026-06-14)
 
-- `dev-plan/release-approval-v5.10.4.md`가 존재하면 v5.10.4 승격은 승인된 릴리스로 취급한다.
-- v5.10.4 승격 후 현행 정본 버전은 `manifest.json`의 `5.10.4`이며, README/AGENTS/Guide/SKILL/manifest/examples/source snapshot/`.skill` 패키지 표면이 이 버전과 일치해야 한다.
+- `dev-plan/release-approval-v5.10.5.md`가 존재하면 v5.10.5 승격은 승인된 릴리스로 취급한다.
+- v5.10.5 승격 후 현행 정본 버전은 `manifest.json`의 `5.10.5`이며, README/AGENTS/Guide/SKILL/manifest/examples/source snapshot/`.skill` 패키지 표면이 이 버전과 일치해야 한다.
 - 과거 CHANGELOG·감사 문서·게이트 도입 버전 마커의 `5.10.3` 표기는 역사 기록으로 보존하되, "현행"으로 읽히는 문구에는 쓰지 않는다.

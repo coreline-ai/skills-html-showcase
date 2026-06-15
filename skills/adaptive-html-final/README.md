@@ -1,8 +1,8 @@
-# Adaptive HTML Final (v5.10.4)
+# Adaptive HTML Final (v5.10.5)
 
 `adaptive-html-learning-ultimate`(13모드 라우터·레이아웃·평가체계)에 GitHub 실사 분석, GitHub 기능·사용법·도입 가이드, YouTube 분석, Manual 분석 모드를 더한 17모드 체계와 `adaptive-html-blog-writer`(블로그·SEO·플랫폼 상세 규칙)를 하나로 합친 **최종 통합 한국어 HTML 콘텐츠 생성 스킬**입니다.
 
-> **v5.10.4 현재 요약**
+> **v5.10.5 현재 요약**
 > - 17번째 모드 `github_feature_usage`: GitHub 저장소를 "무엇을 해주나·어떻게 쓰나·어디에 맞나" 관점의 기능·사용법·도입 가이드 HTML로 변환. 실제 화면(스크린샷)·기능 지도·기술 스택·아키텍처·디렉터리 구조 해부를 포함한다.
 > - 15번째 모드 `youtube_analysis`: YouTube URL/자막/댓글 발췌를 Video Evidence Map, FACT/INFERENCE/UNKNOWN, 댓글 신호, Claim Risk, 재사용 전략 중심의 HTML 분석 리포트로 변환.
 > - 16번째 모드 `manual_analysis`: 제품/운영 매뉴얼을 Source & Version Snapshot, Reader Role Router, First Success Path, Prerequisites/Safety, Troubleshooting, Operations Runbook 중심의 역할별 실행 매뉴얼로 재구성.

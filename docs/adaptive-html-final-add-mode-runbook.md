@@ -1,6 +1,6 @@
 # adaptive-html-final 신규 모드 추가 Runbook
 
-> 목적: Registry 모듈화(B-full) 이후 신규 모드(18번째~)를 **드리프트 없이** 추가하는 절차다. 모드 결정표 데이터는 `skills/adaptive-html-final/modes/NN-<mode>.json` **단일 출처**이며, `validate_output.py`가 이를 읽는다(`_build_mode_template_contracts_from_registry`). 버전은 요청 시에만 올린다(기본 5.10.4 유지).
+> 목적: Registry 모듈화(B-full) 이후 신규 모드(18번째~)를 **드리프트 없이** 추가하는 절차다. 모드 결정표 데이터는 `skills/adaptive-html-final/modes/NN-<mode>.json` **단일 출처**이며, `validate_output.py`가 이를 읽는다(`_build_mode_template_contracts_from_registry`). 버전은 요청 시에만 올린다(기본 5.10.5 유지).
 
 ## 1. 핵심 원칙
 
@@ -58,4 +58,4 @@ python3 skills/adaptive-html-final/scripts/completion_check.py skills/adaptive-h
 
 ## 5. 버전 정책
 
-- 신규 모드 추가는 기능 변경이므로 릴리스 단위 bump 후보다. 단 **사용자 명시 승인 전까지 `5.10.4` 유지**, 변경은 `CHANGELOG.md ## Unreleased`에 기록한다([version-release-guide](adaptive-html-final-version-release-guide.md)).
+- 신규 모드 추가는 기능 변경이므로 릴리스 단위 bump 후보다. 단 **사용자 명시 승인 전까지 `5.10.5` 유지**, 변경은 `CHANGELOG.md ## Unreleased`에 기록한다([version-release-guide](adaptive-html-final-version-release-guide.md)).

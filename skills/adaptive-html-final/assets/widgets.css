@@ -970,3 +970,15 @@
    wg-10 루트의 margin:0 auto가 section 기본 상단 여백을 덮어쓰므로 contract 구간에서만 복구.
    (직계 자식 `>` 대신 descendant — 생성기가 위젯을 figure/div로 감싸도 동작하도록.) */
 .mode-template-contract .wg-10-sheet{width:100%;max-width:100%;margin:var(--space-5) auto 0}
+
+/* forced-colors(고대비): 배경색만으로 상태를 전하는 선택/체크 컨트롤에 시스템색 Highlight outline 단서 추가.
+   일반 렌더에는 미적용(미디어 가드) — 코어/평상시 시각 영향 0. */
+@media(forced-colors:active){
+  .wg-02-radio:checked+.wg-02-card,
+  .wg-06-bg-input:checked+.wg-06-bg-label,
+  .wg-07-radio:checked+.wg-07-pill,.wg-07-radio2:checked+.wg-07-pill,
+  .wg-20-radio:checked+.wg-20-chip{outline:3px solid Highlight;outline-offset:-3px}
+  .wg-06-btn--primary{outline:2px solid Highlight;outline-offset:-2px}
+  .wg-12-ck-in:checked+.wg-12-ck-lb .wg-12-ck-box,
+  .wg-19-cb:checked + .wg-19-toggle::before{outline:2px solid Highlight;outline-offset:1px}
+}

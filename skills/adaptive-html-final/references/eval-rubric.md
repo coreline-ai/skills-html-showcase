@@ -27,3 +27,7 @@
 | Section Diversity | 카드·표·다이어그램·체크리스트·원문 발췌가 목적별로 배치되어 붕어빵 반복이 아닌가 |
 
 총점 36점 이상이면 통과, 30~35점은 보완 후 통과, 29점 이하는 재작성. Hard Fail 항목이 있으면 총점과 무관하게 재작성.
+
+## 기계 판독용 결과 스키마
+
+이 루브릭의 평가 결과를 구조화해 남길 때는 `schemas/quality-report.schema.json`(Quality Report) 형식을 따른다. 스키마의 `mode`/`layout`은 모드·레이아웃 적합도, `rubric`은 위 9개 항목 점수, `total`은 총점, `verdict`은 통과/보완/재작성 판정, `gates`는 Hard Fail·출시 게이트 결과, `notes`는 보완 메모에 대응한다.
