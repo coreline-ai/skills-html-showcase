@@ -1,0 +1,60 @@
+{
+  "mode": "manual_analysis",
+  "profile": "auto",
+  "layout": "manual-analysis.html",
+  "primary_vt": "hero-map",
+  "primary_wg": "wg-13",
+  "topic": "Proxmox + redroid 기반 카카오톡 실행 환경 구축",
+  "section_mapping": {
+    "verdict": "구축 결론(VM 격리 권장·ADB 터널)",
+    "source_version": "구성 & 버전 스냅샷(스택·redroid 12.0.0)",
+    "reader_role": "역할별 경로 + VT-01 hero-map 아키텍처 스택",
+    "first_success": "첫 성공 경로 3단계",
+    "prerequisites_safety": "권장 사양 표 + 보안(ADB 노출 금지)·privileged·커널",
+    "task_recipes": "R1~R5 6필드 + VT-05 checklist-flow + 코드블록",
+    "reference_extract": "redroid/Docker 공식 근거",
+    "decision_guide": "실행위치/GPU모드/Android버전 선택",
+    "troubleshooting": "4 시나리오(컨테이너·ADB·scrcpy·카카오톡) 4단 구조",
+    "operations_runbook": "운영 명령 + 백업/복원",
+    "manual_audit": "주의사항 표 + wg-13 구축 흐름",
+    "next_actions": "최종 실행 흐름 + 다음 단계"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/manual-analysis.html",
+      "sha256": "82e1d983b39bb7560f6fc36ce55cef4ed9fb1324d9ea9aef5d0a272d7e85c719"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/theme.css",
+      "sha256": "2a9c8843a035138ff47b57cfc0806185c1b9cdfb3309a681022b689d8a32b1b6"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/components.css",
+      "sha256": "72c8f2570164acf5fc80330a57201f0feca579e1b6d9c3fdf1dcc5dcb81b7aa5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html.css",
+      "sha256": "540cdf013934d9c2e53ac901d76aefd9ac468f3a6aaa8814d7dd60a57e919263"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widgets.css",
+      "sha256": "847e44c71564666d11f40084171e1b1c14f13436f43bd8b503d70e34dbf54851"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/16_manual_product_runbook.html",
+      "sha256": "2669e0d44015014a01371da1f598531405a4842fd539204d55c01c15979f9ebf"
+    }
+  ]
+}

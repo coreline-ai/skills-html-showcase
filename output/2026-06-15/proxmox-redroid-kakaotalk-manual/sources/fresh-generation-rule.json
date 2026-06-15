@@ -1,0 +1,7 @@
+{
+  "fresh_run": true,
+  "reused_previous_pages": false,
+  "mode_scope": ["manual_analysis"],
+  "topic": "Proxmox + redroid 기반 카카오톡 실행 환경 구축",
+  "note": "신규 주제. 기존 examples/이전 대화 산출물을 소스로 재사용하지 않음. 동일 모드 예제16의 검증된 CSS 셸(코어 해시 동일)만 구조 기준선으로 사용."
+}

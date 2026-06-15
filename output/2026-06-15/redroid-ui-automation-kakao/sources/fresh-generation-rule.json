@@ -1,0 +1,7 @@
+{
+  "fresh_run": true,
+  "reused_previous_pages": false,
+  "mode_scope": ["manual_analysis"],
+  "topic": "redroid UI 자동화 — uiautomator2/ADB/FastAPI 카카오톡 자동 발송",
+  "note": "신규 주제(UI 자동화/구현). 이전 Proxmox 구축 페이지·examples를 소스로 재사용하지 않음. 동일 모드 예제16의 검증된 CSS 셸(코어 해시 동일)만 구조 기준선."
+}

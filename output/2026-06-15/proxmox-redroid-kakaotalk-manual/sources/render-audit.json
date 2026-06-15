@@ -1,0 +1,17 @@
+{
+  "generated_for": "proxmox-redroid-kakaotalk-manual",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/390.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/1280.png"
+    }
+  }
+}
