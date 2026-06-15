@@ -249,6 +249,7 @@
 .layout-manual .manual-step h3,
 .layout-manual .manual-trouble h3{margin-top:0;color:var(--accent-2)}
 .layout-manual .manual-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink);font-weight:800}
+.layout-manual .manual-safe,.layout-manual .manual-risk,.layout-manual .manual-unknown{display:inline-block;padding:3px 10px;line-height:1.45;margin-bottom:8px;border-radius:3px}
 .layout-manual .manual-safe{border-left:4px solid var(--good-accent)}
 .layout-manual .manual-risk{border-left:4px solid var(--danger-accent,var(--accent-2))}
 .layout-manual .manual-unknown{border-style:dashed;background:var(--accent-soft)}

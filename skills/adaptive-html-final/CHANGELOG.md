@@ -1,5 +1,12 @@
 # Changelog — adaptive-html-final
 
+## Unreleased
+
+manual_analysis 산출물의 STEP·위험·UNKNOWN 배지(`.manual-safe`/`.manual-risk`/`.manual-unknown`)가 왼쪽 컬러 rail(`border-left`/dashed)에 padding 없이 붙어 라벨이 라인에 닿던 결함을 수정했다.
+
+- **layouts.css (코어)**: 세 배지에 `display:inline-block; padding:3px 10px; margin-bottom:8px; border-radius:3px` 추가 — 라벨과 컬러 라인 사이 간격 확보(첫 성공 경로 STEP, 사전조건·보안 위험/권한/UNKNOWN 배지).
+- **파급**: 코어 해시 `7e151665`→`a73eb204` 갱신 → examples 18종 재인라인·`sources/css-integrity.json`·source manifest·`.skill` 재패키징. 거버넌스 **162** 유지.
+
 ## v5.10.5 (2026-06-15) — 접근성·스코프 하드닝: forced-colors 상태 단서 + .score 스코프 + vt 장식 글리프 aria + 루브릭↔스키마 연결
 
 코어 CSS 5종 무수정(해시 `7e151665` 불변)으로 접근성·스코프 결함만 좁게 닫은 패치. 변경은 조건부 자산 3종 + vt-10 템플릿 + 문서로 한정한다.
