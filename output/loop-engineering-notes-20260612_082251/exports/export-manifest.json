@@ -1,0 +1,274 @@
+{
+  "generated_at": "2026-06-12T00:47:16.012Z",
+  "tool": "scripts/export_output.mjs",
+  "tool_version": "0.1.0",
+  "node_version": "v22.22.2",
+  "playwright_version": "1.60.0",
+  "chromium_version": "148.0.7778.96",
+  "sharp_version": "0.33.5",
+  "input_dir": "output/loop-engineering-notes-20260612_082251",
+  "command_args": [
+    "output/loop-engineering-notes-20260612_082251",
+    "--formats",
+    "png",
+    "--themes",
+    "light,light2,white,dark,dark2,blue,skyblue,sepia",
+    "--scale",
+    "1",
+    "--clean"
+  ],
+  "html_count": 1,
+  "html_sha256_before": {
+    "index.html": "7e4a890d02b522055f110ab634e73a97f3a1d17f8fc8afd071fb270ad19a06db"
+  },
+  "sources_sha256_before": {
+    "adaptive-html-final-manifest.json": "86df5a7947d685cb80a054cbd1fbee607e3e2da52c18bfda0f6d1b4e8517c5d0",
+    "assets/body-icons.css": "abf84aa13dc11168c18e3aa1d19abe0efed039b89cfd942257c4057ee081bf7c",
+    "assets/components.css": "33afb3f8ba57ed4263d9bc8d6291774610047a8f35e125c43d26fa39bb3ce174",
+    "assets/editorial-patterns.css": "d2ab22f7c0cf928f34fac7b911f3bd1100bc89b666dcb7c0d91fd4202f71a563",
+    "assets/layouts.css": "4c99800aa3eb1e39e5fd254eea5c7f9e7fd251495714e00971ae760fc57c89d7",
+    "assets/print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
+    "assets/shape-visuals.css": "cd4d0f0d9112eb8212564ed05753817d69e1b49ec3fa378c7f3887cdc545e817",
+    "assets/theme-dark.css": "96df50de2fe103e8e1c9ded3279f5d5cd4e88a0ee53af45f937b9817882ad812",
+    "assets/theme.css": "ec97269cba3b7bed52be64990649d945bee023636c6edb0b17e5d17ba03d943d",
+    "assets/visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
+    "assets/visual-html.css": "1b1390637cd405d7a7221165d0e5aac18481dc044453dd8114531ce131f56fc5",
+    "assets/widgets.css": "80ba90a4d7998fb77fde3652c90165c373663b709a605b34c7cd721322f728e7",
+    "assets/workflow-visuals.css": "c4508bb638a671f2839553f5cc88a5c2786b0706a022a086676167c3a88f5e06",
+    "css-integrity.json": "a40bae547aed4863b3e6a096e2bc837febee826c41ea50cb5f26290f56db2315",
+    "generate_loop_html.py": "1149459f3747834039c1be18c6d3884da667548529ff22422c430ef8bc73416e",
+    "input-loop_engineering_notes.md": "f6cdc9ebbe8bae8603690239f4eceafe2bcdca8b6b48622db14174ad54cdd742",
+    "profile.json": "f3c4413e4c7ac87afe0b0a44d17a5fad0abcebacb8d846dcc5d7f4b1e8dab97f"
+  },
+  "validate_before": {
+    "ran": true,
+    "ok": true,
+    "exitCode": 0,
+    "issues": [],
+    "warnings": [],
+    "reason": null
+  },
+  "html_sha256_unchanged": true,
+  "sources_sha256_unchanged": true,
+  "validate_issues_unchanged": true,
+  "formats_requested": [
+    "png"
+  ],
+  "themes_requested": [
+    "light",
+    "light2",
+    "white",
+    "dark",
+    "dark2",
+    "blue",
+    "skyblue",
+    "sepia"
+  ],
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "scale": 1,
+  "concurrency": 1,
+  "pdf": {
+    "media": "print",
+    "format": "A4",
+    "margin": "12mm"
+  },
+  "webp": {
+    "quality": 85,
+    "max_edge": 16383,
+    "mode": "downscale"
+  },
+  "summary": {
+    "ok": 8,
+    "failed": 0,
+    "skipped": 0
+  },
+  "pages": [
+    {
+      "src": "index.html",
+      "slugBase": "index",
+      "url": "file:///Users/iriver/hwan/projects/html-skills-doc/output/loop-engineering-notes-20260612_082251/index.html",
+      "html_sha256_before": "7e4a890d02b522055f110ab634e73a97f3a1d17f8fc8afd071fb270ad19a06db",
+      "html_sha256_after": "7e4a890d02b522055f110ab634e73a97f3a1d17f8fc8afd071fb270ad19a06db",
+      "themes_present": [
+        "light",
+        "light2",
+        "white",
+        "dark",
+        "dark2",
+        "blue",
+        "skyblue",
+        "sepia"
+      ],
+      "themes_skipped": [],
+      "all_theme_radios": [
+        "light",
+        "light2",
+        "white",
+        "dark",
+        "dark2",
+        "blue",
+        "skyblue",
+        "sepia"
+      ],
+      "theme_selector_style": "root-has",
+      "external_font_requests": [
+        "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"
+      ],
+      "fonts_fallback": "external-fonts-detected",
+      "preflight": {
+        "scroll_width": 1280,
+        "scroll_height": 29360,
+        "scale_requested": 1,
+        "scale_used": 1,
+        "scale_degraded": false,
+        "soft_raster_limit_exceeded": true,
+        "png_pixel_max": 300000000,
+        "pixel_width": 1280,
+        "pixel_height": 29360,
+        "raw_rgba_bytes_estimate": 150323200,
+        "est_pipeline_peak_bytes_estimate": 375808000
+      },
+      "artifacts": {
+        "pdf": [],
+        "png": {
+          "light": {
+            "status": "ok",
+            "path": "png/index__light.png",
+            "bytes": 2464044,
+            "width": 1280,
+            "height": 29360,
+            "theme": "light",
+            "scale_requested": 1,
+            "scale_used": 1,
+            "scale_degraded": false,
+            "raw_rgba_bytes_estimate": 150323200,
+            "est_pipeline_peak_bytes_estimate": 375808000
+          },
+          "light2": {
+            "status": "ok",
+            "path": "png/index__light2.png",
+            "bytes": 2656695,
+            "width": 1280,
+            "height": 29360,
+            "theme": "light2",
+            "scale_requested": 1,
+            "scale_used": 1,
+            "scale_degraded": false,
+            "raw_rgba_bytes_estimate": 150323200,
+            "est_pipeline_peak_bytes_estimate": 375808000
+          },
+          "white": {
+            "status": "ok",
+            "path": "png/index__white.png",
+            "bytes": 2645189,
+            "width": 1280,
+            "height": 29360,
+            "theme": "white",
+            "scale_requested": 1,
+            "scale_used": 1,
+            "scale_degraded": false,
+            "raw_rgba_bytes_estimate": 150323200,
+            "est_pipeline_peak_bytes_estimate": 375808000
+          },
+          "dark": {
+            "status": "ok",
+            "path": "png/index__dark.png",
+            "bytes": 2645400,
+            "width": 1280,
+            "height": 29360,
+            "theme": "dark",
+            "scale_requested": 1,
+            "scale_used": 1,
+            "scale_degraded": false,
+            "raw_rgba_bytes_estimate": 150323200,
+            "est_pipeline_peak_bytes_estimate": 375808000
+          },
+          "dark2": {
+            "status": "ok",
+            "path": "png/index__dark2.png",
+            "bytes": 2701735,
+            "width": 1280,
+            "height": 29360,
+            "theme": "dark2",
+            "scale_requested": 1,
+            "scale_used": 1,
+            "scale_degraded": false,
+            "raw_rgba_bytes_estimate": 150323200,
+            "est_pipeline_peak_bytes_estimate": 375808000
+          },
+          "blue": {
+            "status": "ok",
+            "path": "png/index__blue.png",
+            "bytes": 2690416,
+            "width": 1280,
+            "height": 29360,
+            "theme": "blue",
+            "scale_requested": 1,
+            "scale_used": 1,
+            "scale_degraded": false,
+            "raw_rgba_bytes_estimate": 150323200,
+            "est_pipeline_peak_bytes_estimate": 375808000
+          },
+          "skyblue": {
+            "status": "ok",
+            "path": "png/index__skyblue.png",
+            "bytes": 2661912,
+            "width": 1280,
+            "height": 29360,
+            "theme": "skyblue",
+            "scale_requested": 1,
+            "scale_used": 1,
+            "scale_degraded": false,
+            "raw_rgba_bytes_estimate": 150323200,
+            "est_pipeline_peak_bytes_estimate": 375808000
+          },
+          "sepia": {
+            "status": "ok",
+            "path": "png/index__sepia.png",
+            "bytes": 2674132,
+            "width": 1280,
+            "height": 29360,
+            "theme": "sepia",
+            "scale_requested": 1,
+            "scale_used": 1,
+            "scale_degraded": false,
+            "raw_rgba_bytes_estimate": 150323200,
+            "est_pipeline_peak_bytes_estimate": 375808000
+          }
+        },
+        "webp": {}
+      },
+      "errors": []
+    }
+  ],
+  "sources_sha256_after": {
+    "adaptive-html-final-manifest.json": "86df5a7947d685cb80a054cbd1fbee607e3e2da52c18bfda0f6d1b4e8517c5d0",
+    "assets/body-icons.css": "abf84aa13dc11168c18e3aa1d19abe0efed039b89cfd942257c4057ee081bf7c",
+    "assets/components.css": "33afb3f8ba57ed4263d9bc8d6291774610047a8f35e125c43d26fa39bb3ce174",
+    "assets/editorial-patterns.css": "d2ab22f7c0cf928f34fac7b911f3bd1100bc89b666dcb7c0d91fd4202f71a563",
+    "assets/layouts.css": "4c99800aa3eb1e39e5fd254eea5c7f9e7fd251495714e00971ae760fc57c89d7",
+    "assets/print.css": "c3e8bd0f72ec8949c2bb9ae6704a92edf209ca78666e7812b71499774efc2269",
+    "assets/shape-visuals.css": "cd4d0f0d9112eb8212564ed05753817d69e1b49ec3fa378c7f3887cdc545e817",
+    "assets/theme-dark.css": "96df50de2fe103e8e1c9ded3279f5d5cd4e88a0ee53af45f937b9817882ad812",
+    "assets/theme.css": "ec97269cba3b7bed52be64990649d945bee023636c6edb0b17e5d17ba03d943d",
+    "assets/visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
+    "assets/visual-html.css": "1b1390637cd405d7a7221165d0e5aac18481dc044453dd8114531ce131f56fc5",
+    "assets/widgets.css": "80ba90a4d7998fb77fde3652c90165c373663b709a605b34c7cd721322f728e7",
+    "assets/workflow-visuals.css": "c4508bb638a671f2839553f5cc88a5c2786b0706a022a086676167c3a88f5e06",
+    "css-integrity.json": "a40bae547aed4863b3e6a096e2bc837febee826c41ea50cb5f26290f56db2315",
+    "generate_loop_html.py": "1149459f3747834039c1be18c6d3884da667548529ff22422c430ef8bc73416e",
+    "input-loop_engineering_notes.md": "f6cdc9ebbe8bae8603690239f4eceafe2bcdca8b6b48622db14174ad54cdd742",
+    "profile.json": "f3c4413e4c7ac87afe0b0a44d17a5fad0abcebacb8d846dcc5d7f4b1e8dab97f"
+  },
+  "validate_after": {
+    "ran": true,
+    "ok": true,
+    "exitCode": 0,
+    "issues": [],
+    "warnings": [],
+    "reason": null
+  }
+}
