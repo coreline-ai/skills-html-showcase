@@ -1,0 +1,306 @@
+{
+  "generated_at": "2026-06-17T12:23:30.908Z",
+  "theme": "dark2/rose",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "clip": {
+    "x": 0,
+    "y": 0,
+    "width": 1280,
+    "height": 720
+  },
+  "count": 17,
+  "captures": [
+    {
+      "mode_dir": "01_skill_audit_meeting-summary-bot-audit",
+      "mode": "skill_audit",
+      "html": "01_skill_audit_meeting-summary-bot-audit/index.html",
+      "capture": "readme-captures/rose/01_skill_audit_meeting-summary-bot-audit.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "02_platform_blog_oss-release-platforms",
+      "mode": "platform_blog",
+      "html": "02_platform_blog_oss-release-platforms/index.html",
+      "capture": "readme-captures/rose/02_platform_blog_oss-release-platforms.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "03_seo_dashboard_vector-db-seo",
+      "mode": "seo_dashboard",
+      "html": "03_seo_dashboard_vector-db-seo/index.html",
+      "capture": "readme-captures/rose/03_seo_dashboard_vector-db-seo.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "04_education_html_k8s-intro-workshop",
+      "mode": "education_html",
+      "html": "04_education_html_k8s-intro-workshop/index.html",
+      "capture": "readme-captures/rose/04_education_html_k8s-intro-workshop.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "05_github_analysis_sqlmodel-due-diligence",
+      "mode": "github_analysis",
+      "html": "05_github_analysis_sqlmodel-due-diligence/index.html",
+      "capture": "readme-captures/rose/05_github_analysis_sqlmodel-due-diligence.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "06_github_feature_usage_caddy-feature-usage",
+      "mode": "github_feature_usage",
+      "html": "06_github_feature_usage_caddy-feature-usage/index.html",
+      "capture": "readme-captures/rose/06_github_feature_usage_caddy-feature-usage.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "07_youtube_analysis_distsys-talk-analysis",
+      "mode": "youtube_analysis",
+      "html": "07_youtube_analysis_distsys-talk-analysis/index.html",
+      "capture": "readme-captures/rose/07_youtube_analysis_distsys-talk-analysis.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "08_manual_analysis_nginx-reverse-proxy-manual",
+      "mode": "manual_analysis",
+      "html": "08_manual_analysis_nginx-reverse-proxy-manual/index.html",
+      "capture": "readme-captures/rose/08_manual_analysis_nginx-reverse-proxy-manual.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "09_expert_html_read-replica-feasibility",
+      "mode": "expert_html",
+      "html": "09_expert_html_read-replica-feasibility/index.html",
+      "capture": "readme-captures/rose/09_expert_html_read-replica-feasibility.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "10_article_html_monorepo-argument",
+      "mode": "article_html",
+      "html": "10_article_html_monorepo-argument/index.html",
+      "capture": "readme-captures/rose/10_article_html_monorepo-argument.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "11_blog_writer_side-project-12-retro",
+      "mode": "blog_writer",
+      "html": "11_blog_writer_side-project-12-retro/index.html",
+      "capture": "readme-captures/rose/11_blog_writer_side-project-12-retro.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "12_beginner_html_oauth-oidc-beginner",
+      "mode": "beginner_html",
+      "html": "12_beginner_html_oauth-oidc-beginner/index.html",
+      "capture": "readme-captures/rose/12_beginner_html_oauth-oidc-beginner.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "13_reference_html_http-status-reference",
+      "mode": "reference_html",
+      "html": "13_reference_html_http-status-reference/index.html",
+      "capture": "readme-captures/rose/13_reference_html_http-status-reference.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "14_comparison_html_rdbms-comparison",
+      "mode": "comparison_html",
+      "html": "14_comparison_html_rdbms-comparison/index.html",
+      "capture": "readme-captures/rose/14_comparison_html_rdbms-comparison.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "15_case_study_html_double-billing-postmortem",
+      "mode": "case_study_html",
+      "html": "15_case_study_html_double-billing-postmortem/index.html",
+      "capture": "readme-captures/rose/15_case_study_html_double-billing-postmortem.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "16_landing_brief_html_oncallzero-landing",
+      "mode": "landing_brief_html",
+      "html": "16_landing_brief_html_oncallzero-landing/index.html",
+      "capture": "readme-captures/rose/16_landing_brief_html_oncallzero-landing.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "mode_dir": "17_checklist_playbook_prod-index-playbook",
+      "mode": "checklist_playbook",
+      "html": "17_checklist_playbook_prod-index-playbook/index.html",
+      "capture": "readme-captures/rose/17_checklist_playbook_prod-index-playbook.jpg",
+      "theme": "dark2/rose",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    }
+  ]
+}
