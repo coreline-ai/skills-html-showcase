@@ -215,88 +215,88 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 
 - 캡쳐 규격: `1280×720` 부분 캡쳐 · viewport `1280×900` · theme radio `#ahf-dark2`
 - 생성 스크립트: [`scripts/capture_demo17_rose.mjs`](scripts/capture_demo17_rose.mjs)
-- 상위 목차: [`output/2026-06-15/demo17/index.html`](output/2026-06-15/demo17/index.html)
+- 상위 목차: [`output/2026-06-15/demo17/index.html`](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/index.html)
 - 캡쳐 manifest: [`capture-manifest.json`](output/2026-06-15/demo17/readme-captures/rose/capture-manifest.json)
 
 <table>
 <tr>
 <td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/01_skill_audit_meeting-summary-bot-audit/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/01_skill_audit_meeting-summary-bot-audit.jpg" width="320" alt="01 스킬 감사 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/01_skill_audit_meeting-summary-bot-audit/index.html"><b>01 · <code>skill_audit</code></b><br>회의록 자동 요약 봇 스킬 감사 리포트</a></sub>
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/01_skill_audit_meeting-summary-bot-audit/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/01_skill_audit_meeting-summary-bot-audit.jpg" width="320" alt="01 스킬 감사 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/01_skill_audit_meeting-summary-bot-audit/index.html"><b>01 · <code>skill_audit</code></b><br>회의록 자동 요약 봇 스킬 감사 리포트</a></sub>
 </td>
 <td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/02_platform_blog_oss-release-platforms/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/02_platform_blog_oss-release-platforms.jpg" width="320" alt="02 플랫폼 블로그 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/02_platform_blog_oss-release-platforms/index.html"><b>02 · <code>platform_blog</code></b><br>기술 회고 글을 4개 플랫폼으로 변환하기</a></sub>
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/02_platform_blog_oss-release-platforms/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/02_platform_blog_oss-release-platforms.jpg" width="320" alt="02 플랫폼 블로그 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/02_platform_blog_oss-release-platforms/index.html"><b>02 · <code>platform_blog</code></b><br>기술 회고 글을 4개 플랫폼으로 변환하기</a></sub>
 </td>
 <td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/03_seo_dashboard_vector-db-seo/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/03_seo_dashboard_vector-db-seo.jpg" width="320" alt="03 SEO 대시보드 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/03_seo_dashboard_vector-db-seo/index.html"><b>03 · <code>seo_dashboard</code></b><br>‘벡터 데이터베이스 입문’ 글 SEO 설계 대시보드</a></sub>
-</td>
-</tr>
-<tr>
-<td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/04_education_html_k8s-intro-workshop/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/04_education_html_k8s-intro-workshop.jpg" width="320" alt="04 교육 모듈 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/04_education_html_k8s-intro-workshop/index.html"><b>04 · <code>education_html</code></b><br>Kubernetes 입문 3일 워크숍</a></sub>
-</td>
-<td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/05_github_analysis_sqlmodel-due-diligence/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/05_github_analysis_sqlmodel-due-diligence.jpg" width="320" alt="05 GitHub 분석 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/05_github_analysis_sqlmodel-due-diligence/index.html"><b>05 · <code>github_analysis</code></b><br>tiangolo/sqlmodel 저장소 실사 리포트</a></sub>
-</td>
-<td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/06_github_feature_usage_caddy-feature-usage/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/06_github_feature_usage_caddy-feature-usage.jpg" width="320" alt="06 GitHub 기능 가이드 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/06_github_feature_usage_caddy-feature-usage/index.html"><b>06 · <code>github_feature_usage</code></b><br>Caddy 웹서버 기능·도입 가이드</a></sub>
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/03_seo_dashboard_vector-db-seo/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/03_seo_dashboard_vector-db-seo.jpg" width="320" alt="03 SEO 대시보드 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/03_seo_dashboard_vector-db-seo/index.html"><b>03 · <code>seo_dashboard</code></b><br>‘벡터 데이터베이스 입문’ 글 SEO 설계 대시보드</a></sub>
 </td>
 </tr>
 <tr>
 <td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/07_youtube_analysis_distsys-talk-analysis/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/07_youtube_analysis_distsys-talk-analysis.jpg" width="320" alt="07 YouTube 분석 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/07_youtube_analysis_distsys-talk-analysis/index.html"><b>07 · <code>youtube_analysis</code></b><br>바이브코딩 영상은 실제로 팀 생산성을 올리는가</a></sub>
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/04_education_html_k8s-intro-workshop/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/04_education_html_k8s-intro-workshop.jpg" width="320" alt="04 교육 모듈 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/04_education_html_k8s-intro-workshop/index.html"><b>04 · <code>education_html</code></b><br>Kubernetes 입문 3일 워크숍</a></sub>
 </td>
 <td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/08_manual_analysis_nginx-reverse-proxy-manual/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/08_manual_analysis_nginx-reverse-proxy-manual.jpg" width="320" alt="08 매뉴얼 분석 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/08_manual_analysis_nginx-reverse-proxy-manual/index.html"><b>08 · <code>manual_analysis</code></b><br>Nginx 리버스 프록시 운영 매뉴얼</a></sub>
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/05_github_analysis_sqlmodel-due-diligence/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/05_github_analysis_sqlmodel-due-diligence.jpg" width="320" alt="05 GitHub 분석 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/05_github_analysis_sqlmodel-due-diligence/index.html"><b>05 · <code>github_analysis</code></b><br>tiangolo/sqlmodel 저장소 실사 리포트</a></sub>
 </td>
 <td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/09_expert_html_read-replica-feasibility/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/09_expert_html_read-replica-feasibility.jpg" width="320" alt="09 전문가 리포트 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/09_expert_html_read-replica-feasibility/index.html"><b>09 · <code>expert_html</code></b><br>단일 DB → 읽기 복제본 도입 타당성 진단</a></sub>
-</td>
-</tr>
-<tr>
-<td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/10_article_html_monorepo-argument/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/10_article_html_monorepo-argument.jpg" width="320" alt="10 아티클 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/10_article_html_monorepo-argument/index.html"><b>10 · <code>article_html</code></b><br>왜 모노레포로 가는가 — 코드 공유의 무게중심</a></sub>
-</td>
-<td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/11_blog_writer_side-project-12-retro/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/11_blog_writer_side-project-12-retro.jpg" width="320" alt="11 블로그 글 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/11_blog_writer_side-project-12-retro/index.html"><b>11 · <code>blog_writer</code></b><br>사이드 프로젝트 12개 1년 회고: 무엇이 살아남았고 무엇이 사라졌나</a></sub>
-</td>
-<td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/12_beginner_html_oauth-oidc-beginner/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/12_beginner_html_oauth-oidc-beginner.jpg" width="320" alt="12 초보자 학습 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/12_beginner_html_oauth-oidc-beginner/index.html"><b>12 · <code>beginner_html</code></b><br>OAuth 2.0 / OIDC 처음 이해하기</a></sub>
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/06_github_feature_usage_caddy-feature-usage/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/06_github_feature_usage_caddy-feature-usage.jpg" width="320" alt="06 GitHub 기능 가이드 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/06_github_feature_usage_caddy-feature-usage/index.html"><b>06 · <code>github_feature_usage</code></b><br>Caddy 웹서버 기능·도입 가이드</a></sub>
 </td>
 </tr>
 <tr>
 <td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/13_reference_html_http-status-reference/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/13_reference_html_http-status-reference.jpg" width="320" alt="13 레퍼런스 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/13_reference_html_http-status-reference/index.html"><b>13 · <code>reference_html</code></b><br>HTTP 상태 코드 실무 레퍼런스</a></sub>
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/07_youtube_analysis_distsys-talk-analysis/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/07_youtube_analysis_distsys-talk-analysis.jpg" width="320" alt="07 YouTube 분석 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/07_youtube_analysis_distsys-talk-analysis/index.html"><b>07 · <code>youtube_analysis</code></b><br>바이브코딩 영상은 실제로 팀 생산성을 올리는가</a></sub>
 </td>
 <td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/14_comparison_html_rdbms-comparison/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/14_comparison_html_rdbms-comparison.jpg" width="320" alt="14 비교 매트릭스 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/14_comparison_html_rdbms-comparison/index.html"><b>14 · <code>comparison_html</code></b><br>RDBMS 3종 선택 기준 — PostgreSQL vs MySQL vs SQLite</a></sub>
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/08_manual_analysis_nginx-reverse-proxy-manual/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/08_manual_analysis_nginx-reverse-proxy-manual.jpg" width="320" alt="08 매뉴얼 분석 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/08_manual_analysis_nginx-reverse-proxy-manual/index.html"><b>08 · <code>manual_analysis</code></b><br>Nginx 리버스 프록시 운영 매뉴얼</a></sub>
 </td>
 <td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/15_case_study_html_double-billing-postmortem/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/15_case_study_html_double-billing-postmortem.jpg" width="320" alt="15 케이스 스터디 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/15_case_study_html_double-billing-postmortem/index.html"><b>15 · <code>case_study_html</code></b><br>결제 이중 청구 장애 사후 분석</a></sub>
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/09_expert_html_read-replica-feasibility/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/09_expert_html_read-replica-feasibility.jpg" width="320" alt="09 전문가 리포트 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/09_expert_html_read-replica-feasibility/index.html"><b>09 · <code>expert_html</code></b><br>단일 DB → 읽기 복제본 도입 타당성 진단</a></sub>
 </td>
 </tr>
 <tr>
 <td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/16_landing_brief_html_oncallzero-landing/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/16_landing_brief_html_oncallzero-landing.jpg" width="320" alt="16 랜딩 브리프 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/16_landing_brief_html_oncallzero-landing/index.html"><b>16 · <code>landing_brief_html</code></b><br>당번표·알림·에스컬레이션·회고를 한곳에서 자동화하는 팀 온콜 SaaS</a></sub>
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/10_article_html_monorepo-argument/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/10_article_html_monorepo-argument.jpg" width="320" alt="10 아티클 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/10_article_html_monorepo-argument/index.html"><b>10 · <code>article_html</code></b><br>왜 모노레포로 가는가 — 코드 공유의 무게중심</a></sub>
 </td>
 <td width="33%" valign="top" align="center">
-  <a href="output/2026-06-15/demo17/17_checklist_playbook_prod-index-playbook/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/17_checklist_playbook_prod-index-playbook.jpg" width="320" alt="17 체크리스트 로즈 테마 부분 캡쳐"></a><br>
-  <sub><a href="output/2026-06-15/demo17/17_checklist_playbook_prod-index-playbook/index.html"><b>17 · <code>checklist_playbook</code></b><br>프로덕션 DB 인덱스 추가 안전 플레이북</a></sub>
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/11_blog_writer_side-project-12-retro/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/11_blog_writer_side-project-12-retro.jpg" width="320" alt="11 블로그 글 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/11_blog_writer_side-project-12-retro/index.html"><b>11 · <code>blog_writer</code></b><br>사이드 프로젝트 12개 1년 회고: 무엇이 살아남았고 무엇이 사라졌나</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/12_beginner_html_oauth-oidc-beginner/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/12_beginner_html_oauth-oidc-beginner.jpg" width="320" alt="12 초보자 학습 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/12_beginner_html_oauth-oidc-beginner/index.html"><b>12 · <code>beginner_html</code></b><br>OAuth 2.0 / OIDC 처음 이해하기</a></sub>
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/13_reference_html_http-status-reference/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/13_reference_html_http-status-reference.jpg" width="320" alt="13 레퍼런스 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/13_reference_html_http-status-reference/index.html"><b>13 · <code>reference_html</code></b><br>HTTP 상태 코드 실무 레퍼런스</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/14_comparison_html_rdbms-comparison/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/14_comparison_html_rdbms-comparison.jpg" width="320" alt="14 비교 매트릭스 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/14_comparison_html_rdbms-comparison/index.html"><b>14 · <code>comparison_html</code></b><br>RDBMS 3종 선택 기준 — PostgreSQL vs MySQL vs SQLite</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/15_case_study_html_double-billing-postmortem/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/15_case_study_html_double-billing-postmortem.jpg" width="320" alt="15 케이스 스터디 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/15_case_study_html_double-billing-postmortem/index.html"><b>15 · <code>case_study_html</code></b><br>결제 이중 청구 장애 사후 분석</a></sub>
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/16_landing_brief_html_oncallzero-landing/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/16_landing_brief_html_oncallzero-landing.jpg" width="320" alt="16 랜딩 브리프 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/16_landing_brief_html_oncallzero-landing/index.html"><b>16 · <code>landing_brief_html</code></b><br>당번표·알림·에스컬레이션·회고를 한곳에서 자동화하는 팀 온콜 SaaS</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/17_checklist_playbook_prod-index-playbook/index.html"><img src="output/2026-06-15/demo17/readme-captures/rose/17_checklist_playbook_prod-index-playbook.jpg" width="320" alt="17 체크리스트 로즈 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-15/demo17/17_checklist_playbook_prod-index-playbook/index.html"><b>17 · <code>checklist_playbook</code></b><br>프로덕션 DB 인덱스 추가 안전 플레이북</a></sub>
 </td>
 <td width="33%"></td>
 </tr>
