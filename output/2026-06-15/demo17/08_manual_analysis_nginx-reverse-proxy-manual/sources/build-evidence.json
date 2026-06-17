@@ -1,0 +1,37 @@
+{
+  "mode": "manual_analysis",
+  "profile": "auto",
+  "layout": "manual-analysis.html",
+  "primary_vt": "hero-map",
+  "section_mapping": {
+    "direct_h2_count": 11,
+    "layout_class": "layout-manual",
+    "topic": "Nginx 리버스 프록시 운영 매뉴얼"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/manual-analysis.html",
+      "sha256": "82e1d983b39bb7560f6fc36ce55cef4ed9fb1324d9ea9aef5d0a272d7e85c719"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/04-module-map.html",
+      "sha256": "c343793fd626569b98e906b5be4d27dfe0ae7cad5c179b07c7bba83a144cbc47"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "output/2026-06-15/demo17/08_manual_analysis_nginx-reverse-proxy-manual/index.html",
+      "sha256": "a3ce6f4ffd671900e52d12ea4955d63990d82ec5d7470f6f4a90c299c5f4fe99"
+    }
+  ]
+}

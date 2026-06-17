@@ -1,0 +1,69 @@
+{
+  "mode": "github_analysis",
+  "profile": "auto",
+  "layout": "github-analysis.html",
+  "primary_vt": "hero-map",
+  "primary_wg": "wg-11",
+  "topic": "github.com/tiangolo/sqlmodel 저장소 실사 리포트 — 도입/유지보수 의사결정용. 라이브 수치(별점·커밋 수·기여자·최근 커밋일·정확한 버전)는 UNKNOWN으로 두고 확인 위치(GitHub UI/REST) 명시.",
+  "section_mapping": {
+    "verdict": "한 줄 결론 — repo-signal-grid 3카드(Verdict·Fit·UNKNOWN)",
+    "question_toc": "질문 중심 toc-map (무엇을 해주나→바로 시작되나→살아 있는가→…→최종 판정→운영 보드→다음 할 일)",
+    "repo_identity": "저장소 정체 — SQLAlchemy+Pydantic 통합 ORM 정의, 메타 표(FACT/INFERENCE/UNKNOWN), repo-evidence-grid",
+    "quickstart_readiness": "시작 준비도 — 설치/문서/튜토리얼 점검표 + 최소 시작 예제 code 블록 + repo-evidence-grid",
+    "repo_health": "살아 있는가 — 건강 신호 점검표(무엇을 어디서 확인) + hero-map vt(hm-grid 정체성/건강/리스크 3축)",
+    "code_tour": "어디부터 읽나 — repo-identity-grid(공개 API→메타클래스→Field→sql→docs) + col-list 루트 파일 + repo-evidence-grid",
+    "release_roadmap": "릴리스/활동 신호 — Releases/버전/간격/CHANGELOG/1.0/CI 확인표 + repo-action-grid 3단계",
+    "security_license": "보안·라이선스 — License(MIT 추정→확정)·SECURITY·전이 의존성(SQLAlchemy·Pydantic) 표 + danger 경고",
+    "risk_matrix": "도입 리스크 매트릭스 — 성숙도·활성도·추상화 한계·전이 의존성·버스팩터 5행 + repo-evidence-grid",
+    "final_decision": "최종 판정 — ADOPT(FastAPI 스택)/TRIAL(PoC)/HOLD(고급 SQLAlchemy 팀) repo-evidence-grid",
+    "activity_board": "운영 상태 보드 — wg-11(KPI 4 + 정적 확신도 막대 4 + 강한신호/확인필요/리스크 3열)",
+    "next_actions": "다음 할 일(.try) — 활성도 확인·버전/라이선스 확정·대표 쿼리 PoC·의존성 스캔",
+    "source_note": "출처·분석 한계 — 정적 실사, 라이브 수치 UNKNOWN, 확인 위치(repo/commits/contributors API·PyPI)"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/github-analysis.html",
+      "sha256": "0749189eeac876e93daef70a863f140de6df990b6aecd9dee9f31c795301a3f3"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/theme.css",
+      "sha256": "2a9c8843a035138ff47b57cfc0806185c1b9cdfb3309a681022b689d8a32b1b6"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/components.css",
+      "sha256": "72c8f2570164acf5fc80330a57201f0feca579e1b6d9c3fdf1dcc5dcb81b7aa5"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html.css",
+      "sha256": "540cdf013934d9c2e53ac901d76aefd9ac468f3a6aaa8814d7dd60a57e919263"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widgets.css",
+      "sha256": "847e44c71564666d11f40084171e1b1c14f13436f43bd8b503d70e34dbf54851"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/11-weekly-status.html",
+      "sha256": "51014e3e7dc29fd5020f813b6b7a4e279de1014946514a2b9b4c82b3bb6a5278"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/14_github_analysis_fastapi_starter.html",
+      "sha256": "e6481b1be200ccc8aa1764095a0a133dcf44f931b64543535104a124e558fb7f"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "mode": "case_study_html",
+  "profile": "auto",
+  "layout": "case-study.html",
+  "primary_vt": "incident-summary",
+  "section_mapping": {
+    "direct_h2_count": 11,
+    "layout_class": "layout-case",
+    "topic": "결제 이중 청구 장애 사후 분석"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/12-incident-summary.html",
+      "sha256": "d1968a9060f538dae27f18229eebfcbba47bb5b111bba756790758f10eb9fbf9"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/12-incident-timeline.html",
+      "sha256": "e317618504af45b70f792639e96cf3ad44f0ea111fb0142656f50677b5ca401a"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "output/2026-06-15/demo17/15_case_study_html_double-billing-postmortem/index.html",
+      "sha256": "32c13a0286877c15790d2de548c823a5517d1f57b34b9799f51253ebc7d6a4a4"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/case-study.html",
+      "sha256": "fa01cb18c689748485ec9e109283ec71babd757e931f5da5074a25b730a20210"
+    }
+  ]
+}

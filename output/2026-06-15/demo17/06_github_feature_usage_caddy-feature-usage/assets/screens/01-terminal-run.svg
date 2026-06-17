@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="t1 d1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+  <title id="t1">개념 와이어프레임 — 실제 제품 스크린샷 아님</title>
+  <desc id="d1">터미널에서 caddy run 명령으로 서버를 띄우고 자동 HTTPS 인증서를 발급받는 흐름을 나타낸 개념 목업이다. Caddy의 실제 화면이 아니라 구조 설명용 와이어프레임이다.</desc>
+  <rect x="0" y="0" width="640" height="400" fill="#f4f4ef"/>
+  <rect x="24" y="24" width="592" height="352" rx="12" fill="#1c1c20" stroke="#2c2c32"/>
+  <rect x="24" y="24" width="592" height="34" rx="12" fill="#26262c"/>
+  <rect x="24" y="46" width="592" height="12" fill="#26262c"/>
+  <circle cx="46" cy="41" r="6" fill="#e06c5a"/>
+  <circle cx="68" cy="41" r="6" fill="#e3b341"/>
+  <circle cx="90" cy="41" r="6" fill="#7ea66a"/>
+  <text x="320" y="45" fill="#9a9aa2" font-size="12" text-anchor="middle">개념 목업 — Caddy 터미널 (실제 스크린샷 아님)</text>
+  <text x="44" y="92" fill="#7ea66a" font-size="13">$</text>
+  <text x="62" y="92" fill="#e8e8e3" font-size="13">caddy run --config Caddyfile</text>
+  <text x="44" y="120" fill="#9aa6c2" font-size="12">INFO  using config from file  {"file": "Caddyfile"}</text>
+  <text x="44" y="142" fill="#9aa6c2" font-size="12">INFO  serving initial configuration</text>
+  <text x="44" y="164" fill="#9aa6c2" font-size="12">INFO  tls.obtain  acquiring certificate  {"identifier": "example.com"}</text>
+  <text x="44" y="186" fill="#7ea66a" font-size="12">INFO  tls.obtain  certificate obtained successfully  (ACME)</text>
+  <text x="44" y="208" fill="#9aa6c2" font-size="12">INFO  http.log  server running  {"https_port": 443}</text>
+  <text x="44" y="230" fill="#9aa6c2" font-size="12">INFO  http  enabling HTTP/3 listener  {"addr": ":443"}</text>
+  <rect x="40" y="252" width="560" height="40" rx="8" fill="#23321f" stroke="#3a5230"/>
+  <text x="56" y="277" fill="#9bd17e" font-size="12.5">자동 HTTPS 활성화: 인증서 발급·갱신·HTTP→HTTPS 리다이렉트가 기본 동작</text>
+  <text x="44" y="320" fill="#7ea66a" font-size="13">$</text>
+  <rect x="62" y="310" width="9" height="14" fill="#e8e8e3"><animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/></rect>
+  <text x="44" y="356" fill="#6b6b72" font-size="11">개념 와이어프레임 — 실제 제품 스크린샷 아님</text>
+</svg>

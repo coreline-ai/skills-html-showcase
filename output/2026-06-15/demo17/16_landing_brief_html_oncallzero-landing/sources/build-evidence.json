@@ -1,0 +1,38 @@
+{
+  "mode": "landing_brief_html",
+  "profile": "auto",
+  "layout": "landing-brief.html",
+  "primary_vt": "hero-map",
+  "section_mapping": {
+    "direct_h2_count": 12,
+    "layout_class": "page-wide layout-landing",
+    "topic": "팀 온콜 자동화 SaaS OnCallZero 소개"
+  },
+  "primary_wg": "wg-02",
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/landing-brief.html",
+      "sha256": "a6426ca97eaeb68045817af226b7a0997c136ddffde899991a982087f4c61a0c"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/02-visual-design-directions.html",
+      "sha256": "85577e45759246d96f2b71897ad900cbb64ffd9c6f6c14629296b5c045a654d5"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/12_landing_pagercalm_brief.html",
+      "sha256": "b7eb46441e0aed95c0ceb46c54658dc2356b0e40fc5781ddbdbe6f346ae7e9ea"
+    },
+    {
+      "path": "output/2026-06-15/demo17/16_landing_brief_html_oncallzero-landing/index.html",
+      "sha256": "c9f21a6a2048848b0545c0ce2292ce211971469c6be00d31df1e2e3f7f1051f6"
+    }
+  ]
+}

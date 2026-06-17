@@ -1,0 +1,37 @@
+{
+  "mode": "blog_writer",
+  "profile": "auto",
+  "layout": "personal-blog-essay.html",
+  "primary_vt": "timeline",
+  "section_mapping": {
+    "direct_h2_count": 13,
+    "layout_class": "page-wide layout-blog",
+    "topic": "사이드 프로젝트 12개 1년 회고"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/personal-blog-essay.html",
+      "sha256": "7d78bd3437162df4164dfaa30b215ad131b210d43396615ca3ebb08fa0e96028"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/04-timeline.html",
+      "sha256": "0b0c9babbef8e17823170698a61270cfca459252c0304a1377a8cf2b636e37b1"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/17-pr-writeup.html",
+      "sha256": "d400d3daa224703b098bb9d5d00310e20f351ec0c05b3cbed3655f47131cefc1"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "output/2026-06-15/demo17/11_blog_writer_side-project-12-retro/index.html",
+      "sha256": "ecf8d06551c1460635b355e807b58ee9bf07ac6855ae47ec3b6b7d1457322ec9"
+    }
+  ]
+}

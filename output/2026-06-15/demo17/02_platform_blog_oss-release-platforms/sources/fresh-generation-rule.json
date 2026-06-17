@@ -1,0 +1,7 @@
+{
+  "fresh_run": true,
+  "reused_previous_pages": false,
+  "mode_scope": ["platform_blog"],
+  "topic": "신규 오픈소스 라이브러리 릴리스 글을 4개 플랫폼(GitHub Release / velog / LinkedIn / Reddit r/programming)으로 변환",
+  "note": "신규 주제. 기존 examples/이전 대화 산출물을 콘텐츠 소스로 재사용하지 않음. 동일 모드 예제07의 검증된 CSS 셸(코어 해시 a73eb204 동일)만 구조 기준선으로 사용."
+}

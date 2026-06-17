@@ -1,0 +1,41 @@
+{
+  "mode": "article_html",
+  "profile": "auto",
+  "layout": "magazine-article.html",
+  "primary_vt": "decision-tree",
+  "section_mapping": {
+    "direct_h2_count": 14,
+    "layout_class": "layout-article",
+    "topic": "왜 모노레포로 가는가 — 코드 공유의 무게중심"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "output/2026-06-15/demo17/10_article_html_monorepo-argument/index.html",
+      "sha256": "42287d3b28a6d44f5a3953af62de562516a58e342b1e596d090bc9bd13306aa9"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/02-decision-tree.html",
+      "sha256": "84bc44d360fa13a33e9eed65e729fa30a18117fafe3df7f16beb761f91f770bb"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/02-visual-design-directions.html",
+      "sha256": "85577e45759246d96f2b71897ad900cbb64ffd9c6f6c14629296b5c045a654d5"
+    },
+    {
+      "path": "output/2026-06-15/demo17/10_article_html_monorepo-argument/sources/css-integrity.json",
+      "sha256": "7e4137392a494a9560ca7942ac6809525bd2e207a9d5b171c5db19bba5b20621"
+    },
+    {
+      "path": "output/2026-06-15/demo17/10_article_html_monorepo-argument/sources/render-audit.json",
+      "sha256": "c34f710cd961913fe3d0bb1b15747dad08442ad2ebc0b56b7f109b9df42f0a2d"
+    }
+  ]
+}

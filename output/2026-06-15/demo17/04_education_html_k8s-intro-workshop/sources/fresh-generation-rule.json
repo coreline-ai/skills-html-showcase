@@ -1,0 +1,6 @@
+{
+  "fresh_run": true,
+  "reused_previous_pages": false,
+  "mode_scope": ["education_html"],
+  "topic": "Kubernetes 입문 3일 워크숍 (Day1 Pod·컨테이너 기본 / Day2 Deployment·ReplicaSet·롤링업데이트 / Day3 Service·Ingress·헬스체크)"
+}

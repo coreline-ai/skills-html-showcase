@@ -1,0 +1,65 @@
+{
+  "mode": "github_feature_usage",
+  "profile": "auto",
+  "layout": "github-feature-usage.html",
+  "primary_vt": "hero-map",
+  "primary_wg": "wg-14",
+  "topic": "Caddy 웹서버 기능·도입 가이드 (자동 HTTPS·Caddyfile·리버스 프록시 중심의 무엇을/어떻게/어디에 안내)",
+  "section_mapping": {
+    "positioning": "한 줄 정체성(자동 HTTPS 웹서버) + 대상 독자 + lede-note + repo-signal-grid 3 관점(무엇을/어떻게/어디에)",
+    "overview": "hero-map(VT-01) 개요 시그널 3관점 + repo-signal-grid(배포 형태/설정 표면/확장)",
+    "feature_toc": "toc-map feature-toc 15개 pill 계약",
+    "feature_map": "기능 지도 repo-evidence-grid 6카드(자동HTTPS/프록시/정적/압축/모듈/리로드), 각 한 줄 효용",
+    "core_capability": "wg-14 Feature Explainer(자동 HTTPS) — TL;DR+아코디언 3+탭 3+FAQ 2",
+    "tech_stack": "기술 스택 표 6행(criteria-table+mobile-card-table), 버전은 UNKNOWN",
+    "architecture": "아키텍처 repo-evidence-grid(LISTEN/MATCH/HANDLE/TLS/UPSTREAM + UNKNOWN repo-unknown)",
+    "directory": "file-tour ft-card 6개(VT-09 어휘) + md-excerpt 최소 Caddyfile",
+    "actual_screens": "feature-screens-grid 3 figure(개념 SVG 목업, alt+figcaption에 '실제 스크린샷 아님' 명시) + 스크린샷 한계 source-note",
+    "user_features": "사용자(개발자) 기능 repo-evidence-grid 6(설치/설정/실행/프록시/정적/확장)",
+    "admin_features": "운영 기능 repo-signal-grid x2 (리로드/AdminAPI/인증서수명/로깅/헬스체크/권한)",
+    "getting_started": "시작 방법 5+검증 단계 repo-evidence-grid, 버전 UNKNOWN",
+    "where_it_fits": "적합/부적합 good+danger grid-2",
+    "pre_adoption_check": "도입 전 확인 repo-evidence-grid 6(발급전제/AdminAPI/다중인스턴스/성능UNKNOWN/버전/백업)",
+    "final_verdict": "repo-action-grid 3 + core-insight 요약 판정",
+    "next_actions": "try 섹션 5단계 ol",
+    "source_limits": "aside.source-note — 공개문서 기반·UNKNOWN 항목·개념 목업 한계 명시"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/github-feature-usage.html",
+      "sha256": "c358a4038992587ec875ac5b1fd6db68a49245ae1a804cbc0028af096a132d3e"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/09-file-tour.html",
+      "sha256": "88c2ae6c04105fc841692a96d8607ac6b3e81b5ead72876299553e710121186e"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/14-feature-explainer.html",
+      "sha256": "dd2cdb841ccfc11f4742d83b91d84ab2da09fd5c911b2810996aac504fccc927"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/theme.css",
+      "sha256": "2a9c8843a035138ff47b57cfc0806185c1b9cdfb3309a681022b689d8a32b1b6"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/components.css",
+      "sha256": "72c8f2570164acf5fc80330a57201f0feca579e1b6d9c3fdf1dcc5dcb81b7aa5"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/17_github_feature_usage_coreline_auth.html",
+      "sha256": "8e82b7319027429cc831d311166cfd44c6f0e7d4040cdf702fa091ee3b4922e7"
+    }
+  ]
+}

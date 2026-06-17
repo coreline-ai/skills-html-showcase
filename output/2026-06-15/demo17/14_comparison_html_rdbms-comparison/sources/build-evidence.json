@@ -1,0 +1,37 @@
+{
+  "mode": "comparison_html",
+  "profile": "auto",
+  "layout": "comparison-matrix.html",
+  "primary_vt": "comparison-cards",
+  "section_mapping": {
+    "direct_h2_count": 12,
+    "layout_class": "layout-compare",
+    "topic": "PostgreSQL vs MySQL vs SQLite 선택 기준"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/comparison-matrix.html",
+      "sha256": "c2432d9487760c819ae337e14c7f70f69eab95d8bdf0e35100b87f1668bf5abd"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/13-comparison-cards.html",
+      "sha256": "6b71d73236d1b880928be7533b8f25982d61b7ab0e1d6997865dc6071a7a1d4c"
+    },
+    {
+      "path": "output/2026-06-15/demo17/14_comparison_html_rdbms-comparison/index.html",
+      "sha256": "bd7a0ae4301c822c83a4eab308a4962986d7caedcbc753455f240c0eb7e2c655"
+    },
+    {
+      "path": "output/2026-06-15/demo17/14_comparison_html_rdbms-comparison/sources/profile.json",
+      "sha256": "f19e3831955720740bc873fb6605a7b98350533941f531cb3bfab7f366f9a0a8"
+    }
+  ]
+}

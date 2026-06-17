@@ -1,0 +1,55 @@
+{
+  "mode": "expert_html",
+  "layout": "layout-expert",
+  "layout_class": "layout-expert",
+  "profile": "auto",
+  "primary_vt": "risk-matrix",
+  "primary_wg": "wg-16",
+  "topic": "단일 DB → 읽기 복제본 도입 타당성 진단",
+  "version": "v5.10.5",
+  "core_hash": "a73eb204225857f765c745b1c5210fce5f93cbf3fc3f442cc52d8d7acf29c535",
+  "direct_h2_count": 12,
+  "section_mapping": {
+    "section-01": "의사결정 요약",
+    "section-02": "도입 판단 기준",
+    "section-03": "진단 배경",
+    "section-04": "현재 단일 DB 한계",
+    "section-05": "복제본 아키텍처",
+    "section-06": "위험 매트릭스",
+    "section-07": "로드맵",
+    "section-08": "검증 기준",
+    "section-09": "RACI 매트릭스",
+    "section-10": "운영 체크리스트",
+    "section-11": "FAQ"
+  },
+  "files": [
+    {
+      "path": "output/2026-06-15/demo17/09_expert_html_read-replica-feasibility/index.html",
+      "sha256": "352d3188575e44df77bd066380be845e825531ec0532be0bd45b6b3bf9a3e9e1"
+    },
+    {
+      "path": "output/2026-06-15/demo17/09_expert_html_read-replica-feasibility/assets/favicon.png",
+      "sha256": "d0ebaac3abdf09fa791c083acb2de716779762d06da60276e4145facdd664775"
+    },
+    {
+      "path": "output/2026-06-15/demo17/09_expert_html_read-replica-feasibility/sources/profile.json",
+      "sha256": "85c637f7f55bf479e8acb753d40af0640778bdda4316c94d6534b4e2fbdcd2ec"
+    },
+    {
+      "path": "output/2026-06-15/demo17/09_expert_html_read-replica-feasibility/sources/fresh-generation-rule.json",
+      "sha256": "5e892e29b32927cea242f50daf99d091417e143cd51b5e840562484f03d6dd6f"
+    },
+    {
+      "path": "output/2026-06-15/demo17/09_expert_html_read-replica-feasibility/sources/screenshots/1280.png",
+      "sha256": "7828627b93d376158dbf6a005114b30ebe6e920c4f81546b3077db25259a6b5b"
+    },
+    {
+      "path": "output/2026-06-15/demo17/09_expert_html_read-replica-feasibility/sources/screenshots/390.png",
+      "sha256": "9d34220728e1f99e2f3a040a68da233ecac81f1a4e9033a11478e1c2e486e220"
+    },
+    {
+      "path": "output/2026-06-15/demo17/09_expert_html_read-replica-feasibility/sources/render-audit.json",
+      "sha256": "9c6848c4f04941d2408155886b9d78cce8e8199c17618ba3eb91cc11d471261f"
+    }
+  ]
+}

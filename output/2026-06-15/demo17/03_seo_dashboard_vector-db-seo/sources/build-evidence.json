@@ -1,0 +1,55 @@
+{
+  "mode": "seo_dashboard",
+  "profile": "auto",
+  "layout": "seo-dashboard.html",
+  "primary_vt": "card-grid",
+  "primary_wg": "wg-11",
+  "topic": "'벡터 데이터베이스 입문' 블로그 글의 SEO 설계 대시보드",
+  "section_mapping": {
+    "primary_keyword": "SEO 전략 브리프(주 키워드·대상 독자·의도 비율·전환 경로) + term 카드",
+    "serp_preview": "검색 결과 미리보기 — serp-shell/serp-result/serp-rule-grid/serp-variant 정본 premium 구조",
+    "search_intent": "검색 의도 분해 표(정의·예시·비교·활용 4 의도)",
+    "tag_cluster": "키워드 클러스터 표 + col-list + tag-list + card-grid(cg-grid) VT-07",
+    "title_candidates": "제목 후보 표 5종 + 권장 제목(good)",
+    "meta_candidates": "메타 설명 후보 표(120~160자) + 작성 메모",
+    "content_outline": "콘텐츠 각도 선택(A~D) + 권장 허브 각도(good)",
+    "internal_links": "내부 링크·구조화 데이터 표 + FAQPage JSON-LD code 예시",
+    "faq": "FAQ 설계 seo-grid 카드 4개(+2 확장 안내)",
+    "quality_gate": "콘텐츠 품질 게이트 표 5행 + wg-11 발행 상태 보드",
+    "next_actions": "try NEXT ACTION 4단계 + source-note"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/seo-dashboard.html",
+      "sha256": "647a613ff1e11d1307d3932823e91b7243989322916a561f9872aeff15eaef4d"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/07-card-grid.html",
+      "sha256": "99c40c0b313b71198c03b4dbaa80ef1ab3fb27940e8530d08afdf6f1d688bdb9"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/11-weekly-status.html",
+      "sha256": "51014e3e7dc29fd5020f813b6b7a4e279de1014946514a2b9b4c82b3bb6a5278"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/theme.css",
+      "sha256": "2a9c8843a035138ff47b57cfc0806185c1b9cdfb3309a681022b689d8a32b1b6"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/components.css",
+      "sha256": "72c8f2570164acf5fc80330a57201f0feca579e1b6d9c3fdf1dcc5dcb81b7aa5"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/06_seo_prompt_engineering_dashboard.html",
+      "sha256": "72690184ef9f3f65cab867336dd28d8a3176e235d1a0630fae06dd0c7d56f83c"
+    }
+  ]
+}

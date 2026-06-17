@@ -1,0 +1,54 @@
+{
+  "mode": "beginner_html",
+  "profile": "auto",
+  "layout": "beginner-learning.html",
+  "primary_vt": "concept-explainer",
+  "section_mapping": {
+    "s1": "왜 OAuth 2.0이 필요한가",
+    "s2": "OAuth 2.0 핵심 구조 — 4개의 역할",
+    "s3": "Authorization Code 흐름 — 단계별로",
+    "s4": "OIDC — OAuth 2.0 위에 신원 확인을 더하다",
+    "s5": "액세스 토큰 vs ID 토큰 — 역할이 다르다",
+    "s6": "흔한 오해와 함정",
+    "s7": "보안 원칙 4가지",
+    "s8": "소셜 로그인 뜯어보기",
+    "s9": "OAuth 2.0 vs OIDC — 한눈에 비교",
+    "try": "다음 단계 — 실습 경로"
+  },
+  "version": "v5.10.5",
+  "topic": "OAuth 2.0 / OIDC 처음 이해하기",
+  "core_css_sha256": "a73eb204225857f765c745b1c5210fce5f93cbf3fc3f442cc52d8d7acf29c535",
+  "generated": "2026-06-16T00:00:00+09:00",
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207",
+      "reason": "beginner_html mode rules §0.6 §4"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/beginner-learning.html",
+      "sha256": "d33a711621d0008de7e6fc972a225516269bc38ac02eca86688efcb87e0ce29e",
+      "reason": "beginner_html official layout"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/15-concept-explainer.html",
+      "sha256": "72a3f0d2dc904e89cf4d719d6406dacb225bf8f1e4fa9c9bee9666ce6e416b3a",
+      "reason": "vt-15 concept-explainer template"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/10-svg-figure-sheet.html",
+      "sha256": "94e8a5f4cfb9345308576117835e8323a83d9b25d339497bb012336b4f663441",
+      "reason": "wg-10 SVG figure sheet widget"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318",
+      "reason": "body-icons catalog"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/01_beginner_passkey_login.html",
+      "sha256": "6115ba4f3b5d485144449bacae2445831e79c3b0aca359f1baecfe22037daaea",
+      "reason": "shell reference (head+style+themebar+skip+reading-progress)"
+    }
+  ]
+}

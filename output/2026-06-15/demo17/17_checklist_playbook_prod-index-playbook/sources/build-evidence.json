@@ -1,0 +1,37 @@
+{
+  "mode": "checklist_playbook",
+  "profile": "auto",
+  "layout": "checklist-playbook.html",
+  "primary_vt": "checklist-flow",
+  "section_mapping": {
+    "direct_h2_count": 12,
+    "layout_class": "page-wide layout-checklist",
+    "topic": "프로덕션 DB 인덱스 추가 안전 플레이북"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/checklist-playbook.html",
+      "sha256": "c2cdbfea91ce69d14d6680e8fcb95026981db0bd102b04d94f01f4d6ea197212"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/05-checklist-flow.html",
+      "sha256": "7dae201a8b895b2b89a7d0c52f08fcd94697f6a9b3f0beb0bac3eaec3d45aef8"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/11-weekly-status.html",
+      "sha256": "51014e3e7dc29fd5020f813b6b7a4e279de1014946514a2b9b4c82b3bb6a5278"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318"
+    },
+    {
+      "path": "output/2026-06-15/demo17/17_checklist_playbook_prod-index-playbook/index.html",
+      "sha256": "ead29f9b5a6dd9890be009e77d65e71b2046f20da5deae66c5f225e6468be711"
+    }
+  ]
+}

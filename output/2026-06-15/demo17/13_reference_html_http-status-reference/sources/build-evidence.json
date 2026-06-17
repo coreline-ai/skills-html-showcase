@@ -1,0 +1,40 @@
+{
+  "mode": "reference_html",
+  "profile": "auto",
+  "layout": "reference-manual.html",
+  "primary_vt": "file-tour",
+  "wg_used": [
+    "wg-04"
+  ],
+  "section_mapping": {
+    "direct_h2_count": 11,
+    "layout_class": "layout-reference",
+    "topic": "HTTP 상태 코드 실무 레퍼런스"
+  },
+  "files": [
+    {
+      "path": "output/2026-06-15/demo17/13_reference_html_http-status-reference/index.html",
+      "sha256": "7e4ab65db118a5c2c681c31569e0a0a6b1441db4380083c9d1ed5b090c2dea1b"
+    },
+    {
+      "path": "output/2026-06-15/demo17/13_reference_html_http-status-reference/assets/favicon.png",
+      "sha256": "d0ebaac3abdf09fa791c083acb2de716779762d06da60276e4145facdd664775"
+    },
+    {
+      "path": "output/2026-06-15/demo17/13_reference_html_http-status-reference/sources/css-integrity.json",
+      "sha256": "7e4137392a494a9560ca7942ac6809525bd2e207a9d5b171c5db19bba5b20621"
+    },
+    {
+      "path": "output/2026-06-15/demo17/13_reference_html_http-status-reference/sources/adaptive-html-final-manifest.json",
+      "sha256": "5091eca47d175172114ccd1bbac35744d73da60540c9f25af050688f6ffa4a94"
+    },
+    {
+      "path": "output/2026-06-15/demo17/13_reference_html_http-status-reference/sources/profile.json",
+      "sha256": "f5917ad9b63c1b80457bff15122e1edce71e78aba4d82330d952e64eaa75ac52"
+    },
+    {
+      "path": "output/2026-06-15/demo17/13_reference_html_http-status-reference/sources/fresh-generation-rule.json",
+      "sha256": "ae2b351ca8b506a16ebef32afb18f51cdf016d3718f36b3e9b9c365a3620b721"
+    }
+  ]
+}
