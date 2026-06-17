@@ -24,7 +24,7 @@
 
 URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill`·GitHub 저장소 URL·YouTube URL/자막·제품 매뉴얼을 받아 학습자료, 전문가 리포트, 저장소/영상/매뉴얼 분석, 아티클, 교육 모듈, 블로그 원고, SEO 대시보드, 플랫폼 변환, 스킬 감사, 레퍼런스, 비교, 케이스 스터디, 랜딩, 체크리스트로 변환합니다.
 
-[Overview](#-overview) · [빠른 시작](#-빠른-시작) · [17개 모드](#-17개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [8-테마](#-8-테마-시스템) · [쇼케이스](#️-쇼케이스-갤러리) · [v5.10.5 생성물](#v5105-demo17-rose-captures) · [아키텍처](#️-아키텍처--디자인-시스템) · [품질 게이트](#-품질-게이트--결정론) · [사용법](#-사용법)
+[Overview](#-overview) · [빠른 시작](#-빠른-시작) · [17개 모드](#-17개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [8-테마](#-8-테마-시스템) · [쇼케이스](#️-쇼케이스-갤러리) · [v5.10.5 생성물](#v5105-demo17-rose-captures) · [v5.10.3 생성물](#v5103-codex-sepia-captures) · [아키텍처](#️-아키텍처--디자인-시스템) · [품질 게이트](#-품질-게이트--결정론) · [사용법](#-사용법)
 
 </div>
 
@@ -301,6 +301,104 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 <td width="33%"></td>
 </tr>
 </table>
+
+<a id="v5103-codex-sepia-captures"></a>
+
+## 🟤 v5.10.3 생성물 — codex-5.10.3 세피아 캡쳐
+
+`http://localhost:8080/output/2026-06-13/codex-5.10.3/index.html`에 링크된 17개 모드 결과물을 **세피아 테마**로 동일 규격 부분 캡쳐했습니다. 각 이미지를 클릭하면 GitHub Pages에서 렌더링된 실제 HTML 결과물로 이동합니다.
+
+- 버전 정보: `adaptive-html-final v5.10.3` · `Codex Output Index · 17 modes`
+- 캡쳐 규격: `1280×720` 부분 캡쳐 · viewport `1280×900` · theme radio `#ahf-sepia`
+- 생성 스크립트: [`scripts/capture_codex5103_sepia.mjs`](scripts/capture_codex5103_sepia.mjs)
+- 기준 인덱스: [`output/2026-06-13/codex-5.10.3/index.html`](https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/index.html)
+- 캡쳐 manifest: [`capture-manifest.json`](output/2026-06-13/codex-5.10.3/readme-captures/sepia/capture-manifest.json)
+
+<table>
+<tr>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-01-skill-audit-20260613_193236/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-01-skill-audit-20260613_193236.jpg" width="320" alt="01 skill_audit 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-01-skill-audit-20260613_193236/index.html"><b>01 · <code>skill_audit</code></b><br>17모드 독립 생성 프롬프트 감사</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-02-platform-blog-20260613_194351/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-02-platform-blog-20260613_194351.jpg" width="320" alt="02 platform_blog 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-02-platform-blog-20260613_194351/index.html"><b>02 · <code>platform_blog</code></b><br>AI 회의 액션 자동화 글의 플랫폼별 변환 전략</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-03-seo-dashboard-20260613_194804/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-03-seo-dashboard-20260613_194804.jpg" width="320" alt="03 seo_dashboard 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-03-seo-dashboard-20260613_194804/index.html"><b>03 · <code>seo_dashboard</code></b><br>AI 회의록 자동화 글의 SEO 대시보드</a></sub>
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-04-education-html-20260613_195414/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-04-education-html-20260613_195414.jpg" width="320" alt="04 education_html 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-04-education-html-20260613_195414/index.html"><b>04 · <code>education_html</code></b><br>Git Rebase 사고법 워크숍</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-05-github-analysis-20260613_200411/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-05-github-analysis-20260613_200411.jpg" width="320" alt="05 github_analysis 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-05-github-analysis-20260613_200411/index.html"><b>05 · <code>github_analysis</code></b><br>coreline-ai/skills-html-showcase 실사 리포트</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-06-github-feature-usage-20260613_201301/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-06-github-feature-usage-20260613_201301.jpg" width="320" alt="06 github_feature_usage 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-06-github-feature-usage-20260613_201301/index.html"><b>06 · <code>github_feature_usage</code></b><br>skills-html-showcase 기능·사용 가이드</a></sub>
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-07-youtube-analysis-20260613_201813/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-07-youtube-analysis-20260613_201813.jpg" width="320" alt="07 youtube_analysis 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-07-youtube-analysis-20260613_201813/index.html"><b>07 · <code>youtube_analysis</code></b><br>AI 회의 액션 자동화 영상 분석</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-08-manual-analysis-20260613_202323/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-08-manual-analysis-20260613_202323.jpg" width="320" alt="08 manual_analysis 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-08-manual-analysis-20260613_202323/index.html"><b>08 · <code>manual_analysis</code></b><br>결제 실패 급증 온콜 대응 매뉴얼</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-09-expert-html-20260613_202824/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-09-expert-html-20260613_202824.jpg" width="320" alt="09 expert_html 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-09-expert-html-20260613_202824/index.html"><b>09 · <code>expert_html</code></b><br>AI 에이전트 릴리즈 게이트 아키텍처 진단</a></sub>
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-10-article-html-20260613_203333/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-10-article-html-20260613_203333.jpg" width="320" alt="10 article_html 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-10-article-html-20260613_203333/index.html"><b>10 · <code>article_html</code></b><br>AI 시대의 개인 지식 금고가 팀의 의사결정 품질을 바꾸는 방식</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-11-blog-writer-20260613_204015/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-11-blog-writer-20260613_204015.jpg" width="320" alt="11 blog_writer 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-11-blog-writer-20260613_204015/index.html"><b>11 · <code>blog_writer</code></b><br>아침 첫 45분을 화면 밖으로 옮겨본 7일</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-12-beginner-html-20260613_204921/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-12-beginner-html-20260613_204921.jpg" width="320" alt="12 beginner_html 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-12-beginner-html-20260613_204921/index.html"><b>12 · <code>beginner_html</code></b><br>API가 뭐예요? 식당 주문으로 처음 이해하기</a></sub>
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-13-reference-html-20260613_205733/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-13-reference-html-20260613_205733.jpg" width="320" alt="13 reference_html 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-13-reference-html-20260613_205733/index.html"><b>13 · <code>reference_html</code></b><br>HTTP Cache-Control 헤더 레퍼런스</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-14-comparison-html-20260613_210355/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-14-comparison-html-20260613_210355.jpg" width="320" alt="14 comparison_html 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-14-comparison-html-20260613_210355/index.html"><b>14 · <code>comparison_html</code></b><br>SQLite vs DuckDB vs PostgreSQL 선택 매트릭스</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-15-case-study-html-20260613_211157/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-15-case-study-html-20260613_211157.jpg" width="320" alt="15 case_study_html 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-15-case-study-html-20260613_211157/index.html"><b>15 · <code>case_study_html</code></b><br>결제 웹훅 중복 처리 장애 회고</a></sub>
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-16-landing-brief-html-20260613_211157/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-16-landing-brief-html-20260613_211157.jpg" width="320" alt="16 landing_brief_html 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-16-landing-brief-html-20260613_211157/index.html"><b>16 · <code>landing_brief_html</code></b><br>AI 회의 액션 자동화 랜딩 브리프</a></sub>
+</td>
+<td width="33%" valign="top" align="center">
+  <a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-17-checklist-playbook-20260613_211157/index.html"><img src="output/2026-06-13/codex-5.10.3/readme-captures/sepia/adaptive-html-final-single-17-checklist-playbook-20260613_211157.jpg" width="320" alt="17 checklist_playbook 세피아 테마 부분 캡쳐"></a><br>
+  <sub><a href="https://coreline-ai.github.io/skills-html-showcase/output/2026-06-13/codex-5.10.3/adaptive-html-final-single-17-checklist-playbook-20260613_211157/index.html"><b>17 · <code>checklist_playbook</code></b><br>온콜 장애 초동 대응 체크리스트 플레이북</a></sub>
+</td>
+<td width="33%"></td>
+</tr>
+</table>
+
+---
 
 ## 🏗️ 아키텍처 & 디자인 시스템
 

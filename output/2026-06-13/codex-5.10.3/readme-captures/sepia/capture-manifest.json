@@ -1,0 +1,323 @@
+{
+  "generated_at": "2026-06-17T13:05:17.178Z",
+  "theme": "sepia",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "clip": {
+    "x": 0,
+    "y": 0,
+    "width": 1280,
+    "height": 720
+  },
+  "count": 17,
+  "captures": [
+    {
+      "no": "01",
+      "mode": "skill_audit",
+      "title": "17모드 독립 생성 프롬프트 감사",
+      "html": "adaptive-html-final-single-01-skill-audit-20260613_193236/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-01-skill-audit-20260613_193236.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "02",
+      "mode": "platform_blog",
+      "title": "AI 회의 액션 자동화 글의 플랫폼별 변환 전략",
+      "html": "adaptive-html-final-single-02-platform-blog-20260613_194351/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-02-platform-blog-20260613_194351.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "03",
+      "mode": "seo_dashboard",
+      "title": "AI 회의록 자동화 글의 SEO 대시보드",
+      "html": "adaptive-html-final-single-03-seo-dashboard-20260613_194804/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-03-seo-dashboard-20260613_194804.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "04",
+      "mode": "education_html",
+      "title": "Git Rebase 사고법 워크숍",
+      "html": "adaptive-html-final-single-04-education-html-20260613_195414/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-04-education-html-20260613_195414.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "05",
+      "mode": "github_analysis",
+      "title": "coreline-ai/skills-html-showcase 실사 리포트",
+      "html": "adaptive-html-final-single-05-github-analysis-20260613_200411/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-05-github-analysis-20260613_200411.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "06",
+      "mode": "github_feature_usage",
+      "title": "skills-html-showcase 기능·사용 가이드",
+      "html": "adaptive-html-final-single-06-github-feature-usage-20260613_201301/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-06-github-feature-usage-20260613_201301.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "07",
+      "mode": "youtube_analysis",
+      "title": "AI 회의 액션 자동화 영상 분석",
+      "html": "adaptive-html-final-single-07-youtube-analysis-20260613_201813/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-07-youtube-analysis-20260613_201813.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "08",
+      "mode": "manual_analysis",
+      "title": "결제 실패 급증 온콜 대응 매뉴얼",
+      "html": "adaptive-html-final-single-08-manual-analysis-20260613_202323/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-08-manual-analysis-20260613_202323.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "09",
+      "mode": "expert_html",
+      "title": "AI 에이전트 릴리즈 게이트 아키텍처 진단",
+      "html": "adaptive-html-final-single-09-expert-html-20260613_202824/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-09-expert-html-20260613_202824.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "10",
+      "mode": "article_html",
+      "title": "AI 시대의 개인 지식 금고가 팀의 의사결정 품질을 바꾸는 방식",
+      "html": "adaptive-html-final-single-10-article-html-20260613_203333/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-10-article-html-20260613_203333.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "11",
+      "mode": "blog_writer",
+      "title": "아침 첫 45분을 화면 밖으로 옮겨본 7일",
+      "html": "adaptive-html-final-single-11-blog-writer-20260613_204015/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-11-blog-writer-20260613_204015.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "12",
+      "mode": "beginner_html",
+      "title": "API가 뭐예요? 식당 주문으로 처음 이해하기",
+      "html": "adaptive-html-final-single-12-beginner-html-20260613_204921/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-12-beginner-html-20260613_204921.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "13",
+      "mode": "reference_html",
+      "title": "HTTP Cache-Control 헤더 레퍼런스",
+      "html": "adaptive-html-final-single-13-reference-html-20260613_205733/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-13-reference-html-20260613_205733.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "14",
+      "mode": "comparison_html",
+      "title": "SQLite vs DuckDB vs PostgreSQL 선택 매트릭스",
+      "html": "adaptive-html-final-single-14-comparison-html-20260613_210355/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-14-comparison-html-20260613_210355.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "15",
+      "mode": "case_study_html",
+      "title": "결제 웹훅 중복 처리 장애 회고",
+      "html": "adaptive-html-final-single-15-case-study-html-20260613_211157/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-15-case-study-html-20260613_211157.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "16",
+      "mode": "landing_brief_html",
+      "title": "AI 회의 액션 자동화 랜딩 브리프",
+      "html": "adaptive-html-final-single-16-landing-brief-html-20260613_211157/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-16-landing-brief-html-20260613_211157.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "no": "17",
+      "mode": "checklist_playbook",
+      "title": "온콜 장애 초동 대응 체크리스트 플레이북",
+      "html": "adaptive-html-final-single-17-checklist-playbook-20260613_211157/index.html",
+      "capture": "readme-captures/sepia/adaptive-html-final-single-17-checklist-playbook-20260613_211157.jpg",
+      "theme": "sepia",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    }
+  ]
+}
