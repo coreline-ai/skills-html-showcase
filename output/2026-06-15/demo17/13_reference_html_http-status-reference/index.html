@@ -2098,6 +2098,9 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 
 /* forced-colors(고대비): 테마바 선택 상태는 배경색 의존 → 시스템색 Highlight outline으로 단서 복원 */
 @media(forced-colors:active){.ahf-themebar input:checked + label{outline:3px solid Highlight;outline-offset:-3px}}
+
+/* fix: 상태 코드 열(좁은 칸)에서 100/101 등 3자리 코드가 2줄로 깨지지 않게 */
+td[data-label="코드"],td[data-label="상태 코드"]{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -2611,7 +2614,7 @@ Content-Type: application/problem+json
             <path class="wg-04-edge wg-04-edge-crit" d="M120,50 L120,130" marker-end="url(#wg-04-arrow-crit)"></path>
             <path class="wg-04-edge" d="M80,150 L40,230" marker-end="url(#wg-04-arrow)"></path>
             <path class="wg-04-edge wg-04-edge-crit" d="M160,150 L320,230" marker-end="url(#wg-04-arrow-crit)"></path>
-            <path class="wg-04-edge" d="M120,170 L120,230" marker-end="url(#wg-04-arrow)"></path>
+            <path class="wg-04-edge" d="M120,170 L145,230" marker-end="url(#wg-04-arrow)"></path>
             <path class="wg-04-edge wg-04-edge-crit" d="M320,250 L320,310" marker-end="url(#wg-04-arrow-crit)"></path>
             <path class="wg-04-edge" d="M280,250 L180,310" marker-end="url(#wg-04-arrow)"></path>
             <path class="wg-04-edge" d="M360,250 L460,310" marker-end="url(#wg-04-arrow)"></path>
@@ -2630,8 +2633,8 @@ Content-Type: application/problem+json
             <text x="40" y="253">401/403</text>
           </g>
           <g class="wg-04-node wg-04-node-leaf">
-            <rect x="60" y="230" width="100" height="36" rx="8"></rect>
-            <text x="110" y="253">400/404/422</text>
+            <rect x="95" y="230" width="100" height="36" rx="8"></rect>
+            <text x="145" y="253">400/404/422</text>
           </g>
           <g class="wg-04-node wg-04-node-core wg-04-node-crit">
             <rect x="260" y="230" width="120" height="36" rx="8"></rect>
