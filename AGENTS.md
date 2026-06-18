@@ -54,6 +54,18 @@ v5.10.3 감사에서 확인된 반복 원인은 **manifest/SKILL/CHANGELOG 같�
 
 ---
 
+## 2.2 성능 — 알려진 비용 / 최적화 필요 (후속 과제)
+
+> **현재 스킬은 HTML 1장 생성 비용이 크다. 성능 최적화가 필요하다(별도 워크스트림).** 즉흥 최적화로 무결성 게이트를 깨지 말고, 아래 사실만 인지하고 정식 계획에서 다룬다.
+
+- **지배적 비용 = 인라인 CSS verbatim 재현.** 모든 산출물은 코어5 + 조건부 CSS를 거의 전부 **byte-for-byte 인라인**한다(무 JS·단일 파일·`core-css-sha256` 무결성 원칙). 실측상 페이지 1장의 **출력 ~85%가 인라인 CSS(약 200KB+)** 이며, `auto` 프로파일은 `widgets.css`(단일 ~100KB)와 `visual-html.css`를 함께 인라인한다.
+- **재출력 루프 증폭.** verbatim + 해시 게이트 때문에 검증 실패(깊이·마커·해시) 1건마다 전체 CSS를 통째로 다시 출력해야 해 비용이 곱셈으로 늘어난다.
+- **부차 비용**: 읽기 우선 프로토콜(SKILL/AGENTS/모드·템플릿 적재), 본문 깊이(10+ 섹션·body-icon SVG verbatim), render-audit 캡쳐 차수.
+- **최적화 레버(후속 계획 대상, 게이트 설계 동반)**: ① 프로파일 좁히기(`widget`/`diagram` 단일) ② 사용 `wg-NN`만 서브셋 인라인 ③ `layouts.css` 모드별 분리 ④ 생성 단계 선반영으로 재검증 루프 축소.
+- **추적**: [dev-plan/implement_20260618_221706.md](dev-plan/implement_20260618_221706.md) 누적 백로그에서 별도 워크스트림으로 계획한다. "전체 CSS verbatim 인라인 + 해시"는 현행 결정론·무결성의 핵심이므로 서브셋화는 게이트 재설계를 포함하는 큰 작업이다.
+
+---
+
 ## 3. 모드 라우팅 결정표 (17 모드)
 
 여러 트리거가 겹치면 `skills/adaptive-html-final/SKILL.md` §3의 Priority(1=skill_audit … 17=checklist_playbook)를 따른다.
