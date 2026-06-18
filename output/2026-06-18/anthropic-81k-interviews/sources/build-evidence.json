@@ -1,0 +1,21 @@
+{
+  "mode": "expert_html",
+  "profile": "auto",
+  "layout": "expert-report.html",
+  "primary_vt": "risk-matrix",
+  "primary_wg": "wg-16",
+  "section_mapping": {
+    "direct_h2_count": 12,
+    "layout_class": "page-wide layout-expert",
+    "topic": "What 81,000 People Want from AI",
+    "source_url": "https://www.anthropic.com/features/81k-interviews"
+  },
+  "files": [
+    { "path": "skills/adaptive-html-final/SKILL.md", "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207" },
+    { "path": "skills/adaptive-html-final/assets/layouts/expert-report.html", "sha256": "6d6bbf941d66842ea29976ecdd0976f6a41786d07b33d16789b89fcf6c3471c3" },
+    { "path": "skills/adaptive-html-final/assets/visual-html-templates/03-risk-matrix.html", "sha256": "819a2e7a46f0caf85726705c79a95720c9296ab418b1f16f2f2b1f3f72aa522f" },
+    { "path": "skills/adaptive-html-final/assets/widget-templates/16-implementation-plan.html", "sha256": "7137af34d22e3875711958e017929b8d9f14c4d4cd3d57fcd28a02e8d1007c6e" },
+    { "path": "skills/adaptive-html-final/assets/body-icons.json", "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318" },
+    { "path": "output/2026-06-18/anthropic-81k-interviews/index.html", "sha256": "302e8a5b37c9fa4bbd5c0f1a4c0e9800e9b76b7916d45c0e5609e6c775d9e02a" }
+  ]
+}

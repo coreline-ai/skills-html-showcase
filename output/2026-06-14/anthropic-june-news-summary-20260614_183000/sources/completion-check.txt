@@ -9,18 +9,18 @@ OK — quality contract guard passed (1 HTML content file(s))
 -> PASS (2/4 quality_contract (붕어빵·얇음 차단))
 
 === 3/4 governance (게이트 회귀) ===
-ok:   mode registry sync clean (build==live + §0.6/widget + AGENTS §3 + manifest + files + toc)
-ok:   dry-run: duplicate priority is caught
-ok:   dry-run: primary_vt drift vs §0.6/AGENTS is caught
-ok:   dry-run: missing layout file is caught
-ok:   dry-run: missing required field is caught
+ok:   benchmark completion gate fails missing per-mode evidence
+
+=== 4/4 build-evidence + render-audit (official files·1280/390 overflow·screenshot artifact) ===
+-> PASS (build-evidence + render-audit)
+ok:   benchmark completion gate passes micro-layout and per-mode evidence
 ok:   manifest quality.governance_count matches this self-test count
 
-153/153 checks passed
+162/162 checks passed
 -> PASS (3/4 governance (게이트 회귀))
 
-=== 4/4 render-audit (1280/390 overflow·screenshot artifact) ===
--> PASS (render-audit)
+=== 4/4 build-evidence + render-audit (official files·1280/390 overflow·screenshot artifact) ===
+-> PASS (build-evidence + render-audit)
 
 ================================================
 완료 통합 검증: 4/4 통과  ->  OK

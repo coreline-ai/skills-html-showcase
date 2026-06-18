@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
 <style>
-/* adaptive-html-final-core-css-sha256: 34913f528c339a3efdf2cef9944106148edc86ddbbaabda3856eabc18428f6af */
+/* adaptive-html-final-core-css-sha256: a73eb204225857f765c745b1c5210fce5f93cbf3fc3f442cc52d8d7acf29c535 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -128,7 +128,7 @@ article>h2:first-child,
 .source-note>h2:first-child,
 .card-block>h2:first-child,
 .mini-card>h2:first-child{margin-top:0}
-h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;height:34px;padding:0 9px;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;font-family:var(--sans);font-size:15px;font-weight:800;margin-right:12px;vertical-align:3px;line-height:1}
+h2 .no,h2 .num{display:inline-grid;place-items:center;min-width:34px;width:auto;height:34px;padding:0 9px;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;font-family:var(--sans);font-size:15px;font-weight:800;margin-right:12px;vertical-align:3px;line-height:1;white-space:nowrap}
 /* opt-in: only the 1-2 most important section numbers use solid brand red */
 h2 .no.is-key,h2 .num.is-key{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;line-height:1.7}
@@ -151,6 +151,8 @@ strong{color:var(--ink);font-weight:700}
 ul,ol{margin:12px 0 18px 22px;color:var(--ink-soft)}
 li{margin:6px 0}
 footer{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-mute);font-size:13px}
+/* M10: body-level footer(슬롯이 main 밖에 렌더될 때) 본문 폭 중앙 정렬 — viewport 좌측 붙음 방지 */
+body>footer{width:min(var(--max-wide),calc(100% - 44px));margin-left:auto;margin-right:auto}
 footer p{font-size:13px;color:var(--ink-mute)}
 @media(max-width:760px){
   body{line-height:1.74}
@@ -159,7 +161,7 @@ footer p{font-size:13px;color:var(--ink-mute)}
   .lead{font-size:16px}
   h1{font-size:30px;line-height:1.34}
   h2{font-size:23px;margin-top:52px}
-  h2 .no,h2 .num{min-width:30px;width:auto;height:30px;font-size:13px;margin-right:9px;padding:0 8px}
+  h2 .no,h2 .num{min-width:30px;width:auto;height:30px;font-size:13px;margin-right:9px;padding:0 8px;white-space:nowrap}
   .h2-sub{margin-left:39px}
 }
 @media(max-width:430px){
@@ -1376,7 +1378,7 @@ body>footer.source-note p{margin:0}
 .wg-09-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));overflow:visible;scroll-snap-type:none;scroll-behavior:auto;gap:var(--space-4)}
 .wg-09-slide{flex:initial;width:100%;min-width:0;min-height:260px;scroll-snap-align:unset;scroll-margin:0;overflow-wrap:anywhere}
 @media(max-width:760px){.wg-09-track{grid-template-columns:1fr}.wg-09-slide{min-height:220px;padding:22px}}
-/* wg-07: v5.10.3 — 정적화 제거(애니메이션 복원). 879행 카탈로그 메모(미반영)와 코드 일치화. prefers-reduced-motion 블록이 접근성 보장 */
+/* wg-07: 정적화 제거(애니메이션 복원). 879행 카탈로그 메모(미반영)와 코드 일치화. prefers-reduced-motion 블록이 접근성 보장 */
 
 /* === 카탈로그 reverse-sync (2026-06-07) — wg-14/wg-15 카드 전체 폭 사용 ===
    1280px에서 내부 본문이 780px(max-reading)에 묶이던 것을 섹션 카드 폭(≈974px)까지 확장.
@@ -1407,6 +1409,18 @@ body>footer.source-note p{margin:0}
    (직계 자식 `>` 대신 descendant — 생성기가 위젯을 figure/div로 감싸도 동작하도록.) */
 .mode-template-contract .wg-10-sheet{width:100%;max-width:100%;margin:var(--space-5) auto 0}
 
+/* forced-colors(고대비): 배경색만으로 상태를 전하는 선택/체크 컨트롤에 시스템색 Highlight outline 단서 추가.
+   일반 렌더에는 미적용(미디어 가드) — 코어/평상시 시각 영향 0. */
+@media(forced-colors:active){
+  .wg-02-radio:checked+.wg-02-card,
+  .wg-06-bg-input:checked+.wg-06-bg-label,
+  .wg-07-radio:checked+.wg-07-pill,.wg-07-radio2:checked+.wg-07-pill,
+  .wg-20-radio:checked+.wg-20-chip{outline:3px solid Highlight;outline-offset:-3px}
+  .wg-06-btn--primary{outline:2px solid Highlight;outline-offset:-2px}
+  .wg-12-ck-in:checked+.wg-12-ck-lb .wg-12-ck-box,
+  .wg-19-cb:checked + .wg-19-toggle::before{outline:2px solid Highlight;outline-offset:1px}
+}
+
 /* SVG-to-HTML view template system — native, in-flow, harmonized with adaptive-html-final */
 :root{--vt-paper:#fff;--vt-wash:#faf9f5;--vt-soft:#f0eee6;--vt-line:var(--line);--vt-ink:var(--ink);--vt-muted:var(--ink-mute);--vt-red:var(--accent);--vt-red2:var(--accent-2);--vt-blue:#3a6280;--vt-green:#2a7d5a;--vt-gold:#d99a38;--vt-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
 body{background:var(--vt-wash)}
@@ -1423,14 +1437,14 @@ body{background:var(--vt-wash)}
 /* 10 flowchart */.fc{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:center}.fc-node{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.fc-node.hot{border-color:var(--vt-red);box-shadow:inset 0 3px 0 var(--vt-red)}.fc-arrow{text-align:center;font-weight:900;color:var(--ink-mute)}
 /* 11 weekly */.wk-bars{display:grid;gap:10px}.wk-row{display:grid;grid-template-columns:130px 1fr 44px;gap:10px;align-items:center}.wk-bar{height:12px;background:var(--vt-soft);border-radius:99px;overflow:hidden}.wk-fill{height:100%;background:var(--vt-red);border-radius:99px}.wk-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.wk-col{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
 /* 12 incident */.inc-head{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.inc-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.inc-card.impact{border-top:4px solid var(--vt-red)}.inc-card.cause{border-top:4px solid var(--vt-gold)}.inc-card.action{border-top:4px solid var(--vt-green)}
-/* 13 comparison */.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cmp-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.cmp-card .vt-kicker{font-size:14px;line-height:1;margin-bottom:4px}.cmp-card h3{margin:2px 0 0;font-size:16px;line-height:1.35}.cmp-card.pick{border:2px solid var(--vt-red)}.cmp-card ul{font-size:12.8px;line-height:1.45;margin:6px 0 0 16px}.mode-template-contract .vt-shell{background:transparent;border:0;padding:0;margin:18px 0}
+/* 13 comparison */.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cmp-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.cmp-card .vt-kicker{font-size:14px;line-height:1;margin-bottom:8px}.cmp-card h3{margin:2px 0 0;font-size:16px;line-height:1.35}.cmp-card.pick{border:2px solid var(--vt-red)}.cmp-card ul{font-size:12.8px;line-height:1.45;margin:6px 0 0 16px}.mode-template-contract .vt-shell{background:transparent;border:0;padding:0;margin:18px 0}
 /* 14 swimlane */.swim{display:grid;gap:8px}.lane{display:grid;grid-template-columns:110px repeat(4,1fr);gap:8px}.lane-label{font-weight:900;color:var(--vt-red2);padding:10px}.lane-step{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px}.lane-step.blank{opacity:.22}
 /* 15 concept */.concept-ring{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px}.concept-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.concept-step{border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}.concept-step b{display:block;color:var(--vt-red)}
 /* 16 plan */.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.milestone{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.milestone b{display:block}.plan-risk{border-left:4px solid var(--vt-gold)}
 /* 17 pr */.pr-box{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px}.pr-diff{background:var(--code);color:#eee;border-radius:10px;padding:12px;font-family:var(--vt-mono);font-size:12px;overflow:auto}.pr-add{color:#b7f5ce}.pr-del{color:#ffb6c0}.pr-walk{display:grid;gap:9px;margin-top:10px}.pr-file{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--card)}
 /* 18 board */.board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.board-col{background:var(--vt-soft);border:1px solid var(--line);border-radius:12px;padding:10px}.board-col h3{font-size:15px;margin:0 0 8px}.ticket{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0;font-size:13px}.ticket.active{border-left:4px solid var(--vt-red)}
 /* 19 flag */.flag-list{display:grid;gap:10px}.flag{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.switch{width:48px;height:26px;border-radius:999px;background:var(--vt-green);position:relative}.switch:after{content:"";position:absolute;right:4px;top:4px;width:18px;height:18px;background:var(--card);border-radius:99px}.switch.off{background:#bbb}.switch.off:after{right:auto;left:4px}.switch.on{background:var(--vt-green)}.switch.warn{background:var(--vt-gold)}.switch.warn:after{right:auto;left:50%;transform:translateX(-50%)}.flag-ctl{display:flex;align-items:center;gap:10px}.flag-state{font-family:var(--vt-mono);font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:5px;min-height:24px;color:var(--vt-muted)}.flag-state:before{content:"";width:8px;height:8px;background:currentColor;flex:none;border-radius:50%}.flag-state.on{color:var(--vt-green)}.flag-state.warn{color:var(--vt-gold)}.flag-state.off{color:var(--vt-muted)}.flag-state.warn:before{border-radius:2px}.flag-state.off:before{background:none;border:2px solid currentColor}
-/* 20 tuner */.tuner{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tune-box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.score{display:flex;gap:6px;margin-top:8px}.score span{height:8px;flex:1;background:var(--vt-soft);border-radius:99px}.score span.on{background:var(--vt-red)}
+/* 20 tuner */.tuner{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tune-box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.tuner .score{display:flex;gap:6px;margin-top:8px}.tuner .score span{height:8px;flex:1;background:var(--vt-soft);border-radius:99px}.tuner .score span.on{background:var(--vt-red)}
 @media(max-width:920px){.vt-principles,.vt-index-grid,.hm-grid,.dt-q,.dt-options,.qg-grid,.vt-note-grid,.vt-two,.plan-grid,.tuner{grid-template-columns:1fr}.dt-arrow{height:22px;width:2px;justify-self:center}.dt-arrow:after{right:-5px;top:auto;bottom:-1px;border-left:6px solid transparent;border-right:6px solid transparent;border-top:10px solid var(--ink);border-bottom:0}.cg-grid,.vt-four{grid-template-columns:repeat(2,1fr)}.fc{grid-template-columns:1fr}.fc-arrow{transform:rotate(90deg)}.board,.cmp,.wk-cols,.inc-head,.vt-mini-grid{grid-template-columns:1fr}.raci{grid-template-columns:1.2fr repeat(4,.6fr);overflow-x:auto}.lane{grid-template-columns:1fr;overflow:visible}.lane-label{background:var(--vt-soft);border-radius:10px}.concept-steps{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.vt-page{width:min(100% - 32px,var(--max-wide))}.vt-hero{padding:24px 20px}.vt-shell{padding:16px}.vt-shell-head{display:block}.vt-fit{margin-top:10px}.vt-frame{padding:12px}.cg-grid,.vt-four,.concept-steps{grid-template-columns:1fr}.wk-row{grid-template-columns:90px 1fr 38px}.vt-source a{min-height:44px}.rm-grid{grid-template-columns:60px repeat(3,minmax(72px,1fr));gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch}.rm-cell{min-height:58px;padding:8px;font-size:12px}}
 /* 21 soft-workflow-map */.wf-board{--wf-warm:#ff812f;--wf-warm2:#ffbd72;--wf-edge:#ead8c7;position:relative;background:linear-gradient(135deg,#fff2e4 0%,#fffaf5 52%,#f8e1cf 100%);border:1px solid var(--wf-edge);border-radius:18px;padding:30px;overflow:hidden}.wf-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px}.wf-newbadge{display:inline-flex;align-items:center;background:var(--vt-ink);color:#fff;border-radius:999px;padding:9px 22px;font-weight:900;font-size:18px}.wf-aistack{display:flex;align-items:center;gap:12px}.wf-aibadge{width:54px;height:54px;border-radius:16px;background:#242421;color:var(--wf-warm2);display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:26px}.wf-bag{width:48px;height:48px;border:1px solid var(--wf-edge);border-radius:16px;background:#fff5e9;display:grid;place-items:center;color:var(--wf-warm);font-size:24px}.wf-map{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:24px;align-items:center}.wf-col{display:grid;gap:16px}.wf-card{background:rgba(255,250,244,.92);border:1px solid var(--wf-edge);border-radius:16px;padding:18px;min-height:112px;box-shadow:0 14px 28px rgba(172,124,83,.13)}.wf-card strong{display:block;font-weight:900;margin-bottom:6px;color:var(--vt-ink)}.wf-card p{font-size:14px;line-height:1.6;color:var(--ink-mute);margin:0}.wf-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:10px;background:var(--card);box-shadow:inset 0 0 0 1px var(--wf-edge);color:var(--wf-warm)}.wf-center{position:relative;background:#fffaf5;border:1px solid var(--wf-edge);border-radius:22px;padding:22px;box-shadow:0 24px 50px rgba(172,124,83,.2)}.wf-codewin{height:120px;border-radius:15px;background:#2b2e36;margin:-44px auto 16px;width:80%;box-shadow:0 20px 34px rgba(31,31,29,.22);padding:16px}.wf-codewin span{display:block;height:8px;border-radius:999px;margin:9px;background:#7f8cff}.wf-codewin span:nth-child(2){width:64%;background:var(--wf-warm2)}.wf-codewin span:nth-child(3){width:82%;background:#72d9aa}.wf-dash{border-radius:16px;background:#f1e8ff;border:1px solid #d9caff;padding:14px;margin-bottom:16px}.wf-dashbar{height:32px;width:54%;border-radius:11px;background:linear-gradient(90deg,#cdb7ff,#9a75ff);margin-bottom:12px}.wf-dashblock{height:64px;border-radius:11px;background:var(--card)}.wf-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.wf-metric{background:var(--card);border:1px solid var(--wf-edge);border-radius:14px;padding:13px;text-align:center}.wf-metric b{display:block;color:#1683a3;font-size:26px;font-family:var(--serif)}.wf-metric span{font-size:12px;color:var(--ink-mute)}.wf-pipes{margin-top:16px;display:grid;gap:9px}.wf-pipe{display:grid;grid-template-columns:22px 1fr 1.4fr;gap:11px;align-items:center}.wf-pipe i{width:22px;height:22px;border-radius:50%;background:var(--wf-warm)}.wf-pipe:nth-child(2) i{background:#9a75ff}.wf-pipe:nth-child(3) i{background:#61d1a0}.wf-pipe:nth-child(4) i{background:#ff6b6b}.wf-pipe span{height:8px;border-radius:999px;background:#eadbd0}.wf-bottom{margin-top:24px;background:#fff6ed;border:1px solid var(--wf-edge);border-radius:999px;height:50px;display:flex;align-items:center;padding:0 10px 0 18px;gap:16px}.wf-rail-short{width:72px;height:13px;border-radius:999px;background:#f1dac5}.wf-rail-long{width:340px;max-width:46%;height:13px;border-radius:999px;background:#e8d4c2}.wf-arrow{margin-left:auto;width:120px;height:42px;border-radius:999px;background:linear-gradient(135deg,var(--wf-warm2),#ff7a2c);display:flex;align-items:center;justify-content:flex-end;padding-right:11px;box-shadow:0 8px 18px rgba(255,122,44,.25)}.wf-arrow i{width:32px;height:32px;border-radius:50%;background:var(--card);display:grid;place-items:center;color:var(--wf-warm);font-weight:900;font-style:normal}
@@ -1910,6 +1924,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 .layout-manual .manual-step h3,
 .layout-manual .manual-trouble h3{margin-top:0;color:var(--accent-2)}
 .layout-manual .manual-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--chip-ink);font-weight:800}
+.layout-manual .manual-safe,.layout-manual .manual-risk,.layout-manual .manual-unknown{display:inline-block;padding:3px 10px;line-height:1.45;margin-bottom:8px;border-radius:3px}
 .layout-manual .manual-safe{border-left:4px solid var(--good-accent)}
 .layout-manual .manual-risk{border-left:4px solid var(--danger-accent,var(--accent-2))}
 .layout-manual .manual-unknown{border-style:dashed;background:var(--accent-soft)}
@@ -2025,7 +2040,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
   details::details-content{content-visibility:visible}
   .source-note,.toc,.box,.term,.analogy,.danger,.good,.card-block,.mini-card{break-inside:avoid}
   pre,table,.tbl,blockquote,figure,.card-block{break-inside:avoid}
-  .skip,.ahf-themebar{display:none}
+  .skip,.ahf-themebar,.reading-progress{display:none}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:11px;color:#555}
 }
 
@@ -2077,9 +2092,12 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 @media(max-width:560px){.ahf-themebar{position:static;width:276px;max-width:calc(100% - 28px);margin:10px auto 16px}}
 @media print{.ahf-themebar{display:none}}
 
-/* v5.10.3 — 다크 트리오 인쇄 시 라이트 토큰 강제(:has 특이도(1,1,0)가 print.css(:root 불가)를 이기므로 본 파일에서 처리).
+/* 다크 트리오 인쇄 시 라이트 토큰 강제(:has 특이도(1,1,0)가 print.css(:root 불가)를 이기므로 본 파일에서 처리).
    surfaces/inks/lines/vt/code/콜아웃을 라이트 등가값으로 리셋 — 종이 출력에서 다크 카드/저대비 잉크 방지 */
 @media print{:root:has(:is(#ahf-dark,#ahf-dark2,#ahf-blue):checked){--bg:#ffffff;--card:#ffffff;--ink:#111111;--ink-soft:#333333;--ink-mute:#555555;--line:#dddddd;--chip-ink:#555555;--code:#1a1a1a;--accent:#b72d38;--accent-2:#b72d38;--on-accent:#ffffff;--accent-soft:#fbeef0;--link-on-dark:#b72d38;--dark:#1d1d1b;--dark-soft:#2a2a27;--focus:#2f6fdb;--vt-paper:#ffffff;--vt-wash:#f7f7f4;--vt-soft:#f0f0ec;--vt-line:#dddddd;--vt-ink:#111111;--vt-muted:#555555;--vt-blue:#2456a6;--vt-green:#1f6f4e;--vt-gold:#8a6a1f;--term-bg:#fffbeb;--term-border:#e8d48a;--term-ink:#3d3320;--term-label-ink:#8a6a1f;--term-accent:#9b6a20;--analogy-bg:#f4f7fa;--analogy-border:#d6e0ea;--analogy-ink:#2c3a46;--analogy-label-ink:#3f6bb0;--analogy-accent:#3f6bb0;--danger-bg:#fdf0f1;--danger-border:#f3c6cb;--danger-ink:#5c2228;--danger-label-ink:#c62433;--danger-accent:#c62433;--good-bg:#eef7f0;--good-border:#cfe6d5;--good-ink:#1d4030;--good-label-ink:#1f6f4e;--good-accent:#1f6f4e;--hl-yellow:#fff1b8;--hl-blue:#d8e6f7;--hl-pink:#fbdce3;color-scheme:light}}
+
+/* forced-colors(고대비): 테마바 선택 상태는 배경색 의존 → 시스템색 Highlight outline으로 단서 복원 */
+@media(forced-colors:active){.ahf-themebar input:checked + label{outline:3px solid Highlight;outline-offset:-3px}}
 
 
 /* output micro-fix: heading/tag/rail spacing */
@@ -2100,11 +2118,9 @@ main section>h2 .no{
   line-height:1!important;
   flex:0 0 36px!important;
 }
-.template-card-grid .template-card-head{margin-bottom:8px;}
 .template-card-grid .tag-list{margin:0 0 16px;gap:8px;}
 .template-card-grid .tag{display:inline-flex;align-items:center;justify-content:center;min-height:28px;padding:5px 12px;}
 @media (max-width:560px){.impact-grid{grid-template-columns:1fr!important;}main article>section>h2,main section>h2{column-gap:10px;}main article>section>h2 .num,main article>section>h2 .no,main section>h2 .num,main section>h2 .no{width:36px!important;min-width:36px!important;flex-basis:36px!important;}}
-
 /* output micro-fix: internal card rhythm */
 .cmp-card{padding:24px!important;}
 .cmp-card .vt-kicker{display:inline-flex!important;margin:0 0 12px!important;}
@@ -2123,10 +2139,8 @@ main section>h2 .no{
 .chron-card p{margin-top:0!important;}
 .source-note .label,.lede-note .label{display:block!important;margin-bottom:12px!important;}
 .source-note{padding:24px!important;}
-
 /* output micro-fix: less intrusive reading progress */
 .reading-progress{height:2px!important;opacity:.42!important;}
-
 /* output micro-fix: avoid plain direct section prose */
 main article>section>p:not(.h2-sub){
   position:relative;
@@ -2140,7 +2154,6 @@ main article>section>p:not(.h2-sub){
 }
 .timeline-takeaway{margin-top:22px!important;}
 .timeline-takeaway .label{display:block!important;margin-bottom:12px!important;}
-
 /* output micro-fix: timeline cards need visible accent rail */
 #section-03 .mini-card{
   border-left:4px solid var(--accent)!important;
@@ -2152,7 +2165,6 @@ main article>section>p:not(.h2-sub){
 }
 /* output micro-fix: hide fixed progress bar in reviewed artifact */
 .reading-progress{display:none!important;}
-
 /* output micro-fix: official multi-color rail tokens */
 #section-03 .mini-card:nth-child(4n+1){border-left-color:var(--vt-red)!important;}
 #section-03 .mini-card:nth-child(4n+2){border-left-color:var(--vt-blue)!important;}
@@ -2168,20 +2180,16 @@ main article>section>p:not(.h2-sub){
 #section-22 .source-note{border-left-color:var(--vt-blue)!important;}
 #section-27 .lede-note{border-left-color:var(--vt-blue)!important;}
 #section-27 .source-note{border-left-color:var(--vt-gold)!important;}
-
 /* output micro-fix: source-note rail thickness */
 .source-note{border-left-width:4px!important;}
-
 /* output micro-fix: section-level rail color rotation */
 main article>section:nth-of-type(4n+1) :is(.source-note,.lede-note,>p:not(.h2-sub)){border-left-color:var(--vt-red)!important;}
 main article>section:nth-of-type(4n+2) :is(.source-note,.lede-note,>p:not(.h2-sub)){border-left-color:var(--vt-blue)!important;}
 main article>section:nth-of-type(4n+3) :is(.source-note,.lede-note,>p:not(.h2-sub)){border-left-color:var(--vt-green)!important;}
 main article>section:nth-of-type(4n+4) :is(.source-note,.lede-note,>p:not(.h2-sub)){border-left-color:var(--vt-gold)!important;}
-
 /* output micro-fix: terminal notes use official rail colors */
 main>aside.source-note{border-left-color:var(--vt-blue)!important;}
 footer.source-note{border-left-color:var(--vt-gold)!important;}
-
 /* output micro-fix: multi-stripe rail for section-03 bottom takeaway */
 #section-03 .timeline-takeaway{
   position:relative!important;
@@ -2224,7 +2232,7 @@ footer.source-note{border-left-color:var(--vt-gold)!important;}
   <div class="kicker"><span class="kicker-text">ANTHROPIC NEWS SUMMARY · JUNE 2026</span></div>
   <h1>Anthropic 2026년 6월 공지·뉴스 요약 리포트</h1>
   <p class="sub lead">Anthropic News에 노출된 6월 항목 11건을 정책, 모델, 파트너십, 공공 신뢰, 보안 책임 관점으로 재구성한 한국어 HTML 요약입니다.</p>
-  <div class="meta"><span>article_html</span><span>magazine-article.html</span><span>profile auto</span><span>adaptive-html-final v5.10.3</span><span>무 JS</span></div>
+  <div class="meta"><span>article_html</span><span>magazine-article.html</span><span>profile auto</span><span>adaptive-html-final v5.10.5</span><span>무 JS</span></div>
   <div class="generated-row"><p class="generated-date">Generated · 2026-06-14 KST</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">모델 접근</span><span class="lens-chip">정책/규제</span><span class="lens-chip">파트너 실행</span><span class="lens-chip">공공 신뢰</span><span class="lens-chip">보안 책임</span></div></div>
 </header>
 <aside class="pull-quote">6월의 핵심은 “새 모델이 나왔다”가 아니라, 강한 모델을 어떤 조건과 책임 아래 배포할 것인가입니다.</aside>
@@ -2298,13 +2306,13 @@ footer.source-note{border-left-color:var(--vt-gold)!important;}
 <p class="h2-sub">Jun 1, 2026 · Announcements · <a href="https://www.anthropic.com/news/confidential-draft-s1-sec">원문 보기</a></p><div class="card-grid"><article class="summary-card"><div class="label">핵심 요약</div><p>SEC에 draft S-1 등록신고서를 비공개 제출했다는 기업 공지다. 즉시 상장을 뜻하지 않고, 선택지를 확보하는 절차로 읽어야 한다.</p></article><article class="summary-card"><div class="label">왜 중요한가</div><p>뉴스의 의미는 상장 확정이 아니라 향후 자본시장 옵션을 여는 행위다. 시장 상황, SEC 검토, 공모 조건은 아직 미정이다.</p></article><article class="summary-card"><div class="label">실무 확인</div><p>재무·전략 커뮤니케이션은 일정 단정 대신 가능성, 조건, 미확정 변수, 공개 정보의 한계를 구분해야 한다.</p></article></div><aside class="source-note"><div class="label">원문 메타 설명</div><p>Anthropic has confidentially submitted a draft S-1 registration statement to the Securities and Exchange Commission</p></aside>
 </section><section id="section-17">
 <h2><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span><span class="num">17</span>모델 발표와 접근 중단을 함께 읽기</h2>
-<div class="core-insight core-insight--neutral"><blockquote>모델 뉴스는 성능 발표와 접근 제한을 분리해서 읽으면 안 됩니다.</blockquote><p>6월 9일의 Fable/Mythos 발표는 6월 12일 접근 중단 공지와 한 묶음으로 읽어야 합니다. 고객에게 중요한 질문은 “얼마나 강한가”가 아니라 “어떤 조건에서 계속 쓸 수 있는가”입니다.</p></div><div class="ba"><div class="ba-col before"><span class="ba-label">Before</span><p>새 모델 발표를 벤치마크와 기능 개선 중심으로만 읽는다.</p></div><div class="ba-arrow">→</div><div class="ba-col after"><span class="ba-label">After</span><p>릴리스 노트, 안전장치, 접근 제한, 대체 모델, 고객 안내를 하나의 운영 체계로 읽는다.</p></div></div><div class="card-grid template-card-grid"><article class="summary-card"><div class="template-card-head"><span class="label">근거</span></div><div class="tag-list"><span class="tag">★★★</span></div><h3>같은 모델명의 연속 공지</h3><p>Fable 5와 Mythos 5는 출시와 접근 중단이 같은 주에 이어졌습니다.</p></article><article class="summary-card"><div class="template-card-head"><span class="label">리스크</span></div><div class="tag-list"><span class="tag">★★★</span></div><h3>고객 접근 지속성</h3><p>법적·정책적 지시가 제품 사용 가능성을 직접 바꿀 수 있습니다.</p></article><article class="summary-card"><div class="template-card-head"><span class="label">실행</span></div><div class="tag-list"><span class="tag">★★☆</span></div><h3>릴리스 문서 통합</h3><p>제품팀은 성능표와 운영 공지를 별도 문서로 흩뜨리지 않아야 합니다.</p></article></div>
+<div class="core-insight core-insight--neutral"><blockquote>모델 뉴스는 성능 발표와 접근 제한을 분리해서 읽으면 안 됩니다.</blockquote><p>6월 9일의 Fable/Mythos 발표는 6월 12일 접근 중단 공지와 한 묶음으로 읽어야 합니다. 고객에게 중요한 질문은 “얼마나 강한가”가 아니라 “어떤 조건에서 계속 쓸 수 있는가”입니다.</p></div><div class="ba"><div class="ba-col before"><span class="ba-label">Before</span><p>새 모델 발표를 벤치마크와 기능 개선 중심으로만 읽는다.</p></div><div class="ba-arrow">→</div><div class="ba-col after"><span class="ba-label">After</span><p>릴리스 노트, 안전장치, 접근 제한, 대체 모델, 고객 안내를 하나의 운영 체계로 읽는다.</p></div></div><div class="card-grid template-card-grid"><article class="summary-card"><div class="label">근거</div><div class="tag-list"><span class="tag">★★★</span></div><h3>같은 모델명의 연속 공지</h3><p>Fable 5와 Mythos 5는 출시와 접근 중단이 같은 주에 이어졌습니다.</p></article><article class="summary-card"><div class="label">리스크</div><div class="tag-list"><span class="tag">★★★</span></div><h3>고객 접근 지속성</h3><p>법적·정책적 지시가 제품 사용 가능성을 직접 바꿀 수 있습니다.</p></article><article class="summary-card"><div class="label">실행</div><div class="tag-list"><span class="tag">★★☆</span></div><h3>릴리스 문서 통합</h3><p>제품팀은 성능표와 운영 공지를 별도 문서로 흩뜨리지 않아야 합니다.</p></article></div>
 </section><section id="section-18">
 <h2><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="22" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="8" y="22" width="10" height="9" rx="2"/><rect class="bi-fill" x="22" y="22" width="10" height="9" rx="2"/><circle class="bi-accent" cx="13" cy="14" r="2"/></svg></span><span class="num">18</span>규제 산업 파트너십의 의미</h2>
 <div class="lede-note"><span class="label">PARTNER VIEW</span><p>TCS와 DXC는 Claude가 규제 산업 안으로 들어가는 두 가지 경로를 보여줍니다. 하나는 컨설팅·산업 제품화, 다른 하나는 핵심 운영 시스템에 들어가는 현장 엔지니어 모델입니다.</p></div><div class="impact-grid"><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="22" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="8" y="22" width="10" height="9" rx="2"/><rect class="bi-fill" x="22" y="22" width="10" height="9" rx="2"/><circle class="bi-accent" cx="13" cy="14" r="2"/></svg></span><h3>TCS</h3><p>50,000명 내부 사용과 규제 산업 고객 제품화가 핵심입니다.</p></article><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="14" r="6"/><path class="bi-fill" d="M10 32c1.5-7 18.5-7 20 0"/><circle class="bi-accent" cx="28" cy="15" r="2"/></svg></span><h3>DXC</h3><p>수만 명의 인증 forward-deployed engineer가 현장 통합의 축입니다.</p></article><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><h3>감사 가능성</h3><p>금융·항공·보험 등은 정확도보다 감사·책임·복구 체계를 봅니다.</p></article><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-line" d="M13 27h14"/><rect class="bi-soft" x="14" y="20" width="3" height="7" rx="1"/><rect class="bi-accent-box" x="19" y="15" width="3" height="12" rx="1"/><rect class="bi-dot-box" x="24" y="18" width="3" height="9" rx="1"/></svg></span><h3>구매 기준</h3><p>파트너 인증, 운영 경험, 장애 대응, 보안 요구 대응을 비교해야 합니다.</p></article></div>
 </section><section id="section-19">
 <h2><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-soft" cx="20" cy="14" r="6"/><path class="bi-fill" d="M10 32c1.5-7 18.5-7 20 0"/><circle class="bi-accent" cx="28" cy="15" r="2"/></svg></span><span class="num">19</span>공공 신뢰 전략</h2>
-<div class="core-insight core-insight--neutral"><blockquote>공공 신뢰는 홍보 메시지가 아니라 측정·교육·분배 구조로 나타납니다.</blockquote><p>Public Record는 대중 인식을 수치로 측정하고, Claude Corps는 AI 역량을 비영리 현장에 배분하는 프로그램입니다. 두 항목은 기술 기업이 사회적 책임을 어떻게 제도화하려 하는지 보여줍니다.</p></div><div class="card-grid template-card-grid"><article class="summary-card"><div class="template-card-head"><span class="label">측정</span></div><div class="tag-list"><span class="tag">★★★</span></div><h3>Public Record</h3><p>약 5만2천 명의 조사로 기대와 우려를 함께 추적합니다.</p></article><article class="summary-card"><div class="template-card-head"><span class="label">교육</span></div><div class="tag-list"><span class="tag">★★☆</span></div><h3>Claude Corps</h3><p>1,000명 펠로우를 교육하고 비영리 조직에 배치합니다.</p></article><article class="summary-card"><div class="template-card-head"><span class="label">정책</span></div><div class="tag-list"><span class="tag">★★☆</span></div><h3>AI Exponential</h3><p>위험 통제와 경제 전환 대응을 하나의 프레임으로 묶습니다.</p></article></div>
+<div class="core-insight core-insight--neutral"><blockquote>공공 신뢰는 홍보 메시지가 아니라 측정·교육·분배 구조로 나타납니다.</blockquote><p>Public Record는 대중 인식을 수치로 측정하고, Claude Corps는 AI 역량을 비영리 현장에 배분하는 프로그램입니다. 두 항목은 기술 기업이 사회적 책임을 어떻게 제도화하려 하는지 보여줍니다.</p></div><div class="card-grid template-card-grid"><article class="summary-card"><div class="label">측정</div><div class="tag-list"><span class="tag">★★★</span></div><h3>Public Record</h3><p>약 5만2천 명의 조사로 기대와 우려를 함께 추적합니다.</p></article><article class="summary-card"><div class="label">교육</div><div class="tag-list"><span class="tag">★★☆</span></div><h3>Claude Corps</h3><p>1,000명 펠로우를 교육하고 비영리 조직에 배치합니다.</p></article><article class="summary-card"><div class="label">정책</div><div class="tag-list"><span class="tag">★★☆</span></div><h3>AI Exponential</h3><p>위험 통제와 경제 전환 대응을 하나의 프레임으로 묶습니다.</p></article></div>
 </section><section id="section-20">
 <h2><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><span class="num">20</span>보안과 안전을 운영 지표로 바꾸기</h2>
 <div class="lede-note"><span class="label">SECURITY VIEW</span><p>AI-enabled cyber threats와 Project Glasswing은 안전을 선언이 아니라 관찰 가능한 운영 지표로 바꾸는 항목입니다.</p></div><div class="impact-grid"><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><h3>위협 매핑</h3><p>MITRE ATT&amp;CK 기준으로 AI 악용 사례를 기존 보안 언어에 연결합니다.</p></article><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="18" cy="18" r="9"/><path class="bi-accent-line" d="M25 25l7 7"/><path class="bi-line" d="M14 18h8"/></svg></span><h3>탐지 전환</h3><p>계정 규모, 관찰 기간, 전술 단위를 내부 탐지 규칙으로 변환해야 합니다.</p></article><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span><h3>취약점 협력</h3><p>Glasswing은 참여 조직과 발견 취약점의 처리 기준이 핵심입니다.</p></article><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="10" y="7" width="20" height="26" rx="3"/><path class="bi-line" d="M15 14h10M15 20h10M15 26h7"/><path class="bi-accent-line" d="M27 7v8h-8"/></svg></span><h3>한계 기록</h3><p>공개 보고서의 범위와 내부 고객 영향은 분리해 표시해야 합니다.</p></article></div>
@@ -2326,7 +2334,7 @@ footer.source-note{border-left-color:var(--vt-gold)!important;}
   <div class="vt-frame">
     <div class="rm-grid"><div class="rm-cell rm-head">가능성</div><div class="rm-cell rm-head">낮음</div><div class="rm-cell rm-head">중간</div><div class="rm-cell rm-head">높음</div><div class="rm-cell rm-head">영향 큼</div><div class="rm-cell rm-risk med">상장 오해</div><div class="rm-cell rm-risk high">접근 중단</div><div class="rm-cell rm-risk high">규제 배포</div><div class="rm-cell rm-head">영향 중간</div><div class="rm-cell rm-risk low">조사 해석</div><div class="rm-cell rm-risk med">파트너 품질</div><div class="rm-cell rm-risk med">보안 매핑</div><div class="rm-cell rm-head">영향 작음</div><div class="rm-cell rm-risk low">제목 변경</div><div class="rm-cell rm-risk low">featured 누락</div><div class="rm-cell rm-risk low">범위 오해</div></div>
   </div>
-</section><div class="card-grid template-card-grid"><article class="summary-card"><div class="template-card-head"><span class="label">높음</span></div><div class="tag-list"><span class="tag">★★★</span></div><h3>접근 중단</h3><p>즉시 고객 영향이 발생할 수 있으므로 대응표가 필요합니다.</p></article><article class="summary-card"><div class="template-card-head"><span class="label">중간</span></div><div class="tag-list"><span class="tag">★★☆</span></div><h3>파트너 품질</h3><p>도입 규모보다 실제 운영 책임과 감사 가능성을 봐야 합니다.</p></article><article class="summary-card"><div class="template-card-head"><span class="label">낮음</span></div><div class="tag-list"><span class="tag">★☆☆</span></div><h3>상장 오해</h3><p>draft S-1은 확정 이벤트가 아니라 절차적 신호입니다.</p></article></div><div class="table-scroll"><table><caption>리스크 분류표</caption><thead><tr><th>축</th><th>대표 뉴스</th><th>확인 질문</th></tr></thead><tbody><tr><td>접근 통제</td><td>Fable/Mythos access</td><td>고객이 언제 어떤 모델을 못 쓰게 되는가?</td></tr><tr><td>파트너 실행</td><td>TCS / DXC / Partner Hub</td><td>누가 통합과 운영 책임을 지는가?</td></tr><tr><td>공공 신뢰</td><td>Public Record / Claude Corps</td><td>대중 우려와 혜택 배분을 어떻게 설명하는가?</td></tr><tr><td>보안 책임</td><td>Cyber threats / Glasswing</td><td>위협과 취약점 대응을 어떻게 측정하는가?</td></tr></tbody></table></div>
+</section><div class="card-grid template-card-grid"><article class="summary-card"><div class="label">높음</div><div class="tag-list"><span class="tag">★★★</span></div><h3>접근 중단</h3><p>즉시 고객 영향이 발생할 수 있으므로 대응표가 필요합니다.</p></article><article class="summary-card"><div class="label">중간</div><div class="tag-list"><span class="tag">★★☆</span></div><h3>파트너 품질</h3><p>도입 규모보다 실제 운영 책임과 감사 가능성을 봐야 합니다.</p></article><article class="summary-card"><div class="label">낮음</div><div class="tag-list"><span class="tag">★☆☆</span></div><h3>상장 오해</h3><p>draft S-1은 확정 이벤트가 아니라 절차적 신호입니다.</p></article></div><div class="table-scroll"><table><caption>리스크 분류표</caption><thead><tr><th>축</th><th>대표 뉴스</th><th>확인 질문</th></tr></thead><tbody><tr><td>접근 통제</td><td>Fable/Mythos access</td><td>고객이 언제 어떤 모델을 못 쓰게 되는가?</td></tr><tr><td>파트너 실행</td><td>TCS / DXC / Partner Hub</td><td>누가 통합과 운영 책임을 지는가?</td></tr><tr><td>공공 신뢰</td><td>Public Record / Claude Corps</td><td>대중 우려와 혜택 배분을 어떻게 설명하는가?</td></tr><tr><td>보안 책임</td><td>Cyber threats / Glasswing</td><td>위협과 취약점 대응을 어떻게 측정하는가?</td></tr></tbody></table></div>
 </section><section id="section-26">
 <h2><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="18" cy="18" r="9"/><path class="bi-accent-line" d="M25 25l7 7"/><path class="bi-line" d="M14 18h8"/></svg></span><span class="num">26</span>7월에 이어서 봐야 할 신호</h2>
 <ol class="chron-list"><li class="chron-item"><div class="chron-dot">1</div><div class="chron-card"><div class="chron-kicker">Track</div><h3>복구·후속 공지 추적</h3><p>Fable/Mythos 접근 복구 여부와 조건을 확인합니다.</p></div></li><li class="chron-item"><div class="chron-dot">2</div><div class="chron-card"><div class="chron-kicker">Measure</div><h3>파트너 실행 사례 확인</h3><p>TCS·DXC·Partner Hub가 실제 고객 사례로 이어지는지 봅니다.</p></div></li><li class="chron-item"><div class="chron-dot">3</div><div class="chron-card"><div class="chron-kicker">Verify</div><h3>정책·보안 지표 검증</h3><p>Public Record 반복 조사와 Glasswing 성과 지표를 다음 달에도 추적합니다.</p></div></li></ol>
@@ -2338,7 +2346,7 @@ footer.source-note{border-left-color:var(--vt-gold)!important;}
 <div class="core-insight core-insight--neutral"><blockquote>6월 뉴스의 핵심은 “강한 모델을 어떤 조건과 책임 아래 배포할 것인가”입니다.</blockquote><p>모델 성능, 접근 제한, 규제 산업 통합, 공공 신뢰, 보안 책임이 서로 분리되지 않고 한 달 안에 겹쳐 나타났습니다.</p></div><div class="impact-grid"><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span><h3>모델</h3><p>강한 성능은 운영 제한과 함께 읽어야 합니다.</p></article><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 8l12 12-12 12L8 20z"/><path class="bi-line" d="M14 20h12"/><path class="bi-accent-line" d="M22 16l4 4-4 4"/></svg></span><h3>정책</h3><p>배포 통제와 경제 전환 대응이 핵심 프레임입니다.</p></article><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="22" y="10" width="10" height="9" rx="2"/><rect class="bi-soft" x="8" y="22" width="10" height="9" rx="2"/><rect class="bi-fill" x="22" y="22" width="10" height="9" rx="2"/><circle class="bi-accent" cx="13" cy="14" r="2"/></svg></span><h3>파트너</h3><p>규제 산업 도입은 파트너 실행력이 좌우합니다.</p></article><article class="impact-card"><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><h3>안전</h3><p>보안 협력과 위협 매핑은 운영 지표로 전환됩니다.</p></article></div>
 </section><section id="section-29">
 <h2><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M13 7v26"/><circle class="bi-dot" cx="13" cy="10" r="3"/><circle class="bi-accent" cx="13" cy="20" r="3"/><circle class="bi-soft" cx="13" cy="30" r="3"/><path class="bi-line" d="M21 11h10M21 20h7M21 30h9"/></svg></span><span class="num">29</span>읽기 순서 추천</h2>
-<section class="vt-shell" aria-label="요약 타임라인"><div class="vt-frame"><ol class="tl"><li class="tl-item"><b>10분</b><p class="vt-text">접근 중단 → Fable/Mythos → AI Exponential 순서로 핵심 리스크를 파악합니다.</p></li><li class="tl-item"><b>30분</b><p class="vt-text">Public Record, TCS, DXC를 추가해 신뢰와 도입 경로를 연결합니다.</p></li><li class="tl-item"><b>60분</b><p class="vt-text">Cyber threats와 Glasswing까지 읽고 보안 책임 체계로 확장합니다.</p></li><li class="tl-item"><b>공유</b><p class="vt-text">내부 팀에는 역할별 읽기 순서와 체크리스트를 같이 전달합니다.</p></li></ol></div></section><div class="card-grid template-card-grid"><article class="summary-card"><div class="template-card-head"><span class="label">빠른 판단</span></div><div class="tag-list"><span class="tag">★★★</span></div><h3>운영 영향 우선</h3><p>성능보다 고객 접근·계약·대체 경로를 먼저 봅니다.</p></article><article class="summary-card"><div class="template-card-head"><span class="label">심화 판단</span></div><div class="tag-list"><span class="tag">★★☆</span></div><h3>정책·신뢰 연결</h3><p>여론과 정책 프레임을 함께 보며 커뮤니케이션 기준을 만듭니다.</p></article><article class="summary-card"><div class="template-card-head"><span class="label">실행 판단</span></div><div class="tag-list"><span class="tag">★★☆</span></div><h3>담당자 배정</h3><p>제품·구매·정책·보안 담당자가 각자 볼 섹션을 나눕니다.</p></article></div>
+<section class="vt-shell" aria-label="요약 타임라인"><div class="vt-frame"><ol class="tl"><li class="tl-item"><b>10분</b><p class="vt-text">접근 중단 → Fable/Mythos → AI Exponential 순서로 핵심 리스크를 파악합니다.</p></li><li class="tl-item"><b>30분</b><p class="vt-text">Public Record, TCS, DXC를 추가해 신뢰와 도입 경로를 연결합니다.</p></li><li class="tl-item"><b>60분</b><p class="vt-text">Cyber threats와 Glasswing까지 읽고 보안 책임 체계로 확장합니다.</p></li><li class="tl-item"><b>공유</b><p class="vt-text">내부 팀에는 역할별 읽기 순서와 체크리스트를 같이 전달합니다.</p></li></ol></div></section><div class="card-grid template-card-grid"><article class="summary-card"><div class="label">빠른 판단</div><div class="tag-list"><span class="tag">★★★</span></div><h3>운영 영향 우선</h3><p>성능보다 고객 접근·계약·대체 경로를 먼저 봅니다.</p></article><article class="summary-card"><div class="label">심화 판단</div><div class="tag-list"><span class="tag">★★☆</span></div><h3>정책·신뢰 연결</h3><p>여론과 정책 프레임을 함께 보며 커뮤니케이션 기준을 만듭니다.</p></article><article class="summary-card"><div class="label">실행 판단</div><div class="tag-list"><span class="tag">★★☆</span></div><h3>담당자 배정</h3><p>제품·구매·정책·보안 담당자가 각자 볼 섹션을 나눕니다.</p></article></div>
 </section><section id="section-30">
 <h2><span class="body-icon" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="9" width="24" height="22" rx="4"/><path class="bi-accent-line" d="M15 16h5M15 21h10"/><path class="bi-line" d="M14 26c3-1 4-3 4-6"/></svg></span><span class="num">30</span>내부 공유용 한 문장</h2>
 <div class="core-insight core-insight--neutral"><blockquote>“새 모델이 나왔다”가 아니라 “강한 모델을 누가, 어디서, 어떤 조건과 책임으로 쓸 수 있는가”가 6월 Anthropic 뉴스의 핵심입니다.</blockquote><p>이 한 문장을 공유하면 제품, 정책, 구매, 보안 조직이 같은 기준으로 원문을 읽을 수 있습니다.</p></div><figure class="md-excerpt"><figcaption class="case-label">내부 공유 문구 · Slack/Notion</figcaption><pre class="code"><code>Anthropic 6월 뉴스는 모델 출시보다 운영 조건을 먼저 봐야 합니다.
@@ -2351,6 +2359,6 @@ footer.source-note{border-left-color:var(--vt-gold)!important;}
 </section>
 <aside class="source-note"><div class="label">Source</div><p>원문: <a href="https://www.anthropic.com/news">Anthropic News</a>. 각 뉴스의 원문 링크는 섹션 02와 개별 뉴스 섹션에 포함했습니다. 공개 페이지 기준 요약이며, 내부 계약·정책 지시 상세·고객별 영향은 확인 불가로 분리했습니다.</p></aside>
 </main>
-<footer class="source-note"><div class="label">Generated by adaptive-html-final</div><p>mode article_html · profile auto · skill v5.10.3</p></footer>
+<footer class="source-note"><div class="label">Generated by adaptive-html-final</div><p>mode article_html · profile auto · skill v5.10.5</p></footer>
 </body>
 </html>
