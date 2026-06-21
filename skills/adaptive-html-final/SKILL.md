@@ -95,7 +95,7 @@ vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..2
 
 > **프로파일 오버레이(§0.5 프로파일 결정 선행):** 위 표의 **Layout 열은 프로파일과 무관하게 공통**이다. `diagram` 프로파일은 **vt-템플릿 열만**, `widget` 프로파일은 **wg-위젯 열만**, `auto`(기본)는 **두 열 모두** 사용한다. 이 표가 mode→wg / mode→vt 매핑의 **단일 출처**이며, §4.6·§4.7·`references/widget-system.md`·`references/visual-html-system.md`·`AGENTS.md` §3은 이 표의 파생/참조다(불일치 시 §0.6 우선).
 
-> **Mode Registry(실행 정본):** 모드 결정표 데이터의 실행 정본은 `modes/NN-<mode>.json` 17종이며, `validate_output.py`가 이를 읽어 `MODE_TEMPLATE_CONTRACTS`를 구성한다(`_build_mode_template_contracts_from_registry`). 위 §0.6 표·`AGENTS.md §3`·`widget-system.md`는 사람이 읽는 표현이고, `scripts/check_mode_registry_sync.py`가 Registry와 byte/semantic 일치를 강제한다(불일치 시 실패). **신규 모드 추가는 `docs/adaptive-html-final-add-mode-runbook.md`를 따른다 — Registry JSON이 결정표 데이터 편집점이다.**
+> **Mode Registry(실행 정본):** 모드 결정표 데이터의 실행 정본은 `modes/NN-<mode>.json` 18종이며, `validate_output.py`가 이를 읽어 `MODE_TEMPLATE_CONTRACTS`를 구성한다(`_build_mode_template_contracts_from_registry`). 위 §0.6 표·`AGENTS.md §3`·`widget-system.md`는 사람이 읽는 표현이고, `scripts/check_mode_registry_sync.py`가 Registry와 byte/semantic 일치를 강제한다(불일치 시 실패). **신규 모드 추가는 `docs/adaptive-html-final-add-mode-runbook.md`를 따른다 — Registry JSON이 결정표 데이터 편집점이다.**
 
 ## 1. Operating Principles
 
