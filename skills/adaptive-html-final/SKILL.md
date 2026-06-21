@@ -27,7 +27,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.10.6 · "시각 결함 하드닝(G1~G8) — 표 상태코드 nowrap(.status-pill)·`.try` 중첩 흰 카드 링크 대비(--accent-2)·source-preserve gutter·mini-card 리듬·TOC/h2 anchor DOM 가드·core-insight reset·prefers-contrast(A5). 코어 CSS 직접 수정·검출 게이트 G2~G8 신설(거버넌스 185)" (이전 5.10.5 — 접근성·스코프 하드닝)
+> Version 5.10.6 · "시각 결함 하드닝(G1~G8) — 표 상태코드 nowrap(.status-pill)·`.try` 중첩 흰 카드 링크 대비(--accent-2)·source-preserve gutter·mini-card 리듬·TOC/h2 anchor DOM 가드·core-insight reset·prefers-contrast(A5). 코어 CSS 직접 수정·검출 게이트 G2~G8 신설(거버넌스 186)" (이전 5.10.5 — 접근성·스코프 하드닝)
 
 ## 0. Identity
 

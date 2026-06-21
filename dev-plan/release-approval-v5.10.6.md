@@ -10,7 +10,7 @@
 v5.10.5 → **v5.10.6** "시각 결함 하드닝(G1~G8) + 검출 게이트 신설" — **코어 CSS 직접 수정 패치**(D1=코어 직접 확정).
 
 - **코어 해시**: `a73eb204`(직전 미릴리스 배지 수정 흡수본; v5.10.5 태그 릴리스는 `7e151665`) → **`a64604d0`**. examples 18종 재인라인·`sources/css-integrity.json`·source manifest·`.skill`(263파일/2.93MB) 재패키징.
-- **거버넌스**: `162` → **`185`** (신규 게이트 catch/pass: G-series 14 + business_plan 9 = 23건).
+- **거버넌스**: `162` → **`186`** (신규 게이트 catch/pass: G-series 14 + business_plan 9 + pretest_contract 1 = 24건).
 
 ### CSS/패턴/계약 하드닝
 - **G1** (작성 계약): 좁은 표 짧은 상태코드 줄바꿈 → `.status-pill` 정본(`table .status-pill{white-space:nowrap}` 기존). broad `td code` nowrap은 예제 09 regex 다토큰 코드 회귀 회피로 채택 안 함.
@@ -35,9 +35,9 @@ v5.10.5 → **v5.10.6** "시각 결함 하드닝(G1~G8) + 검출 게이트 신�
 - theme-token 마이그레이션·AGENTS §2.2 생성비용 최적화·export 재검증·output 보존 정책·visual-html 잔여 토큰화 → 별도 로드맵. repo `scripts/build_*.py` untracked은 비대상(W3b).
 
 ## 검증 (자체 테스트)
-- `test_governance_gates.py` **185/185**.
+- `test_governance_gates.py` **186/186**.
 - `validate_output.py examples --skill-dir` OK(inline hash·verbatim·snapshot·.skill byte-match) — 코어 해시 `a64604d0` 일관.
-- `quality_contract_check.py examples` OK(18 file). 버전 표면(manifest/SKILL/README/AGENTS/Guide/examples/visual-html-system/sources) 5.10.6 + governance 185 일괄 동기화.
+- `quality_contract_check.py examples` OK(18 file). 버전 표면(manifest/SKILL/README/AGENTS/Guide/examples/visual-html-system/sources) 5.10.6 + governance 186 일괄 동기화.
 
 ## 커밋 정책
 **커밋·푸시 금지. 사용자 요청 시에만 수행.** 본 차수는 워킹트리 구현 + 검증 + 전문가 리뷰까지.

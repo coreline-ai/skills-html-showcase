@@ -739,6 +739,13 @@ check("BP status flags missing evaluator scorecard", bool(_b4) and _b4[0]["type"
 check("BP status passes 4-evaluator scorecard", v.business_plan_status_gate(_bp_ok) == [])
 check("BP gates skip non-business-plan pages", all(g('<main class="page layout-expert"><h1>x</h1></main>') == [] for g in (v.business_plan_evidence_tag_gate, v.business_plan_number_consistency_gate, v.business_plan_source_gate, v.business_plan_status_gate)))
 
+
+# --- pretest_contract decide() 로직 잠금 (hybrid: official/preview/fail 분류 로직 회귀 차단) ---
+_ppspec = importlib.util.spec_from_file_location("pretest_contract_check", SKILL / "scripts" / "pretest_contract_check.py")
+_pp = importlib.util.module_from_spec(_ppspec); _ppspec.loader.exec_module(_pp)
+_pp_cases = [(0,True,False,[],"official"),(0,True,True,[],"preview"),(37,False,True,[],"preview"),(9,True,True,["q"],"preview"),(37,False,False,[],"fail"),(37,False,False,["i"],"fail"),(0,False,False,[],"fail"),(0,True,False,["i"],"official")]
+check("pretest_contract decide() self-test (official/preview/fail 8 cases)", all(_pp.decide(i,s,p,cl)[0]==e for i,s,p,cl,e in _pp_cases))
+
 _manifest_quality = __import__("json").loads((SKILL / "manifest.json").read_text(encoding="utf-8")).get("quality") or {}
 check("manifest quality.governance_count matches this self-test count",
       _manifest_quality.get("governance_count") == _checks + 1)
