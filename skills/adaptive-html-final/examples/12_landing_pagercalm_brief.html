@@ -11,7 +11,7 @@
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
-<style>/* adaptive-html-final-core-css-sha256: a73eb204225857f765c745b1c5210fce5f93cbf3fc3f442cc52d8d7acf29c535 */
+<style>/* adaptive-html-final-core-css-sha256: a64604d02e6c2f37c2f6428bf644f693b8468de57094e4b95d36e4600e6c2e02 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -172,6 +172,11 @@ footer p{font-size:13px;color:var(--ink-mute)}
 .header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
 .header .kicker::before{width:6px;height:6px}
 .header .sub{text-align:justify;word-break:keep-all}
+/* A5 (prefers-contrast): forced-colors(시스템색, theme-dark/widgets) 후속. 사용자 고대비 선호 시 약한 텍스트/라인
+   토큰을 강화한다. 대비를 올리기만 하므로 일반 렌더 영향 0. 다크/블루 테마는 :root:has() 토큰이 더 구체적이라 유지. */
+@media (prefers-contrast: more){
+  :root{--ink-soft:#333333;--ink-mute:#454545;--line:#b5b5ac}
+}
 
 /* Editorial components for adaptive-html-blog-writer-v2. */
 .box,.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px;margin:24px 0}
@@ -359,9 +364,20 @@ details p{margin-bottom:0}
 }
 .try a:hover,
 .try.soft-cta a:hover{color:#fff;text-decoration-color:#fff}
+/* G3: .try 안 흰 inner-card(.box/.summary-card/.cta-box/.card-block/.mini-card)는 --card 배경이라
+   다크 전용 --link-on-dark가 흰 배경에서 1.65:1 저대비. 링크를 --accent-2로 reset(8테마 min 6.09:1).
+   .try 직속 링크(다크 배경)는 위 규칙대로 --link-on-dark 유지. */
+.try :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a,
+.try.soft-cta :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a{color:var(--accent-2);text-decoration-color:var(--accent-2)}
+.try :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a:hover,
+.try.soft-cta :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a:hover{color:var(--accent-2);text-decoration-color:var(--accent-2);text-decoration-thickness:2px}
 .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
 .mini-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:16px}
 .mini-card h3{margin-top:0;font-size:16px}
+/* G5: mini-card 첫 .tag와 후속 h3/p가 세로 간격 없이 붙어 보이던 결함 — 첫 태그 하단 리듬 + 제목/요약 간격 정본화. */
+.mini-card>.tag:first-child{display:inline-flex;margin-bottom:14px}
+.mini-card>.tag:first-child+h3{margin-top:0;margin-bottom:12px}
+.mini-card h3+p{margin-top:0}
 .tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .try .tag,
 .try.soft-cta .tag{
@@ -1887,6 +1903,9 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 .source-preserve summary{padding:16px 20px;min-height:54px}
 .source-preserve .source-body{border-top:1px solid var(--line);padding:18px 22px}
 .source-preserve .source-body p,.source-preserve li{font-size:14.5px}
+/* G4: source-preserve 좌측 accent rail과 본문 텍스트 사이 gutter 정본화. 생성 마크업은 .source-body 안에
+   .source-body-inner 래퍼를 써서 inline style 보정 없이 좌측 여백(미세 라인 + 24px)을 확보한다. */
+.source-preserve .source-body-inner,.source-preserve-static .source-body-inner{border-left:1px solid var(--line);padding-left:24px;margin-left:2px}
 .source-preserve summary::-webkit-details-marker{display:none}
 .source-preserve summary::marker{content:""}
 /* source-preserve-static — 접기 없이 항상 펼쳐진 정적 원문 카드(<details> 대신 div+role=group). 무 JS. */
@@ -1904,6 +1923,9 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 .core-insight{background:linear-gradient(135deg,var(--accent-soft),rgba(255,255,255,.6));border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:22px 24px;margin:18px 0}
 .core-insight blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.02em;font-size:22px;line-height:1.65;color:var(--ink);border:0;margin:0 0 12px;padding:0;font-style:normal}
 .core-insight p{margin:0}
+/* G8: 전역 h3 margin이 .core-insight 내부 첫 제목으로 누수돼 상단 여백이 과해지던 결함을 reset.
+   red gradient 보존: 의도된 그라데이션 카드에는 core-insight--neutral을 붙이지 않는다(작성 규칙 + Phase 2 게이트). */
+.core-insight>:first-child{margin-top:0}
 /* core-insight--neutral — 그라데이션 없는 중립 callout 변형(opt-in). 베어 .core-insight를 덮어쓰지 않는다(전 모드 회귀 방지). */
 .core-insight--neutral{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
 .core-insight--neutral blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.025em;line-height:1.42}
@@ -2114,7 +2136,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
 <a class="skip" href="#main">본문 바로가기</a>
 <div class="reading-progress" aria-hidden="true"></div>
 <main id="main" class="page-wide layout-landing">
-<header class="header"><div class="kicker"><span class="kicker-text">LANDING BRIEF · PAGERCALM</span></div><h1>온콜 당번이 잠을 되찾는 온콜 피로도 관리 도구</h1><p class="sub">PagerCalm은 알림을 더 빨리 울리는 도구가 아니라, 새벽에 깨우지 않아도 되는 알림을 걸러내 온콜 당번의 회복 시간을 지키는 피로도 관리 도구다.</p><div class="meta"><span>landing_brief_html</span><span>landing-brief.html</span><span>profile auto</span><span>adaptive-html-final v5.10.5</span><span>무 JS</span></div><div class="generated-row"><p class="generated-date">Generated · 2026-06-06 KST</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">제품 메시지</span><span class="lens-chip">피로도</span><span class="lens-chip">온보딩</span><span class="lens-chip">신뢰</span></div></div></header><nav class="toc-map" aria-label="문서 목차"><span class="label">문서 목차</span><p>핵심 섹션을 현재 정본 chip-nav로 빠르게 이동합니다.</p><div class="toc-pills"><a class="toc-pill" href="#section-01"><b>1</b>제품 한 문장</a><a class="toc-pill" href="#section-02"><b>2</b>1 지금 온콜 당번이 겪는 문제</a><a class="toc-pill" href="#section-03"><b>3</b>2 PagerCalm이 작동하는 방식</a><a class="toc-pill" href="#section-04"><b>4</b>3 핵심 기능</a><a class="toc-pill" href="#section-05"><b>5</b>4 지표와 신뢰</a><a class="toc-pill" href="#section-06"><b>6</b>5 요금</a><a class="toc-pill" href="#section-07"><b>7</b>6 자주 묻는 질문과 도입 흐름</a><a class="toc-pill" href="#section-08"><b>8</b>7 새벽 3시 알림 하나가 거치는 경로</a></div></nav>
+<header class="header"><div class="kicker"><span class="kicker-text">LANDING BRIEF · PAGERCALM</span></div><h1>온콜 당번이 잠을 되찾는 온콜 피로도 관리 도구</h1><p class="sub">PagerCalm은 알림을 더 빨리 울리는 도구가 아니라, 새벽에 깨우지 않아도 되는 알림을 걸러내 온콜 당번의 회복 시간을 지키는 피로도 관리 도구다.</p><div class="meta"><span>landing_brief_html</span><span>landing-brief.html</span><span>profile auto</span><span>adaptive-html-final v5.10.6</span><span>무 JS</span></div><div class="generated-row"><p class="generated-date">Generated · 2026-06-06 KST</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">제품 메시지</span><span class="lens-chip">피로도</span><span class="lens-chip">온보딩</span><span class="lens-chip">신뢰</span></div></div></header><nav class="toc-map" aria-label="문서 목차"><span class="label">문서 목차</span><p>핵심 섹션을 현재 정본 chip-nav로 빠르게 이동합니다.</p><div class="toc-pills"><a class="toc-pill" href="#section-01"><b>1</b>제품 한 문장</a><a class="toc-pill" href="#section-02"><b>2</b>1 지금 온콜 당번이 겪는 문제</a><a class="toc-pill" href="#section-03"><b>3</b>2 PagerCalm이 작동하는 방식</a><a class="toc-pill" href="#section-04"><b>4</b>3 핵심 기능</a><a class="toc-pill" href="#section-05"><b>5</b>4 지표와 신뢰</a><a class="toc-pill" href="#section-06"><b>6</b>5 요금</a><a class="toc-pill" href="#section-07"><b>7</b>6 자주 묻는 질문과 도입 흐름</a><a class="toc-pill" href="#section-08"><b>8</b>7 새벽 3시 알림 하나가 거치는 경로</a></div></nav>
 
 <section class="hero-analogy" id="section-01"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="12" width="8" height="16" rx="2"/><rect class="bi-soft" x="16" y="9" width="8" height="22" rx="2"/><rect class="bi-fill" x="24" y="12" width="8" height="16" rx="2"/><path class="bi-accent-line" d="M16 20h8"/><circle class="bi-accent" cx="12" cy="27" r="2"/></svg></span>제품 한 문장</h2><div class="tag">제품 한 문장</div><h3>알림이 많은 게 문제가 아니라, 새벽 3시에 깨워놓고 정작 손댈 게 없던 알림이 문제다.</h3><p>대부분의 온콜 피로는 호출 건수가 아니라 <strong>회복하지 못한 시간</strong>에서 온다. PagerCalm은 알림 자체를 줄이려 하지 않는다. 대신 "지금 사람을 깨워야 하는가"를 알림이 울리기 전에 한 번 더 판단해, 기다려도 되는 알림은 다음 근무 시간으로 미룬다.</p><p>그래서 첫 화면이 파는 약속은 "알림을 빨리 받으세요"가 아니라 <span class="hl">깨우지 않아도 되는 알림에 깨지 않는 팀 상태</span>다.</p></section>
 

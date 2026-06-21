@@ -1,0 +1,20 @@
+<!-- G6 fixture — TOC가 독립 섹션이 아니라 첫 콘텐츠 섹션 내부에 중첩
+     결함: 목차(toc-map)가 별도 <section>이 아니라 <section class="executive-summary"> 내부에서
+           생성되어, 개요 섹션 안에 목차가 파묻힌다. (생성기가 executive_summary() 안에서 TOC 반환)
+     현행 미검출 근거: toc_map_contract_gate는 toc-map '구조'(toc-pills 래퍼 + a.toc-pill + <b> 번호배지)만
+           검사하고 '위치(DOM 배치)'는 보지 않는다. 아래는 구조가 정본이므로 통과한다.
+     Phase 2 정답: TOC는 main 직속 독립 <section class="document-toc-section"> — 첫 콘텐츠 섹션 내부
+           중첩 시 실패하는 DOM 정적 가드. -->
+<main class="layout-reference" id="main">
+  <section class="executive-summary">
+    <h2 id="overview">개요</h2>
+    <p>핵심 요약 단락.</p>
+    <nav class="toc-map" aria-label="목차">
+      <div class="toc-pills">
+        <a class="toc-pill" href="#a"><b>1</b> 섹션 A</a>
+        <a class="toc-pill" href="#b"><b>2</b> 섹션 B</a>
+        <a class="toc-pill" href="#c"><b>3</b> 섹션 C</a>
+      </div>
+    </nav>
+  </section>
+</main>

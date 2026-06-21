@@ -1,0 +1,20 @@
+<!-- G2 fixture — wg-04 결정트리 SVG 노드 박스 겹침
+     결함: 노드 A(x20..140, y20..80)와 노드 B(x90..210, y40..100)의 박스가
+           x90..140(50px) × y40..80(40px) 영역에서 겹친다(임계 4px×4px 초과).
+     현행 미검출 근거: widget_static_gate는 네임스페이스/​!important/​script/​draggable만 본다.
+           SVG 좌표는 검사 대상이 아님 → 정적으로 불가. (위젯 CSS는 정상)
+     Phase 2 정답: render-audit.json의 node_overlap_ok(>4px×4px=fail) + completion_check 검사.
+     비고: 이 파일은 Phase 2 Playwright 캡쳐로도 렌더 가능하도록 단독 figure로 둔다. -->
+<style>/* widget templates */ .wg-04{margin:16px 0}</style>
+<figure class="wg-04" role="img" aria-label="결정 트리: 노드 A와 노드 B">
+  <svg viewBox="0 0 320 200" width="320" height="200">
+    <g class="wg-04-node">
+      <rect x="20" y="20" width="120" height="60" rx="6" fill="#fff" stroke="#333"/>
+      <text x="30" y="54">노드 A</text>
+    </g>
+    <g class="wg-04-node">
+      <rect x="90" y="40" width="120" height="60" rx="6" fill="#fff" stroke="#333"/>
+      <text x="100" y="74">노드 B</text>
+    </g>
+  </svg>
+</figure>

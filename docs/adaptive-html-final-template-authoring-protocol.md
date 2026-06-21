@@ -53,6 +53,21 @@
 | M9 | 반복 카드 rail이 전부 `var(--accent)` 한 색이라 단조 | 정본 `.tl-color-cycle`(4색 순환) 사용. 반복 rail은 `--vt-red/--vt-blue/--vt-green/--vt-gold` 중 3종 이상을 의미 있게 순환. `var(--accent)` 단일 반복 금지. |
 | M10 | `{{FOOTER}}`가 `<main>` 밖에 렌더돼 `.source-note` footer가 viewport 좌측에 붙음 | 정본 `body>footer`(v5.10.4 본문폭 중앙정렬) 사용. footer를 임의 위치/폭으로 두지 않는다. |
 
+## 3.6 시각 결함 하드닝 — 실패 예시 → 올바른 처리 (G1~G8, v5.10.6)
+
+validate/quality/completion은 통과하지만 화면에 남던 누적 결함. 코어/조건부 CSS로 닫은 것(G3·G4·G5·G8)·작성 규칙(G1)·검출 게이트(G2·G6·G7)를 구분한다.
+
+| Code | 실패 예시 | 올바른 처리 |
+|---|---|---|
+| G1 | 좁은 표 첫 열에서 상태코드 `<code>100</code>`가 `10`+`0`으로 줄바꿈 | 상태코드형 짧은 코드는 정본 `.status-pill` 사용(`table .status-pill{white-space:nowrap}` 내장). 긴 인라인 코드(공백 포함 다토큰)는 `.tbl`/`.table-scroll` overflow에 맡긴다. bare `<code>`에 broad nowrap 적용 금지(예제 09 regex 회귀). |
+| G2 | `wg-04` 결정트리/다이어그램 SVG 노드 박스가 서로 겹침 | 노드 좌표 간 간격 확보. 신규 산출물은 `micro_layout_audit.mjs`로 `node_overlap_ok`(>4px×4px=fail) 검증. 정적으로 못 잡으므로 render-audit 차수 필수. |
+| G3 | `.try` 안 흰 카드(.summary-card 등) 링크가 다크 전용 `--link-on-dark`(흰 배경 1.65:1) | inner-card 링크는 `--accent-2`(8테마 min 6.09:1). 정본 components.css가 이미 reset하므로 inline 색 지정 금지. `.try` **직속** 링크만 `--link-on-dark` 유지. |
+| G4 | `source-preserve` 좌측 accent rail에 본문 텍스트가 붙음 | 본문을 `.source-body-inner`(좌측 미세 라인 + padding-left:24px 정본)로 감싼다. inline style 보정 금지. |
+| G5 | `.mini-card` 첫 `.tag`(예: `Skeptic`)와 아래 제목/본문이 붙어 보임 | 정본 `.mini-card>.tag:first-child` 리듬(margin-bottom + 후속 h3/p reset) 사용. inline 간격 보정 금지. |
+| G6 | 목차(`toc-map`)를 `executive-summary` 첫 콘텐츠 섹션 **안**에 넣음 | TOC는 `main` 직속 독립 `<section class="document-toc-section">`. `executive-summary`/첫 콘텐츠 섹션 내부 중첩 금지(per-page 게이트 강제). |
+| G7 | 섹션 첫 요소가 빈 `<div id>`/`<a id>`이고 그 뒤가 `<h2>` → `section>h2:first-child` margin reset 풀림 | anchor는 빈 선행 요소가 아니라 `<h2 id="…">`에 직접 부여한다. |
+| G8 | red gradient 의도 `.core-insight`에 간격 보정용 `core-insight--neutral`을 붙여 그라데이션 소실 / 내부 제목 상단 여백 과다 | `--neutral`을 spacing 보정 용도로 붙이지 않는다(red gradient 유지). 내부 제목 간격은 정본 `.core-insight>:first-child{margin-top:0}`가 처리. |
+
 ## 4. 금지 사항 (동일 문제 Z1~Z8 대응)
 
 - `generate_fulltest_17.py`류 자체 `wg_markup()`/`section_inner()`로 17개를 찍어내는 임시 대량 생성기.

@@ -158,3 +158,8 @@ footer p{font-size:13px;color:var(--ink-mute)}
 .header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
 .header .kicker::before{width:6px;height:6px}
 .header .sub{text-align:justify;word-break:keep-all}
+/* A5 (prefers-contrast): forced-colors(시스템색, theme-dark/widgets) 후속. 사용자 고대비 선호 시 약한 텍스트/라인
+   토큰을 강화한다. 대비를 올리기만 하므로 일반 렌더 영향 0. 다크/블루 테마는 :root:has() 토큰이 더 구체적이라 유지. */
+@media (prefers-contrast: more){
+  :root{--ink-soft:#333333;--ink-mute:#454545;--line:#b5b5ac}
+}

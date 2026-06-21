@@ -1,0 +1,12 @@
+<!-- G5 fixture — mini-card 첫 태그와 제목/본문 vertical rhythm 부족
+     결함: .mini-card의 첫 .tag(예: "Skeptic · 회의주의자")와 후속 h3/p 사이의 세로 간격을
+           정본으로 보장하는 규칙이 없어 태그와 제목이 붙어 보인다.
+           (개별 산출물에서 inline style로 임시 보정되던 결함)
+     현행 미검출 근거: .mini-card > .tag:first-child 의 margin/리듬을 검사하는 게이트가 없다.
+     Phase 1 정답: .mini-card > .tag:first-child{margin-bottom:14px} +
+           .mini-card > .tag:first-child + h3{margin-top:0} + h3 + p{margin-top:0} + Phase 2 정적 가드. -->
+<div class="mini-card">
+  <span class="tag">Skeptic · 회의주의자</span>
+  <h3>핵심 반론</h3>
+  <p>이 관점은 가정 A가 무너질 때의 비용을 가장 먼저 점검한다.</p>
+</div>

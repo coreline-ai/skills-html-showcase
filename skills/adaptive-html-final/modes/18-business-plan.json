@@ -1,0 +1,104 @@
+{
+  "id": "business_plan_html",
+  "priority": 18,
+  "label": "Business Plan HTML",
+  "layout_class": "layout-business-plan",
+  "layout_file": "assets/layouts/business-plan-report.html",
+  "recipe": "recipes/business-plan.prompt.md",
+  "triggers": [
+    "사업계획서",
+    "정부지원사업",
+    "R&D 계획서",
+    "기술개발 과제 계획서",
+    "투자 피치덱",
+    "IR 덱",
+    "제안서",
+    "공고문 분석",
+    "business-core",
+    "지원사업 신청서"
+  ],
+  "required_blocks": [
+    "generated_row",
+    "document_type_gate",
+    "notice_summary",
+    "interview_findings",
+    "research_evidence",
+    "business_core",
+    "number_registry",
+    "market_finance_model",
+    "template_mapping",
+    "risk_and_ip_paper_notes",
+    "evaluator_scorecard",
+    "submission_checklist",
+    "source_note"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{GENERATED_ROW}}",
+    "{{DOCUMENT_TYPE_GATE}}",
+    "{{NOTICE_SUMMARY}}",
+    "{{INTERVIEW_FINDINGS}}",
+    "{{RESEARCH_EVIDENCE}}",
+    "{{BUSINESS_CORE}}",
+    "{{NUMBER_REGISTRY}}",
+    "{{MARKET_FINANCE_MODEL}}",
+    "{{TEMPLATE_MAPPING}}",
+    "{{RISK_AND_IP_PAPER_NOTES}}",
+    "{{EVALUATOR_SCORECARD}}",
+    "{{SUBMISSION_CHECKLIST}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "implementation-plan",
+  "vt_candidates": [
+    "implementation-plan",
+    "quality-gate",
+    "risk-matrix",
+    "timeline",
+    "comparison-cards",
+    "process-swimlane"
+  ],
+  "vt_markers": [
+    "\\bplan-grid\\b",
+    "\\bmilestone\\b"
+  ],
+  "wg_candidates": [
+    "wg-16",
+    "wg-11",
+    "wg-13",
+    "wg-18",
+    "wg-14"
+  ],
+  "wg_markers": [
+    "wg-16-",
+    "wg-11-",
+    "wg-13-",
+    "wg-18-",
+    "wg-14-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/18_business_plan_grantproof_core.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": [
+    "business_plan_evidence_tag_gate",
+    "business_plan_number_consistency_gate",
+    "business_plan_source_gate",
+    "business_plan_status_gate"
+  ]
+}

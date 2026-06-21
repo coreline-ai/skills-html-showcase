@@ -3,6 +3,9 @@
 .source-preserve summary{padding:16px 20px;min-height:54px}
 .source-preserve .source-body{border-top:1px solid var(--line);padding:18px 22px}
 .source-preserve .source-body p,.source-preserve li{font-size:14.5px}
+/* G4: source-preserve 좌측 accent rail과 본문 텍스트 사이 gutter 정본화. 생성 마크업은 .source-body 안에
+   .source-body-inner 래퍼를 써서 inline style 보정 없이 좌측 여백(미세 라인 + 24px)을 확보한다. */
+.source-preserve .source-body-inner,.source-preserve-static .source-body-inner{border-left:1px solid var(--line);padding-left:24px;margin-left:2px}
 .source-preserve summary::-webkit-details-marker{display:none}
 .source-preserve summary::marker{content:""}
 /* source-preserve-static — 접기 없이 항상 펼쳐진 정적 원문 카드(<details> 대신 div+role=group). 무 JS. */
@@ -20,6 +23,9 @@
 .core-insight{background:linear-gradient(135deg,var(--accent-soft),rgba(255,255,255,.6));border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:22px 24px;margin:18px 0}
 .core-insight blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.02em;font-size:22px;line-height:1.65;color:var(--ink);border:0;margin:0 0 12px;padding:0;font-style:normal}
 .core-insight p{margin:0}
+/* G8: 전역 h3 margin이 .core-insight 내부 첫 제목으로 누수돼 상단 여백이 과해지던 결함을 reset.
+   red gradient 보존: 의도된 그라데이션 카드에는 core-insight--neutral을 붙이지 않는다(작성 규칙 + Phase 2 게이트). */
+.core-insight>:first-child{margin-top:0}
 /* core-insight--neutral — 그라데이션 없는 중립 callout 변형(opt-in). 베어 .core-insight를 덮어쓰지 않는다(전 모드 회귀 방지). */
 .core-insight--neutral{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
 .core-insight--neutral blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.025em;line-height:1.42}

@@ -81,6 +81,7 @@
 | case_study_html | **12 Incident Timeline** | 사고 회고/포스트모템 |
 | landing_brief_html | **02 Visual Design Directions**, 05 Living Design System, 08 Clickable Flow, 09 Arrow-Key Slide Deck, 16 Implementation Plan | 시안·디자인 시스템·프로토타입·발표·로드맵 |
 | checklist_playbook | **11 Weekly Status**, 13 Annotated Flowchart, 16 Implementation Plan, 18 Ticket Triage Board, 19 Feature Flag Editor | 운영 상태·절차·실행 계획·트리아지·플래그 |
+| business_plan_html | **16 Implementation Plan**, 11 Weekly Status, 13 Annotated Flowchart, 18 Ticket Triage Board, 14 Feature Explainer | 실행계획·재무지표·근거 플로우·과제 트리아지·기능 설명 |
 
 ### github_analysis 조합 가이드
 

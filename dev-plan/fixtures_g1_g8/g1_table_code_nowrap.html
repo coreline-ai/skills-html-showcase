@@ -1,0 +1,22 @@
+<!-- G1 fixture — 좁은 표 열의 짧은 상태코드 줄바꿈
+     결함: components.css의 code{}(L88)에 white-space:nowrap이 없어, 좁은 첫 열에서
+           <code>100</code>이 1 / 0 / 0 으로 줄바꿈된다.
+     현행 미검출 근거: unprotected_long_token_gate는 (a) <code>를 스캔 전 제거하고
+           (b) 길이 72자 이상 토큰만 본다 → 3자리 코드는 보이지 않는다.
+           table_mobile_wrapper_gate는 .tbl 래퍼만 확인(여기선 충족) → 통과.
+     Phase 1 정답: 상태코드형 짧은 코드만 nowrap / .status-pill 정본. (긴 인라인 코드는 overflow에 위임) -->
+<main class="layout-reference" id="main">
+  <section>
+    <h2 id="codes">상태 코드</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>코드</th><th>의미</th></tr></thead>
+        <tbody>
+          <tr><td><code>100</code></td><td>Continue</td></tr>
+          <tr><td><code>200</code></td><td>OK</td></tr>
+          <tr><td><code>404</code></td><td>Not Found</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,11 @@
+<!-- G8 fixture — core-insight red gradient 소실 + 내부 제목 상단 여백
+     결함: red gradient가 의도된 .core-insight 카드에 간격 보정을 위해 core-insight--neutral을 덧붙여
+           의도한 빨간 그라데이션이 사라진다. 동시에 전역 h3 margin이 .core-insight 내부로 누수되어
+           제목 상단 여백이 과해진다.
+     현행 미검출 근거: .core-insight의 gradient 보존/내부 heading margin을 검사하는 게이트가 없다.
+     Phase 1 정답: red gradient 카드에는 --neutral 금지 + .core-insight > h3:first-child{margin-top:0}로만
+           내부 리듬 보정 + Phase 2 정적 가드(red 용도에 --neutral 동반 또는 heading reset 부재 시 실패). -->
+<aside class="core-insight core-insight--neutral">
+  <h3>상품 정의</h3>
+  <p>핵심 인사이트 본문. red gradient가 사라지고 제목 상단 여백이 과하게 잡힌다.</p>
+</aside>

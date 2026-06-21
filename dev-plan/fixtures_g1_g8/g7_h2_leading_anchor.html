@@ -1,0 +1,13 @@
+<!-- G7 fixture — 섹션 첫 타이틀 앞 빈 anchor/div 선행
+     결함: 섹션의 첫 의미 요소가 <h2>가 아니라 빈 <div id="...">(앵커용)라서
+           section > h2:first-child 의 margin reset이 적용되지 않아 제목이 상단 라인과 떨어져 보인다.
+     현행 미검출 근거: <h2> 앞 빈 선행 anchor/div를 검사하는 게이트가 없다.
+     Phase 1/2 정답: 섹션 anchor는 빈 div가 아니라 <h2 id="..."> 에 직접 부여 +
+           '<h2> 앞 빈 anchor/div' 또는 'anchor가 <h2 id>가 아님' 시 실패하는 DOM 정적 가드. -->
+<main class="layout-reference" id="main">
+  <section>
+    <div id="sec-a"></div>
+    <h2>섹션 A</h2>
+    <p>본문 단락. 제목 위 빈 anchor 때문에 first-child margin reset이 풀린다.</p>
+  </section>
+</main>

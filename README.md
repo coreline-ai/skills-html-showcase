@@ -9,27 +9,27 @@
 # 🎨 Adaptive HTML Final
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
-[![version](https://img.shields.io/badge/version-5.10.5-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
-[![modes](https://img.shields.io/badge/modes-17-2a7d5a)](#-17개-모드)
+[![version](https://img.shields.io/badge/version-5.10.6-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
+[![modes](https://img.shields.io/badge/modes-18-2a7d5a)](#-17개-모드)
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
 [![themes](https://img.shields.io/badge/themes-8--theme-111827)](#-8-테마-시스템)
 [![libraries](https://img.shields.io/badge/view%20widgets-20-e63946)](#️-비주얼-프로파일) [![svg→html](https://img.shields.io/badge/svg→html%20templates-21-d99a38)](#️-비주얼-프로파일)
-[![governance](https://img.shields.io/badge/governance-162%2F162-2a7d5a)](#-품질-게이트--결정론)
+[![governance](https://img.shields.io/badge/governance-185%2F185-2a7d5a)](#-품질-게이트--결정론)
 [![lang](https://img.shields.io/badge/lang-한국어-0b7285)](#)
 [![external JS](https://img.shields.io/badge/external%20JS-0-success)](#-품질-게이트--결정론)
 [![cross-agent](https://img.shields.io/badge/cross--agent-AGENTS.md-6e40c9)](AGENTS.md)
 [![python](https://img.shields.io/badge/SVG%20render-stdlib%20only-3776AB?logo=python&logoColor=white)](skills/adaptive-html-final/scripts/render_visual_svg.py)
 
-**입력 자료를 17개 모드로 라우팅해 전문가급 한국어 HTML 콘텐츠를 만드는 단일 통합 스킬 — GitHub 저장소 실사·GitHub 기능/도입 가이드·YouTube 영상·매뉴얼 분석, 8-테마, 비주얼 프로파일(위젯형·도식형·자동) 선택**
+**입력 자료를 18개 모드로 라우팅해 전문가급 한국어 HTML 콘텐츠를 만드는 단일 통합 스킬 — GitHub 저장소 실사·GitHub 기능/도입 가이드·YouTube 영상·매뉴얼 분석, 8-테마, 비주얼 프로파일(위젯형·도식형·자동) 선택**
 
 URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill`·GitHub 저장소 URL·YouTube URL/자막·제품 매뉴얼을 받아 학습자료, 전문가 리포트, 저장소/영상/매뉴얼 분석, 아티클, 교육 모듈, 블로그 원고, SEO 대시보드, 플랫폼 변환, 스킬 감사, 레퍼런스, 비교, 케이스 스터디, 랜딩, 체크리스트로 변환합니다.
 
-[Overview](#-overview) · [빠른 시작](#-빠른-시작) · [17개 모드](#-17개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [8-테마](#-8-테마-시스템) · [쇼케이스](#️-쇼케이스-갤러리) · [v5.10.5 생성물](#v5105-demo17-rose-captures) · [v5.10.3 생성물](#v5103-codex-sepia-captures) · [아키텍처](#️-아키텍처--디자인-시스템) · [품질 게이트](#-품질-게이트--결정론) · [사용법](#-사용법)
+[Overview](#-overview) · [빠른 시작](#-빠른-시작) · [18개 모드](#-18개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [8-테마](#-8-테마-시스템) · [쇼케이스](#️-쇼케이스-갤러리) · [v5.10.5 생성물](#v5105-demo17-rose-captures) · [v5.10.3 생성물](#v5103-codex-sepia-captures) · [아키텍처](#️-아키텍처--디자인-시스템) · [품질 게이트](#-품질-게이트--결정론) · [사용법](#-사용법)
 
 </div>
 
 > [!NOTE]
-> **외부/동작 JS 0** · **결정론적 크로스-에이전트**(Claude Code · Codex · Gemini 동일 출력) · **자기방어 검증 게이트 162/162** · 입력→정보구조 재구성 파이프라인. 단순 변환기가 아니라, 무엇을 어떻게 보여줄지 **모드·레이아웃·프로파일을 결정표로 고정**해 생성합니다.
+> **외부/동작 JS 0** · **결정론적 크로스-에이전트**(Claude Code · Codex · Gemini 동일 출력) · **자기방어 검증 게이트 185/185** · 입력→정보구조 재구성 파이프라인. 단순 변환기가 아니라, 무엇을 어떻게 보여줄지 **모드·레이아웃·프로파일을 결정표로 고정**해 생성합니다.
 
 ---
 
@@ -37,13 +37,13 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 | | |
 |---|---|
-| 🧭 **17개 모드 라우터** | 입력·목적을 분석해 `skill_audit`·`github_analysis`·`youtube_analysis`·`manual_analysis` 등 17개 정보 구조 중 하나로 자동 라우팅 |
+| 🧭 **18개 모드 라우터** | 입력·목적을 분석해 `skill_audit`·`github_analysis`·`youtube_analysis`·`manual_analysis` 등 17개 정보 구조 중 하나로 자동 라우팅 |
 | 🎚️ **3 비주얼 프로파일** | `widget`(CSS 위젯) · `diagram`(SVG→HTML 도식) · `auto`(둘 다, 기본). 코어는 100% 공유, 프로파일이 라이브러리만 게이트 |
 | 🎨 **8-테마 스위처** | `light·light2·white·dark·dark2·blue·skyblue·sepia` — **무 JS** CSS-only 라디오 스위처 |
 | 🧩 **시각 라이브러리** | CSS 뷰 위젯 `wg-` 20종 + SVG→HTML 템플릿 `vt-` 21종 + 본문 아이콘 `bi-` 32종 + soft-shape 36종 |
 | 🛡️ **무 JS 원칙** | 출력에 외부/동작 JS 0. 상호작용은 전부 CSS-only(`:has()`·라디오·`details`). JSON-LD만 허용 |
 | 🤖 **크로스-에이전트 결정론** | `AGENTS.md` 단일 진입점 + `modes/*.json` Registry로 어느 에이전트에서 돌려도 동일 결과 |
-| ✅ **자기방어 게이트** | `validate_output.py`(구조·해시·계약) + `quality_contract_check.py`(붕어빵 차단) + 거버넌스 **162/162** |
+| ✅ **자기방어 게이트** | `validate_output.py`(구조·해시·계약) + `quality_contract_check.py`(붕어빵 차단) + 거버넌스 **185/185** |
 | 🖨️ **PDF/PNG/WebP export** | `html-exporter`로 빌드타임 변환(테마별 캡처). 출력 HTML엔 JS 미삽입 |
 
 ---
@@ -76,7 +76,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 ```bash
 # 1) 저장소 클론 후 루트에서 로컬 미리보기
 python3 -m http.server 8788
-#   현행 17모드 참조 예제
+#   현행 18모드 참조 예제
 #   → http://127.0.0.1:8788/skills/adaptive-html-final/examples/index.html
 
 # 2) 현행 레퍼런스 검증 (마지막 줄 OK 여야 정상)
@@ -99,7 +99,7 @@ python3 skills/adaptive-html-final/scripts/render_visual_svg.py brief.json outpu
 
 ---
 
-## 📦 17개 모드
+## 📦 18개 모드
 
 트리거가 겹치면 우선순위(`1=skill_audit … 17=checklist_playbook`)를 따릅니다. 결정표 단일 출처는 [`modes/NN-<mode>.json`](skills/adaptive-html-final/modes) Registry이며 `validate_output.py`가 직접 읽습니다.
 
@@ -129,7 +129,7 @@ python3 skills/adaptive-html-final/scripts/render_visual_svg.py brief.json outpu
 
 ## 🎚️ 비주얼 프로파일
 
-스킬을 **기동할 때 비주얼 스타일을 고를 수 있습니다.** 코어(17모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 *어느 라이브러리·삽입 단계·CSS 번들*을 쓸지만 게이트합니다. 세 프로파일 모두 **외부/동작 JS 0**.
+스킬을 **기동할 때 비주얼 스타일을 고를 수 있습니다.** 코어(18모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 *어느 라이브러리·삽입 단계·CSS 번들*을 쓸지만 게이트합니다. 세 프로파일 모두 **외부/동작 JS 0**.
 
 <table>
 <tr>
@@ -179,7 +179,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 
 ## 🖼️ 예제 (스킬 번들)
 
-이 저장소가 소개하는 예제는 **스킬에 실제 포함된 현행 17모드 참조 예제**, 단 하나입니다 — [`skills/adaptive-html-final/examples/`](skills/adaptive-html-final/examples). v5.10.5 코어 자산으로 인라인되어 **8-테마·무 JS·검증 게이트(162/162)** 를 모두 통과한 자기완결 HTML이며, 각 모드의 정본 구조를 그대로 보여줍니다.
+이 저장소가 소개하는 예제는 **스킬에 실제 포함된 현행 18모드 참조 예제**, 단 하나입니다 — [`skills/adaptive-html-final/examples/`](skills/adaptive-html-final/examples). v5.10.6 코어 자산으로 인라인되어 **8-테마·무 JS·검증 게이트(185/185)** 를 모두 통과한 자기완결 HTML이며, 각 모드의 정본 구조를 그대로 보여줍니다.
 
 **▶ 예제 인덱스:** [`examples/index.html`](skills/adaptive-html-final/examples/index.html) · [라이브 열기](https://coreline-ai.github.io/skills-html-showcase/skills/adaptive-html-final/examples/index.html)
 
@@ -409,7 +409,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 theme.css              색/폰트/폭 토큰(:root) · skip · focus-visible · reduced-motion
 components.css         term · analogy · danger · good · hero-analogy · try · tbl · faq · cta-box ...
 visual-components.css  figure.visual-figure (8000×6000 SVG 삽입 셸)
-layouts.css            17개 모드별 그리드/구조 (github 실사·기능가이드·youtube·manual 포함)
+layouts.css            18개 모드별 그리드/구조 (github 실사·기능가이드·youtube·manual 포함)
 print.css              인쇄 대응(print-color-adjust · break-inside · reading-progress 숨김)
 
 [ 조건부 / 후행 인라인 — 해시 비대상 ]
@@ -443,25 +443,25 @@ theme-dark.css         CSS-only 8-테마 토큰 오버라이드 + 라디오 스�
 skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트 (단일 출처)
-│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.5 · 17모드)
-│   ├── assets/                        # base.html · CSS 12종 · 위젯/도식/패턴/테마 자산 · 17개 레이아웃 골격
+│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.6 · 18모드)
+│   ├── assets/                        # base.html · CSS 12종 · 위젯/도식/패턴/테마 자산 · 18개 레이아웃 골격
 │   ├── modes/         (17)            # 모드 결정표 Registry (validator가 직접 읽는 실행 정본)
 │   ├── references/    (19)            # 모드/레이아웃/글쓰기/SEO/감사/GitHub·YouTube·Manual·기능가이드 규칙
 │   ├── recipes/       (17)            # 모드별 대표 프롬프트
 │   ├── schemas/       (3)             # blog-meta · quality-report · visual-brief
 │   ├── scripts/       (7)             # validate_output · quality_contract_check · completion_check ·
 │   │                                  #   render_visual_svg · mode_registry · check_mode_registry_sync · body_icon_markup
-│   ├── tests/                         # 거버넌스 게이트 (162/162) + 레이아웃/접근성 체크리스트
+│   ├── tests/                         # 거버넌스 게이트 (185/185) + 레이아웃/접근성 체크리스트
 │   ├── visual-templates/ (7)          # 8000×6000 SVG 템플릿
 │   ├── galleries/                     # body-icon / soft-shape 카탈로그
-│   ├── examples/                      # v5.10.5 현행 17모드 참조 예제 + index + sources 스냅샷
+│   ├── examples/                      # v5.10.6 현행 18모드 참조 예제 + index + sources 스냅샷
 │   └── template-catalog/             # final_20260604 기반 템플릿 HTML 정본 4종
 ├── skills/html-exporter/             # 재사용 export 스킬 (Playwright → PDF/PNG/WebP)
 ├── output/                            # 날짜별 산출물 아카이브 (독립 결과물 — 스킬 입력 아님)
 │   └── YYYY-MM-DD/<산출물>/            # output/README.md 의 날짜 인덱스 참조
 ├── docs/
 │   ├── screenshots/                   # 본 README용 쇼케이스 썸네일
-│   ├── adaptive-html-final-template-authoring-protocol.md  # v5.10.5 작성 프로토콜
+│   ├── adaptive-html-final-template-authoring-protocol.md  # v5.10.6 작성 프로토콜
 │   └── archive/                       # v4~v5.0 시점 고정 리뷰/분석/계획 기록 (SUPERSEDED)
 ├── dev-plan/                          # 단계별 구현 계획 + release-approval 기록
 ├── AGENTS.md                          # 크로스-에이전트 결정론 진입점
@@ -489,22 +489,22 @@ skills-html-showcase/
 
 | 검증 항목 | 결과 |
 |---|---|
-| 거버넌스 게이트 | `test_governance_gates.py` **162 / 162 통과** |
+| 거버넌스 게이트 | `test_governance_gates.py` **185 / 185 통과** |
 | 외부 동작 JS | **0건** |
 | 코어 CSS 해시 | 5종 합본 SHA-256 byte-verbatim 인라인 일치 |
 | skip link ↔ `#main` · 단일 `h1` | 17 / 17 레이아웃 계약 |
 | manifest ↔ 결정표 ↔ Registry | 6자 정합(`check_mode_registry_sync.py`) |
 
 > [!NOTE]
-> 🟢 **게이트 현황(v5.10.5)**: 거버넌스 `test_governance_gates.py` **162 / 162 통과**. 검증기 `validate_output.py`는 17모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합·버전 표면·`.skill` byte-match)을 정적으로 강제합니다. 현행 17모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
+> 🟢 **게이트 현황(v5.10.6)**: 거버넌스 `test_governance_gates.py` **185 / 185 통과**. 검증기 `validate_output.py`는 18모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합·버전 표면·`.skill` byte-match)을 정적으로 강제합니다. 현행 18모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
 
 ```bash
-# 현행 17모드 레퍼런스 검증 (저장소 루트에서)
+# 현행 18모드 레퍼런스 검증 (저장소 루트에서)
 python3 skills/adaptive-html-final/scripts/validate_output.py \
   skills/adaptive-html-final/examples \
   --skill-dir skills/adaptive-html-final          # → 마지막 줄 OK
 
-python3 skills/adaptive-html-final/tests/test_governance_gates.py   # → 162/162 checks passed
+python3 skills/adaptive-html-final/tests/test_governance_gates.py   # → 185/185 checks passed
 python3 skills/adaptive-html-final/scripts/quality_contract_check.py skills/adaptive-html-final/examples
 python3 skills/adaptive-html-final/scripts/completion_check.py     skills/adaptive-html-final/examples
 ```
@@ -538,7 +538,7 @@ python3 skills/adaptive-html-final/scripts/render_visual_svg.py brief.json outpu
 
 ```bash
 python3 -m http.server 8080
-# 스킬 번들 17모드 참조 예제 (현행 v5.10.5)
+# 스킬 번들 18모드 참조 예제 (현행 v5.10.6)
 # → http://localhost:8080/skills/adaptive-html-final/examples/index.html
 ```
 
@@ -564,10 +564,10 @@ npm run export:output -- output/<생성한_산출물_디렉터리> --clean
 
 ## 🗂️ 버전 히스토리
 
-**현행 `v5.10.5`** — 접근성·스코프 하드닝. forced-colors(고대비)에서 배경색만으로 상태를 전하던 테마바·wg 선택/체크 컨트롤에 시스템색 `Highlight` outline 단서를 더하고, `visual-html.css`의 비스코프 `.score`를 `.tuner .score`로 좁히고, vt 장식 글리프(vt-10 화살표·체크리스트 체크표)에 `aria-hidden`을, eval-rubric↔quality-report 스키마 연결을 추가. 조건부 자산만 손대 **코어 해시 `7e151665` 불변**·examples 18종 재인라인. 거버넌스 **162/162**.
+**현행 `v5.10.6`** — 시각 결함 하드닝(G1~G8). validate/quality/completion은 통과하지만 화면에 남던 누적 결함을 본체로 닫았다: 표 상태코드 줄바꿈(`.status-pill` 정본), `.try` 중첩 흰 카드 링크 저대비(`--link-on-dark`→`--accent-2`, 8테마 min 6.09:1), `source-preserve` 좌측 gutter(`.source-body-inner`), `mini-card` 첫 태그 리듬, `core-insight` 내부 제목 margin reset + red gradient 보존, `prefers-contrast` 단서(A5). 정적으로 못 잡던 결함은 검출 게이트로 승격 — G2 diagram 노드 박스 overlap·G3 inner-card 링크 대비 render-audit(`scripts/micro_layout_audit.mjs`) + G4~G8 정적 가드 + TOC/h2 anchor DOM 가드. 코어 CSS 직접 수정 → **코어 해시 `a73eb204`→`a64604d0`**·examples 18종 재인라인·.skill 재패키징. 거버넌스 **162→185/185**.
 
 <details>
-<summary><b>전체 버전 진화 펼치기 (v4.0 → v5.10.5)</b></summary>
+<summary><b>전체 버전 진화 펼치기 (v4.0 → v5.10.6)</b></summary>
 
 <br>
 
@@ -591,6 +591,7 @@ npm run export:output -- output/<생성한_산출물_디렉터리> --clean
 | `v5.10.3` | 다크 대비·인쇄 가독·전 모드 page-wide 폭 정본 + 자기방어 게이트 6종 + 버전 표면/.skill byte-match + render-audit 완료 증빙 + 승인 없는 버전 bump 차단 |
 | `v5.10.4` | **마이크로 레이아웃 정본 계약(M1·M4·M7·M10)** + 작성 프로토콜(M2·M3·M6·M9 정본 컴포넌트 규칙). 코어 해시 갱신·examples 재인라인·.skill 재패키징·17모드 benchmark/micro-layout completion 게이트. 거버넌스 162/162 |
 | `v5.10.5` | **접근성·스코프 하드닝** — forced-colors 상태 단서(테마바·wg 선택/체크) + `.score`→`.tuner .score` 스코프 + vt 장식 글리프 `aria-hidden` + eval-rubric↔quality-report 스키마 연결. 조건부 자산만 변경·코어 해시 불변·examples 18종 재인라인. 거버넌스 162/162 |
+| `v5.10.6` | **시각 결함 하드닝(G1~G8)** — 표 상태코드 nowrap(`.status-pill`)·`.try` 흰 카드 링크 대비(`--accent-2`)·`source-preserve` gutter·`mini-card` 리듬·`core-insight` reset·`prefers-contrast`(A5). 검출 게이트 신설(G2 노드 overlap·G3 링크 대비 render-audit + G4~G8 정적 + TOC/h2 DOM). 코어 해시 `a73eb204`→`a64604d0`·examples 18종 재인라인·.skill 재패키징. 거버넌스 162→185/185 |
 
 </details>
 
@@ -616,5 +617,5 @@ npm run export:output -- output/<생성한_산출물_디렉터리> --clean
 별도 라이선스가 지정되지 않았습니다. 사용 전 저장소 소유자(`coreline-ai`)에게 확인하세요.
 
 <div align="center">
-<sub>생성 도구: <code>adaptive-html-final</code> v5.10.5 · 17-mode · 8-theme · 3-profile editorial HTML engine · 무 JS · governance 162/162</sub>
+<sub>생성 도구: <code>adaptive-html-final</code> v5.10.6 · 18-mode · 8-theme · 3-profile editorial HTML engine · 무 JS · governance 185/185</sub>
 </div>

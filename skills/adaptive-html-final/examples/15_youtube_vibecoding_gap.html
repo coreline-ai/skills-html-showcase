@@ -11,7 +11,7 @@
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
-<style>/* adaptive-html-final-core-css-sha256: a73eb204225857f765c745b1c5210fce5f93cbf3fc3f442cc52d8d7acf29c535 */
+<style>/* adaptive-html-final-core-css-sha256: a64604d02e6c2f37c2f6428bf644f693b8468de57094e4b95d36e4600e6c2e02 */
 :root{
   --bg:#f5f5f0;
   --ink:#1a1a1a;
@@ -172,6 +172,11 @@ footer p{font-size:13px;color:var(--ink-mute)}
 .header .kicker{font-size:11px;letter-spacing:.12em;padding:5px 11px 5px 9px;min-height:26px;margin-bottom:20px}
 .header .kicker::before{width:6px;height:6px}
 .header .sub{text-align:justify;word-break:keep-all}
+/* A5 (prefers-contrast): forced-colors(시스템색, theme-dark/widgets) 후속. 사용자 고대비 선호 시 약한 텍스트/라인
+   토큰을 강화한다. 대비를 올리기만 하므로 일반 렌더 영향 0. 다크/블루 테마는 :root:has() 토큰이 더 구체적이라 유지. */
+@media (prefers-contrast: more){
+  :root{--ink-soft:#333333;--ink-mute:#454545;--line:#b5b5ac}
+}
 
 /* Editorial components for adaptive-html-blog-writer-v2. */
 .box,.summary-card,.toc,.faq,.cta-box,.source-note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px 22px;margin:24px 0}
@@ -359,9 +364,20 @@ details p{margin-bottom:0}
 }
 .try a:hover,
 .try.soft-cta a:hover{color:#fff;text-decoration-color:#fff}
+/* G3: .try 안 흰 inner-card(.box/.summary-card/.cta-box/.card-block/.mini-card)는 --card 배경이라
+   다크 전용 --link-on-dark가 흰 배경에서 1.65:1 저대비. 링크를 --accent-2로 reset(8테마 min 6.09:1).
+   .try 직속 링크(다크 배경)는 위 규칙대로 --link-on-dark 유지. */
+.try :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a,
+.try.soft-cta :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a{color:var(--accent-2);text-decoration-color:var(--accent-2)}
+.try :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a:hover,
+.try.soft-cta :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a:hover{color:var(--accent-2);text-decoration-color:var(--accent-2);text-decoration-thickness:2px}
 .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
 .mini-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:16px}
 .mini-card h3{margin-top:0;font-size:16px}
+/* G5: mini-card 첫 .tag와 후속 h3/p가 세로 간격 없이 붙어 보이던 결함 — 첫 태그 하단 리듬 + 제목/요약 간격 정본화. */
+.mini-card>.tag:first-child{display:inline-flex;margin-bottom:14px}
+.mini-card>.tag:first-child+h3{margin-top:0;margin-bottom:12px}
+.mini-card h3+p{margin-top:0}
 .tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .try .tag,
 .try.soft-cta .tag{
@@ -1887,6 +1903,9 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 .source-preserve summary{padding:16px 20px;min-height:54px}
 .source-preserve .source-body{border-top:1px solid var(--line);padding:18px 22px}
 .source-preserve .source-body p,.source-preserve li{font-size:14.5px}
+/* G4: source-preserve 좌측 accent rail과 본문 텍스트 사이 gutter 정본화. 생성 마크업은 .source-body 안에
+   .source-body-inner 래퍼를 써서 inline style 보정 없이 좌측 여백(미세 라인 + 24px)을 확보한다. */
+.source-preserve .source-body-inner,.source-preserve-static .source-body-inner{border-left:1px solid var(--line);padding-left:24px;margin-left:2px}
 .source-preserve summary::-webkit-details-marker{display:none}
 .source-preserve summary::marker{content:""}
 /* source-preserve-static — 접기 없이 항상 펼쳐진 정적 원문 카드(<details> 대신 div+role=group). 무 JS. */
@@ -1904,6 +1923,9 @@ h2>.body-icon svg,h3>.body-icon svg{width:28px;height:28px}
 .core-insight{background:linear-gradient(135deg,var(--accent-soft),rgba(255,255,255,.6));border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:22px 24px;margin:18px 0}
 .core-insight blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.02em;font-size:22px;line-height:1.65;color:var(--ink);border:0;margin:0 0 12px;padding:0;font-style:normal}
 .core-insight p{margin:0}
+/* G8: 전역 h3 margin이 .core-insight 내부 첫 제목으로 누수돼 상단 여백이 과해지던 결함을 reset.
+   red gradient 보존: 의도된 그라데이션 카드에는 core-insight--neutral을 붙이지 않는다(작성 규칙 + Phase 2 게이트). */
+.core-insight>:first-child{margin-top:0}
 /* core-insight--neutral — 그라데이션 없는 중립 callout 변형(opt-in). 베어 .core-insight를 덮어쓰지 않는다(전 모드 회귀 방지). */
 .core-insight--neutral{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);box-shadow:none}
 .core-insight--neutral blockquote{font-family:var(--sans);font-weight:800;letter-spacing:-.025em;line-height:1.42}
@@ -2119,7 +2141,7 @@ ul.col-list,ol.col-list{list-style:none;margin:14px 0 0;padding:0;display:grid;g
     <h1>바이브코딩 영상은 실제로 팀 생산성을 올리는가</h1>
     <p class="sub">영상 URL·자막·댓글 일부가 주어졌다는 가정으로, 시청자가 가장 궁금해하는 “볼 가치, 근거, 위험, 재사용 전략”을 한 장의 실행 리포트로 재구성한 예제입니다.</p>
     <div class="generated-row"><p class="generated-date">observed_at: 2026-06-07 09:00 KST · input tier: transcript + comments excerpt</p><div class="lens-strip"><span class="lens-strip-label">Lens</span><span class="lens-chip">FACT</span><span class="lens-chip">INFERENCE</span><span class="lens-chip">UNKNOWN</span></div></div>
-    <div class="meta"><span>mode: youtube_analysis</span><span>layout: youtube-analysis.html</span><span>profile: auto</span><span>adaptive-html-final v5.10.5</span><span>embed: none</span></div>
+    <div class="meta"><span>mode: youtube_analysis</span><span>layout: youtube-analysis.html</span><span>profile: auto</span><span>adaptive-html-final v5.10.6</span><span>embed: none</span></div>
   </header>
   <section class="youtube-verdict"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span>분석 결론</h2><p><strong>결론:</strong> 시청 가치는 높지만, 영상의 “AI가 코드를 대신 짜준다”는 인상은 과장될 수 있습니다. 팀 적용 판단은 데모 장면보다 실패 복구·리뷰 루프·테스트 자동화 근거를 중심으로 해야 합니다.</p></section>
   <nav class="toc-map youtube-question-toc" aria-label="YouTube 분석 목차"><span class="label">질문 중심 목차</span><p>시청자가 실제로 궁금해할 질문을 먼저 배치합니다.</p><div class="toc-pills"><a class="toc-pill" href="#yt-source"><b>1</b>출처 신뢰도</a><a class="toc-pill" href="#yt-decision"><b>2</b>볼 가치 판단</a><a class="toc-pill" href="#yt-evidence"><b>3</b>Video Evidence Map</a><a class="toc-pill" href="#yt-risk"><b>4</b>Claim Risk</a><a class="toc-pill" href="#yt-blueprint"><b>5</b>재사용 전략</a></div></nav>

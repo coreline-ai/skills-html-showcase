@@ -1,0 +1,14 @@
+<!-- G4 fixture — source-preserve 좌측 레일/본문 gutter 부족
+     결함: .source-preserve의 좌측 컬러 레일(border-left)과 본문 텍스트 사이 내부 gutter가
+           정본 구조로 보장되지 않는다. inner wrapper(.source-body-inner) 없이 텍스트가 레일에 붙는다.
+           (개별 산출물에서 inline style로 임시 보정되던 결함)
+     현행 미검출 근거: source-preserve 좌측 gutter를 검사하는 정적 게이트가 없다.
+           NONCANONICAL_CLASS_PATTERNS는 'source-preserve-static'만 막고 정본 'source-preserve'는 통과.
+     Phase 1 정답: editorial-patterns.css에 .source-body-inner 정본(border-left + padding-left:24px) +
+           Phase 2 정적 가드(.source-body-inner 부재 시 실패). -->
+<section class="source-preserve">
+  <div class="source-body">
+    원문 보존 텍스트가 좌측 컬러 레일에 바짝 붙어 gutter 없이 렌더된다. 인용 단락이 레일과
+    충분한 간격을 갖지 못해 읽기 흐름이 끊긴다.
+  </div>
+</section>

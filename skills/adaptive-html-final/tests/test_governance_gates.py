@@ -564,9 +564,9 @@ sys.path.insert(0, str(SKILL / "scripts"))
 import mode_registry as _mreg          # noqa: E402
 import check_mode_registry_sync as _mrs  # noqa: E402
 _reg = _mreg.load_mode_registry(SKILL)
-check("mode registry has 17 modes", len(_reg) == 17)
-check("mode registry priority 1..17 contiguous & unique",
-      sorted(m["priority"] for m in _reg) == list(range(1, 18)))
+check("mode registry has 18 modes", len(_reg) == 18)
+check("mode registry priority 1..18 contiguous & unique",
+      sorted(m["priority"] for m in _reg) == list(range(1, 19)))
 _built = _mreg.build_mode_template_contracts(SKILL)
 # B-full: validator now SOURCES MODE_TEMPLATE_CONTRACTS from the registry.
 # This asserts the wiring is in place (validator dict == registry build); if anyone
@@ -685,11 +685,59 @@ with _tmp.TemporaryDirectory() as _td:
     check("benchmark completion gate fails missing micro-layout pass evidence", c.check_render_audit(_root) is False)
     _pages_b[0]['evidence'] = 'sources/modes/p01/missing.json'
     (_root / 'sources' / 'benchmark-manifest.json').write_text(_json_b.dumps({'kind':'adaptive-html-final-17-mode-independent-benchmark','mode_count':17,'pages':_pages_b}, ensure_ascii=False), encoding='utf-8')
-    (_root / 'sources' / 'render-audit.json').write_text('{"viewports":{"1280":{"scrollWidth":1280,"clientWidth":1280,"overflow_ok":true,"screenshot":"sources/screenshots/1280.png"},"390":{"scrollWidth":390,"clientWidth":390,"overflow_ok":true,"screenshot":"sources/screenshots/390.png"}},"micro_layout":{"all_ok":true,"checks":{"heading_badge_nowrap":true,"rail_color_variety":true,"rail_text_padding":true,"card_vertical_rhythm":true,"footer_centered":true,"no_noncanonical_classes":true}}}', encoding='utf-8')
+    (_root / 'sources' / 'render-audit.json').write_text('{"viewports":{"1280":{"scrollWidth":1280,"clientWidth":1280,"overflow_ok":true,"screenshot":"sources/screenshots/1280.png"},"390":{"scrollWidth":390,"clientWidth":390,"overflow_ok":true,"screenshot":"sources/screenshots/390.png"}},"micro_layout":{"all_ok":true,"checks":{"heading_badge_nowrap":true,"rail_color_variety":true,"rail_text_padding":true,"card_vertical_rhythm":true,"footer_centered":true,"no_noncanonical_classes":true,"node_overlap_ok":true,"inner_card_link_contrast_ok":true}}}', encoding='utf-8')
     check("benchmark completion gate fails missing per-mode evidence", c.check_render_audit(_root) is False)
     _pages_b[0]['evidence'] = 'sources/modes/p01/build-evidence.json'
     (_root / 'sources' / 'benchmark-manifest.json').write_text(_json_b.dumps({'kind':'adaptive-html-final-17-mode-independent-benchmark','mode_count':17,'pages':_pages_b}, ensure_ascii=False), encoding='utf-8')
     check("benchmark completion gate passes micro-layout and per-mode evidence", c.check_render_audit(_root) is True)
+    # v5.10.6 G2: node_overlap_ok가 benchmark 필수 micro로 강제됨(누락 시 실패).
+    (_root / 'sources' / 'render-audit.json').write_text('{"viewports":{"1280":{"scrollWidth":1280,"clientWidth":1280,"overflow_ok":true,"screenshot":"sources/screenshots/1280.png"},"390":{"scrollWidth":390,"clientWidth":390,"overflow_ok":true,"screenshot":"sources/screenshots/390.png"}},"micro_layout":{"all_ok":true,"checks":{"heading_badge_nowrap":true,"rail_color_variety":true,"rail_text_padding":true,"card_vertical_rhythm":true,"footer_centered":true,"no_noncanonical_classes":true,"inner_card_link_contrast_ok":true}}}', encoding='utf-8')
+    check("benchmark completion gate fails missing node_overlap_ok (G2)", c.check_render_audit(_root) is False)
+
+# === v5.10.6 시각결함 하드닝 게이트 (G3~G8) — implement_20260618_221706.md Phase 2 ===
+# G4 (asset): source-preserve 좌측 gutter 정본
+_g4b = v.source_preserve_gutter_gate('.source-preserve{border-left:4px}')
+check("G4 source_preserve_gutter flags missing .source-body-inner", bool(_g4b) and _g4b[0]["type"] == "source_preserve_gutter_missing")
+check("G4 source_preserve_gutter passes canonical gutter", v.source_preserve_gutter_gate('.source-body-inner{border-left:1px solid var(--line);padding-left:24px}') == [])
+# G5 (asset): mini-card 첫 tag rhythm 정본
+_g5b = v.mini_card_tag_rhythm_gate('.mini-card{padding:16px}')
+check("G5 mini_card_tag_rhythm flags missing first-tag margin", bool(_g5b) and _g5b[0]["type"] == "mini_card_tag_rhythm_missing")
+check("G5 mini_card_tag_rhythm passes canonical rhythm", v.mini_card_tag_rhythm_gate('.mini-card>.tag:first-child{display:inline-flex;margin-bottom:14px}') == [])
+# G8 (asset): core-insight 내부 제목 margin reset 정본
+_g8b = v.core_insight_heading_reset_gate('.core-insight{background:red}')
+check("G8 core_insight_heading_reset flags missing reset", bool(_g8b) and _g8b[0]["type"] == "core_insight_heading_reset_missing")
+check("G8 core_insight_heading_reset passes canonical reset", v.core_insight_heading_reset_gate('.core-insight>:first-child{margin-top:0}') == [])
+# G3 (per-page): .try 내부 흰 카드 링크 대비 reset (기존 p/tag/dark-link 가드의 link 보강)
+_g3_html = '<section class="try"><div class="summary-card"><a href="#">x</a></div></section>'
+_g3b = v.try_inner_card_link_contrast_gate(_g3_html, '.try a{color:var(--link-on-dark)}')
+check("G3 try_inner_card_link_contrast flags missing inner-card link reset", bool(_g3b) and _g3b[0]["type"] == "missing_try_nested_card_link_contrast_reset")
+check("G3 try_inner_card_link_contrast passes when inner-card link reset present", v.try_inner_card_link_contrast_gate(_g3_html, '.try :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a{color:var(--accent-2)}') == [])
+check("G3 try_inner_card_link_contrast skips pages without .try", v.try_inner_card_link_contrast_gate('<main><p>x</p></main>', '.try a{color:var(--link-on-dark)}') == [])
+# G6 (per-page DOM): toc-map가 executive-summary 내부 중첩이면 실패, 독립 TOC 섹션은 허용
+_g6b = v.toc_in_executive_summary_gate('<section class="executive-summary"><nav class="toc-map"><a class="toc-pill" href="#a"><b>1</b>A</a></nav></section>')
+check("G6 toc_in_executive_summary flags nested TOC", bool(_g6b) and _g6b[0]["type"] == "toc_map_in_executive_summary")
+check("G6 toc_in_executive_summary passes standalone TOC section", v.toc_in_executive_summary_gate('<section class="document-toc-section"><nav class="toc-map"><a class="toc-pill" href="#a"><b>1</b>A</a></nav></section>') == [])
+# G7 (per-page DOM): 섹션 첫 <h2> 앞 빈 anchor/div면 실패, h2-first면 통과
+_g7b = v.section_leading_empty_anchor_gate('<section><div id="a"></div><h2>X</h2></section>')
+check("G7 section_leading_empty_anchor flags empty anchor before h2", bool(_g7b) and _g7b[0]["type"] == "section_leading_empty_anchor_before_h2")
+check("G7 section_leading_empty_anchor passes h2-first section", v.section_leading_empty_anchor_gate('<section><h2 id="a">X</h2><p>body</p></section>') == [])
+
+# === mode 18 business_plan custom contracts — implement_20260621_150500.md (5.10.6 병합) ===
+_bp_bad = '<main class="page layout-business-plan"><h1>x</h1><p>내용</p></main>'
+_bp_ok = '<main class="page layout-business-plan"><h1>사업계획</h1><p>매출 [목표] NR-01, 원가 [추정] NR-02, 인력 [가정] NR-03</p><table><tr><th>발행처</th><th>기준시점</th><th>접근일</th><th>URL</th></tr></table><p>평가위원 행정 기술 사업 회의 스코어</p></main>'
+_b1 = v.business_plan_evidence_tag_gate(_bp_bad)
+check("BP evidence_tag flags missing tags", bool(_b1) and _b1[0]["type"] == "business_plan_missing_evidence_tags")
+check("BP evidence_tag passes tagged content", v.business_plan_evidence_tag_gate(_bp_ok) == [])
+_b2 = v.business_plan_number_consistency_gate(_bp_bad)
+check("BP number_registry flags missing NR ids", bool(_b2) and _b2[0]["type"] == "business_plan_missing_number_registry")
+check("BP number_registry passes NR>=3", v.business_plan_number_consistency_gate(_bp_ok) == [])
+_b3 = v.business_plan_source_gate(_bp_bad)
+check("BP source flags missing ledger columns", bool(_b3) and _b3[0]["type"] == "business_plan_missing_source_ledger")
+check("BP source passes ledger columns", v.business_plan_source_gate(_bp_ok) == [])
+_b4 = v.business_plan_status_gate(_bp_bad)
+check("BP status flags missing evaluator scorecard", bool(_b4) and _b4[0]["type"] == "business_plan_missing_evaluator_scorecard")
+check("BP status passes 4-evaluator scorecard", v.business_plan_status_gate(_bp_ok) == [])
+check("BP gates skip non-business-plan pages", all(g('<main class="page layout-expert"><h1>x</h1></main>') == [] for g in (v.business_plan_evidence_tag_gate, v.business_plan_number_consistency_gate, v.business_plan_source_gate, v.business_plan_status_gate)))
 
 _manifest_quality = __import__("json").loads((SKILL / "manifest.json").read_text(encoding="utf-8")).get("quality") or {}
 check("manifest quality.governance_count matches this self-test count",

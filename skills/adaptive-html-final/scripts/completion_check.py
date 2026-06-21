@@ -243,6 +243,9 @@ def check_render_audit(target: Path) -> bool:
             "card_vertical_rhythm",
             "footer_centered",
             "no_noncanonical_classes",
+            # v5.10.6 시각결함 하드닝: 정적으로 못 잡는 render-only 결함.
+            "node_overlap_ok",            # G2: diagram/wg-04 노드 박스 겹침(>4px×4px) 없음
+            "inner_card_link_contrast_ok",  # G3: .try 중첩 흰 카드 링크 대비 ≥ 4.5:1
         )
         for key in required_micro:
             if checks.get(key) is not True:

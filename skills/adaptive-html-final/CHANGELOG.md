@@ -1,11 +1,19 @@
 # Changelog — adaptive-html-final
 
-## Unreleased
+## v5.10.6 (2026-06-21) — 시각 결함 하드닝(G1~G8) + 검출 게이트 + mode 18 business_plan 병합
 
-manual_analysis 산출물의 STEP·위험·UNKNOWN 배지(`.manual-safe`/`.manual-risk`/`.manual-unknown`)가 왼쪽 컬러 rail(`border-left`/dashed)에 padding 없이 붙어 라벨이 라인에 닿던 결함을 수정했다.
+validate/quality/completion은 통과하지만 사용자 화면에 남던 누적 시각 결함(G1~G8)을 스킬 본체 차원에서 닫고, 정적으로 못 잡던 결함을 검출 게이트로 승격했다. 직전 Unreleased(manual_analysis 배지 padding) 코어 변경도 본 릴리스에 흡수한다.
 
-- **layouts.css (코어)**: 세 배지에 `display:inline-block; padding:3px 10px; margin-bottom:8px; border-radius:3px` 추가 — 라벨과 컬러 라인 사이 간격 확보(첫 성공 경로 STEP, 사전조건·보안 위험/권한/UNKNOWN 배지).
-- **파급**: 코어 해시 `7e151665`→`a73eb204` 갱신 → examples 18종 재인라인·`sources/css-integrity.json`·source manifest·`.skill` 재패키징. 거버넌스 **162** 유지.
+- **G1 (작성 계약)**: 좁은 표 열 짧은 상태코드 줄바꿈 — `.status-pill` 정본(`table .status-pill{white-space:nowrap}`) 사용 규칙화(broad `td code` nowrap은 다토큰 코드 회귀 회피).
+- **G3 (components.css 코어)**: `.try` 중첩 흰 카드(.box/.summary-card/.cta-box/.card-block/.mini-card) 링크가 다크 전용 `--link-on-dark`(흰 배경 1.65:1)를 상속하던 저대비를 `--accent-2`로 reset(8테마 min 6.09:1). `.try` 직속 링크는 `--link-on-dark` 유지.
+- **G4 (editorial-patterns.css)**: `source-preserve` 좌측 rail↔본문 gutter 정본 `.source-body-inner{border-left+padding-left:24px}`.
+- **G5 (components.css 코어)**: `.mini-card>.tag:first-child` vertical rhythm 정본(margin-bottom + 후속 h3/p reset).
+- **G8 (editorial-patterns.css)**: `.core-insight>:first-child{margin-top:0}` 내부 제목 margin 누수 reset(red gradient 보존 — 의도 카드에 `--neutral` 금지).
+- **A5 (theme.css 코어)**: `@media (prefers-contrast: more)` 약 토큰 대비 상향(일반 렌더 영향 0).
+- **manual_analysis 배지(layouts.css 코어, 직전 Unreleased 흡수)**: STEP·위험·UNKNOWN 배지에 `padding:3px 10px;margin-bottom:8px` — 좌측 컬러 rail과 라벨 간격 확보.
+- **검출 게이트 신설**: G2 diagram 노드 박스 overlap(>4px×4px)·G3 inner-card 링크 대비를 `render-audit.json` micro_layout(`node_overlap_ok`·`inner_card_link_contrast_ok`; `scripts/micro_layout_audit.mjs` 생산, `completion_check.py` 검사)으로, G4·G5·G8은 자산-레벨 정적 가드, G3·G6(TOC가 executive-summary 내부 중첩)·G7(섹션 첫 `<h2>` 앞 빈 anchor)은 per-page 정적 가드로 신설. **거버넌스 162→185**.
+- **mode 18 `business_plan_html` 병합(버전 업 없음)**: 사업계획서/지원서 모드 신규 추가 — 증거태그([사실]/[추정]/[가정]/[목표]/[확인 필요])·단일 숫자 레지스트리(NR-NN)·in-HTML 출처원장(발행처/기준시점/접근일/URL)·4-평가자(행정/기술/사업/회의) **자기검토 스코어카드** 계약 + custom gate 4종(evidence_tag·number_consistency·source·status). primary_vt `implementation-plan` + wg-16/11/13/18/14 **재사용**(신규 위젯/코어 CSS 없음 → 코어 해시 불변). 17→18 모드, examples 17→18, governance +9(176→185). 사용자 결정으로 별도 v5.11.0 없이 본 릴리스에 병합.
+- **파급**: 코어 CSS(theme·components·editorial-patterns·layouts) 직접 수정 → **코어 해시 `a73eb204`(직전 미릴리스 배지 수정 흡수본)→`a64604d0`** · examples 18종 재인라인 · `sources/css-integrity.json` · source manifest · `.skill` 재패키징. (v5.10.5 태그 릴리스는 `7e151665`였고, 그 위 미릴리스 배지 수정이 `a73eb204`로 올린 뒤 본 릴리스가 흡수.)
 
 ## v5.10.5 (2026-06-15) — 접근성·스코프 하드닝: forced-colors 상태 단서 + .score 스코프 + vt 장식 글리프 aria + 루브릭↔스키마 연결
 

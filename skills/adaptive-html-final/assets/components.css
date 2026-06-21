@@ -184,9 +184,20 @@ details p{margin-bottom:0}
 }
 .try a:hover,
 .try.soft-cta a:hover{color:#fff;text-decoration-color:#fff}
+/* G3: .try 안 흰 inner-card(.box/.summary-card/.cta-box/.card-block/.mini-card)는 --card 배경이라
+   다크 전용 --link-on-dark가 흰 배경에서 1.65:1 저대비. 링크를 --accent-2로 reset(8테마 min 6.09:1).
+   .try 직속 링크(다크 배경)는 위 규칙대로 --link-on-dark 유지. */
+.try :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a,
+.try.soft-cta :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a{color:var(--accent-2);text-decoration-color:var(--accent-2)}
+.try :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a:hover,
+.try.soft-cta :is(.box,.summary-card,.cta-box,.card-block,.mini-card) a:hover{color:var(--accent-2);text-decoration-color:var(--accent-2);text-decoration-thickness:2px}
 .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
 .mini-card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:16px}
 .mini-card h3{margin-top:0;font-size:16px}
+/* G5: mini-card 첫 .tag와 후속 h3/p가 세로 간격 없이 붙어 보이던 결함 — 첫 태그 하단 리듬 + 제목/요약 간격 정본화. */
+.mini-card>.tag:first-child{display:inline-flex;margin-bottom:14px}
+.mini-card>.tag:first-child+h3{margin-top:0;margin-bottom:12px}
+.mini-card h3+p{margin-top:0}
 .tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .try .tag,
 .try.soft-cta .tag{

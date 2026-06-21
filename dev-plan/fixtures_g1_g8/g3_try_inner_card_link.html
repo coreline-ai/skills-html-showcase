@@ -1,0 +1,20 @@
+<!-- G3 fixture — .try 안 흰 카드 링크 저대비
+     결함: .try 내부 흰 .summary-card 의 링크가 다크 전용 토큰 --link-on-dark(#ffb6c0)를
+           상속한다. 흰 배경(#fff) 위 #ffb6c0 = 약 1.6:1 (AA 4.5 미달).
+     현행 미검출 근거(이중):
+       (1) 기존 try_card_contrast_guard_missing는 TRY_CARD_CONTRAST_CLASSES(repo-/youtube-/manual- 류)만
+           대상으로 하며 .summary-card는 목록에 없다.
+       (2) 그 가드조차 ".try .{class} p"(본문 p/li reset)만 확인하고 a(링크)는 보지 않는다.
+       여기선 .summary-card p reset을 일부러 넣어 p-가드를 만족시키고 '링크 단독 결함'을 격리한다.
+     Phase 2 정답: render contrast audit(contrast_ok) — 중첩 inner-card 컨텍스트의 보이는 링크 대비. -->
+<style>
+.try{background:#1a1a1a;padding:20px;border-radius:10px}
+.try .summary-card{background:#fff;color:#222;padding:16px;border-radius:8px}
+.try .summary-card p{color:#222}                 /* 기존 p/li 가드 충족 → 링크 결함만 남김 */
+.try .summary-card a{color:#ffb6c0;font-weight:800}   /* 결함: 흰 카드에서 ~1.6:1 저대비 링크 */
+</style>
+<section class="try">
+  <div class="summary-card">
+    <p>요약 카드 본문 텍스트는 충분한 대비로 읽힌다. 더 자세한 내용은 <a href="#detail">상세 문서 링크</a>에서 확인한다.</p>
+  </div>
+</section>

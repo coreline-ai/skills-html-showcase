@@ -1225,6 +1225,15 @@ def skill_asset_lint(skill_dir: Path) -> list:
     _pp = assets / 'print.css'
     if _pp.exists():
         issues.extend(print_try_ink_missing(_pp.read_text(encoding='utf-8')))
+    # Gate G4/G5/G8 (v5.10.6 시각결함 하드닝): 정본 규칙이 자산에 존재해야 한다.
+    _ep = assets / 'editorial-patterns.css'
+    if _ep.exists():
+        _ept = _ep.read_text(encoding='utf-8')
+        issues.extend(source_preserve_gutter_gate(_ept))
+        issues.extend(core_insight_heading_reset_gate(_ept))
+    _cp = assets / 'components.css'
+    if _cp.exists():
+        issues.extend(mini_card_tag_rhythm_gate(_cp.read_text(encoding='utf-8')))
     return issues
 
 
@@ -1912,6 +1921,133 @@ def closing_summary_recommendation(text: str) -> list:
     return []
 
 
+# ── v5.10.6 시각결함 하드닝 게이트 (G3~G8) — implement_20260618_221706.md Phase 2 ──
+def source_preserve_gutter_gate(css_text: str) -> list:
+    """G4 (asset): source-preserve 좌측 rail과 본문 사이 gutter 정본(.source-body-inner) 부재 차단.
+    editorial-patterns.css가 .source-body-inner의 left padding gutter 규칙을 정의해야 한다."""
+    masked = _mask_css_comments(css_text)
+    if re.search(r'\.source-body-inner\b[^{}]*\{[^}]*padding-left\s*:', masked):
+        return []
+    return [{'type': 'source_preserve_gutter_missing',
+             'detail': 'editorial-patterns.css에 .source-body-inner{padding-left:…} gutter 정본이 없음 — source-preserve 좌측 레일과 본문이 붙는 회귀(G4).'}]
+
+
+def mini_card_tag_rhythm_gate(css_text: str) -> list:
+    """G5 (asset): mini-card 첫 .tag와 후속 h3/p vertical rhythm 정본 부재 차단."""
+    masked = _mask_css_comments(css_text)
+    if re.search(r'\.mini-card\s*>\s*\.tag:first-child\b[^{}]*\{[^}]*margin-bottom\s*:', masked):
+        return []
+    return [{'type': 'mini_card_tag_rhythm_missing',
+             'detail': 'components.css에 .mini-card>.tag:first-child{margin-bottom:…} 리듬 정본이 없음 — 첫 태그와 제목이 붙는 회귀(G5).'}]
+
+
+def core_insight_heading_reset_gate(css_text: str) -> list:
+    """G8 (asset): core-insight 내부 첫 제목 전역 h3 margin 누수 reset 부재 차단."""
+    masked = _mask_css_comments(css_text)
+    if re.search(r'\.core-insight\s*>\s*(?::first-child|h3:first-child)\b[^{}]*\{[^}]*margin-top\s*:\s*0', masked):
+        return []
+    return [{'type': 'core_insight_heading_reset_missing',
+             'detail': 'editorial-patterns.css에 .core-insight>:first-child{margin-top:0} 정본이 없음 — 내부 제목 상단 여백 누수(G8).'}]
+
+
+def try_inner_card_link_contrast_gate(text: str, style: str) -> list:
+    """G3 (per-page): .try 내부 흰 카드(.box/.summary-card/.cta-box/.card-block/.mini-card) 링크가
+    다크 전용 --link-on-dark를 상속해 흰 배경에서 1.65:1 저대비되던 회귀 차단.
+    인라인 CSS가 inner-card 링크를 --accent-2(또는 --ink)로 reset해야 한다.
+    .try를 쓰지 않는 페이지에는 적용하지 않는다(기존 .try p/tag/dark-link 가드의 link 보강)."""
+    if not re.search(r'class\s*=\s*["\'][^"\']*\btry\b', text):
+        return []
+    masked = _mask_css_comments(style)
+    ok = re.search(r'\.try[^{}]*:is\([^){}]*summary-card[^){}]*\)\s*a[^{}]*\{[^}]*color\s*:\s*var\(--(?:accent-2|ink)\)', masked) \
+        or re.search(r'\.try[^{}]*\.summary-card\s+a[^{}]*\{[^}]*color\s*:\s*var\(--(?:accent-2|ink)\)', masked)
+    if ok:
+        return []
+    return [{'type': 'missing_try_nested_card_link_contrast_reset',
+             'detail': '.try 내부 흰 카드 링크 색 reset(--accent-2/--ink) 없음 — 흰 배경 저대비 링크(G3). .try 직속 링크의 --link-on-dark와 구분.'}]
+
+
+def toc_in_executive_summary_gate(text: str) -> list:
+    """G6 (per-page DOM): 목차(toc-map)가 독립 섹션이 아니라 executive-summary 섹션 내부에 중첩되던 회귀 차단.
+    .toc-map이 열린 <section class="…executive-summary…"> 자손이면 실패.
+    전용 TOC 섹션(.toc/.document-toc-section) 안이나 top-level은 허용."""
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    for tm in re.finditer(r'class\s*=\s*["\'][^"\']*\btoc-map\b', body):
+        stack = []
+        for tok in re.finditer(r'<section\b[^>]*class\s*=\s*["\']([^"\']*)["\'][^>]*>|<section\b[^>]*>|</section>', body[:tm.start()], re.I):
+            if tok.group(0).startswith('</'):
+                if stack:
+                    stack.pop()
+            else:
+                stack.append(tok.group(1) or '')
+        if any('executive-summary' in c for c in stack):
+            return [{'type': 'toc_map_in_executive_summary',
+                     'detail': 'toc-map이 executive-summary 섹션 내부에 중첩됨 — 독립 <section class="document-toc-section">로 분리해야 한다(G6).'}]
+    return []
+
+
+def section_leading_empty_anchor_gate(text: str) -> list:
+    """G7 (per-page DOM): 섹션 첫 의미 요소가 <h2>가 아니라 빈 anchor/div가 선행해
+    section>h2:first-child margin reset이 풀리던 회귀 차단.
+    <section …> 직후 빈 <div id>/<a id></…>가 오고 그 다음이 <h2>면 실패 — anchor는 <h2 id>에 직접 부여."""
+    body = re.sub(r'<style\b[^>]*>[\s\S]*?</style>', '', text, flags=re.I)
+    if re.search(r'<section\b[^>]*>\s*<(?:div|a)\b[^>]*\bid\s*=\s*["\'][^"\']*["\'][^>]*>\s*</(?:div|a)>\s*<h2\b', body, re.I):
+        return [{'type': 'section_leading_empty_anchor_before_h2',
+                 'detail': '섹션 첫 요소가 빈 anchor/div이고 그 뒤가 <h2> — section>h2:first-child margin reset이 풀린다. anchor는 <h2 id>에 직접 부여(G7).'}]
+    return []
+
+
+# ── mode 18 business_plan_html custom contracts (self-gated by layout-business-plan) ──
+def _is_business_plan(text: str) -> bool:
+    return bool(re.search(r'class\s*=\s*["\'][^"\']*\blayout-business-plan\b', text))
+
+
+def business_plan_evidence_tag_gate(text: str) -> list:
+    """business_plan: 핵심 수치/주장에 증거 태그([사실]/[추정]/[가정]/[목표]/[확인 필요]) 강제(D2)."""
+    if not _is_business_plan(text):
+        return []
+    tags = re.findall(r'\[(?:사실|추정|가정|목표|확인\s*필요)\]', text)
+    if len(tags) < 3 or len({t for t in tags}) < 2:
+        return [{'type': 'business_plan_missing_evidence_tags',
+                 'detail': '핵심 수치/주장에 증거 태그([사실]/[추정]/[가정]/[목표]/[확인 필요])가 부족 — 최소 3건·2종 이상 필요(number_registry·market_finance_model 토큰).'}]
+    return []
+
+
+def business_plan_number_consistency_gate(text: str) -> list:
+    """business_plan: 단일 숫자 레지스트리(NR-NN) 구조 + 본문 참조 정합(D1)."""
+    if not _is_business_plan(text):
+        return []
+    ids = set(re.findall(r'\bNR-\d{2,}\b', text))
+    if len(ids) < 3:
+        return [{'type': 'business_plan_missing_number_registry',
+                 'detail': '구조화 number_registry(NR-NN 식별자 ≥3) 부재 — 핵심 수치를 레지스트리로 고정하고 본문/재무모델이 같은 NR-id를 참조해야 한다.'}]
+    return []
+
+
+def business_plan_source_gate(text: str) -> list:
+    """business_plan: in-HTML 출처원장 — 발행처/기준시점/접근일/URL 컬럼 필수(D3)."""
+    if not _is_business_plan(text):
+        return []
+    cols = 0
+    for pat in (r'발행처|publisher', r'기준\s*시점|as-?of|기준일', r'접근일|access', r'\bURL\b|출처\s*링크'):
+        if re.search(pat, text, re.I):
+            cols += 1
+    if cols < 3:
+        return [{'type': 'business_plan_missing_source_ledger',
+                 'detail': 'in-HTML 출처원장(발행처·기준시점·접근일·URL 컬럼 중 ≥3) 부재 — xlsx 대신 정적 테이블로 출처를 추적해야 한다.'}]
+    return []
+
+
+def business_plan_status_gate(text: str) -> list:
+    """business_plan: 4-평가자 자기검토 스코어카드(행정/기술/사업/회의) 필수(D4, 날조 아닌 self-review)."""
+    if not _is_business_plan(text):
+        return []
+    evaluators = sum(1 for pat in (r'행정|admin', r'기술|tech', r'사업|biz', r'회의|skeptic') if re.search(pat, text, re.I))
+    if evaluators < 3:
+        return [{'type': 'business_plan_missing_evaluator_scorecard',
+                 'detail': '4-평가자(행정/기술/사업/회의) 자기검토 스코어카드 부재 — 점수는 외부검증이 아닌 self-review 시뮬이며 근거 라벨을 동반해야 한다.'}]
+    return []
+
+
 def validate(root: Path, skill_dir: Path | None = None, profile: str | None = None) -> dict:
     issues = []
     warnings = []
@@ -2023,6 +2159,20 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
             issues.append({'page': rel, 'type': 'seo_serp_title_literal_google_style'})
         if re.search(r'\.layout-platform\s+\.platform-grid\s*\{[^}]*display\s*:\s*grid', style, re.I|re.S):
             issues.append({'page': rel, 'type': 'platform_grid_selector_allows_section_grid'})
+        for g3l_issue in try_inner_card_link_contrast_gate(text, style):
+            g3l_issue['page'] = rel
+            issues.append(g3l_issue)
+        for g6_issue in toc_in_executive_summary_gate(text):
+            g6_issue['page'] = rel
+            issues.append(g6_issue)
+        for g7_issue in section_leading_empty_anchor_gate(text):
+            g7_issue['page'] = rel
+            issues.append(g7_issue)
+        for bp_gate in (business_plan_evidence_tag_gate, business_plan_number_consistency_gate,
+                        business_plan_source_gate, business_plan_status_gate):
+            for bp_issue in bp_gate(text):
+                bp_issue['page'] = rel
+                issues.append(bp_issue)
         for wg_issue in widget_static_gate(text, style):
             wg_issue['page'] = rel
             issues.append(wg_issue)
