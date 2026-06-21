@@ -50,8 +50,10 @@ def _run_validate(d: Path) -> int:
 
 
 def _sources_complete(d: Path) -> bool:
+    # official 스냅샷 신호: manifest + css-integrity + profile.json (코어 해시 marker는
+    # official=validate0 조건의 inline-hash 게이트가 이미 강제하므로 여기에 포섭).
     s = d / "sources"
-    return (s / "adaptive-html-final-manifest.json").is_file() and (s / "css-integrity.json").is_file()
+    return all((s / f).is_file() for f in ("adaptive-html-final-manifest.json", "css-integrity.json", "profile.json"))
 
 
 def _has_pretest_label(d: Path, repo_root: Path) -> bool:
