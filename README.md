@@ -14,7 +14,7 @@
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
 [![themes](https://img.shields.io/badge/themes-8--theme-111827)](#-8-테마-시스템)
 [![libraries](https://img.shields.io/badge/view%20widgets-20-e63946)](#️-비주얼-프로파일) [![svg→html](https://img.shields.io/badge/svg→html%20templates-21-d99a38)](#️-비주얼-프로파일)
-[![governance](https://img.shields.io/badge/governance-216%2F216-2a7d5a)](#-품질-게이트--결정론)
+[![governance](https://img.shields.io/badge/governance-227%2F227-2a7d5a)](#-품질-게이트--결정론)
 [![lang](https://img.shields.io/badge/lang-한국어-0b7285)](#)
 [![external JS](https://img.shields.io/badge/external%20JS-0-success)](#-품질-게이트--결정론)
 [![cross-agent](https://img.shields.io/badge/cross--agent-AGENTS.md-6e40c9)](AGENTS.md)
@@ -29,7 +29,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 </div>
 
 > [!NOTE]
-> **외부/동작 JS 0** · **결정론적 크로스-에이전트**(Claude Code · Codex · Gemini 동일 출력) · **자기방어 검증 게이트 216/216** · 입력→정보구조 재구성 파이프라인. 단순 변환기가 아니라, 무엇을 어떻게 보여줄지 **모드·레이아웃·프로파일을 결정표로 고정**해 생성합니다.
+> **외부/동작 JS 0** · **결정론적 크로스-에이전트**(Claude Code · Codex · Gemini 동일 출력) · **자기방어 검증 게이트 227/227** · 입력→정보구조 재구성 파이프라인. 단순 변환기가 아니라, 무엇을 어떻게 보여줄지 **모드·레이아웃·프로파일을 결정표로 고정**해 생성합니다.
 
 ---
 
@@ -43,7 +43,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 | 🧩 **시각 라이브러리** | CSS 뷰 위젯 `wg-` 20종 + SVG→HTML 템플릿 `vt-` 21종 + 본문 아이콘 `bi-` 32종 + soft-shape 36종 |
 | 🛡️ **무 JS 원칙** | 출력에 외부/동작 JS 0. 상호작용은 전부 CSS-only(`:has()`·라디오·`details`). JSON-LD만 허용 |
 | 🤖 **크로스-에이전트 결정론** | `AGENTS.md` 단일 진입점 + `modes/*.json` Registry로 어느 에이전트에서 돌려도 동일 결과 |
-| ✅ **자기방어 게이트** | `validate_output.py`(구조·해시·계약) + `quality_contract_check.py`(붕어빵 차단) + 거버넌스 **216/216** |
+| ✅ **자기방어 게이트** | `validate_output.py`(구조·해시·계약) + `quality_contract_check.py`(붕어빵 차단) + 거버넌스 **227/227** |
 | 🖨️ **PDF/PNG/WebP export** | `html-exporter`로 빌드타임 변환(테마별 캡처). 출력 HTML엔 JS 미삽입 |
 
 ---
@@ -179,7 +179,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 
 ## 🖼️ 예제 (스킬 번들)
 
-이 저장소가 소개하는 예제는 **스킬에 실제 포함된 현행 18모드 참조 예제**, 단 하나입니다 — [`skills/adaptive-html-final/examples/`](skills/adaptive-html-final/examples). v5.10.6 코어 자산으로 인라인되어 **8-테마·무 JS·검증 게이트(216/216)** 를 모두 통과한 자기완결 HTML이며, 각 모드의 정본 구조를 그대로 보여줍니다.
+이 저장소가 소개하는 예제는 **스킬에 실제 포함된 현행 18모드 참조 예제**, 단 하나입니다 — [`skills/adaptive-html-final/examples/`](skills/adaptive-html-final/examples). v5.10.6 코어 자산으로 인라인되어 **8-테마·무 JS·검증 게이트(227/227)** 를 모두 통과한 자기완결 HTML이며, 각 모드의 정본 구조를 그대로 보여줍니다.
 
 **▶ 예제 인덱스:** [`examples/index.html`](skills/adaptive-html-final/examples/index.html) · [라이브 열기](https://coreline-ai.github.io/skills-html-showcase/skills/adaptive-html-final/examples/index.html)
 
@@ -451,7 +451,7 @@ skills-html-showcase/
 │   ├── schemas/       (3)             # blog-meta · quality-report · visual-brief
 │   ├── scripts/       (7)             # validate_output · quality_contract_check · completion_check ·
 │   │                                  #   render_visual_svg · mode_registry · check_mode_registry_sync · body_icon_markup
-│   ├── tests/                         # 거버넌스 게이트 (216/216) + 레이아웃/접근성 체크리스트
+│   ├── tests/                         # 거버넌스 게이트 (227/227) + 레이아웃/접근성 체크리스트
 │   ├── visual-templates/ (7)          # 8000×6000 SVG 템플릿
 │   ├── galleries/                     # body-icon / soft-shape 카탈로그
 │   ├── examples/                      # v5.10.6 현행 18모드 참조 예제 + index + sources 스냅샷
@@ -489,14 +489,14 @@ skills-html-showcase/
 
 | 검증 항목 | 결과 |
 |---|---|
-| 거버넌스 게이트 | `test_governance_gates.py` **216 / 216 통과** |
+| 거버넌스 게이트 | `test_governance_gates.py` **227 / 227 통과** |
 | 외부 동작 JS | **0건** |
 | 코어 CSS 해시 | 5종 합본 SHA-256 byte-verbatim 인라인 일치 |
 | skip link ↔ `#main` · 단일 `h1` | 17 / 17 레이아웃 계약 |
 | manifest ↔ 결정표 ↔ Registry | 6자 정합(`check_mode_registry_sync.py`) |
 
 > [!NOTE]
-> 🟢 **게이트 현황(v5.10.6)**: 거버넌스 `test_governance_gates.py` **216 / 216 통과**. 검증기 `validate_output.py`는 18모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합·버전 표면·`.skill` byte-match)을 정적으로 강제합니다. 현행 18모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
+> 🟢 **게이트 현황(v5.10.6)**: 거버넌스 `test_governance_gates.py` **227 / 227 통과**. 검증기 `validate_output.py`는 18모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합·버전 표면·`.skill` byte-match)을 정적으로 강제합니다. 현행 18모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
 
 ```bash
 # 현행 18모드 레퍼런스 검증 (저장소 루트에서)
@@ -504,7 +504,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py \
   skills/adaptive-html-final/examples \
   --skill-dir skills/adaptive-html-final          # → 마지막 줄 OK
 
-python3 skills/adaptive-html-final/tests/test_governance_gates.py   # → 216/216 checks passed
+python3 skills/adaptive-html-final/tests/test_governance_gates.py   # → 227/227 checks passed
 python3 skills/adaptive-html-final/scripts/quality_contract_check.py skills/adaptive-html-final/examples
 python3 skills/adaptive-html-final/scripts/completion_check.py     skills/adaptive-html-final/examples
 ```
@@ -564,7 +564,7 @@ npm run export:output -- output/<생성한_산출물_디렉터리> --clean
 
 ## 🗂️ 버전 히스토리
 
-**현행 `v5.10.6`** — 시각 결함 하드닝(G1~G8). validate/quality/completion은 통과하지만 화면에 남던 누적 결함을 본체로 닫았다: 표 상태코드 줄바꿈(`.status-pill` 정본), `.try` 중첩 흰 카드 링크 저대비(`--link-on-dark`→`--accent-2`, 8테마 min 6.09:1), `source-preserve` 좌측 gutter(`.source-body-inner`), `mini-card` 첫 태그 리듬, `core-insight` 내부 제목 margin reset + red gradient 보존, `prefers-contrast` 단서(A5). 정적으로 못 잡던 결함은 검출 게이트로 승격 — G2 diagram 노드 박스 overlap·G3 inner-card 링크 대비 render-audit(`scripts/micro_layout_audit.mjs`) + G4~G8 정적 가드 + TOC/h2 anchor DOM 가드. 코어 CSS 직접 수정 → **코어 해시 `a73eb204`→`a64604d0`**·examples 18종 재인라인·.skill 재패키징. 거버넌스 **162→216/216**.
+**현행 `v5.10.6`** — 시각 결함 하드닝(G1~G8). validate/quality/completion은 통과하지만 화면에 남던 누적 결함을 본체로 닫았다: 표 상태코드 줄바꿈(`.status-pill` 정본), `.try` 중첩 흰 카드 링크 저대비(`--link-on-dark`→`--accent-2`, 8테마 min 6.09:1), `source-preserve` 좌측 gutter(`.source-body-inner`), `mini-card` 첫 태그 리듬, `core-insight` 내부 제목 margin reset + red gradient 보존, `prefers-contrast` 단서(A5). 정적으로 못 잡던 결함은 검출 게이트로 승격 — G2 diagram 노드 박스 overlap·G3 inner-card 링크 대비 render-audit(`scripts/micro_layout_audit.mjs`) + G4~G8 정적 가드 + TOC/h2 anchor DOM 가드. 코어 CSS 직접 수정 → **코어 해시 `a73eb204`→`a64604d0`**·examples 18종 재인라인·.skill 재패키징. 거버넌스 **162→227/227**.
 
 <details>
 <summary><b>전체 버전 진화 펼치기 (v4.0 → v5.10.6)</b></summary>
@@ -591,7 +591,7 @@ npm run export:output -- output/<생성한_산출물_디렉터리> --clean
 | `v5.10.3` | 다크 대비·인쇄 가독·전 모드 page-wide 폭 정본 + 자기방어 게이트 6종 + 버전 표면/.skill byte-match + render-audit 완료 증빙 + 승인 없는 버전 bump 차단 |
 | `v5.10.4` | **마이크로 레이아웃 정본 계약(M1·M4·M7·M10)** + 작성 프로토콜(M2·M3·M6·M9 정본 컴포넌트 규칙). 코어 해시 갱신·examples 재인라인·.skill 재패키징·17모드 benchmark/micro-layout completion 게이트. 거버넌스 162/162 |
 | `v5.10.5` | **접근성·스코프 하드닝** — forced-colors 상태 단서(테마바·wg 선택/체크) + `.score`→`.tuner .score` 스코프 + vt 장식 글리프 `aria-hidden` + eval-rubric↔quality-report 스키마 연결. 조건부 자산만 변경·코어 해시 불변·examples 18종 재인라인. 거버넌스 162/162 |
-| `v5.10.6` | **시각 결함 하드닝(G1~G8)** — 표 상태코드 nowrap(`.status-pill`)·`.try` 흰 카드 링크 대비(`--accent-2`)·`source-preserve` gutter·`mini-card` 리듬·`core-insight` reset·`prefers-contrast`(A5). 검출 게이트 신설(G2 노드 overlap·G3 링크 대비 render-audit + G4~G8 정적 + TOC/h2 DOM). 코어 해시 `a73eb204`→`a64604d0`·examples 18종 재인라인·.skill 재패키징. 거버넌스 162→216/216 |
+| `v5.10.6` | **시각 결함 하드닝(G1~G8)** — 표 상태코드 nowrap(`.status-pill`)·`.try` 흰 카드 링크 대비(`--accent-2`)·`source-preserve` gutter·`mini-card` 리듬·`core-insight` reset·`prefers-contrast`(A5). 검출 게이트 신설(G2 노드 overlap·G3 링크 대비 render-audit + G4~G8 정적 + TOC/h2 DOM). 코어 해시 `a73eb204`→`a64604d0`·examples 18종 재인라인·.skill 재패키징. 거버넌스 162→227/227 |
 
 </details>
 
@@ -617,5 +617,5 @@ npm run export:output -- output/<생성한_산출물_디렉터리> --clean
 별도 라이선스가 지정되지 않았습니다. 사용 전 저장소 소유자(`coreline-ai`)에게 확인하세요.
 
 <div align="center">
-<sub>생성 도구: <code>adaptive-html-final</code> v5.10.6 · 18-mode · 8-theme · 3-profile editorial HTML engine · 무 JS · governance 216/216</sub>
+<sub>생성 도구: <code>adaptive-html-final</code> v5.10.6 · 18-mode · 8-theme · 3-profile editorial HTML engine · 무 JS · governance 227/227</sub>
 </div>

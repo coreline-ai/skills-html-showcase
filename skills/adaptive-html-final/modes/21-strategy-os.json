@@ -1,0 +1,97 @@
+{
+  "id": "strategy_os",
+  "priority": 21,
+  "label": "AI Strategy OS",
+  "layout_class": "layout-strategy-os",
+  "layout_file": "assets/layouts/strategy-os-dashboard.html",
+  "recipe": "recipes/strategy-os.prompt.md",
+  "triggers": [
+    "AI 전략 대시보드",
+    "회사 전략 운영체계",
+    "부서별 관점 대시보드",
+    "기술 신호 운영",
+    "전략 OS",
+    "기술 인텔리전스 운영체계",
+    "/strategy-os"
+  ],
+  "required_blocks": [
+    "generated_row",
+    "north_star",
+    "signal_scenarios",
+    "department_perspectives",
+    "execution_workflow",
+    "decision_scorecard",
+    "decision_framework",
+    "operating_rhythm",
+    "customization_guide"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{GENERATED_ROW}}",
+    "{{NORTH_STAR}}",
+    "{{SIGNAL_SCENARIOS}}",
+    "{{DEPARTMENT_PERSPECTIVES}}",
+    "{{EXECUTION_WORKFLOW}}",
+    "{{DECISION_SCORECARD}}",
+    "{{DECISION_FRAMEWORK}}",
+    "{{OPERATING_RHYTHM}}",
+    "{{CUSTOMIZATION_GUIDE}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "process-swimlane",
+  "vt_candidates": [
+    "process-swimlane",
+    "comparison-cards",
+    "risk-matrix",
+    "quality-gate",
+    "timeline",
+    "hero-map"
+  ],
+  "vt_markers": [
+    "\\bswim\\b",
+    "\\blane-step\\b"
+  ],
+  "wg_candidates": [
+    "wg-11",
+    "wg-13",
+    "wg-16",
+    "wg-18",
+    "wg-14",
+    "wg-02"
+  ],
+  "wg_markers": [
+    "wg-11-",
+    "wg-13-",
+    "wg-16-",
+    "wg-18-",
+    "wg-14-",
+    "wg-02-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/21_strategy_os_company_dashboard.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": [
+    "strategy_north_star_gate",
+    "strategy_signal_scenarios_gate",
+    "strategy_department_roles_gate",
+    "strategy_decision_framework_gate",
+    "strategy_no_js_switcher_gate"
+  ]
+}

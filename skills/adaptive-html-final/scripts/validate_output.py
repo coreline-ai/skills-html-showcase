@@ -2222,6 +2222,65 @@ def beginner_richness_gate(text: str) -> list:
     return []
 
 
+def _is_strategy_os(text: str) -> bool:
+    return bool(re.search(r'class\s*=\s*["\'][^"\']*\blayout-strategy-os\b', text))
+
+
+def strategy_north_star_gate(text: str) -> list:
+    """strategy_os: 기술보다 회사 목표가 먼저 — North Star(전사 목표) 블록 필수."""
+    if not _is_strategy_os(text):
+        return []
+    if not re.search(r'north[\s-]*star|북극성|전사\s*목표|회사\s*목표|전사\s*북극성', text, re.I):
+        return [{'type': 'strategy_missing_north_star',
+                 'detail': 'North Star(전사 목표) 블록 부재 — 기술 신호는 목적이 아니라 재료이며, 어느 회사 목표에 미치는지 먼저 매핑해야 한다(north_star).'}]
+    return []
+
+
+def strategy_signal_scenarios_gate(text: str) -> list:
+    """strategy_os: 신호 시나리오 ≥4종(새 모델/새 레포/새 기능/규제·보안/경쟁사) — 단일 신호 회귀 차단."""
+    if not _is_strategy_os(text):
+        return []
+    sigs = sum(1 for pat in (r'새?\s*모델|new\s*model', r'레포|repo|저장소', r'기능|feature|플랫폼',
+                             r'규제|보안|regulation|security', r'경쟁|competitor') if re.search(pat, text, re.I))
+    if sigs < 4:
+        return [{'type': 'strategy_missing_signal_scenarios',
+                 'detail': '기술 신호 시나리오 ≥4종(새 AI 모델·새 레포·새 기능·규제/보안·경쟁사) 부재 — 신호 유형별로 다른 부서/판단이 붙어야 한다(signal_scenarios).'}]
+    return []
+
+
+def strategy_department_roles_gate(text: str) -> list:
+    """strategy_os: 부서 관점에 주관/협업/참고(lead/partner/inform) 역할 배정 — 모든 부서를 울리지 않는다."""
+    if not _is_strategy_os(text):
+        return []
+    roles = sum(1 for pat in (r'주관|lead', r'협업|partner', r'참고|inform') if re.search(pat, text, re.I))
+    if roles < 3:
+        return [{'type': 'strategy_missing_department_roles',
+                 'detail': '부서 관점에 주관·협업·참고(lead/partner/inform) 역할 배정 부재 — 신호별로 어느 부서가 주관/협업/참고인지 구분해야 한다(department_perspectives).'}]
+    return []
+
+
+def strategy_decision_framework_gate(text: str) -> list:
+    """strategy_os: 경영 판단 4지선다(전면 도입/조건부 진행/관찰 목록/보류·중단) ≥3."""
+    if not _is_strategy_os(text):
+        return []
+    decs = sum(1 for pat in (r'전면\s*도입|확대\s*도입|전면\s*적용', r'조건부\s*진행|조건부',
+                             r'관찰\s*목록|관찰', r'보류|중단') if re.search(pat, text, re.I))
+    if decs < 3:
+        return [{'type': 'strategy_missing_decision_framework',
+                 'detail': '경영 판단 프레임(전면 도입/조건부 진행/관찰 목록/보류·중단 중 ≥3) 부재 — 모든 결정에 근거·담당·재검토 조건이 붙어야 한다(decision_framework).'}]
+    return []
+
+
+def strategy_no_js_switcher_gate(text: str) -> list:
+    """strategy_os: 시나리오 시뮬레이터를 무-JS로 재현 — JS 의존 훅(onclick/data-scenario 등) 금지."""
+    if not _is_strategy_os(text):
+        return []
+    if re.search(r'onclick|addEventListener|data-scenario\b|querySelector|\.style\.|history\.replaceState', text, re.I):
+        return [{'type': 'strategy_js_switcher_forbidden',
+                 'detail': '원본 JS 시나리오 시뮬레이터를 그대로 이식하면 안 된다(onclick/data-scenario/JS 훅 금지) — 정적 비교(comparison-cards/표) 또는 radio :checked 무-JS로 재현해야 한다.'}]
+    return []
+
+
 def validate(root: Path, skill_dir: Path | None = None, profile: str | None = None) -> dict:
     issues = []
     warnings = []
@@ -2363,6 +2422,11 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for bg_issue in beginner_richness_gate(text):
             bg_issue['page'] = rel
             issues.append(bg_issue)
+        for so_gate in (strategy_north_star_gate, strategy_signal_scenarios_gate, strategy_department_roles_gate,
+                        strategy_decision_framework_gate, strategy_no_js_switcher_gate):
+            for so_issue in so_gate(text):
+                so_issue['page'] = rel
+                issues.append(so_issue)
         for wg_issue in widget_static_gate(text, style):
             wg_issue['page'] = rel
             issues.append(wg_issue)

@@ -564,9 +564,9 @@ sys.path.insert(0, str(SKILL / "scripts"))
 import mode_registry as _mreg          # noqa: E402
 import check_mode_registry_sync as _mrs  # noqa: E402
 _reg = _mreg.load_mode_registry(SKILL)
-check("mode registry has 20 modes", len(_reg) == 20)
+check("mode registry has 21 modes", len(_reg) == 21)
 check("mode registry priority 1..18 contiguous & unique",
-      sorted(m["priority"] for m in _reg) == list(range(1, 21)))
+      sorted(m["priority"] for m in _reg) == list(range(1, 22)))
 _built = _mreg.build_mode_template_contracts(SKILL)
 # B-full: validator now SOURCES MODE_TEMPLATE_CONTRACTS from the registry.
 # This asserts the wiring is in place (validator dict == registry build); if anyone
@@ -806,6 +806,28 @@ _bg1 = v.beginner_richness_gate(_bg_bad)
 check("BEGINNER richness flags missing analogy/pitfall/solution", bool(_bg1) and _bg1[0]["type"] == "beginner_missing_richness")
 check("BEGINNER richness passes analogy+pitfall+solution", v.beginner_richness_gate(_bg_ok) == [])
 check("BEGINNER richness skips non-beginner pages", v.beginner_richness_gate('<main class="page layout-expert"><h1>x</h1></main>') == [])
+
+# === mode 21 strategy_os custom contracts — AI 전략 운영체계 대시보드 (5.10.6 additive) ===
+_so_bad = '<main class="page layout-strategy-os"><h1>전략</h1><p>단일 신호 나열, onclick="x()" data-scenario="model".</p></main>'
+_so_ok = ('<main class="page layout-strategy-os"><h1>AI 전략 OS</h1>'
+          '<p>North Star(전사 목표) 5종. 신호: 새 모델·새 레포·새 기능·규제/보안·경쟁사. '
+          '부서 역할 주관/협업/참고. 판단: 전면 도입·조건부 진행·관찰 목록·보류.</p></main>')
+_o1 = v.strategy_north_star_gate(_so_bad)
+check("STRATEGY north_star flags missing", bool(_o1) and _o1[0]["type"] == "strategy_missing_north_star")
+check("STRATEGY north_star passes", v.strategy_north_star_gate(_so_ok) == [])
+_o2 = v.strategy_signal_scenarios_gate(_so_bad)
+check("STRATEGY signals flags <4", bool(_o2) and _o2[0]["type"] == "strategy_missing_signal_scenarios")
+check("STRATEGY signals passes 5", v.strategy_signal_scenarios_gate(_so_ok) == [])
+_o3 = v.strategy_department_roles_gate(_so_bad)
+check("STRATEGY dept_roles flags missing", bool(_o3) and _o3[0]["type"] == "strategy_missing_department_roles")
+check("STRATEGY dept_roles passes lead/partner/inform", v.strategy_department_roles_gate(_so_ok) == [])
+_o4 = v.strategy_decision_framework_gate(_so_bad)
+check("STRATEGY decision flags <3", bool(_o4) and _o4[0]["type"] == "strategy_missing_decision_framework")
+check("STRATEGY decision passes 4 options", v.strategy_decision_framework_gate(_so_ok) == [])
+_o5 = v.strategy_no_js_switcher_gate(_so_bad)
+check("STRATEGY no_js flags JS hooks", bool(_o5) and _o5[0]["type"] == "strategy_js_switcher_forbidden")
+check("STRATEGY no_js passes static", v.strategy_no_js_switcher_gate(_so_ok) == [])
+check("STRATEGY gates skip non-strategy pages", all(g('<main class="page layout-expert"><h1>x</h1></main>') == [] for g in (v.strategy_north_star_gate, v.strategy_signal_scenarios_gate, v.strategy_department_roles_gate, v.strategy_decision_framework_gate, v.strategy_no_js_switcher_gate)))
 
 
 # --- pretest_contract decide() 로직 잠금 (hybrid: official/preview/fail 분류 로직 회귀 차단) ---
