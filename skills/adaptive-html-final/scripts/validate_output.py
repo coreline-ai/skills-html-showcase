@@ -1738,6 +1738,7 @@ def analysis_toc_map_required_gate(text: str) -> list:
         'layout-github-feature': ('feature-toc', 'github_feature_usage_toc_map_missing'),
         'layout-youtube': ('youtube-question-toc', 'youtube_analysis_toc_map_missing'),
         'layout-manual': ('manual-reader-toc', 'manual_analysis_toc_map_missing'),
+        'layout-storm': ('storm-question-toc', 'storm_research_toc_map_missing'),
     }
     issues = []
     main_match = re.search(r'<main\b([^>]*)>', body, re.I)
@@ -2048,6 +2049,82 @@ def business_plan_status_gate(text: str) -> list:
     return []
 
 
+def _is_storm(text: str) -> bool:
+    return bool(re.search(r'class\s*=\s*["\'][^"\']*\blayout-storm\b', text))
+
+
+def storm_soul_count_gate(text: str) -> list:
+    """storm_research: 다관점(회의주의자/경제학자/역사학자/학자/미래학자) ≥4 표기 — 단일관점 회귀 차단."""
+    if not _is_storm(text):
+        return []
+    souls = sum(1 for pat in (r'회의(주의자)?|skeptic', r'경제(학자)?|econom', r'역사(학자)?|histor',
+                              r'학자|연구자|scholar', r'미래(학자)?|futur') if re.search(pat, text, re.I))
+    if souls < 4:
+        return [{'type': 'storm_missing_souls',
+                 'detail': '다관점(회의주의자/경제학자/역사학자/학자/미래학자) 중 ≥4 표기 필요 — STORM은 단일관점이면 무의미(perspective_router·soul_evidence_cards).'}]
+    return []
+
+
+def storm_minimum_sources_gate(text: str) -> list:
+    """storm_research: 출처 인용([출처:URL] 또는 URL/출처원장 행) ≥5 — 무출처 단언 금지(STORM 핵심)."""
+    if not _is_storm(text):
+        return []
+    cites = re.findall(r'https?://|\[\s*출처', text)
+    if len(cites) < 5:
+        return [{'type': 'storm_missing_sources',
+                 'detail': '출처 인용(URL 또는 [출처:…]) ≥5 부재 — STORM은 모든 핵심 주장에 출처를 강제한다(source_map·provenance_footer).'}]
+    return []
+
+
+def storm_citation_label_gate(text: str) -> list:
+    """storm_research: 신뢰도/근거 라벨([사실]/[추정]/[확인 필요] 또는 confidence high/medium/low) ≥3·≥2종."""
+    if not _is_storm(text):
+        return []
+    labels = re.findall(r'\[(?:사실|추정|가정|확인\s*필요)\]|confidence[\s-]*(?:high|medium|low|상|중|하)', text, re.I)
+    if len(labels) < 3 or len({l.lower() for l in labels}) < 2:
+        return [{'type': 'storm_missing_citation_labels',
+                 'detail': '신뢰도/근거 라벨([사실]/[추정]/[확인 필요] 또는 confidence high/medium/low) ≥3건·≥2종 부재 — 발견의 확실성을 표기해야 한다.'}]
+    return []
+
+
+def storm_contradiction_gate(text: str) -> list:
+    """storm_research: 모순 지도(합의 지점 + 모순/긴장/충돌 지점) — 다관점 충돌 표면 강제."""
+    if not _is_storm(text):
+        return []
+    has_conflict = bool(re.search(r'모순|긴장|충돌|상충|contradict|tension|conflict', text, re.I))
+    has_consensus = bool(re.search(r'합의|동의|공통|consensus|agree', text, re.I))
+    if not (has_conflict and has_consensus):
+        return [{'type': 'storm_missing_contradiction_map',
+                 'detail': '모순 지도(합의 지점 + 모순/긴장/충돌 지점) 부재 — 관점 간 합의와 충돌을 함께 매핑해야 한다(contradiction_map).'}]
+    return []
+
+
+def storm_peer_review_gate(text: str) -> list:
+    """storm_research: 동료검토 게이트(verdict + bias/over-association 점검) — 자기검증 흔적 강제."""
+    if not _is_storm(text):
+        return []
+    has_review = bool(re.search(r'동료\s*검토|peer[\s-]*review|peer_review_gate|검토\s*게이트', text, re.I))
+    has_verdict = bool(re.search(r'통과|조건부|반려|verdict|blocker|편향|bias|over[\s-]*associat|source[\s-]*bias', text, re.I))
+    if not (has_review and has_verdict):
+        return [{'type': 'storm_missing_peer_review',
+                 'detail': '동료검토 게이트(verdict 통과/조건부/반려 + source-bias-transfer/over-association 점검) 부재 — 리서치 자기검증을 표기해야 한다(peer_review_gate).'}]
+    return []
+
+
+def storm_provenance_gate(text: str) -> list:
+    """storm_research: provenance footer(발행처/기준시점/접근일/URL 컬럼 ≥3) — 정적 출처 원장 강제."""
+    if not _is_storm(text):
+        return []
+    cols = 0
+    for pat in (r'발행처|publisher|매체', r'기준\s*시점|as-?of|기준일|observed', r'접근일|access|확인일', r'\bURL\b|출처\s*링크|링크'):
+        if re.search(pat, text, re.I):
+            cols += 1
+    if cols < 3:
+        return [{'type': 'storm_missing_provenance',
+                 'detail': 'provenance footer(발행처·기준시점·접근일·URL 컬럼 중 ≥3) 부재 — in-HTML 정적 출처 원장으로 추적해야 한다(provenance_footer).'}]
+    return []
+
+
 def validate(root: Path, skill_dir: Path | None = None, profile: str | None = None) -> dict:
     issues = []
     warnings = []
@@ -2173,6 +2250,11 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
             for bp_issue in bp_gate(text):
                 bp_issue['page'] = rel
                 issues.append(bp_issue)
+        for st_gate in (storm_soul_count_gate, storm_minimum_sources_gate, storm_citation_label_gate,
+                        storm_contradiction_gate, storm_peer_review_gate, storm_provenance_gate):
+            for st_issue in st_gate(text):
+                st_issue['page'] = rel
+                issues.append(st_issue)
         for wg_issue in widget_static_gate(text, style):
             wg_issue['page'] = rel
             issues.append(wg_issue)

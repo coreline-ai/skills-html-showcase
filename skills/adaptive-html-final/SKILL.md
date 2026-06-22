@@ -32,7 +32,7 @@ description: |
 ## 0. Identity
 
 이 스킬은 `html-for-beginners` → `adaptive-html-blog-writer` → `adaptive-html-blog-writer-v2` → `adaptive-html-learning-ultimate` 계열을 하나로 합친 최종 통합본이다.
-`adaptive-html-learning-ultimate`의 13개 모드 라우터·레이아웃·평가 체계를 뼈대로 두고, GitHub 저장소를 의사결정형 리포트로 바꾸는 `github_analysis`, YouTube 영상을 근거·댓글·제작 액션으로 바꾸는 `youtube_analysis`, 원문 매뉴얼을 역할별 실행 문서로 재구성하는 `manual_analysis`, 그리고 저장소를 기능·사용법·도입 가이드(실제 화면 중심)로 바꾸는 `github_feature_usage`, 그리고 사업계획서/지원서를 의사결정형 문서로 재구성하는 `business_plan_html`를 추가해 18개 모드로 확장했다. `adaptive-html-blog-writer`의 블로그/SEO/플랫폼/박스 선택 상세 규칙은 references로 흡수했으며, 모든 레이아웃은 skip link 접근성 계약(`id="main"`)을 유지한다.
+`adaptive-html-learning-ultimate`의 13개 모드 라우터·레이아웃·평가 체계를 뼈대로 두고, GitHub 저장소를 의사결정형 리포트로 바꾸는 `github_analysis`, YouTube 영상을 근거·댓글·제작 액션으로 바꾸는 `youtube_analysis`, 원문 매뉴얼을 역할별 실행 문서로 재구성하는 `manual_analysis`, 그리고 저장소를 기능·사용법·도입 가이드(실제 화면 중심)로 바꾸는 `github_feature_usage`, 그리고 사업계획서/지원서를 의사결정형 문서로 재구성하는 `business_plan_html`, 그리고 다관점 STORM 리서치 리포트를 만드는 `storm_research`를 추가해 19개 모드로 확장했다. `adaptive-html-blog-writer`의 블로그/SEO/플랫폼/박스 선택 상세 규칙은 references로 흡수했으며, 모든 레이아웃은 skip link 접근성 계약(`id="main"`)을 유지한다.
 
 목표는 단순 HTML 생성이 아니라 다음 파이프라인을 안정적으로 실행하는 것이다.
 
@@ -90,6 +90,7 @@ description: |
 | landing_brief_html | landing-brief.html | hero-map, card-grid, feature-flag, soft-workflow-map | wg-02, wg-05, wg-08, wg-09, wg-16 |
 | checklist_playbook | checklist-playbook.html | checklist-flow, quality-gate, process-swimlane, implementation-plan, triage-board | wg-11, wg-13, wg-16, wg-18, wg-19 |
 | business_plan_html | business-plan-report.html | implementation-plan, quality-gate, risk-matrix, timeline, comparison-cards, process-swimlane | wg-16, wg-11, wg-13, wg-18, wg-14 |
+| storm_research | storm-research-report.html | process-swimlane, hero-map, risk-matrix, quality-gate, comparison-cards, checklist-flow, timeline | wg-13, wg-14, wg-18, wg-11, wg-16, wg-04 |
 
 vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..21)이며, 위 이름은 그 `<name>`과 1:1로 대응한다. `diagram`·`auto` 프로파일 출력은 선택된 모드 행의 **1순위 vt-템플릿을 최소 1회** 삽입한다. `widget`·`auto` 프로파일의 wg-위젯은 구조형 정보가 있을 때만 삽입한다(단순 prose/표로 충분하면 과삽입하지 않는다). 넣을 때는 해당 모드 행의 1순위부터 콘텐츠 적합성 순으로 고른다.
 

@@ -1,0 +1,107 @@
+{
+  "id": "storm_research",
+  "priority": 19,
+  "label": "STORM Research",
+  "layout_class": "layout-storm",
+  "layout_file": "assets/layouts/storm-research-report.html",
+  "recipe": "recipes/storm-research.prompt.md",
+  "triggers": [
+    "STORM 리서치",
+    "스톰 방법",
+    "다관점 딥리서치",
+    "5영혼으로 조사",
+    "여러 LLM으로 병렬 리서치",
+    "모순 지도 포함 리포트",
+    "출처 강제 리서치",
+    "/storm-research"
+  ],
+  "required_blocks": [
+    "generated_row",
+    "method_notice",
+    "research_question",
+    "perspective_router",
+    "soul_evidence_cards",
+    "source_map",
+    "contradiction_map",
+    "synthesis_article",
+    "peer_review_gate",
+    "confidence_badges",
+    "unresolved_questions",
+    "provenance_footer",
+    "next_research_actions"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{GENERATED_ROW}}",
+    "{{METHOD_NOTICE}}",
+    "{{RESEARCH_QUESTION}}",
+    "{{PERSPECTIVE_ROUTER}}",
+    "{{SOUL_EVIDENCE_CARDS}}",
+    "{{SOURCE_MAP}}",
+    "{{CONTRADICTION_MAP}}",
+    "{{SYNTHESIS_ARTICLE}}",
+    "{{PEER_REVIEW_GATE}}",
+    "{{CONFIDENCE_BADGES}}",
+    "{{UNRESOLVED_QUESTIONS}}",
+    "{{PROVENANCE_FOOTER}}",
+    "{{NEXT_RESEARCH_ACTIONS}}"
+  ],
+  "primary_vt": "process-swimlane",
+  "vt_candidates": [
+    "process-swimlane",
+    "hero-map",
+    "risk-matrix",
+    "quality-gate",
+    "comparison-cards",
+    "checklist-flow",
+    "timeline"
+  ],
+  "vt_markers": [
+    "\\bswim\\b",
+    "\\blane-step\\b"
+  ],
+  "wg_candidates": [
+    "wg-13",
+    "wg-14",
+    "wg-18",
+    "wg-11",
+    "wg-16",
+    "wg-04"
+  ],
+  "wg_markers": [
+    "wg-13-",
+    "wg-14-",
+    "wg-18-",
+    "wg-11-",
+    "wg-16-",
+    "wg-04-"
+  ],
+  "toc_contract": {
+    "rule": "always",
+    "required_class": "storm-question-toc",
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/19_storm_research_multi_perspective.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": [
+    "storm_soul_count_gate",
+    "storm_minimum_sources_gate",
+    "storm_citation_label_gate",
+    "storm_contradiction_gate",
+    "storm_peer_review_gate",
+    "storm_provenance_gate"
+  ]
+}

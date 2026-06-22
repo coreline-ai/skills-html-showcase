@@ -564,9 +564,9 @@ sys.path.insert(0, str(SKILL / "scripts"))
 import mode_registry as _mreg          # noqa: E402
 import check_mode_registry_sync as _mrs  # noqa: E402
 _reg = _mreg.load_mode_registry(SKILL)
-check("mode registry has 18 modes", len(_reg) == 18)
+check("mode registry has 19 modes", len(_reg) == 19)
 check("mode registry priority 1..18 contiguous & unique",
-      sorted(m["priority"] for m in _reg) == list(range(1, 19)))
+      sorted(m["priority"] for m in _reg) == list(range(1, 20)))
 _built = _mreg.build_mode_template_contracts(SKILL)
 # B-full: validator now SOURCES MODE_TEMPLATE_CONTRACTS from the registry.
 # This asserts the wiring is in place (validator dict == registry build); if anyone
@@ -738,6 +738,33 @@ _b4 = v.business_plan_status_gate(_bp_bad)
 check("BP status flags missing evaluator scorecard", bool(_b4) and _b4[0]["type"] == "business_plan_missing_evaluator_scorecard")
 check("BP status passes 4-evaluator scorecard", v.business_plan_status_gate(_bp_ok) == [])
 check("BP gates skip non-business-plan pages", all(g('<main class="page layout-expert"><h1>x</h1></main>') == [] for g in (v.business_plan_evidence_tag_gate, v.business_plan_number_consistency_gate, v.business_plan_source_gate, v.business_plan_status_gate)))
+
+# === mode 19 storm_research custom contracts — 다관점 STORM 리서치 (5.10.6 additive) ===
+_st_bad = '<main class="page layout-storm"><h1>x</h1><p>내용</p></main>'
+_st_ok = ('<main class="page layout-storm"><h1>STORM</h1>'
+          '<p>회의주의자·경제학자·역사학자·학자·미래학자 관점. [사실] [추정] [확인 필요]. '
+          '출처 https://a.com https://b.com https://c.com https://d.com https://e.com. '
+          '합의 지점과 모순 지점을 매핑. 동료 검토 통과, 편향(bias) 점검. </p>'
+          '<table><tr><th>발행처</th><th>기준시점</th><th>접근일</th><th>URL</th></tr></table></main>')
+_s1 = v.storm_soul_count_gate(_st_bad)
+check("STORM soul_count flags single-perspective", bool(_s1) and _s1[0]["type"] == "storm_missing_souls")
+check("STORM soul_count passes 5 souls", v.storm_soul_count_gate(_st_ok) == [])
+_s2 = v.storm_minimum_sources_gate(_st_bad)
+check("STORM minimum_sources flags no sources", bool(_s2) and _s2[0]["type"] == "storm_missing_sources")
+check("STORM minimum_sources passes >=5 citations", v.storm_minimum_sources_gate(_st_ok) == [])
+_s3 = v.storm_citation_label_gate(_st_bad)
+check("STORM citation_label flags missing labels", bool(_s3) and _s3[0]["type"] == "storm_missing_citation_labels")
+check("STORM citation_label passes labeled content", v.storm_citation_label_gate(_st_ok) == [])
+_s4 = v.storm_contradiction_gate(_st_bad)
+check("STORM contradiction flags missing map", bool(_s4) and _s4[0]["type"] == "storm_missing_contradiction_map")
+check("STORM contradiction passes consensus+conflict", v.storm_contradiction_gate(_st_ok) == [])
+_s5 = v.storm_peer_review_gate(_st_bad)
+check("STORM peer_review flags missing review", bool(_s5) and _s5[0]["type"] == "storm_missing_peer_review")
+check("STORM peer_review passes verdict+bias-check", v.storm_peer_review_gate(_st_ok) == [])
+_s6 = v.storm_provenance_gate(_st_bad)
+check("STORM provenance flags missing ledger", bool(_s6) and _s6[0]["type"] == "storm_missing_provenance")
+check("STORM provenance passes ledger columns", v.storm_provenance_gate(_st_ok) == [])
+check("STORM gates skip non-storm pages", all(g('<main class="page layout-expert"><h1>x</h1></main>') == [] for g in (v.storm_soul_count_gate, v.storm_minimum_sources_gate, v.storm_citation_label_gate, v.storm_contradiction_gate, v.storm_peer_review_gate, v.storm_provenance_gate)))
 
 
 # --- pretest_contract decide() 로직 잠금 (hybrid: official/preview/fail 분류 로직 회귀 차단) ---
