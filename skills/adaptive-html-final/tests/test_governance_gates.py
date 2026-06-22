@@ -791,6 +791,14 @@ check("TREND no_js_chart flags canvas", bool(_t5) and _t5[0]["type"] == "trend_j
 check("TREND no_js_chart passes static surface", v.trend_no_js_chart_gate(_tr_ok) == [])
 check("TREND gates skip non-trend pages", all(g('<main class="page layout-expert"><h1>x</h1></main>') == [] for g in (v.trend_record_schema_gate, v.trend_url_dedupe_gate, v.trend_metric_honesty_gate, v.trend_read_only_gate, v.trend_no_js_chart_gate)))
 
+# === manual_analysis operator 보강 — manual_capture_required_gate (5.10.6 additive) ===
+_mc_bad = '<main class="page layout-manual"><h1>운영 매뉴얼</h1><p>제출 가능합니다. 검증 완료.</p></main>'
+_mc_ok = '<main class="page layout-manual"><h1>운영 매뉴얼</h1><p>제출 가능 여부는 CAPTURE_REQUIRED — 화면 근거 확인 필요(UNKNOWN).</p></main>'
+_mc1 = v.manual_capture_required_gate(_mc_bad)
+check("MANUAL capture_required flags claim without honesty", bool(_mc1) and _mc1[0]["type"] == "manual_capture_required_missing")
+check("MANUAL capture_required passes claim+honesty", v.manual_capture_required_gate(_mc_ok) == [])
+check("MANUAL capture_required skips non-manual pages", v.manual_capture_required_gate('<main class="page layout-expert"><h1>x</h1><p>제출 가능</p></main>') == [])
+
 
 # --- pretest_contract decide() 로직 잠금 (hybrid: official/preview/fail 분류 로직 회귀 차단) ---
 _ppspec = importlib.util.spec_from_file_location("pretest_contract_check", SKILL / "scripts" / "pretest_contract_check.py")

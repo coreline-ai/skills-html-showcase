@@ -2195,6 +2195,19 @@ def trend_no_js_chart_gate(text: str) -> list:
     return issues
 
 
+def manual_capture_required_gate(text: str) -> list:
+    """manual_analysis(operator 보강): 완료-주장(제출 가능/확정/검증 완료)이 있으면 정직 표기
+    (CAPTURE_REQUIRED/UNKNOWN/확인 불가/검수)를 반드시 동반 — 미근거 상태를 완료로 과장 차단."""
+    if not re.search(r'class\s*=\s*["\'][^"\']*\blayout-manual\b', text):
+        return []
+    has_claim = bool(re.search(r'제출\s*가능|선정\s*가능|검증\s*완료|완료되었|확정(?:됨|되었|입니다|\s*상태)', text))
+    has_honesty = bool(re.search(r'CAPTURE_REQUIRED|UNKNOWN|확인\s*불가|미확인|확인\s*필요|owner[\s-]*review|검수|확인\s*요망', text, re.I))
+    if has_claim and not has_honesty:
+        return [{'type': 'manual_capture_required_missing',
+                 'detail': '완료-주장(제출 가능/확정/검증 완료)이 있으나 CAPTURE_REQUIRED/UNKNOWN/확인 불가/검수 등 정직 표기가 0 — 화면 근거가 필요한 항목을 완료로 과장하면 안 된다(source_hierarchy·workflow_inventory·handoff_boundary 보강).'}]
+    return []
+
+
 def validate(root: Path, skill_dir: Path | None = None, profile: str | None = None) -> dict:
     issues = []
     warnings = []
@@ -2330,6 +2343,9 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
             for tr_issue in tr_gate(text):
                 tr_issue['page'] = rel
                 issues.append(tr_issue)
+        for mc_issue in manual_capture_required_gate(text):
+            mc_issue['page'] = rel
+            issues.append(mc_issue)
         for wg_issue in widget_static_gate(text, style):
             wg_issue['page'] = rel
             issues.append(wg_issue)

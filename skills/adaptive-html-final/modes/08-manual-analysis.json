@@ -26,7 +26,10 @@
     "troubleshooting",
     "operations_runbook",
     "manual_audit",
-    "next_actions"
+    "next_actions",
+    "source_hierarchy",
+    "workflow_inventory",
+    "handoff_boundary"
   ],
   "layout_placeholders": [
     "{{KICKER}}",
@@ -95,6 +98,7 @@
     }
   ],
   "custom_contracts": [
-    "manual_analysis_contract_gate"
+    "manual_analysis_contract_gate",
+    "manual_capture_required_gate"
   ]
 }
