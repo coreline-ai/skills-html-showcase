@@ -16,7 +16,8 @@
     "structure_score",
     "line_audit",
     "improvements",
-    "final_skill"
+    "final_skill",
+    "archive_migration_ledger"
   ],
   "layout_placeholders": [
     "{{KICKER}}",

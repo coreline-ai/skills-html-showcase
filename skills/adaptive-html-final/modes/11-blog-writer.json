@@ -19,7 +19,11 @@
     "example",
     "how_to_start",
     "closing_thought",
-    "soft_cta"
+    "soft_cta",
+    "title_variants",
+    "meta_json",
+    "publish_checklist",
+    "final_assets"
   ],
   "layout_placeholders": [
     "{{KICKER}}",

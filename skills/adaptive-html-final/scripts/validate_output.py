@@ -2208,6 +2208,20 @@ def manual_capture_required_gate(text: str) -> list:
     return []
 
 
+def beginner_richness_gate(text: str) -> list:
+    """beginner_html(deep_dive 보강): 입문 출력은 비유(analogy)·함정(pitfall)·해결(solution) 3요소를 모두 갖춘다."""
+    if not re.search(r'class\s*=\s*["\'][^"\']*\blayout-beginner\b', text):
+        return []
+    has_analogy = bool(re.search(r'비유|마치|처럼|같이|analogy', text, re.I))
+    has_pitfall = bool(re.search(r'함정|흔한\s*실수|주의|놓치기\s*쉬운|pitfall', text, re.I))
+    has_solution = bool(re.search(r'해결|해결책|대신|올바른\s*방법|\bfix\b', text, re.I))
+    missing = [n for n, ok in (('비유', has_analogy), ('함정', has_pitfall), ('해결', has_solution)) if not ok]
+    if missing:
+        return [{'type': 'beginner_missing_richness',
+                 'detail': f'입문 출력은 비유·함정·해결 3요소를 모두 포함해야 한다 — 누락: {", ".join(missing)}(deep_dive 보강 계약).'}]
+    return []
+
+
 def validate(root: Path, skill_dir: Path | None = None, profile: str | None = None) -> dict:
     issues = []
     warnings = []
@@ -2346,6 +2360,9 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
         for mc_issue in manual_capture_required_gate(text):
             mc_issue['page'] = rel
             issues.append(mc_issue)
+        for bg_issue in beginner_richness_gate(text):
+            bg_issue['page'] = rel
+            issues.append(bg_issue)
         for wg_issue in widget_static_gate(text, style):
             wg_issue['page'] = rel
             issues.append(wg_issue)

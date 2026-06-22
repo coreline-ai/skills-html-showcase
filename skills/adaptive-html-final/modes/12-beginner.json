@@ -19,7 +19,8 @@
     "analogy",
     "traps",
     "practice",
-    "final_checklist"
+    "final_checklist",
+    "deep_dive_walkthrough"
   ],
   "layout_placeholders": [
     "{{KICKER}}",
@@ -72,5 +73,7 @@
       "purpose": "reference"
     }
   ],
-  "custom_contracts": []
+  "custom_contracts": [
+    "beginner_richness_gate"
+  ]
 }

@@ -19,7 +19,8 @@
     "meta_candidates",
     "tag_cluster",
     "content_outline",
-    "final_seo_set"
+    "final_seo_set",
+    "meta_json"
   ],
   "layout_placeholders": [
     "{{KICKER}}",

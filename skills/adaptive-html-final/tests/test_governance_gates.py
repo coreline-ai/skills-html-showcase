@@ -799,6 +799,14 @@ check("MANUAL capture_required flags claim without honesty", bool(_mc1) and _mc1
 check("MANUAL capture_required passes claim+honesty", v.manual_capture_required_gate(_mc_ok) == [])
 check("MANUAL capture_required skips non-manual pages", v.manual_capture_required_gate('<main class="page layout-expert"><h1>x</h1><p>제출 가능</p></main>') == [])
 
+# === beginner_html deep_dive 보강 — beginner_richness_gate (5.10.6 additive) ===
+_bg_bad = '<main class="page layout-beginner"><h1>입문</h1><p>이것은 단순 기능 나열 문단입니다. 항목을 차례로 적습니다.</p></main>'
+_bg_ok = '<main class="page layout-beginner"><h1>입문</h1><p>마치 열쇠처럼(비유). 흔한 실수(함정)는 X. 대신 이렇게 해결한다.</p></main>'
+_bg1 = v.beginner_richness_gate(_bg_bad)
+check("BEGINNER richness flags missing analogy/pitfall/solution", bool(_bg1) and _bg1[0]["type"] == "beginner_missing_richness")
+check("BEGINNER richness passes analogy+pitfall+solution", v.beginner_richness_gate(_bg_ok) == [])
+check("BEGINNER richness skips non-beginner pages", v.beginner_richness_gate('<main class="page layout-expert"><h1>x</h1></main>') == [])
+
 
 # --- pretest_contract decide() 로직 잠금 (hybrid: official/preview/fail 분류 로직 회귀 차단) ---
 _ppspec = importlib.util.spec_from_file_location("pretest_contract_check", SKILL / "scripts" / "pretest_contract_check.py")

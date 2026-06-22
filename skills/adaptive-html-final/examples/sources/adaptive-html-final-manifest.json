@@ -429,7 +429,7 @@
     "v5.9.2: 외부 세리프 폰트 링크/스택/과거 세리프 토큰 금지, pull-quote Pretendard 굵게 통일, vt-02 decision-tree 3카드 정합성 + h3 마진 보정, 공식 toc-map 목차 계약 회귀 방지(layout+validator), manual section title spacing/danger accent/qg-final typography 보정 강화."
   ],
   "quality": {
-    "governance_count": 213,
+    "governance_count": 216,
     "governance_command": "python3 skills/adaptive-html-final/tests/test_governance_gates.py",
     "required_gates": [
       "validate_output",
