@@ -2125,6 +2125,76 @@ def storm_provenance_gate(text: str) -> list:
     return []
 
 
+def _is_social_trend(text: str) -> bool:
+    return bool(re.search(r'class\s*=\s*["\'][^"\']*\blayout-social-trend\b', text))
+
+
+def trend_record_schema_gate(text: str) -> list:
+    """social_trend: records 스키마(cat·author·handle·date·summary·url·views·likes 중 ≥6 필드) 고정."""
+    if not _is_social_trend(text):
+        return []
+    fields = sum(1 for pat in (r'카테고리|분류|\bcat\b', r'author|작성자|계정', r'handle|핸들|@\w',
+                               r'\bdate\b|날짜|일자|게시일', r'summary|요약', r'\burl\b|링크|출처',
+                               r'views|조회', r'likes|좋아요|반응') if re.search(pat, text, re.I))
+    if fields < 6:
+        return [{'type': 'trend_missing_record_schema',
+                 'detail': 'records 스키마(cat·author·handle·date·summary·url·views·likes 중 ≥6 필드 정의/표) 부재 — 레코드 구조를 표/코드블록으로 고정해야 한다.'}]
+    return []
+
+
+def trend_url_dedupe_gate(text: str) -> list:
+    """social_trend: URL dedupe/append 정책(중복 url 정규화→대조→append/update) 명시."""
+    if not _is_social_trend(text):
+        return []
+    has_dedupe = bool(re.search(r'dedupe|중복\s*제거|중복|url\s*기준|정규화', text, re.I))
+    has_append = bool(re.search(r'append|update|갱신|병합|행을\s*늘리', text, re.I))
+    if not (has_dedupe and has_append):
+        return [{'type': 'trend_missing_dedupe_policy',
+                 'detail': 'URL dedupe/append 정책(중복 url 정규화→대조→append/update) 명시 부재 — 행을 무한 증식하지 않는 병합 규칙이 필요하다.'}]
+    return []
+
+
+def trend_metric_honesty_gate(text: str) -> list:
+    """social_trend: 지표 정직성 caveat(미확인=0/unknown, 추정 금지) — 없는 숫자 날조 차단."""
+    if not _is_social_trend(text):
+        return []
+    has_zero = bool(re.search(r'\b0\b|unknown|미확인|n/?a', text, re.I))
+    has_caveat = bool(re.search(r'확인\s*불가|미확인|미표시|추정\s*금지|추정값|caveat|주의|한계', text, re.I))
+    if not (has_zero and has_caveat):
+        return [{'type': 'trend_missing_metric_caveat',
+                 'detail': '지표 정직성 caveat(미확인=0/unknown, 추정 금지) 부재 — 확인 안 된 수치를 그럴듯하게 채우지 않는다는 고지가 필요하다.'}]
+    return []
+
+
+def trend_read_only_gate(text: str) -> list:
+    """social_trend: 읽기 전용 수집 고지(좋아요/리포스트/팔로우 등 상호작용 0회)."""
+    if not _is_social_trend(text):
+        return []
+    has_ro = bool(re.search(r'읽기\s*전용|read[\s-]*only', text, re.I))
+    interactions = sum(1 for pat in (r'좋아요|like', r'리포스트|repost|리트윗', r'팔로우|follow',
+                                     r'답글|댓글|reply', r'\bDM\b|메시지', r'북마크|bookmark') if re.search(pat, text, re.I))
+    has_zero = bool(re.search(r'0회|하지\s*않|수행하지|않는다|no\s+interaction', text, re.I))
+    if not (has_ro and interactions >= 2 and has_zero):
+        return [{'type': 'trend_missing_read_only_notice',
+                 'detail': '읽기 전용 수집 고지(좋아요/리포스트/팔로우/답글 등 상호작용 0회 수행) 부재 — 수집은 read-only여야 한다.'}]
+    return []
+
+
+def trend_no_js_chart_gate(text: str) -> list:
+    """social_trend: 무JS 차트 강제 — <canvas>/chart.js 금지 + 정적 차트 surface(.cmp-card 또는 .tbl) 필수."""
+    if not _is_social_trend(text):
+        return []
+    issues = []
+    # 실제 동작형 차트(요소/스크립트)만 차단 — "Chart.js 0" 같은 무JS 자랑 산문은 false-positive 회피.
+    if re.search(r'<canvas\b', text, re.I) or re.search(r'<script[^>]*chart\.js|src\s*=\s*["\'][^"\']*chart\.js', text, re.I):
+        issues.append({'type': 'trend_js_chart_forbidden',
+                       'detail': '동작형 차트(<canvas>/chart.js) 금지 — 분포/비교는 사전정렬 정적 표(.tbl) 또는 comparison-cards(.cmp-card)로 다운컨버트해야 한다.'})
+    if not re.search(r'\bcmp-card\b|\bcmp\b', text) and not re.search(r'class\s*=\s*["\'][^"\']*\btbl\b', text):
+        issues.append({'type': 'trend_no_static_chart_surface',
+                       'detail': '분포/비교 시각이 정적 표(.tbl) 또는 comparison-cards(.cmp-card) 중 하나로 표현돼야 한다(무JS 차트 정본).'})
+    return issues
+
+
 def validate(root: Path, skill_dir: Path | None = None, profile: str | None = None) -> dict:
     issues = []
     warnings = []
@@ -2255,6 +2325,11 @@ def validate(root: Path, skill_dir: Path | None = None, profile: str | None = No
             for st_issue in st_gate(text):
                 st_issue['page'] = rel
                 issues.append(st_issue)
+        for tr_gate in (trend_record_schema_gate, trend_url_dedupe_gate, trend_metric_honesty_gate,
+                        trend_read_only_gate, trend_no_js_chart_gate):
+            for tr_issue in tr_gate(text):
+                tr_issue['page'] = rel
+                issues.append(tr_issue)
         for wg_issue in widget_static_gate(text, style):
             wg_issue['page'] = rel
             issues.append(wg_issue)

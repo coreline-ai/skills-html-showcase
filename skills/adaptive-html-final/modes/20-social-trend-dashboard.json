@@ -1,0 +1,97 @@
+{
+  "id": "social_trend_dashboard",
+  "priority": 20,
+  "label": "Social Trend Dashboard",
+  "layout_class": "layout-social-trend",
+  "layout_file": "assets/layouts/social-trend-dashboard.html",
+  "recipe": "recipes/social-trend-dashboard.prompt.md",
+  "triggers": [
+    "AI 트렌드",
+    "X 트렌드",
+    "트위터 크롤링",
+    "소셜 피드 대시보드",
+    "records.json",
+    "최신 소식 대시보드",
+    "트렌드 인텔리전스"
+  ],
+  "required_blocks": [
+    "scope_brief",
+    "source_policy",
+    "record_schema",
+    "collection_summary",
+    "category_distribution",
+    "top_signals",
+    "evidence_cards",
+    "dedupe_append_policy",
+    "metric_caveats",
+    "verification_notes",
+    "next_actions"
+  ],
+  "layout_placeholders": [
+    "{{KICKER}}",
+    "{{TITLE}}",
+    "{{SUBTITLE}}",
+    "{{META}}",
+    "{{SCOPE_BRIEF}}",
+    "{{SOURCE_POLICY}}",
+    "{{RECORD_SCHEMA}}",
+    "{{COLLECTION_SUMMARY}}",
+    "{{CATEGORY_DISTRIBUTION}}",
+    "{{TOP_SIGNALS}}",
+    "{{EVIDENCE_CARDS}}",
+    "{{DEDUPE_APPEND_POLICY}}",
+    "{{METRIC_CAVEATS}}",
+    "{{VERIFICATION_NOTES}}",
+    "{{NEXT_ACTIONS}}",
+    "{{SOURCE_NOTE}}"
+  ],
+  "primary_vt": "comparison-cards",
+  "vt_candidates": [
+    "comparison-cards",
+    "timeline",
+    "risk-matrix",
+    "quality-gate"
+  ],
+  "vt_markers": [
+    "\\bcmp-card\\b",
+    "\\bcmp\\b"
+  ],
+  "wg_candidates": [
+    "wg-11",
+    "wg-13",
+    "wg-18",
+    "wg-14",
+    "wg-02"
+  ],
+  "wg_markers": [
+    "wg-11-",
+    "wg-13-",
+    "wg-18-",
+    "wg-14-",
+    "wg-02-"
+  ],
+  "toc_contract": {
+    "rule": "structural_h2_gte_4",
+    "required_class": null,
+    "forbid_plain_text_toc": true
+  },
+  "quality_contract": {
+    "requires_body_icon": true,
+    "requires_header_lens": true,
+    "requires_render_audit": true,
+    "mode_depth_min_avg": 400
+  },
+  "examples": [
+    {
+      "file": "examples/20_social_trend_x_ai_agents.html",
+      "purpose": "reference"
+    }
+  ],
+  "custom_contracts": [
+    "trend_record_schema_gate",
+    "trend_url_dedupe_gate",
+    "trend_metric_honesty_gate",
+    "trend_read_only_gate",
+    "trend_no_js_chart_gate"
+  ]
+}

@@ -68,7 +68,7 @@ v5.10.3 감사에서 확인된 반복 원인은 **manifest/SKILL/CHANGELOG 같�
 
 ## 3. 모드 라우팅 결정표 (17 모드)
 
-여러 트리거가 겹치면 `skills/adaptive-html-final/SKILL.md` §3의 Priority(1=skill_audit … 18=business_plan_html, 19=storm_research)를 따른다.
+여러 트리거가 겹치면 `skills/adaptive-html-final/SKILL.md` §3의 Priority(1=skill_audit … 19=storm_research, 20=social_trend_dashboard)를 따른다.
 사용자가 모드를 명시하면 그 지시가 최우선. **vt-템플릿의 첫 항목이 1순위이며 단일 출처다** (캐노니컬 매핑).
 
 > **Mode Registry 정합(필수):** 아래 결정표는 `skills/adaptive-html-final/modes/NN-<mode>.json`(실행 정본, validator가 읽음)과 **반드시 일치**한다. `check_mode_registry_sync.py`가 이 §3 표를 직접 파싱해 Registry와 대조하므로(layout_class·layout_file·primary_vt·wg), 모드 추가/변경 시 이 표와 Registry JSON을 함께 갱신한다. 절차: `docs/adaptive-html-final-add-mode-runbook.md`.
@@ -96,6 +96,7 @@ v5.10.3 감사에서 확인된 반복 원인은 **manifest/SKILL/CHANGELOG 같�
 | `checklist_playbook` | 체크리스트, 운영 절차, 플레이북 | `.layout-checklist` | `checklist-playbook.html` | **checklist-flow** → quality-gate → process-swimlane → implementation-plan → triage-board | wg-11, wg-13, wg-16, wg-18, wg-19 |
 | `business_plan_html` | 사업계획서, 정부지원사업, R&D 계획서, 투자 피치덱, 제안서, 공고문 분석 | `.layout-business-plan` | `business-plan-report.html` | **implementation-plan** → quality-gate → risk-matrix → timeline → comparison-cards → process-swimlane | wg-16, wg-11, wg-13, wg-18, wg-14 |
 | `storm_research` | STORM 리서치, 다관점 딥리서치, 5영혼 조사, 모순 지도 리포트, 출처 강제 리서치 | `.layout-storm` | `storm-research-report.html` | **process-swimlane** → hero-map → risk-matrix → quality-gate → comparison-cards → checklist-flow → timeline | wg-13, wg-14, wg-18, wg-11, wg-16, wg-04 |
+| `social_trend_dashboard` | 소셜 트렌드, X/트위터 트렌드, AI 도구 시장 신호, records.json 대시보드, 무JS 차트 | `.layout-social-trend` | `social-trend-dashboard.html` | **comparison-cards** → timeline → risk-matrix → quality-gate | wg-11, wg-13, wg-18, wg-14, wg-02 |
 
 - layout 파일 위치: `skills/adaptive-html-final/assets/layouts/<layout 파일>`
 - vt-템플릿 → 파일 매핑은 §8 인덱스 참조. wg-위젯 골격은 `skills/adaptive-html-final/assets/widget-templates/NN-*.html`.

@@ -114,13 +114,14 @@
     "landing-brief.html",
     "checklist-playbook.html",
     "business-plan-report.html",
-    "storm-research-report.html"
+    "storm-research-report.html",
+    "social-trend-dashboard.html"
   ],
   "examples": {
     "dir": "examples/",
-    "count": 19,
+    "count": 20,
     "index": "examples/index.html",
-    "purpose": "19모드 풀 스킬급 참조 예제 — 실제 코어 CSS 인라인(v5.10.6)·8-테마 스위처·body-icon·editorial/vt/wg 컴포넌트로 생성된 자기완결 HTML(무 JS). 18번째 business_plan은 증거태그·단일 숫자 레지스트리·in-HTML 출처원장·4-평가자 자기검토 스코어카드를 정본화(버전 업 없이 5.10.6 병합). 구 16모드/신규 변종 본문 정형화는 후속 재생성 단계.",
+    "purpose": "20모드 풀 스킬급 참조 예제 — 실제 코어 CSS 인라인(v5.10.6)·8-테마 스위처·body-icon·editorial/vt/wg 컴포넌트로 생성된 자기완결 HTML(무 JS). 18번째 business_plan은 증거태그·단일 숫자 레지스트리·in-HTML 출처원장·4-평가자 자기검토 스코어카드를 정본화(버전 업 없이 5.10.6 병합). 구 16모드/신규 변종 본문 정형화는 후속 재생성 단계.",
     "fidelity": "skill-core-inlined + 8-theme(ahf-theme) + body-icons + editorial components + vt/wg auto profile",
     "files": [
       "01_beginner_passkey_login.html",
@@ -142,6 +143,7 @@
       "17_github_feature_usage_coreline_auth.html",
       "18_business_plan_grantproof_core.html",
       "19_storm_research_multi_perspective.html",
+      "20_social_trend_x_ai_agents.html",
       "index.html"
     ],
     "version": "5.10.6"
@@ -222,6 +224,10 @@
     {
       "id": "storm_research",
       "layout": "storm-research-report.html"
+    },
+    {
+      "id": "social_trend_dashboard",
+      "layout": "social-trend-dashboard.html"
     }
   ],
   "design": "editorial-learning-v4.3.3-responsive-polish",
@@ -423,7 +429,7 @@
     "v5.9.2: 외부 세리프 폰트 링크/스택/과거 세리프 토큰 금지, pull-quote Pretendard 굵게 통일, vt-02 decision-tree 3카드 정합성 + h3 마진 보정, 공식 toc-map 목차 계약 회귀 방지(layout+validator), manual section title spacing/danger accent/qg-final typography 보정 강화."
   ],
   "quality": {
-    "governance_count": 199,
+    "governance_count": 210,
     "governance_command": "python3 skills/adaptive-html-final/tests/test_governance_gates.py",
     "required_gates": [
       "validate_output",

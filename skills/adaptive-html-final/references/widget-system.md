@@ -83,6 +83,7 @@
 | checklist_playbook | **11 Weekly Status**, 13 Annotated Flowchart, 16 Implementation Plan, 18 Ticket Triage Board, 19 Feature Flag Editor | 운영 상태·절차·실행 계획·트리아지·플래그 |
 | business_plan_html | **16 Implementation Plan**, 11 Weekly Status, 13 Annotated Flowchart, 18 Ticket Triage Board, 14 Feature Explainer | 실행계획·재무지표·근거 플로우·과제 트리아지·기능 설명 |
 | storm_research | **13 Annotated Flowchart**, 14 Feature Explainer, 18 Ticket Triage Board, 11 Weekly Status, 16 Implementation Plan, 04 Timeline | 모순 흐름·관점 발견·미해결 트리아지·검토 상태·후속 액션·출처 시점 |
+| social_trend_dashboard | **11 Weekly Status**, 13 Annotated Flowchart, 18 Ticket Triage Board, 14 Feature Explainer, 02 Visual Design Directions | 수집 상태·신호 흐름·미해결 트리아지·기능 설명·시안 비교 |
 
 ### github_analysis 조합 가이드
 

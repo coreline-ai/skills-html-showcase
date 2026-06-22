@@ -564,9 +564,9 @@ sys.path.insert(0, str(SKILL / "scripts"))
 import mode_registry as _mreg          # noqa: E402
 import check_mode_registry_sync as _mrs  # noqa: E402
 _reg = _mreg.load_mode_registry(SKILL)
-check("mode registry has 19 modes", len(_reg) == 19)
+check("mode registry has 20 modes", len(_reg) == 20)
 check("mode registry priority 1..18 contiguous & unique",
-      sorted(m["priority"] for m in _reg) == list(range(1, 20)))
+      sorted(m["priority"] for m in _reg) == list(range(1, 21)))
 _built = _mreg.build_mode_template_contracts(SKILL)
 # B-full: validator now SOURCES MODE_TEMPLATE_CONTRACTS from the registry.
 # This asserts the wiring is in place (validator dict == registry build); if anyone
@@ -765,6 +765,31 @@ _s6 = v.storm_provenance_gate(_st_bad)
 check("STORM provenance flags missing ledger", bool(_s6) and _s6[0]["type"] == "storm_missing_provenance")
 check("STORM provenance passes ledger columns", v.storm_provenance_gate(_st_ok) == [])
 check("STORM gates skip non-storm pages", all(g('<main class="page layout-expert"><h1>x</h1></main>') == [] for g in (v.storm_soul_count_gate, v.storm_minimum_sources_gate, v.storm_citation_label_gate, v.storm_contradiction_gate, v.storm_peer_review_gate, v.storm_provenance_gate)))
+
+# === mode 20 social_trend_dashboard custom contracts — 무JS 트렌드 대시보드 (5.10.6 additive) ===
+_tr_bad = '<main class="page layout-social-trend"><h1>x</h1><p>트렌드 요약</p><canvas id="c"></canvas></main>'
+_tr_ok = ('<main class="page layout-social-trend"><h1>트렌드</h1>'
+          '<table class="tbl"><tr><th>cat</th><th>author</th><th>handle</th><th>date</th>'
+          '<th>summary</th><th>url</th><th>views</th><th>likes</th></tr></table>'
+          '<p>url 정규화 dedupe 후 append/갱신. 미확인 지표는 0/unknown으로, 확인 불가는 그대로 표기(추정 금지). '
+          '읽기 전용 수집 — 좋아요·리포스트는 0회, 수행하지 않는다.</p>'
+          '<div class="cmp"><div class="cmp-card">A</div></div></main>')
+_t1 = v.trend_record_schema_gate(_tr_bad)
+check("TREND record_schema flags missing fields", bool(_t1) and _t1[0]["type"] == "trend_missing_record_schema")
+check("TREND record_schema passes 8-field schema", v.trend_record_schema_gate(_tr_ok) == [])
+_t2 = v.trend_url_dedupe_gate(_tr_bad)
+check("TREND url_dedupe flags missing policy", bool(_t2) and _t2[0]["type"] == "trend_missing_dedupe_policy")
+check("TREND url_dedupe passes dedupe+append", v.trend_url_dedupe_gate(_tr_ok) == [])
+_t3 = v.trend_metric_honesty_gate(_tr_bad)
+check("TREND metric_honesty flags missing caveat", bool(_t3) and _t3[0]["type"] == "trend_missing_metric_caveat")
+check("TREND metric_honesty passes caveat", v.trend_metric_honesty_gate(_tr_ok) == [])
+_t4 = v.trend_read_only_gate(_tr_bad)
+check("TREND read_only flags missing notice", bool(_t4) and _t4[0]["type"] == "trend_missing_read_only_notice")
+check("TREND read_only passes read-only notice", v.trend_read_only_gate(_tr_ok) == [])
+_t5 = v.trend_no_js_chart_gate(_tr_bad)
+check("TREND no_js_chart flags canvas", bool(_t5) and _t5[0]["type"] == "trend_js_chart_forbidden")
+check("TREND no_js_chart passes static surface", v.trend_no_js_chart_gate(_tr_ok) == [])
+check("TREND gates skip non-trend pages", all(g('<main class="page layout-expert"><h1>x</h1></main>') == [] for g in (v.trend_record_schema_gate, v.trend_url_dedupe_gate, v.trend_metric_honesty_gate, v.trend_read_only_gate, v.trend_no_js_chart_gate)))
 
 
 # --- pretest_contract decide() 로직 잠금 (hybrid: official/preview/fail 분류 로직 회귀 차단) ---
