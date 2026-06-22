@@ -10,7 +10,7 @@
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
 [![version](https://img.shields.io/badge/version-5.10.6-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
-[![modes](https://img.shields.io/badge/modes-18-2a7d5a)](#-17개-모드)
+[![modes](https://img.shields.io/badge/modes-21-2a7d5a)](#-17개-모드)
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
 [![themes](https://img.shields.io/badge/themes-8--theme-111827)](#-8-테마-시스템)
 [![libraries](https://img.shields.io/badge/view%20widgets-20-e63946)](#️-비주얼-프로파일) [![svg→html](https://img.shields.io/badge/svg→html%20templates-21-d99a38)](#️-비주얼-프로파일)
@@ -20,11 +20,11 @@
 [![cross-agent](https://img.shields.io/badge/cross--agent-AGENTS.md-6e40c9)](AGENTS.md)
 [![python](https://img.shields.io/badge/SVG%20render-stdlib%20only-3776AB?logo=python&logoColor=white)](skills/adaptive-html-final/scripts/render_visual_svg.py)
 
-**입력 자료를 18개 모드로 라우팅해 전문가급 한국어 HTML 콘텐츠를 만드는 단일 통합 스킬 — GitHub 저장소 실사·GitHub 기능/도입 가이드·YouTube 영상·매뉴얼 분석, 8-테마, 비주얼 프로파일(위젯형·도식형·자동) 선택**
+**입력 자료를 21개 모드로 라우팅해 전문가급 한국어 HTML 콘텐츠를 만드는 단일 통합 스킬 — GitHub 저장소 실사·GitHub 기능/도입 가이드·YouTube 영상·매뉴얼 분석, 8-테마, 비주얼 프로파일(위젯형·도식형·자동) 선택**
 
-URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill`·GitHub 저장소 URL·YouTube URL/자막·제품 매뉴얼을 받아 학습자료, 전문가 리포트, 저장소/영상/매뉴얼 분석, 아티클, 교육 모듈, 블로그 원고, SEO 대시보드, 플랫폼 변환, 스킬 감사, 레퍼런스, 비교, 케이스 스터디, 랜딩, 체크리스트로 변환합니다.
+URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill`·GitHub 저장소 URL·YouTube URL/자막·제품 매뉴얼을 받아 학습자료, 전문가 리포트, 저장소/영상/매뉴얼 분석, 아티클, 교육 모듈, 블로그 원고, SEO 대시보드, 플랫폼 변환, 스킬 감사, 레퍼런스, 비교, 케이스 스터디, 랜딩, 체크리스트, **사업계획서, 다관점 STORM 리서치, 소셜 트렌드 대시보드, AI 전략 운영체계**로 변환합니다.
 
-[Overview](#-overview) · [빠른 시작](#-빠른-시작) · [18개 모드](#-18개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [8-테마](#-8-테마-시스템) · [쇼케이스](#️-쇼케이스-갤러리) · [v5.10.5 생성물](#v5105-demo17-rose-captures) · [v5.10.3 생성물](#v5103-codex-sepia-captures) · [아키텍처](#️-아키텍처--디자인-시스템) · [품질 게이트](#-품질-게이트--결정론) · [사용법](#-사용법)
+[Overview](#-overview) · [빠른 시작](#-빠른-시작) · [21개 모드](#-21개-모드) · [비주얼 프로파일](#️-비주얼-프로파일) · [8-테마](#-8-테마-시스템) · [쇼케이스](#️-쇼케이스-갤러리) · [v5.10.5 생성물](#v5105-demo17-rose-captures) · [v5.10.3 생성물](#v5103-codex-sepia-captures) · [아키텍처](#️-아키텍처--디자인-시스템) · [품질 게이트](#-품질-게이트--결정론) · [사용법](#-사용법)
 
 </div>
 
@@ -37,7 +37,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 
 | | |
 |---|---|
-| 🧭 **18개 모드 라우터** | 입력·목적을 분석해 `skill_audit`·`github_analysis`·`youtube_analysis`·`manual_analysis` 등 17개 정보 구조 중 하나로 자동 라우팅 |
+| 🧭 **21개 모드 라우터** | 입력·목적을 분석해 `skill_audit`·`github_analysis`·`youtube_analysis`·`manual_analysis` 등 21개 정보 구조 중 하나로 자동 라우팅 |
 | 🎚️ **3 비주얼 프로파일** | `widget`(CSS 위젯) · `diagram`(SVG→HTML 도식) · `auto`(둘 다, 기본). 코어는 100% 공유, 프로파일이 라이브러리만 게이트 |
 | 🎨 **8-테마 스위처** | `light·light2·white·dark·dark2·blue·skyblue·sepia` — **무 JS** CSS-only 라디오 스위처 |
 | 🧩 **시각 라이브러리** | CSS 뷰 위젯 `wg-` 20종 + SVG→HTML 템플릿 `vt-` 21종 + 본문 아이콘 `bi-` 32종 + soft-shape 36종 |
@@ -76,7 +76,7 @@ URL·PDF·텍스트·메모·기술 문서·블로그 초안·`SKILL.md`/`.skill
 ```bash
 # 1) 저장소 클론 후 루트에서 로컬 미리보기
 python3 -m http.server 8788
-#   현행 18모드 참조 예제
+#   현행 21모드 참조 예제
 #   → http://127.0.0.1:8788/skills/adaptive-html-final/examples/index.html
 
 # 2) 현행 레퍼런스 검증 (마지막 줄 OK 여야 정상)
@@ -99,9 +99,9 @@ python3 skills/adaptive-html-final/scripts/render_visual_svg.py brief.json outpu
 
 ---
 
-## 📦 18개 모드
+## 📦 21개 모드
 
-트리거가 겹치면 우선순위(`1=skill_audit … 17=checklist_playbook`)를 따릅니다. 결정표 단일 출처는 [`modes/NN-<mode>.json`](skills/adaptive-html-final/modes) Registry이며 `validate_output.py`가 직접 읽습니다.
+트리거가 겹치면 우선순위(`1=skill_audit … 18=business_plan_html … 21=strategy_os`)를 따릅니다. 결정표 단일 출처는 [`modes/NN-<mode>.json`](skills/adaptive-html-final/modes) Registry이며 `validate_output.py`가 직접 읽습니다.
 
 | # | 모드 | 용도 (트리거 요약) | 레이아웃 | 1순위 vt-템플릿 |
 |--:|---|---|---|---|
@@ -122,6 +122,10 @@ python3 skills/adaptive-html-final/scripts/render_visual_svg.py brief.json outpu
 | 15 | 🧾 `case_study_html` | 사례 연구·회고·프로젝트 기록 | `.layout-case` | `incident-summary` |
 | 16 | 🚀 `landing_brief_html` | 소개 페이지·랜딩·요약 페이지 | `.layout-landing` | `hero-map` |
 | 17 | ✅ `checklist_playbook` | 체크리스트·운영 절차·플레이북 | `.layout-checklist` | `checklist-flow` |
+| 18 | 📑 `business_plan_html` | 사업계획서·정부지원사업·R&D·투자 피치·제안서·공고문 분석 | `.layout-business-plan` | `implementation-plan` |
+| 19 | 🌩️ `storm_research` | 다관점 STORM 리서치·5관점·모순 지도·출처 강제 리서치 | `.layout-storm` | `process-swimlane` |
+| 20 | 📡 `social_trend_dashboard` | 소셜 트렌드·X/트위터 신호·records.json 무 JS 대시보드 | `.layout-social-trend` | `comparison-cards` |
+| 21 | 🧭 `strategy_os` | AI 전략 운영체계·기술 신호→부서 라우팅→경영 판단 | `.layout-strategy-os` | `process-swimlane` |
 
 > 전체 트리거·후순위 vt·권장 wg 매핑은 [`AGENTS.md` §3 결정표](AGENTS.md)와 [`SKILL.md` §0.6](skills/adaptive-html-final/SKILL.md) 참조.
 
@@ -129,7 +133,7 @@ python3 skills/adaptive-html-final/scripts/render_visual_svg.py brief.json outpu
 
 ## 🎚️ 비주얼 프로파일
 
-스킬을 **기동할 때 비주얼 스타일을 고를 수 있습니다.** 코어(18모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 *어느 라이브러리·삽입 단계·CSS 번들*을 쓸지만 게이트합니다. 세 프로파일 모두 **외부/동작 JS 0**.
+스킬을 **기동할 때 비주얼 스타일을 고를 수 있습니다.** 코어(21모드 라우터·레이아웃·코어 CSS 5종)는 100% 공유하고, 프로파일이 *어느 라이브러리·삽입 단계·CSS 번들*을 쓸지만 게이트합니다. 세 프로파일 모두 **외부/동작 JS 0**.
 
 <table>
 <tr>
@@ -179,7 +183,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 
 ## 🖼️ 예제 (스킬 번들)
 
-이 저장소가 소개하는 예제는 **스킬에 실제 포함된 현행 18모드 참조 예제**, 단 하나입니다 — [`skills/adaptive-html-final/examples/`](skills/adaptive-html-final/examples). v5.10.6 코어 자산으로 인라인되어 **8-테마·무 JS·검증 게이트(227/227)** 를 모두 통과한 자기완결 HTML이며, 각 모드의 정본 구조를 그대로 보여줍니다.
+이 저장소가 소개하는 예제는 **스킬에 실제 포함된 현행 21모드 참조 예제**, 단 하나입니다 — [`skills/adaptive-html-final/examples/`](skills/adaptive-html-final/examples). v5.10.6 코어 자산으로 인라인되어 **8-테마·무 JS·검증 게이트(227/227)** 를 모두 통과한 자기완결 HTML이며, 각 모드의 정본 구조를 그대로 보여줍니다.
 
 **▶ 예제 인덱스:** [`examples/index.html`](skills/adaptive-html-final/examples/index.html) · [라이브 열기](https://coreline-ai.github.io/skills-html-showcase/skills/adaptive-html-final/examples/index.html)
 
@@ -202,6 +206,10 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 | 15 | `youtube_analysis` | YouTube 분석 — 바이브코딩 영상 | [source](skills/adaptive-html-final/examples/15_youtube_vibecoding_gap.html) · [live](https://coreline-ai.github.io/skills-html-showcase/skills/adaptive-html-final/examples/15_youtube_vibecoding_gap.html) |
 | 16 | `manual_analysis` | 제품 운영 매뉴얼 분석 | [source](skills/adaptive-html-final/examples/16_manual_product_runbook.html) · [live](https://coreline-ai.github.io/skills-html-showcase/skills/adaptive-html-final/examples/16_manual_product_runbook.html) |
 | 17 | `github_feature_usage` | Coreline Auth 기능·사용 가이드 | [source](skills/adaptive-html-final/examples/17_github_feature_usage_coreline_auth.html) · [live](https://coreline-ai.github.io/skills-html-showcase/skills/adaptive-html-final/examples/17_github_feature_usage_coreline_auth.html) |
+| 18 | `business_plan_html` | GrantProof Core 정부지원 사업계획서 | [source](skills/adaptive-html-final/examples/18_business_plan_grantproof_core.html) · [live](https://coreline-ai.github.io/skills-html-showcase/skills/adaptive-html-final/examples/18_business_plan_grantproof_core.html) |
+| 19 | `storm_research` | 다관점 STORM 리서치 리포트 | [source](skills/adaptive-html-final/examples/19_storm_research_multi_perspective.html) · [live](https://coreline-ai.github.io/skills-html-showcase/skills/adaptive-html-final/examples/19_storm_research_multi_perspective.html) |
+| 20 | `social_trend_dashboard` | X AI 에이전트 트렌드 대시보드 | [source](skills/adaptive-html-final/examples/20_social_trend_x_ai_agents.html) · [live](https://coreline-ai.github.io/skills-html-showcase/skills/adaptive-html-final/examples/20_social_trend_x_ai_agents.html) |
+| 21 | `strategy_os` | 회사 AI 전략 운영체계 대시보드 | [source](skills/adaptive-html-final/examples/21_strategy_os_company_dashboard.html) · [live](https://coreline-ai.github.io/skills-html-showcase/skills/adaptive-html-final/examples/21_strategy_os_company_dashboard.html) |
 
 > 로컬 확인: 저장소 루트에서 `python3 -m http.server 8080` 후 `http://localhost:8080/skills/adaptive-html-final/examples/index.html`
 
@@ -409,7 +417,7 @@ python3 skills/adaptive-html-final/scripts/validate_output.py <output_dir> \
 theme.css              색/폰트/폭 토큰(:root) · skip · focus-visible · reduced-motion
 components.css         term · analogy · danger · good · hero-analogy · try · tbl · faq · cta-box ...
 visual-components.css  figure.visual-figure (8000×6000 SVG 삽입 셸)
-layouts.css            18개 모드별 그리드/구조 (github 실사·기능가이드·youtube·manual 포함)
+layouts.css            21개 모드별 그리드/구조 (github 실사·기능가이드·youtube·manual 포함)
 print.css              인쇄 대응(print-color-adjust · break-inside · reading-progress 숨김)
 
 [ 조건부 / 후행 인라인 — 해시 비대상 ]
@@ -443,7 +451,7 @@ theme-dark.css         CSS-only 8-테마 토큰 오버라이드 + 라디오 스�
 skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트 (단일 출처)
-│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.6 · 18모드)
+│   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.6 · 21모드)
 │   ├── assets/                        # base.html · CSS 12종 · 위젯/도식/패턴/테마 자산 · 18개 레이아웃 골격
 │   ├── modes/         (17)            # 모드 결정표 Registry (validator가 직접 읽는 실행 정본)
 │   ├── references/    (19)            # 모드/레이아웃/글쓰기/SEO/감사/GitHub·YouTube·Manual·기능가이드 규칙
@@ -454,7 +462,7 @@ skills-html-showcase/
 │   ├── tests/                         # 거버넌스 게이트 (227/227) + 레이아웃/접근성 체크리스트
 │   ├── visual-templates/ (7)          # 8000×6000 SVG 템플릿
 │   ├── galleries/                     # body-icon / soft-shape 카탈로그
-│   ├── examples/                      # v5.10.6 현행 18모드 참조 예제 + index + sources 스냅샷
+│   ├── examples/                      # v5.10.6 현행 21모드 참조 예제 + index + sources 스냅샷
 │   └── template-catalog/             # final_20260604 기반 템플릿 HTML 정본 4종
 ├── skills/html-exporter/             # 재사용 export 스킬 (Playwright → PDF/PNG/WebP)
 ├── output/                            # 날짜별 산출물 아카이브 (독립 결과물 — 스킬 입력 아님)
@@ -492,14 +500,16 @@ skills-html-showcase/
 | 거버넌스 게이트 | `test_governance_gates.py` **227 / 227 통과** |
 | 외부 동작 JS | **0건** |
 | 코어 CSS 해시 | 5종 합본 SHA-256 byte-verbatim 인라인 일치 |
-| skip link ↔ `#main` · 단일 `h1` | 17 / 17 레이아웃 계약 |
+| skip link ↔ `#main` · 단일 `h1` | 21 / 21 레이아웃 계약 |
 | manifest ↔ 결정표 ↔ Registry | 6자 정합(`check_mode_registry_sync.py`) |
+| 모드별 semantic gate | 증거태그·출처원장·NR 레지스트리(business_plan) · 5관점·모순지도·peer-review(storm) · records 스키마·dedupe·무 JS 차트(social_trend) · North Star·부서 역할·무 JS 스위처(strategy_os) 등 |
+| output 분류 · 생성 지문 | `pretest_contract_check.py`(official/preview/fail 라벨 · governance 잠금) · `generation_smoke_check.py`(스킬-자산 생성 지문) · `micro_layout_audit.mjs`(노드 overlap·대비 render-audit) |
 
 > [!NOTE]
-> 🟢 **게이트 현황(v5.10.6)**: 거버넌스 `test_governance_gates.py` **227 / 227 통과**. 검증기 `validate_output.py`는 18모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합·버전 표면·`.skill` byte-match)을 정적으로 강제합니다. 현행 18모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
+> 🟢 **게이트 현황(v5.10.6)**: 거버넌스 `test_governance_gates.py` **227 / 227 통과**. 검증기 `validate_output.py`는 21모드 계약(시각 정본·모드별 vt/wg·toc-map·무 JS·코어 해시·manifest/결정표/참조문서 자기정합·버전 표면·`.skill` byte-match)을 정적으로 강제합니다. 현행 21모드 레퍼런스는 `skills/adaptive-html-final/examples/`입니다.
 
 ```bash
-# 현행 18모드 레퍼런스 검증 (저장소 루트에서)
+# 현행 21모드 레퍼런스 검증 (저장소 루트에서)
 python3 skills/adaptive-html-final/scripts/validate_output.py \
   skills/adaptive-html-final/examples \
   --skill-dir skills/adaptive-html-final          # → 마지막 줄 OK
@@ -538,7 +548,7 @@ python3 skills/adaptive-html-final/scripts/render_visual_svg.py brief.json outpu
 
 ```bash
 python3 -m http.server 8080
-# 스킬 번들 18모드 참조 예제 (현행 v5.10.6)
+# 스킬 번들 21모드 참조 예제 (현행 v5.10.6)
 # → http://localhost:8080/skills/adaptive-html-final/examples/index.html
 ```
 
@@ -617,5 +627,5 @@ npm run export:output -- output/<생성한_산출물_디렉터리> --clean
 별도 라이선스가 지정되지 않았습니다. 사용 전 저장소 소유자(`coreline-ai`)에게 확인하세요.
 
 <div align="center">
-<sub>생성 도구: <code>adaptive-html-final</code> v5.10.6 · 18-mode · 8-theme · 3-profile editorial HTML engine · 무 JS · governance 227/227</sub>
+<sub>생성 도구: <code>adaptive-html-final</code> v5.10.6 · 21-mode · 8-theme · 3-profile editorial HTML engine · 무 JS · governance 227/227</sub>
 </div>
