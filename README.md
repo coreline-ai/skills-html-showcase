@@ -1,12 +1,15 @@
 <div align="center">
 
-<img width="2752" height="1596" alt="똑똑한 HTML 요정 기능 소개" src="https://github.com/user-attachments/assets/18690d7b-ea95-430b-b450-7ae95a61999e" />
+<img width="0" height="0" alt="똑똑한 HTML 요정 기능 소개" src="https://github.com/user-attachments/assets/18690d7b-ea95-430b-b450-7ae95a61999e" />
 
 <img width="0" height="0" alt="뚝딱! 마법의 HTML 변신 도구" src="https://github.com/user-attachments/assets/73915e46-1a31-49b1-9023-dbd724c90534" />
 
 <img width="0" height="0" alt="완벽한 HTML 변환 파이프라인 안내" src="https://github.com/user-attachments/assets/aad48544-f667-438a-a28b-5c55f38a1909" />
 
+<img width="2752" height="1536" alt="마법의_Adaptive_HTML_Final_소개" src="https://github.com/user-attachments/assets/4b1d99c0-241e-4b5e-b632-e5ad89c49778" />
+
 # 🎨 Adaptive HTML Final
+
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
 [![version](https://img.shields.io/badge/version-5.10.6-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
