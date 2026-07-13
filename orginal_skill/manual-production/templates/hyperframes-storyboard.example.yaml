@@ -1,0 +1,29 @@
+storyboard:
+  id: V1-01-overview
+  lesson_id: V1-01
+  title: "ERPNext 기본 화면 이동"
+  output: media/videos/V1-01/basic-navigation.mp4
+  resolution:
+    width: 1920
+    height: 1080
+  fps: 24
+  scenes:
+    - id: intro
+      duration: 3
+      source_evidence:
+        - tracks/v1-operational-onboarding/01-basic-navigation.md
+      visual: title_card
+      caption_ko: "ERPNext에서 업무 화면을 찾는 기본 방법"
+    - id: workspace
+      duration: 5
+      source_evidence:
+        - media/screenshots/V1-01/workspace.png
+      visual: screenshot_with_highlight
+      focus_selector_or_region: UI_CAPTURE_REQUIRED
+      caption_ko: "Workspace에서 업무 영역을 선택합니다."
+qa:
+  hyperframes_lint: not_started
+  hyperframes_inspect: not_started
+  snapshots_reviewed: false
+  ffprobe_verified: false
+  content_verified: false

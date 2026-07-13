@@ -1,0 +1,25 @@
+tour:
+  id: V1-01-basic-navigation
+  lesson_id: V1-01
+  mode: driverjs-browser-recording
+  entrypoint: media/compositions/V1-01/index.html
+  viewport:
+    width: 1920
+    height: 1080
+  deterministic_options:
+    animate: false
+    smoothScroll: false
+    allowClose: false
+    disableActiveInteraction: true
+    showButtons: []
+    showProgress: true
+  steps:
+    - id: workspace-sidebar
+      selector: '[data-tour="workspace-sidebar"]'
+      title_ko: "Workspace 이동"
+      body_ko: "업무 영역을 선택하는 탐색 영역입니다."
+      evidence: media/screenshots/V1-01/workspace-sidebar.png
+      start: 2.0
+      end: 5.0
+      fallback_selector: null
+      ui_capture_required: true

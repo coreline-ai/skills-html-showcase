@@ -1,0 +1,24 @@
+media_id: null
+lesson_id: null
+type: screenshot | video | gif | html_embed
+source_environment:
+  type: local_demo | staging | official_demo | production_read_only
+  product_version: null
+  source_version: null
+  url: null
+fixture:
+  dataset: safe_demo | read_only_existing | unknown
+  company_or_account: null
+  user_role: null
+risk_level: low | medium | high
+covered_screens: []
+covered_actions: []
+excluded_actions: []
+source_evidence: []
+qa:
+  content_verified: false
+  technical_verified: false
+  console_errors_checked: false
+  playback_verified: false
+  visual_review_done: false
+notes: []

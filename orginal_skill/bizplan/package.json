@@ -1,0 +1,26 @@
+{
+  "name": "bizplan-architect",
+  "version": "1.0.0",
+  "description": "BizPlan Architect 스킬의 HWPX/PPTX 문서 생성 스크립트 (node)",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "hwpx": "tsx scripts/build_hwpx.mts",
+    "pptx": "tsx scripts/build_pptx.mts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mermaid-js/mermaid-cli": "^11.15.0",
+    "jszip": "^3.10.1",
+    "kordoc": "^2.8.0",
+    "pptxgenjs": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.7.0"
+  }
+}

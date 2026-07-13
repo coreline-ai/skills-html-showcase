@@ -1,0 +1,37 @@
+# Copy into a target manual manifest and adjust per project.
+videos:
+  - id: basic-navigation
+    lesson_id: V1-01
+    title: "기본 화면 이동"
+    mode: driverjs-browser-recording # hyperframes-only | driverjs-browser-recording | real-ui-recording
+    viewport:
+      width: 1920
+      height: 1080
+    duration_seconds: 18
+    entrypoint: media/compositions/basic-navigation/index.html
+    output: media/videos/basic-navigation.mp4
+    poster: media/posters/basic-navigation.png
+    contact_sheet: media/review/basic-navigation-contact-sheet.jpg
+    forbidden_terms:
+      - DB
+      - API
+      - cache
+    prerequisites:
+      - node
+      - hyperframes
+      - playwright
+      - ffmpeg
+    safety:
+      uses_demo_data_only: true
+      destructive_actions: false
+    steps:
+      - selector: '[data-tour="workspace"]'
+        title: "Workspace"
+        description: "업무 영역을 먼저 확인합니다."
+        start: 2.0
+        end: 5.0
+      - selector: '[data-tour="search"]'
+        title: "Search"
+        description: "필요한 화면은 검색으로 빠르게 찾습니다."
+        start: 5.0
+        end: 8.0

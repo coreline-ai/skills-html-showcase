@@ -1,0 +1,51 @@
+# Copy to manual.yaml in the target project.
+manual:
+  id: example-operator-manual
+  title: Example Operator Manual
+  language: ko
+  audience: operator
+  version_basis: "TBD: product/version/build/date"
+  source_of_truth:
+    - type: live-ui
+      status: required-before-production
+      location: "TBD"
+    - type: repo-or-docs
+      status: supporting-only
+      location: "TBD"
+  forbidden_terms:
+    - DB
+    - API
+    - cache
+
+lessons:
+  # Source evidence can be a string for quick drafts, but distributable manuals
+  # should prefer objects with evidence_tier:
+  #   source_evidence:
+  #     - evidence_tier: workspace_config # live_ui | workspace_config | doctype_source | official_docs | owner_decision | unverified
+  #       source: path/or/url
+  #       status: inferred # confirmed | inferred | unverified
+  # If risky_action is true, these fields are mandatory:
+  #   safe_fixture_required: true
+  #   safe_fixture_available: false
+  #   risk_handling: read_only_explanation_until_safe_fixture_ready # demo_capture | read_only_explanation_until_safe_fixture_ready | blocked
+  - id: example-create-record
+    title: "레코드 만들기(Create Record)"
+    audience: operator
+    goal: "A reader can create and verify one record safely."
+    prerequisites:
+      - "Demo/staging account available"
+    evidence:
+      - type: live-ui
+        status: unverified
+        location: "TBD route/screen"
+    steps_file: lessons/example-create-record.md
+    media:
+      screenshots:
+        - assets/screenshots/example-create-record.png
+      videos:
+        - assets/videos/example-create-record.mp4
+    review_card: review/example-create-record.md
+    risks:
+      - "Do not use production data."
+    excluded:
+      - "Admin-only configuration"

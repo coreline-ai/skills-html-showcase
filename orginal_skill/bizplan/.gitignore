@@ -1,0 +1,7 @@
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+dist/
+# 사용자 프로젝트 산출물(스킬을 사용자 작업 디렉토리에서 호출하므로 보통 여기 안 생기지만, 안전망)
+bizplan-*/

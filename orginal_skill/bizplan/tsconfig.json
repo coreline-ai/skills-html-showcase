@@ -1,0 +1,29 @@
+{
+  // BizPlan Architect — tsx 로 .mts 스크립트를 직접 실행하기 위한 최소 설정.
+  // 빌드(emit) 없이 tsx 런타임 + `tsc --noEmit` 타입체크 용도.
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ESNext"],
+    "types": ["node"],
+
+    // ESM/CJS 상호운용 (kordoc=ESM, pptxgenjs=CJS default export)
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+
+    // 스크립트 성격상 strict 는 적절히 완화 (실행 우선)
+    "strict": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": false,
+    "noEmit": true
+  },
+  "include": ["scripts/**/*.mts", "scripts/**/*.ts"]
+}

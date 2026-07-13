@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>형광펜 밑줄 강조 샘플 6종</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: #faf9f6;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 48px 24px 80px;
+    line-height: 1.9;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+  .sub { color: #777; font-size: 0.9rem; margin-bottom: 40px; }
+
+  .card {
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 14px;
+    padding: 28px 30px;
+    margin-bottom: 22px;
+  }
+  .label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #999;
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+  }
+  .demo { font-size: 1.18rem; }
+  .code {
+    margin-top: 16px;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'SF Mono', Consolas, monospace;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    padding: 12px 14px;
+    border-radius: 8px;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .code .v { color: #ce9178; }
+  .code .p { color: #9cdcfe; }
+
+  /* 1. 기본 — 아래 38%만 노란 형광펜 */
+  .hl-basic {
+    background: linear-gradient(transparent 62%, #fff176 62%);
+    padding: 0 2px;
+  }
+
+  /* 2. 얇은 라인형 — 아래 22%만, 거의 밑줄에 가까운 */
+  .hl-thin {
+    background: linear-gradient(transparent 78%, #a5d8ff 78%);
+    padding: 0 2px;
+  }
+
+  /* 3. 두꺼운 마커형 — 아래 50% */
+  .hl-thick {
+    background: linear-gradient(transparent 50%, #ffc9c9 50%);
+    padding: 0 3px;
+  }
+
+  /* 4. 손그림 기울어진 형광펜 — skew로 비스듬하게 */
+  .hl-skew {
+    background: linear-gradient(transparent 60%, #d8f5a2 60%);
+    padding: 0 4px;
+    transform: skewX(-3deg);
+    display: inline-block;
+  }
+
+  /* 5. 둥근 끝 마커 — 양끝이 둥근 형광펜 덩어리 */
+  .hl-round {
+    background: linear-gradient(transparent 58%, #ffd8a8 58%);
+    padding: 1px 6px;
+    border-radius: 3px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* 6. 애니메이션 — hover 시 왼쪽에서 오른쪽으로 칠해짐 */
+  .hl-anim {
+    background: linear-gradient(transparent 60%, #eebefa 60%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    padding: 0 2px;
+    transition: background-size 0.5s ease;
+  }
+  .card:hover .hl-anim { background-size: 100% 100%; }
+  .hint { font-size: 0.78rem; color: #aaa; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>형광펜 밑줄 강조 — 6종 샘플</h1>
+  <p class="sub">전체를 칠하지 않고 글자 <b>아래쪽만</b> 칠하는 방식. 핵심은 <code>linear-gradient(transparent N%, 색 N%)</code> 의 N값 조절.</p>
+
+  <div class="card">
+    <span class="label">01 · 기본형 (아래 38%)</span>
+    <div class="demo">이 문장에서 <span class="hl-basic">중요한 부분</span>을 강조합니다.</div>
+    <div class="code"><span class="p">background</span>: linear-gradient(transparent <span class="v">62%</span>, <span class="v">#fff176</span> 62%);</div>
+  </div>
+
+  <div class="card">
+    <span class="label">02 · 얇은 라인형 (아래 22%)</span>
+    <div class="demo">밑줄에 가까운 <span class="hl-thin">은은한 강조</span> 스타일.</div>
+    <div class="code"><span class="p">background</span>: linear-gradient(transparent <span class="v">78%</span>, <span class="v">#a5d8ff</span> 78%);</div>
+  </div>
+
+  <div class="card">
+    <span class="label">03 · 두꺼운 마커형 (아래 50%)</span>
+    <div class="demo">진하게 <span class="hl-thick">눈에 띄는 강조</span>가 필요할 때.</div>
+    <div class="code"><span class="p">background</span>: linear-gradient(transparent <span class="v">50%</span>, <span class="v">#ffc9c9</span> 50%);</div>
+  </div>
+
+  <div class="card">
+    <span class="label">04 · 손그림 기울어진형</span>
+    <div class="demo">실제 형광펜처럼 <span class="hl-skew">살짝 비스듬한 느낌</span>.</div>
+    <div class="code"><span class="p">transform</span>: skewX(<span class="v">-3deg</span>);
+<span class="p">display</span>: inline-block;</div>
+  </div>
+
+  <div class="card">
+    <span class="label">05 · 둥근 끝 마커</span>
+    <div class="demo">양끝이 <span class="hl-round">동글동글한 덩어리</span> 스타일.</div>
+    <div class="code"><span class="p">padding</span>: 1px 6px;
+<span class="p">border-radius</span>: 3px;
+<span class="p">box-decoration-break</span>: clone;</div>
+  </div>
+
+  <div class="card">
+    <span class="label">06 · 애니메이션 (마우스 올려보세요)</span>
+    <div class="demo">왼쪽에서 오른쪽으로 <span class="hl-anim">스르륵 칠해지는</span> 효과.</div>
+    <div class="code"><span class="p">background-size</span>: 0% 100%;  <span style="color:#6a9955">/* hover 시 100% */</span>
+<span class="p">transition</span>: background-size <span class="v">0.5s</span> ease;</div>
+    <p class="hint">↑ 이 카드에 마우스를 올리면 채워집니다.</p>
+  </div>
+</div>
+</body>
+</html>

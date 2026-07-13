@@ -1,0 +1,30 @@
+lesson:
+  id: V1-01
+  title: "ERPNext 기본 화면과 Workspace 이동"
+  track: v1-operational-onboarding
+  audience:
+    - operations_admin
+    - business_user
+  prerequisite:
+    - demo_or_staging_account_available
+  source_evidence:
+    - type: repo
+      status: inferred
+      location: erpnext/workspace_sidebar/home.json
+    - type: live_ui
+      status: unconfirmed
+      location: UI_CAPTURE_REQUIRED
+  ui_capture_required: true
+  status: outline_only
+  risky_action: false
+  safe_fixture_required: false
+  safe_fixture_available: null
+  domain_expert_required: false
+  excluded_risks:
+    - permission-specific menu differences
+  media:
+    required: true
+    status: blocked_until_capture_env_ready
+  qa:
+    content_status: not_started
+    technical_status: not_started

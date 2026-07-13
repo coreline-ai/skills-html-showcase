@@ -1,0 +1,34 @@
+manual:
+  id: example-manual
+  title: Example Manual
+  target_version: null
+  version_source: owner_decision | live_ui | repo_tag | unknown
+  language_policy: local_explanation_with_visible_ui_labels
+  primary_audience: []
+  excluded_domains: []
+  capture_environment:
+    status: planned | ready | blocked
+    type: local_demo | staging | official_demo | production_read_only
+    url: null
+    source_version: null
+    sample_data_policy: safe_demo_fixtures_only
+lessons:
+  - id: L-00
+    title: Example lesson
+    track: onboarding
+    audience: []
+    status: outline_only | draft_with_ui_capture_markers | ready_for_capture | media_captured_pending_qa | ready_for_handoff
+    source_evidence: []
+    evidence_status: confirmed | inferred | unconfirmed
+    ui_capture_required: true
+    risky_action: false
+    safe_fixture_required: false
+    safe_fixture_available: null
+    domain_expert_required: false
+    excluded_risks: []
+    media:
+      required: false
+      status: not_required | blocked_until_capture_env_ready | planned | captured | qa_passed
+    qa:
+      content_status: not_started | pending | passed | failed
+      technical_status: not_started | pending | passed | failed

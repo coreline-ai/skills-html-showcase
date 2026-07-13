@@ -1,0 +1,30 @@
+media_id: V1-01-video-001
+lesson_id: V1-01
+type: video # video | screenshot | gif | contact_sheet
+source_environment:
+  type: local_docker_demo
+  product_version: "TBD"
+  image_or_commit: null
+  url: null
+fixture:
+  company: null
+  user_role: null
+  fake_data_only: true
+risk_level: low # low | medium | high
+covered_screens: []
+excluded_actions:
+  - submit
+  - cancel
+  - amend
+artifacts:
+  source: null
+  output: media/videos/V1-01/video.mp4
+  poster: null
+  contact_sheet: null
+qa:
+  content_verified: false
+  technical_verified: false
+  console_errors_checked: false
+  playback_verified: false
+  ffprobe_verified: false
+notes: []
