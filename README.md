@@ -458,7 +458,7 @@ skills-html-showcase/
 │   ├── recipes/       (21)            # 모드별 대표 프롬프트
 │   ├── schemas/       (3)             # blog-meta · quality-report · visual-brief
 │   ├── scripts/       (8)             # validate_output · quality_contract_check · completion_check ·
-│   │                                  #   render_visual_svg · mode_registry · check_mode_registry_sync · body_icon_markup
+│   │                                  #   render_visual_svg · mode_registry · check_mode_registry_sync · body_icon_markup · pretest_contract_check
 │   ├── tests/                         # 거버넌스 게이트 (227/227) + 레이아웃/접근성 체크리스트
 │   ├── visual-templates/ (7)          # 8000×6000 SVG 템플릿
 │   ├── galleries/                     # body-icon / soft-shape 카탈로그

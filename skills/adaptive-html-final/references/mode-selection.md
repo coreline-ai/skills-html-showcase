@@ -19,6 +19,10 @@
 15. case_study_html
 16. landing_brief_html
 17. checklist_playbook
+18. business_plan_html
+19. storm_research
+20. social_trend_dashboard
+21. strategy_os
 
 명시적 요청이 있으면 명시적 요청이 우선한다. “블로그 HTML”처럼 복합 요청이면 `blog_writer`를 선택하고 HTML 렌더링을 추가한다. “스킬 분석/통합/감사”는 `skill_audit`을 우선한다. GitHub 저장소 URL 또는 `owner/repo`를 주고 저장소 이해·분석·채택 판단을 요청하면 `github_analysis`를 선택한다. 단, 같은 GitHub URL이라도 목적이 기능 소개·사용법·도입 가이드·실제 화면 중심 설명이면 `github_feature_usage`를 선택한다. YouTube URL/트랜스크립트/댓글/영상 콘텐츠 갭 분석이 목적이면 `youtube_analysis`를 선택한다. 사용 설명서·운영 매뉴얼·절차서·트러블슈팅 제작/분석은 `manual_analysis`를 선택한다.
 
@@ -41,6 +45,10 @@
 - 사례/회고/프로젝트 기록 → case_study_html
 - 랜딩/소개/요약 페이지 → landing_brief_html
 - 체크리스트/운영 절차/플레이북 → checklist_playbook
+- 사업계획서/정부지원사업/R&D 계획서/IR·피치덱/제안서/공고문 분석 → business_plan_html
+- STORM 리서치/다관점 딥리서치/모순 지도/출처 강제 리서치 → storm_research
+- AI·X 트렌드/소셜 피드 대시보드/records.json/트렌드 인텔리전스 → social_trend_dashboard
+- AI 전략 대시보드/전략 운영체계(전략 OS)/부서별 관점/기술 신호 운영 → strategy_os
 
 ## github_analysis 선택 기준
 

@@ -148,6 +148,10 @@ examples/*.html                # 모드별 예시 결과물 (21종 + index)
 | 15 | `case_study_html` | 사례 연구, 회고, 프로젝트 기록 | `case-study.html` |
 | 16 | `landing_brief_html` | 소개 페이지, 랜딩, 요약 페이지 | `landing-brief.html` |
 | 17 | `checklist_playbook` | 체크리스트, 운영 절차, 플레이북 | `checklist-playbook.html` |
+| 18 | `business_plan_html` | 사업계획서, 정부지원사업, R&D 계획서, IR/피치덱, 제안서, 공고문 분석 | `business-plan-report.html` |
+| 19 | `storm_research` | 다관점 STORM 리서치, 모순 지도, 출처 강제 종합 리포트 | `storm-research-report.html` |
+| 20 | `social_trend_dashboard` | AI/X 트렌드, 소셜 피드 대시보드, 트렌드 인텔리전스 | `social-trend-dashboard.html` |
+| 21 | `strategy_os` | AI 전략 운영체계(전략 OS), 부서별 관점, 기술 신호 운영 | `strategy-os-dashboard.html` |
 
 여러 트리거가 동시에 들어오면 우선순위가 높은 모드를 선택합니다. 사용자가 모드를 명시하면 사용자 지시가 우선입니다. tie-breaker: 교육/강의 + 공개글이 겹치면 `education_html` 우선, GitHub 저장소 URL/`owner/repo` 실사·리스크 분석이면 `github_analysis` 우선, GitHub 기능·사용법·도입 가이드·실제 화면 설명이면 `github_feature_usage` 우선, YouTube URL/자막/댓글 분석이면 `youtube_analysis` 우선, 매뉴얼 제작·분석·트러블슈팅이면 `manual_analysis` 우선, GitHub Pages 배포가 단독 언급되면 `article_html`.
 

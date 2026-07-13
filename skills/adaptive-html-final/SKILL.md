@@ -156,6 +156,10 @@ vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..2
 | 15 | case_study_html | 사례 연구, 회고, 프로젝트 기록 | case-study.html |
 | 16 | landing_brief_html | 소개 페이지, 랜딩, 요약 페이지 | landing-brief.html |
 | 17 | checklist_playbook | 체크리스트, 운영 절차, 플레이북 | checklist-playbook.html |
+| 18 | business_plan_html | 사업계획서, 정부지원사업, R&D 계획서, IR/피치덱, 제안서, 공고문 분석 | business-plan-report.html |
+| 19 | storm_research | STORM 리서치, 다관점 딥리서치, 모순 지도, 출처 강제 리서치 | storm-research-report.html |
+| 20 | social_trend_dashboard | AI/X 트렌드, 소셜 피드 대시보드, records.json, 트렌드 인텔리전스 | social-trend-dashboard.html |
+| 21 | strategy_os | AI 전략 대시보드, 전략 운영체계(전략 OS), 부서별 관점, 기술 신호 운영 | strategy-os-dashboard.html |
 
 여러 트리거가 동시에 감지되면 Priority가 높은 모드를 우선한다. 단, 사용자가 명시적으로 특정 모드를 지정하면 그 지시가 우선한다.
 
