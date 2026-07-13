@@ -1,4 +1,5 @@
 {
+  "packageManager": "pnpm@10.29.3",
   "name": "skills-html-showcase",
   "version": "0.1.0",
   "private": true,
