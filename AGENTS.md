@@ -45,7 +45,7 @@ v5.10.3 감사에서 확인된 반복 원인은 **manifest/SKILL/CHANGELOG 같�
 
 1. **정본 버전 확인** — `skills/adaptive-html-final/manifest.json`의 `version`을 단일 출처로 삼고, 절차 문서에 임의 하드코딩하지 않는다.
 2. **스킬 본체 동기화** — `SKILL.md` 헤더 `> Version`, `CHANGELOG.md` 최신 항목, `manifest.json`의 `examples.version`·`changes[0]`·`releases[0]`·`updated`를 같은 릴리스로 맞춘다.
-3. **현행 설명 표면 동기화** — `manifest.examples.purpose`, `manifest.quality.governance_count`, `README.md`의 “현행 18모드 참조 예제”·“게이트 현황”, `Guide.md`, `AGENTS.md`, `references/*` 중 “현행/현재/스킬 자산 기준” 문구를 최신 버전·최신 게이트 수로 맞춘다. 현재 게이트 수는 manifest의 단일 필드를 기준으로 한다. 과거 CHANGELOG·역사적 기준선 설명은 보존하되 “현행”으로 읽히지 않게 쓴다.
+3. **현행 설명 표면 동기화** — `manifest.examples.purpose`, `manifest.quality.governance_count`, `README.md`의 “현행 21모드 참조 예제”·“게이트 현황”, `Guide.md`, `AGENTS.md`, `references/*` 중 “현행/현재/스킬 자산 기준” 문구를 최신 버전·최신 게이트 수로 맞춘다. 현재 게이트 수는 manifest의 단일 필드를 기준으로 한다. 과거 CHANGELOG·역사적 기준선 설명은 보존하되 “현행”으로 읽히지 않게 쓴다.
 4. **예제 visible meta/footer 동기화** — `skills/adaptive-html-final/examples/*.html`의 header meta, generated row, footer에 보이는 `adaptive-html-final vX.Y.Z` / `adaptive-html-final X.Y.Z` 문자열이 `manifest.version`과 다른지 검색한다. CSS 주석·CHANGELOG 인용이 아니라 **사용자에게 보이는 본문 텍스트**가 대상이다.
 5. **source snapshot 동기화** — `skills/adaptive-html-final/examples/sources/adaptive-html-final-manifest.json`은 현행 `manifest.json`과 byte-equivalent JSON이어야 하며, CSS snapshot·`css-integrity.json`은 현재 자산 해시와 맞아야 한다.
 6. **패키지 재생성** — 소스·예제·검증기·문서가 바뀌면 `skills/adaptive-html-final.skill`도 재패키징한다. manifest 버전만 맞는 zip은 충분하지 않다. zip 내부 파일이 워킹트리와 byte-match해야 한다. 단, 패키징/비교 모두 `.pytest_cache/`, `__pycache__/`, `*.pyc`, `.DS_Store` 같은 실행 환경 노이즈는 제외한다.
@@ -66,7 +66,7 @@ v5.10.3 감사에서 확인된 반복 원인은 **manifest/SKILL/CHANGELOG 같�
 
 ---
 
-## 3. 모드 라우팅 결정표 (17 모드)
+## 3. 모드 라우팅 결정표 (21 모드)
 
 여러 트리거가 겹치면 `skills/adaptive-html-final/SKILL.md` §3의 Priority(1=skill_audit … 20=social_trend_dashboard, 21=strategy_os)를 따른다.
 사용자가 모드를 명시하면 그 지시가 최우선. **vt-템플릿의 첫 항목이 1순위이며 단일 출처다** (캐노니컬 매핑).
@@ -166,7 +166,7 @@ v5.10.3 감사에서 확인된 반복 원인은 **manifest/SKILL/CHANGELOG 같�
    - (2) SVG→HTML 템플릿 `vt-` 21종: `assets/visual-html.css` + `assets/visual-html-templates/01..21.html` (본문 삽입 다이어그램).
 3. **네임스페이스 고정.** 위젯은 `wg-NN-` 접두사만, 비주얼 템플릿은 `.vt-*` 접두사만 사용. 충돌·누수 0.
 4. **인터랙션 한정.** `<details>` / `:checked` / `:target` / CSS 애니메이션만. JS 필요 위젯(18 triage, 20 prompt-tuner)은 무 JS 근사로 삽입.
-5. **18모드 라우터 고정.** §3 결정표 외 모드를 만들지 않는다.
+5. **21모드 라우터 고정.** §3 결정표 외 모드를 만들지 않는다.
 6. **코어 CSS 5종 해시 + 조건부 인라인.** 코어 해시 대상은 **5종**(`theme→components→visual-components→layouts→print`)이며 이 합본의 SHA-256 마커를 반드시 포함한다. `widgets.css`·`visual-html.css`는 **해시 대상이 아닌 조건부 인라인**으로, 프로파일에 따라 포함 여부가 갈린다(widget=widgets만/diagram=visual-html만/auto=둘 다). 인라인 동작 순서는 `theme→components→visual-components→(widgets)→(visual-html)→layouts→print`(미사용 라이브러리는 생략, 코어 5종 해시 산식·순서는 불변).
 7. **구조 보장.** `<html lang="ko">`, viewport, title, meta description, `h1` 정확히 1개, `<main id="main">`.
 8. **버전·메타 일치.** 출력 source manifest는 현재 `manifest.json`과 동일 내용으로 일치한다(현재 버전 **5.10.6** + `theme_system` 블록 포함). 절차 규칙에 버전 문자열을 하드코딩하지 않는다.
@@ -196,8 +196,8 @@ python3 skills/adaptive-html-final/scripts/validate_output.py \
 python3 skills/adaptive-html-final/scripts/quality_contract_check.py <output_dir>
 ```
 
-- **현행 레퍼런스 출력:** `skills/adaptive-html-final/examples/`는 v5.10.6 스킬 자산 기준의 18모드 참조 예제 세트다.
-- **역사적 13-topic 기준선:** `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점 캐노니컬 예시로 보존하되, 최신 18모드 기준선으로 오해하지 않는다.
+- **현행 레퍼런스 출력:** `skills/adaptive-html-final/examples/`는 v5.10.6 스킬 자산 기준의 21모드 참조 예제 세트다.
+- **역사적 13-topic 기준선:** `output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/`는 v5.2.3 시점 캐노니컬 예시로 보존하되, 최신 21모드 기준선으로 오해하지 않는다.
 - **역사적 골든:** `output/2026-06-01/adaptive-html-final-showcase-v6/`는 v4.5 동결 시점의 역사적 auto 예시이므로 현재 검증 기준선으로 사용하지 않는다.
 
 **무 JS grep (불변식 1 보조 확인)** — JSON-LD 외 `<script>`가 0이어야 한다.
@@ -228,7 +228,7 @@ grep -rniE 'draggable=|contenteditable=' <output_dir>/*.html && echo "FORBIDDEN 
 |---|---|
 | 스킬 전체 워크플로우·모드·품질 게이트 | `SKILL.md` |
 | 버전·자산·레이아웃·위젯·스크립트 목록 | `manifest.json` |
-| 18모드 라우팅 상세 | `references/mode-selection.md` |
+| 21모드 라우팅 상세 | `references/mode-selection.md` |
 | 레이아웃별 블록 | `references/layout-system.md` |
 | 모드별 글쓰기 원칙 | `references/writing-system.md` |
 | GitHub 저장소 분석 전략 | `references/github-analysis-system.md` |

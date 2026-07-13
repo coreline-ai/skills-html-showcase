@@ -1,6 +1,6 @@
 # Adaptive HTML Final (v5.10.6)
 
-`adaptive-html-learning-ultimate`(13모드 라우터·레이아웃·평가체계)에 GitHub 실사 분석, GitHub 기능·사용법·도입 가이드, YouTube 분석, Manual 분석 모드를 더한 18모드 체계와 `adaptive-html-blog-writer`(블로그·SEO·플랫폼 상세 규칙)를 하나로 합친 **최종 통합 한국어 HTML 콘텐츠 생성 스킬**입니다.
+`adaptive-html-learning-ultimate`(13모드 라우터·레이아웃·평가체계)에 GitHub 실사 분석, GitHub 기능·사용법·도입 가이드, YouTube 분석, Manual 분석 모드를 더한 21모드 체계와 `adaptive-html-blog-writer`(블로그·SEO·플랫폼 상세 규칙)를 하나로 합친 **최종 통합 한국어 HTML 콘텐츠 생성 스킬**입니다.
 
 > **v5.10.6 현재 요약**
 > - 17번째 모드 `github_feature_usage`: GitHub 저장소를 "무엇을 해주나·어떻게 쓰나·어디에 맞나" 관점의 기능·사용법·도입 가이드 HTML로 변환. 실제 화면(스크린샷)·기능 지도·기술 스택·아키텍처·디렉터리 구조 해부를 포함한다.
@@ -29,10 +29,10 @@
 ## 핵심
 
 - 11개 핵심/실사/사용 가이드 모드: beginner, expert, article, education, github_analysis, github_feature_usage, youtube_analysis, manual_analysis, blog, seo, platform
-- 6개 확장 모드: skill_audit, reference, comparison, case_study, landing_brief, checklist_playbook
+- 10개 확장 모드: skill_audit, reference, comparison, case_study, landing_brief, checklist_playbook, business_plan, storm_research, social_trend_dashboard, strategy_os
 - 디자인 유지: 오프화이트 배경, Pretendard 단일 산세리프, h2 빨간 원번호, h2-sub, 의미 박스, source-note
 - 블로그 강점 흡수: 제목 4계열·도입부 3유형·본문 밀도·블로그 메타 스키마·플랫폼별 규칙·박스 선택 가이드(references 상세)
-- 접근성 수정: 18개 레이아웃 `<main>`에 `id="main"` 통일 (skip link 정상 동작)
+- 접근성 수정: 21개 레이아웃 `<main>`에 `id="main"` 통일 (skip link 정상 동작)
 
 ## 통합 내역
 
@@ -53,7 +53,7 @@
 - `assets/layouts.css`: 모드별 레이아웃 차이
 - `assets/base.html`: 단일 HTML 렌더링 골격
 - `assets/print.css`: 인쇄 대응
-- `assets/layouts/*.html`: 18개 레이아웃 템플릿
+- `assets/layouts/*.html`: 21개 레이아웃 템플릿
 - `assets/layouts/github-analysis.html`: GitHub 저장소 분석 전용 레이아웃
 - `assets/layouts/github-feature-usage.html`: GitHub 기능·사용법·도입 가이드 전용 레이아웃
 - `assets/layouts/youtube-analysis.html`: YouTube 영상 분석 전용 레이아웃
@@ -67,6 +67,6 @@
 - `references/youtube-analysis-system.md`: YouTube 근거 지도·댓글 신호·주장 위험 분석 기준
 - `references/manual-analysis-system.md`: 역할별 매뉴얼·안전 조건·트러블슈팅 작성 기준
 - `references/*.md`: 필요 시 로드하는 세부 규칙 (`widget-system.md` 위젯 선택·삽입·접근성 규칙, `visual-html-system.md` SVG→HTML 템플릿 모드→vt 매핑·삽입 규칙 포함)
-- `recipes/*.md`: 대표 요청 프롬프트 (18모드)
+- `recipes/*.md`: 대표 요청 프롬프트 (21모드)
 - `tests/*.md`: 검증 체크리스트 6종 (accessibility, golden-prompts, layout, quality, visual-regression, widget-checklist)
 - `schemas/*.json`: 메타/품질/시각 스키마 3종 (blog-meta, quality-report, visual-brief)

@@ -77,4 +77,4 @@
 
 ## 폭 정본 (v5.10.3)
 
-모든 18모드 레이아웃은 `.page-wide`(`--max-wide` 1020px) 컨테이너를 사용하고, 본문 단락(`main>section>p/ul/ol` 및 `main>article>section>p/ul/ol`)은 `theme.css`의 60rem(960px) 단락 오버라이드를 받는다. `.page`(780px)는 모드 레이아웃에 사용하지 않는다(갤러리·인덱스 셸 전용). 골격↔예제 폭 클래스 일치와 wide 골격의 60rem 등재는 검증기 `layout_width_consistency_issues` 게이트가 강제한다(v5.10.0 github-feature 폭 결함·골격 드리프트 5건의 재발 차단).
+모든 21모드 레이아웃은 `.page-wide`(`--max-wide` 1020px) 컨테이너를 사용하고, 본문 단락(`main>section>p/ul/ol` 및 `main>article>section>p/ul/ol`)은 `theme.css`의 60rem(960px) 단락 오버라이드를 받는다. `.page`(780px)는 모드 레이아웃에 사용하지 않는다(갤러리·인덱스 셸 전용). 골격↔예제 폭 클래스 일치와 wide 골격의 60rem 등재는 검증기 `layout_width_consistency_issues` 게이트가 강제한다(v5.10.0 github-feature 폭 결함·골격 드리프트 5건의 재발 차단).

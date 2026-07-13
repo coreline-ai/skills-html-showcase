@@ -4,7 +4,7 @@
 
 핵심 철학은 스킬 전체와 동일하게 **외부/동작 JS 0**이다. 본문 삽입형 다이어그램에는 `<script>`가 한 줄도 들어가지 않는다. 검색·복사·번역·스크린리더가 그대로 통하고, 모바일에서 자연스럽게 줄바꿈되며, 문서의 한 부분으로 읽힌다(허용되는 유일한 스크립트는 Article/Blog/SEO 모드의 `application/ld+json` JSON-LD 메타데이터뿐이며, 이는 동작 코드가 아니다).
 
-> 도입 이력: 이 라이브러리는 v4.5.0에서 본문 삽입형 HTML 다이어그램으로 편입되었고, 현행 v5.10.6 기준은 `vt-` 21종 + 18모드 §0.6 매핑이다.
+> 도입 이력: 이 라이브러리는 v4.5.0에서 본문 삽입형 HTML 다이어그램으로 편입되었고, 현행 v5.10.6 기준은 `vt-` 21종 + 21모드 §0.6 매핑이다.
 
 ## 1. 목적 — 왜 대형 SVG 대신 본문형 HTML인가
 
@@ -154,11 +154,11 @@ Manual 분석은 `hero-map`을 1순위로 사용해 독자 역할·목표·첫 �
 ## 7. 적용 갤러리
 
 - 카탈로그·전략 원본: `adaptive-html-final-html-view-templates-20-v1` 공개 데모(초기 20종 라이브 데모 + `SVG_TO_HTML_TEMPLATE_STRATEGY.md`; 이후 21번째 `soft-workflow-map`이 후순위 템플릿으로 편입됨).
-- 현행 18모드 참조 예제: **`skills/adaptive-html-final/examples/`** — v5.10.6 스킬 자산 기준의 18모드 레퍼런스이며, §0.6의 1순위 vt 계약과 8테마/무JS 검증을 통과해야 한다.
-- 역사적 적용 갤러리: **`adaptive-html-final-showcase-v6`** — v4.5 동결 시점의 모드별 페이지와 QA 스크린샷 확인용이다. 현재 18모드 기준선이나 21종 완전 적용 증거로 사용하지 않는다.
+- 현행 21모드 참조 예제: **`skills/adaptive-html-final/examples/`** — v5.10.6 스킬 자산 기준의 21모드 레퍼런스이며, §0.6의 1순위 vt 계약과 8테마/무JS 검증을 통과해야 한다.
+- 역사적 적용 갤러리: **`adaptive-html-final-showcase-v6`** — v4.5 동결 시점의 모드별 페이지와 QA 스크린샷 확인용이다. 현재 21모드 기준선이나 21종 완전 적용 증거로 사용하지 않는다.
 
 ## 관련 문서
 
 - `references/widget-system.md` — CSS 뷰 위젯 `wg-01`~`20`(인터랙션 보조 뷰, 이 라이브러리와 별개).
 - `references/visual-template-system.md` — `8000×6000` SVG 인포그래픽(hero·별첨용, HTML 템플릿이 대체하는 대상).
-- `references/mode-selection.md` — 18개 모드 라우팅.
+- `references/mode-selection.md` — 21개 모드 라우팅.

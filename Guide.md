@@ -22,7 +22,7 @@ html-for-beginners
 운영 원칙:
 
 1. 기본 HTML 생성·블로그·SEO·플랫폼 변환·스킬 감사를 `adaptive-html-final` 하나로 처리합니다.
-2. 18개 모드 라우터가 요청을 자동 분류하고, 모드별 레이아웃·글쓰기 규칙·시각 자산을 적용합니다.
+2. 21개 모드 라우터가 요청을 자동 분류하고, 모드별 레이아웃·글쓰기 규칙·시각 자산을 적용합니다.
 3. **외부/동작 JS는 0**입니다. 인터랙션은 `<details>`/`:checked`/`:target`/CSS 애니메이션으로만 구현하며, `<script>`는 JSON-LD(`type="application/ld+json"`)만 허용합니다.
 4. 출처가 확인되지 않은 최신 정보·수치·가격은 단정하지 않고 `확인 필요`로 표시합니다.
 5. **완료 기준은 `scripts/validate_output.py`가 `OK`를 내는 것**입니다(§9).
@@ -36,16 +36,16 @@ html-for-beginners
 | 디렉토리 | `skills/adaptive-html-final/` |
 | 설치용 패키지 | `skills/adaptive-html-final.skill` |
 | 파일 수 | 100개+ |
-| 모드 수 | 17개 |
-| 레이아웃 수 | 17개 |
+| 모드 수 | 21개 |
+| 레이아웃 수 | 21개 |
 | CSS 자산 | 12개 + `base.html` 템플릿 |
 | 비주얼 프로파일 | `widget`(v5) · `diagram`(v6) · `auto`(기본) |
 | 테마 | `light` · `light2` · `white` · `dark` · `dark2` · `blue` · `skyblue` · `sepia` — CSS-only 라디오 스위처 |
 | vt- SVG→HTML 템플릿 | 21종 |
 | wg- 뷰 위젯 | 20종 |
 | 본문 시각 자산 | body-icon 32 · editorial-pattern 8 · soft-shape 36 · workflow 도판 10 |
-| references | 19종 |
-| recipes | 17종 (모드 17/17 완비) |
+| references | 23종 |
+| recipes | 21종 (모드 21/21 완비) |
 | schemas | 3종 (blog-meta, quality-report, visual-brief) |
 | 스크립트 | `validate_output.py`(정적 게이트), `render_visual_svg.py`(SVG 렌더러) |
 | aliases | `adaptive-html-learning-ultimate`, `adaptive-html-blog-writer-v2` |
@@ -71,17 +71,17 @@ assets/body-icons.css(.json)   # 본문 compact 아이콘 32종 (bi-, aria-hidde
 assets/editorial-patterns.css  # 본문 구조 패턴 8종 (chronology·core-insight·before-after 등)
 assets/shape-visuals.css       # soft-shape 도형 36종 앵커 (8000×6000 SVG)
 assets/workflow-visuals.css    # soft 워크플로우 도판 10종 (8000×6000 SVG, ~720px)
-assets/layouts/*.html          # 18개 모드별 HTML 골격 (모두 <main id="main">)
+assets/layouts/*.html          # 21개 모드별 HTML 골격 (모두 <main id="main">)
 assets/widget-templates/*.html       # wg- 위젯 삽입 골격 20종
 assets/visual-html-templates/*.html   # vt- 템플릿 삽입 골격 21종
 assets/editorial-pattern-templates/*.html  # 패턴 골격 8종
-references/*.md                # 필요할 때만 읽는 세부 규칙 (19종)
-recipes/*.prompt.md            # 모드별 대표 프롬프트 (17종)
+references/*.md                # 필요할 때만 읽는 세부 규칙 (23종)
+recipes/*.prompt.md            # 모드별 대표 프롬프트 (21종)
 schemas/*.json                 # blog-meta / quality-report / visual-brief
 tests/*                        # 품질/레이아웃/접근성/위젯/시각 회귀 체크리스트 + governance 테스트
 scripts/validate_output.py     # 정적 품질 게이트 (완료 필수, stdlib-only)
 scripts/render_visual_svg.py   # visual brief → 8000×6000 SVG 렌더러
-examples/*.html                # 모드별 예시 결과물 (17종 + index)
+examples/*.html                # 모드별 예시 결과물 (21종 + index)
 ```
 
 ## 4. 동작 파이프라인
@@ -93,7 +93,7 @@ examples/*.html                # 모드별 예시 결과물 (17종 + index)
 → 사실 / 해석 / 추론 / 확인 필요 분리
 → 독자 수준 판단
 → 비주얼 프로파일 결정 (widget / diagram / auto)   ← §5
-→ 모드 선택 (18모드 라우터)                          ← §6
+→ 모드 선택 (21모드 라우터)                          ← §6
 → 레이아웃 선택
 → 글쓰기·학습·SEO·플랫폼 최적화
 → 시각 자산 배치 (vt-/wg- · body-icon · shape · workflow · SVG 인포그래픽)
@@ -112,7 +112,7 @@ examples/*.html                # 모드별 예시 결과물 (17종 + index)
 
 ## 5. 비주얼 프로파일 (widget / diagram / auto)
 
-코어(18모드·레이아웃·코어 CSS)는 공유하되, 프로파일이 **어떤 시각 라이브러리를 쓸지** 게이트합니다.
+코어(21모드·레이아웃·코어 CSS)는 공유하되, 프로파일이 **어떤 시각 라이브러리를 쓸지** 게이트합니다.
 
 | 프로파일 | 별칭 | 쓰는 라이브러리 | CSS 번들 추가 | 삽입 단계 |
 |---|---|---|---|---|
@@ -127,7 +127,7 @@ examples/*.html                # 모드별 예시 결과물 (17종 + index)
 
 > **vt- vs SVG 인포그래픽**: 본문에서 읽혀야 하는 구조도(절차·비교·리스크·RACI·타임라인·플로우)는 `vt-`(네이티브 HTML, 검색·복사·반응형). hero 키비주얼·별첨·다운로드용 한 장 인포그래픽은 8000×6000 SVG(`figure.visual-figure > img`). 둘을 뒤바꾸지 않습니다.
 
-## 6. 18개 모드 사용표
+## 6. 21개 모드 사용표
 
 | 우선순위 | 모드 | 언제 쓰나 | 레이아웃 |
 |---:|---|---|---|
@@ -333,18 +333,18 @@ v1 허용 옵션은 `--formats`, `--themes`, `--scale`, `--viewport`, `--require
 
 ## 11. 빌드 완성도 기준선 (Canonical Baseline)
 
-현재 운영본은 v5.10.6이며, `skills/adaptive-html-final/examples/`가 18모드 참조 예제 세트입니다. 아래 과거 smoke 산출물은 각 생성 시점의 정적 품질 게이트를 통과한 기준선이고, 기존 13-topic 캐노니컬 산출물은 v5.2.3 기준선으로 보존합니다:
+현재 운영본은 v5.10.6이며, `skills/adaptive-html-final/examples/`가 21모드 참조 예제 세트입니다. 아래 과거 smoke 산출물은 각 생성 시점의 정적 품질 게이트를 통과한 기준선이고, 기존 13-topic 캐노니컬 산출물은 v5.2.3 기준선으로 보존합니다:
 
 ```text
 output/2026-06-05/adaptive-html-final-13-topics-20260605_083433/   (v5.2.3 기준선, HTML 14개, 게이트 OK)
 output/2026-06-07/youtube-analysis-vibecoding-gap-20260607_001503/      (v5.7.0 youtube_analysis, 게이트 OK)
 output/2026-06-07/manual-analysis-product-runbook-20260607_001503/      (v5.7.0 manual_analysis, 게이트 OK)
-skills/adaptive-html-final/examples/                         (v5.10.6 18모드 참조 예제, 게이트 OK)
+skills/adaptive-html-final/examples/                         (v5.10.6 21모드 참조 예제, 게이트 OK)
 ```
 
 13-topic 디렉토리는 13개 토픽을 v5.2.3의 강력한 정적 게이트(코어 해시·교차 누수·무 JS·접근성·모바일 안전 표·시각 자산 계약)에 맞춰 빌드한 **빌드 완성도 검증 기준선**입니다. 신규 산출물을 만들 때는 이 구조(`sources/` 스냅샷 + `css-integrity.json` + 코어 해시 마커)를 따르고, 게이트 `OK`를 완료 기준으로 삼습니다.
 
-> 참고: v4~v5.0 시점에 생성된 일부 `output/`는 그 사이 코어 CSS가 진화하면서 해시가 드리프트해 현재 게이트에서 `FAILED`가 날 수 있습니다(시점 고정 산출물). 최신 18모드 참조 기준선은 `skills/adaptive-html-final/examples/`이며, 오래된 output 폴더는 생성 시점 기준으로 해석합니다.
+> 참고: v4~v5.0 시점에 생성된 일부 `output/`는 그 사이 코어 CSS가 진화하면서 해시가 드리프트해 현재 게이트에서 `FAILED`가 날 수 있습니다(시점 고정 산출물). 최신 21모드 참조 기준선은 `skills/adaptive-html-final/examples/`이며, 오래된 output 폴더는 생성 시점 기준으로 해석합니다.
 
 ## 12. 추천 운영 규칙
 
@@ -358,4 +358,4 @@ skills/adaptive-html-final/examples/                         (v5.10.6 18모드 �
 
 ## 13. 한 줄 요약
 
-`adaptive-html-final`(**v5.10.6**)은 18개 모드 라우터 + editorial 디자인 시스템에 **비주얼 프로파일(widget·diagram·auto)·8-테마·vt-/wg- 시각 라이브러리·정적 품질 게이트**까지 갖춘, 외부 JS 0의 결정론적 단일 통합 운영본입니다.
+`adaptive-html-final`(**v5.10.6**)은 21개 모드 라우터 + editorial 디자인 시스템에 **비주얼 프로파일(widget·diagram·auto)·8-테마·vt-/wg- 시각 라이브러리·정적 품질 게이트**까지 갖춘, 외부 JS 0의 결정론적 단일 통합 운영본입니다.

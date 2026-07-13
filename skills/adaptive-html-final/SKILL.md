@@ -5,7 +5,7 @@ description: |
   고품질 한국어 HTML 학습자료, 전문가 리포트, 공개 아티클, 교육 모듈, 블로그 원고, SEO 대시보드,
   플랫폼별 블로그 변환, 스킬 감사 리포트, 레퍼런스 매뉴얼, 비교 매트릭스, 케이스 스터디,
   랜딩 브리프, 체크리스트 플레이북, GitHub 저장소 분석 리포트, YouTube 영상 분석 리포트, 역할별 매뉴얼 분석 리포트까지 생성하는 최종형 다중 모드 스킬.
-  adaptive-html-learning-ultimate의 13개 모드 라우터·레이아웃·평가 루브릭을 뼈대로 삼고 GitHub 분석·YouTube 분석·매뉴얼 분석·GitHub 기능/도입 가이드·사업계획서(business_plan)를 추가한 18개 모드 체계를,
+  adaptive-html-learning-ultimate의 13개 모드 라우터·레이아웃·평가 루브릭을 뼈대로 삼고 GitHub 분석·YouTube 분석·매뉴얼 분석·GitHub 기능/도입 가이드·사업계획서(business_plan)를 추가한 21개 모드 체계를,
   adaptive-html-blog-writer의 블로그 글쓰기·SEO·플랫폼·박스 선택 상세 규칙을 흡수하고,
   현행 examples급 editorial 디자인 시스템을 유지하고, 필요 시 8000×6000 SVG 인포그래픽 Visual Template System을 섹션별로 배치한다.
 
@@ -27,7 +27,7 @@ description: |
 
 # Adaptive HTML Final
 
-> Version 5.10.6 · "시각 결함 하드닝(G1~G8) — 표 상태코드 nowrap(.status-pill)·`.try` 중첩 흰 카드 링크 대비(--accent-2)·source-preserve gutter·mini-card 리듬·TOC/h2 anchor DOM 가드·core-insight reset·prefers-contrast(A5). 코어 CSS 직접 수정·검출 게이트 G2~G8 신설(거버넌스 186)" (이전 5.10.5 — 접근성·스코프 하드닝)
+> Version 5.10.6 · "시각 결함 하드닝(G1~G8) — 표 상태코드 nowrap(.status-pill)·`.try` 중첩 흰 카드 링크 대비(--accent-2)·source-preserve gutter·mini-card 리듬·TOC/h2 anchor DOM 가드·core-insight reset·prefers-contrast(A5). 코어 CSS 직접 수정·검출 게이트 G2~G8 신설(거버넌스 227)" (이전 5.10.5 — 접근성·스코프 하드닝)
 
 ## 0. Identity
 
@@ -51,13 +51,13 @@ description: |
 2. **두 위젯 라이브러리는 별개다.**
    - (1) **CSS 뷰 위젯 `wg-01`~`wg-20`** = `assets/widgets.css` + `assets/widget-templates/*.html`. 섹션 보강용 인터랙션 위젯이며 `wg-<id>-` 네임스페이스로 격리된다(Step 4.6).
    - (2) **SVG→HTML 템플릿 `vt-` 21종** = `assets/visual-html.css` + `assets/visual-html-templates/01..21.html`. 본문에 그대로 삽입하는 in-flow 다이어그램(이미지가 아닌 네이티브 HTML 구조도)이다(Step 4.7). 두 라이브러리를 혼동하거나 한쪽으로 대체하지 않는다.
-3. **비주얼 프로파일 → 18모드 라우터(§3) 순서가 단일 진입점**이다. (a) 먼저 비주얼 프로파일(`widget` / `diagram` / `auto`=기본)을 결정한다 — 현행 정본 인자는 `profile=widget|diagram|auto`뿐이며 `trim→lowercase→정규화`한다(무효 토큰은 `invalid_profile` 실패). 인자 미지정 시 **비대화형(AGENTS.md 경유 Codex/Gemini)은 무조건 `auto`·질문 금지**, 대화형(Claude 대화)은 1회 질문 가능(결정론 보장은 인자 명시 경로 한정). 역사적 style 별칭은 파서 호환 목적 외 문서·manifest·예제 표면에 노출하지 않는다. (b) 이어 모드 선택 → 레이아웃 → 프로파일에 따라 vt-템플릿(diagram·auto)·wg-위젯(widget·auto)을 §0.6에서 고른다. 프로파일이 §0.6 결정표의 **어느 열을 쓸지** 게이트한다(widget=wg 열만/diagram=vt 열만/auto=둘 다).
+3. **비주얼 프로파일 → 21모드 라우터(§3) 순서가 단일 진입점**이다. (a) 먼저 비주얼 프로파일(`widget` / `diagram` / `auto`=기본)을 결정한다 — 현행 정본 인자는 `profile=widget|diagram|auto`뿐이며 `trim→lowercase→정규화`한다(무효 토큰은 `invalid_profile` 실패). 인자 미지정 시 **비대화형(AGENTS.md 경유 Codex/Gemini)은 무조건 `auto`·질문 금지**, 대화형(Claude 대화)은 1회 질문 가능(결정론 보장은 인자 명시 경로 한정). 역사적 style 별칭은 파서 호환 목적 외 문서·manifest·예제 표면에 노출하지 않는다. (b) 이어 모드 선택 → 레이아웃 → 프로파일에 따라 vt-템플릿(diagram·auto)·wg-위젯(widget·auto)을 §0.6에서 고른다. 프로파일이 §0.6 결정표의 **어느 열을 쓸지** 게이트한다(widget=wg 열만/diagram=vt 열만/auto=둘 다).
 4. **코어 CSS 인라인 + 해시 마커.** 출력은 `theme.css + components.css + visual-components.css + layouts.css + print.css`를 코어로 인라인하고, 인라인 `<style>`에 `adaptive-html-final-core-css-sha256: <64hex>` 주석 마커를 남긴다. `widgets.css`(위젯 사용 시)와 `visual-html.css`(vt-템플릿 사용 시)는 조건부 인라인이며, 인라인 순서는 §5 Step 5의 합본 순서를 따른다.
 5. **전 모드 공통 시각 정본(github 전용→전역 승격, CSS·validator에 완전 잠금).** 모드와 무관하게 다음을 지킨다 — 검증기 `section_surface_contract_gate`·`direct_section_title_icon_policy_gate`·`numbered_h2_body_icon_gate`·`body_icon_diversity_gate`가 전역 강제한다.
    - **layout-* main의 직접 자식 `section`은 `.try`를 제외하고 카드/view surface를 가진다 — class 유무와 무관.** `.page(-wide)?>section:not(.try)`(및 `>article>section:not(.try)`)에 카드 배경·보더(layouts.css 규칙)를 유지한다(무클래스 한정 아님: `.summary-card`·`.risk-matrix`·`.check-grid` 등 class 있는 직접 섹션도 카드여야 한다). 규칙이 인라인 CSS에서 빠지면 실패(`section_surface_css_missing`). 검정 `.try`(Next Actions hero)만 제외. grid형 섹션은 카드 안에 내부 카드를 두는 github 패턴을 따른다.
    - **직접 섹션은 제목 없는 카드로 시작하지 않는다. 첫 `h2`는 `body-icon → (num/no) → title` 순서를 따른다 — body-icon은 필수.** `<h2><span class="body-icon …"><svg aria-hidden></svg></span><span class="num">N</span>제목</h2>` 정본. 직접 섹션에 h2가 없으면 실패(`direct_section_h2_missing`), 직접 섹션 h2에 body-icon이 없으면 실패(`direct_section_h2_missing_body_icon`). **번호는 강제하지 않는다**(미리보기·개요처럼 아이콘만 있고 번호 없는 정당한 섹션 존재). 추가로 번호 칩(`.num`/`.no`)을 단 h2는 어느 위치(index/nav shell 포함)든 body-icon이 없으면 실패(`numbered_h2_missing_body_icon`). **body-icon 내부 SVG는 직접 작성하지 않는다. 반드시 `assets/body-icons.json`의 32종 SVG를 그대로 삽입한다**(전부 `viewBox="0 0 40 40"` + `bi-*` 토큰 클래스). `viewBox="0 0 24 24"` Lucide/Feather식 임의 SVG, 새 path 직접 작성, 외부 아이콘 복사는 실패(`body_icon_not_in_catalog`, `body_icon_viewbox_invalid`). 필요하면 `python3 skills/adaptive-html-final/scripts/body_icon_markup.py <icon-id>`로 정본 마크업을 출력해 복사한다. **섹션 아이콘은 의미별로 골라야 하며, 같은 SVG를 모든 섹션에 반복 주입하지 않는다**(`body_icon_diversity_too_low` 실패). 예: manual_analysis는 판정=shield, source=file, role=people, path=arrow, safety=shield-plus, recipe=checklist, reference=doc, decision=diamond, troubleshooting=warning, operations=clock, audit=search, next=flag처럼 섹션 기능별로 구분한다.
    - **모드별 템플릿 증명은 선택이 아니라 계약이다.** `mode_template_contract_gate`가 §0.6 행의 1순위 vt와 권장 wg 사용을 검사한다. `diagram/auto`는 해당 모드 1순위 vt marker를 최소 1회 포함해야 하고, `widget/auto`는 권장 `wg-NN-` 중 최소 1개를 포함해야 한다. 예제/쇼케이스는 특히 이 계약을 시각적으로 보여야 하며, 같은 카드/리스트 틀만 반복하면 실패다.
-6. **완료 단계 = 격리 검증 후 통합·동기화.** 모드별 isolated `validate_output.py OK` 이후에도 (a) 인라인 코어/조건부 CSS를 **현재 자산으로 재주입**하고 `sources/assets/*.css`·`css-integrity.json`·source manifest를 동기화(stale 스냅샷 금지), (b) `index`/네비 shell, (c) 전 페이지 일괄 validate + `quality_contract_check.py`(붕어빵·얇은 문서 차단)를 **별도 통합 단계**로 통과시킨다. `validate OK`는 필요조건일 뿐 완료 기준이 아니다. 18모드 일괄 생성 시 공통 생성기로 찍지 말고 모드별 layout/recipe/reference/template만 사용한다. 통합 실행: `python3 scripts/completion_check.py <output_dir>`(validate+quality_contract+governance+render-audit 4종을 한 번에 강제. 신규 산출물은 `sources/render-audit.json`과 1280/390 screenshot artifact가 필요하며, 과거 생성 산출물(공개 데모/테스트) 전체는 스킬 정본 입력이 아니다).
+6. **완료 단계 = 격리 검증 후 통합·동기화.** 모드별 isolated `validate_output.py OK` 이후에도 (a) 인라인 코어/조건부 CSS를 **현재 자산으로 재주입**하고 `sources/assets/*.css`·`css-integrity.json`·source manifest를 동기화(stale 스냅샷 금지), (b) `index`/네비 shell, (c) 전 페이지 일괄 validate + `quality_contract_check.py`(붕어빵·얇은 문서 차단)를 **별도 통합 단계**로 통과시킨다. `validate OK`는 필요조건일 뿐 완료 기준이 아니다. 21모드 일괄 생성 시 공통 생성기로 찍지 말고 모드별 layout/recipe/reference/template만 사용한다. 통합 실행: `python3 scripts/completion_check.py <output_dir>`(validate+quality_contract+governance+render-audit 4종을 한 번에 강제. 신규 산출물은 `sources/render-audit.json`과 1280/390 screenshot artifact가 필요하며, 과거 생성 산출물(공개 데모/테스트) 전체는 스킬 정본 입력이 아니다).
 7. **마이크로 레이아웃 정본 계약 + 작성 프로토콜(v5.10.4).** 검증 OK 이후에도 눈검수에서 어긋나는 마이크로 결함(번호 pill 줄바꿈·tag 접착·rail 접착·카드 내부 간격·밋밋한 직접 문단·단색 rail·footer 좌측 붙음)은 **정본 컴포넌트로만 닫는다**: 텍스트-only 정보도 `lede-note`/`source-note`/`core-insight`/`summary-card`/`impact-card`/`chron-card` 중 하나로 감싸고(`main article>section>p:not(.h2-sub)` 직접 노출 금지), 반복 카드 rail은 `.tl-color-cycle`(`--vt-red/--vt-blue/--vt-green/--vt-gold` 3종+ 순환)을 쓰며, 번호 pill·카드 간격·footer 정렬은 정본 `.no/.num`·`.cmp-card`·`body>footer`를 그대로 쓴다. 비정본 `template-card-head`·`source-preserve-static` 류 클래스 발명 금지. 전체 절차: [docs/adaptive-html-final-template-authoring-protocol.md](../../docs/adaptive-html-final-template-authoring-protocol.md).
 
 **운영 원칙:**
@@ -98,7 +98,7 @@ vt-템플릿 파일명은 `assets/visual-html-templates/NN-<name>.html`(NN=01..2
 
 > **프로파일 오버레이(§0.5 프로파일 결정 선행):** 위 표의 **Layout 열은 프로파일과 무관하게 공통**이다. `diagram` 프로파일은 **vt-템플릿 열만**, `widget` 프로파일은 **wg-위젯 열만**, `auto`(기본)는 **두 열 모두** 사용한다. 이 표가 mode→wg / mode→vt 매핑의 **단일 출처**이며, §4.6·§4.7·`references/widget-system.md`·`references/visual-html-system.md`·`AGENTS.md` §3은 이 표의 파생/참조다(불일치 시 §0.6 우선).
 
-> **Mode Registry(실행 정본):** 모드 결정표 데이터의 실행 정본은 `modes/NN-<mode>.json` 18종이며, `validate_output.py`가 이를 읽어 `MODE_TEMPLATE_CONTRACTS`를 구성한다(`_build_mode_template_contracts_from_registry`). 위 §0.6 표·`AGENTS.md §3`·`widget-system.md`는 사람이 읽는 표현이고, `scripts/check_mode_registry_sync.py`가 Registry와 byte/semantic 일치를 강제한다(불일치 시 실패). **신규 모드 추가는 `docs/adaptive-html-final-add-mode-runbook.md`를 따른다 — Registry JSON이 결정표 데이터 편집점이다.**
+> **Mode Registry(실행 정본):** 모드 결정표 데이터의 실행 정본은 `modes/NN-<mode>.json` 21종이며, `validate_output.py`가 이를 읽어 `MODE_TEMPLATE_CONTRACTS`를 구성한다(`_build_mode_template_contracts_from_registry`). 위 §0.6 표·`AGENTS.md §3`·`widget-system.md`는 사람이 읽는 표현이고, `scripts/check_mode_registry_sync.py`가 Registry와 byte/semantic 일치를 강제한다(불일치 시 실패). **신규 모드 추가는 `docs/adaptive-html-final-add-mode-runbook.md`를 따른다 — Registry JSON이 결정표 데이터 편집점이다.**
 
 ## 1. Operating Principles
 
@@ -190,7 +190,7 @@ assets/base.html       = 단일 HTML 렌더링 기본 골격
 assets/layouts/*.html  = 모드별 골격
 visual-templates/*.svg.tpl = 8000×6000 SVG 인포그래픽 템플릿
 scripts/render_visual_svg.py = visual brief → SVG 렌더러
-examples/01..18_*.html = 18모드 풀 스킬급 참조 예제(실제 코어 CSS 인라인·8테마 스위처·body-icon·editorial/vt/wg 컴포넌트, 자기완결·무 JS, 모드별 시그니처 구조 확인용) + examples/index.html 갤러리
+examples/01..21_*.html = 21모드 풀 스킬급 참조 예제(실제 코어 CSS 인라인·8테마 스위처·body-icon·editorial/vt/wg 컴포넌트, 자기완결·무 JS, 모드별 시그니처 구조 확인용) + examples/index.html 갤러리
 ```
 
 공개 블로그 품질이 필요하면 `<head>`에 Pretendard Variable 폰트 링크를 포함한다. 오프라인/내부 문서이면 fallback으로도 동작한다.
@@ -513,7 +513,7 @@ vt-템플릿 21종(파일명 `<name>`): hero-map, decision-tree, risk-matrix, ti
 
 - `references/design-dna.md` — 디자인 토큰 원천
 - `references/editorial-design-system.md` — 현재 디자인 DNA와 컴포넌트 규칙
-- `references/mode-selection.md` — 18개 모드 라우팅
+- `references/mode-selection.md` — 21개 모드 라우팅
 - `references/layout-system.md` — 레이아웃별 블록
 - `references/writing-system.md` — 모드별 글쓰기 원칙
 - `references/github-analysis-system.md` — GitHub 저장소 분석 리포트 정보 구조·판단 기준·출처 한계

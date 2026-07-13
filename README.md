@@ -10,7 +10,7 @@
 
 [![skill](https://img.shields.io/badge/skill-adaptive--html--final-e63946)](skills/adaptive-html-final)
 [![version](https://img.shields.io/badge/version-5.10.6-3178C6)](skills/adaptive-html-final/CHANGELOG.md)
-[![modes](https://img.shields.io/badge/modes-21-2a7d5a)](#-17개-모드)
+[![modes](https://img.shields.io/badge/modes-21-2a7d5a)](#-21개-모드)
 [![profiles](https://img.shields.io/badge/profiles-widget·diagram·auto-8a5e10)](#️-비주얼-프로파일)
 [![themes](https://img.shields.io/badge/themes-8--theme-111827)](#-8-테마-시스템)
 [![libraries](https://img.shields.io/badge/view%20widgets-20-e63946)](#️-비주얼-프로파일) [![svg→html](https://img.shields.io/badge/svg→html%20templates-21-d99a38)](#️-비주얼-프로파일)
@@ -452,12 +452,12 @@ skills-html-showcase/
 ├── skills/adaptive-html-final/        # 통합 스킬 + .skill 패키지
 │   ├── SKILL.md                       # 라우터 · 워크플로우 · 품질 게이트 (단일 출처)
 │   ├── manifest.json                  # name/version/modes/layouts/profiles/theme_system (v5.10.6 · 21모드)
-│   ├── assets/                        # base.html · CSS 12종 · 위젯/도식/패턴/테마 자산 · 18개 레이아웃 골격
-│   ├── modes/         (17)            # 모드 결정표 Registry (validator가 직접 읽는 실행 정본)
-│   ├── references/    (19)            # 모드/레이아웃/글쓰기/SEO/감사/GitHub·YouTube·Manual·기능가이드 규칙
-│   ├── recipes/       (17)            # 모드별 대표 프롬프트
+│   ├── assets/                        # base.html · CSS 12종 · 위젯/도식/패턴/테마 자산 · 21개 레이아웃 골격
+│   ├── modes/         (21)            # 모드 결정표 Registry (validator가 직접 읽는 실행 정본)
+│   ├── references/    (23)            # 모드/레이아웃/글쓰기/SEO/감사/GitHub·YouTube·Manual·기능가이드 규칙
+│   ├── recipes/       (21)            # 모드별 대표 프롬프트
 │   ├── schemas/       (3)             # blog-meta · quality-report · visual-brief
-│   ├── scripts/       (7)             # validate_output · quality_contract_check · completion_check ·
+│   ├── scripts/       (8)             # validate_output · quality_contract_check · completion_check ·
 │   │                                  #   render_visual_svg · mode_registry · check_mode_registry_sync · body_icon_markup
 │   ├── tests/                         # 거버넌스 게이트 (227/227) + 레이아웃/접근성 체크리스트
 │   ├── visual-templates/ (7)          # 8000×6000 SVG 템플릿
@@ -617,7 +617,7 @@ npm run export:output -- output/<생성한_산출물_디렉터리> --clean
 | [`skills/adaptive-html-final/SKILL.md`](skills/adaptive-html-final/SKILL.md) | 스킬 본체 — §0.6 결정표 · 워크플로우 · 품질 게이트 |
 | [`Guide.md`](Guide.md) | 사용 가이드 |
 | [`docs/adaptive-html-final-template-authoring-protocol.md`](docs/adaptive-html-final-template-authoring-protocol.md) | 공식 템플릿 기반 작성 프로토콜 (M1~M10 실패→정답) |
-| [`references/`](skills/adaptive-html-final/references) | 모드·레이아웃·글쓰기·SEO·감사·GitHub/YouTube/Manual 규칙 19종 |
+| [`references/`](skills/adaptive-html-final/references) | 모드·레이아웃·글쓰기·SEO·감사·GitHub/YouTube/Manual 규칙 23종 |
 | [`CHANGELOG.md`](skills/adaptive-html-final/CHANGELOG.md) | 전체 변경 이력 |
 
 ---
