@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GrantProof Core 운영자 매뉴얼 · operator_manual_html pretest</title>
+<meta name="description" content="GrantProof Core 운영자 매뉴얼 신규 모드 선 반영 테스트: 공고문, 인터뷰, 증거 원장, 제출본 검증 워크플로우를 무 JS 단일 HTML로 구성합니다.">
+<style>
+:root{
+  --bg:#f5f5f0;--card:#fff;--ink:#1a1a1a;--ink-soft:#454545;--ink-mute:#6a6a6a;--line:#d9d8cf;
+  --accent:#e63946;--accent-2:#b72d38;--accent-soft:#fce5e7;--accent-wash:#fff2f2;--on-accent:#fff;
+  --dark:#1a1a1a;--dark-soft:#252522;--code:#1f1f1d;--focus:#1a56db;
+  --good-bg:#eef7f1;--good-border:#b8d8c2;--good-ink:#1f5040;--good-label:#1f6f4e;
+  --warn-bg:#fff7e3;--warn-border:#ead090;--warn-ink:#70501d;--warn-label:#956514;
+  --danger-bg:#fff0ee;--danger-border:#e8b8b2;--danger-ink:#6a302b;--danger-label:#c62433;
+  --blue-bg:#eef5fb;--blue-border:#c7dae8;--blue-ink:#23465e;--radius-sm:8px;--radius-md:12px;--radius-lg:18px;
+  --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --max-reading:790px;--max-wide:1120px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;
+}
+:root:has(#ahf-light2:checked){--bg:#f5f6f8;--card:#fff;--line:#e4e7ec;--ink:#16161d;--ink-soft:#303747;--ink-mute:#606877;--accent:#e23b2e;--accent-2:#b72d38;--accent-soft:#fdecea;--accent-wash:#fff5f4}
+:root:has(#ahf-white:checked){--bg:#fff;--card:#fff;--line:#e4e4ea;--ink:#16181d;--ink-soft:#42474f;--ink-mute:#6b6f78;--accent-soft:#f8ecee;--accent-wash:#fff}
+:root:has(#ahf-skyblue:checked){--bg:#eef4fb;--card:#fff;--line:#d4e0f0;--ink:#15233a;--ink-soft:#344960;--ink-mute:#647088;--accent:#2f6fdb;--accent-2:#1d4fa6;--accent-soft:#e3edfb;--accent-wash:#f4f8fd;--good-bg:#eafaf1;--good-label:#1f7754;--blue-bg:#e3edfb;--blue-border:#c2d8f2}
+:root:has(#ahf-sepia:checked){--bg:#f4ecd8;--card:#fbf6e9;--line:#e2d6bb;--ink:#3a2f25;--ink-soft:#5c4d3e;--ink-mute:#857260;--accent:#a85c32;--accent-2:#7e4426;--accent-soft:#f0e2cf;--accent-wash:#fbf6e9;--on-accent:#fbf6e9;--dark:#2d2418;--dark-soft:#3a2f23;--warn-bg:#f7eed6;--warn-border:#e3cf9f;--blue-bg:#f1ecd9;--blue-border:#ddcfac}
+:root:has(#ahf-dark:checked){--bg:#0c0d10;--card:#1a1c22;--line:#2c2d34;--ink:#ececea;--ink-soft:#c3c3bc;--ink-mute:#9a9a92;--accent:#ff6b75;--accent-2:#ff909a;--accent-soft:#3a2228;--accent-wash:#181217;--on-accent:#0c0d10;--dark:#050608;--dark-soft:#0c0d10;--code:#070809;--good-bg:#0f2419;--good-border:#244b37;--good-ink:#bfe2cf;--good-label:#80d2a7;--warn-bg:#241f13;--warn-border:#48402a;--warn-ink:#ead9b2;--warn-label:#e3bd6a;--danger-bg:#291513;--danger-border:#5c2f2a;--danger-ink:#f2c6c0;--danger-label:#ff8c87;--blue-bg:#15212e;--blue-border:#2e4458;--blue-ink:#bfd6e8;color-scheme:dark}
+:root:has(#ahf-dark2:checked){--bg:#0f1014;--card:#191b21;--line:#333640;--ink:#ece8df;--ink-soft:#c8c2b7;--ink-mute:#9d968b;--accent:#c8747c;--accent-2:#d9a0a5;--accent-soft:#2d2024;--accent-wash:#171116;--on-accent:#0f1014;--dark:#0b0c10;--dark-soft:#14161b;--code:#0b0c10;--good-bg:#18251d;--good-border:#324a39;--good-ink:#c5d9cb;--good-label:#8fb59d;--warn-bg:#27231c;--warn-border:#4b412b;--warn-ink:#d8c89e;--warn-label:#b8a06f;--danger-bg:#2b1e21;--danger-border:#593238;--danger-ink:#dfb8bd;--danger-label:#d79aa1;--blue-bg:#18232b;--blue-border:#2d4251;--blue-ink:#bfd0db;color-scheme:dark}
+:root:has(#ahf-blue:checked){--bg:#0a1a3c;--card:#13294e;--line:#2c3e63;--ink:#e7edf7;--ink-soft:#bcc7da;--ink-mute:#8a97ad;--accent:#5b9cf0;--accent-2:#92bdff;--accent-soft:#16345e;--accent-wash:#0e2344;--on-accent:#0d1320;--dark:#06122c;--dark-soft:#11203f;--code:#06122c;--good-bg:#13241c;--good-border:#2c4a39;--good-ink:#c2dccd;--good-label:#86bd9f;--warn-bg:#221f12;--warn-border:#473f25;--warn-ink:#e0d3a6;--warn-label:#c9b06f;--danger-bg:#2a1719;--danger-border:#5a2f33;--danger-ink:#e6bcc0;--danger-label:#e08c92;--blue-bg:#102746;--blue-border:#27425f;--blue-ink:#bcd3ea;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.78;letter-spacing:-.012em;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}a{color:inherit;text-underline-offset:3px}a:hover{color:var(--accent)}a:focus-visible,summary:focus-visible,label:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}.skip{position:absolute;left:-999px;top:8px;background:var(--dark);color:#fff;padding:10px 14px;border-radius:9px;z-index:900}.skip:focus{left:8px}.reading-progress{position:fixed;inset:0 auto auto 0;height:4px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--accent),var(--accent-2));z-index:700;animation:read-progress linear both;animation-timeline:scroll(root)}@keyframes read-progress{to{transform:scaleX(1)}}.ahf-themebar{position:fixed;top:14px;right:16px;z-index:600;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:276px;background:color-mix(in srgb,var(--card) 96%,transparent);border:1px solid var(--line);border-radius:14px;padding:5px;box-shadow:0 3px 10px rgba(0,0,0,.10);backdrop-filter:blur(8px)}.ahf-themebar input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}.ahf-themebar label{display:flex;align-items:center;justify-content:center;min-height:30px;padding:5px 4px;border-radius:9px;font-size:12px;font-weight:800;color:var(--ink-mute);cursor:pointer;white-space:nowrap;text-align:center}.ahf-themebar label:hover{background:var(--accent-soft);color:var(--ink)}.ahf-themebar input:checked+label{background:var(--accent-2);color:var(--on-accent)}.page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:56px 0 88px}.header{padding:0 0 28px;border-bottom:1px solid var(--line);margin-bottom:30px}.kicker{display:inline-flex;align-items:center;gap:8px;min-height:28px;padding:6px 12px 6px 10px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:11px;letter-spacing:.13em;color:var(--accent-2);font-weight:900;text-transform:uppercase;margin:0 0 20px}.kicker:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}h1{font-family:var(--serif);font-size:clamp(31px,4.4vw,47px);line-height:1.17;letter-spacing:-.035em;margin:0 0 14px;font-weight:900}.sub{font-size:17px;color:var(--ink-soft);max-width:860px;margin:0 0 20px}.generated-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 0;flex-wrap:wrap}.generated-date{margin:0;font-size:13px;color:var(--ink-mute)}.lens-strip{display:flex;gap:6px;flex-wrap:wrap}.lens-strip-label{font-size:11px;font-weight:900;color:var(--ink-mute);align-self:center}.lens-chip,.meta span,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--ink-mute);font-weight:750}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.meta .hot{border-color:var(--accent-2);color:var(--accent-2);background:var(--accent-soft)}section{margin:34px 0;scroll-margin-top:22px}.section-card,.toc-map,.source-note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px 26px;box-shadow:0 10px 26px rgba(0,0,0,.035)}section>h2,.section-card>h2{font-family:var(--serif);font-size:clamp(23px,3vw,29px);line-height:1.28;letter-spacing:-.02em;margin:0 0 14px;font-weight:900}.num{display:inline-grid;place-items:center;min-width:34px;height:34px;padding:0 9px;border:2px solid var(--ink);border-radius:999px;font:900 14px/1 var(--sans);margin-right:10px;vertical-align:3px}.num.is-key{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}.block-code{font:800 12px/1.2 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--accent-2);letter-spacing:.02em;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent-2) 28%,var(--line));padding:3px 7px;border-radius:7px}.h2-sub{font-size:14px;color:var(--ink-mute);margin:0 0 22px 46px;max-width:800px}.section-card p{margin:0 0 15px;color:var(--ink-soft);font-size:15px}.section-card p:last-child{margin-bottom:0}h3{font-size:17px;line-height:1.4;margin:0 0 8px;color:var(--ink);font-weight:900}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.mini-card,.evidence-card,.gate-card,.lane-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:17px 18px;min-width:0}.mini-card p,.evidence-card p,.gate-card p,.lane-card p{font-size:14px;margin:0;color:var(--ink-soft)}.label{display:inline-flex;align-items:center;min-height:24px;border-radius:999px;padding:3px 8px;margin:0 0 9px;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent-2) 25%,var(--line))}.label.good{color:var(--good-label);background:var(--good-bg);border-color:var(--good-border)}.label.warn{color:var(--warn-label);background:var(--warn-bg);border-color:var(--warn-border)}.label.danger,.label.cap{color:var(--danger-label);background:var(--danger-bg);border-color:var(--danger-border)}.hero-analogy{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;background:linear-gradient(135deg,var(--card),var(--accent-wash));border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-lg);padding:24px 26px;margin:24px 0}.hero-analogy strong{color:var(--ink)}.metric-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}.metric{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px}.metric b{display:block;font-size:22px;line-height:1;color:var(--accent);margin-bottom:6px}.metric span{font-size:12px;color:var(--ink-mute);font-weight:800}.toc-map{margin:22px 0 34px}.toc-map .label{margin-bottom:10px}.toc-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.toc-pill{display:inline-flex;align-items:center;gap:7px;min-height:34px;border:1px solid var(--line);border-radius:999px;padding:6px 11px;background:var(--card);text-decoration:none;font-size:13px;font-weight:800;color:var(--ink-soft)}.toc-pill b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:11px}.toc-pill:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-2)}.gate-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}.gate-card{border-top:4px solid var(--line)}.gate-card.pass{border-top-color:var(--good-label)}.gate-card.hold{border-top-color:var(--warn-label)}.gate-card.capture{border-top-color:var(--danger-label)}.status-line{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.status{display:inline-flex;align-items:center;min-height:28px;border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:12px;font-weight:850;color:var(--ink-mute);background:var(--card)}.status.ok{border-color:var(--good-border);background:var(--good-bg);color:var(--good-label)}.status.warn{border-color:var(--warn-border);background:var(--warn-bg);color:var(--warn-label)}.status.cap{border-color:var(--danger-border);background:var(--danger-bg);color:var(--danger-label)}.swimlane{position:relative;background:var(--accent-wash);border:1px solid var(--line);border-radius:var(--radius-lg);padding:18px;margin:16px 0 0}.swimlane:before{content:"";position:absolute;left:24px;right:24px;top:72px;height:4px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2),color-mix(in srgb,var(--accent) 50%,#f0a44a));opacity:.72}.lane-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;position:relative}.lane-card{position:relative;padding-top:42px;background:color-mix(in srgb,var(--card) 94%,transparent)}.lane-dot{position:absolute;top:12px;left:16px;width:24px;height:24px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:12px;font-weight:900;display:grid;place-items:center;box-shadow:0 0 0 5px var(--accent-soft)}.lane-kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);font-weight:900;margin-bottom:8px}.lane-list{list-style:none;margin:10px 0 0;padding:0}.lane-list li{font-size:13px;color:var(--ink-soft);margin:6px 0;padding-left:14px;position:relative}.lane-list li:before{content:"";position:absolute;left:0;top:.75em;width:6px;height:6px;border-radius:2px;background:var(--accent)}.wg-08-proto{max-width:100%;margin:8px 0 0;color:var(--ink)}.wg-08-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}.wg-08-title{font-size:13px;font-weight:900;letter-spacing:.04em;color:var(--ink-soft)}.wg-08-steps{list-style:none;display:flex;gap:8px;margin:0;padding:0;flex-wrap:wrap}.wg-08-steps li{margin:0}.wg-08-steps a{display:block;text-align:center;font-size:12px;font-weight:850;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink-mute);text-decoration:none}.wg-08-steps a:hover{border-color:var(--accent);color:var(--accent)}.wg-08-device{background:var(--dark);border-radius:18px;padding:14px;box-shadow:0 12px 30px rgba(0,0,0,.18)}.wg-08-viewport{position:relative;background:var(--bg);border-radius:13px;min-height:390px;overflow:hidden}.wg-08-screen{position:absolute;inset:0;padding:22px;display:flex;flex-direction:column;gap:14px;background:var(--bg);opacity:0;visibility:hidden;transform:translateX(16px);transition:opacity .24s ease,transform .24s ease,visibility .24s}.wg-08-screen--default{opacity:1;visibility:visible;transform:none}.wg-08-viewport:has(.wg-08-screen:target) .wg-08-screen--default{opacity:0;visibility:hidden}.wg-08-screen:target{opacity:1;visibility:visible;transform:none;z-index:2}.wg-08-shead{display:flex;align-items:center;gap:10px}.wg-08-shead h3{margin:0;font-size:19px}.wg-08-badge{font-size:11px;font-weight:900;letter-spacing:.05em;padding:3px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent-2);border:1px solid var(--accent-2)}.wg-08-list{list-style:none;margin:0;padding:0;display:grid;gap:9px}.wg-08-list li{display:flex;justify-content:space-between;gap:12px;margin:0;padding:11px 12px;background:var(--card);border:1px solid var(--line);border-radius:9px;font-size:14px;color:var(--ink-soft)}.wg-08-total{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px dashed var(--line);font-size:14px;color:var(--ink-soft)}.wg-08-cta{margin-top:auto;display:block;text-align:center;background:var(--accent);color:var(--on-accent);font-weight:900;padding:11px 14px;border-radius:10px;text-decoration:none}.wg-08-cta:hover{background:var(--accent-2);color:var(--on-accent)}.wg-08-back{font-size:13px;font-weight:800;color:var(--ink-mute);text-decoration:none}.wg-08-nav{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}.wg-08-nav .wg-08-cta{margin-top:0;flex:1}.wg-08-ok{display:flex;align-items:flex-start;gap:14px;background:var(--good-bg);border:1px solid var(--good-border);border-radius:13px;padding:16px}.wg-08-check{width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:50%;background:var(--good-label);color:var(--on-accent);font-size:22px;font-weight:900}.wg-08-ok p{margin:0;font-size:14px;color:var(--good-ink)}.evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}.evidence-card{position:relative;overflow:hidden}.evidence-card:after{content:"";position:absolute;right:-26px;top:-26px;width:90px;height:90px;border-radius:999px;background:var(--accent-soft)}.evidence-card>*{position:relative;z-index:1}.fixture{display:grid;grid-template-columns:1fr 1fr;gap:14px}.fixture .safe{border-left:4px solid var(--good-label);background:var(--good-bg)}.fixture .unsafe{border-left:4px solid var(--danger-label);background:var(--danger-bg)}.quote-box{border:1px dashed var(--line);border-radius:13px;padding:14px 16px;background:var(--card);font-size:14px;color:var(--ink-soft);margin-top:12px}.quote-box strong{color:var(--ink)}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;margin-top:16px;background:var(--card)}table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}caption{text-align:left;padding:12px 14px;font-weight:900;color:var(--ink);border-bottom:1px solid var(--line)}th,td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{background:var(--dark);color:#fff;font-size:12px;letter-spacing:.06em;text-transform:uppercase}td{color:var(--ink-soft)}tbody tr:last-child td{border-bottom:0}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--accent-soft);color:var(--accent-2);padding:1px 6px;border-radius:5px;font-size:.9em}.try{background:var(--dark);color:#f7f7ef;border-radius:var(--radius-lg);padding:26px 28px;margin-top:38px}.try p,.try li{color:#d8d8cf}.try h2{color:#fff}.try .num{border-color:#fff;color:#fff}.try .label{background:rgba(255,255,255,.08);color:#ffb6c0;border-color:rgba(255,255,255,.18)}.try .mini-card,.try .evidence-card,.try .gate-card,.try .lane-card{background:var(--card);color:var(--ink);border-color:var(--line)}.try .mini-card h3,.try .evidence-card h3,.try .gate-card h3,.try .lane-card h3{color:var(--ink)}.try .mini-card p,.try .evidence-card p,.try .gate-card p,.try .lane-card p{color:var(--ink-soft)}.try .mini-card .label,.try .evidence-card .label,.try .gate-card .label,.try .lane-card .label{background:var(--accent-soft);color:var(--accent-2);border-color:color-mix(in srgb,var(--accent-2) 28%,var(--line))}.source-note strong{color:var(--ink)}.source-note p{margin:0;color:var(--ink-soft)}.float-toc{position:fixed;right:18px;bottom:18px;z-index:650;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 14px;border-radius:999px;text-decoration:none;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:var(--on-accent);font-size:13px;font-weight:900;box-shadow:0 10px 24px rgba(183,45,56,.25)}.float-toc:hover{color:var(--on-accent);filter:saturate(1.06) brightness(.98)}footer{border-top:1px solid var(--line);margin-top:50px;padding-top:18px;color:var(--ink-mute);font-size:13px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:880px){.page-wide{width:min(100% - 34px,var(--max-wide));padding-top:40px}.ahf-themebar{position:static;width:276px;max-width:calc(100% - 28px);margin:10px auto 14px}.hero-analogy,.fixture{grid-template-columns:1fr}.grid,.grid.two,.gate-grid,.lane-grid,.evidence-grid,.metric-row{grid-template-columns:1fr}.swimlane:before{display:none}.wg-08-viewport{min-height:470px}.generated-row{align-items:flex-start}.lens-strip{width:100%}}
+@media(max-width:560px){h1{font-size:28px}.section-card,.toc-map,.source-note,.try{padding:20px 18px}.h2-sub{margin-left:0}.num{min-width:30px;height:30px;font-size:13px}.wg-08-screen{padding:18px}.wg-08-viewport{min-height:520px}.float-toc{right:12px;bottom:12px}.toc-pill{width:100%}.wg-08-bar{display:block}.wg-08-steps{margin-top:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reading-progress{display:none}.wg-08-screen{transition:none;transform:none}}
+@media print{.ahf-themebar,.float-toc,.skip,.reading-progress{display:none}.page-wide{width:auto;padding:0}.section-card,.toc-map,.source-note{box-shadow:none;break-inside:avoid}.wg-08-screen{position:static;opacity:1;visibility:visible;transform:none}.wg-08-device{background:#fff;box-shadow:none;border:1px solid #ddd}body{background:#fff;color:#111}}
+</style>
+</head>
+<body>
+<fieldset class="ahf-themebar" aria-label="테마 선택">
+  <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">그레이</label>
+  <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark2"><label for="ahf-dark2">로즈</label>
+  <input type="radio" name="ahf-theme" id="ahf-blue"><label for="ahf-blue">블루</label>
+  <input type="radio" name="ahf-theme" id="ahf-skyblue"><label for="ahf-skyblue">스카이</label>
+  <input type="radio" name="ahf-theme" id="ahf-sepia"><label for="ahf-sepia">세피아</label>
+</fieldset>
+<a class="skip" href="#main">본문 바로가기</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<a class="float-toc" href="#toc" aria-label="목차로 이동">목차 <span aria-hidden="true">↗</span></a>
+<main id="main" class="page-wide layout-operator-manual">
+  <header class="header">
+    <div class="kicker"><span>OPERATOR MANUAL HTML · PRE-IMPLEMENTATION SMOKE</span></div>
+    <h1>GrantProof Core 운영자 매뉴얼: 공고문 → 인터뷰 → 증거 원장 → 제출본 검증</h1>
+    <p class="sub">신규 모드 <strong>operator_manual_html</strong>이 추가됐다고 가정하고, 운영자가 실제 업무에서 따라갈 수 있는 매뉴얼형 화면을 선검수하기 위한 출력 전용 HTML입니다. 실제 화면 근거가 필요한 항목은 <strong>CAPTURE_REQUIRED</strong>로 남겨 과장 없이 표시합니다.</p>
+    <div class="generated-row">
+      <p class="generated-date">pretest generated: 2026-06-21 · output-only visual/content smoke · source mutation: none</p>
+      <div class="lens-strip"><span class="lens-strip-label">Lens</span><span class="lens-chip">Operator</span><span class="lens-chip">Evidence</span><span class="lens-chip">Safety Fixture</span><span class="lens-chip">Handoff</span></div>
+    </div>
+    <div class="meta"><span class="hot">mode: operator_manual_html</span><span>profile: auto-like</span><span>8 themes</span><span>no behavioral JS</span><span>single-file HTML</span><span>CAPTURE_REQUIRED honest markers</span></div>
+  </header>
+
+  <nav id="toc" class="toc-map" aria-label="operator manual 목차">
+    <span class="label">Reader Role Router</span>
+    <p>필수 스켈레톤 블록 12개를 모두 실제 섹션으로 배치했습니다. 운영자는 현재 단계에서 필요한 블록으로 바로 이동할 수 있습니다.</p>
+    <div class="toc-pills">
+      <a class="toc-pill" href="#artifact_format_gate"><b>1</b>format gate</a>
+      <a class="toc-pill" href="#audience_scope"><b>2</b>audience</a>
+      <a class="toc-pill" href="#source_hierarchy"><b>3</b>source hierarchy</a>
+      <a class="toc-pill" href="#workflow_inventory"><b>4</b>inventory</a>
+      <a class="toc-pill" href="#system_overview"><b>5</b>system overview</a>
+      <a class="toc-pill" href="#workflow_map"><b>6</b>workflow map</a>
+      <a class="toc-pill" href="#lesson_boundaries"><b>7</b>boundaries</a>
+      <a class="toc-pill" href="#step_evidence_cards"><b>8</b>evidence cards</a>
+      <a class="toc-pill" href="#risk_safe_fixture"><b>9</b>safety fixture</a>
+      <a class="toc-pill" href="#verification_record"><b>10</b>verification</a>
+      <a class="toc-pill" href="#handoff_boundary"><b>11</b>handoff</a>
+      <a class="toc-pill" href="#source_note"><b>12</b>source note</a>
+    </div>
+  </nav>
+
+  <section id="artifact_format_gate" class="section-card">
+    <h2><span class="num is-key">1</span><span class="block-code">artifact_format_gate</span> 산출물 형식 게이트</h2>
+    <p class="h2-sub">이 문서는 공식 모드 등록 전 선반영 화면입니다. 따라서 “통과처럼 보이는 데모”보다, 무엇이 준비됐고 무엇이 캡처 대기인지 분리하는 것이 게이트의 핵심입니다.</p>
+    <div class="hero-analogy">
+      <div>
+        <span class="label">Gate Verdict</span>
+        <h3>운영자가 실행 가능한 단일 HTML</h3>
+        <p>공고문 입력부터 제출본 검증까지의 업무 흐름을 한 화면에서 따라가도록 구성했습니다. 모든 링크는 문서 내부 앵커이며 외부 네트워크, 외부 CSS, 동작 스크립트를 사용하지 않습니다.</p>
+      </div>
+      <div class="metric-row" aria-label="형식 요약">
+        <div class="metric"><b>1</b><span>HTML 파일</span></div>
+        <div class="metric"><b>8</b><span>CSS 테마</span></div>
+        <div class="metric"><b>12</b><span>필수 블록</span></div>
+        <div class="metric"><b>0</b><span>동작 JS</span></div>
+      </div>
+    </div>
+    <div class="gate-grid">
+      <article class="gate-card pass"><span class="label good">PASS</span><h3>구조</h3><p><code>html lang="ko"</code>, viewport, h1 1개, <code>main id="main"</code>, 목차 앵커와 우측 하단 목차 이동 버튼을 포함합니다.</p></article>
+      <article class="gate-card hold"><span class="label warn">PENDING</span><h3>공식 검증</h3><p>신규 모드를 실제 스킬 소스에 추가하지 않았으므로 공식 validator 통과 목적이 아닙니다. 화면 선검수용 smoke output으로만 해석합니다.</p></article>
+      <article class="gate-card capture"><span class="label cap">CAPTURE_REQUIRED</span><h3>화면 근거</h3><p>GrantProof Core 실제 화면, 로그, 증거 원장 필드명은 캡처 후 확정합니다. 현재 문구는 운영 매뉴얼 골격과 안전 fixture를 검토하기 위한 가상 표기입니다.</p></article>
+    </div>
+  </section>
+
+
+
+  <section id="audience_scope" class="section-card">
+    <h2><span class="num">2</span><span class="block-code">audience_scope</span> 독자와 권한 범위</h2>
+    <p class="h2-sub">이 매뉴얼의 독자는 “글을 잘 쓰는 사람”이 아니라, 보조금 제출 전 증거 체인을 깨지 않도록 운영하는 사람입니다.</p>
+    <div class="grid">
+      <article class="mini-card"><span class="label good">Primary</span><h3>운영자</h3><p>공고문 원문, 인터뷰 기록, 증거 원장, 제출본 검증 결과를 연결합니다. 화면 캡처와 로그 링크를 요구할 권한이 있습니다.</p></article>
+      <article class="mini-card"><span class="label">Secondary</span><h3>작성자</h3><p>인터뷰 답변과 제출 문안을 작성하지만, 근거가 없는 문장을 확정하지 않습니다. 운영자가 요청한 보강 질문에 답합니다.</p></article>
+      <article class="mini-card"><span class="label warn">Reviewer</span><h3>최종 검수자</h3><p>제출 전 누락·모순·스크린샷 미확인 항목을 판정합니다. CAPTURE_REQUIRED가 남으면 제출 가능 상태로 보지 않습니다.</p></article>
+    </div>
+    <div class="status-line"><span class="status ok">범위: 운영 절차</span><span class="status warn">비범위: 법률 자문</span><span class="status cap">화면명: CAPTURE_REQUIRED</span></div>
+  </section>
+
+  <section id="source_hierarchy" class="section-card">
+    <h2><span class="num">3</span><span class="block-code">source_hierarchy</span> 출처 위계</h2>
+    <p class="h2-sub">공고문이 최상위, 실제 화면 캡처가 운영 근거, 인터뷰는 보강 설명입니다. 출처 위계를 뒤집으면 제출본이 설득 문안처럼 보이지만 검증 문서가 되지 못합니다.</p>
+    <div class="grid">
+      <article class="mini-card"><span class="label">Level 1</span><h3>공고문 원문</h3><p>지원 자격, 제출 서류, 평가 기준, 마감일의 정본입니다. 운영자는 모든 요구사항에 공고문 위치를 붙입니다.</p></article>
+      <article class="mini-card"><span class="label cap">Level 2</span><h3>제품 화면·로그</h3><p>GrantProof Core의 실제 화면 캡처, 증거 원장 row, 제출본 검증 로그입니다. 화면 근거가 필요한 항목은 CAPTURE_REQUIRED로 남깁니다.</p></article>
+      <article class="mini-card"><span class="label warn">Level 3</span><h3>인터뷰·메모</h3><p>신청자의 맥락과 수치 설명입니다. 공고문 요구사항을 보강할 수는 있지만 단독 증거로 승격하지 않습니다.</p></article>
+    </div>
+  </section>
+
+  <section id="workflow_inventory" class="section-card">
+    <h2><span class="num">4</span><span class="block-code">workflow_inventory</span> 업무 목록 인벤토리</h2>
+    <p class="h2-sub">운영 매뉴얼은 화면 설명서가 아니라 업무 단위 목록입니다. 각 업무는 입력, 작업자, 근거, 완료 기준, 실패 분기를 가져야 합니다.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>GrantProof Core 운영 업무 인벤토리</caption>
+        <thead><tr><th>업무</th><th>입력</th><th>담당</th><th>완료 기준</th><th>근거 상태</th></tr></thead>
+        <tbody>
+          <tr><td>공고문 수집</td><td>PDF/URL/텍스트</td><td>운영자</td><td>요구사항 원장에 항목화</td><td><span class="status warn">원문 필요</span></td></tr>
+          <tr><td>인터뷰 설계</td><td>공고 요구사항 + 신청자 정보</td><td>작성자</td><td>누락 질문 0개</td><td><span class="status ok">템플릿 가능</span></td></tr>
+          <tr><td>증거 원장 작성</td><td>답변, 파일, 화면 캡처</td><td>운영자</td><td>모든 claim에 evidence id 연결</td><td><span class="status cap">CAPTURE_REQUIRED</span></td></tr>
+          <tr><td>제출본 검증</td><td>최종 문안 + evidence ledger</td><td>검수자</td><td>미근거 문장 0개, 제출 패키지 잠금</td><td><span class="status cap">CAPTURE_REQUIRED</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="system_overview" class="section-card">
+    <h2><span class="num">5</span><span class="block-code">system_overview</span> 시스템 개요</h2>
+    <p class="h2-sub">운영자는 “어느 화면에서 무엇을 확인하는가”를 알아야 하지만, 현재는 pre-implementation smoke이므로 실제 UI 이름은 캡처 후 확정합니다.</p>
+    <div class="grid">
+      <article class="mini-card"><span class="label">Notice Intake</span><h3>공고문 해체</h3><p>공고문을 자격·서류·평가·마감·금지 조건으로 나누고, 각 조건에 원문 위치를 연결합니다.</p></article>
+      <article class="mini-card"><span class="label">Interview Builder</span><h3>질문 생성</h3><p>공고문 조건별로 인터뷰 질문을 만들고, 답변이 어떤 증거를 요구하는지 표시합니다.</p></article>
+      <article class="mini-card"><span class="label cap">Evidence Ledger</span><h3>증거 원장</h3><p>답변, 파일, 화면 캡처, 운영 로그를 claim 단위로 연결합니다. 실제 필드명은 CAPTURE_REQUIRED입니다.</p></article>
+      <article class="mini-card"><span class="label cap">Submission Check</span><h3>제출본 검증</h3><p>최종 제출본의 모든 주장에 evidence id가 있는지 확인합니다. 검증 화면과 로그는 CAPTURE_REQUIRED입니다.</p></article>
+      <article class="mini-card"><span class="label warn">Audit Trail</span><h3>변경 이력</h3><p>근거 교체, 답변 수정, 제출본 재생성 시 누가 왜 변경했는지 남깁니다. 저장 정책은 실제 시스템 확인 전까지 보류합니다.</p></article>
+      <article class="mini-card"><span class="label good">Operator Copy</span><h3>안내 문구</h3><p>사용자에게 보내는 보강 요청은 과장 없이 “근거 확보가 필요하다”는 문장으로 제한합니다.</p></article>
+    </div>
+  </section>
+
+  <section id="workflow_map" class="section-card">
+    <h2><span class="num is-key">6</span><span class="block-code">workflow_map</span> 공고문 → 인터뷰 → 증거 원장 → 제출본 검증</h2>
+    <p class="h2-sub">process-swimlane 느낌의 핵심 워크플로우입니다. 네 단계가 모두 닫혀야 운영자는 제출 가능 여부를 말할 수 있습니다.</p>
+    <div class="swimlane" role="img" aria-label="GrantProof Core 운영 워크플로우 맵">
+      <div class="lane-grid">
+        <article class="lane-card"><span class="lane-dot">1</span><div class="lane-kicker">Notice</div><h3>공고문 요구사항 잠금</h3><p>지원 조건과 제출 서류를 원문 기준으로 분해합니다.</p><ul class="lane-list"><li>마감일/제출 채널</li><li>평가 기준</li><li>금지·제외 조건</li></ul></article>
+        <article class="lane-card"><span class="lane-dot">2</span><div class="lane-kicker">Interview</div><h3>인터뷰 질문 배정</h3><p>요구사항마다 답변 책임자와 증거 유형을 붙입니다.</p><ul class="lane-list"><li>답변자 지정</li><li>추가 질문</li><li>사용자 문구 발송</li></ul></article>
+        <article class="lane-card"><span class="lane-dot">3</span><div class="lane-kicker">Ledger</div><h3>증거 원장 연결</h3><p>각 주장에 파일, 캡처, 로그, 인터뷰 근거를 연결합니다.</p><ul class="lane-list"><li>evidence id</li><li>CAPTURE_REQUIRED</li><li>모순 플래그</li></ul></article>
+        <article class="lane-card"><span class="lane-dot">4</span><div class="lane-kicker">Submit</div><h3>제출본 검증</h3><p>미근거 문장과 누락 서류를 제거한 뒤 제출 패키지를 잠급니다.</p><ul class="lane-list"><li>claim coverage</li><li>서류 체크</li><li>검증 기록</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="lesson_boundaries" class="section-card">
+    <h2><span class="num">7</span><span class="block-code">lesson_boundaries</span> 운영자가 가르칠 것과 넘길 것</h2>
+    <p class="h2-sub">매뉴얼이 모든 문제를 해결하려고 하면 위험한 판단까지 운영자에게 밀어 넣습니다. 교육 범위와 인수인계 범위를 분리합니다.</p>
+    <div class="grid two">
+      <article class="mini-card"><span class="label good">Teach</span><h3>운영자가 설명할 수 있는 것</h3><p>공고문 요구사항을 어디에 입력하는지, 인터뷰 질문이 왜 생성됐는지, evidence id가 왜 필요한지, 제출본 검증 결과를 어떻게 읽는지 설명합니다.</p></article>
+      <article class="mini-card"><span class="label danger">Do not teach as fact</span><h3>운영자가 확정하지 않는 것</h3><p>선정 가능성, 법적 적합성, 제출 후 심사 결과, 실제 화면 캡처가 없는 기능 동작은 단정하지 않습니다. 이 항목은 CAPTURE_REQUIRED 또는 담당자 이관으로 남깁니다.</p></article>
+    </div>
+  </section>
+
+  <section id="step_evidence_cards" class="section-card">
+    <h2><span class="num">8</span><span class="block-code">step_evidence_cards</span> 단계별 근거 카드</h2>
+    <p class="h2-sub">wg-08/clickable-flow 느낌의 CSS-only 단계 카드입니다. 상단 단계 버튼 또는 화면 안 버튼으로 업무 화면을 전환합니다.</p>
+    <section class="wg-08-proto" aria-label="GrantProof Core 단계별 근거 카드">
+      <div class="wg-08-bar">
+        <span class="wg-08-title">GrantProof Core · Operator Flow</span>
+        <ol class="wg-08-steps" aria-label="단계 이동">
+          <li><a href="#flow-notice">1 공고문</a></li>
+          <li><a href="#flow-interview">2 인터뷰</a></li>
+          <li><a href="#flow-ledger">3 원장</a></li>
+          <li><a href="#flow-submit">4 검증</a></li>
+        </ol>
+      </div>
+      <div class="wg-08-device">
+        <div class="wg-08-viewport">
+          <article id="flow-notice" class="wg-08-screen wg-08-screen--default" tabindex="-1" aria-label="공고문 화면">
+            <header class="wg-08-shead"><span class="wg-08-badge">STEP 1</span><h3>공고문 요구사항 추출</h3></header>
+            <ul class="wg-08-list">
+              <li><span>지원 자격</span><span class="status warn">원문 위치 필요</span></li>
+              <li><span>제출 서류</span><span class="status warn">서류명 확정</span></li>
+              <li><span>평가 기준</span><span class="status ok">질문 후보 생성</span></li>
+            </ul>
+            <div class="wg-08-total"><span>다음 작업</span><strong>인터뷰 질문 배정</strong></div>
+            <a class="wg-08-cta" href="#flow-interview">인터뷰 단계로 이동 →</a>
+          </article>
+          <article id="flow-interview" class="wg-08-screen" tabindex="-1" aria-label="인터뷰 화면">
+            <header class="wg-08-shead"><span class="wg-08-badge">STEP 2</span><h3>인터뷰 답변 수집</h3></header>
+            <ul class="wg-08-list">
+              <li><span>대표자 경험</span><span class="status ok">답변 있음</span></li>
+              <li><span>성과 수치</span><span class="status cap">CAPTURE_REQUIRED</span></li>
+              <li><span>사용자 보강 요청</span><span class="status warn">문구 승인 필요</span></li>
+            </ul>
+            <div class="wg-08-nav"><a class="wg-08-back" href="#flow-notice">← 이전</a><a class="wg-08-cta" href="#flow-ledger">증거 원장으로 이동 →</a></div>
+          </article>
+          <article id="flow-ledger" class="wg-08-screen" tabindex="-1" aria-label="증거 원장 화면">
+            <header class="wg-08-shead"><span class="wg-08-badge">STEP 3</span><h3>증거 원장 연결</h3></header>
+            <ul class="wg-08-list">
+              <li><span>claim GP-C-014</span><span class="status ok">파일 연결</span></li>
+              <li><span>claim GP-C-018</span><span class="status cap">화면 캡처 필요</span></li>
+              <li><span>claim GP-C-022</span><span class="status warn">인터뷰 재질문</span></li>
+            </ul>
+            <div class="wg-08-nav"><a class="wg-08-back" href="#flow-interview">← 이전</a><a class="wg-08-cta" href="#flow-submit">제출본 검증으로 이동 →</a></div>
+          </article>
+          <article id="flow-submit" class="wg-08-screen" tabindex="-1" aria-label="제출본 검증 화면">
+            <header class="wg-08-shead"><span class="wg-08-badge">STEP 4</span><h3>제출본 검증</h3></header>
+            <div class="wg-08-ok"><span class="wg-08-check" aria-hidden="true">!</span><p><strong>제출 보류:</strong> CAPTURE_REQUIRED 2건과 사용자 문구 승인 1건이 남아 있습니다. 운영 검증 기록을 남긴 뒤 인수인계해야 합니다.</p></div>
+            <a class="wg-08-back" href="#flow-notice">처음으로 돌아가기</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <div class="evidence-grid">
+      <article class="evidence-card"><span class="label cap">CAPTURE_REQUIRED</span><h3>실제 화면 근거</h3><p>공고문 import 화면, evidence ledger 필드, 제출본 검증 로그는 아직 실제 캡처가 없으므로 확정 문구로 쓰지 않습니다.</p></article>
+      <article class="evidence-card"><span class="label good">Reusable</span><h3>운영 문구</h3><p>“근거가 연결되지 않은 주장은 제출본에서 보류됩니다. 관련 화면 캡처 또는 원본 파일을 evidence id에 연결해 주세요.”</p></article>
+    </div>
+  </section>
+
+  <section id="risk_safe_fixture" class="section-card">
+    <h2><span class="num">9</span><span class="block-code">risk_safe_fixture</span> 안전 fixture와 사용자 문구</h2>
+    <p class="h2-sub">실제 보조금 제출 업무는 과장된 문장 하나가 리스크가 될 수 있습니다. fixture는 “하지 말아야 할 말”과 “안전한 요청 문구”를 나란히 둡니다.</p>
+    <div class="fixture">
+      <article class="mini-card unsafe"><span class="label danger">Unsafe</span><h3>금지 문구</h3><p>“이 내용은 선정 가능성이 높습니다”, “화면 확인 없이도 제출 가능합니다”, “증거는 나중에 붙이면 됩니다”처럼 결과를 보장하거나 근거 없는 상태를 정상으로 말하지 않습니다.</p></article>
+      <article class="mini-card safe"><span class="label good">Safe Fixture</span><h3>사용자 문구</h3><p>“현재 제출본에는 실제 화면 근거가 필요한 항목이 남아 있습니다. 해당 화면 캡처 또는 원본 파일을 업로드하면 운영자가 evidence id와 연결해 검증하겠습니다.”</p></article>
+    </div>
+    <div class="quote-box"><strong>운영자 원칙:</strong> 근거가 없으면 설득하지 말고 표시합니다. CAPTURE_REQUIRED는 실패가 아니라, 제출 전 확인 지점을 정직하게 보존하는 상태입니다.</div>
+  </section>
+
+  <section id="verification_record" class="section-card">
+    <h2><span class="num">10</span><span class="block-code">verification_record</span> 운영 검증 기록</h2>
+    <p class="h2-sub">검증 기록은 제출 전 최종 판단의 근거입니다. 누가, 언제, 무엇을 확인했고, 무엇을 보류했는지 남깁니다.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>운영 검증 로그 예시</caption>
+        <thead><tr><th>검증 항목</th><th>확인 방식</th><th>상태</th><th>운영자 메모</th></tr></thead>
+        <tbody>
+          <tr><td>공고문 요구사항 전체 추출</td><td>원문 대조</td><td><span class="status warn">REVIEW</span></td><td>원문 PDF/URL 수집 후 항목 번호를 다시 부여해야 합니다.</td></tr>
+          <tr><td>인터뷰 답변-요구사항 연결</td><td>질문 매핑</td><td><span class="status ok">READY</span></td><td>질문 설계 골격은 작성 가능하나 실제 답변은 입력 전입니다.</td></tr>
+          <tr><td>증거 원장 화면 검증</td><td>실제 UI 캡처</td><td><span class="status cap">CAPTURE_REQUIRED</span></td><td>필드명, 상태 배지, evidence id 형식은 캡처 후 확정합니다.</td></tr>
+          <tr><td>제출본 검증 결과</td><td>검증 로그/체크리스트</td><td><span class="status cap">CAPTURE_REQUIRED</span></td><td>미근거 문장 수, 누락 서류 수, 패키지 잠금 화면이 필요합니다.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="handoff_boundary" class="section-card try">
+    <h2><span class="num">11</span><span class="block-code">handoff_boundary</span> 인수인계 경계</h2>
+    <p class="h2-sub">운영자가 끝낼 수 있는 것과 다음 담당자에게 넘겨야 하는 것을 명시합니다. 경계가 없으면 보류 항목이 조용히 제출본에 섞입니다.</p>
+    <div class="grid">
+      <article class="mini-card"><span class="label">운영자 → 작성자</span><h3>재질문 필요</h3><p>답변은 있으나 수치·기간·대상 정의가 모호한 claim을 질문 목록으로 넘깁니다.</p></article>
+      <article class="mini-card"><span class="label">운영자 → 검수자</span><h3>제출 보류 판단</h3><p>CAPTURE_REQUIRED가 남은 항목과 안전 fixture 위반 문구를 묶어 최종 검수자에게 넘깁니다.</p></article>
+      <article class="mini-card"><span class="label">운영자 → 제품팀</span><h3>화면 근거 요청</h3><p>실제 화면 경로, 상태 배지 의미, 로그 저장 위치가 확인되지 않으면 제품팀에 캡처 요청을 남깁니다.</p></article>
+    </div>
+  </section>
+
+  <section id="source_note" class="source-note">
+    <h2><span class="num">12</span><span class="block-code">source_note</span> 출처와 한계</h2>
+    <p><strong>Source note:</strong> 이 파일은 신규 모드 <code>operator_manual_html</code> 선반영 테스트용 산출물입니다. 실제 adaptive-html-final 소스, 문서, 개발계획에는 모드를 추가하지 않았으며, GrantProof Core의 실제 화면·로그·필드명은 이 작업에서 확인하지 않았습니다. 따라서 화면 근거가 필요한 항목은 의도적으로 <strong>CAPTURE_REQUIRED</strong>로 남겼습니다.</p>
+  </section>
+
+  <footer>
+    <p>Generated as output-only pre-implementation smoke artifact · path: output/2026-06-21/new-mode-pretest/operator-manual-html/index.html · no behavioral JS.</p>
+  </footer>
+</main>
+</body>
+</html>

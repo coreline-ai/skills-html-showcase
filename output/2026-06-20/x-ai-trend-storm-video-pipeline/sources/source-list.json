@@ -1,0 +1,57 @@
+[
+  {
+    "name": "OpenAI Help Center · Sora discontinuation",
+    "url": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+    "role": "Sora web/app 종료일과 API 종료일 확인"
+  },
+  {
+    "name": "OpenAI API Docs · Video generation with Sora",
+    "url": "https://developers.openai.com/api/docs/guides/video-generation",
+    "role": "Sora 2/Videos API deprecation 및 rapid iteration vs production-quality 구분"
+  },
+  {
+    "name": "Google Blog · Veo 3.1 and Flow advanced capabilities",
+    "url": "https://blog.google/innovation-and-ai/products/veo-updates-flow/",
+    "role": "Flow·Veo 3.1의 오디오·편집·제어 기능 확인"
+  },
+  {
+    "name": "Google Blog · Generative media models at I/O 2025",
+    "url": "https://blog.google/innovation-and-ai/products/generative-media-models-io-2025/",
+    "role": "Veo 3, Imagen 4, Flow 발표와 영상+오디오 방향 확인"
+  },
+  {
+    "name": "Runway · Introducing Gen-4",
+    "url": "https://runwayml.com/research/introducing-runway-gen-4",
+    "role": "캐릭터·장소·오브젝트 일관성 중심의 제작 흐름 확인"
+  },
+  {
+    "name": "Adobe Blog · Firefly Video Model",
+    "url": "https://blog.adobe.com/en/publish/2025/02/12/meet-firefly-video-model-ai-powered-creation-with-unparalleled-creative-control",
+    "role": "IP 친화·상업적 안전성 포지셔닝 확인"
+  },
+  {
+    "name": "Luma · Ray",
+    "url": "https://lumalabs.ai/ray",
+    "role": "multi-keyframe, reframe, footage modification 등 감독형 워크플로우 확인"
+  },
+  {
+    "name": "Pika · Agent / MCP",
+    "url": "https://pika.me/",
+    "role": "영상·이미지·음악·보이스오버를 에이전트/MCP로 묶는 방향 확인"
+  },
+  {
+    "name": "Kling · VIDEO 3.0 Omni User Guide",
+    "url": "https://kling.ai/quickstart/klingai-video-3-omni-model-user-guide",
+    "role": "native audio, multimodal input/output, storyboarding, consistency control 확인"
+  },
+  {
+    "name": "Stanford STORM Research Project",
+    "url": "https://storm-project.stanford.edu/research/storm/",
+    "role": "다관점 질문·검색 grounding 방법론 확인"
+  },
+  {
+    "name": "STORM paper · arXiv 2402.14207",
+    "url": "https://arxiv.org/abs/2402.14207",
+    "role": "STORM 원논문 추적성"
+  }
+]

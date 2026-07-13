@@ -1,0 +1,66 @@
+{
+  "mode": "education_html",
+  "profile": "auto",
+  "layout": "course-module.html",
+  "primary_vt": "timeline",
+  "topic": "데이터베이스 인덱스 — 검색은 어떻게 빨라지는가 (자유 주제 교육 모듈)",
+  "pipeline": "adaptive-html-learning-ultimate-merged(교육 방법론: 학습목표·사전개념·예제·실습·퀴즈·정답해설·복습체크·평가루브릭) → adaptive-html-final 5.10.5 education_html (하이브리드, scaffold-splice)",
+  "section_mapping": {
+    "01": "핵심 요약(summary-card, Learning Goal)",
+    "02": "학습 목표(learning-goals, 설명·판단·진단·피한다)",
+    "03": "시작 전 사전 개념 4가지(before_start)",
+    "04": "학습 로드맵 타임라인(vt-shell + tl-item = 1순위 vt)",
+    "05": "개념1 — 풀스캔 vs 인덱스(B-Tree, core-insight+box)",
+    "06": "예제 — 100만 행에서 한 명 찾기(code + tbl)",
+    "07": "실습1 — EXPLAIN으로 확인(practice-card)",
+    "08": "개념2 — 복합 인덱스·왼쪽 접두사(code + box)",
+    "09": "인덱스가 꺼지는 5가지(warning, tbl 안티패턴↔교정)",
+    "10": "실습2 — 무효화 재현·교정(practice-card)",
+    "11": "퀴즈·정답·평가 루브릭(quiz-box + tbl = quiz/answer_key)",
+    "12": "판단 흐름 — 이 쿼리가 인덱스를 탈까(wg-13 흐름도 중첩 = wg 마커)",
+    "13": "복습 체크리스트(review_checklist)",
+    "CTA": "바로 실행할 일(.try)"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/modes/04-education.json",
+      "sha256": "548049a9d5cbcd5b71020b0a7e8f31fe2198da8c4e1193268f5689e94b068728",
+      "why": "education_html 모드 정본(레이아웃·primary_vt·wg 후보 정의)"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/course-module.html",
+      "sha256": "18662fd21a7e1dc6e9544ccd1b1b60c8d6dafb0f322e0f04ff95f2fb3e131f04",
+      "why": "course-module 레이아웃 scaffold 정본"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/04_education_git_rebase_workshop.html",
+      "sha256": "037b03c6994ee01d191f7d9e9143c5bfa65ed0d5104697ad89fdbe00a522de29",
+      "why": "education 예제 — scaffold-splice 베이스(CSS/해시/테마바 보존)"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318",
+      "why": "body-icon 정본 카탈로그(32종 SVG)"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/theme.css",
+      "sha256": "2a9c8843a035138ff47b57cfc0806185c1b9cdfb3309a681022b689d8a32b1b6",
+      "why": "코어 CSS(테마 토큰) — 인라인 정본"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/components.css",
+      "sha256": "72c8f2570164acf5fc80330a57201f0feca579e1b6d9c3fdf1dcc5dcb81b7aa5",
+      "why": "코어 CSS(컴포넌트) — 인라인 정본"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widgets.css",
+      "sha256": "847e44c71564666d11f40084171e1b1c14f13436f43bd8b503d70e34dbf54851",
+      "why": "wg-13(판단 흐름 위젯) 정본 CSS"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-components.css",
+      "sha256": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
+      "why": "코어 CSS(visual-components) — 인라인 정본"
+    }
+  ]
+}

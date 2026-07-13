@@ -1,0 +1,199 @@
+{
+  "topic": "STORM식 다관점 리서치가 AI HTML 리포트 생성 파이프라인에 주는 실제 가치와 한계",
+  "slug": "storm-research-hybrid-storm-method",
+  "storm_mode": "solo-fallback",
+  "sources": [
+    {
+      "id": "storm-paper",
+      "title": "Assisting in Writing Wikipedia-like Articles From Scratch with Large Language Models",
+      "url": "https://arxiv.org/abs/2402.14207",
+      "kind": "paper",
+      "notes": "STORM 원논문. 다관점 질문·검색 grounding·FreshWiki 평가와 한계의 핵심 근거."
+    },
+    {
+      "id": "storm-project",
+      "title": "Stanford STORM Research Project",
+      "url": "https://storm-project.stanford.edu/research/storm/",
+      "kind": "project",
+      "notes": "NAACL 2024 프로젝트 페이지. pre-writing/writing 단계, +25% 조직성, +10% coverage, 오류 분석 근거."
+    },
+    {
+      "id": "storm-github",
+      "title": "stanford-oval/storm GitHub repository",
+      "url": "https://github.com/stanford-oval/storm",
+      "kind": "code",
+      "notes": "구현·패키지·Co-STORM 통합·모듈형 runner와 검색/모델 구성 근거."
+    },
+    {
+      "id": "costorm-paper",
+      "title": "Into the Unknown Unknowns: Engaged Human Learning through Participation in Language Model Agent Conversations",
+      "url": "https://arxiv.org/abs/2408.15232",
+      "kind": "paper",
+      "notes": "Co-STORM 원논문. unknown unknowns, multi-agent discourse, mind map, human preference 수치 근거."
+    },
+    {
+      "id": "costorm-acl",
+      "title": "Co-STORM ACL Anthology page",
+      "url": "https://aclanthology.org/2024.emnlp-main.554/",
+      "kind": "paper-page",
+      "notes": "EMNLP 2024 정식 메타데이터와 초록. 70%/78% 선호 수치 근거."
+    },
+    {
+      "id": "local-storm-skill",
+      "title": "local orginal_skill/storm-research/SKILL.md",
+      "url": "orginal_skill/storm-research/SKILL.md",
+      "kind": "local-skill",
+      "notes": "이번 하이브리드 실행 방식. full cmux 불가 시 solo fallback + 4프롬프트 파이프라인 규칙."
+    }
+  ],
+  "scan": {
+    "topic": "STORM식 다관점 리서치가 AI HTML 리포트 생성 파이프라인에 주는 실제 가치와 한계",
+    "mode": "solo-fallback",
+    "reason": "CMUX_WORKSPACE_ID와 cmux CLI가 없어 storm-research full 분산 모드 대신 인라인 4프롬프트 파이프라인을 사용했다.",
+    "souls": [
+      {
+        "name": "회의주의자",
+        "persona": "가장 강한 반론·검증 실패 모드 탐색",
+        "findings": [
+          "STORM의 평가상 이득은 조직성·coverage 지표이지, 자동으로 출판 가능한 글을 보장한다는 뜻이 아니다. GitHub README도 출판 품질 문서에는 상당한 편집이 필요하다고 적고, 숙련된 Wikipedia 편집자에게는 pre-writing 단계에서 유용하다고 범위를 제한한다. [출처: https://github.com/stanford-oval/storm]",
+          "원논문·프로젝트 페이지가 직접 지목한 실패 모드는 source bias transfer와 unrelated facts over-association이다. 즉 검색 grounding이 있어도 출처 편향과 부당한 연결은 남는다. [출처: https://storm-project.stanford.edu/research/storm/]",
+          "따라서 하이브리드 HTML 산출물은 ‘리서치 엔진의 최종판’이 아니라 ‘출처·모순·검토를 보존한 의사결정 초안’으로 배치해야 한다. [추론]"
+        ],
+        "conclusion": "STORM은 결론 제조기가 아니라 질문·출처·모순을 끌어내는 pre-writing 엔진으로 써야 안전하다.",
+        "uncertainty": "상용 deep-research 도구와의 비용/정확도 비교는 같은 벤치마크가 없으므로 이 문서에서는 단정하지 않는다."
+      },
+      {
+        "name": "경제학자",
+        "persona": "비용·운영 레버·ROI 관점",
+        "findings": [
+          "STORM은 긴 글 생성을 pre-writing과 writing으로 분리한다. 이 분리는 리서치/개요 품질을 먼저 검수해 재작성 비용을 낮추는 운영 레버가 된다. [출처: https://storm-project.stanford.edu/research/storm/]",
+          "공식 GitHub 예시는 conversation simulator에는 더 저렴하고 빠른 모델을, article generation에는 더 강한 모델을 쓰는 구성을 제안한다. 즉 비용 최적화의 핵심은 전 단계에 같은 고가 모델을 쓰지 않는 것이다. [출처: https://github.com/stanford-oval/storm]",
+          "2024~2025 업데이트에서 `knowledge-storm` 패키지, VectorRM, 다양한 retriever/search integration, LiteLLM 통합이 언급된다. 이는 도입 비용이 ‘프롬프트 하나’가 아니라 검색·모델·문서 저장소 구성 비용을 포함한다는 뜻이다. [출처: https://github.com/stanford-oval/storm]"
+        ],
+        "conclusion": "경제적 가치는 초안 품질보다 ‘질문/개요 검수 루프를 앞당기는 것’에서 먼저 발생한다.",
+        "uncertainty": "실제 조직 ROI는 주제 난도, 검색 API 비용, 편집자 검수 시간에 따라 달라져 별도 계측이 필요하다."
+      },
+      {
+        "name": "역사학자",
+        "persona": "RAG·장문 생성의 반복 패턴 관점",
+        "findings": [
+          "STORM 프로젝트는 긴 인용 글 생성이 어렵고 평가도 어렵기 때문에 pre-writing과 writing의 두 단계로 나눈다고 설명한다. [출처: https://storm-project.stanford.edu/research/storm/]",
+          "프로젝트 페이지는 직접 질문 생성을 지시하면 특히 long-tail 주제에서 피상적 질문으로 흐르기 쉽다고 설명하고, 이를 보완하기 위해 perspective-guided question asking과 simulated conversation을 쓴다. [출처: https://storm-project.stanford.edu/research/storm/]",
+          "Co-STORM은 사용자가 모든 질문을 직접 떠올려야 하는 QA 방식의 한계를 ‘unknown unknowns’ 문제로 재정의하고, 여러 LM agent 담화를 관찰·조향하게 만든다. [출처: https://aclanthology.org/2024.emnlp-main.554/]"
+        ],
+        "conclusion": "역사적 패턴은 ‘답변 생성’보다 ‘좋은 질문을 먼저 만드는 구조’가 장문 품질의 병목이라는 쪽으로 이동한다.",
+        "uncertainty": "STORM 계열이 모든 도메인에서 기존 편집 워크플로우를 대체한다는 근거는 없다."
+      },
+      {
+        "name": "학자",
+        "persona": "논문·평가·검증 가능 주장 중심",
+        "findings": [
+          "STORM 원논문은 Wikipedia-like long-form articles를 생성하기 위해 diverse perspectives, grounded simulated conversation, outline curation을 결합한다고 설명한다. [출처: https://arxiv.org/abs/2402.14207]",
+          "FreshWiki 평가에서 outline-driven RAG baseline과 비교해 STORM 산출물이 organized로 판단되는 비율이 25%p 높고, broad in coverage가 10% 높았다고 보고한다. [출처: https://storm-project.stanford.edu/research/storm/]",
+          "Co-STORM의 EMNLP 2024 페이지는 사용자가 검색엔진보다 Co-STORM을 선호한 비율 70%, RAG chatbot보다 선호한 비율 78%를 초록에 명시한다. [출처: https://aclanthology.org/2024.emnlp-main.554/]"
+        ],
+        "conclusion": "검증 가능한 주장은 ‘조직성·coverage·사용자 선호’ 개선까지이며, 사실 정확도 만능 주장은 이 자료만으로는 과장이다.",
+        "uncertainty": "수치들은 특정 벤치마크와 연구 설정의 결과이므로, 로컬 스킬 산출물에는 재검증 없이 그대로 일반화하지 않는다."
+      },
+      {
+        "name": "미래학자",
+        "persona": "하이브리드 도구·출판 파이프라인 전망",
+        "findings": [
+          "Co-STORM은 여러 LM agents가 사용자 대신 질문을 던지고, 사용자는 담화를 관찰하거나 조향한다는 모델이다. [출처: https://aclanthology.org/2024.emnlp-main.554/]",
+          "공식 GitHub README는 Co-STORM이 discourse를 hierarchical concept structure인 dynamic mind map으로 조직해 shared conceptual space를 만든다고 설명한다. [출처: https://github.com/stanford-oval/storm]",
+          "이 프로젝트의 hybrid 방식은 STORM의 ‘내용 생산/검토’와 adaptive-html-final의 ‘무 JS 단일 HTML·테마·검증 게이트’를 분리하므로, 리서치 품질과 배포 안정성을 각각 다른 계약으로 관리할 수 있다. [추론]"
+        ],
+        "conclusion": "다음 실용 지점은 ‘STORM으로 출처·모순·검토를 만들고, 검증 가능한 HTML 스킬로 발표물을 고정하는 이중 계약’이다.",
+        "uncertainty": "다중 agent 담화가 조직 내 의사결정 품질을 얼마나 높이는지는 실제 사용 로그와 편집자 평가가 필요하다."
+      }
+    ]
+  },
+  "contradiction_map": {
+    "consensus": [
+      "다섯 관점 모두 STORM의 강점이 최종 문장 생성보다 pre-writing 단계, 특히 질문 생성과 개요 품질에 있다고 본다.",
+      "출처 grounding이 있어도 편향 전이와 부당한 연결을 별도 검토해야 한다는 데 합의한다.",
+      "하이브리드 산출물은 연구 내용과 HTML 표현 계층을 분리해야 검증 가능성이 높아진다."
+    ],
+    "contradictions": [
+      {
+        "issue": "품질 개선 수치를 도입 근거로 삼을 수 있는가",
+        "a": "학자 관점: +25% 조직성, +10% coverage는 명확한 연구 결과이므로 pre-writing 품질 개선 근거가 된다. [출처: https://storm-project.stanford.edu/research/storm/]",
+        "b": "회의주의자 관점: 같은 자료가 publication-ready가 아니며 source bias transfer를 경고하므로 최종 품질 보장으로 읽으면 안 된다. [출처: https://github.com/stanford-oval/storm]",
+        "why_unresolved": "평가 지표가 조직/coverage 중심이라 factuality·편집 비용·도메인별 안전성까지 포괄하지 않는다."
+      },
+      {
+        "issue": "자동화는 비용을 줄이는가, 새 비용을 만드는가",
+        "a": "경제학자 관점: 개요와 질문을 먼저 검수하면 재작성 비용을 줄일 수 있다. [추론]",
+        "b": "경제학자/회의주의자 관점: 검색 API, retriever, 모델 계층, 편집 검수 비용이 새로 생긴다. [출처: https://github.com/stanford-oval/storm]",
+        "why_unresolved": "조직별 주제 난도와 편집자 시간 단가가 달라 공통 ROI를 단정할 수 없다."
+      },
+      {
+        "issue": "사용자가 질문해야 하는가, agent가 질문해야 하는가",
+        "a": "Co-STORM 관점: agent들이 사용자를 대신해 질문을 던져 unknown unknowns를 발견하게 한다. [출처: https://aclanthology.org/2024.emnlp-main.554/]",
+        "b": "회의주의자 관점: 사용자가 질문을 조향하지 않으면 출처 선택과 프레이밍이 시스템 편향으로 굳을 수 있다. [추론]",
+        "why_unresolved": "autonomous discovery와 human steering의 최적 비율은 과업과 위험 수준에 따라 달라진다."
+      }
+    ],
+    "blind_spots": [
+      "한국어·로컬 지식베이스에서 perspective mining과 검색 grounding 품질이 영어 Wikipedia-like 주제만큼 유지되는지 별도 검증이 필요하다.",
+      "비공개 내부 문서 기반 리서치에서 개인정보·보안 경계가 어디에 놓여야 하는지 이 자료만으로는 충분하지 않다.",
+      "adaptive-html-final 출력의 품질 게이트는 HTML 무결성 검증이지, STORM 리서치 사실성 검증을 자동 대체하지 않는다."
+    ],
+    "key_tension": "STORM은 ‘더 똑똑한 최종 저자’인가, 아니면 ‘더 좋은 질문과 개요를 만드는 사전 조사 엔진’인가. 이 하이브리드의 안전한 결론은 후자다."
+  },
+  "synthesis": {
+    "lead": "STORM식 다관점 리서치의 실질 가치는 최종 문장을 대신 써주는 데 있지 않다. 더 정확한 위치는 ‘질문을 다양화하고, 출처를 묶고, 모순을 드러내는 pre-writing 엔진’이다. 따라서 이 프로젝트의 안전한 하이브리드는 storm-research가 만든 내용만 사용하고, 표현·테마·무결성은 adaptive-html-final v5.10.5의 HTML 계약으로 고정하는 방식이다.",
+    "sections": [
+      {
+        "title": "1. 무엇이 검증됐나",
+        "body": "STORM 원논문은 diverse perspectives, grounded simulated conversation, outline curation을 결합해 long-form article pre-writing을 개선하는 시스템을 제안한다. Stanford 프로젝트 페이지는 FreshWiki 평가에서 organized 판단이 25%p, coverage breadth가 10% 높았다고 요약한다. 그러나 이 수치는 글쓰기 품질의 특정 차원을 말하며 사실 검증 만능이나 출판-ready를 뜻하지 않는다."
+      },
+      {
+        "title": "2. 왜 질문 생성이 병목인가",
+        "body": "프로젝트 페이지는 직접 prompting만으로는 long-tail 주제에서 피상적 질문이 나오기 쉽다고 설명한다. STORM은 관점을 먼저 부여하고, 검색 기반 답변으로 이해가 갱신될 때 후속 질문을 유도한다. 이는 HTML 리포트 생성에서도 ‘본문을 바로 쓰기’보다 ‘질문·개요·출처를 먼저 잠그기’가 품질 병목이라는 교훈으로 이어진다."
+      },
+      {
+        "title": "3. 어디서 실패하는가",
+        "body": "논문과 프로젝트 페이지가 직접 경고한 실패 모드는 source bias transfer와 over-association이다. 다시 말해, 출처를 붙였다고 해서 편향이 사라지지 않고, 서로 관련 없는 사실을 자연스러운 이야기로 엮는 위험이 남는다. 그래서 storm-research 파이프라인의 peer review 단계는 장식이 아니라 필수 게이트다."
+      },
+      {
+        "title": "4. 하이브리드 출력의 운영 해석",
+        "body": "이 산출물은 STORM의 HTML 빌더를 쓰지 않고, storm-research의 스캔·모순 지도·종합·동료 검토 내용만 가져온다. 그런 다음 adaptive-html-final의 expert_html 레이아웃, risk-matrix vt 템플릿, wg-16 구현 계획 위젯, CSS 해시·source snapshot 검증으로 표현 계층을 고정한다. 내용 검증과 표현 검증을 분리하는 것이 핵심이다."
+      }
+    ],
+    "unresolved": [
+      "내부 문서/한국어 자료에서 STORM식 perspective mining이 동일하게 효과적인지 검증이 필요하다.",
+      "다중 LLM을 실제로 병렬 실행할 때 비용·속도·출처 품질이 단일 LLM solo fallback보다 얼마나 나은지 계측해야 한다.",
+      "HTML 품질 게이트가 통과해도 리서치 사실성은 별도 출처 감사와 peer review를 유지해야 한다."
+    ]
+  },
+  "peer_review": {
+    "verdict": "조건부 통과 + MINOR 반영",
+    "confidence": {
+      "source_diversity": "중",
+      "citation_fidelity": "상",
+      "certainty_honesty": "상"
+    },
+    "defects": [
+      {
+        "severity": "MAJOR",
+        "type": "출처 편향 전이",
+        "finding": "핵심 근거가 Stanford 원논문·프로젝트·GitHub에 집중되어 있어 자기 설명 편향이 있다.",
+        "fix": "HTML의 source note와 validation checklist에 ‘독립 외부 벤치마크 미확인’을 명시한다."
+      },
+      {
+        "severity": "MINOR",
+        "type": "부당한 연결 위험",
+        "finding": "Co-STORM 사용자 선호 수치를 이 프로젝트의 HTML 하이브리드 효과로 연결하면 비약이다.",
+        "fix": "Co-STORM 수치는 multi-agent discourse의 근거로만 쓰고, adaptive-html-final 효과와 직접 연결하지 않는다."
+      },
+      {
+        "severity": "MINOR",
+        "type": "미인용 운영 주장",
+        "finding": "ROI·비용 절감 문장은 자료에서 직접 측정된 값이 아니다.",
+        "fix": "경제성 문장은 [추론]으로 표시하고 계측 필요 항목으로 이동한다."
+      }
+    ],
+    "most_important_open_question": "실제 팀 문서 생산에서 STORM식 다관점 리서치가 편집 시간과 오류율을 어느 정도 줄이는가?"
+  }
+}

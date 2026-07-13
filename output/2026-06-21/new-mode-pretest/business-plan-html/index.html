@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GrantProof Core 사업계획 HTML 선검수</title>
+<meta name="description" content="business_plan_html 신규 모드 선 반영 테스트: GrantProof Core 정부지원사업 사업 논리·증거 원장 SaaS 사업계획서형 editorial HTML.">
+<style>
+:root{
+  --bg:#f5f5f0;
+  --ink:#1a1a1a;
+  --ink-soft:#47413f;
+  --ink-mute:#706965;
+  --line:#ded8cf;
+  --card:#fffdf8;
+  --card-2:#ffffff;
+  --accent:#e63946;
+  --accent-2:#b72d38;
+  --coral:#ff7a59;
+  --gold:#d99a38;
+  --green:#2f8a61;
+  --blue:#3867b7;
+  --accent-soft:#fce4e6;
+  --coral-soft:#fff0ea;
+  --good-soft:#edf8f2;
+  --warn-soft:#fff7df;
+  --shadow:0 24px 70px rgba(40,31,25,.10);
+  --shadow-soft:0 10px 30px rgba(40,31,25,.08);
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:24px;
+  --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  --max-wide:1120px;
+  --focus:#1a56db;
+  color-scheme:light;
+}
+:root:has(#ahf-light2:checked){--bg:#f5f6f8;--card:#ffffff;--card-2:#fbfcfe;--line:#e4e7ee;--ink:#16181d;--ink-soft:#3d4654;--ink-mute:#687282;--accent:#e23b2e;--accent-soft:#fdecea;color-scheme:light}
+:root:has(#ahf-white:checked){--bg:#ffffff;--card:#ffffff;--card-2:#ffffff;--line:#e7e7ec;--ink:#15171c;--ink-soft:#3d424b;--ink-mute:#69707a;color-scheme:light}
+:root:has(#ahf-skyblue:checked){--bg:#eef4fb;--card:#ffffff;--card-2:#f8fbff;--line:#d5e1f0;--ink:#15233a;--ink-soft:#3a4a63;--ink-mute:#65748a;--accent:#2f6fdb;--accent-2:#1d4fa6;--coral:#f26d58;--accent-soft:#e4eefc;--coral-soft:#fff0ea;color-scheme:light}
+:root:has(#ahf-sepia:checked){--bg:#f4ecd8;--card:#fbf6e9;--card-2:#fffaf0;--line:#e2d6bb;--ink:#382f25;--ink-soft:#5d4d3f;--ink-mute:#857260;--accent:#a85c32;--accent-2:#7e4426;--coral:#c76a3c;--accent-soft:#f0e2cf;--coral-soft:#f6e5d8;color-scheme:light}
+:root:has(#ahf-dark:checked){--bg:#0c0d10;--card:#1a1c22;--card-2:#13151b;--line:#2c2f38;--ink:#ececea;--ink-soft:#c7c7bf;--ink-mute:#9d9d96;--accent:#ff6b75;--accent-2:#ff9aa3;--coral:#ff8a65;--accent-soft:#3a2228;--coral-soft:#321f1b;--good-soft:#0f2419;--warn-soft:#2a2210;--shadow:none;--shadow-soft:none;--focus:#7ea4ff;color-scheme:dark}
+:root:has(#ahf-dark2:checked){--bg:#0f1014;--card:#191b21;--card-2:#14161b;--line:#333640;--ink:#ece8df;--ink-soft:#c8c2b7;--ink-mute:#9d968b;--accent:#c8747c;--accent-2:#d9a0a5;--coral:#d4856b;--accent-soft:#2d2024;--coral-soft:#2b211e;--good-soft:#18251d;--warn-soft:#2b2417;--shadow:none;--shadow-soft:none;color-scheme:dark}
+:root:has(#ahf-blue:checked){--bg:#0a1a3c;--card:#13294e;--card-2:#0f2344;--line:#2c3e63;--ink:#e7edf7;--ink-soft:#c0c9db;--ink-mute:#8d99ad;--accent:#5b9cf0;--accent-2:#9fc6ff;--coral:#ff8a65;--accent-soft:#16345e;--coral-soft:#2a2a32;--good-soft:#13241c;--warn-soft:#2b2514;--shadow:none;--shadow-soft:none;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+body{margin:0;background:radial-gradient(circle at 16% -4%, color-mix(in srgb,var(--accent-soft) 70%,transparent), transparent 34%),radial-gradient(circle at 88% 4%, color-mix(in srgb,var(--coral-soft) 80%,transparent), transparent 31%),var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.78;letter-spacing:-.015em;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+a:focus-visible,summary:focus-visible,label:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:8px}
+.ahf-themebar{position:fixed;top:14px;right:16px;z-index:80;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:276px;margin:0;padding:5px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--card) 94%,transparent);box-shadow:0 3px 10px rgba(0,0,0,.10);backdrop-filter:blur(14px)}
+.ahf-themebar input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.ahf-themebar label{display:flex;align-items:center;justify-content:center;min-height:30px;padding:5px 4px;border-radius:9px;color:var(--ink-mute);font-size:12px;font-weight:800;line-height:1;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s}
+.ahf-themebar label:hover{background:var(--accent-soft);color:var(--ink)}
+.ahf-themebar input:checked+label{background:linear-gradient(135deg,var(--accent),var(--coral));color:#fff}
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:#111;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800}
+.skip:focus{left:12px}
+.reading-progress{position:fixed;top:0;left:0;z-index:90;width:100%;height:4px;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--accent),var(--coral));animation:read-progress linear both;animation-timeline:scroll(root)}
+@keyframes read-progress{to{transform:scaleX(1)}}
+.page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:54px 0 104px}
+.header{position:relative;margin:0 0 26px;padding:30px 0 34px;border-bottom:1px solid var(--line)}
+.header::after{content:"";position:absolute;left:0;bottom:-2px;width:168px;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--coral))}
+.kicker{display:inline-flex;align-items:center;gap:8px;min-height:30px;margin:0 0 18px;padding:6px 12px 6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--accent-2);font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+.kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+h1{max-width:900px;margin:0 0 16px;font-size:clamp(32px,5vw,58px);line-height:1.12;font-weight:900;letter-spacing:-.045em}
+.sub{max-width:860px;margin:0;color:var(--ink-soft);font-size:clamp(16px,2vw,19px);line-height:1.8}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.meta span,.chip,.tag{display:inline-flex;align-items:center;min-height:29px;padding:5px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink-mute);font-size:12px;font-weight:750;line-height:1.2}
+.generated-row{display:grid;grid-template-columns:1.35fr .9fr;gap:14px;align-items:stretch;margin:22px 0 0}
+.generated-card{min-width:0;padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--card);box-shadow:var(--shadow-soft)}
+.generated-card .label,.label{display:block;margin:0 0 6px;color:var(--accent-2);font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+.generated-card p{margin:0;color:var(--ink-soft);font-size:13.5px;line-height:1.62}
+.lens-strip{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.lens-chip{border-style:dashed}
+.toc-map{position:relative;margin:24px 0 30px;padding:18px 20px 20px;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--card);box-shadow:var(--shadow-soft)}
+.toc-map>.label{color:var(--ink);font-size:14px;letter-spacing:-.01em;text-transform:none}.toc-map p{margin:0 0 13px;color:var(--ink-mute);font-size:13.5px}.toc-pills{display:flex;flex-wrap:wrap;gap:7px}.toc-pill{display:inline-flex;align-items:center;gap:6px;min-height:31px;padding:0 11px;border:1px solid var(--line);border-radius:999px;background:var(--card-2);color:var(--ink-mute);font-size:12.3px;font-weight:800;text-decoration:none}.toc-pill:hover{border-color:var(--accent);color:var(--accent)}.toc-pill b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:999px;background:var(--accent-soft);color:var(--accent-2);font-size:10px;font-weight:900;font-variant-numeric:tabular-nums}
+section{scroll-margin-top:26px;margin:30px 0}.block{padding:28px;border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(180deg,color-mix(in srgb,var(--card) 98%,transparent),color-mix(in srgb,var(--card-2) 94%,transparent));box-shadow:var(--shadow-soft)}
+.block.is-tight{padding:22px 24px}.block.is-hero{overflow:hidden;position:relative;border-top:5px solid transparent;border-image:linear-gradient(90deg,var(--accent),var(--coral)) 1;background:linear-gradient(135deg,color-mix(in srgb,var(--card) 96%,transparent),color-mix(in srgb,var(--coral-soft) 35%,var(--card)))}
+.block.is-hero::after{content:"";position:absolute;right:-90px;top:-120px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--coral) 22%,transparent),transparent 66%)}
+h2{position:relative;margin:0 0 14px;font-size:clamp(24px,3vw,31px);line-height:1.25;font-weight:900;letter-spacing:-.035em;color:var(--ink)}
+h2 .num{display:inline-grid;place-items:center;min-width:34px;height:34px;margin-right:10px;padding:0 9px;border:2px solid var(--ink);border-radius:999px;font-size:14px;font-weight:900;line-height:1;vertical-align:3px}.block.is-hero h2 .num,.num.is-key{border-color:transparent;background:linear-gradient(135deg,var(--accent),var(--coral));color:#fff}.h2-sub{max-width:820px;margin:0 0 18px 47px;color:var(--ink-mute);font-size:14.5px;line-height:1.7}h3{margin:24px 0 9px;color:var(--ink);font-size:18px;line-height:1.42;font-weight:900;letter-spacing:-.02em}p{margin:0 0 14px;color:var(--ink-soft);font-size:15px}strong{color:var(--ink);font-weight:900}ul,ol{margin:10px 0 16px 22px;color:var(--ink-soft);padding:0}li{margin:6px 0}.lead{font-size:17px;color:var(--ink-soft);line-height:1.78}.lede-panel{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}.statement{padding:24px;border:1px solid color-mix(in srgb,var(--accent) 28%,var(--line));border-radius:20px;background:linear-gradient(135deg,var(--accent-soft),var(--card));}.statement strong{display:block;margin-bottom:8px;font-size:22px;line-height:1.32}.note-box,.good-box,.warn-box{padding:18px 20px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);background:var(--card)}.good-box{border-left-color:var(--green);background:var(--good-soft)}.warn-box{border-left-color:var(--gold);background:var(--warn-soft)}.note-box p:last-child,.good-box p:last-child,.warn-box p:last-child{margin-bottom:0}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{min-width:0;padding:18px 19px;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--card);box-shadow:0 1px 0 rgba(255,255,255,.4) inset}.card h3{margin-top:0}.card p:last-child{margin-bottom:0}.card .metric{display:block;margin-bottom:4px;font-size:28px;font-weight:950;letter-spacing:-.04em;color:var(--accent)}.card.hot{border-left:4px solid var(--accent)}.card.coral{border-left:4px solid var(--coral)}.card.good{border-left:4px solid var(--green)}.card.blue{border-left:4px solid var(--blue)}.mini-kicker{display:block;margin-bottom:6px;color:var(--accent-2);font-size:10.5px;font-weight:950;letter-spacing:.12em;text-transform:uppercase}.table-wrap{max-width:100%;overflow:auto;margin-top:14px;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--card)}table{width:100%;border-collapse:collapse;min-width:720px}caption{caption-side:top;padding:13px 16px;text-align:left;color:var(--ink);font-size:13px;font-weight:900;line-height:1.5;background:color-mix(in srgb,var(--accent-soft) 42%,var(--card))}th,td{padding:12px 14px;border-top:1px solid var(--line);text-align:left;vertical-align:top;color:var(--ink-soft);font-size:13.7px;line-height:1.58}th{color:var(--ink);background:color-mix(in srgb,var(--card-2) 72%,var(--line));font-weight:900}.pill{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;border-radius:999px;border:1px solid var(--line);font-size:11px;font-weight:850;color:var(--ink-mute);background:var(--card)}.pill.ok{border-color:color-mix(in srgb,var(--green) 45%,var(--line));color:var(--green);background:var(--good-soft)}.pill.warn{border-color:color-mix(in srgb,var(--gold) 45%,var(--line));color:var(--gold);background:var(--warn-soft)}.pill.hot{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));color:var(--accent);background:var(--accent-soft)}
+.roadmap{position:relative;margin:18px 0 4px;padding:22px;border:1px solid var(--line);border-radius:22px;background:var(--card)}.roadmap::before{content:"";position:absolute;left:44px;right:44px;top:76px;height:4px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--coral),var(--gold),var(--green))}.milestones{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.milestone{position:relative;z-index:1;padding:54px 14px 16px;border:1px solid var(--line);border-radius:18px;background:color-mix(in srgb,var(--card) 94%,transparent)}.milestone::before{content:attr(data-step);position:absolute;top:20px;left:16px;display:grid;place-items:center;width:34px;height:34px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--coral));color:#fff;font-size:12px;font-weight:950}.milestone h3{margin:0 0 8px;font-size:16px}.milestone p{margin:0;font-size:13.2px;color:var(--ink-soft)}.milestone time{display:block;margin-top:10px;color:var(--ink-mute);font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.wg-16-plan{margin-top:18px;padding:20px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent-soft) 44%,var(--card)),var(--card));}.plan-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:15px}.plan-head h3{margin:0;font-size:19px}.plan-score{display:grid;place-items:center;min-width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,var(--accent),var(--coral));color:#fff;font-size:22px;font-weight:950;box-shadow:0 12px 30px color-mix(in srgb,var(--accent) 22%,transparent)}.plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.plan-item{padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--card)}.plan-item b{display:block;margin-bottom:5px;color:var(--ink);font-size:14px}.plan-item span{display:block;color:var(--ink-soft);font-size:13px;line-height:1.55}.gate-list{display:grid;gap:9px;margin-top:14px}.gate{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;padding:12px 13px;border:1px solid var(--line);border-radius:14px;background:var(--card)}.gate .dot{display:grid;place-items:center;width:23px;height:23px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:950;font-size:12px}.gate strong{font-size:14px}.gate small{display:block;color:var(--ink-mute);font-size:12px;line-height:1.45}.scorecard{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.score-ring{display:grid;place-items:center;min-height:260px;border:1px solid var(--line);border-radius:22px;background:conic-gradient(var(--accent) 0 72%, color-mix(in srgb,var(--line) 80%,transparent) 72% 100%);}.score-inner{display:grid;place-items:center;width:170px;height:170px;border-radius:999px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);text-align:center}.score-inner b{display:block;color:var(--accent);font-size:45px;line-height:1;font-weight:950}.score-inner span{color:var(--ink-mute);font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.checklist{display:grid;gap:10px;margin-top:12px}.check{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;padding:13px 14px;border:1px solid var(--line);border-radius:14px;background:var(--card)}.check::before{content:"✓";display:grid;place-items:center;width:22px;height:22px;border-radius:7px;background:var(--good-soft);color:var(--green);font-weight:950}.check b{display:block;margin-bottom:3px;color:var(--ink);font-size:14px}.check span{display:block;color:var(--ink-soft);font-size:13px;line-height:1.55}.source-note{padding:22px 24px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-md);background:var(--card)}footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-mute);font-size:13px}.toc-fab{position:fixed;right:18px;bottom:18px;z-index:70;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 15px;border:1px solid color-mix(in srgb,var(--accent) 36%,var(--line));border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--coral));color:#fff;text-decoration:none;font-size:13px;font-weight:950;box-shadow:0 12px 32px color-mix(in srgb,var(--accent) 28%,transparent)}.toc-fab:hover{color:#fff;transform:translateY(-1px)}
+@media(max-width:900px){.generated-row,.lede-panel,.grid-2,.grid-3,.scorecard{grid-template-columns:1fr}.roadmap::before{display:none}.milestones{grid-template-columns:1fr 1fr}.plan-grid{grid-template-columns:1fr}.page-wide{padding-top:42px}.header{padding-top:22px}.ahf-themebar{position:static;width:276px;max-width:calc(100% - 28px);margin:10px auto 0}.block{padding:22px}.h2-sub{margin-left:0}.toc-fab{right:14px;bottom:14px}}
+@media(max-width:620px){.page-wide{width:min(100% - 32px,var(--max-wide));padding-bottom:88px}.milestones{grid-template-columns:1fr}.toc-pill{white-space:normal;line-height:1.25;min-height:34px;padding:5px 11px}h1{font-size:32px}.block{border-radius:18px;padding:20px}.roadmap,.wg-16-plan{padding:16px}.gate{grid-template-columns:auto 1fr}.gate .pill{grid-column:2}.meta span{font-size:11.5px}}
+@media print{.ahf-themebar,.reading-progress,.toc-fab,.skip{display:none}.page-wide{width:100%;padding:0}.block,.toc-map,.generated-card{box-shadow:none}body{background:#fff;color:#111}.block{break-inside:avoid}}
+</style>
+</head>
+<body>
+<fieldset class="ahf-themebar" aria-label="테마 선택">
+  <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">그레이</label>
+  <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark2"><label for="ahf-dark2">로즈</label>
+  <input type="radio" name="ahf-theme" id="ahf-blue"><label for="ahf-blue">블루</label>
+  <input type="radio" name="ahf-theme" id="ahf-skyblue"><label for="ahf-skyblue">스카이</label>
+  <input type="radio" name="ahf-theme" id="ahf-sepia"><label for="ahf-sepia">세피아</label>
+</fieldset>
+<a class="skip" href="#main">본문 바로가기</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<main id="main" class="page-wide layout-business-plan">
+  <header class="header" id="top">
+    <div class="kicker"><span>NEW MODE PRETEST · BUSINESS PLAN</span></div>
+    <h1>GrantProof Core: 정부지원사업 사업 논리·증거 원장 SaaS</h1>
+    <p class="sub">신규 모드 <strong>business_plan_html</strong>이 실제로 추가되었다고 가정하고 만든 화면 선검수용 사업계획서형 HTML입니다. 제출 문서의 논리, 숫자, 증거, 템플릿 항목을 한 원장에 묶어 “평가자가 다시 계산해도 같은 결론”이 나오게 만드는 B2B SaaS를 주제로 작성했습니다.</p>
+    <div class="meta" aria-label="문서 메타">
+      <span>business_plan_html</span><span>pre-implementation smoke</span><span>profile auto 느낌</span><span>adaptive-html-final v5.10.5 look</span><span>무 JS</span>
+    </div>
+    <div class="generated-row" aria-label="생성 개요">
+      <div class="generated-card">
+        <span class="label">Generated</span>
+        <p>2026-06-21 KST · output-only 신규 모드 선반영 테스트 · 최종 파일 <strong>index.html</strong></p>
+      </div>
+      <div class="generated-card">
+        <span class="label">Lens</span>
+        <div class="lens-strip"><span class="chip lens-chip">사업논리</span><span class="chip lens-chip">증거원장</span><span class="chip lens-chip">평가표</span><span class="chip lens-chip">제출검수</span></div>
+      </div>
+    </div>
+  </header>
+
+  <nav id="toc" class="toc-map" aria-label="문서 목차">
+    <span class="label">문서 목차</span>
+    <p>필수 스켈레톤 블록 13개를 모두 실제 섹션으로 배치했습니다.</p>
+    <div class="toc-pills">
+      <a class="toc-pill" href="#generated_row"><b>1</b>generated_row</a>
+      <a class="toc-pill" href="#document_type_gate"><b>2</b>document_type_gate</a>
+      <a class="toc-pill" href="#notice_summary"><b>3</b>notice_summary</a>
+      <a class="toc-pill" href="#interview_findings"><b>4</b>interview_findings</a>
+      <a class="toc-pill" href="#research_evidence"><b>5</b>research_evidence</a>
+      <a class="toc-pill" href="#business_core"><b>6</b>business_core</a>
+      <a class="toc-pill" href="#number_registry"><b>7</b>number_registry</a>
+      <a class="toc-pill" href="#market_finance_model"><b>8</b>market_finance_model</a>
+      <a class="toc-pill" href="#template_mapping"><b>9</b>template_mapping</a>
+      <a class="toc-pill" href="#risk_and_ip_paper_notes"><b>10</b>risk_and_ip_paper_notes</a>
+      <a class="toc-pill" href="#evaluator_scorecard"><b>11</b>evaluator_scorecard</a>
+      <a class="toc-pill" href="#submission_checklist"><b>12</b>submission_checklist</a>
+      <a class="toc-pill" href="#source_note"><b>13</b>source_note</a>
+    </div>
+  </nav>
+
+  <section id="generated_row" class="block is-tight" data-block="generated_row">
+    <h2><span class="num is-key">1</span>generated_row · 생성 메타와 사용 조건</h2>
+    <p class="h2-sub">신규 모드가 공식 추가되기 전, 화면과 콘텐츠 흐름을 먼저 보는 산출물입니다.</p>
+    <div class="grid-3">
+      <article class="card hot"><span class="mini-kicker">Mode assumption</span><h3>business_plan_html</h3><p>정부지원사업·R&D·창업패키지 제출용 사업계획 논리를 HTML로 구조화하는 신규 모드 가정.</p></article>
+      <article class="card coral"><span class="mini-kicker">Output boundary</span><h3>출력 전용</h3><p>실제 스킬 소스, 문서, 개발계획은 수정하지 않고 선검수 파일만 생성하는 조건.</p></article>
+      <article class="card good"><span class="mini-kicker">Design target</span><h3>8테마·무JS·editorial</h3><p>현재 adaptive-html-final 계열의 카드 리듬, 칩 목차, 코랄 포인트를 유지한 단일 HTML.</p></article>
+    </div>
+  </section>
+
+  <section id="document_type_gate" class="block" data-block="document_type_gate">
+    <h2><span class="num">2</span>document_type_gate · 문서 유형 판정</h2>
+    <p class="h2-sub">이 모드는 “사업계획을 예쁘게 설명”하는 것이 아니라, 평가 문항별로 증거가 연결되는지 먼저 판정합니다.</p>
+    <div class="lede-panel">
+      <div class="statement">
+        <span class="label">Gate Verdict</span>
+        <strong>사업계획서형 HTML로 처리 가능. 단, 모든 숫자와 근거는 원장 ID를 가져야 한다.</strong>
+        <p>GrantProof Core의 핵심 산출물은 피치덱이 아니라 <strong>제출 논리의 추적 가능성</strong>입니다. 문제, 고객, 시장, 실행, 재무, 리스크가 하나의 근거 테이블로 이어지지 않으면 통과하지 않습니다.</p>
+      </div>
+      <div class="note-box">
+        <span class="label">Not this</span>
+        <ul>
+          <li>공식 제출 확정본 또는 법률·세무 검토 문서가 아닙니다.</li>
+          <li>지원사업별 양식의 최신 항목을 단정하지 않습니다.</li>
+          <li>정량 지표는 선검수 가정값이며, 실제 제출 전 재검증이 필요합니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="notice_summary" class="block is-hero" data-block="notice_summary">
+    <h2><span class="num is-key">3</span>notice_summary · 한 장 요약</h2>
+    <p class="h2-sub">평가자가 가장 먼저 확인해야 하는 사업 논리, 근거 상태, 제출 리스크를 압축합니다.</p>
+    <div class="grid-2">
+      <article class="card hot"><span class="mini-kicker">Problem</span><h3>지원사업 문서는 마지막 72시간에 무너진다</h3><p>팀은 제품보다 제출 논리 맞추기에 시간을 쓰고, 숫자의 출처·증빙 파일·인터뷰 인용·평가 문항 매핑이 분리되어 재사용되지 않습니다.</p></article>
+      <article class="card good"><span class="mini-kicker">Solution</span><h3>사업 논리와 증거를 원장화한다</h3><p>GrantProof Core는 주장, 수치, 파일, 인터뷰, 시장 근거, 평가 문항을 하나의 ID 체계로 연결해 매번 같은 근거로 문서를 재생성합니다.</p></article>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <article class="card"><span class="metric">1</span><p><strong>Claim Registry</strong><br>문장 하나가 어떤 근거와 숫자에서 왔는지 추적.</p></article>
+      <article class="card"><span class="metric">3</span><p><strong>Reviewer Views</strong><br>창업자·PM·컨설턴트가 각자 다른 검수 화면으로 확인.</p></article>
+      <article class="card"><span class="metric">0</span><p><strong>Unmapped Claims</strong><br>최종 제출 전 근거 없는 주장 0개를 목표로 잠금.</p></article>
+    </div>
+  </section>
+
+  <section id="interview_findings" class="block" data-block="interview_findings">
+    <h2><span class="num">4</span>interview_findings · 인터뷰 발견</h2>
+    <p class="h2-sub">가상 사전 인터뷰를 제품 요구사항으로 변환한 섹션입니다. 실제 고객 인터뷰 전에는 가설로 취급합니다.</p>
+    <div class="grid-3">
+      <article class="card hot"><span class="mini-kicker">초기 창업팀</span><h3>문장보다 근거 위치가 더 불안하다</h3><p>“작년에 쓴 수치가 어디서 왔는지 몰라서 새 사업계획서마다 다시 찾는다.”</p></article>
+      <article class="card coral"><span class="mini-kicker">정부과제 PM</span><h3>양식 변경이 전체 문서를 흔든다</h3><p>항목 순서가 바뀌면 파일명, 표, 근거 캡션이 모두 어긋나 마지막 날 오류가 늘어납니다.</p></article>
+      <article class="card blue"><span class="mini-kicker">액셀러레이터</span><h3>검수 기준이 사람 머릿속에 남는다</h3><p>잘 쓴 문서의 패턴은 있지만, 다음 팀에 재사용 가능한 체크리스트와 증거 매핑으로 남지 않습니다.</p></article>
+    </div>
+    <div class="good-box" style="margin-top:14px"><span class="label">Implication</span><p>가장 먼저 팔아야 할 것은 “자동 작성”이 아니라 <strong>근거 누락을 줄이는 제출 전 통제감</strong>입니다. 생성 AI 기능은 원장 위에서만 작동해야 신뢰를 얻습니다.</p></div>
+  </section>
+
+  <section id="research_evidence" class="block" data-block="research_evidence">
+    <h2><span class="num">5</span>research_evidence · 리서치 증거 원장</h2>
+    <p class="h2-sub">외부 최신 사실 단정 대신, 사업계획 제출 전 채워야 할 증거 슬롯과 판정 기준을 설계합니다.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>GrantProof Core가 관리해야 하는 증거 슬롯(선검수 가정)</caption>
+        <thead><tr><th scope="col">증거 ID</th><th scope="col">필요 근거</th><th scope="col">사용 위치</th><th scope="col">검수 상태</th></tr></thead>
+        <tbody>
+          <tr><td>EV-01</td><td>지원사업 작성·검수 업무에 드는 시간 인터뷰</td><td>문제 정의, 시간 절감 ROI</td><td><span class="pill warn">인터뷰 필요</span></td></tr>
+          <tr><td>EV-02</td><td>최근 2년간 제출 양식 변경 사례와 항목 비교</td><td>템플릿 매핑, 버전관리 필요성</td><td><span class="pill warn">공식 공고 확인 필요</span></td></tr>
+          <tr><td>EV-03</td><td>사업계획서 컨설팅·R&D 관리 SaaS 경쟁 대안</td><td>시장·차별화</td><td><span class="pill hot">비교표 보강</span></td></tr>
+          <tr><td>EV-04</td><td>지원금 수혜 후 증빙·성과관리 페인포인트</td><td>확장 로드맵</td><td><span class="pill ok">가설 적합</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn-box" style="margin-top:14px"><span class="label">Research rule</span><p>실제 제출본에서는 공고명, 기관명, 연도별 양식, 통계 수치, 인터뷰 인용을 모두 원문 링크와 수집일로 고정해야 합니다. 이 페이지는 선검수용이므로 증거 슬롯만 제시합니다.</p></div>
+  </section>
+
+  <section id="business_core" class="block" data-block="business_core">
+    <h2><span class="num">6</span>business_core · 사업 핵심과 실행 로드맵</h2>
+    <p class="h2-sub">권장 비주얼 1: implementation-plan 느낌의 마일스톤 시각화입니다.</p>
+    <div class="roadmap" aria-label="GrantProof Core 실행 로드맵">
+      <div class="milestones">
+        <article class="milestone" data-step="M1"><h3>Proof Ledger MVP</h3><p>주장·근거·숫자·파일을 ID로 묶는 원장과 누락 검사를 먼저 만든다.</p><time>0-8주</time></article>
+        <article class="milestone" data-step="M2"><h3>Template Mapper</h3><p>지원사업 양식 항목을 원장 필드에 연결하고, 양식 변경 시 영향 범위를 표시한다.</p><time>9-14주</time></article>
+        <article class="milestone" data-step="M3"><h3>Reviewer Workspace</h3><p>대표자, 작성자, 외부 멘토가 서로 다른 검수 뷰에서 의견을 남긴다.</p><time>15-22주</time></article>
+        <article class="milestone" data-step="M4"><h3>Submission Lock</h3><p>근거 없는 주장, 미확정 숫자, 파일 누락이 있으면 제출 패키지를 잠근다.</p><time>23-32주</time></article>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <article class="card hot"><span class="mini-kicker">Wedge</span><h3>초기 타깃은 “매년 2회 이상 지원사업을 쓰는 B2B 초기팀”</h3><p>문서 작성 빈도가 높고, 근거 재사용의 비용 절감 효과가 즉시 보이는 팀부터 시작합니다.</p></article>
+      <article class="card good"><span class="mini-kicker">Moat</span><h3>문서 생성보다 증거 그래프가 방어력</h3><p>각 팀의 인터뷰, 수치, 파일, 문장 이력이 누적될수록 다음 제출 문서의 작성 비용이 낮아집니다.</p></article>
+    </div>
+  </section>
+
+  <section id="number_registry" class="block" data-block="number_registry">
+    <h2><span class="num">7</span>number_registry · 숫자 원장</h2>
+    <p class="h2-sub">사업계획서의 모든 정량 주장을 단위, 산식, 소유자, 확정 상태로 분리합니다.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>초기 사업계획 숫자 레지스트리(예시값 · 제출 전 재검증 필요)</caption>
+        <thead><tr><th scope="col">번호</th><th scope="col">숫자</th><th scope="col">단위·산식</th><th scope="col">사용 주장</th><th scope="col">상태</th></tr></thead>
+        <tbody>
+          <tr><td>NR-01</td><td>8시간</td><td>팀당 문서 재작업 시간/회</td><td>원장화로 반복 입력을 줄인다</td><td><span class="pill warn">인터뷰 검증</span></td></tr>
+          <tr><td>NR-02</td><td>3명</td><td>대표·작성자·멘토 기본 협업자</td><td>역할별 검수 뷰 필요</td><td><span class="pill ok">제품 가정</span></td></tr>
+          <tr><td>NR-03</td><td>₩149,000</td><td>워크스페이스 월 구독 가정</td><td>초기 SMB 가격 실험</td><td><span class="pill hot">가격 실험</span></td></tr>
+          <tr><td>NR-04</td><td>0개</td><td>제출 직전 unmapped claim 목표</td><td>품질 게이트 핵심 KPI</td><td><span class="pill ok">게이트 지표</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="market_finance_model" class="block" data-block="market_finance_model">
+    <h2><span class="num">8</span>market_finance_model · 시장과 재무 모델</h2>
+    <p class="h2-sub">정확한 시장 규모 단정 대신, 검증 가능한 단위경제 구조를 먼저 보여줍니다.</p>
+    <div class="grid-3">
+      <article class="card hot"><span class="mini-kicker">Buyer</span><h3>지원사업 반복 신청 팀</h3><p>매년 2회 이상 공고를 찾고, 대표·실무자·외부 멘토가 함께 문서를 고치는 팀.</p></article>
+      <article class="card coral"><span class="mini-kicker">Pricing</span><h3>워크스페이스 구독 + 제출팩</h3><p>월 구독으로 원장과 협업을 제공하고, 특정 공고 제출 패키지는 사용량 기반으로 과금.</p></article>
+      <article class="card good"><span class="mini-kicker">Expansion</span><h3>성과·증빙 관리로 확장</h3><p>선정 이후 협약, 증빙, 중간보고, 최종보고 문서까지 같은 원장 구조를 재사용.</p></article>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>초기 재무 모델 스케치(선검수 가정)</caption>
+        <thead><tr><th scope="col">항목</th><th scope="col">가정</th><th scope="col">핵심 민감도</th><th scope="col">검증 방법</th></tr></thead>
+        <tbody>
+          <tr><td>ARPA</td><td>팀당 월 ₩149,000 + 제출팩</td><td>멘토·컨설턴트 동시 사용 여부</td><td>가격 인터뷰 20건</td></tr>
+          <tr><td>COGS</td><td>문서 생성 비용보다 파일 저장·검수 이력 비용 중심</td><td>AI 재작성 빈도</td><td>베타 사용 로그</td></tr>
+          <tr><td>Retention</td><td>공고 시즌이 지나도 성과관리로 유지</td><td>선정 후 증빙 기능의 사용률</td><td>코호트별 90일 잔존</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="template_mapping" class="block" data-block="template_mapping">
+    <h2><span class="num">9</span>template_mapping · 제출 양식 매핑</h2>
+    <p class="h2-sub">지원사업 양식이 바뀌어도 원장 필드는 유지되고, 각 항목만 다시 연결됩니다.</p>
+    <div class="grid-2">
+      <article class="card hot"><span class="mini-kicker">원장 필드</span><h3>Problem → Evidence → Claim</h3><p>문제 정의, 고객 증거, 시장 근거, 솔루션 주장을 하나의 체인으로 저장합니다.</p></article>
+      <article class="card coral"><span class="mini-kicker">양식 필드</span><h3>사업 필요성 → 추진 계획 → 기대 효과</h3><p>기관별 양식 문항은 원장 필드를 참조합니다. 양식 항목이 바뀌면 연결만 업데이트합니다.</p></article>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>사업계획서 필드 매핑 예시</caption>
+        <thead><tr><th scope="col">양식 항목</th><th scope="col">원장 소스</th><th scope="col">필수 검증</th><th scope="col">누락 시 조치</th></tr></thead>
+        <tbody>
+          <tr><td>창업 아이템 개요</td><td>Product Thesis, Target Persona</td><td>한 문장 가치제안, 고객군 명확성</td><td>문장 잠금 금지</td></tr>
+          <tr><td>문제 인식</td><td>Interview Finding, Evidence Slot</td><td>인터뷰 인용 또는 관찰 로그</td><td>근거 ID 요구</td></tr>
+          <tr><td>시장성</td><td>Market Model, Number Registry</td><td>시장 범위와 산식</td><td>숫자 상태를 draft로 표시</td></tr>
+          <tr><td>사업화 계획</td><td>Roadmap, Finance Model</td><td>마일스톤과 비용 연결</td><td>예산 항목 재계산</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="risk_and_ip_paper_notes" class="block" data-block="risk_and_ip_paper_notes">
+    <h2><span class="num">10</span>risk_and_ip_paper_notes · 리스크·IP·논문 메모</h2>
+    <p class="h2-sub">사업계획서에서 흔히 과장되거나 누락되는 법적·기술적 방어 문장을 별도 관리합니다.</p>
+    <div class="grid-3">
+      <article class="card hot"><span class="mini-kicker">Risk</span><h3>자동 작성 신뢰 리스크</h3><p>AI가 없는 근거를 지어내면 제품 신뢰가 무너집니다. 모든 문장 생성은 원장 ID가 있는 근거로 제한합니다.</p></article>
+      <article class="card coral"><span class="mini-kicker">IP</span><h3>원장 스키마와 검수 게이트</h3><p>방어 가능한 지식재산은 “작성 모델”보다 양식 매핑, 증거 추적, 제출 잠금 규칙에 있습니다.</p></article>
+      <article class="card blue"><span class="mini-kicker">Paper notes</span><h3>근거 기반 글쓰기와 감사 추적</h3><p>논문·공식 문서 인용은 원문, 수집일, 요약자, 사용 문장을 함께 저장해야 합니다.</p></article>
+    </div>
+    <div class="warn-box" style="margin-top:14px"><span class="label">Legal boundary</span><p>지원사업 선정 가능성을 보장하거나 심사 기준을 우회한다고 말하지 않습니다. 제품 메시지는 “제출 전 누락과 불일치를 줄인다”로 고정합니다.</p></div>
+  </section>
+
+  <section id="evaluator_scorecard" class="block" data-block="evaluator_scorecard">
+    <h2><span class="num">11</span>evaluator_scorecard · 평가자 스코어카드</h2>
+    <p class="h2-sub">평가자의 눈으로 사업계획 논리를 사전 채점합니다.</p>
+    <div class="scorecard">
+      <div class="score-ring" aria-label="예상 완성도 72점">
+        <div class="score-inner"><b>72</b><span>pretest score</span></div>
+      </div>
+      <div class="table-wrap" style="margin-top:0">
+        <table>
+          <caption>GrantProof Core 사업계획 평가 예시</caption>
+          <thead><tr><th scope="col">평가축</th><th scope="col">점수</th><th scope="col">보강 포인트</th></tr></thead>
+          <tbody>
+            <tr><td>문제 명확성</td><td>18/20</td><td>제출 마감 직전 재작업 사례를 실제 인터뷰로 확보</td></tr>
+            <tr><td>시장성</td><td>14/20</td><td>지원사업 반복 신청 팀 규모 산식 보강</td></tr>
+            <tr><td>차별화</td><td>16/20</td><td>컨설팅·문서 생성툴 대비 원장형 방어력 강조</td></tr>
+            <tr><td>실행 가능성</td><td>15/20</td><td>MVP 범위를 Claim Registry로 더 좁히기</td></tr>
+            <tr><td>리스크 관리</td><td>9/20</td><td>법적 경계, 개인정보, 파일 보안 정책 보강</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="submission_checklist" class="block" data-block="submission_checklist">
+    <h2><span class="num">12</span>submission_checklist · 제출 전 실행 계획과 체크리스트</h2>
+    <p class="h2-sub">권장 비주얼 2: wg-16/quality gate 스타일의 실행 계획 카드입니다.</p>
+    <div class="wg-16-plan" aria-label="실행 계획 카드">
+      <div class="plan-head">
+        <div><span class="label">Execution Plan Card</span><h3>7일 안에 심사 가능 상태로 끌어올리는 최소 루프</h3><p>보기 좋은 문장보다 원장 누락, 숫자 상태, 양식 매핑, 리스크 문장을 먼저 잠급니다.</p></div>
+        <div class="plan-score" aria-label="잠금 목표 0">0</div>
+      </div>
+      <div class="plan-grid">
+        <div class="plan-item"><b>D1-D2 · 주장 수집</b><span>핵심 주장 30개 이하로 제한하고 모든 주장에 Claim ID를 부여.</span></div>
+        <div class="plan-item"><b>D3-D4 · 근거 연결</b><span>인터뷰, 파일, 숫자, 공식 문서 증거를 Evidence ID로 연결.</span></div>
+        <div class="plan-item"><b>D5-D7 · 제출 잠금</b><span>양식 항목별 누락과 불일치를 닫고 최종 PDF/HTML을 동결.</span></div>
+      </div>
+      <div class="gate-list">
+        <div class="gate"><span class="dot">1</span><div><strong>Unmapped claim gate</strong><small>근거 ID가 없는 주장이 남으면 제출 패키지 생성 금지.</small></div><span class="pill hot">필수</span></div>
+        <div class="gate"><span class="dot">2</span><div><strong>Number registry gate</strong><small>숫자마다 단위, 산식, 출처, 확정 여부가 있어야 함.</small></div><span class="pill warn">검수</span></div>
+        <div class="gate"><span class="dot">3</span><div><strong>Template mapping gate</strong><small>모든 양식 항목이 원장 소스에 연결되어야 함.</small></div><span class="pill ok">목표</span></div>
+      </div>
+    </div>
+    <div class="checklist">
+      <div class="check"><div><b>문제 정의</b><span>고객 인터뷰 인용 3개 이상이 문제 문장과 연결되어 있는가.</span></div></div>
+      <div class="check"><div><b>시장·재무</b><span>시장 규모, 가격, 비용, 유지율 가정이 산식과 소유자를 갖는가.</span></div></div>
+      <div class="check"><div><b>리스크</b><span>AI 환각, 개인정보, 보안, 선정 보장 금지 문구가 명시되어 있는가.</span></div></div>
+      <div class="check"><div><b>제출 패키지</b><span>파일명, 버전, 제출일, 공고명, 항목 매핑이 최종 잠금되었는가.</span></div></div>
+    </div>
+  </section>
+
+  <section id="source_note" class="source-note" data-block="source_note">
+    <h2><span class="num">13</span>source_note · 출처와 한계</h2>
+    <p>이 HTML은 <strong>business_plan_html 신규 모드 선 반영 테스트</strong>를 위한 가상 사업계획 화면입니다. 주제, 수치, 인터뷰, 시장 모델은 화면 구조와 콘텐츠 깊이 검토를 위한 예시이며 실제 정부지원사업 제출 자료, 법률·세무 자문, 최신 공고 검증을 대체하지 않습니다.</p>
+    <p>실제 제출 전에는 공고 원문, 기관 양식, 최근 평가 기준, 개인정보 처리, 보안 요구사항, 지식재산 검토, 가격 인터뷰를 별도 근거 원장에 등록해야 합니다.</p>
+  </section>
+
+  <footer>
+    <p>Generated for new-mode-pretest · GrantProof Core business_plan_html smoke output · no behavioral JavaScript.</p>
+  </footer>
+</main>
+<a class="toc-fab" href="#toc" aria-label="문서 목차로 이동">↑ 목차</a>
+</body>
+</html>

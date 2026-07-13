@@ -1,0 +1,13 @@
+{
+  "skill": "storm-research",
+  "selected_topic": "AI 에이전트가 지식노동 생산성을 실제로 올리는 조건 — STORM Research 프리뷰",
+  "environment": {
+    "cmux": "missing",
+    "CMUX_WORKSPACE_ID": "NONE",
+    "kimi": "missing"
+  },
+  "execution_mode": "solo fallback by main agent",
+  "html_template_rule": "adaptive-html-final current manifest used for base/layout/css/widget/validation",
+  "content_source_rule": "storm-research local skill content only",
+  "target_output": "output/2026-06-21/new-mode-pretest/storm-research/index.html"
+}

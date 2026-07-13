@@ -1,0 +1,88 @@
+{
+  "mode": "expert_html",
+  "profile": "auto",
+  "layout": "expert-report.html",
+  "layout_class": "layout-expert",
+  "primary_vt": "risk-matrix",
+  "primary_wg": "wg-16",
+  "section_mapping": {
+    "layout": "expert-report.html",
+    "KICKER": "x-ai trend collector + STORM research",
+    "TITLE": "AI 영상 제작 파이프라인 2026",
+    "SUBTITLE": "AI 영상 트렌드 수집과 다관점 리서치 기반 전문가 리포트",
+    "EXECUTIVE_SUMMARY": "핵심 판단과 카테고리 분포",
+    "DECISION_CARDS": "STORM 5관점 카드와 원문 details",
+    "ARCHITECTURE": "x-ai trend records 표",
+    "RISK_MATRIX": "vt risk-matrix + contradiction map",
+    "PRIORITY_ROADMAP": "30/60/90일 실행표 + synthesis",
+    "VALIDATION_CHECKLIST": "peer review와 검증 기준",
+    "FINAL_RECOMMENDATION": "즉시 실행 체크리스트",
+    "SOURCE_NOTE": "출처 허브와 보조 산출물"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "80b912c06fb1055ca14e99123c01a99b89765cbd8935616dbff3ac48efaef002"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "5091eca47d175172114ccd1bbac35744d73da60540c9f25af050688f6ffa4a94"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/expert-report.html",
+      "sha256": "6d6bbf941d66842ea29976ecdd0976f6a41786d07b33d16789b89fcf6c3471c3"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/03-risk-matrix.html",
+      "sha256": "819a2e7a46f0caf85726705c79a95720c9296ab418b1f16f2f2b1f3f72aa522f"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/16-implementation-plan.html",
+      "sha256": "7137af34d22e3875711958e017929b8d9f14c4d4cd3d57fcd28a02e8d1007c6e"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/layout-system.md",
+      "sha256": "74209d73bebcef56f0f6c242a73d0ef45793ae2bdc74b9e89d58e10dc178d2f9"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/writing-system.md",
+      "sha256": "eaeafad51b4704f4cf417474031c31f51c676971c148728182fc19468c757e09"
+    },
+    {
+      "path": "orginal_skill/x-ai-trend-collector/SKILL.md",
+      "sha256": "376225908627913ada6ea6356d21224c9f8272ca978f614d9c950935d0e1c03f"
+    },
+    {
+      "path": "orginal_skill/x-ai-trend-collector/references/web-search-fallback.md",
+      "sha256": "120cdc6c5e736ebfbf0c05d12f97e781e4fb5884663943d1399f659b69fb1092"
+    },
+    {
+      "path": "orginal_skill/storm-research/SKILL.md",
+      "sha256": "866622b669953de1c1f235fcc9bb86c70ee06322c90b01ae8008705372a04932"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/storm-pipeline.md",
+      "sha256": "ebe8bc4eb959ff2a7c84d8456ceb8ee18d17e25e65e192c1a109df1ffd08e6c2"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/provenance.md",
+      "sha256": "8d15a93d4c0a305d44612241d05d2d006703b122f8c0616012368c0f1b942d7c"
+    }
+  ],
+  "input_snapshots": [
+    "sources/x-ai-trend-records.json",
+    "sources/storm-scan.md",
+    "sources/storm-contradiction-map.md",
+    "sources/storm-synthesis.md",
+    "sources/storm-peer-review.md"
+  ],
+  "collection_route": "x-ai-trend-collector web-search fallback; metrics unknown=0"
+}

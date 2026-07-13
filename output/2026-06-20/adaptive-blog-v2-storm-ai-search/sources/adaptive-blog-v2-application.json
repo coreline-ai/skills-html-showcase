@@ -1,0 +1,15 @@
+{
+  "skill": "adaptive-html-blog-writer-v2",
+  "source_package": "orginal_skill/adaptive-html-blog-writer-v2.skill",
+  "selected_mode": "article_html",
+  "audience": "블로그 운영자, SEO 담당자, 콘텐츠 팀, 1인 창작자",
+  "format": "html",
+  "platform": "generic / github-pages",
+  "applied_rules": [
+    "fact/opinion/inference split",
+    "article lead, argument, case, takeaway",
+    "SEO title/meta/tag candidates",
+    "source-note/source hub for more than 6 links",
+    "no external behavior JS"
+  ]
+}

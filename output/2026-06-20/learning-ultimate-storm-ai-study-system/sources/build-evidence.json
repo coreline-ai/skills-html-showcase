@@ -1,0 +1,86 @@
+{
+  "mode": "education_html",
+  "profile": "auto",
+  "layout": "course-module.html",
+  "layout_class": "layout-education",
+  "primary_vt": "timeline",
+  "primary_wg": "wg-15",
+  "section_mapping": {
+    "layout": "course-module.html",
+    "KICKER": "adaptive-html-learning-ultimate-merged + STORM",
+    "TITLE": "AI 튜터 시대의 4주 학습 시스템",
+    "SUBTITLE": "제품 기능이 아니라 학습 루프 설계로 읽는 Study Mode, Guided Learning, Khanmigo, UNESCO, retrieval practice",
+    "META": "mode/profile/version/lens",
+    "LEARNING_GOALS": "목표 + STORM 다섯 관점 + 목차",
+    "BEFORE_START": "사실/해석/실행 분리 + 안전 경계",
+    "CONCEPT_LESSON": "vt timeline + contradiction map",
+    "EXAMPLE": "AI 영상 제작 파이프라인 학습 예제",
+    "PRACTICE": "wg-15 concept explainer + 4주 플레이북",
+    "QUIZ": "7문항 퀴즈",
+    "ANSWER_KEY": "정답과 해설",
+    "REVIEW_CHECKLIST": "품질/안전 손검수",
+    "SOURCE_NOTE": "출처 허브와 스킬 적용 증빙"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "80b912c06fb1055ca14e99123c01a99b89765cbd8935616dbff3ac48efaef002"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "5091eca47d175172114ccd1bbac35744d73da60540c9f25af050688f6ffa4a94"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/course-module.html",
+      "sha256": "18662fd21a7e1dc6e9544ccd1b1b60c8d6dafb0f322e0f04ff95f2fb3e131f04"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/04-timeline.html",
+      "sha256": "0b0c9babbef8e17823170698a61270cfca459252c0304a1377a8cf2b636e37b1"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/15-concept-explainer.html",
+      "sha256": "42caec19599ddf789438530d853e0c703e574c3c7731e9f88090b0dd01a8c1f8"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/writing-system.md",
+      "sha256": "eaeafad51b4704f4cf417474031c31f51c676971c148728182fc19468c757e09"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/layout-system.md",
+      "sha256": "74209d73bebcef56f0f6c242a73d0ef45793ae2bdc74b9e89d58e10dc178d2f9"
+    },
+    {
+      "path": "orginal_skill/adaptive-html-learning-ultimate-merged.skill",
+      "sha256": "799c223cd4d32efff4c09f9ea916b9c2fe8b766d9f8a8de14ded0da4583d6ab8"
+    },
+    {
+      "path": "orginal_skill/storm-research/SKILL.md",
+      "sha256": "866622b669953de1c1f235fcc9bb86c70ee06322c90b01ae8008705372a04932"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/storm-pipeline.md",
+      "sha256": "ebe8bc4eb959ff2a7c84d8456ceb8ee18d17e25e65e192c1a109df1ffd08e6c2"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/provenance.md",
+      "sha256": "8d15a93d4c0a305d44612241d05d2d006703b122f8c0616012368c0f1b942d7c"
+    }
+  ],
+  "input_snapshots": [
+    "sources/storm-scan.md",
+    "sources/storm-contradiction-map.md",
+    "sources/storm-synthesis.md",
+    "sources/storm-peer-review.md",
+    "sources/learning-ultimate-application.json"
+  ],
+  "research_route": "storm-research solo fallback; web-sourced claims stored in source-list.json"
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "OpenAI · Introducing study mode",
+    "url": "https://openai.com/index/chatgpt-study-mode/",
+    "role": "step-by-step guidance, active participation, cognitive load, metacognition, knowledge checks",
+    "used_for": "AI tutor design principle: answer-first 대신 guided learning"
+  },
+  {
+    "name": "Google · Guided Learning in Gemini",
+    "url": "https://blog.google/products-and-platforms/products/education/guided-learning/",
+    "role": "questions, step-by-step breakdowns, multimodal responses, quizzes, active learning",
+    "used_for": "멀티모달/퀴즈/질문형 학습 companion 설계"
+  },
+  {
+    "name": "Khanmigo · Khan Academy AI tutor",
+    "url": "https://www.khanmigo.ai/",
+    "role": "doesn’t just give answers; guides learners; safety/supervision for minors",
+    "used_for": "답을 찾게 하는 튜터와 보호자/학교 감독 경계"
+  },
+  {
+    "name": "UNESCO · Guidance for generative AI in education and research",
+    "url": "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research",
+    "role": "human-centered approach, privacy and institutional readiness concerns",
+    "used_for": "AI 학습 도구의 정책·프라이버시·연령 적합성 리스크"
+  },
+  {
+    "name": "UNESCO · Artificial intelligence in education",
+    "url": "https://www.unesco.org/en/digital-education/artificial-intelligence",
+    "role": "human-centered, inclusive, equitable AI in education framing",
+    "used_for": "교육에서 AI를 인간 역량 보강으로 제한하는 원칙"
+  },
+  {
+    "name": "Dunlosky et al. · Effective learning techniques",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26173288/",
+    "role": "practice testing and distributed practice as high utility; rereading/highlighting low utility",
+    "used_for": "4주 학습 루프의 retrieval/spacing 근거"
+  },
+  {
+    "name": "IES What Works Clearinghouse · Organizing Instruction and Study",
+    "url": "https://ies.ed.gov/ncee/wwc/practiceguide/1",
+    "role": "space learning over time, interleave examples with exercises, use quizzing",
+    "used_for": "주차별 분산·인터리빙·퀴즈 설계"
+  },
+  {
+    "name": "Education Endowment Foundation · Metacognition and Self-Regulated Learning",
+    "url": "https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/metacognition",
+    "role": "planning, monitoring, evaluating learning; metacognition and self-regulation",
+    "used_for": "학습 전·중·후 자기점검 루틴"
+  },
+  {
+    "name": "Stanford STORM Research Project",
+    "url": "https://storm-project.stanford.edu/research/storm/",
+    "role": "multi-perspective question asking and retrieval-grounded outline synthesis",
+    "used_for": "이번 산출물의 STORM식 리서치 절차"
+  },
+  {
+    "name": "STORM paper · arXiv:2402.14207",
+    "url": "https://arxiv.org/abs/2402.14207",
+    "role": "Synthesis of Topic Outlines through Retrieval and Multi-perspective Question Asking",
+    "used_for": "다관점 질문 → 충돌 지도 → 교육 모듈화 절차"
+  }
+]

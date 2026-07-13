@@ -1,0 +1,17 @@
+{
+  "layout": "manual-analysis.html",
+  "VERDICT": "운영 판정 + vt hero-map + STORM 관점",
+  "READER_TOC": "manual-reader-toc chip navigation",
+  "SOURCE_VERSION": "출처/버전 snapshot + system overview",
+  "ROLE_ROUTER": "역할별 책임",
+  "FIRST_SUCCESS": "30분 첫 컷 기준",
+  "PREREQUISITES_SAFETY": "사전조건/안전/위험 소재",
+  "TASK_RECIPES": "wg-13 flowchart + contradiction map",
+  "REFERENCE_EXTRACT": "evidence ledger fields",
+  "DECISION_GUIDE": "공개 전 결정표",
+  "TROUBLESHOOTING": "증상/원인/진단",
+  "OPERATIONS_RUNBOOK": "운영 주기",
+  "MANUAL_AUDIT": "Source Limits + verification boundary",
+  "NEXT_ACTIONS": "실행 산출물",
+  "SOURCE_NOTE": "source hub"
+}

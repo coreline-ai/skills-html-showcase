@@ -1,0 +1,71 @@
+{
+  "mode": "expert_html",
+  "topic": "STORM식 다관점 리서치가 AI HTML 리포트 생성 파이프라인에 주는 실제 가치와 한계",
+  "profile": "auto",
+  "layout": "expert-report.html",
+  "primary_vt": "risk-matrix",
+  "recommended_wg": "wg-16",
+  "section_mapping": {
+    "EXECUTIVE_SUMMARY": "storm synthesis lead + decision summary",
+    "DECISION_CARDS": "storm contradiction decisions",
+    "ARCHITECTURE": "storm pipeline + adaptive-html-final hybrid flow",
+    "RISK_MATRIX": "risk-matrix vt + contradiction map",
+    "PRIORITY_ROADMAP": "30-day operational validation plan",
+    "VALIDATION_CHECKLIST": "storm peer review + HTML validation scope",
+    "FINAL_RECOMMENDATION": "safe use recommendation"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "80b912c06fb1055ca14e99123c01a99b89765cbd8935616dbff3ac48efaef002"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "5091eca47d175172114ccd1bbac35744d73da60540c9f25af050688f6ffa4a94"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/expert-report.html",
+      "sha256": "6d6bbf941d66842ea29976ecdd0976f6a41786d07b33d16789b89fcf6c3471c3"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/03-risk-matrix.html",
+      "sha256": "819a2e7a46f0caf85726705c79a95720c9296ab418b1f16f2f2b1f3f72aa522f"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/16-implementation-plan.html",
+      "sha256": "7137af34d22e3875711958e017929b8d9f14c4d4cd3d57fcd28a02e8d1007c6e"
+    },
+    {
+      "path": "orginal_skill/storm-research/SKILL.md",
+      "sha256": "866622b669953de1c1f235fcc9bb86c70ee06322c90b01ae8008705372a04932"
+    },
+    {
+      "path": "orginal_skill/storm-research/prompts/1-multi-perspective-scan.md",
+      "sha256": "09d35b3803f0a09239621d53ce5f010c1d228d6cdbe0a0f543a5c6b19699ea13"
+    },
+    {
+      "path": "orginal_skill/storm-research/prompts/2-contradiction-map.md",
+      "sha256": "ee11c2ba8aca818df51e00d28ee009b6fd16cf5e17411bcb2d000da21e713361"
+    },
+    {
+      "path": "orginal_skill/storm-research/prompts/3-synthesis.md",
+      "sha256": "497f02cd62d8df92e17b264ac0a08ec5da753525ce6e04942768aea5c9656db7"
+    },
+    {
+      "path": "orginal_skill/storm-research/prompts/4-peer-review.md",
+      "sha256": "6dbfef8a6e07e778da4a6be1e528e82ee5b160edf080f2e23b2f3a509545a2a2"
+    },
+    {
+      "path": "scripts/build_storm_research_hybrid.py",
+      "sha256": "77ff1e0750fde6c16dda159f2558a477710fb17a5ac2fe6cd5a86993d21ad03d"
+    }
+  ]
+}

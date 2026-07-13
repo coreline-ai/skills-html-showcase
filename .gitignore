@@ -20,3 +20,7 @@ node_modules/
 # Build-time export artifacts (regenerable)
 output/**/exports/
 .pytest_cache/
+
+# QA scene captures (regenerable, siblings of qa-screenshots/)
+output/**/_qa/screenshots/
+output/**/_qa/screenshots-after/

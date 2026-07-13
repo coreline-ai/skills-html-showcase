@@ -1,0 +1,63 @@
+{
+  "mode": "blog_writer",
+  "profile": "auto",
+  "layout": "personal-blog-essay.html",
+  "primary_vt": "timeline",
+  "topic": "AI 코딩 6개월 후 다시 손코딩 — 개인 회고",
+  "pipeline": "adaptive-html-blog-writer-v2(글쓰기 방법론: 제목 4계열·Hook→문제→관점→사례→실행→CTA·밀도·톤) → adaptive-html-final 5.10.5 blog_writer (하이브리드)",
+  "section_mapping": {
+    "01": "Hook/문제",
+    "02": "제목 4계열(방법론)",
+    "03": "타임라인(tl 1순위 vt)",
+    "04": "사례",
+    "05": "관점",
+    "06": "워크플로 before→after(wg-17)+기준표",
+    "07": "습관",
+    "08": "동료",
+    "09": "반론",
+    "10": "CTA(.try)",
+    "11": "메타·태그"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/modes/11-blog-writer.json",
+      "sha256": "a562c4525b1a01c6854e82690c30d4af01148d951797fa0fa62517b5afb50dc4",
+      "why": "blog_writer 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/personal-blog-essay.html",
+      "sha256": "7d78bd3437162df4164dfaa30b215ad131b210d43396615ca3ebb08fa0e96028",
+      "why": "blog_writer 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318",
+      "why": "blog_writer 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/theme.css",
+      "sha256": "2a9c8843a035138ff47b57cfc0806185c1b9cdfb3309a681022b689d8a32b1b6",
+      "why": "blog_writer 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/components.css",
+      "sha256": "72c8f2570164acf5fc80330a57201f0feca579e1b6d9c3fdf1dcc5dcb81b7aa5",
+      "why": "blog_writer 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html.css",
+      "sha256": "540cdf013934d9c2e53ac901d76aefd9ac468f3a6aaa8814d7dd60a57e919263",
+      "why": "blog_writer 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widgets.css",
+      "sha256": "847e44c71564666d11f40084171e1b1c14f13436f43bd8b503d70e34dbf54851",
+      "why": "blog_writer 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/05_blog_deepwork_4day_retro.html",
+      "sha256": "30d705e335bd728c1d1d70e1c03af71e3e3b5ba6cd5588b576708510abf024d3",
+      "why": "blog_writer 정본 자산/scaffold"
+    }
+  ]
+}

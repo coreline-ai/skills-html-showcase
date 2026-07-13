@@ -1,0 +1,42 @@
+[
+  {
+    "name": "storm-research/SKILL.md",
+    "url": "sources/storm-SKILL.md",
+    "role": "Phase 0~7 실행 절차, full/solo 모드, 5영혼·4프롬프트·HTML 산출 규칙"
+  },
+  {
+    "name": "storm-pipeline.md",
+    "url": "sources/storm-pipeline.md",
+    "role": "STORM 원논문 단계 매핑, Knowledge Curation, Outline, Article, Polish"
+  },
+  {
+    "name": "provenance.md",
+    "url": "sources/provenance.md",
+    "role": "출처 계보, 과장-사실 구분, 조직성 +25%/coverage +10% 정확 표기"
+  },
+  {
+    "name": "prompt 1 · Multi-Perspective Scan",
+    "url": "sources/prompt-1-multi-perspective-scan.md",
+    "role": "다섯 전문가 렌즈와 출처 강제 스캔"
+  },
+  {
+    "name": "prompt 2 · Contradiction Map",
+    "url": "sources/prompt-2-contradiction-map.md",
+    "role": "합의·모순·사각지대·핵심 긴장 도출"
+  },
+  {
+    "name": "prompt 3 · Synthesis",
+    "url": "sources/prompt-3-synthesis.md",
+    "role": "모순을 중심축으로 둔 개요·본문·lead 생성"
+  },
+  {
+    "name": "prompt 4 · Peer Review",
+    "url": "sources/prompt-4-peer-review.md",
+    "role": "source bias transfer와 over-association 검토"
+  },
+  {
+    "name": "soul charters",
+    "url": "sources/soul-charters.md",
+    "role": "Skeptic/Economist/Historian/Academic/Futurist 각 영혼 질문 프레임"
+  }
+]

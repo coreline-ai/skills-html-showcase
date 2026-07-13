@@ -1,0 +1,12 @@
+{
+  "skill": "storm-research",
+  "selected_topic": "STORM Research OS — 다섯 영혼 리서치가 단일 답변을 이기는 조건",
+  "environment": {
+    "cmux": "missing",
+    "CMUX_WORKSPACE_ID": "NONE",
+    "kimi": "missing"
+  },
+  "execution_mode": "solo fallback by main agent",
+  "html_template_rule": "adaptive-html-final v5.10.5 used only for base/layout/css/widget/validation",
+  "content_source_rule": "storm-research local skill content only"
+}

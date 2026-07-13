@@ -1,0 +1,11 @@
+{
+  "manual_verification_skill_available": false,
+  "substitute_checks": [
+    "validate_output",
+    "quality_contract_check",
+    "render_audit_fulltest",
+    "completion_check",
+    "visible_text_content_preservation"
+  ],
+  "claim": "Project validation passed; dedicated manual-verification skill pass not claimed."
+}

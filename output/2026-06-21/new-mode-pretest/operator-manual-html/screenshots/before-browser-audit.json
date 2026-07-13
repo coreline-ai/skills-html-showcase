@@ -1,0 +1,727 @@
+{
+  "desktop": {
+    "consoleMessages": [],
+    "metrics": {
+      "viewport": {
+        "w": 1280,
+        "h": 720
+      },
+      "scroll": {
+        "width": 1280,
+        "height": 6399,
+        "bodyWidth": 1280
+      },
+      "h1Count": 1,
+      "mainId": true,
+      "scriptCount": 0,
+      "draggableCount": 0,
+      "contenteditableCount": 0,
+      "themeInputCount": 8,
+      "themebar": {
+        "x": 986,
+        "y": 14,
+        "w": 276,
+        "h": 79,
+        "top": 14,
+        "bottom": 93
+      },
+      "page": {
+        "x": 80,
+        "y": 0,
+        "w": 1120,
+        "h": 6399,
+        "top": 0,
+        "bottom": 6399
+      },
+      "header": {
+        "x": 80,
+        "y": 56,
+        "w": 1120,
+        "h": 372,
+        "top": 56,
+        "bottom": 428
+      },
+      "firstSection": {
+        "x": 80,
+        "y": 462,
+        "w": 1120,
+        "h": 581,
+        "top": 462,
+        "bottom": 1043
+      },
+      "toc": {
+        "x": 80,
+        "y": 1077,
+        "w": 1120,
+        "h": 231,
+        "top": 1077,
+        "bottom": 1308
+      },
+      "floatToc": {
+        "x": 1194,
+        "y": 658,
+        "w": 68,
+        "h": 44,
+        "top": 658,
+        "bottom": 702
+      },
+      "firstSectionGap": 34,
+      "tocGap": 34,
+      "captureLabels": [
+        {
+          "text": "CAPTURE_REQUIRED",
+          "box": {
+            "x": 846,
+            "y": 857,
+            "w": 135,
+            "h": 28
+          }
+        },
+        {
+          "text": "화면명: CAPTURE_REQUIRED",
+          "box": {
+            "x": 312,
+            "y": 1649,
+            "w": 166,
+            "h": 31
+          }
+        },
+        {
+          "text": "Level 2",
+          "box": {
+            "x": 486,
+            "y": 1899,
+            "w": 64,
+            "h": 28
+          }
+        },
+        {
+          "text": "CAPTURE_REQUIRED",
+          "box": {
+            "x": 955,
+            "y": 2456,
+            "w": 129,
+            "h": 31
+          }
+        },
+        {
+          "text": "CAPTURE_REQUIRED",
+          "box": {
+            "x": 955,
+            "y": 2512,
+            "w": 129,
+            "h": 31
+          }
+        },
+        {
+          "text": "Evidence Ledger",
+          "box": {
+            "x": 846,
+            "y": 2775,
+            "w": 124,
+            "h": 28
+          }
+        },
+        {
+          "text": "Submission Check",
+          "box": {
+            "x": 126,
+            "y": 2944,
+            "w": 131,
+            "h": 28
+          }
+        },
+        {
+          "text": "CAPTURE_REQUIRED",
+          "box": {
+            "x": 1011,
+            "y": 4289,
+            "w": 129,
+            "h": 31
+          }
+        },
+        {
+          "text": "화면 캡처 필요",
+          "box": {
+            "x": 1053,
+            "y": 4289,
+            "w": 87,
+            "h": 31
+          }
+        },
+        {
+          "text": "CAPTURE_REQUIRED",
+          "box": {
+            "x": 126,
+            "y": 4588,
+            "w": 135,
+            "h": 28
+          }
+        }
+      ],
+      "overflows": [
+        {
+          "tag": "a",
+          "cls": "skip",
+          "id": "",
+          "x": -999,
+          "right": -885.09375,
+          "w": 113.90625,
+          "overflowX": "visible"
+        }
+      ]
+    },
+    "afterFloat": {
+      "hash": "#toc",
+      "tocTop": 839,
+      "scrollY": 238
+    },
+    "themeStates": {
+      "ahf-light": {
+        "checked": true,
+        "bg": "rgb(245, 245, 240)",
+        "accent": "#e63946"
+      },
+      "ahf-light2": {
+        "checked": true,
+        "bg": "rgb(245, 246, 248)",
+        "accent": "#e23b2e"
+      },
+      "ahf-white": {
+        "checked": true,
+        "bg": "rgb(255, 255, 255)",
+        "accent": "#e63946"
+      },
+      "ahf-dark": {
+        "checked": true,
+        "bg": "rgb(12, 13, 16)",
+        "accent": "#ff6b75"
+      },
+      "ahf-dark2": {
+        "checked": true,
+        "bg": "rgb(15, 16, 20)",
+        "accent": "#c8747c"
+      },
+      "ahf-blue": {
+        "checked": true,
+        "bg": "rgb(10, 26, 60)",
+        "accent": "#5b9cf0"
+      },
+      "ahf-skyblue": {
+        "checked": true,
+        "bg": "rgb(238, 244, 251)",
+        "accent": "#2f6fdb"
+      },
+      "ahf-sepia": {
+        "checked": true,
+        "bg": "rgb(244, 236, 216)",
+        "accent": "#a85c32"
+      }
+    },
+    "flowState": {
+      "hash": "#flow-submit",
+      "targetMatches": true,
+      "visibleish": "visible",
+      "opacity": "0.535693",
+      "rect": {
+        "top": 287,
+        "left": 112,
+        "width": 1038,
+        "height": 390
+      }
+    }
+  },
+  "mobile": {
+    "consoleMessages": [],
+    "metrics": {
+      "viewport": {
+        "w": 390,
+        "h": 844
+      },
+      "scroll": {
+        "width": 390,
+        "height": 12546,
+        "bodyWidth": 390
+      },
+      "h1Count": 1,
+      "mainId": true,
+      "scriptCount": 0,
+      "draggableCount": 0,
+      "contenteditableCount": 0,
+      "themeInputCount": 8,
+      "themebar": {
+        "x": 57,
+        "y": 10,
+        "w": 276,
+        "h": 79,
+        "top": 10,
+        "bottom": 89
+      },
+      "page": {
+        "x": 17,
+        "y": 103,
+        "w": 356,
+        "h": 12443,
+        "top": 103,
+        "bottom": 12546
+      },
+      "header": {
+        "x": 17,
+        "y": 143,
+        "w": 356,
+        "h": 611,
+        "top": 143,
+        "bottom": 754
+      },
+      "firstSection": {
+        "x": 17,
+        "y": 788,
+        "w": 356,
+        "h": 1504,
+        "top": 788,
+        "bottom": 2292
+      },
+      "toc": {
+        "x": 17,
+        "y": 2326,
+        "w": 356,
+        "h": 731,
+        "top": 2326,
+        "bottom": 3058
+      },
+      "floatToc": {
+        "x": 310,
+        "y": 788,
+        "w": 68,
+        "h": 44,
+        "top": 788,
+        "bottom": 832
+      },
+      "firstSectionGap": 34,
+      "tocGap": 34,
+      "captureLabels": [
+        {
+          "text": "CAPTURE_REQUIRED",
+          "box": {
+            "x": 55,
+            "y": 2085,
+            "w": 135,
+            "h": 28
+          }
+        },
+        {
+          "text": "화면명: CAPTURE_REQUIRED",
+          "box": {
+            "x": 36,
+            "y": 3868,
+            "w": 166,
+            "h": 31
+          }
+        },
+        {
+          "text": "Level 2",
+          "box": {
+            "x": 55,
+            "y": 4323,
+            "w": 64,
+            "h": 28
+          }
+        },
+        {
+          "text": "CAPTURE_REQUIRED",
+          "box": {
+            "x": 646,
+            "y": 5142,
+            "w": 129,
+            "h": 31
+          }
+        },
+        {
+          "text": "CAPTURE_REQUIRED",
+          "box": {
+            "x": 646,
+            "y": 5198,
+            "w": 129,
+            "h": 31
+          }
+        },
+        {
+          "text": "Evidence Ledger",
+          "box": {
+            "x": 55,
+            "y": 5811,
+            "w": 124,
+            "h": 28
+          }
+        },
+        {
+          "text": "Submission Check",
+          "box": {
+            "x": 55,
+            "y": 6005,
+            "w": 131,
+            "h": 28
+          }
+        },
+        {
+          "text": "CAPTURE_REQUIRED",
+          "box": {
+            "x": 196,
+            "y": 9039,
+            "w": 129,
+            "h": 31
+          }
+        },
+        {
+          "text": "화면 캡처 필요",
+          "box": {
+            "x": 238,
+            "y": 9039,
+            "w": 87,
+            "h": 31
+          }
+        },
+        {
+          "text": "CAPTURE_REQUIRED",
+          "box": {
+            "x": 55,
+            "y": 9472,
+            "w": 135,
+            "h": 28
+          }
+        }
+      ],
+      "overflows": [
+        {
+          "tag": "a",
+          "cls": "skip",
+          "id": "",
+          "x": -999,
+          "right": -885.09375,
+          "w": 113.90625,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "table",
+          "cls": "",
+          "id": "",
+          "x": 37,
+          "right": 797,
+          "w": 760,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "caption",
+          "cls": "",
+          "id": "",
+          "x": 37,
+          "right": 797,
+          "w": 760,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "thead",
+          "cls": "",
+          "id": "",
+          "x": 37,
+          "right": 797,
+          "w": 760,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "tr",
+          "cls": "",
+          "id": "",
+          "x": 37,
+          "right": 797,
+          "w": 760,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "th",
+          "cls": "",
+          "id": "",
+          "x": 341.984375,
+          "right": 409.03125,
+          "w": 67.046875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "th",
+          "cls": "",
+          "id": "",
+          "x": 409.03125,
+          "right": 631.953125,
+          "w": 222.921875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "th",
+          "cls": "",
+          "id": "",
+          "x": 631.953125,
+          "right": 797,
+          "w": 165.046875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "tbody",
+          "cls": "",
+          "id": "",
+          "x": 37,
+          "right": 797,
+          "w": 760,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "tr",
+          "cls": "",
+          "id": "",
+          "x": 37,
+          "right": 797,
+          "w": 760,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 341.984375,
+          "right": 409.03125,
+          "w": 67.046875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 409.03125,
+          "right": 631.953125,
+          "w": 222.921875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 631.953125,
+          "right": 797,
+          "w": 165.046875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "span",
+          "cls": "status warn",
+          "id": "",
+          "x": 645.953125,
+          "right": 709.671875,
+          "w": 63.71875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "tr",
+          "cls": "",
+          "id": "",
+          "x": 37,
+          "right": 797,
+          "w": 760,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 341.984375,
+          "right": 409.03125,
+          "w": 67.046875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 409.03125,
+          "right": 631.953125,
+          "w": 222.921875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 631.953125,
+          "right": 797,
+          "w": 165.046875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "span",
+          "cls": "status ok",
+          "id": "",
+          "x": 645.953125,
+          "right": 719.859375,
+          "w": 73.90625,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "tr",
+          "cls": "",
+          "id": "",
+          "x": 37,
+          "right": 797,
+          "w": 760,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 341.984375,
+          "right": 409.03125,
+          "w": 67.046875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 409.03125,
+          "right": 631.953125,
+          "w": 222.921875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 631.953125,
+          "right": 797,
+          "w": 165.046875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "span",
+          "cls": "status cap",
+          "id": "",
+          "x": 645.953125,
+          "right": 774.859375,
+          "w": 128.90625,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "tr",
+          "cls": "",
+          "id": "",
+          "x": 37,
+          "right": 797,
+          "w": 760,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 341.984375,
+          "right": 409.03125,
+          "w": 67.046875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 409.03125,
+          "right": 631.953125,
+          "w": 222.921875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "td",
+          "cls": "",
+          "id": "",
+          "x": 631.953125,
+          "right": 797,
+          "w": 165.046875,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "span",
+          "cls": "status cap",
+          "id": "",
+          "x": 645.953125,
+          "right": 774.859375,
+          "w": 128.90625,
+          "overflowX": "visible"
+        },
+        {
+          "tag": "table",
+          "cls": "",
+          "id": "",
+          "x": 37,
+          "right": 797,
+          "w": 760,
+          "overflowX": "visible"
+        }
+      ]
+    },
+    "afterFloat": {
+      "hash": "#toc",
+      "tocTop": 2231,
+      "scrollY": 95
+    },
+    "themeStates": {
+      "ahf-light": {
+        "checked": true,
+        "bg": "rgb(245, 245, 240)",
+        "accent": "#e63946"
+      },
+      "ahf-light2": {
+        "checked": true,
+        "bg": "rgb(245, 246, 248)",
+        "accent": "#e23b2e"
+      },
+      "ahf-white": {
+        "checked": true,
+        "bg": "rgb(255, 255, 255)",
+        "accent": "#e63946"
+      },
+      "ahf-dark": {
+        "checked": true,
+        "bg": "rgb(12, 13, 16)",
+        "accent": "#ff6b75"
+      },
+      "ahf-dark2": {
+        "checked": true,
+        "bg": "rgb(15, 16, 20)",
+        "accent": "#c8747c"
+      },
+      "ahf-blue": {
+        "checked": true,
+        "bg": "rgb(10, 26, 60)",
+        "accent": "#5b9cf0"
+      },
+      "ahf-skyblue": {
+        "checked": true,
+        "bg": "rgb(238, 244, 251)",
+        "accent": "#2f6fdb"
+      },
+      "ahf-sepia": {
+        "checked": true,
+        "bg": "rgb(244, 236, 216)",
+        "accent": "#a85c32"
+      }
+    },
+    "flowState": {
+      "hash": "#flow-submit",
+      "targetMatches": true,
+      "visibleish": "visible",
+      "opacity": "0.583666",
+      "rect": {
+        "top": 328,
+        "left": 41,
+        "width": 290,
+        "height": 520
+      }
+    }
+  }
+}

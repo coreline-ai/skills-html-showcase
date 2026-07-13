@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-06-20T13:32:14.504465+00:00",
+  "skill": "adaptive-html-final",
+  "version": "5.10.5",
+  "profile": "auto",
+  "mode": "expert_html",
+  "layout": "expert-report.html",
+  "core_css_sha256": "a73eb204225857f765c745b1c5210fce5f93cbf3fc3f442cc52d8d7acf29c535",
+  "asset_order": [
+    "theme.css",
+    "components.css",
+    "visual-components.css",
+    "layouts.css",
+    "print.css"
+  ],
+  "asset_sha256": {
+    "theme.css": "2a9c8843a035138ff47b57cfc0806185c1b9cdfb3309a681022b689d8a32b1b6",
+    "components.css": "72c8f2570164acf5fc80330a57201f0feca579e1b6d9c3fdf1dcc5dcb81b7aa5",
+    "visual-components.css": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
+    "widgets.css": "847e44c71564666d11f40084171e1b1c14f13436f43bd8b503d70e34dbf54851",
+    "visual-html.css": "540cdf013934d9c2e53ac901d76aefd9ac468f3a6aaa8814d7dd60a57e919263",
+    "body-icons.css": "abf84aa13dc11168c18e3aa1d19abe0efed039b89cfd942257c4057ee081bf7c",
+    "editorial-patterns.css": "d2ab22f7c0cf928f34fac7b911f3bd1100bc89b666dcb7c0d91fd4202f71a563",
+    "shape-visuals.css": "cd4d0f0d9112eb8212564ed05753817d69e1b49ec3fa378c7f3887cdc545e817",
+    "workflow-visuals.css": "c4508bb638a671f2839553f5cc88a5c2786b0706a022a086676167c3a88f5e06",
+    "layouts.css": "25803a2e056c200ba4367cf67bfaf4386f6971a781a151f593070f86ce430f70",
+    "print.css": "de9e2f1a338a1f983edb6c78461b3cf73c910f125b231b6ca1040b3f50d97973",
+    "theme-dark.css": "a7c734331e99869fe0e3867b3842d4fd4d470d545f6f5f48483b8e183e70478d"
+  },
+  "inline_order": [
+    "theme.css",
+    "components.css",
+    "visual-components.css",
+    "widgets.css",
+    "visual-html.css",
+    "body-icons.css",
+    "editorial-patterns.css",
+    "shape-visuals.css",
+    "workflow-visuals.css",
+    "layouts.css",
+    "print.css",
+    "theme-dark.css"
+  ]
+}

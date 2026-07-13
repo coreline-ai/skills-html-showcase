@@ -1,0 +1,64 @@
+{
+  "mode": "landing_brief_html",
+  "profile": "auto",
+  "layout": "landing-brief.html",
+  "primary_vt": "hero-map",
+  "topic": "리셀(ReCell) — 중고 EV 배터리 진단·인증·재사용 라우팅 플랫폼 투자 피치덱 (storm 자유주제)",
+  "pipeline": "storm-research(3관점 출처조사: 시장/경쟁·회의론/기술·규제) → bizplan(사업논리·증거태깅 [사실][추정][가정][목표][확인필요]·TAM/SAM/SOM 산식·무날조) → adaptive-html-final 5.10.5 landing_brief (하이브리드, scaffold-splice)",
+  "section_mapping": {
+    "01": "한 문장 정의(hero-analogy) + hm-grid 한장요약(hero-map=1순위 vt, 섹션 내 중첩)",
+    "02": "문제 — SoH 표준부재·OEM 락인·라우팅 부재(card-grid)",
+    "03": "왜 지금 — 은퇴파동+EU여권/한국법+ESS 3곡선 교차",
+    "04": "시장 — TAM/SAM/SOM(tbl, 산식·증거등급 표기)",
+    "05": "솔루션 — 진단/인증/라우팅/데이터(card-grid) + 배터리 경로(wg-08-static)",
+    "06": "사업모델 — 진단/인증SaaS/라우팅/데이터(card-grid)",
+    "07": "경쟁과 해자 — TWAICE/Redwood/Li-Cycle/민테크/현대글로비스(tbl)",
+    "08": "리스크와 대응 — 표준부재·락인·물량지연·재활용경쟁(tbl, 반론 견디기)",
+    "09": "팀·실행 — [확인필요]/[목표] 정직 표기",
+    "10": "재무·투자요청 — 자금사용계획(tbl, 전부 [목표]/[가정])",
+    "11": "다음 단계(.try) — 공동 검증 4단계",
+    "12": "출처·증거등급 범례·메타·무날조 고지(source-note, 28 출처 링크)"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/modes/16-landing-brief.json",
+      "sha256": "b419bff033a06e86c0a8cf256b493852cbbbdabaae1ad54131cccd490eea2a8f",
+      "why": "landing_brief 모드 정본(primary_vt=hero-map·wg 후보 정의)"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/landing-brief.html",
+      "sha256": "a6426ca97eaeb68045817af226b7a0997c136ddffde899991a982087f4c61a0c",
+      "why": "landing-brief 레이아웃 scaffold 정본"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/12_landing_pagercalm_brief.html",
+      "sha256": "b7eb46441e0aed95c0ceb46c54658dc2356b0e40fc5781ddbdbe6f346ae7e9ea",
+      "why": "landing-brief 예제 — scaffold-splice 베이스(CSS/해시/테마바 보존)"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318",
+      "why": "body-icon 정본 카탈로그"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/theme.css",
+      "sha256": "2a9c8843a035138ff47b57cfc0806185c1b9cdfb3309a681022b689d8a32b1b6",
+      "why": "코어 CSS(테마) — 인라인 정본"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/components.css",
+      "sha256": "72c8f2570164acf5fc80330a57201f0feca579e1b6d9c3fdf1dcc5dcb81b7aa5",
+      "why": "코어 CSS(컴포넌트) — 인라인 정본"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-components.css",
+      "sha256": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
+      "why": "코어 CSS(hero-map/hm-grid primary vt) — 인라인 정본"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widgets.css",
+      "sha256": "847e44c71564666d11f40084171e1b1c14f13436f43bd8b503d70e34dbf54851",
+      "why": "wg-08-static(무-JS 스테퍼) 정본 CSS"
+    }
+  ]
+}

@@ -1,0 +1,435 @@
+{
+  "name": "adaptive-html-final",
+  "version": "5.10.6",
+  "language": "ko",
+  "entry": "SKILL.md",
+  "assets": [
+    "assets/theme.css",
+    "assets/components.css",
+    "assets/visual-components.css",
+    "assets/widgets.css",
+    "assets/visual-html.css",
+    "assets/body-icons.css",
+    "assets/body-icons.json",
+    "assets/editorial-patterns.css",
+    "assets/shape-visuals.css",
+    "assets/shape-catalog.json",
+    "assets/workflow-visuals.css",
+    "assets/workflow-catalog.json",
+    "assets/layouts.css",
+    "assets/print.css",
+    "assets/theme-dark.css",
+    "assets/base.html"
+  ],
+  "theme_system": {
+    "css": "assets/theme-dark.css",
+    "slot": "{{THEME_DARK_CSS}}",
+    "order": "print.css 뒤(맨 끝) — 토큰 오버라이드+표면 보정이 코어를 이긴다",
+    "model": "token-only :root override · CSS-only radios (:has)",
+    "themes": [
+      "light(크림 기본)",
+      "light2(그레이)",
+      "white(순백)",
+      "dark(proper-black)",
+      "dark2(로즈)",
+      "blue(딥 네이비)",
+      "skyblue(라이트 블루)",
+      "sepia(종이빛)"
+    ],
+    "switcher": "라디오 name=ahf-theme: #ahf-light(checked)/#ahf-light2/#ahf-white/#ahf-dark/#ahf-dark2/#ahf-blue/#ahf-skyblue/#ahf-sepia + .ahf-themebar 4x2 세그먼트. 마크업 없으면 라이트 고정",
+    "default": "light",
+    "hash_safe": true,
+    "no_js": true,
+    "important": 0,
+    "reference": "references/editorial-design-system.md",
+    "note": "v5.7.0. CSS-only 8테마(light/light2/white/dark/dark2/blue/skyblue/sepia). 코어 CSS 해시에는 포함하지 않는 token override이며, theme switcher는 base.html 라디오 계약으로 제공한다."
+  },
+  "body_icons": {
+    "css": "assets/body-icons.css",
+    "data": "assets/body-icons.json",
+    "count": 32,
+    "namespace": "bi-",
+    "decorative": true,
+    "reference": "references/body-icon-system.md",
+    "catalog": "galleries/body-icons-catalog.html"
+  },
+  "editorial_patterns": {
+    "css": "assets/editorial-patterns.css",
+    "templates": "assets/editorial-pattern-templates/",
+    "count": 8,
+    "patterns": [
+      "chronology",
+      "source-preserve",
+      "core-insight",
+      "connection",
+      "before-after",
+      "impact-grid",
+      "md-excerpt",
+      "accessibility-checklist"
+    ],
+    "reference": "references/editorial-pattern-system.md",
+    "note": "기존 13모드 내 선택 삽입 본문 구조 패턴, 프로파일 무관, 무 JS. accessibility-checklist(v4.6.0): a11y- 네임스페이스, 색 외 PASS/FAIL 텍스트 단서, 다크 릴리스 패널은 .try 동일 의도적 반전"
+  },
+  "shape_visuals": {
+    "css": "assets/shape-visuals.css",
+    "svgs": "assets/shape-svgs/",
+    "catalog": "assets/shape-catalog.json",
+    "count": 36,
+    "namespace": "shape-",
+    "render": "figure.shape-figure > img.shape-img(8000x6000 SVG, alt 필수) + 선택 figcaption",
+    "viewbox": "0 0 8000 6000",
+    "decorative": true,
+    "reference": "references/visual-template-system.md",
+    "gallery": "galleries/soft-shapes-catalog.html",
+    "note": "본문 설명 시작부 보조 도형(시각 앵커), 핵심 정보는 HTML 텍스트로, 프로파일 무관, 무 JS"
+  },
+  "workflow_visuals": {
+    "css": "assets/workflow-visuals.css",
+    "svgs": "assets/workflow-svgs/",
+    "catalog": "assets/workflow-catalog.json",
+    "count": 10,
+    "namespace": "workflow-",
+    "render": "figure.workflow-figure > img.workflow-img(8000x6000 SVG, alt 필수) + 권장 figcaption | .workflow-grid 갤러리",
+    "viewbox": "0 0 8000 6000",
+    "decorative": true,
+    "reference": "references/visual-template-system.md",
+    "note": "본문 대표 도판/섹션 상단 구조도/랜딩 카드(와이드 ~720px). soft-shape보다 크고 상세, vt- 대체 아님(검색가능 구조도는 vt-), 핵심 정보는 HTML 텍스트로, 프로파일 무관, 무 JS. wf- 금지(vt-21 점유) workflow- 풀네임"
+  },
+  "layouts": [
+    "beginner-learning.html",
+    "github-analysis.html",
+    "github-feature-usage.html",
+    "youtube-analysis.html",
+    "manual-analysis.html",
+    "expert-report.html",
+    "magazine-article.html",
+    "course-module.html",
+    "personal-blog-essay.html",
+    "seo-dashboard.html",
+    "platform-adaptation.html",
+    "skill-audit-report.html",
+    "reference-manual.html",
+    "comparison-matrix.html",
+    "case-study.html",
+    "landing-brief.html",
+    "checklist-playbook.html"
+  ],
+  "examples": {
+    "dir": "examples/",
+    "count": 17,
+    "index": "examples/index.html",
+    "purpose": "17모드 풀 스킬급 참조 예제 — 실제 코어 CSS 인라인(v5.10.6)·8-테마 스위처·body-icon·editorial/vt/wg 컴포넌트로 생성된 자기완결 HTML(무 JS). 17번째 github_feature_usage는 smoke output(github-feature-usage-coreline-auth)을 layout-github-feature로 정합해 편입(스크린샷 갤러리 동봉). 구 16모드/신규 변종 본문 정형화는 후속 재생성 단계.",
+    "fidelity": "skill-core-inlined + 8-theme(ahf-theme) + body-icons + editorial components + vt/wg auto profile",
+    "files": [
+      "01_beginner_passkey_login.html",
+      "02_expert_llm_gateway_report.html",
+      "03_article_side_project_signal.html",
+      "04_education_git_rebase_workshop.html",
+      "05_blog_deepwork_4day_retro.html",
+      "06_seo_prompt_engineering_dashboard.html",
+      "07_platform_tech_retro_adaptation.html",
+      "08_skill_audit_codereview_bot.html",
+      "09_reference_regex.html",
+      "10_comparison_message_queue.html",
+      "11_case_study_search_index_outage.html",
+      "12_landing_pagercalm_brief.html",
+      "13_checklist_data_migration.html",
+      "14_github_analysis_fastapi_starter.html",
+      "15_youtube_vibecoding_gap.html",
+      "16_manual_product_runbook.html",
+      "17_github_feature_usage_coreline_auth.html",
+      "index.html"
+    ],
+    "version": "5.10.6"
+  },
+  "modes": [
+    {
+      "id": "skill_audit",
+      "layout": "skill-audit-report.html"
+    },
+    {
+      "id": "platform_blog",
+      "layout": "platform-adaptation.html"
+    },
+    {
+      "id": "seo_dashboard",
+      "layout": "seo-dashboard.html"
+    },
+    {
+      "id": "education_html",
+      "layout": "course-module.html"
+    },
+    {
+      "id": "github_analysis",
+      "layout": "github-analysis.html"
+    },
+    {
+      "id": "github_feature_usage",
+      "layout": "github-feature-usage.html"
+    },
+    {
+      "id": "youtube_analysis",
+      "layout": "youtube-analysis.html"
+    },
+    {
+      "id": "manual_analysis",
+      "layout": "manual-analysis.html"
+    },
+    {
+      "id": "expert_html",
+      "layout": "expert-report.html"
+    },
+    {
+      "id": "article_html",
+      "layout": "magazine-article.html"
+    },
+    {
+      "id": "blog_writer",
+      "layout": "personal-blog-essay.html"
+    },
+    {
+      "id": "beginner_html",
+      "layout": "beginner-learning.html"
+    },
+    {
+      "id": "reference_html",
+      "layout": "reference-manual.html"
+    },
+    {
+      "id": "comparison_html",
+      "layout": "comparison-matrix.html"
+    },
+    {
+      "id": "case_study_html",
+      "layout": "case-study.html"
+    },
+    {
+      "id": "landing_brief_html",
+      "layout": "landing-brief.html"
+    },
+    {
+      "id": "checklist_playbook",
+      "layout": "checklist-playbook.html"
+    }
+  ],
+  "design": "editorial-learning-v4.3.3-responsive-polish",
+  "merged_from": [
+    "adaptive-html-learning-ultimate@3.0.0 (13-mode router, layouts, eval rubric, recipes, schemas, layered CSS)",
+    "adaptive-html-blog-writer@2.0.0 (blog/SEO/platform/box-selection 상세 references)"
+  ],
+  "integrates": [
+    "adaptive-html-blog-writer-v2",
+    "adaptive-html-learning-ultimate",
+    "html-for-beginners design DNA"
+  ],
+  "aliases": [
+    "adaptive-html-learning-ultimate",
+    "adaptive-html-blog-writer-v2"
+  ],
+  "changes": [
+    "v5.10.6: 시각 결함 하드닝(G1~G8) — 좁은 표 상태코드 nowrap(.status-pill 정본), .try 중첩 흰 inner-card 링크 대비 reset(--accent-2, 8테마 min 6.09:1), source-preserve 좌측 gutter(.source-body-inner), mini-card 첫 태그 vertical rhythm, TOC 독립 섹션·섹션 첫 h2 anchor DOM 정적 가드, core-insight 내부 제목 margin reset + red gradient 보존, prefers-contrast 단서(A5). 코어 CSS(components·editorial-patterns·theme) 직접 수정 → 코어 해시 a73eb204→a64604d0·examples 18종 재인라인·sources/css-integrity·.skill 재패키징. 신규 검출 게이트(G2 노드 overlap·G3 inner-card 링크 대비 render-audit[scripts/micro_layout_audit.mjs] + G4~G8 정적 가드) → 거버넌스 162→176.",
+    "v5.10.5: 접근성·스코프 하드닝 — forced-colors(고대비) 상태 단서 추가(테마바 선택 라벨 + wg 선택/체크 컨트롤 7종[wg-02·06·07·12·19·20 및 06 primary]에 시스템색 Highlight outline, @media(forced-colors:active) 가드로 일반 렌더 영향 0), visual-html.css 비스코프 .score→.tuner .score 스코프(vt-20 튜너 전용·시각 무변), vt 장식 글리프 aria-hidden(vt-10 flowchart 화살표 4종 + vt-05 checklist 체크표 ✓/· — 동반 cf-state 텍스트가 상태 전달, 템플릿·예제 13/16·카탈로그 동기화), eval-rubric.md→schemas/quality-report.schema.json 연결로 스키마 고아 해소. 조건부 자산(theme-dark/widgets/visual-html)만 변경 → 코어 해시 7e151665 불변·examples 18종 재인라인·sources/css-integrity 동기화. 거버넌스 162 유지.",
+    "v5.10.4: 마이크로 레이아웃 계약 — 실산출물 눈검수 결함 M1·M4·M7·M10 정본 CSS 반영(h2 번호 pill 390px white-space:nowrap·cmp-card kicker→title gap 8px·인쇄 reading-progress 숨김·body-level footer 본문폭 중앙정렬). 코어(theme/print) 해시 갱신·examples 18종 재인라인·sources/css-integrity 동기화. M2·M3·M6·M9는 정본 컴포넌트(lede-note·vt chip·tl-color-cycle) 사용 작성 프로토콜(docs/adaptive-html-final-template-authoring-protocol.md)로 문서화. Phase 3에서 M2/M3 비정본 클래스·M5/M6 flat text-only section·build-evidence 누락/stale 검출 게이트를 추가하고, 17모드 독립 벤치마크 전용 benchmark-manifest/page evidence/micro-layout completion 게이트를 더해 거버넌스 162로 승격.",
+    "v5.10.3: 회귀 안전 패치 — widgets reverse-sync 층 #fff→var(--on-accent)(다크 대비 1.92→8.6+, 라이트 byte-동일)·wg-07 애니메이션 복원, 다크 트리오 인쇄 라이트 토큰 강제+--danger-accent(dark), print.css .try 잉크(실측 1.3:1 소실 수정)·details 펼침·외부링크 한정 href·themebar 숨김, 폭 정본 A(전 17모드 page-wide·60rem — 골격 5종 승격+4모드 단락 960px), 게이트 6종 신설(on-accent lint·테마 대비·print 잉크·폭 일치·테마 8/8·.skill 버전) + 미커버 게이트 7종 거버넌스 잠금, exporter --require-webp skipped 오판 수정, 렌더러 2줄 제목 겹침 수정, 체크리스트 4종 모드17 동기화, editorial 03/05 실콘텐츠.",
+    "v5.10.2: layout-github-feature 본문 단락 폭 결함 수정 — theme.css 60rem 오버라이드 목록에서 누락돼 46rem(736px)로 좁던 것을 형제 layout-github와 동일하게 60rem(960px)로 추가. R5 게이트를 layout별 60rem 셀렉터 정밀 검사로 강화(60rem 문자열 존재만 보던 blind spot 제거). 코어(theme.css) 변경 → 코어 해시 갱신·examples 18종 재인라인·sources/css-integrity 동기화.",
+    "v5.10.1: examples 01–14 정본화(mode-template-contract 부록 제거·1순위 vt 본문 내장·주제 wg 1종) + manifest_version_consistency_gate·decision_table_consistency_gate·quality_contract 메타문구 게이트 신설·배선, widget-system.md mode→wg 표 §0.6 정렬, references 스테일(4.5.0/20종·dangling 갤러리) 정리. 거버넌스 80→86, 코어 CSS·17모드·자산 불변.",
+    "v5.10.0: github_feature_usage 17번째 모드 추가 — 기능·사용법·도입 가이드 전용 layout-github-feature, 스크린샷 갤러리, 기술 스택/아키텍처/디렉토리 구조 섹션, 계약 게이트와 examples 17종 v5.10.0 재인라인.",
+    "v5.9.2: 외부 세리프 폰트 링크/스택/과거 세리프 토큰 금지, pull-quote Pretendard 굵게 통일, vt-02 decision-tree 3카드 정합성 + h3 마진 보정 + 검증 게이트 강화.",
+    "v5.9.1: wg-10 figure sheet를 모드 정본 데모 섹션(.mode-template-contract) 안에서만 full-width로 확장 — 일반 본문 가독성(620px)은 보존하고 examples 17종 재인라인·sources 스냅샷·css-integrity 재동기화; section.lead 직접 섹션 wrapper의 prose max-width 상속을 reset해 article 모드 카드 가로폭 회귀를 방지.",
+    "v5.9.0: final_20260604 카탈로그 reverse-sync — vt/wg 반응형·가로폭·대비 계약, 제목 body-icon/섹션 surface/모드 템플릿 정본 게이트를 스킬 자산과 검증기로 승격.",
+    "v5.8.1: 캡처 QA 발견 P0 수정 — theme.css .generated-date flex 축소 허용+overflow-wrap:anywhere(모바일 390px 가로 오버플로 해소), examples 17종 인라인 코어 CSS·해시 마커 재동기화.",
+    "v5.8.0: youtube/manual 깊이 계약 — examples/15·16 함대 수준 증보(앵커 교정), SKILL.md §4 정량 하한·§7 게이트 2줄, references 2종 증보(블록별 깊이 하한·실패 패턴·완료 게이트), validate_output에 mode_section_depth_too_thin(h2≥6·평균 400자 미만)·profile_vt_template_missing(diagram/auto vt 0개) 게이트 추가. governance 51/51.",
+    "v5.7.0: youtube_analysis(15) + manual_analysis(16) 신규 모드 추가 — youtube-analysis/manual-analysis 레이아웃, references/recipes, 16모드 라우터·manifest·AGENTS 동기화, 전용 validate_output 계약 게이트(youtube/manual), 8테마 theme_system 정합화.",
+    "v5.7.0: quality_contract_check.py 보조 품질 게이트 추가 — layout-first 계약, 예제/placeholder 문구, mini-card/col-list 반복, repeated h3를 검사해 validate OK지만 붕어빵인 산출물을 차단.",
+    "v5.4.3: final_20260604 검수 템플릿 P0 4종 승격 — wg-11 상태판(KPI/진척/완료·진행·리스크), wg-16 거버넌스 운영 팩(마일스톤/플로우/리스크), seo_dashboard SERP premium(`serp-*`), platform_blog transform/output cards(`platform-split`/`platform-output-*`). final 전용 prefix는 사용하지 않고 정본 namespace로 토큰화.",
+    "v5.3.0: github_analysis 14번째 모드 추가 — GitHub 저장소 URL/owner/repo를 사용자 질문 중심 HTML 분석 리포트로 변환하는 레이아웃·라우터·문서 계약 추가.",
+    "blog-seo-system / writing-system / platform-system / editorial-design-system references를 blog-writer 상세본으로 흡수",
+    "SKILL.md description에 명시적 트리거 목록과 출력 원칙 추가",
+    "skip link 접근성 버그 수정: 13개 레이아웃 <main>에 id=\"main\" 통일",
+    "v4.1.0: modes를 13개 {id, layout} 객체 배열로 표준화하고 SKILL.md §3 라우터와 일치",
+    "v4.1.0: 접근성 테스트 체크리스트 추가, recipes 13/13 완비, blog-meta/quality-report 스키마 보강",
+    "v4.1.0: layouts.css 미정의 클래스 39개 정의로 차집합 0 달성, AA 대비·focus-visible·reduced-motion 보강",
+    "v4.1.0: base.html에 선택적 {{FOOTER}} 슬롯 추가",
+    "v4.2.0: Visual Template System 추가 — 8000×6000 SVG 인포그래픽 템플릿 7종과 렌더러 도입",
+    "v4.2.0: visual brief schema, visual-components.css, figure 삽입/품질 게이트 추가",
+    "v4.2.1: quality-gate SVG 레이아웃을 2×3 카드 그리드 + 충분한 높이의 PRE-FLIGHT 패널로 교정",
+    "v4.2.1: 납작한 하단 배너/텍스트-footer 겹침 방지 규칙을 렌더러와 품질 게이트에 반영",
+    "v4.3.0: section wrapper와 grid/card wrapper 분리 — h2/h2-sub/body/table이 grid item으로 쪼개지는 레이아웃 결함 수정",
+    "v4.3.0: components/theme에 long-token overflow 방지와 caption 음수 margin 금지 안전장치 추가",
+    "v4.3.0: validate_output.py 정적 품질 게이트 추가 — h1/main/local refs/caption/grid/source sync/visual figure 검사",
+    "v4.3.1: section/card 내부 첫 heading margin reset으로 카드 상단 과다 여백 방지",
+    "v4.3.1: .try 내부 밝은 카드 텍스트 contrast reset 추가",
+    "v4.3.1: winners/tradeoffs 의미형 블록 grid 오배치와 case timeline left rule 중복 방지",
+    "v4.3.1: validate_output.py에 디자인 회귀 정적 검사 4종 추가",
+    "v4.3.1: output CSS snapshot/css-integrity.json/inline hash marker를 validate_output.py에서 강제",
+    "v4.3.1: .try .cta-box accent left rule 복구와 timeline-card 굵은 left rule 회귀 검사 추가",
+    "v4.3.1: --ink-mute를 #666으로 상향해 h2-sub/caption/meta 흐림 완화",
+    "v4.3.1: timeline-card ordered-list marker 여백 보강",
+    "v4.3.1: 표 내부 status-pill nowrap/center 정렬로 등급 배지 세로 깨짐 방지",
+    "v4.3.2: dark soft CTA 내부 tag pill 대비 보강으로 태그 텍스트 가독성 회복",
+    "v4.3.2: blog_writer 섹션 h2 자동 번호 badge를 CSS counter로 통일",
+    "v4.3.2: SEO SERP title을 literal Google blue/Arial에서 editorial balanced title로 조정",
+    "v4.3.2: validate_output.py에 h2-sub 닫는 태그 오류, blog counter, try tag contrast, SERP title style 회귀 검사 추가",
+    "v4.3.3: dark CTA 내부 링크 전용 --link-on-dark 토큰과 .try a 대비 reset 추가",
+    "v4.3.3: platform-grid를 inner wrapper 전용으로 제한하고 section.platform-grid 회귀 검사 추가",
+    "v4.3.3: mobile-card-table 패턴으로 4열 이상 표를 390px에서 카드형으로 전환 가능하게 추가",
+    "v4.3.3: case timeline을 단일 거대 카드 대신 개별 step card로 렌더링하는 CSS 추가",
+    "v4.3.3: table caption 누락, dark CTA link reset 누락, platform grid section 사용을 validate_output.py에서 실패 처리",
+    "v4.4.0: 뷰 위젯 시스템 정식 편입 — assets/widgets.css(wg-<id>- 네임스페이스, 무 JS)와 assets/widget-templates/*.html 20종 도입",
+    "v4.4.0: 위젯 인터랙티브 분류 정의 — CSS-only 11 / CSS 부분 7 / JS 필요 2(18 칸반, 20 프롬프트 튜너는 무 JS 근사, 완전 인터랙션은 선택적 점진 향상)",
+    "v4.4.0: SKILL.md 워크플로우에 Step 4.6 View Widget Selection & Insertion과 모드별 권장 위젯 가이드 추가, References에 widget-system.md 등재",
+    "v4.4.0: references/widget-system.md 위젯 선택·삽입·접근성 규칙 문서 추가, base.html {{WIDGETS_CSS}} 슬롯 사용 명시",
+    "v4.4.0: tests/widget-checklist.md 위젯 게이트 추가 — 외부 JS 0, wg-<id>- 네임스페이스 충돌 0, 인터랙션 details/:checked/:target/CSS-anim 한정, 색 외 단서·포커스, 18·20 무 JS 근사 검증",
+    "v4.5.0: SVG→HTML 템플릿 21종 편입 + 하네스 정형화 — assets/visual-html.css와 assets/visual-html-templates/01..21.html(vt- 본문 삽입 다이어그램), 캐노니컬 모드→vt 매핑·결정론 진입점, visual_html_templates 메타 등록, 무 JS 0 유지",
+    "v4.5.0: 본문용 compact 아이콘 32종 편입 — assets/body-icons.css(bi- 네임스페이스, 무 JS, aria-hidden 장식) + assets/body-icons.json(id/label/usage/svg), references/body-icon-system.md(모드별 추천·삽입 규칙), base.html {{BODY_ICONS_CSS}} 슬롯",
+    "v4.5.0: 본문 구조 패턴 7종 편입 — assets/editorial-patterns.css(chronology·source-preserve·core-insight·connection·before-after·impact-grid·md-excerpt) + assets/editorial-pattern-templates/01..07.html, references/editorial-pattern-system.md, base.html {{EDITORIAL_PATTERNS_CSS}} 슬롯, 기존 13모드 내 선택 삽입·무 JS",
+    "v4.5.0: vt-21 soft-workflow-map 편입(8816, 전문가 검토) — visual-html-templates/21-soft-workflow-map.html(wf- 접두사, role=img 제거로 카드 텍스트 prune 방지, 장식만 aria-hidden), visual-html.css .wf-*, soft_workflow_gate, expert/education/skill_audit/landing 후순위(1순위 불변)",
+    "v4.5.0: soft-shape 도형 36종 편입(8817, 전문가 검토) — assets/shape-svgs/*.svg(8000×6000) + shape-visuals.css(figure.shape-figure 앵커) + shape-catalog.json, visual-template-system.md 흡수, shape_visual_gate, base.html {{SHAPE_VISUALS_CSS}} 슬롯",
+    "v4.5.0: soft 워크플로우 도판 10종 편입(8819, 전문가 검토) — assets/workflow-svgs/*.svg(8000×6000 pipeline/hub/router/stack/funnel/graph/swarm/timeline/board/governance) + workflow-visuals.css(figure.workflow-figure 와이드 ~720px) + workflow-catalog.json, visual-template-system.md 흡수, workflow_visual_gate(8000×6000 크기 계약 포함), base.html {{WORKFLOW_VISUALS_CSS}} 슬롯, wf- 금지 workflow- 풀네임, version 4.5.0 유지(frozen 골든 v6 보존)",
+    "v5.2.1: body-icons.css에 icon+text 정렬 규칙 추가(:has 기반, 무 JS) — body-icon을 직접 자식으로 갖는 .label/h1/h2/h3를 flex 왼쪽 아이콘+일정 간격 정렬, .mini-card/.card-block h3 아이콘은 상단 정렬. theme.css 헤더 48rem 단일측정 캡 해제(.header content가 .page/.page-wide 컨테이너 폭에 맞춰 아래 섹션과 동일 폭). 코어 해시 변경(theme.css), 13-topics 기준선 재생성",
+    "v5.2.2: body-icons.css에 아이콘 박스 배경 테마 적응 추가 — :root:has(#ahf-white) 순백 / :root:has(#ahf-dark) 카드 표면(var(--vt-soft)→var(--card))으로, 하드코딩 흰빛 그라디언트가 다크에서 떠 보이던 보편 결함 해소(스킬·final 템플릿 공통). lede-note 컨텍스트 라벨 아이콘 정렬(.lede-note .label:has) 추가. 조건부 자산만 변경 → 코어 해시 불변, 13-topics body-icons.css 재인라인+스냅샷+css-integrity 갱신",
+    "v5.2.3: editorial-patterns.css 일반 가독성 승격 — a11y-card 줄 간격 8→12px·a11y-points 5→9px(헤드/제목/PASS·FAIL 덜 붙음), impact-card 아이콘 하단 12px 여백(아이콘이 제목에 붙던 문제). 조건부 자산만 변경 → 코어 해시 불변, 13-topics editorial-patterns.css 재인라인+스냅샷+css-integrity 갱신"
+  ],
+  "updated": "2026-06-21",
+  "visual_templates": [
+    "visual-templates/hero-map.svg.tpl",
+    "visual-templates/card-grid.svg.tpl",
+    "visual-templates/decision-tree.svg.tpl",
+    "visual-templates/quality-gate.svg.tpl",
+    "visual-templates/timeline.svg.tpl",
+    "visual-templates/matrix.svg.tpl",
+    "visual-templates/checklist-flow.svg.tpl"
+  ],
+  "widget_templates": [
+    "assets/widget-templates/01-three-code-approaches.html",
+    "assets/widget-templates/02-visual-design-directions.html",
+    "assets/widget-templates/03-annotated-pull-request.html",
+    "assets/widget-templates/04-module-map.html",
+    "assets/widget-templates/05-living-design-system.html",
+    "assets/widget-templates/06-component-variants.html",
+    "assets/widget-templates/07-animation-sandbox.html",
+    "assets/widget-templates/08-clickable-flow.html",
+    "assets/widget-templates/09-arrow-key-slide-deck.html",
+    "assets/widget-templates/10-svg-figure-sheet.html",
+    "assets/widget-templates/11-weekly-status.html",
+    "assets/widget-templates/12-incident-timeline.html",
+    "assets/widget-templates/13-annotated-flowchart.html",
+    "assets/widget-templates/14-feature-explainer.html",
+    "assets/widget-templates/15-concept-explainer.html",
+    "assets/widget-templates/16-implementation-plan.html",
+    "assets/widget-templates/17-pr-writeup.html",
+    "assets/widget-templates/18-ticket-triage-board.html",
+    "assets/widget-templates/19-feature-flag-editor.html",
+    "assets/widget-templates/20-prompt-tuner.html"
+  ],
+  "visual_html_templates": [
+    "assets/visual-html-templates/01-hero-map.html",
+    "assets/visual-html-templates/02-decision-tree.html",
+    "assets/visual-html-templates/03-risk-matrix.html",
+    "assets/visual-html-templates/04-timeline.html",
+    "assets/visual-html-templates/05-checklist-flow.html",
+    "assets/visual-html-templates/06-quality-gate.html",
+    "assets/visual-html-templates/07-card-grid.html",
+    "assets/visual-html-templates/08-raci.html",
+    "assets/visual-html-templates/09-file-tour.html",
+    "assets/visual-html-templates/10-flowchart.html",
+    "assets/visual-html-templates/11-weekly-status.html",
+    "assets/visual-html-templates/12-incident-summary.html",
+    "assets/visual-html-templates/13-comparison-cards.html",
+    "assets/visual-html-templates/14-process-swimlane.html",
+    "assets/visual-html-templates/15-concept-explainer.html",
+    "assets/visual-html-templates/16-implementation-plan.html",
+    "assets/visual-html-templates/17-pr-writeup.html",
+    "assets/visual-html-templates/18-triage-board.html",
+    "assets/visual-html-templates/19-feature-flag.html",
+    "assets/visual-html-templates/20-prompt-tuner.html",
+    "assets/visual-html-templates/21-soft-workflow-map.html"
+  ],
+  "profiles": {
+    "widget": {
+      "alias": "v5",
+      "css": [
+        "widgets.css"
+      ],
+      "templates": "widget-templates/",
+      "markup": "wg-",
+      "steps": [
+        "4.6"
+      ]
+    },
+    "diagram": {
+      "alias": "v6",
+      "css": [
+        "visual-html.css"
+      ],
+      "templates": "visual-html-templates/",
+      "markup": "vt-",
+      "steps": [
+        "4.7"
+      ]
+    },
+    "auto": {
+      "alias": null,
+      "css": [
+        "widgets.css",
+        "visual-html.css"
+      ],
+      "templates": [
+        "widget-templates/",
+        "visual-html-templates/"
+      ],
+      "markup": [
+        "vt-",
+        "wg-"
+      ],
+      "steps": [
+        "4.6",
+        "4.7"
+      ],
+      "default": true
+    }
+  },
+  "profile_selection": "profile=widget|diagram|auto (trim→lowercase→정규화, 무효=invalid_profile). 미지정 시: 비대화형(AGENTS.md 경유)=auto·질문금지, 대화형=1회 질문. 역사적 style 별칭은 parser-only compatibility이며 현행 문서·manifest·예제 표면에 노출하지 않는다.",
+  "scripts": [
+    "scripts/render_visual_svg.py",
+    "scripts/validate_output.py",
+    "scripts/quality_contract_check.py"
+  ],
+  "schemas": [
+    "schemas/blog-meta.schema.json",
+    "schemas/quality-report.schema.json",
+    "schemas/visual-brief.schema.json"
+  ],
+  "releases": [
+    "v5.10.6: 시각 결함 하드닝(G1~G8) — 상태코드 nowrap·.try inner-card 링크 대비(--accent-2)·source-preserve gutter·mini-card 리듬·TOC/h2 anchor DOM 가드·core-insight reset·prefers-contrast(A5). 코어 CSS 직접 수정 → 코어 해시 a73eb204→a64604d0·examples 18종 재인라인·.skill 재패키징. 신규 검출 게이트(G2 render-audit node-overlap·G3 inner-card 대비 + G4~G8 정적) → 거버넌스 162→176.",
+    "v5.10.5: 접근성·스코프 하드닝 — forced-colors 상태 단서(테마바+wg 선택/체크 7종) + .score→.tuner .score 스코프 + vt 장식 글리프(vt-10 화살표·vt-05 체크표) aria-hidden + eval-rubric→quality-report.schema 연결. 조건부 자산만 변경 → 코어 해시 7e151665 불변·examples 18종 재인라인·.skill 재패키징. 거버넌스 162.",
+    "v5.10.4: 마이크로 레이아웃 정본 CSS(M1·M4·M7·M10) + 작성 프로토콜 신설. 코어 해시 갱신·examples 18종 재인라인·.skill 재패키징. Phase 3 M계열/build-evidence + 17모드 benchmark/micro-layout completion 게이트 포함. 거버넌스 162.",
+    "v5.10.3: 다크 대비·인쇄 가독·폭 정본(전모드 wide) + 자기방어 게이트 6종. 코어 해시 갱신·examples 재인라인·.skill 재패키징.",
+    "v5.10.2: layout-github-feature 단락 폭(46rem→60rem) 수정 + R5 게이트 정밀화. 코어 해시 갱신·examples 재인라인.",
+    "v5.10.1: 예제 정본화(부록 제거·vt 본문 내장) + 자기정합 게이트 3종(manifest·결정표·메타문구) + 거버넌스 86. 코어 CSS·17모드 불변.",
+    "v5.10.0: github_feature_usage 17번째 모드 추가 — GitHub 기능·사용법·도입 가이드, layout-github-feature, 스크린샷 갤러리, mode contract gate, examples 17종 v5.10.0 재인라인.",
+    "v5.9.2: 외부 세리프 폰트 링크/스택/과거 세리프 토큰 금지, pull-quote Pretendard 굵게 통일, vt-02 decision-tree 3카드 정합성 + h3 마진 보정, 공식 toc-map 목차 계약 회귀 방지(layout+validator), manual section title spacing/danger accent/qg-final typography 보정 강화."
+  ],
+  "quality": {
+    "governance_count": 176,
+    "governance_command": "python3 skills/adaptive-html-final/tests/test_governance_gates.py",
+    "required_gates": [
+      "validate_output",
+      "quality_contract_check",
+      "completion_check",
+      "governance"
+    ],
+    "note": "현행 게이트 수의 단일 출처. README/AGENTS/Guide의 현재 게이트 표기는 이 값을 기준으로 동기화한다. CHANGELOG 과거 항목의 시점별 수치는 역사 기록으로 보존한다."
+  },
+  "template_catalog": {
+    "dir": "template-catalog/",
+    "source": "templates/final_20260604/ (moved 2026-06-13)",
+    "purpose": "final_20260604 손검수 템플릿 HTML 4종을 스킬 내부 디자인 카탈로그로 보관한다. 17모드 examples 기준선은 아니며, vt/wg/테마/폭 회귀 확인과 패턴 역동기화 참고용이다.",
+    "files": [
+      "template-catalog/index.html",
+      "template-catalog/index-standard-width.html",
+      "template-catalog/index-beginner-width.html",
+      "template-catalog/index-all-templates-catalog.html"
+    ]
+  }
+}

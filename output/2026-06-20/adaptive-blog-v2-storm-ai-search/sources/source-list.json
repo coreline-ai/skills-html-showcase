@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Google Search Central · Optimizing for generative AI features",
+    "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+    "role": "Google이 generative AI search에서도 SEO fundamentals가 유효하다고 설명하는 최신 공식 가이드"
+  },
+  {
+    "name": "Google Search Central · AI features and your website",
+    "url": "https://developers.google.com/search/docs/appearance/ai-features",
+    "role": "AI Overviews/AI Mode의 query fan-out, technical requirements, Search Console 처리 설명"
+  },
+  {
+    "name": "OpenAI Help Center · ChatGPT Search",
+    "url": "https://help.openai.com/en/articles/9237897-chatgpt-search",
+    "role": "ChatGPT Search의 citations/Sources 패널 사용자 경험 설명"
+  },
+  {
+    "name": "OpenAI · Introducing ChatGPT search",
+    "url": "https://openai.com/index/introducing-chatgpt-search/",
+    "role": "ChatGPT search가 timely answers와 relevant web sources 링크를 제공한다는 제품 설명"
+  },
+  {
+    "name": "OpenAI Developers · Overview of OpenAI Crawlers",
+    "url": "https://developers.openai.com/api/docs/bots",
+    "role": "OAI-SearchBot, GPTBot, ChatGPT-User의 목적과 robots.txt 분리 설명"
+  },
+  {
+    "name": "Cloudflare Blog · Pay per crawl",
+    "url": "https://blog.cloudflare.com/introducing-pay-per-crawl/",
+    "role": "콘텐츠 소유자가 AI crawler 접근을 allow/charge/block로 제어하는 모델"
+  },
+  {
+    "name": "Cloudflare Docs · What is Pay Per Crawl?",
+    "url": "https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/",
+    "role": "Pay per crawl closed beta, HTTP 200/402 기반 접근 제어 설명"
+  },
+  {
+    "name": "Cloudflare Blog · Crawl-to-click gap",
+    "url": "https://blog.cloudflare.com/crawlers-click-ai-bots-training/",
+    "role": "AI crawling 목적과 referral imbalance에 대한 Cloudflare 데이터"
+  },
+  {
+    "name": "Columbia Journalism Review · ChatGPT Search and publisher content",
+    "url": "https://www.cjr.org/tow_center/how-chatgpt-misrepresents-publisher-content.php",
+    "role": "AI search citation/attribution의 publisher-side 리스크를 제기하는 비판 자료"
+  },
+  {
+    "name": "Stanford STORM Research Project",
+    "url": "https://storm-project.stanford.edu/research/storm/",
+    "role": "다관점 질문 + retrieval grounding 리서치 방법론"
+  },
+  {
+    "name": "STORM paper · arXiv 2402.14207",
+    "url": "https://arxiv.org/abs/2402.14207",
+    "role": "STORM 원논문 추적성"
+  }
+]

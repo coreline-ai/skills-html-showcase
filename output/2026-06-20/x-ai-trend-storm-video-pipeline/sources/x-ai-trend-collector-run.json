@@ -1,0 +1,12 @@
+{
+  "tool": "orginal_skill/x-ai-trend-collector/scripts/build_outputs.py",
+  "python_env": "/tmp/x-ai-trend-collector-openpyxl-venv/bin/python",
+  "mode": "create",
+  "existing": 0,
+  "incoming": 10,
+  "added_net": 10,
+  "total": 10,
+  "xlsx": "sources/x-ai-trend-collector-artifacts/AI_영상_트렌드_리포트.xlsx",
+  "html": "sources/x-ai-trend-collector-artifacts/AI_영상_트렌드_대시보드.html",
+  "caveat": "Direct X/API collection was unavailable; this run used public web-search fallback records and kept metrics at 0."
+}

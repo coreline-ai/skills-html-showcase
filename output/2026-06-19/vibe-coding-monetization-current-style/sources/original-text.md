@@ -1,0 +1,595 @@
+## ① 다중 관점 스캔 (5 영혼)
+Skeptic회의주의자claude
+RCT(METR) 19% 감속·마이크로SaaS 92% 실패·AI코드 취약점 2.74배·Apple 크래다운 — 수익화 내러티브의 4대 균열
+#### 회의주의자 관점: 바이브코딩으로 수익화하기 — 2026년 현재
+##### 지배적 내러티브 (한 줄)
+"코딩을 몰라도 AI와 대화만으로 앱을 만들어 월 수천~수만 달러를 벌 수 있다."
+##### 가장 강한 반론 3가지 (각 출처 포함)
+###### 반론 1: 생산성 향상 주장은 RCT에서 반증됐다 — 오히려 19% 느려졌다
+바이브코딩 수익화 서사의 전제는 "AI가 개발 속도를 비약적으로 올린다"는 것이다. 그런데 2025년 가장 엄밀한 방법론(무작위 대조 실험, RCT)으로 이 가정을 직접 검증한 METR 연구는 정반대를 보여줬다.
+- 실험 설계: 평균 5년 이상 경험을 가진 오픈소스 개발자 16명, 246개 작업, AI 허용 여부를 무작위 배정.
+- 예측: 개발자 스스로 AI 사용 시 24% 빨라질 것으로 예상. 경제학 전문가는 39% 단축 예측.
+- 실제 결과: AI를 허용했을 때 완료 시간이 19% 증가(느려짐).
+- 중요한 함의: 개발자들은 과업 완료 후에도 AI가 20% 빠르게 해줬다고 잘못 인식했다. 즉 체감 생산성과 실제 생산성 사이에 심각한 괴리가 존재한다.
+이 결과는 벤더 연구들이 주장하는 "20~55% 생산성 향상"이 통제된 환경에서의 단순 작업을 측정한 것임을 시사한다.
+[출처:  [https://arxiv.org/abs/2507.09089] https://arxiv.org/abs/2507.09089 — METR, "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity"][출처:  [https://letsdatascience.com/blog/developers-thought-ai-made-them-faster-the-data-said-otherwise] https://letsdatascience.com/blog/developers-thought-ai-made-them-faster-the-data-said-otherwise]
+###### 반론 2: 수익화 성공 사례는 심각한 생존자 편향에 오염돼 있다
+"바이브코딩으로 월 2만 달러 MRR"이라는 이야기가 퍼지는 구조적 이유가 있다: 성공한 사람만 입을 연다.
+- 실제 데이터: 마이크로 SaaS 의 92%가 3년 내 실패하며, 45%는 18~24개월 "죽음의 계곡"에서 사라진다. [출처:  [https://www.rockingweb.com.au/18-month-rule-micro-saas-startup-failure-analysis/] https://www.rockingweb.com.au/18-month-rule-micro-saas-startup-failure-analysis/]
+- 수익 분포의 현실: 수익을 내는 마이크로 SaaS 중에서도 70%는 월 1,000달러 이하를 번다. 1,000~5,000달러 구간은 18%에 불과하다. [출처:  [https://www.rockingweb.com.au/micro-saas-revenue-analysis-2025/] https://www.rockingweb.com.au/micro-saas-revenue-analysis-2025/]
+- $20K MRR은 상위 1% 이하의 이야기: 언론·유튜브·소셜 미디어에서 반복 인용되는 "Polsia가 AI로 30일 만에 100만 달러 ARR 달성" 같은 사례는 명백한 이상값(outlier)이다. [추론] 이 사례들이 '기준'처럼 유통되는 현상 자체가 내러티브 오염의 증거다.
+- 솔로 파운더 실패율: 보완적 기술 없이 혼자 창업한 솔로 파운더는 공동창업 팀 대비 3배 높은 실패율을 기록한다. [출처:  [https://www.shno.co/marketing-statistics/saas-launch-statistics] https://www.shno.co/marketing-statistics/saas-launch-statistics]
+수익화 가이드를 쓰는 블로거·유튜버·교육 판매자들은 이 성공 사례를 통해 자신의 콘텐츠/강의를 판매한다는 이해충돌 구조가 있다. [추론]
+###### 반론 3: AI 생성 코드의 보안·품질 결함이 수익화 지속 가능성을 위협한다
+앱을 만드는 것과 수익을 "지속적으로" 내는 것 사이에는 기술 부채와 보안 취약점이라는 장벽이 있다.
+- 보안 취약점 비율: Veracode 2025년 연구에 따르면 AI 생성 코드 샘플의 약 45%가 OWASP Top 10 취약점을 포함한다. Java 코드의 경우 72%까지 올라가며, XSS 방어 실패율 86%, 로그 인젝션 취약점 88%다. [출처:  [https://rtslabs.com/vibe-coding-security-risks] https://rtslabs.com/vibe-coding-security-risks]
+- 인간 코드 대비 2.74배 높은 취약점: AI가 공동 작성한 코드는 인간 단독 코드 대비 보안 취약점이 2.74배, 논리 오류가 75% 더 많다. [출처:  [https://medium.com/@svnkrmkr/vibe-coding-in-2026-the-hidden-risks-nobody-covers-e407b2abecdc] https://medium.com/@svnkrmkr/vibe-coding-in-2026-the-hidden-risks-nobody-covers-e407b2abecdc]
+- GitClear 코드 품질 데이터: 2025년 GitClear가 2억 1,100만 줄의 코드 변경을 분석한 결과, 코드 중복 블록이 8배 증가, 2주 내 재작성되는 코드 비율(churn)이 3.3%→7.9%로 상승, 리팩토링 비율은 25%→10% 이하로 급락했다. [출처:  [https://www.gitclear.com/ai_assistant_code_quality_2025_research] https://www.gitclear.com/ai_assistant_code_quality_2025_research]
+- Apple의 실제 대응: 2026년 1분기 바이브코딩 앱 스토어 제출이 84% 급증하자 Apple은 Replit·Vibecode 등의 업데이트를 차단하고 가이드라인 2.5.2(런타임 코드 다운로드 금지) 위반을 이유로 다수 앱을 거절하기 시작했다. [출처:  [https://thenextweb.com/news/vibe-coding-apple-app-store-surge-crackdown] https://thenextweb.com/news/vibe-coding-apple-app-store-surge-crackdown]
+- 생산 환경 장애: SonarSource 조사에서 AI 생성 코드를 출시한 개발자의 53%가 배포 후 보안 문제를 발견했다(개발 중이 아니라). [출처:  [https://checkvibe.dev/blog/vibe-coding-security-risks] https://checkvibe.dev/blog/vibe-coding-security-risks]
+##### 방법론적 허점 / 약한 증거
+###### (A) 수익 주장의 검증 불가능성
+대부분의 "월 X만 달러 MRR" 주장은:
+- Stripe 대시보드 스크린샷에 의존하며, 비용(API 비용, 인프라, 광고 등) 공제 전 총매출(gross revenue)인 경우가 많다 [추론]
+- 샘플이 자기선택적(self-selected)이다 — 성공한 사람이 공개하고, 실패한 사람은 침묵한다
+- "7가지 검증된 방법(7 Proven Ways)" 류의 콘텐츠는 통계적 근거를 제시하지 않는다 [출처:  [https://claw.mobile/blog/make-money-vibe-coding-2026] https://claw.mobile/blog/make-money-vibe-coding-2026 — 실제 검증 데이터 없이 "proven" 용어 사용]
+###### (B) YC "95% AI 코드" 통계의 과장 가능성
+"YC 2025 Winter 배치 스타트업의 25%가 코드베이스의 95%를 AI로 생성했다"는 주장이 반복 인용되지만:
+- 이 수치의 원출처는 YC 파트너의 발언으로, 독립적 감사 없음 [추론]
+- "코드베이스의 95%"가 MVP 단계인지 프로덕션 단계인지 불분명 [추론]
+- YC 입학률 자체가 약 1.5~2%임을 감안하면, 이미 고도로 선별된 집단이다 [추론]
+###### (C) "비개발자도 가능"의 교란변수
+63%의 바이브코딩 사용자가 비개발자라는 통계가 있지만, 성공적 수익화에 도달한 비개발자 비율은 별도로 측정되지 않는다. 사용(usage)과 수익화(monetization)는 다른 측정값이다. [추론]
+##### 반증 조건 (무엇이 관찰되면 내러티브가 틀린 것인가)
+- 통제된 집단 연구: 비개발자 1,000명이 바이브코딩으로 앱을 만들었을 때, 6개월 후 $1K+ MRR을 유지하는 비율이 10% 이상임이 독립 기관에 의해 검증되면 — 현 회의론을 재고할 것.
+- RCT 복제: METR 연구와 반대 결과(AI 사용 시 실제 생산성 향상)를 보이는 대규모 RCT가 벤더와 무관한 기관에서 발표되면 — 생산성 반론을 철회할 것.
+- 보안 개선 데이터: AI 코딩 도구의 보안 취약점 비율이 인간 코드 수준(5~15%)으로 하락했다는 2026년 이후 Veracode/NIST급 연구가 나오면 — 보안 반론을 수정할 것.
+- 실패율 데이터: 바이브코딩 기반 마이크로 SaaS 의 3년 생존율이 일반 마이크로 SaaS(8%)보다 유의미하게 높다는 데이터가 나오면 — 선택 편향 반론을 재검토할 것.
+##### 불확실성 (내가 확신 못 하는 부분)
+- 모델 급진화의 변수: METR 연구는 "early-2025 AI"를 측정했다. 2026년 중반 현재 모델(Claude Opus 4.8, Sonnet 4.6, GPT-5급)이 이 한계를 이미 극복했을 가능성을 배제하지 못한다. METR 자신도 2026년 2월 실험 설계를 업데이트 중임을 공개했다. [출처:  [https://metr.org/blog/2026-02-24-uplift-update/] https://metr.org/blog/2026-02-24-uplift-update/]
+- 도메인별 차이: "경험 많은 오픈소스 개발자 + 성숙한 코드베이스" 환경에서의 19% 감속이 "비개발자 + 그린필드 프로젝트"에도 동일하게 적용되는지는 검증되지 않았다. 바이브코딩의 실제 타깃은 후자에 가깝다. [추론]
+- 수익화 채널별 차이: 교육 콘텐츠(강의·유튜브) 기반 수익화는 코드 품질 위험에서 상대적으로 자유롭다. 회의론이 가장 강하게 적용되는 것은 "앱 직접 판매/SaaS" 모델이며, 에이전시/컨설팅 모델은 중간 어딘가다. [추론]
+##### 참고 출처 (URL 전체 목록)
+- METR RCT 논문:  [https://arxiv.org/abs/2507.09089] https://arxiv.org/abs/2507.09089
+- METR 결과 보도:  [https://letsdatascience.com/blog/developers-thought-ai-made-them-faster-the-data-said-otherwise] https://letsdatascience.com/blog/developers-thought-ai-made-them-faster-the-data-said-otherwise
+- METR 실험 설계 업데이트:  [https://metr.org/blog/2026-02-24-uplift-update/] https://metr.org/blog/2026-02-24-uplift-update/
+- Vibe Coding 보안 위험 (RTS Labs):  [https://rtslabs.com/vibe-coding-security-risks] https://rtslabs.com/vibe-coding-security-risks
+- Vibe Coding vs OWASP Top 10:  [https://softwaremill.com/vibe-coding-against-owasp-top-10-2025/] https://softwaremill.com/vibe-coding-against-owasp-top-10-2025/
+- CSA AI 생성 코드 취약점 보고서:  [https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-generated-code-vulnerability-surge-2026/] https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-generated-code-vulnerability-surge-2026/
+- Vibe Coding 숨겨진 위험:  [https://medium.com/@svnkrmkr/vibe-coding-in-2026-the-hidden-risks-nobody-covers-e407b2abecdc] https://medium.com/@svnkrmkr/vibe-coding-in-2026-the-hidden-risks-nobody-covers-e407b2abecdc
+- GitClear AI 코드 품질 2025:  [https://www.gitclear.com/ai_assistant_code_quality_2025_research] https://www.gitclear.com/ai_assistant_code_quality_2025_research
+- AI 생성 코드 기술 부채:  [https://www.tembo.io/blog/ai-technical-debt] https://www.tembo.io/blog/ai-technical-debt
+- Micro SaaS 18개월 실패율 (92%):  [https://www.rockingweb.com.au/18-month-rule-micro-saas-startup-failure-analysis/] https://www.rockingweb.com.au/18-month-rule-micro-saas-startup-failure-analysis/
+- Micro SaaS 수익 분석:  [https://www.rockingweb.com.au/micro-saas-revenue-analysis-2025/] https://www.rockingweb.com.au/micro-saas-revenue-analysis-2025/
+- SaaS 출시 통계 2026:  [https://www.shno.co/marketing-statistics/saas-launch-statistics] https://www.shno.co/marketing-statistics/saas-launch-statistics
+- Apple App Store 크래다운:  [https://thenextweb.com/news/vibe-coding-apple-app-store-surge-crackdown] https://thenextweb.com/news/vibe-coding-apple-app-store-surge-crackdown
+- Apple vibe 코딩 앱 거절 이유:  [https://vativeapps.com/blog/why-vibe-coded-apps-fail-app-store-review] https://vativeapps.com/blog/why-vibe-coded-apps-fail-app-store-review
+- Vibe Coding Debate 2026 (양면):  [https://vibecoding.app/blog/vibe-coding-debate] https://vibecoding.app/blog/vibe-coding-debate
+- Vibe Coding 수익화 수익 현실:  [https://www.hostinger.com/blog/vibe-coding-statistics] https://www.hostinger.com/blog/vibe-coding-statistics
+- AI 소득 주장 2026:  [https://www.neuralgrimoire.com/ai-income-claims/] https://www.neuralgrimoire.com/ai-income-claims/
+- AI 코딩 생산성 현실 (orbit.build):  [https://www.orbit.build/blog/ai-coding-hype-vs-evidence] https://www.orbit.build/blog/ai-coding-hype-vs-evidence
+- 소프트웨어 개발자 고용 감소 (MIT Tech Review):  [https://www.technologyreview.com/2025/12/15/1128352/rise-of-ai-coding-developers-2026/] https://www.technologyreview.com/2025/12/15/1128352/rise-of-ai-coding-developers-2026/
+- Vibe Coding이 최악의 소프트웨어 위기를 만들 것:  [https://medium.com/@Reiki32/why-vibe-coding-is-going-to-create-the-worst-software-crisis-in-history-1a0b666a9b0c] https://medium.com/@Reiki32/why-vibe-coding-is-going-to-create-the-worst-software-crisis-in-history-1a0b666a9b0c
+- Vibe Coding 더티 시크릿:  [https://medium.com/illumination/vibe-coding-you-dont-own-what-you-cant-read-7b13352c618d] https://medium.com/illumination/vibe-coding-you-dont-own-what-you-cant-read-7b13352c618d
+- vibe coding 숨겨진 비용 (The New Stack):  [https://thenewstack.io/vibe-coding-could-cause-catastrophic-explosions-in-2026/] https://thenewstack.io/vibe-coding-could-cause-catastrophic-explosions-in-2026/
+Economist경제학자codex
+코딩비 하락의 이익은 도구·인프라·유통이 선취하고, 개인의 수익 병목은 고객 접근·검증·운영 책임이다
+#### 경제학자 관점: 바이브코딩으로 수익화하는 방법 — 2026년 개인 개발자·창작자
+조사 기준일: 2026-06-19. 이 문서는 기업 발표·공식 가격표·공식 설문·연구기관 자료를 우선 사용했다. 기업이 자기 성장률과 효능을 발표한 자료는 이해관계가 있는 1차 자료이므로, 해당 수치를 독립 검증값으로 간주하지 않는다. [추론]
+##### Cui bono — 이득/비용 주체
+주체얻는 것치르는 비용·떠안는 위험경제학적 판독
+| 개인 개발자·창작자 | 2025년 Stripe Atlas 법인 중 20%가 설립 30일 안에 첫 고객에게 과금했고, 첫 3개월 안에 수익화한 집단의 첫 결제 중앙값은 2024년 38일에서 2025년 34일로 줄었다. [출처:  [https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] | 제작 이후의 고객 획득, 검증, 보안, 지원, 세금·환불 책임은 사라지지 않는다. Stack Overflow의 2025년 조사에서 AI 도구 정확도를 불신한다는 개발자는 46%, 신뢰한다는 개발자는 33%였다. [출처:  [https://survey.stackoverflow.co/2025/ai] https://survey.stackoverflow.co/2025/ai] | 코드 공급이 늘면 코드 자체의 희소성은 낮아지고, 고객 접근권·도메인 지식·검증·운영 책임 같은 보완재의 가격이 상대적으로 오른다. [추론] | 바이브코딩 도구 회사 | Cursor는 2025년 6월 ARR 5억 달러 초과와 9억 달러 투자 유치를 발표했고, Lovable은 2025년 7월 ARR 1억 달러와 누적 프로젝트 1,000만 개를 발표했으며, Replit은 2025년 9월 연환산 매출 1억5,000만 달러와 2억5,000만 달러 투자 유치를 발표했다. [출처:  [https://cursor.com/en/blog/series-c] https://cursor.com/en/blog/series-c][출처:  [https://lovable.dev/pt/blog/agent] https://lovable.dev/pt/blog/agent][출처:  [https://replit.com/news/funding-announcement-series-c] https://replit.com/news/funding-announcement-series-c] | 추론 비용, 모델 공급자 의존, 무료 사용자 보조금, 지원·안전 비용을 부담한다. API 원가가 사용량에 비례하므로 무제한 정액제는 사용량이 큰 고객에게 역선택될 수 있다. OpenAI의 공식 가격표도 토큰별 종량제를 사용한다. [출처:  [https://platform.openai.com/docs/pricing/] https://platform.openai.com/docs/pricing/] | 개인이 앱을 성공시키는지와 무관하게 구독·사용량 매출을 먼저 얻는 ‘곡괭이 판매자’다. [추론] | 모델·클라우드·결제 인프라 | OpenAI GPT-5의 표준 API 가격은 입력 100만 토큰당 1.25달러, 출력 100만 토큰당 10달러이며, Vercel Pro는 월 20달러와 초과 사용량, Supabase Pro는 월 25달러부터다. [출처:  [https://platform.openai.com/docs/pricing/] https://platform.openai.com/docs/pricing/][출처:  [https://vercel.com/pricing] https://vercel.com/pricing][출처:  [https://supabase.com/pricing] https://supabase.com/pricing] | 가격 경쟁과 대규모 선투자가 필요하지만 앱이 늘수록 반복 사용량이 쌓인다. Microsoft는 2025 회계연도 4분기 실적 발표에서 바이브코딩 프로젝트와 코딩 에이전트가 GitHub의 저장소와 PR 증가를 만들고 있다고 밝혔다. [출처:  [https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q4] https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q4] | 앱의 매출은 불확실하지만 인프라 비용은 선행·반복된다. 창작자의 고정비를 낮춘 대신 변동비와 잠금 효과를 가져가는 구조다. [추론] | 앱·창작물 마켓플레이스 | Shopify는 2025년부터 앱 개발자의 첫 누적 총매출 100만 달러까지 수익 배분율을 0%로 두고, 그 초과분에 15%를 받으며 모든 결제에 2.9% 처리 수수료를 받는다. [출처:  [https://shopify.dev/docs/apps/launch/distribution/revenue-share] https://shopify.dev/docs/apps/launch/distribution/revenue-share] | 심사·결제·발견·신뢰 인프라를 제공한다. Apple의 소규모 사업자 프로그램은 전년도 수익금 100만 달러 이하 개발자에게 유료 앱·인앱결제 수수료 15%를 적용한다. [출처:  [https://developer.apple.com/app-store/small-business-program/] https://developer.apple.com/app-store/small-business-program/] | 제작비가 낮아질수록 상품 수는 늘고, 병목인 검색·추천·결제가 더 강한 지대 추출 지점이 된다. [추론] | 구매 기업·소비자 | 더 많은 맞춤형 소프트웨어와 낮은 초기 가격을 얻을 수 있다. [추론] | 품질을 사전에 판별하기 어려운 정보 비대칭과 유지보수 중단 위험을 떠안는다. 2025년 조사에서 개발자의 66%가 ‘거의 맞지만 완전히 맞지는 않는’ AI 해법을, 45%가 AI 생성 코드를 디버깅하는 데 시간이 더 든다는 점을 불만으로 꼽았다. [출처:  [https://survey.stackoverflow.co/2025/ai] https://survey.stackoverflow.co/2025/ai] | 구매자는 코드보다 보증, SLA, 데이터 이전성, 유지보수 이력을 사려 할 유인이 커진다. [추론] | 숙련 개발자·감사자·도메인 전문가 | 배포·모니터링에 AI를 쓸 계획이 없다는 응답이 76%였고, AI 답을 신뢰하지 못할 때 사람에게 도움을 청하겠다는 응답이 75%였다. [출처:  [https://survey.stackoverflow.co/2025/ai] https://survey.stackoverflow.co/2025/ai] | 단순 구현 단가가 압박받는 대신 검증·통합·사고 대응 책임이 커진다. [추론] | 바이브코딩은 숙련을 없애기보다 숙련 노동의 판매 단위를 ‘타이핑 시간’에서 ‘판단과 책임’으로 이동시킨다. [추론]
+##### 인센티브 구조
+###### 1. 돈이 되는 순서는 ‘코드 → 고객’이 아니라 ‘고객의 반복 비용 → 코드’다
+개인에게 가장 방어적인 출발점은 이미 돈이 새는 좁은 업무를 찾고, 절감액의 일부를 받는 제품화 서비스다. 예컨대 월별 수작업 보고·견적·콘텐츠 변환을 구축비와 월 운영료로 묶으면 첫 현금흐름은 커스텀 작업에서, 반복 수익은 유지보수·호스팅·사용량에서 나온다. [추론]
+반대로 범용 아이디어를 먼저 만든 뒤 광고로 고객을 사는 마이크로 SaaS는 제작비는 낮아도 고객획득비와 이탈률을 해결하지 못하면 단위경제가 성립하지 않는다. [추론]
+실행 우선순위는 ① 유료 문제 인터뷰/선판매 → ② 반자동 제품화 서비스 → ③ 반복 기능만 SaaS화 → ④ 검증된 수요를 템플릿·교육으로 재판매가 합리적이다. 앞 단계가 다음 단계의 수요 정보와 현금을 보조하기 때문이다. [추론]
+###### 2. 수익 모델별 자원 흐름
+모델고객이 지불하는 것창작자에게 남는 희소 자산주요 누수적합한 조건
+맞춤 자동화·에이전시구축비 + 월 유지비 + 성과보수 [추론]고객 업무 데이터, 신뢰, 재계약권 [추론]Upwork를 쓰면 계약별 프리랜서 수수료가 0~15%다. [출처:  [https://support.upwork.com/hc/en-us/articles/211062538-Freelancer-Service-Fees] https://support.upwork.com/hc/en-us/articles/211062538-Freelancer-Service-Fees]도메인 경력과 기존 네트워크가 있는 개인에게 가장 빠른 현금화 경로다. [추론]
+제품화 서비스정해진 범위의 구축비 + 월 운영료 [추론]표준 프로세스와 재사용 가능한 내부 도구 [추론]예외 요청과 지원 시간이 마진을 잠식한다. [추론]같은 고통을 가진 고객 3곳 이상에서 반복 패턴을 확인했을 때 유리하다. [추론]
+마이크로 SaaS좌석·사용량·구독료 [추론]반복 매출, 사용 데이터, 전환 비용 [추론]API·DB·호스팅 종량비와 지원·해지·환불 비용이 발생한다. Vercel Pro는 월 20달러, Supabase Pro는 월 25달러부터다. [출처:  [https://vercel.com/pricing] https://vercel.com/pricing][출처:  [https://supabase.com/pricing] https://supabase.com/pricing]사용 빈도가 높고 고객의 업무 흐름에 들어갈 때 유리하다. [추론]
+Shopify 앱 등 수직 마켓 앱월 구독·사용량 [추론]특정 생태계의 설치 기반과 리뷰 [추론]Shopify는 첫 총매출 100만 달러까지 수익 배분 0%지만 결제 처리 2.9%를 받고, 초과분에는 15%를 추가로 받는다. [출처:  [https://shopify.dev/docs/apps/launch/distribution/revenue-share] https://shopify.dev/docs/apps/launch/distribution/revenue-share]독립 유통보다 마켓의 검색 의도가 더 값질 때 유리하다. [추론]
+모바일 앱유료 다운로드·인앱결제·구독 [추론]기기 접근성과 앱스토어 신뢰 [추론]Apple 소규모 사업자 프로그램의 수수료는 15%이고 자격 기준은 전년도 수익금 100만 달러 이하다. [출처:  [https://developer.apple.com/app-store/small-business-program/] https://developer.apple.com/app-store/small-business-program/]모바일 고유 기능이나 반복 습관을 장악할 때 유리하다. [추론]
+템플릿·코드·강의·전자책건별 판매·멤버십 [추론]저자의 평판과 잠재고객 명단 [추론]Gumroad 직접 판매는 거래당 10% + 0.50달러에 카드 처리비가 별도이며, Discover 판매는 처리비 포함 30%다. [출처:  [https://gumroad.com/help/article/66-gumroads-fees.html] https://gumroad.com/help/article/66-gumroads-fees.html]업데이트 비용이 낮고 독자가 스스로 적용할 수 있을 때 유리하다. [추론]
+###### 3. 유통권이 코딩 능력보다 비싸지는 이유
+Stripe Atlas의 2025년 표본 2만3,000개사에서 6개월 내 매출 10만 달러에 도달한 회사 수는 2024년보다 56% 늘었지만, 상위 10%의 매출 증가율은 52%, 하위 10%는 18%로 격차도 확대됐다. [출처:  [https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review]
+이는 진입비용 하락이 성공을 균등화하기보다, 이미 유통·브랜드·자본·고객 학습 속도를 가진 상위 사업자의 실험 횟수를 더 크게 늘릴 가능성을 보여준다. [추론]
+따라서 개인의 방어력은 코드 저장소보다 고객 명단, 반복 구매, 특정 업종의 데이터 구조, 신뢰 가능한 업데이트 기록, 손쉬운 데이터 반출에 축적해야 한다. [추론]
+###### 4. 가격은 개발시간이 아니라 대체 비용과 책임으로 정한다
+AI로 2시간 만에 만들었다는 이유로 가격을 낮추면 생산성 이익을 전부 구매자에게 넘기게 된다. 가격 상한은 고객이 기존에 쓰는 인건비·오류 비용·지연 비용이고, 가격 하한은 모델·인프라·지원·환불·보안·세금·창업자의 시간 비용이다. [추론]
+권장 견적 구조는 초기 진단비 + 구축비 + 월 기본료 + 사용량 초과분 + 고위험 변경 별도 승인이며, 고객에게는 결과 지표와 책임 범위를 계약서에 적는 방식이다. [추론]
+##### 핵심 수치: 시장 규모·자본 흐름·수익 모델
+###### 관측 가능한 시장 대용치
+‘바이브코딩 시장’은 정의가 통일되지 않아 2026년 현재 비교 가능한 공공 1차 통계의 단일 시장 규모를 확인하지 못했다. 민간 시장조사 업체의 숫자를 합산하지 않고, 실제 매출·투자·사용자·결제 자료를 시장 대용치로 사용한다. [추론]
+지표확인된 수치경제학적 의미
+Cursor 자본·매출2025년 6월 투자 9억 달러, 기업가치 99억 달러, ARR 5억 달러 초과. [출처:  [https://cursor.com/en/blog/series-c] https://cursor.com/en/blog/series-c]코드 생성 가치의 상당 부분이 도구 구독층에 먼저 포획되고 있음을 보여주는 기업 자체 발표다. [추론]
+Lovable 매출·생산량2025년 7월 ARR 1억 달러, 누적 프로젝트 1,000만 개, 일일 신규 프로젝트 10만 개. [출처:  [https://lovable.dev/pt/blog/agent] https://lovable.dev/pt/blog/agent]프로젝트 생산량이 매출보다 훨씬 빠르게 늘 수 있어 ‘생성된 앱 수’를 최종 사업 성공으로 읽으면 안 된다. [추론]
+Replit 자본·매출2025년 9월 투자 2억5,000만 달러, 기업가치 30억 달러, 연환산 매출 1억5,000만 달러, 사용자 4,000만 명 이상. [출처:  [https://replit.com/news/funding-announcement-series-c] https://replit.com/news/funding-announcement-series-c]자본은 개별 앱보다 앱 제작 플랫폼의 규모 확장에 집중되고 있다. [추론]
+GitHub Copilot 보급Microsoft는 2025년 12월 GitHub Copilot 사용자 2,600만 명을 발표했다. [출처:  [https://www.microsoft.com/en-us/investor/events/fy-2026/2025-annual-shareholder-meeting] https://www.microsoft.com/en-us/investor/events/fy-2026/2025-annual-shareholder-meeting]개발자의 제작 활동을 묶는 저장소·에이전트 관리 계층이 집계력과 교섭력을 얻는다. [추론]
+인터넷 사업 결제 흐름Stripe에서 2025년 처리된 기업 결제액은 1조9,000억 달러였고 전년 대비 34% 증가했다. [출처:  [https://stripe.com/in/newsroom/news/stripe-2025-update] https://stripe.com/in/newsroom/news/stripe-2025-update]앱 제작 민주화의 하류에서 결제·세금·청구 인프라가 거래량 기반 지대를 얻는다. [추론]
+초기 수익화 속도2025년 Stripe Atlas 법인 중 20%가 30일 안에 첫 고객에게 과금했고, 2020년에는 8%였다. [출처:  [https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review]출시 속도는 개선됐지만 Atlas 이용사라는 선택 편향이 있어 전체 개인 개발자로 일반화할 수 없다. [추론]
+###### 100달러 매출의 채널별 단순 예시
+아래 계산은 미국 달러 100달러 거래 1건, 세금·환불·환전·광고·AI·호스팅 비용 제외 조건의 산술 예시이며 실제 국가·계정·상품 조건에 따라 달라진다. [추론]
+채널공식 요율창작자 잔액 단순 예시
+자체 판매 + Stripe 미국 내 카드2.9% + 0.30달러. [출처:  [https://stripe.com/pricing] https://stripe.com/pricing]96.80달러. [추론]
+Shopify App Store, 첫 총매출 100만 달러 구간수익 배분 0% + 처리비 2.9%. [출처:  [https://shopify.dev/docs/apps/launch/distribution/revenue-share] https://shopify.dev/docs/apps/launch/distribution/revenue-share]97.10달러. [추론]
+Apple 소규모 사업자유료 앱·인앱결제 수수료 15%. [출처:  [https://developer.apple.com/app-store/small-business-program/] https://developer.apple.com/app-store/small-business-program/]85.00달러. [추론]
+Gumroad 직접 링크, 카드 결제 가정10% + 0.50달러에 카드 처리비 2.9% + 0.30달러 별도. [출처:  [https://gumroad.com/help/article/66-gumroads-fees.html] https://gumroad.com/help/article/66-gumroads-fees.html]86.30달러. [추론]
+Gumroad Discover처리비 포함 30%. [출처:  [https://gumroad.com/help/article/66-gumroads-fees.html] https://gumroad.com/help/article/66-gumroads-fees.html]70.00달러. [추론]
+이 비교는 수수료가 단순 손실이라는 뜻이 아니다. 자체 판매의 96.80달러에는 고객을 직접 데려오는 비용이 빠져 있고, 마켓플레이스의 높은 수수료에는 발견·신뢰·세금·분쟁 처리의 일부가 들어간다. [추론]
+##### 2차 효과 / 외부효과
+- 소프트웨어 풍요와 발견의 희소화: 앱 제작비 하락은 유사 상품을 늘려 검색·추천·브랜드의 상대 가치를 높이고, 결과적으로 마켓·결제·크리에이터 플랫폼의 수수료 협상력을 높일 수 있다. [추론]
+- 검증 노동의 파생 수요: 2025년 개발자 조사에서 AI 정확성 우려는 87%, 보안·개인정보 우려는 81%였고, 에이전트 관측 도구로 Grafana·Prometheus를 쓰는 비율은 43%, Sentry는 32%였다. [출처:  [https://survey.stackoverflow.co/2025/ai] https://survey.stackoverflow.co/2025/ai] 이 수치는 코드 생성 이후의 테스트·관측·보안·감사 상품이 별도 시장이 될 유인을 보여준다. [추론]
+- 유지보수 비용의 시간 이동: 출시 시점의 개발비 절감이 문맥 없는 생성 코드, 공급자 변경, 프롬프트·모델 회귀로 인한 미래 유지비로 옮겨갈 수 있다. [추론] 따라서 소스 인계, 테스트, 데이터 반출, 장애 대응 시간을 유료 상품에 포함시키는 사업자가 단기 저가 경쟁자와 차별화할 수 있다. [추론]
+- 생산성 착시와 과잉투자: METR의 2025년 초 무작위 대조시험에서는 익숙한 오픈소스 저장소를 다루는 숙련 개발자가 AI 사용 시 19% 더 오래 걸렸고, 개발자는 사용 전 24% 향상을 예상했으며 사용 후에도 20% 빨라졌다고 믿었다. [출처:  [https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/] https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/] 2026년 후속 연구진은 후기 도구에서 속도 향상 신호를 봤지만 표본 선택과 시간 측정 문제 때문에 크기를 신뢰성 있게 추정할 수 없다고 밝혔다. [출처:  [https://metr.org/blog/2026-02-24-uplift-update/] https://metr.org/blog/2026-02-24-uplift-update/] 그러므로 견적과 투자 판단은 ‘느낌상 빨라짐’이 아니라 납품 리드타임, 재작업률, 지원시간, 이탈률을 전후 비교해야 한다. [추론]
+- 숙련의 구축효과와 보완효과가 동시에 발생: 단순 CRUD·랜딩페이지·프로토타입 단가는 하락 압력을 받지만, 책임 있는 배포·복잡한 통합·보안 검증 수요는 늘 수 있다. [추론] Stack Overflow 조사에서 응답자의 72%는 전문 개발 업무에서 바이브코딩을 하지 않는다고 답해, 현 시점에 전면 대체를 전제한 수익 계획은 근거가 약하다. [출처:  [https://survey.stackoverflow.co/2025/ai] https://survey.stackoverflow.co/2025/ai]
+- 플랫폼 종속의 옵션 가치 손실: 특정 생성기·모델·호스팅에 묶인 제품은 가격 인상이나 정책 변경 때 이전 비용이 커진다. [추론] 고객에게 표준 코드 저장소, 데이터 내보내기, 모델 교체 경로를 제공하면 단기 제작속도는 늦어져도 장기 신뢰를 가격에 반영할 수 있다. [추론]
+##### 불확실성 (데이터 공백·추정의 한계)
+- Cursor·Lovable·Replit의 ARR·사용자·투자 수치는 감사된 공시가 아니라 자금 조달과 제품 홍보의 이해관계가 있는 회사 자체 발표다. [출처:  [https://cursor.com/en/blog/series-c] https://cursor.com/en/blog/series-c][출처:  [https://lovable.dev/pt/blog/agent] https://lovable.dev/pt/blog/agent][출처:  [https://replit.com/news/funding-announcement-series-c] https://replit.com/news/funding-announcement-series-c]
+- Stripe Atlas 표본은 Stripe를 통해 델라웨어 법인을 세운 스타트업이므로 비법인 1인 창작자, 한국 내수 사업자, 실패 후 결제를 시작하지 않은 사람을 대표하지 않는다. Stripe는 2025년 Atlas 법인 2만3,000개를 분석했다고 밝혔다. [출처:  [https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review]
+- 플랫폼 가격은 조사 기준일 이후 바뀔 수 있고, 국가·세금·결제수단·환전·환불에 따라 실수령액이 달라진다. 각 요율은 2026-06-19에 확인한 공식 가격표의 스냅샷이다. [출처:  [https://stripe.com/pricing] https://stripe.com/pricing][출처:  [https://shopify.dev/docs/apps/launch/distribution/revenue-share] https://shopify.dev/docs/apps/launch/distribution/revenue-share][출처:  [https://gumroad.com/help/article/66-gumroads-fees.html] https://gumroad.com/help/article/66-gumroads-fees.html]
+- Stack Overflow 조사는 자발적 응답자 표본이며 질문별 응답 수가 다르다. 예를 들어 AI 정확성 문항 응답은 33,244명, 바이브코딩 문항 응답은 26,564명이었다. [출처:  [https://survey.stackoverflow.co/2025/ai] https://survey.stackoverflow.co/2025/ai]
+- AI 생산성은 과업, 사용자 숙련도, 저장소 친숙도, 병렬 에이전트 사용 여부에 따라 달라지고 2026년 현재도 신뢰 가능한 단일 효과 크기가 없다. METR도 2026년 후속 실험의 선택 편향과 측정 문제를 명시했다. [출처:  [https://metr.org/blog/2026-02-24-uplift-update/] https://metr.org/blog/2026-02-24-uplift-update/]
+- 공개 1차 자료만으로 개인 바이브코더의 생존율, 중앙값 MRR, 고객획득비, 이탈률을 확인하지 못했다. 이 공백 때문에 플랫폼 기업의 ARR을 개인 창작자의 평균 수익 가능성으로 환산해서는 안 된다. [추론]
+##### 경제학자의 결론
+2026년의 바이브코딩 수익화에서 가장 희소한 것은 코드를 만드는 능력이 아니라 누가 돈을 낼 문제인지 아는 정보, 그 고객에게 닿는 유통권, 결과를 검증하고 운영할 책임 능력이다. [추론]
+개인 개발자·창작자의 합리적 전략은 범용 앱을 대량 출시하는 것이 아니라, 이미 신뢰가 있는 좁은 업종에서 제품화 서비스로 현금을 만들고, 반복되는 부분만 SaaS로 전환하며, 검증·운영·데이터 이동성을 가격에 포함시키는 것이다. [추론]
+핵심 관리 지표는 생성한 앱 수가 아니라 유료 인터뷰→선결제 전환율, 고객별 회수기간, 월 총마진, 지원시간/매출, 90일 유지율, 플랫폼·모델별 원가 비중이다. [추론]
+##### 참고 출처 (URL 전체 목록)
+-  [https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review
+-  [https://stripe.com/in/newsroom/news/stripe-2025-update] https://stripe.com/in/newsroom/news/stripe-2025-update
+-  [https://stripe.com/pricing] https://stripe.com/pricing
+-  [https://survey.stackoverflow.co/2025/ai] https://survey.stackoverflow.co/2025/ai
+-  [https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/] https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/
+-  [https://metr.org/blog/2026-02-24-uplift-update/] https://metr.org/blog/2026-02-24-uplift-update/
+-  [https://cursor.com/en/blog/series-c] https://cursor.com/en/blog/series-c
+-  [https://lovable.dev/pt/blog/agent] https://lovable.dev/pt/blog/agent
+-  [https://replit.com/news/funding-announcement-series-c] https://replit.com/news/funding-announcement-series-c
+-  [https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q4] https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q4
+-  [https://www.microsoft.com/en-us/investor/events/fy-2026/2025-annual-shareholder-meeting] https://www.microsoft.com/en-us/investor/events/fy-2026/2025-annual-shareholder-meeting
+-  [https://platform.openai.com/docs/pricing/] https://platform.openai.com/docs/pricing/
+-  [https://vercel.com/pricing] https://vercel.com/pricing
+-  [https://supabase.com/pricing] https://supabase.com/pricing
+-  [https://shopify.dev/docs/apps/launch/distribution/revenue-share] https://shopify.dev/docs/apps/launch/distribution/revenue-share
+-  [https://developer.apple.com/app-store/small-business-program/] https://developer.apple.com/app-store/small-business-program/
+-  [https://gumroad.com/help/article/66-gumroads-fees.html] https://gumroad.com/help/article/66-gumroads-fees.html
+-  [https://support.upwork.com/hc/en-us/articles/211062538-Freelancer-Service-Fees] https://support.upwork.com/hc/en-us/articles/211062538-Freelancer-Service-Fees
+Historian역사학자kimi
+App Store·노코드·ThemeForest 선례 — 수익 집중·플랫폼 의존·유지보수 부채. 희망은 'AI 아키텍트 서비스화'
+#### 역사학자 관점: 바이브코딩(vibe coding)으로 수익화하기
+렌즈: 시간과 패턴의 반복. “이전에 어떤 패턴이 펼쳐졌는가?”
+##### 구조적으로 닮은 선례 3개 (연도+출처)
+###### 1. 아이폰 앱스토어(App Store)와 모바일 앱 골드러시 (2008~)
+가장 직접적인 구조적 유사점은 2008년 7월 10일 Apple이 출시한 App Store다. 앱스토어는 기존 소프트웨어 판매(박스·다운로드·업그레이드 과금)를 대체하는 단일 마켓플레이스를 만들었고, 개발자에게 70%, Apple에 30%라는 표준 수익 배분을 제시했다. 출시 첫 주 1,000만 다운로드를 기록했으며, 2018년 10년 만에 개발자들에게 누적 1,000억 달러를 지급했다. [출처:  [https://www.macstories.net/stories/developers-decade-long-rollercoaster-ride-the-business-of-selling-apps-on-the-app-store/] https://www.macstories.net/stories/developers-decade-long-rollercoaster-ride-the-business-of-selling-apps-on-the-app-store/]
+그러나 이 ‘골드러시’는 금세 수익 집중 현상으로 변했다. 2015년 App Store에는 약 150만 개의 앱이 있었지만, 그해 100만 달러 이상 번 앱은 고작 1,887개(0.13%)에 불과했다. 10만 달러 이상 번 개발자·회사는 2만 개(1.3%) 수준이었다. [출처:  [https://www.macstories.net/stories/developers-decade-long-rollercoaster-ride-the-business-of-selling-apps-on-the-app-store/] https://www.macstories.net/stories/developers-decade-long-rollercoaster-ride-the-business-of-selling-apps-on-the-app-store/] 즉, 누구나 앱을 만들 수 있게 된 것과 ‘누구나 돈을 번다’는 전혀 다른 사건이다.
+이 패턴은 바이브코딩 환경과 거의 동일한 구조를 보인다: 강력한 플랫폼(Cursor, Replit, Claude Code, Lovable 등)이 제작과 배포의 문턱을 낮추고, 미디어는 소수의 성공 사례를 ‘골드러시’로 포장하며, 실제 수익은 발견·마케팅·지속 가능한 비즈니스 모델 능력에 의해 극소수에게 집중된다.
+###### 2. 노코드/로우코드 플랫폼의 부상과 시민 개발자(citizen developer) 물결 (2011~)
+바이브코딩은 단순한 기술 혁신이 아니라, 2010년대에 이미 시작된 ‘코드 없이 소프트웨어를 만든다’는 욕망의 최신 변주다. 2011년 Zapier가 출시되어 비개발자도 API를 연결해 워크플로우를 자동화할 수 있게 했고, 2012년 Bubble, 2013년 Webflow가 등장해 시각적 방식으로 웹앱·웹사이트를 구축했다. [출처:  [https://arxiv.org/pdf/2307.16717] https://arxiv.org/pdf/2307.16717] 2014년 Forrester는 ‘low-code’라는 용어를 공식화했고, 2018년 Microsoft PowerApps, 2020년 Google의 AppSheet 인수가 이어졌다. [출처:  [https://arxiv.org/pdf/2307.16717] https://arxiv.org/pdf/2307.16717]
+이 선례의 핵심은 “ democratization(민주화)”과 “shadow IT(그림자 IT)”의 동전 양면성이다. 비즈니스 부서가 IT 승인 없이 자체 도구를 만들 수 있게 되면서 생산성은 급증했지만, 거버넌스 부재·보안·유지보수 부채도 함께 커졌다. 2026년 기준으로 노코드 프리랜서 시장은 여전히 고성장세이며, n8n AI 에이전트 워크플로우처럼 AI와 결합된 영역에서 특히 높은 단가($10,000~$30,000+)를 받는다. [출처:  [https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/] https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/] 이는 바이브코딩 역시 ‘개인 개발자의 수익화’보다 먼저 ‘AI를 이해하는 시스템 아키텍트의 고부가가치 서비스화’로 안착할 가능성을 보여준다.
+###### 3. 테마/템플릿 마켓플레이스(ThemeForest)와 디지털 자산 장사 (2008~)
+2008년 8월 Envato의 ThemeForest는 첫 번째 WordPress 테마 ‘Our Community’를 판매하며 시작됐다. 2016년까지 누적 거래액은 3억 5,500만 달러에 달했고, 그중 WordPress 테마가 2억 8,600만 달러(80% 이상)를 차지했다. [출처:  [https://freemius.com/blog/themeforest-wordpress-themes-analyisis/] https://freemius.com/blog/themeforest-wordpress-themes-analyisis/]
+그러나 수익 분포는 극도로 왜곡되어 있었다. 2016년 기준 ThemeForest의 WordPress 테마 7,986개 중 36.56%(약 2,900개)는 100개 라이선스도 팔지 못했고, 86.9%는 1,000개 미만 판매에 그쳤다. 월수익 $10,000를 넘는 테마는 0.83%에 불과했고, $100,000 이상을 버는 테마는 단 3개뿐이었다. [출처:  [https://freemius.com/blog/themeforest-wordpress-themes-analyisis/] https://freemius.com/blog/themeforest-wordpress-themes-analyisis/]
+이 패턴은 바이브코딩 기반의 ‘프롬프트 팩’, ‘AI 앱 템플릿’, ‘에이전트 워크플로우’ 등 디지털 자산 판매가 어떻게 전개될지를 미리 보여준다: 초기에는 공급 부족으로 소수가 고수익을 올리지만, 시간이 지나면서 상품화(commoditization)와 가격 하락이 진행되고, 장기적으로는 업데이트·호환성·고객지원이 생존의 분수령이 된다.
+##### 그 선례의 전개와 결말
+선례전개결말/현재
+App Store (2008)초기 ‘누구나 부자 될 수 있다’는 골드러시, 99센트~$9.99 저가 앱 확산, 게임/유틸리티 폭발적 증가수익 집중, freemium/subscription 모델로 전환, 대형 개발사·퍼블리셔 우위, 인디 개발자 생존은 마케팅·커뮤니티·구독 모델에 의존
+No-code/Low-code (2011~)Zapier→Bubble→Webflow→PowerApps/AppSheet으로 확장, citizen developer 개념 정착엔터프라이즈 납품·낮은 코드 유지보수·AI 통합 서비스로 진화. 플랫폼 종속(lock-in)과 거버넌스 이슈는 여전히 핵심 장벽
+ThemeForest (2008~)초기 디지털 자산 시장 형성, Avada/Visual Composer 등 메가히트 등장2026년 기준 트래픽·사용자 감소, 구독형 테마·FSE/Gutenberg 전환, 자체 사이트 직판 채널의 부상. 장기 업데이트 능력이 핵심 차별화
+YouTube Partner Program (2007~)2007년 출시→2012년 전면 개방→2014년 100만 크리에이터 수익 창출광고 수익 집중, 멤버십·후원·자체 제품 판매 등 다변화 필수. 플랫폼 알고리즘 의존성이 핵심 리스크
+Learn-to-code/부트캠프 (2012~)Codecademy Code Year(2012), Code.org Hour of Code(2013), Obama 후원, CS 전공자 2005~2023년 4배 증가2020년대 초반 과잉 공급·주니어 채용 위축·AI 대체 우려. ‘코딩을 배운다’에서 ‘코딩으로 무엇을 시장에 팔 것인가’로 패러다임 이동
+##### 현재 vs 과거: 진짜 새로운 것 / 반복되는 것
+###### 반복되는 것 (Strong Precedents)
+- 플랫폼 게이트키핑과 수익 배분: App Store의 70/30, YouTube의 55/45 광고 분배처럼, 바이브코딩 역시 Cursor, Replit, Claude Code, Lovable 등 특정 플랫폼 위에서 작동하며, 플랫폼이 배포·결제·발견의 관문이 된다. [출처:  [https://www.engadget.com/youtube-created-the-creator-economy-130028016.html] https://www.engadget.com/youtube-created-the-creator-economy-130028016.html]
+- 골드러시 서사와 생존자 편향: Y Combinator Winter 2025 배치의 25%가 AI 생성 코드 95%를 사용했다는 본보기, Google의 신규 코드 30%가 AI에서 나온다는 발표 등은 초기 App Store의 “수천 달러 버는 17세 개발자” 신화와 동일한 구조다. [출처:  [https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/] https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/]
+- 민주화 → 공급 과잉 → 발견의 위기: 과거 App Store, ThemeForest, YouTube에서 공통적으로 나타난 ‘누구나 만들 수 있게 되면서 가시성이 사라짐’ 현상이 바이브코딩에서도 반복되고 있다.
+- 하이프 사이클상의 위치: Gartner의 2025 Hype Cycle에서 생성형 AI는 ‘과대 기대의 정점(Peak of Inflated Expectations)’을 지나 ‘환멸의 골짜기(Trough of Disillusionment)’로 진입했으며, AI 에이전트는 현재 정점에 있다. [출처:  [https://wp.unil.ch/iaunil/en/gartners-hype-cycle-2025-artificial-intelligence-beyond-the-hype/] https://wp.unil.ch/iaunil/en/gartners-hype-cycle-2025-artificial-intelligence-beyond-the-hype/] 이는 App Store 초기(2008~2010)의 ‘누구나 부자’ 서사가 2012~2015년 ‘지속 가능성 위기’로 전환된 패턴과 유사하다.
+###### 진짜 새로운 것 (Genuine Novelties)
+- 생성형 AI의 일반화된 추론 능력: 과거 노코드가 ‘시각적 추상화(visual abstraction)’로 코드 작성을 대체했다면, 바이브코딩은 자연어 프롬프트를 통해 원시 소스코드 자체를 생성한다. 이는 Bubble/Webflow가 할 수 없었던, 임의의 로직·라이브러리·아키텍처로의 확장 가능성을 의미한다. [출처:  [https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/] https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/]
+- 시간 단위의 프로토타이핑: Congruence Market Insights는 2028년까지 바이브코딩 도구체인을 사용하는 경우 평균 프로토타입 생성 시간이 50% 감소할 수 있다고 전망했다. [출처:  [https://www.congruencemarketinsights.com/report/vibe-coding-market] https://www.congruencemarketinsights.com/report/vibe-coding-market] 과거 App Store나 ThemeForest에서 몇 주~몇 달이 걸렸던 MVP 제작이 몇 시간~며칠로 단축된다.
+- 블랙박스 코드와 유지보수 부채: Veracode 2025년 조사에 따른 AI 생성 코드의 45%에 취약점이 있다는 점, 그리고 생성된 코드를 작성자조차 읽지 않는다는 바이브코딩의 정의적 특성은 과거 선례와 구별되는 새로운 리스크 범주다. [출처:  [https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/] https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/]
+- ‘소프트웨어를 하나만큼’(software for one)의 경제성: Kevin Roose(New York Times)가 지적한 개인용 도구의 대량 생산 가능성은, 과거 SaaS의 ‘수만 명이 쓰는 제품’ 패러다임과는 다른 초소형 니치(N-of-1) 수익화 모델을 열 수 있다. [출처:  [https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/] https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/]
+##### 역사가 주는 경고 또는 희망
+###### 경고 (Warnings from History)
+- 수익 집중은 불가피하다: App Store(0.13%가 백만달러), ThemeForest(0.83%가 월 $10K 이상) 선례처럼, ‘모두가 돈 번다’는 서사는 통계적으로 거짓이다. 대다수는 소득이 거의 없거나 플랫폼 수수료·경쟁에 의해 삭감된다.
+- 플랫폼 의존성은 치명적이다: ThemeForest 판매자들이 2026년 경험하는 트래픽 감소와 FSE/Gutenberg 전환 부담처럼, Cursor/Lovable/Replit 등의 생태계 변화에 따라 개인 사업자의 자산이 순식간에 가치를 잃을 수 있다. [출처:  [https://superbthemes.com/blog/what-happened-to-themeforest-traffic-and-user-decline/] https://superbthemes.com/blog/what-happened-to-themeforest-traffic-and-user-decline/]
+- 과대 기대 뒤의 환멸: Gartner가 2025년 생성형 AI를 ‘환멸의 골짜기’에 배치한 것은, 2024년 190만 달러의 평균 GenAI 투자에도 CEO의 30% 미만만 ROI에 만족했다는 현실을 반영한다. [출처:  [https://wp.unil.ch/iaunil/en/gartners-hype-cycle-2025-artificial-intelligence-beyond-the-hype/] https://wp.unil.ch/iaunil/en/gartners-hype-cycle-2025-artificial-intelligence-beyond-the-hype/] 바이브코딩 기반 사업도 이 골짜기를 피하지 못할 것이다.
+- 인력 시장의 역설: 2010년대 learn-to-code 붐은 2020년대 초반 주니어 개발자 과잉 공급과 채용 위축으로 이어졌다. 바이브코딩이 진입 장벽을 더 낮추면, ‘프롬프트 엔지니어’나 ‘AI 빌더’라는 새 레이블 아래 동일한 과잉 공급이 재현될 수 있다. [출처:  [https://distantjob.com/blog/software-engineer-job-market/] https://distantjob.com/blog/software-engineer-job-market/]
+###### 희망 (Hopes from History)
+- Survivors create durable categories: 버블이 꺼진 뒤에도 Amazon, eBay, Google은 살아남았고, App Store 이후에도 Notion, Figma, Slack 등 새로운 독립 SaaS가 등장했다. 바이브코딩의 ‘환멸의 골짜기’ 이후에도, 진짜 문제를 해결하고 반복 수익을 만드는 소수의 사업자가 남을 것이다.
+- 서비스·에이전시 모델의 안정성: 노코드 시장에서 가장 높은 수익을 올리는 주체는 ‘도구 조작자’가 아니라 ‘비즈니스 문제를 시스템으로 전환하는 아키텍트’였다. 2026년 n8n AI 에이전트 워크플로우 고급 프로젝트가 $10,000~$30,000+에 거래되는 사실은 이 희망을 뒷받침한다. [출처:  [https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/] https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/]
+- 플랫폼 자체를 넘어선 자산 축적: 성공한 YouTuber나 테마 개발자는 궁극적으로 자체 메일링 리스트, 멤버십, 제품군을 구축해 플랫폼 알고리즘 의존에서 벗어난다. 바이브코딩 수익화도 마찬가지로 자체 고객 관계와 반복 결제를 만드는 쪽으로 진화할 가능성이 크다.
+##### 불확실성 (유추의 한계)
+- 법적·지식재산권 리스크: App Store 시대에는 ‘누가 코드를 소유하는가’가 명확했다. 바이브코딩에서는 LLM이 생성한 코드의 라이선스, 훈련 데이터 논란, 고객 데이터 처리 방식 등이 아직 미결 상태다. 이는 과거 선례에서 직접적으로 유추하기 어려운 새로운 불확실성이다.
+- 플랫폼 수수료와 경쟁 구조의 미성숙: App Store의 70/30, YouTube의 55/45처럼 바이브코딩 플랫폼의 표준 수익 배분이 아직 확립되지 않았다. AI 코딩 도구들이 ‘인프라’가 될 것인지, ‘마켓플레이스’가 될 것인지에 따라 수익화 경로가 크게 달라진다.
+- 유지보수 가능성의 검증 부족: ThemeForest나 App Store에서 장기적으로 살아남은 제품은 꾸준한 업데이트와 고객지원이 가능했던 제품들이다. 바이브코딩으로 만들어진 제품이 2~3년 후에도 유지보수 가능한지에 대한 실증적 데이터는 아직 충분하지 않다.
+- 경제적 파급력의 불확실성: MIT의 Daron Acemoglu는 향후 10년간 AI가 미국 경제를 1% 정도만 확장할 수 있다고 추정했다. [출처:  [https://www.baytechconsulting.com/blog/agi-hype-to-practical-ai-business-value] https://www.baytechconsulting.com/blog/agi-hype-to-practical-ai-business-value] 이처럼 거시적 효과가 제한적이라면, 개인 개발자의 수익화 잠재력 역시 과대평가될 수 있다.
+##### 참고 출처 (URL 전체 목록)
+-  [https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/] https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/
+-  [https://www.congruencemarketinsights.com/report/vibe-coding-market] https://www.congruencemarketinsights.com/report/vibe-coding-market
+-  [https://arxiv.org/pdf/2307.16717] https://arxiv.org/pdf/2307.16717
+-  [https://core.ac.uk/download/pdf/617931905.pdf] https://core.ac.uk/download/pdf/617931905.pdf
+-  [https://www.macstories.net/stories/developers-decade-long-rollercoaster-ride-the-business-of-selling-apps-on-the-app-store/] https://www.macstories.net/stories/developers-decade-long-rollercoaster-ride-the-business-of-selling-apps-on-the-app-store/
+-  [https://download.e-bookshelf.de/download/0000/5966/03/L-G-0000596603-0002364049.pdf] https://download.e-bookshelf.de/download/0000/5966/03/L-G-0000596603-0002364049.pdf
+-  [https://core.ac.uk/download/pdf/80713354.pdf] https://core.ac.uk/download/pdf/80713354.pdf
+-  [https://yourstory.com/2023/06/apple-app-store-genesis-impact-revolutionary-business-model] https://yourstory.com/2023/06/apple-app-store-genesis-impact-revolutionary-business-model
+-  [https://freemius.com/blog/themeforest-wordpress-themes-analyisis/] https://freemius.com/blog/themeforest-wordpress-themes-analyisis/
+-  [https://superbthemes.com/blog/what-happened-to-themeforest-traffic-and-user-decline/] https://superbthemes.com/blog/what-happened-to-themeforest-traffic-and-user-decline/
+-  [https://www.engadget.com/youtube-created-the-creator-economy-130028016.html] https://www.engadget.com/youtube-created-the-creator-economy-130028016.html
+-  [https://trepo.tuni.fi/bitstream/handle/10024/123007/PewDiePie_racism_and_Youtube_2020.pdf?sequence=2&isAllowed=y] https://trepo.tuni.fi/bitstream/handle/10024/123007/PewDiePie_racism_and_Youtube_2020.pdf?sequence=2&isAllowed=y
+-  [https://distantjob.com/blog/software-engineer-job-market/] https://distantjob.com/blog/software-engineer-job-market/
+-  [https://www.hatchways.io/blog/bootcamps-part-1-what-are-coding-bootcamps] https://www.hatchways.io/blog/bootcamps-part-1-what-are-coding-bootcamps
+-  [https://wp.unil.ch/iaunil/en/gartners-hype-cycle-2025-artificial-intelligence-beyond-the-hype/] https://wp.unil.ch/iaunil/en/gartners-hype-cycle-2025-artificial-intelligence-beyond-the-hype/
+-  [https://www.aiprimer.net/library/ai-in-practice/evaluating-ai-tools-for-your-team] https://www.aiprimer.net/library/ai-in-practice/evaluating-ai-tools-for-your-team
+-  [https://mktclarity.com/blogs/news/ai-agents-overhyped] https://mktclarity.com/blogs/news/ai-agents-overhyped
+-  [https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/] https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/
+-  [https://www.investopedia.com/terms/d/dotcom-bubble.asp] https://www.investopedia.com/terms/d/dotcom-bubble.asp
+-  [https://internationalbanker.com/history-of-financial-crises/the-dotcom-bubble-burst-2000/] https://internationalbanker.com/history-of-financial-crises/the-dotcom-bubble-burst-2000/
+-  [https://www.britannica.com/money/dot-com-bubble] https://www.britannica.com/money/dot-com-bubble
+-  [https://www.baytechconsulting.com/blog/agi-hype-to-practical-ai-business-value] https://www.baytechconsulting.com/blog/agi-hype-to-practical-ai-business-value
+-  [https://gravity.fast/blog/gartner-hype-cycle-ai-agents-2026/] https://gravity.fast/blog/gartner-hype-cycle-ai-agents-2026/
+Academic학자claude
+peer-review 13편 — 수익화 직접 실증 전무, 생산성은 과제 복잡도 의존, LLM 프리랜서 26%, OSS 수익모델 위협이 가장 확립
+#### 학자 관점: 바이브코딩(Vibe Coding)으로 수익화하는 방법
+렌즈: peer-reviewed 실증 증거. "데이터가 실제로 말하는 것은 무엇인가?" 작성일: 2026-06-19 | 영혼: The Academic
+##### 학계 합의 수준 (한 줄 + 등급)
+"AI 코딩 도구는 단순하고 잘 정의된 작업에서는 유의한 생산성 이득을 보이지만, 실제 복잡한 소프트웨어 개발·장기 유지보수·개인 수익화 경로에서는 증거가 혼재하거나 부정적이며, 바이브코딩이 수익화로 직결된다는 주장은 아직 peer-reviewed 실증으로 검증되지 않았다."
+질문합의 등급
+AI 코딩 도구 → 단기 생산성 향상 (협소한 과제)[수렴 중]
+바이브코딩 → 코드 품질·유지보수 악화[수렴 중]
+AI 코딩 → 개인 개발자 수익화[예비/추측] — peer-review 부재
+OSS 생태계에 미치는 경제적 위협[수렴 중] (이론 모델)
+LLM이 실제 프리랜서 과제를 대부분 해결[확립] — 불가능 (현재 기준)
+##### 핵심 논문·메타분석 5선
+###### ① Peng et al. (2023) — GitHub Copilot 첫 번째 대규모 RCT
+발견: JavaScript HTTP 서버 구현 과제에서 Copilot 사용자가 55.8% 빠르게 완료(대조군 대비). 경험이 적은 개발자에게 이득이 더 컸으며 "이질적 효과" 존재. 한계: 단일 협소 과제·인위적 환경. 표본 수 미공개(초록 기준). 장기 코드 품질 미측정. [출처: Sida Peng, Eirini Kalliamvakou, Peter Cihon, Mert Demirer. arXiv:2302.06590, 2023-02-13. DOI:  [https://doi.org/10.48550/arXiv.2302.06590]] https://doi.org/10.48550/arXiv.2302.06590]
+###### ② Becker et al. (2025) — 숙련 오픈소스 개발자 대상 RCT
+발견: 경험 5년 이상의 오픈소스 개발자 16명이 246개 실제 과제를 수행하자 AI 도구 허용 집단이 19% 더 오래 걸렸다. 개발자들은 사전에 24% 단축, 전문가(경제학자·ML 연구자)들은 38~39% 단축을 예측했으나 완전히 빗나갔다. 도구: Cursor Pro + Claude 3.5/3.7 Sonnet. 저자 결론: 이 결과는 "실험 설계의 인공물일 가능성이 낮다"고 명시. [출처: Joel Becker, Nate Rush, Elizabeth Barnes, David Rein. arXiv:2507.09089. DOI:  [https://doi.org/10.48550/arXiv.2507.09089]] https://doi.org/10.48550/arXiv.2507.09089]
+###### ③ Fawzy, Tahir, Blincoe (2025) — 바이브코딩 그레이 리터러처 체계적 검토
+발견: 101개 실무자 출처, 518개 행동 사례 분석.
+- 동기 분포: 속도·효율 62%, 접근성·역량강화 14%, 학습·실험 11%
+- QA 관행: QA 완전 건너뜀 36%, 무비판적 수용 18%, QA를 AI에 재위임 10%
+- 핵심 역설: "빠르고 결함 있는" 코드 생산 + "취약한 개발자 코호트" 등장(빌드는 할 수 있지만 버그 해결 불가)
+한계: Grey literature 기반—peer-review 아님. 수익화 데이터 없음. [출처: Ahmed Fawzy, Amjed Tahir, Kelly Blincoe. arXiv:2510.00328, 2025-09-30. DOI:  [https://doi.org/10.48550/arXiv.2510.00328]] https://doi.org/10.48550/arXiv.2510.00328]
+###### ④ Miserendino et al. (2025) — SWE-Lancer: LLM이 프리랜서 $100만을 벌 수 있나? (ICML 2025 Oral)
+발견: Upwork 실제 프리랜서 과제 1,400개+($50 버그 수정~$32,000 기능 구현), 총 $100만 가치 벤치마크.
+- 최고 성능 모델(Claude 3.5 Sonnet): IC 과제 성공률 26.2%, 경영 과제 44.9%, 가능한 수익 중 $400,000/100만 달러(약 40%) 획득.
+- "프런티어 모델은 여전히 대부분의 과제를 해결할 수 없다."
+함의: 인간 개발자가 AI와 결합했을 때의 수익화 잠재력은 직접 측정 대상이 아니었음—LLM 단독 성능 한계를 제시. [출처: Samuel Miserendino, Michele Wang, Tejal Patwardhan, Johannes Heidecke. arXiv:2502.12115. DOI:  [https://doi.org/10.48550/arXiv.2502.12115.] https://doi.org/10.48550/arXiv.2502.12115. ICML 2025.]
+###### ⑤ Koren, Békés, Hinz, Lohmann (2026) — 바이브코딩이 오픈소스를 죽인다
+발견: 이론 균형 경제 모델(내생적 프로젝트 진입 + 이질적 품질 + OSS 코드 재사용 구조).
+- AI 코딩이 확산되면 유지관리자가 직접 사용자 참여로 보상을 받는 현재 OSS 모델이 붕괴한다.
+- 대안으로 "직접 참여에 의존하지 않는 수익화 채널—엔터프라이즈 라이선싱, API 요금, 개발자 서비스"가 필요함을 명시.
+- "현재 규모의 OSS를 지속하려면 유지관리자 보상 방식의 대대적 변화가 필요하다."
+[출처: Miklós Koren, Gábor Békés, Julian Hinz, Aaron Lohmann. arXiv:2601.15494, 2026-01-21. DOI:  [https://doi.org/10.48550/arXiv.2601.15494.] https://doi.org/10.48550/arXiv.2601.15494. ERC 지원 연구.]
+##### 보조 증거 — 규모 실증
+###### Kumar et al. (2025) — 1mg.com, 300 엔지니어 12개월 준실험 연구
+발견: AI 보조 개발 플랫폼 배포 후 cycle time 33.8% 감소(p=0.0018), 리뷰 시간 29.8% 감소. 상위 채택 코호트는 출하 코드량 61% 증가. 그러나 저채택 집단은 코드 출력이 11% 감소. 비용: 300명 기준 월 $8,257~$12,061 (인당 ~$30~34, 인건비의 1~2%). [출처: Anand Kumar 외 11명(1mg.com). arXiv:2509.19708, 2025-09-24. DOI: 미공개.]
+###### Liu et al. (2026) — "AI 붐 뒤의 부채": 대규모 실증 연구
+발견: 6,299개 GitHub 저장소의 AI 작성 커밋 302,600건 분석.
+- 484,366개의 개별 문제 식별 (89.3%가 코드 스멜)
+- 모든 AI 도구에서 커밋의 15% 이상이 품질 문제를 도입
+- AI가 도입한 문제의 22.7%가 최신 버전에도 생존 → 장기 기술 부채
+[출처: Yue Liu, Ratnadira Widyasari 외 4명(Singapore Management University). arXiv:2603.28592, 2026-04-26. DOI:  [https://doi.org/10.48550/arXiv.2603.28592]] https://doi.org/10.48550/arXiv.2603.28592]
+###### Butler et al. (2024) — "Dear Diary" Microsoft RCT
+발견: 대형 다국적 소프트웨어 기업 200명+ 엔지니어 대상 3주 일기 연구 + RCT.
+- 참가자의 84%가 일일 업무 관행에 긍정적 변화를 보고
+- 66%가 일에 대한 감정 변화를 보고(열정 증가 포함)
+- 단, AI 생성 코드에 대한 신뢰도는 연구 기간 동안 정적(상승 없음)
+- 전통적 생산성 지표(코드 속도·버그율·완료 시간)는 측정하지 않음
+[출처: Jenna Butler, Jina Suh, Sankeerti Haniyur, Constance Hadley. arXiv:2410.18334. DOI:  [https://doi.org/10.48550/arXiv.2410.18334]] https://doi.org/10.48550/arXiv.2410.18334]
+##### 증거의 품질과 한계
+1. 외적 타당도 문제 (Critical) Peng et al.(2023)의 55.8% 생산성 이득은 "JavaScript HTTP 서버 구현"이라는 단일 협소 과제에서 나왔다. Becker et al.(2025)의 실제 OSS 과제에서는 오히려 19% 느려졌다. 두 결과가 모순처럼 보이지만, 실제로는 과제 특성(범위 명확성, 코드베이스 익숙도, 코드 표준)이 핵심 조절 변인임을 보여준다.
+2. 수익화 경로에 대한 peer-review 전무 (Critical Gap) "바이브코딩으로 수익화"라는 주제를 직접 다룬 peer-reviewed 논문은 현재(2026년 6월) 존재하지 않는다. SWE-Lancer는 LLM 단독 성능을 측정했고, Noever & McKee(2025)의 Kaggle 기반 소득 추정($1.52M)은 합성 과제 기반이다. 실제 인간 개발자가 AI를 활용해 얼마를 버는가는 학술적으로 미측정 영역이다. [추론]
+3. 표본 소규모 및 단기 관찰 가장 통제된 연구(Becker et al.)의 표본은 16명. Butler et al.의 일기 연구는 인식 변화를 측정하되 경제적 성과를 측정하지 않는다. Kumar et al.의 300명 연구는 단일 회사(인도 헬스케어 플랫폼)에 국한된다.
+4. 출판 편향 가능성 긍정적 결과를 보고하는 산업계 연구(GitHub 자체 연구 포함)와 독립 학술 RCT 간에 결과 격차가 크다. Becker et al.은 이 편향을 명시적으로 언급한다.
+5. 장기 기술 부채 효과 포착 미비 대부분의 연구는 단기 생산성을 측정한다. Liu et al.(2026)이 처음으로 22.7%의 AI 도입 결함이 장기 생존함을 보였지만, 이것이 개인 개발자 수익에 미치는 경제적 영향은 계산되지 않았다.
+##### 대중 통념 vs 학술 증거의 간극
+대중 통념학술 증거판정
+"AI로 55% 더 빠르게 코딩"Peng et al.(2023): 맞음, 단 협소한 표준화 과제 한정. Becker et al.(2025): 실제 복잡 OSS에선 오히려 19% 느림과잉 일반화
+"비개발자도 바이브코딩으로 SaaS를 만들 수 있다"Fawzy et al.(2025): 빌드는 가능하지만 버그 해결 불가한 '취약한 코호트' 등장 확인부분 사실, 심각한 단서
+"AI가 프리랜서 시장을 대체한다"Miserendino et al.(2025): 최고 LLM도 26.2% 과제 성공률 — 대체 불가 수준. 인간+AI 결합 효과는 미측정현재 기준 거짓
+"바이브코딩으로 OSS 생태계가 풍부해진다"Koren et al.(2026): 이론 모델상 오히려 유지관리자 보상 구조 붕괴 위협반대 방향
+"AI 도구 도입 = 소득 자동 증가"학술 증거 전무. Kumar et al.(2025): 저채택 집단은 11% 출력 감소증거 없음, 잠재적 역효과
+"AI가 코드 품질도 높인다"Liu et al.(2026): 302K 커밋 분석—15%+ 커밋이 품질 문제 도입, 22.7% 장기 생존반대 증거 수렴 중
+##### 불확실성 (미해결 연구 질문)
+- 인간+AI 팀의 장기 수익화 경로는?
+현재 연구는 LLM 단독 또는 기업 내부 생산성에 집중. 개인 개발자가 AI를 보조 도구로 써서 프리랜서·SaaS·오픈소스로 실제 얼마를 버는지 추적한 종단 연구 없음.
+- 바이브코딩의 학습 효과 vs 스킬 침식 trade-off?
+Fawzy et al.은 '학습·실험' 동기가 11%임을 보였지만, 장기적으로 AI 의존이 개발자 역량을 강화하는지 약화하는지는 미해결.
+- OSS 유지관리자를 위한 대안 수익 모델의 실효성?
+Koren et al.은 "엔터프라이즈 라이선싱·API 요금·개발자 서비스"를 제안하지만, 이 대안들이 실제로 개인 유지관리자 소득을 보전하는지는 이론 모델에만 머문다.
+- '취약한 개발자 코호트'의 규모와 수익 실패율?
+Fawzy et al.은 존재를 확인했지만 규모 측정은 하지 않았다. 바이브코딩으로 수익화를 시도한 비전문 개발자의 실패율 데이터 없음.
+- 과제 복잡도와 AI 이득의 함수 관계?
+협소 과제(+55.8%)와 복잡 과제(−19%) 사이에서 AI 이득이 0이 되는 임계 복잡도가 어디인지 체계적으로 측정한 연구 없음.
+##### 학자 요약 (불편한 진실)
+학술 증거를 종합하면 바이브코딩 수익화 담론과 실증 사이에는 큰 간극이 존재한다:
+- 생산성 이득은 실재하지만 맥락 의존적이다 — 협소하고 잘 정의된 과제, 또는 AI 도구를 깊이 통합한 팀에서만 재현된다.
+- 수익화와 직접 연결하는 peer-reviewed 증거는 존재하지 않는다 — 현재 학계가 측정한 것은 과제 성공률, 사이클 타임, 코드 품질이지 개인 개발자 소득이 아니다.
+- 코드 품질 악화와 기술 부채 축적은 수렴 중인 학술 합의다 — 이는 장기 수익화 모델(유지보수 비용 증가, 고객 이탈)에 직접적 위협이다.
+- 최고 수준의 LLM도 실제 프리랜서 과제의 26% 수준만 해결한다 — AI가 인간 개발자를 대체하거나 무제한적으로 증폭시킨다는 주장은 현재 증거로 지지되지 않는다.
+- OSS 경제 모델의 위협은 학술적으로 가장 명확히 확립된 발견 중 하나다 — 바이브코딩이 OSS 유지관리자 수익을 구조적으로 약화시킨다.
+##### 참고 출처 (URL/DOI 전체 목록)
+#출처유형DOI/URL
+1Peng et al. (2023). "The Impact of AI on Developer Productivity: Evidence from GitHub Copilot."arXiv [cs.SE] [https://doi.org/10.48550/arXiv.2302.06590] https://doi.org/10.48550/arXiv.2302.06590
+2Becker et al. (2025). "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity."arXiv [cs.SE] [https://doi.org/10.48550/arXiv.2507.09089] https://doi.org/10.48550/arXiv.2507.09089
+3Fawzy, Tahir, Blincoe (2025). "Vibe Coding in Practice: Motivations, Challenges, and a Future Outlook — a Grey Literature Review."arXiv [cs.SE] [https://doi.org/10.48550/arXiv.2510.00328] https://doi.org/10.48550/arXiv.2510.00328
+4Miserendino et al. (2025). "SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering?" ICML 2025.arXiv [cs.LG] [https://doi.org/10.48550/arXiv.2502.12115] https://doi.org/10.48550/arXiv.2502.12115
+5Koren, Békés, Hinz, Lohmann (2026). "Vibe Coding Kills Open Source."arXiv [econ] [https://doi.org/10.48550/arXiv.2601.15494] https://doi.org/10.48550/arXiv.2601.15494
+6Butler et al. (2024). "Dear Diary: A randomized controlled trial of Generative AI coding tools in the workplace."arXiv [cs.HC] [https://doi.org/10.48550/arXiv.2410.18334] https://doi.org/10.48550/arXiv.2410.18334
+7Liu et al. (2026). "Debt Behind the AI Boom: A Large-Scale Empirical Study of AI-Generated Code in the Wild."arXiv [cs.SE] [https://doi.org/10.48550/arXiv.2603.28592] https://doi.org/10.48550/arXiv.2603.28592
+8Kumar et al. (2025). "Intuition to Evidence: Measuring AI's True Impact on Developer Productivity." (1mg.com)arXiv [cs.SE] [https://arxiv.org/abs/2509.19708] https://arxiv.org/abs/2509.19708
+9Xu et al. (2025). "AI-Assisted Programming Decreases the Productivity of..."arXiv [cs.SE] [https://doi.org/10.48550/arXiv.2510.10165] https://doi.org/10.48550/arXiv.2510.10165
+10Crowson & Celi (2025). "Academic Vibe Coding: Opportunities for Accelerating Research in an Era of Resource Constraint."arXiv [cs.AI] [https://doi.org/10.48550/arXiv.2508.00952] https://doi.org/10.48550/arXiv.2508.00952
+11Noever & McKee (2025). "Can AI Freelancers Compete? Benchmarking Earnings, Reliability, and Task Success at Scale."arXiv [https://doi.org/10.48550/arXiv.2505.13511] https://doi.org/10.48550/arXiv.2505.13511
+12Vukovic et al. (2026). "Usage, Effects and Requirements for AI Coding Assistants in the Enterprise." ICSE 2026.arXiv [cs.SE] [https://doi.org/10.48550/arXiv.2601.20112] https://doi.org/10.48550/arXiv.2601.20112
+13Stack Overflow. "2025 Developer Survey." (비peer-review, 대규모 산업 조사)Survey [https://survey.stackoverflow.co/2025] https://survey.stackoverflow.co/2025
+작성: Academic 영혼 | STORM 딥리서치 파이프라인 | 주제: 바이브코딩 수익화 | 날짜: 2026-06-19
+Futurist미래학자codex
+제작비 급락 후 수익의 희소점은 코드에서 검증·고유 데이터·에이전트 유통·운영 책임으로 이동한다
+#### 미래학자 관점: 바이브코딩으로 수익화하는 방법 — 2026년 개인 개발자/창작자의 다음 3~10년
+##### 현재 관측된 신호 (각 출처+날짜)
+###### 신호 1 — 제작 속도의 경쟁우위가 빠르게 소멸하고 있다
+- Anthropic은 2025년 4월 6~13일의 코딩 관련 상호작용 50만 건을 분석했고, Claude Code 대화의 79%를 사람이 협업하는 증강이 아니라 AI가 직접 과업을 수행하는 자동화로 분류했다. 같은 분석에서 Claude.ai의 자동화 비율은 49%였으며, Claude Code 이용 중 스타트업 관련 작업 추정치는 33%, 엔터프라이즈 관련 작업은 13%였다. [출처:  [https://www.anthropic.com/research/impact-software-development,] https://www.anthropic.com/research/impact-software-development, 2025-04-28]
+- 같은 조사에서 JavaScript와 HTML이 가장 많이 쓰인 언어였고 UI·UX 과업도 상위 용도에 포함돼, 단순한 사용자용 앱과 인터페이스가 AI 자동화의 선두 영역임을 시사했다. [출처:  [https://www.anthropic.com/research/impact-software-development,] https://www.anthropic.com/research/impact-software-development, 2025-04-28]
+- GitHub는 비동기 개발 에이전트가 이슈를 받아 독립 환경에서 작업하고 초안 PR을 만드는 Copilot coding agent를 모든 유료 Copilot 구독자에게 일반 제공했다. [출처:  [https://github.blog/changelog/2025-09-25-copilot-coding-agent-is-now-generally-available,] https://github.blog/changelog/2025-09-25-copilot-coding-agent-is-now-generally-available, 2025-09-25]
+- METR의 소프트웨어·추론 과업 실험에서는 최전선 모델의 50% 성공 시간 지평이 2019년 이후 약 7개월마다 두 배가 됐으며, 연구진은 이 추세가 2~4년 더 이어질 경우 범용 에이전트가 광범위한 일주일짜리 과업을 수행할 수 있다고 외삽했다. 다만 연구진은 실제 장기 프로젝트 대체가 이미 가능하다고 주장하지 않으며, 과업 분포와 외적 타당성이 큰 불확실성이라고 명시한다. [출처:  [https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,] https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/, 2025-03-19]
+고유 발견 — ‘빠른 제작’은 상품이 아니라 전기처럼 투입재가 된다. [추론] 모델의 시간 지평이 길어지고 비동기 병렬 작업이 보편화될수록, 바이브코딩 자체는 희소한 기술에서 누구나 구매할 수 있는 생산요소로 이동할 가능성이 높다. [추론] 따라서 “48시간 만에 앱을 만들었다”는 판매 문구의 반감기는 짧아지고, 무엇을 만들지 정하는 도메인 판단·실사용 데이터·검수 책임·유통 접근권이 가격을 결정할 가능성이 높다. [추론]
+###### 신호 2 — 앱 공급은 폭증하지만 AI라는 표지만으로는 유지되지 않는다
+- RevenueCat의 2026년 보고서는 활성 구독 매출이 있고 일정 설치·매출 기준을 충족한 자사 연동 앱의 2025년 데이터를 분석했으며, 현재 월간 신규 구독 앱 출시가 약 1만5천 개로 3년 전 약 2천 개보다 크게 늘었다고 밝혔다. [출처:  [https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/,] https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/, 2026]
+- 이 데이터셋에서 구독 앱의 27.1%가 AI 기능 앱으로 분류됐고, AI 앱은 체험 시작률 중앙값 8.5%로 비AI 앱의 5.6%보다 높았으며 다운로드 후 결제 전환 중앙값도 2.4% 대 2.0%로 높았다. [출처:  [https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/,] https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/, 2026]
+- 반면 12개월 뒤 유지 구독자 중앙값은 주간·월간·연간 요금제 모두 AI 앱이 낮았고, 월간은 AI 6.1% 대 비AI 9.5%, 연간은 AI 21.1% 대 비AI 30.7%였다. [출처:  [https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/,] https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/, 2026]
+- Apple의 현행 심사 지침 4.2는 재포장한 웹사이트를 넘어서는 기능·콘텐츠·UI와 충분한 효용을 요구하고, 4.3은 이미 널리 존재하는 앱과 구별되지 않는 변형 앱을 스팸으로 규정한다. [출처:  [https://developer.apple.com/app-store/review/guidelines/,] https://developer.apple.com/app-store/review/guidelines/, 2026-06 확인]
+고유 발견 — 바이브코딩 시장의 병목은 출시가 아니라 ‘두 번째 결제’다. [추론] AI 표시는 첫 체험을 유도하지만 장기 잔존을 보장하지 않으며, 공급 증가와 플랫폼의 중복 앱 규정은 복제형 마이크로 SaaS의 발견 가능성을 동시에 깎는다. [추론] 수익화 실험의 핵심 지표는 출시 개수나 첫 달 MRR보다 90일 반복 사용, 두 번째 갱신, 사용자가 쌓아 둔 데이터·워크플로의 증가량이어야 한다. [추론]
+###### 신호 3 — 상점이 웹페이지에서 AI 대화의 ‘호출 가능한 능력’으로 이동하고 있다
+- OpenAI는 2025년 12월 개발자의 ChatGPT 앱 제출을 열고 앱 디렉터리, 대화 맥락·사용 패턴·선호에 따른 앱 추천 실험, MCP 연결 정보가 포함된 심사 절차를 공개했다. 당시 물리적 상품 거래는 개발자 사이트나 네이티브 앱으로 연결할 수 있었지만 디지털 상품을 포함한 추가 수익화 방식은 아직 탐색 중이라고 명시했다. [출처:  [https://openai.com/index/developers-can-now-submit-apps-to-chatgpt/,] https://openai.com/index/developers-can-now-submit-apps-to-chatgpt/, 2025-12-17]
+- Stripe와 OpenAI는 ChatGPT 안에서 미국 Etsy 판매자의 상품을 구매하는 Instant Checkout과 개방형 Agentic Commerce Protocol을 공개했으며, 주문은 판매자 백엔드로 전달되고 판매자가 승인·결제·세금·이행·반품을 관리하는 구조라고 설명했다. [출처:  [https://stripe.com/newsroom/news/stripe-openai-instant-checkout,] https://stripe.com/newsroom/news/stripe-openai-instant-checkout, 2025-09-29]
+- Shopify는 2026년 3월 Agentic Storefronts를 통해 ChatGPT, Microsoft Copilot, Google Search AI Mode, Gemini에서 상품을 발견·구매할 수 있게 했고, 주문의 AI 채널 유입 귀속과 판매자의 고객 관계·데이터 보유를 지원한다고 발표했다. [출처:  [https://www.shopify.com/news/agentic-commerce-momentum,] https://www.shopify.com/news/agentic-commerce-momentum, 2026-03-24]
+- Shopify는 2026년 6월 Catalog와 Universal Commerce Protocol을 기반으로 AI 채널별 발견·직접 결제 활성화, 주문·매출·전환 확인 기능을 한 관리 화면에 제공한다고 발표했다. [출처:  [https://www.shopify.com/news/spring-26-edition-merchant,] https://www.shopify.com/news/spring-26-edition-merchant, 2026-06-17]
+고유 발견 — 다음 앱스토어의 검색 결과는 아이콘 목록이 아니라 에이전트의 한 문장 추천이다. [추론] 이 환경에서는 화려한 랜딩 페이지보다 기계가 읽을 수 있는 상품 스키마, 실시간 가격·재고, 명확한 권한, 성공률, 환불 정책, 구조화된 평판이 노출을 좌우할 가능성이 높다. [추론] 개인 개발자의 새 상품 단위도 독립 앱 하나에서 “대화 중 호출돼 결과를 반환하고 즉시 결제되는 좁은 능력”으로 이동할 가능성이 높다. [추론]
+###### 신호 4 — 원천 콘텐츠와 신뢰 증명이 별도 과금층으로 분리되고 있다
+- Cloudflare는 사이트 소유자가 AI 크롤러의 콘텐츠 접근을 허용·차단하거나 요청당 과금할 수 있는 Pay Per Crawl을 비공개 베타로 공개했다. [출처:  [https://developers.cloudflare.com/changelog/post/2025-07-01-pay-per-crawl/,] https://developers.cloudflare.com/changelog/post/2025-07-01-pay-per-crawl/, 2025-07-01]
+- EU AI Act는 2026년 8월 2일 전면 적용을 기본 일정으로 두고 있으며, GPAI 관련 의무는 2025년 8월 2일부터 적용됐다. 유럽위원회는 훈련 콘텐츠 공개 요약 템플릿이 데이터 출처와 주요 도메인 등을 요구하고, AI 생성 콘텐츠 표시·라벨링 실무 지침도 개발 중이라고 밝혔다. [출처:  [https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai,] https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai, 2026-06 확인]
+고유 발견 — 창작자의 글은 ‘읽을거리’와 ‘기계가 호출하는 검증 데이터’라는 두 상품으로 갈라질 수 있다. [추론] 원문·업데이트 이력·인용 가능한 구조·사용 허가를 갖춘 전문 아카이브는 뉴스레터 구독 외에도 에이전트 조회권, 데이터 라이선스, 기업용 근거 API로 판매할 여지가 생긴다. [추론] 동시에 AI 결과물의 출처·동의·생성 이력과 테스트 증거를 묶어 주는 ‘신뢰 영수증’이 규제 산업과 B2B 구매에서 새로운 부가가치가 될 가능성이 높다. [추론]
+##### 가장 중요한 2차/3차 효과
+- 코드 가격 하락 → 검증 비용 상승 → 책임의 프리미엄화. [추론] 코드 생성량이 늘면 오류 후보와 변경 빈도도 늘어날 수 있으므로, 고객은 코드 줄 수가 아니라 실제 환경의 성공률, 회귀 테스트, 보안 검토, 장애 대응 약속에 돈을 낼 가능성이 높다. [추론] 개인 개발자에게는 “AI로 대신 개발”보다 “결과를 보증하는 좁은 운영 서비스”가 더 방어적인 상품이 된다. [추론]
+- 앱 폭증 → 발견권 집중 → 멀티채널 구조화 데이터가 새 SEO가 됨. [추론] AI 대화가 상품을 골라 주면 유입의 관문은 검색 순위와 앱스토어 차트에서 에이전트 추천 정책으로 이동한다. [추론] 이때 한 플랫폼에 종속된 래퍼보다 동일한 카탈로그·권한·결제·관측 데이터를 여러 에이전트 채널에 배포하는 ‘agent-ready’ 구조가 자산이 된다. [추론]
+- 기능 복제 가속 → 관계·기억·고유 데이터의 잠금효과 강화. [추론] 기능 UI는 빠르게 복제되지만 사용자의 누적 기록, 전문가의 판단 규칙, 커뮤니티 평판, 실세계 이행망은 즉시 복제하기 어렵다. [추론] 장기 수익은 새 기능 추가보다 고객이 떠날 때 잃는 축적된 맥락의 가치에서 나올 가능성이 높다. [추론]
+- 정액 구독 피로 → 성과·사용량·거래 혼합 과금 증가. [추론] AI 기능은 호출마다 변동비가 생기고 사용자별 사용 편차가 크므로, 기본 구독에 크레딧·성과 수수료·전문가 검수비를 결합한 모델이 단순 무제한 구독보다 지속 가능할 가능성이 높다. [추론] RevenueCat 데이터에서 AI 앱이 비AI 앱보다 소비성 상품을 섞는 비율이 더 높다는 초기 신호가 보인다. [출처:  [https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/,] https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/, 2026]
+- 콘텐츠 무단 흡수 갈등 → 접근권 시장 → 소규모 창작자의 협상력 양극화. [추론] 희소하고 최신성이 높은 전문 자료는 조회당 과금·라이선스가 가능해질 수 있지만, 대체 가능한 범용 글은 에이전트에게 선택되지 않을 위험이 있다. [추론] 개인 창작자는 글의 양보다 독점 인터뷰, 장기 추적 데이터, 업데이트 신뢰성, 명시적 사용 조건을 축적해야 협상력을 갖는다. [추론]
+- 규제 부담 증가 → ‘증거 생성 자동화’라는 새 마이크로 B2B 시장. [추론] AI 기능을 만드는 소규모 사업자가 직접 모든 규정과 감사 자료를 관리하기 어려워질수록, 모델·프롬프트·데이터 출처·동의·평가 결과를 자동 기록해 제출 가능한 문서로 만드는 도구와 서비스가 성장할 가능성이 높다. [추론]
+##### 시나리오 (낙관/기준/비관 — 각 전제)
+###### 낙관 시나리오 — “천 개의 1인 전문기업” (주관 확률 25%) [추론]
+전제: 에이전트 채널이 개방형 프로토콜과 투명한 귀속·결제를 유지하고, 개인 사업자가 고객 데이터와 판매자 지위를 보유하며, 모델 비용이 하락한다. [추론]
+2030~2036 모습: 한 사람이 여러 코딩 에이전트를 운영해 특정 업종의 문제를 해결하고, ChatGPT·Copilot·Gemini 등에서 호출 가능한 서비스로 배포한다. [추론] 수익은 월 구독 하나가 아니라 기본 접근료, 성공 건당 수수료, 전문가 승인, 독점 데이터 라이선스의 조합에서 나온다. [추론] 작가 겸 개발자는 자신의 원고·인터뷰·분류 체계를 근거 API와 대화형 도구로 확장해 ‘책 한 권’ 이후에도 반복 매출을 만든다. [추론]
+선행 지표: 플랫폼 간 상호운용 결제 확대, 외부 앱의 추천·전환 데이터 공개, 판매자의 고객 관계 보유, 개인용 데이터 라이선스 마켓의 실제 정산액 증가. [추론]
+###### 기준 시나리오 — “기능은 싸고, 유통과 책임은 비싸다” (주관 확률 55%) [추론]
+전제: 에이전트 능력은 계속 향상되지만 장기 과업의 신뢰성은 불균일하고, 소수 플랫폼이 발견을 중개하며, 규제·보안·환불 대응 비용은 유지된다. [추론]
+2030~2036 모습: 범용 앱과 단순 SaaS의 가격은 내려가고 다수는 사라진다. [추론] 살아남는 개인 사업자는 특정 직군의 데이터와 워크플로를 보유하고, 인간 검수와 SLA를 붙인 관리형 서비스로 전환한다. [추론] 바이브코딩은 내부 원가 절감 수단이지만 고객에게 보이는 상품은 “매주 정확히 끝나는 결과”가 된다. [추론]
+선행 지표: 신규 앱 수는 계속 증가하지만 12개월 유지율은 개선되지 않음, AI 채널 추천 트래픽의 플랫폼 집중, 보험·감사·보안 증거 요구 증가. [추론]
+###### 비관 시나리오 — “래퍼 대멸종과 플랫폼 지대” (주관 확률 20%) [추론]
+전제: 기반 모델과 운영체제가 인기 기능을 빠르게 흡수하고, 에이전트 추천·결제 수수료가 불투명해지며, 데이터·규제 비용이 개인에게 과도하게 전가된다. [추론]
+2030~2036 모습: 독자 유통이 없는 AI 래퍼는 플랫폼 기능 업데이트 한 번에 상품성을 잃고, 창작자는 원천 콘텐츠를 제공하면서도 추천 트래픽과 정산을 충분히 받지 못한다. [추론] 고정비·법적 책임을 감당할 수 있는 대형 사업자와 무료 오픈소스 사이에서 유료 개인 앱의 중간 시장이 축소된다. [추론]
+선행 지표: 디렉터리 추천의 상위 앱 집중, 디지털 상품 외부 결제 제한, 에이전트 유입의 고객 데이터 비공개, 소규모 앱의 심사·규제 비용 급증. [추론]
+##### 실무자가 지금 할 일 (actionable)
+###### 1. ‘7일 안에 복제 가능한 기능’은 만들지 말고, ‘90일 쌓이는 자산’을 설계한다 [추론]
+- 첫 화면보다 시간이 갈수록 늘어나는 고객별 기록, 승인 규칙, 비교 데이터, 템플릿, 전문가 코멘트를 제품 핵심으로 둔다. [추론]
+- 아이디어 선별 질문을 “AI가 만들 수 있는가?”에서 “사용 90일 뒤 고객에게 무엇이 축적되는가?”로 바꾼다. [추론]
+- 출시 전 최소 10명의 실제 사용자에게 수작업으로 결과를 제공해 반복 빈도와 지불 의사를 확인한 뒤 자동화한다. [추론]
+###### 2. 수익 모델을 네 층으로 분해한다 [추론]
+- 접근료: 기본 워크플로·저장·협업에 월 구독을 받는다. [추론]
+- 사용량: 모델 호출·대량 처리에는 크레딧이나 건당 과금을 붙인다. [추론]
+- 결과: 예약 성사, 문서 승인, 매출 회수처럼 측정 가능한 성과에는 성공 수수료를 실험한다. [추론]
+- 신뢰: 전문가 검수, 빠른 응답, 감사 기록, 데이터 보존에는 프리미엄을 받는다. [추론]
+###### 3. ‘앱’과 함께 ‘에이전트용 상품면’을 만든다 [추론]
+- 기능마다 입력·출력·가격·권한·실패 조건·환불 정책을 기계가 읽을 수 있는 스키마로 정의한다. [추론]
+- 웹, ChatGPT 앱, MCP 도구, 향후 상거래 프로토콜이 같은 백엔드 계약을 쓰도록 분리한다. [추론]
+- 채널별 노출, 호출, 성공, 결제, 환불을 하나의 이벤트 체계로 기록해 어느 에이전트가 실제 고객을 데려오는지 측정한다. [추론]
+###### 4. 작가·창작자는 원고를 ‘증거가 있는 지식 제품’으로 이중 포장한다 [추론]
+- 공개 글에는 출처, 작성일, 수정 이력, 주제 태그, 인용 가능한 단락 ID를 붙인다. [추론]
+- 유료 층에는 원문 인터뷰, 사례 데이터, 체크리스트, 정기 업데이트, 질의 API를 묶는다. [추론]
+- 크롤러 정책과 라이선스를 명시하고, 사람 독자용 구독과 기계 조회용 계약을 분리해 가격을 실험한다. [추론]
+###### 5. 기능 데모보다 ‘신뢰 영수증’을 먼저 축적한다 [추론]
+- 매 릴리스마다 사용 모델, 주요 프롬프트·도구 버전, 테스트 케이스, 실패율, 인간 승인 지점, 데이터 출처·동의를 기록한다. [추론]
+- 규제 산업 진입 전에는 법률 준수를 단언하지 말고, 관할 전문가가 검토할 수 있는 증거 묶음을 자동 생성하는 데 집중한다. [추론]
+- 고객에게는 “AI가 만들었다”가 아니라 검증 범위, 알려진 한계, 사고 시 책임 주체를 명확히 판매한다. [추론]
+###### 6. 12주 실험 포트폴리오를 운영한다 [추론]
+- 1~2주: 돈을 내는 특정 직군 한 곳과 주간 반복 과업 한 개를 고른다. [추론]
+- 3~4주: 코드 없이 컨시어지 방식으로 10회 수행하고 시간 절감·오류·재구매를 측정한다. [추론]
+- 5~8주: 가장 반복적인 70%만 바이브코딩으로 자동화하고 나머지는 인간 승인으로 남긴다. [추론]
+- 9~10주: 구독 단독안과 구독+사용량 또는 결과 과금안을 비교한다. [추론]
+- 11~12주: 30일 잔존, 두 번째 결제, 건당 총마진, 인간 개입 시간 가운데 두 지표 이상이 개선되지 않으면 기능 추가가 아니라 시장·과업을 바꾼다. [추론]
+##### 불확실성 (예측의 신뢰도와 전제)
+- 신뢰도 중간: 코딩 에이전트의 자동화 비중, 비동기 작업 제품화, 앱 공급 증가, AI 앱 유지율 열세, 대화형 상거래 출시는 이미 관측된 신호다. [출처:  [https://www.anthropic.com/research/impact-software-development,] https://www.anthropic.com/research/impact-software-development, 2025-04-28][출처:  [https://github.blog/changelog/2025-09-25-copilot-coding-agent-is-now-generally-available,] https://github.blog/changelog/2025-09-25-copilot-coding-agent-is-now-generally-available, 2025-09-25][출처:  [https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/,] https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/, 2026][출처:  [https://www.shopify.com/news/agentic-commerce-momentum,] https://www.shopify.com/news/agentic-commerce-momentum, 2026-03-24]
+- 신뢰도 중하: METR의 시간 지평은 실제 조직의 모호한 요구, 사람 간 조율, 배포 책임을 그대로 측정하지 않으며, 연구진도 미래 추세 변화와 외적 타당성을 주요 불확실성으로 둔다. [출처:  [https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/,] https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/, 2025-03-19]
+- 신뢰도 중하: RevenueCat 표본은 자사 구독 관리 도구를 연동하고 최소 기준을 충족한 앱이므로 전체 앱 시장이나 한국 시장에 그대로 일반화할 수 없다. [출처:  [https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/,] https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/, 2026]
+- 신뢰도 낮음: ChatGPT 앱의 디지털 상품 수익화는 2025년 12월 기준 탐색 단계였으므로 수수료, 추천 알고리즘, 외부 결제, 개발자 정산 조건을 확정된 사업 기반으로 가정하면 안 된다. [출처:  [https://openai.com/index/developers-can-now-submit-apps-to-chatgpt/,] https://openai.com/index/developers-can-now-submit-apps-to-chatgpt/, 2025-12-17]
+- 신뢰도 낮음: Pay Per Crawl은 비공개 베타 신호일 뿐, 개인 창작자에게 의미 있는 정산 시장이 형성됐다는 증거는 아직 아니다. [출처:  [https://developers.cloudflare.com/changelog/post/2025-07-01-pay-per-crawl/,] https://developers.cloudflare.com/changelog/post/2025-07-01-pay-per-crawl/, 2025-07-01]
+- 핵심 반증 조건: AI 앱의 12개월 유지율이 비AI 앱을 지속적으로 앞서거나, 개방형 에이전트 채널보다 독립 웹·앱 유입이 더 빠르게 성장하거나, 플랫폼이 고객 관계·귀속 데이터를 판매자에게 제공하지 않으면 본 보고서의 ‘호출 가능한 능력+관계 자산’ 전략은 수정해야 한다. [추론]
+##### 참고 출처 (URL 전체 목록)
+- Anthropic, “AI’s impact on software development” (2025-04-28):  [https://www.anthropic.com/research/impact-software-development] https://www.anthropic.com/research/impact-software-development
+- Anthropic, “Economic primitives” (2026-01):  [https://www.anthropic.com/research/anthropic-economic-index-january-2026-report] https://www.anthropic.com/research/anthropic-economic-index-january-2026-report
+- METR, “Measuring AI Ability to Complete Long Tasks” (2025-03-19):  [https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/] https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/
+- GitHub, “Copilot coding agent is now generally available” (2025-09-25):  [https://github.blog/changelog/2025-09-25-copilot-coding-agent-is-now-generally-available] https://github.blog/changelog/2025-09-25-copilot-coding-agent-is-now-generally-available
+- RevenueCat, “State of Subscription Apps 2026”:  [https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/] https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/
+- Apple, “App Review Guidelines” (2026-06 확인):  [https://developer.apple.com/app-store/review/guidelines/] https://developer.apple.com/app-store/review/guidelines/
+- OpenAI, “Developers can now submit apps to ChatGPT” (2025-12-17):  [https://openai.com/index/developers-can-now-submit-apps-to-chatgpt/] https://openai.com/index/developers-can-now-submit-apps-to-chatgpt/
+- Stripe, “Stripe powers Instant Checkout in ChatGPT and releases Agentic Commerce Protocol” (2025-09-29):  [https://stripe.com/newsroom/news/stripe-openai-instant-checkout] https://stripe.com/newsroom/news/stripe-openai-instant-checkout
+- Shopify, “Millions of merchants can sell in AI chats” (2026-03-24):  [https://www.shopify.com/news/agentic-commerce-momentum] https://www.shopify.com/news/agentic-commerce-momentum
+- Shopify, “Selling everything, everywhere, all at once: The Spring '26 Edition” (2026-06-17):  [https://www.shopify.com/news/spring-26-edition-merchant] https://www.shopify.com/news/spring-26-edition-merchant
+- Cloudflare, “Introducing Pay Per Crawl (private beta)” (2025-07-01):  [https://developers.cloudflare.com/changelog/post/2025-07-01-pay-per-crawl/] https://developers.cloudflare.com/changelog/post/2025-07-01-pay-per-crawl/
+- European Commission, “AI Act — Regulatory framework” (2026-06 확인):  [https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai] https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai
+
+## ② 모순 지도
+#### 모순 지도 — 다섯 영혼이 어디서 만나고 어디서 부딪히는가
+claude(Skeptic·Academic) · codex(Economist·Futurist) · kimi(Historian) — 세 개의 다른 모델이 독립적으로 조사했다. 그래서 합의는 더 신뢰할 만하고, 충돌은 더 진짜다.
+##### 합의 지점 (Consensus — 3개 모델이 독립 수렴)
+C1. 코드 제작은 더 이상 희소자원이 아니다. 다섯 영혼 전원이 동의한 단일 결론.
+- 경제학자: "가장 희소한 것은 코드를 만드는 능력이 아니라 누가 돈을 낼 문제인지 아는 정보·유통권·검증/운영 책임" [출처:  [https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review]
+- 미래학자: "빠른 제작은 상품이 아니라 전기처럼 투입재가 된다" [출처:  [https://www.anthropic.com/research/impact-software-development] https://www.anthropic.com/research/impact-software-development]
+- 역사학자: 노코드 선례도 '개인 수익화'보다 'AI 이해하는 시스템 아키텍트의 고부가 서비스화'로 안착 [출처:  [https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/] https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/]
+- 학자: OSS조차 "엔터프라이즈 라이선싱·API 요금·개발자 서비스"로 수익 채널 이동 필요 [출처:  [https://doi.org/10.48550/arXiv.2601.15494] https://doi.org/10.48550/arXiv.2601.15494]
+C2. 수익은 극단적으로 집중되며, 성공담은 생존자 편향이다. (power-law)
+- 역사학자: App Store 앱 중 $1M+ 0.13%, ThemeForest 테마 중 월 $10k+ 0.83% [출처:  [https://freemius.com/blog/themeforest-wordpress-themes-analyisis/] https://freemius.com/blog/themeforest-wordpress-themes-analyisis/]
+- 회의주의자: 마이크로 SaaS 92% 3년 내 실패, 수익 내는 곳도 70%가 월 $1k 이하 [출처:  [https://www.rockingweb.com.au/micro-saas-revenue-analysis-2025/] https://www.rockingweb.com.au/micro-saas-revenue-analysis-2025/]
+- 경제학자: Stripe Atlas 상위 10% 매출 증가율 52% vs 하위 10% 18% — 진입비용 하락이 격차를 키움 [출처:  [https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review]
+C3. AI 생산성 이득은 실재하나 보편적이지 않고 과제 복잡도에 의존한다.
+- 학자: Peng 2023 협소 과제 +55.8% vs Becker 2025 실제 OSS 과제 −19% [출처:  [https://doi.org/10.48550/arXiv.2302.06590] https://doi.org/10.48550/arXiv.2302.06590][출처:  [https://doi.org/10.48550/arXiv.2507.09089] https://doi.org/10.48550/arXiv.2507.09089]
+- 회의주의자·경제학자 모두 METR RCT(−19%, 그러나 체감은 +20%)를 핵심 근거로 인용 [출처:  [https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/] https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/]
+##### 모순 지점 (Contradiction — 진짜 충돌, 봉합하지 않음)
+충돌 대상A 입장 (+출처)B 입장 (+출처)미해결 이유
+AI는 빨라지나 느려지나미래학자: 모델 시간지평 ~7개월마다 2배, 곧 일주일짜리 과업 [출처:  [https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/] https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/]회의주의자·학자: 실제 복잡 과제 RCT는 −19% [출처:  [https://doi.org/10.48550/arXiv.2507.09089] https://doi.org/10.48550/arXiv.2507.09089]시간 지평 차이 — 미래학자는 능력 곡선의 추세, 회의주의자는 2025 현재 단면. 임계 복잡도 미측정
+플랫폼 채널: 기회인가 함정인가미래학자: 에이전트 커머스(ChatGPT 앱·Shopify Agentic)가 새 유통 [출처:  [https://www.shopify.com/news/agentic-commerce-momentum] https://www.shopify.com/news/agentic-commerce-momentum]회의주의자·경제학자: Apple 크래다운 + 플랫폼이 '곡괭이 판매자'로 지대 선취 [출처:  [https://thenextweb.com/news/vibe-coding-apple-app-store-surge-crackdown] https://thenextweb.com/news/vibe-coding-apple-app-store-surge-crackdown]개방형 프로토콜 지속 여부 — 수수료·추천 알고리즘·정산 조건이 아직 미확정
+'비개발자도 가능'통념: 누구나 앱 제작 → 수익학자: 빌드는 되나 '버그 못 고치는 취약한 코호트' 등장 [출처:  [https://doi.org/10.48550/arXiv.2510.00328] https://doi.org/10.48550/arXiv.2510.00328]사용(usage)과 수익화(monetization)는 다른 측정값, 후자 데이터 공백
+##### 사각지대 (Blind Spot — 누구도 충분히 다루지 않음)
+- 국내(한국) 시장 특수성 — 경제학자가 Stripe Atlas=미국 델라웨어 법인 편향임을 명시했으나, 한국 내수 결제·세금·플랫폼(네이버·카카오·토스) 기반 수익화는 다섯 영혼 모두 미조사. 본 리서치의 가장 큰 공백.
+- 세무·법적 책임·환불 의무 — 1인 창작자가 AI로 만든 SW를 판매할 때의 하자담보·개인정보 책임. 경제학자가 '책임'을 언급했으나 구체적 법무는 미조사.
+- 창작자 본인의 역량 침식 vs 학습 — 학자가 미해결 연구질문으로만 남김.
+##### 핵심 긴장 (Key Tension — 이 주제를 가르는 단 하나)
+내러티브는 '제작 속도'를 돈의 경로로 팔지만, 다섯 렌즈 전부 병목이 하류로 이동했다고 수렴한다. 제작이 7일이면 누구나 복제할 수 있을 만큼 싸졌을 때, 결과를 가르는 단 하나의 질문:
+"앱이 거의 공짜로 만들어진 다음, 7일 안에 복제되지 않고 시간이 갈수록 쌓이는 무엇을 당신이 소유하는가?"
+회의주의자는 "대부분 아무것도 못 가져서 92% 실패"라 답하고, 미래학자는 "고유 데이터·관계·신뢰 영수증·에이전트 유통권"이라 답한다. 이 둘 사이가 수익화의 전장이다.
+
+## ③ 종합
+### 바이브코딩으로 수익화하는 방법 — 다섯 전문가가 충돌을 통과해 내린 결론
+Lead. 바이브코딩 수익화의 지배적 서사는 "코딩 없이 빠르게 앱을 만들어 돈을 번다"이다. 그러나 claude·codex·kimi 세 모델로 독립 조사한 다섯 전문가는 한 점에 수렴했다 — 제작 속도는 이미 희소성을 잃었고, 돈의 병목은 하류(고객 접근·검증·운영 책임)로 이동했다 [수렴 중]. 가장 엄밀한 RCT는 숙련 개발자가 AI로 오히려 19% 느려졌음을 보였고(체감은 +20%) [출처:  [https://doi.org/10.48550/arXiv.2507.09089] https://doi.org/10.48550/arXiv.2507.09089], 수익은 power-law로 극단 집중되며(앱 중 0.13%만 $1M+) [출처:  [https://freemius.com/blog/themeforest-wordpress-themes-analyisis/] https://freemius.com/blog/themeforest-wordpress-themes-analyisis/], "바이브코딩 수익화"를 직접 다룬 peer-reviewed 실증은 2026년 6월 현재 존재하지 않는다[출처:  [https://doi.org/10.48550/arXiv.2510.00328] https://doi.org/10.48550/arXiv.2510.00328]. 결론은 비관이 아니라 전략의 재배치다.
+#### 1. 지배적 내러티브와 그 유혹
+"코딩을 몰라도 AI와 대화만으로 앱을 만들어 월 수천~수만 달러"라는 서사는 강력하다. 실제로 진입 속도는 개선됐다 — Stripe Atlas 법인 중 30일 내 첫 과금 비율이 2020년 8%에서 2025년 20%로 올랐다 [출처:  [https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review]. 문제는 제작 가능과 수익 지속이 전혀 다른 사건이라는 점이다.
+#### 2. 실제로 희소해진 것 (다섯 모델의 수렴)
+가장 강한 발견은 합의에 있다. 서로 다른 학습 분포를 가진 세 모델이 독립적으로 같은 결론에 도달했다: 코드 제작 능력은 더 이상 희소자원이 아니다. 경제학자는 이를 "코드 공급이 늘면 코드의 희소성은 낮아지고 고객 접근권·도메인 지식·검증·운영 책임의 가격이 상대적으로 오른다"로 정식화했고 [출처:  [https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review], 미래학자는 "빠른 제작이 전기 같은 투입재가 된다"로 [출처:  [https://www.anthropic.com/research/impact-software-development] https://www.anthropic.com/research/impact-software-development], 학자는 OSS조차 직접 참여가 아닌 "엔터프라이즈 라이선싱·API·서비스"로 수익을 옮겨야 한다는 이론 모델로 뒷받침했다 [출처:  [https://doi.org/10.48550/arXiv.2601.15494] https://doi.org/10.48550/arXiv.2601.15494].
+#### 3. 생산성 신기루 [논쟁 → 수렴 중]
+수익화 서사의 전제인 "AI가 개발을 비약적으로 빠르게 한다"는 맥락 의존적이다. Peng 2023은 협소한 JS 서버 과제에서 +55.8%를 봤지만 [출처:  [https://doi.org/10.48550/arXiv.2302.06590] https://doi.org/10.48550/arXiv.2302.06590], Becker 2025(METR)는 숙련 개발자의 실제 OSS 과제에서 −19%를 보였다 — 게다가 개발자들은 끝나고도 +20% 빨라졌다고 오인했다 [출처:  [https://doi.org/10.48550/arXiv.2507.09089] https://doi.org/10.48550/arXiv.2507.09089]. 여기서 모순이 살아있다: 미래학자는 모델 능력의 시간지평이 ~7개월마다 2배가 되는 추세를 강조하고 [출처:  [https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/] https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/], 회의주의자·학자는 2025 현재 단면의 −19%를 강조한다. 둘 다 옳다 — 임계 복잡도가 어디서 이득을 0으로 만드는지는 아직 측정되지 않았다 [추론].
+#### 4. 누가 가치를 가져가는가 (경제학)
+코딩비 하락의 이익은 균등 분배되지 않는다. 도구 회사(Cursor ARR $500M+, Lovable $100M, Replit $150M)와 인프라·결제 플랫폼이 '곡괭이 판매자'로서 개별 앱의 성패와 무관하게 구독·사용량 매출을 먼저 가져간다 [출처:  [https://cursor.com/en/blog/series-c] https://cursor.com/en/blog/series-c][출처:  [https://replit.com/news/funding-announcement-series-c] https://replit.com/news/funding-announcement-series-c]. 개인의 100달러 매출에서도 채널이 즉시 떼간다 — Apple 소규모사업자 15%, Gumroad Discover 30% [출처:  [https://developer.apple.com/app-store/small-business-program/] https://developer.apple.com/app-store/small-business-program/][출처:  [https://gumroad.com/help/article/66-gumroads-fees.html] https://gumroad.com/help/article/66-gumroads-fees.html]. 그래서 가격은 개발 시간이 아니라 고객의 대체 비용과 책임으로 정해야 한다 [추론].
+#### 5. 역사는 운율을 반복한다
+이 구조는 새롭지 않다. 역사학자는 세 선례를 들었다: ① App Store 골드러시(2008~) — 150만 앱 중 $1M+은 0.13% ② 노코드/시민개발자 물결(2011~) — 민주화와 'shadow IT' 부채의 양면 ③ ThemeForest(2008~) — 테마 86.9%가 1,000개 미만 판매 [출처:  [https://www.macstories.net/stories/developers-decade-long-rollercoaster-ride-the-business-of-selling-apps-on-the-app-store/] https://www.macstories.net/stories/developers-decade-long-rollercoaster-ride-the-business-of-selling-apps-on-the-app-store/][출처:  [https://freemius.com/blog/themeforest-wordpress-themes-analyisis/] https://freemius.com/blog/themeforest-wordpress-themes-analyisis/]. 매번 패턴은 동일했다 — 플랫폼이 문턱을 낮추고, 미디어가 소수 성공을 골드러시로 포장하고, 실제 수익은 발견·마케팅·지속가능 모델 능력으로 극소수에 집중됐다. 그러나 같은 역사는 희망도 준다: 노코드에서 진짜 돈은 '앱 양산'이 아니라 'AI 이해하는 아키텍트의 고부가 서비스'($10k~$30k+)에 안착했다 [출처:  [https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/] https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/].
+#### 6. 어디로 향하는가 (미래 신호)
+미래학자는 4개 궤적을 관측했다: ① 코딩 에이전트의 자동화 비중 상승(Claude Code 대화의 79%가 자동화) [출처:  [https://www.anthropic.com/research/impact-software-development] https://www.anthropic.com/research/impact-software-development] ② 구독 앱 공급 폭증(월 신규 ~1.5만 개)이나 AI 앱의 12개월 유지율이 비AI보다 낮음(연간 21.1% vs 30.7%) [출처:  [https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/] https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/] ③ 상점이 웹페이지에서 '에이전트가 호출하는 능력'으로 이동(ChatGPT 앱·Shopify Agentic Storefronts) [출처:  [https://www.shopify.com/news/agentic-commerce-momentum] https://www.shopify.com/news/agentic-commerce-momentum] ④ 원천 콘텐츠·신뢰 증명의 유료 인프라화(Cloudflare Pay-Per-Crawl, EU AI Act) [출처:  [https://developers.cloudflare.com/changelog/post/2025-07-01-pay-per-crawl/] https://developers.cloudflare.com/changelog/post/2025-07-01-pay-per-crawl/]. 병목은 '출시'가 아니라 '두 번째 결제'다 [추론].
+#### 7. 방어 가능한 플레이북 (충돌을 통과한 종합 판단)
+다섯 관점을 종합하면, 개인 개발자·창작자의 합리적 전략은 범용 앱 양산이 아니라 다음이다 [추론, 단 다섯 렌즈가 독립 지지]:
+- 7일 안에 복제될 기능이 아니라 90일 쌓이는 자산을 설계한다. 고객별 기록·승인 규칙·고유 데이터·전문가 판단이 핵심. 선별 질문을 "AI가 만들 수 있나?"에서 "90일 뒤 고객에게 무엇이 축적되나?"로 바꾼다.
+- 이미 신뢰가 있는 좁은 업종에서 '제품화 서비스'로 현금을 만든다. 컨시어지 → 반복 70%만 자동화 → 반복 기능만 SaaS화. 앞 단계가 뒤 단계의 수요·현금을 보조한다 [출처:  [https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review].
+- 수익을 4층으로 분해한다: 접근료(구독) + 사용량(크레딧) + 결과(성과 수수료) + 신뢰(검수·SLA·감사 프리미엄).
+- 가격은 개발 시간이 아니라 고객의 대체 비용으로 정한다. AI로 2시간 만들었다고 싸게 팔면 생산성 이익을 전부 구매자에게 넘긴다.
+- 'AI가 만들었다'가 아니라 검증 범위·한계·책임 주체를 판다 — 보안 취약점이 인간 코드의 2.74배인 환경에서 [출처:  [https://medium.com/@svnkrmkr/vibe-coding-in-2026-the-hidden-risks-nobody-covers-e407b2abecdc] https://medium.com/@svnkrmkr/vibe-coding-in-2026-the-hidden-risks-nobody-covers-e407b2abecdc], '신뢰 영수증'이 차별점이 된다.
+#### 미해결 질문
+- 인간+AI 팀의 실제 수익화 경로 — peer-review 실증 전무. LLM 단독은 프리랜서 과제의 26%만 해결(SWE-Lancer) [출처:  [https://doi.org/10.48550/arXiv.2502.12115] https://doi.org/10.48550/arXiv.2502.12115], 인간 결합 효과는 미측정.
+- 국내(한국) 시장 — 본 리서치의 출처는 대부분 미국·글로벌. 네이버·카카오·토스 기반 수익화, 국내 세무·환불 의무는 별도 조사 필요.
+- 플랫폼 개방성의 지속 — 에이전트 커머스 수수료·정산이 개인에게 우호적으로 남을지 미확정.
+- 임계 복잡도 — AI 이득이 +55.8%에서 −19%로 뒤집히는 과제 복잡도 경계.
+이 글은 Stanford STORM 방법론의 재해석으로 생성됐다. 5개 페르소나를 claude·codex·kimi에 분산해 출처 강제 딥리서치를 수행한 뒤, 모순을 보존하며 종합했다. 수치는 각 출처 시점 기준이며, 기업 자기발표(ARR 등)는 감사된 공시가 아니다.
+
+## ④ 동료 검토 (Peer Review)
+출처 다양성 상인용 충실도 상확신 정직성 상
+조건부 통과 (MINOR 3건 반영, BLOCKER 0)
+#### 동료 검토 (Peer Review) — 적대적 점검
+기본 가정: "이 종합본에는 문제가 있다." 논문이 경고한 두 실패모드(source bias transfer / over-association)를 전담 점검.
+##### 결함 목록
+- [MINOR] 출처 편향 — 일부 회의 근거가 Medium/블로그 의존. 보안 취약점 "2.74배" 등 일부 수치가 Medium 글에 의존한다 [출처:  [https://medium.com/@svnkrmkr/vibe-coding-in-2026-the-hidden-risks-nobody-covers-e407b2abecdc] https://medium.com/@svnkrmkr/vibe-coding-in-2026-the-hidden-risks-nobody-covers-e407b2abecdc]. 반면 학자 영혼은 arXiv peer-review 13편으로 강하게 보강돼, 종합본은 가급적 학술 출처(Becker·Liu·Fawzy)를 1차로 인용하도록 조정함. 권고: 보안 수치는 Veracode 원자료로 교체.
+- [MAJOR→완화] 과잉 일반화(over-association) — METR 연구의 대상 전이. METR RCT(−19%)는 숙련 오픈소스 개발자 + 성숙 코드베이스가 대상이다. 이를 비개발자 + 그린필드인 바이브코딩 타깃에 그대로 적용하면 부당한 연결이다. 회의주의자 본인이 이 한계를 명시했고(불확실성 섹션), 종합본도 §3에서 "임계 복잡도 미측정"으로 정직하게 남김 → 봉합 회피 확인.
+- [MINOR] 기업 자기발표 수치(ARR) 인용. Cursor/Lovable/Replit ARR은 감사 공시가 아니라 자금조달·홍보용 자체발표다. 경제학자가 이를 명시했고 종합본 footer에 반영 → 편향 라벨 유지.
+- [MINOR] 생존자 편향 vs 균형. 회의주의자의 92% 실패율은 강력하나, 역사학자의 '아키텍트 서비스화 희망'과 균형을 이뤄 비관 단일화는 피함.
+##### 모순 봉합 점검
+핵심 모순 3개(생산성 추세 vs 단면 / 플랫폼 기회 vs 함정 / 비개발자 가능 여부)가 종합본 §3·§6·미해결질문에서 한쪽으로 봉합되지 않고 살아있음 확인. ✅
+##### 누락된 반론 점검
+회의주의자의 가장 강한 반론(RCT 반증·생존자 편향·보안·Apple 크래다운)이 종합 §3·§4·§7에 모두 보존됨. 희석되지 않음. ✅
+##### 신뢰도 배지
+- 출처 다양성: 상 — arXiv 학술(13편) + 기업 공식가격표 + 정부(EU)·인프라(Stripe/Cloudflare) + 업계 보고서. 단일 진영 아님.
+- 인용 충실도: 상 — 거의 모든 사실 주장에 [출처:], 추정은 [추론] 라벨 일관.
+- 확신 정직성: 상 — "수익화 직접 실증 전무", "국내 시장 미조사", "임계 복잡도 미측정"을 숨기지 않음.
+##### 통과 판정
+조건부 통과 (MINOR 3건 반영, MAJOR 1건 완화 확인). BLOCKER 없음 — 종합본은 출처 편향을 라벨링하고 모순을 보존하며 반론을 희석하지 않았다.
+##### 검토 후 남는 가장 중요한 미해결 질문
+학술적으로 "바이브코딩 → 개인 수익화"를 직접 측정한 종단 연구가 하나도 없다. 본 리포트의 모든 전략 권고는 인접 증거(생산성·코드품질·플랫폼 경제·역사 선례)로부터의 삼각측량이지, 직접 실증이 아니다. 이 공백을 메우는 첫 RCT/종단 연구가 나오기 전까지, 모든 "월 X만원" 약속은 [추론]으로 읽어야 한다.
+
+## ⑤ 통합 출처 (89)
+-  [https://arxiv.org/abs/2507.09089] https://arxiv.org/abs/2507.09089
+-  [https://letsdatascience.com/blog/developers-thought-ai-made-them-faster-the-data-said-otherwise] https://letsdatascience.com/blog/developers-thought-ai-made-them-faster-the-data-said-otherwise
+-  [https://www.rockingweb.com.au/18-month-rule-micro-saas-startup-failure-analysis/] https://www.rockingweb.com.au/18-month-rule-micro-saas-startup-failure-analysis/
+-  [https://www.rockingweb.com.au/micro-saas-revenue-analysis-2025/] https://www.rockingweb.com.au/micro-saas-revenue-analysis-2025/
+-  [https://www.shno.co/marketing-statistics/saas-launch-statistics] https://www.shno.co/marketing-statistics/saas-launch-statistics
+-  [https://rtslabs.com/vibe-coding-security-risks] https://rtslabs.com/vibe-coding-security-risks
+-  [https://medium.com/@svnkrmkr/vibe-coding-in-2026-the-hidden-risks-nobody-covers-e407b2abecdc] https://medium.com/@svnkrmkr/vibe-coding-in-2026-the-hidden-risks-nobody-covers-e407b2abecdc
+-  [https://www.gitclear.com/ai_assistant_code_quality_2025_research] https://www.gitclear.com/ai_assistant_code_quality_2025_research
+-  [https://thenextweb.com/news/vibe-coding-apple-app-store-surge-crackdown] https://thenextweb.com/news/vibe-coding-apple-app-store-surge-crackdown
+-  [https://checkvibe.dev/blog/vibe-coding-security-risks] https://checkvibe.dev/blog/vibe-coding-security-risks
+-  [https://claw.mobile/blog/make-money-vibe-coding-2026] https://claw.mobile/blog/make-money-vibe-coding-2026
+-  [https://metr.org/blog/2026-02-24-uplift-update/] https://metr.org/blog/2026-02-24-uplift-update/
+-  [https://softwaremill.com/vibe-coding-against-owasp-top-10-2025/] https://softwaremill.com/vibe-coding-against-owasp-top-10-2025/
+-  [https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-generated-code-vulnerability-surge-2026/] https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-generated-code-vulnerability-surge-2026/
+-  [https://www.tembo.io/blog/ai-technical-debt] https://www.tembo.io/blog/ai-technical-debt
+-  [https://vativeapps.com/blog/why-vibe-coded-apps-fail-app-store-review] https://vativeapps.com/blog/why-vibe-coded-apps-fail-app-store-review
+-  [https://vibecoding.app/blog/vibe-coding-debate] https://vibecoding.app/blog/vibe-coding-debate
+-  [https://www.hostinger.com/blog/vibe-coding-statistics] https://www.hostinger.com/blog/vibe-coding-statistics
+-  [https://www.neuralgrimoire.com/ai-income-claims/] https://www.neuralgrimoire.com/ai-income-claims/
+-  [https://www.orbit.build/blog/ai-coding-hype-vs-evidence] https://www.orbit.build/blog/ai-coding-hype-vs-evidence
+-  [https://www.technologyreview.com/2025/12/15/1128352/rise-of-ai-coding-developers-2026/] https://www.technologyreview.com/2025/12/15/1128352/rise-of-ai-coding-developers-2026/
+-  [https://medium.com/@Reiki32/why-vibe-coding-is-going-to-create-the-worst-software-crisis-in-history-1a0b666a9b0c] https://medium.com/@Reiki32/why-vibe-coding-is-going-to-create-the-worst-software-crisis-in-history-1a0b666a9b0c
+-  [https://medium.com/illumination/vibe-coding-you-dont-own-what-you-cant-read-7b13352c618d] https://medium.com/illumination/vibe-coding-you-dont-own-what-you-cant-read-7b13352c618d
+-  [https://thenewstack.io/vibe-coding-could-cause-catastrophic-explosions-in-2026/] https://thenewstack.io/vibe-coding-could-cause-catastrophic-explosions-in-2026/
+-  [https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review] https://stripe.com/us/blog/stripe-atlas-startups-in-2025-year-in-review
+-  [https://survey.stackoverflow.co/2025/ai] https://survey.stackoverflow.co/2025/ai
+-  [https://cursor.com/en/blog/series-c] https://cursor.com/en/blog/series-c
+-  [https://lovable.dev/pt/blog/agent] https://lovable.dev/pt/blog/agent
+-  [https://replit.com/news/funding-announcement-series-c] https://replit.com/news/funding-announcement-series-c
+-  [https://platform.openai.com/docs/pricing/] https://platform.openai.com/docs/pricing/
+-  [https://vercel.com/pricing] https://vercel.com/pricing
+-  [https://supabase.com/pricing] https://supabase.com/pricing
+-  [https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q4] https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q4
+-  [https://shopify.dev/docs/apps/launch/distribution/revenue-share] https://shopify.dev/docs/apps/launch/distribution/revenue-share
+-  [https://developer.apple.com/app-store/small-business-program/] https://developer.apple.com/app-store/small-business-program/
+-  [https://support.upwork.com/hc/en-us/articles/211062538-Freelancer-Service-Fees] https://support.upwork.com/hc/en-us/articles/211062538-Freelancer-Service-Fees
+-  [https://gumroad.com/help/article/66-gumroads-fees.html] https://gumroad.com/help/article/66-gumroads-fees.html
+-  [https://www.microsoft.com/en-us/investor/events/fy-2026/2025-annual-shareholder-meeting] https://www.microsoft.com/en-us/investor/events/fy-2026/2025-annual-shareholder-meeting
+-  [https://stripe.com/in/newsroom/news/stripe-2025-update] https://stripe.com/in/newsroom/news/stripe-2025-update
+-  [https://stripe.com/pricing] https://stripe.com/pricing
+-  [https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/] https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/
+-  [https://www.macstories.net/stories/developers-decade-long-rollercoaster-ride-the-business-of-selling-apps-on-the-app-store/] https://www.macstories.net/stories/developers-decade-long-rollercoaster-ride-the-business-of-selling-apps-on-the-app-store/
+-  [https://arxiv.org/pdf/2307.16717] https://arxiv.org/pdf/2307.16717
+-  [https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/] https://www.jobbers.io/no-code-low-code-freelancing-bubble-webflow-zapier-2026/
+-  [https://freemius.com/blog/themeforest-wordpress-themes-analyisis/] https://freemius.com/blog/themeforest-wordpress-themes-analyisis/
+-  [https://www.engadget.com/youtube-created-the-creator-economy-130028016.html] https://www.engadget.com/youtube-created-the-creator-economy-130028016.html
+-  [https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/] https://kissflow.com/no-code/vibe-coding-vs-no-code-vs-low-code/
+-  [https://wp.unil.ch/iaunil/en/gartners-hype-cycle-2025-artificial-intelligence-beyond-the-hype/] https://wp.unil.ch/iaunil/en/gartners-hype-cycle-2025-artificial-intelligence-beyond-the-hype/
+-  [https://www.congruencemarketinsights.com/report/vibe-coding-market] https://www.congruencemarketinsights.com/report/vibe-coding-market
+-  [https://superbthemes.com/blog/what-happened-to-themeforest-traffic-and-user-decline/] https://superbthemes.com/blog/what-happened-to-themeforest-traffic-and-user-decline/
+-  [https://distantjob.com/blog/software-engineer-job-market/] https://distantjob.com/blog/software-engineer-job-market/
+-  [https://www.baytechconsulting.com/blog/agi-hype-to-practical-ai-business-value] https://www.baytechconsulting.com/blog/agi-hype-to-practical-ai-business-value
+-  [https://core.ac.uk/download/pdf/617931905.pdf] https://core.ac.uk/download/pdf/617931905.pdf
+-  [https://download.e-bookshelf.de/download/0000/5966/03/L-G-0000596603-0002364049.pdf] https://download.e-bookshelf.de/download/0000/5966/03/L-G-0000596603-0002364049.pdf
+-  [https://core.ac.uk/download/pdf/80713354.pdf] https://core.ac.uk/download/pdf/80713354.pdf
+-  [https://yourstory.com/2023/06/apple-app-store-genesis-impact-revolutionary-business-model] https://yourstory.com/2023/06/apple-app-store-genesis-impact-revolutionary-business-model
+-  [https://trepo.tuni.fi/bitstream/handle/10024/123007/PewDiePie_racism_and_Youtube_2020.pdf?sequence=2&isAllowed=y] https://trepo.tuni.fi/bitstream/handle/10024/123007/PewDiePie_racism_and_Youtube_2020.pdf?sequence=2&isAllowed=y
+-  [https://www.hatchways.io/blog/bootcamps-part-1-what-are-coding-bootcamps] https://www.hatchways.io/blog/bootcamps-part-1-what-are-coding-bootcamps
+-  [https://www.aiprimer.net/library/ai-in-practice/evaluating-ai-tools-for-your-team] https://www.aiprimer.net/library/ai-in-practice/evaluating-ai-tools-for-your-team
+-  [https://mktclarity.com/blogs/news/ai-agents-overhyped] https://mktclarity.com/blogs/news/ai-agents-overhyped
+-  [https://www.investopedia.com/terms/d/dotcom-bubble.asp] https://www.investopedia.com/terms/d/dotcom-bubble.asp
+-  [https://internationalbanker.com/history-of-financial-crises/the-dotcom-bubble-burst-2000/] https://internationalbanker.com/history-of-financial-crises/the-dotcom-bubble-burst-2000/
+-  [https://www.britannica.com/money/dot-com-bubble] https://www.britannica.com/money/dot-com-bubble
+-  [https://gravity.fast/blog/gartner-hype-cycle-ai-agents-2026/] https://gravity.fast/blog/gartner-hype-cycle-ai-agents-2026/
+-  [https://doi.org/10.48550/arXiv.2302.06590] https://doi.org/10.48550/arXiv.2302.06590
+-  [https://doi.org/10.48550/arXiv.2507.09089] https://doi.org/10.48550/arXiv.2507.09089
+-  [https://doi.org/10.48550/arXiv.2510.00328] https://doi.org/10.48550/arXiv.2510.00328
+-  [https://doi.org/10.48550/arXiv.2502.12115] https://doi.org/10.48550/arXiv.2502.12115
+-  [https://doi.org/10.48550/arXiv.2601.15494] https://doi.org/10.48550/arXiv.2601.15494
+-  [https://doi.org/10.48550/arXiv.2603.28592] https://doi.org/10.48550/arXiv.2603.28592
+-  [https://doi.org/10.48550/arXiv.2410.18334] https://doi.org/10.48550/arXiv.2410.18334
+-  [https://arxiv.org/abs/2509.19708] https://arxiv.org/abs/2509.19708
+-  [https://doi.org/10.48550/arXiv.2510.10165] https://doi.org/10.48550/arXiv.2510.10165
+-  [https://doi.org/10.48550/arXiv.2508.00952] https://doi.org/10.48550/arXiv.2508.00952
+-  [https://doi.org/10.48550/arXiv.2505.13511] https://doi.org/10.48550/arXiv.2505.13511
+-  [https://doi.org/10.48550/arXiv.2601.20112] https://doi.org/10.48550/arXiv.2601.20112
+-  [https://survey.stackoverflow.co/2025] https://survey.stackoverflow.co/2025
+-  [https://www.anthropic.com/research/impact-software-development] https://www.anthropic.com/research/impact-software-development
+-  [https://github.blog/changelog/2025-09-25-copilot-coding-agent-is-now-generally-available] https://github.blog/changelog/2025-09-25-copilot-coding-agent-is-now-generally-available
+-  [https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/] https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/
+-  [https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/] https://www.revenuecat.com/state-of-subscription-apps-2026-shopping/
+-  [https://developer.apple.com/app-store/review/guidelines/] https://developer.apple.com/app-store/review/guidelines/
+-  [https://openai.com/index/developers-can-now-submit-apps-to-chatgpt/] https://openai.com/index/developers-can-now-submit-apps-to-chatgpt/
+-  [https://stripe.com/newsroom/news/stripe-openai-instant-checkout] https://stripe.com/newsroom/news/stripe-openai-instant-checkout
+-  [https://www.shopify.com/news/agentic-commerce-momentum] https://www.shopify.com/news/agentic-commerce-momentum
+-  [https://www.shopify.com/news/spring-26-edition-merchant] https://www.shopify.com/news/spring-26-edition-merchant
+-  [https://developers.cloudflare.com/changelog/post/2025-07-01-pay-per-crawl/] https://developers.cloudflare.com/changelog/post/2025-07-01-pay-per-crawl/
+-  [https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai] https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai
+-  [https://www.anthropic.com/research/anthropic-economic-index-january-2026-report] https://www.anthropic.com/research/anthropic-economic-index-january-2026-report

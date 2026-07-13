@@ -1,0 +1,76 @@
+{
+  "objective_audit": {
+    "skeleton_entry_count": 4,
+    "business_plan_html": {
+      "path": "output/2026-06-21/new-mode-pretest/business-plan-html/index.html",
+      "exists": true,
+      "contains_mode_id": true,
+      "required_blocks_total": 13,
+      "required_blocks_missing": [],
+      "qa_report_exists": true,
+      "h1_count": 1,
+      "theme_radios": 8,
+      "main_id": true,
+      "behavior_scripts": 0,
+      "forbidden_primitives": 0,
+      "toc_link": true,
+      "ok": true
+    },
+    "storm_research": {
+      "path": "output/2026-06-21/new-mode-pretest/storm-research/index.html",
+      "exists": true,
+      "contains_mode_id": true,
+      "required_blocks_total": 13,
+      "required_blocks_missing": [],
+      "qa_report_exists": true,
+      "h1_count": 1,
+      "theme_radios": 8,
+      "main_id": true,
+      "behavior_scripts": 0,
+      "forbidden_primitives": 0,
+      "toc_link": true,
+      "ok": true
+    },
+    "social_trend_dashboard": {
+      "path": "output/2026-06-21/new-mode-pretest/social-trend-dashboard/index.html",
+      "exists": true,
+      "contains_mode_id": true,
+      "required_blocks_total": 11,
+      "required_blocks_missing": [],
+      "qa_report_exists": true,
+      "h1_count": 1,
+      "theme_radios": 8,
+      "main_id": true,
+      "behavior_scripts": 0,
+      "forbidden_primitives": 0,
+      "toc_link": true,
+      "ok": true
+    },
+    "operator_manual_html": {
+      "path": "output/2026-06-21/new-mode-pretest/operator-manual-html/index.html",
+      "exists": true,
+      "contains_mode_id": true,
+      "required_blocks_total": 11,
+      "required_blocks_missing": [],
+      "qa_report_exists": true,
+      "h1_count": 1,
+      "theme_radios": 8,
+      "main_id": true,
+      "behavior_scripts": 0,
+      "forbidden_primitives": 0,
+      "toc_link": true,
+      "ok": true
+    },
+    "top_index": {
+      "path": "output/2026-06-21/new-mode-pretest/index.html",
+      "exists": true,
+      "missing_links": [],
+      "h1_count": 1,
+      "theme_radios": 8,
+      "main_id": true,
+      "ok": true
+    },
+    "browser_audit_ok": true
+  },
+  "ok": true
+}

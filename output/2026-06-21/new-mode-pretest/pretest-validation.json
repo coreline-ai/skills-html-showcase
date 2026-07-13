@@ -1,0 +1,74 @@
+{
+  "base": "output/2026-06-21/new-mode-pretest",
+  "files": {
+    "index.html": {
+      "exists": true,
+      "html_lang_ko": true,
+      "viewport": true,
+      "h1_count": 1,
+      "main_id": true,
+      "theme_radio_count": 8,
+      "behavior_script_count": 0,
+      "forbidden_primitive_count": 0,
+      "toc_fab": true,
+      "ok": true
+    },
+    "business-plan-html/index.html": {
+      "exists": true,
+      "html_lang_ko": true,
+      "viewport": true,
+      "h1_count": 1,
+      "main_id": true,
+      "theme_radio_count": 8,
+      "behavior_script_count": 0,
+      "forbidden_primitive_count": 0,
+      "toc_fab": true,
+      "required_block_missing": [],
+      "qa_report_exists": true,
+      "ok": true
+    },
+    "operator-manual-html/index.html": {
+      "exists": true,
+      "html_lang_ko": true,
+      "viewport": true,
+      "h1_count": 1,
+      "main_id": true,
+      "theme_radio_count": 8,
+      "behavior_script_count": 0,
+      "forbidden_primitive_count": 0,
+      "toc_fab": true,
+      "required_block_missing": [],
+      "qa_report_exists": true,
+      "ok": true
+    },
+    "social-trend-dashboard/index.html": {
+      "exists": true,
+      "html_lang_ko": true,
+      "viewport": true,
+      "h1_count": 1,
+      "main_id": true,
+      "theme_radio_count": 8,
+      "behavior_script_count": 0,
+      "forbidden_primitive_count": 0,
+      "toc_fab": true,
+      "required_block_missing": [],
+      "qa_report_exists": true,
+      "ok": true
+    },
+    "storm-research/index.html": {
+      "exists": true,
+      "html_lang_ko": true,
+      "viewport": true,
+      "h1_count": 1,
+      "main_id": true,
+      "theme_radio_count": 8,
+      "behavior_script_count": 0,
+      "forbidden_primitive_count": 0,
+      "toc_fab": true,
+      "required_block_missing": [],
+      "qa_report_exists": true,
+      "ok": true
+    }
+  },
+  "ok": true
+}

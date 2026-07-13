@@ -1,0 +1,83 @@
+{
+  "mode": "expert_html",
+  "profile": "auto",
+  "layout": "expert-report.html",
+  "layout_class": "layout-expert",
+  "primary_vt": "risk-matrix",
+  "primary_wg": "wg-16",
+  "section_mapping": {
+    "layout": "expert-report.html",
+    "EXECUTIVE_SUMMARY": "business plan summary + tagged assumptions",
+    "DECISION_CARDS": "5 decision cards for positioning and gates",
+    "ARCHITECTURE": "business-core.yaml and evidence-ledger architecture",
+    "RISK_MATRIX": "vt risk-matrix + risk table",
+    "PRIORITY_ROADMAP": "wg-16 90-day MVP roadmap",
+    "VALIDATION_CHECKLIST": "bizplan gate status + evidence ledger",
+    "FINAL_RECOMMENDATION": "honest incomplete recommendation",
+    "SOURCE_NOTE": "bizplan-only source hub"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "80b912c06fb1055ca14e99123c01a99b89765cbd8935616dbff3ac48efaef002"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "5091eca47d175172114ccd1bbac35744d73da60540c9f25af050688f6ffa4a94"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/expert-report.html",
+      "sha256": "6d6bbf941d66842ea29976ecdd0976f6a41786d07b33d16789b89fcf6c3471c3"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/03-risk-matrix.html",
+      "sha256": "819a2e7a46f0caf85726705c79a95720c9296ab418b1f16f2f2b1f3f72aa522f"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/16-implementation-plan.html",
+      "sha256": "7137af34d22e3875711958e017929b8d9f14c4d4cd3d57fcd28a02e8d1007c6e"
+    },
+    {
+      "path": "orginal_skill/bizplan/SKILL.md",
+      "sha256": "520556eb63deaadcaad543eaf5610037a8cfdd6b013e823069b4ad2227985200"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/evidence-tagging.md",
+      "sha256": "de2e4dea742b239c92429143a245720b2f470111d802447113353987c10661bb"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/04-research-engine.md",
+      "sha256": "f7e6f03deceb00016267da70e413e5bd44661edd537ab5b82a36306f1a26bc9f"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/07-business-core.md",
+      "sha256": "f15d23cb72e4bc0c09ee084027bab053ed1e4850560268ffa778fcdb0f4db07d"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/11-document-types.md",
+      "sha256": "728c012edef1df0f318fe6ef330c7828aedd655ef2e48684298b4a76c549ef19"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/12-verification.md",
+      "sha256": "c501cabed210580a8374fe7a82f838ecff32e41f6bdce55b322f4c38fa59c2af"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/document-output.md",
+      "sha256": "da7631f531669f6d89187f7fa34b01e71acbbef5fe12d64640537b52734d8ce1"
+    }
+  ],
+  "input_snapshots": [
+    "sources/business-core.yaml",
+    "sources/evidence-ledger.json",
+    "sources/bizplan-application.json"
+  ],
+  "research_route": "No web/STORM; business-plan content derived only from local bizplan skill files"
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "name": "OpenAI · Launching Sora responsibly",
+    "url": "https://openai.com/index/launching-sora-responsibly/",
+    "role": "Sora availability note, provenance signals, visible watermark, C2PA metadata, consent-based likeness controls",
+    "evidence": "As of April 26, 2026 Sora product no longer available; Sora outputs carried visible and invisible provenance signals."
+  },
+  {
+    "name": "OpenAI · Sora 2 is here",
+    "url": "https://openai.com/index/sora-2/",
+    "role": "characters / likeness controls and creation-first feed philosophy",
+    "evidence": "Sora app described create, remix, feed, characters, identity verification and user control of likeness."
+  },
+  {
+    "name": "Google DeepMind · Veo 3.1",
+    "url": "https://deepmind.google/models/veo/",
+    "role": "current video generation model capability framing",
+    "evidence": "Veo 3.1 is described as a video generation model with audio, prompt adherence, creative control, realism."
+  },
+  {
+    "name": "Google AI for Developers · Generate videos with Veo 3.1",
+    "url": "https://ai.google.dev/gemini-api/docs/video",
+    "role": "API/runtime operational limits: 8-second clips, resolution, reference images, polling/download pattern",
+    "evidence": "Veo 3.1 docs list text/image/video modalities, 720p/1080p/4k options, 4/6/8 second durations and generated audio."
+  },
+  {
+    "name": "Runway Research · Gen-4.5",
+    "url": "https://runwayml.com/research/introducing-runway-gen-4.5",
+    "role": "multi-tool market capability context",
+    "evidence": "Runway describes Gen-4.5 as emphasizing motion quality, prompt adherence, visual fidelity, creative control."
+  },
+  {
+    "name": "Adobe · Firefly Video Model",
+    "url": "https://blog.adobe.com/en/publish/2025/02/12/meet-firefly-video-model-ai-powered-creation-with-unparalleled-creative-control",
+    "role": "creator-safe workflow and commercial-safety positioning",
+    "evidence": "Adobe positions Firefly Video Model as IP-friendly/commercially safe and workflow-integrated."
+  },
+  {
+    "name": "Adobe Help · Content Credentials overview",
+    "url": "https://helpx.adobe.com/firefly/web/get-started/learn-the-basics/content-credentials-overview.html",
+    "role": "what Content Credentials store and how Firefly applies them",
+    "evidence": "Content Credentials are tamper-evident metadata; Adobe lists issuer/date/app/AI tool/action fields."
+  },
+  {
+    "name": "YouTube Blog · Disclosing altered or synthetic content",
+    "url": "https://blog.youtube/news-and-events/disclosing-ai-generated-content/",
+    "role": "platform upload disclosure scenarios",
+    "evidence": "Disclosure is needed for realistic altered/synthetic content such as likeness replacement, altered real events/places, realistic fictional events."
+  },
+  {
+    "name": "YouTube Help · How this content was made disclosures",
+    "url": "https://support.google.com/youtube/answer/15447836?hl=en",
+    "role": "viewer-facing labels and Content Credentials carry-forward",
+    "evidence": "YouTube can show altered/synthetic disclosures from creator input, YouTube tools, or valid C2PA data."
+  },
+  {
+    "name": "C2PA · Verifying Media Content Sources",
+    "url": "https://c2pa.org/",
+    "role": "open provenance standard and Content Credentials mental model",
+    "evidence": "C2PA describes Content Credentials as a nutrition-label-like origin/edit history standard."
+  },
+  {
+    "name": "Google · Tools to understand how content was created and edited",
+    "url": "https://blog.google/innovation-and-ai/products/identifying-ai-generated-media-online/",
+    "role": "SynthID/C2PA operational trend and verification availability",
+    "evidence": "Google states SynthID watermarking across AI media, C2PA use, and verification expansion to Gemini/Search/Chrome."
+  },
+  {
+    "name": "Google DeepMind · SynthID",
+    "url": "https://deepmind.google/models/synthid/",
+    "role": "invisible watermarking concept and durability limits",
+    "evidence": "SynthID embeds imperceptible watermarks into AI-generated images/audio/text/video and is designed to withstand common modifications."
+  },
+  {
+    "name": "U.S. Copyright Office · Copyright and Artificial Intelligence",
+    "url": "https://www.copyright.gov/ai/",
+    "role": "copyrightability/digital-replica report scope; not legal advice",
+    "evidence": "USCO report Part 1 addresses digital replicas; Part 2 addresses copyrightability of generative AI outputs; Part 3 covers training."
+  },
+  {
+    "name": "FTC · Endorsements, Influencers, and Reviews",
+    "url": "https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews",
+    "role": "marketing/endorsement disclosure and consumer review guidance",
+    "evidence": "FTC plain-language guidance covers disclosures for endorsements/influencers and avoiding deceptive reviews/advertising."
+  },
+  {
+    "name": "Stanford STORM Research Project",
+    "url": "https://storm-project.stanford.edu/research/storm/",
+    "role": "multi-perspective research method and source-bias warning",
+    "evidence": "STORM uses perspective-guided question asking, source-grounded conversations, and notes source bias/over-association risks."
+  },
+  {
+    "name": "STORM paper · arXiv:2402.14207",
+    "url": "https://arxiv.org/abs/2402.14207",
+    "role": "methodology provenance",
+    "evidence": "Paper defines Synthesis of Topic Outlines through Retrieval and Multi-perspective Question Asking."
+  }
+]

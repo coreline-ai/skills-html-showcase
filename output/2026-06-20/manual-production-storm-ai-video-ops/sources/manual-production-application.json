@@ -1,0 +1,18 @@
+{
+  "skill": "manual-production",
+  "source_path": "orginal_skill/manual-production",
+  "selected_adaptive_mode": "manual_analysis",
+  "topic": "AI 영상 제작 파이프라인 운영 매뉴얼 2026",
+  "reader": "크리에이터, 편집자, 채널 매니저, 권리/브랜드 검수자",
+  "artifact_format": "single-page adaptive-html-final manual_analysis output",
+  "applied_rules": [
+    "workflow inventory before prose",
+    "system overview / beginner-first explanation",
+    "role router",
+    "prerequisites and safety before tasks",
+    "workflow map with failure branch",
+    "source/version and Source Limits",
+    "technical/content verification separated",
+    "manual-verification required but unavailable locally, recorded as incomplete boundary"
+  ]
+}

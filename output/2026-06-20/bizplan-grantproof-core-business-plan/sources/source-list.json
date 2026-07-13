@@ -1,0 +1,37 @@
+[
+  {
+    "name": "bizplan/SKILL.md",
+    "url": "sources/bizplan-SKILL.md",
+    "role": "7대 절대 규칙, 21단계 게이트, HTML 항상 생성 원칙"
+  },
+  {
+    "name": "evidence-tagging.md",
+    "url": "sources/evidence-tagging.md",
+    "role": "[사실] [추정] [가정] [목표] [확인 필요] 태그 체계"
+  },
+  {
+    "name": "research-engine.md",
+    "url": "sources/research-engine.md",
+    "role": "조사와 작성 분리, source-index.xlsx, 부정적 근거 수집"
+  },
+  {
+    "name": "business-core.md",
+    "url": "sources/business-core.md",
+    "role": "business-core.yaml, evidence-ledger, Gate 3/4 논리·숫자 일관성"
+  },
+  {
+    "name": "document-types.md",
+    "url": "sources/document-types.md",
+    "role": "정부지원/R&D/IR/제안서 유형별 변환 논리"
+  },
+  {
+    "name": "verification.md",
+    "url": "sources/verification.md",
+    "role": "admin·tech·biz·skeptic 4역할 평가위원 시뮬레이션"
+  },
+  {
+    "name": "document-output.md",
+    "url": "sources/document-output.md",
+    "role": "HTML 산출·렌더링 검사·제출 체크리스트"
+  }
+]

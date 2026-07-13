@@ -1,0 +1,60 @@
+{
+  "mode": "seo_dashboard",
+  "profile": "auto",
+  "layout": "seo-dashboard.html",
+  "primary_vt": "card-grid",
+  "topic": "2026년 5~6월 AI 트렌드 대시보드",
+  "pipeline": "x-ai-trend-collector(웹검색 fallback 수집) → adaptive-html-final 5.10.5 seo_dashboard (하이브리드)",
+  "section_mapping": {
+    "section-01": "KPI 요약(wg-11)",
+    "section-02": "수집 방법·한계(fallback 고지)",
+    "section-03": "신규 모델·제품(cg-grid 1순위 vt + 비교표)",
+    "section-04": "연구·논문(cg-grid)",
+    "section-05": "산업·투자(cg-grid)",
+    "section-06": "도구·에이전트(cg-grid)",
+    "section-07": "핵심 관전 포인트",
+    "section-08": "출처(source-note)"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/modes/03-seo-dashboard.json",
+      "sha256": "e36b824ad4b75932a855b31b6782435e306cfb37d465f141d216b03273d88aa1",
+      "why": "seo_dashboard 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/seo-dashboard.html",
+      "sha256": "647a613ff1e11d1307d3932823e91b7243989322916a561f9872aeff15eaef4d",
+      "why": "seo_dashboard 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318",
+      "why": "seo_dashboard 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/theme.css",
+      "sha256": "2a9c8843a035138ff47b57cfc0806185c1b9cdfb3309a681022b689d8a32b1b6",
+      "why": "seo_dashboard 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/components.css",
+      "sha256": "72c8f2570164acf5fc80330a57201f0feca579e1b6d9c3fdf1dcc5dcb81b7aa5",
+      "why": "seo_dashboard 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html.css",
+      "sha256": "540cdf013934d9c2e53ac901d76aefd9ac468f3a6aaa8814d7dd60a57e919263",
+      "why": "seo_dashboard 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widgets.css",
+      "sha256": "847e44c71564666d11f40084171e1b1c14f13436f43bd8b503d70e34dbf54851",
+      "why": "seo_dashboard 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/06_seo_prompt_engineering_dashboard.html",
+      "sha256": "72690184ef9f3f65cab867336dd28d8a3176e235d1a0630fae06dd0c7d56f83c",
+      "why": "seo_dashboard 정본 자산/scaffold"
+    }
+  ]
+}

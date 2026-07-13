@@ -1,0 +1,594 @@
+{
+  "generatedAt": "2026-06-21T05:29:22.254Z",
+  "pages": {
+    "business_plan_html": {
+      "rel": "business-plan-html/index.html",
+      "checks": {
+        "desktop": {
+          "ok": true,
+          "errors": [],
+          "metrics": {
+            "h1": 1,
+            "main": true,
+            "radios": 8,
+            "badScript": 0,
+            "forbidden": 0,
+            "overflowX": 0,
+            "anchors": 15,
+            "missingAnchors": [],
+            "tocPresent": true,
+            "tocBeforeFirst": true,
+            "firstGap": 818,
+            "h2s": [
+              {
+                "text": "1generated_row · 생성 메타와 사용 조건",
+                "gapToText": 14
+              },
+              {
+                "text": "2document_type_gate · 문서 유형 판정",
+                "gapToText": 14
+              },
+              {
+                "text": "3notice_summary · 한 장 요약",
+                "gapToText": 14
+              },
+              {
+                "text": "4interview_findings · 인터뷰 발견",
+                "gapToText": 14
+              },
+              {
+                "text": "5research_evidence · 리서치 증거 원장",
+                "gapToText": 14
+              },
+              {
+                "text": "6business_core · 사업 핵심과 실행 로드맵",
+                "gapToText": 14
+              },
+              {
+                "text": "7number_registry · 숫자 원장",
+                "gapToText": 14
+              },
+              {
+                "text": "8market_finance_model · 시장과 재무 모델",
+                "gapToText": 14
+              },
+              {
+                "text": "9template_mapping · 제출 양식 매핑",
+                "gapToText": 14
+              },
+              {
+                "text": "10risk_and_ip_paper_notes · 리스크·IP·논문 메모",
+                "gapToText": 14
+              },
+              {
+                "text": "11evaluator_scorecard · 평가자 스코어카드",
+                "gapToText": 14
+              },
+              {
+                "text": "12submission_checklist · 제출 전 실행 계획과 체크리스트",
+                "gapToText": 14
+              },
+              {
+                "text": "13source_note · 출처와 한계",
+                "gapToText": 14
+              }
+            ],
+            "stormMobileDockLinks": 0,
+            "socialVerifyNeedsWarn": false
+          }
+        },
+        "mobile": {
+          "ok": true,
+          "errors": [],
+          "metrics": {
+            "h1": 1,
+            "main": true,
+            "radios": 8,
+            "badScript": 0,
+            "forbidden": 0,
+            "overflowX": 0,
+            "anchors": 15,
+            "missingAnchors": [],
+            "tocPresent": true,
+            "tocBeforeFirst": true,
+            "firstGap": 1223,
+            "h2s": [
+              {
+                "text": "1generated_row · 생성 메타와 사용 조건",
+                "gapToText": 14
+              },
+              {
+                "text": "2document_type_gate · 문서 유형 판정",
+                "gapToText": 14
+              },
+              {
+                "text": "3notice_summary · 한 장 요약",
+                "gapToText": 14
+              },
+              {
+                "text": "4interview_findings · 인터뷰 발견",
+                "gapToText": 14
+              },
+              {
+                "text": "5research_evidence · 리서치 증거 원장",
+                "gapToText": 14
+              },
+              {
+                "text": "6business_core · 사업 핵심과 실행 로드맵",
+                "gapToText": 14
+              },
+              {
+                "text": "7number_registry · 숫자 원장",
+                "gapToText": 14
+              },
+              {
+                "text": "8market_finance_model · 시장과 재무 모델",
+                "gapToText": 14
+              },
+              {
+                "text": "9template_mapping · 제출 양식 매핑",
+                "gapToText": 14
+              },
+              {
+                "text": "10risk_and_ip_paper_notes · 리스크·IP·논문 메모",
+                "gapToText": 14
+              },
+              {
+                "text": "11evaluator_scorecard · 평가자 스코어카드",
+                "gapToText": 14
+              },
+              {
+                "text": "12submission_checklist · 제출 전 실행 계획과 체크리스트",
+                "gapToText": 14
+              },
+              {
+                "text": "13source_note · 출처와 한계",
+                "gapToText": 14
+              }
+            ],
+            "stormMobileDockLinks": 0,
+            "socialVerifyNeedsWarn": false
+          }
+        }
+      }
+    },
+    "storm_research": {
+      "rel": "storm-research/index.html",
+      "checks": {
+        "desktop": {
+          "ok": true,
+          "errors": [],
+          "metrics": {
+            "h1": 1,
+            "main": true,
+            "radios": 8,
+            "badScript": 0,
+            "forbidden": 0,
+            "overflowX": 0,
+            "anchors": 22,
+            "missingAnchors": [],
+            "tocPresent": true,
+            "tocBeforeFirst": true,
+            "firstGap": 0,
+            "h2s": [
+              {
+                "text": "생성 메타와 판정 범위",
+                "gapToText": 12
+              },
+              {
+                "text": "방법 공지: 숫자보다 조건, 주장보다 반증",
+                "gapToText": 12
+              },
+              {
+                "text": "핵심 연구 질문",
+                "gapToText": 12
+              },
+              {
+                "text": "다섯 관점 라우터와 process-swimlane",
+                "gapToText": 12
+              },
+              {
+                "text": "5개 관점/영혼 카드",
+                "gapToText": 12
+              },
+              {
+                "text": "출처 지도와 wg-13 annotated-flowchart형 흐름 카드",
+                "gapToText": 12
+              },
+              {
+                "text": "모순 지도: 좋아 보이는 신호와 반대 증거",
+                "gapToText": 12
+              },
+              {
+                "text": "합성 아티클: 생산성은 도구 성능보다 운영 계약에서 나온다",
+                "gapToText": 12
+              },
+              {
+                "text": "Peer review gate",
+                "gapToText": 12
+              },
+              {
+                "text": "신뢰도 배지",
+                "gapToText": 12
+              },
+              {
+                "text": "아직 풀리지 않은 질문",
+                "gapToText": 12
+              },
+              {
+                "text": "출처·생성 provenance",
+                "gapToText": 12
+              },
+              {
+                "text": "다음 연구 액션",
+                "gapToText": 12
+              }
+            ],
+            "stormMobileDockLinks": 3,
+            "socialVerifyNeedsWarn": false
+          }
+        },
+        "mobile": {
+          "ok": true,
+          "errors": [],
+          "metrics": {
+            "h1": 1,
+            "main": true,
+            "radios": 8,
+            "badScript": 0,
+            "forbidden": 0,
+            "overflowX": 0,
+            "anchors": 22,
+            "missingAnchors": [],
+            "tocPresent": true,
+            "tocBeforeFirst": true,
+            "firstGap": 0,
+            "h2s": [
+              {
+                "text": "생성 메타와 판정 범위",
+                "gapToText": 12
+              },
+              {
+                "text": "방법 공지: 숫자보다 조건, 주장보다 반증",
+                "gapToText": 12
+              },
+              {
+                "text": "핵심 연구 질문",
+                "gapToText": 12
+              },
+              {
+                "text": "다섯 관점 라우터와 process-swimlane",
+                "gapToText": 12
+              },
+              {
+                "text": "5개 관점/영혼 카드",
+                "gapToText": 12
+              },
+              {
+                "text": "출처 지도와 wg-13 annotated-flowchart형 흐름 카드",
+                "gapToText": 12
+              },
+              {
+                "text": "모순 지도: 좋아 보이는 신호와 반대 증거",
+                "gapToText": 12
+              },
+              {
+                "text": "합성 아티클: 생산성은 도구 성능보다 운영 계약에서 나온다",
+                "gapToText": 12
+              },
+              {
+                "text": "Peer review gate",
+                "gapToText": 12
+              },
+              {
+                "text": "신뢰도 배지",
+                "gapToText": 12
+              },
+              {
+                "text": "아직 풀리지 않은 질문",
+                "gapToText": 12
+              },
+              {
+                "text": "출처·생성 provenance",
+                "gapToText": 12
+              },
+              {
+                "text": "다음 연구 액션",
+                "gapToText": 12
+              }
+            ],
+            "stormMobileDockLinks": 1,
+            "socialVerifyNeedsWarn": false
+          }
+        }
+      }
+    },
+    "social_trend_dashboard": {
+      "rel": "social-trend-dashboard/index.html",
+      "checks": {
+        "desktop": {
+          "ok": true,
+          "errors": [],
+          "metrics": {
+            "h1": 1,
+            "main": true,
+            "radios": 8,
+            "badScript": 0,
+            "forbidden": 0,
+            "overflowX": 0,
+            "anchors": 15,
+            "missingAnchors": [],
+            "tocPresent": true,
+            "tocBeforeFirst": true,
+            "firstGap": 0,
+            "h2s": [
+              {
+                "text": "1scope_brief · 무엇을 보여주는 화면인가",
+                "gapToText": 14
+              },
+              {
+                "text": "2source_policy · 수집원과 표기 원칙",
+                "gapToText": 14
+              },
+              {
+                "text": "3record_schema · records.json 스키마 표",
+                "gapToText": 14
+              },
+              {
+                "text": "4collection_summary · 수집 요약 카드",
+                "gapToText": 14
+              },
+              {
+                "text": "5category_distribution · 무JS 카테고리 분포",
+                "gapToText": 14
+              },
+              {
+                "text": "6top_signals · signal grid",
+                "gapToText": 14
+              },
+              {
+                "text": "7evidence_cards · 증거 카드 후보",
+                "gapToText": 14
+              },
+              {
+                "text": "8dedupe_append_policy · URL dedupe와 append 규칙",
+                "gapToText": 14
+              },
+              {
+                "text": "9metric_caveats · 지표 정직성 caveat",
+                "gapToText": 14
+              },
+              {
+                "text": "10verification_notes · 검증 메모",
+                "gapToText": 14
+              },
+              {
+                "text": "11next_actions · 다음 구현 액션",
+                "gapToText": 14
+              },
+              {
+                "text": "12source_note · 소스 노트",
+                "gapToText": 14
+              }
+            ],
+            "stormMobileDockLinks": 0,
+            "socialVerifyNeedsWarn": true
+          }
+        },
+        "mobile": {
+          "ok": true,
+          "errors": [],
+          "metrics": {
+            "h1": 1,
+            "main": true,
+            "radios": 8,
+            "badScript": 0,
+            "forbidden": 0,
+            "overflowX": 0,
+            "anchors": 15,
+            "missingAnchors": [],
+            "tocPresent": true,
+            "tocBeforeFirst": true,
+            "firstGap": 0,
+            "h2s": [
+              {
+                "text": "1scope_brief · 무엇을 보여주는 화면인가",
+                "gapToText": 14
+              },
+              {
+                "text": "2source_policy · 수집원과 표기 원칙",
+                "gapToText": 14
+              },
+              {
+                "text": "3record_schema · records.json 스키마 표",
+                "gapToText": 14
+              },
+              {
+                "text": "4collection_summary · 수집 요약 카드",
+                "gapToText": 14
+              },
+              {
+                "text": "5category_distribution · 무JS 카테고리 분포",
+                "gapToText": 14
+              },
+              {
+                "text": "6top_signals · signal grid",
+                "gapToText": 14
+              },
+              {
+                "text": "7evidence_cards · 증거 카드 후보",
+                "gapToText": 14
+              },
+              {
+                "text": "8dedupe_append_policy · URL dedupe와 append 규칙",
+                "gapToText": 14
+              },
+              {
+                "text": "9metric_caveats · 지표 정직성 caveat",
+                "gapToText": 14
+              },
+              {
+                "text": "10verification_notes · 검증 메모",
+                "gapToText": 14
+              },
+              {
+                "text": "11next_actions · 다음 구현 액션",
+                "gapToText": 14
+              },
+              {
+                "text": "12source_note · 소스 노트",
+                "gapToText": 14
+              }
+            ],
+            "stormMobileDockLinks": 0,
+            "socialVerifyNeedsWarn": true
+          }
+        }
+      }
+    },
+    "operator_manual_html": {
+      "rel": "operator-manual-html/index.html",
+      "checks": {
+        "desktop": {
+          "ok": true,
+          "errors": [],
+          "metrics": {
+            "h1": 1,
+            "main": true,
+            "radios": 8,
+            "badScript": 0,
+            "forbidden": 0,
+            "overflowX": 0,
+            "anchors": 24,
+            "missingAnchors": [],
+            "tocPresent": true,
+            "tocBeforeFirst": true,
+            "firstGap": 723,
+            "h2s": [
+              {
+                "text": "1artifact_format_gate 산출물 형식 게이트",
+                "gapToText": 14
+              },
+              {
+                "text": "2audience_scope 독자와 권한 범위",
+                "gapToText": 14
+              },
+              {
+                "text": "3source_hierarchy 출처 위계",
+                "gapToText": 14
+              },
+              {
+                "text": "4workflow_inventory 업무 목록 인벤토리",
+                "gapToText": 14
+              },
+              {
+                "text": "5system_overview 시스템 개요",
+                "gapToText": 14
+              },
+              {
+                "text": "6workflow_map 공고문 → 인터뷰 → 증거 원장 → 제출본 검증",
+                "gapToText": 14
+              },
+              {
+                "text": "7lesson_boundaries 운영자가 가르칠 것과 넘길 것",
+                "gapToText": 14
+              },
+              {
+                "text": "8step_evidence_cards 단계별 근거 카드",
+                "gapToText": 14
+              },
+              {
+                "text": "9risk_safe_fixture 안전 fixture와 사용자 문구",
+                "gapToText": 14
+              },
+              {
+                "text": "10verification_record 운영 검증 기록",
+                "gapToText": 14
+              },
+              {
+                "text": "11handoff_boundary 인수인계 경계",
+                "gapToText": 14
+              },
+              {
+                "text": "12source_note 출처와 한계",
+                "gapToText": 14
+              }
+            ],
+            "stormMobileDockLinks": 0,
+            "socialVerifyNeedsWarn": false
+          }
+        },
+        "mobile": {
+          "ok": true,
+          "errors": [],
+          "metrics": {
+            "h1": 1,
+            "main": true,
+            "radios": 8,
+            "badScript": 0,
+            "forbidden": 0,
+            "overflowX": 0,
+            "anchors": 24,
+            "missingAnchors": [],
+            "tocPresent": true,
+            "tocBeforeFirst": true,
+            "firstGap": 1447,
+            "h2s": [
+              {
+                "text": "1artifact_format_gate 산출물 형식 게이트",
+                "gapToText": 14
+              },
+              {
+                "text": "2audience_scope 독자와 권한 범위",
+                "gapToText": 14
+              },
+              {
+                "text": "3source_hierarchy 출처 위계",
+                "gapToText": 14
+              },
+              {
+                "text": "4workflow_inventory 업무 목록 인벤토리",
+                "gapToText": 14
+              },
+              {
+                "text": "5system_overview 시스템 개요",
+                "gapToText": 14
+              },
+              {
+                "text": "6workflow_map 공고문 → 인터뷰 → 증거 원장 → 제출본 검증",
+                "gapToText": 14
+              },
+              {
+                "text": "7lesson_boundaries 운영자가 가르칠 것과 넘길 것",
+                "gapToText": 14
+              },
+              {
+                "text": "8step_evidence_cards 단계별 근거 카드",
+                "gapToText": 14
+              },
+              {
+                "text": "9risk_safe_fixture 안전 fixture와 사용자 문구",
+                "gapToText": 14
+              },
+              {
+                "text": "10verification_record 운영 검증 기록",
+                "gapToText": 14
+              },
+              {
+                "text": "11handoff_boundary 인수인계 경계",
+                "gapToText": 14
+              },
+              {
+                "text": "12source_note 출처와 한계",
+                "gapToText": 14
+              }
+            ],
+            "stormMobileDockLinks": 0,
+            "socialVerifyNeedsWarn": false
+          }
+        }
+      }
+    }
+  },
+  "ok": true
+}

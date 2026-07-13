@@ -1,0 +1,89 @@
+{
+  "mode": "expert_html",
+  "profile": "auto",
+  "layout": "expert-report.html",
+  "layout_class": "layout-expert",
+  "primary_vt": "risk-matrix",
+  "primary_wg": "wg-11",
+  "section_mapping": {
+    "layout": "expert-report.html",
+    "EXECUTIVE_SUMMARY": "content-only STORM five-soul scan summary",
+    "DECISION_CARDS": "full/solo/citation/peer-review decision cards",
+    "ARCHITECTURE": "Phase 0-7 pipeline mapping",
+    "RISK_MATRIX": "vt risk-matrix + contradiction map",
+    "PRIORITY_ROADMAP": "wg-11 execution status board",
+    "VALIDATION_CHECKLIST": "peer-review scope and honesty checks",
+    "FINAL_RECOMMENDATION": "when STORM is worth using",
+    "SOURCE_NOTE": "storm-research-only source hub"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "ee7a3e31d6463f6f211736e2d33fb5226a297b6e2f2a840221beba698f55b2b9"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "71a76015015dae7be1ca79e031c5a7e9d2c17bbf4ee943033018aecccd0bd8b6"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "9d0c42b48774ec7296dea536c128ced4b8438244f74325ed5d008f8fcbdfaf1d"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/expert-report.html",
+      "sha256": "6d6bbf941d66842ea29976ecdd0976f6a41786d07b33d16789b89fcf6c3471c3"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/03-risk-matrix.html",
+      "sha256": "819a2e7a46f0caf85726705c79a95720c9296ab418b1f16f2f2b1f3f72aa522f"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/11-weekly-status.html",
+      "sha256": "51014e3e7dc29fd5020f813b6b7a4e279de1014946514a2b9b4c82b3bb6a5278"
+    },
+    {
+      "path": "orginal_skill/storm-research/SKILL.md",
+      "sha256": "866622b669953de1c1f235fcc9bb86c70ee06322c90b01ae8008705372a04932"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/storm-pipeline.md",
+      "sha256": "ebe8bc4eb959ff2a7c84d8456ceb8ee18d17e25e65e192c1a109df1ffd08e6c2"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/provenance.md",
+      "sha256": "8d15a93d4c0a305d44612241d05d2d006703b122f8c0616012368c0f1b942d7c"
+    },
+    {
+      "path": "orginal_skill/storm-research/prompts/1-multi-perspective-scan.md",
+      "sha256": "09d35b3803f0a09239621d53ce5f010c1d228d6cdbe0a0f543a5c6b19699ea13"
+    },
+    {
+      "path": "orginal_skill/storm-research/prompts/2-contradiction-map.md",
+      "sha256": "ee11c2ba8aca818df51e00d28ee009b6fd16cf5e17411bcb2d000da21e713361"
+    },
+    {
+      "path": "orginal_skill/storm-research/prompts/3-synthesis.md",
+      "sha256": "497f02cd62d8df92e17b264ac0a08ec5da753525ce6e04942768aea5c9656db7"
+    },
+    {
+      "path": "orginal_skill/storm-research/prompts/4-peer-review.md",
+      "sha256": "6dbfef8a6e07e778da4a6be1e528e82ee5b160edf080f2e23b2f3a509545a2a2"
+    },
+    {
+      "path": "orginal_skill/storm-research/templates/report.schema.json",
+      "sha256": "a37c322dadd74496e6eada7c99335845f93bbbc5d58e2dcaafc0e00444056ced"
+    }
+  ],
+  "input_snapshots": [
+    "sources/storm-report.json",
+    "sources/storm-scan.md",
+    "sources/storm-contradiction-map.md",
+    "sources/storm-synthesis.md",
+    "sources/storm-peer-review.md"
+  ],
+  "research_route": "storm-research solo fallback; content sourced only from local storm-research skill files"
+}

@@ -1,0 +1,64 @@
+{
+  "mode": "blog_writer",
+  "profile": "auto",
+  "layout": "personal-blog-essay.html",
+  "primary_vt": "timeline",
+  "topic": "주 4일 근무제는 환상인가 — 출처 기반 분석 에세이 (자유 주제)",
+  "pipeline": "storm-research(3개 관점 병렬 출처조사: 학술·회의론·역사/미래) → adaptive-html-blog-writer-v2(글쓰기 방법론: 제목 4계열·Hook→문제→근거→반론→관점→실행→CTA·과장어 금지) → adaptive-html-final 5.10.5 blog_writer (하이브리드, scaffold-splice)",
+  "section_mapping": {
+    "01": "Hook — 다 좋다는데 왜 주5일인가(lede-note HOOK, 켈로그 6시간제)",
+    "02": "제목 4계열 메타(personal_note, summary-card)",
+    "03": "why_now — 주5일 100주년·AI·한국 경기도 2026",
+    "04": "데이터(example/evidence) — 6개 실험 타임라인(tl 1순위 vt)+출처",
+    "05": "회의론(contradiction-map) — 선택편향·자기보고·1.4% vs 35% 모순",
+    "06": "무너진 실험들(example/사례) — 철회 tbl(마자르텔레콤·Yarno·시간당업종)",
+    "07": "my_view — 압축 vs 재설계(wg-17 before→after)",
+    "08": "역사 — 포드·켈로그·케인스 15시간 예측과 빗나간 이유",
+    "09": "AI·한국(future+home) — Schor/Dimon/Pissarides[추론]·OECD 1865시간",
+    "10": "how_to_start — 도입 체크리스트 5",
+    "11": "closing_thought + soft_cta(.try soft-cta)",
+    "12": "참고 자료(storm 출처 규칙: 20개 링크) + 메타·태그·제작노트"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/modes/11-blog-writer.json",
+      "sha256": "a562c4525b1a01c6854e82690c30d4af01148d951797fa0fa62517b5afb50dc4",
+      "why": "blog_writer 모드 정본(layout·primary_vt 정의)"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/personal-blog-essay.html",
+      "sha256": "7d78bd3437162df4164dfaa30b215ad131b210d43396615ca3ebb08fa0e96028",
+      "why": "personal-blog-essay 레이아웃 scaffold 정본"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/05_blog_deepwork_4day_retro.html",
+      "sha256": "30d705e335bd728c1d1d70e1c03af71e3e3b5ba6cd5588b576708510abf024d3",
+      "why": "blog 예제 — scaffold-splice 베이스(CSS/해시/테마바 보존)"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318",
+      "why": "body-icon 정본 카탈로그"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/theme.css",
+      "sha256": "2a9c8843a035138ff47b57cfc0806185c1b9cdfb3309a681022b689d8a32b1b6",
+      "why": "코어 CSS(테마) — 인라인 정본"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/components.css",
+      "sha256": "72c8f2570164acf5fc80330a57201f0feca579e1b6d9c3fdf1dcc5dcb81b7aa5",
+      "why": "코어 CSS(컴포넌트) — 인라인 정본"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widgets.css",
+      "sha256": "847e44c71564666d11f40084171e1b1c14f13436f43bd8b503d70e34dbf54851",
+      "why": "wg-17(before→after 위젯) 정본 CSS"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-components.css",
+      "sha256": "eae6bd0932441e61a5247f1bfab99221600a6a3041e161b34ab9cb0922eeb76e",
+      "why": "코어 CSS(visual-components, 타임라인) — 인라인 정본"
+    }
+  ]
+}

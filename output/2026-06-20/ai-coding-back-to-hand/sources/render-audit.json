@@ -1,0 +1,20 @@
+{
+  "note": "hybrid adaptive-html-blog-writer-v2(방법론)→adaptive-html-final 5.10.5 blog_writer",
+  "all_overflow_ok": true,
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "scrollHeight": 12075,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/390.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "scrollHeight": 7236,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/1280.png"
+    }
+  }
+}

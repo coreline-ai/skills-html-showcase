@@ -1,0 +1,43 @@
+{
+  "$comment": "build-report.mjs 입력 스키마. 메인 Opus가 5영혼 results + 4프롬프트 산출을 이 형태로 조립한다.",
+  "type": "object",
+  "required": ["topic", "souls", "synthesis"],
+  "properties": {
+    "topic": { "type": "string", "description": "리서치 주제 (HTML 제목)" },
+    "slug": { "type": "string", "description": "dist/<slug>/ 폴더명. 생략 시 topic에서 자동 생성" },
+    "generated_at": { "type": "string", "description": "YYYY-MM-DD (메인이 stamp)" },
+    "souls": {
+      "type": "array",
+      "description": "5영혼의 딥리서치 결과 (results/<soul>.md 내용)",
+      "items": {
+        "type": "object",
+        "required": ["name", "markdown"],
+        "properties": {
+          "name": { "type": "string", "example": "Skeptic" },
+          "persona": { "type": "string", "example": "회의주의자" },
+          "llm": { "type": "string", "enum": ["claude", "codex", "kimi", "opus"] },
+          "summary": { "type": "string", "description": "한 줄 요약" },
+          "markdown": { "type": "string", "description": "results 파일 전체 (출처 포함)" },
+          "sources": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "contradiction_map": { "type": "string", "description": "storm-contradict 산출 (markdown)" },
+    "synthesis": { "type": "string", "description": "storm-synthesize 산출 = 본문 글 (markdown)" },
+    "peer_review": { "type": "string", "description": "storm-review 산출 (markdown)" },
+    "confidence": {
+      "type": "object",
+      "properties": {
+        "source_diversity": { "type": "string", "example": "상" },
+        "citation": { "type": "string", "example": "중" },
+        "honesty": { "type": "string", "example": "상" },
+        "verdict": { "type": "string", "example": "조건부 통과 (MINOR 2건 반영)" }
+      }
+    },
+    "all_sources": {
+      "type": "array",
+      "description": "통합 출처 (중복 제거). 생략 시 모든 텍스트에서 URL 자동 수집",
+      "items": { "type": "string" }
+    }
+  }
+}

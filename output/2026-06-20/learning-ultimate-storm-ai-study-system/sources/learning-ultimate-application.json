@@ -1,0 +1,16 @@
+{
+  "skill": "adaptive-html-learning-ultimate-merged",
+  "source_package": "orginal_skill/adaptive-html-learning-ultimate-merged.skill",
+  "selected_mode": "education_html",
+  "audience": "AI 학습자, 교육자, 자기주도 학습 설계자, AI 도구를 쓰는 실무자",
+  "format": "single HTML education module",
+  "applied_rules": [
+    "input analysis and mode routing",
+    "fact/opinion/inference split",
+    "education_html blocks: goals, before_start, lesson, example, practice, quiz, answer",
+    "source hub for more than 6 links",
+    "quiz and answer key included",
+    "no external behavior JS",
+    "mobile/reading flow/accessible table captions"
+  ]
+}

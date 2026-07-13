@@ -1,0 +1,84 @@
+{
+  "url": "file:///Users/hwanchoi/project_202606/skills-html-showcase/output/2026-06-21/new-mode-pretest/operator-manual-html/index.html#handoff_boundary",
+  "checkedAt": "2026-06-21T05:50:11.419Z",
+  "light": [
+    {
+      "selector": "#handoff_boundary .mini-card p",
+      "text": "답변은 있으나 수치·기간·대상 정의가 모호한 claim을 질문 목록으로 넘깁니다.",
+      "color": "rgb(69, 69, 69)",
+      "background": "rgb(255, 255, 255)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "contrast": 9.59
+    },
+    {
+      "selector": "#handoff_boundary .mini-card h3",
+      "text": "재질문 필요",
+      "color": "rgb(26, 26, 26)",
+      "background": "rgb(255, 255, 255)",
+      "fontSize": "17px",
+      "fontWeight": "900",
+      "contrast": 17.4
+    },
+    {
+      "selector": "#handoff_boundary .mini-card .label",
+      "text": "운영자 → 작성자",
+      "color": "rgb(183, 45, 56)",
+      "background": "rgb(255, 255, 255)",
+      "fontSize": "11px",
+      "fontWeight": "900",
+      "contrast": 6.09
+    },
+    {
+      "selector": "#handoff_boundary .h2-sub",
+      "text": "운영자가 끝낼 수 있는 것과 다음 담당자에게 넘겨야 하는 것을 명시합니다. 경계가 없으면 보류 항목이 조용히 제출본에 섞입니다.",
+      "color": "rgb(216, 216, 207)",
+      "background": "rgb(26, 26, 26)",
+      "fontSize": "15px",
+      "fontWeight": "400",
+      "contrast": 12.14
+    }
+  ],
+  "rose": [
+    {
+      "selector": "#handoff_boundary .mini-card p",
+      "text": "답변은 있으나 수치·기간·대상 정의가 모호한 claim을 질문 목록으로 넘깁니다.",
+      "color": "rgb(200, 194, 183)",
+      "background": "rgb(25, 27, 33)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "contrast": 9.72
+    },
+    {
+      "selector": "#handoff_boundary .mini-card h3",
+      "text": "재질문 필요",
+      "color": "rgb(236, 232, 223)",
+      "background": "rgb(25, 27, 33)",
+      "fontSize": "17px",
+      "fontWeight": "900",
+      "contrast": 14.08
+    },
+    {
+      "selector": "#handoff_boundary .mini-card .label",
+      "text": "운영자 → 작성자",
+      "color": "rgb(217, 160, 165)",
+      "background": "rgb(25, 27, 33)",
+      "fontSize": "11px",
+      "fontWeight": "900",
+      "contrast": 7.8
+    },
+    {
+      "selector": "#handoff_boundary .h2-sub",
+      "text": "운영자가 끝낼 수 있는 것과 다음 담당자에게 넘겨야 하는 것을 명시합니다. 경계가 없으면 보류 항목이 조용히 제출본에 섞입니다.",
+      "color": "rgb(216, 216, 207)",
+      "background": "rgb(11, 12, 16)",
+      "fontSize": "15px",
+      "fontWeight": "400",
+      "contrast": 13.63
+    }
+  ],
+  "screenshots": [
+    "handoff-boundary-after-light.png",
+    "handoff-boundary-after-rose.png"
+  ]
+}

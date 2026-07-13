@@ -1,0 +1,92 @@
+{
+  "topic": "AI 튜터 시대의 4주 학습 시스템",
+  "mode": "solo-fallback-by-main-agent",
+  "method": "five perspectives, contradiction map, synthesis, peer review, official web sources",
+  "souls": {
+    "Skeptic": {
+      "persona": "회의주의자",
+      "question": "AI 튜터가 학습을 돕는다는 말은 정답 대행을 포장한 것 아닌가?",
+      "summary": "가장 큰 실패 모드는 '즉시 답변'이 학습자의 회상·시도·오류 경험을 빼앗는 것이다.",
+      "body": "OpenAI와 Google 모두 quick answers가 아니라 step-by-step 또는 deeper understanding을 강조한다. Khanmigo도 답을 주기보다 학습자가 찾도록 안내한다고 설명한다. 반대로 UNESCO는 프라이버시와 기관 검증 준비 부족을 지적한다. 따라서 AI 튜터를 쓰려면 정답 제공을 기본값으로 두지 않고, 사용 금지 상황과 데이터 경계를 함께 둬야 한다.",
+      "sources": [
+        "https://openai.com/index/chatgpt-study-mode/",
+        "https://blog.google/products-and-platforms/products/education/guided-learning/",
+        "https://www.khanmigo.ai/",
+        "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"
+      ]
+    },
+    "Economist": {
+      "persona": "경제학자",
+      "question": "AI 튜터의 경제적 가치는 어디에서 생기고 어디에서 과장되는가?",
+      "summary": "가치는 교사를 대체하는 데서보다 피드백 지연을 줄이고 교사의 관찰 시간을 늘리는 데서 난다.",
+      "body": "AI 튜터는 24시간 힌트·퀴즈·요약을 제공할 수 있어 피드백 비용을 낮춘다. 하지만 Khanmigo의 교사용 기능과 학교/구역 파트너십처럼 실제 교육 현장에서는 교사·부모·기관의 판단이 여전히 필요하다. 생산성 KPI는 '답변 수'가 아니라 '학생이 스스로 해결한 문제 수, 오류 설명 품질, 재시도율'이어야 한다.",
+      "sources": [
+        "https://blog.google/products-and-platforms/products/education/guided-learning/",
+        "https://www.khanmigo.ai/",
+        "https://www.unesco.org/en/digital-education/artificial-intelligence"
+      ]
+    },
+    "Historian": {
+      "persona": "역사학자",
+      "question": "이번 AI 학습 붐은 이전 에듀테크 붐과 무엇이 다르고 무엇이 반복되는가?",
+      "summary": "기술은 바뀌었지만 오래 버틴 학습 원리는 retrieval, spacing, feedback, metacognition이다.",
+      "body": "새 도구는 매번 '개인화 혁명'을 약속했다. 그러나 Dunlosky 리뷰와 IES 가이드는 분산 학습, 연습 테스트, 예시와 문제의 교차, 퀴즈 재노출 같은 오래된 원칙을 다시 확인한다. AI 튜터의 차별점은 이 원칙을 매일 적용하도록 대화형으로 유지시킬 수 있다는 점이지, 원칙을 대체한다는 점이 아니다.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/26173288/",
+        "https://ies.ed.gov/ncee/wwc/practiceguide/1",
+        "https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/metacognition"
+      ]
+    },
+    "Academic": {
+      "persona": "학자",
+      "question": "AI 튜터가 학습 과학과 맞물리려면 최소 설계 조건은 무엇인가?",
+      "summary": "설명은 회상 문제와 자기평가를 동반할 때 학습 활동이 된다.",
+      "body": "OpenAI는 active participation, cognitive load, metacognition, knowledge checks를 명시한다. EEF는 planning, monitoring, evaluating을 포함한 자기조절 전략을 강조한다. 그러므로 좋은 AI 학습 루프는 '목표 진단 → 짧은 설명 → 학습자 회상 → 오답 피드백 → 간격 재등장 → 자기평가' 순서여야 한다.",
+      "sources": [
+        "https://openai.com/index/chatgpt-study-mode/",
+        "https://pubmed.ncbi.nlm.nih.gov/26173288/",
+        "https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/metacognition"
+      ]
+    },
+    "Futurist": {
+      "persona": "미래학자",
+      "question": "AI 학습 경험은 앞으로 어떤 제품 형태로 수렴할까?",
+      "summary": "개인화 대화창보다 중요한 것은 학습자의 기억 상태를 유지하는 adaptive study loop다.",
+      "body": "Google은 multimodal responses와 interactive quizzes를, OpenAI는 progress tracking과 deeper personalization 가능성을 언급한다. 미래의 학습 제품은 '멋진 설명'을 넘어 학습자의 오답, 회상 성공률, 다음 재노출 시점, 프로젝트 적용 사례를 기록하는 루프가 될 가능성이 높다. 단, UNESCO의 human-centered 원칙처럼 최종 판단과 보호는 인간 쪽에 남겨야 한다.",
+      "sources": [
+        "https://openai.com/index/chatgpt-study-mode/",
+        "https://blog.google/products-and-platforms/products/education/guided-learning/",
+        "https://www.unesco.org/en/digital-education/artificial-intelligence"
+      ]
+    }
+  },
+  "contradictions": [
+    [
+      "즉시 도움은 학습 장벽을 낮춘다",
+      "즉시 정답은 회상·시도·오류 경험을 빼앗는다",
+      "정답 공개 전 반드시 '내 시도'와 '힌트 1개' 단계를 둔다"
+    ],
+    [
+      "개인화는 학습 효율을 높인다",
+      "개인화에는 민감 데이터와 정책 공백 리스크가 따른다",
+      "개인정보를 주제 밖으로 입력하지 않고 학교/조직 정책을 먼저 확인한다"
+    ],
+    [
+      "긴 설명은 이해감을 준다",
+      "보존되는 기억은 회상 테스트와 간격 반복에서 강해진다",
+      "모든 설명 뒤에는 3분 회상 문제와 다음 복습 일정을 붙인다"
+    ],
+    [
+      "AI가 교사 시간을 아낀다",
+      "교사 판단과 학생 안전 감독은 자동화하기 어렵다",
+      "AI는 초안과 피드백 보조, 교사는 목표·평가·개입을 맡는다"
+    ],
+    [
+      "멀티모달 자료는 흥미를 높인다",
+      "이미지·영상만 소비하면 이해 착각이 생긴다",
+      "자료 보기 후 개념을 말로 재구성하고 문제에 적용한다"
+    ]
+  ],
+  "synthesis": "# STORM Synthesis · AI 튜터 시대의 4주 학습 시스템\n\n핵심 합의는 하나다. AI 튜터는 답변기가 아니라 학습 루프 관리자여야 한다. 제품들은 이미 quick answers에서 guided understanding으로 방향을 잡고 있고, 학습 과학은 practice testing, distributed practice, metacognition을 반복해서 강조한다. 둘을 합치면 실전 루프는 다섯 단계가 된다.\n\n1. Diagnose — 목표, 현재 수준, 헷갈리는 지점을 먼저 말하게 한다.\n2. Explain — 짧게 설명하고 예시를 하나만 준다.\n3. Retrieve — 화면을 덮고 학습자가 스스로 떠올려 말한다.\n4. Feedback — 오답의 원인을 하나만 교정하고 다시 시도한다.\n5. Space — 다음 재노출 날짜와 변형 문제를 기록한다.\n\n4주 설계는 Week 1 개념 지도, Week 2 회상·오답, Week 3 적용 프로젝트, Week 4 전이·평가로 구성한다. AI는 매일 질문을 던지고, 학습자는 매일 짧게 답하고, 주말에는 사람/동료/교사가 결과물을 점검한다.\n",
+  "peer_review": "# STORM Peer Review\n\n검토 결과: 낙관 편향을 줄이기 위해 UNESCO와 Khanmigo의 safety/supervision 경계를 반드시 본문에 넣어야 한다. 또한 제품 기능 소개가 학습 효과 증거처럼 읽히지 않도록 OpenAI/Google/Khanmigo는 '제품 설계 방향'으로, Dunlosky/IES/EEF는 '학습 과학 근거'로 분리해야 한다.\n\n수정 지시:\n- AI 튜터 기능과 학습 효과를 동일시하지 않는다.\n- 미성년자·학교·조직 데이터 사용에는 정책/보호자/교사 경계를 둔다.\n- 4주 계획은 설명 소비보다 retrieval/spacing/practice 비중이 높게 보이도록 한다.\n- 모든 주장에는 source hub를 붙이고, 검증되지 않은 미래 예측은 '가능성'으로 표기한다.\n"
+}

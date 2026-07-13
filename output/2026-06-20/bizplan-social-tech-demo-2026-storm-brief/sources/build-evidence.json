@@ -1,0 +1,87 @@
+{
+  "mode": "landing_brief_html",
+  "profile": "auto",
+  "layout": "landing-brief.html",
+  "layout_class": "layout-landing",
+  "primary_vt": "hero-map",
+  "primary_wg": "wg-16",
+  "section_mapping": {
+    "layout": "landing-brief.html",
+    "HERO": "vt hero-map + STORM scan",
+    "VALUE_PROPS": "RFP value table",
+    "HOW_IT_WORKS": "wg-16 roadmap + contradiction map",
+    "FAQ": "evaluation questions",
+    "CTA": "submission gates",
+    "SOURCE_NOTE": "source hub"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "80b912c06fb1055ca14e99123c01a99b89765cbd8935616dbff3ac48efaef002"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "5091eca47d175172114ccd1bbac35744d73da60540c9f25af050688f6ffa4a94"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/landing-brief.html",
+      "sha256": "a6426ca97eaeb68045817af226b7a0997c136ddffde899991a982087f4c61a0c"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/16-implementation-plan.html",
+      "sha256": "7137af34d22e3875711958e017929b8d9f14c4d4cd3d57fcd28a02e8d1007c6e"
+    },
+    {
+      "path": "orginal_skill/bizplan-social-tech-demo-2026/project.json",
+      "sha256": "4e49416848f05609bb60488130c888252e89f22ecc060a22ca70225758d866d9"
+    },
+    {
+      "path": "orginal_skill/bizplan-social-tech-demo-2026/02-interview/idea-brief.md",
+      "sha256": "8014c7f22f141b8a78d4ab8de301bae1ebb5553c9e3a929c2eb4664cb10a2475"
+    },
+    {
+      "path": "orginal_skill/bizplan-social-tech-demo-2026/05-business-core/business-core.yaml",
+      "sha256": "728685b0e9543e30031ab618b1917e692b8e648ee7cd0a739af5edf832917e33"
+    },
+    {
+      "path": "orginal_skill/bizplan-social-tech-demo-2026/04-research/research-report.md",
+      "sha256": "9a5f0c8e290e49bfc050a5ed3578315476e17e1ca9a56e1b50379e006cd190d2"
+    },
+    {
+      "path": "orginal_skill/bizplan-social-tech-demo-2026/08-draft/executive-summary.md",
+      "sha256": "2cc8b8588cb356905e311d0216afb7840073311e30bda8b19db7c524d4025d51"
+    },
+    {
+      "path": "orginal_skill/storm-research/SKILL.md",
+      "sha256": "866622b669953de1c1f235fcc9bb86c70ee06322c90b01ae8008705372a04932"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/storm-pipeline.md",
+      "sha256": "ebe8bc4eb959ff2a7c84d8456ceb8ee18d17e25e65e192c1a109df1ffd08e6c2"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/provenance.md",
+      "sha256": "8d15a93d4c0a305d44612241d05d2d006703b122f8c0616012368c0f1b942d7c"
+    }
+  ],
+  "input_snapshots": [
+    "sources/storm-scan.md",
+    "sources/storm-contradiction-map.md",
+    "sources/storm-synthesis.md",
+    "sources/storm-peer-review.md",
+    "sources/bizplan-application.json"
+  ],
+  "research_route": "storm-research solo fallback; local bizplan corpus plus public research links"
+}

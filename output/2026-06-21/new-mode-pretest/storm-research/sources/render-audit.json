@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "generatedAt": "2026-06-21T05:39:06.811Z",
+  "target": "/Users/hwanchoi/project_202606/skills-html-showcase/output/2026-06-21/new-mode-pretest/storm-research/index.html",
+  "checks": {
+    "desktop": {
+      "ok": true,
+      "errors": [],
+      "metrics": {
+        "h1": 1,
+        "main": true,
+        "themeRadios": 8,
+        "badScripts": 0,
+        "overflowX": 0,
+        "coreHash": true,
+        "vt": true,
+        "wg": true,
+        "bodyIcon": true,
+        "customShell": false
+      }
+    },
+    "mobile": {
+      "ok": true,
+      "errors": [],
+      "metrics": {
+        "h1": 1,
+        "main": true,
+        "themeRadios": 8,
+        "badScripts": 0,
+        "overflowX": 0,
+        "coreHash": true,
+        "vt": true,
+        "wg": true,
+        "bodyIcon": true,
+        "customShell": false
+      }
+    }
+  }
+}

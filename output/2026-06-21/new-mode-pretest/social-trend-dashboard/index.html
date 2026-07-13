@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 도구 시장 신호 프리테스트 대시보드</title>
+<meta name="description" content="social_trend_dashboard 신규 모드 선검수용 샘플 대시보드. AI 도구 시장 신호를 실제 최신 트렌드로 단정하지 않고 pretest dataset으로 시각화합니다.">
+<meta property="og:title" content="AI 도구 시장 신호 프리테스트 대시보드">
+<meta property="og:description" content="read-only sample/pretest dataset dashboard for social_trend_dashboard mode smoke output.">
+<meta property="og:type" content="article">
+<style>
+:root{
+  --bg:#f5f5f0;
+  --ink:#191918;
+  --ink-soft:#42423e;
+  --ink-mute:#6a6a63;
+  --line:#d9d7cc;
+  --card:#fffefa;
+  --card-2:#fbfaf4;
+  --accent:#e63946;
+  --accent-2:#b72d38;
+  --accent-3:#ff7a4d;
+  --accent-soft:#ffe7e4;
+  --good:#247255;
+  --good-soft:#eef7f1;
+  --warn:#9a6a14;
+  --warn-soft:#fff6df;
+  --blue:#315f7d;
+  --blue-soft:#edf4f8;
+  --shadow:0 24px 60px rgba(31,31,29,.08);
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:22px;
+  --max-wide:1120px;
+  --max-reading:760px;
+  --focus:#1a56db;
+  --sans:"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{
+  margin:0;
+  font-family:var(--sans);
+  background:
+    radial-gradient(circle at 8% 0%,rgba(230,57,70,.12),transparent 28rem),
+    radial-gradient(circle at 100% 8%,rgba(255,122,77,.14),transparent 34rem),
+    linear-gradient(180deg,var(--bg),var(--bg));
+  color:var(--ink);
+  line-height:1.75;
+  letter-spacing:-.014em;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+  -webkit-font-smoothing:antialiased;
+}
+body:has(#ahf-light2:checked){--bg:#eeeeea;--card:#fbfbf7;--card-2:#f6f6f0;--line:#cfcdc1;--ink:#20201e;--ink-soft:#494944;--ink-mute:#686861;--accent-soft:#ffe2df}
+body:has(#ahf-white:checked){--bg:#ffffff;--card:#ffffff;--card-2:#fafafa;--line:#dedede;--ink:#141414;--ink-soft:#3f3f3f;--ink-mute:#666;--shadow:0 18px 44px rgba(0,0,0,.055)}
+body:has(#ahf-dark:checked){--bg:#171717;--card:#222220;--card-2:#292926;--line:#3b3b36;--ink:#f4f1e9;--ink-soft:#d8d3c9;--ink-mute:#a9a397;--accent:#ff6974;--accent-2:#ff9da4;--accent-3:#ff9b62;--accent-soft:#3b2427;--good:#7bd7a8;--good-soft:#1e3329;--warn:#f1c86a;--warn-soft:#362d1c;--blue:#8cc7ef;--blue-soft:#1c2e3a;--shadow:0 24px 70px rgba(0,0,0,.28);color-scheme:dark}
+body:has(#ahf-dark2:checked){--bg:#1e171a;--card:#2b2025;--card-2:#35282d;--line:#4a363c;--ink:#fff3f4;--ink-soft:#ead0d3;--ink-mute:#bea3a8;--accent:#ff7380;--accent-2:#ffb3ba;--accent-3:#ff9266;--accent-soft:#45262d;--good:#87d9a9;--good-soft:#20372a;--warn:#f6d07d;--warn-soft:#3d2e18;--blue:#9fcdf0;--blue-soft:#203242;--shadow:0 24px 70px rgba(0,0,0,.28);color-scheme:dark}
+body:has(#ahf-blue:checked){--bg:#eef4f8;--card:#ffffff;--card-2:#f7fbff;--line:#c9d7e0;--ink:#152433;--ink-soft:#334b61;--ink-mute:#637789;--accent:#d93646;--accent-2:#a92d3a;--accent-3:#ff7f50;--accent-soft:#ffe3e2;--blue:#1e668d;--blue-soft:#e5f2f8}
+body:has(#ahf-skyblue:checked){--bg:#f1f9fc;--card:#ffffff;--card-2:#f8fdff;--line:#cce1ea;--ink:#132936;--ink-soft:#355566;--ink-mute:#668391;--accent:#e04755;--accent-2:#bd3341;--accent-3:#ff8a59;--accent-soft:#ffe8e5;--blue:#1683a3;--blue-soft:#e3f6fb}
+body:has(#ahf-sepia:checked){--bg:#f5efe3;--card:#fffaf0;--card-2:#fbf2df;--line:#dfcdb0;--ink:#241d16;--ink-soft:#514334;--ink-mute:#7a6b59;--accent:#c94d3f;--accent-2:#96372e;--accent-3:#d97935;--accent-soft:#ffe2d5;--good:#54734f;--good-soft:#edf5e5;--warn:#9b6a1a;--warn-soft:#fff3d4;--blue:#516f82;--blue-soft:#e9f0ef}
+a{color:inherit;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:8px}
+p{margin:0 0 15px;color:var(--ink-soft);font-size:15.5px}
+strong{color:var(--ink);font-weight:850}
+code{font-family:var(--mono);font-size:.92em;background:var(--card-2);border:1px solid var(--line);border-radius:6px;padding:.08rem .38rem;color:var(--ink)}
+.skip{position:absolute;left:-999px;top:10px;z-index:900;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:850}
+.skip:focus{left:10px}
+.ahf-themebar{position:fixed;top:14px;right:16px;z-index:700;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:276px;background:color-mix(in srgb,var(--card) 94%,transparent);border:1px solid var(--line);border-radius:14px;padding:5px;box-shadow:0 12px 28px rgba(0,0,0,.11);backdrop-filter:blur(10px);margin:0}
+.ahf-themebar input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.ahf-themebar label{display:flex;align-items:center;justify-content:center;min-height:30px;padding:5px 4px;border-radius:9px;font-size:12px;font-weight:850;color:var(--ink-mute);cursor:pointer;white-space:nowrap;text-align:center;line-height:1.1}
+.ahf-themebar label:hover{background:var(--accent-soft);color:var(--ink)}
+.ahf-themebar input:checked + label{background:linear-gradient(135deg,var(--accent),var(--accent-3));color:#fff}
+.reading-progress{position:fixed;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-3));transform:scaleX(0);transform-origin:0 50%;z-index:800;animation:progress linear both;animation-timeline:scroll(root)}
+@keyframes progress{to{transform:scaleX(1)}}
+.page-wide{width:min(var(--max-wide),calc(100% - 44px));margin:0 auto;padding:58px 0 96px}
+.header{padding:38px 0 30px;border-bottom:1px solid var(--line);margin-bottom:30px}
+.kicker{display:inline-flex;align-items:center;gap:8px;min-height:28px;padding:6px 12px 6px 10px;border:1px solid var(--line);background:var(--card);border-radius:999px;font-size:11px;letter-spacing:.13em;color:var(--accent-2);font-weight:950;text-transform:uppercase;margin-bottom:20px}
+.kicker::before{content:"";width:7px;height:7px;border-radius:99px;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+h1{font-size:clamp(34px,5vw,58px);line-height:1.08;letter-spacing:-.04em;margin:0 0 18px;font-weight:950;max-width:900px;color:var(--ink)}
+.sub{font-size:18px;line-height:1.72;max-width:850px;color:var(--ink-soft);margin-bottom:22px}
+.meta,.lens-strip,.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.meta span,.lens-chip,.chip{display:inline-flex;align-items:center;min-height:28px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:760;color:var(--ink-mute)}
+.meta .is-hot,.chip.is-hot{background:var(--accent);border-color:var(--accent);color:#fff}
+.generated-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+.generated-date{font-size:13px;color:var(--ink-mute);margin:0}
+.toc-map{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 24px;margin:24px 0 38px;box-shadow:var(--shadow)}
+.toc-map .label,.section-label,.metric-label{font-size:11px;font-weight:950;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);margin-bottom:7px}
+.toc-map p{margin-bottom:16px;font-size:14px}
+.toc-pills{display:flex;flex-wrap:wrap;gap:8px}
+.toc-pill{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none;background:var(--card-2);color:var(--ink-soft);font-size:12.5px;font-weight:800}
+.toc-pill b{display:grid;place-items:center;min-width:22px;height:22px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:11px}
+.toc-pill:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+section{margin:42px 0;scroll-margin-top:26px}
+h2{display:flex;align-items:flex-start;gap:12px;font-size:clamp(24px,3vw,32px);line-height:1.24;letter-spacing:-.03em;margin:0 0 14px;color:var(--ink);font-weight:950}
+h2 .num{display:inline-grid;place-items:center;flex:0 0 auto;min-width:34px;height:34px;padding:0 9px;border:2px solid var(--ink);border-radius:999px;font-size:14px;font-weight:950;line-height:1}
+h2 .num.is-key{background:var(--accent);border-color:var(--accent);color:#fff}
+.h2-sub{margin:0 0 20px 48px;max-width:850px;color:var(--ink-mute);font-size:14.5px}
+h3{font-size:18px;line-height:1.34;margin:0 0 9px;color:var(--ink);font-weight:900;letter-spacing:-.015em}
+.summary-card,.panel,.source-note,.callout{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:21px 23px;box-shadow:0 8px 24px rgba(0,0,0,.035)}
+.summary-card{border-left:5px solid var(--accent)}
+.summary-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:stretch}
+.metric-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:16px}
+.metric{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:14px 15px;min-width:0}
+.metric b{display:block;font-size:clamp(25px,3vw,36px);line-height:1;font-weight:950;color:var(--accent);letter-spacing:-.03em;margin-bottom:6px}
+.metric span{display:block;font-size:12.5px;line-height:1.35;color:var(--ink-mute);font-weight:750}
+.readonly-banner{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:linear-gradient(135deg,var(--ink),color-mix(in srgb,var(--ink) 78%,var(--accent)));color:var(--bg);border-radius:18px;padding:18px 20px;overflow:hidden;position:relative}
+.readonly-banner::after{content:"";position:absolute;right:-34px;top:-42px;width:150px;height:150px;border-radius:999px;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 62%)}
+.readonly-badge{display:grid;place-items:center;width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-3));color:#fff;font-weight:950;font-size:20px;box-shadow:0 14px 32px rgba(230,57,70,.25)}
+.readonly-banner p{color:color-mix(in srgb,var(--bg) 82%,transparent);margin:0;font-size:14px}
+.readonly-banner strong{color:#fff}.readonly-state{position:relative;z-index:1;display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:5px 10px;font-family:var(--mono);font-size:11px;font-weight:850;color:#fff;background:rgba(255,255,255,.08)}
+.status-card{display:grid;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.status-row{display:grid;grid-template-columns:132px 1fr 52px;gap:10px;align-items:center;font-size:13px;color:var(--ink-soft)}
+.status-bar{height:12px;background:var(--card-2);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.status-fill{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,var(--accent),var(--accent-3));border-radius:999px}.status-fill.blue{background:linear-gradient(90deg,var(--blue),#6db4d3)}.status-fill.good{background:linear-gradient(90deg,var(--good),#83cfa5)}.status-fill.warn{background:linear-gradient(90deg,var(--warn),#e9b84c)}
+.card-grid,.signal-grid,.evidence-grid,.policy-grid,.action-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.signal-card,.evidence-card,.policy-card,.action-card,.mini-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:17px 18px;min-width:0;position:relative;overflow:hidden}
+.signal-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--accent),var(--accent-3))}
+.signal-card .rank{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;border-radius:999px;background:var(--accent-soft);color:var(--accent-2);font-weight:950;margin-bottom:12px;font-size:12px}
+.signal-card p,.evidence-card p,.policy-card p,.action-card p,.mini-card p{font-size:14px;line-height:1.62;margin-bottom:0}.signal-card ul,.policy-card ul,.action-card ul{margin:10px 0 0 19px;color:var(--ink-soft);font-size:14px;padding:0}.signal-card li,.policy-card li,.action-card li{margin:5px 0}
+.bar-chart{display:grid;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:20px}
+.bar-row{display:grid;grid-template-columns:168px 1fr 62px;gap:12px;align-items:center}
+.bar-label{font-weight:850;color:var(--ink);font-size:14px}.bar-track{height:22px;border-radius:999px;background:var(--card-2);border:1px solid var(--line);overflow:hidden}.bar-fill{height:100%;width:var(--w);background:linear-gradient(90deg,var(--accent),var(--accent-3));border-radius:999px}.bar-fill.blue{background:linear-gradient(90deg,var(--blue),#78c6de)}.bar-fill.good{background:linear-gradient(90deg,var(--good),#8bd4a9)}.bar-fill.warn{background:linear-gradient(90deg,var(--warn),#f3bd4d)}.bar-val{font-family:var(--mono);font-size:12px;color:var(--ink-mute);text-align:right}
+.table-scroll{overflow-x:auto;margin-top:16px;border-radius:var(--radius-md);border:1px solid var(--line);background:var(--card)}
+table{width:100%;border-collapse:collapse;min-width:760px;background:var(--card)}
+caption{text-align:left;font-size:13px;color:var(--ink-mute);padding:14px 16px;border-bottom:1px solid var(--line);font-weight:750}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left;font-size:14px}
+th{background:var(--ink);color:var(--bg);font-size:12px;letter-spacing:.04em;text-transform:uppercase}tr:last-child td{border-bottom:0}td:first-child{font-family:var(--mono);font-weight:850;color:var(--accent-2)}
+.schema-note{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.schema-note .mini-card{border-left:4px solid var(--blue)}
+.flow-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:20px}.flow{display:grid;grid-template-columns:1fr 42px 1fr 42px 1fr;gap:10px;align-items:center}.flow-step{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:15px}.flow-step b{display:block;margin-bottom:4px;color:var(--ink)}.flow-step p{font-size:13.5px;margin:0}.flow-arrow{height:2px;background:var(--accent);position:relative}.flow-arrow::after{content:"";position:absolute;right:-1px;top:-5px;border-left:10px solid var(--accent);border-top:6px solid transparent;border-bottom:6px solid transparent}
+.caveat{background:var(--warn-soft);border:1px solid color-mix(in srgb,var(--warn) 35%,var(--line));border-left:5px solid var(--warn);border-radius:var(--radius-md);padding:18px 20px}.caveat p{color:var(--ink-soft)}
+.verify-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.verify-list li{display:grid;grid-template-columns:34px 1fr;gap:11px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;margin:0}.verify-list b{display:grid;place-items:center;width:30px;height:30px;border-radius:999px;background:var(--good-soft);color:var(--good);font-size:12px}
+.source-note{background:transparent;box-shadow:none;color:var(--ink-mute)}
+.source-note p,.source-note li{font-size:13px;color:var(--ink-mute)}
+footer{width:min(var(--max-wide),calc(100% - 44px));margin:48px auto 0;border-top:1px solid var(--line);padding:20px 0 42px;color:var(--ink-mute);font-size:13px}.footer-line{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.jump-dock{position:fixed;right:18px;bottom:18px;z-index:650;display:grid;gap:7px}.jump-dock a{display:flex;align-items:center;justify-content:center;min-width:52px;min-height:42px;padding:7px 11px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent-3));color:#fff;text-decoration:none;font-weight:900;font-size:12px;box-shadow:0 12px 28px rgba(230,57,70,.25);border:1px solid rgba(255,255,255,.24)}.jump-dock a.secondary{background:var(--card);color:var(--ink);border-color:var(--line);box-shadow:0 10px 24px rgba(0,0,0,.10)}
+@media(max-width:920px){.summary-grid,.schema-note{grid-template-columns:1fr}.metric-strip,.card-grid,.signal-grid,.evidence-grid,.policy-grid,.action-grid{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr}.flow-arrow{width:2px;height:26px;justify-self:center}.flow-arrow::after{right:-5px;top:auto;bottom:-1px;border-left:6px solid transparent;border-right:6px solid transparent;border-top:10px solid var(--accent);border-bottom:0}.bar-row{grid-template-columns:132px 1fr 54px}.readonly-banner{grid-template-columns:auto 1fr}.readonly-state{grid-column:2}}
+@media(max-width:680px){.ahf-themebar{position:static;width:min(276px,calc(100% - 28px));margin:10px auto 0}.page-wide{width:min(100% - 32px,var(--max-wide));padding-top:34px}.header{padding-top:22px}.sub{font-size:16px}.metric-strip,.card-grid,.signal-grid,.evidence-grid,.policy-grid,.action-grid{grid-template-columns:1fr}.status-row{grid-template-columns:92px 1fr 42px}.bar-row{grid-template-columns:1fr}.bar-val{text-align:left}.toc-pill{width:100%;justify-content:flex-start}.jump-dock{right:12px;bottom:12px}.jump-dock a{min-width:48px;min-height:38px}.readonly-banner{grid-template-columns:1fr}.readonly-badge{width:48px;height:48px}.readonly-state{grid-column:auto}}
+@media print{.ahf-themebar,.jump-dock,.reading-progress,.skip{display:none}.page-wide,footer{width:100%;padding:0;margin:0}body{background:#fff;color:#111}.summary-card,.panel,.toc-map,.signal-card,.evidence-card,.policy-card,.action-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<fieldset class="ahf-themebar" aria-label="테마 선택">
+  <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">그레이</label>
+  <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark2"><label for="ahf-dark2">로즈</label>
+  <input type="radio" name="ahf-theme" id="ahf-blue"><label for="ahf-blue">블루</label>
+  <input type="radio" name="ahf-theme" id="ahf-skyblue"><label for="ahf-skyblue">스카이</label>
+  <input type="radio" name="ahf-theme" id="ahf-sepia"><label for="ahf-sepia">세피아</label>
+</fieldset>
+<div class="reading-progress" aria-hidden="true"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="page-wide">
+  <header class="header" id="top">
+    <div class="kicker"><span>SOCIAL TREND DASHBOARD · PRE-IMPLEMENTATION SMOKE</span></div>
+    <h1>AI 도구 시장 신호 프리테스트 대시보드</h1>
+    <p class="sub">신규 모드 <code>social_trend_dashboard</code>가 어떤 화면 밀도와 정보 계약을 가져야 하는지 선검수하기 위한 <strong>sample/pretest dataset</strong> 대시보드입니다. 이 문서는 실제 최신 시장 트렌드라고 단정하지 않으며, records.json 형태의 샘플 레코드를 읽기 전용으로 요약한 것처럼 구성했습니다.</p>
+    <div class="meta" aria-label="문서 메타">
+      <span class="is-hot">read-only pretest</span>
+      <span>mode candidate: social_trend_dashboard</span>
+      <span>profile: visual smoke</span>
+      <span>sample records: 48</span>
+      <span>JS 0</span>
+    </div>
+    <div class="generated-row">
+      <p class="generated-date">Generated · 2026-06-21 KST · output-only artifact</p>
+      <div class="lens-strip" aria-label="적용 렌즈">
+        <span class="lens-chip">URL dedupe</span>
+        <span class="lens-chip">metric caveat</span>
+        <span class="lens-chip">evidence cards</span>
+        <span class="lens-chip">records.json</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc-map" id="toc" aria-label="문서 목차">
+    <div class="label">문서 목차</div>
+    <p>필수 스켈레톤 블록 12개를 실제 섹션으로 분리했습니다. 우측 하단 버튼으로 언제든 목차와 상단으로 돌아갈 수 있습니다.</p>
+    <div class="toc-pills">
+      <a class="toc-pill" href="#scope_brief"><b>1</b>scope_brief</a>
+      <a class="toc-pill" href="#source_policy"><b>2</b>source_policy</a>
+      <a class="toc-pill" href="#record_schema"><b>3</b>record_schema</a>
+      <a class="toc-pill" href="#collection_summary"><b>4</b>collection_summary</a>
+      <a class="toc-pill" href="#category_distribution"><b>5</b>category_distribution</a>
+      <a class="toc-pill" href="#top_signals"><b>6</b>top_signals</a>
+      <a class="toc-pill" href="#evidence_cards"><b>7</b>evidence_cards</a>
+      <a class="toc-pill" href="#dedupe_append_policy"><b>8</b>dedupe_append_policy</a>
+      <a class="toc-pill" href="#metric_caveats"><b>9</b>metric_caveats</a>
+      <a class="toc-pill" href="#verification_notes"><b>10</b>verification_notes</a>
+      <a class="toc-pill" href="#next_actions"><b>11</b>next_actions</a>
+      <a class="toc-pill" href="#source_note"><b>12</b>source_note</a>
+    </div>
+  </nav>
+
+  <main id="main" class="layout-social-trend-dashboard" aria-label="AI 도구 시장 신호 프리테스트 대시보드 본문">
+    <section id="scope_brief" aria-labelledby="scope_brief_title">
+      <h2 id="scope_brief_title"><span class="num is-key">1</span>scope_brief · 무엇을 보여주는 화면인가</h2>
+      <p class="h2-sub">이 섹션은 신규 모드의 역할, 읽기 전용 원칙, 샘플 데이터의 한계를 먼저 잠급니다.</p>
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="section-label">Scope Brief</div>
+          <h3>시장 신호를 “확정 트렌드”가 아니라 “검토 큐”로 보여준다</h3>
+          <p>이 대시보드는 AI 도구 시장 주변의 게시글·출시 노트·커뮤니티 반응·가격/패키징 언급을 샘플 레코드로 묶어 <strong>어디에 후속 검증을 붙일지</strong>를 고르는 화면입니다. 수치와 순위는 pretest dataset 내부 신호일 뿐이며, 실제 시장 점유율·매출·사용량을 의미하지 않습니다.</p>
+          <div class="metric-strip" aria-label="샘플 범위 요약">
+            <div class="metric"><b>48</b><span>sample records</span></div>
+            <div class="metric"><b>6</b><span>임시 카테고리</span></div>
+            <div class="metric"><b>0</b><span>behavioral JS</span></div>
+            <div class="metric"><b>RO</b><span>read-only dashboard</span></div>
+          </div>
+        </div>
+        <div class="readonly-banner" aria-label="읽기 전용 상태">
+          <div class="readonly-badge">RO</div>
+          <div>
+            <strong>쓰기·수정 버튼이 없는 선검수용 화면</strong>
+            <p>레코드 추가, dedupe merge, 점수 재계산은 실제 모드 구현 이후 파이프라인에서 처리합니다. 본 HTML은 화면 구성과 콘텐츠 계약만 확인합니다.</p>
+          </div>
+          <span class="readonly-state">LOCKED VIEW</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="source_policy" aria-labelledby="source_policy_title">
+      <h2 id="source_policy_title"><span class="num">2</span>source_policy · 수집원과 표기 원칙</h2>
+      <p class="h2-sub">sample source를 실제 최신 근거로 오해하지 않도록 출처·스냅샷·민감도 정책을 분리합니다.</p>
+      <div class="policy-grid">
+        <article class="policy-card">
+          <div class="metric-label">Allowed sample source</div>
+          <h3>공개 표면만 가정</h3>
+          <p>공개 블로그, 릴리스 노트, 공개 커뮤니티 글, 공개 가격 페이지처럼 접근 가능한 표면만 샘플에 포함한 것으로 간주합니다.</p>
+        </article>
+        <article class="policy-card">
+          <div class="metric-label">No live claim</div>
+          <h3>실시간 최신성 단정 금지</h3>
+          <p>“요즘 대세”, “현재 1위” 같은 표현은 쓰지 않습니다. 모든 표현은 “샘플 레코드에서 관찰된 신호”로 제한합니다.</p>
+        </article>
+        <article class="policy-card">
+          <div class="metric-label">Sensitive filter</div>
+          <h3>비공개·개인정보 제외</h3>
+          <p>로그인 뒤 화면, 개인 계정 활동, 비공개 채팅 캡처, 개인식별 정보는 대시보드 입력으로 쓰지 않는 정책을 전제로 합니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="record_schema" aria-labelledby="record_schema_title">
+      <h2 id="record_schema_title"><span class="num is-key">3</span>record_schema · records.json 스키마 표</h2>
+      <p class="h2-sub">실제 구현 전에도 레코드 필드 계약을 화면에서 읽을 수 있어야 합니다.</p>
+      <div class="panel">
+        <div class="section-label">records.json contract</div>
+        <p><code>records.json</code>은 원문 보존과 요약 표시를 분리합니다. 대시보드는 원문 URL을 정규화해 dedupe key를 만들고, 사람이 판단해야 할 caveat를 별도 필드로 남기는 방향을 가정합니다.</p>
+        <div class="table-scroll">
+          <table>
+            <caption>records.json 샘플 스키마. 필드명은 후보이며 실제 스킬 소스에는 아직 추가하지 않은 선반영 계약입니다.</caption>
+            <thead>
+              <tr><th>field</th><th>type</th><th>required</th><th>display use</th><th>note</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>id</td><td>string</td><td>yes</td><td>카드 내부 추적 ID</td><td><code>sig_YYYYMMDD_###</code>처럼 안정 키를 권장</td></tr>
+              <tr><td>url</td><td>string</td><td>yes</td><td>증거 카드 원문 링크 라벨</td><td>쿼리·fragment 제거 전 원본 보존</td></tr>
+              <tr><td>canonical_url</td><td>string</td><td>yes</td><td>URL dedupe 기준</td><td>scheme/host/path 정규화 후 비교</td></tr>
+              <tr><td>source_type</td><td>enum</td><td>yes</td><td>release/community/pricing/blog 구분</td><td>출처 신뢰도 점수와 분리</td></tr>
+              <tr><td>category</td><td>enum</td><td>yes</td><td>카테고리 분포 차트</td><td>agent, video, workflow, devtool 등</td></tr>
+              <tr><td>signal_title</td><td>string</td><td>yes</td><td>상위 신호 카드 제목</td><td>과장형 제목 금지</td></tr>
+              <tr><td>evidence_excerpt</td><td>string</td><td>yes</td><td>증거 카드 요약</td><td>짧은 paraphrase만 표시</td></tr>
+              <tr><td>observed_at</td><td>date</td><td>yes</td><td>수집 시점 표기</td><td>최신성 판단의 기준이 아님</td></tr>
+              <tr><td>metric_hint</td><td>object</td><td>no</td><td>mention/share/comment 같은 보조값</td><td>표본 편향 caveat와 함께만 표시</td></tr>
+              <tr><td>verification_state</td><td>enum</td><td>yes</td><td>unverified/sample/needs_review</td><td>검증 완료처럼 보이는 색상 금지</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="schema-note">
+          <div class="mini-card"><h3>원문 보존</h3><p>대시보드가 표시하는 요약과 별개로 원본 URL과 수집 시점은 보존합니다. 단, 이 HTML에는 실제 외부 링크를 넣지 않았습니다.</p></div>
+          <div class="mini-card"><h3>정직한 상태값</h3><p><code>verification_state</code>가 <code>sample</code> 또는 <code>needs_review</code>이면 수치 칩은 muted tone으로 표시합니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collection_summary" aria-labelledby="collection_summary_title">
+      <h2 id="collection_summary_title"><span class="num">4</span>collection_summary · 수집 요약 카드</h2>
+      <p class="h2-sub">wg-11 weekly-status 느낌의 무JS 요약 카드입니다. 샘플 레코드의 처리 상태를 진행률처럼 보이되 완료 보증으로 해석되지 않게 표시합니다.</p>
+      <div class="status-card" aria-label="샘플 데이터 처리 상태">
+        <div class="section-label">Sample collection status</div>
+        <div class="status-row"><strong>정규화 완료</strong><div class="status-bar"><span class="status-fill" style="--w:88%"></span></div><span>88%</span></div>
+        <div class="status-row"><strong>중복 후보</strong><div class="status-bar"><span class="status-fill warn" style="--w:26%"></span></div><span>12건</span></div>
+        <div class="status-row"><strong>증거 카드화</strong><div class="status-bar"><span class="status-fill blue" style="--w:64%"></span></div><span>31건</span></div>
+        <div class="status-row"><strong>검증 필요</strong><div class="status-bar"><span class="status-fill warn" style="--w:72%"></span></div><span>높음</span></div>
+        <p>이 값은 sample dataset 내부의 처리 상태 예시입니다. 시장 전체의 관심도·성장률·실제 사용량을 나타내지 않습니다.</p>
+      </div>
+    </section>
+
+    <section id="category_distribution" aria-labelledby="category_distribution_title">
+      <h2 id="category_distribution_title"><span class="num">5</span>category_distribution · 무JS 카테고리 분포</h2>
+      <p class="h2-sub">CSS 바 차트만 사용합니다. 표본 수가 작아 분포는 탐색용이며 추정 통계가 아닙니다.</p>
+      <div class="bar-chart" role="img" aria-label="샘플 레코드 카테고리 분포: 에이전트 워크플로우 31%, 영상 생성 23%, 개발자 도구 17%, 검색 리서치 13%, 자동화 운영 10%, 가격 패키징 6%">
+        <div class="bar-row"><span class="bar-label">에이전트 워크플로우</span><span class="bar-track"><span class="bar-fill" style="--w:31%"></span></span><span class="bar-val">31%</span></div>
+        <div class="bar-row"><span class="bar-label">영상·크리에이티브 생성</span><span class="bar-track"><span class="bar-fill blue" style="--w:23%"></span></span><span class="bar-val">23%</span></div>
+        <div class="bar-row"><span class="bar-label">개발자 도구</span><span class="bar-track"><span class="bar-fill good" style="--w:17%"></span></span><span class="bar-val">17%</span></div>
+        <div class="bar-row"><span class="bar-label">검색·리서치 보조</span><span class="bar-track"><span class="bar-fill warn" style="--w:13%"></span></span><span class="bar-val">13%</span></div>
+        <div class="bar-row"><span class="bar-label">자동화·운영</span><span class="bar-track"><span class="bar-fill" style="--w:10%"></span></span><span class="bar-val">10%</span></div>
+        <div class="bar-row"><span class="bar-label">가격·패키징 언급</span><span class="bar-track"><span class="bar-fill blue" style="--w:6%"></span></span><span class="bar-val">6%</span></div>
+      </div>
+    </section>
+
+    <section id="top_signals" aria-labelledby="top_signals_title">
+      <h2 id="top_signals_title"><span class="num">6</span>top_signals · signal grid</h2>
+      <p class="h2-sub">card-grid 느낌의 주요 신호 후보입니다. 순위는 샘플 내부 정렬일 뿐 “시장 순위”가 아닙니다.</p>
+      <div class="signal-grid">
+        <article class="signal-card">
+          <span class="rank">S1</span>
+          <h3>업무 앱 안에서 에이전트가 바로 실행되는 흐름</h3>
+          <p>샘플 레코드에서는 별도 챗 화면보다 문서·스프레드시트·이슈 트래커 내부에서 작업을 맡기는 흐름이 반복 관찰됩니다.</p>
+          <ul><li>category: agent workflow</li><li>state: needs_review</li></ul>
+        </article>
+        <article class="signal-card">
+          <span class="rank">S2</span>
+          <h3>영상 생성은 “결과물 편집”보다 “운영 파이프라인” 언급 증가</h3>
+          <p>프롬프트 한 번의 생성보다 스크립트, 자막, 썸네일, 배포 체크까지 묶는 워크플로우 카드가 더 많은 설명 면적을 차지합니다.</p>
+          <ul><li>category: video ops</li><li>state: sample</li></ul>
+        </article>
+        <article class="signal-card">
+          <span class="rank">S3</span>
+          <h3>개발자 도구는 IDE 확장보다 리뷰·테스트 증거를 강조</h3>
+          <p>“코드 생성 가능”보다 변경 근거, 테스트 로그, PR 설명, 회귀 검출 같은 검증형 메시지가 두드러지는 샘플입니다.</p>
+          <ul><li>category: devtool</li><li>state: unverified</li></ul>
+        </article>
+        <article class="signal-card">
+          <span class="rank">S4</span>
+          <h3>검색·리서치는 최신성보다 출처 추적성을 전면에 둠</h3>
+          <p>요약문 자체보다 어떤 원문에서 어떤 문장을 근거로 삼았는지 보여주는 카드형 UI 요구가 반복됩니다.</p>
+          <ul><li>category: research</li><li>state: needs_review</li></ul>
+        </article>
+        <article class="signal-card">
+          <span class="rank">S5</span>
+          <h3>가격·패키징 신호는 비교표보다 caveat가 먼저 필요</h3>
+          <p>플랜명, 크레딧, 사용량 제한이 자주 바뀌므로 가격 관련 레코드는 자동 단정이 아니라 확인 필요 상태로 묶어야 합니다.</p>
+          <ul><li>category: pricing</li><li>state: sample</li></ul>
+        </article>
+        <article class="signal-card">
+          <span class="rank">S6</span>
+          <h3>팀 도입 문구는 보안·감사 로그·관리자 권한으로 이동</h3>
+          <p>개별 생산성보다 조직 관리자가 확인할 수 있는 로그와 권한 체계를 언급하는 샘플 카드가 있습니다.</p>
+          <ul><li>category: enterprise ops</li><li>state: needs_review</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="evidence_cards" aria-labelledby="evidence_cards_title">
+      <h2 id="evidence_cards_title"><span class="num">7</span>evidence_cards · 증거 카드 후보</h2>
+      <p class="h2-sub">원문 링크를 실제로 연결하지 않고, evidence card의 표시 형식만 검수합니다.</p>
+      <div class="evidence-grid">
+        <article class="evidence-card">
+          <div class="metric-label">release-note · sample</div>
+          <h3>“자동 실행”보다 “승인 후 실행” 문구를 강조</h3>
+          <p>샘플 요약: 제품 업데이트 문구가 에이전트 자율성보다 human approval gate를 먼저 설명하는 형태.</p>
+          <div class="chips"><span class="chip">canonical_url hash</span><span class="chip">needs review</span></div>
+        </article>
+        <article class="evidence-card">
+          <div class="metric-label">community · sample</div>
+          <h3>툴 비교 글에서 “작업 단위”가 더 선명해짐</h3>
+          <p>샘플 요약: 모델명 비교보다 리서치, 요약, 코드 리뷰, 영상 편집처럼 job-to-be-done 중심 표현이 많음.</p>
+          <div class="chips"><span class="chip">sample excerpt</span><span class="chip">low confidence</span></div>
+        </article>
+        <article class="evidence-card">
+          <div class="metric-label">pricing-page · sample</div>
+          <h3>크레딧·한도 설명이 구매 마찰 포인트로 표시</h3>
+          <p>샘플 요약: “월 N회”, “seat당”, “credit pack” 같은 단위가 스냅샷마다 달라 caveat가 필요.</p>
+          <div class="chips"><span class="chip">volatile field</span><span class="chip">verify later</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="dedupe_append_policy" aria-labelledby="dedupe_append_policy_title">
+      <h2 id="dedupe_append_policy_title"><span class="num">8</span>dedupe_append_policy · URL dedupe와 append 규칙</h2>
+      <p class="h2-sub">같은 URL·같은 주장의 중복을 줄이되, 시간차로 바뀐 내용을 잃지 않기 위한 정책 느낌을 구체화합니다.</p>
+      <div class="flow-card">
+        <div class="section-label">URL dedupe flow</div>
+        <div class="flow" aria-label="URL dedupe 처리 흐름">
+          <div class="flow-step"><b>1. normalize</b><p>scheme, host, trailing slash, tracking query, fragment를 정리해 <code>canonical_url</code>을 만듭니다.</p></div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-step"><b>2. compare</b><p>canonical URL과 title fingerprint를 비교해 동일 페이지·동일 주장 후보를 찾습니다.</p></div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-step"><b>3. append</b><p>날짜나 가격처럼 변동 가능 필드가 다르면 기존 레코드에 observation을 append합니다.</p></div>
+        </div>
+      </div>
+      <div class="policy-grid" style="margin-top:14px">
+        <article class="policy-card"><h3>동일 URL + 동일 주장</h3><p>기존 레코드의 <code>observations[]</code>에 수집 시점만 추가하고 top signal count는 1로 유지합니다.</p></article>
+        <article class="policy-card"><h3>동일 URL + 변경된 주장</h3><p>가격·기능·제한처럼 의미가 바뀐 경우 새 observation으로 append하고 caveat를 갱신합니다.</p></article>
+        <article class="policy-card"><h3>서로 다른 URL + 같은 주장</h3><p>증거 카드에는 대표 1개만 노출하되, backing sources count를 별도 표기합니다.</p></article>
+      </div>
+    </section>
+
+    <section id="metric_caveats" aria-labelledby="metric_caveats_title">
+      <h2 id="metric_caveats_title"><span class="num">9</span>metric_caveats · 지표 정직성 caveat</h2>
+      <p class="h2-sub">숫자는 설득 장치가 아니라 위험 표시 장치입니다. 표본·기간·수집 편향을 화면 안에 고정합니다.</p>
+      <div class="caveat">
+        <div class="section-label">Metric caveat</div>
+        <h3>이 대시보드의 숫자는 시장 규모, 성장률, 선호도, 구매 의향을 대표하지 않습니다</h3>
+        <p>sample/pretest dataset은 수집 채널, 키워드, 작성 시점, 중복 제거 방식에 강하게 좌우됩니다. 따라서 비율·순위·막대 길이는 <strong>다음 검증 우선순위</strong>를 정하는 내부 신호로만 사용해야 합니다.</p>
+      </div>
+      <div class="card-grid" style="margin-top:14px">
+        <div class="mini-card"><div class="metric-label">표본 편향</div><h3>채널별 노출 편차</h3><p>개발자 커뮤니티가 많으면 devtool 신호가 과대 표시될 수 있습니다.</p></div>
+        <div class="mini-card"><div class="metric-label">기간 편향</div><h3>짧은 관찰 창</h3><p>특정 출시 주간에는 release-note 신호가 비정상적으로 커질 수 있습니다.</p></div>
+        <div class="mini-card"><div class="metric-label">중복 편향</div><h3>재게시·요약글</h3><p>같은 원문을 여러 글이 요약하면 관심도가 아닌 재배포량으로 보일 수 있습니다.</p></div>
+      </div>
+    </section>
+
+    <section id="verification_notes" aria-labelledby="verification_notes_title">
+      <h2 id="verification_notes_title"><span class="num">10</span>verification_notes · 검증 메모</h2>
+      <p class="h2-sub">검증 완료를 주장하지 않고, 구현 이후 어떤 체크가 필요한지 명시합니다.</p>
+      <ul class="verify-list">
+        <li><b>V1</b><span><strong>URL 접근성 재확인:</strong> 샘플 URL이 공개 표면인지, 로그인이나 세션 의존이 없는지 확인해야 합니다.</span></li>
+        <li><b>V2</b><span><strong>원문-요약 대응:</strong> evidence_excerpt가 원문 의미를 과장하지 않는지 사람이 검수해야 합니다.</span></li>
+        <li><b>V3</b><span><strong>카테고리 일관성:</strong> agent workflow와 automation ops처럼 겹치는 라벨의 분류 기준을 문서화해야 합니다.</span></li>
+        <li><b>V4</b><span><strong>지표 표시 제한:</strong> mention count나 comment count를 점수처럼 보이게 만들지 않는 UI 톤을 유지해야 합니다.</span></li>
+      </ul>
+    </section>
+
+    <section id="next_actions" aria-labelledby="next_actions_title">
+      <h2 id="next_actions_title"><span class="num">11</span>next_actions · 다음 구현 액션</h2>
+      <p class="h2-sub">pretest 결과를 실제 모드 구현으로 옮길 때 필요한 체크리스트입니다. 이 HTML은 실제 소스에 모드를 추가하지 않습니다.</p>
+      <div class="action-grid">
+        <article class="action-card"><div class="metric-label">Contract</div><h3>스키마 우선 확정</h3><p><code>records.json</code> 필드와 enum을 먼저 확정한 뒤 카드·차트·테이블이 그 필드만 읽게 합니다.</p></article>
+        <article class="action-card"><div class="metric-label">Rendering</div><h3>무JS 차트 컴포넌트화</h3><p>막대, 카드, 상태 칩은 CSS-only로 유지하고, 수치가 missing일 때 자동으로 caveat 문구가 나오게 합니다.</p></article>
+        <article class="action-card"><div class="metric-label">Governance</div><h3>검증 상태를 최상단에 노출</h3><p>sample, pretest, unverified 상태가 header와 source_note에 반복 표시되어야 합니다.</p></article>
+      </div>
+    </section>
+
+    <section id="source_note" aria-labelledby="source_note_title">
+      <h2 id="source_note_title"><span class="num">12</span>source_note · 소스 노트</h2>
+      <p class="h2-sub">사용자가 가장 마지막에 보더라도 이 페이지가 선검수 샘플임을 알 수 있게 고정합니다.</p>
+      <div class="source-note">
+        <div class="section-label">Source note</div>
+        <p>본 문서는 <strong>신규 모드 선 반영 테스트용 단일 HTML</strong>입니다. 실제 adaptive-html-final 소스, 문서, 개발계획, manifest, validator에는 어떤 신규 모드도 추가하지 않았습니다.</p>
+        <ul>
+          <li>데이터셋: 가상 sample/pretest records 48건으로 구성한 화면 검수용 텍스트</li>
+          <li>정책: 실제 최신 트렌드, 시장 순위, 사용량, 매출, 성장률로 단정하지 않음</li>
+          <li>상호작용: 8개 테마 라디오와 앵커 이동만 사용, behavioral JavaScript 없음</li>
+          <li>출력 범위: <code>output/2026-06-21/new-mode-pretest/social-trend-dashboard/</code></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>
+
+<nav class="jump-dock" aria-label="빠른 이동">
+  <a href="#toc">목차</a>
+  <a class="secondary" href="#top">위</a>
+</nav>
+<footer>
+  <div class="footer-line">
+    <span>Generated for social_trend_dashboard pretest · sample dataset only</span>
+    <span>No external CSS · No behavioral JS · Read-only visual/content smoke</span>
+  </div>
+</footer>
+</body>
+</html>

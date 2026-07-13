@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-06-20T13:32:15.167Z",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/390.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/1280.png"
+    }
+  },
+  "pages": {
+    "index.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 13857,
+        "title": "GrantProof Core 사업계획서 · bizplan skill-only · adaptive-html-final v5.10.5",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 8534,
+        "title": "GrantProof Core 사업계획서 · bizplan skill-only · adaptive-html-final v5.10.5",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/1280.png"
+      }
+    }
+  },
+  "micro_layout": {
+    "all_ok": true,
+    "checks": {
+      "heading_badge_nowrap": true,
+      "rail_color_variety": true,
+      "rail_text_padding": true,
+      "card_vertical_rhythm": true,
+      "footer_centered": true,
+      "no_noncanonical_classes": true
+    },
+    "failures": []
+  }
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "name": "프로젝트 project.json",
+    "url": "sources/project.json",
+    "role": "공고/RFP/기간/예산/TRL/최종 산출물 메타"
+  },
+  {
+    "name": "아이디어 브리프",
+    "url": "sources/idea-brief.md",
+    "role": "RFP 11 한 줄 정의, 고정 요구, 보유 자산, 사업화"
+  },
+  {
+    "name": "business-core.yaml",
+    "url": "sources/business-core.yaml",
+    "role": "문제·해결·기술·시장·경쟁·재무·영향 단일 코어"
+  },
+  {
+    "name": "종합 리서치 보고서",
+    "url": "sources/research-report.md",
+    "role": "시장·정책·경쟁·기술·특허·논문 조사 요약"
+  },
+  {
+    "name": "Executive Summary",
+    "url": "sources/executive-summary.md",
+    "role": "최종 사업계획 요약과 핵심 정량 목표"
+  },
+  {
+    "name": "AI and Sustainable Development Goals",
+    "url": "https://arxiv.org/abs/1905.00501",
+    "role": "AI가 SDGs를 지원할 수 있지만 투명성·안전·윤리 규제가 필요하다는 일반 근거"
+  },
+  {
+    "name": "Real-world Anomaly Detection in Surveillance Videos",
+    "url": "https://arxiv.org/abs/1801.04264",
+    "role": "감시 영상 이상탐지 데이터셋/약지도 학습의 대표 연구 근거"
+  },
+  {
+    "name": "Stanford STORM Research Project",
+    "url": "https://storm-project.stanford.edu/research/storm/",
+    "role": "다관점 질문+출처 grounding 리서치 방식"
+  },
+  {
+    "name": "STORM paper · arXiv:2402.14207",
+    "url": "https://arxiv.org/abs/2402.14207",
+    "role": "STORM 방법론 출처"
+  }
+]

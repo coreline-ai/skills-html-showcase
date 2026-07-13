@@ -1,0 +1,8 @@
+{
+  "target": "sources/x-ai-trend-collector-artifacts/AI_영상_트렌드_대시보드.html",
+  "title": "X AI 트렌드 대시보드",
+  "interaction": "search input #q = Veo",
+  "cards_after_search": 2,
+  "console_errors": 0,
+  "status": "PASS"
+}

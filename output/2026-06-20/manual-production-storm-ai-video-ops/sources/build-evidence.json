@@ -1,0 +1,112 @@
+{
+  "mode": "manual_analysis",
+  "profile": "auto",
+  "layout": "manual-analysis.html",
+  "layout_class": "layout-manual",
+  "primary_vt": "hero-map",
+  "primary_wg": "wg-13",
+  "section_mapping": {
+    "layout": "manual-analysis.html",
+    "VERDICT": "운영 판정 + vt hero-map + STORM 관점",
+    "READER_TOC": "manual-reader-toc chip navigation",
+    "SOURCE_VERSION": "출처/버전 snapshot + system overview",
+    "ROLE_ROUTER": "역할별 책임",
+    "FIRST_SUCCESS": "30분 첫 컷 기준",
+    "PREREQUISITES_SAFETY": "사전조건/안전/위험 소재",
+    "TASK_RECIPES": "wg-13 flowchart + contradiction map",
+    "REFERENCE_EXTRACT": "evidence ledger fields",
+    "DECISION_GUIDE": "공개 전 결정표",
+    "TROUBLESHOOTING": "증상/원인/진단",
+    "OPERATIONS_RUNBOOK": "운영 주기",
+    "MANUAL_AUDIT": "Source Limits + verification boundary",
+    "NEXT_ACTIONS": "실행 산출물",
+    "SOURCE_NOTE": "source hub"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "80b912c06fb1055ca14e99123c01a99b89765cbd8935616dbff3ac48efaef002"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "5091eca47d175172114ccd1bbac35744d73da60540c9f25af050688f6ffa4a94"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/manual-analysis.html",
+      "sha256": "82e1d983b39bb7560f6fc36ce55cef4ed9fb1324d9ea9aef5d0a272d7e85c719"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/13-annotated-flowchart.html",
+      "sha256": "406be36f9f41e45b62e0518dc17362b768e4137b9e47702b59b68fdf8653d0c5"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/manual-analysis-system.md",
+      "sha256": "d4b938558e7485ce8f348551c3fff1dafde0cd04e7208dcdf27ae6e5fc642fd9"
+    },
+    {
+      "path": "skills/adaptive-html-final/references/layout-system.md",
+      "sha256": "74209d73bebcef56f0f6c242a73d0ef45793ae2bdc74b9e89d58e10dc178d2f9"
+    },
+    {
+      "path": "orginal_skill/manual-production/SKILL.md",
+      "sha256": "26e9a9469aa1062585c225cd8456dd22a9bdfe4c135434bdaa4c54a64d75e00c"
+    },
+    {
+      "path": "orginal_skill/manual-production/references/beginner-friendly-manual-patterns.md",
+      "sha256": "49ac061ca003fa6b691010266aa7d2db9c6835467e4aca02c1322369e4b8ad0d"
+    },
+    {
+      "path": "orginal_skill/manual-production/references/system-overview-page-for-beginners.md",
+      "sha256": "30a74f457472b5554ed4f0bed59bf85f6fecfdf990857fffe130d360b7e460b7"
+    },
+    {
+      "path": "orginal_skill/manual-production/references/content-verification-checklist.md",
+      "sha256": "3c95323867cd9b6a63da98a655b733af291b5adeb277d5c3c8a406cc4f3c1a53"
+    },
+    {
+      "path": "orginal_skill/manual-production/references/technical-verification-checklist.md",
+      "sha256": "f42cb9919c6745395317cd382d6d6bfab9b696baf18a73e6d59cb9d05bcb1b9d"
+    },
+    {
+      "path": "orginal_skill/manual-production/references/manual-phase-gates.md",
+      "sha256": "a58bc60ff17284bb842621d0474a5ed7705263ac0174ffec858681d2845a2a9d"
+    },
+    {
+      "path": "orginal_skill/manual-production/references/workflow-inventory-template.md",
+      "sha256": "0d933eaba619c70f1d919d223747577ab0d7dbf73018558499effa5feb267ec4"
+    },
+    {
+      "path": "orginal_skill/storm-research/SKILL.md",
+      "sha256": "866622b669953de1c1f235fcc9bb86c70ee06322c90b01ae8008705372a04932"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/storm-pipeline.md",
+      "sha256": "ebe8bc4eb959ff2a7c84d8456ceb8ee18d17e25e65e192c1a109df1ffd08e6c2"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/provenance.md",
+      "sha256": "8d15a93d4c0a305d44612241d05d2d006703b122f8c0616012368c0f1b942d7c"
+    }
+  ],
+  "input_snapshots": [
+    "sources/storm-scan.md",
+    "sources/storm-contradiction-map.md",
+    "sources/storm-synthesis.md",
+    "sources/storm-peer-review.md",
+    "sources/manual-production-application.json"
+  ],
+  "research_route": "storm-research solo fallback; web-sourced claims stored in source-list.json",
+  "manual_verification_boundary": "dedicated manual-verification skill not installed; not claiming manual-verification PASS"
+}

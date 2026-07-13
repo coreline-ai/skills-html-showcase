@@ -1,0 +1,58 @@
+{
+  "business_plan": {
+    "bytes": 261650,
+    "html_lang_ko": true,
+    "viewport": true,
+    "h1_count": 1,
+    "main_id": true,
+    "theme_radios": 8,
+    "behavioral_script": 0,
+    "core_hash_a64604d0": true,
+    "layout_class": true,
+    "toc_map": true,
+    "source_note": true,
+    "ok": true
+  },
+  "storm_research": {
+    "bytes": 263317,
+    "html_lang_ko": true,
+    "viewport": true,
+    "h1_count": 1,
+    "main_id": true,
+    "theme_radios": 8,
+    "behavioral_script": 0,
+    "core_hash_a64604d0": true,
+    "layout_class": true,
+    "toc_map": true,
+    "source_note": true,
+    "ok": true
+  },
+  "social_trend": {
+    "bytes": 259078,
+    "html_lang_ko": true,
+    "viewport": true,
+    "h1_count": 1,
+    "main_id": true,
+    "theme_radios": 8,
+    "behavioral_script": 0,
+    "core_hash_a64604d0": true,
+    "layout_class": true,
+    "toc_map": true,
+    "source_note": true,
+    "ok": true
+  },
+  "operator_manual": {
+    "bytes": 263108,
+    "html_lang_ko": true,
+    "viewport": true,
+    "h1_count": 1,
+    "main_id": true,
+    "theme_radios": 8,
+    "behavioral_script": 0,
+    "core_hash_a64604d0": true,
+    "layout_class": true,
+    "toc_map": true,
+    "source_note": true,
+    "ok": true
+  }
+}

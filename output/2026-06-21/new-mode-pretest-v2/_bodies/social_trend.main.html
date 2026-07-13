@@ -1,0 +1,171 @@
+<main id="main" class="page-wide layout-social-trend">
+<header class="header"><div class="kicker"><span class="kicker-text">SOCIAL TREND DASHBOARD</span></div><h1>X(트위터) AI 에이전트 트렌드 수집 대시보드</h1><p class="sub">2026년 6월 첫 2주간 X에서 수집한 AI 에이전트 관련 공개 게시물을 표준 레코드 스키마로 정규화한 읽기 전용 트렌드 대시보드다. 검색·정렬·칩 필터 같은 동작형 UI 대신, 사전 분류·사전 정렬된 정적 섹션으로 같은 정보를 무 JS로 전달한다. 모든 지표는 공개 노출값만 사용하며 확인 불가 시 0 또는 unknown으로 표기한다.</p><div class="meta"><span>social_trend_dashboard</span><span>social-trend-dashboard.html</span><span>profile auto</span><span>adaptive-html-final v5.13.0</span><span>무 JS</span><span>읽기 전용 수집</span></div><div class="generated-row"><p class="generated-date">생성 기준: 2026-06-15 KST · 수집 창 2026-06-01 ~ 2026-06-14 · 레코드 18건</p><div class="lens-strip" aria-label="적용 렌즈"><span class="lens-strip-label">LENS</span><span class="lens-chip">읽기 전용</span><span class="lens-chip">URL dedupe</span><span class="lens-chip">지표 정직성</span><span class="lens-chip">정적 렌더</span></div></div></header>
+
+<nav class="toc-map" aria-label="문서 목차"><span class="label">문서 목차</span><p>핵심 섹션을 정적 chip-nav로 이동합니다. 검색 입력 없이 사전 분류된 섹션으로 직접 점프합니다.</p><div class="toc-pills"><a class="toc-pill" href="#section-01"><b>1</b>수집 범위 브리프</a><a class="toc-pill" href="#section-02"><b>2</b>수집 경로와 한계</a><a class="toc-pill" href="#section-03"><b>3</b>레코드 스키마</a><a class="toc-pill" href="#section-04"><b>4</b>수집 요약 · append/update</a><a class="toc-pill" href="#section-05"><b>5</b>카테고리별 레코드</a><a class="toc-pill" href="#section-06"><b>6</b>상위 신호와 비교</a><a class="toc-pill" href="#section-07"><b>7</b>지표 정직성 규칙</a><a class="toc-pill" href="#section-08"><b>8</b>중복/추가 정책</a><a class="toc-pill" href="#section-09"><b>9</b>검증 노트</a></div></nav>
+
+<section class="executive-summary" id="section-01"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M14 27h12M16 32h8"/><path class="bi-soft" d="M20 7c-6 0-10 4.4-10 9.7 0 3.7 2 6.2 4.5 8.1h11c2.5-1.9 4.5-4.4 4.5-8.1C30 11.4 26 7 20 7z"/><circle class="bi-accent" cx="20" cy="16" r="3"/></svg></span><span class="num is-key" aria-hidden="true">1</span>수집 범위 브리프</h2><p class="h2-sub">무엇을, 언제, 어디서, 몇 건 수집했는지를 먼저 고정한다 — 수집 범위가 결과 해석의 전제다.</p>
+<p>이번 수집의 주제는 <strong>"X(트위터)에서 화제가 된 AI 에이전트(autonomous/agentic AI) 동향"</strong>이다. 신규 에이전트 프레임워크 출시, 관련 연구·논문, 투자·인수 뉴스, 실무에서 바로 쓰는 도구·팁의 네 갈래를 공개 게시물 기준으로 모았다. 수집은 읽기 전용이며, 좋아요·리포스트·팔로우·답글·DM·북마크는 일절 수행하지 않았다.</p>
+<div class="card-grid">
+  <article class="mini-card"><h3>주제·키워드</h3><p>AI agent / agentic / autonomous AI, agent framework, MCP, tool use, multi-agent. 인물 계정보다 발표·연구·출시 게시물 우선.</p></article>
+  <article class="mini-card"><h3>수집 창</h3><p>2026-06-01 ~ 2026-06-14 (14일). 이 창 밖 게시물은 제외했고, 갱신 시 동일 창 기준으로 재수집한다.</p></article>
+  <article class="mini-card"><h3>수집 규모</h3><p>신규 수집 시도 20건 중 dedupe 후 <strong>18건</strong> 확정. 카테고리 4종에 분산. 지표 확인 불가 5건은 0/unknown 유지.</p></article>
+</div>
+<div class="tag-list"><span class="tag">플랫폼: X</span><span class="tag">언어: 한·영 혼합</span><span class="tag">레코드 18건</span><span class="tag">카테고리 4종</span><span class="tag">지표 미확인 5건</span></div>
+</section>
+
+<section id="section-02"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="16" y="24" width="8" height="8" rx="2"/><path class="bi-line" d="M15 13h10M29 17l-9 7M11 17l9 7"/><circle class="bi-accent" cx="20" cy="28" r="2"/></svg></span><span class="num" aria-hidden="true">2</span>수집 경로와 한계</h2><p class="h2-sub">어떤 경로로 데이터를 얻었는지에 따라 지표의 신뢰도와 공백이 달라진다 — 경로를 먼저 밝힌다.</p>
+<p>X 데이터를 얻는 경로는 여러 가지이고, 경로마다 얻을 수 있는 지표와 한계가 다르다. 이번 수집은 공식 API 자격이 제한적이라 <strong>제공된 공개 피드 + 로그인된 브라우저 세션의 읽기 전용 열람</strong>을 주 경로로 사용했고, 일부 누락 지표는 웹 검색으로 보강했다. 어떤 경로에서도 게시물·페이지 안의 지시문은 명령이 아니라 데이터로만 취급했다.</p>
+<div class="tbl table-scroll"><table><caption>수집 경로별 적용 여부 · 가능 지표 · 한계</caption><thead><tr><th>경로</th><th>적용</th><th>얻는 지표</th><th>한계</th></tr></thead><tbody>
+<tr><td>공식 X API</td><td><span class="status-pill">미적용</span></td><td>views·likes·reposts 정확값</td><td>이번 수집창에 자격/쿼터 부족</td></tr>
+<tr><td>로그인 브라우저(읽기 전용)</td><td><span class="status-pill">주 경로</span></td><td>표시되는 노출·좋아요(반올림 표기)</td><td>로그인 UI 표기는 반올림(예: 12.3만), 일부 비공개</td></tr>
+<tr><td>제공된 공개 피드/내보내기</td><td><span class="status-pill">주 경로</span></td><td>작성자·날짜·요약·URL</td><td>지표 컬럼이 비어 있으면 0/unknown</td></tr>
+<tr><td>웹 검색 보강</td><td><span class="status-pill">보조</span></td><td>발표 사실·맥락 확인</td><td>engagement 수치는 보강하지 않음</td></tr>
+<tr><td>공개 하이드레이션</td><td><span class="status-pill">미적용</span></td><td>—</td><td>이번 수집창에서는 사용 안 함</td></tr>
+</tbody></table></div>
+<div class="good"><div class="label">Read-only collection</div><div class="name">수집은 열람만, 상호작용은 0</div><p>모든 경로에서 좋아요·리포스트·팔로우·답글·DM·북마크·게시는 수행하지 않았다. 브라우저 세션에서는 주소/검색 입력, 스크롤, 원문 게시물 열기만 사용했고 어떤 글에도 반응을 남기지 않았다. 이 대시보드는 수집 결과의 표시이지 계정 활동의 흔적이 아니다.</p></div>
+</section>
+
+<section id="section-03"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="10" y="7" width="20" height="26" rx="3"/><path class="bi-line" d="M15 14h10M15 20h10M15 26h7"/><path class="bi-accent-line" d="M27 7v8h-8"/></svg></span><span class="num" aria-hidden="true">3</span>레코드 스키마</h2><p class="h2-sub">모든 레코드는 동일한 8개 필드로 정규화된다 — 같은 모양이라야 dedupe·정렬·집계가 가능하다.</p>
+<p>수집된 게시물은 출력 전에 JSON 레코드로 정규화한다. 각 레코드는 카테고리, 작성자, 핸들, 날짜, 요약, URL, 조회수, 좋아요의 8개 필드를 가지며, 요약은 한국어 1~2문장으로 사실 위주·출처 결속이다. 아래는 단일 레코드의 표준 구조다.</p>
+<pre class="code"><code>{
+  "cat": "신규 모델·제품 출시",
+  "author": "Anthropic",
+  "handle": "@AnthropicAI",
+  "date": "2026-06-05",
+  "summary": "에이전트 도구 호출을 표준화하는 신규 SDK를 공개. MCP 호환 명시.",
+  "url": "https://x.com/AnthropicAI/status/1930000000000000001",
+  "views": 412000,
+  "likes": 5800
+}</code></pre>
+<div class="tbl table-scroll"><table><caption>레코드 필드 정의 · 필수 여부 · 미확인 시 처리</caption><thead><tr><th>필드</th><th>의미</th><th>필수</th><th>미확인 시</th></tr></thead><tbody>
+<tr><td><code>cat</code></td><td>표준 카테고리 4종 중 하나</td><td>필수</td><td>분류 불가 시 가장 가까운 카테고리, 임의 신설 금지</td></tr>
+<tr><td><code>author</code></td><td>작성자 표시명</td><td>권장</td><td>unknown</td></tr>
+<tr><td><code>handle</code></td><td>@핸들</td><td>권장</td><td>unknown</td></tr>
+<tr><td><code>date</code></td><td>게시 날짜(YYYY-MM-DD)</td><td>권장</td><td>unknown</td></tr>
+<tr><td><code>summary</code></td><td>한국어 1~2문장 사실 요약</td><td>필수</td><td>요약 없는 레코드는 채택하지 않음</td></tr>
+<tr><td><code>url</code></td><td>원문 게시물 URL — <strong>dedupe 키</strong></td><td>필수</td><td>URL 없는 레코드는 채택하지 않음</td></tr>
+<tr><td><code>views</code></td><td>노출/조회 수</td><td>선택</td><td><strong>0</strong> (추정 금지)</td></tr>
+<tr><td><code>likes</code></td><td>좋아요 수</td><td>선택</td><td><strong>0</strong> (추정 금지)</td></tr>
+</tbody></table></div>
+<div class="term"><div class="label">Dedupe key</div><span class="word">url</span><p class="meaning"><code>url</code>은 레코드를 식별하는 유일 키다. 같은 게시물을 다시 수집하면 새 행을 추가하지 않고 기존 행을 최신 값으로 갱신한다. URL은 쿼리스트링·트래킹 파라미터를 제거한 정규화 형태로 비교한다.</p></div>
+</section>
+
+<section id="section-04"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-line" d="M13 27h14"/><rect class="bi-soft" x="14" y="20" width="3" height="7" rx="1"/><rect class="bi-accent-box" x="19" y="15" width="3" height="12" rx="1"/><rect class="bi-dot-box" x="24" y="18" width="3" height="9" rx="1"/></svg></span><span class="num" aria-hidden="true">4</span>수집 요약 · append/update</h2><p class="h2-sub">신규 수집을 기존 데이터셋에 병합한 결과를 incoming/existing/added_net/total로 닫는다.</p>
+<p>이번 실행은 기존 데이터셋(11건)에 이번 창 수집분(20건 시도)을 병합한 결과다. URL 기준 dedupe·update를 거쳐 순증 7건, 기존 4건 갱신으로 총 18건이 되었다.</p>
+<div class="card-grid">
+  <article class="mini-card"><h3>existing</h3><p>병합 전 기존 레코드 <strong>11</strong>건</p></article>
+  <article class="mini-card"><h3>incoming</h3><p>이번 창 수집 시도 <strong>20</strong>건</p></article>
+  <article class="mini-card"><h3>added_net</h3><p>중복 제거 후 순증 <strong>+7</strong>건</p></article>
+  <article class="mini-card"><h3>updated</h3><p>기존 URL 값 갱신 <strong>4</strong>건</p></article>
+  <article class="mini-card"><h3>duplicates</h3><p>동일 URL 재수집 <strong>13</strong>건(병합)</p></article>
+  <article class="mini-card"><h3>total</h3><p>병합 후 데이터셋 <strong>18</strong>건</p></article>
+</div>
+<section class="vt-shell"><div class="vt-shell-head"><div><div class="vt-id">VT · TIMELINE</div><h2>병합 파이프라인 순서</h2><p>수집 → 정규화 → dedupe/update → 집계 → 정적 렌더의 단방향 흐름입니다.</p></div><span class="vt-fit">append/update</span></div><div class="vt-frame"><ol class="timeline-card">
+<li><strong>수집</strong> — 읽기 전용으로 게시물 열람, 8필드 후보 추출(20건 시도).</li>
+<li><strong>정규화</strong> — 카테고리 매핑, 요약 1~2문장, URL 정규화, 미확인 지표 0/unknown.</li>
+<li><strong>dedupe/update</strong> — URL 키로 기존 11건과 대조, 중복 13건은 갱신, 신규 7건 추가.</li>
+<li><strong>집계</strong> — 카테고리 분포·상위 신호 계산(확인된 지표만 사용).</li>
+<li><strong>정적 렌더</strong> — 사전 분류·사전 정렬된 섹션으로 무 JS 출력.</li>
+</ol></div></section>
+</section>
+
+<section id="section-05"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="7" y="9" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="9" width="8" height="8" rx="2"/><rect class="bi-fill" x="7" y="23" width="8" height="8" rx="2"/><rect class="bi-soft" x="25" y="23" width="8" height="8" rx="2"/></svg></span><span class="num" aria-hidden="true">5</span>카테고리별 레코드</h2><p class="h2-sub">원본의 칩 필터를 동작 UI 없이 대체한다 — 카테고리마다 별도 섹션으로 사전 분류해 둔다.</p>
+<p>원본 수집기는 카테고리 칩을 눌러 목록을 필터링하는 JS UI를 썼다. 무 JS 환경에서는 같은 분류 의미를 <strong>고정된 4개 하위 섹션</strong>으로 펼친다. 사용자는 위 목차 chip-nav에서 이 섹션으로 이동한 뒤 원하는 카테고리 표를 바로 읽는다. 각 행은 작성자·핸들·날짜·요약·지표·URL의 타입드 레코드 카드/행이다.</p>
+
+<h3>5.1 신규 모델·제품 출시 <span class="status-pill">6건</span></h3>
+<div class="tbl table-scroll"><table><caption>신규 모델·제품 출시 — date 내림차순 사전 정렬</caption><thead><tr><th>날짜</th><th>작성자 / 핸들</th><th>요약</th><th>조회</th><th>좋아요</th><th>원문</th></tr></thead><tbody>
+<tr><td>2026-06-12</td><td>OpenAgents<br>@openagents</td><td>멀티 에이전트 오케스트레이션 런타임 v2를 공개. 도구 호출 병렬화와 비용 태깅을 기본 제공.</td><td>318,000</td><td>4,210</td><td><a href="https://x.com/openagents/status/1932000000000000010">원문</a></td></tr>
+<tr><td>2026-06-09</td><td>Anthropic<br>@AnthropicAI</td><td>에이전트 도구 호출 표준 SDK 업데이트. MCP 호환과 장기 작업 체크포인트를 추가.</td><td>412,000</td><td>5,800</td><td><a href="https://x.com/AnthropicAI/status/1931000000000000001">원문</a></td></tr>
+<tr><td>2026-06-07</td><td>LangFlow<br>@langflow</td><td>비주얼 에이전트 빌더에 코드 내보내기와 평가 하니스를 통합한 신버전 출시.</td><td>96,500</td><td>1,330</td><td><a href="https://x.com/langflow/status/1930500000000000020">원문</a></td></tr>
+<tr><td>2026-06-05</td><td>unknown<br>unknown</td><td>오픈소스 로컬 에이전트 런타임 첫 릴리스. 게시물 노출 지표가 표시되지 않아 0으로 둠.</td><td>0</td><td>0</td><td><a href="https://x.com/i/status/1930000000000000099">원문</a></td></tr>
+<tr><td>2026-06-04</td><td>HaystackAI<br>@haystack_ai</td><td>RAG+에이전트 하이브리드 파이프라인 템플릿 공개. 엔터프라이즈 커넥터 6종 동봉.</td><td>54,200</td><td>870</td><td><a href="https://x.com/haystack_ai/status/1929800000000000030">원문</a></td></tr>
+<tr><td>2026-06-02</td><td>CrewWorks<br>@crewworks</td><td>역할 기반 멀티 에이전트 프레임워크의 안정 버전 발표. 휴먼-인-더-루프 승인 단계 추가.</td><td>71,000</td><td>1,040</td><td><a href="https://x.com/crewworks/status/1929000000000000040">원문</a></td></tr>
+</tbody></table></div>
+
+<h3>5.2 연구·논문 동향 <span class="status-pill">4건</span></h3>
+<div class="tbl table-scroll"><table><caption>연구·논문 동향 — date 내림차순 사전 정렬</caption><thead><tr><th>날짜</th><th>작성자 / 핸들</th><th>요약</th><th>조회</th><th>좋아요</th><th>원문</th></tr></thead><tbody>
+<tr><td>2026-06-13</td><td>arXiv bot<br>@arxiv_cs_ai</td><td>장기 에이전트 작업에서의 오류 누적을 줄이는 자기검증 루프 논문. 벤치 12% 향상 보고.</td><td>33,400</td><td>520</td><td><a href="https://x.com/arxiv_cs_ai/status/1932100000000000050">원문</a></td></tr>
+<tr><td>2026-06-10</td><td>DeepMind<br>@GoogleDeepMind</td><td>도구 사용 에이전트의 일반화 평가용 신규 벤치마크를 공개. 데이터셋과 코드 동봉.</td><td>205,000</td><td>3,100</td><td><a href="https://x.com/GoogleDeepMind/status/1931200000000000060">원문</a></td></tr>
+<tr><td>2026-06-06</td><td>unknown<br>@ml_paper_daily</td><td>다중 에이전트 협업의 통신 비용 분석 논문 요약 스레드. 좋아요 수치는 표시되지 않아 0.</td><td>18,900</td><td>0</td><td><a href="https://x.com/ml_paper_daily/status/1930200000000000070">원문</a></td></tr>
+<tr><td>2026-06-03</td><td>Stanford NLP<br>@stanfordnlp</td><td>에이전트 메모리 압축 기법 비교 연구. 장기 대화에서 토큰 비용 절감 효과 제시.</td><td>47,800</td><td>790</td><td><a href="https://x.com/stanfordnlp/status/1929300000000000080">원문</a></td></tr>
+</tbody></table></div>
+
+<h3>5.3 업계·투자 뉴스 <span class="status-pill">4건</span></h3>
+<div class="tbl table-scroll"><table><caption>업계·투자 뉴스 — date 내림차순 사전 정렬</caption><thead><tr><th>날짜</th><th>작성자 / 핸들</th><th>요약</th><th>조회</th><th>좋아요</th><th>원문</th></tr></thead><tbody>
+<tr><td>2026-06-11</td><td>TechCrunch<br>@TechCrunch</td><td>에이전트 인프라 스타트업이 시리즈 B로 1.2억 달러 유치. 엔터프라이즈 자동화 타깃.</td><td>156,000</td><td>2,050</td><td><a href="https://x.com/TechCrunch/status/1931900000000000090">원문</a></td></tr>
+<tr><td>2026-06-08</td><td>unknown<br>unknown</td><td>대형 SaaS 기업의 에이전트 스타트업 인수설 보도 인용. 노출/좋아요 모두 미표시로 0.</td><td>0</td><td>0</td><td><a href="https://x.com/i/status/1930800000000000100">원문</a></td></tr>
+<tr><td>2026-06-05</td><td>The Information<br>@theinformation</td><td>엔터프라이즈 에이전트 도입 설문. 응답 기업 절반이 파일럿 단계라고 보도.</td><td>88,300</td><td>1,180</td><td><a href="https://x.com/theinformation/status/1930100000000000110">원문</a></td></tr>
+<tr><td>2026-06-02</td><td>VCpulse<br>@vcpulse</td><td>2026 상반기 AI 에이전트 분야 투자액 집계 스레드. 분기 대비 증가 추세 정리.</td><td>42,600</td><td>610</td><td><a href="https://x.com/vcpulse/status/1929100000000000120">원문</a></td></tr>
+</tbody></table></div>
+
+<h3>5.4 실무 팁·도구 <span class="status-pill">4건</span></h3>
+<div class="tbl table-scroll"><table><caption>실무 팁·도구 — date 내림차순 사전 정렬</caption><thead><tr><th>날짜</th><th>작성자 / 핸들</th><th>요약</th><th>조회</th><th>좋아요</th><th>원문</th></tr></thead><tbody>
+<tr><td>2026-06-14</td><td>devtips_ai<br>@devtips_ai</td><td>에이전트 도구 호출 실패를 줄이는 스키마 검증 패턴 정리. 재시도 로직 예제 포함.</td><td>61,200</td><td>980</td><td><a href="https://x.com/devtips_ai/status/1932300000000000130">원문</a></td></tr>
+<tr><td>2026-06-09</td><td>unknown<br>@prompt_eng</td><td>멀티 에이전트 비용을 절반으로 줄인 캐싱 전략 스레드. 조회수만 확인되어 좋아요 0.</td><td>29,500</td><td>0</td><td><a href="https://x.com/prompt_eng/status/1931100000000000140">원문</a></td></tr>
+<tr><td>2026-06-06</td><td>MLops weekly<br>@mlops_weekly</td><td>프로덕션 에이전트 관측(observability) 체크리스트. 추적·비용·실패율 항목 제시.</td><td>37,800</td><td>540</td><td><a href="https://x.com/mlops_weekly/status/1930600000000000150">원문</a></td></tr>
+<tr><td>2026-06-03</td><td>buildwithai<br>@buildwithai</td><td>로컬에서 에이전트를 빠르게 평가하는 오픈소스 하니스 사용기. 설정 단계 캡처 동봉.</td><td>22,100</td><td>410</td><td><a href="https://x.com/buildwithai/status/1929400000000000160">원문</a></td></tr>
+</tbody></table></div>
+</section>
+
+<section id="section-06"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-line" d="M13 7v26"/><circle class="bi-dot" cx="13" cy="10" r="3"/><circle class="bi-accent" cx="13" cy="20" r="3"/><circle class="bi-soft" cx="13" cy="30" r="3"/><path class="bi-line" d="M21 11h10M21 20h7M21 30h9"/></svg></span><span class="num is-key" aria-hidden="true">6</span>상위 신호와 비교</h2><p class="h2-sub">원본의 정렬 토글을 동작 UI 없이 대체한다 — 확인된 지표만으로 사전 정렬한 상위 목록을 고정 표시한다.</p>
+<p>원본 대시보드는 조회/좋아요 정렬 버튼을 제공했다. 무 JS 환경에서는 정렬 결과 자체를 <strong>미리 계산해 고정</strong>한다. 아래는 조회수 확인값 기준 상위 신호이며, 지표가 0/unknown인 레코드는 순위에서 제외했음을 명시한다.</p>
+<div class="tbl table-scroll"><table><caption>조회수 확인값 기준 상위 5 (views=0/unknown 레코드 제외)</caption><thead><tr><th>순위</th><th>카테고리</th><th>작성자</th><th>조회</th><th>좋아요</th><th>원문</th></tr></thead><tbody>
+<tr><td>1</td><td>신규 모델·제품 출시</td><td>Anthropic</td><td>412,000</td><td>5,800</td><td><a href="https://x.com/AnthropicAI/status/1931000000000000001">원문</a></td></tr>
+<tr><td>2</td><td>신규 모델·제품 출시</td><td>OpenAgents</td><td>318,000</td><td>4,210</td><td><a href="https://x.com/openagents/status/1932000000000000010">원문</a></td></tr>
+<tr><td>3</td><td>연구·논문 동향</td><td>DeepMind</td><td>205,000</td><td>3,100</td><td><a href="https://x.com/GoogleDeepMind/status/1931200000000000060">원문</a></td></tr>
+<tr><td>4</td><td>업계·투자 뉴스</td><td>TechCrunch</td><td>156,000</td><td>2,050</td><td><a href="https://x.com/TechCrunch/status/1931900000000000090">원문</a></td></tr>
+<tr><td>5</td><td>신규 모델·제품 출시</td><td>LangFlow</td><td>96,500</td><td>1,330</td><td><a href="https://x.com/langflow/status/1930500000000000020">원문</a></td></tr>
+</tbody></table></div>
+<section class="vt-shell"><div class="vt-shell-head"><div><div class="vt-id">VT · COMPARISON</div><h2>카테고리 신호 비교</h2><p>건수와 확인된 조회 합으로 본 카테고리별 활동량 — 추정값은 더하지 않습니다.</p></div><span class="vt-fit">comparison cards</span></div><div class="vt-frame"><div class="cmp">
+<div class="cmp-card pick"><div class="vt-kicker">최다 신호</div><h3>신규 모델·제품 출시</h3><ul><li>레코드 6건</li><li>확인 조회 합 ≈ 953K</li><li>지표 미확인 1건(0 처리)</li></ul></div>
+<div class="cmp-card"><div class="vt-kicker">연구</div><h3>연구·논문 동향</h3><ul><li>레코드 4건</li><li>확인 조회 합 ≈ 305K</li><li>좋아요 미확인 1건(0 처리)</li></ul></div>
+<div class="cmp-card"><div class="vt-kicker">시장</div><h3>업계·투자 뉴스</h3><ul><li>레코드 4건</li><li>확인 조회 합 ≈ 287K</li><li>지표 전부 미확인 1건(0 처리)</li></ul></div>
+</div></div></section>
+<div class="core-insight core-insight--neutral"><blockquote>이번 창의 신호는 "신규 에이전트 런타임 출시"에 가장 강하게 몰렸다.</blockquote><p>출시 카테고리가 건수와 확인 조회 합 모두에서 1위였고, 연구·투자가 그 뒤를 이었다. 다만 이 결론은 <strong>확인된 지표만</strong>으로 도출했으며, 0/unknown 레코드 5건이 채워지면 순위가 달라질 수 있다.</p></div>
+</section>
+
+<section id="section-07"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-fill" d="M20 7l11 4v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8z"/><path class="bi-accent-line" d="M15 20l4 4 7-9"/></svg></span><span class="num" aria-hidden="true">7</span>지표 정직성 규칙</h2><p class="h2-sub">없는 숫자는 만들지 않는다 — 미확인·숨김·반올림 지표를 표기 규칙으로 고정한다.</p>
+<p>X의 노출·좋아요는 경로에 따라 가려지거나 반올림되어 표시된다. 이 대시보드는 그 한계를 숨기지 않고 표기 규칙으로 드러낸다. <strong>지표를 확인할 수 없으면 0 또는 unknown으로 두며, 어떤 경우에도 추정값을 만들어 넣지 않는다.</strong></p>
+<div class="tbl table-scroll"><table><caption>지표 상태별 표기 규칙</caption><thead><tr><th>상태</th><th>표기</th><th>순위 반영</th><th>예시</th></tr></thead><tbody>
+<tr><td>정확값 확인</td><td>숫자 그대로</td><td>반영</td><td>views 412,000</td></tr>
+<tr><td>UI 반올림</td><td>표시값 + 반올림 주석</td><td>반영(주의)</td><td>"약 12.3만"</td></tr>
+<tr><td>미표시/숨김</td><td><strong>0</strong></td><td>제외</td><td>views 0 · likes 0</td></tr>
+<tr><td>작성자/날짜 불명</td><td><strong>unknown</strong></td><td>해당 없음</td><td>author unknown</td></tr>
+</tbody></table></div>
+<div class="danger"><div class="label">Anti-pattern</div><div class="name">빈 칸을 그럴듯한 숫자로 채우기</div><p>"비슷한 게시물이 보통 1만 정도니까 1만으로 둔다" 같은 보간은 금지된다. 추정 한 번이 전체 상위 신호 순위를 왜곡하고, 이후 갱신에서 진짜 값과 충돌한다. 미확인은 끝까지 0/unknown으로 남기고, 순위 계산에서 명시적으로 제외한다.</p></div>
+<p>이번 데이터셋에서 지표 미확인 레코드는 5건이며, 모두 0으로 표기하고 §6 상위 신호 순위에서 제외했다.</p>
+</section>
+
+<section id="section-08"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bi-fill" cx="14" cy="20" r="7"/><circle class="bi-soft" cx="26" cy="20" r="7"/><path class="bi-accent-line" d="M20 15v10"/></svg></span><span class="num" aria-hidden="true">8</span>중복/추가 정책</h2><p class="h2-sub">같은 게시물을 다시 만나면 행을 늘리지 않고 갱신한다 — URL 기준 dedupe/append 규칙을 못 박는다.</p>
+<p>수집은 반복 실행되므로 같은 URL이 여러 번 들어온다. 정책은 단순하다. <strong>URL이 같으면 같은 레코드</strong>다. 새 행을 추가하는 대신 기존 행의 지표·요약을 최신 값으로 덮어쓴다.</p>
+<section class="vt-shell"><div class="vt-shell-head"><div><div class="vt-id">VT · PLAN</div><h2>dedupe/append 판정</h2><p>URL 정규화 후 기존 데이터셋과 대조해 추가·갱신·스킵을 결정합니다.</p></div><span class="vt-fit">url dedupe</span></div><div class="vt-frame"><div class="plan-grid">
+<div class="milestone"><b>1. URL 정규화</b><p>스킴·호스트 통일, 트래킹 파라미터(<code>?t=</code>, <code>&amp;s=</code> 등) 제거 후 비교 키 생성.</p></div>
+<div class="milestone"><b>2. 기존 대조</b><p>정규화 URL이 데이터셋에 있으면 매칭, 없으면 신규 후보.</p></div>
+<div class="milestone"><b>3. 신규 → append</b><p>매칭 없으면 새 레코드로 추가. 이번 실행 +7건.</p></div>
+<div class="milestone plan-risk"><b>4. 중복 → update</b><p>매칭되면 views·likes·summary를 최신 값으로 갱신, 행 수는 그대로. 이번 실행 4건 갱신.</p></div>
+</div></div></section>
+<div class="good"><div class="label">Append 규칙</div><div class="name">행은 URL 수만큼, 그 이상도 이하도 아니다</div><p>병합 후 total은 항상 고유 URL 개수와 같아야 한다. 이번 실행은 existing 11 + added_net 7 = total 18로, 중복 13건은 전부 기존 행 갱신으로 흡수되어 행 수를 늘리지 않았다.</p></div>
+</section>
+
+<section id="section-09"><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span><span class="num" aria-hidden="true">9</span>검증 노트</h2><p class="h2-sub">출력 전에 통과해야 하는 자가 점검을 게이트 카드로 닫는다 — 통과/주의/차단을 분리한다.</p>
+<section class="vt-shell"><div class="vt-shell-head"><div><div class="vt-id">VT · QUALITY GATE</div><h2>수집 완료 자가 점검</h2><p>레코드 무결성·읽기 전용·지표 정직성·무 JS를 게이트로 확인합니다.</p></div><span class="vt-fit">quality gate</span></div><div class="vt-frame"><div class="qg-grid">
+<div class="qg-card"><b>레코드 스키마</b><p>18건 모두 8필드 정규화, summary·url 빠진 레코드 0. PASS</p></div>
+<div class="qg-card"><b>URL dedupe</b><p>고유 URL 18개 = total 18. 중복 행 0. PASS</p></div>
+<div class="qg-card"><b>읽기 전용</b><p>좋아요·리포스트·팔로우·답글·DM·북마크 0회. PASS</p></div>
+<div class="qg-card warn"><b>지표 정직성</b><p>미확인 5건 0/unknown 처리, 순위 제외. 추정값 0건. PASS(주의 표기)</p></div>
+<div class="qg-card"><b>무 JS 렌더</b><p>Chart.js·검색·정렬·칩 스크립트 0. 정적 표/카드/사전정렬만 사용. PASS</p></div>
+<div class="qg-card"><b>출처 링크</b><p>모든 레코드에 원문 URL 존재, 임의 생성 URL 0건. PASS</p></div>
+</div><div class="qg-final"><span class="qg-final-label">FINAL</span>전 게이트 통과. 지표 미확인 5건은 0/unknown으로 정직하게 표기되어 있으며, 완료 보고는 수집 한계와 검증된 출력물을 분리해 기술한다.</div></div></section>
+<aside class="lede-note"><div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="bi-soft" d="M20 7l14 25H6L20 7z"/><path class="bi-accent-line" d="M20 16v8"/><circle class="bi-accent" cx="20" cy="29" r="2"/></svg></span>수집 한계 고지</div><p>이번 수집은 14일 창의 표본이며 X 전체 트렌드를 대표하지 않는다. 반올림 표기된 지표는 정확값이 아니고, 0/unknown은 "관심 없음"이 아니라 "확인 불가"를 뜻한다. 의사결정에 쓰기 전 정확 지표가 필요하면 공식 API 경로 재수집을 권한다.</p></aside>
+</section>
+
+<section class="try"><div class="label">NEXT ACTION</div><h2><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="8" y="8" width="24" height="24" rx="4"/><path class="bi-accent-line" d="M14 20l4 4 9-10"/><path class="bi-line" d="M14 29h14"/></svg></span>다음 수집과 자동화를 잠근다</h2><p>이번 표본을 정기 트렌드 라인으로 키우려면, 지표 공백을 메우고 수집을 정해진 창으로 반복한다. 읽기 전용·URL dedupe·지표 정직성 규칙은 모든 후속 실행에서 그대로 유지한다.</p><ol>
+<li>지표 미확인 5건을 공식 API 경로로 재조회해 0/unknown을 정확값으로 교체한다.</li>
+<li>동일 키워드·14일 창으로 다음 수집을 실행하고 URL 기준 append/update로 병합한다.</li>
+<li>카테고리 분포·상위 신호를 이전 창과 비교해 추세선(증감)을 기록한다.</li>
+<li>정기 수집을 자동화할 경우 주제·쿼리·목표 건수·읽기 전용 규칙·출력 경로를 한 프롬프트에 명시한다.</li>
+<li>완료 보고는 수집 한계(반올림·미확인·표본 크기)와 검증된 출력 파일을 분리해 적는다.</li>
+</ol></section>
+
+<aside class="source-note"><div class="label"><span class="body-icon body-icon--sm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect class="bi-fill" x="10" y="7" width="20" height="26" rx="3"/><path class="bi-line" d="M15 14h10M15 20h10M15 26h7"/><path class="bi-accent-line" d="M27 7v8h-8"/></svg></span>Source Note</div><p>adaptive-html-final social-trend-dashboard.html 레이아웃과 social_trend_dashboard 모드 충실도 기준을 따른다. 레코드 스키마·URL dedupe·지표 정직성·읽기 전용 규칙은 x-ai-trend-collector 원본 계약에서 가져왔다. 모든 게시물 URL·작성자·지표는 무 JS 프리테스트용 예시 데이터이며 실제 게시물이 아니다. 원본의 자유 텍스트 검색·정렬 토글·카테고리 칩(JS)은 각각 사전 분류 섹션·사전 정렬 표·고정 chip-nav로 무 JS 다운컨버트했다.</p></aside>
+</main>

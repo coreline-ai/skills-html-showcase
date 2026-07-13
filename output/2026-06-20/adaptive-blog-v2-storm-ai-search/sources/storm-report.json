@@ -1,0 +1,83 @@
+{
+  "topic": "AI 검색 시대의 블로그 생존 전략 2026",
+  "mode": "solo-fallback-by-main-agent",
+  "souls": {
+    "Skeptic": {
+      "persona": "회의주의자",
+      "summary": "AI 검색은 링크를 준다고 약속하지만, 출처 오인용·클릭 감소·crawler 비대칭이 남는다.",
+      "body": "Google과 OpenAI는 links/sources를 제품 경험의 일부로 설명하지만, 출처가 있다는 사실과 출처가 정확히 대표된다는 사실은 다르다. CJR/Tow Center는 ChatGPT Search가 publisher content를 오표현할 수 있다는 위험을 제기했고, Cloudflare는 AI bot crawling과 referral imbalance를 별도 문제로 다룬다. 따라서 블로그 전략은 'AI에 인용되면 성공'이 아니라 '인용되어도 왜곡되지 않게 근거 단위를 설계하고, crawler 정책을 분리 관리하는 것'이어야 한다.",
+      "sources": [
+        "https://www.cjr.org/tow_center/how-chatgpt-misrepresents-publisher-content.php",
+        "https://blog.cloudflare.com/crawlers-click-ai-bots-training/",
+        "https://help.openai.com/en/articles/9237897-chatgpt-search"
+      ]
+    },
+    "Economist": {
+      "persona": "경제학자",
+      "summary": "콘텐츠의 단위 경제가 pageview 광고에서 citation, crawler access, subscription conversion으로 갈라진다.",
+      "body": "Cloudflare의 Pay per crawl은 allow/block 사이에 charge라는 세 번째 선택지를 제안한다. Google은 AI 검색에서도 더 깊은 engagement와 conversion 기회가 있을 수 있다고 말하지만, Cloudflare 데이터는 crawling과 referral의 비대칭을 보여준다. 콘텐츠 운영자는 traffic-only KPI를 버리고 citation visibility, crawler policy, subscriber capture, licensing readiness를 함께 보아야 한다.",
+      "sources": [
+        "https://blog.cloudflare.com/introducing-pay-per-crawl/",
+        "https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/",
+        "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide"
+      ]
+    },
+    "Historian": {
+      "persona": "역사학자",
+      "summary": "SEO는 죽은 것이 아니라 검색 인터페이스가 '목록'에서 '종합 답변'으로 바뀐 것이다.",
+      "body": "과거 featured snippet, knowledge panel, zero-click search 때도 'SEO 종료' 논쟁이 있었지만, 실제로는 문서 구조와 출처 신뢰를 더 엄격하게 요구하는 방향으로 진화했다. Google은 AI features에서도 foundational SEO best practices를 유지하라고 설명한다. 차이는 이제 하나의 키워드 순위가 아니라 여러 하위 질문에 걸친 증거 단위가 선택된다는 점이다.",
+      "sources": [
+        "https://developers.google.com/search/docs/appearance/ai-features",
+        "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide"
+      ]
+    },
+    "Academic": {
+      "persona": "학자",
+      "summary": "RAG와 query fan-out 시대의 글은 주장·근거·한계가 명확히 분리되어야 한다.",
+      "body": "Google은 AI search가 Search index 기반 RAG와 query fan-out을 활용한다고 설명한다. STORM 논문도 긴 글의 품질을 높이려면 다양한 관점의 질문과 검색 grounding이 중요하다고 본다. 이 둘을 합치면 좋은 글의 조건은 '문장 감성'보다 구조적 검증성이다. claim, evidence, caveat, next question이 분리되어야 AI와 사람이 모두 안전하게 재사용할 수 있다.",
+      "sources": [
+        "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+        "https://storm-project.stanford.edu/research/storm/",
+        "https://arxiv.org/abs/2402.14207"
+      ]
+    },
+    "Futurist": {
+      "persona": "미래학자",
+      "summary": "블로그는 페이지가 아니라 agent가 예산을 들고 읽는 'source object'가 된다.",
+      "body": "Cloudflare는 Pay per crawl의 미래를 agentic world와 연결해 설명한다. OpenAI crawler 문서도 search, training, user action을 서로 다른 user agent와 정책으로 분리한다. 앞으로 콘텐츠는 사람에게 읽히는 글인 동시에 agent가 접근권·출처·요약 가능성을 판단하는 객체가 된다. 블로그 운영자는 UI 글쓰기와 API-like governance를 동시에 설계해야 한다.",
+      "sources": [
+        "https://blog.cloudflare.com/introducing-pay-per-crawl/",
+        "https://developers.openai.com/api/docs/bots"
+      ]
+    }
+  },
+  "contradictions": [
+    [
+      "SEO는 죽었다",
+      "Google은 AI features에서도 SEO fundamentals가 여전히 관련 있다고 설명한다",
+      "SEO를 버리지 말고 evidence-first SEO로 재정의한다"
+    ],
+    [
+      "AI 답변은 출처 링크를 준다",
+      "CJR/Tow Center는 publisher content 오표현 위험을 지적한다",
+      "citation-ready 문장과 출처 QA를 함께 설계한다"
+    ],
+    [
+      "AI crawler를 막으면 보호된다",
+      "검색 노출·학습·사용자 액션 crawler는 목적이 다르다",
+      "robots.txt와 CDN/WAF 정책을 목적별로 분리한다"
+    ],
+    [
+      "좋은 글이면 충분하다",
+      "query fan-out은 여러 하위 질문과 데이터 소스를 동시에 다룬다",
+      "하나의 글 안에 FAQ·비교·절차·한계를 구조화한다"
+    ],
+    [
+      "트래픽이 줄면 끝이다",
+      "Pay per crawl과 구독 전환은 접근권/인용 기반 수익 가능성을 보여준다",
+      "pageview뿐 아니라 citation, subscriber, license KPI를 둔다"
+    ]
+  ],
+  "synthesis": "# STORM Synthesis\nAI 검색 시대의 블로그 전략은 '검색엔진을 속이는 법'이 아니라 '사람과 모델이 함께 검증할 수 있는 source object를 만드는 법'으로 바뀐다.\n\n핵심은 네 가지다. 첫째, Google의 설명처럼 기본 SEO는 여전히 필요하다. 크롤링, 색인, snippet, 내부 링크, 텍스트 가용성, visible text와 structured data의 일치는 버려도 되는 과거 기술이 아니다. 둘째, query fan-out은 하나의 키워드보다 여러 하위 질문을 동시에 다룬다. 그래서 글은 단일 주장보다 정의, 비교, 절차, FAQ, 한계, 원문 출처를 함께 가져야 한다. 셋째, ChatGPT Search와 AI Overviews가 링크를 제공하더라도 attribution 품질은 자동 보장되지 않는다. 넷째, Cloudflare의 pay per crawl은 콘텐츠가 pageview뿐 아니라 crawler access와 agentic budget의 대상이 될 수 있음을 보여준다.\n\n따라서 좋은 블로그 글의 새 기준은 '읽기 좋은 에세이 + 검증 가능한 근거 블록 + crawler 정책 + 수익 전환 경로'다.",
+  "peer_review": "# STORM Peer Review\n- BLOCKER 없음: 공식 문서와 비판 자료를 분리했고, 확인되지 않은 수치나 수익 효과를 단정하지 않았다.\n- 주의 1: Google과 OpenAI 자료는 제품 제공자 관점이다. 낙관적 claim은 실행 지침으로 쓰되, 독립 검증이 필요한 주장으로 취급한다.\n- 주의 2: Cloudflare의 Pay per crawl은 closed/private beta 성격이므로 즉시 적용 가능한 보편 표준처럼 쓰면 안 된다.\n- 주의 3: CJR/Tow Center 분석은 publisher risk를 보여주는 비판 자료이며, 모든 AI search citation이 틀린다는 의미로 과장하면 안 된다.\n- 주의 4: 'SEO는 죽었다/살았다'의 이분법보다, content evidence architecture로 재정의하는 결론이 더 안전하다."
+}

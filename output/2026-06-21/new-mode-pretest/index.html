@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>신규 모드 선반영 테스트 인덱스</title>
+<meta name="description" content="adaptive-html-final 신규 모드 후보 4개를 소스 수정 없이 출력 전용으로 선검수한 HTML 링크 인덱스.">
+<style>
+:root{--bg:#f5f1eb;--card:#fffdf8;--ink:#171412;--muted:#695f59;--line:#e1d8cf;--accent:#e63946;--accent2:#ff7a59;--rose:#fff0ee;--shadow:0 24px 70px rgba(40,31,25,.10);--sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:light}
+:root:has(#ahf-light2:checked){--bg:#f5f6f8;--card:#fff;--ink:#16181d;--muted:#687282;--line:#e4e7ee;--rose:#fdecea;color-scheme:light}
+:root:has(#ahf-white:checked){--bg:#fff;--card:#fff;--ink:#15171c;--muted:#69707a;--line:#e7e7ec;--rose:#fff5f3;color-scheme:light}
+:root:has(#ahf-dark:checked){--bg:#0c0d10;--card:#191b21;--ink:#ececea;--muted:#aaa49d;--line:#30333b;--accent:#ff6b75;--accent2:#ff8a65;--rose:#2d2024;color-scheme:dark}
+:root:has(#ahf-dark2:checked){--bg:#120f12;--card:#1f181d;--ink:#f1e9e5;--muted:#c4aaa2;--line:#3a2c33;--accent:#ff7582;--accent2:#e08a68;--rose:#302029;color-scheme:dark}
+:root:has(#ahf-blue:checked){--bg:#0a1a3c;--card:#13294e;--ink:#e7edf7;--muted:#aebad1;--line:#2c3e63;--accent:#5b9cf0;--accent2:#ff8a65;--rose:#16345e;color-scheme:dark}
+:root:has(#ahf-skyblue:checked){--bg:#eef4fb;--card:#fff;--ink:#15233a;--muted:#65748a;--line:#d5e1f0;--accent:#2f6fdb;--accent2:#f26d58;--rose:#e4eefc;color-scheme:light}
+:root:has(#ahf-sepia:checked){--bg:#f4ecd8;--card:#fbf6e9;--ink:#382f25;--muted:#857260;--line:#e2d6bb;--accent:#a85c32;--accent2:#c76a3c;--rose:#f0e2cf;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 12% -8%,var(--rose),transparent 32%),radial-gradient(circle at 92% 2%,color-mix(in srgb,var(--accent2) 18%,transparent),transparent 28%),var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.72;letter-spacing:-.014em;word-break:keep-all}a{color:inherit;text-underline-offset:3px}.themebar{position:fixed;top:14px;right:16px;z-index:10;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:276px;padding:5px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--card) 94%,transparent);box-shadow:0 3px 10px rgba(0,0,0,.10);backdrop-filter:blur(12px)}.themebar input{position:absolute;opacity:0;width:1px;height:1px}.themebar label{display:grid;place-items:center;min-height:30px;border-radius:9px;color:var(--muted);font-size:12px;font-weight:850;cursor:pointer}.themebar input:checked+label{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white}.wrap{width:min(1120px,calc(100% - 44px));margin:0 auto;padding:72px 0 90px}.hero{position:relative;padding:34px 0 34px;border-bottom:1px solid var(--line)}.hero:after{content:"";position:absolute;left:0;bottom:-2px;width:190px;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2))}.kicker{display:inline-flex;gap:8px;align-items:center;margin:0 0 18px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--accent);font-size:11px;font-weight:950;letter-spacing:.13em;text-transform:uppercase}.kicker:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}h1{max-width:900px;margin:0 0 16px;font-size:clamp(34px,5vw,60px);line-height:1.1;font-weight:950;letter-spacing:-.05em}.lead{max-width:880px;margin:0;color:var(--muted);font-size:18px}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.chip{display:inline-flex;align-items:center;min-height:30px;padding:5px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--muted);font-size:12px;font-weight:850}.panel{margin:28px 0;padding:24px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,var(--card),color-mix(in srgb,var(--rose) 35%,var(--card)));box-shadow:var(--shadow)}.panel h2{margin:0 0 10px;font-size:24px;letter-spacing:-.03em}.panel p{margin:0;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}.card{position:relative;overflow:hidden;display:flex;min-height:235px;flex-direction:column;gap:14px;padding:24px;border:1px solid var(--line);border-radius:24px;background:var(--card);box-shadow:0 12px 34px rgba(40,31,25,.07);text-decoration:none}.card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line));box-shadow:0 18px 50px rgba(40,31,25,.12)}.card:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--accent),var(--accent2))}.mode{display:flex;align-items:center;justify-content:space-between;gap:12px}.mode code{padding:5px 8px;border-radius:9px;background:var(--rose);color:var(--accent);font-weight:900;font-size:12px}.mode span{color:var(--muted);font-size:12px;font-weight:850}.card h2{margin:8px 0 0;font-size:25px;line-height:1.22;letter-spacing:-.035em}.card p{margin:0;color:var(--muted);font-size:15px}.open{margin-top:auto;display:inline-flex;align-self:flex-start;align-items:center;gap:8px;min-height:38px;padding:8px 13px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;font-weight:900;font-size:13px}.checklist{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}.check{padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--card)}.check b{display:block;margin-bottom:4px;color:var(--accent);font-size:18px}.check span{color:var(--muted);font-size:13px}.toc-fab{position:fixed;right:18px;bottom:18px;z-index:9;display:inline-flex;align-items:center;min-height:44px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;text-decoration:none;font-size:13px;font-weight:950;box-shadow:0 10px 24px rgba(183,45,56,.25)}footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}@media(max-width:860px){.themebar{position:static;margin:12px auto 0}.wrap{padding-top:30px}.grid,.checklist{grid-template-columns:1fr}.card{min-height:auto}}
+</style>
+</head>
+<body>
+<nav class="themebar" aria-label="테마 선택">
+  <input type="radio" name="ahf-theme" id="ahf-light" checked><label for="ahf-light">라이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-light2"><label for="ahf-light2">그레이</label>
+  <input type="radio" name="ahf-theme" id="ahf-white"><label for="ahf-white">화이트</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark"><label for="ahf-dark">다크</label>
+  <input type="radio" name="ahf-theme" id="ahf-dark2"><label for="ahf-dark2">로즈</label>
+  <input type="radio" name="ahf-theme" id="ahf-blue"><label for="ahf-blue">블루</label>
+  <input type="radio" name="ahf-theme" id="ahf-skyblue"><label for="ahf-skyblue">스카이</label>
+  <input type="radio" name="ahf-theme" id="ahf-sepia"><label for="ahf-sepia">세피아</label>
+</nav>
+<a class="toc-fab" href="#mode-links" aria-label="모드 링크로 이동">모드 링크 ↑</a>
+<div class="wrap">
+<header class="hero" id="top">
+  <p class="kicker">NEW MODE PRETEST · OUTPUT ONLY</p>
+  <h1>신규 모드 4종 선반영 테스트 링크</h1>
+  <p class="lead">실제 스킬 소스는 수정하지 않고, 신규 모드가 추가되었다고 가정한 결과물만 병렬 에이전트로 생성했습니다. 아래 카드를 클릭하면 각 선검수(output-only pretest) HTML이 열립니다. 공식 검증 미통과 산출물이며 스킬 산출물이 아닙니다.</p>
+  <div class="meta">
+    <span class="chip">base version reference: adaptive-html-final v5.10.5</span>
+    <span class="chip">generated: 2026-06-21</span>
+    <span class="chip">source edit: none for this pretest</span>
+    <span class="chip">behavioral JS: 0</span>
+  </div>
+</header>
+<main id="main">
+  <section class="panel" aria-labelledby="pretest-note">
+    <h2 id="pretest-note">선검수 전제</h2>
+    <p>이 인덱스는 신규 모드 추가 전 화면 품질과 콘텐츠 구조를 먼저 확인하기 위한 산출물입니다. 공식 registry/layout/validator 통합은 아직 하지 않았으므로, 공식 <code>validate_output.py</code> 대상이 아니라 smoke check 대상으로 봐야 합니다.</p>
+    <div class="checklist">
+      <div class="check"><b>4</b><span>신규 모드 후보</span></div>
+      <div class="check"><b>4</b><span>병렬 에이전트 할당</span></div>
+      <div class="check"><b>8</b><span>테마 라디오 포함</span></div>
+      <div class="check"><b>0</b><span>행동 JS 없음</span></div>
+    </div>
+  </section>
+  <section id="mode-links" aria-labelledby="mode-title">
+    <h2 id="mode-title">선검수 HTML 링크 <small>(output-only pretest · 공식 validate 미통과 · 스킬 산출물 아님)</small></h2>
+    <div class="grid">
+<a class="card" href="business-plan-html/index.html">
+  <div class="mode"><code>business_plan_html</code><span>pretest</span></div>
+  <h2>Business Plan HTML</h2>
+  <p><strong>GrantProof Core 사업계획서</strong></p>
+  <p>정부지원사업 공고문-인터뷰-리서치-원장-평가위원 시뮬레이션을 묶는 사업계획서형 신규 모드 선검수.</p>
+  <span class="open">선검수 HTML 열기 →</span>
+</a>
+<a class="card" href="storm-research/index.html">
+  <div class="mode"><code>storm_research</code><span>pretest</span></div>
+  <h2>STORM Research</h2>
+  <p><strong>AI 에이전트 생산성 조건 리서치</strong></p>
+  <p>5개 관점, 출처 지도, 모순 지도, 동료검토 게이트를 포함한 다관점 리서치형 신규 모드 선검수.</p>
+  <span class="open">선검수 HTML 열기 →</span>
+</a>
+<a class="card" href="social-trend-dashboard/index.html">
+  <div class="mode"><code>social_trend_dashboard</code><span>pretest</span></div>
+  <h2>Social Trend Dashboard</h2>
+  <p><strong>AI 도구 시장 신호 대시보드</strong></p>
+  <p>records.json 스키마, dedupe 정책, 무JS 차트, 지표 caveat를 포함한 트렌드 대시보드형 신규 모드 선검수.</p>
+  <span class="open">선검수 HTML 열기 →</span>
+</a>
+<a class="card" href="operator-manual-html/index.html">
+  <div class="mode"><code>operator_manual_html</code><span>pretest</span></div>
+  <h2>Operator Manual HTML</h2>
+  <p><strong>GrantProof Core 운영자 매뉴얼</strong></p>
+  <p>공고문→인터뷰→증거 원장→제출본 검증 흐름과 CAPTURE_REQUIRED를 분리한 운영자 매뉴얼형 신규 모드 선검수.</p>
+  <span class="open">선검수 HTML 열기 →</span>
+</a>
+    </div>
+  </section>
+</main>
+<footer>
+  <p>신규 모드 선반영 테스트 · output/2026-06-21/new-mode-pretest · 공식 스킬 소스 통합 전 프리뷰</p>
+</footer>
+</div>
+</body>
+</html>

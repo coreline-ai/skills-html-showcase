@@ -1,0 +1,11 @@
+{
+  "layout": "expert-report.html",
+  "EXECUTIVE_SUMMARY": "content-only STORM five-soul scan summary",
+  "DECISION_CARDS": "full/solo/citation/peer-review decision cards",
+  "ARCHITECTURE": "Phase 0-7 pipeline mapping",
+  "RISK_MATRIX": "vt risk-matrix + contradiction map",
+  "PRIORITY_ROADMAP": "wg-11 execution status board",
+  "VALIDATION_CHECKLIST": "peer-review scope and honesty checks",
+  "FINAL_RECOMMENDATION": "when STORM is worth using",
+  "SOURCE_NOTE": "storm-research-only source hub"
+}

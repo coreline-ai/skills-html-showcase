@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-06-20T00:32:40.573Z",
+  "viewports": {
+    "390": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/390.png"
+    },
+    "1280": {
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow_ok": true,
+      "screenshot": "sources/screenshots/1280.png"
+    }
+  },
+  "pages": {
+    "index.html": {
+      "390": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 17861,
+        "title": "AI 검색 시대의 블로그 생존 전략 2026 · adaptive blog v2 STORM",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/390.png"
+      },
+      "1280": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 10023,
+        "title": "AI 검색 시대의 블로그 생존 전략 2026 · adaptive blog v2 STORM",
+        "overflow_ok": true,
+        "screenshot": "sources/screenshots/1280.png"
+      }
+    }
+  },
+  "micro_layout": {
+    "all_ok": true,
+    "checks": {
+      "heading_badge_nowrap": true,
+      "rail_color_variety": true,
+      "rail_text_padding": true,
+      "card_vertical_rhythm": true,
+      "footer_centered": true,
+      "no_noncanonical_classes": true
+    },
+    "failures": []
+  }
+}

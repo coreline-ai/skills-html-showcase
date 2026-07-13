@@ -1,0 +1,11 @@
+{
+  "layout": "expert-report.html",
+  "EXECUTIVE_SUMMARY": "business plan summary + tagged assumptions",
+  "DECISION_CARDS": "5 decision cards for positioning and gates",
+  "ARCHITECTURE": "business-core.yaml and evidence-ledger architecture",
+  "RISK_MATRIX": "vt risk-matrix + risk table",
+  "PRIORITY_ROADMAP": "wg-16 90-day MVP roadmap",
+  "VALIDATION_CHECKLIST": "bizplan gate status + evidence ledger",
+  "FINAL_RECOMMENDATION": "honest incomplete recommendation",
+  "SOURCE_NOTE": "bizplan-only source hub"
+}

@@ -1,0 +1,64 @@
+{
+  "mode": "expert_html",
+  "profile": "auto",
+  "layout": "expert-report.html",
+  "primary_vt": "risk-matrix",
+  "topic": "AI 코딩 에이전트가 주니어 개발자 채용·경력에 미치는 영향",
+  "pipeline": "storm-research(5영혼 딥리서치·실웹검색·출처강제) → adaptive-html-final 5.10.5 expert_html (하이브리드)",
+  "section_mapping": {
+    "section-01": "핵심 결론(verdict)",
+    "section-02": "5렌즈 합의",
+    "section-03": "원인 논쟁(상관vs인과)",
+    "section-04": "생산성 증거 분열(table)",
+    "section-05": "학습 침식(wg-03 코드리뷰)",
+    "section-06": "위험 지도(rm-grid 1순위 vt)",
+    "section-07": "역사 선례",
+    "section-08": "시장·인센티브",
+    "section-09": "시나리오",
+    "section-10": "권고(decision)",
+    "section-11": "동료 검토",
+    "section-12": "출처(source-note)"
+  },
+  "files": [
+    {
+      "path": "skills/adaptive-html-final/modes/09-expert.json",
+      "sha256": "d42849c3b2bea50418a598943d97f03ab0030a368f461e47b243e8c060984de9",
+      "why": "expert_html 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/expert-report.html",
+      "sha256": "6d6bbf941d66842ea29976ecdd0976f6a41786d07b33d16789b89fcf6c3471c3",
+      "why": "expert_html 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/body-icons.json",
+      "sha256": "fe519b23431338e2fa053d8f76e16abf168d7868aba4252ca454b5dda89d1318",
+      "why": "expert_html 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/theme.css",
+      "sha256": "2a9c8843a035138ff47b57cfc0806185c1b9cdfb3309a681022b689d8a32b1b6",
+      "why": "expert_html 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/components.css",
+      "sha256": "72c8f2570164acf5fc80330a57201f0feca579e1b6d9c3fdf1dcc5dcb81b7aa5",
+      "why": "expert_html 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html.css",
+      "sha256": "540cdf013934d9c2e53ac901d76aefd9ac468f3a6aaa8814d7dd60a57e919263",
+      "why": "expert_html 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widgets.css",
+      "sha256": "847e44c71564666d11f40084171e1b1c14f13436f43bd8b503d70e34dbf54851",
+      "why": "expert_html 정본 자산/scaffold"
+    },
+    {
+      "path": "skills/adaptive-html-final/examples/02_expert_llm_gateway_report.html",
+      "sha256": "3563f8f09f32b13b113a3908372f4d56fb981658f0f137ec6920a2f326271d57",
+      "why": "expert_html 정본 자산/scaffold"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "skill": "bizplan",
+  "content_source_rule": "business-plan content uses only local orginal_skill/bizplan files; no STORM and no external market data",
+  "html_template_rule": "adaptive-html-final v5.10.5 used only for base/layout/css/widget/validation",
+  "selected_topic": "PlanCore Ledger — 사업계획서 증거 원장 SaaS",
+  "document_type": "내부 신사업/자유형식 사업계획서",
+  "mode": "expert_html",
+  "profile": "auto",
+  "disclaimer": "사용자 인터뷰와 외부 시장조사 전이므로 실제 제출용 최종본이 아니라 스킬 기반 사업 논리 초안이다."
+}

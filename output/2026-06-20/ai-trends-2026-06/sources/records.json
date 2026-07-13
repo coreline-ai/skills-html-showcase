@@ -1,0 +1,202 @@
+[
+  {
+    "cat": "신규 모델·제품 출시",
+    "author": "Anthropic",
+    "handle": "",
+    "date": "2026-06-09",
+    "summary": "앤트로픽이 프런티어 모델 Claude Fable 5를 공개했다. 100만 토큰·멀티모달을 지원하고 SW엔지니어링·과학에서 Opus 4.8을 능가하며, 사이버보안·생물 등 고위험 영역은 차단하는 안전장치를 뒀다.",
+    "url": "https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "신규 모델·제품 출시",
+    "author": "MiniMax",
+    "handle": "",
+    "date": "2026-06-01",
+    "summary": "중국 MiniMax가 희소어텐션(MSA) 기반 오픈웨이트 모델 M3를 출시했다. 100만 토큰·네이티브 멀티모달·에이전트 코딩을 단일 구조로 지원하고 SWE-Bench Pro 59%로 GPT-5.5를 앞선다고 주장했다.",
+    "url": "https://www.marktechpost.com/2026/06/01/minimax-releases-minimax-m3-with-msa-architecture-supporting-1m-token-context-native-multimodality-and-agentic-coding/",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "신규 모델·제품 출시",
+    "author": "OpenAI",
+    "handle": "",
+    "date": "2026-05-05",
+    "summary": "오픈AI가 플래그십 GPT-5.5의 경량판 'Instant'를 무료 사용자에게 배포하며 ChatGPT 기본 모델로 전환했다. 고위험 주제 환각이 기존 대비 52.5% 줄었다는 내부 평가를 제시했다.",
+    "url": "https://techcrunch.com/2026/05/05/openai-releases-gpt-5-5-instant-a-new-default-model-for-chatgpt/",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "신규 모델·제품 출시",
+    "author": "Alibaba Qwen",
+    "handle": "",
+    "date": "2026-05-20",
+    "summary": "알리바바가 추론·에이전트 특화 Qwen3.7-Max를 발표했다. 100만 토큰 컨텍스트, Terminal-Bench 2.0·SWE-Bench Pro에서 Opus를 앞선다고 밝혔고 입력 100만 토큰당 2.5달러로 가격을 책정했다.",
+    "url": "https://www.marktechpost.com/2026/05/21/qwen-introduces-qwen3-7-max-a-reasoning-agent-model-with-a-1m-token-context-window/",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "신규 모델·제품 출시",
+    "author": "Anthropic",
+    "handle": "",
+    "date": "2026-06-09",
+    "summary": "Fable 5 공개와 동시에 더 강력한 Mythos 5를 'Project Glasswing'으로 사전 승인 조직에만 한정 배포하며, 위험성 경고 직후 단계적 안전 공개 전략을 취했다.",
+    "url": "https://www.infoq.com/news/2026/06/claude-5-release/",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "연구·논문·벤치마크",
+    "author": "Marozzo·Liò",
+    "handle": "",
+    "date": "2026-06-11",
+    "summary": "LLM이 사용자가 준 가설을 성급히 채택하는 문제를 지적하고, 증거를 수집·가설 확률을 갱신하며 진단하는 에이전트를 제안했다. 표준 프롬프팅 대비 진단 정확도가 향상됐다.",
+    "url": "https://arxiv.org/abs/2606.13220",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "연구·논문·벤치마크",
+    "author": "Akgül 외",
+    "handle": "",
+    "date": "2026-05-07",
+    "summary": "RL의 추론 개선이 새 능력 학습이 아니라 토큰의 1~3%에만 작용하는 희소 정책 선택임을 보였다. 단일 GPU 수 분 학습만으로 전체 RL급 성능을 내며 학습 비용을 약 1/1000로 줄였다.",
+    "url": "https://arxiv.org/abs/2605.06241",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "연구·논문·벤치마크",
+    "author": "Wang 외",
+    "handle": "",
+    "date": "2026-05-07",
+    "summary": "합성 논리추론으로 RL 학습이 난이도에 따라 어떻게 확장되는지 분석했다. 스케일링 지수 γ가 1.04→2.60으로 증가해 장기추론 한계가 구조가 아닌 학습 방법론에서 비롯됨을 시사했다.",
+    "url": "https://arxiv.org/abs/2605.06638",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "연구·논문·벤치마크",
+    "author": "Cui 외",
+    "handle": "",
+    "date": "2026-05-15",
+    "summary": "LLM 에이전트형 강화학습의 개념·방법론·설계를 정리한 서베이다. 목표 설정·자기 성찰 등 자율 에이전트 역량을 위한 RL의 핵심 과제와 향후 방향을 제시했다.",
+    "url": "https://arxiv.org/abs/2604.27859",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "연구·논문·벤치마크",
+    "author": "Li 외",
+    "handle": "",
+    "date": "2026-02-22",
+    "summary": "검색·코딩·추론·도구사용 전반의 LLM 에이전트를 평가하는 통합 프레임워크다. 순차 스케일링은 컨텍스트 한계, 병렬은 검증 격차 때문에 테스트타임 스케일링이 성능을 끌어올리지 못함을 발견했다.",
+    "url": "https://arxiv.org/abs/2602.18998",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "산업·투자·기업",
+    "author": "AlphaSense",
+    "handle": "",
+    "date": "2026-06-03",
+    "summary": "기업용 AI 시장정보 플랫폼 AlphaSense가 75억 달러 가치로 3.5억 달러 그로스 라운드를 유치했다(Vitruvian·Accenture Ventures·JPMAM). 1분기 ARR 6억 달러를 돌파했다.",
+    "url": "https://techstartups.com/2026/06/03/venture-capital-startup-funding-roundup-june-3-2026/",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "산업·투자·기업",
+    "author": "Coralogix",
+    "handle": "",
+    "date": "2026-06-03",
+    "summary": "AI 옵저버빌리티 기업 Coralogix가 2억 달러 시리즈 F를 유치해 포스트머니 16억 달러를 기록했다(Advent·CPP Investments·Greenfield, 매출 60%+ 성장).",
+    "url": "https://techstartups.com/2026/06/03/venture-capital-startup-funding-roundup-june-3-2026/",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "산업·투자·기업",
+    "author": "NVIDIA",
+    "handle": "",
+    "date": "2026-05-07",
+    "summary": "NVIDIA와 IREN이 최대 5기가와트 규모 AI 인프라 배치 파트너십을 발표했다. NVIDIA는 5년간 주당 70달러에 최대 3천만 주(약 21억 달러)를 매입할 권리를 확보했다.",
+    "url": "https://nvidianews.nvidia.com/news/nvidia-and-iren-announce-strategic-partnership-to-accelerate-deployment-of-up-to-5-gigawatts-of-ai-infrastructure",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "산업·투자·기업",
+    "author": "TechCrunch",
+    "handle": "",
+    "date": "2026-05-04",
+    "summary": "같은 날 양사가 엔터프라이즈 AI 합작사를 출범했다. Anthropic JV는 15억 달러 가치(각 3억 출자), OpenAI JV는 100억 달러 가치에 19개 투자자로부터 40억 달러를 조달했다.",
+    "url": "https://techcrunch.com/2026/05/04/anthropic-and-openai-are-both-launching-joint-ventures-for-enterprise-ai-services/",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "산업·투자·기업",
+    "author": "Tech Policy Press",
+    "handle": "",
+    "date": "2026-06-04",
+    "summary": "초당적(Obernolte·Trahan) 269페이지 연방 AI 거버넌스 초안이 공개됐다. 연매출 5억 달러+ 프런티어 개발사에 투명성 보고·독립 감사를 의무화하는 첫 포괄적 연방안이다.",
+    "url": "https://www.techpolicy.press/unpacking-the-great-american-artificial-intelligence-act-of-2026/",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "실용 도구·에이전트",
+    "author": "Anthropic",
+    "handle": "",
+    "date": "2026-05-13",
+    "summary": "중소기업용 Claude를 출시했다. QuickBooks·HubSpot·Canva 등 커넥터와 급여 계획·월마감·인보이스 독촉 등 15개 즉시 실행형 에이전트 워크플로(스킬)를 제공한다.",
+    "url": "https://www.anthropic.com/news/claude-for-small-business",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "실용 도구·에이전트",
+    "author": "Model Context Protocol",
+    "handle": "",
+    "date": "2026-05-21",
+    "summary": "2026-07-28 정식 발표를 목표로 한 MCP 사양 RC를 공개했다. 무상태(stateless) 코어, 샌드박스 iframe UI 'MCP Apps', Tasks·Extensions 프레임워크, OAuth 인가 강화가 핵심이다.",
+    "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "실용 도구·에이전트",
+    "author": "Cursor",
+    "handle": "",
+    "date": "2026-05-18",
+    "summary": "코딩 에이전트 모델 Composer 2.5를 출시했다. 멀티파일 편집·터미널 실행·반복 디버깅 안정성을 높였고 SWE-Bench Multilingual 79.8%를 프리미엄 모델의 약 1/10 비용에 제공한다.",
+    "url": "https://cursor.com/blog/composer-2-5",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "실용 도구·에이전트",
+    "author": "Microsoft",
+    "handle": "",
+    "date": "2026-06-02",
+    "summary": "Build 2026에서 Windows를 AI 에이전트 빌드·실행 플랫폼으로 재정의했다. Development Skills·Developer Configurations 정식 출시, 실험적 Intelligent Terminal, 로컬 에이전트 추론을 공개했다.",
+    "url": "https://redmondmag.com/articles/2026/06/02/microsoft-uses-build-2026-to-put-ai-agents-at-the-center-of-windows.aspx",
+    "views": 0,
+    "likes": 0
+  },
+  {
+    "cat": "실용 도구·에이전트",
+    "author": "SD Times",
+    "handle": "",
+    "date": "2026-05-08",
+    "summary": "CI/CD용 AI 에이전트를 Cursor 네이티브 플러그인으로 출시했다 — Architecture Analyzer·Security/SQL Scanner·Compliance Auditor가 IDE 안에서 동작한다. 같은 주 Snyk-Claude 보안 통합도 발표됐다.",
+    "url": "https://sdtimes.com/ai/may-8-2026-ai-updates-from-the-past-week-coder-agents-launch-snyk-claude-partnership-opsera-cursor-partnership-and-more/",
+    "views": 0,
+    "likes": 0
+  }
+]

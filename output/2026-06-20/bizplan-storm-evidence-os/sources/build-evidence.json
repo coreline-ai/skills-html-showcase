@@ -1,0 +1,98 @@
+{
+  "mode": "landing_brief_html",
+  "profile": "auto",
+  "layout": "landing-brief.html",
+  "layout_class": "layout-landing",
+  "primary_vt": "hero-map",
+  "primary_wg": "wg-16",
+  "section_mapping": {
+    "layout": "landing-brief.html",
+    "HERO": "vt hero-map + STORM scan + topic disclaimer",
+    "VALUE_PROPS": "evidence-tagged value proposition matrix + business-core sketch",
+    "HOW_IT_WORKS": "wg-16 implementation plan + contradiction map",
+    "FAQ": "buyer/evaluator questions + synthesis/peer review preserved",
+    "CTA": "five validation gates",
+    "SOURCE_NOTE": "local bizplan sources + public STORM sources"
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "80b912c06fb1055ca14e99123c01a99b89765cbd8935616dbff3ac48efaef002"
+    },
+    {
+      "path": "skills/adaptive-html-final/SKILL.md",
+      "sha256": "7f8bf19819fb963d7f77b8c1fdd1f4bb1589c7c703f43298d9bb48d9e84b7207"
+    },
+    {
+      "path": "skills/adaptive-html-final/manifest.json",
+      "sha256": "5091eca47d175172114ccd1bbac35744d73da60540c9f25af050688f6ffa4a94"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/base.html",
+      "sha256": "ecd2c4206d1c7f5e6b290b08c470a3cc9bc1cd2b72638e221339311b8a885259"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/layouts/landing-brief.html",
+      "sha256": "a6426ca97eaeb68045817af226b7a0997c136ddffde899991a982087f4c61a0c"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/visual-html-templates/01-hero-map.html",
+      "sha256": "4bbbe6107aa6df14b2f7c4e2dad28065bddbfcbbf7721ab1b688d37b9393a0dc"
+    },
+    {
+      "path": "skills/adaptive-html-final/assets/widget-templates/16-implementation-plan.html",
+      "sha256": "7137af34d22e3875711958e017929b8d9f14c4d4cd3d57fcd28a02e8d1007c6e"
+    },
+    {
+      "path": "orginal_skill/bizplan/SKILL.md",
+      "sha256": "520556eb63deaadcaad543eaf5610037a8cfdd6b013e823069b4ad2227985200"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/evidence-tagging.md",
+      "sha256": "de2e4dea742b239c92429143a245720b2f470111d802447113353987c10661bb"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/04-research-engine.md",
+      "sha256": "f7e6f03deceb00016267da70e413e5bd44661edd537ab5b82a36306f1a26bc9f"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/07-business-core.md",
+      "sha256": "f15d23cb72e4bc0c09ee084027bab053ed1e4850560268ffa778fcdb0f4db07d"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/11-document-types.md",
+      "sha256": "728c012edef1df0f318fe6ef330c7828aedd655ef2e48684298b4a76c549ef19"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/12-verification.md",
+      "sha256": "c501cabed210580a8374fe7a82f838ecff32e41f6bdce55b322f4c38fa59c2af"
+    },
+    {
+      "path": "orginal_skill/bizplan/references/document-output.md",
+      "sha256": "da7631f531669f6d89187f7fa34b01e71acbbef5fe12d64640537b52734d8ce1"
+    },
+    {
+      "path": "orginal_skill/storm-research/SKILL.md",
+      "sha256": "866622b669953de1c1f235fcc9bb86c70ee06322c90b01ae8008705372a04932"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/storm-pipeline.md",
+      "sha256": "ebe8bc4eb959ff2a7c84d8456ceb8ee18d17e25e65e192c1a109df1ffd08e6c2"
+    },
+    {
+      "path": "orginal_skill/storm-research/references/provenance.md",
+      "sha256": "8d15a93d4c0a305d44612241d05d2d006703b122f8c0616012368c0f1b942d7c"
+    }
+  ],
+  "input_snapshots": [
+    "sources/bizplan-SKILL.md",
+    "sources/evidence-tagging.md",
+    "sources/business-core.md",
+    "sources/storm-scan.md",
+    "sources/storm-contradiction-map.md",
+    "sources/storm-synthesis.md",
+    "sources/storm-peer-review.md",
+    "sources/bizplan-application.json"
+  ],
+  "research_route": "storm-research solo fallback; local bizplan skill + public STORM sources; no invented business statistics"
+}

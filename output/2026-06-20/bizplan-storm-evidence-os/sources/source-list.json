@@ -1,0 +1,47 @@
+[
+  {
+    "name": "bizplan/SKILL.md",
+    "url": "sources/bizplan-SKILL.md",
+    "role": "7대 절대 규칙, 21단계 워크플로우, business-core.yaml 단일 출처 원칙"
+  },
+  {
+    "name": "evidence-tagging.md",
+    "url": "sources/evidence-tagging.md",
+    "role": "[사실] [추정] [가정] [목표] [확인 필요] 증거 태깅 문법"
+  },
+  {
+    "name": "research-engine.md",
+    "url": "sources/research-engine.md",
+    "role": "조사와 작성 분리, 부정적 근거 수집, source-index.xlsx 구축"
+  },
+  {
+    "name": "business-core.md",
+    "url": "sources/business-core.md",
+    "role": "사업 코어·evidence-ledger·숫자 일관성 게이트"
+  },
+  {
+    "name": "document-types.md",
+    "url": "sources/document-types.md",
+    "role": "정부지원·R&D·투자덱·제안서별 평가 논리 변환"
+  },
+  {
+    "name": "verification.md",
+    "url": "sources/verification.md",
+    "role": "평가위원 4역할 시뮬레이션과 점수/결함 반복 루프"
+  },
+  {
+    "name": "document-output.md",
+    "url": "sources/document-output.md",
+    "role": "HTML 렌더링·깨짐 검사·최종 제출 체크리스트"
+  },
+  {
+    "name": "Stanford STORM Research Project",
+    "url": "https://storm-project.stanford.edu/research/storm/",
+    "role": "다관점 질문·출처 grounding 기반 pre-writing 방법론"
+  },
+  {
+    "name": "STORM paper · arXiv:2402.14207",
+    "url": "https://arxiv.org/abs/2402.14207",
+    "role": "STORM의 outline organization·coverage 개선과 source bias/over-association 한계"
+  }
+]
